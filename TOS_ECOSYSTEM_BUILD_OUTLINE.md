@@ -2,7 +2,7 @@
 # SKILL.md Ecosystem — Expanded Build Outline
 
 Version: 2.0
-Status: Plan / Pre-build (awaiting confirmation on the decision points in §13)
+Status: Phase 0 (Foundations) BUILT on `claude/fervent-hawking-nyrzy5` — see `STATE.md`. The §13 decisions were resolved this session (Phase 0 only; full-K–12 breadth-first; 5 protocols drafted from QG; defaults accepted) and are recorded in `STATE.md`.
 Operationalizes: Master Project Charter V4 + the Quality Gates Protocol v3.0.0 (sections 001–100).
 
 Authoritative inputs read for this plan:
@@ -410,10 +410,15 @@ outline + `STATE.md`, say "continue from STATE.md."
 
 ---
 
-## 15. Immediate next step (on approval)
+## 15. Status & next step
 
-Begin **Phase 0**: scaffold the repo (§7); author `shared/` + place the provided
-`protocols/quality-gates.md` (and draft the other 5 if approved); write the 5 governance docs and
-`CLAUDE.md`/`STATE.md`; build `tools/new_skill.py` + `tools/sync_check.py` (QG §96 invariants); and
-write `teacher-core/SKILL.md`. Then Phase A in QG order:
-`teacher-core → quality-review → lesson-planner → assessment-designer → presentation-builder`.
+**Phase 0 is built and verified** (`tools/sync_check.py` PASS): repo scaffolding (§7); the `shared/`
+core; all 6 protocols (`quality-gates.md` canonicalized from the provided 001–100; the other 5
+drafted from QG references, marked pending review); the 5 governance docs; `CLAUDE.md` / `README.md`
+/ `STATE.md`; `tools/sync_check.py` (QG §96 invariants) + `tools/new_skill.py` + the skill template;
+a CI stub; and `teacher-core/SKILL.md` (the charter's `skill_mission_FULL.md`).
+
+**Next — Phase A** in QG order:
+`quality-review → lesson-planner (reference skill) → assessment-designer → presentation-builder`,
+each via the skill-creator inner loop (§11.7). See `STATE.md` for the live dashboard and the open
+items (review the 5 drafted protocols; confirm defaults).

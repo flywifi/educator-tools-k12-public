@@ -1,0 +1,7 @@
+{
+  "_comment": "Canonical -> per-skill synced reference mapping. Each skill carries byte-identical copies of these files under references/<name>. Edit the canonical source, never the copy, then run tools/sync_check.py. The set grows as capability skills are added.",
+  "synced_references": {
+    "method.md": "shared/method/method.md",
+    "quality-gates.md": "shared/quality/quality-gates.md"
+  }
+}
