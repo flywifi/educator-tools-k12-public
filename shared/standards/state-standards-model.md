@@ -33,7 +33,10 @@ state_adapter:
   independent of CCSS. `relationship: independent`.
 - **Virginia (SOL):** `framework: VA-Math`, codes like `3.2` (grade.standard); `relationship:
   independent`.
-- **Florida (B.E.S.T.):** `framework: FL-ELA`, codes like `ELA.3.R.1.1`; `relationship: independent`.
+- **Florida (B.E.S.T. + NGSSS):** ✅ **fully populated** — see `florida-best.md` (verified
+  Math/ELA/Science/SS/CS/ELD coding schemes, Access Points, and the `resources/` catalog of
+  standards + assessment materials). Codes like `MA.K.NSO.1.1`, `ELA.K.F.1.1`, `SC.K.L.14.1`;
+  `relationship: independent`. **Use it as the template for the next state.**
 
 ## 4. Selection rule
 

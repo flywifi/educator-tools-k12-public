@@ -3,6 +3,15 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 [Keep a Changelog]; this project uses [Semantic Versioning](https://semver.org/) — see
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
+## [Unreleased]
+### Added
+- **Florida B.E.S.T. + NGSSS standards** wired into the engine: `shared/standards/florida-best.md`
+  (coding schemes verified against the official docs — Math `MA.*`, ELA `ELA.*`, Science `SC.*`,
+  CS `SC.K12.CTR.*`, ELD `ELD.K12.ELL.*` — plus Access Points for SpEd) and a resource catalog
+  `shared/standards/resources/florida-2025-26.md` (FAST/B.E.S.T./EOC/FCLE specs, ALDs, writing
+  rubrics, accommodations, WIDA) that points to **CPALMS/FLDOE/WIDA as the live, current sources**.
+- Worked examples for `curriculum-mapping`, `family-communication`, and `professional-learning`.
+
 ## [1.0.0] — 2026-06-20
 First complete release of the TOS SKILL.md ecosystem.
 

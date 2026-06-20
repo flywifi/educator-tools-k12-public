@@ -34,7 +34,8 @@ state sets plug in via `state-standards-model.md`.
 1. From the request, determine **subject + grade band** (assume + log if missing — assumptions
    protocol).
 2. Choose the **framework**: default CCSS (ELA/Math) and NGSS (Science); use a state set when the
-   user names a state (`state-standards-model.md`).
+   user names a state (`state-standards-model.md`). **Florida is fully wired** — `florida-best.md`
+   (B.E.S.T. Math/ELA, NGSSS Science/SS, CS, ELD) + the `resources/` catalog.
 3. Select the **most specific aligned standard(s)** for the objective — not merely topically
    adjacent (alignment matters; QG §26).
 4. Prefer a small number of well-aligned standards over a long shallow list.

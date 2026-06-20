@@ -35,3 +35,8 @@ appropriate **accommodations by default** (expectation-preserving) and treat **m
 team decisions to be surfaced, not assumed (assumptions-protocol.md → escalate). Record what was
 applied in metadata (`differentiation`). The `special-education-support` skill (Phase A+) builds on
 this catalog.
+
+## 4. Florida
+For Florida, use the official **Access Points** — `shared/standards/florida-best.md` (`.AP.` for
+B.E.S.T. Math/ELA; `.In./.Su./.Pa.` for NGSSS Science) — and the FL **Accommodations Guide** indexed
+in `shared/standards/resources/florida-2025-26.md`.

@@ -30,3 +30,5 @@ which the artifact targets and scaffold the rest.
 - Keep cognitive demand high; lower the **language** barrier, not the **thinking**.
 - Record EL supports in metadata (`differentiation`). Checked by **Accessibility** (QG §31) +
   **Educational Quality** (QG §27).
+- **Florida:** align to the ELD standards (`ELD.K12.ELL.*`) and WIDA ACCESS resources —
+  `shared/standards/florida-best.md` + `resources/florida-2025-26.md`.
