@@ -58,15 +58,16 @@ security review, per-skill READMEs.
 
 ## Validation note
 Every skill ships `evals/evals.json` (prompts + assertions) and worked examples. The eval
-**benchmark** (with-skill vs. baseline subagent runs + grading) is the active next step; results land
-in `BENCHMARK.md`.
+**benchmark ran** on a representative 3-case subset (with-skill vs. no-skill baseline): **with-skill
+12/12 vs. baseline 8/12** — biggest uplift in governance/auditability and standards rigor; no
+regressions. Details in **`BENCHMARK.md`**. Widening to the full eval set is a follow-up.
 
 ## Confirmed decisions
 Full-K-12 breadth-first standards; FULL §33.1 9-dimension weighting authoritative; QG canonical
 names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protocols are approved.
 
 ## Open items
-1. Eval benchmark (running / next).
+1. Eval benchmark — representative subset done (`BENCHMARK.md`); widen to the full 27-case set.
 2. Phase C cross-skill orchestration (e.g., "unit + assessments + slides + parent letter" in one pass).
 3. Phase D hardening (packaging, CI, security review).
 
