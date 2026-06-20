@@ -9,7 +9,7 @@ The skill first produces a **slide outline** (content + structure), then renders
 - **Required elements:** a title slide; an objective slide (the cited standard's goal in student
   language); a gradual-release flow (hook → model → guided → independent → closing) with **one idea
   per slide**; visuals/models; embedded checks for understanding; a closing/recap slide.
-- **Render with:** the `pptx` skill (`/mnt/skills/public/pptx`).
+- **Render with:** a `.pptx` rendering skill (e.g., a `pptx` skill, if one is available in the host environment).
 
 ### Review / warm-up deck
 - **Purpose:** activate prior knowledge or review before an assessment.

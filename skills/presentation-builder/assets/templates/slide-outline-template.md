@@ -15,7 +15,7 @@
 | 7 | Closing / recap | [restate objective; key idea] | [visual + alt] | exit check |
 
 ## Render
-Build the `.pptx` with the `pptx` skill (`/mnt/skills/public/pptx`) from this outline.
+Build the `.pptx` with a `pptx` rendering skill (if one is available in the host environment) from this outline.
 
 ## Metadata block (required)
 ```yaml
