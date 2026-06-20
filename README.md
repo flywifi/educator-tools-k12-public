@@ -32,12 +32,13 @@ Approval/Certification → Release`. Standards-aligned, differentiated (UDL by d
 determination, and uses placeholder data only — never real student information.**
 
 ## Status
-**Phases 0–C complete; Phase D mostly done.** 11 skills (hub `teacher-core` + `quality-review` + 9
+**Core build complete — Phases 0–E delivered.** 11 skills (hub `teacher-core` + `quality-review` + 9
 capability skills), 6 approved protocols, the live **Quality Ledger**, cross-skill **orchestration**
-(`teacher-core/references/workflows.md` + the Example Library), a passing **eval benchmark**
-(`BENCHMARK.md`), **packaging** (`tools/package_skill.py` → installable `.skill` bundles), hardened
-**CI**, a **skills catalog** (`skills/README.md`), and a **security review** (`SECURITY_REVIEW.md`).
-The drift guard passes across all 11 skills. Next: Phase E (analytics/ontology) — see `STATE.md`.
+(+ Example Library), a passing **eval benchmark** (`BENCHMARK.md`), installable **packaging**
+(`tools/package_skill.py`), hardened **CI**, **semantic versioning** (`VERSION` / `CHANGELOG.md`), a
+**security review** (`SECURITY_REVIEW.md`), and a live **success-metrics dashboard** (`METRICS.md`,
+via `tools/metrics.py`). The drift guard passes across all 11 skills. Optional follow-ups in
+`STATE.md`.
 
 ## Provenance
 Built from the TOS Master Project Charters (V2–V4) and the Quality Gates Protocol v3.0.0

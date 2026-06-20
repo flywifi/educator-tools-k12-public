@@ -29,7 +29,12 @@ branch → make the change → run the drift guard → (Phase A+) run evals → 
 - Undocumented scope changes are prohibited (QG §2.3).
 
 ## 5. Versioning & maintenance
-- Protocols and the outline carry version numbers; the drafted protocols are `0.x` until reviewed.
+- The ecosystem uses **semantic versioning** (`VERSION`, recorded in `CHANGELOG.md`):
+  **MAJOR** = a breaking change to a protocol, the metadata schema, or the pipeline contract;
+  **MINOR** = a new skill or artifact type, or a backward-compatible capability;
+  **PATCH** = fixes, doc, or content corrections.
+- Protocols carry their own version line (currently all v1.0). Record notable changes in
+  `CHANGELOG.md`; cut a `VERSION` bump + a changelog entry at each release.
 - Review the quality model when governance, audit, certification, or architecture changes (QG §98).
 - Update `STATE.md` at every phase boundary and after each skill ships (preservation/recovery).
 

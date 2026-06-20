@@ -57,4 +57,21 @@ CLAUDE.md README.md STATE.md TOS_ECOSYSTEM_BUILD_OUTLINE.md
 ARCHITECTURE.md QUALITY_MODEL.md SECURITY_AND_SAFETY.md ROUTING_MODEL.md CHANGE_MANAGEMENT.md
 ```
 
+## 8. AI systems (Phase E2)
+
+The ecosystem's "AI" is layered deliberately:
+- **Generation** is the LLM following a capability skill (analysis → standards → differentiation →
+  generation). The skill constrains and grounds it; it never invents standards/citations.
+- **Evaluation is LLM-as-judge, made auditable.** `quality-review` is the LLM applying the 9-dimension
+  rubric *with evidence*; the **deterministic aggregator** `quality-review/scripts/score.py` then
+  computes the weighted composite, thresholds, and critical-failure override — so the *judgment* is
+  the model's but the *arithmetic and the verdict rule* are reproducible and not hand-waved.
+- **The charter's "AI Artifacts" category** lives here as an internal concern (the judge + the
+  scoring tool + the metrics), not as a teacher-facing skill.
+- **Analytics** (`tools/metrics.py`) reads the ledger + registry to render `METRICS.md` — closing the
+  loop from generation → gate → ledger → metrics.
+
+This keeps the powerful-but-fuzzy part (LLM judgment) separable from the parts that must be
+deterministic (weights, thresholds, overrides, drift, packaging).
+
 See `TOS_ECOSYSTEM_BUILD_OUTLINE.md` for the full build plan and `STATE.md` for live status.

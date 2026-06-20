@@ -17,8 +17,13 @@ artifact, who decided, the outcome, and a pointer to the full decision record.
 - **No real student data.** Ledger entries reference placeholder artifacts only.
 
 ## Format
-See `quality-ledger.md`. Columns: `decision_id · date · artifact_id · skill · decision · composite ·
-reference`. The seed entries correspond to the worked examples bundled in each skill.
+Two views, kept in sync:
+- **`ledger.json`** — the machine-readable data source (one object per decision), read by
+  `tools/metrics.py`.
+- **`quality-ledger.md`** — the human-readable view. Columns: `decision_id · date · artifact_id ·
+  skill · decision · composite · reference`.
+
+The seed entries correspond to the worked examples bundled in each skill.
 
 ## Roadmap
 Phase E adds an analytics pass over this ledger to populate the success metrics in `QUALITY_MODEL.md`
