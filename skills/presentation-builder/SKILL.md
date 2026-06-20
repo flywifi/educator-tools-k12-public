@@ -20,8 +20,8 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
    keep the cognitive load low (one idea per slide).
 4. **Generation** — draft the deck as a **slide outline** using
    `assets/templates/slide-outline-template.md` and the design rules in
-   `references/slide-design.md`, then **render the `.pptx` with the `pptx` skill**
-   (`/mnt/skills/public/pptx`) — do not re-implement PowerPoint generation.
+   `references/slide-design.md`, then **render the `.pptx` with a `pptx` rendering skill** (if one is
+   available in the host environment) — do not re-implement PowerPoint generation.
 
 ## 2. Validate, then gate
 Run the universal + slide checks (`shared/quality/verification-checklists.md`), self-score against
