@@ -17,16 +17,16 @@ From the request (and conversation), determine:
 
 | Artifact | Skill | Status |
 |---|---|---|
-| lesson plan, unit, guided notes, exit ticket, centers, project | `lesson-planner` | Phase A |
-| formative/summative assessment, rubric, performance task, item bank | `assessment-designer` | Phase A |
-| slide deck / instructional presentation | `presentation-builder` | Phase A |
-| run the Quality Gates on any artifact | `quality-review` | Phase A |
-| curriculum map, pacing guide, scope & sequence | `curriculum-mapping` | Expansion |
-| IEP support, accommodation, modification, progress monitoring | `special-education-support` | Expansion |
-| Tier 1/2/3 plan, MTSS documentation | `intervention-mtss` | Expansion |
-| newsletter, parent communication, report | `family-communication` | Expansion |
-| observation tool, coaching resource, PD | `professional-learning` | Expansion |
-| walkthrough, implementation/monitoring plan | `school-administration` | Expansion |
+| lesson plan, unit, guided notes, exit ticket, centers, project | `lesson-planner` | available |
+| formative/summative assessment, rubric, performance task, item bank | `assessment-designer` | available |
+| slide deck / instructional presentation | `presentation-builder` | available |
+| run the Quality Gates on any artifact | `quality-review` | available |
+| curriculum map, pacing guide, scope & sequence | `curriculum-mapping` | available |
+| IEP support, accommodation, modification, progress monitoring | `special-education-support` | available |
+| Tier 1/2/3 plan, MTSS documentation | `intervention-mtss` | available |
+| newsletter, parent communication, report | `family-communication` | available |
+| observation tool, coaching resource, PD | `professional-learning` | available |
+| walkthrough, implementation/monitoring plan | `school-administration` | available |
 
 ## 3. Routing rules
 - **Single best match:** route to the one skill whose artifact family fits. If a request bundles

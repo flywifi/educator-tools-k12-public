@@ -1,12 +1,11 @@
 # metadata-schema.md
 ## Metadata Schema Protocol
-Version: 0.1 (DRAFTED from Quality Gates references — pending your review)
+Version: 1.0 (reconstructed from the Quality Gates references; approved)
 Derived from: QG §3.3 (Quality Gates depend on metadata), §39 & §93 (decision records),
 §92 (traceability), §12.2 (metadata compliance).
 
-> **Status note.** Quality Gates §2.1 lists `metadata-schema.md` as part of a "complete" protocol
-> layer, but the file was not delivered. This is a faithful reconstruction from the QG references.
-> Replace or amend it if you have the original.
+> **Status note.** Reconstructed from the Quality Gates references (§2.1, §39, §93) and approved for
+> use (v1.0). Amend if an original surfaces.
 
 ---
 

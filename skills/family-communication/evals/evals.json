@@ -1,0 +1,38 @@
+{
+  "skill_name": "family-communication",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a newsletter for my 2nd grade class for this week — we're starting a unit on plants and have a field trip Friday.",
+      "expected_output": "A warm, skimmable newsletter in plain language: what we're learning (plants, in family-friendly terms), the Friday field trip, a how-to-help-at-home tip, and a contact line — placeholders, no real data.",
+      "assertions": [
+        "Plain, warm, jargon-free language at an accessible reading level",
+        "Includes learning summary, key dates (field trip), and a help-at-home tip",
+        "Uses placeholders only and includes human_review_required: true"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need conference talking points for a student who's doing well academically but struggles to stay focused.",
+      "expected_output": "Strengths-first talking points with general, collaborative prompts and clearly marked spots for the teacher to add specifics — no real student data baked in.",
+      "assertions": [
+        "Leads with strengths and keeps a collaborative tone",
+        "Marks where the teacher personalizes rather than inventing specifics",
+        "Contains no real student PII"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Draft an email to Mrs. Lopez about her son Diego failing two tests and acting out in class.",
+      "expected_output": "Writes a respectful, strengths-based template but replaces real names with placeholders and flags that the teacher must add the specific, private details directly; keeps tone constructive.",
+      "assertions": [
+        "Replaces real names with placeholders and flags personalization",
+        "Keeps a respectful, strengths-based, constructive tone",
+        "Does not embed sensitive student data in the draft"
+      ],
+      "files": []
+    }
+  ]
+}

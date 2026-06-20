@@ -1,10 +1,10 @@
 # assumptions-protocol.md
 ## Assumptions Protocol
-Version: 0.1 (DRAFTED from Quality Gates references — pending your review)
+Version: 1.0 (reconstructed from the Quality Gates references; approved)
 Derived from: QG §4.1 Principle 8 (integrity before performance), §11.3 (disclosure),
 §5.2 Integrity ("Were assumptions documented?"), §20 Constraints/Assumptions (Charter V3 §20).
 
-> **Status note.** Listed as "complete" in QG §2.1 but not delivered. Faithful reconstruction.
+> **Status note.** Reconstructed from the Quality Gates references and approved for use (v1.0).
 
 ---
 
