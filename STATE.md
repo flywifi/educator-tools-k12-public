@@ -6,8 +6,9 @@ Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 **Last updated:** Phases 0–E delivered — 11 skills, 6 protocols, ledger, benchmark, packaging,
 versioning, and the metrics dashboard. Core build complete.
 **Active branch:** `claude/fervent-hawking-nyrzy5`
-**Resume here:** maintenance mode. Optional follow-ups: widen the eval benchmark to all 27 cases;
-load specific state-standards corpora (licensing-gated); deepen the ontology; tag a `v1.0.0` release.
+**Resume here:** maintenance mode. **Florida B.E.S.T./NGSSS is now wired** (`shared/standards/florida-best.md`
++ `resources/`). Optional follow-ups: widen the eval benchmark to all 27 cases; add more state corpora
+via the Florida template; deepen the ontology; tag a `v1.0.0` release.
 
 ---
 
@@ -68,10 +69,10 @@ names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protoc
 
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
-2. Load specific state-standards corpora (licensing-gated — `shared/standards/state-standards-model.md`).
+2. Florida B.E.S.T./NGSSS wired (`shared/standards/florida-best.md` + `resources/florida-2025-26.md`); add other states via the same template (licensing-gated).
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
 Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 11 skills ·
-40 artifact types · 27 eval cases · 4 standards frameworks · 4 differentiation engines · 6/6
+40 artifact types · 27 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
 protocols · 100% ledger approval (seed) · 11/11 skills emit `human_review_required`.
