@@ -32,8 +32,11 @@ Approval/Certification → Release`. Standards-aligned, differentiated (UDL by d
 determination, and uses placeholder data only — never real student information.**
 
 ## Status
-**Phase 0 (Foundations) complete.** Next: Phase A — build `quality-review`, then `lesson-planner`
-(the reference skill), `assessment-designer`, and `presentation-builder`. See `STATE.md`.
+**Phase A complete** — the v1 skill set is built: `teacher-core` (hub), `quality-review` (the Quality
+Gates executor, with a deterministic scoring helper), `lesson-planner` (the reference skill, with a
+gold worked example), `assessment-designer`, and `presentation-builder`. Each ships references,
+templates, a worked example, and evals; the drift guard passes across all 5 skills. Next: run the
+eval benchmark, or start the Phase C expansion skills. See `STATE.md`.
 
 ## Provenance
 Built from the TOS Master Project Charters (V2–V4) and the Quality Gates Protocol v3.0.0
