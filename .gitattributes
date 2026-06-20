@@ -1,2 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Standards resource binaries — never line-ending-normalize (prevents corruption)
+*.pdf binary
+*.doc binary
+*.docx binary
+*.xlsx binary
+*.rtf binary

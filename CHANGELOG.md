@@ -10,6 +10,10 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   CS `SC.K12.CTR.*`, ELD `ELD.K12.ELL.*` — plus Access Points for SpEd) and a resource catalog
   `shared/standards/resources/florida-2025-26.md` (FAST/B.E.S.T./EOC/FCLE specs, ALDs, writing
   rubrics, accommodations, WIDA) that points to **CPALMS/FLDOE/WIDA as the live, current sources**.
+- **Florida resource corpus stored** (`shared/standards/resources/florida/`, 104 files ~108 MB) with a
+  `sources.json` manifest (per-file sha256 + official CPALMS/FLDOE/WIDA source), and
+  `tools/standards_refresh.py` — a recursive crawler that checks the canonical sources for newer
+  documents and reports/downloads updates.
 - Worked examples for `curriculum-mapping`, `family-communication`, and `professional-learning`.
 
 ## [1.0.0] — 2026-06-20

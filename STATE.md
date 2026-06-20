@@ -69,7 +69,8 @@ names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protoc
 
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
-2. Florida B.E.S.T./NGSSS wired (`shared/standards/florida-best.md` + `resources/florida-2025-26.md`); add other states via the same template (licensing-gated).
+2. Florida wired + **corpus stored** (`resources/florida/` + `sources.json`, 104 files) with
+   `tools/standards_refresh.py` to crawl CPALMS/FLDOE/WIDA for updates; add other states via the same template.
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)

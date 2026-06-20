@@ -1,24 +1,39 @@
 # Standards resources
 
-This folder holds **catalogs** of external standards/assessment resources the ecosystem draws on —
-not the raw documents themselves.
+External standards/assessment resources the ecosystem draws on, **stored as canonical references**
+alongside their source information.
 
-## Why catalogs, not binaries
-The goal is to "find the most up-to-date canonical information now and as standards change." Bundling
-a large static snapshot of state PDFs/DOCs would (a) bloat the repo and (b) go stale — the opposite
-of staying current. So instead each catalog records, per resource: **what it is, the subject/grade,
-and the official live source** to pull the newest version from.
+## Layout
+- `florida/` — the Florida snapshot (104 files: standards, assessment specs, writing rubrics,
+  accommodations, WIDA/ELD, civics, admin), organized by category subfolder.
+- `florida/sources.json` — the **manifest**: per file → category, size, **sha256**, and its
+  **official source** (CPALMS / FLDOE / WIDA), plus `crawl_seeds` and `authorities`.
+- `florida-2025-26.md` — the human-readable catalog. Adapter: `../florida-best.md`.
 
-- **Live sources are authoritative.** CPALMS (`www.cpalms.org`) for Florida standards; FLDOE
-  (`www.fldoe.org`) for assessments/ALDs/rubrics/accommodations; WIDA (`wida.wisc.edu`) for ELD.
-- **Snapshots are dated.** e.g., `florida-2025-26.md` is the 2025–26 cycle. Add a new dated catalog
-  when a new cycle ships; keep old ones for provenance.
+## Snapshot vs. live (staying current)
+The stored files are a **dated 2025–26 snapshot**. The **live authority** is the source recorded in
+the manifest — **CPALMS (`cpalms.org`)** for standards, **FLDOE (`fldoe.org`)** for assessments,
+**WIDA (`wida.wisc.edu`)** for ELD. Always prefer the live source when verifying a code or pulling a
+newer document (`protocols/standards-verification.md`).
 
-## Catalogs
-- `florida-2025-26.md` — Florida B.E.S.T. + NGSSS standards, FAST/B.E.S.T./EOC/FCLE assessment specs,
-  ALDs, writing rubrics + anchor sets, accommodations, and WIDA/ELD. Adapter: `../florida-best.md`.
+## Refreshing (crawl the sources for updates)
+`tools/standards_refresh.py` reads `sources.json` and recursively crawls the canonical sources for
+newer documents, comparing against the stored sha256 hashes:
 
-## If you want the raw files in-repo
-Keep them out of normal git history (they're large). Options: **git-LFS**, attach them as **GitHub
-Release assets**, or store them in a separate data bucket and link from the catalog. The catalog
-works the same either way — it points at the canonical source.
+```bash
+python3 tools/standards_refresh.py --check                 # offline: validate + show the crawl plan
+python3 tools/standards_refresh.py --crawl                 # report NEW / CHANGED docs (needs network)
+python3 tools/standards_refresh.py --crawl --download out/ # fetch the updates into out/
+```
+After downloading updates: drop them into the right `florida/<category>/` folder, re-run the import to
+refresh `sources.json` (hashes), bump the snapshot date in the catalog, and re-verify any cited codes
+on CPALMS.
+
+## Adding another state
+Mirror this folder (`<state>/` + `sources.json` + a catalog) and a `<state>-best`-style adapter,
+following `../state-standards-model.md`. Florida is the template.
+
+## Size note
+This corpus is ~108 MB of public Florida DOE/CPALMS/WIDA documents, stored deliberately as offline
+references. If repo size becomes a concern, migrate `florida/` to git-LFS or Release assets — the
+manifest + refresher work unchanged.
