@@ -1,0 +1,7 @@
+[
+  {"decision_id": "qr-2026-0001", "date": "2026-06-20", "artifact_id": "lp-grade3-fractions-001", "skill": "lesson-planner", "decision": "Approved", "composite": 4.34},
+  {"decision_id": "qr-2026-0002", "date": "2026-06-20", "artifact_id": "ad-grade3-fractions-rubric-001", "skill": "assessment-designer", "decision": "Approved", "composite": 4.2},
+  {"decision_id": "qr-2026-0003", "date": "2026-06-20", "artifact_id": "pb-grade3-fractions-slides-001", "skill": "presentation-builder", "decision": "Approved", "composite": 4.2},
+  {"decision_id": "qr-2026-0004", "date": "2026-06-20", "artifact_id": "ses-accommodations-001", "skill": "special-education-support", "decision": "Approved", "composite": 4.1},
+  {"decision_id": "qr-2026-0005", "date": "2026-06-20", "artifact_id": "im-tier2-multiplication-001", "skill": "intervention-mtss", "decision": "Approved", "composite": 4.2}
+]

@@ -3,12 +3,11 @@
 Update at every phase boundary and after each skill ships. Recovery package = the charters + Quality
 Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 
-**Last updated:** Phases 0–C complete + Phase D mostly done (orchestration, packaging, CI, security
-review). 11 skills · 6 protocols · ledger · benchmark · packaging.
+**Last updated:** Phases 0–E delivered — 11 skills, 6 protocols, ledger, benchmark, packaging,
+versioning, and the metrics dashboard. Core build complete.
 **Active branch:** `claude/fervent-hawking-nyrzy5`
-**Resume here:** (a) **Phase E** — analytics over the ledger → success-metric dashboard; ontology
-hardening; LLM-as-judge for quality-review; (b) widen the eval benchmark to all 27 cases;
-(c) finish Phase D tail — semantic versioning + (optional) per-skill READMEs.
+**Resume here:** maintenance mode. Optional follow-ups: widen the eval benchmark to all 27 cases;
+load specific state-standards corpora (licensing-gated); deepen the ontology; tag a `v1.0.0` release.
 
 ---
 
@@ -19,8 +18,8 @@ hardening; LLM-as-judge for quality-review; (b) widen the eval benchmark to all 
 | A — Educational Foundations | quality-review + lesson/assessment/presentation | ✅ Complete |
 | B — Governance Infrastructure | 6 protocols approved; decision records emitted by every skill; Quality Ledger created | ✅ Largely complete (runtime automation later) |
 | C — Operational Integration | expansion skills + teacher-core orchestration (`workflows.md`) + Example Library | ✅ Complete |
-| D — Repository Hardening | `package_skill.py` (.skill), hardened CI, skills catalog, `SECURITY_REVIEW.md` | 🟡 Mostly (versioning + optional per-skill READMEs remain) |
-| E — Advanced Architecture | ontology, AI systems, analytics, deployment | ⬜ Not started |
+| D — Repository Hardening | packaging, CI, catalog, security review, **versioning** (`VERSION`/`CHANGELOG`) | ✅ Complete (per-skill READMEs omitted — redundant with each `SKILL.md`) |
+| E — Advanced Architecture | analytics (`metrics.py`/`METRICS.md`), artifact registry, `DEPLOYMENT.md`, AI-systems doc | ✅ Largely complete (ontology can deepen later) |
 
 ## Skill status (11 built)
 | Skill | Role | Status |
@@ -67,11 +66,12 @@ regressions. Details in **`BENCHMARK.md`**. Widening to the full eval set is a f
 Full-K-12 breadth-first standards; FULL §33.1 9-dimension weighting authoritative; QG canonical
 names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protocols are approved.
 
-## Open items
-1. Phase E — analytics over the ledger → success-metric dashboard; ontology hardening; LLM-as-judge.
-2. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
-3. Phase D tail — semantic versioning; optional per-skill READMEs (currently redundant with SKILL.md).
+## Open items (optional follow-ups — core build complete)
+1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
+2. Load specific state-standards corpora (licensing-gated — `shared/standards/state-standards-model.md`).
+3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
-Artifact / Standards / Differentiation / Quality / Governance / AI-Safety coverage — _pending the
-analytics pass over the Quality Ledger._
+Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 11 skills ·
+40 artifact types · 27 eval cases · 4 standards frameworks · 4 differentiation engines · 6/6
+protocols · 100% ledger approval (seed) · 11/11 skills emit `human_review_required`.
