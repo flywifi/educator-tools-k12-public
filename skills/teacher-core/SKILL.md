@@ -34,11 +34,13 @@ Approval/Certification → Release`.
   authoritative gate via `quality-review`. Resolve contradictions with
   `protocols/conflict-protocol.md`; degrade honestly with `protocols/failure-recovery.md`.
 
-## 4. Routing
-Use `references/routing-map.md` (mirrors `ROUTING_MODEL.md`). Route to the single best-fit skill;
-sequence a multi-skill workflow when a request bundles several artifacts. **If a target skill isn't
-built yet, carry the pipeline here** using the shared core and say so. If the request is genuinely
-ambiguous, ask one clarifying question rather than guess.
+## 4. Routing & orchestration
+Use `references/routing-map.md` (mirrors `ROUTING_MODEL.md`). Route a single request to the best-fit
+skill. When a request bundles several artifacts (e.g., "a unit + its assessments + slides + a parent
+letter"), **orchestrate a multi-skill workflow** per `references/workflows.md`: decompose → order →
+share one standard/persona/grade-band context across steps → gate each piece with `quality-review` →
+assemble one coherent bundle. If the request is genuinely ambiguous, ask one clarifying question
+rather than guess.
 
 ## 5. Standards, differentiation, quality (the shared engines)
 - **Standards** — select + cite verifiable standards (CCSS/NGSS/state), framework + version; never

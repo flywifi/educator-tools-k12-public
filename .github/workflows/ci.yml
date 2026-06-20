@@ -6,13 +6,32 @@ on:
   pull_request:
 
 jobs:
-  drift-guard:
+  checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Drift guard (sync_check)
         run: python3 tools/sync_check.py
+
+      - name: Validate eval files
+        run: |
+          python3 - <<'PY'
+          import json, glob, sys
+          bad = []
+          for f in glob.glob("skills/*/evals/evals.json"):
+              try:
+                  json.load(open(f))
+              except Exception as e:
+                  bad.append(f"{f}: {e}")
+          if bad:
+              print("\n".join(bad)); sys.exit(1)
+          print("all eval files valid")
+          PY
+
+      - name: Package all skills (validates every skill is installable)
+        run: python3 tools/package_skill.py --all
       # Phase A+: add eval smoke tests here (skill triggering + Quality Gates pass).
