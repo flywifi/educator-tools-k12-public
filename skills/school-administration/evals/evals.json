@@ -1,0 +1,27 @@
+{
+  "skill_name": "school-administration",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our school focus this year is increasing student discourse. Build me a walkthrough form with look-fors and a way to roll it up across classrooms.",
+      "expected_output": "A walkthrough instrument with 3-6 observable discourse look-fors, an evidence/scale field, and an aggregate roll-up view for trends — implementation-focused, not individual call-outs.",
+      "assertions": [
+        "Look-fors are observable and tied to student discourse",
+        "Includes an aggregate roll-up/trend view",
+        "Aggregate framing; no real PII; human_review_required: true"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "We're rolling out a new K-5 literacy curriculum next year. I need an implementation plan.",
+      "expected_output": "A phased implementation plan with milestones/dates, roles, PD/supports, risks, and the data that defines success.",
+      "assertions": [
+        "Includes phases with milestones and roles/responsibilities",
+        "Identifies required supports/PD and success metrics",
+        "Practical and summarizable for leadership decisions"
+      ],
+      "files": []
+    }
+  ]
+}

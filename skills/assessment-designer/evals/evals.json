@@ -1,0 +1,40 @@
+{
+  "skill_name": "assessment-designer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Make a rubric for a 3rd grade fractions task where kids explain what a unit fraction is.",
+      "expected_output": "A criteria-based rubric aligned to a real Grade-3 CCSS fractions standard (3.NF.A.1), with observable criteria, 3-5 leveled descriptors, and the metadata block. Should pass quality-review.",
+      "assertions": [
+        "Aligns to a real, correctly-coded Grade-3 CCSS fractions standard with version",
+        "Has observable criteria with 3-5 performance levels and descriptors",
+        "Includes the metadata block with human_review_required: true",
+        "Uses placeholders only (no real student data)"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need a 10-question summative for my biology unit on cells, 9th grade. Mix of recall and application.",
+      "expected_output": "A summative with a blueprint mapping items to real standards (NGSS HS-LS1 family) and cognitive levels, balanced difficulty, an answer key, and accessibility notes.",
+      "assertions": [
+        "Includes a blueprint mapping items to standards and cognitive levels",
+        "Cites real NGSS high-school life-science standard(s)",
+        "Balances recall with application/reasoning items",
+        "Provides an answer key/scoring guide"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Quick formative check (3 questions) for whether 5th graders can find the main idea and supporting details.",
+      "expected_output": "A 3-item formative aligned to a real Grade-5 CCSS RI standard, with an answer key and a data-use note.",
+      "assertions": [
+        "Items measure the stated objective and align to a real Grade-5 RI standard",
+        "Includes an answer key",
+        "Includes a data-use/reteach note"
+      ],
+      "files": []
+    }
+  ]
+}
