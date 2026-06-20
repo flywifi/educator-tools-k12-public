@@ -8,7 +8,7 @@ Operationalizes: Master Project Charter V4 + the Quality Gates Protocol v3.0.0 (
 Authoritative inputs read for this plan:
 - Charter V2, Charter V2 (duplicate), Charter V3 §§12–24, Charter V4
 - **Quality Gates Protocol v3.0.0 — full sections 001–100** (the 20 `_FULL` files + the two condensed editions)
-- iMessage Forensic Toolkit (read as an engineering/quality exemplar, not TOS domain content)
+- An external engineering/quality exemplar — an invariants-based drift-guard pattern (not TOS domain content)
 
 ### Changelog v1.0 → v2.0
 The Quality Gates package resolved the biggest unknown and **revealed the project's real
@@ -74,7 +74,7 @@ Gates §2.1 already prescribes.
 | Decision-record schema | QG §39, §93 | §8.5 metadata/decision block |
 | 8 Repository Invariants | QG §96 | §8.6 drift guard + CI |
 | Preservation & Recovery | all charters | §12 + `STATE.md` |
-| Quality/engineering bar, drift guard | iMessage toolkit | §8.6, §11 Phase D |
+| Quality/engineering bar, drift guard | engineering exemplar | §8.6, §11 Phase D |
 
 ---
 
@@ -211,7 +211,7 @@ repo-root/
 ├── shared/                           # standards/differentiation/quality engines (§6)
 ├── protocols/                        # the 6 protocols (§6)
 ├── tools/
-│   ├── sync_check.py                 # drift guard (invariants, incl. QG §96) — modeled on the toolkit
+│   ├── sync_check.py                 # drift guard (invariants, incl. QG §96) — invariants, not diffs
 │   ├── new_skill.py                  # scaffolds a skill from the standard anatomy (§4.4)
 │   └── package_skill.py              # builds installable .skill bundles (Phase D)
 ├── examples/                         # cross-skill Example Library (Phase C)
@@ -268,7 +268,7 @@ Plus the education trailer (persona, grade band, subject, standards set+version,
 applied, **human-review-required** flag).
 
 ### 8.6 Drift guard (tools/sync_check.py) — enforces the 8 Repository Invariants (QG §96)
-Asserts invariants, not diffs (toolkit pattern). Invariant set = QG §96 + ecosystem rules:
+Asserts invariants, not textual diffs. Invariant set = QG §96 + ecosystem rules:
 1. Integrity precedes approval · 2. Evidence precedes certification · 3. Validation precedes release ·
 4. Audits remain independent · 5. Critical failures block approval · 6. History remains traceable ·
 7. Quality decisions remain auditable · 8. Certification requires evidence · plus: each skill's
@@ -345,7 +345,7 @@ A Phase E analytics script renders these (+ QG longitudinal trends §95) into `S
 ### Phase D — Repository Hardening  *(charter Phase D)*
 - **Deliverables:** `package_skill.py` → installable `.skill` bundles; CI (drift guard + eval smoke
   tests); education safety review + QG-invariant checks; per-skill + top-level READMEs at the
-  toolkit's documentation bar; semantic versioning + the Maturity Model (QG §79) self-assessment.
+  exemplar's documentation bar; semantic versioning + the Maturity Model (QG §79) self-assessment.
 - **Exit:** CI green; skills install cleanly; docs match the exemplar.
 
 ### Phase E — Advanced Architecture  *(charter Phase E)*
@@ -375,8 +375,8 @@ outline + `STATE.md`, say "continue from STATE.md."
 1. **Architecture** — hub-and-spoke is now *confirmed by QG §2.1* (teacher-core hub + quality-review
    + capability skills + protocol layer). Only sub-question: enforce quality both as the
    `quality-review` skill **and** as each skill's self-check? *Recommend: yes (defense in depth).*
-2. **Repository home** — build here in Repo-1 per §7, or fold into the larger "Antigravity Kit"
-   monorepo the toolkit references? *Recommend: here, unless you want it alongside the kit.*
+2. **Repository home** — build here in Repo-1 per §7, or fold into a larger monorepo if you maintain
+   one? *Recommend: here, unless you want it alongside an existing kit.*
 3. **Standards scope (v1)** — CCSS (ELA/Math) + NGSS + a state-agnostic adapter is the default.
    Which **specific state standards**, if any, must ship in v1? (Accuracy/licensing is a real risk.)
 4. **Grade-band scope (v1)** — full K–12, or start with one band (e.g., 3–5) for depth?

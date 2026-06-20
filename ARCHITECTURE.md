@@ -41,8 +41,8 @@ split into focused skills that pull detail from `references/` and the shared cor
 `shared/` and `protocols/` are the **single source of truth**. For portability, each skill carries
 **synced copies** of the cross-cutting references it needs (`references/method.md`,
 `references/quality-gates.md`, …). The mapping lives in `tools/sync_manifest.json`; the drift guard
-`tools/sync_check.py` guarantees the copies never diverge from canon. (Pattern borrowed from the
-iMessage Forensic Toolkit's `sync_check.py`.)
+`tools/sync_check.py` guarantees the copies never diverge from canon. (Pattern: an invariants-based
+drift guard — assert invariants, not textual diffs.)
 
 ## 6. Dependency order
 

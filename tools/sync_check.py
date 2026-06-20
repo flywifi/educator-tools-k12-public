@@ -6,7 +6,7 @@ Asserts INVARIANTS (not textual diffs) so that:
     never silently diverge, and
   - every skill honors the Quality Gates repository invariants and governance wiring.
 
-Modeled on the iMessage Forensic Toolkit's sync_check.py (invariants + exit codes).
+Uses an invariants-based approach (assert invariants, not textual diffs; exit codes).
 
 Run:   python3 tools/sync_check.py
 Exit:  0 if every invariant holds, 1 (with a report) otherwise.

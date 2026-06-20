@@ -37,4 +37,4 @@ determination, and uses placeholder data only — never real student information
 
 ## Provenance
 Built from the TOS Master Project Charters (V2–V4) and the Quality Gates Protocol v3.0.0
-(sections 001–100). The drift-guard pattern is adapted from the iMessage Forensic Toolkit.
+(sections 001–100). The drift-guard pattern follows a proven invariants-based approach.
