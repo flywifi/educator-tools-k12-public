@@ -1,10 +1,10 @@
 # standards-verification.md
 ## Standards Verification Protocol
-Version: 0.1 (DRAFTED from Quality Gates references — pending your review)
+Version: 1.0 (reconstructed from the Quality Gates references; approved)
 Derived from: QG §9 (Accuracy gates: "Are standards references valid?"), §25 (Accuracy rubric:
 standards accuracy), §11.4 (fabricated standard = automatic integrity failure), §3.3.
 
-> **Status note.** Listed as "complete" in QG §2.1 but not delivered. Faithful reconstruction.
+> **Status note.** Reconstructed from the Quality Gates references and approved for use (v1.0).
 > Works hand-in-hand with `shared/standards/` (the standards engine).
 
 ---

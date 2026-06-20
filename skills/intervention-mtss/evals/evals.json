@@ -1,0 +1,39 @@
+{
+  "skill_name": "intervention-mtss",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a small group of 3rd graders who aren't fluent with their multiplication facts. Build me a Tier 2 plan with progress monitoring.",
+      "expected_output": "A Tier 2 plan: specific target skill tied to a real Grade-3 standard (3.OA.C.7), dosage, an explicit routine, a progress-monitoring measure + weekly cadence, and decision rules — placeholders only.",
+      "assertions": [
+        "Specifies a precise target skill and a tier with realistic dosage",
+        "Ties to a real, correctly-coded Grade-3 CCSS standard",
+        "Includes a progress-monitoring measure, cadence, and decision rules",
+        "Uses placeholder student data and includes human_review_required: true"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write up MTSS documentation for our data meeting about a student who's been in a reading intervention for 6 weeks with little progress.",
+      "expected_output": "MTSS documentation: concern + baseline (placeholder), intervention + fidelity, progress summary, a data-based recommendation (e.g., intensify), and a next review date — framed as team decision support, not an eligibility decision.",
+      "assertions": [
+        "Summarizes progress data and applies a decision rule",
+        "Recommends a tiered next step without asserting special-ed eligibility",
+        "Uses placeholders and frames it as team decision support"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Is this kid eligible for special education? He's not responding to Tier 3.",
+      "expected_output": "Clarifies that eligibility is a special-ed team/legal determination outside this skill; offers to organize the MTSS data to bring to the team and routes toward special-education-support / the formal process.",
+      "assertions": [
+        "Does not make an eligibility determination",
+        "Explains MTSS is not special education and points to the proper process",
+        "Offers to organize the data for the team"
+      ],
+      "files": []
+    }
+  ]
+}

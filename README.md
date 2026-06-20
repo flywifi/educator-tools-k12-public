@@ -32,11 +32,12 @@ Approval/Certification → Release`. Standards-aligned, differentiated (UDL by d
 determination, and uses placeholder data only — never real student information.**
 
 ## Status
-**Phase A complete** — the v1 skill set is built: `teacher-core` (hub), `quality-review` (the Quality
-Gates executor, with a deterministic scoring helper), `lesson-planner` (the reference skill, with a
-gold worked example), `assessment-designer`, and `presentation-builder`. Each ships references,
-templates, a worked example, and evals; the drift guard passes across all 5 skills. Next: run the
-eval benchmark, or start the Phase C expansion skills. See `STATE.md`.
+**v1 ecosystem built — 11 skills.** Hub: `teacher-core`. Governance: `quality-review` (with a
+deterministic scoring helper). Capability skills: `lesson-planner` (reference, with a gold example),
+`assessment-designer`, `presentation-builder`, `curriculum-mapping`, `special-education-support`,
+`intervention-mtss`, `family-communication`, `professional-learning`, `school-administration`. All 6
+protocols are approved, the **Quality Ledger** is live, and the drift guard passes across all 11
+skills. Next: the eval benchmark and cross-skill orchestration. See `STATE.md`.
 
 ## Provenance
 Built from the TOS Master Project Charters (V2–V4) and the Quality Gates Protocol v3.0.0

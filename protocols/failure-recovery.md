@@ -1,10 +1,10 @@
 # failure-recovery.md
 ## Failure Recovery Protocol
-Version: 0.1 (DRAFTED from Quality Gates references — pending your review)
+Version: 1.0 (reconstructed from the Quality Gates references; approved)
 Derived from: QG §§76–77 (quality system recovery), §91 (recovery procedures), §46–50
 (remediation), §13 (safety gates), §37 (automatic failures).
 
-> **Status note.** Listed as "complete" in QG §2.1 but not delivered. Faithful reconstruction.
+> **Status note.** Reconstructed from the Quality Gates references and approved for use (v1.0).
 
 ---
 
