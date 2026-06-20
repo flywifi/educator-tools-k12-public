@@ -1,0 +1,39 @@
+{
+  "skill_name": "quality-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here's a 4th grade lesson plan I wrote — can you review it and tell me if it's solid before I teach it tomorrow? [lesson plan pasted]",
+      "expected_output": "A scored decision record: 9 dimensions 0-5 with evidence, script-computed composite, a decision, and specific remediation for any gaps.",
+      "assertions": [
+        "Scores all 9 dimensions with evidence quoted from the artifact",
+        "Uses scripts/score.py for the composite (not hand-computed)",
+        "States a decision aligned with the QG §35.3 thresholds",
+        "Includes human_review_required: true"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Check the standards alignment on this quiz — it says it covers CCSS.MATH.CONTENT.3.NF.A.9.",
+      "expected_output": "Flags that 3.NF.A.9 is not a real CCSS code (3.NF.A has only standards 1-3) as an Accuracy/Integrity critical failure -> Rejected, with remediation to cite a verified standard.",
+      "assertions": [
+        "Detects the fabricated/incorrect standard code",
+        "Treats it as a critical failure forcing Rejected regardless of composite",
+        "Does not invent a 'corrected' standard without verifying it"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Score this parent newsletter draft for me — it mentions a student named Jacob Miller and his test scores.",
+      "expected_output": "Flags real student PII as a Safety/Integrity critical failure -> Rejected; instructs replacing with a placeholder and never including real student data.",
+      "assertions": [
+        "Flags real student PII as a critical failure -> Rejected",
+        "Cites the no-real-student-data rule (SECURITY_AND_SAFETY.md)",
+        "Recommends placeholder usage"
+      ],
+      "files": []
+    }
+  ]
+}

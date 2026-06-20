@@ -1,0 +1,17 @@
+{
+  "_comment": "Knowledge architecture (Phase E1): the registry of every artifact type the ecosystem produces, by skill, plus the wired standards frameworks. Read by tools/metrics.py. Keep in sync with each skill's references/artifact-types.md.",
+  "frameworks": ["CCSS-Math", "CCSS-ELA", "NGSS", "state-standards-model"],
+  "skills": {
+    "teacher-core": ["routing", "multi-skill-workflow"],
+    "quality-review": ["decision-record", "remediation-list", "batch-quality-report"],
+    "lesson-planner": ["lesson-plan", "unit-plan", "guided-notes", "exit-ticket", "centers", "project"],
+    "assessment-designer": ["formative-assessment", "summative-assessment", "rubric", "performance-task", "item-bank"],
+    "presentation-builder": ["slide-deck", "review-deck", "family-briefing-deck"],
+    "curriculum-mapping": ["curriculum-map", "pacing-guide", "scope-and-sequence"],
+    "special-education-support": ["accommodation-plan", "modification-plan", "iep-goal-draft", "progress-monitoring-tool"],
+    "intervention-mtss": ["intervention-plan", "mtss-documentation", "progress-monitoring-schedule", "data-based-decision-note"],
+    "family-communication": ["newsletter", "parent-letter", "conference-talking-points", "progress-report-comments"],
+    "professional-learning": ["observation-tool", "coaching-conversation-guide", "pd-session-plan"],
+    "school-administration": ["walkthrough-instrument", "implementation-plan", "monitoring-plan"]
+  }
+}
