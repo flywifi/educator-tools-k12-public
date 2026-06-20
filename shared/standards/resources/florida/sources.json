@@ -24,40 +24,6 @@
   ],
   "files": [
     {
-      "filename": "0077550-fl09sp_us_history.pdf",
-      "category": "other",
-      "path": "shared/standards/resources/florida/other/0077550-fl09sp_us_history.pdf",
-      "bytes": 1609794,
-      "sha256": "7a3b4461f6ebed598cd189ec4d68bc5027f445916bb48c8a6b258cae64d09cdc",
-      "source": "https://www.fldoe.org/accountability/assessments/"
-    },
-    {
-      "filename": "2021WIDATestSessionForms.xlsx",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/2021WIDATestSessionForms.xlsx",
-      "bytes": 16779,
-      "sha256": "c9aa118a3ec7a324df1ceb902d80465635fbb881dde129e99ba5038c47ea1b65",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "2024 Test Release Support Document Practice Test Civics_508.pdf",
-      "category": "assessment",
-      "path": "shared/standards/resources/florida/assessment/2024 Test Release Support Document Practice Test Civics_508.pdf",
-      "bytes": 554880,
-      "sha256": "d70c7da2f9b67811cf7586f118dceb2fee1543f6b77f0c08e58e8955450ca708",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/2024%20Test%20Release%20Support%20Document%20Practice%20Test%20Civics_508.pdf"
-    },
-    {
-      "filename": "2024 Test Release Support Document_FINAL_508.pdf",
-      "category": "assessment",
-      "path": "shared/standards/resources/florida/assessment/2024 Test Release Support Document_FINAL_508.pdf",
-      "bytes": 3910943,
-      "sha256": "2a9b6e5f3eb30d0eaad767f0672f401ce34eb270eee174c817efe9e8f4f92e52",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/2024%20Test%20Release%20Support%20Document_FINAL_508.pdf"
-    },
-    {
       "filename": "2025-2026 K-2 Progress Monitoring Accommodations Guide_508.pdf",
       "category": "accommodations",
       "path": "shared/standards/resources/florida/accommodations/2025-2026 K-2 Progress Monitoring Accommodations Guide_508.pdf",
@@ -71,6 +37,22 @@
       "path": "shared/standards/resources/florida/accommodations/2025-2026_Sp-Su_FL_Accomm_Guide_FINAL_012326_508.pdf",
       "bytes": 2889646,
       "sha256": "7b822b3a7dd18ac01b0c861061438d983c53c116ca690957dcb45e9431545096",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/"
+    },
+    {
+      "filename": "FL_SPSU26_PBT_Accommodated_Scripts_022726_Final_508.pdf",
+      "category": "accommodations",
+      "path": "shared/standards/resources/florida/accommodations/FL_SPSU26_PBT_Accommodated_Scripts_022726_Final_508.pdf",
+      "bytes": 1144509,
+      "sha256": "1ff6898fc43920398e38016398612beba8c7beb74c4f7439f254fead99bcece8",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/"
+    },
+    {
+      "filename": "SpSu26_FL_CBT_Accommodated_Scripts_012726_Final_508.pdf",
+      "category": "accommodations",
+      "path": "shared/standards/resources/florida/accommodations/SpSu26_FL_CBT_Accommodated_Scripts_012726_Final_508.pdf",
+      "bytes": 1105912,
+      "sha256": "87a70f14b9211033b1d3dcdca328770386030f17dfed22f9ee446e057db31778",
       "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/"
     },
     {
@@ -90,6 +72,114 @@
       "sha256": "0e8a0e9ca98ef6883803bc1547c1beea6b810c28eccfb560a0754871c769ebed",
       "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
       "direct_url_guess": "https://www.fldoe.org/file/20102/2025-2026_Test_Administrator_Prohibited_Activities_Agreement.pdf"
+    },
+    {
+      "filename": "CompAdaptTestFAQ.pdf",
+      "category": "admin",
+      "path": "shared/standards/resources/florida/admin/CompAdaptTestFAQ.pdf",
+      "bytes": 215268,
+      "sha256": "3077a67388277d3ac75e58f794548bfb0bf3c47ecdc2c879956862390a8bd245",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/CompAdaptTestFAQ.pdf"
+    },
+    {
+      "filename": "Florida_TA_User Guide_25-26_FINAL_012826_508.pdf",
+      "category": "admin",
+      "path": "shared/standards/resources/florida/admin/Florida_TA_User Guide_25-26_FINAL_012826_508.pdf",
+      "bytes": 2938089,
+      "sha256": "c1dbe44ee5dcb77ec280e4a51959851f1ff5f9a0d018f838b7b0c16b595643b7",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Florida_TA_User%20Guide_25-26_FINAL_012826_508.pdf"
+    },
+    {
+      "filename": "GradRequireFSA.pdf",
+      "category": "admin",
+      "path": "shared/standards/resources/florida/admin/GradRequireFSA.pdf",
+      "bytes": 391668,
+      "sha256": "53ea14f8191999d11a7715c8f3e1a5afee889d2cbfafb4546910a90a19bff1de",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/GradRequireFSA.pdf"
+    },
+    {
+      "filename": "K12SAG.pdf",
+      "category": "admin",
+      "path": "shared/standards/resources/florida/admin/K12SAG.pdf",
+      "bytes": 817070,
+      "sha256": "12e81756c7e9f30e22038c8af9f9c815c9f1e68cf727a5b5a30b3a91a0ea54e5",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/K12SAG.pdf"
+    },
+    {
+      "filename": "K2CompAdaptTestFAQ.pdf",
+      "category": "admin",
+      "path": "shared/standards/resources/florida/admin/K2CompAdaptTestFAQ.pdf",
+      "bytes": 187489,
+      "sha256": "5771e27f013a200586d83bd8852547af7cab6ae513a835801bcf4932f6509496",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/K2CompAdaptTestFAQ.pdf"
+    },
+    {
+      "filename": "REI User Guide_2025-2026_FINAL_012826_508.pdf",
+      "category": "admin",
+      "path": "shared/standards/resources/florida/admin/REI User Guide_2025-2026_FINAL_012826_508.pdf",
+      "bytes": 1214981,
+      "sha256": "28fab0605628e9ff884db4252829daf9b9bf2acd6dd91e935193fa6e0c67443f",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/REI%20User%20Guide_2025-2026_FINAL_012826_508.pdf"
+    },
+    {
+      "filename": "Sp-Su 2026 CBT Worksheet.pdf",
+      "category": "admin",
+      "path": "shared/standards/resources/florida/admin/Sp-Su 2026 CBT Worksheet.pdf",
+      "bytes": 99416,
+      "sha256": "d7c54779c86a544615ca9d601e4cc85282e6f1f9d9813403bf6237203ddb6007",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Sp-Su%202026%20CBT%20Worksheet.pdf"
+    },
+    {
+      "filename": "Sp-Su 2026 School Assessment Coordinator Checklist.pdf",
+      "category": "admin",
+      "path": "shared/standards/resources/florida/admin/Sp-Su 2026 School Assessment Coordinator Checklist.pdf",
+      "bytes": 192382,
+      "sha256": "63d6889e37915c1483a1ebeaa37990ce6e96be0d75936589c0f39122b004d323",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Sp-Su%202026%20School%20Assessment%20Coordinator%20Checklist.pdf"
+    },
+    {
+      "filename": "Sp-Su 2026 Test Administrator Checklist.pdf",
+      "category": "admin",
+      "path": "shared/standards/resources/florida/admin/Sp-Su 2026 Test Administrator Checklist.pdf",
+      "bytes": 144481,
+      "sha256": "99d19d62de0e60312196cdc33811b0b18cd8917123c984377fbdbe867b6d14c8",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Sp-Su%202026%20Test%20Administrator%20Checklist.pdf"
+    },
+    {
+      "filename": "TIDE_User Guide_25-26_FINAL_110725_508.pdf",
+      "category": "admin",
+      "path": "shared/standards/resources/florida/admin/TIDE_User Guide_25-26_FINAL_110725_508.pdf",
+      "bytes": 4685437,
+      "sha256": "a249e2d04eef59eca019f4ada8bef40d0dc454afa1fa870be07139225c8a2f57",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/TIDE_User%20Guide_25-26_FINAL_110725_508.pdf"
+    },
+    {
+      "filename": "2024 Test Release Support Document Practice Test Civics_508.pdf",
+      "category": "assessment",
+      "path": "shared/standards/resources/florida/assessment/2024 Test Release Support Document Practice Test Civics_508.pdf",
+      "bytes": 554880,
+      "sha256": "d70c7da2f9b67811cf7586f118dceb2fee1543f6b77f0c08e58e8955450ca708",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/2024%20Test%20Release%20Support%20Document%20Practice%20Test%20Civics_508.pdf"
+    },
+    {
+      "filename": "2024 Test Release Support Document_FINAL_508.pdf",
+      "category": "assessment",
+      "path": "shared/standards/resources/florida/assessment/2024 Test Release Support Document_FINAL_508.pdf",
+      "bytes": 3910943,
+      "sha256": "2a9b6e5f3eb30d0eaad767f0672f401ce34eb270eee174c817efe9e8f4f92e52",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/2024%20Test%20Release%20Support%20Document_FINAL_508.pdf"
     },
     {
       "filename": "2526BESTEOCFactSheet.pdf",
@@ -137,14 +227,6 @@
       "direct_url_guess": "https://www.fldoe.org/file/20102/2526Gr5-8ScienceFactSheet.pdf"
     },
     {
-      "filename": "2526K12FCLEFactSheet.pdf",
-      "category": "civics",
-      "path": "shared/standards/resources/florida/civics/2526K12FCLEFactSheet.pdf",
-      "bytes": 200505,
-      "sha256": "cd3f072249e6506c49f497758b5536de9a95199653071f6a243d22c56bb07eb7",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fcle.stml"
-    },
-    {
       "filename": "2526SciSSEOCFactSheet.pdf",
       "category": "assessment",
       "path": "shared/standards/resources/florida/assessment/2526SciSSEOCFactSheet.pdf",
@@ -152,66 +234,6 @@
       "sha256": "be4aee31b9a412f3020c9fbe545153dd8dc2553626f2be505c5b69a0c41bc9a4",
       "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
       "direct_url_guess": "https://www.fldoe.org/file/20102/2526SciSSEOCFactSheet.pdf"
-    },
-    {
-      "filename": "2627StatewideAssessmentSched.pdf",
-      "category": "other",
-      "path": "shared/standards/resources/florida/other/2627StatewideAssessmentSched.pdf",
-      "bytes": 247850,
-      "sha256": "e419f535ed4babffcd146bdf7d933673611c8bb2dc9a9b604a13e59320237a3e",
-      "source": "https://www.fldoe.org/accountability/assessments/"
-    },
-    {
-      "filename": "4-6BESTWritingArgumentationRubric.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/4-6BESTWritingArgumentationRubric.pdf",
-      "bytes": 223138,
-      "sha256": "1b43f135adf82b324b28b5cc15d2c155c69b9c53b14a207f04973bbc3436e7f8",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/4-6BESTWritingArgumentationRubric.pdf"
-    },
-    {
-      "filename": "4-6BESTWritingExpositoryRubric.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/4-6BESTWritingExpositoryRubric.pdf",
-      "bytes": 224743,
-      "sha256": "a8f1e121d528388acf1b6aa7e0ac1bc3ef5c1063ae5938871df6cb8c02a462b4",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/4-6BESTWritingExpositoryRubric.pdf"
-    },
-    {
-      "filename": "7-10BESTWritingArgumentationRubric.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/7-10BESTWritingArgumentationRubric.pdf",
-      "bytes": 225505,
-      "sha256": "845572f6948c0205bb6ac668fefe1acf5c2ae36b46493e1221a14847c3f9fa28",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/7-10BESTWritingArgumentationRubric.pdf"
-    },
-    {
-      "filename": "7-10BESTWritingExpositoryRubric.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/7-10BESTWritingExpositoryRubric.pdf",
-      "bytes": 224753,
-      "sha256": "d68a52241b7536ca0e38edf2f8730af115137c3c90709f81f7d2bb7983e06986",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/7-10BESTWritingExpositoryRubric.pdf"
-    },
-    {
-      "filename": "8743200-1516.rtf",
-      "category": "other",
-      "path": "shared/standards/resources/florida/other/8743200-1516.rtf",
-      "bytes": 1669789,
-      "sha256": "42fcdb3f9bfbd2fa1b787892f5534683d158cb4b1de71a18287143795595a2cb",
-      "source": "https://www.fldoe.org/accountability/assessments/"
-    },
-    {
-      "filename": "ACCESS-Parent-Handout-English.pdf",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/ACCESS-Parent-Handout-English.pdf",
-      "bytes": 136599,
-      "sha256": "ba30ab1f49e6a479ce3da6e5759f59c6e5008bdadef38d6aa03a7ede10d0ead3",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
     },
     {
       "filename": "AchieveLevelDesc.pdf",
@@ -250,14 +272,6 @@
       "direct_url_guess": "https://www.fldoe.org/file/20102/BIology-rcs.pdf"
     },
     {
-      "filename": "CivicLiteracyRule-faq.pdf",
-      "category": "civics",
-      "path": "shared/standards/resources/florida/civics/CivicLiteracyRule-faq.pdf",
-      "bytes": 513264,
-      "sha256": "833d863fa536602bd8451c09e6d2485c8013804cc56c8d6ce4fd2224782c4ec1",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fcle.stml"
-    },
-    {
       "filename": "Civics-rcs.pdf",
       "category": "assessment",
       "path": "shared/standards/resources/florida/assessment/Civics-rcs.pdf",
@@ -285,31 +299,6 @@
       "direct_url_guess": "https://www.fldoe.org/file/20102/CivicsEOCTIS.pdf"
     },
     {
-      "filename": "CompAdaptTestFAQ.pdf",
-      "category": "admin",
-      "path": "shared/standards/resources/florida/admin/CompAdaptTestFAQ.pdf",
-      "bytes": 215268,
-      "sha256": "3077a67388277d3ac75e58f794548bfb0bf3c47ecdc2c879956862390a8bd245",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/CompAdaptTestFAQ.pdf"
-    },
-    {
-      "filename": "ComputerScience_StandardsReportWithoutAccessPoints.doc",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/ComputerScience_StandardsReportWithoutAccessPoints.doc",
-      "bytes": 521858,
-      "sha256": "24b6cd35a87d5c6aece8e8f46a7b52c05c420919c0b2761deb300b7858958bdd",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "ComputerScience_StandardsReportWithoutAccessPoints.doc.docx",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/ComputerScience_StandardsReportWithoutAccessPoints.doc.docx",
-      "bytes": 163657,
-      "sha256": "1aca45ea841d13b5dcc8d4e49311ee0f24e97c3088137bc38c0a3ff431490aa9",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
       "filename": "ERMCSD2627SY.pdf",
       "category": "assessment",
       "path": "shared/standards/resources/florida/assessment/ERMCSD2627SY.pdf",
@@ -317,70 +306,6 @@
       "sha256": "58c5dc22a06365dc3e0ba6e95037b576e387aa148f35244f916252969c1b8132",
       "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
       "direct_url_guess": "https://www.fldoe.org/file/20102/ERMCSD2627SY.pdf"
-    },
-    {
-      "filename": "EnglishLanguageArts(B.E.S.T.)_StandardsandAccessPoints.doc",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/EnglishLanguageArts(B.E.S.T.)_StandardsandAccessPoints.doc",
-      "bytes": 631938,
-      "sha256": "316c78fb7eed0780357f189f2d58dd05c5b6cbb6273f4e82921432765ae203c0",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "EnglishLanguageArts(B.E.S.T.)_StandardsandAccessPoints.doc.docx",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/EnglishLanguageArts(B.E.S.T.)_StandardsandAccessPoints.doc.docx",
-      "bytes": 208883,
-      "sha256": "f594e87a6d191ae80c532e0e4c5970cbd740f3520117779d4ccc251eb2c2f392",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc",
-      "bytes": 9690,
-      "sha256": "0cd0ef50042adaf0523e536ee72d46db3a57edf4f6f855b6f99bbdfff54195f8",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc.docx",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc.docx",
-      "bytes": 41774,
-      "sha256": "a002de96a2836e16b6ae47744486f5a2bf2e9c2e452dd4db46b6ddc38dcdb106",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "Export.docx",
-      "category": "other",
-      "path": "shared/standards/resources/florida/other/Export.docx",
-      "bytes": 558754,
-      "sha256": "658a88ce349b08a1f6d0128793f32c98d571975be8b6ce8514f9a384a118c8d8",
-      "source": "https://www.fldoe.org/accountability/assessments/"
-    },
-    {
-      "filename": "Export.xlsx",
-      "category": "other",
-      "path": "shared/standards/resources/florida/other/Export.xlsx",
-      "bytes": 461821,
-      "sha256": "ba0cc30d7a79ca33ffdcfe3a7b99ecdaf88f3443a18e43d6e06f1e7c3dc1f86d",
-      "source": "https://www.fldoe.org/accountability/assessments/"
-    },
-    {
-      "filename": "FCLESampleItem.pdf",
-      "category": "civics",
-      "path": "shared/standards/resources/florida/civics/FCLESampleItem.pdf",
-      "bytes": 254793,
-      "sha256": "ec2df94b944665dde52548e37bde9de267a27d034c99ba52069716906dba2e4b",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fcle.stml"
-    },
-    {
-      "filename": "FL-Checklist.pdf",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/FL-Checklist.pdf",
-      "bytes": 572854,
-      "sha256": "477dcc9c374bc4516e7f5aa721f94a27141aa9f0c62e99401319e27282fb732c",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
     },
     {
       "filename": "FLMathFormuSuccess.pdf",
@@ -401,14 +326,6 @@
       "direct_url_guess": "https://www.fldoe.org/file/20102/FL_2025-26_FAST-BEST-Mathematics-Reference-Sheets-Packet_Final_508.pdf"
     },
     {
-      "filename": "FL_SPSU26_PBT_Accommodated_Scripts_022726_Final_508.pdf",
-      "category": "accommodations",
-      "path": "shared/standards/resources/florida/accommodations/FL_SPSU26_PBT_Accommodated_Scripts_022726_Final_508.pdf",
-      "bytes": 1144509,
-      "sha256": "1ff6898fc43920398e38016398612beba8c7beb74c4f7439f254fead99bcece8",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/"
-    },
-    {
       "filename": "FSACalcRefSheetPolicy.pdf",
       "category": "assessment",
       "path": "shared/standards/resources/florida/assessment/FSACalcRefSheetPolicy.pdf",
@@ -416,56 +333,6 @@
       "sha256": "6943d9d3dd945069d34eb8d25112d43f84bfdda612587130f691e7d9f067e815",
       "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
       "direct_url_guess": "https://www.fldoe.org/file/20102/FSACalcRefSheetPolicy.pdf"
-    },
-    {
-      "filename": "Florida-Civic-Literacy-Exam-K12-FAQ.pdf",
-      "category": "civics",
-      "path": "shared/standards/resources/florida/civics/Florida-Civic-Literacy-Exam-K12-FAQ.pdf",
-      "bytes": 237879,
-      "sha256": "95ad6720b4cd159c501abed69ff4f0bdeba7a0c8dd96d042704442018d070c7c",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fcle.stml"
-    },
-    {
-      "filename": "Florida-WIDA-ACCESS-Online-FAQ.pdf",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/Florida-WIDA-ACCESS-Online-FAQ.pdf",
-      "bytes": 290224,
-      "sha256": "7c896bf0d68c0572f1488e26692ae8c17cd4cff86a617db397d29183098854a5",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "Florida_TA_User Guide_25-26_FINAL_012826_508.pdf",
-      "category": "admin",
-      "path": "shared/standards/resources/florida/admin/Florida_TA_User Guide_25-26_FINAL_012826_508.pdf",
-      "bytes": 2938089,
-      "sha256": "c1dbe44ee5dcb77ec280e4a51959851f1ff5f9a0d018f838b7b0c16b595643b7",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Florida_TA_User%20Guide_25-26_FINAL_012826_508.pdf"
-    },
-    {
-      "filename": "Gifted_StandardsReportWithoutAccessPoints.doc",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/Gifted_StandardsReportWithoutAccessPoints.doc",
-      "bytes": 167761,
-      "sha256": "d54a5592bba227ce33b7e17d12a6c189d91462d2b5d6f067fb9422d9b37e4286",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "Gifted_StandardsReportWithoutAccessPoints.doc.docx",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/Gifted_StandardsReportWithoutAccessPoints.doc.docx",
-      "bytes": 77440,
-      "sha256": "6ba6a1cf4a258931ca0167ca32e8a701e3a9cdaa4b13fc52036f5f3f22560708",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "GradRequireFSA.pdf",
-      "category": "admin",
-      "path": "shared/standards/resources/florida/admin/GradRequireFSA.pdf",
-      "bytes": 391668,
-      "sha256": "53ea14f8191999d11a7715c8f3e1a5afee889d2cbfafb4546910a90a19bff1de",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/GradRequireFSA.pdf"
     },
     {
       "filename": "Grade5-Science-rcs.pdf",
@@ -495,48 +362,6 @@
       "direct_url_guess": "https://www.fldoe.org/file/20102/Interpretive-Guide.pdf"
     },
     {
-      "filename": "K12SAG.pdf",
-      "category": "admin",
-      "path": "shared/standards/resources/florida/admin/K12SAG.pdf",
-      "bytes": 817070,
-      "sha256": "12e81756c7e9f30e22038c8af9f9c815c9f1e68cf727a5b5a30b3a91a0ea54e5",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/K12SAG.pdf"
-    },
-    {
-      "filename": "K2CompAdaptTestFAQ.pdf",
-      "category": "admin",
-      "path": "shared/standards/resources/florida/admin/K2CompAdaptTestFAQ.pdf",
-      "bytes": 187489,
-      "sha256": "5771e27f013a200586d83bd8852547af7cab6ae513a835801bcf4932f6509496",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/K2CompAdaptTestFAQ.pdf"
-    },
-    {
-      "filename": "MTR-ClassroomCoachTool.pdf",
-      "category": "standards",
-      "path": "shared/standards/resources/florida/standards/MTR-ClassroomCoachTool.pdf",
-      "bytes": 191476,
-      "sha256": "4a86221e2f3b4bcba8e412e4c3bfb0e46832806ceedaf9711ac45f05a1d01ab2",
-      "source": "https://www.cpalms.org/downloads"
-    },
-    {
-      "filename": "Mathematics(B.E.S.T.)_StandardsandAccessPoints.doc",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/Mathematics(B.E.S.T.)_StandardsandAccessPoints.doc",
-      "bytes": 1083228,
-      "sha256": "05d2bdb4be889cf1b28f515b63d6a381b6be1836aa84ebd82a27d2eebc4bb6a8",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "Mathematics(B.E.S.T.)_StandardsandAccessPoints.doc.docx",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/Mathematics(B.E.S.T.)_StandardsandAccessPoints.doc.docx",
-      "bytes": 479074,
-      "sha256": "97e31a47ba95fe32e4a75a2a14b91744daf3ea14cb042bb9d140de0e10934a99",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
       "filename": "NGSSSAchievementLevels.pdf",
       "category": "assessment",
       "path": "shared/standards/resources/florida/assessment/NGSSSAchievementLevels.pdf",
@@ -544,31 +369,6 @@
       "sha256": "8bcc968949143ef431075fed8b84f35d3b07c1b6203ad032cc7a4de3aa92db31",
       "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
       "direct_url_guess": "https://www.fldoe.org/file/20102/NGSSSAchievementLevels.pdf"
-    },
-    {
-      "filename": "PLT-Places-We-Live-Florida-Standards-Correlations-Aug2019.pdf",
-      "category": "other",
-      "path": "shared/standards/resources/florida/other/PLT-Places-We-Live-Florida-Standards-Correlations-Aug2019.pdf",
-      "bytes": 580501,
-      "sha256": "9a9bb1fc7a1f9ecea3f16865d0095e509ac2c5b1f8ee165b9c02b4a701f7ff2c",
-      "source": "https://www.fldoe.org/accountability/assessments/"
-    },
-    {
-      "filename": "PLT-PreK8-Environmental-Education-Activity-Guide-Florida-Standards-Correlations_July2019.pdf",
-      "category": "other",
-      "path": "shared/standards/resources/florida/other/PLT-PreK8-Environmental-Education-Activity-Guide-Florida-Standards-Correlations_July2019.pdf",
-      "bytes": 1761724,
-      "sha256": "a5ac1162eedfbf526ced7bc85d0ebd8f4b659d11e6d8dd92c98138d16dfb1442",
-      "source": "https://www.fldoe.org/accountability/assessments/"
-    },
-    {
-      "filename": "REI User Guide_2025-2026_FINAL_012826_508.pdf",
-      "category": "admin",
-      "path": "shared/standards/resources/florida/admin/REI User Guide_2025-2026_FINAL_012826_508.pdf",
-      "bytes": 1214981,
-      "sha256": "28fab0605628e9ff884db4252829daf9b9bf2acd6dd91e935193fa6e0c67443f",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/REI%20User%20Guide_2025-2026_FINAL_012826_508.pdf"
     },
     {
       "filename": "SCIBIO1EOCTSI.pdf",
@@ -607,30 +407,6 @@
       "direct_url_guess": "https://www.fldoe.org/file/20102/Science-TDS.pdf"
     },
     {
-      "filename": "Science_StandardsandAccessPoints.doc",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/Science_StandardsandAccessPoints.doc",
-      "bytes": 770273,
-      "sha256": "5ecf1e6411b3fabb9e131fe052862cb96b7dc6b020cd499de394822cc01fb0e1",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "Science_StandardsandAccessPoints.doc.docx",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/Science_StandardsandAccessPoints.doc.docx",
-      "bytes": 258548,
-      "sha256": "913b18f58c9c739ca131cfa0d5b549598ae33ab93bd5ca997b386d00ce2bd0d3",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "Social-Studies assessments updates .pdf",
-      "category": "other",
-      "path": "shared/standards/resources/florida/other/Social-Studies assessments updates .pdf",
-      "bytes": 1259235,
-      "sha256": "91833de527399bff8c6f42d2c4a348f1fdb7519f1d1e375d18dc1087dd39f277",
-      "source": "https://www.fldoe.org/accountability/assessments/"
-    },
-    {
       "filename": "SocialStudies-TDS.pdf",
       "category": "assessment",
       "path": "shared/standards/resources/florida/assessment/SocialStudies-TDS.pdf",
@@ -638,120 +414,6 @@
       "sha256": "d31e7cebaf597969b5a326300fd52e2c0448710cdb97955713a4b02c3d1e98fe",
       "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
       "direct_url_guess": "https://www.fldoe.org/file/20102/SocialStudies-TDS.pdf"
-    },
-    {
-      "filename": "SocialStudies_StandardsandAccessPoints_WR.doc",
-      "category": "english-learners",
-      "path": "shared/standards/resources/florida/english-learners/SocialStudies_StandardsandAccessPoints_WR.doc",
-      "bytes": 1856864,
-      "sha256": "ae412c2dfd0f7dd4326cc9cd12e0da29bfc54f3f40b4750fc38a04b7fd6a5889",
-      "source": "https://wida.wisc.edu/memberships/consortium/fl"
-    },
-    {
-      "filename": "Sp-Su 2026 CBT Worksheet.pdf",
-      "category": "admin",
-      "path": "shared/standards/resources/florida/admin/Sp-Su 2026 CBT Worksheet.pdf",
-      "bytes": 99416,
-      "sha256": "d7c54779c86a544615ca9d601e4cc85282e6f1f9d9813403bf6237203ddb6007",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Sp-Su%202026%20CBT%20Worksheet.pdf"
-    },
-    {
-      "filename": "Sp-Su 2026 School Assessment Coordinator Checklist.pdf",
-      "category": "admin",
-      "path": "shared/standards/resources/florida/admin/Sp-Su 2026 School Assessment Coordinator Checklist.pdf",
-      "bytes": 192382,
-      "sha256": "63d6889e37915c1483a1ebeaa37990ce6e96be0d75936589c0f39122b004d323",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Sp-Su%202026%20School%20Assessment%20Coordinator%20Checklist.pdf"
-    },
-    {
-      "filename": "Sp-Su 2026 Test Administrator Checklist.pdf",
-      "category": "admin",
-      "path": "shared/standards/resources/florida/admin/Sp-Su 2026 Test Administrator Checklist.pdf",
-      "bytes": 144481,
-      "sha256": "99d19d62de0e60312196cdc33811b0b18cd8917123c984377fbdbe867b6d14c8",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Sp-Su%202026%20Test%20Administrator%20Checklist.pdf"
-    },
-    {
-      "filename": "Sp-Su 2026 Writing Planning Sheet.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/Sp-Su 2026 Writing Planning Sheet.pdf",
-      "bytes": 93641,
-      "sha256": "d9fa32a29f0c70a9d79cd9d0eb99ac09efaff8067d01a2261e6c9290662cf602",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Sp-Su%202026%20Writing%20Planning%20Sheet.pdf"
-    },
-    {
-      "filename": "SpSu26_FL_CBT_Accommodated_Scripts_012726_Final_508.pdf",
-      "category": "accommodations",
-      "path": "shared/standards/resources/florida/accommodations/SpSu26_FL_CBT_Accommodated_Scripts_012726_Final_508.pdf",
-      "bytes": 1105912,
-      "sha256": "87a70f14b9211033b1d3dcdca328770386030f17dfed22f9ee446e057db31778",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/"
-    },
-    {
-      "filename": "Spring-2025-Grade-10-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-10-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "bytes": 4379037,
-      "sha256": "d601a5a120136f78f9f5ff03e2228815d6f2f0ee8420a7a2a66239243aae2a2f",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-10-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
-    },
-    {
-      "filename": "Spring-2025-Grade-4-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-4-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "bytes": 4349668,
-      "sha256": "0dd4d34cee301640083a5db2a8f3e689c27ff8580b399e398dca0e5ca2a6a471",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-4-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
-    },
-    {
-      "filename": "Spring-2025-Grade-6-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-6-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "bytes": 3543228,
-      "sha256": "55449d7478d0a80891bad04bc179b3425e31f523eb59143eda882a645b0400b6",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-6-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
-    },
-    {
-      "filename": "Spring-2025-Grade-7-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-7-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "bytes": 6499300,
-      "sha256": "70498e51a1cb43aba843e6f65b033a2420f1df7f6369c5667758a15a46e421dd",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-7-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
-    },
-    {
-      "filename": "Spring-2025-Grade-8-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-8-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "bytes": 4660392,
-      "sha256": "cb3bdba45ab4ecbdc6731936c826a58d8520f01dd519a148ad0177b52a74ad84",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-8-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
-    },
-    {
-      "filename": "Spring-2025-Grade-9-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "category": "writing",
-      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-9-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
-      "bytes": 4276936,
-      "sha256": "70d1faba0ae3702188c068e8df969de00dd6361a3bc4da0a389458c6fec77df6",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-9-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
-    },
-    {
-      "filename": "SuppGuideFCLE.pdf",
-      "category": "civics",
-      "path": "shared/standards/resources/florida/civics/SuppGuideFCLE.pdf",
-      "bytes": 197580,
-      "sha256": "87b077e7d8141a3d9bc043f6a47481d9953768b79f2c31bc9c74fa9141b5a6af",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fcle.stml"
     },
     {
       "filename": "TDS-FAST-ELA.pdf",
@@ -770,15 +432,6 @@
       "sha256": "607b708ce542edc84ecb8f1dd738c6c825775d553ad646785b386e568553d9a6",
       "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
       "direct_url_guess": "https://www.fldoe.org/file/20102/TDS-FAST-Math.pdf"
-    },
-    {
-      "filename": "TIDE_User Guide_25-26_FINAL_110725_508.pdf",
-      "category": "admin",
-      "path": "shared/standards/resources/florida/admin/TIDE_User Guide_25-26_FINAL_110725_508.pdf",
-      "bytes": 4685437,
-      "sha256": "a249e2d04eef59eca019f4ada8bef40d0dc454afa1fa870be07139225c8a2f57",
-      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-      "direct_url_guess": "https://www.fldoe.org/file/20102/TIDE_User%20Guide_25-26_FINAL_110725_508.pdf"
     },
     {
       "filename": "USHistory-rcs.pdf",
@@ -835,14 +488,6 @@
       "direct_url_guess": "https://www.fldoe.org/file/20102/best-math-rcs.pdf"
     },
     {
-      "filename": "bestela202511.pdf",
-      "category": "standards",
-      "path": "shared/standards/resources/florida/standards/bestela202511.pdf",
-      "bytes": 2600716,
-      "sha256": "d4cef8364bea33c5748afdf2349898d26e6127e53dbafa147b36fb6f82b0fd94",
-      "source": "https://www.cpalms.org/downloads"
-    },
-    {
       "filename": "cognitivecomplexity.pdf",
       "category": "assessment",
       "path": "shared/standards/resources/florida/assessment/cognitivecomplexity.pdf",
@@ -850,6 +495,262 @@
       "sha256": "9f2bda7eb74219b9decca41c4fe90877e7d8f58aa9433614f2147a7806da26a3",
       "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
       "direct_url_guess": "https://www.fldoe.org/file/20102/cognitivecomplexity.pdf"
+    },
+    {
+      "filename": "2526K12FCLEFactSheet.pdf",
+      "category": "civics",
+      "path": "shared/standards/resources/florida/civics/2526K12FCLEFactSheet.pdf",
+      "bytes": 200505,
+      "sha256": "cd3f072249e6506c49f497758b5536de9a95199653071f6a243d22c56bb07eb7",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fcle.stml"
+    },
+    {
+      "filename": "CivicLiteracyRule-faq.pdf",
+      "category": "civics",
+      "path": "shared/standards/resources/florida/civics/CivicLiteracyRule-faq.pdf",
+      "bytes": 513264,
+      "sha256": "833d863fa536602bd8451c09e6d2485c8013804cc56c8d6ce4fd2224782c4ec1",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fcle.stml"
+    },
+    {
+      "filename": "FCLESampleItem.pdf",
+      "category": "civics",
+      "path": "shared/standards/resources/florida/civics/FCLESampleItem.pdf",
+      "bytes": 254793,
+      "sha256": "ec2df94b944665dde52548e37bde9de267a27d034c99ba52069716906dba2e4b",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fcle.stml"
+    },
+    {
+      "filename": "Florida-Civic-Literacy-Exam-K12-FAQ.pdf",
+      "category": "civics",
+      "path": "shared/standards/resources/florida/civics/Florida-Civic-Literacy-Exam-K12-FAQ.pdf",
+      "bytes": 237879,
+      "sha256": "95ad6720b4cd159c501abed69ff4f0bdeba7a0c8dd96d042704442018d070c7c",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fcle.stml"
+    },
+    {
+      "filename": "SuppGuideFCLE.pdf",
+      "category": "civics",
+      "path": "shared/standards/resources/florida/civics/SuppGuideFCLE.pdf",
+      "bytes": 197580,
+      "sha256": "87b077e7d8141a3d9bc043f6a47481d9953768b79f2c31bc9c74fa9141b5a6af",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fcle.stml"
+    },
+    {
+      "filename": "2021WIDATestSessionForms.xlsx",
+      "category": "english-learners",
+      "path": "shared/standards/resources/florida/english-learners/2021WIDATestSessionForms.xlsx",
+      "bytes": 16779,
+      "sha256": "c9aa118a3ec7a324df1ceb902d80465635fbb881dde129e99ba5038c47ea1b65",
+      "source": "https://wida.wisc.edu/memberships/consortium/fl"
+    },
+    {
+      "filename": "ACCESS-Parent-Handout-English.pdf",
+      "category": "english-learners",
+      "path": "shared/standards/resources/florida/english-learners/ACCESS-Parent-Handout-English.pdf",
+      "bytes": 136599,
+      "sha256": "ba30ab1f49e6a479ce3da6e5759f59c6e5008bdadef38d6aa03a7ede10d0ead3",
+      "source": "https://wida.wisc.edu/memberships/consortium/fl"
+    },
+    {
+      "filename": "EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc",
+      "category": "english-learners",
+      "path": "shared/standards/resources/florida/english-learners/EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc",
+      "bytes": 9690,
+      "sha256": "0cd0ef50042adaf0523e536ee72d46db3a57edf4f6f855b6f99bbdfff54195f8",
+      "source": "https://wida.wisc.edu/memberships/consortium/fl"
+    },
+    {
+      "filename": "EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc.docx",
+      "category": "english-learners",
+      "path": "shared/standards/resources/florida/english-learners/EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc.docx",
+      "bytes": 41774,
+      "sha256": "a002de96a2836e16b6ae47744486f5a2bf2e9c2e452dd4db46b6ddc38dcdb106",
+      "source": "https://wida.wisc.edu/memberships/consortium/fl"
+    },
+    {
+      "filename": "FL-Checklist.pdf",
+      "category": "english-learners",
+      "path": "shared/standards/resources/florida/english-learners/FL-Checklist.pdf",
+      "bytes": 572854,
+      "sha256": "477dcc9c374bc4516e7f5aa721f94a27141aa9f0c62e99401319e27282fb732c",
+      "source": "https://wida.wisc.edu/memberships/consortium/fl"
+    },
+    {
+      "filename": "Florida-WIDA-ACCESS-Online-FAQ.pdf",
+      "category": "english-learners",
+      "path": "shared/standards/resources/florida/english-learners/Florida-WIDA-ACCESS-Online-FAQ.pdf",
+      "bytes": 290224,
+      "sha256": "7c896bf0d68c0572f1488e26692ae8c17cd4cff86a617db397d29183098854a5",
+      "source": "https://wida.wisc.edu/memberships/consortium/fl"
+    },
+    {
+      "filename": "0077550-fl09sp_us_history.pdf",
+      "category": "other",
+      "path": "shared/standards/resources/florida/other/0077550-fl09sp_us_history.pdf",
+      "bytes": 1609794,
+      "sha256": "7a3b4461f6ebed598cd189ec4d68bc5027f445916bb48c8a6b258cae64d09cdc",
+      "source": "https://www.fldoe.org/accountability/assessments/"
+    },
+    {
+      "filename": "2627StatewideAssessmentSched.pdf",
+      "category": "other",
+      "path": "shared/standards/resources/florida/other/2627StatewideAssessmentSched.pdf",
+      "bytes": 247850,
+      "sha256": "e419f535ed4babffcd146bdf7d933673611c8bb2dc9a9b604a13e59320237a3e",
+      "source": "https://www.fldoe.org/accountability/assessments/"
+    },
+    {
+      "filename": "8743200-1516.rtf",
+      "category": "other",
+      "path": "shared/standards/resources/florida/other/8743200-1516.rtf",
+      "bytes": 1669789,
+      "sha256": "42fcdb3f9bfbd2fa1b787892f5534683d158cb4b1de71a18287143795595a2cb",
+      "source": "https://www.fldoe.org/accountability/assessments/"
+    },
+    {
+      "filename": "Export.docx",
+      "category": "other",
+      "path": "shared/standards/resources/florida/other/Export.docx",
+      "bytes": 558754,
+      "sha256": "658a88ce349b08a1f6d0128793f32c98d571975be8b6ce8514f9a384a118c8d8",
+      "source": "https://www.fldoe.org/accountability/assessments/"
+    },
+    {
+      "filename": "Export.xlsx",
+      "category": "other",
+      "path": "shared/standards/resources/florida/other/Export.xlsx",
+      "bytes": 461821,
+      "sha256": "ba0cc30d7a79ca33ffdcfe3a7b99ecdaf88f3443a18e43d6e06f1e7c3dc1f86d",
+      "source": "https://www.fldoe.org/accountability/assessments/"
+    },
+    {
+      "filename": "PLT-Places-We-Live-Florida-Standards-Correlations-Aug2019.pdf",
+      "category": "other",
+      "path": "shared/standards/resources/florida/other/PLT-Places-We-Live-Florida-Standards-Correlations-Aug2019.pdf",
+      "bytes": 580501,
+      "sha256": "9a9bb1fc7a1f9ecea3f16865d0095e509ac2c5b1f8ee165b9c02b4a701f7ff2c",
+      "source": "https://www.fldoe.org/accountability/assessments/"
+    },
+    {
+      "filename": "PLT-PreK8-Environmental-Education-Activity-Guide-Florida-Standards-Correlations_July2019.pdf",
+      "category": "other",
+      "path": "shared/standards/resources/florida/other/PLT-PreK8-Environmental-Education-Activity-Guide-Florida-Standards-Correlations_July2019.pdf",
+      "bytes": 1761724,
+      "sha256": "a5ac1162eedfbf526ced7bc85d0ebd8f4b659d11e6d8dd92c98138d16dfb1442",
+      "source": "https://www.fldoe.org/accountability/assessments/"
+    },
+    {
+      "filename": "Social-Studies assessments updates .pdf",
+      "category": "other",
+      "path": "shared/standards/resources/florida/other/Social-Studies assessments updates .pdf",
+      "bytes": 1259235,
+      "sha256": "91833de527399bff8c6f42d2c4a348f1fdb7519f1d1e375d18dc1087dd39f277",
+      "source": "https://www.fldoe.org/accountability/assessments/"
+    },
+    {
+      "filename": "ComputerScience_StandardsReportWithoutAccessPoints.doc",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/ComputerScience_StandardsReportWithoutAccessPoints.doc",
+      "bytes": 521858,
+      "sha256": "24b6cd35a87d5c6aece8e8f46a7b52c05c420919c0b2761deb300b7858958bdd",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "ComputerScience_StandardsReportWithoutAccessPoints.doc.docx",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/ComputerScience_StandardsReportWithoutAccessPoints.doc.docx",
+      "bytes": 163657,
+      "sha256": "1aca45ea841d13b5dcc8d4e49311ee0f24e97c3088137bc38c0a3ff431490aa9",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "EnglishLanguageArts(B.E.S.T.)_StandardsandAccessPoints.doc",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/EnglishLanguageArts(B.E.S.T.)_StandardsandAccessPoints.doc",
+      "bytes": 631938,
+      "sha256": "316c78fb7eed0780357f189f2d58dd05c5b6cbb6273f4e82921432765ae203c0",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "EnglishLanguageArts(B.E.S.T.)_StandardsandAccessPoints.doc.docx",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/EnglishLanguageArts(B.E.S.T.)_StandardsandAccessPoints.doc.docx",
+      "bytes": 208883,
+      "sha256": "f594e87a6d191ae80c532e0e4c5970cbd740f3520117779d4ccc251eb2c2f392",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "Gifted_StandardsReportWithoutAccessPoints.doc",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/Gifted_StandardsReportWithoutAccessPoints.doc",
+      "bytes": 167761,
+      "sha256": "d54a5592bba227ce33b7e17d12a6c189d91462d2b5d6f067fb9422d9b37e4286",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "Gifted_StandardsReportWithoutAccessPoints.doc.docx",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/Gifted_StandardsReportWithoutAccessPoints.doc.docx",
+      "bytes": 77440,
+      "sha256": "6ba6a1cf4a258931ca0167ca32e8a701e3a9cdaa4b13fc52036f5f3f22560708",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "MTR-ClassroomCoachTool.pdf",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/MTR-ClassroomCoachTool.pdf",
+      "bytes": 191476,
+      "sha256": "4a86221e2f3b4bcba8e412e4c3bfb0e46832806ceedaf9711ac45f05a1d01ab2",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "Mathematics(B.E.S.T.)_StandardsandAccessPoints.doc",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/Mathematics(B.E.S.T.)_StandardsandAccessPoints.doc",
+      "bytes": 1083228,
+      "sha256": "05d2bdb4be889cf1b28f515b63d6a381b6be1836aa84ebd82a27d2eebc4bb6a8",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "Mathematics(B.E.S.T.)_StandardsandAccessPoints.doc.docx",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/Mathematics(B.E.S.T.)_StandardsandAccessPoints.doc.docx",
+      "bytes": 479074,
+      "sha256": "97e31a47ba95fe32e4a75a2a14b91744daf3ea14cb042bb9d140de0e10934a99",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "Science_StandardsandAccessPoints.doc",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/Science_StandardsandAccessPoints.doc",
+      "bytes": 770273,
+      "sha256": "5ecf1e6411b3fabb9e131fe052862cb96b7dc6b020cd499de394822cc01fb0e1",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "Science_StandardsandAccessPoints.doc.docx",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/Science_StandardsandAccessPoints.doc.docx",
+      "bytes": 258548,
+      "sha256": "913b18f58c9c739ca131cfa0d5b549598ae33ab93bd5ca997b386d00ce2bd0d3",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "SocialStudies_StandardsandAccessPoints_WR.doc",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/SocialStudies_StandardsandAccessPoints_WR.doc",
+      "bytes": 1856864,
+      "sha256": "ae412c2dfd0f7dd4326cc9cd12e0da29bfc54f3f40b4750fc38a04b7fd6a5889",
+      "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "bestela202511.pdf",
+      "category": "standards",
+      "path": "shared/standards/resources/florida/standards/bestela202511.pdf",
+      "bytes": 2600716,
+      "sha256": "d4cef8364bea33c5748afdf2349898d26e6127e53dbafa147b36fb6f82b0fd94",
+      "source": "https://www.cpalms.org/downloads"
     },
     {
       "filename": "csstandards202407.pdf",
@@ -914,6 +815,105 @@
       "bytes": 40448,
       "sha256": "a7f69326d0a3c1c5812c3af5b99cc76fb7cdcd7f3fe332fe01bbb2ffdeb22bc0",
       "source": "https://www.cpalms.org/downloads"
+    },
+    {
+      "filename": "4-6BESTWritingArgumentationRubric.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/4-6BESTWritingArgumentationRubric.pdf",
+      "bytes": 223138,
+      "sha256": "1b43f135adf82b324b28b5cc15d2c155c69b9c53b14a207f04973bbc3436e7f8",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/4-6BESTWritingArgumentationRubric.pdf"
+    },
+    {
+      "filename": "4-6BESTWritingExpositoryRubric.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/4-6BESTWritingExpositoryRubric.pdf",
+      "bytes": 224743,
+      "sha256": "a8f1e121d528388acf1b6aa7e0ac1bc3ef5c1063ae5938871df6cb8c02a462b4",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/4-6BESTWritingExpositoryRubric.pdf"
+    },
+    {
+      "filename": "7-10BESTWritingArgumentationRubric.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/7-10BESTWritingArgumentationRubric.pdf",
+      "bytes": 225505,
+      "sha256": "845572f6948c0205bb6ac668fefe1acf5c2ae36b46493e1221a14847c3f9fa28",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/7-10BESTWritingArgumentationRubric.pdf"
+    },
+    {
+      "filename": "7-10BESTWritingExpositoryRubric.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/7-10BESTWritingExpositoryRubric.pdf",
+      "bytes": 224753,
+      "sha256": "d68a52241b7536ca0e38edf2f8730af115137c3c90709f81f7d2bb7983e06986",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/7-10BESTWritingExpositoryRubric.pdf"
+    },
+    {
+      "filename": "Sp-Su 2026 Writing Planning Sheet.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/Sp-Su 2026 Writing Planning Sheet.pdf",
+      "bytes": 93641,
+      "sha256": "d9fa32a29f0c70a9d79cd9d0eb99ac09efaff8067d01a2261e6c9290662cf602",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Sp-Su%202026%20Writing%20Planning%20Sheet.pdf"
+    },
+    {
+      "filename": "Spring-2025-Grade-10-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-10-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "bytes": 4379037,
+      "sha256": "d601a5a120136f78f9f5ff03e2228815d6f2f0ee8420a7a2a66239243aae2a2f",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-10-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
+    },
+    {
+      "filename": "Spring-2025-Grade-4-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-4-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "bytes": 4349668,
+      "sha256": "0dd4d34cee301640083a5db2a8f3e689c27ff8580b399e398dca0e5ca2a6a471",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-4-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
+    },
+    {
+      "filename": "Spring-2025-Grade-6-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-6-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "bytes": 3543228,
+      "sha256": "55449d7478d0a80891bad04bc179b3425e31f523eb59143eda882a645b0400b6",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-6-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
+    },
+    {
+      "filename": "Spring-2025-Grade-7-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-7-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "bytes": 6499300,
+      "sha256": "70498e51a1cb43aba843e6f65b033a2420f1df7f6369c5667758a15a46e421dd",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-7-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
+    },
+    {
+      "filename": "Spring-2025-Grade-8-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-8-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "bytes": 4660392,
+      "sha256": "cb3bdba45ab4ecbdc6731936c826a58d8520f01dd519a148ad0177b52a74ad84",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-8-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
+    },
+    {
+      "filename": "Spring-2025-Grade-9-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "category": "writing",
+      "path": "shared/standards/resources/florida/writing/Spring-2025-Grade-9-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf",
+      "bytes": 4276936,
+      "sha256": "70d1faba0ae3702188c068e8df969de00dd6361a3bc4da0a389458c6fec77df6",
+      "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-9-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
     }
   ]
 }

@@ -10,9 +10,11 @@ by type. Pairs with the adapter `../florida-best.md`.
 >   accommodations:** FLDOE — `www.fldoe.org` (Accountability → Assessments).
 > - **English learners (ELD/ACCESS):** WIDA — `wida.wisc.edu`; FLDOE ESOL pages.
 >
-> **Refresh process:** when a new year/cycle is published, replace the snapshot entries below with the
-> new files (or just rely on the live sources), bump the catalog date, and re-verify any cited codes
-> on CPALMS. The raw binaries are **not** committed to the repo (see `README.md` in this folder).
+> **Stored + refreshable.** The raw files are stored under `florida/` (by category) with
+> `florida/sources.json` recording each file's **sha256 + official source**. Run
+> `tools/standards_refresh.py --crawl` to crawl the canonical sources for newer documents (compares
+> against the stored hashes), then drop in updates, refresh `sources.json`, bump this date, and
+> re-verify any cited codes on CPALMS.
 
 ---
 
