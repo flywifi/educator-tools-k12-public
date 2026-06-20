@@ -3,10 +3,13 @@
 Update at every phase boundary and after each skill ships. Recovery package = the charters + Quality
 Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 
-**Last updated:** Phase 0 complete.
+**Last updated:** Phase A complete (the v1 skill set is built).
 **Active branch:** `claude/fervent-hawking-nyrzy5`
-**Resume here:** Begin **Phase A** — build `quality-review`, then `lesson-planner` (reference skill),
-`assessment-designer`, `presentation-builder`. Use the inner loop (draft → evals → iterate).
+**Resume here:** Options — (a) **run the eval benchmark** for the 4 new skills (each `evals.json`
+has prompts + assertions; the with-skill/without-skill subagent run was not executed this pass);
+(b) **Phase B** — wire decision records + the Quality Ledger into runtime; (c) **Phase C** — start
+the expansion skills (curriculum-mapping, special-education-support, intervention-mtss,
+family-communication, professional-learning, school-administration).
 
 ---
 
@@ -14,7 +17,7 @@ Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 | Phase | Scope | Status |
 |---|---|---|
 | 0 — Skill Architecture & Foundations | scaffold, shared core, protocols, governance docs, teacher-core, tooling | ✅ Complete |
-| A — Educational Foundations | quality-review + capability skills (lesson/assessment/presentation) | ⬜ Not started |
+| A — Educational Foundations | quality-review + capability skills (lesson/assessment/presentation) | ✅ Complete |
 | B — Governance Infrastructure | protocols finalized + wired; metadata everywhere; ledger | ⬜ Not started |
 | C — Operational Integration | cross-skill workflows; example library; expansion skills | ⬜ Not started |
 | D — Repository Hardening | packaging, CI, security review, READMEs, versioning | ⬜ Not started |
@@ -24,10 +27,10 @@ Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 | Skill | Role | Status |
 |---|---|---|
 | `teacher-core` | hub / router | ✅ built (Phase 0) |
-| `quality-review` | Quality Gates executor | ⬜ Phase A |
-| `lesson-planner` | capability (reference skill) | ⬜ Phase A |
-| `assessment-designer` | capability | ⬜ Phase A |
-| `presentation-builder` | capability | ⬜ Phase A |
+| `quality-review` | Quality Gates executor | ✅ built (Phase A) — incl. `scripts/score.py` |
+| `lesson-planner` | capability (reference skill) | ✅ built (Phase A) — gold example + evals |
+| `assessment-designer` | capability | ✅ built (Phase A) |
+| `presentation-builder` | capability | ✅ built (Phase A) — renders via the `pptx` skill |
 | expansion set (6 skills) | capability | ⬜ Phase C |
 
 ## Protocol layer
@@ -41,7 +44,14 @@ Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 | `failure-recovery.md` | ⚠️ drafted — pending review |
 
 ## Last drift-guard result
-`python3 tools/sync_check.py` → see commit (Phase 0: PASS — 1 skill, 8 invariants, 2 synced refs).
+`python3 tools/sync_check.py` → **PASS — 5 skills, 8 invariants, 2 synced refs** (Phase A).
+`quality-review/scripts/score.py` verified across normal / critical-override / threshold cases.
+
+## Phase A validation note
+Each new skill ships `evals/evals.json` (realistic prompts + assertions) and a worked example. The
+end-to-end path is demonstrated by linked examples: lesson-planner's gold Grade-3 fractions lesson →
+`quality-review` `score.py` → **Approved (4.34)**. The formal with-skill/without-skill subagent
+benchmark (skill-creator loop) has **not** been run yet — that's the next validation step if wanted.
 
 ## Confirmed decisions
 - Scope of this pass: **Phase 0 foundations only.**

@@ -1,0 +1,40 @@
+{
+  "skill_name": "presentation-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Turn my 3rd grade fractions lesson into slides for tomorrow — about 7 slides.",
+      "expected_output": "A slide outline (one idea per slide, gradual-release flow, visuals with alt text, at least one CFU) aligned to the real Grade-3 standard, then rendered to .pptx via the pptx skill, with the metadata block. Should pass quality-review.",
+      "assertions": [
+        "Follows a gradual-release flow with one idea per slide",
+        "Aligned to a real, cited Grade-3 CCSS fractions standard",
+        "Includes visuals with alt text and at least one check-for-understanding slide",
+        "Renders the .pptx using the pptx skill (does not hand-roll the format)",
+        "Includes the metadata block with human_review_required: true"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Make a short review deck to warm up my 7th graders before their ratios quiz.",
+      "expected_output": "A review/warm-up deck with item-per-slide prompts and reveal-answer slides, aligned to real Grade-7 CCSS ratio/proportion standards.",
+      "assertions": [
+        "Uses item-per-slide prompts with reveal-answer slides",
+        "Aligned to real Grade-7 CCSS ratios/proportional-relationships standard(s)",
+        "Readable, high-contrast slide design"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I need a parent-night presentation explaining how we teach reading in kindergarten.",
+      "expected_output": "A family briefing deck in plain language, no jargon, no real student data, with clear visuals.",
+      "assertions": [
+        "Plain-language, jargon-free slides appropriate for families",
+        "Contains no real student data (placeholders only)",
+        "One idea per slide with supporting visuals"
+      ],
+      "files": []
+    }
+  ]
+}
