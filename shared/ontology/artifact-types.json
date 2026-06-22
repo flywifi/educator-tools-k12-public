@@ -13,6 +13,7 @@
     "family-communication": ["newsletter", "parent-letter", "conference-talking-points", "progress-report-comments"],
     "professional-learning": ["observation-tool", "coaching-conversation-guide", "pd-session-plan"],
     "school-administration": ["walkthrough-instrument", "implementation-plan", "monitoring-plan"],
-    "standards-updater": ["update-report", "applied-update-record", "currency-check"]
+    "standards-updater": ["update-report", "applied-update-record", "currency-check"],
+    "document-intelligence": ["processed-document-record", "udom-document", "recovery-report", "structure-map", "governance-record", "knowledge-artifact", "consumer-artifact"]
   }
 }

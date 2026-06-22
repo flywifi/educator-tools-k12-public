@@ -5,6 +5,22 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **`document-intelligence` skill + `shared/docintel/` engine** — a TOS-native Document Intelligence
+  Platform (built from the uploaded V01–V09 architecture): documents in → **governed knowledge
+  assets** out. Parser-**independent** (swappable plugins behind one `Parser` contract) and
+  artifact-centric. Full-framework skeleton, runs end to end: **UDOM** (`udom.md` +
+  `udom.schema.json` + `udom.py`), **Parser Orchestration** (`parser-orchestration.md` +
+  `orchestration.py` + `parsers/`), **Governance** (`governance-contract.md` + `governance.py`:
+  provenance/lineage/confidence/evidence), **Artifacts** (`artifact-framework.md` + `artifact.py`),
+  **Validation** (`validation-framework.md` + `validation.py`: A/G/R metrics). CLI:
+  `tools/docintel_run.py` (`--check`, `<file> --out art.json --udom udom.json`). Stdlib-only by
+  default (.txt/.md/.html/.docx); PDF activates when PyMuPDF is installed. Ties to
+  `protocols/metadata-schema.md` + `quality-gates.md` (every artifact `human_review_required: true`,
+  not certified until `quality-review`); registered in `shared/ontology/artifact-types.json` (7 new
+  artifact types). Never fabricates — unrecovered regions are reported with low confidence and a
+  capability-gap note. Experimental stages are feature-flagged OFF by default. Staged next: OCR,
+  deep table/layout intelligence, parallel recovery, reference-set accuracy metrics, and re-basing
+  `parse_fl_standards.py` on docintel.
 - **`standards-updater` skill + upgraded crawler** — `tools/standards_refresh.py` now respects
   robots.txt, crawls politely (randomized delays, one honest User-Agent), detects JS-required pages
   (e.g., the CPALMS search SPA) and **backs off rather than bypassing**, and writes a timestamped JSON
