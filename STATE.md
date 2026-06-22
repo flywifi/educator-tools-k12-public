@@ -3,8 +3,10 @@
 Update at every phase boundary and after each skill ships. Recovery package = the charters + Quality
 Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 
-**Last updated:** Phases 0–E delivered — 11 skills, 6 protocols, ledger, benchmark, packaging,
-versioning, and the metrics dashboard. Core build complete.
+**Last updated:** Phases 0–E delivered + Florida complete; **`document-intelligence` skill +
+`shared/docintel/` engine added** (full-framework skeleton: UDOM, parser-orchestration, governance,
+artifact, validation — runs end to end). 13 skills, 6 protocols, ledger, benchmark, packaging,
+versioning, and the metrics dashboard.
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable
@@ -24,7 +26,7 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 | D — Repository Hardening | packaging, CI, catalog, security review, **versioning** (`VERSION`/`CHANGELOG`) | ✅ Complete (per-skill READMEs omitted — redundant with each `SKILL.md`) |
 | E — Advanced Architecture | analytics (`metrics.py`/`METRICS.md`), artifact registry, `DEPLOYMENT.md`, AI-systems doc | ✅ Largely complete (ontology can deepen later) |
 
-## Skill status (12 built)
+## Skill status (13 built)
 | Skill | Role | Status |
 |---|---|---|
 | `teacher-core` | hub / router | ✅ built |
@@ -39,6 +41,17 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 | `professional-learning` | capability (non-evaluative coaching) | ✅ built |
 | `school-administration` | capability (school/system level) | ✅ built |
 | `standards-updater` | governance / maintenance (polite crawler; watches all FL change vectors) | ✅ built |
+| `document-intelligence` | capability (document understanding; parser-independent, artifact-centric, governed) | ✅ built (skeleton) |
+
+## Document Intelligence engine (`shared/docintel/`)
+TOS-native platform: documents → governed knowledge assets (provenance/lineage/confidence/evidence).
+Parser-independent (swappable plugins behind one `Parser` contract), artifact-centric. Frameworks:
+**UDOM** (`udom.md` + `udom.schema.json`), **Parser Orchestration** (`parser-orchestration.md`),
+**Governance** (`governance-contract.md`), **Artifacts** (`artifact-framework.md`), **Validation**
+(`validation-framework.md`). Runnable skeleton: `python3 tools/docintel_run.py --check` /
+`<file> --out art.json`. Stdlib-only by default; PDF via PyMuPDF when installed. Built from the
+uploaded V01–V09 architecture. Staged next: OCR, deep table/layout, parallel recovery, reference-set
+accuracy metrics, FL-pipeline integration (`parse_fl_standards.py` on top of docintel).
 
 ## Protocol layer (all v1.0)
 | Protocol | Status |
@@ -57,7 +70,7 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
   (enforced by the drift guard).
 
 ## Last drift-guard result
-`python3 tools/sync_check.py` → **PASS — 11 skills, 8 invariants, 2 synced refs.**
+`python3 tools/sync_check.py` → **PASS — 13 skills, 8 invariants, 2 synced refs.**
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
 ## Validation note
@@ -77,6 +90,6 @@ names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protoc
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
-Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 12 skills ·
-43 artifact types · 30 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
-protocols · 100% ledger approval (seed) · 12/12 skills emit `human_review_required`.
+Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 13 skills ·
+50 artifact types · 34 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
+protocols · 100% ledger approval (seed) · 13/13 skills emit `human_review_required`.
