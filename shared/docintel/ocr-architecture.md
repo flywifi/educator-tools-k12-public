@@ -43,9 +43,12 @@ can be introduced/removed/replaced without changing the artifact contract.
 
 | Engine | Deps | Scope | Status |
 |---|---|---|---|
-| `TesseractEngine` | `pytesseract` + `Pillow` | images | activates when installed |
-| PDF OCR (rasterize + OCR) | PyMuPDF/pdf2image + an engine | scanned PDFs | **staged** — reported via `StageNotImplemented`, never faked |
+| `TesseractEngine` — images | `pytesseract` + `Pillow` | images | implemented; activates when installed |
+| `TesseractEngine` — **scanned PDFs** | `pytesseract` + `Pillow` + **PyMuPDF** | rasterizes each page locally, then OCRs | **implemented, fully offline**; activates when installed (else reported via `StageNotImplemented`, never faked) |
 | Surya / OCRmyPDF | optional | images + PDFs | plug in behind the same contract |
+
+> **Offline:** rasterization (PyMuPDF) and OCR (Tesseract) both run locally — **no network at run
+> time**. Install once via `tools/requirements-docintel.txt` (+ the system `tesseract-ocr` binary).
 
 ## Media types
 `guess_media_type` maps `.png/.jpg/.jpeg/.gif/.bmp/.tif/.tiff/.webp → image/*`. PDFs use PyMuPDF for

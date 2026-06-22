@@ -1,0 +1,14 @@
+# Optional OFFLINE document-reader engines for docintel (shared/docintel).
+# The reader runs stdlib-only by default; installing these (once) activates richer, fully
+# OFFLINE recovery — no internet is used at run time. Each engine is auto-detected via its
+# parser/engine `available()`; absence is reported as a capability gap, never faked.
+#
+#   pip install -r tools/requirements-docintel.txt
+#   # plus the local Tesseract binary for OCR (system package, offline):
+#   #   Debian/Ubuntu: apt-get install tesseract-ocr
+#   #   macOS:         brew install tesseract
+
+pymupdf        # PDF native text + page rasterization for OCR (import name: fitz)
+pdfplumber     # PDF table extraction (PdfPlumberTableExtractor)
+pillow         # image handling for OCR (import name: PIL)
+pytesseract    # Python wrapper around the local Tesseract OCR binary

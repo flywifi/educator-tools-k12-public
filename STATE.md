@@ -55,10 +55,13 @@ Stdlib-only by default: **table intelligence** (docx/html/md), **image analysis*
 a **targeted OCR** stage (honest `ocr` capability-gap when no engine), and **Google Workspace** inputs
 (Google Docs API JSON + Docs/Sheets/Slides exports .odt/.csv/.xlsx/.pptx). Every doc carries a
 **retrieval-state** (`referenced/metadata_only/content_ingested/local_artifact_saved`) so visibility
-≠ extraction. PDF text via PyMuPDF, PDF tables via pdfplumber, image OCR via pytesseract when
-installed. Built from the uploaded V01–V09 architecture. Staged next: PDF OCR (rasterize+OCR), DL
-layout, parallel recovery, reference-set accuracy metrics, `.ods`/`.odp` + Sheets/Slides API JSON,
-FL-pipeline integration.
+≠ extraction. **Fully offline** — optional local engines (PyMuPDF, pdfplumber, Tesseract) via
+`tools/requirements-docintel.txt`, **no network at run time**: PDF native text + **scanned-PDF OCR**
+(PyMuPDF rasterize → Tesseract), PDF tables (pdfplumber), image OCR (pytesseract). **The Florida
+standards pipeline now reads via docintel** (`tools/parse_fl_standards.py`; 6,583 codes, identical to
+the prior reader). Built from the uploaded V01–V09 architecture. Staged next: more OCR engines
+(Surya/OCRmyPDF), DL layout, parallel recovery, reference-set accuracy metrics, `.ods`/`.odp` +
+Sheets/Slides API JSON.
 
 ## Protocol layer (all v1.0)
 | Protocol | Status |
