@@ -108,6 +108,8 @@ def validate(doc: UDOMDocument, artifact: Optional[Dict[str, Any]] = None) -> Di
         "R-005_knowledge_preservation": _STAGED,
         # Schema conformance
         "schema": schema_valid(doc),
+        # Retrieval state (visibility != extraction)
+        "retrieval_state": doc.diagnostics.get("retrieval_state"),
     }
     if artifact is not None:
         report["R-001_artifact_completeness"] = round(artifact_completeness(artifact), 4)

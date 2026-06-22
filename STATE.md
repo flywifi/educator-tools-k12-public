@@ -53,10 +53,12 @@ Workspace** (`google-workspace.md`), **Governance** (`governance-contract.md`), 
 from V03_S07). Runnable skeleton: `python3 tools/docintel_run.py --check` / `<file> --out art.json`.
 Stdlib-only by default: **table intelligence** (docx/html/md), **image analysis** (format/dimensions),
 a **targeted OCR** stage (honest `ocr` capability-gap when no engine), and **Google Workspace** inputs
-(Google Docs API JSON + Docs/Sheets/Slides exports .odt/.csv/.xlsx/.pptx). PDF text via PyMuPDF, PDF
-tables via pdfplumber, image OCR via pytesseract when installed. Built from the uploaded V01–V09
-architecture. Staged next: PDF OCR (rasterize+OCR), DL layout, parallel recovery, reference-set
-accuracy metrics, `.ods`/`.odp` + Sheets/Slides API JSON, FL-pipeline integration.
+(Google Docs API JSON + Docs/Sheets/Slides exports .odt/.csv/.xlsx/.pptx). Every doc carries a
+**retrieval-state** (`referenced/metadata_only/content_ingested/local_artifact_saved`) so visibility
+≠ extraction. PDF text via PyMuPDF, PDF tables via pdfplumber, image OCR via pytesseract when
+installed. Built from the uploaded V01–V09 architecture. Staged next: PDF OCR (rasterize+OCR), DL
+layout, parallel recovery, reference-set accuracy metrics, `.ods`/`.odp` + Sheets/Slides API JSON,
+FL-pipeline integration.
 
 ## Protocol layer (all v1.0)
 | Protocol | Status |
@@ -75,7 +77,8 @@ accuracy metrics, `.ods`/`.odp` + Sheets/Slides API JSON, FL-pipeline integratio
   (enforced by the drift guard).
 
 ## Last drift-guard result
-`python3 tools/sync_check.py` → **PASS — 13 skills, 8 invariants, 2 synced refs.**
+`python3 tools/sync_check.py` → **PASS — 13 skills, 8 invariants, 2 synced refs; frontmatter +
+resource integrity validated.**
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
 ## Validation note
