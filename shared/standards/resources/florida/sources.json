@@ -957,6 +957,45 @@
     "english_learners": "WIDA ACCESS / ELD standards",
     "additional_resources": "CPALMS resources + FLDOE resource pages"
   },
+  "monitoring_policy": {
+    "_comment": "Change-triage model (harvested from a regulatory-intelligence pattern): verify against PRIMARY sources, weigh recency incl. forward-looking effective dates, score confidence, and brief impact. Used by the standards-updater method.",
+    "source_classes": {
+      "primary": [
+        "CPALMS",
+        "FLDOE",
+        "Florida Legislature (leg.state.fl.us)",
+        "Florida Administrative Code (flrules.org)",
+        "WIDA"
+      ],
+      "discovery_only": [
+        "news",
+        "vendor/association summaries",
+        "blogs",
+        "social media"
+      ]
+    },
+    "verification_rule": "Include a change in results only when confirmed on an official PRIMARY source; secondary sources are for discovery only. Unconfirmed items go to gaps, never results.",
+    "recency_policy": {
+      "new_window_days": 90,
+      "forward_looking_window_days": 730,
+      "note": "Flag both recently published items AND older items whose effective/enforcement date falls inside the forward-looking window (e.g., a statute adopted now that takes effect in 2026-27)."
+    },
+    "confidence_model": {
+      "high": "primary source states the change directly",
+      "medium": "primary source is clear but scope/effect still needs interpretation",
+      "low": "partial access, translation/ambiguity, or unresolved conflict"
+    },
+    "impact_dimensions": [
+      "standards/benchmarks",
+      "courses/curriculum",
+      "pacing/guidance",
+      "instructional materials",
+      "assessment",
+      "graduation",
+      "eligibility/English-learners",
+      "policy/compliance"
+    ]
+  },
   "watch_pages": [
     {
       "url": "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Index&Title_Request=XLVIII",

@@ -30,6 +30,7 @@ import argparse
 import hashlib
 import json
 import random
+import re
 import sys
 import time
 import urllib.parse
@@ -69,6 +70,32 @@ def reg_domain(netloc: str) -> str:
     return ".".join(netloc.lower().split(":")[0].split(".")[-2:])
 
 
+def _retry_after_seconds(headers: dict) -> float | None:
+    """Honor the server's own backoff: Retry-After (seconds or HTTP-date) or RateLimit-Reset."""
+    if not headers:
+        return None
+    # case-insensitive header lookup
+    h = {k.lower(): v for k, v in headers.items()}
+    ra = h.get("retry-after")
+    if ra:
+        try:
+            return float(int(str(ra).strip()))
+        except ValueError:
+            try:
+                from email.utils import parsedate_to_datetime
+                dt = parsedate_to_datetime(ra)
+                return max(0.0, (dt - datetime.now(dt.tzinfo)).total_seconds())
+            except Exception:
+                return None
+    reset = h.get("ratelimit-reset") or h.get("x-ratelimit-reset")
+    if reset:
+        try:
+            return float(int(str(reset).strip()))
+        except ValueError:
+            return None
+    return None
+
+
 class Fetcher:
     """Honest, robots-respecting, polite fetcher. Backs off; never evades."""
 
@@ -94,25 +121,25 @@ class Fetcher:
         rp = self._robots[base]
         return True if rp is None else rp.can_fetch(self.ua, url)
 
-    def get(self, url) -> tuple[int, bytes, str]:
-        """Return (status, body, content_type). status 0 on transport error."""
+    def get(self, url) -> tuple[int, bytes, str, dict]:
+        """Return (status, body, content_type, response_headers). status 0 on transport error."""
         headers = {"User-Agent": self.ua,
                    "Accept": "text/html,application/xhtml+xml,*/*;q=0.8",
                    "Accept-Language": "en-US,en;q=0.5"}
         if _HAS_REQUESTS:
             try:
                 r = requests.get(url, headers=headers, timeout=self.timeout)
-                return r.status_code, r.content, r.headers.get("Content-Type", "")
+                return r.status_code, r.content, r.headers.get("Content-Type", ""), dict(r.headers)
             except Exception:
-                return 0, b"", ""
+                return 0, b"", "", {}
         req = urllib.request.Request(url, headers=headers)
         try:
             with urllib.request.urlopen(req, timeout=self.timeout) as resp:
-                return resp.status, resp.read(), resp.headers.get("Content-Type", "")
+                return resp.status, resp.read(), resp.headers.get("Content-Type", ""), dict(resp.headers)
         except urllib.error.HTTPError as e:
-            return e.code, b"", ""
+            return e.code, b"", "", dict(getattr(e, "headers", {}) or {})
         except Exception:
-            return 0, b"", ""
+            return 0, b"", "", {}
 
 
 def detect(html: str) -> dict:
@@ -121,25 +148,50 @@ def detect(html: str) -> dict:
             "captcha": any(t in low for t in CAPTCHA_INDICATORS)}
 
 
-def crawl(seeds, fetcher, max_pages, max_depth, min_delay, max_delay):
-    seen, docs = set(), {}
+def crawl(seeds, fetcher, max_pages, max_depth, min_delay, max_delay,
+          max_retries=2, saturation=0, max_wait=120.0, checkpoint=None, resume=False):
+    seen, docs, retries = set(), {}, {}
     report = {"visited": 0, "skipped_robots": [], "js_required": [], "captcha": [],
-              "rate_limited": [], "errors": []}
+              "rate_limited": [], "errors": [], "stop_reason": None, "resumed": False}
     allowed_doms = {reg_domain(urllib.parse.urlparse(s).netloc) for s in seeds}
     queue = [(s, 0) for s in seeds]
+
+    if resume and checkpoint and Path(checkpoint).exists():        # resume an interrupted crawl
+        st = json.loads(Path(checkpoint).read_text(encoding="utf-8"))
+        seen = set(st.get("seen", []))
+        docs = st.get("docs", {})
+        retries = st.get("retries", {})
+        report = st.get("report", report)
+        report["resumed"] = True
+        queue = [tuple(x) for x in st.get("queue", [])] or queue
+
+    def save_ckpt():
+        if checkpoint:
+            Path(checkpoint).write_text(json.dumps(
+                {"seen": sorted(seen), "docs": docs, "retries": retries,
+                 "report": report, "queue": queue}), encoding="utf-8")
+
+    no_new_streak = 0
     while queue and report["visited"] < max_pages:
         url, depth = queue.pop(0)
         if url in seen:
             continue
-        seen.add(url)
         if not fetcher.allowed(url):
+            seen.add(url)
             report["skipped_robots"].append(url)
             continue
-        status, body, ctype = fetcher.get(url)
-        if status == 429:
-            report["rate_limited"].append(url)
-            time.sleep(max_delay * 2)            # back off, do not evade
+        status, body, ctype, headers = fetcher.get(url)
+        if status in (429, 503):                  # honor the server's backoff, then retry once or twice
+            wait = min(_retry_after_seconds(headers) or (max_delay * 2), max_wait)
+            if retries.get(url, 0) < max_retries:
+                retries[url] = retries.get(url, 0) + 1
+                time.sleep(wait)
+                queue.insert(0, (url, depth))     # back off and re-try the SAME url; never evade
+                continue
+            seen.add(url)
+            report["rate_limited"].append(url)     # gave it max_retries; record and move on
             continue
+        seen.add(url)
         if status == 0 or status >= 400 or not body:
             report["errors"].append(f"{url} (status {status})")
             continue
@@ -158,15 +210,32 @@ def crawl(seeds, fetcher, max_pages, max_depth, min_delay, max_delay):
             p.feed(text)
         except Exception:
             continue
+        found_new_doc = False
         for href in p.links:
             absu = urllib.parse.urljoin(url, href).split("#")[0]
             pr = urllib.parse.urlparse(absu)
             if pr.scheme not in ("http", "https") or reg_domain(pr.netloc) not in allowed_doms:
                 continue
             if pr.path.lower().endswith(DOC_EXTS):
+                if absu not in docs:
+                    found_new_doc = True
                 docs.setdefault(absu, urllib.parse.unquote(pr.path.lower().rsplit("/", 1)[-1]))
             elif depth < max_depth and absu not in seen:
                 queue.append((absu, depth + 1))
+        if saturation:                            # stop once the crawl stops finding new documents
+            no_new_streak = 0 if found_new_doc else no_new_streak + 1
+            if no_new_streak >= saturation:
+                report["stop_reason"] = f"saturated ({saturation} pages without a new document)"
+                break
+        save_ckpt()
+
+    if report["stop_reason"] is None:
+        report["stop_reason"] = "max_pages" if report["visited"] >= max_pages else "frontier_exhausted"
+    if checkpoint and Path(checkpoint).exists():   # clean completion -> clear the checkpoint
+        try:
+            Path(checkpoint).unlink()
+        except Exception:
+            pass
     return docs, report
 
 
@@ -181,6 +250,13 @@ def main(argv) -> int:
     ap.add_argument("--min-delay", type=float, default=1.5)
     ap.add_argument("--max-delay", type=float, default=3.0)
     ap.add_argument("--timeout", type=float, default=30.0)
+    ap.add_argument("--max-retries", type=int, default=2,
+                    help="bounded retries that honor Retry-After/RateLimit-Reset before giving up")
+    ap.add_argument("--max-wait", type=float, default=120.0, help="cap (s) on a single honored backoff")
+    ap.add_argument("--saturation", type=int, default=0,
+                    help="stop after N pages with no new document found (0 = disabled)")
+    ap.add_argument("--checkpoint", metavar="PATH", help="write resumable crawl state here")
+    ap.add_argument("--resume", action="store_true", help="resume from --checkpoint if present")
     ap.add_argument("--user-agent", default=DEFAULT_UA)
     ap.add_argument("--report", metavar="PATH")
     ap.add_argument("--no-robots", action="store_true", help="(not recommended) ignore robots.txt")
@@ -208,15 +284,18 @@ def main(argv) -> int:
 
     fetcher = Fetcher(a.user_agent, a.timeout, respect_robots=not a.no_robots)
     print(f"\n[crawl] polite crawl (UA='{a.user_agent[:40]}…', robots={'off' if a.no_robots else 'on'}, "
-          f"delay {a.min_delay}-{a.max_delay}s)…")
-    docs, rep = crawl(seeds, fetcher, a.max_pages, a.max_depth, a.min_delay, a.max_delay)
+          f"delay {a.min_delay}-{a.max_delay}s, retries={a.max_retries}, "
+          f"saturation={a.saturation or 'off'})…")
+    docs, rep = crawl(seeds, fetcher, a.max_pages, a.max_depth, a.min_delay, a.max_delay,
+                      max_retries=a.max_retries, saturation=a.saturation, max_wait=a.max_wait,
+                      checkpoint=a.checkpoint, resume=a.resume)
 
     new, changed = [], []
     for url, fname in sorted(docs.items()):
         if fname not in known:
             new.append({"file": fname, "url": url})
         elif a.download:
-            st, body, _ = fetcher.get(url)
+            st, body, _, _ = fetcher.get(url)
             if body and hashlib.sha256(body).hexdigest() != known[fname]["sha256"]:
                 changed.append({"file": fname, "url": url, "_body": body})
 
@@ -225,7 +304,7 @@ def main(argv) -> int:
     for w in watch:
         if not fetcher.allowed(w["url"]):
             page_changes.append({**w, "status": "skipped_robots"}); continue
-        st, body, _ = fetcher.get(w["url"])
+        st, body, _, _ = fetcher.get(w["url"])
         time.sleep(random.uniform(a.min_delay, a.max_delay))
         if st == 0 or st >= 400 or not body:
             page_changes.append({**w, "status": f"error_{st}"}); continue
@@ -239,13 +318,14 @@ def main(argv) -> int:
     report = {"timestamp": datetime.now().strftime("%Y%m%d_%H%M%S"), "manifest": a.manifest,
               "school_year": man.get("current_school_year"), "coverage": list(cov),
               "pages_visited": rep["visited"], "docs_found": len(docs),
+              "stop_reason": rep.get("stop_reason"), "resumed": rep.get("resumed", False),
               "new": new, "changed": [{k: v for k, v in c.items() if k != "_body"} for c in changed],
               "page_changes": page_changes,
               "skipped_robots": rep["skipped_robots"], "js_required": rep["js_required"],
               "captcha": rep["captcha"], "rate_limited": rep["rate_limited"], "errors": rep["errors"]}
 
     print(f"[crawl] visited {rep['visited']} page(s); {len(docs)} doc link(s); "
-          f"NEW {len(new)}, CHANGED {len(changed)}.")
+          f"NEW {len(new)}, CHANGED {len(changed)}; stop: {rep.get('stop_reason')}.")
     for n in new[:50]:
         print(f"  + {n['file']}  <-  {n['url']}")
     chg = [p for p in page_changes if p["status"] == "changed"]
@@ -265,7 +345,7 @@ def main(argv) -> int:
         for c in changed:
             (out / c["file"]).write_bytes(c["_body"]); print(f"  ~ {c['file']} (downloaded)")
         for n in new:
-            st, body, _ = fetcher.get(n["url"])
+            st, body, _, _ = fetcher.get(n["url"])
             if body:
                 (out / n["file"]).write_bytes(body)
         print(f"  downloaded updates to {out}/ — review, then update sources.json + re-verify on CPALMS.")

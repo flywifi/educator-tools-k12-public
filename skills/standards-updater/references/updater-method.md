@@ -17,6 +17,26 @@ Two detection modes: **document discovery** (new/changed files found via `crawl_
 **content-change monitoring** (sha256 of `watch_pages` — statute/rule/guidance/graduation/curriculum
 index pages — to catch policy edits that aren't new files). `--update-hashes` saves the baselines.
 
+## Change intelligence (triage → verify → brief)
+Detection finds *what moved*; this turns it into *what matters*. The policy is config in
+`sources.json → monitoring_policy` (a regulatory-intelligence pattern adapted to Florida education):
+
+1. **Discover broadly, but verify on a PRIMARY source.** Secondary sources (news, association
+   summaries, blogs) are discovery only — never a basis for inclusion. Sources are classed
+   `primary` (CPALMS, FLDOE, the Legislature, FAC/flrules.org, WIDA) vs `discovery_only`. An item
+   that can't be confirmed on a primary source goes to **gaps**, not results.
+2. **Weigh recency two ways** (`recency_policy`): flag items published in the last **90 days**, AND
+   older items whose **effective/enforcement date** falls in the **forward-looking window (≈2 years)** —
+   e.g., a statute adopted now that takes effect in 2026-27 matters *now*.
+3. **Score confidence** (`confidence_model`): `high` (primary source states it directly) ·
+   `medium` (clear but scope needs interpretation) · `low` (partial access / ambiguity / conflict).
+4. **Brief the impact.** For each confirmed change write *why it matters* against the
+   `impact_dimensions` (standards · courses/curriculum · pacing/guidance · instructional materials ·
+   assessment · graduation · EL · policy/compliance) — e.g. "FAC 6A rule edit → graduation pathways →
+   update pacing + diploma-designation guidance." Output is a **currency brief** (see
+   `references/artifact-types.md`): JSON package + a short human-readable brief. Confirmed facts stay
+   separate from inference; conflicts go to gaps.
+
 ## What we borrowed (and what we did not)
 | Pattern (from a scraper design) | Adopted here | Why |
 |---|---|---|
@@ -24,6 +44,9 @@ index pages — to catch policy edits that aren't new files). `--update-hashes` 
 | polite crawling (random 2–4s delays) | ✅ randomized jitter delays | be a good citizen |
 | JS-required detection (`noscript`, "enable javascript", tiny page) | ✅ detect + **report** | CPALMS *search* is a JS SPA; don't fake it — use downloads/CDN or a browser render |
 | rate-limit detection (429 / latency) | ✅ detect + **back off** | never hammer a public site |
+| **honor `Retry-After` / `RateLimit-Reset`** | ✅ wait the server's own backoff (bounded retry) | use the platform's published limit, not a guess |
+| **resumable checkpoint** (frontier + visited) | ✅ `--checkpoint` / `--resume` | a long crawl can pause/resume without re-hammering |
+| **saturation / stop rule** | ✅ `--saturation N` (stop when no new docs appear) | don't crawl deeper than the evidence justifies |
 | realistic headers | ✅ Accept/Accept-Language | basic compatibility |
 | structured JSON report | ✅ timestamped report | auditable, reviewable |
 | **User-Agent rotation / browser impersonation** | ❌ **not used** | one honest UA; we identify ourselves, not evade |
@@ -32,7 +55,9 @@ index pages — to catch policy edits that aren't new files). `--update-hashes` 
 ## The tools
 - `tools/standards_refresh.py` — the crawler/reporter (`--check` offline, `--crawl`, `--download`,
   `--report`). Reads `crawl_seeds` from each state's `sources.json`. Stdlib-only; uses
-  `requests`/`bs4` if installed (`tools/requirements-scraper.txt`).
+  `requests`/`bs4` if installed (`tools/requirements-scraper.txt`). Hardened crawl options:
+  `--max-retries` (honor `Retry-After`/`RateLimit-Reset`), `--saturation N` (stop when no new docs),
+  `--checkpoint PATH` + `--resume` (resumable), `--max-wait` (cap a single backoff).
 - `tools/parse_fl_standards.py` — re-enumerate the queryable standards JSON after applying updates.
 - `tools/fl_lookup.py` — query the enumerated standards.
 
