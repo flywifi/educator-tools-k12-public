@@ -5,19 +5,28 @@
   "adapter": "shared/standards/florida-best.md",
   "authorities": {
     "standards_repository": "https://www.cpalms.org",
-    "standards_search": "https://www.cpalms.org/public/search/standard",
-    "access_points_search": "https://www.cpalms.org/Public/search/AccessPoint",
+    "standards_search": "https://www.cpalms.org/search/Standard",
     "standards_downloads": "https://www.cpalms.org/downloads",
+    "standards_books": "https://www.cpalms.org/Standards/Standardsbooks.aspx",
+    "standards_pdf_cdn": "https://cpalmsmediaprod.blob.core.windows.net/uploads/docs/standards/",
     "fldoe_standards": "https://www.fldoe.org/academics/standards/",
-    "fldoe_assessment_best": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
-    "fldoe_file_pattern": "https://www.fldoe.org/file/20102/<filename>",
+    "fldoe_best_math": "https://www.fldoe.org/academics/standards/subject-areas/math-science/mathematics/bestmath.stml",
+    "fldoe_science": "https://www.fldoe.org/academics/standards/subject-areas/math-science/science/",
+    "fldoe_assessment": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/",
+    "fldoe_assessment_schedules": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/assessment-schedules.stml",
+    "fldoe_eoc": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/end-of-course-eoc-assessments/",
+    "assessment_schedule_2026_27": "https://www.fldoe.org/file/5663/2627StatewideAssessmentSched.pdf",
     "el_wida_florida": "https://wida.wisc.edu/memberships/consortium/fl",
     "el_fldoe_access": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/access-for-ells"
   },
   "crawl_seeds": [
+    "https://www.cpalms.org/search/Standard",
     "https://www.cpalms.org/downloads",
-    "https://www.cpalms.org/public/search/standard",
+    "https://www.cpalms.org/Standards/Standardsbooks.aspx",
     "https://www.fldoe.org/academics/standards/",
+    "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/",
+    "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/assessment-schedules.stml",
+    "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/end-of-course-eoc-assessments/",
     "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
     "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/access-for-ells",
     "https://wida.wisc.edu/memberships/consortium/fl"
@@ -915,5 +924,7 @@
       "source": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
       "direct_url_guess": "https://www.fldoe.org/file/20102/Spring-2025-Grade-9-B.E.S.T.-Writing-Anchor-Set_508_FINAL.pdf"
     }
-  ]
+  ],
+  "current_school_year": "2026-2027",
+  "standards_status": "B.E.S.T. (Math/ELA) + NGSSS (Science/Social Studies) current for 2026-27; CS moving to a standalone framework (verify on CPALMS). Verified June 2026 via official sources."
 }

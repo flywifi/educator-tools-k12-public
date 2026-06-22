@@ -1,14 +1,18 @@
 # florida-best.md
 ## Florida Standards Adapter — B.E.S.T. + NGSSS (populated state set)
 Canonical source for the Standards Engine (`standards-framework.md`). Florida is the first fully
-populated state via the pattern in `state-standards-model.md`.
+populated state via the pattern in `state-standards-model.md`. **Current for the 2026–2027 school
+year** (verified June 2026): B.E.S.T. (Math/ELA, adopted 2020) and NGSSS (Science/Social Studies)
+remain Florida's adopted standards.
 
-> **Staying current (read this first).** These coding schemes are stable, but the *content* changes.
-> The **live canonical authority for Florida standards is CPALMS — `www.cpalms.org`** (the official
-> FLDOE standards repository), with assessment materials at **`www.fldoe.org`** and EL/WIDA at
-> **`wida.wisc.edu`**. The files indexed in `resources/florida-2025-26.md` are a **dated 2025–26
-> snapshot**; when verifying a standard or pulling the newest rubric/fact sheet, prefer CPALMS/FLDOE
-> over the snapshot. Never invent a code — confirm it on CPALMS (`protocols/standards-verification.md`).
+> **Staying current (read this first).** The coding schemes below are **current for 2026–2027** and
+> stable; the *content* is maintained live. The **canonical authority is CPALMS** — search
+> `https://www.cpalms.org/search/Standard`, download `https://www.cpalms.org/downloads` (standards
+> PDFs are hosted on the CPALMS CDN `cpalmsmediaprod.blob.core.windows.net`). Subject standards pages:
+> FLDOE `https://www.fldoe.org/academics/standards/`. Assessment (FAST/B.E.S.T./EOC):
+> `https://www.fldoe.org/accountability/assessments/k-12-student-assessment/`. EL/WIDA:
+> `https://wida.wisc.edu/memberships/consortium/fl`. Always prefer these live sources; never invent a
+> code — confirm on CPALMS (`protocols/standards-verification.md`). Refresh: `tools/standards_refresh.py`.
 
 ## Frameworks (use these in metadata `standards_set`)
 | Framework | Subject | System | Live source |
@@ -24,7 +28,7 @@ Relationship to national sets: **Florida does not use CCSS** — B.E.S.T. replac
 codes). Science/Social Studies are **NGSSS** (Next Generation Sunshine State Standards). When a user
 is in Florida, prefer these over CCSS/NGSS.
 
-## Coding schemes (verified against the official 2025–26 documents)
+## Coding schemes (verified against the official documents; current for 2026–27)
 
 **Math (B.E.S.T.)** — `MA.<grade>.<strand>.<standard>.<benchmark>`
 - e.g., `MA.K.NSO.1.1` = Kindergarten · Number Sense & Operations · standard 1 · benchmark 1.
@@ -44,7 +48,8 @@ is in Florida, prefer these over CCSS/NGSS.
   E (Earth/Space).
 
 **Computer Science** — `SC.<grade>.CS-*` content + 6 Computational Thinking & Reasoning practices
-`SC.K12.CTR.1.1` … `SC.K12.CTR.6.1`.
+`SC.K12.CTR.1.1` … `SC.K12.CTR.6.1`. *Update:* Florida is establishing a **standalone Computer
+Science** framework (separating CS from Science, 2025+) — verify current CS codes on CPALMS before citing.
 
 **English Language Development (ELD)** — `ELD.K12.ELL.<area>.<n>`, areas: LA, MA, SC, SS, SI
 (language of Language Arts, Math, Science, Social Studies, and Social/Instructional). WIDA-aligned.
@@ -63,7 +68,17 @@ These are the canonical hooks `special-education-support` should reference for F
 ## Grade → band mapping
 K, 1, 2 → **K-2** · 3, 4, 5 → **3-5** · 6, 7, 8 → **6-8** · 9-12 → **9-12** (HS math by course = `912`).
 
+## Florida assessment program (2026–27) — for `assessment-designer`
+- **FAST** (Florida Assessment of Student Thinking) — progress monitoring **3×/year** (PM1/PM2/PM3):
+  ELA Reading VPK–grade 10, Mathematics VPK–grade 8.
+- **B.E.S.T. EOC** — Algebra 1, Geometry; **B.E.S.T. Writing** grades 4–10.
+- **EOC** — Algebra 1, Geometry, Biology 1, Civics, U.S. History.
+- **FCLE** — Florida Civic Literacy Exam. **ACCESS for ELLs** (WIDA) for English learners.
+- 2026–27 schedule: `https://www.fldoe.org/file/5663/2627StatewideAssessmentSched.pdf` (in the corpus).
+- Align items to the cited standard; use the B.E.S.T. writing rubrics + ALDs in `resources/florida/`.
+
 ## Verification & provenance
 - Verify every cited FL code on **CPALMS** (live). Record `standards_set` (e.g., `FL-BEST-Math`) +
   the code in artifact metadata.
-- Snapshot provenance + assessment/rubric/accommodation resources: `resources/florida-2025-26.md`.
+- Stored corpus + per-file sources: `resources/florida/` (+ `sources.json`); catalog
+  `resources/florida-2025-26.md`; refresh with `tools/standards_refresh.py`.
