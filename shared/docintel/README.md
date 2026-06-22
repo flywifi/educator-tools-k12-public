@@ -31,15 +31,17 @@ artifacts are the only consumer-facing outputs.
 | `udom.md` + `udom.schema.json` | **UDOM** — Unified Document Object Model | V02 §S05/§S06 (structure, tables) |
 | `parser-orchestration.md` | **Parser Orchestration** — swappable parser plugins behind one contract | V02 §S03/§S04 |
 | `table-intelligence.md` | **Table Intelligence** — swappable table engines (detect/reconstruct/normalize/confidence) | V02 §S06 |
+| `ocr-architecture.md` | **OCR & Images** — stdlib image analysis + swappable OCR engines (targeted, confidence-aware) | V02 §S04 |
 | `governance-contract.md` | **Governance** — provenance/lineage/confidence/evidence | V02 §S07; `protocols/metadata-schema.md`, `protocols/quality-gates.md` |
 | `artifact-framework.md` | **Artifacts** — governed knowledge + consumer artifacts, readiness levels | V02 §S08/§S09 |
 | `validation-framework.md` | **Validation** — accuracy/governance/reusability metrics + acceptance | V01 §S04; V02 §S10 |
 
 ## Python package (runnable skeleton)
-`udom.py` · `governance.py` · `orchestration.py` · `tables.py` · `change.py` · `artifact.py` ·
-`validation.py` · `parsers/` (`plaintext_parser.py`, `pymupdf_parser.py`, `pdf_table_parser.py`).
-Run it via `tools/docintel_run.py`. Stdlib-only by default; uses PyMuPDF/pdfplumber/Docling/etc.
-**if installed** (parser/table-engine independence).
+`udom.py` · `governance.py` · `orchestration.py` · `tables.py` · `ocr.py` · `images.py` ·
+`change.py` · `artifact.py` · `validation.py` · `parsers/` (`plaintext_parser.py`, `pymupdf_parser.py`,
+`pdf_table_parser.py`, `image_parser.py`, `tesseract_ocr.py`). Run it via `tools/docintel_run.py`.
+Stdlib-only by default; uses PyMuPDF/pdfplumber/pytesseract/Docling/etc. **if installed**
+(parser/table/OCR-engine independence).
 
 ## Build sequence (Volume 01 §S07 — dependency order)
 Governance → UDOM → Artifacts → Parser Evaluation → Parser Orchestration → TOS Integration →

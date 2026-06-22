@@ -14,6 +14,8 @@ from .change import (
     validate_change,
 )
 from .governance import Confidence, Evidence, LineageEvent, Provenance
+from .images import image_info
+from .ocr import OcrEngine, OcrRegistry, default_ocr_registry, ocr_blocks
 from .tables import (
     StdlibTableExtractor,
     TableExtractor,
@@ -49,5 +51,6 @@ __all__ = [
     "ChangeClass", "ChangeRecord", "IMPACT_DIMENSIONS", "build_change_record", "validate_change",
     "TableExtractor", "TableRegistry", "StdlibTableExtractor", "default_table_registry",
     "extract_docx_tables", "extract_html_tables", "extract_markdown_tables",
+    "OcrEngine", "OcrRegistry", "default_ocr_registry", "ocr_blocks", "image_info",
     "__version__",
 ]

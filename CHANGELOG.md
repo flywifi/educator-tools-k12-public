@@ -5,6 +5,15 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **OCR & image handling (V02_S04)** for `document-intelligence` — image inputs
+  (`png/jpeg/gif/bmp/tiff/webp`) are recognized and analyzed with **stdlib only** (format +
+  dimensions via `shared/docintel/images.py` + `parsers/image_parser.py`), and a new **targeted OCR
+  stage** (`shared/docintel/ocr.py` + `ocr-architecture.md`) recovers confidence-aware text only when
+  native extraction is insufficient (image inputs, text-less/scanned pages). OCR engines are swappable
+  behind an `OcrEngine` contract; `TesseractEngine` activates when `pytesseract`/`Pillow` are installed.
+  When OCR is needed but no engine is available the pipeline reports `capability_gaps: ["ocr"]` and
+  **never fabricates text**; PDF OCR (rasterize + OCR) is staged via `StageNotImplemented`. Stage is
+  feature-flaggable (`flags["ocr"]`).
 - **Table Intelligence (V02_S06)** for `document-intelligence` — a dedicated, swappable table stage
   (`shared/docintel/tables.py` + `table-intelligence.md`). Detects/reconstructs/normalizes tables into
   UDOM `Table`/`Cell`: rows, columns, **header rows**, and **merged cells** (HTML colspan/rowspan,
