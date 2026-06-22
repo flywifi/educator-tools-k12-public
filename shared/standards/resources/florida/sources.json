@@ -17,7 +17,18 @@
     "fldoe_eoc": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/end-of-course-eoc-assessments/",
     "assessment_schedule_2026_27": "https://www.fldoe.org/file/5663/2627StatewideAssessmentSched.pdf",
     "el_wida_florida": "https://wida.wisc.edu/memberships/consortium/fl",
-    "el_fldoe_access": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/access-for-ells"
+    "el_fldoe_access": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/access-for-ells",
+    "statutes_education_title_xlviii": "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Index&Title_Request=XLVIII",
+    "senate_statutes": "https://www.flsenate.gov/Laws/Statutes",
+    "admin_code_6a": "https://flrules.org/gateway/organization.asp?id=195",
+    "fldoe_state_board_rules": "https://www.fldoe.org/policy/state-board-of-edu/administrative-rules.stml",
+    "cte_curriculum_frameworks": "https://www.fldoe.org/academics/career-adult-edu/career-tech-edu/curriculum-frameworks/index.stml",
+    "cte_frameworks_2026_27": "https://www.fldoe.org/academics/career-adult-edu/career-tech-edu/curriculum-frameworks/2026-27-frameworks/",
+    "technical_assistance_papers": "https://www.fldoe.org/policy/federal-edu-programs/technical-assistance-papers.stml",
+    "ese_taps_memos": "https://www.fldoe.org/academics/exceptional-student-edu/beess-resources/technical-assistance-papers-memos-note.stml",
+    "fldoe_docushare": "https://info.fldoe.org/docushare/",
+    "graduation_requirements": "https://www.fldoe.org/academics/graduation-requirements/",
+    "instructional_materials": "https://www.fldoe.org/academics/standards/instructional-materials/"
   },
   "crawl_seeds": [
     "https://www.cpalms.org/search/Standard",
@@ -29,7 +40,14 @@
     "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/end-of-course-eoc-assessments/",
     "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
     "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/access-for-ells",
-    "https://wida.wisc.edu/memberships/consortium/fl"
+    "https://wida.wisc.edu/memberships/consortium/fl",
+    "https://www.fldoe.org/academics/career-adult-edu/career-tech-edu/curriculum-frameworks/index.stml",
+    "https://www.fldoe.org/academics/career-adult-edu/career-tech-edu/curriculum-frameworks/2026-27-frameworks/",
+    "https://www.fldoe.org/policy/federal-edu-programs/technical-assistance-papers.stml",
+    "https://www.fldoe.org/academics/exceptional-student-edu/beess-resources/technical-assistance-papers-memos-note.stml",
+    "https://www.fldoe.org/academics/graduation-requirements/",
+    "https://www.fldoe.org/academics/standards/instructional-materials/",
+    "https://www.fldoe.org/policy/state-board-of-edu/administrative-rules.stml"
   ],
   "files": [
     {
@@ -926,5 +944,55 @@
     }
   ],
   "current_school_year": "2026-2027",
-  "standards_status": "B.E.S.T. (Math/ELA) + NGSSS (Science/Social Studies) current for 2026-27; CS moving to a standalone framework (verify on CPALMS). Verified June 2026 via official sources."
+  "standards_status": "B.E.S.T. (Math/ELA) + NGSSS (Science/Social Studies) current for 2026-27; CS moving to a standalone framework (verify on CPALMS). Verified June 2026 via official sources.",
+  "coverage": {
+    "standards": "CPALMS B.E.S.T./NGSSS standards (search + downloads)",
+    "courses_and_curriculum": "course descriptions (CPALMS) + CTE curriculum frameworks (FLDOE)",
+    "pacing_and_guidance": "Technical Assistance Papers (TAPs), DPS memos, guidance (FLDOE + docushare)",
+    "instructional_materials": "FLDOE instructional materials adoptions",
+    "assessment": "FAST/B.E.S.T./EOC/FCLE fact sheets, schedules, ALDs, reference sheets",
+    "graduation": "graduation requirements (s.1003.4282 F.S.)",
+    "legislation": "Florida Statutes Title XLVIII (K-20 Education Code, ch.1000-1013)",
+    "state_board_rules": "Florida Administrative Code 6A (State Board of Education)",
+    "english_learners": "WIDA ACCESS / ELD standards",
+    "additional_resources": "CPALMS resources + FLDOE resource pages"
+  },
+  "watch_pages": [
+    {
+      "url": "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Index&Title_Request=XLVIII",
+      "label": "FL Statutes Title XLVIII (Education Code)",
+      "category": "legislation",
+      "sha256": null
+    },
+    {
+      "url": "https://flrules.org/gateway/organization.asp?id=195",
+      "label": "FAC 6A \u2014 State Board of Education rules",
+      "category": "state_board_rules",
+      "sha256": null
+    },
+    {
+      "url": "https://www.fldoe.org/policy/state-board-of-edu/administrative-rules.stml",
+      "label": "FLDOE administrative rules (in development)",
+      "category": "state_board_rules",
+      "sha256": null
+    },
+    {
+      "url": "https://www.fldoe.org/academics/graduation-requirements/",
+      "label": "Graduation requirements",
+      "category": "graduation",
+      "sha256": null
+    },
+    {
+      "url": "https://www.fldoe.org/academics/career-adult-edu/career-tech-edu/curriculum-frameworks/index.stml",
+      "label": "CTE curriculum frameworks index",
+      "category": "courses_and_curriculum",
+      "sha256": null
+    },
+    {
+      "url": "https://www.cpalms.org/downloads",
+      "label": "CPALMS standards downloads",
+      "category": "standards",
+      "sha256": null
+    }
+  ]
 }
