@@ -35,7 +35,10 @@ additional resources.
    `tools/requirements-scraper.txt`). It also **hashes `watch_pages`** (statutes, FAC 6A rules,
    guidance, graduation, CTE frameworks) to catch *content* changes (legislation/rule/policy edits),
    not just new files — run with `--update-hashes` to save baselines.
-3. **Review** the report (NEW / CHANGED / js_required / skipped_robots / errors).
+3. **Triage with change intelligence** — beyond NEW / CHANGED / js_required / skipped_robots / errors,
+   apply `sources.json → monitoring_policy`: keep a change only if confirmed on a **primary** source
+   (secondary = discovery only), weigh recency including **forward-looking effective dates** (≈2-year
+   window), and score **confidence** (`references/updater-method.md` → "Change intelligence").
 4. **Verify on CPALMS** — the live authority (`https://www.cpalms.org/search/Standard`). Never trust
    a crawled change without confirming it (`protocols/standards-verification.md`). Never invent codes.
 5. **Apply (human-approved)** — drop accepted files into `resources/<state>/<category>/`, then
@@ -50,7 +53,9 @@ additional resources.
 ## Output: always emit the metadata/update record
 Produce an **update record** per `protocols/metadata-schema.md`: what was crawled, NEW/CHANGED found,
 what was verified on CPALMS, what was applied, and `human_review_required: true`. Placeholder/public
-data only — no PII.
+data only — no PII. For policy/legislative/standards movement, also emit a **currency brief**
+(`references/artifact-types.md`): confirmed primary-source changes with confidence + **why it matters**
+per impact dimension, and unconfirmed/conflicting items under gaps.
 
 Artifact types: `references/artifact-types.md`. Detailed workflow + the borrowed crawler design:
 `references/updater-method.md`.

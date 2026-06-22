@@ -20,6 +20,15 @@ Maintenance artifacts (not student-facing). Each carries the metadata block + `h
 - **Required elements:** the `current_school_year` from `sources.json`, the crawl summary, and a
   yes/needs-update verdict.
 
+### Currency brief (change intelligence)
+- **Purpose:** turn detected changes into *what matters* — a triaged, verified, impact-framed brief
+  (JSON package + short human-readable brief). Driven by `sources.json → monitoring_policy`.
+- **Required elements:** for each confirmed change — source **class** (must be PRIMARY to be
+  included), publication and/or **effective/enforcement date**, **confidence** (high/medium/low),
+  the affected **impact dimension(s)**, and a plain-language **why it matters**; unconfirmed or
+  conflicting items listed under **gaps** (never as results). Confirmed facts kept separate from
+  inference. See `references/updater-method.md` → "Change intelligence".
+
 ## Validation (extends `shared/quality/verification-checklists.md`)
 - Only public official sources were crawled; robots.txt respected; no bypass/evasion.
 - Every applied standards change was **verified on CPALMS** (no invented codes).
