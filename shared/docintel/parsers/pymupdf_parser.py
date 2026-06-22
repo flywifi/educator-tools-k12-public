@@ -24,7 +24,7 @@ class PyMuPDFParser(Parser):
         try:
             import fitz  # noqa: F401  (pymupdf)
             return True
-        except Exception:
+        except BaseException:
             return False
 
     def supports(self, media_type: str) -> bool:

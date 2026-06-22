@@ -5,6 +5,7 @@
     "math": {
       "file": "data/math.json",
       "format": "docx",
+      "reader": "docintel",
       "count": 1127,
       "benchmarks": 635,
       "access_points": 485,
@@ -13,6 +14,7 @@
     "ela": {
       "file": "data/ela.json",
       "format": "docx",
+      "reader": "docintel",
       "count": 719,
       "benchmarks": 329,
       "access_points": 384,
@@ -21,6 +23,7 @@
     "science": {
       "file": "data/science.json",
       "format": "docx",
+      "reader": "docintel",
       "count": 1450,
       "benchmarks": 498,
       "access_points": 952,
@@ -29,6 +32,7 @@
     "computer_science": {
       "file": "data/computer_science.json",
       "format": "docx",
+      "reader": "docintel",
       "count": 569,
       "benchmarks": 562,
       "access_points": 0,
@@ -37,6 +41,7 @@
     "eld": {
       "file": "data/eld.json",
       "format": "docx",
+      "reader": "docintel",
       "count": 5,
       "benchmarks": 0,
       "access_points": 0,
@@ -45,6 +50,7 @@
     "social_studies": {
       "file": "data/social_studies.json",
       "format": "doc",
+      "reader": "legacy-doc",
       "count": 2713,
       "benchmarks": 1432,
       "access_points": 1281,

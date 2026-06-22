@@ -5,6 +5,16 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **Offline document reader: scanned-PDF OCR + Florida pipeline on docintel + currency-brief example.**
+  (1) **PDF OCR** — `TesseractEngine` now reads **scanned PDFs** by rasterizing each page locally with
+  PyMuPDF and OCRing with Tesseract; **fully offline** (no network at run time), activates when the
+  optional engines are installed (`tools/requirements-docintel.txt`), and reports an honest gap when
+  not. (2) **Florida standards pipeline re-based on docintel** — `tools/parse_fl_standards.py` now
+  reads each source through the governed engine (structure + table cells + provenance/retrieval-state),
+  and a smarter extractor captures access points that live in table cells; output is **6,583 codes,
+  byte-for-byte identical** to the prior reader (no regression), now with a `reader`/`retrieval_state`
+  on each subject. (3) **Worked `currency-brief` example** added under `standards-updater/examples/`.
+  Hardened optional engines' `available()` against broken-install panics.
 - **docintel retrieval-state ladder** (harvested "visibility ≠ extraction" pattern) — every processed
   document now carries a four-step `retrieval_state` (`referenced → metadata_only → content_ingested →
   local_artifact_saved`) in diagnostics, the artifact governance block, and the validation report, so

@@ -24,7 +24,7 @@ class PdfPlumberTableExtractor(TableExtractor):
         try:
             import pdfplumber  # noqa: F401
             return True
-        except Exception:
+        except BaseException:
             return False
 
     def supports(self, media_type: str) -> bool:

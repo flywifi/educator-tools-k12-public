@@ -2,6 +2,8 @@
   "subject": "eld",
   "source_file": "EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc.docx",
   "format": "docx",
+  "reader": "docintel",
+  "retrieval_state": "content_ingested",
   "count": 5,
   "standards": [
     {
