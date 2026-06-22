@@ -15,6 +15,7 @@ from enum import Enum
 from typing import Any, Dict, List, Optional, Set
 
 from .governance import Confidence, LineageEvent, Provenance, new_id, now_iso
+from .ocr import OcrRegistry, default_ocr_registry
 from .tables import TableRegistry, default_table_registry
 from .udom import Block, Page, Source, UDOMDocument
 
@@ -28,6 +29,14 @@ _EXT_MEDIA = {
     ".htm": "text/html",
     ".html": "text/html",
     ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".gif": "image/gif",
+    ".bmp": "image/bmp",
+    ".tif": "image/tiff",
+    ".tiff": "image/tiff",
+    ".webp": "image/webp",
 }
 
 
@@ -38,6 +47,7 @@ def guess_media_type(filename: str) -> str:
 class Stage(str, Enum):
     INGESTION = "ingestion"
     RECOVERY = "recovery"
+    OCR = "ocr"
     TABLES = "table_intelligence"
     STRUCTURE = "structure"
     GOVERNANCE = "governance"
@@ -109,12 +119,14 @@ class ParserRegistry:
 
 
 def default_registry() -> ParserRegistry:
-    """PDF-capable parser preferred when available; stdlib text parser is the always-on fallback."""
+    """PDF/image parsers preferred when they match; stdlib text parser is the always-on fallback."""
+    from .parsers.image_parser import ImageParser
     from .parsers.plaintext_parser import PlainTextParser
     from .parsers.pymupdf_parser import PyMuPDFParser
 
     reg = ParserRegistry()
     reg.register(PyMuPDFParser())
+    reg.register(ImageParser())
     reg.register(PlainTextParser())
     return reg
 
@@ -132,15 +144,18 @@ class Pipeline:
 
     def __init__(self, registry: Optional[ParserRegistry] = None,
                  config: Optional[PipelineConfig] = None,
-                 table_registry: Optional[TableRegistry] = None) -> None:
+                 table_registry: Optional[TableRegistry] = None,
+                 ocr_registry: Optional[OcrRegistry] = None) -> None:
         self.registry = registry or default_registry()
         self.table_registry = table_registry or default_table_registry()
+        self.ocr_registry = ocr_registry or default_ocr_registry()
         self.config = config or PipelineConfig()
 
     def run(self, data: bytes, filename: str, media_type: Optional[str] = None) -> UDOMDocument:
         media_type = media_type or guess_media_type(filename)
         doc = self._ingest(data, filename, media_type)
         self._recover(doc, data, media_type)
+        self._ocr(doc, data, media_type)
         self._tables(doc, data, media_type)
         self._structure(doc)
         self._govern(doc)
@@ -187,6 +202,54 @@ class Pipeline:
                                      tool=parser.name, tool_version=parser.version,
                                      inputs=[doc.source.filename],
                                      outputs=[b.block_id for b in result.blocks]))
+
+    def _ocr(self, doc: UDOMDocument, data: bytes, media_type: str) -> None:
+        # OCR (V02_S04): recovery only when native extraction is insufficient. Targeted + flaggable.
+        if not self.config.flags.get("ocr", True):
+            doc.diagnostics["ocr"] = {"status": "disabled"}
+            return
+        _texty = {"paragraph", "heading", "list", "list_item"}
+        has_text = any(b.text for _, b in doc.iter_blocks() if b.type in _texty)
+        target_pages: Optional[List[int]] = None
+        if media_type.startswith("image/") or not has_text:
+            need = True
+        else:
+            empty = [p.page_number for p in doc.pages
+                     if not any(b.text for b in p.blocks if b.type in _texty)]
+            need, target_pages = (bool(empty), empty or None)
+        if not need:
+            doc.diagnostics["ocr"] = {"status": "not_needed"}
+            return
+
+        engine = self.ocr_registry.select(media_type)
+        if engine is None:
+            doc.diagnostics["ocr"] = {"status": "capability_unavailable", "needed": True,
+                                      "media_type": media_type}
+            rec = doc.diagnostics.setdefault("recovery", {})
+            gaps = set(rec.get("capability_gaps", [])) | {"ocr"}
+            rec["capability_gaps"] = sorted(gaps)  # honest: we needed OCR and had none
+            doc.add_lineage(LineageEvent(stage=Stage.OCR.value, operation="ocr", tool="none"))
+            return
+        try:
+            blocks = engine.recognize(data, media_type, doc.source, pages=target_pages)
+        except StageNotImplemented as exc:
+            doc.diagnostics["ocr"] = {"status": "staged", "engine": engine.name, "reason": str(exc)}
+            doc.add_lineage(LineageEvent(stage=Stage.OCR.value, operation="ocr", tool=engine.name))
+            return
+        pages = {p.page_number: p for p in doc.pages}
+        for blk in blocks:
+            page = pages.get(blk.page_number)
+            if page is None:
+                page = Page(page_number=blk.page_number)
+                doc.pages.append(page)
+                pages[blk.page_number] = page
+            page.blocks.append(blk)
+        doc.pages.sort(key=lambda p: p.page_number)
+        doc.diagnostics["ocr"] = {"status": "ok", "engine": engine.name, "blocks": len(blocks),
+                                  "targeted": bool(target_pages)}
+        doc.add_lineage(LineageEvent(stage=Stage.OCR.value, operation="ocr", tool=engine.name,
+                                     tool_version=engine.version,
+                                     outputs=[b.block_id for b in blocks]))
 
     def _tables(self, doc: UDOMDocument, data: bytes, media_type: str) -> None:
         # Table Intelligence (V02_S06): a dedicated, replaceable stage. Feature-flaggable.

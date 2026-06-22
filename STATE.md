@@ -47,13 +47,15 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 TOS-native platform: documents → governed knowledge assets (provenance/lineage/confidence/evidence).
 Parser-independent (swappable plugins behind one `Parser` contract), artifact-centric. Frameworks:
 **UDOM** (`udom.md` + `udom.schema.json`), **Parser Orchestration** (`parser-orchestration.md`),
-**Table Intelligence** (`table-intelligence.md`), **Governance** (`governance-contract.md`),
-**Artifacts** (`artifact-framework.md`), **Validation** (`validation-framework.md`), **Change Control**
-(`change.py`, from V03_S07). Runnable skeleton: `python3 tools/docintel_run.py --check` /
-`<file> --out art.json`. Stdlib-only by default; **table intelligence for docx/html/md** (rows/cols/
-headers/merged cells); PDF text via PyMuPDF + PDF tables via pdfplumber when installed. Built from the
-uploaded V01–V09 architecture. Staged next: OCR (scanned PDFs/images), DL layout, parallel recovery,
-reference-set accuracy metrics, FL-pipeline integration (`parse_fl_standards.py` on top of docintel).
+**Table Intelligence** (`table-intelligence.md`), **OCR & Images** (`ocr-architecture.md`),
+**Governance** (`governance-contract.md`), **Artifacts** (`artifact-framework.md`), **Validation**
+(`validation-framework.md`), **Change Control** (`change.py`, from V03_S07). Runnable skeleton:
+`python3 tools/docintel_run.py --check` / `<file> --out art.json`. Stdlib-only by default: **table
+intelligence** (docx/html/md), **image analysis** (format/dimensions), and a **targeted OCR** stage
+(honest `ocr` capability-gap when no engine). PDF text via PyMuPDF, PDF tables via pdfplumber, image
+OCR via pytesseract when installed. Built from the uploaded V01–V09 architecture. Staged next: PDF OCR
+(rasterize+OCR), DL layout, parallel recovery, reference-set accuracy metrics, FL-pipeline integration
+(`parse_fl_standards.py` on top of docintel).
 
 ## Protocol layer (all v1.0)
 | Protocol | Status |
