@@ -29,8 +29,9 @@ Specs live in the canonical engine `shared/docintel/` (kept in sync with
 
 ### structure-map
 - Purpose: the document's sections, headings, reading order, and table inventory.
-- Required elements: heading hierarchy/levels, per-page reading order, table list with shape.
-- Validation: reading-order and structure metrics (A-002/A-005).
+- Required elements: heading hierarchy/levels, per-page reading order, table list with shape
+  (rows/cols/`header_rows`, merged cells via rowspan/colspan).
+- Validation: reading-order, table-recovery, and structure metrics (A-002/A-003/A-005).
 
 ### governance-record
 - Purpose: the consolidated provenance + lineage + confidence + evidence for a document.
