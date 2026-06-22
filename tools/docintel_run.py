@@ -39,7 +39,11 @@ def main(argv: list[str]) -> int:
         for p in registry.describe():
             flag = "available" if p["available"] else "unavailable (deps not installed)"
             print(f"  - {p['name']} v{p['version']}: {flag}; capabilities: {', '.join(p['capabilities'])}")
-        print("\nstdlib-only by default; PDF support activates when PyMuPDF (fitz) is installed.")
+        print("registered table engines:")
+        for e in docintel.default_table_registry().describe():
+            flag = "available" if e["available"] else "unavailable (deps not installed)"
+            print(f"  - {e['name']} v{e['version']}: {flag}")
+        print("\nstdlib-only by default; PDF text via PyMuPDF, PDF tables via pdfplumber when installed.")
         return 0
 
     if not a.file:

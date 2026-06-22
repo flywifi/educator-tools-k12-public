@@ -36,7 +36,7 @@ class Provenance:
 class Confidence:
     """How sure we are, at the granularity it was produced."""
     value: float                       # 0.0 - 1.0
-    level: str = "text"                # text | page | document
+    level: str = "text"                # text | cell | table | page | document
     method: Optional[str] = None       # how the value was derived (explainable)
 
 

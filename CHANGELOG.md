@@ -5,6 +5,14 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **Table Intelligence (V02_S06)** for `document-intelligence` — a dedicated, swappable table stage
+  (`shared/docintel/tables.py` + `table-intelligence.md`). Detects/reconstructs/normalizes tables into
+  UDOM `Table`/`Cell`: rows, columns, **header rows**, and **merged cells** (HTML colspan/rowspan,
+  DOCX `gridSpan`/`vMerge`) via occupancy-aware placement, with **table- and cell-level confidence**
+  (new `Confidence.level` values `table`/`cell`) and conflict handling (ragged/merge). Engines are
+  swappable behind a `TableExtractor` contract: `StdlibTableExtractor` (docx/html/markdown, always on)
+  and `PdfPlumberTableExtractor` (PDF, activates when `pdfplumber` is installed). The text parser now
+  skips table regions so content isn't double-counted; validation computes `A-003` table recovery.
 - **`document-intelligence` skill + `shared/docintel/` engine** — a TOS-native Document Intelligence
   Platform (built from the uploaded V01–V09 architecture): documents in → **governed knowledge
   assets** out. Parser-**independent** (swappable plugins behind one `Parser` contract) and

@@ -54,7 +54,7 @@
       "properties": {
         "value": {"type": "number", "minimum": 0, "maximum": 1},
         "method": {"type": ["string", "null"]},
-        "level": {"enum": ["text", "page", "document"]}
+        "level": {"enum": ["text", "cell", "table", "page", "document"]}
       }
     },
     "lineage_event": {
@@ -108,6 +108,7 @@
       "properties": {
         "rows": {"type": "integer", "minimum": 0},
         "cols": {"type": "integer", "minimum": 0},
+        "header_rows": {"type": "integer", "minimum": 0},
         "cells": {"type": "array", "items": {"$ref": "#/$defs/cell"}}
       }
     },

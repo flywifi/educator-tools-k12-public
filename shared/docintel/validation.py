@@ -59,6 +59,28 @@ def schema_valid(doc: UDOMDocument) -> Dict[str, Any]:
         return {"status": "ok", "valid": False, "error": str(exc).splitlines()[0]}
 
 
+def _table_wellformed(table: Any) -> bool:
+    if table is None or table.rows <= 0 or table.cols <= 0:
+        return False
+    for c in table.cells:
+        if c.row < 0 or c.col < 0 or c.row + c.rowspan > table.rows or c.col + c.colspan > table.cols:
+            return False
+    return True
+
+
+def table_recovery(doc: UDOMDocument) -> Dict[str, Any]:
+    """A-003: count recovered tables and check structural well-formedness."""
+    tables = [b for _, b in doc.iter_blocks() if b.type == "table" and b.table is not None]
+    if not tables:
+        return dict(_STAGED)
+    return {
+        "status": "computed",
+        "tables": len(tables),
+        "cells": sum(len(b.table.cells) for b in tables),
+        "wellformed": sum(1 for b in tables if _table_wellformed(b.table)),
+    }
+
+
 def artifact_completeness(artifact: Dict[str, Any]) -> float:
     required = ["artifact_id", "artifact_type", "schema_version", "payload",
                "governance", "metadata"]
@@ -78,7 +100,7 @@ def validate(doc: UDOMDocument, artifact: Optional[Dict[str, Any]] = None) -> Di
         "A-002_reading_order_ok": reading_order_ok(doc),
         "A-004_metadata_present": bool(doc.properties),
         "A-001_text_recovery": _STAGED,
-        "A-003_table_recovery": _STAGED,
+        "A-003_table_recovery": table_recovery(doc),
         "A-005_structure_recovery": _STAGED,
         # Reusability
         "R-002_consistency": _STAGED,

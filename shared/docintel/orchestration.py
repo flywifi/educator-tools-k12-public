@@ -15,6 +15,7 @@ from enum import Enum
 from typing import Any, Dict, List, Optional, Set
 
 from .governance import Confidence, LineageEvent, Provenance, new_id, now_iso
+from .tables import TableRegistry, default_table_registry
 from .udom import Block, Page, Source, UDOMDocument
 
 CAPABILITIES = {"text", "ocr", "tables", "layout", "reading_order", "figures", "formulas"}
@@ -37,6 +38,7 @@ def guess_media_type(filename: str) -> str:
 class Stage(str, Enum):
     INGESTION = "ingestion"
     RECOVERY = "recovery"
+    TABLES = "table_intelligence"
     STRUCTURE = "structure"
     GOVERNANCE = "governance"
     KNOWLEDGE = "knowledge_construction"
@@ -129,14 +131,17 @@ class Pipeline:
     """Document -> governed knowledge asset. Each stage appends lineage; nothing skips governance."""
 
     def __init__(self, registry: Optional[ParserRegistry] = None,
-                 config: Optional[PipelineConfig] = None) -> None:
+                 config: Optional[PipelineConfig] = None,
+                 table_registry: Optional[TableRegistry] = None) -> None:
         self.registry = registry or default_registry()
+        self.table_registry = table_registry or default_table_registry()
         self.config = config or PipelineConfig()
 
     def run(self, data: bytes, filename: str, media_type: Optional[str] = None) -> UDOMDocument:
         media_type = media_type or guess_media_type(filename)
         doc = self._ingest(data, filename, media_type)
         self._recover(doc, data, media_type)
+        self._tables(doc, data, media_type)
         self._structure(doc)
         self._govern(doc)
         self._knowledge(doc)
@@ -182,6 +187,31 @@ class Pipeline:
                                      tool=parser.name, tool_version=parser.version,
                                      inputs=[doc.source.filename],
                                      outputs=[b.block_id for b in result.blocks]))
+
+    def _tables(self, doc: UDOMDocument, data: bytes, media_type: str) -> None:
+        # Table Intelligence (V02_S06): a dedicated, replaceable stage. Feature-flaggable.
+        if not self.config.flags.get("tables", True):
+            doc.diagnostics["tables"] = {"status": "disabled"}
+            return
+        engine = self.table_registry.select(media_type)
+        if engine is None:
+            doc.diagnostics["tables"] = {"status": "no_engine", "media_type": media_type}
+            return
+        table_blocks = engine.extract(data, media_type, doc.source)
+        pages = {p.page_number: p for p in doc.pages}
+        for blk in table_blocks:
+            page = pages.get(blk.page_number)
+            if page is None:
+                page = Page(page_number=blk.page_number)
+                doc.pages.append(page)
+                pages[blk.page_number] = page
+            page.blocks.append(blk)
+        doc.pages.sort(key=lambda p: p.page_number)
+        doc.diagnostics["tables"] = {"status": "ok", "engine": engine.name,
+                                     "tables": len(table_blocks)}
+        doc.add_lineage(LineageEvent(stage=Stage.TABLES.value, operation="extract_tables",
+                                     tool=engine.name, tool_version=engine.version,
+                                     outputs=[b.block_id for b in table_blocks]))
 
     def _structure(self, doc: UDOMDocument) -> None:
         # Default reading order = recovered (document) order. Advanced layout models overwrite this.
