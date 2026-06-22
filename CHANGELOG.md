@@ -5,6 +5,17 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **`standards-updater` change intelligence** (harvested from a regulatory-intelligence pattern) —
+  `sources.json` gains a `monitoring_policy` (PRIMARY-vs-discovery source classes, a
+  verify-on-primary rule, a dual recency window incl. **forward-looking effective dates**, a
+  confidence model, and impact dimensions). The method now triages detected changes → verifies on a
+  primary source → scores confidence → emits a **currency brief** (new artifact type) that says *why
+  it matters* per impact dimension, with unconfirmed/conflicting items kept in gaps. (`SKILL.md`,
+  `references/updater-method.md`, `references/artifact-types.md`.)
+- **Crawler hardening** (`tools/standards_refresh.py`) — honors the server's own backoff
+  (`Retry-After` / `RateLimit-Reset`) with bounded retries, a **resumable checkpoint**
+  (`--checkpoint`/`--resume`), and a **saturation/stop rule** (`--saturation N`) so a long crawl stays
+  under limits and never re-hammers a source. (Also fixed a latent missing `import re`.)
 - **Drift-guard skill-health checks** (`tools/sync_check.py`) — harvested (reimplemented stdlib-only)
   from prior skill-tooling: every `SKILL.md` is now validated as an installable Claude Skill —
   frontmatter has only allowed keys, `name` is clean hyphen-case == folder name and ≤64 chars,
