@@ -38,6 +38,8 @@ This is the same "detect → degrade gracefully → report, don't fake" stance a
 |---|---|---|---|
 | `PlainTextParser` | none (stdlib) | `text`, `reading_order` | `.txt`, `.md`, and `.docx` (via `zipfile`/XML). Always available. |
 | `ImageParser` | none (stdlib) | `figures` | `image/*`; recovers format + dimensions from the header. Text needs OCR (`ocr-architecture.md`). |
+| `GoogleDocsParser` | none (stdlib) | `text`, `reading_order`, `tables` | Google Docs API JSON (`google-workspace.md`). |
+| `OdtParser` · `CsvParser` · `XlsxParser` · `PptxParser` | none (stdlib) | `text`/`tables` | Workspace exports: `.odt`/`.csv`/`.xlsx`/`.pptx`. |
 | `PyMuPDFParser` | `pymupdf` (optional) | `text`, `layout`, `reading_order`, `figures` | PDFs; registered only when `fitz` imports. |
 
 Tables and OCR are **separate, swappable stages** with their own engine contracts/registries —

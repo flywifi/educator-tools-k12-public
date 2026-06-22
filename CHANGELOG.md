@@ -5,6 +5,15 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **Google Workspace document types** for `document-intelligence` — read Google Docs/Sheets/Slides
+  with **stdlib only**. `shared/docintel/google.py` adds `GoogleDocsParser`, which parses the native
+  Google Docs API JSON (`documents.get`: title, headings via `namedStyleType`, paragraphs, tables)
+  into UDOM, content-sniffed so non-Docs JSON isn't mis-parsed; plus the Drive `files.export` MIME
+  map. `shared/docintel/parsers/workspace_parsers.py` adds the export-format parsers: `OdtParser`
+  (`.odt`, incl. merged cells), `CsvParser` (`.csv`/`.tsv`), `XlsxParser` (`.xlsx`, resolves
+  sharedStrings, one table per sheet), `PptxParser` (`.pptx`, one page per slide). Media types wired
+  in `guess_media_type`; canonical doc `google-workspace.md`. Boundary: no Drive/OAuth fetching —
+  bring the exported file or the API JSON. `.ods`/`.odp` + Sheets/Slides API JSON are staged.
 - **OCR & image handling (V02_S04)** for `document-intelligence` — image inputs
   (`png/jpeg/gif/bmp/tiff/webp`) are recognized and analyzed with **stdlib only** (format +
   dimensions via `shared/docintel/images.py` + `parsers/image_parser.py`), and a new **targeted OCR
