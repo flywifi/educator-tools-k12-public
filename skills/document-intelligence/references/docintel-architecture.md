@@ -19,6 +19,7 @@ the skill-side map and the build status.
 | Parser Orchestration | `shared/docintel/parser-orchestration.md` | `shared/docintel/orchestration.py`, `parsers/` |
 | Table Intelligence | `shared/docintel/table-intelligence.md` | `shared/docintel/tables.py`, `parsers/pdf_table_parser.py` |
 | OCR & Images | `shared/docintel/ocr-architecture.md` | `shared/docintel/ocr.py`, `images.py`, `parsers/image_parser.py`, `parsers/tesseract_ocr.py` |
+| Google Workspace | `shared/docintel/google-workspace.md` | `shared/docintel/google.py`, `parsers/workspace_parsers.py` |
 | Governance | `shared/docintel/governance-contract.md` | `shared/docintel/governance.py` |
 | Artifacts | `shared/docintel/artifact-framework.md` | `shared/docintel/artifact.py` |
 | Validation | `shared/docintel/validation-framework.md` | `shared/docintel/validation.py` |
@@ -47,13 +48,16 @@ Validation → Optimization.
   honest `ocr` capability-gap when not — never fabricated), **table intelligence for docx/html/markdown**
   (rows/cols/headers/merged cells via colspan + gridSpan/vMerge, table/cell confidence + conflict
   handling), reading-order structure, governance stamping, knowledge normalization, knowledge-artifact
-  generation, computable validation metrics (incl. A-003 table recovery), schema conformance, and
-  artifact **change-control** records (classify → evaluate → approve-with-evidence → trace, V03_S07).
+  generation, computable validation metrics (incl. A-003 table recovery), schema conformance,
+  **Google Workspace inputs** (Google Docs API JSON natively; Docs/Sheets/Slides exports
+  `.odt`/`.csv`/`.xlsx`/`.pptx`, all stdlib), and artifact **change-control** records
+  (classify → evaluate → approve-with-evidence → trace, V03_S07).
 - **Staged (interfaces defined; fill in next):** **PDF OCR** (rasterize + OCR via PyMuPDF/pdf2image —
   reported via `StageNotImplemented`, never faked), additional OCR engines (Surya/OCRmyPDF), **PDF
   table recovery** (pdfplumber/Camelot — activates when installed), DL layout (Docling/LayoutParser/
   Marker), parallel multi-parser reconciliation, reference-set accuracy metrics (A-001/A-005),
-  consumer-interface projections. Each plugs in behind the existing contracts with no consumer changes.
+  consumer-interface projections, and the remaining Workspace types (`.ods`/`.odp`; Google
+  Sheets/Slides API JSON). Each plugs in behind the existing contracts with no consumer changes.
 
 ## Parser tiers to wrap (reuse, don't reinvent — V01 S08)
 - **Tier 1:** Docling, PyMuPDF, Marker.

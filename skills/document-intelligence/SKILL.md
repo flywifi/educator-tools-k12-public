@@ -1,6 +1,6 @@
 ---
 name: document-intelligence
-description: "Transform documents (PDF, DOCX, HTML, TXT, scans) into GOVERNED, reusable knowledge assets — a parser-independent, artifact-centric document-understanding pipeline (ingestion → recovery/OCR → structure/tables/reading-order → governance → knowledge → artifact). Use this whenever someone needs to read, parse, extract, OCR, or structure a document WITH provenance/lineage/confidence and human-reviewable artifacts — e.g. 'read this PDF properly', 'extract the tables', 'ingest these standards docs into structured data', 'OCR this scan', 'build a knowledge artifact from this report', or 'improve how we parse the Florida corpus'. Produces: processed-document-record, udom-document, recovery-report, structure-map, governance-record, knowledge-artifact, consumer-artifact. It emits the metadata block (protocols/metadata-schema.md) with human_review_required: true and is gated by quality-review. Do NOT use it to author NEW instructional content (use lesson-planner/assessment-designer/etc.), to crawl or fetch documents from the web (that is standards-updater), or as a search engine / vector database. It never fabricates content: unrecovered regions are reported with low confidence, never invented."
+description: "Transform documents — PDF, DOCX, HTML, TXT, images/scans, and Google Workspace (Google Docs API JSON plus Docs/Sheets/Slides exports: .odt/.csv/.xlsx/.pptx) — into GOVERNED, reusable knowledge assets via a parser-independent, artifact-centric document-understanding pipeline (ingestion → recovery/OCR → structure/tables/reading-order → governance → knowledge → artifact). Use this whenever someone needs to read, parse, extract, OCR, or structure a document WITH provenance/lineage/confidence and human-reviewable artifacts — e.g. 'read this PDF properly', 'extract the tables', 'ingest these standards docs into structured data', 'OCR this scan', 'read this Google Doc/Sheet/Slides', 'build a knowledge artifact from this report', or 'improve how we parse the Florida corpus'. Produces: processed-document-record, udom-document, recovery-report, structure-map, governance-record, knowledge-artifact, consumer-artifact. It emits the metadata block (protocols/metadata-schema.md) with human_review_required: true and is gated by quality-review. Do NOT use it to author NEW instructional content (use lesson-planner/assessment-designer/etc.), to crawl or fetch documents from the web (that is standards-updater), or as a search engine / vector database. It never fabricates content: unrecovered regions are reported with low confidence, never invented."
 ---
 
 # document-intelligence
@@ -14,9 +14,11 @@ It is **parser-independent** (parsers/OCR engines are swappable plugins) and **a
 Parser-Independence · Artifact-Centric. See `references/docintel-architecture.md`.
 
 > **Boundaries (read first).** This skill *reads and structures* documents you already have; it does
-> **not** fetch them from the web — discovery/crawling is `standards-updater`. It **never fabricates**
-> content: anything that cannot be recovered (e.g., a scan with no OCR engine installed) is reported
-> with low/zero confidence and a capability-gap note, never guessed. Outputs are decision support.
+> **not** fetch them from the web or Google Drive — discovery/crawling is `standards-updater`, and
+> Drive/Docs API access (OAuth/network) is a separate connector. Bring the exported file or the Docs
+> API JSON. It **never fabricates** content: anything that cannot be recovered (e.g., a scan with no
+> OCR engine installed) is reported with low/zero confidence and a capability-gap note, never guessed.
+> Outputs are decision support.
 
 ## What this skill does
 Runs the document-processing pipeline and emits governed artifacts:
