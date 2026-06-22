@@ -28,8 +28,8 @@ UDOMDocument
 ## Governance fields on every object (Principles 2 & 3)
 - **provenance** — `{source_id, parser, parser_version, extraction_method, page_number, bbox, timestamp}`
   where `extraction_method ∈ {native, ocr, heuristic, manual}`.
-- **confidence** — `{value: 0–1, method, level ∈ {text, page, document}}`. Low-confidence regions are
-  **kept and flagged**, never silently dropped or "cleaned up" by guesswork.
+- **confidence** — `{value: 0–1, method, level ∈ {text, cell, table, page, document}}`. Low-confidence
+  regions are **kept and flagged**, never silently dropped or "cleaned up" by guesswork.
 - **evidence** — a back-reference (`page`, `bbox`, optional `char_range`) so a downstream fact can be
   traced to the exact source location it came from.
 
@@ -39,10 +39,11 @@ uses geometric document order; advanced layout models (Tier 1/3) may overwrite i
 not an accident of extraction — consumers rely on it.
 
 ## Tables
-A `Table` is `rows × cols` with a flat `cells[]` list; each cell has `{row, col, rowspan, colspan,
-text, bbox, confidence}`. This survives merged cells and cross-page tables (a table may reference
-multiple source pages via its cells' provenance). Deep table reconstruction (Camelot/Surya/Table
-Intelligence, V02 §S06) plugs in here without changing the contract.
+A `Table` is `rows × cols` (plus `header_rows`) with a flat `cells[]` list; each cell has
+`{row, col, rowspan, colspan, text, bbox, confidence}`. This survives merged cells and cross-page
+tables (a table may reference multiple source pages via its cells' provenance). Tables are produced by
+the dedicated, swappable **Table Intelligence** stage (`table-intelligence.md`, V02 §S06) — stdlib for
+docx/html/markdown today; Camelot/Surya/pdfplumber plug in without changing the contract.
 
 ## Invariants (asserted by `validation.py` and the drift guard philosophy)
 1. Every `Block` has non-null `provenance` and `confidence`.

@@ -14,6 +14,15 @@ from .change import (
     validate_change,
 )
 from .governance import Confidence, Evidence, LineageEvent, Provenance
+from .tables import (
+    StdlibTableExtractor,
+    TableExtractor,
+    TableRegistry,
+    default_table_registry,
+    extract_docx_tables,
+    extract_html_tables,
+    extract_markdown_tables,
+)
 from .orchestration import (
     CAPABILITIES,
     Parser,
@@ -38,5 +47,7 @@ __all__ = [
     "Provenance", "Confidence", "LineageEvent", "Evidence",
     "build_knowledge_artifact", "build_consumer_artifact", "validate",
     "ChangeClass", "ChangeRecord", "IMPACT_DIMENSIONS", "build_change_record", "validate_change",
+    "TableExtractor", "TableRegistry", "StdlibTableExtractor", "default_table_registry",
+    "extract_docx_tables", "extract_html_tables", "extract_markdown_tables",
     "__version__",
 ]

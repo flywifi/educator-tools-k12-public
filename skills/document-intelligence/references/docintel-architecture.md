@@ -17,6 +17,7 @@ the skill-side map and the build status.
 |---|---|---|
 | UDOM (object model) | `shared/docintel/udom.md` + `udom.schema.json` | `shared/docintel/udom.py` |
 | Parser Orchestration | `shared/docintel/parser-orchestration.md` | `shared/docintel/orchestration.py`, `parsers/` |
+| Table Intelligence | `shared/docintel/table-intelligence.md` | `shared/docintel/tables.py`, `parsers/pdf_table_parser.py` |
 | Governance | `shared/docintel/governance-contract.md` | `shared/docintel/governance.py` |
 | Artifacts | `shared/docintel/artifact-framework.md` | `shared/docintel/artifact.py` |
 | Validation | `shared/docintel/validation-framework.md` | `shared/docintel/validation.py` |
@@ -28,7 +29,7 @@ the skill-side map and the build status.
   (A/G/R), the build sequence below, and the parser tiers.
 - **V02** (reference architecture, processing pipeline, parser orchestration, OCR, structure
   recovery, table intelligence, governance, artifacts, consumer interface, acceptance criteria) →
-  the pipeline stages, `orchestration.py`, `udom.*`, `governance-contract.md`, `artifact.py`.
+  the pipeline stages, `orchestration.py`, `udom.*`, `tables.py`, `governance-contract.md`, `artifact.py`.
 - **V03** (implementation planning, work packages, dependencies, validation/readiness/governance,
   **change control (S07)**, risk, acceptance) → the build sequence, the drift-guard / quality-gate
   wiring, and the artifact **change-control** model (`change.py`; artifact-framework.md "Change control").
@@ -39,13 +40,16 @@ Validation → Optimization.
 
 ## Build status (skeleton)
 - **Done (runs end to end):** ingestion, native text recovery (.txt/.md/.html/.docx; PDF via
-  PyMuPDF when installed), reading-order structure, governance stamping, knowledge normalization,
-  knowledge-artifact generation, computable validation metrics, schema conformance, and
+  PyMuPDF when installed), **table intelligence for docx/html/markdown** (rows/cols/headers/merged
+  cells via colspan + gridSpan/vMerge, with table- and cell-level confidence + conflict handling),
+  reading-order structure, governance stamping, knowledge normalization, knowledge-artifact
+  generation, computable validation metrics (incl. A-003 table recovery), schema conformance, and
   artifact **change-control** records (classify → evaluate → approve-with-evidence → trace, V03_S07).
-- **Staged (interfaces defined; fill in next):** OCR engines (Surya/Tesseract/OCRmyPDF), deep table
-  intelligence (Camelot/pdfplumber/Surya), DL layout (Docling/LayoutParser/Marker), parallel/targeted
-  multi-parser reconciliation, reference-set accuracy metrics (A-001/A-003/A-005), consumer-interface
-  projections. Each plugs in behind the existing contracts with no consumer changes.
+- **Staged (interfaces defined; fill in next):** OCR engines (Surya/Tesseract/OCRmyPDF) for scanned
+  PDFs/images, **PDF table recovery** (pdfplumber/Camelot — activates when installed), DL layout
+  (Docling/LayoutParser/Marker), parallel/targeted multi-parser reconciliation, reference-set accuracy
+  metrics (A-001/A-005), consumer-interface projections. Each plugs in behind the existing contracts
+  with no consumer changes.
 
 ## Parser tiers to wrap (reuse, don't reinvent — V01 S08)
 - **Tier 1:** Docling, PyMuPDF, Marker.

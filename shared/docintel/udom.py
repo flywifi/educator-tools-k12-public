@@ -49,6 +49,7 @@ class Table:
     rows: int
     cols: int
     cells: List[Cell] = field(default_factory=list)
+    header_rows: int = 0
 
 
 @dataclass

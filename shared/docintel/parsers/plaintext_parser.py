@@ -14,6 +14,7 @@ from typing import List, Optional, Tuple
 
 from ..governance import Confidence, Provenance, new_id
 from ..orchestration import Parser, RecoveryResult
+from ..tables import _is_md_sep
 from ..udom import Block, Source
 
 DOCX_TYPE = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -64,6 +65,9 @@ class PlainTextParser(Parser):
             line = chunk.strip()
             if not line:
                 continue
+            # Markdown tables are owned by the Table Intelligence stage - don't double-count them.
+            if markdown and any(_is_md_sep(ln) for ln in chunk.splitlines()):
+                continue
             kind, level = "paragraph", None
             if markdown:
                 m = re.match(r"^(#{1,6})\s+(.*)$", line)
@@ -77,6 +81,8 @@ class PlainTextParser(Parser):
         out: List[Tuple[str, str, Optional[int]]] = []
         with zipfile.ZipFile(BytesIO(data)) as z:
             xml = z.read("word/document.xml").decode("utf-8", "ignore")
+        # Tables are owned by the Table Intelligence stage - strip them from the text pass.
+        xml = re.sub(r"(?is)<w:tbl>.*?</w:tbl>", " ", xml)
         for para_xml in re.split(r"</w:p>", xml):
             is_heading = bool(re.search(r'w:val="Heading', para_xml))
             text = re.sub(r"<[^>]+>", "", para_xml)
@@ -89,6 +95,8 @@ class PlainTextParser(Parser):
     @staticmethod
     def _html_paragraphs(text: str) -> List[Tuple[str, str, Optional[int]]]:
         text = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", text)
+        # Tables are owned by the Table Intelligence stage - strip them from the text pass.
+        text = re.sub(r"(?is)<table\b.*?</table>", " ", text)
         text = re.sub(r"(?i)<(br|/p|/div|/li|/h[1-6]|/tr)\s*/?>", "\n", text)
         text = re.sub(r"<[^>]+>", "", text)
         text = html.unescape(text)
