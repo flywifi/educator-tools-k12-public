@@ -5,6 +5,13 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **Drift-guard skill-health checks** (`tools/sync_check.py`) — harvested (reimplemented stdlib-only)
+  from prior skill-tooling: every `SKILL.md` is now validated as an installable Claude Skill —
+  frontmatter has only allowed keys, `name` is clean hyphen-case == folder name and ≤64 chars,
+  `description` is present, ≤1024 chars, and free of angle brackets — plus **resource integrity**:
+  every backticked repo path (with a known extension) referenced in a `SKILL.md` must resolve to a
+  real file under the skill dir or repo root. Fixed 3 descriptions that exceeded the 1024-char spec
+  (`standards-updater`, `document-intelligence`, `special-education-support`).
 - **Google Workspace document types** for `document-intelligence` — read Google Docs/Sheets/Slides
   with **stdlib only**. `shared/docintel/google.py` adds `GoogleDocsParser`, which parses the native
   Google Docs API JSON (`documents.get`: title, headings via `namedStyleType`, paragraphs, tables)
