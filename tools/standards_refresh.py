@@ -1,38 +1,56 @@
 #!/usr/bin/env python3
-"""Standards refresh — crawl canonical sources for newer versions of stored resources.
+"""Standards refresh — politely crawl canonical sources for newer stored resources.
 
-Reads a resource manifest (default: shared/standards/resources/florida/sources.json), then
-recursively crawls its `crawl_seeds` (official sources — CPALMS, FLDOE, WIDA), discovers
-document links (pdf/doc/docx/xlsx), and reports what is NEW or CHANGED relative to the stored
-snapshot. Optionally downloads the updates.
+Reads a resource manifest (default: shared/standards/resources/florida/sources.json),
+crawls its `crawl_seeds` (official sources — CPALMS, FLDOE, WIDA), discovers document
+links (pdf/doc/docx/xlsx), and reports what is NEW or CHANGED vs. the stored sha256s.
+Optionally downloads the updates and writes a timestamped JSON report.
 
-This keeps the standards corpus current as standards change: the stored files are a dated
-snapshot; the canonical sources in the manifest are the live authority.
+Design (ethical, public-data crawler — NOT an evasion tool):
+  - Respects robots.txt (skips disallowed paths) — compliance, not bypass.
+  - One honest, identifying User-Agent (no browser-impersonation/rotation).
+  - Polite randomized delays; backs OFF on 429/robots/JS/CAPTCHA rather than bypassing.
+  - Detects JS-required pages (CPALMS search is a JS app) and reports them for a
+    browser-rendered fetch instead of pretending to scrape them.
+Patterns adapted from a robots-respecting "detect → polite-crawl → report" scraper design.
 
-Stdlib only. Requires outbound network for --crawl/--download (use --check offline).
+Stdlib only (urllib + robotparser + html.parser); uses `requests`/`bs4` automatically if
+installed (see tools/requirements-scraper.txt). Network required for --crawl/--download.
 
 Usage:
-  python3 tools/standards_refresh.py --check                  # offline: validate manifest, show plan
-  python3 tools/standards_refresh.py --crawl                  # crawl sources, report new/changed
-  python3 tools/standards_refresh.py --crawl --download out/  # also download updates to out/
-Options: --manifest PATH  --max-pages N(200)  --max-depth N(2)  --delay S(1.0)  --timeout S(30)
+  python3 tools/standards_refresh.py --check                       # offline: validate + plan
+  python3 tools/standards_refresh.py --crawl                       # report new/changed (+ JSON report)
+  python3 tools/standards_refresh.py --crawl --download out/       # also download updates
+Options: --manifest PATH --max-pages N(200) --max-depth N(2) --min-delay S(1.5) --max-delay S(3.0)
+         --timeout S(30) --user-agent UA --report PATH --no-robots(not recommended)
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
+import random
 import sys
 import time
 import urllib.parse
 import urllib.request
+import urllib.robotparser
+from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
+
+try:                       # optional, better fetch/parse if available
+    import requests       # noqa
+    _HAS_REQUESTS = True
+except Exception:
+    _HAS_REQUESTS = False
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_MANIFEST = ROOT / "shared" / "standards" / "resources" / "florida" / "sources.json"
 DOC_EXTS = (".pdf", ".doc", ".docx", ".xlsx", ".rtf")
-UA = "TOS-standards-refresh/1.0 (+educational standards update checker; contact: repo owner)"
+DEFAULT_UA = "TOS-standards-updater/1.1 (+polite educational-standards update checker; respects robots.txt)"
+JS_INDICATORS = ("enable javascript", "javascript is required", "please enable javascript", "<noscript")
+CAPTCHA_INDICATORS = ("recaptcha", "hcaptcha", "verify you are human", "prove you are human")
 
 
 class LinkParser(HTMLParser):
@@ -51,112 +69,179 @@ def reg_domain(netloc: str) -> str:
     return ".".join(netloc.lower().split(":")[0].split(".")[-2:])
 
 
-def fetch(url: str, timeout: float) -> tuple[bytes, str]:
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read(), r.headers.get("Content-Type", "")
+class Fetcher:
+    """Honest, robots-respecting, polite fetcher. Backs off; never evades."""
 
+    def __init__(self, ua, timeout, respect_robots=True):
+        self.ua = ua
+        self.timeout = timeout
+        self.respect_robots = respect_robots
+        self._robots: dict[str, urllib.robotparser.RobotFileParser | None] = {}
 
-def crawl(seeds, max_pages, max_depth, delay, timeout):
-    """BFS over same-registrable-domain pages; return {doc_url: ...} discovered."""
-    seen_pages, docs = set(), {}
-    allowed = {reg_domain(urllib.parse.urlparse(s).netloc) for s in seeds}
-    queue = [(s, 0) for s in seeds]
-    pages = 0
-    while queue and pages < max_pages:
-        url, depth = queue.pop(0)
-        if url in seen_pages:
-            continue
-        seen_pages.add(url)
+    def allowed(self, url) -> bool:
+        if not self.respect_robots:
+            return True
+        pr = urllib.parse.urlparse(url)
+        base = f"{pr.scheme}://{pr.netloc}"
+        if base not in self._robots:
+            rp = urllib.robotparser.RobotFileParser()
+            rp.set_url(base + "/robots.txt")
+            try:
+                rp.read()
+            except Exception:
+                rp = None        # no robots reachable -> treat as allowed
+            self._robots[base] = rp
+        rp = self._robots[base]
+        return True if rp is None else rp.can_fetch(self.ua, url)
+
+    def get(self, url) -> tuple[int, bytes, str]:
+        """Return (status, body, content_type). status 0 on transport error."""
+        headers = {"User-Agent": self.ua,
+                   "Accept": "text/html,application/xhtml+xml,*/*;q=0.8",
+                   "Accept-Language": "en-US,en;q=0.5"}
+        if _HAS_REQUESTS:
+            try:
+                r = requests.get(url, headers=headers, timeout=self.timeout)
+                return r.status_code, r.content, r.headers.get("Content-Type", "")
+            except Exception:
+                return 0, b"", ""
+        req = urllib.request.Request(url, headers=headers)
         try:
-            body, ctype = fetch(url, timeout)
-            pages += 1
-        except Exception as e:
-            print(f"  [skip] {url} ({e})")
+            with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+                return resp.status, resp.read(), resp.headers.get("Content-Type", "")
+        except urllib.error.HTTPError as e:
+            return e.code, b"", ""
+        except Exception:
+            return 0, b"", ""
+
+
+def detect(html: str) -> dict:
+    low = html.lower()
+    return {"js_required": any(t in low for t in JS_INDICATORS) or len(html.strip()) < 500,
+            "captcha": any(t in low for t in CAPTCHA_INDICATORS)}
+
+
+def crawl(seeds, fetcher, max_pages, max_depth, min_delay, max_delay):
+    seen, docs = set(), {}
+    report = {"visited": 0, "skipped_robots": [], "js_required": [], "captcha": [],
+              "rate_limited": [], "errors": []}
+    allowed_doms = {reg_domain(urllib.parse.urlparse(s).netloc) for s in seeds}
+    queue = [(s, 0) for s in seeds]
+    while queue and report["visited"] < max_pages:
+        url, depth = queue.pop(0)
+        if url in seen:
             continue
-        time.sleep(delay)  # politeness
+        seen.add(url)
+        if not fetcher.allowed(url):
+            report["skipped_robots"].append(url)
+            continue
+        status, body, ctype = fetcher.get(url)
+        if status == 429:
+            report["rate_limited"].append(url)
+            time.sleep(max_delay * 2)            # back off, do not evade
+            continue
+        if status == 0 or status >= 400 or not body:
+            report["errors"].append(f"{url} (status {status})")
+            continue
+        report["visited"] += 1
+        time.sleep(random.uniform(min_delay, max_delay))   # polite jitter
         if "html" not in ctype.lower():
             continue
+        text = body.decode("utf-8", "ignore")
+        flags = detect(text)
+        if flags["captcha"]:
+            report["captcha"].append(url)
+        if flags["js_required"]:
+            report["js_required"].append(url)   # needs a browser-rendered fetch; reported, not faked
         p = LinkParser()
         try:
-            p.feed(body.decode("utf-8", "ignore"))
+            p.feed(text)
         except Exception:
             continue
         for href in p.links:
             absu = urllib.parse.urljoin(url, href).split("#")[0]
             pr = urllib.parse.urlparse(absu)
-            if pr.scheme not in ("http", "https"):
+            if pr.scheme not in ("http", "https") or reg_domain(pr.netloc) not in allowed_doms:
                 continue
-            if reg_domain(pr.netloc) not in allowed:
-                continue
-            low = pr.path.lower()
-            if low.endswith(DOC_EXTS):
-                docs.setdefault(absu, urllib.parse.unquote(low.rsplit("/", 1)[-1]))
-            elif depth < max_depth and absu not in seen_pages:
+            if pr.path.lower().endswith(DOC_EXTS):
+                docs.setdefault(absu, urllib.parse.unquote(pr.path.lower().rsplit("/", 1)[-1]))
+            elif depth < max_depth and absu not in seen:
                 queue.append((absu, depth + 1))
-    return docs, pages
+    return docs, report
 
 
 def main(argv) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
-    ap.add_argument("--check", action="store_true", help="offline: validate + show plan")
-    ap.add_argument("--crawl", action="store_true", help="crawl sources for updates")
-    ap.add_argument("--download", metavar="DIR", help="download new/changed docs to DIR")
+    ap.add_argument("--check", action="store_true")
+    ap.add_argument("--crawl", action="store_true")
+    ap.add_argument("--download", metavar="DIR")
     ap.add_argument("--max-pages", type=int, default=200)
     ap.add_argument("--max-depth", type=int, default=2)
-    ap.add_argument("--delay", type=float, default=1.0)
+    ap.add_argument("--min-delay", type=float, default=1.5)
+    ap.add_argument("--max-delay", type=float, default=3.0)
     ap.add_argument("--timeout", type=float, default=30.0)
+    ap.add_argument("--user-agent", default=DEFAULT_UA)
+    ap.add_argument("--report", metavar="PATH")
+    ap.add_argument("--no-robots", action="store_true", help="(not recommended) ignore robots.txt")
     a = ap.parse_args(argv)
 
     man = json.loads(Path(a.manifest).read_text(encoding="utf-8"))
     seeds = man.get("crawl_seeds", [])
     known = {f["filename"].lower(): f for f in man.get("files", [])}
-
-    print(f"manifest: {a.manifest}")
-    print(f"snapshot: {man.get('snapshot')}  stored files: {len(known)}  seeds: {len(seeds)}")
+    print(f"manifest: {a.manifest}\nschool year: {man.get('current_school_year','?')}  "
+          f"stored: {len(known)}  seeds: {len(seeds)}  fetch: {'requests' if _HAS_REQUESTS else 'urllib'}")
 
     if a.check or not (a.crawl or a.download):
         print("\n[check] crawl seeds (canonical sources):")
         for s in seeds:
             print("  -", s)
-        print("\n[check] OK — manifest parses; run with --crawl (needs network) to check for updates.")
+        print("\n[check] OK — manifest parses. Run --crawl (needs network) to check for updates.")
         return 0
 
-    print("\n[crawl] discovering documents from canonical sources...")
-    docs, pages = crawl(seeds, a.max_pages, a.max_depth, a.delay, a.timeout)
-    print(f"[crawl] visited {pages} page(s); found {len(docs)} document link(s).")
+    fetcher = Fetcher(a.user_agent, a.timeout, respect_robots=not a.no_robots)
+    print(f"\n[crawl] polite crawl (UA='{a.user_agent[:40]}…', robots={'off' if a.no_robots else 'on'}, "
+          f"delay {a.min_delay}-{a.max_delay}s)…")
+    docs, rep = crawl(seeds, fetcher, a.max_pages, a.max_depth, a.min_delay, a.max_delay)
 
     new, changed = [], []
     for url, fname in sorted(docs.items()):
         if fname not in known:
-            new.append((fname, url))
-        elif a.download:  # only verify content when downloading (costs a GET)
-            try:
-                body, _ = fetch(url, a.timeout)
-                if hashlib.sha256(body).hexdigest() != known[fname]["sha256"]:
-                    changed.append((fname, url, body))
-            except Exception as e:
-                print(f"  [skip verify] {url} ({e})")
+            new.append({"file": fname, "url": url})
+        elif a.download:
+            st, body, _ = fetcher.get(url)
+            if body and hashlib.sha256(body).hexdigest() != known[fname]["sha256"]:
+                changed.append({"file": fname, "url": url, "_body": body})
 
-    print(f"\nNEW (not in snapshot): {len(new)}")
-    for fname, url in new[:50]:
-        print(f"  + {fname}  <-  {url}")
+    report = {"timestamp": datetime.now().strftime("%Y%m%d_%H%M%S"), "manifest": a.manifest,
+              "pages_visited": rep["visited"], "docs_found": len(docs),
+              "new": new, "changed": [{k: v for k, v in c.items() if k != "_body"} for c in changed],
+              "skipped_robots": rep["skipped_robots"], "js_required": rep["js_required"],
+              "captcha": rep["captcha"], "rate_limited": rep["rate_limited"], "errors": rep["errors"]}
+
+    print(f"[crawl] visited {rep['visited']} page(s); {len(docs)} doc link(s); "
+          f"NEW {len(new)}, CHANGED {len(changed)}.")
+    for n in new[:50]:
+        print(f"  + {n['file']}  <-  {n['url']}")
+    if rep["js_required"]:
+        print(f"  [note] {len(rep['js_required'])} page(s) need a browser render (JS) — e.g. CPALMS "
+              f"search; use a Selenium/Playwright fetch for those, or the static downloads page.")
+    if rep["skipped_robots"]:
+        print(f"  [note] {len(rep['skipped_robots'])} URL(s) skipped per robots.txt (respected).")
+
     if a.download:
-        print(f"\nCHANGED (content differs): {len(changed)}")
         out = Path(a.download); out.mkdir(parents=True, exist_ok=True)
-        for fname, url, body in changed:
-            (out / fname).write_bytes(body)
-            print(f"  ~ {fname}  (downloaded)")
-        for fname, url in new:
-            try:
-                body, _ = fetch(url, a.timeout)
-                (out / fname).write_bytes(body)
-            except Exception as e:
-                print(f"  [skip download] {url} ({e})")
-        print(f"\nDownloaded updates to {out}/. Review, then update sources.json + re-verify codes on CPALMS.")
-    else:
-        print("\nRun with --download DIR to fetch the updates. Then refresh sources.json + the catalog.")
+        for c in changed:
+            (out / c["file"]).write_bytes(c["_body"]); print(f"  ~ {c['file']} (downloaded)")
+        for n in new:
+            st, body, _ = fetcher.get(n["url"])
+            if body:
+                (out / n["file"]).write_bytes(body)
+        print(f"  downloaded updates to {out}/ — review, then update sources.json + re-verify on CPALMS.")
+
+    if a.report:
+        Path(a.report).write_text(json.dumps(report, indent=2), encoding="utf-8")
+        print(f"  report -> {a.report}")
     return 0
 
 
