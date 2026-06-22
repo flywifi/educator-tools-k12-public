@@ -40,6 +40,8 @@ state_adapter:
 
 ## 4. Selection rule
 
+Look the state up in `state-standards-map.md` / `states.json` to see which framework it follows
+(CCSS-aligned, NGSS/NGSS-based, or an independent named set).
 When the user names a state, prefer that state's set over the national default; record the state
 framework + version in metadata. If the state set isn't loaded yet, fall back to the closest
 national framework, **log the substitution as an assumption** (assumptions-protocol.md), and tell

@@ -10,6 +10,10 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   CS `SC.K12.CTR.*`, ELD `ELD.K12.ELL.*` — plus Access Points for SpEd) and a resource catalog
   `shared/standards/resources/florida-2025-26.md` (FAST/B.E.S.T./EOC/FCLE specs, ALDs, writing
   rubrics, accommodations, WIDA) that points to **CPALMS/FLDOE/WIDA as the live, current sources**.
+- **National standards overlay** (`shared/standards/state-standards-map.md` + `states.json`): an
+  approximate 50-state + DC map of CCSS (Math/ELA) vs. NGSS/NGSS-based vs. independent science, with
+  named state sets and each state's DOE as the live authority. Florida stays the deep, fully-supported
+  state; other states follow the `state-standards-model.md` template.
 - **Florida verified current for 2026–2027** (June 2026): B.E.S.T. (Math/ELA) + NGSSS (Science/SS)
   confirmed as the adopted standards; `florida-best.md` adds the FAST/B.E.S.T./EOC assessment program
   and a CS-standards-update note; `sources.json` authorities/seeds refreshed to the verified
