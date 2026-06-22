@@ -57,6 +57,24 @@ Science** framework (separating CS from Science, 2025+) — verify current CS co
 **Social Studies** — `SS.<grade>.<strand>.*` (per `SocialStudies_StandardsandAccessPoints`; confirm
 benchmarks on CPALMS).
 
+## Full enumerated standards (queryable) — `resources/florida/data/`
+Every Florida standard + access point is extracted from the official documents into JSON by
+`tools/parse_fl_standards.py`, so skills can look up exact codes and statements:
+
+| Subject | Codes | Benchmarks | Access points |
+|---|---|---|---|
+| Math (B.E.S.T.) | 1,127 | 635 | 485 (+7 MTR) |
+| ELA (B.E.S.T.) | 719 | 329 | 384 (+6 EE) |
+| Science (NGSSS) | 1,450 | 498 | 952 |
+| Computer Science | 569 | 562 | — (+7 CTR) |
+| Social Studies | 2,713 | 1,432 | 1,281 |
+| ELD | 5 | — | — |
+| **Total** | **6,583** | | |
+
+Query: `python3 tools/fl_lookup.py --subject math --grade 3 --search fraction`. **Always verify on
+CPALMS** before citing. Social Studies is best-effort from a legacy `.doc` — verify there. Re-extract
+after a refresh with `tools/parse_fl_standards.py`.
+
 ## Access points (Special Education) — important
 Florida publishes **Access Points** for students with significant cognitive disabilities, embedded in
 the same documents:

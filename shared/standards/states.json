@@ -568,41 +568,54 @@
           "framework": "FL-BEST-Math",
           "codes_verified": true,
           "source": "https://www.cpalms.org/search/Standard",
-          "example": "MA.K.NSO.1.1"
+          "example": "MA.K.NSO.1.1",
+          "data": "data/math.json",
+          "count": 1127
         },
         "ela": {
           "framework": "FL-BEST-ELA",
           "codes_verified": true,
           "source": "https://www.cpalms.org/search/Standard",
-          "example": "ELA.K.F.1.1"
+          "example": "ELA.K.F.1.1",
+          "data": "data/ela.json",
+          "count": 719
         },
         "science": {
           "framework": "FL-NGSSS-Sci",
           "codes_verified": true,
           "source": "https://www.cpalms.org/search/Standard",
-          "example": "SC.K.L.14.1"
+          "example": "SC.K.L.14.1",
+          "data": "data/science.json",
+          "count": 1450
         },
         "social_studies": {
           "framework": "FL-SS",
           "codes_verified": true,
           "source": "https://www.cpalms.org/search/Standard",
-          "example": "SS.*"
+          "example": "SS.*",
+          "data": "data/social_studies.json",
+          "count": 2713
         },
         "computer_science": {
           "framework": "FL-CS",
           "codes_verified": false,
           "source": "https://www.cpalms.org/search/Standard",
           "example": "SC.K12.CTR.*",
-          "notes": "FL moving CS to a standalone framework (2025+); verify on CPALMS"
+          "notes": "FL moving CS to a standalone framework (2025+); verify on CPALMS",
+          "data": "data/computer_science.json",
+          "count": 569
         },
         "eld": {
           "framework": "FL-ELD",
           "codes_verified": true,
           "source": "https://wida.wisc.edu/memberships/consortium/fl",
-          "example": "ELD.K12.ELL.*"
+          "example": "ELD.K12.ELL.*",
+          "data": "data/eld.json",
+          "count": 5
         }
       },
-      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced); fully enumerated (6,583 codes in resources/florida/data/)",
+      "enumerated_codes": 6583
     },
     {
       "code": "GA",

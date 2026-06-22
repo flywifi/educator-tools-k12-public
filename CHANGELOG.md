@@ -16,6 +16,10 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   state; **every other state is an explicit `stub`** with fillable per-subject slots
   (`status`, `subjects[*]`, `adapter`, `resources_dir`) + a populate checklist — room to add states
   later without redesign.
+- **Florida standards fully enumerated** — `tools/parse_fl_standards.py` extracts all **6,583** FL
+  standards + access points (Math 1,127 · ELA 719 · Science 1,450 · CS 569 · Social Studies 2,713 ·
+  ELD 5) from the stored documents into queryable JSON (`resources/florida/data/`), with
+  `tools/fl_lookup.py` to query by subject/grade/keyword.
 - **Florida verified current for 2026–2027** (June 2026): B.E.S.T. (Math/ELA) + NGSSS (Science/SS)
   confirmed as the adopted standards; `florida-best.md` adds the FAST/B.E.S.T./EOC assessment program
   and a CS-standards-update note; `sources.json` authorities/seeds refreshed to the verified
