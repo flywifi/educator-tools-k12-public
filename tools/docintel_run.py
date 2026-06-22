@@ -75,7 +75,8 @@ def main(argv: list[str]) -> int:
     print(f"  parser: {rec.get('parser', 'none')}  method: {rec.get('extraction_method', '-')}"
           f"  capability_gaps: {rec.get('capability_gaps', [])}")
     print(f"  pages: {doc.properties.get('page_count', 0)}  blocks: {doc.properties.get('block_count', 0)}"
-          f"  doc_confidence: {getattr(doc.confidence, 'value', 0.0):.3f}")
+          f"  doc_confidence: {getattr(doc.confidence, 'value', 0.0):.3f}"
+          f"  retrieval_state: {doc.diagnostics.get('retrieval_state')}")
     print(f"  lineage stages: {[e.stage for e in doc.lineage]}")
     print("validation:")
     print(f"  governance_ok: {report['summary']['governance_ok']}  "

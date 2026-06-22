@@ -21,6 +21,21 @@ from .udom import Block, Page, Source, UDOMDocument
 
 CAPABILITIES = {"text", "ocr", "tables", "layout", "reading_order", "figures", "formulas"}
 
+# Retrieval-state ladder (visibility != extraction): how much of the document was actually recovered.
+RETRIEVAL_STATES = ("referenced", "metadata_only", "content_ingested", "local_artifact_saved")
+
+
+def retrieval_state(doc: "UDOMDocument") -> str:
+    """Honest recovery level. `content_ingested` only when real content (text or a table) was
+    recovered; `metadata_only` when something was seen but no content (e.g. an image with no OCR
+    engine); `referenced` when nothing was recovered. `local_artifact_saved` is a downstream state."""
+    has_content = any((b.text or b.table) for _, b in doc.iter_blocks())
+    if has_content:
+        return "content_ingested"
+    if any(True for _ in doc.iter_blocks()):
+        return "metadata_only"
+    return "referenced"
+
 _EXT_MEDIA = {
     ".pdf": "application/pdf",
     ".txt": "text/plain",
@@ -318,6 +333,7 @@ class Pipeline:
             "block_count": sum(len(p.blocks) for p in doc.pages),
             "processed_at": now_iso(),
         })
+        doc.diagnostics["retrieval_state"] = retrieval_state(doc)   # visibility != extraction
         doc.add_lineage(LineageEvent(stage=Stage.KNOWLEDGE.value, operation="normalize",
                                      tool="docintel.knowledge"))
 
