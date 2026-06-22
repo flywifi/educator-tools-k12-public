@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tos.local/context/context.schema.json",
+  "title": "TOS teaching-context contract",
+  "description": "The operating context an artifact is generated for. Resolved first (operating-reference pattern), threaded into every artifact's metadata, and carried across skill handoffs. Canonical prose: shared/context/context-model.md.",
+  "type": "object",
+  "required": ["context_id", "state", "school_type", "authority_precedence", "human_review_required"],
+  "properties": {
+    "context_id": {"type": "string"},
+    "state": {"type": "string", "default": "FL"},
+    "district": {
+      "type": ["object", "null"],
+      "properties": {
+        "fldoe_district_number": {"type": ["integer", "null"]},
+        "name": {"type": ["string", "null"]}
+      }
+    },
+    "school": {
+      "type": ["object", "null"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "type": {"type": ["string", "null"]}
+      }
+    },
+    "school_type": {
+      "enum": ["traditional_public", "magnet_public", "charter_public",
+                "district_virtual_instruction", "flvs_statewide", "home_education",
+                "private_scholarship"]
+    },
+    "program": {
+      "type": "array",
+      "items": {"enum": ["general", "ese", "ell", "gifted", "cte", "ap", "ib", "aice",
+                          "dual_enrollment", "title_i", "acceleration", "intervention_mtss"]}
+    },
+    "subject": {"type": ["string", "null"]},
+    "grade_band": {"type": ["string", "null"], "enum": ["K-2", "3-5", "6-8", "9-12", null]},
+    "instructional_model": {
+      "enum": ["traditional", "blended", "hybrid", "virtual_synchronous",
+                "virtual_asynchronous", "self_paced", null]
+    },
+    "calendar": {"enum": ["semester", "quarter", "trimester", "year_round", "block", null]},
+    "standards_applicability": {
+      "enum": ["best_ngsss_apply", "parent_selected", "school_defined", "unknown"]
+    },
+    "mandates": {
+      "type": "array",
+      "description": "Administrative mandates in force (district/school/state).",
+      "items": {
+        "type": "object",
+        "required": ["text", "scope"],
+        "properties": {
+          "text": {"type": "string"},
+          "scope": {"enum": ["state", "district", "school", "classroom"]},
+          "source": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "sop_refs": {
+      "type": "array",
+      "description": "Uploaded SOP files that shape behavior in this context.",
+      "items": {
+        "type": "object",
+        "required": ["id", "scope", "path"],
+        "properties": {
+          "id": {"type": "string"},
+          "scope": {"enum": ["state", "district", "school", "classroom"]},
+          "path": {"type": "string"},
+          "label": {"type": ["string", "null"]},
+          "effective": {"type": ["string", "null"]},
+          "source": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "authority_precedence": {
+      "type": "array",
+      "description": "Ordered scopes, highest authority first, for resolving conflicts.",
+      "items": {"enum": ["state", "district", "school", "classroom"]}
+    },
+    "overrides": {
+      "type": "array",
+      "description": "Override log (control-plane resets): explicit instructions to prefer/avoid a rule or source.",
+      "items": {
+        "type": "object",
+        "required": ["instruction"],
+        "properties": {
+          "instruction": {"type": "string"},
+          "by": {"type": ["string", "null"]},
+          "timestamp": {"type": ["string", "null"]},
+          "effect": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "resolved_by": {"type": ["string", "null"]},
+    "confidence": {"enum": ["high", "medium", "low"]},
+    "human_review_required": {"const": true},
+    "assumptions": {"type": "array", "items": {"type": "string"}}
+  }
+}

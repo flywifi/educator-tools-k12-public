@@ -5,6 +5,19 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **Teaching-context & SOP layer** (`shared/context/`) — new architecture so the ecosystem adapts to a
+  teacher's school/district context and **teacher-uploaded SOP files** (operating-reference pattern,
+  harvested from a control-plane/route-plan skill). Adds: a **log of all 67 Florida county districts**
+  (`florida-districts.json`, fillable stubs; Orange/OCPS populated incl. its own OCVS virtual school);
+  a school-type taxonomy with **exception rule-sets** (`school-types.json`:
+  traditional/magnet/charter/district-virtual/FLVS/home-education/private-scholarship — each declares
+  how it overrides the traditional-public baseline); a **context contract** (`context.schema.json` +
+  `context.py`: district/school_type/program/instructional_model/mandates/SOPs/authority_precedence/
+  overrides) resolved first and validated; the **SOP upload model** (`sop-model.md`, read offline via
+  docintel). Threaded into the contracts: `protocols/metadata-schema.md` gains a `context` envelope and
+  `teacher-core` resolves context first and carries it across handoffs. School type governs standards
+  applicability (home-ed/private contexts do not inherit the B.E.S.T./NGSSS mandate). District
+  rules/norms + most school-type specifics are explicit stubs to fill per source over time.
 - **Offline document reader: scanned-PDF OCR + Florida pipeline on docintel + currency-brief example.**
   (1) **PDF OCR** — `TesseractEngine` now reads **scanned PDFs** by rasterizing each page locally with
   PyMuPDF and OCRing with Tesseract; **fully offline** (no network at run time), activates when the
