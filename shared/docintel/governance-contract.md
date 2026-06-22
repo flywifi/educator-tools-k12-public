@@ -38,6 +38,21 @@ When docintel emits an artifact, the metadata block (`protocols/metadata-schema.
 - `human_review_required: true` **always** (decision support, not a final determination);
 - no real student data / PII (Integrity + Safety automatic-fail dimensions of the gates).
 
+## Retrieval state — visibility ≠ extraction
+Seeing a file is not the same as recovering its content. Every processed document carries a
+**retrieval-state** on a four-step ladder (in `diagnostics.retrieval_state`, surfaced in the
+artifact's governance block), so a consumer never mistakes a shallow hit for real content:
+- `referenced` — only cited/linked; nothing recovered.
+- `metadata_only` — lightweight facts seen (e.g. an image's format/dimensions, or an image-only page
+  with no OCR engine installed) but **no content**.
+- `content_ingested` — real content (text and/or a table) was recovered.
+- `local_artifact_saved` — bytes/an exported artifact were saved for downstream use (a downstream
+  state; the read pipeline reports up to `content_ingested`).
+
+This pairs with the capability-gap reporting: an image with no OCR engine is `metadata_only` + an
+`ocr` gap — **never** silently upgraded to "recovered." (Pattern adapted from an artifact-extractor's
+evidence ladder; computed by `orchestration.retrieval_state`.)
+
 ## Governance invariants
 1. No object without provenance + confidence reaches an artifact (G-001, G-004 = 100% target).
 2. Lineage is append-only and complete — every stage appends exactly one event.

@@ -5,6 +5,12 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **docintel retrieval-state ladder** (harvested "visibility ≠ extraction" pattern) — every processed
+  document now carries a four-step `retrieval_state` (`referenced → metadata_only → content_ingested →
+  local_artifact_saved`) in diagnostics, the artifact governance block, and the validation report, so
+  a shallow hit is never mistaken for real content (e.g. an image with no OCR engine is
+  `metadata_only` + an `ocr` gap, not "recovered"). (`orchestration.retrieval_state`,
+  `governance-contract.md`.)
 - **`standards-updater` change intelligence** (harvested from a regulatory-intelligence pattern) —
   `sources.json` gains a `monitoring_policy` (PRIMARY-vs-discovery source classes, a
   verify-on-primary rule, a dual recency window incl. **forward-looking effective dates**, a

@@ -28,6 +28,7 @@ from .tables import (
 )
 from .orchestration import (
     CAPABILITIES,
+    RETRIEVAL_STATES,
     Parser,
     ParserRegistry,
     Pipeline,
@@ -37,6 +38,7 @@ from .orchestration import (
     StageNotImplemented,
     default_registry,
     guess_media_type,
+    retrieval_state,
 )
 from .udom import Block, Cell, Page, Source, Table, TextSpan, UDOMDocument, UDOM_VERSION
 from .validation import validate
@@ -45,7 +47,8 @@ __version__ = "0.1.0"
 
 __all__ = [
     "Pipeline", "PipelineConfig", "Parser", "ParserRegistry", "RecoveryResult", "Stage",
-    "StageNotImplemented", "default_registry", "guess_media_type", "CAPABILITIES",
+    "StageNotImplemented", "default_registry", "guess_media_type", "retrieval_state",
+    "CAPABILITIES", "RETRIEVAL_STATES",
     "UDOMDocument", "Source", "Page", "Block", "Table", "Cell", "TextSpan", "UDOM_VERSION",
     "Provenance", "Confidence", "LineageEvent", "Evidence",
     "build_knowledge_artifact", "build_consumer_artifact", "validate",
