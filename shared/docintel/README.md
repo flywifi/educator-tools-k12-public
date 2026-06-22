@@ -32,6 +32,7 @@ artifacts are the only consumer-facing outputs.
 | `parser-orchestration.md` | **Parser Orchestration** — swappable parser plugins behind one contract | V02 §S03/§S04 |
 | `table-intelligence.md` | **Table Intelligence** — swappable table engines (detect/reconstruct/normalize/confidence) | V02 §S06 |
 | `ocr-architecture.md` | **OCR & Images** — stdlib image analysis + swappable OCR engines (targeted, confidence-aware) | V02 §S04 |
+| `google-workspace.md` | **Google Workspace** — Docs API JSON + Docs/Sheets/Slides exports (odt/csv/xlsx/pptx) | V02 §S02 (ingestion) |
 | `governance-contract.md` | **Governance** — provenance/lineage/confidence/evidence | V02 §S07; `protocols/metadata-schema.md`, `protocols/quality-gates.md` |
 | `artifact-framework.md` | **Artifacts** — governed knowledge + consumer artifacts, readiness levels | V02 §S08/§S09 |
 | `validation-framework.md` | **Validation** — accuracy/governance/reusability metrics + acceptance | V01 §S04; V02 §S10 |

@@ -13,6 +13,7 @@ from .change import (
     build_change_record,
     validate_change,
 )
+from .google import DRIVE_EXPORT_MIME, GoogleDocsParser, is_google_doc_json
 from .governance import Confidence, Evidence, LineageEvent, Provenance
 from .images import image_info
 from .ocr import OcrEngine, OcrRegistry, default_ocr_registry, ocr_blocks
@@ -52,5 +53,6 @@ __all__ = [
     "TableExtractor", "TableRegistry", "StdlibTableExtractor", "default_table_registry",
     "extract_docx_tables", "extract_html_tables", "extract_markdown_tables",
     "OcrEngine", "OcrRegistry", "default_ocr_registry", "ocr_blocks", "image_info",
+    "GoogleDocsParser", "DRIVE_EXPORT_MIME", "is_google_doc_json",
     "__version__",
 ]

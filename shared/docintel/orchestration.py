@@ -37,6 +37,15 @@ _EXT_MEDIA = {
     ".tif": "image/tiff",
     ".tiff": "image/tiff",
     ".webp": "image/webp",
+    # Google Workspace exports + open/office equivalents
+    ".json": "application/json",  # Google Docs API resource (content-sniffed)
+    ".csv": "text/csv",
+    ".tsv": "text/tab-separated-values",
+    ".odt": "application/vnd.oasis.opendocument.text",
+    ".ods": "application/vnd.oasis.opendocument.spreadsheet",
+    ".odp": "application/vnd.oasis.opendocument.presentation",
+    ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
 }
 
 
@@ -119,15 +128,22 @@ class ParserRegistry:
 
 
 def default_registry() -> ParserRegistry:
-    """PDF/image parsers preferred when they match; stdlib text parser is the always-on fallback."""
+    """PDF/image/Workspace parsers match by media type; stdlib text parser is the always-on fallback."""
+    from .google import GoogleDocsParser
     from .parsers.image_parser import ImageParser
     from .parsers.plaintext_parser import PlainTextParser
     from .parsers.pymupdf_parser import PyMuPDFParser
+    from .parsers.workspace_parsers import CsvParser, OdtParser, PptxParser, XlsxParser
 
     reg = ParserRegistry()
     reg.register(PyMuPDFParser())
     reg.register(ImageParser())
-    reg.register(PlainTextParser())
+    reg.register(GoogleDocsParser())          # Google Docs API JSON
+    reg.register(OdtParser())                 # Docs → ODF text
+    reg.register(CsvParser())                 # Sheets → CSV/TSV
+    reg.register(XlsxParser())                # Sheets → XLSX
+    reg.register(PptxParser())                # Slides → PPTX
+    reg.register(PlainTextParser())           # .txt/.md/.html/.docx fallback
     return reg
 
 
