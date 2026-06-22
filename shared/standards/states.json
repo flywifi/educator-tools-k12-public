@@ -1,0 +1,482 @@
+{
+  "_comment": "Approximate national standards overlay. Florida is the deep, fully-supported state (shared/standards/florida-best.md). Other rows are framework-level classifications \u2014 VERIFY current status on each state's DOE (standards get revised/rebranded). Verified June 2026.",
+  "updated": "2026-06-22",
+  "legend": {
+    "math_ela": {
+      "CCSS-aligned": "adopted CCSS or CCSS-based (many states have revised/rebranded)",
+      "independent": "own state standards (never adopted, or repealed/replaced CCSS)"
+    },
+    "science": {
+      "NGSS": "adopted Next Generation Science Standards in full",
+      "NGSS-based": "own standards built on the Framework for K-12 Science Education",
+      "independent": "distinct named science standards"
+    }
+  },
+  "national_sources": {
+    "ccss": "https://www.thecorestandards.org/standards-in-your-state/",
+    "ngss": "https://www.nextgenscience.org/lead-state-partners",
+    "overview": "https://ballotpedia.org/K-12_education_content_standards_in_the_states"
+  },
+  "deep_state": "FL",
+  "states": [
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Alaska Standards",
+      "doe": null,
+      "note": "never adopted CCSS"
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Arizona Academic Standards",
+      "doe": null,
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "math_ela": "independent",
+      "science": "independent",
+      "state_set": "B.E.S.T. (Math/ELA) + NGSSS (Science/SS)",
+      "doe": "https://www.cpalms.org",
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced); fully supported \u2014 see florida-best.md"
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Georgia Standards of Excellence",
+      "doe": null,
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "ID",
+      "name": "Idaho",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Indiana Academic Standards",
+      "doe": null,
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "MT",
+      "name": "Montana",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "NE",
+      "name": "Nebraska",
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Nebraska College & Career Ready Standards",
+      "doe": null,
+      "note": "never adopted CCSS"
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Oklahoma Academic Standards",
+      "doe": null,
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "SC College- and Career-Ready",
+      "doe": null,
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Tennessee Academic Standards",
+      "doe": null,
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "math_ela": "independent",
+      "science": "independent",
+      "state_set": "TEKS",
+      "doe": "https://tea.texas.gov/academics/curriculum-standards",
+      "note": "never adopted CCSS"
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "math_ela": "independent",
+      "science": "independent",
+      "state_set": "SOL",
+      "doe": "https://www.doe.virginia.gov",
+      "note": "never adopted CCSS"
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "note": null
+    }
+  ]
+}

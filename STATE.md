@@ -6,9 +6,10 @@ Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 **Last updated:** Phases 0–E delivered — 11 skills, 6 protocols, ledger, benchmark, packaging,
 versioning, and the metrics dashboard. Core build complete.
 **Active branch:** `claude/fervent-hawking-nyrzy5`
-**Resume here:** maintenance mode. **Florida B.E.S.T./NGSSS is now wired** (`shared/standards/florida-best.md`
-+ `resources/`). Optional follow-ups: widen the eval benchmark to all 27 cases; add more state corpora
-via the Florida template; deepen the ontology; tag a `v1.0.0` release.
+**Resume here:** maintenance mode. **Florida is wired & current for 2026–27** (`florida-best.md` +
+stored `resources/florida/` corpus + refresher), and a **national overlay** (`state-standards-map.md`
+/ `states.json`) maps the other states (CCSS/NGSS/own). Optional follow-ups: widen the eval benchmark
+to all 27 cases; deepen another state via the Florida template; tag a `v1.0.0` release.
 
 ---
 
