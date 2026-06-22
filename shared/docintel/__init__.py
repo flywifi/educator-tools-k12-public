@@ -6,6 +6,13 @@ Canonical design: shared/docintel/README.md. Runnable entry point: tools/docinte
 from __future__ import annotations
 
 from .artifact import build_consumer_artifact, build_knowledge_artifact
+from .change import (
+    IMPACT_DIMENSIONS,
+    ChangeClass,
+    ChangeRecord,
+    build_change_record,
+    validate_change,
+)
 from .governance import Confidence, Evidence, LineageEvent, Provenance
 from .orchestration import (
     CAPABILITIES,
@@ -29,5 +36,7 @@ __all__ = [
     "StageNotImplemented", "default_registry", "guess_media_type", "CAPABILITIES",
     "UDOMDocument", "Source", "Page", "Block", "Table", "Cell", "TextSpan", "UDOM_VERSION",
     "Provenance", "Confidence", "LineageEvent", "Evidence",
-    "build_knowledge_artifact", "build_consumer_artifact", "validate", "__version__",
+    "build_knowledge_artifact", "build_consumer_artifact", "validate",
+    "ChangeClass", "ChangeRecord", "IMPACT_DIMENSIONS", "build_change_record", "validate_change",
+    "__version__",
 ]

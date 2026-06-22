@@ -12,7 +12,9 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   `udom.schema.json` + `udom.py`), **Parser Orchestration** (`parser-orchestration.md` +
   `orchestration.py` + `parsers/`), **Governance** (`governance-contract.md` + `governance.py`:
   provenance/lineage/confidence/evidence), **Artifacts** (`artifact-framework.md` + `artifact.py`),
-  **Validation** (`validation-framework.md` + `validation.py`: A/G/R metrics). CLI:
+  **Validation** (`validation-framework.md` + `validation.py`: A/G/R metrics), and **Change Control**
+  (`change.py`, from V03_S07: classify → evaluate impact → approve-with-evidence → trace; constraints
+  enforced by `validate_change`). CLI:
   `tools/docintel_run.py` (`--check`, `<file> --out art.json --udom udom.json`). Stdlib-only by
   default (.txt/.md/.html/.docx); PDF activates when PyMuPDF is installed. Ties to
   `protocols/metadata-schema.md` + `quality-gates.md` (every artifact `human_review_required: true`,

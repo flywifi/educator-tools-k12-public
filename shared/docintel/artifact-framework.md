@@ -19,10 +19,27 @@ Both are parser-independent and carry the metadata block from `protocols/metadat
 5. Readiness level (below).
 
 ## Artifact contract stability
-A consumer that reads `schema_version` N keeps working when parsers change underneath. Breaking the
-artifact contract is a governed change (V01 §S09 change management: Clarification / Enhancement /
-Scope-Expansion). Parser swaps are **never** allowed to change the artifact contract — that is the
-core acceptance guarantee (V01 §S04: parser replaceability).
+A consumer that reads `schema_version` N keeps working when parsers change underneath. Parser swaps
+are **never** allowed to change the artifact contract — that is the core acceptance guarantee
+(V01 §S04: parser replaceability). Breaking the contract is a **controlled change** (below).
+
+## Change control (V03_S07)
+Any modification to an approved artifact contract, the UDOM schema (`udom.schema.json`), or a
+governed artifact is **classified, evaluated, approved with evidence, and traceable** — *controlled
+change preserves integrity; uncontrolled change creates uncertainty*. Implemented in `change.py`
+(`ChangeRecord`, `build_change_record`, `validate_change`).
+
+- **Classify** (`ChangeClass`): `administrative` · `planning` · `governance` · `acceptance`.
+  This supersedes the older Clarification/Enhancement/Scope-Expansion shorthand (V01 §S09).
+- **Evaluate** every change for impact on all four dimensions before adoption:
+  `scope` · `architecture` · `acceptance` · `governance` (V03_S07 §6).
+- **Approve with evidence** — an approval carries a description, impact assessment, decision, and
+  **approval evidence** + at least one approval reference (§7); recorded in the Quality Ledger.
+- **Trace** — every change keeps an id, status, rationale, and approval references (§8); artifacts
+  are immutable, so corrections create a **new** record, never an in-place edit
+  (`protocols/metadata-schema.md` §3).
+- **Constraints** (§9, enforced by `validate_change`): a change may **not** bypass governance, bypass
+  review (no jump from proposed → approved), reduce traceability, or reduce planning integrity.
 
 ## Readiness levels (V01 §S06 — Definition of Done)
 `Draft → Reviewed → Validated → Production-Ready → Reference-Standard`. An artifact is only

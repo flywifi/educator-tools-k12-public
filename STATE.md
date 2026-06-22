@@ -48,7 +48,8 @@ TOS-native platform: documents → governed knowledge assets (provenance/lineage
 Parser-independent (swappable plugins behind one `Parser` contract), artifact-centric. Frameworks:
 **UDOM** (`udom.md` + `udom.schema.json`), **Parser Orchestration** (`parser-orchestration.md`),
 **Governance** (`governance-contract.md`), **Artifacts** (`artifact-framework.md`), **Validation**
-(`validation-framework.md`). Runnable skeleton: `python3 tools/docintel_run.py --check` /
+(`validation-framework.md`), **Change Control** (`change.py`, from V03_S07). Runnable skeleton:
+`python3 tools/docintel_run.py --check` /
 `<file> --out art.json`. Stdlib-only by default; PDF via PyMuPDF when installed. Built from the
 uploaded V01–V09 architecture. Staged next: OCR, deep table/layout, parallel recovery, reference-set
 accuracy metrics, FL-pipeline integration (`parse_fl_standards.py` on top of docintel).
