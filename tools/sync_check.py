@@ -14,6 +14,7 @@ Exit:  0 if every invariant holds, 1 (with a report) otherwise.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -42,9 +43,78 @@ REQUIRED_IN_SKILL = ["method.md", "metadata-schema.md", "human_review_required"]
 # Tokens that must never ship inside a skill's markdown.
 FORBIDDEN = ["TODO", "FIXME", "PLACEHOLDER", "<<<<<<<", ">>>>>>>"]
 
+# SKILL.md frontmatter rules (Claude Skill spec): only these top-level keys are allowed,
+# name is hyphen-case <=64, description is <=1024 chars with no angle brackets.
+ALLOWED_FRONTMATTER = {"name", "description", "license", "allowed-tools", "metadata"}
+MAX_NAME, MAX_DESC = 64, 1024
+
+# Resource-integrity: backticked repo paths in a SKILL.md must exist. A reference is valid if it
+# resolves under the skill dir OR the repo root (so skill-local `examples/...` and repo-root
+# `shared/...` both work). Conservative anchors/extensions on purpose; assets/ is intentionally
+# excluded (output templates may be absent by design).
+_REF_ANCHORS = ("references/", "scripts/", "evals/", "examples/",
+                "protocols/", "shared/", "tools/", "ledger/")
+_REF_EXTS = (".md", ".py", ".json", ".yaml", ".yml", ".txt", ".csv")
+
 
 def read(p: Path) -> str:
     return p.read_text(encoding="utf-8")
+
+
+def parse_frontmatter(body: str):
+    """Return (frontmatter_text|None, keys, name, description) for a SKILL.md body."""
+    m = re.match(r"^---\n(.*?)\n---", body, re.DOTALL)
+    if not m:
+        return None, [], None, None
+    fm = m.group(1)
+    keys = re.findall(r"^([A-Za-z0-9_-]+):", fm, re.MULTILINE)
+    nm = re.search(r"^name:\s*(.+)$", fm, re.MULTILINE)
+    dm = re.search(r"^description:\s*(.+)$", fm, re.DOTALL | re.MULTILINE)
+    name = nm.group(1).strip().strip('"').strip("'") if nm else None
+    desc = dm.group(1).strip().strip('"').strip("'") if dm else None
+    return fm, keys, name, desc
+
+
+def validate_frontmatter(name, desc, keys, folder: str) -> list[str]:
+    out: list[str] = []
+    if name is None:
+        out.append("frontmatter missing 'name'")
+    else:
+        if name != folder:
+            out.append(f"frontmatter name '{name}' != folder '{folder}'")
+        if not re.match(r"^[a-z0-9-]+$", name) or "--" in name or name[0] == "-" or name[-1] == "-":
+            out.append(f"name '{name}' is not clean hyphen-case")
+        if len(name) > MAX_NAME:
+            out.append(f"name >{MAX_NAME} chars ({len(name)})")
+    if desc is None:
+        out.append("frontmatter missing 'description'")
+    else:
+        if len(desc) > MAX_DESC:
+            out.append(f"description >{MAX_DESC} chars ({len(desc)})")
+        if "<" in desc or ">" in desc:
+            out.append("description contains angle brackets (< or >)")
+    bad = sorted(set(keys) - ALLOWED_FRONTMATTER)
+    if bad:
+        out.append("unexpected frontmatter key(s): " + ", ".join(bad))
+    return out
+
+
+def check_references(sd: Path, text: str) -> list[str]:
+    """Every backticked repo path with a known extension must resolve to a real file
+    (under the skill dir or the repo root)."""
+    out: list[str] = []
+    for tok in re.findall(r"`([^`]+)`", text):
+        tok = tok.strip()
+        if "/" not in tok or not tok.endswith(_REF_EXTS):
+            continue
+        if any(c in tok for c in "<>*| "):
+            continue
+        if not tok.startswith(_REF_ANCHORS):
+            continue
+        if (sd / tok).exists() or (ROOT / tok).exists():
+            continue
+        out.append(f"broken reference: `{tok}`")
+    return out
 
 
 def main() -> int:
@@ -103,6 +173,18 @@ def main() -> int:
                 if tok in mtext:
                     failures.append(f"  x {md.relative_to(ROOT)}: forbidden token '{tok}'")
 
+        # 7. SKILL.md frontmatter is a valid Claude Skill header.
+        fm, keys, name, desc = parse_frontmatter(body)
+        if fm is None:
+            failures.append(f"  x {rel}: SKILL.md has no YAML frontmatter")
+        else:
+            for w in validate_frontmatter(name, desc, keys, sd.name):
+                failures.append(f"  x {rel}: {w}")
+
+        # 8. Resource integrity: referenced repo files must exist.
+        for w in check_references(sd, body):
+            failures.append(f"  x {rel}: {w}")
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")
@@ -115,7 +197,7 @@ def main() -> int:
 
     print(
         f"OK - {len(skill_dirs)} skill(s) checked; {len(REPO_INVARIANTS)} repository invariants "
-        f"present; {len(canonical)} synced reference(s) in sync."
+        f"present; {len(canonical)} synced reference(s) in sync; frontmatter + resource integrity OK."
     )
     return 0
 
