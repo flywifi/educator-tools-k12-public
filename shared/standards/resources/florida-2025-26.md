@@ -3,6 +3,12 @@
 Index of the canonical Florida standards & assessment resources provided for this ecosystem, grouped
 by type. Pairs with the adapter `../florida-best.md`.
 
+> **Current for 2026–2027 (verified June 2026).** The **standards** (B.E.S.T. Math/ELA, NGSSS
+> Science/SS) are unchanged since adoption and remain current. The **2026–27 assessment schedule**
+> (`2627StatewideAssessmentSched.pdf`) is included; most other assessment fact-sheets here are the
+> 2025–26 cycle, and the live FLDOE pages carry the 2026–27 versions — run `tools/standards_refresh.py`
+> to pull the latest.
+
 > **Snapshot vs. live.** This catalogs a **2025–26 snapshot** (104 documents). The **current**
 > versions live at the official sources below — always prefer them when standards/assessments change:
 > - **Standards (all subjects):** CPALMS — `www.cpalms.org` (search by code or subject/grade).
