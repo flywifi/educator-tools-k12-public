@@ -42,22 +42,24 @@ Governance → UDOM → Artifacts → Parser Evaluation → Parser Orchestration
 Validation → Optimization.
 
 ## Build status (skeleton)
+Everything below is **offline** — stdlib by default; optional engines (PyMuPDF, pdfplumber,
+Tesseract) run locally with **no network at run time** (install via `tools/requirements-docintel.txt`).
 - **Done (runs end to end):** ingestion, native text recovery (.txt/.md/.html/.docx; PDF via
-  PyMuPDF when installed), **image ingestion + stdlib image analysis** (format/dimensions for
-  png/jpeg/gif/bmp), **targeted OCR stage** (confidence-aware text via Tesseract when installed;
-  honest `ocr` capability-gap when not — never fabricated), **table intelligence for docx/html/markdown**
-  (rows/cols/headers/merged cells via colspan + gridSpan/vMerge, table/cell confidence + conflict
-  handling), reading-order structure, governance stamping, knowledge normalization, knowledge-artifact
+  PyMuPDF), **image ingestion + stdlib image analysis** (format/dimensions for png/jpeg/gif/bmp),
+  **OCR** — confidence-aware text from images **and scanned PDFs** (PyMuPDF rasterizes each page
+  locally, then Tesseract; honest `ocr` capability-gap when no engine — never fabricated),
+  **table intelligence** for docx/html/markdown (rows/cols/headers/merged cells via colspan +
+  gridSpan/vMerge, table/cell confidence + conflict handling) **and PDF tables** (pdfplumber),
+  reading-order structure, governance stamping, knowledge normalization, knowledge-artifact
   generation, computable validation metrics (incl. A-003 table recovery), schema conformance,
   **Google Workspace inputs** (Google Docs API JSON natively; Docs/Sheets/Slides exports
-  `.odt`/`.csv`/`.xlsx`/`.pptx`, all stdlib), and artifact **change-control** records
-  (classify → evaluate → approve-with-evidence → trace, V03_S07).
-- **Staged (interfaces defined; fill in next):** **PDF OCR** (rasterize + OCR via PyMuPDF/pdf2image —
-  reported via `StageNotImplemented`, never faked), additional OCR engines (Surya/OCRmyPDF), **PDF
-  table recovery** (pdfplumber/Camelot — activates when installed), DL layout (Docling/LayoutParser/
-  Marker), parallel multi-parser reconciliation, reference-set accuracy metrics (A-001/A-005),
-  consumer-interface projections, and the remaining Workspace types (`.ods`/`.odp`; Google
-  Sheets/Slides API JSON). Each plugs in behind the existing contracts with no consumer changes.
+  `.odt`/`.csv`/`.xlsx`/`.pptx`), the **retrieval-state ladder**, and artifact **change-control**
+  records (V03_S07). **The Florida standards pipeline now reads via docintel**
+  (`tools/parse_fl_standards.py`; 6,583 codes, byte-for-byte identical to the prior reader).
+- **Staged (interfaces defined; fill in next):** additional OCR engines (Surya/OCRmyPDF), DL layout
+  (Docling/LayoutParser/Marker), parallel multi-parser reconciliation, reference-set accuracy metrics
+  (A-001/A-005), consumer-interface projections, and the remaining Workspace types (`.ods`/`.odp`;
+  Google Sheets/Slides API JSON). Each plugs in behind the existing contracts with no consumer changes.
 
 ## Parser tiers to wrap (reuse, don't reinvent — V01 S08)
 - **Tier 1:** Docling, PyMuPDF, Marker.

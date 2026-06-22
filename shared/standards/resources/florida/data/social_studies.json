@@ -2,6 +2,8 @@
   "subject": "social_studies",
   "source_file": "SocialStudies_StandardsandAccessPoints_WR.doc",
   "format": "doc",
+  "reader": "legacy-doc",
+  "retrieval_state": null,
   "count": 2713,
   "standards": [
     {

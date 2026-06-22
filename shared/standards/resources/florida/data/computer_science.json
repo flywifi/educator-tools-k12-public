@@ -2,6 +2,8 @@
   "subject": "computer_science",
   "source_file": "ComputerScience_StandardsReportWithoutAccessPoints.doc.docx",
   "format": "docx",
+  "reader": "docintel",
+  "retrieval_state": "content_ingested",
   "count": 569,
   "standards": [
     {
@@ -9,112 +11,112 @@
       "grade": "K12",
       "strand": "CTR",
       "type": "practice",
-      "statement": "Actively participate in effortful learning both individually and collaboratively."
+      "statement": "Actively participate in effortful learning both individually and collaboratively. Students who actively participate in effortful learning both individually and with others: Build perseverance by modifying methods as needed while solving a challenging task. Stay engaged and maintain a positive mindse"
     },
     {
       "code": "SC.K12.CTR.2.1",
       "grade": "K12",
       "strand": "CTR",
       "type": "practice",
-      "statement": "Demonstrate understanding by decomposing a problem."
+      "statement": "Demonstrate understanding by decomposing a problem. Students who demonstrate understanding by decomposing a problem: Analyze the problems in a way that makes sense given the task. Ask questions that will help with solving the task. Break down complex problems into individual problems. Decompose a co"
     },
     {
       "code": "SC.K12.CTR.3.1",
       "grade": "K12",
       "strand": "CTR",
       "type": "practice",
-      "statement": "Complete tasks with digital fluency."
+      "statement": "Complete tasks with digital fluency. Students who complete tasks with digital fluency:Select and use appropriate digital tools by their functions. Demonstrate proper typing techniques and keyboarding skills. Understand responsible technology use. Use feedback to improve efficiency using digital tool"
     },
     {
       "code": "SC.K12.CTR.4.1",
       "grade": "K12",
       "strand": "CTR",
       "type": "practice",
-      "statement": "Express solutions as computational steps."
+      "statement": "Express solutions as computational steps. Students who express solutions as computational steps: Solve problems step by step rather than all at once. Represent solutions to problems in multiple ways, based on context or purpose. Use patterns and structures to understand and connect computational con"
     },
     {
       "code": "SC.K12.CTR.5.1",
       "grade": "K12",
       "strand": "CTR",
       "type": "practice",
-      "statement": "Create an algorithm to achieve a given goal."
+      "statement": "Create an algorithm to achieve a given goal. Students who create algorithms to achieve a given goal: Create or use a well-defined series of steps to achieve a desired outcome. Compare the efficiency of an algorithm to those expressed by others. Design a sequence of steps to follow. Verify possible s"
     },
     {
       "code": "SC.K12.CTR.6.1",
       "grade": "K12",
       "strand": "CTR",
       "type": "practice",
-      "statement": "Differentiate between usable data and miscellaneous information."
+      "statement": "Differentiate between usable data and miscellaneous information. Students who differentiate between usable data and miscellaneous information: Express connections between concepts and representations. Construct possible arguments based on evidence. Perform decision-making between two actions. Practi"
     },
     {
       "code": "SC.K12.CTR.7.1",
       "grade": "K12",
       "strand": "CTR",
       "type": "practice",
-      "statement": "Solve real-life problems in science and engineering using computational thinking."
+      "statement": "Solve real-life problems in science and engineering using computational thinking. Students who solve real-life problems in science and engineering using computational thinking: Adapt procedures to find solutions and apply them to a new context. Look for similarities among problems. Connect solutions"
     },
     {
       "code": "SC.K.CC.1.1",
       "grade": "K",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Provide positive feedback."
+      "statement": "Provide positive feedback. Clarifications : Clarification 1: The expectation is for students to provide specific compliments on peer projects."
     },
     {
       "code": "SC.K.HS.1.1",
       "grade": "K",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Determine the risks of Internet usage."
+      "statement": "Determine the risks of Internet usage. Clarifications : Clarification 1: Students should be aware of the risks if they are interacting with other people online. Clarification 2: Students should know that unsafe practices include sharing their information like phone number, address and other identify"
     },
     {
       "code": "SC.K.HS.1.2",
       "grade": "K",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Explore the need for adult permission before using a network-capable device."
+      "statement": "Explore the need for adult permission before using a network-capable device. Clarifications : Clarification 1: Instruction includes discussing how someone can have safe and unsafe interactions with others while online."
     },
     {
       "code": "SC.K.HS.1.3",
       "grade": "K",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Discuss that a password helps protect the privacy of information."
+      "statement": "Discuss that a password helps protect the privacy of information. Clarifications : Clarification 1: Instruction includes discussing the importance of not sharing a password with anyone other than a parent or guardian."
     },
     {
       "code": "SC.K.HS.1.4",
       "grade": "K",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Explain that some information is private and should not be shared online or in person."
+      "statement": "Explain that some information is private and should not be shared online or in person. Clarifications : Clarification 1: Instruction includes discussing the importance of not sharing information with anyone other than a parent or guardian."
     },
     {
       "code": "SC.K.HS.2.1",
       "grade": "K",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Explore the impact that technology has on the senses."
+      "statement": "Explore the impact that technology has on the senses. Clarifications : Clarification 1: Instruction includes discussion on how technology positively and negatively affects the five senses."
     },
     {
       "code": "SC.K.HS.2.2",
       "grade": "K",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Explore how to create a healthy balance between physical activity and time spent on a digital device."
+      "statement": "Explore how to create a healthy balance between physical activity and time spent on a digital device. Clarifications : Clarification 1: Instruction includes discussing the balance between health and time spent on a digital device."
     },
     {
       "code": "SC.K.CO.1.1",
       "grade": "K",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Recognize components of computing devices."
+      "statement": "Recognize components of computing devices. Clarifications : Clarification 1: Instruction includes recognizing the differences between a laptop and a desk-top computer."
     },
     {
       "code": "SC.K.CO.1.2",
       "grade": "K",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify what types of computer components can be used with senses."
+      "statement": "Identify what types of computer components can be used with senses. Clarifications : Clarification 1: Instruction includes discussion on how headphones, screens and keyboards affect the five senses."
     },
     {
       "code": "SC.K.CO.1.3",
@@ -135,7 +137,7 @@
       "grade": "K",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Explore the keyboard of a computer through Consonant-Vowel-Consonant (CVC) words."
+      "statement": "Explore the keyboard of a computer through Consonant-Vowel-Consonant (CVC) words. Clarifications : Clarification 1: Consonant-Vowel-Consonant (CVC) words include \u201ccat\u201d or \u201cdog.\u201d"
     },
     {
       "code": "SC.K.CO.1.6",
@@ -149,7 +151,7 @@
       "grade": "K",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Discuss proper care for electronic devices."
+      "statement": "Discuss proper care for electronic devices. Clarifications : Clarification 1: Proper care includes handling devices carefully, logging off or shutting down correctly and keeping devices away from food or drinks. Clarification 2: Instruction includes teaching keeping food and drinks away from compute"
     },
     {
       "code": "SC.K.PE.1.1",
@@ -163,21 +165,21 @@
       "grade": "K",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Develop a series of steps to complete a task."
+      "statement": "Develop a series of steps to complete a task. Examples : Example: Students brainstorm how to make a sandwich."
     },
     {
       "code": "SC.K.PE.2.1",
       "grade": "K",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Recognize different types of data."
+      "statement": "Recognize different types of data. Clarifications : Clarification 1: Instruction includes defining data as a collection of information that can be used to sort and organize details."
     },
     {
       "code": "SC.K.PE.2.2",
       "grade": "K",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Use different data representations to make comparisons."
+      "statement": "Use different data representations to make comparisons. Clarifications : Clarification 1: Types of data representations include tally marks or pictographs."
     },
     {
       "code": "SC.K.PE.3.1",
@@ -191,14 +193,14 @@
       "grade": "K",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Solve problems involving logical order thinking or sequencing with or without technology."
+      "statement": "Solve problems involving logical order thinking or sequencing with or without technology. Clarifications : Clarification 1: Problem types include putting things in order or sequence, either with or without technology."
     },
     {
       "code": "SC.K.PE.3.3",
       "grade": "K",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Observe patterns of daily life and routines."
+      "statement": "Observe patterns of daily life and routines. Clarifications : Clarification 1: Instruction includes describing steps missing in scenarios for an intended outcome."
     },
     {
       "code": "SC.K.PE.3.4",
@@ -254,14 +256,14 @@
       "grade": "1",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Define and discuss what makes a healthy balance between unplugged activities and time spent on a digital device."
+      "statement": "Define and discuss what makes a healthy balance between unplugged activities and time spent on a digital device. Clarifications : Clarification 1: Unplugged activities include reading a physical book, playing a sport, completing a puzzle or playing a game outside."
     },
     {
       "code": "SC.1.CO.1.1",
       "grade": "1",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Recognize and operate different types of computer components."
+      "statement": "Recognize and operate different types of computer components. Clarifications : Clarification 1: Instruction includes using word processor and input/output devices such as a mouse, keyboard or touch screen."
     },
     {
       "code": "SC.1.CO.1.2",
@@ -282,56 +284,56 @@
       "grade": "1",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify tools that can be used for sharing information."
+      "statement": "Identify tools that can be used for sharing information. Clarifications : Clarification 1: Tools include storyboards, posters, photos, journals, magazines or newspapers."
     },
     {
       "code": "SC.1.CO.1.5",
       "grade": "1",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Demonstrate how to complete a task using a digital device."
+      "statement": "Demonstrate how to complete a task using a digital device. Clarifications : Clarification 1: Instruction includes tasks such as completing practice tests, homework and surveys. Clarification 2: Instruction emphasizes the responsible use of completing tasks effectively."
     },
     {
       "code": "SC.1.CO.1.6",
       "grade": "1",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Discuss the importance of saving digital work."
+      "statement": "Discuss the importance of saving digital work. Clarifications : Clarification 1: Students should discuss reasons why it is important to save their work periodically instead of waiting until they complete it."
     },
     {
       "code": "SC.1.CO.1.7",
       "grade": "1",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Use the keyboard of a computer to write consonant-vowel-consonant (CVC) and consonant-vowel-consonant-e (CVCe) words."
+      "statement": "Use the keyboard of a computer to write consonant-vowel-consonant (CVC) and consonant-vowel-consonant-e (CVCe) words. Clarifications : Clarification 1: Instruction includes the use of a keyboard or a printed version of a keyboard."
     },
     {
       "code": "SC.1.CO.1.8",
       "grade": "1",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Type a username and password accurately."
+      "statement": "Type a username and password accurately. Clarifications : Clarification 1: Instruction includes understanding the difference between typing capital and lowercase letters. Clarification 2: Passwords include the use of letters, numbers and symbols."
     },
     {
       "code": "SC.1.CO.1.9",
       "grade": "1",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Recognize and operate different types of computer applications."
+      "statement": "Recognize and operate different types of computer applications. Clarifications : Clarification 1: Instruction includes demonstrating the correct use of logging into a computer and launching applications from the desktop."
     },
     {
       "code": "SC.1.CO.1.10",
       "grade": "1",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Create multimedia files."
+      "statement": "Create multimedia files. Clarifications : Clarification 1: Instruction includes clarifying that multimedia can be audio, video or both."
     },
     {
       "code": "SC.1.CO.1.11",
       "grade": "1",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Demonstrate proper care for electronic devices."
+      "statement": "Demonstrate proper care for electronic devices. Clarifications : Clarification 1: Instruction includes demonstrating how to properly shut down a computer."
     },
     {
       "code": "SC.1.PE.1.1",
@@ -345,14 +347,14 @@
       "grade": "1",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Determine what makes data important."
+      "statement": "Determine what makes data important. Clarifications : Clarification 1: Instruction includes providing opportunities for students to discuss why data may be important to them. Clarification 2: Instruction includes understanding that depending on the person and the context and their justification, som"
     },
     {
       "code": "SC.1.PE.2.2",
       "grade": "1",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Sort data using visual representation tools."
+      "statement": "Sort data using visual representation tools. Clarifications : Clarification 1: Representations include two-column charts, pictographs and tally marks. Clarification 2: When sorting, students can look for trends in the data. Examples : Example: Sort a bag of chocolate candies based on their color. Af"
     },
     {
       "code": "SC.1.PE.2.3",
@@ -366,7 +368,7 @@
       "grade": "1",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a pattern that can be repeated to complete a task."
+      "statement": "Create a pattern that can be repeated to complete a task. Examples : Example: What numbers can you repeatedly add to each other to get to 100?"
     },
     {
       "code": "SC.1.PE.3.2",
@@ -401,7 +403,7 @@
       "grade": "1",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Explore Artificial Intelligence (AI)-powered devices."
+      "statement": "Explore Artificial Intelligence (AI)-powered devices. Clarifications : Clarification 1: Instruction includes introducing the concept of Artificial Intelligence (AI) by identifying smart toys."
     },
     {
       "code": "SC.1.TI.2.1",
@@ -422,28 +424,28 @@
       "grade": "2",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Identify a variety of digital tools used for communication."
+      "statement": "Identify a variety of digital tools used for communication. Clarifications : Clarification 1: Instruction includes identifying digital tools such as Internet applications, online catalogs and databases. Clarification 2: Instruction includes recognizing the Internet as a means of communication."
     },
     {
       "code": "SC.2.CC.1.2",
       "grade": "2",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Describe the similarities and differences among the Internet, websites and online applications."
+      "statement": "Describe the similarities and differences among the Internet, websites and online applications. Clarifications : Clarification 1: Instruction includes understanding what the Internet is and how it works, and what websites and online applications are and how they work."
     },
     {
       "code": "SC.2.CC.1.3",
       "grade": "2",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Complete basic keyword searches."
+      "statement": "Complete basic keyword searches. Clarifications : Clarification 1: Instruction includes child-friendly searches on a safe search engine or browser. Clarification 2: Instruction includes the connection to using a dictionary, glossary or encyclopedia."
     },
     {
       "code": "SC.2.CC.1.4",
       "grade": "2",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Identify concepts illustrated by a simple simulation."
+      "statement": "Identify concepts illustrated by a simple simulation. Clarifications : Clarification 1: Instruction includes concepts such as growth, human health and the butterfly life cycle."
     },
     {
       "code": "SC.2.HS.1.1",
@@ -457,56 +459,56 @@
       "grade": "2",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Demonstrate why personal or family member login usernames, passcodes, passwords and secure logins should not be shared with other people."
+      "statement": "Demonstrate why personal or family member login usernames, passcodes, passwords and secure logins should not be shared with other people. Clarifications : Clarification 1: Instruction includes teaching students to store passwords in a secure location."
     },
     {
       "code": "SC.2.HS.1.3",
       "grade": "2",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Discuss the difference between weak and strong passwords."
+      "statement": "Discuss the difference between weak and strong passwords. Clarifications : Clarification 1: Instruction includes teaching what constitutes a strong password. Examples : Example: Alana is creating a password for her school account. She knows she must use 10 characters. These characters should include"
     },
     {
       "code": "SC.2.HS.1.4",
       "grade": "2",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Recognize that digital content posted online should have the consent of the subject."
+      "statement": "Recognize that digital content posted online should have the consent of the subject. Clarifications : Clarification 1: Instruction includes discussing how to respect others\u2019 privacy, as well as one\u2019s own privacy. Clarification 2: Digital content includes videos, pictures and audio (sound bites). Exa"
     },
     {
       "code": "SC.2.HS.2.1",
       "grade": "2",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Identify healthy digital use habits."
+      "statement": "Identify healthy digital use habits. Clarifications : Clarification 1: Instruction includes the use of an application, stopwatch, timer or clock to determine the number of minutes on an electronic device. Examples : Example: Record the number of minutes you spend on an electronic device every day fo"
     },
     {
       "code": "SC.2.HS.2.2",
       "grade": "2",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Identify if there is a need to reduce screen time and how that can be done."
+      "statement": "Identify if there is a need to reduce screen time and how that can be done. Clarifications : Clarification 1: Instruction includes creating a list of activities that could be done in place of the use of technology."
     },
     {
       "code": "SC.2.CO.1.1",
       "grade": "2",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify the characteristics of hardware."
+      "statement": "Identify the characteristics of hardware. Clarifications : Clarification 1: Instruction includes using input/output devices such as a mouse, speakers, printer, monitor, keyboard or touch screen to find, navigate and launch a program. Clarification 2: Students should understand that hardware is the p"
     },
     {
       "code": "SC.2.CO.1.2",
       "grade": "2",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Demonstrate the proper handling of computers and devices."
+      "statement": "Demonstrate the proper handling of computers and devices. Clarifications : Clarification 1: Instruction includes teaching students to keep food and drinks away from computers and other hardware such as keyboards, screens, mice, printers and tablets. Clarification 2: Instruction includes teaching stu"
     },
     {
       "code": "SC.2.CO.1.3",
       "grade": "2",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Use the keyboard of a computer to write simple sentences."
+      "statement": "Use the keyboard of a computer to write simple sentences. Clarifications : Clarification 1: Instruction includes the use of a keyboard or a printed version of a keyboard."
     },
     {
       "code": "SC.2.CO.1.4",
@@ -534,35 +536,35 @@
       "grade": "2",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify the characteristics of software."
+      "statement": "Identify the characteristics of software. Clarifications : Clarification 1: Instruction includes the understanding that software is the actual programs that are running on a computer. Clarification 2: Instruction includes comparing the characteristics of hardware and software."
     },
     {
       "code": "SC.2.CO.1.8",
       "grade": "2",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Introduce network system tools and how to determine if they are connected to a network."
+      "statement": "Introduce network system tools and how to determine if they are connected to a network. Clarifications : Clarification 1: Students should be able to determine from the symbol whether or not they have a network connection. Clarification 2: Instruction includes recognizing a network system symbol on a"
     },
     {
       "code": "SC.2.CO.1.9",
       "grade": "2",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify the strength of a network system from the symbol on a computing device."
+      "statement": "Identify the strength of a network system from the symbol on a computing device. Clarifications : Clarification 1: Within this benchmark, the expectation is to look at the network system symbol to determine the strength of the network connection. Examples : Example: Mr. Thompson has his class count "
     },
     {
       "code": "SC.2.PE.1.1",
       "grade": "2",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Construct code segments using tools that do not require a textual programming language."
+      "statement": "Construct code segments using tools that do not require a textual programming language. Examples : Example: Poppy is writing directions to help her puppy to the food bowl. Poppy will be using a block-based program to demonstrate to her puppy how to get to the food bowl. Can you help Poppy write part"
     },
     {
       "code": "SC.2.PE.2.1",
       "grade": "2",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Collect data using a variety of computing methods."
+      "statement": "Collect data using a variety of computing methods. Clarifications : Clarification 1: Instruction includes sorting and totaling as a collection tool."
     },
     {
       "code": "SC.2.PE.2.2",
@@ -576,42 +578,42 @@
       "grade": "2",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create data visualizations."
+      "statement": "Create data visualizations. Clarifications : Clarification 1: Instruction includes creating bar graphs, pictographs, tables or infographics as data visualizations."
     },
     {
       "code": "SC.2.PE.3.1",
       "grade": "2",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a repeatable pattern, with or without technology, to solve a problem."
+      "statement": "Create a repeatable pattern, with or without technology, to solve a problem. Clarifications : Clarification 1: Patterns can be created using manipulatives, building bricks, visuals, numbers, music or technology. Clarification 2: Students discussing and creating repeated patterns will build the found"
     },
     {
       "code": "SC.2.PE.3.2",
       "grade": "2",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Develop a plan that could be used to create a story."
+      "statement": "Develop a plan that could be used to create a story. Clarifications : Clarification 1: Instruction emphasizes creating a story in a step-by-step manner. Clarification 2: Instruction makes the connection to developing an algorithm. Clarification 3: When developing a plan, students can use graphic org"
     },
     {
       "code": "SC.2.PE.3.3",
       "grade": "2",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Demonstrate the use of conditional logic."
+      "statement": "Demonstrate the use of conditional logic. Clarifications : Clarification 1: Instruction includes using conditional logic: if-then statements and while loops. Examples : Example: If it is raining, then students cannot go outside for recess."
     },
     {
       "code": "SC.2.PE.3.4",
       "grade": "2",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Solve questions using models, simulations or data."
+      "statement": "Solve questions using models, simulations or data. Clarifications : Clarification 1: Simulations include growth, human health, weather patterns, soil development and the butterfly life cycle. Clarification 2: When solving questions, students may need to create a visual representation. Examples : Exa"
     },
     {
       "code": "SC.2.TI.1.1",
       "grade": "2",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Recognize that people use computing technology in the workplace or school to perform many important tasks and functions."
+      "statement": "Recognize that people use computing technology in the workplace or school to perform many important tasks and functions. Clarifications : Clarification 1: Instruction includes teacher explanations about how technology is used in the classroom. Examples : Example: Interview family members to determin"
     },
     {
       "code": "SC.2.TI.1.2",
@@ -632,77 +634,77 @@
       "grade": "2",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Evaluate if given information (written or visual) is accurate."
+      "statement": "Evaluate if given information (written or visual) is accurate. Clarifications : Clarification 1: Instruction includes teaching that images can be digitally manipulated, and information can be falsified. Examples : Example: Teacher shares an image of a jackalope and asks students to discuss if it is "
     },
     {
       "code": "SC.3.CC.1.1",
       "grade": "3",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Describe how collaborating with others can be beneficial to a project."
+      "statement": "Describe how collaborating with others can be beneficial to a project. Clarifications : Clarification 1: Instruction includes understanding how collaborating includes brainstorming or sharing ideas with one another."
     },
     {
       "code": "SC.3.CC.1.2",
       "grade": "3",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Use feedback from peers to make revisions using technology."
+      "statement": "Use feedback from peers to make revisions using technology. Clarifications : Clarification 1: Instruction includes asking questions of self and others on their work. Clarification 2: Feedback should be constructive."
     },
     {
       "code": "SC.3.CC.1.3",
       "grade": "3",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Explain that searches may be enhanced by key terms."
+      "statement": "Explain that searches may be enhanced by key terms. Examples : Example: Students use a shoe brand website to find a particular type of shoe, then they narrow their search by typing more descriptive words into the search bar like size and color. Finally, they add a sport to the search to see more spe"
     },
     {
       "code": "SC.3.CC.1.4",
       "grade": "3",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Describe how computer simulations can help communicate ideas in concepts or problem-solving."
+      "statement": "Describe how computer simulations can help communicate ideas in concepts or problem-solving. Examples : Example: Describe how a computer simulation can model the water cycle."
     },
     {
       "code": "SC.3.CC.2.1",
       "grade": "3",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Identify uses of technology when sending communication over the Internet."
+      "statement": "Identify uses of technology when sending communication over the Internet. Clarifications : Clarification 1: Instruction includes Netiquette depending on the audience and type of communication. Clarification 2: Instruction includes email, texting, uploads, surveys and screen shots."
     },
     {
       "code": "SC.3.CC.2.2",
       "grade": "3",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Describe responsible uses of modern communication media and devices."
+      "statement": "Describe responsible uses of modern communication media and devices. Clarifications : Clarification 1: Instruction includes safe practices that include making sure your personal information is protected. Examples might be your information or your family\u2019s information, real names, addresses, phone nu"
     },
     {
       "code": "SC.3.HS.1.1",
       "grade": "3",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Discuss the need for parental control settings on network- capable devices."
+      "statement": "Discuss the need for parental control settings on network- capable devices. Clarifications : Clarification 1: Instruction includes reasons that some sites and devices have parental control settings."
     },
     {
       "code": "SC.3.HS.1.2",
       "grade": "3",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Discuss why some sites or games have age requirements."
+      "statement": "Discuss why some sites or games have age requirements. Clarifications : Clarification 1: Instruction includes age ratings on games and videos, and age requirements to certain websites. Examples : Example: Johnny tries to get on a website to play a new video game. The website asks for his age. When h"
     },
     {
       "code": "SC.3.HS.1.3",
       "grade": "3",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Explain what actions should be taken if students are either victims or witnesses of cyberbullying or harassment."
+      "statement": "Explain what actions should be taken if students are either victims or witnesses of cyberbullying or harassment. Clarifications : Clarification 1: Instruction includes providing information or evidence to authority figures or Fortify Florida to show authority figures, recordings, emails or photos. C"
     },
     {
       "code": "SC.3.HS.2.1",
       "grade": "3",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Explore ways to balance movement and screen time."
+      "statement": "Explore ways to balance movement and screen time. Clarifications : Clarification 1: Instruction includes that for every 20 minutes of screen time, students look at an object 20 feet away for 20 seconds. Clarification 2: Instruction includes identifying ways to incorporate physical movement."
     },
     {
       "code": "SC.3.HS.2.2",
@@ -723,63 +725,63 @@
       "grade": "3",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Use the keyboard of a computer to write short paragraphs or short stories."
+      "statement": "Use the keyboard of a computer to write short paragraphs or short stories. Clarifications : Clarification 1: Instruction includes the correct use of punctuation and capitalization."
     },
     {
       "code": "SC.3.CO.1.3",
       "grade": "3",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify digital tools used for writing activities."
+      "statement": "Identify digital tools used for writing activities. Clarifications : Clarification 1: Instruction includes using digital tools such as word processing, emails and text messages."
     },
     {
       "code": "SC.3.CO.1.4",
       "grade": "3",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify digital tools for data collection."
+      "statement": "Identify digital tools for data collection. Clarifications : Clarification 1: Instruction includes using digital tools such as tables, cameras and online forms or surveys."
     },
     {
       "code": "SC.3.CO.1.5",
       "grade": "3",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Use digital tools for sharing information."
+      "statement": "Use digital tools for sharing information. Clarifications : Clarification 1: Instruction includes using digital tools such as slideshows, presentation software or storyboards. Clarification 2: Instruction includes explaining why one might select that specific tool."
     },
     {
       "code": "SC.3.CO.1.6",
       "grade": "3",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Apply self-editing practices to improve accuracy."
+      "statement": "Apply self-editing practices to improve accuracy. Clarifications : Clarification 1: Instruction includes accuracy within any activity, such as writing a prompt or creating a digital project. Clarification 2: Instruction includes the use of built-in tools for grammar and spelling within software."
     },
     {
       "code": "SC.3.CO.1.7",
       "grade": "3",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Categorize software based on its main purpose."
+      "statement": "Categorize software based on its main purpose. Clarifications : Clarification 1: Instruction includes discussion of different software products and their primary purpose. Clarification 2: Instruction includes discussion of productivity, entertainment, communication, presentation, collaboration and o"
     },
     {
       "code": "SC.3.CO.1.8",
       "grade": "3",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Introduce how network systems are part of a global communication network."
+      "statement": "Introduce how network systems are part of a global communication network. Clarifications : Clarification 1: Instruction includes how anyone can access a website from anywhere at any time."
     },
     {
       "code": "SC.3.PE.1.1",
       "grade": "3",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Explore using graphics, blocks or visual cues to design a program."
+      "statement": "Explore using graphics, blocks or visual cues to design a program. Clarifications : Clarification 1: Instruction includes using graphics or visual cues to represent a list of directions."
     },
     {
       "code": "SC.3.PE.1.2",
       "grade": "3",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a program that includes user choices based on defined conditions."
+      "statement": "Create a program that includes user choices based on defined conditions. Examples : Example: Create an algorithm that describes your daily routine for getting ready based on the weather."
     },
     {
       "code": "SC.3.PE.2.1",
@@ -793,7 +795,7 @@
       "grade": "3",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Compile data collected and draw conclusions based on trends."
+      "statement": "Compile data collected and draw conclusions based on trends. Clarifications : Clarification 1: Instruction includes analyzing charts, graphs or tables to answer questions and draw conclusions."
     },
     {
       "code": "SC.3.PE.2.3",
@@ -814,21 +816,21 @@
       "grade": "3",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Demonstrate how programs written differently can have the same outcome."
+      "statement": "Demonstrate how programs written differently can have the same outcome. Clarifications : Clarification 1: Instruction includes identifying or explaining how multiple approaches can lead to a desired outcome or goal."
     },
     {
       "code": "SC.3.PE.3.3",
       "grade": "3",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Use graphical programming or visual cues to represent a set of instructions (algorithm) that includes repetition."
+      "statement": "Use graphical programming or visual cues to represent a set of instructions (algorithm) that includes repetition. Examples : Example: Create an algorithm that describes your daily routine before you go to bed. Use words, phrases, pictures or symbols to create your algorithm."
     },
     {
       "code": "SC.3.PE.3.4",
       "grade": "3",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a model or a simulation of a system and explain what the model shows."
+      "statement": "Create a model or a simulation of a system and explain what the model shows. Clarifications : Clarification 1: Instruction includes models such as plant growth, solar systems and changes in matter. Examples : Example: Create a model that shows the role of water and nutrient transport within plants."
     },
     {
       "code": "SC.3.PE.3.5",
@@ -842,14 +844,14 @@
       "grade": "3",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Summarize how different types of computing devices are used to communicate with others on a daily basis."
+      "statement": "Summarize how different types of computing devices are used to communicate with others on a daily basis. Clarifications : Clarification 1: Instruction includes devices such as cell phones, tablets and similar electronic communication devices."
     },
     {
       "code": "SC.3.TI.1.2",
       "grade": "3",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Identify adaptive technology and discuss how it has changed over time."
+      "statement": "Identify adaptive technology and discuss how it has changed over time. Clarifications : Clarification 1: Instruction includes understanding that using adaptive technology can be a benefit to everyone. Clarification 2: Adaptive technology includes screen readers, oversized keyboards, text-to-speech, "
     },
     {
       "code": "SC.3.TI.1.3",
@@ -863,7 +865,7 @@
       "grade": "3",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Demonstrate awareness of copyright laws to show respect for the ideas of others when using digital artifacts."
+      "statement": "Demonstrate awareness of copyright laws to show respect for the ideas of others when using digital artifacts. Clarifications : Clarification 1: Instruction includes understanding that some digital artifacts are free to use while others are not. Clarification 2: Instruction includes digital artifacts"
     },
     {
       "code": "SC.3.TI.2.2",
@@ -877,42 +879,42 @@
       "grade": "3",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Cite evidence using direct and indirect citations."
+      "statement": "Cite evidence using direct and indirect citations. Clarifications : Clarification 1: Instruction includes using relevant textual evidence in written and oral communication. Clarification 2: Instruction includes students naming the text or source."
     },
     {
       "code": "SC.3.TI.2.4",
       "grade": "3",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Identify digital information resources used to answer research questions."
+      "statement": "Identify digital information resources used to answer research questions. Clarifications : Clarification 1: Instruction includes resources such as online library catalog, encyclopedias, databases, search engines and websites. Clarification 2: Instruction includes making sure that students are using "
     },
     {
       "code": "SC.4.CC.1.1",
       "grade": "4",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Demonstrate ways that technology can foster teamwork."
+      "statement": "Demonstrate ways that technology can foster teamwork. Clarifications : Clarification 1: Instruction includes discussing how technology can foster teamwork including shared documents, applications or presentations. Examples : Example: Students can collaborate on geometric software to explore angle me"
     },
     {
       "code": "SC.4.CC.1.2",
       "grade": "4",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Demonstrate collaboration and problem-solving."
+      "statement": "Demonstrate collaboration and problem-solving. Clarifications : Clarification 1: Instruction includes collaborating with or without the use of technology."
     },
     {
       "code": "SC.4.CC.1.3",
       "grade": "4",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Discuss ways that collaboration can lead to innovation."
+      "statement": "Discuss ways that collaboration can lead to innovation. Examples : Example: Students can read a text about a recent innovation and then discuss ways that collaboration was essential to the innovation process."
     },
     {
       "code": "SC.4.CC.1.4",
       "grade": "4",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Explain why providing and receiving feedback from others can improve performance for projects."
+      "statement": "Explain why providing and receiving feedback from others can improve performance for projects. Clarifications : Clarification 1: Projects include ones completed both individually and collaboratively."
     },
     {
       "code": "SC.4.CC.1.5",
@@ -947,7 +949,7 @@
       "grade": "4",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Discuss how websites and applications can be utilized for different purposes."
+      "statement": "Discuss how websites and applications can be utilized for different purposes. Clarifications : Clarification 1: Instruction includes understanding that websites and applications can foster one\u2019s education and personal growth."
     },
     {
       "code": "SC.4.HS.1.3",
@@ -989,63 +991,63 @@
       "grade": "4",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Publish multimedia artifacts using digital tools based on feedback."
+      "statement": "Publish multimedia artifacts using digital tools based on feedback. Clarifications : Clarification 1: Publication includes various publications (local and online). Clarification 2: Feedback can be from teacher or peers."
     },
     {
       "code": "SC.4.CO.1.4",
       "grade": "4",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Determine whether software can be described as a system or application software."
+      "statement": "Determine whether software can be described as a system or application software. Clarifications : Clarification 1: System software includes various operating systems while application software is what is used to perform tasks and solve problems."
     },
     {
       "code": "SC.4.CO.1.5",
       "grade": "4",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Troubleshoot digital problems that may occur during daily use."
+      "statement": "Troubleshoot digital problems that may occur during daily use. Clarifications : Clarification 1: Instruction includes common problems such as powering on devices, checking cable connections and checking settings."
     },
     {
       "code": "SC.4.CO.1.6",
       "grade": "4",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Discuss ways computers connect."
+      "statement": "Discuss ways computers connect. Clarifications : Clarification 1: Ways that computers can connect include through USB, a wired network, wireless network and through Bluetooth."
     },
     {
       "code": "SC.4.CO.1.7",
       "grade": "4",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Compare hardware and software."
+      "statement": "Compare hardware and software. Clarifications : Clarification 1: Instruction includes defining examples of hardware such as keyboard, laptop, tablet, mouse and monitors. Clarification 2: Instruction includes defining examples of software such as applications, word processing programs, spreadsheets, "
     },
     {
       "code": "SC.4.PE.1.1",
       "grade": "4",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Explain that when writing programs, a specific initial program environment is necessary."
+      "statement": "Explain that when writing programs, a specific initial program environment is necessary. Clarifications : Clarification 1: Initial program environment can include initial score, character position or program variables set to zero. Clarification 2: Instruction includes activities that are digital or "
     },
     {
       "code": "SC.4.PE.1.2",
       "grade": "4",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a condition that will modify a situation or value in the program."
+      "statement": "Create a condition that will modify a situation or value in the program. Clarifications : Clarification 1: In programs that award points, points will not be less than zero. Examples : Example: Use tally marks in a game to designate points and add or subtract tally marks based on the given condition "
     },
     {
       "code": "SC.4.PE.2.1",
       "grade": "4",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Collect, organize and graph data."
+      "statement": "Collect, organize and graph data. Clarifications : Clarification 1: The collection, organization and graphing of data can be done with and without the use of technology. Clarification 2: Graphical representations are limited to tables, stem-and-leaf plots, line plots, bar graphs or pictographs. Exam"
     },
     {
       "code": "SC.4.PE.2.2",
       "grade": "4",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Analyze a graphical representation of data."
+      "statement": "Analyze a graphical representation of data. Examples : Example: When a student is analyzing a graph, they will reference the collected data."
     },
     {
       "code": "SC.4.PE.3.1",
@@ -1094,7 +1096,7 @@
       "grade": "4",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Define plagiarism and explore the impacts of plagiarized materials."
+      "statement": "Define plagiarism and explore the impacts of plagiarized materials. Clarifications : Clarification 1: Instruction includes the connection to text-based evidence."
     },
     {
       "code": "SC.5.CC.1.1",
@@ -1157,14 +1159,14 @@
       "grade": "5",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Define the 20-20-20 rule for technology."
+      "statement": "Define the 20-20-20 rule for technology. Clarifications : Clarification 1: For instruction of this benchmark, the 20-20-20 rule is defined as for every 20 minutes of screen time, look at an object 20 feet away for 20 seconds."
     },
     {
       "code": "SC.5.HS.2.2",
       "grade": "5",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Discuss ways to counteract digital fatigue."
+      "statement": "Discuss ways to counteract digital fatigue. Clarifications : Clarification 1: Counteraction methods include blue light glasses, rest, digital detachment and more."
     },
     {
       "code": "SC.5.HS.3.1",
@@ -1178,28 +1180,28 @@
       "grade": "5",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe the function and purpose of various input/output devices."
+      "statement": "Describe the function and purpose of various input/output devices. Clarifications : Clarification 1: Input devices include: keyboards, controllers, microphones and other devices. Clarification 2: Output devices include: speakers, monitors, printers and other devices."
     },
     {
       "code": "SC.5.CO.1.2",
       "grade": "5",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Create a digital project that answers a research question, clearly communicating thoughts and ideas."
+      "statement": "Create a digital project that answers a research question, clearly communicating thoughts and ideas. Clarifications : Clarification 1: Instruction includes both collaboratively and independently."
     },
     {
       "code": "SC.5.CO.1.3",
       "grade": "5",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Explore the use of keyboard shortcuts."
+      "statement": "Explore the use of keyboard shortcuts. Clarifications : Clarification 1: Instruction includes the use of an actual keyboard and a printed version of a keyboard. Clarification 2: Instruction includes the understanding that not all computers have the same shortcuts. Clarification 3: Shortcut functions"
     },
     {
       "code": "SC.5.CO.1.4",
       "grade": "5",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Explore the use of the keyboard with proper finger placement for all rows."
+      "statement": "Explore the use of the keyboard with proper finger placement for all rows. Clarifications : Clarification 1: Instruction includes the use of an actual keyboard and a printed version of a keyboard."
     },
     {
       "code": "SC.5.CO.1.5",
@@ -1220,14 +1222,14 @@
       "grade": "5",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify hardware components in the computation cycle as input, processing, output and storage."
+      "statement": "Identify hardware components in the computation cycle as input, processing, output and storage. Clarifications : Clarification 1: Instruction includes what system components have one purpose or multiple purposes such as input, output, storage and processing. Examples : Example: As Oscar is playing a"
     },
     {
       "code": "SC.5.CO.2.2",
       "grade": "5",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Troubleshoot hardware problems that may occur during everyday use."
+      "statement": "Troubleshoot hardware problems that may occur during everyday use. Clarifications : Clarification 1: Within this benchmark, common problems include powering on devices, checking cable connections and checking settings."
     },
     {
       "code": "SC.5.CO.3.1",
@@ -1241,7 +1243,7 @@
       "grade": "5",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Troubleshoot software problems that may occur during everyday use."
+      "statement": "Troubleshoot software problems that may occur during everyday use. Clarifications : Clarification 1: Within this benchmark, common tasks include refreshing the screen, closing out and reopening the application, completely rebooting, checking compatibility and updating software."
     },
     {
       "code": "SC.5.PE.1.1",
@@ -1255,7 +1257,7 @@
       "grade": "5",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a program in a graphical environment."
+      "statement": "Create a program in a graphical environment. Clarifications : Clarification 1: Graphical environments include block-based and visual coding environments."
     },
     {
       "code": "SC.5.PE.1.3",
@@ -1276,7 +1278,7 @@
       "grade": "5",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Describe examples of databases from everyday life."
+      "statement": "Describe examples of databases from everyday life. Clarifications : Clarification 1: Instruction includes: barcode categories, school records, telephone directories and contact lists."
     },
     {
       "code": "SC.5.PE.2.2",
@@ -1290,42 +1292,42 @@
       "grade": "5",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Analyze the data from a given scenario."
+      "statement": "Analyze the data from a given scenario. Clarifications : Clarification 1: Scenarios should make the connection to science or math. Examples : Example: Kysha observed the moon for a month and kept a journal describing the moon, including its apparent shape and size. She will analyze her journal to dr"
     },
     {
       "code": "SC.5.PE.3.1",
       "grade": "5",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Identify the concepts illustrated by a simulation that offers problems and solutions."
+      "statement": "Identify the concepts illustrated by a simulation that offers problems and solutions. Clarifications : Clarification 1: Instruction includes simulations such as ecosystem, predator/prey and invasive species."
     },
     {
       "code": "SC.5.PE.3.2",
       "grade": "5",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Solve problems using digital graphic organizers."
+      "statement": "Solve problems using digital graphic organizers. Clarifications : Clarification 1: Instruction includes concept maps and Venn diagrams."
     },
     {
       "code": "SC.5.PE.3.3",
       "grade": "5",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Explain that there are several possible algorithms for searching within a dataset."
+      "statement": "Explain that there are several possible algorithms for searching within a dataset. Clarifications : Clarification 1: Possible algorithms could be a specific word in a word list or a card in a deck of cards."
     },
     {
       "code": "SC.5.PE.3.4",
       "grade": "5",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Explain how to identify and correct logical errors in algorithms."
+      "statement": "Explain how to identify and correct logical errors in algorithms. Clarifications : Clarification 1: Logical errors include written, mapped live action or digital."
     },
     {
       "code": "SC.5.TI.1.1",
       "grade": "5",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Explain how access to technology helps empower individuals and groups."
+      "statement": "Explain how access to technology helps empower individuals and groups. Clarifications : Clarification 1: Empowerment includes access to information, worldwide communication and e-commerce."
     },
     {
       "code": "SC.5.TI.1.2",
@@ -1346,14 +1348,14 @@
       "grade": "5",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Compare digital resources."
+      "statement": "Compare digital resources. Clarifications : Clarification 1: Comparisons include accuracy, relevancy and appropriateness."
     },
     {
       "code": "SC.5.TI.2.2",
       "grade": "5",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Describe the purpose of copyright."
+      "statement": "Describe the purpose of copyright. Clarifications : Clarification 1: Instruction includes recognizing the symbol that represents copyright."
     },
     {
       "code": "SC.5.TI.2.3",
@@ -1367,7 +1369,7 @@
       "grade": "5",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Verify information from digital resources."
+      "statement": "Verify information from digital resources. Clarifications : Clarification 1: Instruction includes verifying information from research conducted independently."
     },
     {
       "code": "SC.5.TI.2.5",
@@ -1388,7 +1390,7 @@
       "grade": "6",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Create a digital product individually and collaboratively."
+      "statement": "Create a digital product individually and collaboratively. Clarifications : Clarification 1: When creating a product, students should be able to design and publish the product. Clarification 2: Products include those that can inform, persuade or entertain."
     },
     {
       "code": "SC.6.HS.1.1",
@@ -1402,21 +1404,21 @@
       "grade": "6",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Discuss the need for downloads to come from trusted sources."
+      "statement": "Discuss the need for downloads to come from trusted sources. Clarifications : Clarification 1: Instruction focuses on a source\u2019s legitimacy."
     },
     {
       "code": "SC.6.HS.1.3",
       "grade": "6",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Describe safe practices when participating in digital communication."
+      "statement": "Describe safe practices when participating in digital communication. Clarifications : Clarification 1: Instruction focuses on communications within discussion groups and blogs."
     },
     {
       "code": "SC.6.HS.1.4",
       "grade": "6",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Evaluate a given website to determine if it is safe for users."
+      "statement": "Evaluate a given website to determine if it is safe for users. Clarifications : Clarification 1: Instruction includes discussing the accuracy and security of given websites. Clarification 2: Instruction includes types of personal information required for access and whether it is encrypted (https)."
     },
     {
       "code": "SC.6.HS.2.1",
@@ -1430,35 +1432,35 @@
       "grade": "6",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "List negative impacts of excessive device usage."
+      "statement": "List negative impacts of excessive device usage. Clarifications : Clarification 1: Instruction includes device addiction, online versus in-person personality traits, digital overload and others."
     },
     {
       "code": "SC.6.HS.2.3",
       "grade": "6",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Implement the 20-20-20 rule for technology."
+      "statement": "Implement the 20-20-20 rule for technology. Clarifications : Clarification 1: For instruction of this benchmark, the 20-20-20 rule is defined as for every 20 minutes of screen time, look at an object 20 feet away for 20 seconds."
     },
     {
       "code": "SC.6.HS.3.1",
       "grade": "6",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Explore the impact that digital media and communication has on our behavior."
+      "statement": "Explore the impact that digital media and communication has on our behavior. Clarifications : Clarification 1: Instruction includes identifying impacts of computing, social networking and web technologies on an individual and society."
     },
     {
       "code": "SC.6.CO.1.1",
       "grade": "6",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify multiple file format types."
+      "statement": "Identify multiple file format types. Clarifications : Clarification 1: Within this benchmark, file types include formats for word processing, images, music and three-dimensional drawings. Clarification 2: Instruction includes explaining why different file types exist."
     },
     {
       "code": "SC.6.CO.1.2",
       "grade": "6",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify applications that have different desktop and online versions."
+      "statement": "Identify applications that have different desktop and online versions. Clarifications : Clarification 1: Instruction includes desktop versions and online subscription services."
     },
     {
       "code": "SC.6.CO.1.3",
@@ -1472,7 +1474,7 @@
       "grade": "6",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe how information is translated and communicated between computers and devices over a network."
+      "statement": "Describe how information is translated and communicated between computers and devices over a network. Clarifications : Clarification 1: Instruction focuses on both text and non-text information."
     },
     {
       "code": "SC.6.CO.1.5",
@@ -1486,56 +1488,56 @@
       "grade": "6",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Research questions using digital information resources."
+      "statement": "Research questions using digital information resources. Clarifications : Clarification 1: Research questions should make connections to scientific and statistical questions within this grade level."
     },
     {
       "code": "SC.6.CO.2.1",
       "grade": "6",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify and describe the major hardware components and functions of computer systems."
+      "statement": "Identify and describe the major hardware components and functions of computer systems. Clarifications : Clarification 1: Major hardware components include motherboards, processors, hard drives, random access memory (RAM) and cooling fans."
     },
     {
       "code": "SC.6.CO.3.1",
       "grade": "6",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe the essential characteristics of a software artifact."
+      "statement": "Describe the essential characteristics of a software artifact. Clarifications : Clarification 1: Essential characteristics include usability, completeness and accuracy. Clarification 2: Instruction includes evaluating the effective use of a given program."
     },
     {
       "code": "SC.6.CO.3.2",
       "grade": "6",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe the main functions of an operating system."
+      "statement": "Describe the main functions of an operating system. Clarifications : Clarification 1: Functions include user interface, input and output (IO), device management and task management."
     },
     {
       "code": "SC.6.CO.3.3",
       "grade": "6",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Explain how an operating system provides user and system services."
+      "statement": "Explain how an operating system provides user and system services. Clarifications : Clarification 1: Instruction includes discussing how an operating system manages the computer hardware and software."
     },
     {
       "code": "SC.6.CO.3.4",
       "grade": "6",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe the major software components and functions of computer systems."
+      "statement": "Describe the major software components and functions of computer systems. Clarifications : Clarification 1: Major software components include operating system, application programs, graphics, firmware and others."
     },
     {
       "code": "SC.6.CO.3.5",
       "grade": "6",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Evaluate various forms of input and output (IO) and peripheral devices."
+      "statement": "Evaluate various forms of input and output (IO) and peripheral devices. Clarifications : Clarification 1: Input and output and peripheral devices include monitor, mouse, printer, keyboard, headphone, speakers and microphone."
     },
     {
       "code": "SC.6.PE.1.1",
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Identify the types of operations that can be performed on different data types."
+      "statement": "Identify the types of operations that can be performed on different data types. Clarifications : Clarification 1: Operations include arithmetic operations and logical operations."
     },
     {
       "code": "SC.6.PE.1.2",
@@ -1549,14 +1551,14 @@
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Develop a program using a numeric data type."
+      "statement": "Develop a program using a numeric data type. Clarifications : Clarification 1: Instruction includes integers and floats."
     },
     {
       "code": "SC.6.PE.1.4",
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Index selected items within a list."
+      "statement": "Index selected items within a list. Clarifications : Clarification 1: Instruction includes indexing items from a list in a spreadsheet, array list or programming language."
     },
     {
       "code": "SC.6.PE.1.5",
@@ -1570,49 +1572,49 @@
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Develop a program using a Boolean data type."
+      "statement": "Develop a program using a Boolean data type. Clarifications : Clarification 1: Boolean data types include true or false; yes or no; on or off; and 1 or 0."
     },
     {
       "code": "SC.6.PE.1.7",
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Write code segments that use standard mathematical operators."
+      "statement": "Write code segments that use standard mathematical operators. Clarifications : Clarification 1: Instruction includes the use of addition, subtraction, multiplication and division. Clarification 2: Within this benchmark, instruction includes the use of inequalities."
     },
     {
       "code": "SC.6.PE.1.8",
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Use a function for a specified purpose."
+      "statement": "Use a function for a specified purpose. Clarifications : Clarification 1: Within this benchmark, the term function and procedure can be used interchangeably. Clarification 2: Instruction includes consideration of the intake and output of information."
     },
     {
       "code": "SC.6.PE.1.9",
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Use looping techniques for a specified purpose."
+      "statement": "Use looping techniques for a specified purpose. Clarifications : Clarification 1: Within this benchmark, the terms iteration and loop will be used interchangeably."
     },
     {
       "code": "SC.6.PE.1.10",
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Use conditional statements for a specified purpose."
+      "statement": "Use conditional statements for a specified purpose. Clarifications : Clarification 1: Within this benchmark, the term selection and conditional statement will be used interchangeably."
     },
     {
       "code": "SC.6.PE.1.11",
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Design solutions that use repetition and two-way selection."
+      "statement": "Design solutions that use repetition and two-way selection. Clarifications : Clarification 1: Within this benchmark two-way selections include while, for and if/else statements."
     },
     {
       "code": "SC.6.PE.2.1",
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create designated graph types using data."
+      "statement": "Create designated graph types using data. Clarifications : Clarification 1: Graph types include graphs, charts, tables and Venn diagram."
     },
     {
       "code": "SC.6.PE.2.2",
@@ -1626,7 +1628,7 @@
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a simple database."
+      "statement": "Create a simple database. Clarifications : Clarification 1: Within this benchmark, the expectation is that a simple database includes defining field formats, adding new records or manipulating data."
     },
     {
       "code": "SC.6.PE.3.1",
@@ -1661,14 +1663,14 @@
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a visual representation of a solution to a problem."
+      "statement": "Create a visual representation of a solution to a problem. Clarifications : Clarification 1: Instruction includes visually writing out a program plan."
     },
     {
       "code": "SC.6.PE.3.6",
       "grade": "6",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Evaluate the logical flow of a step-by-step program by acting it out through computer-free activities."
+      "statement": "Evaluate the logical flow of a step-by-step program by acting it out through computer-free activities. Clarifications : Clarification 1: Instruction includes drafting a flowchart."
     },
     {
       "code": "SC.6.PE.3.7",
@@ -1689,14 +1691,14 @@
       "grade": "6",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Recognize the data content sources that make your digital footprint."
+      "statement": "Recognize the data content sources that make your digital footprint. Clarifications : Clarification 1: Instruction includes permanence of digital footprint. Clarification 2: Within this benchmark, digital footprint includes digital profiles and other forms of personally identifiable information (PII"
     },
     {
       "code": "SC.6.TI.1.2",
       "grade": "6",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Explore the history of computer and other devices."
+      "statement": "Explore the history of computer and other devices. Clarifications : Clarification 1: Instruction includes legacy devices and antiquated technology."
     },
     {
       "code": "SC.6.TI.1.3",
@@ -1717,7 +1719,7 @@
       "grade": "6",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Recognize the consequences of plagiarism on the development of creative works."
+      "statement": "Recognize the consequences of plagiarism on the development of creative works. Clarifications : Clarification 1: Creative works include projects, publications and online content. Clarification 2: Instruction includes defining intellectual property."
     },
     {
       "code": "SC.6.TI.2.2",
@@ -1731,7 +1733,7 @@
       "grade": "6",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Explain fair use for using copyrighted materials."
+      "statement": "Explain fair use for using copyrighted materials. Clarifications : Clarification 1: Copyrighted materials include images, music, video and text."
     },
     {
       "code": "SC.6.TI.2.4",
@@ -1745,7 +1747,7 @@
       "grade": "6",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Identify technology used to support specialized forms of human- computer interaction (HCI)."
+      "statement": "Identify technology used to support specialized forms of human- computer interaction (HCI). Clarifications : Clarification 1: Technologies may include augmented reality (AR), virtual reality (VR) and others."
     },
     {
       "code": "SC.6.ET.1.2",
@@ -1787,7 +1789,7 @@
       "grade": "6",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Define the states of data."
+      "statement": "Define the states of data. Clarifications : Clarification 1: States of data include data at rest, data in motion and data in use."
     },
     {
       "code": "SC.6.CS.1.2",
@@ -1836,14 +1838,14 @@
       "grade": "7",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Apply multimedia tools for local and global group collaboration."
+      "statement": "Apply multimedia tools for local and global group collaboration. Clarifications : Clarification 1: Tools include collaborative spreadsheets, video conferencing software, collaborative forms, image editing software and other programs."
     },
     {
       "code": "SC.7.CC.1.2",
       "grade": "7",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Identify productivity tools for collaboration."
+      "statement": "Identify productivity tools for collaboration. Clarifications : Clarification 1: Instruction includes shared calendars, group messaging applications and other project management software."
     },
     {
       "code": "SC.7.CC.1.3",
@@ -1871,7 +1873,7 @@
       "grade": "7",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Explain the possible consequences of cyberbullying."
+      "statement": "Explain the possible consequences of cyberbullying. Clarifications : Clarification 1: Instruction includes the consequences that our society and schools might impose."
     },
     {
       "code": "SC.7.HS.1.2",
@@ -1892,7 +1894,7 @@
       "grade": "7",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Categorize potential dangers to an individual\u2019s safety and security."
+      "statement": "Categorize potential dangers to an individual\u2019s safety and security. Clarifications : Clarification 1: Instruction includes the use of email, chat rooms and other forms of direct electronic communication. Clarification 2: Within this benchmark, dangers include predatory behavior and human traffickin"
     },
     {
       "code": "SC.7.HS.1.5",
@@ -1906,14 +1908,14 @@
       "grade": "7",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Compare the risks and benefits of accessing the Internet."
+      "statement": "Compare the risks and benefits of accessing the Internet. Clarifications : Clarification 1: Instruction includes access to websites, web applications or software that does not protect against the disclosure, use or dissemination of an individual\u2019s personal information."
     },
     {
       "code": "SC.7.HS.1.7",
       "grade": "7",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Examine safe practices for technology use."
+      "statement": "Examine safe practices for technology use. Clarifications : Clarification 1: Instruction includes discussing personal information security. Clarification 2: Instruction includes discussing personal safety when utilizing technology."
     },
     {
       "code": "SC.7.HS.2.1",
@@ -1948,21 +1950,21 @@
       "grade": "7",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify the kinds of content associated with different file types."
+      "statement": "Identify the kinds of content associated with different file types. Clarifications : Clarification 1: Within this benchmark, file types include .mp3\u2019s association with audio, .mp4\u2019s association with video and various file types associated with digital documents."
     },
     {
       "code": "SC.7.CO.1.2",
       "grade": "7",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Differentiate between different file types."
+      "statement": "Differentiate between different file types. Clarifications : Clarification 1: Instruction includes researching different types of documents such as .docx, .pdf, .stl, .jpg and others. Examples : Example: Lukas is working on a resume to apply for a job at his local grocery store. The grocery store ju"
     },
     {
       "code": "SC.7.CO.1.3",
       "grade": "7",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe the relationship between hardware and software."
+      "statement": "Describe the relationship between hardware and software. Clarifications : Clarification 1: Hardware and software including basic input/output systems (BIOS), operating systems and firmware."
     },
     {
       "code": "SC.7.CO.1.4",
@@ -1976,7 +1978,7 @@
       "grade": "7",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Utilize government websites to facilitate civic engagement."
+      "statement": "Utilize government websites to facilitate civic engagement. Clarifications : Clarification 1: Within this benchmark, students will access local, state and federal government websites."
     },
     {
       "code": "SC.7.CO.1.6",
@@ -1997,14 +1999,14 @@
       "grade": "7",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify and describe the function of the main internal parts of a basic computing device."
+      "statement": "Identify and describe the function of the main internal parts of a basic computing device. Clarifications : Clarification 1: Instruction includes motherboard, hard drive, central processing unit (CPU), random access memory (RAM), graphics processing unit (GPU) and other components."
     },
     {
       "code": "SC.7.CO.2.3",
       "grade": "7",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Explore devices that contain firmware."
+      "statement": "Explore devices that contain firmware. Clarifications : Clarification 1: Instruction includes defining firmware and exploring the importance of it."
     },
     {
       "code": "SC.7.CO.2.4",
@@ -2018,14 +2020,14 @@
       "grade": "7",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Differentiate between desktop applications and software as a service (SaaS)."
+      "statement": "Differentiate between desktop applications and software as a service (SaaS). Clarifications : Clarification 1: Instruction includes programs that have an online counterpart with varying functionality."
     },
     {
       "code": "SC.7.PE.1.1",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a function for a specific purpose."
+      "statement": "Create a function for a specific purpose. Clarifications : Clarification 1: Instruction includes discussing why a program should be program specific rather than generic."
     },
     {
       "code": "SC.7.PE.1.2",
@@ -2039,49 +2041,49 @@
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Develop a logical expression using operator precedence."
+      "statement": "Develop a logical expression using operator precedence. Clarifications : Clarification 1: Problem types include equations that include parenthesis but not nested parentheses. Clarification 2: Instruction focuses on the connection between properties of equality and order of operations."
     },
     {
       "code": "SC.7.PE.1.4",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Develop an arithmetic expression using operator precedence."
+      "statement": "Develop an arithmetic expression using operator precedence. Clarifications : Clarification 1: Problem types include equations that include parenthesis but not nested parentheses. Clarification 2: Instruction focuses on the connection between properties of equality and order of operations."
     },
     {
       "code": "SC.7.PE.1.5",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Identify the types and uses of variables in a program."
+      "statement": "Identify the types and uses of variables in a program. Clarifications : Clarification 1: Instruction includes explaining the use of variables in a program. Clarification 2: Instruction includes demonstrating how different data types are defined in variables within a given program."
     },
     {
       "code": "SC.7.PE.1.6",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Develop problem solutions using a block programming language."
+      "statement": "Develop problem solutions using a block programming language. Clarifications : Clarification 1: Block programming language includes looping behavior, conditional statements, expressions, variables and functions."
     },
     {
       "code": "SC.7.PE.1.7",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create online content using advanced design tools."
+      "statement": "Create online content using advanced design tools. Clarifications : Clarification 1: Within this benchmark, online content includes webpages, digital portfolios and multimedia artifacts."
     },
     {
       "code": "SC.7.PE.1.8",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Identify different types of programming errors."
+      "statement": "Identify different types of programming errors. Clarifications : Clarification 1: Types of programming errors include syntax, logical and runtime."
     },
     {
       "code": "SC.7.PE.1.9",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Debug a program using iterative development."
+      "statement": "Debug a program using iterative development. Examples : Example: How is the iterative development of a computer program and an essay alike and different? Example: Create a series of steps that you can repeat over and over to help find errors in a computer program."
     },
     {
       "code": "SC.7.PE.1.10",
@@ -2095,7 +2097,7 @@
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create iterative and non-iterative structures in a code segment."
+      "statement": "Create iterative and non-iterative structures in a code segment. Clarifications : Clarification 1: Instruction includes the Fibonacci sequence."
     },
     {
       "code": "SC.7.PE.2.1",
@@ -2109,14 +2111,14 @@
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Analyze digital data within a database."
+      "statement": "Analyze digital data within a database. Clarifications : Clarification 1: Instruction includes generating graphs, generating reports and structuring data."
     },
     {
       "code": "SC.7.PE.3.1",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Define parameters for individual and collaborative projects using Boolean logic."
+      "statement": "Define parameters for individual and collaborative projects using Boolean logic. Clarifications : Clarification 1: Boolean logic includes \u201cand,\u201d \u201cor\u201d and \u201cnot.\u201d"
     },
     {
       "code": "SC.7.PE.3.2",
@@ -2137,21 +2139,21 @@
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Define the concept of a class related to object-oriented programming."
+      "statement": "Define the concept of a class related to object-oriented programming. Clarifications : Clarification 1: Instruction includes understanding that in object-oriented programming, a class is the outline for objects or attributes."
     },
     {
       "code": "SC.7.PE.3.5",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Identify the purpose of indexing the order of elements in a list."
+      "statement": "Identify the purpose of indexing the order of elements in a list. Clarifications : Clarification 1: Instruction includes the potential of different programming languages indexing differently."
     },
     {
       "code": "SC.7.PE.3.6",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Perform program tracing to predict the behavior of programs."
+      "statement": "Perform program tracing to predict the behavior of programs. Examples : Example: Students received a program to randomize passwords. The students must read through the program and interpret the logic for each section of the program and write them out in their own words predicting what each section w"
     },
     {
       "code": "SC.7.PE.3.7",
@@ -2200,7 +2202,7 @@
       "grade": "7",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Summarize the historical impact of digital media and communication."
+      "statement": "Summarize the historical impact of digital media and communication. Clarifications : Clarification 1: Instruction includes discussing the historical purposes of digital media and communication."
     },
     {
       "code": "SC.7.TI.1.6",
@@ -2221,7 +2223,7 @@
       "grade": "7",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Describe and model responsible use of modern communication media and devices."
+      "statement": "Describe and model responsible use of modern communication media and devices. Clarifications : Clarification 1: Instruction includes discussion of personal information security."
     },
     {
       "code": "SC.7.TI.2.3",
@@ -2277,28 +2279,28 @@
       "grade": "7",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Identify ways humans interact with computers."
+      "statement": "Identify ways humans interact with computers. Clarifications : Clarification 1: Instruction includes software and user interface."
     },
     {
       "code": "SC.7.ET.3.3",
       "grade": "7",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Identify ways humans interact with hardware components."
+      "statement": "Identify ways humans interact with hardware components. Clarifications : Clarification 1: Instruction includes probes, sensors and handheld devices."
     },
     {
       "code": "SC.7.CS.1.1",
       "grade": "7",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Describe data in its three states and potential threats to each state."
+      "statement": "Describe data in its three states and potential threats to each state. Clarifications : Clarification 1: The three states of data are data in use, data at rest and data in motion."
     },
     {
       "code": "SC.7.CS.1.2",
       "grade": "7",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Explain the concept of access control and how to limit access to authorized users."
+      "statement": "Explain the concept of access control and how to limit access to authorized users. Clarifications : Clarification 1: Students should examine more advanced authentication and authorization methods, such as two-factor, multifactor and biometric."
     },
     {
       "code": "SC.7.CS.1.3",
@@ -2319,7 +2321,7 @@
       "grade": "7",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Explain components of access control."
+      "statement": "Explain components of access control. Clarifications : Clarification 1: Components of access control include identification, authentication, authorization, accountability and non-repudiation."
     },
     {
       "code": "SC.7.CS.1.6",
@@ -2340,14 +2342,14 @@
       "grade": "7",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Identify actions that protect electronic devices."
+      "statement": "Identify actions that protect electronic devices. Clarifications : Clarification 1: Actions include protecting devices from viruses, intrusion, vandalism and other malicious activities."
     },
     {
       "code": "SC.7.CS.2.1",
       "grade": "7",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Define the Internet of Things (IoT)."
+      "statement": "Define the Internet of Things (IoT). Clarifications : Clarification 1: Instruction includes understanding that IoT is a network of devices, normally physical objects with sensors, that exchange information and data with one another and to computing systems."
     },
     {
       "code": "SC.7.CS.3.1",
@@ -2368,49 +2370,49 @@
       "grade": "7",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Identify data vulnerabilities."
+      "statement": "Identify data vulnerabilities. Clarifications : Clarification 1: Instruction includes password strength (alphanumeric passwords), biometric access and two-factor authentication. Clarification 2: Within this benchmark, encryptions include cryptography, Ceasar cypher, MD5 hashing and Vigen\u00e8re cypher."
     },
     {
       "code": "SC.8.CC.1.1",
       "grade": "8",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Design a digital product."
+      "statement": "Design a digital product. Clarifications : Clarification 1: Instruction includes creating a product pertaining to the real world using a variety of digital tools and resources. Clarification 2: Instruction includes the creation of a digital product that provides value to society individually or coll"
     },
     {
       "code": "SC.8.CC.1.2",
       "grade": "8",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Evaluate the benefits of collaboration compared to individual product creation."
+      "statement": "Evaluate the benefits of collaboration compared to individual product creation. Clarifications : Clarification 1: Instruction includes circumstances in which working as a collaborative group would not be optimal or possible."
     },
     {
       "code": "SC.8.CC.2.1",
       "grade": "8",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Publish a digital product individually and collaboratively."
+      "statement": "Publish a digital product individually and collaboratively. Clarifications : Clarification 1: Instruction includes creating a product pertaining to the real- world, using a variety of digital tools and resources. Clarification 2: Instruction includes publication of a digital product that provides va"
     },
     {
       "code": "SC.8.HS.1.1",
       "grade": "8",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Describe the impacts of the presence of technology and the lack of technology on everyday life."
+      "statement": "Describe the impacts of the presence of technology and the lack of technology on everyday life. Clarifications : Clarification 1: Instruction includes comparing how the presence of technology has impacted our daily lives and how the lack of technology has impacted our daily lives."
     },
     {
       "code": "SC.8.HS.1.2",
       "grade": "8",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Develop procedures to protect personal information while accessing the Internet."
+      "statement": "Develop procedures to protect personal information while accessing the Internet. Clarifications : Clarification 1: Instruction includes access to websites, web applications or software that does not protect against the disclosure, use or dissemination of an individual\u2019s personal information. Clarifi"
     },
     {
       "code": "SC.8.HS.1.3",
       "grade": "8",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Model a procedure to mitigate risks to personal safety while accessing the Internet."
+      "statement": "Model a procedure to mitigate risks to personal safety while accessing the Internet. Clarifications : Clarification 1: Instruction focuses on knowledge of location and personal privacy. Examples : Example: Jennifer is playing a game online competing against other players. Her opponent has messaged w"
     },
     {
       "code": "SC.8.HS.2.1",
@@ -2424,14 +2426,14 @@
       "grade": "8",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Investigate the causes of headaches associated with digital device usage."
+      "statement": "Investigate the causes of headaches associated with digital device usage. Clarifications : Clarification 1: Within this benchmark, causes include but are not limited to poor posture, dehydration, blue light and eye strain."
     },
     {
       "code": "SC.8.HS.2.3",
       "grade": "8",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Investigate the causes of physical body changes due to device usage."
+      "statement": "Investigate the causes of physical body changes due to device usage. Clarifications : Clarification 1: Focal points include research on muscle, nervous and bone systems. Clarification 2: Instruction is limited to the physical effects of direct digital device usage."
     },
     {
       "code": "SC.8.HS.2.4",
@@ -2452,7 +2454,7 @@
       "grade": "8",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Analyze how digital media and communication influence behavior."
+      "statement": "Analyze how digital media and communication influence behavior. Clarifications : Clarification 1: Instruction includes the influences on individuals, communities and cultures."
     },
     {
       "code": "SC.8.CO.1.1",
@@ -2466,7 +2468,7 @@
       "grade": "8",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Create a collaborative project utilizing an online digital application."
+      "statement": "Create a collaborative project utilizing an online digital application. Clarifications : Clarification 1: Projects include those that inform, persuade and entertain others."
     },
     {
       "code": "SC.8.CO.2.1",
@@ -2480,14 +2482,14 @@
       "grade": "8",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Explore different hardware specifications and their impact on the performance of the computer."
+      "statement": "Explore different hardware specifications and their impact on the performance of the computer. Clarifications : Clarification 1: Instruction includes multicore processing, refresh rates and their impact on operation."
     },
     {
       "code": "SC.8.CO.2.3",
       "grade": "8",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify the major components of a network."
+      "statement": "Identify the major components of a network. Clarifications : Clarification 1: Within this benchmark, the components include connection, connecting point and other devices to communicate with."
     },
     {
       "code": "SC.8.CO.3.1",
@@ -2501,35 +2503,35 @@
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Use an expression for a specified purpose."
+      "statement": "Use an expression for a specified purpose. Examples : Example: Simon has been asked to develop a rock/paper/scissors game. He assigns rock as the number 1, paper as the number 2 and scissors as the number 3. Develop expressions that will allow the game to output a winner based off the combination of"
     },
     {
       "code": "SC.8.PE.1.2",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a programming process for decomposing a problem."
+      "statement": "Create a programming process for decomposing a problem. Clarifications : Clarification 1: Within this benchmark, the term function and procedure can be used interchangeably. Clarification 2: Instruction includes consideration of the intake and output of information."
     },
     {
       "code": "SC.8.PE.1.3",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a function with parameters."
+      "statement": "Create a function with parameters. Clarifications : Clarification 1: Instruction includes understanding that a parameter is a kind of variable that is defined in the function."
     },
     {
       "code": "SC.8.PE.1.4",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Explain the use of iterative and non-iterative structures and their uses as a code segment."
+      "statement": "Explain the use of iterative and non-iterative structures and their uses as a code segment. Clarifications : Clarification 1: Instruction includes discussing that iteration is a process repeated until a specific end result."
     },
     {
       "code": "SC.8.PE.1.5",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create an algorithm to solve one or more parts of a decomposed problem."
+      "statement": "Create an algorithm to solve one or more parts of a decomposed problem. Clarifications : Clarification 1: Instruction focuses on creating algorithms that are efficient, reliable and valid. Clarification 2: Context for problems include video games, robot obstacle course and making dinner."
     },
     {
       "code": "SC.8.PE.1.6",
@@ -2543,21 +2545,21 @@
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Design an application for a specified purpose."
+      "statement": "Design an application for a specified purpose. Examples : Example: A marine biologist conducting research at the FSU Coastal and Marine Laboratory is trying to determine why periwinkle snails climb to the top of marsh seagrass. Design a program to determine the time of day that the majority of snail"
     },
     {
       "code": "SC.8.PE.1.8",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Recognize different numerical data types."
+      "statement": "Recognize different numerical data types. Clarifications : Clarification 1: Instruction includes decimal type (floating point) and integers."
     },
     {
       "code": "SC.8.PE.1.9",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Design a program that will assist a user with equations using standard mathematical operators."
+      "statement": "Design a program that will assist a user with equations using standard mathematical operators. Clarifications : Clarification 1: Instruction includes the use of addition, subtraction, multiplication and division. Clarification 2: Within this benchmark, instruction includes the use of inequalities. C"
     },
     {
       "code": "SC.8.PE.1.10",
@@ -2571,35 +2573,35 @@
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Identify the limitations that need to be recognized when creating an algorithm."
+      "statement": "Identify the limitations that need to be recognized when creating an algorithm. Clarifications : Clarification 1: Instruction includes the necessity to abide by mathematical rules."
     },
     {
       "code": "SC.8.PE.1.12",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Select an efficient algorithm for a given task based on certain criteria."
+      "statement": "Select an efficient algorithm for a given task based on certain criteria. Clarifications : Clarification 1: Within this benchmark, the expectation is that students will not create algorithms, a list will be provided by the teacher. Clarification 2: Criteria may include time, resources and accessibil"
     },
     {
       "code": "SC.8.PE.2.1",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Select and use applicable data-collection technology."
+      "statement": "Select and use applicable data-collection technology. Clarifications : Clarification 1: Instruction includes gathering, viewing, organizing and analyzing data. Clarification 2: Data-collection tools include probes, handheld devices, geographic mapping systems and output from multiple runs of a compu"
     },
     {
       "code": "SC.8.PE.2.2",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Utilize data-collection technology to report results for content-related problems."
+      "statement": "Utilize data-collection technology to report results for content-related problems. Clarifications : Clarification 1: Instruction includes allowing students to operate individually and collaboratively."
     },
     {
       "code": "SC.8.PE.2.3",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Utilize data from simulations to test hypotheses."
+      "statement": "Utilize data from simulations to test hypotheses. Clarifications : Clarification 1: Instruction includes the use of digital modeling."
     },
     {
       "code": "SC.8.PE.2.4",
@@ -2613,7 +2615,7 @@
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Utilize organized data within a database to solve a problem."
+      "statement": "Utilize organized data within a database to solve a problem. Clarifications : Clarification 1: Instruction includes the selection and display of the data using an appropriate graph."
     },
     {
       "code": "SC.8.PE.3.1",
@@ -2627,14 +2629,14 @@
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Explore the purpose of a class."
+      "statement": "Explore the purpose of a class. Clarifications : Clarification 1: Instruction includes understanding that classes can be used to create new objects when programming."
     },
     {
       "code": "SC.8.PE.3.3",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Evaluate the benefits and limitations of the use of models."
+      "statement": "Evaluate the benefits and limitations of the use of models. Clarifications : Clarification 1: Instruction includes consideration of models. Clarification 2: Within this benchmark, instruction includes consideration of safety, cost, time, location and precision. Examples : Example: Mrs. Hooper\u2019s clas"
     },
     {
       "code": "SC.8.PE.4.1",
@@ -2648,28 +2650,28 @@
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Explain the phases of a simple software development life cycle."
+      "statement": "Explain the phases of a simple software development life cycle. Clarifications : Clarification 1: Instruction includes the following phases: describe the project, list necessary steps, take resources into consideration, create a visual representation, actualize the code then perform maintenance for "
     },
     {
       "code": "SC.8.PE.4.3",
       "grade": "8",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Discuss the role of maintenance in the software development cycle."
+      "statement": "Discuss the role of maintenance in the software development cycle. Clarifications : Clarification 1: Instruction includes the outcome of changing, modifying and improving the project to meet the user\u2019s needs."
     },
     {
       "code": "SC.8.TI.1.1",
       "grade": "8",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Examine the historical progression and impact of digital media and communication."
+      "statement": "Examine the historical progression and impact of digital media and communication. Clarifications : Clarification 1: Instruction includes how digital media and communication has changed over time. Clarification 2: Instruction includes physical meeting places prior to the popularity of the Internet."
     },
     {
       "code": "SC.8.TI.1.2",
       "grade": "8",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Describe the influence of access-to-information technologies over time."
+      "statement": "Describe the influence of access-to-information technologies over time. Clarifications : Clarification 1: Instruction includes the effects of information technology on the workplace, education and global society. Clarification 2: Instruction includes the historical impact."
     },
     {
       "code": "SC.8.TI.2.1",
@@ -2732,7 +2734,7 @@
       "grade": "8",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Discuss the utilization of intelligent behavior in technology."
+      "statement": "Discuss the utilization of intelligent behavior in technology. Clarifications : Clarification 1: Instruction includes speech and language understanding and computer vision. Examples : Example: Discuss the autonomous robotic vacuum cleaner\u2019s ability to map and analyze structures to avoid obstacles. E"
     },
     {
       "code": "SC.8.ET.3.1",
@@ -2746,28 +2748,28 @@
       "grade": "8",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Analyze threats and vulnerabilities to information security for individuals and organizations."
+      "statement": "Analyze threats and vulnerabilities to information security for individuals and organizations. Clarifications : Clarification 1: Threats and vulnerabilities such as malware, phishing, smishing and hacks."
     },
     {
       "code": "SC.8.CS.1.2",
       "grade": "8",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Explain how authentication and authorization methods can protect users."
+      "statement": "Explain how authentication and authorization methods can protect users. Clarifications : Clarification 1: Students should examine more advanced authentication and authorization methods, such as two-factor, multifactor and biometric."
     },
     {
       "code": "SC.8.CS.1.3",
       "grade": "8",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Describe defense in-depth strategies to protect simple networks."
+      "statement": "Describe defense in-depth strategies to protect simple networks. Clarifications : Clarification 1: Instruction includes layered strategies, such as firewalls, allow and block lists, changes to default passwords and access points."
     },
     {
       "code": "SC.8.CS.1.4",
       "grade": "8",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Explain how malicious actions threaten network security."
+      "statement": "Explain how malicious actions threaten network security. Clarifications : Clarification 1: Instruction includes malicious actions, such as social engineering, malware and hacks."
     },
     {
       "code": "SC.8.CS.1.5",
@@ -2781,21 +2783,21 @@
       "grade": "8",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Describe defense in depth and how physical access controls work together."
+      "statement": "Describe defense in depth and how physical access controls work together. Clarifications : Clarification 1: Instruction includes authentic and digital physical access controls, such as door locks, ID cards, PIN codes, bollards, lighting, fencing, cameras and guards."
     },
     {
       "code": "SC.8.CS.1.7",
       "grade": "8",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Explore the process of protecting computer hardware from exploitation."
+      "statement": "Explore the process of protecting computer hardware from exploitation. Clarifications : Clarification 1: Instruction includes disabled or unused USB ports, windows lock screens and managed access to restricted areas. Clarification 2: Instruction includes hardware, tablets, phones and other devices."
     },
     {
       "code": "SC.8.CS.2.1",
       "grade": "8",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Evaluate security and privacy issues that relate to computer networks and Internet of Things (IoT) devices."
+      "statement": "Evaluate security and privacy issues that relate to computer networks and Internet of Things (IoT) devices. Clarifications : Clarification 1: Devices include phones, tablets, smartwatches and other emerging technologies."
     },
     {
       "code": "SC.8.CS.2.2",
@@ -2809,7 +2811,7 @@
       "grade": "8",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Describe the permanency of data on the Internet, online identity and personal privacy."
+      "statement": "Describe the permanency of data on the Internet, online identity and personal privacy. Clarifications : Clarification 1: Instruction includes discussing the \u201cRight to be Forgotten.\u201d"
     },
     {
       "code": "SC.8.CS.3.1",
@@ -2837,21 +2839,21 @@
       "grade": "912",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Evaluate digital modes of communication and collaboration."
+      "statement": "Evaluate digital modes of communication and collaboration. Clarifications : Clarification 1: Instruction includes examples of appropriate tools including email, instant messaging, word processors and virtual meeting software."
     },
     {
       "code": "SC.912.CC.1.2",
       "grade": "912",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Utilize tools within a project environment to communicate."
+      "statement": "Utilize tools within a project environment to communicate. Clarifications : Clarification 1: Instruction includes discussing the productivity of each tool."
     },
     {
       "code": "SC.912.CC.1.3",
       "grade": "912",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Present information and data using presentation software."
+      "statement": "Present information and data using presentation software. Clarifications : Clarification 1: Instruction includes computing devices such as probes, sensors, software tools, programs and handheld devices. Clarification 2: Instruction includes analyzing and presenting interactive data visualizations."
     },
     {
       "code": "SC.912.CC.1.4",
@@ -2872,14 +2874,14 @@
       "grade": "912",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Assess how collaboration influences the design and development of software artifacts."
+      "statement": "Assess how collaboration influences the design and development of software artifacts. Clarifications : Clarification 1: Instruction includes comparing an individually designed project to a collaboratively designed project."
     },
     {
       "code": "SC.912.CC.2.3",
       "grade": "912",
       "strand": "CC",
       "type": "benchmark",
-      "statement": "Evaluate program designs and implementations for readability and usability."
+      "statement": "Evaluate program designs and implementations for readability and usability. Clarifications : Clarification 1: Instruction includes evaluating programs done by third parties, peers and marketable programs."
     },
     {
       "code": "SC.912.CC.2.4",
@@ -2893,42 +2895,42 @@
       "grade": "912",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Identify potential dangers to an individual\u2019s safety and security online."
+      "statement": "Identify potential dangers to an individual\u2019s safety and security online. Clarifications : Clarification 1: Instruction includes the use of email, chat rooms and other forms of direct electronic communication. Clarification 2: Instruction includes the dangers of direct electronic communication inclu"
     },
     {
       "code": "SC.912.HS.1.2",
       "grade": "912",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Evaluate the consequences of cyberbullying."
+      "statement": "Evaluate the consequences of cyberbullying. Clarifications : Clarification 1: Instruction includes the consequences for an individual engaged in bullying behavior. Clarification 2: Instruction includes the consequences suffered by the victim of cyberbullying. Clarification 3: Instruction includes th"
     },
     {
       "code": "SC.912.HS.1.3",
       "grade": "912",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Determine the consequences of inaction when witnessing unsafe Internet practices."
+      "statement": "Determine the consequences of inaction when witnessing unsafe Internet practices. Clarifications : Clarification 1: Instruction focuses on the possible outcomes when suspicious Internet activity is not reported."
     },
     {
       "code": "SC.912.HS.1.4",
       "grade": "912",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Examine the positive outcomes when someone reports suspicious behavior on the Internet."
+      "statement": "Examine the positive outcomes when someone reports suspicious behavior on the Internet. Clarifications : Clarification 1: Instruction focuses on positive outcomes when action is taken relating to Internet reporting. Clarification 2: Instruction includes reporting to parents, school staff and peers."
     },
     {
       "code": "SC.912.HS.1.5",
       "grade": "912",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Evaluate the risks to personal information while accessing the Internet."
+      "statement": "Evaluate the risks to personal information while accessing the Internet. Clarifications : Clarification 1: Instruction includes access to software, websites or web applications that do not protect against the disclosure, use or dissemination of an individual\u2019s personal information. Clarification 2: "
     },
     {
       "code": "SC.912.HS.1.6",
       "grade": "912",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Describe the impact of permissible privacy and security."
+      "statement": "Describe the impact of permissible privacy and security. Clarifications : Clarification 1: Instruction includes, but is not limited to, discussing privacy and security as it relates to account settings, cookies and application permissions."
     },
     {
       "code": "SC.912.HS.1.7",
@@ -2942,7 +2944,7 @@
       "grade": "912",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Prioritize regulating screen time and the use of electronic devices for mental and physical well-being."
+      "statement": "Prioritize regulating screen time and the use of electronic devices for mental and physical well-being. Clarifications : Clarification 1: Instruction includes the role of digital media and communication, gaming devices, cellular devices, television and other digital sources as they relate to mental "
     },
     {
       "code": "SC.912.HS.2.2",
@@ -2963,7 +2965,7 @@
       "grade": "912",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Analyze the relationship between eye strain related to use of technology and exposure to increased blue light."
+      "statement": "Analyze the relationship between eye strain related to use of technology and exposure to increased blue light. Clarifications : Clarification 1: Instruction focuses on blurred vision, headaches, sleep deprivation and eye fatigue."
     },
     {
       "code": "SC.912.HS.2.5",
@@ -2977,7 +2979,7 @@
       "grade": "912",
       "strand": "HS",
       "type": "benchmark",
-      "statement": "Discuss the permanency of data on the Internet."
+      "statement": "Discuss the permanency of data on the Internet. Clarifications : Clarification 1: Instruction includes the permanency of sharing materials through digital communication and how it can affect future jobs, scholarship opportunities and potential positions. Clarification 2: Instruction focuses on confi"
     },
     {
       "code": "SC.912.HS.3.2",
@@ -2998,7 +3000,7 @@
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify and select the file format based on trade-offs."
+      "statement": "Identify and select the file format based on trade-offs. Clarifications : Clarification 1: Trade-offs for the most appropriate file format include analyzing the size, quality and accessibility of the file."
     },
     {
       "code": "SC.912.CO.1.3",
@@ -3012,35 +3014,35 @@
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe the relationship between drivers, hardware and operating systems."
+      "statement": "Describe the relationship between drivers, hardware and operating systems. Clarifications : Clarification 1: Instruction focuses on the driver acting as a communication bridge between hardware and the operating system."
     },
     {
       "code": "SC.912.CO.1.5",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe the organization of a computer and its principal components."
+      "statement": "Describe the organization of a computer and its principal components. Clarifications : Clarification 1: Instruction includes the identification of components by name, function and the interaction between them."
     },
     {
       "code": "SC.912.CO.1.6",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Develop and evaluate criteria for purchasing or upgrading computer system hardware."
+      "statement": "Develop and evaluate criteria for purchasing or upgrading computer system hardware. Clarifications : Clarification 1: Instruction includes developing criteria for selecting hardware when solving a specific real-world problem."
     },
     {
       "code": "SC.912.CO.1.7",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe the process of protecting computer hardware from exploitation."
+      "statement": "Describe the process of protecting computer hardware from exploitation. Clarifications : Clarification 1: Instruction includes disabled unused USB ports, windows lock screens and managed access to restricted areas. Clarification 2: Instruction includes the role of hardware such as tablets, phones an"
     },
     {
       "code": "SC.912.CO.1.8",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe how the Internet facilitates global communication."
+      "statement": "Describe how the Internet facilitates global communication. Clarifications : Clarification 1: Instruction includes the grouping of smaller networks to provide a world wide web that facilitates communication."
     },
     {
       "code": "SC.912.CO.1.9",
@@ -3061,28 +3063,28 @@
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Explore motherboard variations."
+      "statement": "Explore motherboard variations. Clarifications : Clarification 1: Instruction includes sizes, input and output, central processing unit (CPU) socket type and expansion slots."
     },
     {
       "code": "SC.912.CO.2.3",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Discuss the central processing unit (CPU)."
+      "statement": "Discuss the central processing unit (CPU). Clarifications : Clarification 1: Instruction includes similarities and differences between CPUs. Clarification 2: Instruction includes multi-core processing, hyper-threading and socket type."
     },
     {
       "code": "SC.912.CO.2.4",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Explore the role of a power supply unit (PSU) in relation to a computer system."
+      "statement": "Explore the role of a power supply unit (PSU) in relation to a computer system. Clarifications : Clarification 1: Instruction includes wattage, modulation (semi, non and fully modular) and connector type. Clarification 2: Instruction includes the correct wattage for devices to prevent damage."
     },
     {
       "code": "SC.912.CO.2.5",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Analyze the purpose of various random-access memory (RAM) speeds and storage sizes."
+      "statement": "Analyze the purpose of various random-access memory (RAM) speeds and storage sizes. Clarifications : Clarification 1: Instruction includes temporary storage space and speed in relation to communication with the processor. Clarification 2: Instruction includes how computers store different data types"
     },
     {
       "code": "SC.912.CO.2.6",
@@ -3096,28 +3098,28 @@
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Evaluate various forms of input and output (IO)."
+      "statement": "Evaluate various forms of input and output (IO). Clarifications : Clarification 1: Instruction includes data used for or produced by input and output."
     },
     {
       "code": "SC.912.CO.2.8",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Evaluate the basic components of wired computer networks."
+      "statement": "Evaluate the basic components of wired computer networks. Clarifications : Clarification 1: Within this benchmark, components include a network interface card (NIC), an ethernet cable and a network switch. Clarification 2: Instruction includes two or more devices to communicate on a network."
     },
     {
       "code": "SC.912.CO.2.9",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Evaluate the basic components of wireless computer networks."
+      "statement": "Evaluate the basic components of wireless computer networks. Clarifications : Clarification 1: Within this benchmark, components include a Wi-Fi adapter and wireless access point. Clarification 2: Instruction includes two or more devices to communicate on a network."
     },
     {
       "code": "SC.912.CO.2.10",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Explore the components of a data packet."
+      "statement": "Explore the components of a data packet. Clarifications : Clarification 1: Instruction includes data breaking down into packets to be routed through networks."
     },
     {
       "code": "SC.912.CO.2.11",
@@ -3145,28 +3147,28 @@
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Explore the role of dynamic host control protocol (DHCP) in a networking system."
+      "statement": "Explore the role of dynamic host control protocol (DHCP) in a networking system. Clarifications : Clarification 1: Instruction includes discussing how the DHCP client and DHCP server communicate."
     },
     {
       "code": "SC.912.CO.2.15",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Analyze the importance of subnetting."
+      "statement": "Analyze the importance of subnetting. Clarifications : Clarification 1: Instruction includes reducing traffic and improved speeds. Examples : Example: Ruby is a network technician at a hospital in Ft. Pierce. Her hospital has over 100 computers active on the internet at one time. Ruby would like to "
     },
     {
       "code": "SC.912.CO.2.16",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe how devices are identified on a network."
+      "statement": "Describe how devices are identified on a network. Clarifications : Clarification 1: Instruction includes differentiation between public and private Internet protocol (IP) addresses."
     },
     {
       "code": "SC.912.CO.2.17",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Identify similarities and differences between Internet protocol versions."
+      "statement": "Identify similarities and differences between Internet protocol versions. Clarifications : Clarification 1: Instruction includes the understanding that Internet protocol version 4 (IPv4) is binary and that Internet protocol version 6 (IPv6) is hexadecimal."
     },
     {
       "code": "SC.912.CO.2.18",
@@ -3180,21 +3182,21 @@
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Analyze various operating systems."
+      "statement": "Analyze various operating systems. Clarifications : Clarification 1: Instruction includes similarities and differences in operating systems."
     },
     {
       "code": "SC.912.CO.3.2",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Develop criteria for selecting software when solving a specific real-world problem."
+      "statement": "Develop criteria for selecting software when solving a specific real-world problem. Clarifications : Clarification 1: Instruction includes evaluating cost, features, reliability and usability."
     },
     {
       "code": "SC.912.CO.3.3",
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Examine the difference between operating system (OS) software and application software."
+      "statement": "Examine the difference between operating system (OS) software and application software. Clarifications : Clarification 1: Instruction includes the role that operating systems play in relation to application programs."
     },
     {
       "code": "SC.912.CO.3.4",
@@ -3208,56 +3210,56 @@
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Write code segments."
+      "statement": "Write code segments. Clarifications : Clarification 1: Instruction includes writing code segments that accept arguments and other segments such as functions, subroutines and methods."
     },
     {
       "code": "SC.912.PE.1.2",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create iterative and non-iterative structures within a program."
+      "statement": "Create iterative and non-iterative structures within a program. Clarifications : Clarification 1: Iterative structures include nested iterative structures."
     },
     {
       "code": "SC.912.PE.1.3",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create selection structures within a program."
+      "statement": "Create selection structures within a program. Clarifications : Clarification 1: Instruction includes explaining selection structures and their uses within a program."
     },
     {
       "code": "SC.912.PE.1.4",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Write a void function that does not return a value."
+      "statement": "Write a void function that does not return a value. Clarifications : Clarification 1: Instruction includes understanding that while void functions perform a function, it does not return a value."
     },
     {
       "code": "SC.912.PE.1.5",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Write a non-void function that will return a value."
+      "statement": "Write a non-void function that will return a value. Clarifications : Clarification 1: Methods of function writing include the example of \u201cHello World\u201d and other value-returning functions."
     },
     {
       "code": "SC.912.PE.1.6",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create a nested array to aggregate data."
+      "statement": "Create a nested array to aggregate data. Examples : Example: Beth has written a code segment for her programming class. She has created a list but needs her list to begin with 1 instead of 0. Create a nested array that assigns an alternative value to the numbers in her original list."
     },
     {
       "code": "SC.912.PE.1.7",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Define multiple variables to the same value while utilizing aliasing."
+      "statement": "Define multiple variables to the same value while utilizing aliasing. Clarifications : Clarification 1: Instruction includes discussing why multiple variables will not be aliased for having the same value alone; the variables must refer to the same location as well."
     },
     {
       "code": "SC.912.PE.1.8",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Define a class to store data attributes."
+      "statement": "Define a class to store data attributes. Clarifications : Clarification 1: Data attributes include numerical values, categories and descriptions."
     },
     {
       "code": "SC.912.PE.1.9",
@@ -3278,21 +3280,21 @@
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Compare the differences in execution of interpreted and compiled languages."
+      "statement": "Compare the differences in execution of interpreted and compiled languages. Clarifications : Clarification 1: Instruction includes examining different programming languages and how they are converted to machine language."
     },
     {
       "code": "SC.912.PE.1.12",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Classify programming languages."
+      "statement": "Classify programming languages. Clarifications : Clarification 1: Instruction includes the classification of paradigms by object-oriented and procedural. Clarification 2: Instruction includes the application of domains by scientific applications and commercial applications."
     },
     {
       "code": "SC.912.PE.1.13",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Describe and identify types of programming errors."
+      "statement": "Describe and identify types of programming errors. Clarifications : Clarification 1: Instruction includes syntax, logic, runtime and computation errors."
     },
     {
       "code": "SC.912.PE.1.14",
@@ -3313,28 +3315,28 @@
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Explain the distinction between a programming language\u2019s standard library and the Application Programming Interface (API)."
+      "statement": "Explain the distinction between a programming language\u2019s standard library and the Application Programming Interface (API). Clarifications : Clarification 1: Instruction includes facilitating programming solutions using API and libraries. Clarification 2: Instruction includes explaining the role of a"
     },
     {
       "code": "SC.912.PE.1.17",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Examine the building blocks of algorithms."
+      "statement": "Examine the building blocks of algorithms. Clarifications : Clarification 1: Building blocks include sequence, selection, iteration and recursion."
     },
     {
       "code": "SC.912.PE.1.18",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Develop a computer program."
+      "statement": "Develop a computer program. Clarifications : Clarification 1: Instruction includes meeting the requirements set by a plan. Clarification 2: Instruction includes the use of the software development cycle."
     },
     {
       "code": "SC.912.PE.1.19",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Review a computer program to verify program functionality, programming styles, program usability and adherence to common programming standards."
+      "statement": "Review a computer program to verify program functionality, programming styles, program usability and adherence to common programming standards. Clarifications : Clarification 1: Instruction includes peer review. Clarification 2: Instruction includes adherence to a programming language style guide."
     },
     {
       "code": "SC.912.PE.1.20",
@@ -3376,7 +3378,7 @@
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Evaluate the purpose of sublist indexing."
+      "statement": "Evaluate the purpose of sublist indexing. Clarifications : Clarification 1: Within this benchmark, the terms nesting and sublist can be used interchangeably."
     },
     {
       "code": "SC.912.PE.2.3",
@@ -3404,14 +3406,14 @@
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Design and implement a simple simulation that is representative of a natural phenomenon."
+      "statement": "Design and implement a simple simulation that is representative of a natural phenomenon. Clarifications : Clarification 1: Instruction includes analyzing and understanding the algorithm that is representative of a natural phenomenon."
     },
     {
       "code": "SC.912.PE.3.4",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Evaluate algorithms by their efficiency, correctness and clarity."
+      "statement": "Evaluate algorithms by their efficiency, correctness and clarity. Clarifications : Clarification 1: Instruction includes analyzing and comparing execution times, testing with multiple inputs or data sets and debugging. Clarification 2: Instruction includes evaluating a well-known algorithm and imple"
     },
     {
       "code": "SC.912.PE.3.5",
@@ -3495,7 +3497,7 @@
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Design a representation of a computer program."
+      "statement": "Design a representation of a computer program. Clarifications : Clarification 1: Instruction includes creating a plan that defines requirements, structural design, time estimates and testing elements. Clarification 2: Instruction includes the use of the software development cycle."
     },
     {
       "code": "SC.912.PE.3.17",
@@ -3509,28 +3511,28 @@
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Explain the principles of cryptography."
+      "statement": "Explain the principles of cryptography. Clarifications : Clarification 1: Instruction includes the principles of confidentiality, integrity, authentication, non-repudiation and key management."
     },
     {
       "code": "SC.912.PE.3.19",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Determine which encryption method is suitable for an intended task."
+      "statement": "Determine which encryption method is suitable for an intended task. Clarifications : Clarification 1: Instruction includes the use of digital signatures and authentication as encryption methods."
     },
     {
       "code": "SC.912.PE.4.1",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Explore software development cycles that can be used to solve problems at different software development stages."
+      "statement": "Explore software development cycles that can be used to solve problems at different software development stages. Clarifications : Clarification 1: Instruction includes the following stages: analysis, design, coding, testing, verification and maintenance."
     },
     {
       "code": "SC.912.PE.4.2",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Develop a software artifact according to a common software development methodology."
+      "statement": "Develop a software artifact according to a common software development methodology. Clarifications : Clarification 1: Instruction includes various software development methodologies, including waterfall, spiral model and agile."
     },
     {
       "code": "SC.912.PE.4.3",
@@ -3544,35 +3546,35 @@
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Identify the software environment required to create a program within a specific language."
+      "statement": "Identify the software environment required to create a program within a specific language. Examples : Example: Johnny is given the assignment to create a simple addition program in his computer programming class. He decides to load a popular integrated development environment (IDE) to assist him wit"
     },
     {
       "code": "SC.912.PE.4.5",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Define user prompts for clarity and usability within a program."
+      "statement": "Define user prompts for clarity and usability within a program. Examples : Example: Mrs. Jan has given her programming class the task of creating an age verification application. Paolo, a student in the class, initially runs into an issue where when a user enters their birth month out, the program c"
     },
     {
       "code": "SC.912.PE.4.6",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Write a program that utilizes both input and output."
+      "statement": "Write a program that utilizes both input and output. Clarifications : Clarification 1: Instruction includes the end user entering the input and the program delivering the output."
     },
     {
       "code": "SC.912.PE.4.7",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Use internal documentation to collaboratively design a program according to accepted standards."
+      "statement": "Use internal documentation to collaboratively design a program according to accepted standards. Clarifications : Clarification 1: Instruction includes multiple creators communicating within a program utilizing \u201cclean code.\u201d"
     },
     {
       "code": "SC.912.PE.4.8",
       "grade": "912",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Create mobile computing applications and/or dynamic web pages using a variety of design and development tools, programming languages and mobile devices/emulators."
+      "statement": "Create mobile computing applications and/or dynamic web pages using a variety of design and development tools, programming languages and mobile devices/emulators. Clarifications : Clarification 1: For this benchmark and depending on the task, students can create mobile computing applications, create"
     },
     {
       "code": "SC.912.TI.1.1",
@@ -3586,21 +3588,21 @@
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Identify ways to use technology to support lifelong learning."
+      "statement": "Identify ways to use technology to support lifelong learning. Clarifications : Clarification 1: Instruction includes the use of online tutorials, Artificial Intelligence (AI) and web searches to facilitate personal learning."
     },
     {
       "code": "SC.912.TI.1.3",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Analyze the impact of digital media."
+      "statement": "Analyze the impact of digital media. Clarifications : Clarification 1: Instruction includes the analysis of digital media for implicit or explicit bias Clarification 2: Instruction includes discerning fact from opinion within digital media."
     },
     {
       "code": "SC.912.TI.1.4",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Analyze the impact of digital media on culture and persona."
+      "statement": "Analyze the impact of digital media on culture and persona. Clarifications : Clarification 1: Instruction includes the effects of digital media on self- image and societal changes."
     },
     {
       "code": "SC.912.TI.1.5",
@@ -3614,14 +3616,14 @@
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Describe how technology impacts personal life."
+      "statement": "Describe how technology impacts personal life. Clarifications : Clarification 1: Instruction includes evaluating the impact of smartwatches and various Internet of Things (IoT) devices."
     },
     {
       "code": "SC.912.TI.1.7",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Evaluate ways in which technology may improve accessibility for the varying needs of learners, including students with disabilities (SWD)."
+      "statement": "Evaluate ways in which technology may improve accessibility for the varying needs of learners, including students with disabilities (SWD). Clarifications : Clarification 1: Instruction includes assistive and instructional technologies."
     },
     {
       "code": "SC.912.TI.1.8",
@@ -3635,77 +3637,77 @@
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Evaluate access and distribution of technology in a global society."
+      "statement": "Evaluate access and distribution of technology in a global society. Clarifications : Clarification 1: Instruction includes providing possible solutions to the challenges to equal access and the distribution of technology."
     },
     {
       "code": "SC.912.TI.1.10",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Analyze technology-related career paths."
+      "statement": "Analyze technology-related career paths. Clarifications : Clarification 1: Technological career paths include programming, medical, health information technology (IT) and various other upcoming industries. Clarification 2: Instruction includes predicting future technology-related career trends."
     },
     {
       "code": "SC.912.TI.1.11",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Evaluate the benefits of technology regarding environmental concerns."
+      "statement": "Evaluate the benefits of technology regarding environmental concerns. Clarifications : Clarification 1: Within this benchmark, the expectation is that students will recognize occurrences such as a technological drought and its impact on the surrounding area."
     },
     {
       "code": "SC.912.TI.1.12",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Examine the history of networking devices."
+      "statement": "Examine the history of networking devices. Clarifications : Clarification 1: Instruction includes hubs, switches, ethernet cabling, wireless technology and fiber optics."
     },
     {
       "code": "SC.912.TI.1.13",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Examine the historical impact of social media."
+      "statement": "Examine the historical impact of social media. Clarifications : Clarification 1: Instruction includes discussing the purpose of social media. Clarification 2: Instruction includes analyzing the impact of current social media platforms."
     },
     {
       "code": "SC.912.TI.2.1",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Research how social media and technology can be used to distort, exaggerate or misrepresent information."
+      "statement": "Research how social media and technology can be used to distort, exaggerate or misrepresent information. Clarifications : Clarification 1: Instruction includes the consequences associated with posting misinformation, such as slander, libel and defamation. Clarification 2: Within this benchmark, emph"
     },
     {
       "code": "SC.912.TI.2.2",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Demonstrate knowledge of the Internet safety policy as it applies to state and district guidelines."
+      "statement": "Demonstrate knowledge of the Internet safety policy as it applies to state and district guidelines. Clarifications : Clarification 1: Instruction focuses on the current school district guidelines in which the student is enrolled. Clarification 2: Instruction includes local and state level statutory "
     },
     {
       "code": "SC.912.TI.2.3",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Recognize the terms and policies associated with the use of public access points."
+      "statement": "Recognize the terms and policies associated with the use of public access points. Clarifications : Clarification 1: Instruction includes understanding that using public access points may pose security risks. Clarification 2: Instruction includes discussing the importance of reading the full terms an"
     },
     {
       "code": "SC.912.TI.2.4",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Explore the legal ramifications of technology use."
+      "statement": "Explore the legal ramifications of technology use. Clarifications : Clarification 1: Instruction includes differentiating between legal and ethical responsibility. Clarification 2: Instruction includes understanding the importance of staying current with legal changes."
     },
     {
       "code": "SC.912.TI.2.5",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Describe and model the legal use of modern communication media and devices."
+      "statement": "Describe and model the legal use of modern communication media and devices. Clarifications : Clarification 1: Instruction includes the responsible use of modern communication media and devices. Clarification 2: Instruction includes discussion of personal safety when utilizing technology."
     },
     {
       "code": "SC.912.TI.2.6",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Evaluate the impacts of the irresponsible use of information on collaborative projects."
+      "statement": "Evaluate the impacts of the irresponsible use of information on collaborative projects. Clarifications : Clarification 1: Instruction includes discussing plagiarism, artificial intelligence (AI) chat usage and falsification of data."
     },
     {
       "code": "SC.912.TI.2.7",
@@ -3719,21 +3721,21 @@
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Evaluate the consequences of misrepresenting digital work as your own."
+      "statement": "Evaluate the consequences of misrepresenting digital work as your own. Clarifications : Clarification 1: Instruction includes plagiarism, infringement and digital theft."
     },
     {
       "code": "SC.912.TI.2.9",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Analyze how different categories of software licenses can be used to share and protect intellectual property."
+      "statement": "Analyze how different categories of software licenses can be used to share and protect intellectual property. Clarifications : Clarification 1: Types of software licenses include open source and proprietary licenses."
     },
     {
       "code": "SC.912.TI.2.10",
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Analyze how access to information may not include the right to distribute the information."
+      "statement": "Analyze how access to information may not include the right to distribute the information. Clarifications : Clarification 1: Instruction includes comparing licensing in relation to ownership and distribution."
     },
     {
       "code": "SC.912.TI.2.11",
@@ -3775,7 +3777,7 @@
       "grade": "912",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Examine device-to-device interactions that exclude human input."
+      "statement": "Examine device-to-device interactions that exclude human input. Clarifications : Clarification 1: Instruction includes making the connection to machine-to-machine (M2M) interaction."
     },
     {
       "code": "SC.912.ET.1.5",
@@ -3789,7 +3791,7 @@
       "grade": "912",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Analyze the impact on natural resources due to manufacturing of computer hardware components."
+      "statement": "Analyze the impact on natural resources due to manufacturing of computer hardware components. Clarifications : Clarification 1: Instruction includes discussing the shortage of semiconductors due to increased demand and lack of available resources."
     },
     {
       "code": "SC.912.ET.1.7",
@@ -3803,21 +3805,21 @@
       "grade": "912",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Explore the history of Artificial Intelligence (AI)."
+      "statement": "Explore the history of Artificial Intelligence (AI). Clarifications : Clarification 1: Instruction includes the application of AI tests. Clarification 2: Instruction includes how these tests have evolved along with AI."
     },
     {
       "code": "SC.912.ET.2.2",
       "grade": "912",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Describe the major branches of Artificial Intelligence (AI)."
+      "statement": "Describe the major branches of Artificial Intelligence (AI). Clarifications : Clarification 1: Major branches include expert systems, natural language processing, machine perception, machine learning and generative AI."
     },
     {
       "code": "SC.912.ET.2.3",
       "grade": "912",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Evaluate the application of algorithms to Artificial Intelligence (AI)."
+      "statement": "Evaluate the application of algorithms to Artificial Intelligence (AI). Clarifications : Clarification 1: Instruction includes acknowledging AI measurement tests are algorithms. Clarification 2: Instruction includes discussing how algorithms can be used to enhance the effectiveness of AI."
     },
     {
       "code": "SC.912.ET.2.4",
@@ -3831,21 +3833,21 @@
       "grade": "912",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Describe major applications of artificial intelligence (AI) and machine learning."
+      "statement": "Describe major applications of artificial intelligence (AI) and machine learning. Clarifications : Clarification 1: Instruction includes discussing the applications to the medical, space and automotive fields."
     },
     {
       "code": "SC.912.ET.2.6",
       "grade": "912",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Describe how predictive Artificial Intelligence (AI) can be used to solve problems."
+      "statement": "Describe how predictive Artificial Intelligence (AI) can be used to solve problems. Clarifications : Clarification 1: Instruction includes using predictive Artificial Intelligence (AI) to forecast trends, such as sports, the stock market and weather."
     },
     {
       "code": "SC.912.ET.2.7",
       "grade": "912",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Describe common measurements of machine intelligence."
+      "statement": "Describe common measurements of machine intelligence. Clarifications : Clarification 1: Common measurements include the Turing test and the Lovelace test."
     },
     {
       "code": "SC.912.ET.3.1",
@@ -3866,28 +3868,28 @@
       "grade": "912",
       "strand": "ET",
       "type": "benchmark",
-      "statement": "Evaluate how the natural world has influenced robotic designs."
+      "statement": "Evaluate how the natural world has influenced robotic designs. Clarifications : Clarification 1: Instruction includes both functionality and physical attributes."
     },
     {
       "code": "SC.912.CS.1.1",
       "grade": "912",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Identify possible risks to maintaining data confidentiality."
+      "statement": "Identify possible risks to maintaining data confidentiality. Clarifications : Clarification 1: Within this benchmark, risks include shoulder surfing, illicit access to devices and theft of sensitive items."
     },
     {
       "code": "SC.912.CS.1.2",
       "grade": "912",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Describe computer security vulnerabilities."
+      "statement": "Describe computer security vulnerabilities. Clarifications : Clarification 1: Instruction includes student understanding that a computer worm can replicate itself across the network without human interaction while a computer virus requires human interaction to replicate."
     },
     {
       "code": "SC.912.CS.1.3",
       "grade": "912",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Evaluate computer security vulnerabilities."
+      "statement": "Evaluate computer security vulnerabilities. Clarifications : Clarification 1: Instruction includes evaluating the effects of attacks on computer systems. Clarification 2: Instruction includes evaluating the social and economic impacts on people."
     },
     {
       "code": "SC.912.CS.2.1",
@@ -3936,7 +3938,7 @@
       "grade": "912",
       "strand": "CS",
       "type": "benchmark",
-      "statement": "Trace the social engineering attack cycle."
+      "statement": "Trace the social engineering attack cycle. Clarifications : Clarification 1: Instruction includes the various ways of collecting information, relationship building and how that information is used for exploitation. Clarification 2: Instruction includes discussing and evaluating the social and econom"
     },
     {
       "code": "SC.912.DC.1.1",
@@ -3950,21 +3952,21 @@
       "grade": "912",
       "strand": "DC",
       "type": "benchmark",
-      "statement": "Analyze the effects of digital currencies on the current financial market."
+      "statement": "Analyze the effects of digital currencies on the current financial market. Clarifications : Clarification 1: Instruction includes understanding that the value of a digital currency can be very volatile."
     },
     {
       "code": "SC.912.DC.2.1",
       "grade": "912",
       "strand": "DC",
       "type": "benchmark",
-      "statement": "Differentiate between a digital currency and a security."
+      "statement": "Differentiate between a digital currency and a security. Clarifications : Clarification 1: Instruction includes securities serving as a placeholder of ownership or equity in an organization."
     },
     {
       "code": "SC.912.DC.2.2",
       "grade": "912",
       "strand": "DC",
       "type": "benchmark",
-      "statement": "Discuss the risks associated with digital currencies."
+      "statement": "Discuss the risks associated with digital currencies. Clarifications : Clarification 1: Instruction includes currencies that show no proof of work (POW) in blockchain."
     },
     {
       "code": "SC.912.DC.2.3",
@@ -3978,7 +3980,7 @@
       "grade": "912",
       "strand": "DC",
       "type": "benchmark",
-      "statement": "Evaluate digital tools that aid in personal financial literacy and money management."
+      "statement": "Evaluate digital tools that aid in personal financial literacy and money management. Clarifications : Clarification 1: Instruction includes digital accounting tools, digital wallets and budgeting applications."
     },
     {
       "code": "SC.912.DC.3.2",
