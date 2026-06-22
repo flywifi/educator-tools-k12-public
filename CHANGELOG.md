@@ -5,6 +5,12 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **`standards-updater` skill + upgraded crawler** — `tools/standards_refresh.py` now respects
+  robots.txt, crawls politely (randomized delays, one honest User-Agent), detects JS-required pages
+  (e.g., the CPALMS search SPA) and **backs off rather than bypassing**, and writes a timestamped JSON
+  report. `skills/standards-updater/` orchestrates detect → crawl → verify-on-CPALMS → apply
+  (human-in-the-loop, no auto-apply); `tools/requirements-scraper.txt` lists optional deps. Adapted
+  compliantly (no evasion) from a robots-respecting scraper design.
 - **Florida B.E.S.T. + NGSSS standards** wired into the engine: `shared/standards/florida-best.md`
   (coding schemes verified against the official docs — Math `MA.*`, ELA `ELA.*`, Science `SC.*`,
   CS `SC.K12.CTR.*`, ELD `ELD.K12.ELL.*` — plus Access Points for SpEd) and a resource catalog
