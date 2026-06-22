@@ -24,7 +24,13 @@ can be requested. Details: `shared/personas/personas.md`.
 Follow `references/method.md`:
 `Request → Routing → Protocol Enforcement → Generation → Validation → Quality Gates →
 Approval/Certification → Release`.
-- **Routing** — classify persona × artifact × subject × grade band, then dispatch (§4).
+- **Context resolution (first)** — resolve the teaching-context contract (`shared/context/`):
+  state / district / school_type / program(s) / instructional_model / mandates / uploaded SOPs. Apply
+  the school-type **exception rule-set** and **authority precedence**, and **carry the contract through
+  every handoff** (overrides logged, never silent). Default to traditional-public Florida when
+  unstated; log the assumption. School type governs standards applicability (home-ed/private contexts
+  do not silently inherit the B.E.S.T./NGSSS mandate).
+- **Routing** — classify persona × artifact × subject × grade band (× context), then dispatch (§4).
 - **Protocol Enforcement** — log assumptions (`protocols/assumptions-protocol.md`), initialize the
   metadata block (`protocols/metadata-schema.md`), arm standards verification
   (`protocols/standards-verification.md`).
@@ -38,7 +44,7 @@ Approval/Certification → Release`.
 Use `references/routing-map.md` (mirrors `ROUTING_MODEL.md`). Route a single request to the best-fit
 skill. When a request bundles several artifacts (e.g., "a unit + its assessments + slides + a parent
 letter"), **orchestrate a multi-skill workflow** per `references/workflows.md`: decompose → order →
-share one standard/persona/grade-band context across steps → gate each piece with `quality-review` →
+share one standard/persona/grade-band + teaching-context contract across steps → gate each piece with `quality-review` →
 assemble one coherent bundle. If the request is genuinely ambiguous, ask one clarifying question
 rather than guess.
 
@@ -51,5 +57,6 @@ rather than guess.
 
 ## 6. Output: always emit the metadata block
 End every artifact with the metadata block from `protocols/metadata-schema.md`: artifact type,
-persona, grade band, subject, standards set + cited codes, differentiation applied, the quality
+persona, grade band, subject, standards set + cited codes, differentiation applied, the
+teaching-context contract (district / school-type / mandates / SOPs; `shared/context/`), the quality
 decision (per-dimension scores + composite), assumptions, and `human_review_required: true`.
