@@ -1,0 +1,97 @@
+{
+  "_comment": "Florida school-type taxonomy with EXCEPTION RULE-SETS. 'traditional_public' is the baseline; every other type declares how it OVERRIDES the baseline (governance, standards applicability, assessment, calendar, certification, funding). This is the school-side analog of framework exceptions: a charter / virtual / home-ed / private context changes which operating rules apply, which flows into the context contract and the artifact/handoff. Specifics are fillable stubs - verify on the cited FLDOE/FAC sources.",
+  "state": "FL",
+  "baseline": "traditional_public",
+  "types": {
+    "traditional_public": {
+      "label": "Traditional public school (district LEA)",
+      "governing_authority": "district school board",
+      "standards_applicability": "B.E.S.T. (Math/ELA) + NGSSS (Science/SS) apply",
+      "assessment": "statewide assessment program (FAST/B.E.S.T. EOC/Science/SS, FCLE)",
+      "certification": "state-certified instructional staff",
+      "sop_overrides": [],
+      "key_authorities": ["FL Statutes Title XLVIII", "FAC 6A"],
+      "status": "baseline"
+    },
+    "magnet_public": {
+      "label": "Magnet / choice public school",
+      "governing_authority": "district school board",
+      "standards_applicability": "same as traditional public",
+      "assessment": "same as traditional public",
+      "overrides_baseline": ["admissions/lottery", "thematic program emphasis", "transportation"],
+      "sop_overrides": ["enrollment/eligibility SOPs", "program-theme pacing emphasis"],
+      "key_authorities": ["https://www.fldoe.org/schools/school-choice/other-school-choice-options/"],
+      "status": "stub"
+    },
+    "charter_public": {
+      "label": "Charter school (public, independently governed)",
+      "governing_authority": "independent governing board + sponsor (district or state)",
+      "standards_applicability": "B.E.S.T./NGSSS apply (public school); some operational flexibility per charter contract",
+      "assessment": "statewide assessment program applies",
+      "certification": "certified instructional staff (with charter-specific allowances)",
+      "overrides_baseline": ["governance (independent board + governance training)", "calendar flexibility",
+                              "budget/operations autonomy", "sponsor accountability contract"],
+      "sop_overrides": ["board governance SOPs", "sponsor-reporting SOPs", "enrollment SOPs", "calendar"],
+      "key_authorities": [
+        "https://www.fldoe.org/schools/school-choice/charter-schools/charter-school-resources/governance-training.stml",
+        "https://www.fldoe.org/schools/school-choice/charter-schools/links-for-parents/"
+      ],
+      "status": "stub"
+    },
+    "district_virtual_instruction": {
+      "label": "District virtual instruction program / district-run virtual school",
+      "governing_authority": "district school board (statute-mandated VIP options)",
+      "standards_applicability": "B.E.S.T./NGSSS apply; virtual delivery",
+      "assessment": "statewide assessment applies (in-person testing requirements)",
+      "overrides_baseline": ["synchronous/asynchronous delivery", "attendance/engagement model",
+                              "pacing flexibility", "proctoring logistics"],
+      "sop_overrides": ["attendance/engagement SOPs", "pacing SOPs", "device/access SOPs", "proctoring SOPs"],
+      "examples": ["Orange County Virtual School (OCVS)"],
+      "key_authorities": [
+        "s.1002.45 F.S.",
+        "https://www.fldoe.org/schools/school-choice/virtual-edu/district-resources/",
+        "https://www.fldoe.org/schools/school-choice/virtual-edu/district-resources/memos.stml"
+      ],
+      "status": "stub"
+    },
+    "flvs_statewide": {
+      "label": "Florida Virtual School (statewide, district 71)",
+      "governing_authority": "FLVS board of trustees (statewide LEA)",
+      "standards_applicability": "B.E.S.T./NGSSS apply; statewide virtual",
+      "assessment": "statewide assessment applies",
+      "overrides_baseline": ["statewide enrollment (not county-bound)", "fully online delivery", "rolling pacing"],
+      "sop_overrides": ["enrollment SOPs", "pacing SOPs", "host-district coordination SOPs"],
+      "key_authorities": ["https://www.fldoe.org/schools/school-choice/virtual-edu/"],
+      "status": "stub"
+    },
+    "home_education": {
+      "label": "Home education (parent-directed)",
+      "governing_authority": "parent/guardian (district home-ed office on file)",
+      "standards_applicability": "B.E.S.T. NOT mandated; parent selects curriculum",
+      "assessment": "annual evaluation (portfolio / certified evaluator / nationally-normed test) - not statewide assessment",
+      "certification": "n/a (parent-directed)",
+      "overrides_baseline": ["no statewide-standards mandate", "annual evaluation instead of state assessment",
+                              "portfolio recordkeeping", "scholarship options (PEP)"],
+      "sop_overrides": ["evaluation/portfolio SOPs (replace statewide-assessment SOPs)",
+                         "recordkeeping SOPs", "standards alignment becomes optional/advisory"],
+      "key_authorities": ["s.1002.41 F.S.",
+        "https://www.fldoe.org/schools/school-choice/other-school-choice-options/",
+        "https://www.fldoe.org/finance/financial-aid-scholarships/"],
+      "status": "stub"
+    },
+    "private_scholarship": {
+      "label": "Private school enrolling FL scholarship students",
+      "governing_authority": "private school governance",
+      "standards_applicability": "B.E.S.T. NOT binding; school selects curriculum/standards",
+      "assessment": "scholarship-required nationally-norm-referenced assessment (varies); not statewide",
+      "certification": "varies by school",
+      "overrides_baseline": ["own curriculum/standards", "own calendar", "scholarship accountability",
+                              "different assessment regime"],
+      "sop_overrides": ["curriculum-selection SOPs", "scholarship-reporting SOPs",
+                         "standards alignment becomes school-defined"],
+      "key_authorities": ["https://www.fldoe.org/finance/financial-aid-scholarships/",
+        "https://www.fldoe.org/schools/school-choice/other-school-choice-options/"],
+      "status": "stub"
+    }
+  }
+}

@@ -42,6 +42,9 @@ subject:                # e.g., Math, ELA, Science
 standards_set:          # framework + version, e.g., "CCSS-Math 2010"
 standards_cited:        # list of standard codes referenced
 differentiation:        # UDL / tiering / EL / IEP supports applied
+context:                # teaching-context contract (shared/context/context.schema.json): state,
+                        #   district, school_type, program(s), instructional_model, mandates, SOPs,
+                        #   authority_precedence, overrides — what this artifact was built FOR
 human_review_required:  # true (always — artifacts are decision support, not final determinations)
 assumptions:            # list of assumptions made (see assumptions-protocol.md)
 ```
@@ -54,6 +57,11 @@ assumptions:            # list of assumptions made (see assumptions-protocol.md)
   is an Integrity/Safety automatic failure (QG §37; SECURITY_AND_SAFETY.md).
 - **Standards must be cited with framework + version** so they are verifiable
   (standards-verification.md).
+- **Context envelope.** When a teaching context is known, record the `context` contract
+  (`shared/context/`) so the artifact is auditable against the district / school-type / mandates / SOPs
+  it was built for. Context is resolved first and **preserved across skill handoffs**; an override is
+  logged, never silent. School type governs standards applicability (home-ed/private contexts do not
+  silently inherit the B.E.S.T./NGSSS mandate).
 - **Immutability.** Once an artifact is finalized, its decision record is recorded in the Quality
   Ledger (QG §94) and is not edited; corrections create a new record.
 

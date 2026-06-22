@@ -63,6 +63,17 @@ the prior reader). Built from the uploaded V01–V09 architecture. Staged next: 
 (Surya/OCRmyPDF), DL layout, parallel recovery, reference-set accuracy metrics, `.ods`/`.odp` +
 Sheets/Slides API JSON.
 
+## Context & SOP layer (`shared/context/`)
+Adapts the ecosystem to *where/how* a teacher works (operating-reference pattern). **All 67 FL county
+districts logged** (`florida-districts.json`, fillable stubs; Orange/OCPS populated incl. OCVS).
+School-type **exception rule-sets** (`school-types.json`):
+traditional/magnet/charter/district-virtual/FLVS/home-ed/private-scholarship. **Context contract**
+(`context.schema.json` + `context.py`) — state/district/school_type/program/instructional_model/
+mandates/SOPs/authority_precedence/overrides — resolved first by teacher-core and carried into the
+metadata block + handoffs (`protocols/metadata-schema.md` gains a `context` envelope). Teachers upload
+SOPs (`sop-model.md`), read offline via docintel; school type governs standards applicability.
+**Architecture in place; district rules/norms + school-type specifics are fillable stubs.**
+
 ## Protocol layer (all v1.0)
 | Protocol | Status |
 |---|---|
