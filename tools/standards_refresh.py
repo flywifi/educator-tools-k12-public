@@ -184,6 +184,7 @@ def main(argv) -> int:
     ap.add_argument("--user-agent", default=DEFAULT_UA)
     ap.add_argument("--report", metavar="PATH")
     ap.add_argument("--no-robots", action="store_true", help="(not recommended) ignore robots.txt")
+    ap.add_argument("--update-hashes", action="store_true", help="save watch-page baseline hashes to the manifest")
     a = ap.parse_args(argv)
 
     man = json.loads(Path(a.manifest).read_text(encoding="utf-8"))
@@ -192,10 +193,16 @@ def main(argv) -> int:
     print(f"manifest: {a.manifest}\nschool year: {man.get('current_school_year','?')}  "
           f"stored: {len(known)}  seeds: {len(seeds)}  fetch: {'requests' if _HAS_REQUESTS else 'urllib'}")
 
+    cov = man.get("coverage", {})
+    watch = man.get("watch_pages", [])
+    if cov:
+        print(f"coverage: {', '.join(cov)}")
     if a.check or not (a.crawl or a.download):
-        print("\n[check] crawl seeds (canonical sources):")
+        print(f"\n[check] {len(seeds)} crawl seed(s) + {len(watch)} watch page(s) (content-change monitoring):")
         for s in seeds:
-            print("  -", s)
+            print("  - seed:", s)
+        for w in watch:
+            print(f"  - watch[{w.get('category')}]: {w['url']}")
         print("\n[check] OK — manifest parses. Run --crawl (needs network) to check for updates.")
         return 0
 
@@ -213,9 +220,27 @@ def main(argv) -> int:
             if body and hashlib.sha256(body).hexdigest() != known[fname]["sha256"]:
                 changed.append({"file": fname, "url": url, "_body": body})
 
+    # watch pages: detect CONTENT changes (legislation / rules / guidance / graduation / curriculum)
+    page_changes = []
+    for w in watch:
+        if not fetcher.allowed(w["url"]):
+            page_changes.append({**w, "status": "skipped_robots"}); continue
+        st, body, _ = fetcher.get(w["url"])
+        time.sleep(random.uniform(a.min_delay, a.max_delay))
+        if st == 0 or st >= 400 or not body:
+            page_changes.append({**w, "status": f"error_{st}"}); continue
+        h = hashlib.sha256(re.sub(r"\s+", " ", body.decode("utf-8", "ignore")).encode()).hexdigest()
+        prev = w.get("sha256")
+        page_changes.append({"url": w["url"], "label": w.get("label"), "category": w.get("category"),
+                             "status": "baseline_recorded" if not prev else ("changed" if h != prev else "unchanged")})
+        if a.update_hashes:
+            w["sha256"] = h
+
     report = {"timestamp": datetime.now().strftime("%Y%m%d_%H%M%S"), "manifest": a.manifest,
+              "school_year": man.get("current_school_year"), "coverage": list(cov),
               "pages_visited": rep["visited"], "docs_found": len(docs),
               "new": new, "changed": [{k: v for k, v in c.items() if k != "_body"} for c in changed],
+              "page_changes": page_changes,
               "skipped_robots": rep["skipped_robots"], "js_required": rep["js_required"],
               "captcha": rep["captcha"], "rate_limited": rep["rate_limited"], "errors": rep["errors"]}
 
@@ -223,11 +248,17 @@ def main(argv) -> int:
           f"NEW {len(new)}, CHANGED {len(changed)}.")
     for n in new[:50]:
         print(f"  + {n['file']}  <-  {n['url']}")
+    chg = [p for p in page_changes if p["status"] == "changed"]
+    base = [p for p in page_changes if p["status"] == "baseline_recorded"]
+    for p in chg:
+        print(f"  ! CHANGED [{p.get('category')}]: {p.get('label')}  ({p['url']})")
+    if base:
+        print(f"  [watch] {len(base)} baseline hash(es) recorded — run with --update-hashes to save them.")
     if rep["js_required"]:
         print(f"  [note] {len(rep['js_required'])} page(s) need a browser render (JS) — e.g. CPALMS "
               f"search; use a Selenium/Playwright fetch for those, or the static downloads page.")
-    if rep["skipped_robots"]:
-        print(f"  [note] {len(rep['skipped_robots'])} URL(s) skipped per robots.txt (respected).")
+    if rep["skipped_robots"] or any(p["status"] == "skipped_robots" for p in page_changes):
+        print("  [note] some URL(s) skipped per robots.txt (respected).")
 
     if a.download:
         out = Path(a.download); out.mkdir(parents=True, exist_ok=True)
@@ -238,6 +269,10 @@ def main(argv) -> int:
             if body:
                 (out / n["file"]).write_bytes(body)
         print(f"  downloaded updates to {out}/ — review, then update sources.json + re-verify on CPALMS.")
+
+    if a.update_hashes:
+        Path(a.manifest).write_text(json.dumps(man, indent=2), encoding="utf-8")
+        print(f"  saved watch-page baseline hashes to {a.manifest}")
 
     if a.report:
         Path(a.report).write_text(json.dumps(report, indent=2), encoding="utf-8")

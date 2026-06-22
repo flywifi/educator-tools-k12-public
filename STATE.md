@@ -38,7 +38,7 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 | `family-communication` | capability (privacy-emphasized) | ✅ built |
 | `professional-learning` | capability (non-evaluative coaching) | ✅ built |
 | `school-administration` | capability (school/system level) | ✅ built |
-| `standards-updater` | governance / maintenance (polite crawler) | ✅ built |
+| `standards-updater` | governance / maintenance (polite crawler; watches all FL change vectors) | ✅ built |
 
 ## Protocol layer (all v1.0)
 | Protocol | Status |

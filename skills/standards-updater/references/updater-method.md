@@ -5,6 +5,18 @@ Keeps the stored standards corpus current. The crawler design adapts a robots-re
 **detect → polite-crawl → report** pattern, deliberately **without** the evasive parts (a standards
 updater hits public `.gov` sources, so it stays transparent and compliant).
 
+## Coverage (every Florida change vector)
+From `resources/florida/sources.json` (`coverage`, `crawl_seeds`, `watch_pages`):
+- **standards** (CPALMS B.E.S.T./NGSSS) · **courses & curriculum** (CTE frameworks + course descriptions)
+- **pacing & guidance** (Technical Assistance Papers + DPS memos) · **instructional materials**
+- **assessment** (FAST/B.E.S.T./EOC/FCLE) · **graduation requirements** (s.1003.4282 F.S.)
+- **legislation** (FL Statutes Title XLVIII, ch.1000–1013) · **State Board rules** (FAC 6A)
+- **English learners** (WIDA/ELD) · **additional resources** (CPALMS/FLDOE resource pages)
+
+Two detection modes: **document discovery** (new/changed files found via `crawl_seeds`) and
+**content-change monitoring** (sha256 of `watch_pages` — statute/rule/guidance/graduation/curriculum
+index pages — to catch policy edits that aren't new files). `--update-hashes` saves the baselines.
+
 ## What we borrowed (and what we did not)
 | Pattern (from a scraper design) | Adopted here | Why |
 |---|---|---|

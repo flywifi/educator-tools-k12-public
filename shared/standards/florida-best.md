@@ -100,3 +100,7 @@ K, 1, 2 → **K-2** · 3, 4, 5 → **3-5** · 6, 7, 8 → **6-8** · 9-12 → **
   the code in artifact metadata.
 - Stored corpus + per-file sources: `resources/florida/` (+ `sources.json`); catalog
   `resources/florida-2025-26.md`; refresh with `tools/standards_refresh.py`.
+- **Currency monitoring:** the `standards-updater` skill watches **all Florida change vectors** —
+  standards, courses/curriculum (CTE), pacing/guidance (TAPs, memos), instructional materials,
+  assessment, graduation, **legislation** (Statutes Title XLVIII), and **State Board rules** (FAC 6A).
+  See `sources.json` (`coverage` / `crawl_seeds` / `watch_pages`).
