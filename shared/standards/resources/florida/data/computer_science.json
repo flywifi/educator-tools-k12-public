@@ -1,0 +1,3991 @@
+{
+  "subject": "computer_science",
+  "source_file": "ComputerScience_StandardsReportWithoutAccessPoints.doc.docx",
+  "format": "docx",
+  "count": 569,
+  "standards": [
+    {
+      "code": "SC.K12.CTR.1.1",
+      "grade": "K12",
+      "strand": "CTR",
+      "type": "practice",
+      "statement": "Actively participate in effortful learning both individually and collaboratively."
+    },
+    {
+      "code": "SC.K12.CTR.2.1",
+      "grade": "K12",
+      "strand": "CTR",
+      "type": "practice",
+      "statement": "Demonstrate understanding by decomposing a problem."
+    },
+    {
+      "code": "SC.K12.CTR.3.1",
+      "grade": "K12",
+      "strand": "CTR",
+      "type": "practice",
+      "statement": "Complete tasks with digital fluency."
+    },
+    {
+      "code": "SC.K12.CTR.4.1",
+      "grade": "K12",
+      "strand": "CTR",
+      "type": "practice",
+      "statement": "Express solutions as computational steps."
+    },
+    {
+      "code": "SC.K12.CTR.5.1",
+      "grade": "K12",
+      "strand": "CTR",
+      "type": "practice",
+      "statement": "Create an algorithm to achieve a given goal."
+    },
+    {
+      "code": "SC.K12.CTR.6.1",
+      "grade": "K12",
+      "strand": "CTR",
+      "type": "practice",
+      "statement": "Differentiate between usable data and miscellaneous information."
+    },
+    {
+      "code": "SC.K12.CTR.7.1",
+      "grade": "K12",
+      "strand": "CTR",
+      "type": "practice",
+      "statement": "Solve real-life problems in science and engineering using computational thinking."
+    },
+    {
+      "code": "SC.K.CC.1.1",
+      "grade": "K",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Provide positive feedback."
+    },
+    {
+      "code": "SC.K.HS.1.1",
+      "grade": "K",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Determine the risks of Internet usage."
+    },
+    {
+      "code": "SC.K.HS.1.2",
+      "grade": "K",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explore the need for adult permission before using a network-capable device."
+    },
+    {
+      "code": "SC.K.HS.1.3",
+      "grade": "K",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss that a password helps protect the privacy of information."
+    },
+    {
+      "code": "SC.K.HS.1.4",
+      "grade": "K",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explain that some information is private and should not be shared online or in person."
+    },
+    {
+      "code": "SC.K.HS.2.1",
+      "grade": "K",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explore the impact that technology has on the senses."
+    },
+    {
+      "code": "SC.K.HS.2.2",
+      "grade": "K",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explore how to create a healthy balance between physical activity and time spent on a digital device."
+    },
+    {
+      "code": "SC.K.CO.1.1",
+      "grade": "K",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Recognize components of computing devices."
+    },
+    {
+      "code": "SC.K.CO.1.2",
+      "grade": "K",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify what types of computer components can be used with senses."
+    },
+    {
+      "code": "SC.K.CO.1.3",
+      "grade": "K",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify tools used for creative expression."
+    },
+    {
+      "code": "SC.K.CO.1.4",
+      "grade": "K",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Create a project that expresses thoughts and ideas."
+    },
+    {
+      "code": "SC.K.CO.1.5",
+      "grade": "K",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explore the keyboard of a computer through Consonant-Vowel-Consonant (CVC) words."
+    },
+    {
+      "code": "SC.K.CO.1.6",
+      "grade": "K",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Recognize that universal icons represent tools or information."
+    },
+    {
+      "code": "SC.K.CO.1.7",
+      "grade": "K",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Discuss proper care for electronic devices."
+    },
+    {
+      "code": "SC.K.PE.1.1",
+      "grade": "K",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Discuss how a computer program is a set of instructions made by people to show a computer how to complete a task."
+    },
+    {
+      "code": "SC.K.PE.1.2",
+      "grade": "K",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Develop a series of steps to complete a task."
+    },
+    {
+      "code": "SC.K.PE.2.1",
+      "grade": "K",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Recognize different types of data."
+    },
+    {
+      "code": "SC.K.PE.2.2",
+      "grade": "K",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Use different data representations to make comparisons."
+    },
+    {
+      "code": "SC.K.PE.3.1",
+      "grade": "K",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Arrange or sort information."
+    },
+    {
+      "code": "SC.K.PE.3.2",
+      "grade": "K",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Solve problems involving logical order thinking or sequencing with or without technology."
+    },
+    {
+      "code": "SC.K.PE.3.3",
+      "grade": "K",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Observe patterns of daily life and routines."
+    },
+    {
+      "code": "SC.K.PE.3.4",
+      "grade": "K",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create and use repeating patterns using letters, numbers or symbols."
+    },
+    {
+      "code": "SC.K.TI.1.1",
+      "grade": "K",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explore the use of technology in daily life."
+    },
+    {
+      "code": "SC.K.TI.2.1",
+      "grade": "K",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Introduce and state the importance of rules."
+    },
+    {
+      "code": "SC.1.CC.1.1",
+      "grade": "1",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Communicate and collaborate with teachers and other students with and without the use of technology."
+    },
+    {
+      "code": "SC.1.HS.1.1",
+      "grade": "1",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Define and recognize the risks of Internet usage."
+    },
+    {
+      "code": "SC.1.HS.1.2",
+      "grade": "1",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explain the need for adult permission before using a network-capable device."
+    },
+    {
+      "code": "SC.1.HS.1.3",
+      "grade": "1",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Recognize why student identification is considered secure information."
+    },
+    {
+      "code": "SC.1.HS.2.1",
+      "grade": "1",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Define and discuss what makes a healthy balance between unplugged activities and time spent on a digital device."
+    },
+    {
+      "code": "SC.1.CO.1.1",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Recognize and operate different types of computer components."
+    },
+    {
+      "code": "SC.1.CO.1.2",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Create and review projects using digital tools."
+    },
+    {
+      "code": "SC.1.CO.1.3",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify tools that can be used for data collection."
+    },
+    {
+      "code": "SC.1.CO.1.4",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify tools that can be used for sharing information."
+    },
+    {
+      "code": "SC.1.CO.1.5",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Demonstrate how to complete a task using a digital device."
+    },
+    {
+      "code": "SC.1.CO.1.6",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Discuss the importance of saving digital work."
+    },
+    {
+      "code": "SC.1.CO.1.7",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Use the keyboard of a computer to write consonant-vowel-consonant (CVC) and consonant-vowel-consonant-e (CVCe) words."
+    },
+    {
+      "code": "SC.1.CO.1.8",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Type a username and password accurately."
+    },
+    {
+      "code": "SC.1.CO.1.9",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Recognize and operate different types of computer applications."
+    },
+    {
+      "code": "SC.1.CO.1.10",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Create multimedia files."
+    },
+    {
+      "code": "SC.1.CO.1.11",
+      "grade": "1",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Demonstrate proper care for electronic devices."
+    },
+    {
+      "code": "SC.1.PE.1.1",
+      "grade": "1",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain that a computer program can only follow a set of instructions made by people to complete a task."
+    },
+    {
+      "code": "SC.1.PE.2.1",
+      "grade": "1",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Determine what makes data important."
+    },
+    {
+      "code": "SC.1.PE.2.2",
+      "grade": "1",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Sort data using visual representation tools."
+    },
+    {
+      "code": "SC.1.PE.2.3",
+      "grade": "1",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Recognize the type of data needed to be collected and use it to solve a specific problem using models."
+    },
+    {
+      "code": "SC.1.PE.3.1",
+      "grade": "1",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a pattern that can be repeated to complete a task."
+    },
+    {
+      "code": "SC.1.PE.3.2",
+      "grade": "1",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Extend a repeated pattern."
+    },
+    {
+      "code": "SC.1.PE.3.3",
+      "grade": "1",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Describe how data collected from models can be used to solve real-world problems."
+    },
+    {
+      "code": "SC.1.TI.1.1",
+      "grade": "1",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Discuss that individuals can use computing technology in the workplace or school to perform many important tasks and functions."
+    },
+    {
+      "code": "SC.1.TI.1.2",
+      "grade": "1",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explore that individuals can use computing technology at home to perform many important tasks and functions."
+    },
+    {
+      "code": "SC.1.TI.1.3",
+      "grade": "1",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explore Artificial Intelligence (AI)-powered devices."
+    },
+    {
+      "code": "SC.1.TI.2.1",
+      "grade": "1",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Identify why personal information should be kept private."
+    },
+    {
+      "code": "SC.1.TI.2.2",
+      "grade": "1",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Compare information from two different digital resources on the same topic to confirm accuracy."
+    },
+    {
+      "code": "SC.2.CC.1.1",
+      "grade": "2",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Identify a variety of digital tools used for communication."
+    },
+    {
+      "code": "SC.2.CC.1.2",
+      "grade": "2",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Describe the similarities and differences among the Internet, websites and online applications."
+    },
+    {
+      "code": "SC.2.CC.1.3",
+      "grade": "2",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Complete basic keyword searches."
+    },
+    {
+      "code": "SC.2.CC.1.4",
+      "grade": "2",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Identify concepts illustrated by a simple simulation."
+    },
+    {
+      "code": "SC.2.HS.1.1",
+      "grade": "2",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Identify examples of safe and unsafe online communications."
+    },
+    {
+      "code": "SC.2.HS.1.2",
+      "grade": "2",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Demonstrate why personal or family member login usernames, passcodes, passwords and secure logins should not be shared with other people."
+    },
+    {
+      "code": "SC.2.HS.1.3",
+      "grade": "2",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss the difference between weak and strong passwords."
+    },
+    {
+      "code": "SC.2.HS.1.4",
+      "grade": "2",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Recognize that digital content posted online should have the consent of the subject."
+    },
+    {
+      "code": "SC.2.HS.2.1",
+      "grade": "2",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Identify healthy digital use habits."
+    },
+    {
+      "code": "SC.2.HS.2.2",
+      "grade": "2",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Identify if there is a need to reduce screen time and how that can be done."
+    },
+    {
+      "code": "SC.2.CO.1.1",
+      "grade": "2",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify the characteristics of hardware."
+    },
+    {
+      "code": "SC.2.CO.1.2",
+      "grade": "2",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Demonstrate the proper handling of computers and devices."
+    },
+    {
+      "code": "SC.2.CO.1.3",
+      "grade": "2",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Use the keyboard of a computer to write simple sentences."
+    },
+    {
+      "code": "SC.2.CO.1.4",
+      "grade": "2",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Create an audio or video recording."
+    },
+    {
+      "code": "SC.2.CO.1.5",
+      "grade": "2",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Create and present a digital product."
+    },
+    {
+      "code": "SC.2.CO.1.6",
+      "grade": "2",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explain that a computer program is running when a program or command is executed."
+    },
+    {
+      "code": "SC.2.CO.1.7",
+      "grade": "2",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify the characteristics of software."
+    },
+    {
+      "code": "SC.2.CO.1.8",
+      "grade": "2",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Introduce network system tools and how to determine if they are connected to a network."
+    },
+    {
+      "code": "SC.2.CO.1.9",
+      "grade": "2",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify the strength of a network system from the symbol on a computing device."
+    },
+    {
+      "code": "SC.2.PE.1.1",
+      "grade": "2",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Construct code segments using tools that do not require a textual programming language."
+    },
+    {
+      "code": "SC.2.PE.2.1",
+      "grade": "2",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Collect data using a variety of computing methods."
+    },
+    {
+      "code": "SC.2.PE.2.2",
+      "grade": "2",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explore dividing a collection of data or objects into like groups."
+    },
+    {
+      "code": "SC.2.PE.2.3",
+      "grade": "2",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create data visualizations."
+    },
+    {
+      "code": "SC.2.PE.3.1",
+      "grade": "2",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a repeatable pattern, with or without technology, to solve a problem."
+    },
+    {
+      "code": "SC.2.PE.3.2",
+      "grade": "2",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Develop a plan that could be used to create a story."
+    },
+    {
+      "code": "SC.2.PE.3.3",
+      "grade": "2",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Demonstrate the use of conditional logic."
+    },
+    {
+      "code": "SC.2.PE.3.4",
+      "grade": "2",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Solve questions using models, simulations or data."
+    },
+    {
+      "code": "SC.2.TI.1.1",
+      "grade": "2",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Recognize that people use computing technology in the workplace or school to perform many important tasks and functions."
+    },
+    {
+      "code": "SC.2.TI.1.2",
+      "grade": "2",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Recognize that people use computing technology at home to perform many important tasks and functions."
+    },
+    {
+      "code": "SC.2.TI.1.3",
+      "grade": "2",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Identify and compare Artificial Intelligence (AI) devices to other devices."
+    },
+    {
+      "code": "SC.2.TI.2.1",
+      "grade": "2",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Evaluate if given information (written or visual) is accurate."
+    },
+    {
+      "code": "SC.3.CC.1.1",
+      "grade": "3",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Describe how collaborating with others can be beneficial to a project."
+    },
+    {
+      "code": "SC.3.CC.1.2",
+      "grade": "3",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Use feedback from peers to make revisions using technology."
+    },
+    {
+      "code": "SC.3.CC.1.3",
+      "grade": "3",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Explain that searches may be enhanced by key terms."
+    },
+    {
+      "code": "SC.3.CC.1.4",
+      "grade": "3",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Describe how computer simulations can help communicate ideas in concepts or problem-solving."
+    },
+    {
+      "code": "SC.3.CC.2.1",
+      "grade": "3",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Identify uses of technology when sending communication over the Internet."
+    },
+    {
+      "code": "SC.3.CC.2.2",
+      "grade": "3",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Describe responsible uses of modern communication media and devices."
+    },
+    {
+      "code": "SC.3.HS.1.1",
+      "grade": "3",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss the need for parental control settings on network- capable devices."
+    },
+    {
+      "code": "SC.3.HS.1.2",
+      "grade": "3",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss why some sites or games have age requirements."
+    },
+    {
+      "code": "SC.3.HS.1.3",
+      "grade": "3",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explain what actions should be taken if students are either victims or witnesses of cyberbullying or harassment."
+    },
+    {
+      "code": "SC.3.HS.2.1",
+      "grade": "3",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explore ways to balance movement and screen time."
+    },
+    {
+      "code": "SC.3.HS.2.2",
+      "grade": "3",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Demonstrate the use of healthy digital habits."
+    },
+    {
+      "code": "SC.3.CO.1.1",
+      "grade": "3",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Classify hardware as input, output, both or neither."
+    },
+    {
+      "code": "SC.3.CO.1.2",
+      "grade": "3",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Use the keyboard of a computer to write short paragraphs or short stories."
+    },
+    {
+      "code": "SC.3.CO.1.3",
+      "grade": "3",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify digital tools used for writing activities."
+    },
+    {
+      "code": "SC.3.CO.1.4",
+      "grade": "3",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify digital tools for data collection."
+    },
+    {
+      "code": "SC.3.CO.1.5",
+      "grade": "3",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Use digital tools for sharing information."
+    },
+    {
+      "code": "SC.3.CO.1.6",
+      "grade": "3",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Apply self-editing practices to improve accuracy."
+    },
+    {
+      "code": "SC.3.CO.1.7",
+      "grade": "3",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Categorize software based on its main purpose."
+    },
+    {
+      "code": "SC.3.CO.1.8",
+      "grade": "3",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Introduce how network systems are part of a global communication network."
+    },
+    {
+      "code": "SC.3.PE.1.1",
+      "grade": "3",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explore using graphics, blocks or visual cues to design a program."
+    },
+    {
+      "code": "SC.3.PE.1.2",
+      "grade": "3",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a program that includes user choices based on defined conditions."
+    },
+    {
+      "code": "SC.3.PE.2.1",
+      "grade": "3",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Collect data using a digital tool."
+    },
+    {
+      "code": "SC.3.PE.2.2",
+      "grade": "3",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Compile data collected and draw conclusions based on trends."
+    },
+    {
+      "code": "SC.3.PE.2.3",
+      "grade": "3",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Analyze data for trends."
+    },
+    {
+      "code": "SC.3.PE.3.1",
+      "grade": "3",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a repeatable pattern to solve a problem."
+    },
+    {
+      "code": "SC.3.PE.3.2",
+      "grade": "3",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Demonstrate how programs written differently can have the same outcome."
+    },
+    {
+      "code": "SC.3.PE.3.3",
+      "grade": "3",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Use graphical programming or visual cues to represent a set of instructions (algorithm) that includes repetition."
+    },
+    {
+      "code": "SC.3.PE.3.4",
+      "grade": "3",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a model or a simulation of a system and explain what the model shows."
+    },
+    {
+      "code": "SC.3.PE.3.5",
+      "grade": "3",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain the process of sorting information into a useful order."
+    },
+    {
+      "code": "SC.3.TI.1.1",
+      "grade": "3",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Summarize how different types of computing devices are used to communicate with others on a daily basis."
+    },
+    {
+      "code": "SC.3.TI.1.2",
+      "grade": "3",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Identify adaptive technology and discuss how it has changed over time."
+    },
+    {
+      "code": "SC.3.TI.1.3",
+      "grade": "3",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Discuss the uses of Artificial Intelligence (AI) in daily life."
+    },
+    {
+      "code": "SC.3.TI.2.1",
+      "grade": "3",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Demonstrate awareness of copyright laws to show respect for the ideas of others when using digital artifacts."
+    },
+    {
+      "code": "SC.3.TI.2.2",
+      "grade": "3",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Identify various digital artifacts and whether they are copyrighted or trademarked."
+    },
+    {
+      "code": "SC.3.TI.2.3",
+      "grade": "3",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Cite evidence using direct and indirect citations."
+    },
+    {
+      "code": "SC.3.TI.2.4",
+      "grade": "3",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Identify digital information resources used to answer research questions."
+    },
+    {
+      "code": "SC.4.CC.1.1",
+      "grade": "4",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Demonstrate ways that technology can foster teamwork."
+    },
+    {
+      "code": "SC.4.CC.1.2",
+      "grade": "4",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Demonstrate collaboration and problem-solving."
+    },
+    {
+      "code": "SC.4.CC.1.3",
+      "grade": "4",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Discuss ways that collaboration can lead to innovation."
+    },
+    {
+      "code": "SC.4.CC.1.4",
+      "grade": "4",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Explain why providing and receiving feedback from others can improve performance for projects."
+    },
+    {
+      "code": "SC.4.CC.1.5",
+      "grade": "4",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Compare different communication technologies."
+    },
+    {
+      "code": "SC.4.CC.2.1",
+      "grade": "4",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Gather information from a variety of digital resources."
+    },
+    {
+      "code": "SC.4.CC.2.2",
+      "grade": "4",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Organize information from digital resources."
+    },
+    {
+      "code": "SC.4.HS.1.1",
+      "grade": "4",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss what makes websites and applications appropriate for use at school."
+    },
+    {
+      "code": "SC.4.HS.1.2",
+      "grade": "4",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss how websites and applications can be utilized for different purposes."
+    },
+    {
+      "code": "SC.4.HS.1.3",
+      "grade": "4",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Evaluate the permanence of content posted online."
+    },
+    {
+      "code": "SC.4.HS.1.4",
+      "grade": "4",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Identify the legal and social consequences of cyberbullying."
+    },
+    {
+      "code": "SC.4.HS.2.1",
+      "grade": "4",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Identify the impact of digital device usage on behavior."
+    },
+    {
+      "code": "SC.4.CO.1.1",
+      "grade": "4",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Demonstrate keyboarding skills for communication."
+    },
+    {
+      "code": "SC.4.CO.1.2",
+      "grade": "4",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Create and edit multimedia artifacts using digital tools."
+    },
+    {
+      "code": "SC.4.CO.1.3",
+      "grade": "4",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Publish multimedia artifacts using digital tools based on feedback."
+    },
+    {
+      "code": "SC.4.CO.1.4",
+      "grade": "4",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Determine whether software can be described as a system or application software."
+    },
+    {
+      "code": "SC.4.CO.1.5",
+      "grade": "4",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Troubleshoot digital problems that may occur during daily use."
+    },
+    {
+      "code": "SC.4.CO.1.6",
+      "grade": "4",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Discuss ways computers connect."
+    },
+    {
+      "code": "SC.4.CO.1.7",
+      "grade": "4",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Compare hardware and software."
+    },
+    {
+      "code": "SC.4.PE.1.1",
+      "grade": "4",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain that when writing programs, a specific initial program environment is necessary."
+    },
+    {
+      "code": "SC.4.PE.1.2",
+      "grade": "4",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a condition that will modify a situation or value in the program."
+    },
+    {
+      "code": "SC.4.PE.2.1",
+      "grade": "4",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Collect, organize and graph data."
+    },
+    {
+      "code": "SC.4.PE.2.2",
+      "grade": "4",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Analyze a graphical representation of data."
+    },
+    {
+      "code": "SC.4.PE.3.1",
+      "grade": "4",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Describe how computational thinking can be used to solve real-world issues in science and engineering."
+    },
+    {
+      "code": "SC.4.PE.3.2",
+      "grade": "4",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a list of steps (algorithm) to solve a real-world problem."
+    },
+    {
+      "code": "SC.4.TI.1.1",
+      "grade": "4",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explain how over time digital literacy has been used to simplify tasks and functions."
+    },
+    {
+      "code": "SC.4.TI.1.2",
+      "grade": "4",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explore and identify the functions of adaptive technologies and how they have changed over time."
+    },
+    {
+      "code": "SC.4.TI.1.3",
+      "grade": "4",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explain how Artificial Intelligence (AI) affects our ability to access, create and modify content."
+    },
+    {
+      "code": "SC.4.TI.1.4",
+      "grade": "4",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Compare human and computer performance on similar tasks."
+    },
+    {
+      "code": "SC.4.TI.2.1",
+      "grade": "4",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Define plagiarism and explore the impacts of plagiarized materials."
+    },
+    {
+      "code": "SC.5.CC.1.1",
+      "grade": "5",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Identify appropriate and inappropriate uses of technology for communication with others."
+    },
+    {
+      "code": "SC.5.CC.1.2",
+      "grade": "5",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Demonstrate ways with or without technology that collaborating with others can support problem solving."
+    },
+    {
+      "code": "SC.5.CC.1.3",
+      "grade": "5",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Revise and refine thinking based on peer feedback."
+    },
+    {
+      "code": "SC.5.CC.2.1",
+      "grade": "5",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Research and use information gathered from digital resources."
+    },
+    {
+      "code": "SC.5.CC.2.2",
+      "grade": "5",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Support ideas using collected evidence through research."
+    },
+    {
+      "code": "SC.5.HS.1.1",
+      "grade": "5",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss the importance of a search engine\u2019s safe-search feature."
+    },
+    {
+      "code": "SC.5.HS.1.2",
+      "grade": "5",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Describe the role that parental digital monitoring programs play in Internet safety."
+    },
+    {
+      "code": "SC.5.HS.1.3",
+      "grade": "5",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Describe threats to safe and efficient use of electronic devices."
+    },
+    {
+      "code": "SC.5.HS.2.1",
+      "grade": "5",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Define the 20-20-20 rule for technology."
+    },
+    {
+      "code": "SC.5.HS.2.2",
+      "grade": "5",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss ways to counteract digital fatigue."
+    },
+    {
+      "code": "SC.5.HS.3.1",
+      "grade": "5",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explain the impact of digital media, communication and the consequences of cyberbullying and harassment."
+    },
+    {
+      "code": "SC.5.CO.1.1",
+      "grade": "5",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe the function and purpose of various input/output devices."
+    },
+    {
+      "code": "SC.5.CO.1.2",
+      "grade": "5",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Create a digital project that answers a research question, clearly communicating thoughts and ideas."
+    },
+    {
+      "code": "SC.5.CO.1.3",
+      "grade": "5",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explore the use of keyboard shortcuts."
+    },
+    {
+      "code": "SC.5.CO.1.4",
+      "grade": "5",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explore the use of the keyboard with proper finger placement for all rows."
+    },
+    {
+      "code": "SC.5.CO.1.5",
+      "grade": "5",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explain how computers access a network and how to effectively troubleshoot."
+    },
+    {
+      "code": "SC.5.CO.1.6",
+      "grade": "5",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explain how computers can communicate to transfer data."
+    },
+    {
+      "code": "SC.5.CO.2.1",
+      "grade": "5",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify hardware components in the computation cycle as input, processing, output and storage."
+    },
+    {
+      "code": "SC.5.CO.2.2",
+      "grade": "5",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Troubleshoot hardware problems that may occur during everyday use."
+    },
+    {
+      "code": "SC.5.CO.3.1",
+      "grade": "5",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify software components in the computation cycle as input, processing, output and storage."
+    },
+    {
+      "code": "SC.5.CO.3.2",
+      "grade": "5",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Troubleshoot software problems that may occur during everyday use."
+    },
+    {
+      "code": "SC.5.PE.1.1",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain how computers model intelligent behavior."
+    },
+    {
+      "code": "SC.5.PE.1.2",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a program in a graphical environment."
+    },
+    {
+      "code": "SC.5.PE.1.3",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a program using arithmetic operators, conditionals and repetition in programs."
+    },
+    {
+      "code": "SC.5.PE.1.4",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Detect and correct program errors."
+    },
+    {
+      "code": "SC.5.PE.2.1",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Describe examples of databases from everyday life."
+    },
+    {
+      "code": "SC.5.PE.2.2",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify data types and data structures."
+    },
+    {
+      "code": "SC.5.PE.2.3",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Analyze the data from a given scenario."
+    },
+    {
+      "code": "SC.5.PE.3.1",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify the concepts illustrated by a simulation that offers problems and solutions."
+    },
+    {
+      "code": "SC.5.PE.3.2",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Solve problems using digital graphic organizers."
+    },
+    {
+      "code": "SC.5.PE.3.3",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain that there are several possible algorithms for searching within a dataset."
+    },
+    {
+      "code": "SC.5.PE.3.4",
+      "grade": "5",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain how to identify and correct logical errors in algorithms."
+    },
+    {
+      "code": "SC.5.TI.1.1",
+      "grade": "5",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explain how access to technology helps empower individuals and groups."
+    },
+    {
+      "code": "SC.5.TI.1.2",
+      "grade": "5",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explore various technology-related career paths."
+    },
+    {
+      "code": "SC.5.TI.1.3",
+      "grade": "5",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Evaluate audio and video technologies and their impact on communication."
+    },
+    {
+      "code": "SC.5.TI.2.1",
+      "grade": "5",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Compare digital resources."
+    },
+    {
+      "code": "SC.5.TI.2.2",
+      "grade": "5",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe the purpose of copyright."
+    },
+    {
+      "code": "SC.5.TI.2.3",
+      "grade": "5",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe the possible consequences for improper use of digital materials that are protected by copyright."
+    },
+    {
+      "code": "SC.5.TI.2.4",
+      "grade": "5",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Verify information from digital resources."
+    },
+    {
+      "code": "SC.5.TI.2.5",
+      "grade": "5",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Demonstrate how to cite sources."
+    },
+    {
+      "code": "SC.6.CC.1.1",
+      "grade": "6",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Demonstrate an ability to communicate through various online tools."
+    },
+    {
+      "code": "SC.6.CC.2.1",
+      "grade": "6",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Create a digital product individually and collaboratively."
+    },
+    {
+      "code": "SC.6.HS.1.1",
+      "grade": "6",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Identify the connection between strong passwords and Internet safety."
+    },
+    {
+      "code": "SC.6.HS.1.2",
+      "grade": "6",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss the need for downloads to come from trusted sources."
+    },
+    {
+      "code": "SC.6.HS.1.3",
+      "grade": "6",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Describe safe practices when participating in digital communication."
+    },
+    {
+      "code": "SC.6.HS.1.4",
+      "grade": "6",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Evaluate a given website to determine if it is safe for users."
+    },
+    {
+      "code": "SC.6.HS.2.1",
+      "grade": "6",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Define the online disinhibition effect."
+    },
+    {
+      "code": "SC.6.HS.2.2",
+      "grade": "6",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "List negative impacts of excessive device usage."
+    },
+    {
+      "code": "SC.6.HS.2.3",
+      "grade": "6",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Implement the 20-20-20 rule for technology."
+    },
+    {
+      "code": "SC.6.HS.3.1",
+      "grade": "6",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explore the impact that digital media and communication has on our behavior."
+    },
+    {
+      "code": "SC.6.CO.1.1",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify multiple file format types."
+    },
+    {
+      "code": "SC.6.CO.1.2",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify applications that have different desktop and online versions."
+    },
+    {
+      "code": "SC.6.CO.1.3",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify the differences between wired and wireless computer networks."
+    },
+    {
+      "code": "SC.6.CO.1.4",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe how information is translated and communicated between computers and devices over a network."
+    },
+    {
+      "code": "SC.6.CO.1.5",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explain that a database is a collection of digital data that can be organized, stored and retrieved in a designated order."
+    },
+    {
+      "code": "SC.6.CO.1.6",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Research questions using digital information resources."
+    },
+    {
+      "code": "SC.6.CO.2.1",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify and describe the major hardware components and functions of computer systems."
+    },
+    {
+      "code": "SC.6.CO.3.1",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe the essential characteristics of a software artifact."
+    },
+    {
+      "code": "SC.6.CO.3.2",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe the main functions of an operating system."
+    },
+    {
+      "code": "SC.6.CO.3.3",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explain how an operating system provides user and system services."
+    },
+    {
+      "code": "SC.6.CO.3.4",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe the major software components and functions of computer systems."
+    },
+    {
+      "code": "SC.6.CO.3.5",
+      "grade": "6",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Evaluate various forms of input and output (IO) and peripheral devices."
+    },
+    {
+      "code": "SC.6.PE.1.1",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify the types of operations that can be performed on different data types."
+    },
+    {
+      "code": "SC.6.PE.1.2",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Develop a program using a string data type."
+    },
+    {
+      "code": "SC.6.PE.1.3",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Develop a program using a numeric data type."
+    },
+    {
+      "code": "SC.6.PE.1.4",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Index selected items within a list."
+    },
+    {
+      "code": "SC.6.PE.1.5",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Compare data types and their uses."
+    },
+    {
+      "code": "SC.6.PE.1.6",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Develop a program using a Boolean data type."
+    },
+    {
+      "code": "SC.6.PE.1.7",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Write code segments that use standard mathematical operators."
+    },
+    {
+      "code": "SC.6.PE.1.8",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Use a function for a specified purpose."
+    },
+    {
+      "code": "SC.6.PE.1.9",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Use looping techniques for a specified purpose."
+    },
+    {
+      "code": "SC.6.PE.1.10",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Use conditional statements for a specified purpose."
+    },
+    {
+      "code": "SC.6.PE.1.11",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Design solutions that use repetition and two-way selection."
+    },
+    {
+      "code": "SC.6.PE.2.1",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create designated graph types using data."
+    },
+    {
+      "code": "SC.6.PE.2.2",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Analyze a database and propose solutions based on a task or problem."
+    },
+    {
+      "code": "SC.6.PE.2.3",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a simple database."
+    },
+    {
+      "code": "SC.6.PE.3.1",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify what kinds of real-world problems can be solved using modeling and simulation."
+    },
+    {
+      "code": "SC.6.PE.3.2",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Interact with content-specific models and simulations to support learning, research and problem-solving."
+    },
+    {
+      "code": "SC.6.PE.3.3",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Design a digital model."
+    },
+    {
+      "code": "SC.6.PE.3.4",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify the benefits and the limitations of the use of models."
+    },
+    {
+      "code": "SC.6.PE.3.5",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a visual representation of a solution to a problem."
+    },
+    {
+      "code": "SC.6.PE.3.6",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Evaluate the logical flow of a step-by-step program by acting it out through computer-free activities."
+    },
+    {
+      "code": "SC.6.PE.3.7",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Select tools and technology resources to accomplish a variety of tasks and solve problems."
+    },
+    {
+      "code": "SC.6.PE.4.1",
+      "grade": "6",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Recognize the phases of the software development life cycle."
+    },
+    {
+      "code": "SC.6.TI.1.1",
+      "grade": "6",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Recognize the data content sources that make your digital footprint."
+    },
+    {
+      "code": "SC.6.TI.1.2",
+      "grade": "6",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explore the history of computer and other devices."
+    },
+    {
+      "code": "SC.6.TI.1.3",
+      "grade": "6",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Create a timeline for the innovation of an electronic device."
+    },
+    {
+      "code": "SC.6.TI.1.4",
+      "grade": "6",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe various technology-related career paths."
+    },
+    {
+      "code": "SC.6.TI.2.1",
+      "grade": "6",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Recognize the consequences of plagiarism on the development of creative works."
+    },
+    {
+      "code": "SC.6.TI.2.2",
+      "grade": "6",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Demonstrate compliance with the school\u2019s Acceptable Use Policy."
+    },
+    {
+      "code": "SC.6.TI.2.3",
+      "grade": "6",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explain fair use for using copyrighted materials."
+    },
+    {
+      "code": "SC.6.TI.2.4",
+      "grade": "6",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Generate citations for text and non-text sources using a digital tool."
+    },
+    {
+      "code": "SC.6.ET.1.1",
+      "grade": "6",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Identify technology used to support specialized forms of human- computer interaction (HCI)."
+    },
+    {
+      "code": "SC.6.ET.1.2",
+      "grade": "6",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Identify technology skills needed in the workplace."
+    },
+    {
+      "code": "SC.6.ET.2.1",
+      "grade": "6",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Identify the characteristics of Artificial Intelligence (AI)."
+    },
+    {
+      "code": "SC.6.ET.2.2",
+      "grade": "6",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Discuss the benefits associated with Artificial Intelligence (AI)."
+    },
+    {
+      "code": "SC.6.ET.3.1",
+      "grade": "6",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Explain why some tasks can be accomplished faster by computers."
+    },
+    {
+      "code": "SC.6.ET.3.2",
+      "grade": "6",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Describe how humans and machines interact to accomplish tasks that neither can accomplish alone."
+    },
+    {
+      "code": "SC.6.CS.1.1",
+      "grade": "6",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Define the states of data."
+    },
+    {
+      "code": "SC.6.CS.1.2",
+      "grade": "6",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Illustrate the concept of access control and how to limit access to authorized users."
+    },
+    {
+      "code": "SC.6.CS.1.3",
+      "grade": "6",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Discuss the importance of cybersecurity."
+    },
+    {
+      "code": "SC.6.CS.1.4",
+      "grade": "6",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Determine information that should remain confidential."
+    },
+    {
+      "code": "SC.6.CS.1.5",
+      "grade": "6",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Identify the need for encryption."
+    },
+    {
+      "code": "SC.6.CS.1.6",
+      "grade": "6",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Recognize the importance of digital identity."
+    },
+    {
+      "code": "SC.6.CS.2.1",
+      "grade": "6",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Identify the need for security safeguards on personal devices."
+    },
+    {
+      "code": "SC.7.CC.1.1",
+      "grade": "7",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Apply multimedia tools for local and global group collaboration."
+    },
+    {
+      "code": "SC.7.CC.1.2",
+      "grade": "7",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Identify productivity tools for collaboration."
+    },
+    {
+      "code": "SC.7.CC.1.3",
+      "grade": "7",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Identify individual roles within a collaborative team."
+    },
+    {
+      "code": "SC.7.CC.2.1",
+      "grade": "7",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Organize compiled information using a digital tool."
+    },
+    {
+      "code": "SC.7.CC.2.2",
+      "grade": "7",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Analyze one\u2019s own ideas with research-based information to create a unique digital artifact."
+    },
+    {
+      "code": "SC.7.HS.1.1",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explain the possible consequences of cyberbullying."
+    },
+    {
+      "code": "SC.7.HS.1.2",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss the impact of online disinhibition on individuals and society."
+    },
+    {
+      "code": "SC.7.HS.1.3",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Interpret writings and communications using terminology."
+    },
+    {
+      "code": "SC.7.HS.1.4",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Categorize potential dangers to an individual\u2019s safety and security."
+    },
+    {
+      "code": "SC.7.HS.1.5",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Recognize the importance of reporting suspicious behavior encountered on the Internet."
+    },
+    {
+      "code": "SC.7.HS.1.6",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Compare the risks and benefits of accessing the Internet."
+    },
+    {
+      "code": "SC.7.HS.1.7",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Examine safe practices for technology use."
+    },
+    {
+      "code": "SC.7.HS.2.1",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Identify the digital practices that may affect your physical and mental well- being."
+    },
+    {
+      "code": "SC.7.HS.3.1",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss how device usage can affect sleeping patterns."
+    },
+    {
+      "code": "SC.7.HS.3.2",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss the potential risks of device addiction and how to prevent it."
+    },
+    {
+      "code": "SC.7.HS.3.3",
+      "grade": "7",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Explain the possible consequences of cyberbullying and inappropriate use of digital media and communication on personal life and society."
+    },
+    {
+      "code": "SC.7.CO.1.1",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify the kinds of content associated with different file types."
+    },
+    {
+      "code": "SC.7.CO.1.2",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Differentiate between different file types."
+    },
+    {
+      "code": "SC.7.CO.1.3",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe the relationship between hardware and software."
+    },
+    {
+      "code": "SC.7.CO.1.4",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Utilize a set of websites to find information for a given topic."
+    },
+    {
+      "code": "SC.7.CO.1.5",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Utilize government websites to facilitate civic engagement."
+    },
+    {
+      "code": "SC.7.CO.1.6",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe strategies for determining the reliability of resources or information on the Internet."
+    },
+    {
+      "code": "SC.7.CO.2.1",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explain the difference between wired, local area, wireless and mobile networks."
+    },
+    {
+      "code": "SC.7.CO.2.2",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify and describe the function of the main internal parts of a basic computing device."
+    },
+    {
+      "code": "SC.7.CO.2.3",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explore devices that contain firmware."
+    },
+    {
+      "code": "SC.7.CO.2.4",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explain the connection of natural resources on the manufacturing of computer hardware components."
+    },
+    {
+      "code": "SC.7.CO.3.1",
+      "grade": "7",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Differentiate between desktop applications and software as a service (SaaS)."
+    },
+    {
+      "code": "SC.7.PE.1.1",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a function for a specific purpose."
+    },
+    {
+      "code": "SC.7.PE.1.2",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Write a code segment that will explore a list using iteration."
+    },
+    {
+      "code": "SC.7.PE.1.3",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Develop a logical expression using operator precedence."
+    },
+    {
+      "code": "SC.7.PE.1.4",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Develop an arithmetic expression using operator precedence."
+    },
+    {
+      "code": "SC.7.PE.1.5",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify the types and uses of variables in a program."
+    },
+    {
+      "code": "SC.7.PE.1.6",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Develop problem solutions using a block programming language."
+    },
+    {
+      "code": "SC.7.PE.1.7",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create online content using advanced design tools."
+    },
+    {
+      "code": "SC.7.PE.1.8",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify different types of programming errors."
+    },
+    {
+      "code": "SC.7.PE.1.9",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Debug a program using iterative development."
+    },
+    {
+      "code": "SC.7.PE.1.10",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Write a code segment that will explore a list using iteration."
+    },
+    {
+      "code": "SC.7.PE.1.11",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create iterative and non-iterative structures in a code segment."
+    },
+    {
+      "code": "SC.7.PE.2.1",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Predict outputs while showing an understanding of inputs."
+    },
+    {
+      "code": "SC.7.PE.2.2",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Analyze digital data within a database."
+    },
+    {
+      "code": "SC.7.PE.3.1",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Define parameters for individual and collaborative projects using Boolean logic."
+    },
+    {
+      "code": "SC.7.PE.3.2",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Modify and create a simulation to analyze and illustrate a concept in depth."
+    },
+    {
+      "code": "SC.7.PE.3.3",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Use modeling and simulations to test scientific hypotheses."
+    },
+    {
+      "code": "SC.7.PE.3.4",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Define the concept of a class related to object-oriented programming."
+    },
+    {
+      "code": "SC.7.PE.3.5",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify the purpose of indexing the order of elements in a list."
+    },
+    {
+      "code": "SC.7.PE.3.6",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Perform program tracing to predict the behavior of programs."
+    },
+    {
+      "code": "SC.7.PE.3.7",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify the types and uses of variables in a program."
+    },
+    {
+      "code": "SC.7.PE.4.1",
+      "grade": "7",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Define the phases of the software development life cycle."
+    },
+    {
+      "code": "SC.7.TI.1.1",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Discuss the ways that technology has increased the capacity for communication within a community."
+    },
+    {
+      "code": "SC.7.TI.1.2",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Evaluate the responsible and irresponsible use of information on collaborative projects."
+    },
+    {
+      "code": "SC.7.TI.1.3",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Identify how media is used to influence information."
+    },
+    {
+      "code": "SC.7.TI.1.4",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Analyze technology-related career paths."
+    },
+    {
+      "code": "SC.7.TI.1.5",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Summarize the historical impact of digital media and communication."
+    },
+    {
+      "code": "SC.7.TI.1.6",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explore the innovation of computer components."
+    },
+    {
+      "code": "SC.7.TI.2.1",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe legal and ethical behaviors when using information and technology and describe the consequences of misuse."
+    },
+    {
+      "code": "SC.7.TI.2.2",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe and model responsible use of modern communication media and devices."
+    },
+    {
+      "code": "SC.7.TI.2.3",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Recognize the legal use of modern communication media and devices."
+    },
+    {
+      "code": "SC.7.TI.2.4",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explore the ethical use of collected data."
+    },
+    {
+      "code": "SC.7.TI.2.5",
+      "grade": "7",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explain how copyright law and licensing protect the owner of intellectual property."
+    },
+    {
+      "code": "SC.7.ET.1.1",
+      "grade": "7",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Investigate the latest technologies and the potential they have to improve our lives at home, work and in society."
+    },
+    {
+      "code": "SC.7.ET.1.2",
+      "grade": "7",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Explore emerging technologies that have the potential to impact education."
+    },
+    {
+      "code": "SC.7.ET.2.1",
+      "grade": "7",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Explore future technologies and the role artificial intelligence (AI) may play."
+    },
+    {
+      "code": "SC.7.ET.3.1",
+      "grade": "7",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Describe ways in which adaptive technologies can assist users in their daily lives."
+    },
+    {
+      "code": "SC.7.ET.3.2",
+      "grade": "7",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Identify ways humans interact with computers."
+    },
+    {
+      "code": "SC.7.ET.3.3",
+      "grade": "7",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Identify ways humans interact with hardware components."
+    },
+    {
+      "code": "SC.7.CS.1.1",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Describe data in its three states and potential threats to each state."
+    },
+    {
+      "code": "SC.7.CS.1.2",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Explain the concept of access control and how to limit access to authorized users."
+    },
+    {
+      "code": "SC.7.CS.1.3",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Examine the basics of cybersecurity needs for business, government and organizations."
+    },
+    {
+      "code": "SC.7.CS.1.4",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "List and define the elements of the confidentiality, integrity and availability (CIA) triad."
+    },
+    {
+      "code": "SC.7.CS.1.5",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Explain components of access control."
+    },
+    {
+      "code": "SC.7.CS.1.6",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Identify the characteristics of strong versus weak passwords in data and identity security."
+    },
+    {
+      "code": "SC.7.CS.1.7",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Explain the proper use and operation of security technologies."
+    },
+    {
+      "code": "SC.7.CS.1.8",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Identify actions that protect electronic devices."
+    },
+    {
+      "code": "SC.7.CS.2.1",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Define the Internet of Things (IoT)."
+    },
+    {
+      "code": "SC.7.CS.3.1",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Identify the types of cyberattacks."
+    },
+    {
+      "code": "SC.7.CS.3.2",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Explore social engineering attacks."
+    },
+    {
+      "code": "SC.7.CS.3.3",
+      "grade": "7",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Identify data vulnerabilities."
+    },
+    {
+      "code": "SC.8.CC.1.1",
+      "grade": "8",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Design a digital product."
+    },
+    {
+      "code": "SC.8.CC.1.2",
+      "grade": "8",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Evaluate the benefits of collaboration compared to individual product creation."
+    },
+    {
+      "code": "SC.8.CC.2.1",
+      "grade": "8",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Publish a digital product individually and collaboratively."
+    },
+    {
+      "code": "SC.8.HS.1.1",
+      "grade": "8",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Describe the impacts of the presence of technology and the lack of technology on everyday life."
+    },
+    {
+      "code": "SC.8.HS.1.2",
+      "grade": "8",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Develop procedures to protect personal information while accessing the Internet."
+    },
+    {
+      "code": "SC.8.HS.1.3",
+      "grade": "8",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Model a procedure to mitigate risks to personal safety while accessing the Internet."
+    },
+    {
+      "code": "SC.8.HS.2.1",
+      "grade": "8",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Determine the association between hand-eye coordination and the use of digital devices."
+    },
+    {
+      "code": "SC.8.HS.2.2",
+      "grade": "8",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Investigate the causes of headaches associated with digital device usage."
+    },
+    {
+      "code": "SC.8.HS.2.3",
+      "grade": "8",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Investigate the causes of physical body changes due to device usage."
+    },
+    {
+      "code": "SC.8.HS.2.4",
+      "grade": "8",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Identify the effects on cognitive function as a result of technology use."
+    },
+    {
+      "code": "SC.8.HS.3.1",
+      "grade": "8",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss how regulating the use of digital media and communication is important for mental and physical well-being."
+    },
+    {
+      "code": "SC.8.HS.3.2",
+      "grade": "8",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Analyze how digital media and communication influence behavior."
+    },
+    {
+      "code": "SC.8.CO.1.1",
+      "grade": "8",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Integrate information from multiple file formats into a single artifact."
+    },
+    {
+      "code": "SC.8.CO.1.2",
+      "grade": "8",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Create a collaborative project utilizing an online digital application."
+    },
+    {
+      "code": "SC.8.CO.2.1",
+      "grade": "8",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explain how to disassemble or reassemble a desktop computer."
+    },
+    {
+      "code": "SC.8.CO.2.2",
+      "grade": "8",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explore different hardware specifications and their impact on the performance of the computer."
+    },
+    {
+      "code": "SC.8.CO.2.3",
+      "grade": "8",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify the major components of a network."
+    },
+    {
+      "code": "SC.8.CO.3.1",
+      "grade": "8",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Compare the benefits and limitations of desktop applications and their complimentary online subscription version."
+    },
+    {
+      "code": "SC.8.PE.1.1",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Use an expression for a specified purpose."
+    },
+    {
+      "code": "SC.8.PE.1.2",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a programming process for decomposing a problem."
+    },
+    {
+      "code": "SC.8.PE.1.3",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a function with parameters."
+    },
+    {
+      "code": "SC.8.PE.1.4",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain the use of iterative and non-iterative structures and their uses as a code segment."
+    },
+    {
+      "code": "SC.8.PE.1.5",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create an algorithm to solve one or more parts of a decomposed problem."
+    },
+    {
+      "code": "SC.8.PE.1.6",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create an algorithm that can collect data."
+    },
+    {
+      "code": "SC.8.PE.1.7",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Design an application for a specified purpose."
+    },
+    {
+      "code": "SC.8.PE.1.8",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Recognize different numerical data types."
+    },
+    {
+      "code": "SC.8.PE.1.9",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Design a program that will assist a user with equations using standard mathematical operators."
+    },
+    {
+      "code": "SC.8.PE.1.10",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a code segment using iteration."
+    },
+    {
+      "code": "SC.8.PE.1.11",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify the limitations that need to be recognized when creating an algorithm."
+    },
+    {
+      "code": "SC.8.PE.1.12",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Select an efficient algorithm for a given task based on certain criteria."
+    },
+    {
+      "code": "SC.8.PE.2.1",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Select and use applicable data-collection technology."
+    },
+    {
+      "code": "SC.8.PE.2.2",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Utilize data-collection technology to report results for content-related problems."
+    },
+    {
+      "code": "SC.8.PE.2.3",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Utilize data from simulations to test hypotheses."
+    },
+    {
+      "code": "SC.8.PE.2.4",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Perform a variety of operations such as sorting, filtering and searching in a database."
+    },
+    {
+      "code": "SC.8.PE.2.5",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Utilize organized data within a database to solve a problem."
+    },
+    {
+      "code": "SC.8.PE.3.1",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Represent natural phenomena using a model."
+    },
+    {
+      "code": "SC.8.PE.3.2",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explore the purpose of a class."
+    },
+    {
+      "code": "SC.8.PE.3.3",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Evaluate the benefits and limitations of the use of models."
+    },
+    {
+      "code": "SC.8.PE.4.1",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explore the purpose of the software development life cycle."
+    },
+    {
+      "code": "SC.8.PE.4.2",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain the phases of a simple software development life cycle."
+    },
+    {
+      "code": "SC.8.PE.4.3",
+      "grade": "8",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Discuss the role of maintenance in the software development cycle."
+    },
+    {
+      "code": "SC.8.TI.1.1",
+      "grade": "8",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Examine the historical progression and impact of digital media and communication."
+    },
+    {
+      "code": "SC.8.TI.1.2",
+      "grade": "8",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe the influence of access-to-information technologies over time."
+    },
+    {
+      "code": "SC.8.TI.2.1",
+      "grade": "8",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe legal and ethical behaviors when using technology."
+    },
+    {
+      "code": "SC.8.TI.2.2",
+      "grade": "8",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Use a local or federal government website to engage with a public official."
+    },
+    {
+      "code": "SC.8.TI.2.3",
+      "grade": "8",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Compare various technology-related career paths."
+    },
+    {
+      "code": "SC.8.ET.1.1",
+      "grade": "8",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Identify the emerging features of mobile devices, smart devices and vehicles."
+    },
+    {
+      "code": "SC.8.ET.1.2",
+      "grade": "8",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Identify challenges faced by users when learning to use computer interfaces."
+    },
+    {
+      "code": "SC.8.ET.1.3",
+      "grade": "8",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Identify the impact of natural resources on the manufacturing of computer hardware components."
+    },
+    {
+      "code": "SC.8.ET.1.4",
+      "grade": "8",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Analyze the increasing impact of access to the Internet on daily life."
+    },
+    {
+      "code": "SC.8.ET.2.1",
+      "grade": "8",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Explore the use of an artificial intelligence (AI) device to accomplish a task."
+    },
+    {
+      "code": "SC.8.ET.2.2",
+      "grade": "8",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Discuss the utilization of intelligent behavior in technology."
+    },
+    {
+      "code": "SC.8.ET.3.1",
+      "grade": "8",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Investigate the advancement of robotics."
+    },
+    {
+      "code": "SC.8.CS.1.1",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Analyze threats and vulnerabilities to information security for individuals and organizations."
+    },
+    {
+      "code": "SC.8.CS.1.2",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Explain how authentication and authorization methods can protect users."
+    },
+    {
+      "code": "SC.8.CS.1.3",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Describe defense in-depth strategies to protect simple networks."
+    },
+    {
+      "code": "SC.8.CS.1.4",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Explain how malicious actions threaten network security."
+    },
+    {
+      "code": "SC.8.CS.1.5",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Explain how malicious actions threaten physical security."
+    },
+    {
+      "code": "SC.8.CS.1.6",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Describe defense in depth and how physical access controls work together."
+    },
+    {
+      "code": "SC.8.CS.1.7",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Explore the process of protecting computer hardware from exploitation."
+    },
+    {
+      "code": "SC.8.CS.2.1",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Evaluate security and privacy issues that relate to computer networks and Internet of Things (IoT) devices."
+    },
+    {
+      "code": "SC.8.CS.2.2",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Describe security and privacy issues that relate to computer networks."
+    },
+    {
+      "code": "SC.8.CS.2.3",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Describe the permanency of data on the Internet, online identity and personal privacy."
+    },
+    {
+      "code": "SC.8.CS.3.1",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Discuss ransomware attacks."
+    },
+    {
+      "code": "SC.8.CS.3.2",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Discuss the necessity of immediate security updates of a program."
+    },
+    {
+      "code": "SC.8.CS.3.3",
+      "grade": "8",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Identify the steps of the social engineering attack cycle."
+    },
+    {
+      "code": "SC.912.CC.1.1",
+      "grade": "912",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Evaluate digital modes of communication and collaboration."
+    },
+    {
+      "code": "SC.912.CC.1.2",
+      "grade": "912",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Utilize tools within a project environment to communicate."
+    },
+    {
+      "code": "SC.912.CC.1.3",
+      "grade": "912",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Present information and data using presentation software."
+    },
+    {
+      "code": "SC.912.CC.1.4",
+      "grade": "912",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Create a digital artifact utilizing collaboration, reflection, analysis and iteration."
+    },
+    {
+      "code": "SC.912.CC.2.1",
+      "grade": "912",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Collaborate to publish information and data for a variety of audiences using digital tools and media-rich resources."
+    },
+    {
+      "code": "SC.912.CC.2.2",
+      "grade": "912",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Assess how collaboration influences the design and development of software artifacts."
+    },
+    {
+      "code": "SC.912.CC.2.3",
+      "grade": "912",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Evaluate program designs and implementations for readability and usability."
+    },
+    {
+      "code": "SC.912.CC.2.4",
+      "grade": "912",
+      "strand": "CC",
+      "type": "benchmark",
+      "statement": "Critique the strengths and weaknesses of the collaborative process when creating digital products."
+    },
+    {
+      "code": "SC.912.HS.1.1",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Identify potential dangers to an individual\u2019s safety and security online."
+    },
+    {
+      "code": "SC.912.HS.1.2",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Evaluate the consequences of cyberbullying."
+    },
+    {
+      "code": "SC.912.HS.1.3",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Determine the consequences of inaction when witnessing unsafe Internet practices."
+    },
+    {
+      "code": "SC.912.HS.1.4",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Examine the positive outcomes when someone reports suspicious behavior on the Internet."
+    },
+    {
+      "code": "SC.912.HS.1.5",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Evaluate the risks to personal information while accessing the Internet."
+    },
+    {
+      "code": "SC.912.HS.1.6",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Describe the impact of permissible privacy and security."
+    },
+    {
+      "code": "SC.912.HS.1.7",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Construct strategies to combat cyberbullying or online harassment."
+    },
+    {
+      "code": "SC.912.HS.2.1",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Prioritize regulating screen time and the use of electronic devices for mental and physical well-being."
+    },
+    {
+      "code": "SC.912.HS.2.2",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Investigate the correlation between sedentary behavior and digital device use."
+    },
+    {
+      "code": "SC.912.HS.2.3",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Assess the role of digital health trackers in promoting healthy behaviors."
+    },
+    {
+      "code": "SC.912.HS.2.4",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Analyze the relationship between eye strain related to use of technology and exposure to increased blue light."
+    },
+    {
+      "code": "SC.912.HS.2.5",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Research the consequences associated with Nature Deficit Disorder (NDD)."
+    },
+    {
+      "code": "SC.912.HS.3.1",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Discuss the permanency of data on the Internet."
+    },
+    {
+      "code": "SC.912.HS.3.2",
+      "grade": "912",
+      "strand": "HS",
+      "type": "benchmark",
+      "statement": "Analyze how social media influences the digital footprint of individuals, communities and cultures."
+    },
+    {
+      "code": "SC.912.CO.1.1",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe the efficiency and effectiveness of digital tools or resources used for real-world tasks."
+    },
+    {
+      "code": "SC.912.CO.1.2",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify and select the file format based on trade-offs."
+    },
+    {
+      "code": "SC.912.CO.1.3",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Select and use the correct file type for specific tasks."
+    },
+    {
+      "code": "SC.912.CO.1.4",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe the relationship between drivers, hardware and operating systems."
+    },
+    {
+      "code": "SC.912.CO.1.5",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe the organization of a computer and its principal components."
+    },
+    {
+      "code": "SC.912.CO.1.6",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Develop and evaluate criteria for purchasing or upgrading computer system hardware."
+    },
+    {
+      "code": "SC.912.CO.1.7",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe the process of protecting computer hardware from exploitation."
+    },
+    {
+      "code": "SC.912.CO.1.8",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe how the Internet facilitates global communication."
+    },
+    {
+      "code": "SC.912.CO.1.9",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Evaluate the accuracy, relevance, comprehensiveness and bias of electronic information resources."
+    },
+    {
+      "code": "SC.912.CO.2.1",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explore the function of Basic Input/Output System (BIOS) and Unified Extensible Firmware Interface (UEFI) in a computer."
+    },
+    {
+      "code": "SC.912.CO.2.2",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explore motherboard variations."
+    },
+    {
+      "code": "SC.912.CO.2.3",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Discuss the central processing unit (CPU)."
+    },
+    {
+      "code": "SC.912.CO.2.4",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explore the role of a power supply unit (PSU) in relation to a computer system."
+    },
+    {
+      "code": "SC.912.CO.2.5",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Analyze the purpose of various random-access memory (RAM) speeds and storage sizes."
+    },
+    {
+      "code": "SC.912.CO.2.6",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Analyze hardware compatibility issues between industry specific devices."
+    },
+    {
+      "code": "SC.912.CO.2.7",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Evaluate various forms of input and output (IO)."
+    },
+    {
+      "code": "SC.912.CO.2.8",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Evaluate the basic components of wired computer networks."
+    },
+    {
+      "code": "SC.912.CO.2.9",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Evaluate the basic components of wireless computer networks."
+    },
+    {
+      "code": "SC.912.CO.2.10",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explore the components of a data packet."
+    },
+    {
+      "code": "SC.912.CO.2.11",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Investigate the issues that impact network functionality."
+    },
+    {
+      "code": "SC.912.CO.2.12",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe common network protocols."
+    },
+    {
+      "code": "SC.912.CO.2.13",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Discern how common network protocols are applied by client-server and peer-to-peer networks."
+    },
+    {
+      "code": "SC.912.CO.2.14",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explore the role of dynamic host control protocol (DHCP) in a networking system."
+    },
+    {
+      "code": "SC.912.CO.2.15",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Analyze the importance of subnetting."
+    },
+    {
+      "code": "SC.912.CO.2.16",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Describe how devices are identified on a network."
+    },
+    {
+      "code": "SC.912.CO.2.17",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Identify similarities and differences between Internet protocol versions."
+    },
+    {
+      "code": "SC.912.CO.2.18",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Examine 2.4 gigahertz (GHz) and 5 gigahertz (GHz) wireless networks."
+    },
+    {
+      "code": "SC.912.CO.3.1",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Analyze various operating systems."
+    },
+    {
+      "code": "SC.912.CO.3.2",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Develop criteria for selecting software when solving a specific real-world problem."
+    },
+    {
+      "code": "SC.912.CO.3.3",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Examine the difference between operating system (OS) software and application software."
+    },
+    {
+      "code": "SC.912.CO.3.4",
+      "grade": "912",
+      "strand": "CO",
+      "type": "benchmark",
+      "statement": "Explain how automated software testing can reduce the cost of the testing effort."
+    },
+    {
+      "code": "SC.912.PE.1.1",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Write code segments."
+    },
+    {
+      "code": "SC.912.PE.1.2",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create iterative and non-iterative structures within a program."
+    },
+    {
+      "code": "SC.912.PE.1.3",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create selection structures within a program."
+    },
+    {
+      "code": "SC.912.PE.1.4",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Write a void function that does not return a value."
+    },
+    {
+      "code": "SC.912.PE.1.5",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Write a non-void function that will return a value."
+    },
+    {
+      "code": "SC.912.PE.1.6",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a nested array to aggregate data."
+    },
+    {
+      "code": "SC.912.PE.1.7",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Define multiple variables to the same value while utilizing aliasing."
+    },
+    {
+      "code": "SC.912.PE.1.8",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Define a class to store data attributes."
+    },
+    {
+      "code": "SC.912.PE.1.9",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create methods that a class can inherit."
+    },
+    {
+      "code": "SC.912.PE.1.10",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Write programs that validate user input."
+    },
+    {
+      "code": "SC.912.PE.1.11",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Compare the differences in execution of interpreted and compiled languages."
+    },
+    {
+      "code": "SC.912.PE.1.12",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Classify programming languages."
+    },
+    {
+      "code": "SC.912.PE.1.13",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Describe and identify types of programming errors."
+    },
+    {
+      "code": "SC.912.PE.1.14",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Design and implement variables in a program using global and local scope"
+    },
+    {
+      "code": "SC.912.PE.1.15",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Implement a program using an integrated development environment (IDE) commonly used."
+    },
+    {
+      "code": "SC.912.PE.1.16",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain the distinction between a programming language\u2019s standard library and the Application Programming Interface (API)."
+    },
+    {
+      "code": "SC.912.PE.1.17",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Examine the building blocks of algorithms."
+    },
+    {
+      "code": "SC.912.PE.1.18",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Develop a computer program."
+    },
+    {
+      "code": "SC.912.PE.1.19",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Review a computer program to verify program functionality, programming styles, program usability and adherence to common programming standards."
+    },
+    {
+      "code": "SC.912.PE.1.20",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Write programs that use standard logic operators."
+    },
+    {
+      "code": "SC.912.PE.1.21",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Use Boolean logic to perform logical operations."
+    },
+    {
+      "code": "SC.912.PE.1.22",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain structures and their uses within a program."
+    },
+    {
+      "code": "SC.912.PE.1.23",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Compile, run, test and debug a digital artifact."
+    },
+    {
+      "code": "SC.912.PE.2.1",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a matrix from connected lists."
+    },
+    {
+      "code": "SC.912.PE.2.2",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Evaluate the purpose of sublist indexing."
+    },
+    {
+      "code": "SC.912.PE.2.3",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Compare techniques for analyzing massive data collections."
+    },
+    {
+      "code": "SC.912.PE.3.1",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Evaluate arithmetic expressions using operator precedence."
+    },
+    {
+      "code": "SC.912.PE.3.2",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Decompose a problem by defining new code segments."
+    },
+    {
+      "code": "SC.912.PE.3.3",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Design and implement a simple simulation that is representative of a natural phenomenon."
+    },
+    {
+      "code": "SC.912.PE.3.4",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Evaluate algorithms by their efficiency, correctness and clarity."
+    },
+    {
+      "code": "SC.912.PE.3.5",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Differentiate automated testing platforms and their uses."
+    },
+    {
+      "code": "SC.912.PE.3.6",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain the different types of testing that can be performed in a complex software system."
+    },
+    {
+      "code": "SC.912.PE.3.7",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Introduce complex problems and understand that these problems may be computationally unsolvable."
+    },
+    {
+      "code": "SC.912.PE.3.8",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Describe the concept of parallel processing as a strategy to solve large problems."
+    },
+    {
+      "code": "SC.912.PE.3.9",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Demonstrate concurrency by separating processes into threads of execution and dividing data into parallel streams."
+    },
+    {
+      "code": "SC.912.PE.3.10",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Simplify a complex problem by using abstraction to manage complexity using functions and parameters, classes and methods."
+    },
+    {
+      "code": "SC.912.PE.3.11",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Perform advanced searches to locate information and design a data-collection approach to gather original data."
+    },
+    {
+      "code": "SC.912.PE.3.12",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain how data analysis is used to enhance the understanding of complex natural and human systems."
+    },
+    {
+      "code": "SC.912.PE.3.13",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create a computational model that utilizes data to analyze and enhance the understanding of complex natural and human systems."
+    },
+    {
+      "code": "SC.912.PE.3.14",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Analyze data by identifying patterns through modeling and simulation of real-world data."
+    },
+    {
+      "code": "SC.912.PE.3.15",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Test the accuracy of scientific hypotheses using computer models and simulations."
+    },
+    {
+      "code": "SC.912.PE.3.16",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Design a representation of a computer program."
+    },
+    {
+      "code": "SC.912.PE.3.17",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Summarize the differences between an array and an array list."
+    },
+    {
+      "code": "SC.912.PE.3.18",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explain the principles of cryptography."
+    },
+    {
+      "code": "SC.912.PE.3.19",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Determine which encryption method is suitable for an intended task."
+    },
+    {
+      "code": "SC.912.PE.4.1",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Explore software development cycles that can be used to solve problems at different software development stages."
+    },
+    {
+      "code": "SC.912.PE.4.2",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Develop a software artifact according to a common software development methodology."
+    },
+    {
+      "code": "SC.912.PE.4.3",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify the tools required to develop a program."
+    },
+    {
+      "code": "SC.912.PE.4.4",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Identify the software environment required to create a program within a specific language."
+    },
+    {
+      "code": "SC.912.PE.4.5",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Define user prompts for clarity and usability within a program."
+    },
+    {
+      "code": "SC.912.PE.4.6",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Write a program that utilizes both input and output."
+    },
+    {
+      "code": "SC.912.PE.4.7",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Use internal documentation to collaboratively design a program according to accepted standards."
+    },
+    {
+      "code": "SC.912.PE.4.8",
+      "grade": "912",
+      "strand": "PE",
+      "type": "benchmark",
+      "statement": "Create mobile computing applications and/or dynamic web pages using a variety of design and development tools, programming languages and mobile devices/emulators."
+    },
+    {
+      "code": "SC.912.TI.1.1",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Analyze historical trends in hardware and software."
+    },
+    {
+      "code": "SC.912.TI.1.2",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Identify ways to use technology to support lifelong learning."
+    },
+    {
+      "code": "SC.912.TI.1.3",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Analyze the impact of digital media."
+    },
+    {
+      "code": "SC.912.TI.1.4",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Analyze the impact of digital media on culture and persona."
+    },
+    {
+      "code": "SC.912.TI.1.5",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe the impact of computing on business and commerce."
+    },
+    {
+      "code": "SC.912.TI.1.6",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe how technology impacts personal life."
+    },
+    {
+      "code": "SC.912.TI.1.7",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Evaluate ways in which technology may improve accessibility for the varying needs of learners, including students with disabilities (SWD)."
+    },
+    {
+      "code": "SC.912.TI.1.8",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explain how economic and societal factors are affected by access to critical information."
+    },
+    {
+      "code": "SC.912.TI.1.9",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Evaluate access and distribution of technology in a global society."
+    },
+    {
+      "code": "SC.912.TI.1.10",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Analyze technology-related career paths."
+    },
+    {
+      "code": "SC.912.TI.1.11",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Evaluate the benefits of technology regarding environmental concerns."
+    },
+    {
+      "code": "SC.912.TI.1.12",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Examine the history of networking devices."
+    },
+    {
+      "code": "SC.912.TI.1.13",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Examine the historical impact of social media."
+    },
+    {
+      "code": "SC.912.TI.2.1",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Research how social media and technology can be used to distort, exaggerate or misrepresent information."
+    },
+    {
+      "code": "SC.912.TI.2.2",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Demonstrate knowledge of the Internet safety policy as it applies to state and district guidelines."
+    },
+    {
+      "code": "SC.912.TI.2.3",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Recognize the terms and policies associated with the use of public access points."
+    },
+    {
+      "code": "SC.912.TI.2.4",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Explore the legal ramifications of technology use."
+    },
+    {
+      "code": "SC.912.TI.2.5",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe and model the legal use of modern communication media and devices."
+    },
+    {
+      "code": "SC.912.TI.2.6",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Evaluate the impacts of the irresponsible use of information on collaborative projects."
+    },
+    {
+      "code": "SC.912.TI.2.7",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe differences between open source, freeware and proprietary software licenses and how they apply to different types of software."
+    },
+    {
+      "code": "SC.912.TI.2.8",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Evaluate the consequences of misrepresenting digital work as your own."
+    },
+    {
+      "code": "SC.912.TI.2.9",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Analyze how different categories of software licenses can be used to share and protect intellectual property."
+    },
+    {
+      "code": "SC.912.TI.2.10",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Analyze how access to information may not include the right to distribute the information."
+    },
+    {
+      "code": "SC.912.TI.2.11",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Utilize citation tools when using digital information."
+    },
+    {
+      "code": "SC.912.TI.2.12",
+      "grade": "912",
+      "strand": "TI",
+      "type": "benchmark",
+      "statement": "Describe legal regulations that govern Internet usage and interaction."
+    },
+    {
+      "code": "SC.912.ET.1.1",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Describe the emerging features of mobile devices, smart devices and vehicles."
+    },
+    {
+      "code": "SC.912.ET.1.2",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Describe the physical and cognitive challenges faced by users when learning to use computer interfaces."
+    },
+    {
+      "code": "SC.912.ET.1.3",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Analyze the process and design innovative software to support specialized forms of human-computer interaction."
+    },
+    {
+      "code": "SC.912.ET.1.4",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Examine device-to-device interactions that exclude human input."
+    },
+    {
+      "code": "SC.912.ET.1.5",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Explore the concepts of virtual and augmented reality."
+    },
+    {
+      "code": "SC.912.ET.1.6",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Analyze the impact on natural resources due to manufacturing of computer hardware components."
+    },
+    {
+      "code": "SC.912.ET.1.7",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Describe how technology has changed the way people build and manage organizations and how technology impacts personal life."
+    },
+    {
+      "code": "SC.912.ET.2.1",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Explore the history of Artificial Intelligence (AI)."
+    },
+    {
+      "code": "SC.912.ET.2.2",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Describe the major branches of Artificial Intelligence (AI)."
+    },
+    {
+      "code": "SC.912.ET.2.3",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Evaluate the application of algorithms to Artificial Intelligence (AI)."
+    },
+    {
+      "code": "SC.912.ET.2.4",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Evaluate the Artificial Intelligence (AI) of computers to model human behaviors."
+    },
+    {
+      "code": "SC.912.ET.2.5",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Describe major applications of artificial intelligence (AI) and machine learning."
+    },
+    {
+      "code": "SC.912.ET.2.6",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Describe how predictive Artificial Intelligence (AI) can be used to solve problems."
+    },
+    {
+      "code": "SC.912.ET.2.7",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Describe common measurements of machine intelligence."
+    },
+    {
+      "code": "SC.912.ET.3.1",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Describe the advancement of robotics."
+    },
+    {
+      "code": "SC.912.ET.3.2",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Examine how robotics are used to address human challenges."
+    },
+    {
+      "code": "SC.912.ET.3.3",
+      "grade": "912",
+      "strand": "ET",
+      "type": "benchmark",
+      "statement": "Evaluate how the natural world has influenced robotic designs."
+    },
+    {
+      "code": "SC.912.CS.1.1",
+      "grade": "912",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Identify possible risks to maintaining data confidentiality."
+    },
+    {
+      "code": "SC.912.CS.1.2",
+      "grade": "912",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Describe computer security vulnerabilities."
+    },
+    {
+      "code": "SC.912.CS.1.3",
+      "grade": "912",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Evaluate computer security vulnerabilities."
+    },
+    {
+      "code": "SC.912.CS.2.1",
+      "grade": "912",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Analyze security and privacy issues that relate to computer networks and network connected devices."
+    },
+    {
+      "code": "SC.912.CS.2.2",
+      "grade": "912",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Describe security and privacy issues that relate to computer networks including the permanency of data on the Internet, online identity and privacy."
+    },
+    {
+      "code": "SC.912.CS.2.3",
+      "grade": "912",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Apply network security concepts and strategies to real-world simulations."
+    },
+    {
+      "code": "SC.912.CS.3.1",
+      "grade": "912",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Investigate ransomware attacks."
+    },
+    {
+      "code": "SC.912.CS.3.2",
+      "grade": "912",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Explore access control rules."
+    },
+    {
+      "code": "SC.912.CS.3.3",
+      "grade": "912",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Analyze the limitations of a program\u2019s temporary storage and the security vulnerabilities."
+    },
+    {
+      "code": "SC.912.CS.3.4",
+      "grade": "912",
+      "strand": "CS",
+      "type": "benchmark",
+      "statement": "Trace the social engineering attack cycle."
+    },
+    {
+      "code": "SC.912.DC.1.1",
+      "grade": "912",
+      "strand": "DC",
+      "type": "benchmark",
+      "statement": "Examine the history of digital currency and blockchain technologies."
+    },
+    {
+      "code": "SC.912.DC.1.2",
+      "grade": "912",
+      "strand": "DC",
+      "type": "benchmark",
+      "statement": "Analyze the effects of digital currencies on the current financial market."
+    },
+    {
+      "code": "SC.912.DC.2.1",
+      "grade": "912",
+      "strand": "DC",
+      "type": "benchmark",
+      "statement": "Differentiate between a digital currency and a security."
+    },
+    {
+      "code": "SC.912.DC.2.2",
+      "grade": "912",
+      "strand": "DC",
+      "type": "benchmark",
+      "statement": "Discuss the risks associated with digital currencies."
+    },
+    {
+      "code": "SC.912.DC.2.3",
+      "grade": "912",
+      "strand": "DC",
+      "type": "benchmark",
+      "statement": "Compare decentralized currencies to centralized currencies."
+    },
+    {
+      "code": "SC.912.DC.3.1",
+      "grade": "912",
+      "strand": "DC",
+      "type": "benchmark",
+      "statement": "Evaluate digital tools that aid in personal financial literacy and money management."
+    },
+    {
+      "code": "SC.912.DC.3.2",
+      "grade": "912",
+      "strand": "DC",
+      "type": "benchmark",
+      "statement": "Analyze the opportunities created with digital stock portfolios."
+    }
+  ]
+}

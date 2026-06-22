@@ -1,0 +1,55 @@
+{
+  "state": "Florida",
+  "note": "Full enumerated FL standards extracted from the stored documents. Verify on CPALMS (https://www.cpalms.org/search/Standard). SS is best-effort from a binary .doc.",
+  "subjects": {
+    "math": {
+      "file": "data/math.json",
+      "format": "docx",
+      "count": 1127,
+      "benchmarks": 635,
+      "access_points": 485,
+      "practices": 7
+    },
+    "ela": {
+      "file": "data/ela.json",
+      "format": "docx",
+      "count": 719,
+      "benchmarks": 329,
+      "access_points": 384,
+      "practices": 6
+    },
+    "science": {
+      "file": "data/science.json",
+      "format": "docx",
+      "count": 1450,
+      "benchmarks": 498,
+      "access_points": 952,
+      "practices": 0
+    },
+    "computer_science": {
+      "file": "data/computer_science.json",
+      "format": "docx",
+      "count": 569,
+      "benchmarks": 562,
+      "access_points": 0,
+      "practices": 7
+    },
+    "eld": {
+      "file": "data/eld.json",
+      "format": "docx",
+      "count": 5,
+      "benchmarks": 0,
+      "access_points": 0,
+      "practices": 5
+    },
+    "social_studies": {
+      "file": "data/social_studies.json",
+      "format": "doc",
+      "count": 2713,
+      "benchmarks": 1432,
+      "access_points": 1281,
+      "practices": 0
+    }
+  },
+  "total": 6583
+}
