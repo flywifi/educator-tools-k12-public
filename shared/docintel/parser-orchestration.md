@@ -37,7 +37,12 @@ This is the same "detect → degrade gracefully → report, don't fake" stance a
 | Parser | Deps | Capabilities | Notes |
 |---|---|---|---|
 | `PlainTextParser` | none (stdlib) | `text`, `reading_order` | `.txt`, `.md`, and `.docx` (via `zipfile`/XML). Always available. |
+| `ImageParser` | none (stdlib) | `figures` | `image/*`; recovers format + dimensions from the header. Text needs OCR (`ocr-architecture.md`). |
 | `PyMuPDFParser` | `pymupdf` (optional) | `text`, `layout`, `reading_order`, `figures` | PDFs; registered only when `fitz` imports. |
+
+Tables and OCR are **separate, swappable stages** with their own engine contracts/registries —
+`TableExtractor` (`table-intelligence.md`) and `OcrEngine` (`ocr-architecture.md`) — selected the same
+way (availability + media type, never by name).
 
 ## Parser tiers to wrap next (Volume 01 §S08)
 - **Tier 1:** Docling (layout+reading order+markdown), PyMuPDF (fast native text), Marker (PDF→md).

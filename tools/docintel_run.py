@@ -43,7 +43,12 @@ def main(argv: list[str]) -> int:
         for e in docintel.default_table_registry().describe():
             flag = "available" if e["available"] else "unavailable (deps not installed)"
             print(f"  - {e['name']} v{e['version']}: {flag}")
-        print("\nstdlib-only by default; PDF text via PyMuPDF, PDF tables via pdfplumber when installed.")
+        print("registered OCR engines:")
+        for e in docintel.default_ocr_registry().describe():
+            flag = "available" if e["available"] else "unavailable (deps not installed)"
+            print(f"  - {e['name']} v{e['version']}: {flag}")
+        print("\nstdlib-only by default; PDF text via PyMuPDF, PDF tables via pdfplumber, "
+              "image OCR via pytesseract - each activates when installed.")
         return 0
 
     if not a.file:
