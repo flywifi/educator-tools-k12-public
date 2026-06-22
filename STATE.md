@@ -24,7 +24,7 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 | D — Repository Hardening | packaging, CI, catalog, security review, **versioning** (`VERSION`/`CHANGELOG`) | ✅ Complete (per-skill READMEs omitted — redundant with each `SKILL.md`) |
 | E — Advanced Architecture | analytics (`metrics.py`/`METRICS.md`), artifact registry, `DEPLOYMENT.md`, AI-systems doc | ✅ Largely complete (ontology can deepen later) |
 
-## Skill status (11 built)
+## Skill status (12 built)
 | Skill | Role | Status |
 |---|---|---|
 | `teacher-core` | hub / router | ✅ built |
@@ -38,6 +38,7 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 | `family-communication` | capability (privacy-emphasized) | ✅ built |
 | `professional-learning` | capability (non-evaluative coaching) | ✅ built |
 | `school-administration` | capability (school/system level) | ✅ built |
+| `standards-updater` | governance / maintenance (polite crawler) | ✅ built |
 
 ## Protocol layer (all v1.0)
 | Protocol | Status |
@@ -76,6 +77,6 @@ names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protoc
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
-Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 11 skills ·
-40 artifact types · 27 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
-protocols · 100% ledger approval (seed) · 11/11 skills emit `human_review_required`.
+Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 12 skills ·
+43 artifact types · 30 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
+protocols · 100% ledger approval (seed) · 12/12 skills emit `human_review_required`.
