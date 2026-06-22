@@ -20,6 +20,7 @@ the skill-side map and the build status.
 | Governance | `shared/docintel/governance-contract.md` | `shared/docintel/governance.py` |
 | Artifacts | `shared/docintel/artifact-framework.md` | `shared/docintel/artifact.py` |
 | Validation | `shared/docintel/validation-framework.md` | `shared/docintel/validation.py` |
+| Change Control | `shared/docintel/artifact-framework.md` (Change control) | `shared/docintel/change.py` |
 
 ## How it maps to the source volumes
 - **V01** (project definition, stakeholders, current-state, metrics, scope, deliverables,
@@ -29,7 +30,8 @@ the skill-side map and the build status.
   recovery, table intelligence, governance, artifacts, consumer interface, acceptance criteria) →
   the pipeline stages, `orchestration.py`, `udom.*`, `governance-contract.md`, `artifact.py`.
 - **V03** (implementation planning, work packages, dependencies, validation/readiness/governance,
-  risk, acceptance) → the build sequence + the drift-guard / quality-gate wiring.
+  **change control (S07)**, risk, acceptance) → the build sequence, the drift-guard / quality-gate
+  wiring, and the artifact **change-control** model (`change.py`; artifact-framework.md "Change control").
 
 ## Build sequence (dependency order — V01 S07)
 Governance → UDOM → Artifacts → Parser Evaluation → Parser Orchestration → TOS Integration →
@@ -38,7 +40,8 @@ Validation → Optimization.
 ## Build status (skeleton)
 - **Done (runs end to end):** ingestion, native text recovery (.txt/.md/.html/.docx; PDF via
   PyMuPDF when installed), reading-order structure, governance stamping, knowledge normalization,
-  knowledge-artifact generation, computable validation metrics, schema conformance.
+  knowledge-artifact generation, computable validation metrics, schema conformance, and
+  artifact **change-control** records (classify → evaluate → approve-with-evidence → trace, V03_S07).
 - **Staged (interfaces defined; fill in next):** OCR engines (Surya/Tesseract/OCRmyPDF), deep table
   intelligence (Camelot/pdfplumber/Surya), DL layout (Docling/LayoutParser/Marker), parallel/targeted
   multi-parser reconciliation, reference-set accuracy metrics (A-001/A-003/A-005), consumer-interface
