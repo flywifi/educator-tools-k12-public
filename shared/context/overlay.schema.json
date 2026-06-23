@@ -9,7 +9,8 @@
   "properties": {
     "scope": {
       "enum": ["national", "state", "framework", "county", "district", "school",
-                "program", "grade", "subject", "classroom"]
+                "program", "grade", "grade_band", "subject", "course", "course_level",
+                "classroom"]
     },
     "id": {"type": "string"},
     "label": {"type": ["string", "null"]},

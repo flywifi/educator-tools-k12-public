@@ -97,6 +97,15 @@ Every dimension is scored on a **0–5 scale** (§23): 0 critical failure · 1 m
 **Constraint (§33.3):** Integrity may never be weighted below Accuracy. Weighting changes require
 governance approval (§32.5).
 
+**Context-conditional Accuracy/Alignment (§33.4, added for multi-constituency support).** Score the
+Accuracy and Alignment dimensions against the **applicable** standards per the context's
+`standards_applicability` (`shared/context/`): verified FL B.E.S.T./NGSSS for `best_ngsss_apply`
+(public/charter/virtual); the school's framework (`shared/standards/frameworks/`) for `school_defined`
+(private); and, for `parent_selected` (home education), objective↔instruction↔assessment coherence —
+**the absence of state-mandated codes is not a deduction or a critical failure** where no framework is
+mandated. Weighting is unchanged. *Fabricating* a code/standard/citation remains a critical failure in
+every context (§37).
+
 > Note: an earlier condensed edition listed 8 dimensions (omitting Safety; User Intent 10 /
 > Accessibility 2). **This 9-dimension model (§33.1) is authoritative.**
 
