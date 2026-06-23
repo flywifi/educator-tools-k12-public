@@ -19,6 +19,7 @@ is the readable companion.
 | observation tool, coaching resource, PD plan | `professional-learning` | available |
 | walkthrough, implementation/monitoring plan | `school-administration` | available |
 | classify a meeting/invite + route it (observation, IEP/504, conference, MTSS, planning, PD, safety) | `meeting-classifier` | available |
+| diagnose/repair the ecosystem itself (skill + engine health, diagnosis, impact, repair plan) | `skill-health` | available |
 
 ## Rules
 - **Single best match** → that skill. **Bundled request** → sequence one skill per artifact, each
