@@ -47,8 +47,6 @@ except Exception:             # pragma: no cover
 # Extended-module catalog (core is always on; these are the independently feature-flagged categories).
 MODULES = {
     "gradebook":      {"sensitivity": "moderate", "label": "Gradebook — assignments, rubrics, submissions, grade calc, grading policy, competencies"},
-    "assessments":    {"sensitivity": "moderate", "label": "Assessments catalog + scores (diagnostic/benchmark/state/AP/IB/SAT/ACT)"},
-    "curriculum":     {"sensitivity": "low",      "label": "Course catalog, curriculum, subjects, learning objectives"},
     "scheduling":     {"sensitivity": "low",      "label": "Scheduling & placement, section capacity/occupancy"},
     "transportation": {"sensitivity": "moderate", "label": "Transportation profile + dismissal plan"},
     "activities":     {"sensitivity": "low",      "label": "Athletics, activities, leadership, service learning"},
@@ -155,6 +153,8 @@ def academic_package(record: dict, modules: list[str]) -> dict:
         },
         "course_history": record.get("course_history", []),
         "course_grades": record.get("course_grades", []),
+        "assessments": record.get("assessments", []),
+        "curriculum": record.get("curriculum", []),
         "standards_mastery": record.get("standards_mastery", []),
         "active_interventions": record.get("active_interventions", []),
         "active_accommodations": record.get("active_accommodations", []),
@@ -247,9 +247,9 @@ def build_package(package_type: str, student_id: str, mode: str = "name",
 
     if package_type == "teacher_to_teacher":
         # Year-end: focus the payload on what next year's teacher needs.
-        keep = ("academic_summary", "course_grades", "standards_mastery", "active_accommodations",
-                "active_interventions", "attendance_summary", "behavior_summary",
-                "teacher_recommendations", "teacher_notes")
+        keep = ("academic_summary", "course_grades", "assessments", "curriculum", "standards_mastery",
+                "active_accommodations", "active_interventions", "attendance_summary",
+                "behavior_summary", "teacher_recommendations", "teacher_notes")
         pkg["academic_package"] = {k: academic[k] for k in keep if k in academic}
         if "modules" in academic:
             pkg["academic_package"]["modules"] = academic["modules"]

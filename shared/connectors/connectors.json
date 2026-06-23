@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "updated": "2026-06-23",
   "states": ["available", "disabled", "not_installed", "permission_blocked", "metadata_only", "unsupported", "unknown"],
-  "evidence_types": ["calendar_event", "email", "roster", "attendee_roles", "transcript", "call_notes", "chat_history", "file", "student_profile", "guardians", "plan_flags", "grades", "attendance", "behavior", "standards_mastery", "accommodations"],
+  "evidence_types": ["calendar_event", "email", "roster", "attendee_roles", "transcript", "call_notes", "chat_history", "file", "student_profile", "guardians", "plan_flags", "grades", "assessments", "attendance", "behavior", "standards_mastery", "accommodations"],
   "connectors": [
     {"id": "manual_paste", "label": "Manual paste", "vendor": "(none)", "default_flag": "available",
       "provides": ["email", "calendar_event", "transcript", "call_notes", "attendee_roles"],
@@ -36,8 +36,8 @@
       "provides": ["roster", "email", "call_notes"],
       "privacy_sensitivity": "high", "auth_note": "realized by the host AI's native Salesforce integration when connected; no client built here.", "status": "seed"},
     {"id": "sis", "label": "Student Information System (Skyward / PowerSchool / Focus / etc.)", "vendor": "(various)", "default_flag": "not_installed",
-      "provides": ["roster", "student_profile", "guardians", "plan_flags", "grades", "attendance", "behavior", "standards_mastery", "accommodations"],
-      "authoritative_for": ["student_profile", "guardians", "plan_flags", "grades", "attendance", "behavior", "standards_mastery", "accommodations"],
+      "provides": ["roster", "student_profile", "guardians", "plan_flags", "grades", "assessments", "attendance", "behavior", "standards_mastery", "accommodations"],
+      "authoritative_for": ["student_profile", "guardians", "plan_flags", "grades", "assessments", "attendance", "behavior", "standards_mastery", "accommodations"],
       "privacy_sensitivity": "high",
       "auth_note": "district-managed; realized by the host AI's native SIS integration if the district connects one (uncommon). AUTHORITATIVE for student data when connected — used first unless overridden; on conflict with the local store, raise with the user (see shared/students/student-data-policy.md).",
       "status": "seed"}

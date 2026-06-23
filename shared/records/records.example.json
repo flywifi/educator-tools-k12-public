@@ -20,6 +20,13 @@
       "course_grades": [
         {"course": {"course_id": "COURSE-MATH4", "course_code": "5012060", "course_name": "Grade 4 Mathematics", "course_display_name": "Grade 4 Mathematics (5012060)"}, "teacher": {"staff_id": "STF-014", "staff_name": "Pat Teacher"}, "grading_period": "Quarter 3", "grade_percentage": 87.5, "letter_grade": "B+", "missing_assignments": ["Fractions Quiz 2"], "completed_assignments": ["Place Value Test", "Multiplication Project"]}
       ],
+      "assessments": [
+        {"assessment_id": "ASMT-1", "assessment_name": "Fall Math Benchmark", "assessment_type": "Benchmark", "score": "Level 3", "performance": "approaching grade level; fractions below benchmark", "date": "2025-10-01"},
+        {"assessment_id": "ASMT-2", "assessment_name": "Winter Reading Diagnostic", "assessment_type": "Diagnostic", "score": "Tier 2", "performance": "fluency below grade level — scaffold reading", "date": "2026-01-08"}
+      ],
+      "curriculum": [
+        {"course": {"course_id": "COURSE-MATH4", "course_code": "5012060", "course_name": "Grade 4 Mathematics", "course_display_name": "Grade 4 Mathematics (5012060)"}, "curriculum_name": "Grade 4 Math (B.E.S.T.)", "learning_objectives": ["Fraction equivalence and comparison", "Multi-digit multiplication", "Multiplicative comparison word problems"]}
+      ],
       "standards_mastery": [
         {"standard": {"standard_id": "STD-MAFS4NF1", "standard_code": "MA.4.FR.1.1", "standard_name": "Fraction equivalence"}, "mastery_level": 3, "evidence_count": 5, "last_assessed_date": "2026-03-01"},
         {"standard": {"standard_id": "STD-MAFS4OA1", "standard_code": "MA.4.AR.1.1", "standard_name": "Multiplicative comparison"}, "mastery_level": 4, "evidence_count": 8, "last_assessed_date": "2026-02-15"}
@@ -53,9 +60,6 @@
           ],
           "grading_policy": {"grading_policy_name": "Standard 4th Grade", "term_weights": [{"component_name": "Homework", "weight_percentage": 20}, {"component_name": "Quiz", "weight_percentage": 20}, {"component_name": "Project", "weight_percentage": 20}, {"component_name": "Midterm", "weight_percentage": 15}, {"component_name": "Final", "weight_percentage": 25}]}
         },
-        "assessments": [
-          {"assessment_id": "ASMT-1", "assessment_name": "Fall Math Benchmark", "assessment_type": "Benchmark", "score": "Level 3", "date": "2025-10-01"}
-        ],
         "transportation": {
           "transportation_profile": {"transportation_id": "TR-1", "primary_transportation_mode": "School Bus", "bus_route": {"route_id": "BUS-12", "route_name": "Route 12"}},
           "dismissal_schedule": [

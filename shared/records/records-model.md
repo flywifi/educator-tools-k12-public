@@ -25,8 +25,10 @@ generated package ends with that metadata block and `human_review_required: true
 ## Core baseline (default, always on)
 Identity (extends the `shared/students/` profile), Guardians (authorization / court-restriction flags),
 Enrollment, Course/CourseLevel/Section (course_level is separate from course_code), StandardsMastery,
-active Interventions/Accommodations, minimum-necessary **summaries** (attendance, behavior, health,
-counseling), teacher recommendations/notes, parent-contact summary, the **three handoff packages**,
+**assessment results + curriculum/learning objectives** (so teachers — or the AI — can scaffold from how
+the student tested and what they're learning), active Interventions/Accommodations, minimum-necessary
+**summaries** (attendance, behavior, health, counseling), teacher recommendations/notes, parent-contact
+summary, the **three handoff packages**,
 EducationalTimeline, MobilityHistory, TransitionHandoff. School/District/AcademicYear/Term **link to**
 `shared/context/` (records adds Year/Term/Section that context does not model).
 
@@ -39,8 +41,6 @@ apply (each widens the PII surface, hence per-category opt-in).
 | module | adds | sensitivity |
 |---|---|---|
 | `gradebook` | assignments, rubrics, submissions, grade calc, grading policy, competencies | moderate |
-| `assessments` | assessments catalog + scores | moderate |
-| `curriculum` | course catalog, curriculum, subjects, learning objectives | low |
 | `scheduling` | scheduling & placement, section capacity/occupancy | low |
 | `transportation` | transportation profile + dismissal plan | moderate |
 | `activities` | athletics, activities, leadership, service learning | low |
