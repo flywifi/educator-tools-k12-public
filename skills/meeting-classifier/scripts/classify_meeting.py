@@ -278,7 +278,7 @@ def classify(d: dict, flags: dict | None = None) -> dict:
         subject_student = stu.render_ref(student, mode)
         guardians = student.get("guardians") if mode != "id" else f"{len(student.get('guardians', []))} on file (hidden in id mode)"
         if medical and student.get("health_plans"):
-            medical_action_plan = {"safety_critical": True, "surface_from": "the student's SIGNED plan only — never fabricate; defer to nurse/911",
+            medical_action_plan = {"safety_critical": True, "surface_from": "the source on file (attributed; a signature is not required) — never fabricate; defer to nurse/911",
                                     "plans": student["health_plans"]}
 
     required_cadence = None

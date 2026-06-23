@@ -32,7 +32,7 @@ Three surfaces are supported; the difference is mostly **where student data live
 - **SIS-first** precedence + **SIS↔local conflict** escalation hold everywhere
   (`shared/students/student-data-policy.md`).
 - **Real student PII/ePHI is never committed to git** on any surface (placeholders only in tracked
-  files). ePHI is **surfaced from the signed plan, never generated**.
+  files). ePHI is **surfaced from the source on file (attributed; signature not required), never generated**.
 - Connectors that are off/blocked are never presented as active; degraded paths lower confidence.
 - Identification mode (`name` default, `id`-only available) applies to saved/shared records on all
   surfaces.

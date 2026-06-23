@@ -21,18 +21,38 @@
         {
           "condition": "Severe food allergy (peanut) — anaphylaxis risk",
           "severity": "life-threatening",
-          "action_plan_ref": "PLACEHOLDER-AAP-2026 (the student's signed Allergy & Anaphylaxis Action Plan)",
+          "instructions": "EXAMPLE/PLACEHOLDER — the ACTUAL steps come verbatim from the form on file; do not rely on this example.",
+          "when_where_to_administer": "EXAMPLE/PLACEHOLDER — verbatim from the source on file.",
           "medications": ["epinephrine auto-injector (EpiPen)", "antihistamine per plan"],
-          "emergency_protocol": "Per the signed plan: on signs of anaphylaxis, administer the auto-injector and call 911; notify the school nurse and guardians.",
-          "when_where_to_administer": "EXAMPLE/PLACEHOLDER text — the ACTUAL when/where comes verbatim from the student's signed plan; do not rely on this example.",
-          "signed_by": "PLACEHOLDER physician + guardian",
+          "emergency_protocol": "On signs of anaphylaxis, administer the auto-injector and call 911; notify the school nurse and guardians.",
+          "action_plan_ref": "PLACEHOLDER-AAP-2026",
+          "source_type": "district_health_form",
+          "source_authority": "high",
+          "provided_by": "school nurse",
+          "signed": true,
           "effective_dates": "2025-08 to 2026-07 (example)",
-          "source": "signed Allergy & Anaphylaxis Action Plan on file with the school nurse"
+          "last_verified": "2026-06-23",
+          "source": "District Allergy & Anaphylaxis Action Plan on file with the school nurse"
+        },
+        {
+          "condition": "Exercise-induced asthma",
+          "severity": "moderate",
+          "instructions": "EXAMPLE/PLACEHOLDER — per the note: allow a rescue inhaler before PE/recess as needed.",
+          "when_where_to_administer": "EXAMPLE/PLACEHOLDER — verbatim from the note on file.",
+          "medications": ["albuterol rescue inhaler"],
+          "emergency_protocol": "If breathing does not improve after inhaler use, call the nurse / 911.",
+          "source_type": "guardian_note",
+          "source_authority": "medium",
+          "provided_by": "guardian",
+          "signed": false,
+          "effective_dates": "2026 school year (example)",
+          "last_verified": "2026-06-23",
+          "source": "guardian note on file (no physician signature — trusted as a medium-authority source)"
         }
       ],
       "provenance": "placeholder-example",
       "last_verified": "2026-06-23",
-      "access": {"minimum_necessary": true, "note": "Surfaced to staff with legitimate educational interest; medical specifics defer to the nurse / signed plan / 911."}
+      "access": {"minimum_necessary": true, "note": "Surfaced to staff with legitimate educational interest; medical specifics are quoted from the source on file (attributed) and defer to the nurse / 911."}
     },
     {
       "student_id": "S-000456",

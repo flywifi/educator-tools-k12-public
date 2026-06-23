@@ -67,13 +67,16 @@ def show(s: dict, mode: str) -> None:
     else:
         print(f"  guardians: {len(s.get('guardians', []))} on file (names hidden in ID-only mode)")
     for hp in s.get("health_plans", []):
-        print("\n  *** MEDICAL ACTION PLAN — SAFETY-CRITICAL (ePHI) ***")
+        print("\n  *** STUDENT HEALTH INFO — SAFETY-CRITICAL (ePHI) ***")
         print(f"      condition: {hp.get('condition')}  [{hp.get('severity','')}]")
         print(f"      medications: {', '.join(hp.get('medications', []))}")
-        print(f"      when/where: {hp.get('when_where_to_administer')}")
+        print(f"      when/where: {hp.get('when_where_to_administer') or hp.get('instructions','')}")
         print(f"      protocol:   {hp.get('emergency_protocol')}")
-        print(f"      source:     {hp.get('source')}  (effective {hp.get('effective_dates','?')})")
-        print("      >> Surface from the SIGNED plan only; never fabricate. Defer to the school nurse / 911.")
+        sig = "signed" if hp.get("signed") else "unsigned"
+        print(f"      source:     {hp.get('source_type','?')} [{hp.get('source_authority','?')} authority, {sig}] — "
+              f"{hp.get('source','')}  (effective {hp.get('effective_dates','?')})")
+        print("      >> Quote verbatim from the source on file (attributed; a signature is not required); "
+              "never fabricate. Defer to the school nurse / 911.")
 
 
 def reconcile(store: dict, sis_path: str, mode: str) -> int:

@@ -291,13 +291,13 @@
         {
           "source": "signed_health_plan",
           "rank": 100,
-          "ref": "the student's signed medical/anaphylaxis action plan on file",
-          "note": "AUTHORITATIVE and ONLY source for ePHI/medical instructions; never fabricate; defer to nurse/911"
+          "ref": "the student's medical/health information on file (district/school health form, nurse/guardian note, sick note, or action plan)",
+          "note": "the source(s) on file are the basis for ePHI/medical instructions (trusted by attribution, not signature); never fabricate; defer to nurse/911"
         }
       ],
       "must_not_prove_from": [
         "a remembered/guessed name, contact, or medical instruction",
-        "fabricated medical dosages, timing, or protocols (use the signed plan verbatim)"
+        "fabricated medical dosages, timing, or protocols (quote the source on file verbatim)"
       ],
       "hard_rule": "On SIS<->local conflict, never auto-merge: raise with the user (which source wins + update local?). Real student data never enters a tracked/committed file.",
       "escalates": true,

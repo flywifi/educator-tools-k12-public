@@ -20,7 +20,9 @@ Skill-specific:
   evaluation result, or a medical decision. The IEP/504 `required_cadence` is an **advisory** with
   `verify_on_source: true`; escalate specifics to the team.
 - **ePHI is surfaced, never generated** — a medical/anaphylaxis action plan is quoted from the
-  student's **signed plan** with its source; never fabricate instructions/dosages; defer to nurse/911.
+  **source on file** (district/school form, nurse/guardian note, sick note, or action plan; a signature
+  is not required), attributed with its source + authority; never fabricate instructions/dosages; defer
+  to nurse/911.
 - **Connector honesty** — a disabled/blocked/`metadata_only` source is never shown as an active path;
   degraded paths lower confidence and are recorded in `execution_trace`.
 - **Real student data never enters a tracked/committed file** (placeholders only; real data lives in
@@ -31,7 +33,7 @@ Skill-specific:
 - Collapsing `annual_review_observation` vs `interim_observation` (or SIS↔local) into a guess instead
   of a minority report.
 - Treating a connector that is visible but off as if it returned content.
-- Echoing a medical instruction that is not in the signed plan.
+- Echoing a medical instruction that is not in the source on file.
 
 ## Fragile fallbacks that must not become defaults
 - Classifying from a **single weak** cue (e.g., a bare calendar title) — acceptable only as a clearly
