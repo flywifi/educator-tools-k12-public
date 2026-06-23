@@ -1,0 +1,28 @@
+{
+  "_comment": "Currency-watch config (Area 1). Lists every stored authoritative REGISTRY/field-catalog in the ecosystem, where its authority lives (to re-verify a drift), and how to check it (sha256 baseline). tools/registry_currency.py hashes each, compares to tools/registry-baselines.json, and reports drift + the source to re-verify on. Education-standards crawling lives in standards-updater (tools/standards_refresh.py); this watches the OTHER registries + the plugin manifest. Human-approve every change, then --update-baselines.",
+  "version": "0.1.0",
+  "updated": "2026-06-23",
+  "registries": [
+    {"id": "connectors", "path": "shared/connectors/connectors.json", "class": "internal_registry",
+      "authority": "host-AI native-integration availability (Claude/OpenAI/Gemini) + per-district policy",
+      "note": "re-verify which native connectors exist + what districts restrict; states/evidence types may change"},
+    {"id": "grade-scales", "path": "shared/standards/grade-scales.md", "class": "primary_external",
+      "authority": "district/school grading-scale policy", "note": "grade-scale cutoffs vary by district"},
+    {"id": "frameworks", "path": "shared/standards/state-standards-map.md", "class": "primary_external",
+      "authority": "state DOEs + independent framework registries (IB/AP/Cambridge/...)",
+      "note": "new states or framework versions"},
+    {"id": "standards-sources", "path": "shared/standards/resources/florida/sources.json", "class": "primary_external",
+      "authority": "CPALMS/FLDOE/WIDA — crawled by standards-updater (tools/standards_refresh.py)",
+      "note": "cross-link: deep crawl is standards-updater's job; this flags the source list itself drifting"},
+    {"id": "ontology", "path": "shared/ontology/artifact-types.json", "class": "internal_registry",
+      "authority": "each skill's references/artifact-types.md", "note": "must list every shipped skill + artifact type"},
+    {"id": "routing", "path": "shared/routing/routing.json", "class": "internal_registry",
+      "authority": "installed skills under skills/", "note": "routes must resolve to real skills (see shared/health/)"},
+    {"id": "records-catalog", "path": "shared/records/records.schema.json", "class": "primary_external",
+      "authority": "SIS + state field catalogs (course levels, enrollment statuses, assessment types)",
+      "note": "enum/field catalogs evolve with SIS/state reporting"},
+    {"id": "plugin-manifest", "path": ".claude-plugin/plugin.json", "class": "internal_registry",
+      "authority": "Cowork plugin marketplace + the installed skill set",
+      "note": "bump version + refresh marketplace.json when skills are added/removed"}
+  ]
+}

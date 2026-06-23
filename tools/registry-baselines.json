@@ -1,0 +1,13 @@
+{
+  "updated": "2026-06-23T22:39:43.811801+00:00",
+  "hashes": {
+    "connectors": "e7946785cef639dd24a22bbd4063cf141bc9c2f59731bfb4aeb1fc049e767494",
+    "grade-scales": "2c4afb04ed309f1ead8e2315a50e66762aeb25e19e28996ac47fe7b97dd06fbe",
+    "frameworks": "4b9ec0e2be026e12d59a182bc007d0f4e99f3e189c6a0d6c3bde7a6a1b383e54",
+    "standards-sources": "277251e3ef6c5fc6391ab8e6215d9ca623f44e5d2e49fc67f48bd59ca0f09246",
+    "ontology": "93b6fc41fc77afe1f9d5fabff48eff6f40c78070ad3b7a5a1d0b0ee4c586e5df",
+    "routing": "f97c1f2617431055bf0d5a583b93905fe6abb386c5f966fc0c0d2b6ecbdeddea",
+    "records-catalog": "020d8435984fdb5f88943941f0398e0e4f0bff4903a6c9b32aa8593dffb8954e",
+    "plugin-manifest": "15e0df8654dff51cb828016bc1e1ea795ae169b75361c0c72fa4ddbcfa42f8e9"
+  }
+}
