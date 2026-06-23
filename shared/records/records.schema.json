@@ -22,7 +22,7 @@
       }
     },
     "module_id": {
-      "enum": ["gradebook", "assessments", "curriculum", "scheduling", "transportation",
+      "enum": ["gradebook", "scheduling", "transportation",
                "activities", "credentials", "discipline", "counseling", "communications",
                "documents", "health_detail", "state_reporting"]
     },
@@ -40,6 +40,8 @@
         "enrollments": {"type": "array", "items": {"type": "object"}},
         "course_history": {"type": "array", "items": {"type": "object"}},
         "course_grades": {"type": "array", "items": {"type": "object"}},
+        "assessments": {"type": "array", "items": {"type": "object"}, "description": "core: test/benchmark results — teachers scaffold from these"},
+        "curriculum": {"type": "array", "items": {"type": "object"}, "description": "core: what the student is being taught (course + learning objectives)"},
         "standards_mastery": {"type": "array", "items": {"type": "object"}},
         "active_interventions": {"type": "array", "items": {"type": "object"}},
         "active_accommodations": {"type": "array", "items": {"type": "object"}},
