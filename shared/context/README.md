@@ -17,7 +17,8 @@ context **once**, and every skill then adapts and carries that context through i
 | `florida-districts.json` | **Log of all 67 FL county districts** (LEAs) — fillable stubs for rules/norms/superintendent/district-run virtual school; Orange/OCPS populated as the worked example. |
 | `school-types.json` | School-type **taxonomy + exception rule-sets** (traditional/magnet/charter/district-virtual/FLVS/home-ed/private-scholarship): how each overrides the baseline. |
 | `context.schema.json` | The **context contract** envelope (machine-readable). |
-| `context.py` | Resolver: build/validate a context, apply school-type exceptions, resolve precedence + overrides. Stdlib. |
+| `overlay.schema.json` + `overlays/` | **Composable scoped overlays** (state/county/district/school/framework/grade/subject/program/classroom) — `overlays.md`. |
+| `context.py` | Resolver: `resolve()` stacks overlays; build/validate a context, apply school-type exceptions, precedence + overrides. Stdlib. |
 | `context-model.md` | The dimensions, authority-precedence, and override model. |
 | `sop-model.md` | How teachers **upload/update SOP files** and how they map into the contract. |
 

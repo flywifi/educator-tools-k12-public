@@ -39,6 +39,14 @@ downstream skills must honor the latest override and record it. Prior evidence/p
 `sop_overrides` (which SOP categories this type replaces). This is how the same request yields
 different governed behavior in a charter vs. a district-virtual vs. a home-ed context.
 
+## Overlays (composable scoped rules)
+Beyond the single resolved contract, rules can be layered as **overlays** at any scope (state, county,
+district, school, framework, grade, subject, program, classroom). `context.resolve(selectors)` stacks
+all matching overlays by precedence — `sets` (defaults) + `adds` (accumulate mandates/notes/SOPs) +
+`overrides` (state/compliance wins) — and records `overlays_applied`. This is how the system stays
+adaptable/translatable: new school-/county-/framework-/grade-/subject-specific rules are added **as
+data** (`overlays/<scope>/<id>.json`) without code or skill changes. Full model: `overlays.md`.
+
 ## Invariants
 1. Context is resolved **first** and travels with the work (into metadata + handoffs).
 2. Unknown dimensions are explicit nulls/stubs — never guessed.
