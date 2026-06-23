@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tos.local/records/records.schema.json",
+  "title": "TOS student records + handoff packages",
+  "description": "Two shapes: (1) the academic RECORDS STORE (records.example.json / records.local.json) and (2) a generated HANDOFF PACKAGE (skill_to_skill | teacher_to_teacher | school_transfer). Identity/guardians/health come from ../students/. Core entities are always present; extended entities live under `modules` and appear only when the module is enabled. Universal pattern: every entity ref carries *_id/*_code/*_name/*_display_name. Prose: records-model.md. Governance/audit envelope maps to protocols/metadata-schema.md.",
+  "$defs": {
+    "entity_ref": {
+      "type": "object",
+      "description": "Universal entity pattern: a human-readable name alongside every id (e.g. course_id/course_code/course_name/course_display_name). Permissive by design.",
+      "additionalProperties": true
+    },
+    "lifecycle": {
+      "type": "object",
+      "description": "Lifecycle/audit envelope (maps to the metadata block in protocols/metadata-schema.md).",
+      "properties": {
+        "created_date": {"type": "string"},
+        "last_modified_date": {"type": "string"},
+        "created_by": {"type": "string"},
+        "last_modified_by": {"type": "string"},
+        "status": {"type": "string"},
+        "active": {"type": "boolean"}
+      }
+    },
+    "module_id": {
+      "enum": ["gradebook", "assessments", "curriculum", "scheduling", "transportation",
+               "activities", "credentials", "discipline", "counseling", "communications",
+               "documents", "health_detail", "state_reporting"]
+    },
+    "record": {
+      "type": "object",
+      "required": ["student_id"],
+      "description": "Per-student academic record (core fields always; extended data under `modules`).",
+      "properties": {
+        "student_id": {"type": "string", "description": "join key into ../students/"},
+        "lifecycle": {"$ref": "#/$defs/lifecycle"},
+        "current_school": {"$ref": "#/$defs/entity_ref"},
+        "academic_year": {"$ref": "#/$defs/entity_ref"},
+        "current_grade_level": {"type": "string"},
+        "homeroom": {"$ref": "#/$defs/entity_ref"},
+        "enrollments": {"type": "array", "items": {"type": "object"}},
+        "course_history": {"type": "array", "items": {"type": "object"}},
+        "course_grades": {"type": "array", "items": {"type": "object"}},
+        "standards_mastery": {"type": "array", "items": {"type": "object"}},
+        "active_interventions": {"type": "array", "items": {"type": "object"}},
+        "active_accommodations": {"type": "array", "items": {"type": "object"}},
+        "attendance_summary": {"type": "object"},
+        "behavior_summary": {"type": "object"},
+        "counseling_summary": {"type": "object"},
+        "teacher_recommendations": {"type": "array", "items": {"type": "string"}},
+        "teacher_notes": {"type": "array", "items": {"type": "string"}},
+        "parent_contact_summary": {"type": "array", "items": {"type": "object"}},
+        "educational_timeline": {"type": "array", "items": {"type": "object"}},
+        "mobility_history": {"type": "array", "items": {"type": "object"}},
+        "modules": {
+          "type": "object",
+          "description": "Extended-module data keyed by module id (see module_id). Present only for enabled modules.",
+          "additionalProperties": true
+        }
+      }
+    },
+    "handoff_package": {
+      "type": "object",
+      "required": ["package_type", "subject_student", "human_review_required", "metadata"],
+      "properties": {
+        "package_type": {"enum": ["skill_to_skill", "teacher_to_teacher", "school_transfer"]},
+        "subject_student": {"type": "string", "description": "rendered per identification mode (name | id)"},
+        "identification_mode": {"enum": ["name", "id"]},
+        "modules_included": {"type": "array", "items": {"$ref": "#/$defs/module_id"}},
+        "context": {"type": ["object", "null"], "description": "the teaching-context contract (shared/context/), carried across the handoff"},
+        "academic_package": {"type": "object", "description": "the shared Academic Handoff Package payload"},
+        "guardians": {"type": ["array", "null"]},
+        "medical_safety_banner": {"type": ["object", "null"], "description": "attributed to its source; never fabricated"},
+        "source_availability": {"type": "object"},
+        "restricted_sources": {"type": "object"},
+        "execution_trace": {"type": "array"},
+        "source_decisions": {"type": ["object", "null"]},
+        "minority_report": {"type": ["object", "null"]},
+        "recommended_next_skill": {"type": ["string", "null"]},
+        "transition_handoff": {"type": ["object", "null"], "description": "school_transfer only"},
+        "mobility_history": {"type": ["array", "null"], "description": "school_transfer only"},
+        "lifecycle": {"$ref": "#/$defs/lifecycle"},
+        "human_review_required": {"const": true},
+        "metadata": {"type": "object", "description": "the metadata block (protocols/metadata-schema.md)"}
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["records"],
+      "properties": {
+        "_comment": {"type": "string"},
+        "version": {"type": "string"},
+        "updated": {"type": "string"},
+        "is_placeholder": {"type": "boolean"},
+        "records": {"type": "array", "items": {"$ref": "#/$defs/record"}}
+      }
+    },
+    {"$ref": "#/$defs/handoff_package"}
+  ]
+}
