@@ -8,3 +8,8 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# TOS: real student data (PII/ePHI) — never commit; placeholders only in tracked files
+shared/students/students.local.json
+shared/students/local/
+*.students.local.json
