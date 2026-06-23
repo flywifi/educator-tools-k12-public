@@ -44,6 +44,15 @@ registry-currency watcher flags this (below).
   catalogs, the plugin manifest) for drift vs. recorded baselines and names the authority to re-verify
   on; `--update-baselines` after a human approves. (Education-standards crawling stays with
   `standards-updater` / `tools/standards_refresh.py`.) Structural health is `shared/health/health.py`.
+- **Optional capabilities & deps:** `python3 shared/health/capabilities.py` shows which optional powers
+  are active (PDF/OCR/Office/render/transcription/fonts) and which **cloud** providers are installed +
+  credentialed. Install per-capability with the matching `tools/requirements-*.txt` (+ system bins:
+  LibreOffice, poppler, ffmpeg, tesseract; fonts: Noto/Liberation/Carlito/Caladea). **Cloud providers**
+  (Azure/fal/Nutrient/Firecrawl) are OFF until a deployment opts in via `cloud_providers` and supplies
+  API keys **in the environment** (never the repo). Policy + privacy boundary:
+  `shared/health/dependency-policy.md`.
+- **Supply chain:** deps are pinned, auto-updated (`.github/dependabot.yml`), and scanned
+  (`tools/security_scan.py` = pip-audit + bandit) as a CI gate — so every bump is current AND vetted.
 
 ## 4. Environment notes
 - This repo currently lives at `flywifi/Repo-1`, developed on branch `claude/fervent-hawking-nyrzy5`.
