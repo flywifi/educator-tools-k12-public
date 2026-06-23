@@ -11,9 +11,15 @@ B.E.S.T. coverage, or a homeschooler mapping a chosen curriculum to FL for refer
 { "from_framework": "AP", "to_framework": "FL-BEST-Math", "status": "stub",
   "entries": [
     { "subject": "Mathematics", "from_code": "AP Calculus AB", "to_code": ["MA.912.C.*"],
-      "relationship": "exact|partial|related", "confidence": "high|medium|low",
+      "relationship": "exact|partial|related|none",
+      "coverage": "full|most|partial|minimal|none",
+      "confidence": "high|medium|low",
       "note": "source / caveat" } ] }
 ```
+`coverage` records **how much** of the from-requirement carries over. Contract:
+`shared/standards/crosswalks/crosswalk.schema.json` (also covers the grade-scale crosswalk,
+`kind: grade_scale_crosswalk`). To translate **grades** (what an "A" means across scales) see
+`shared/standards/grade-scales.md` + `tools/crosswalk.py --grade`.
 
 ## Discipline (no false equivalence)
 - Shipped entries are **domain-level and illustrative (`confidence: low`)** until verified on **both**

@@ -1,0 +1,17 @@
+{
+  "id": "traditional-10pt",
+  "label": "Traditional 10-point letter (A-F)",
+  "type": "letter",
+  "common_in": "Many Florida districts and schools (verify the specific school/district scale).",
+  "bands": [
+    {"grade": "A", "min": 90, "max": 100, "meaning": "excellent"},
+    {"grade": "B", "min": 80, "max": 89, "meaning": "above average"},
+    {"grade": "C", "min": 70, "max": 79, "meaning": "average"},
+    {"grade": "D", "min": 60, "max": 69, "meaning": "below average / lowest passing"},
+    {"grade": "F", "min": 0, "max": 59, "meaning": "failing"}
+  ],
+  "source": ["district student-progression plan / school handbook"],
+  "institution_dependent": true,
+  "status": "seed",
+  "note": "A widely-used 10-point scale; the exact cutoffs are set by the district/school — verify on the student-progression plan. Never assert a school's scale you have not confirmed."
+}

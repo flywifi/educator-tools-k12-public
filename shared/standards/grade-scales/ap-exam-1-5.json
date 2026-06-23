@@ -1,0 +1,17 @@
+{
+  "id": "ap-exam-1-5",
+  "label": "AP exam score 1-5",
+  "type": "exam",
+  "common_in": "Advanced Placement (College Board) end-of-course exam.",
+  "levels": [
+    {"level": 5, "meaning": "extremely well qualified"},
+    {"level": 4, "meaning": "well qualified"},
+    {"level": 3, "meaning": "qualified"},
+    {"level": 2, "meaning": "possibly qualified"},
+    {"level": 1, "meaning": "no recommendation"}
+  ],
+  "source": ["https://apcentral.collegeboard.org/"],
+  "institution_dependent": true,
+  "status": "seed",
+  "note": "An AP EXAM score (1-5) is NOT a course letter grade. College credit/placement for a given score is set by each college and varies (commonly 3+). Do not equate an AP score to a classroom A-F grade; keep them separate and flag credit as institution-dependent."
+}
