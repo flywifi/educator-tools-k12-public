@@ -1,0 +1,102 @@
+{
+  "_comment": "PLACEHOLDER academic records — committed for documentation/tests ONLY. All data is fake (obvious placeholder ids/names). NEVER put real student data here; the real store is gitignored (records.local.json) or a live SIS. Identity/guardians/health come from ../students/ (this file holds the academic + module record). Schema: records.schema.json. Policy: ../students/student-data-policy.md.",
+  "version": "0.1.0",
+  "updated": "2026-06-23",
+  "is_placeholder": true,
+  "records": [
+    {
+      "student_id": "S-000123",
+      "lifecycle": {"created_date": "2025-08-12", "last_modified_date": "2026-06-23", "created_by": "placeholder", "last_modified_by": "placeholder", "status": "active", "active": true},
+      "current_school": {"school_id": "SCH-001", "school_code": "0001", "school_name": "Sample Elementary", "school_display_name": "Sample Elementary (0001)"},
+      "academic_year": {"academic_year_id": "AY-2026", "academic_year_name": "2026-2027"},
+      "current_grade_level": "4",
+      "homeroom": {"section_id": "SEC-HR4A", "section_name": "Homeroom 4A"},
+      "enrollments": [
+        {"enrollment_id": "ENR-1001", "section": {"section_id": "SEC-MATH4", "section_name": "Math 4 - Period 2"}, "course": {"course_id": "COURSE-MATH4", "course_code": "5012060", "course_name": "Grade 4 Mathematics", "course_display_name": "Grade 4 Mathematics (5012060)"}, "course_level": {"course_level_id": "CL-REG", "course_level_code": "REG", "course_level_name": "Regular"}, "enrollment_date": "2025-08-12", "status": "active"}
+      ],
+      "course_history": [
+        {"course": {"course_id": "COURSE-MATH3", "course_code": "5012050", "course_name": "Grade 3 Mathematics", "course_display_name": "Grade 3 Mathematics (5012050)"}, "academic_year_name": "2025-2026", "final_letter_grade": "B"}
+      ],
+      "course_grades": [
+        {"course": {"course_id": "COURSE-MATH4", "course_code": "5012060", "course_name": "Grade 4 Mathematics", "course_display_name": "Grade 4 Mathematics (5012060)"}, "teacher": {"staff_id": "STF-014", "staff_name": "Pat Teacher"}, "grading_period": "Quarter 3", "grade_percentage": 87.5, "letter_grade": "B+", "missing_assignments": ["Fractions Quiz 2"], "completed_assignments": ["Place Value Test", "Multiplication Project"]}
+      ],
+      "standards_mastery": [
+        {"standard": {"standard_id": "STD-MAFS4NF1", "standard_code": "MA.4.FR.1.1", "standard_name": "Fraction equivalence"}, "mastery_level": 3, "evidence_count": 5, "last_assessed_date": "2026-03-01"},
+        {"standard": {"standard_id": "STD-MAFS4OA1", "standard_code": "MA.4.AR.1.1", "standard_name": "Multiplicative comparison"}, "mastery_level": 4, "evidence_count": 8, "last_assessed_date": "2026-02-15"}
+      ],
+      "active_interventions": [
+        {"intervention_id": "INT-77", "tier": "Tier 2", "focus": "reading fluency", "started": "2026-01-10", "status": "active", "owner_skill": "intervention-mtss"}
+      ],
+      "active_accommodations": [
+        {"accommodation_id": "ACC-12", "type": "extended time", "applies_to": "assessments", "source": "Section 504 plan", "status": "active"}
+      ],
+      "attendance_summary": {"present_pct": 96.0, "absences": 7, "tardies": 3, "as_of": "2026-06-01"},
+      "behavior_summary": {"referrals": 0, "positive_notes": 4, "summary": "Engaged; occasional reminders to stay on task.", "as_of": "2026-06-01"},
+      "counseling_summary": {"has_active_support": false, "summary": "No active counseling referrals on file."},
+      "teacher_recommendations": ["Continue small-group fraction work next year.", "Strong candidate for math enrichment."],
+      "teacher_notes": ["Works well with a visual multiplication chart."],
+      "parent_contact_summary": [
+        {"date": "2026-03-05", "method": "phone", "topic": "fractions progress", "outcome": "guardian supportive; will review homework"}
+      ],
+      "educational_timeline": [
+        {"timeline_event_id": "TL-1", "event_type": "Enrollment", "event_name": "Enrolled at Sample Elementary", "event_date": "2025-08-12", "summary": "Started grade 4."},
+        {"timeline_event_id": "TL-2", "event_type": "Intervention Started", "event_name": "Tier 2 reading fluency", "event_date": "2026-01-10", "summary": "Began small-group fluency support."}
+      ],
+      "mobility_history": [
+        {"mobility_event_id": "MOB-1", "event_type": "enrollment", "event_date": "2025-08-12", "origin_school": null, "destination_school": {"school_id": "SCH-001", "school_name": "Sample Elementary"}, "reason": "start of year"}
+      ],
+      "modules": {
+        "gradebook": {
+          "assignment_statuses": [
+            {"assignment_id": "ASG-1", "assignment_name": "Place Value Test", "category": "Midterm", "status": "graded", "points_earned": 92, "points_possible": 100},
+            {"assignment_id": "ASG-2", "assignment_name": "Fractions Quiz 2", "category": "Quiz", "status": "missing", "points_earned": 0, "points_possible": 20}
+          ],
+          "grading_policy": {"grading_policy_name": "Standard 4th Grade", "term_weights": [{"component_name": "Homework", "weight_percentage": 20}, {"component_name": "Quiz", "weight_percentage": 20}, {"component_name": "Project", "weight_percentage": 20}, {"component_name": "Midterm", "weight_percentage": 15}, {"component_name": "Final", "weight_percentage": 25}]}
+        },
+        "assessments": [
+          {"assessment_id": "ASMT-1", "assessment_name": "Fall Math Benchmark", "assessment_type": "Benchmark", "score": "Level 3", "date": "2025-10-01"}
+        ],
+        "transportation": {
+          "transportation_profile": {"transportation_id": "TR-1", "primary_transportation_mode": "School Bus", "bus_route": {"route_id": "BUS-12", "route_name": "Route 12"}},
+          "dismissal_schedule": [
+            {"day_of_week": "Monday", "dismissal_type": "Bus", "destination_name": "Route 12"},
+            {"day_of_week": "Tuesday", "dismissal_type": "Parent Pickup", "pickup_person": {"name": "Alex Sample"}}
+          ]
+        },
+        "activities": [
+          {"activity_id": "ACT-1", "activity_name": "Robotics Club", "role": "member", "season": "spring"}
+        ]
+      }
+    },
+    {
+      "student_id": "S-000456",
+      "lifecycle": {"created_date": "2025-08-12", "last_modified_date": "2026-06-23", "created_by": "placeholder", "last_modified_by": "placeholder", "status": "active", "active": true},
+      "current_school": {"school_id": "SCH-001", "school_code": "0001", "school_name": "Sample Elementary", "school_display_name": "Sample Elementary (0001)"},
+      "academic_year": {"academic_year_id": "AY-2026", "academic_year_name": "2026-2027"},
+      "current_grade_level": "4",
+      "enrollments": [
+        {"enrollment_id": "ENR-2001", "section": {"section_id": "SEC-MATH4", "section_name": "Math 4 - Period 2"}, "course": {"course_id": "COURSE-MATH4", "course_code": "5012060", "course_name": "Grade 4 Mathematics", "course_display_name": "Grade 4 Mathematics (5012060)"}, "course_level": {"course_level_id": "CL-REG", "course_level_code": "REG", "course_level_name": "Regular"}, "enrollment_date": "2025-08-12", "status": "active"}
+      ],
+      "course_grades": [
+        {"course": {"course_id": "COURSE-MATH4", "course_code": "5012060", "course_name": "Grade 4 Mathematics", "course_display_name": "Grade 4 Mathematics (5012060)"}, "teacher": {"staff_id": "STF-014", "staff_name": "Pat Teacher"}, "grading_period": "Quarter 3", "grade_percentage": 91.0, "letter_grade": "A-", "missing_assignments": [], "completed_assignments": ["Place Value Test"]}
+      ],
+      "standards_mastery": [
+        {"standard": {"standard_id": "STD-MAFS4NF1", "standard_code": "MA.4.FR.1.1", "standard_name": "Fraction equivalence"}, "mastery_level": 4, "evidence_count": 6, "last_assessed_date": "2026-03-01"}
+      ],
+      "active_interventions": [],
+      "active_accommodations": [
+        {"accommodation_id": "ACC-44", "type": "EL language supports", "applies_to": "instruction", "source": "IEP + EL plan", "status": "active"}
+      ],
+      "attendance_summary": {"present_pct": 98.0, "absences": 3, "tardies": 1, "as_of": "2026-06-01"},
+      "behavior_summary": {"referrals": 0, "positive_notes": 2, "summary": "Consistent and focused.", "as_of": "2026-06-01"},
+      "teacher_recommendations": ["Continue EL supports; ready for grade-level enrichment in math."],
+      "teacher_notes": [],
+      "parent_contact_summary": [],
+      "educational_timeline": [
+        {"timeline_event_id": "TL-9", "event_type": "Enrollment", "event_name": "Enrolled at Sample Elementary", "event_date": "2025-08-12", "summary": "Started grade 4."}
+      ],
+      "mobility_history": [],
+      "modules": {}
+    }
+  ]
+}

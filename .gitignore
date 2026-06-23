@@ -13,3 +13,6 @@ __pycache__/
 shared/students/students.local.json
 shared/students/local/
 *.students.local.json
+shared/records/records.local.json
+shared/records/local/
+*.records.local.json
