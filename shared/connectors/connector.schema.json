@@ -60,7 +60,9 @@
         "allowed_sources": {"type": "array", "items": {"type": "string"}},
         "blocked_sources": {"type": "array", "items": {"type": "string"}},
         "student_identification": {"type": "object", "properties": {"mode": {"enum": ["name", "id"]}}},
-        "storage_adapter": {"enum": ["auto", "local_gitignored", "session_ephemeral", "uploaded_file", "connector_sis"]}
+        "storage_adapter": {"enum": ["auto", "local_gitignored", "session_ephemeral", "uploaded_file", "connector_sis"]},
+        "records_modules": {"description": "shared/records/ extended modules to enable ([] = core only; \"all\" = every module).",
+          "oneOf": [{"type": "array", "items": {"type": "string"}}, {"const": "all"}]}
       }
     }
   ]
