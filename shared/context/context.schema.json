@@ -8,6 +8,9 @@
   "properties": {
     "context_id": {"type": "string"},
     "state": {"type": "string", "default": "FL"},
+    "county": {"type": ["string", "null"]},
+    "framework": {"type": ["string", "null"],
+                   "description": "Independent framework when school_defined (e.g., IB, AP, Cambridge, Montessori, classical, ACSI)."},
     "district": {
       "type": ["object", "null"],
       "properties": {
@@ -50,7 +53,7 @@
         "required": ["text", "scope"],
         "properties": {
           "text": {"type": "string"},
-          "scope": {"enum": ["state", "district", "school", "classroom"]},
+          "scope": {"enum": ["national", "state", "framework", "county", "district", "school", "program", "grade", "subject", "classroom"]},
           "source": {"type": ["string", "null"]}
         }
       }
@@ -63,7 +66,7 @@
         "required": ["id", "scope", "path"],
         "properties": {
           "id": {"type": "string"},
-          "scope": {"enum": ["state", "district", "school", "classroom"]},
+          "scope": {"enum": ["national", "state", "framework", "county", "district", "school", "program", "grade", "subject", "classroom"]},
           "path": {"type": "string"},
           "label": {"type": ["string", "null"]},
           "effective": {"type": ["string", "null"]},
@@ -74,7 +77,7 @@
     "authority_precedence": {
       "type": "array",
       "description": "Ordered scopes, highest authority first, for resolving conflicts.",
-      "items": {"enum": ["state", "district", "school", "classroom"]}
+      "items": {"enum": ["national", "state", "framework", "county", "district", "school", "program", "grade", "subject", "classroom"]}
     },
     "overrides": {
       "type": "array",
@@ -93,6 +96,23 @@
     "resolved_by": {"type": ["string", "null"]},
     "confidence": {"enum": ["high", "medium", "low"]},
     "human_review_required": {"const": true},
-    "assumptions": {"type": "array", "items": {"type": "string"}}
+    "assumptions": {"type": "array", "items": {"type": "string"}},
+    "school_type_exceptions": {"type": "array", "items": {"type": "string"}},
+    "sop_override_targets": {"type": "array", "items": {"type": "string"}},
+    "frameworks": {"type": "array", "items": {"type": "string"},
+                    "description": "Independent frameworks contributed by overlays (IB/AP/Cambridge/...)."},
+    "notes": {"type": "array", "items": {"type": "string"}},
+    "overlays_applied": {
+      "type": "array",
+      "description": "Overlays merged into this context, in precedence order.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": ["string", "null"]},
+          "scope": {"type": ["string", "null"]},
+          "precedence": {"type": ["integer", "null"]}
+        }
+      }
+    }
   }
 }

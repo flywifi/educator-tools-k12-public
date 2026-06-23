@@ -1,0 +1,16 @@
+{
+  "scope": "framework",
+  "id": "ib",
+  "label": "International Baccalaureate",
+  "match": {"framework": "IB"},
+  "overrides": {"standards_applicability": "school_defined"},
+  "adds": {
+    "frameworks": ["IB"],
+    "notes": [
+      "Use shared/standards/frameworks/ib.json as the primary framework; cite IB objectives/ATL.",
+      "Optionally crosswalk to FL B.E.S.T. (shared/standards/crosswalks/ib__fl-best.json) to show coverage."
+    ]
+  },
+  "source": ["https://www.ibo.org/programmes/"],
+  "status": "seed"
+}

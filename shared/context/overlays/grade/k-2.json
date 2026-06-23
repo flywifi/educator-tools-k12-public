@@ -1,0 +1,13 @@
+{
+  "scope": "grade",
+  "id": "k-2",
+  "label": "Grade band K-2",
+  "match": {"grade_band": "K-2"},
+  "adds": {
+    "notes": [
+      "K-2: foundational literacy (B.E.S.T. ELA Foundations) and numeracy emphasis; concrete-representational-abstract.",
+      "FL VPK-to-K transition and early progress monitoring (FAST PM1-3) apply in public/charter."
+    ]
+  },
+  "status": "seed"
+}

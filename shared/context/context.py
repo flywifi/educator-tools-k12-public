@@ -16,10 +16,17 @@ from typing import Any, Dict, List, Optional
 HERE = Path(__file__).resolve().parent
 DISTRICTS_PATH = HERE / "florida-districts.json"
 SCHOOL_TYPES_PATH = HERE / "school-types.json"
+OVERLAYS_DIR = HERE / "overlays"
 
 # Default precedence for MANDATES/compliance: higher authority wins. Instructional-style
 # decisions may invert this (classroom discretion); callers can pass a custom order.
 DEFAULT_PRECEDENCE = ["state", "district", "school", "classroom"]
+
+# Overlay merge rank (compliance default): higher = applied later = wins on `overrides` conflicts.
+# State/law ranks highest; framework/grade/subject are mostly additive defaults. Per-overlay
+# `precedence` overrides this.
+SCOPE_RANK = {"national": 1, "framework": 2, "subject": 3, "grade": 4, "program": 5,
+              "county": 6, "school": 7, "district": 8, "classroom": 9, "state": 10}
 
 
 def load_districts() -> Dict[str, Any]:
@@ -113,6 +120,76 @@ def resolve_conflict(context: Dict[str, Any], candidates: List[Dict[str, Any]]) 
     return ranked[0] if ranked else None
 
 
+def load_overlays() -> List[Dict[str, Any]]:
+    """Load every overlay JSON under overlays/ (any scope). Stored offline; filled in over time."""
+    out: List[Dict[str, Any]] = []
+    if OVERLAYS_DIR.exists():
+        for f in sorted(OVERLAYS_DIR.rglob("*.json")):
+            try:
+                out.append(json.loads(f.read_text(encoding="utf-8")))
+            except Exception:
+                continue
+    return out
+
+
+def _matches(match: Optional[Dict[str, Any]], selectors: Dict[str, Any]) -> bool:
+    for k, v in (match or {}).items():
+        sv = selectors.get(k)
+        if isinstance(v, str) and isinstance(sv, str):
+            if v.lower() != sv.lower():
+                return False
+        elif sv != v:
+            return False
+    return True
+
+
+def _rank(ov: Dict[str, Any]) -> int:
+    p = ov.get("precedence")
+    return p if isinstance(p, int) else SCOPE_RANK.get(ov.get("scope"), 50)
+
+
+def resolve(selectors: Optional[Dict[str, Any]] = None, **kw) -> Dict[str, Any]:
+    """Resolve a full context by stacking matching OVERLAYS onto the base context contract.
+
+    Selectors may include: school_type, district, county, school_name, framework, subject,
+    grade_band, instructional_model, calendar, program, precedence. Overlays whose `match` is a
+    subset of the selectors are merged in precedence order (sets = defaults; adds = accumulate;
+    overrides = highest precedence wins). Records `overlays_applied`.
+    """
+    selectors = {**(selectors or {}), **kw}
+    ctx = build_context(
+        school_type=selectors.get("school_type", "traditional_public"),
+        district=selectors.get("district"), school_name=selectors.get("school_name"),
+        subject=selectors.get("subject"), grade_band=selectors.get("grade_band"),
+        instructional_model=selectors.get("instructional_model"),
+        calendar=selectors.get("calendar"), program=selectors.get("program"),
+        precedence=selectors.get("precedence"))
+    if selectors.get("framework"):
+        ctx["framework"] = selectors["framework"]
+    if selectors.get("county"):
+        ctx["county"] = selectors["county"]
+
+    sel = {**selectors, "state": ctx["state"], "school_type": ctx["school_type"],
+           "subject": ctx.get("subject"), "grade_band": ctx.get("grade_band"),
+           "district": (ctx["district"]["name"] if ctx.get("district") else selectors.get("district"))}
+    applied: List[Dict[str, Any]] = []
+    for ov in sorted(load_overlays(), key=_rank):
+        if not _matches(ov.get("match", {}), sel):
+            continue
+        for k, v in (ov.get("sets") or {}).items():
+            if ctx.get(k) in (None, [], "", {}):
+                ctx[k] = v
+        for k, v in (ov.get("overrides") or {}).items():
+            ctx[k] = v
+        for k, v in (ov.get("adds") or {}).items():
+            cur = ctx.setdefault(k, [])
+            if isinstance(cur, list) and isinstance(v, list):
+                cur.extend(v)
+        applied.append({"id": ov.get("id"), "scope": ov.get("scope"), "precedence": _rank(ov)})
+    ctx["overlays_applied"] = applied
+    return ctx
+
+
 def validate_context(context: Dict[str, Any]) -> Dict[str, Any]:
     problems: List[str] = []
     if context.get("state") != "FL":
@@ -126,8 +203,16 @@ def validate_context(context: Dict[str, Any]) -> Dict[str, Any]:
     return {"valid": not problems, "problems": problems}
 
 
-if __name__ == "__main__":  # tiny demo
-    ctx = build_context(school_type="charter_public", district="Orange", subject="Math",
-                        grade_band="6-8", instructional_model="blended")
+if __name__ == "__main__":  # demo: stacked overlay resolution
+    ctx = resolve(school_type="charter_public", district="Orange", framework="IB",
+                  subject="Mathematics", grade_band="6-8", instructional_model="blended")
     apply_override(ctx, "Use the district pacing guide over the school default", by="teacher")
-    print(json.dumps({"context": ctx, "validation": validate_context(ctx)}, indent=2))
+    print(json.dumps({
+        "school_type": ctx["school_type"],
+        "district": ctx["district"],
+        "framework": ctx.get("framework"),
+        "standards_applicability": ctx["standards_applicability"],
+        "overlays_applied": ctx["overlays_applied"],
+        "notes": ctx.get("notes", []),
+        "validation": validate_context(ctx),
+    }, indent=2))
