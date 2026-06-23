@@ -64,6 +64,14 @@ _EXT_MEDIA = {
     # Lightweight workplace evidence files (calendar invites, saved email)
     ".ics": "text/calendar",
     ".eml": "message/rfc822",
+    # Caption / transcript tracks (video calls, recordings)
+    ".vtt": "text/vtt",
+    ".srt": "application/x-subrip",
+    # Audio / video (transcribed via a Transcriber engine when available; gap-reported otherwise)
+    ".mp3": "audio/mpeg", ".wav": "audio/wav", ".m4a": "audio/mp4", ".aac": "audio/aac",
+    ".ogg": "audio/ogg", ".flac": "audio/flac",
+    ".mp4": "video/mp4", ".mov": "video/quicktime", ".webm": "video/webm",
+    ".mkv": "video/x-matroska", ".avi": "video/x-msvideo",
 }
 
 
@@ -149,8 +157,10 @@ def default_registry() -> ParserRegistry:
     """PDF/image/Workspace parsers match by media type; stdlib text parser is the always-on fallback."""
     from .google import GoogleDocsParser
     from .parsers.calendar_parser import IcsParser
+    from .parsers.caption_parser import SrtParser, VttParser
     from .parsers.email_parser import EmlParser
     from .parsers.image_parser import ImageParser
+    from .parsers.media_parser import MediaTranscriptParser
     from .parsers.plaintext_parser import PlainTextParser
     from .parsers.pymupdf_parser import PyMuPDFParser
     from .parsers.workspace_parsers import CsvParser, OdtParser, PptxParser, XlsxParser
@@ -165,6 +175,9 @@ def default_registry() -> ParserRegistry:
     reg.register(PptxParser())                # Slides → PPTX
     reg.register(IcsParser())                 # calendar invite (.ics)
     reg.register(EmlParser())                 # saved email (.eml)
+    reg.register(VttParser())                 # WebVTT caption/transcript
+    reg.register(SrtParser())                 # SubRip caption/transcript
+    reg.register(MediaTranscriptParser())     # audio/video → transcription engine (gap if none)
     reg.register(PlainTextParser())           # .txt/.md/.html/.docx fallback
     return reg
 
@@ -245,6 +258,9 @@ class Pipeline:
         # OCR (V02_S04): recovery only when native extraction is insufficient. Targeted + flaggable.
         if not self.config.flags.get("ocr", True):
             doc.diagnostics["ocr"] = {"status": "disabled"}
+            return
+        if media_type.startswith("audio/") or media_type.startswith("video/"):
+            doc.diagnostics["ocr"] = {"status": "not_applicable", "media_type": media_type}  # text comes from transcription
             return
         _texty = {"paragraph", "heading", "list", "list_item"}
         has_text = any(b.text for _, b in doc.iter_blocks() if b.type in _texty)

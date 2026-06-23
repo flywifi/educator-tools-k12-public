@@ -95,6 +95,12 @@
       "_note": "A saved .eml from the principal is read via shared/docintel and drives the classification.",
       "input": {"files": ["skills/meeting-classifier/examples/sample-observation.eml"], "user_request": "help me prepare"},
       "assert": {"meeting_type": "annual_review_observation", "recommended_next_skill": "professional-learning"}
+    },
+    {
+      "name": "vtt_transcript_classifies_iep",
+      "_note": "A dropped .vtt video-call transcript is read via shared/docintel (captions -> text) and classified.",
+      "input": {"files": ["skills/meeting-classifier/examples/sample-meeting.vtt"], "user_request": "summarize this meeting"},
+      "assert": {"meeting_type": "iep_meeting", "recommended_next_skill": "special-education-support", "escalate_to_human": true}
     }
   ]
 }

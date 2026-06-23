@@ -3,8 +3,10 @@
 ocr-architecture.md) so it can be added/removed without touching consumers.
 """
 from .calendar_parser import IcsParser
+from .caption_parser import SrtParser, VttParser
 from .email_parser import EmlParser
 from .image_parser import ImageParser
+from .media_parser import MediaTranscriptParser
 from .pdf_table_parser import PdfPlumberTableExtractor
 from .plaintext_parser import PlainTextParser
 from .pymupdf_parser import PyMuPDFParser
@@ -15,5 +17,5 @@ __all__ = [
     "PlainTextParser", "PyMuPDFParser", "ImageParser",
     "PdfPlumberTableExtractor", "TesseractEngine",
     "OdtParser", "CsvParser", "XlsxParser", "PptxParser",
-    "IcsParser", "EmlParser",
+    "IcsParser", "EmlParser", "VttParser", "SrtParser", "MediaTranscriptParser",
 ]
