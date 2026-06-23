@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tos.local/traversal/traversal.schema.json",
+  "title": "TOS traversal evidence envelope",
+  "description": "The reusable, append-only evidence envelope produced by shared/traversal/traversal.py. Prose: traversal-model.md.",
+  "type": "object",
+  "required": ["objective", "seed_manifest", "evidence", "retrieval_gaps", "traversal_log", "checkpoint_state", "handoff", "human_review_required"],
+  "properties": {
+    "skill_metadata": {"type": "object"},
+    "objective": {"type": "string"},
+    "seed_manifest": {"type": "array", "items": {"$ref": "#/$defs/seed"}},
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "relationship_graph": {"type": "object", "properties": {"edges": {"type": "array", "items": {"type": "object"}}}},
+    "retrieval_gaps": {"type": "array", "items": {"type": "object"}},
+    "traversal_log": {"type": "array", "items": {"type": "object"}},
+    "checkpoint_state": {
+      "type": "object",
+      "properties": {
+        "completed_layers": {"type": "integer"},
+        "visited": {"type": "array", "items": {"type": "string"}},
+        "findings": {"type": "integer"},
+        "stop_reason": {"enum": ["saturated", "depth_cap_reached", "size_cap_reached", "frontier_exhausted", null]}
+      }
+    },
+    "confidence": {"enum": ["high", "medium", "low"]},
+    "handoff": {
+      "type": "object",
+      "properties": {
+        "primary_artifact": {"type": "string"},
+        "what_this_pass_added": {"type": "array", "items": {"type": "string"}},
+        "best_next_owner": {"type": ["string", "null"]}
+      }
+    },
+    "human_review_required": {"const": true}
+  },
+  "$defs": {
+    "seed": {
+      "type": "object",
+      "required": ["seed_id", "seed_type", "value"],
+      "properties": {
+        "seed_id": {"type": "string"},
+        "seed_type": {"enum": ["file", "connector", "record", "url", "person", "query", "other"]},
+        "value": {"type": "string"},
+        "source_hint": {"type": ["string", "null"]},
+        "discovered_from": {"type": ["string", "null"]},
+        "confidence": {"enum": ["high", "medium", "low"]}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["finding_id", "summary", "source", "added_by"],
+      "properties": {
+        "finding_id": {"type": "string"},
+        "summary": {"type": "string"},
+        "source": {"type": "string"},
+        "added_by": {"type": "string"},
+        "confidence": {"enum": ["high", "medium", "low"]},
+        "locator": {"type": ["string", "null"]},
+        "retrieval_state": {"enum": ["referenced", "metadata_only", "content_ingested", "local_artifact_saved"]},
+        "layer": {"type": "integer"}
+      }
+    }
+  }
+}
