@@ -42,7 +42,9 @@ Approval/Certification → Release`.
 
 ## 4. Routing & orchestration
 Use `references/routing-map.md` (mirrors `ROUTING_MODEL.md`). Route a single request to the best-fit
-skill. When a request bundles several artifacts (e.g., "a unit + its assessments + slides + a parent
+skill. **Meeting-centered requests** (a meeting, invite, or calendar event) classify via
+`meeting-classifier` first — it returns the meeting type, intent, IEP/504 advisories, subject
+student/guardians, and the recommended owner skill, then route there. When a request bundles several artifacts (e.g., "a unit + its assessments + slides + a parent
 letter"), **orchestrate a multi-skill workflow** per `references/workflows.md`: decompose → order →
 share one standard/persona/grade-band + teaching-context contract across steps → gate each piece with `quality-review` →
 assemble one coherent bundle. If the request is genuinely ambiguous, ask one clarifying question

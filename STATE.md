@@ -14,7 +14,11 @@ context-conditional Quality Gates. **Canonical source-of-truth resolver + minori
 (`shared/context/sot_resolver.py`, `source-roles.json`, `decision.schema.json`, `minority-report.md`,
 `source-of-truth.md`; wired into `conflict-protocol.md` §4a + `metadata-schema.md` + `method.md`). Every
 skill now ships **`MAINTAINER.md` update instructions** (template + `tools/skill-maintenance.md`;
-enforced by the drift guard).
+enforced by the drift guard). **Latest:** grade/assessment **translation** + crosswalk `coverage` +
+`department` scope (`shared/standards/grade-scales/`, `tools/crosswalk.py`); **connector** feature-flag
+engine + **student** PII/ePHI engine (`shared/connectors/`, `shared/students/`); and the
+**`meeting-classifier`** skill (14th) that classifies a teacher meeting from context clues and routes it
+(`DEPLOYMENT_SURFACES.md` covers Claude Code / web / other-model use).
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable
@@ -34,7 +38,7 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 | D — Repository Hardening | packaging, CI, catalog, security review, **versioning** (`VERSION`/`CHANGELOG`) | ✅ Complete (per-skill READMEs omitted — redundant with each `SKILL.md`) |
 | E — Advanced Architecture | analytics (`metrics.py`/`METRICS.md`), artifact registry, `DEPLOYMENT.md`, AI-systems doc | ✅ Largely complete (ontology can deepen later) |
 
-## Skill status (13 built)
+## Skill status (14 built)
 | Skill | Role | Status |
 |---|---|---|
 | `teacher-core` | hub / router | ✅ built |
@@ -50,6 +54,7 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 | `school-administration` | capability (school/system level) | ✅ built |
 | `standards-updater` | governance / maintenance (polite crawler; watches all FL change vectors) | ✅ built |
 | `document-intelligence` | capability (document understanding; parser-independent, artifact-centric, governed) | ✅ built (skeleton) |
+| `meeting-classifier` | triage/router (classifies a teacher meeting + intent from context clues; connector-aware, PII/ePHI-aware; routes) | ✅ built |
 
 ## Document Intelligence engine (`shared/docintel/`)
 TOS-native platform: documents → governed knowledge assets (provenance/lineage/confidence/evidence).
@@ -82,6 +87,20 @@ metadata block + handoffs (`protocols/metadata-schema.md` gains a `context` enve
 SOPs (`sop-model.md`), read offline via docintel; school type governs standards applicability.
 **Architecture in place; district rules/norms + school-type specifics are fillable stubs.**
 
+## Connector + Student layers (`shared/connectors/`, `shared/students/`)
+**Connectors** (`connectors.json`/`.md`/`connector.schema.json`/`connectors.py`) — feature-flag
+contract for workplace tools (Google Workspace/Classroom, Microsoft 365/Teams, Zoom, Canvas,
+Blackboard, Salesforce, SIS; `manual_paste`+`uploaded_file` always-on). Use whatever's connected,
+**degrade + converge** via alternates, flag unused off; states + resilience/override policy mirror the
+source-availability contract. **Students** (`student-profile.schema.json`, `students.example.json`
+placeholders, `student-data-policy.md`, `students.py`) — PII/ePHI profiles keyed by `student_id`
+(guardians + signed **medical action plans**). **Repo=placeholders; runtime=real data in a
+pluggable storage adapter** (`local_gitignored` | `session_ephemeral` | `uploaded_file` |
+`connector_sis`), **never committed**. **SIS-first** precedence; SIS↔local conflicts escalate
+(new `student_record` claim in `source-roles.json`); `identify_students_by` name|id (default name).
+Surfaces (`DEPLOYMENT_SURFACES.md`): Claude Code / claude.ai web / other models — core is stdlib +
+Markdown, portable. First consumer: `meeting-classifier`.
+
 ## Protocol layer (all v1.0)
 | Protocol | Status |
 |---|---|
@@ -99,7 +118,7 @@ SOPs (`sop-model.md`), read offline via docintel; school type governs standards 
   (enforced by the drift guard).
 
 ## Last drift-guard result
-`python3 tools/sync_check.py` → **PASS — 13 skills, 8 invariants, 2 synced refs; frontmatter +
+`python3 tools/sync_check.py` → **PASS — 14 skills, 8 invariants, 2 synced refs; frontmatter +
 resource integrity validated; `MAINTAINER.md` present in all skills.**
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
@@ -120,6 +139,6 @@ names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protoc
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
-Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 13 skills ·
-50 artifact types · 34 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
-protocols · 100% ledger approval (seed) · 13/13 skills emit `human_review_required`.
+Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 14 skills ·
+51 artifact types · 48 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
+protocols · 100% ledger approval (seed) · 14/14 skills emit `human_review_required`.
