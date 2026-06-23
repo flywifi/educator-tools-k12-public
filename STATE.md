@@ -33,9 +33,11 @@ across handoffs; reuses students/context/standards/connectors + the metadata blo
 optional; never fabricated). **Shared router:** new `shared/routing/` engine (`routing.json` + `router.py`)
 — data-driven request→skill routing with confidence + alternates + a minority report on ties, consumed by
 both `teacher-core` and `meeting-classifier` (one source instead of duplicate tables); drift guard now
-verifies every route target is a real skill. *(This is the first of a 5-area capability roadmap: shared
-router ✓ · anticipated connections (audio/video transcripts) · currency watcher + Cowork/plugin
-provisioning · accumulating/recursive handoff · skill-health & repair.)*
+verifies every route target is a real skill. **Connections:** docintel gains caption/transcript parsers
+(`.vtt`/`.srt`) + a `Transcriber` engine contract (`transcribe.py`, `media_parser.py`) so audio/video are
+transcribed when a host-AI/ASR engine is present and **honestly gap-reported (never faked)** when not.
+*(5-area capability roadmap: shared router ✓ · anticipated connections (audio/video transcripts) ✓ ·
+currency watcher + Cowork/plugin provisioning · accumulating/recursive handoff · skill-health & repair.)*
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable
