@@ -1,0 +1,32 @@
+{
+  "_comment": "Cross-mapping between grading SCALES — how to 'translate' a grade (e.g., what an 'A' means) from one scale to another. relationship: exact|partial|related|none. coverage: how much carries over (full|most|partial|minimal|none). MOST of these are institution_dependent and are NOT universal equivalences — verify on the school/district policy. Query with tools/crosswalk.py --grade. Prose: ../grade-scales.md.",
+  "kind": "grade_scale_crosswalk",
+  "status": "seed",
+  "entries": [
+    {
+      "from_scale": "traditional-10pt", "from_grade": "A", "to_scale": "gpa-4pt", "to": ["4.0"],
+      "relationship": "exact", "coverage": "full", "confidence": "high", "institution_dependent": true,
+      "note": "A -> 4.0 on an UNWEIGHTED 4.0 GPA. Plus/minus and weighted (honors/AP/IB) GPA change this; verify."
+    },
+    {
+      "from_scale": "traditional-10pt", "from_grade": "A", "to_scale": "seven-point", "to": ["A or B"],
+      "relationship": "partial", "coverage": "partial", "confidence": "medium", "institution_dependent": true,
+      "note": "A 90-92% is an 'A' on a 10-point scale but a 'B' on a 7-point scale (A starts at 93). Translating an 'A' across schools is NOT 1:1 — confirm each school's cutoffs."
+    },
+    {
+      "from_scale": "standards-based-4", "from_grade": "3", "to_scale": "traditional-10pt", "to": ["B or A (school-defined)"],
+      "relationship": "related", "coverage": "partial", "confidence": "low", "institution_dependent": true,
+      "note": "Level 3 = 'meets/proficient'. SBG-to-letter conversion is contested and school-defined; do not assert 3=B universally."
+    },
+    {
+      "from_scale": "ib-1-7", "from_grade": "7", "to_scale": "traditional-10pt", "to": ["A (institution-defined)"],
+      "relationship": "related", "coverage": "partial", "confidence": "low", "institution_dependent": true,
+      "note": "IB 7 is the top band but the IB-to-letter table is set by each school/college; flag for confirmation, never assert a universal 7=A."
+    },
+    {
+      "from_scale": "ap-exam-1-5", "from_grade": "5", "to_scale": "traditional-10pt", "to": [],
+      "relationship": "none", "coverage": "none", "confidence": "high", "institution_dependent": true,
+      "note": "An AP EXAM score (1-5) is NOT a course letter grade and does not translate to one. College credit for a 5 varies by college. Keep exam score and course grade separate."
+    }
+  ]
+}

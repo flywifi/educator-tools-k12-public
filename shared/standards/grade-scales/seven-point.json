@@ -1,0 +1,17 @@
+{
+  "id": "seven-point",
+  "label": "7-point letter (A-F) — example, varies by school",
+  "type": "letter",
+  "common_in": "Some private/charter schools historically; illustrative cutoffs only.",
+  "bands": [
+    {"grade": "A", "min": 93, "max": 100, "meaning": "excellent"},
+    {"grade": "B", "min": 85, "max": 92, "meaning": "above average"},
+    {"grade": "C", "min": 77, "max": 84, "meaning": "average"},
+    {"grade": "D", "min": 70, "max": 76, "meaning": "below average / lowest passing"},
+    {"grade": "F", "min": 0, "max": 69, "meaning": "failing"}
+  ],
+  "source": ["school handbook (varies)"],
+  "institution_dependent": true,
+  "status": "seed",
+  "note": "ILLUSTRATIVE example of a tighter scale where an 'A' starts at 93, not 90 — shows why translating an 'A' across schools is not 1:1. Confirm the actual school's cutoffs; do not assume."
+}

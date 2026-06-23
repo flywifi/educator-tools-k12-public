@@ -12,8 +12,10 @@ a **polite, transparent, compliant crawler of public official sources** — neve
 standards (CPALMS B.E.S.T./NGSSS) · courses & curriculum (CTE frameworks, course descriptions) ·
 pacing & guidance (Technical Assistance Papers, DPS memos) · instructional materials · assessment
 (FAST/B.E.S.T./EOC/FCLE) · graduation requirements · **legislation** (Florida Statutes Title XLVIII,
-ch.1000–1013) · **State Board rules** (Florida Administrative Code 6A) · English learners (WIDA/ELD) ·
-additional resources.
+ch.1000–1013) · **State Board rules** (Florida Administrative Code 6A) · **county school-board policy**
+(per-district) · **independent frameworks** (IB/AP/Cambridge/Montessori/Classical/ACSI registries +
+crosswalks) · **grade scales** (cross-scale grade translation) · English learners (WIDA/ELD) ·
+additional resources. Frameworks/grade-scales are stored **offline** and re-verified on each run.
 
 > **Ethics & boundaries (read first).** Only crawl the **public official sources** recorded in a
 > state's `resources/<state>/sources.json` (`crawl_seeds`): CPALMS, FLDOE, WIDA, state DOEs.

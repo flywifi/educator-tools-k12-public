@@ -955,7 +955,10 @@
     "legislation": "Florida Statutes Title XLVIII (K-20 Education Code, ch.1000-1013)",
     "state_board_rules": "Florida Administrative Code 6A (State Board of Education)",
     "english_learners": "WIDA ACCESS / ELD standards",
-    "additional_resources": "CPALMS resources + FLDOE resource pages"
+    "additional_resources": "CPALMS resources + FLDOE resource pages",
+    "county_board_policy": "County school-board policies per district (local rules/norms/calendars)",
+    "grade_scales": "Grading scales + cross-scale translation (shared/standards/grade-scales/)",
+    "independent_frameworks": "IB/AP/Cambridge/Montessori/Classical/ACSI registries + crosswalks (shared/standards/frameworks/, crosswalks/)"
   },
   "monitoring_policy": {
     "_comment": "Change-triage model (harvested from a regulatory-intelligence pattern): verify against PRIMARY sources, weigh recency incl. forward-looking effective dates, score confidence, and brief impact. Used by the standards-updater method.",
@@ -965,7 +968,8 @@
         "FLDOE",
         "Florida Legislature (leg.state.fl.us)",
         "Florida Administrative Code (flrules.org)",
-        "WIDA"
+        "WIDA",
+        "County school-board policy (per-district portals, e.g., BoardDocs/NEOLA)"
       ],
       "discovery_only": [
         "news",
@@ -1011,7 +1015,18 @@
       ],
       "private_schools": [
         "https://www.fldoe.org/schools/school-choice/private-schools/"
-      ]
+      ],
+      "grade_scales": {
+        "registry": "shared/standards/grade-scales/ (offline)",
+        "note": "District student-progression plans and school handbooks define the actual cutoffs; verify per institution."
+      },
+      "county_board_policy": {
+        "note": "Per-district school-board policy portals; populate from shared/context/florida-districts.json as each district is added. Do not fabricate URLs."
+      },
+      "cadence": {
+        "standards_and_law": "each refresh run (CPALMS/FLDOE/Legislature/FAC); see recency_policy",
+        "frameworks_and_grade_scales": "refresh on each run and at least each term; store offline, re-verify codes before asserting changes"
+      }
     }
   },
   "watch_pages": [
@@ -1023,7 +1038,7 @@
     },
     {
       "url": "https://flrules.org/gateway/organization.asp?id=195",
-      "label": "FAC 6A \u2014 State Board of Education rules",
+      "label": "FAC 6A — State Board of Education rules",
       "category": "state_board_rules",
       "sha256": null
     },
