@@ -1,5 +1,5 @@
 {
-  "_comment": "SAMPLE per-deployment connector flags. Copy to a real config and set states per what your district/school/classroom has connected. Unlisted connectors fall back to their registry default_flag (third-party = not_installed, so nothing is probed unless enabled). manual_paste + uploaded_file are always available. A connector can be ACTIVE yet district-restricted for specific evidence: use the object form {state, restricted_evidence, reason} (see google_workspace below) — the skill then drops that evidence to the next available source and lowers confidence. Schema: connector.schema.json.",
+  "_comment": "SAMPLE per-deployment connector flags. Copy to a real config and set states per what your district/school/classroom has connected. Unlisted connectors fall back to their registry default_flag (third-party = not_installed, so nothing is probed unless enabled). manual_paste + uploaded_file are always available. A connector can be ACTIVE yet district-restricted for specific evidence: use the object form {state, restricted_evidence, reason} (see google_workspace below) — the skill then drops that evidence to the next available source and lowers confidence. records_modules enables shared/records/ extended categories per deployment ([] = core only; \"all\" = every module). Schema: connector.schema.json.",
   "deployment": "Example District (sample)",
   "connectors": {
     "google_workspace": {"state": "available", "restricted_evidence": ["email"], "reason": "district policy: the AI may use Workspace calendar/files, but not read Gmail message bodies (student PII) — paste/upload the specific email instead"},
@@ -15,5 +15,6 @@
   "allowed_sources": [],
   "blocked_sources": [],
   "student_identification": {"mode": "name"},
-  "storage_adapter": "auto"
+  "storage_adapter": "auto",
+  "records_modules": ["gradebook"]
 }
