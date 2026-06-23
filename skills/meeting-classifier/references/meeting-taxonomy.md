@@ -50,7 +50,7 @@ For a student who **already has a plan**:
 | Meeting type | Route to | Note |
 |---|---|---|
 | parent_teacher_conference, parent_contact (discipline) | `family-communication` | talking points / call prep; privacy-emphasized |
-| parent_contact (medical), health_plan_meeting | `family-communication` + surface the signed medical action plan; **escalate** | from the signed plan only; defer to nurse / 911 |
+| parent_contact (medical), health_plan_meeting | `family-communication` + surface the medical action plan from the source on file; **escalate** | from the source on file (signature not required); defer to nurse / 911 |
 | iep_meeting, section_504_meeting | `special-education-support` | **escalate**; team/legal review; never a determination |
 | mtss_meeting, data_meeting (intervention focus) | `intervention-mtss` | MTSS doc / data-based decision note |
 | annual_review_observation, interim_observation, annual_review_debrief | `professional-learning` (teacher being observed) or `school-administration` (the evaluator) | pick by persona/evidence |

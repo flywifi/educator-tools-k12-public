@@ -23,8 +23,8 @@ own artifacts — those are produced by the skill it routes to. All outputs carr
 ### Light prep brief / handoff packet
 - **Purpose:** a short brief passed to the owner skill so it can start with context.
 - **Required elements:** the classification summary, the context contract, guardian-contact info when a
-  call home is needed, and a **medical safety banner** (surfaced from the student's signed plan, never
-  fabricated) when the meeting/call is medical. No full artifact authoring here.
+  call home is needed, and a **medical safety banner** (surfaced from the source on file, attributed,
+  never fabricated) when the meeting/call is medical. No full artifact authoring here.
 
 ## Validation (extends `shared/quality/verification-checklists.md`)
 - Exactly one `meeting_type` + one `request_intent`; `unknown` preferred over a forced label.
@@ -32,4 +32,4 @@ own artifacts — those are produced by the skill it routes to. All outputs carr
   minority report or `unknown`.
 - `required_cadence` is **advisory** with `verify_on_source: true`; no per-student determination.
 - Disabled connectors are never shown as active; degraded paths lower confidence and are recorded.
-- No real student data in any committed example (placeholders only); ePHI surfaced from the signed plan.
+- No real student data in any committed example (placeholders only); ePHI surfaced from the source on file (attributed; signature not required).

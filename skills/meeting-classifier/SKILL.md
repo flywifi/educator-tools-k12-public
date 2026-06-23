@@ -1,6 +1,6 @@
 ---
 name: meeting-classifier
-description: "Classify a teacher's meeting-related request, then route it. Use whenever a teacher mentions a meeting or invite — faculty, grade-level/PLC, department, data, or emergency meetings; evaluation observations, post-observation debriefs, and interim walkthroughs; parent-teacher conferences; calls home about discipline or a medical issue; IEP and Section 504 meetings; MTSS; pre-planning, planning, post-planning; PD; safety training; special-event planning. It pieces the meeting together from context clues (email subject and body, the sender and their title, prior threads, call notes, and calendar invites) using whatever connectors are available, identifies the student and guardians, surfaces a student's signed medical action plan when relevant, attaches the IEP/504 required-meeting advisory, and recommends the right skill. Do NOT use it to author lessons, assessments, IEP/504 content, or letters (it routes to those skills); it never makes a determination about an individual student's plan, medical or legal."
+description: "Classify a teacher's meeting-related request, then route it. Use whenever a teacher mentions a meeting or invite — faculty, grade-level/PLC, department, data, or emergency meetings; evaluation observations, post-observation debriefs, and interim walkthroughs; parent-teacher conferences; calls home about discipline or a medical issue; IEP and Section 504 meetings; MTSS; pre-planning, planning, post-planning; PD; safety training; special-event planning. It pieces the meeting together from context clues (email subject and body, the sender and their title, prior threads, call notes, and calendar invites) using whatever connectors are available, identifies the student and guardians, surfaces a student's medical action plan on file when relevant, attaches the IEP/504 required-meeting advisory, and recommends the right skill. Do NOT use it to author lessons, assessments, IEP/504 content, or letters (it routes to those skills); it never makes a determination about an individual student's plan, medical or legal."
 ---
 
 # meeting-classifier
@@ -11,7 +11,7 @@ does **not** author the meeting artifacts (sibling skills do).
 
 > **Read first — boundaries (`SECURITY_AND_SAFETY.md`).** This skill never makes a determination about
 > an individual student's IEP/504, eligibility, medical, or legal status — it **escalates** those to a
-> human/team. Medical/ePHI is **surfaced from the student's signed plan only, never fabricated**
+> human/team. Medical/ePHI is **surfaced from the source on file (attributed; a signature is not required), never fabricated**
 > (`shared/students/student-data-policy.md`); real student data never enters a tracked/committed file.
 
 ## 1. Resolve context, connectors, and student first
@@ -22,7 +22,7 @@ does **not** author the meeting artifacts (sibling skills do).
   connector as an active path; lower confidence on degraded paths.
 - **Student** — when a meeting concerns a student, resolve the profile (`shared/students/`,
   identification mode name-by-default; SIS authoritative when connected). Surface guardian contacts for
-  a call home, and a **signed medical action plan** when the meeting/call is medical (safety-critical).
+  a call home, and a **medical action plan from the source on file** when the meeting/call is medical (safety-critical).
 
 ## 2. Follow the pipeline (`references/method.md`)
 Within Generation the domain work is **classification**:
@@ -34,7 +34,7 @@ Within Generation the domain work is **classification**:
    schedule/triage, documentation/compliance, extract-only, or unknown).
 4. **Attach advisories** — for `iep_meeting`/`section_504_meeting` attach the required-cadence advisory
    (an existing plan is reviewed on a legal cadence; `verify_on_source`; cite IDEA / Section 504); for a
-   medical meeting, surface the signed action plan and flag safety-critical.
+   medical meeting, surface the action plan from the source on file and flag safety-critical.
 5. **Decide honestly** — when two meeting types are materially plausible (e.g., annual-review vs interim
    observation) or sources conflict, emit a **minority report** via the resolver
    (`shared/context/sot_resolver.py`; policy `shared/context/minority-report.md`) instead of guessing;
