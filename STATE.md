@@ -54,6 +54,15 @@ manifest) and names the authority to re-verify on; standards crawling stays with
 *(5-area capability roadmap — COMPLETE: shared router ✓ · anticipated connections (audio/video
 transcripts) ✓ · accumulating/recursive handoff ✓ · skill-health & repair ✓ · currency watcher +
 Cowork/plugin provisioning ✓.)*
+**Capability/dependency layer (post-roadmap):** optional deps are now **capability-gated** via
+`tools/dependencies.json` + a credentials-aware preflight (`shared/health/capabilities.py`,
+`health.py --capabilities`): **local_optional** (PDF/OCR/Office-authoring/render/transcription/fonts —
+on when installed, honest gap when not) and **cloud_optional** (Azure/fal/Nutrient/Firecrawl — OFF by
+default, district opt-in, API keys from env only, bound by student-data-policy + connector restrictions).
+A real gated `WhisperTranscriber` fills the audio/video contract. Supply chain: pinned
+`requirements-*.txt` + `.github/dependabot.yml` (auto-update) + `tools/security_scan.py` (pip-audit +
+bandit) as a CI gate; fonts = Noto + Liberation/Carlito/Caladea with a coverage check. Policy:
+`shared/health/dependency-policy.md`.
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable

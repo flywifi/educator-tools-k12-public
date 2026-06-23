@@ -23,6 +23,9 @@
       "note": "enum/field catalogs evolve with SIS/state reporting"},
     {"id": "plugin-manifest", "path": ".claude-plugin/plugin.json", "class": "internal_registry",
       "authority": "Cowork plugin marketplace + the installed skill set",
-      "note": "bump version + refresh marketplace.json when skills are added/removed"}
+      "note": "bump version + refresh marketplace.json when skills are added/removed"},
+    {"id": "dependencies", "path": "tools/dependencies.json", "class": "internal_registry",
+      "authority": "library/binary/font availability + cloud provider APIs (Azure/fal/Nutrient/Firecrawl)",
+      "note": "capability manifest; re-verify pins/providers; auto-update via dependabot, scan via security_scan.py"}
   ]
 }

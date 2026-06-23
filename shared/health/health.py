@@ -245,9 +245,13 @@ def main(argv) -> int:
     ap.add_argument("--summary", action="store_true", help="human-readable summary (Markdown)")
     ap.add_argument("--diagnose", action="store_true", help="audit-trail diagnostics only")
     ap.add_argument("--impact", metavar="SKILL", help="which ecosystem files must update for this skill")
+    ap.add_argument("--capabilities", action="store_true", help="optional-dependency + font + cloud preflight")
     ap.add_argument("--traces", metavar="DIR", help="dir of saved decision records / observability traces")
     a = ap.parse_args(argv)
-    if a.impact:
+    if a.capabilities:
+        from capabilities import report as cap_report, to_summary as cap_summary  # type: ignore
+        print(cap_summary(cap_report()), end="")
+    elif a.impact:
         print(json.dumps(impact_analysis(a.impact), indent=2))
     elif a.diagnose:
         print(json.dumps(diagnose(a.traces), indent=2))

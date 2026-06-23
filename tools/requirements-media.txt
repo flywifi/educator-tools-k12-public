@@ -1,0 +1,4 @@
+# Audio/video transcription capability (local_optional) — offline ASR for the docintel Transcriber.
+# Also needs the system binary `ffmpeg` (not pip-installable): apt-get install ffmpeg.
+# Pinned; auto-updated by dependabot; scanned by tools/security_scan.py. Absent => transcription gap, never faked.
+faster-whisper==1.0.3

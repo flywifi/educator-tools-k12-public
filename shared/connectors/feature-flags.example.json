@@ -16,5 +16,7 @@
   "blocked_sources": [],
   "student_identification": {"mode": "name"},
   "storage_adapter": "auto",
-  "records_modules": ["gradebook"]
+  "records_modules": ["gradebook"],
+  "optional_deps": {"office_authoring": "allow", "transcription": "allow", "render_convert": "allow"},
+  "cloud_providers": {"azure": "not_installed", "fal": "not_installed", "nutrient": "not_installed", "firecrawl": "not_installed"}
 }

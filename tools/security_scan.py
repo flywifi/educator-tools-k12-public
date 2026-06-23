@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+"""Supply-chain scan gate (offline-friendly) — known-CVE + malicious/unsafe-code checks for deps.
+
+Runs `pip-audit` (known vulnerabilities in pinned requirements) and `bandit` (unsafe/suspicious code
+patterns) when they are installed; if neither is present it reports a gap and exits 0 (CI installs them).
+Exits non-zero when findings exist so it can be a release gate. This is the enforcement half of the
+"dependencies must be auto-updated AND scanned" policy (auto-update = .github/dependabot.yml).
+
+Usage:
+  python3 tools/security_scan.py            # scan; non-zero exit on findings
+  python3 tools/security_scan.py --report   # JSON only, never fail (for inspection)
+"""
+from __future__ import annotations
+
+import argparse
+import glob
+import json
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def _run(cmd: list[str]) -> tuple[int, str]:
+    try:
+        p = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT), timeout=600)
+        return p.returncode, (p.stdout or "") + (p.stderr or "")
+    except Exception as exc:
+        return -1, f"{exc.__class__.__name__}: {exc}"
+
+
+def scan() -> dict:
+    findings, ran, skipped = [], [], []
+    # 1) pip-audit over every pinned requirements file.
+    reqs = sorted(glob.glob(str(ROOT / "tools" / "requirements-*.txt")))
+    if shutil.which("pip-audit"):
+        for r in reqs:
+            code, out = _run(["pip-audit", "-r", r, "-f", "json", "--progress-spinner", "off"])
+            ran.append(f"pip-audit {Path(r).name}")
+            try:
+                data = json.loads(out or "{}")
+                vulns = data.get("dependencies", data) if isinstance(data, dict) else data
+                for dep in (vulns or []):
+                    for v in (dep.get("vulns") or []):
+                        findings.append({"tool": "pip-audit", "file": Path(r).name,
+                                         "package": dep.get("name"), "id": v.get("id")})
+            except Exception:
+                if code not in (0,):
+                    findings.append({"tool": "pip-audit", "file": Path(r).name, "raw": out[:300]})
+    else:
+        skipped.append("pip-audit (not installed)")
+    # 2) bandit over our own Python (skills + shared + tools).
+    if shutil.which("bandit"):
+        code, out = _run(["bandit", "-r", "shared", "tools", "skills", "-ll", "-q", "-f", "json"])
+        ran.append("bandit")
+        try:
+            data = json.loads(out or "{}")
+            for r in data.get("results", []):
+                findings.append({"tool": "bandit", "file": r.get("filename"), "test": r.get("test_id"),
+                                 "severity": r.get("issue_severity"), "issue": r.get("issue_text")})
+        except Exception:
+            if code not in (0,):
+                findings.append({"tool": "bandit", "raw": out[:300]})
+    else:
+        skipped.append("bandit (not installed)")
+
+    return {"tool": "security-scan", "ran": ran, "skipped": skipped,
+            "findings": findings, "finding_count": len(findings),
+            "status": "findings" if findings else ("no_scanners" if not ran else "clean")}
+
+
+def main(argv) -> int:
+    ap = argparse.ArgumentParser(description="Dependency + code security scan gate.")
+    ap.add_argument("--report", action="store_true", help="print JSON and exit 0 regardless")
+    a = ap.parse_args(argv)
+    result = scan()
+    print(json.dumps(result, indent=2))
+    if a.report:
+        return 0
+    return 1 if result["findings"] else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

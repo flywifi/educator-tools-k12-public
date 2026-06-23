@@ -61,6 +61,9 @@
         "blocked_sources": {"type": "array", "items": {"type": "string"}},
         "student_identification": {"type": "object", "properties": {"mode": {"enum": ["name", "id"]}}},
         "storage_adapter": {"enum": ["auto", "local_gitignored", "session_ephemeral", "uploaded_file", "connector_sis"]},
+        "records_modules": {"description": "shared/records/ extended modules to enable ([] = core only; 'all' = every module)", "oneOf": [{"type": "array", "items": {"type": "string"}}, {"const": "all"}]},
+        "optional_deps": {"type": "object", "description": "allow/deny local_optional capabilities (tools/dependencies.json)", "additionalProperties": {"enum": ["allow", "deny"]}},
+        "cloud_providers": {"type": "object", "description": "opt in to cloud_optional providers; default not_installed; reuses connector states", "additionalProperties": {"$ref": "#/$defs/state"}},
         "records_modules": {"description": "shared/records/ extended modules to enable ([] = core only; \"all\" = every module).",
           "oneOf": [{"type": "array", "items": {"type": "string"}}, {"const": "all"}]}
       }

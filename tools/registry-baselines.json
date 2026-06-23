@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T22:39:43.811801+00:00",
+  "updated": "2026-06-23T23:33:36.219456+00:00",
   "hashes": {
     "connectors": "e7946785cef639dd24a22bbd4063cf141bc9c2f59731bfb4aeb1fc049e767494",
     "grade-scales": "2c4afb04ed309f1ead8e2315a50e66762aeb25e19e28996ac47fe7b97dd06fbe",
@@ -8,6 +8,7 @@
     "ontology": "93b6fc41fc77afe1f9d5fabff48eff6f40c78070ad3b7a5a1d0b0ee4c586e5df",
     "routing": "f97c1f2617431055bf0d5a583b93905fe6abb386c5f966fc0c0d2b6ecbdeddea",
     "records-catalog": "020d8435984fdb5f88943941f0398e0e4f0bff4903a6c9b32aa8593dffb8954e",
-    "plugin-manifest": "15e0df8654dff51cb828016bc1e1ea795ae169b75361c0c72fa4ddbcfa42f8e9"
+    "plugin-manifest": "15e0df8654dff51cb828016bc1e1ea795ae169b75361c0c72fa4ddbcfa42f8e9",
+    "dependencies": "e4d08dd2a222f3ce1d2d8adef9da1a99305ca6edc2deb6798439cb3410d0afde"
   }
 }
