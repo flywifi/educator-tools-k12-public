@@ -14,6 +14,8 @@
     "professional-learning": ["observation-tool", "coaching-conversation-guide", "pd-session-plan"],
     "school-administration": ["walkthrough-instrument", "implementation-plan", "monitoring-plan"],
     "standards-updater": ["update-report", "applied-update-record", "currency-check", "currency-brief"],
-    "document-intelligence": ["processed-document-record", "udom-document", "recovery-report", "structure-map", "governance-record", "knowledge-artifact", "consumer-artifact"]
+    "document-intelligence": ["processed-document-record", "udom-document", "recovery-report", "structure-map", "governance-record", "knowledge-artifact", "consumer-artifact"],
+    "meeting-classifier": ["meeting-classification-record", "routing-recommendation", "handoff-packet"],
+    "skill-health": ["health-report", "diagnosis", "repair-plan"]
   }
 }

@@ -36,6 +36,7 @@ From the request (and conversation), determine:
 | observation tool, coaching resource, PD | `professional-learning` | available |
 | walkthrough, implementation/monitoring plan | `school-administration` | available |
 | classify a meeting/invite + route it (faculty, observation, IEP/504, conference, MTSS, planning, PD, safety) | `meeting-classifier` | available |
+| diagnose/repair the ecosystem itself (skill + engine health, audit-trail diagnosis, impact analysis, repair plan) | `skill-health` | available |
 
 ## 3. Routing rules
 - **Single best match:** route to the one skill whose artifact family fits. If a request bundles

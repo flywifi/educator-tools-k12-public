@@ -31,7 +31,9 @@
     "standards-updater": {"status": "available",
       "keywords": ["update standards", "refresh standards", "latest standards", "cpalms", "pull the latest", "did the legislature", "check for new"]},
     "document-intelligence": {"status": "available",
-      "keywords": ["read this", "parse", "extract", "ocr", "open this file", "what's in this", "attachment", "transcript"]}
+      "keywords": ["read this", "parse", "extract", "ocr", "open this file", "what's in this", "attachment", "transcript"]},
+    "skill-health": {"status": "available",
+      "keywords": ["ecosystem health", "skill health", "audit the skills", "diagnose", "repair plan", "why did this skill fail", "readiness", "what needs updating"]}
   },
   "meeting_routes": {
     "parent_teacher_conference": "family-communication",
