@@ -1,0 +1,13 @@
+{
+  "_comment": "Grade/assessment SCALE registry — so the ecosystem can TRANSLATE 'what an A means' across contexts (e.g., a 10-point letter scale vs a 7-point scale vs IB 1-7 vs AP 1-5 vs standards-based 1-4 vs GPA). Each scale is its own JSON in a normalized shape; cross-mappings live in ../crosswalks/grade-scales.json. CRITICAL: most cross-scale conversions are INSTITUTION-DEPENDENT and are NOT universal 1:1 equivalences — entries carry confidence + institution_dependent flags. Offline; kept current via standards-updater. Prose: ../grade-scales.md.",
+  "version": "0.1.0",
+  "updated": "2026-06-23",
+  "scales": [
+    {"id": "traditional-10pt", "label": "Traditional 10-point letter (A-F)", "file": "traditional-10pt.json", "type": "letter", "status": "seed"},
+    {"id": "seven-point", "label": "7-point letter (A-F) — example, varies by school", "file": "seven-point.json", "type": "letter", "status": "seed"},
+    {"id": "standards-based-4", "label": "Standards-based 4-3-2-1", "file": "standards-based-4.json", "type": "sbg", "status": "seed"},
+    {"id": "gpa-4pt", "label": "GPA 4.0 (unweighted)", "file": "gpa-4pt.json", "type": "gpa", "status": "seed"},
+    {"id": "ib-1-7", "label": "IB 1-7 assessment", "file": "ib-1-7.json", "type": "points", "status": "seed"},
+    {"id": "ap-exam-1-5", "label": "AP exam score 1-5", "file": "ap-exam-1-5.json", "type": "exam", "status": "seed"}
+  ]
+}

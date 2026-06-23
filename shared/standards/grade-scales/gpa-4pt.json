@@ -1,0 +1,17 @@
+{
+  "id": "gpa-4pt",
+  "label": "GPA 4.0 (unweighted)",
+  "type": "gpa",
+  "common_in": "Unweighted GPA reporting.",
+  "points": [
+    {"grade": "A", "points": 4.0},
+    {"grade": "B", "points": 3.0},
+    {"grade": "C", "points": 2.0},
+    {"grade": "D", "points": 1.0},
+    {"grade": "F", "points": 0.0}
+  ],
+  "source": ["district student-progression plan"],
+  "institution_dependent": true,
+  "status": "seed",
+  "note": "UNWEIGHTED 4.0 points. WEIGHTED GPA differs — honors/AP/IB/AICE/dual-enrollment courses add weight, and the exact bonus varies by district (verify). Plus/minus letters (A-, B+) change the points where used."
+}

@@ -1,5 +1,5 @@
 {
-  "_comment": "Crosswalk between two frameworks for cross-mapping requirements across standards/grades/subjects/domains. relationship: exact|partial|related. Entries are DOMAIN-LEVEL and ILLUSTRATIVE until verified (confidence=low); verify on both sources. Never assert exact benchmark equivalence without a verified source.",
+  "_comment": "Crosswalk between two frameworks for cross-mapping requirements across standards/grades/subjects/domains. relationship: exact|partial|related; coverage: how much of the from-requirement carries over (full|most|partial|minimal|none). Entries are DOMAIN-LEVEL and ILLUSTRATIVE until verified (confidence=low); verify on both sources. Never assert exact benchmark equivalence without a verified source.",
   "from_framework": "IB",
   "to_framework": "FL-BEST-Math",
   "status": "stub",
@@ -13,6 +13,7 @@
         "MA.8.*"
       ],
       "relationship": "related",
+      "coverage": "partial",
       "confidence": "low",
       "note": "illustrative band-level; verify on CPALMS + IB MYP guide"
     }

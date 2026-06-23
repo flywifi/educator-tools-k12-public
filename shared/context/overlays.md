@@ -13,10 +13,11 @@ without changing code or skills. Implemented in `context.py` (`resolve`, `load_o
   "source": [...], "status": "seed|stub|populated" }
 ```
 - **scope** — `national · state · framework · county · district · school · program · grade · grade_band ·
-  subject · course · course_level · classroom`. Sets the default merge precedence (`SCOPE_RANK`);
-  state/compliance ranks highest, then more-specific scopes
-  (`state → district → school → grade → subject → course → course_level → classroom`). `grade` is the
-  individual grade level and ranks above `grade_band`.
+  subject · department · course · course_level · classroom`. Sets the default merge precedence
+  (`SCOPE_RANK`); state/compliance ranks highest, then more-specific scopes
+  (`state → district → school → grade → subject → department → course → course_level → classroom`).
+  `grade` is the individual grade level and ranks above `grade_band`; `department` is an org unit within
+  a school (e.g., the HS math department) and ranks just below `subject`.
 - **match** — selector predicate; the overlay activates when every key equals the `resolve()` selector
   (case-insensitive). `{}` = always applies.
 - **sets** — default field values, applied only if the field is still empty (weak).

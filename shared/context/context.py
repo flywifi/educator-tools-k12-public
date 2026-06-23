@@ -20,10 +20,12 @@ OVERLAYS_DIR = HERE / "overlays"
 
 # Default precedence for MANDATES/compliance: higher authority wins, then more-specific scopes.
 # Highest authority FIRST: state > district > county > school > grade (individual) > grade_band >
-# subject > framework > course (CPALMS #) > course_level > program > classroom/teacher; national is
-# the baseline. Instructional-style decisions may invert toward the classroom; pass a custom order.
+# subject > department > framework > course (CPALMS #) > course_level > program > classroom/teacher;
+# national is the baseline. Instructional-style decisions may invert toward the classroom; pass a
+# custom order. (`department` = an org unit within a school, e.g., the HS math department.)
 _PRECEDENCE_ORDER = ["state", "district", "county", "school", "grade", "grade_band", "subject",
-                     "framework", "course", "course_level", "program", "classroom", "national"]
+                     "department", "framework", "course", "course_level", "program", "classroom",
+                     "national"]
 DEFAULT_PRECEDENCE = list(_PRECEDENCE_ORDER)
 
 # Overlay merge rank: higher = applied later = wins on `overrides`. Inverse of the precedence order
