@@ -27,6 +27,7 @@ From the request (and conversation), determine:
 | newsletter, parent communication, report | `family-communication` | available |
 | observation tool, coaching resource, PD | `professional-learning` | available |
 | walkthrough, implementation/monitoring plan | `school-administration` | available |
+| classify a meeting/invite + route it (faculty, observation, IEP/504, conference, MTSS, planning, PD, safety) | `meeting-classifier` | available |
 
 ## 3. Routing rules
 - **Single best match:** route to the one skill whose artifact family fits. If a request bundles
@@ -35,6 +36,9 @@ From the request (and conversation), determine:
 - **No spoke yet / ambiguous:** if the target skill isn't built yet, `teacher-core` **carries the
   pipeline itself** using the shared core, and labels the output's provenance. If genuinely
   ambiguous, ask one clarifying question rather than guess (`protocols/assumptions-protocol.md`).
+- **Meeting-centered requests:** when the request is about a meeting, invite, or calendar event,
+  classify it via `meeting-classifier` first — it returns the meeting type, request intent, IEP/504
+  advisories, the subject student/guardians, and the recommended owner skill (then route there).
 - **Always gate:** whatever produces the artifact, the final stage is the Quality Gates
   (`quality-review` / the operational rubric) before "Final."
 
