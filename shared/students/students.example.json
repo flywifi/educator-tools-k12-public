@@ -1,0 +1,53 @@
+{
+  "_comment": "PLACEHOLDER example roster — committed for documentation/tests ONLY. All data is fake (note the obviously-fake student_ids/names/phones). NEVER put real student data in this or any tracked file; the real store is gitignored (students.local.json) or a live SIS. Schema: student-profile.schema.json. Policy: student-data-policy.md.",
+  "version": "0.1.0",
+  "updated": "2026-06-23",
+  "is_placeholder": true,
+  "students": [
+    {
+      "student_id": "S-000123",
+      "first_name": "Jordan",
+      "last_name": "Sample",
+      "preferred_name": "Jordan",
+      "grade": "4",
+      "guardians": [
+        {"name": "Alex Sample", "relationship": "parent", "phone": "555-0100", "email": "guardian1@example.com",
+          "is_emergency_contact": true, "primary": true, "contact_preferences": "call or text after 3pm"},
+        {"name": "Casey Sample", "relationship": "parent", "phone": "555-0101", "email": "guardian2@example.com",
+          "is_emergency_contact": true, "primary": false, "contact_preferences": "email"}
+      ],
+      "plan_flags": {"iep": false, "section_504": true, "ell": false, "gifted": false, "medical_action_plan": true, "behavior_plan": false},
+      "health_plans": [
+        {
+          "condition": "Severe food allergy (peanut) — anaphylaxis risk",
+          "severity": "life-threatening",
+          "action_plan_ref": "PLACEHOLDER-AAP-2026 (the student's signed Allergy & Anaphylaxis Action Plan)",
+          "medications": ["epinephrine auto-injector (EpiPen)", "antihistamine per plan"],
+          "emergency_protocol": "Per the signed plan: on signs of anaphylaxis, administer the auto-injector and call 911; notify the school nurse and guardians.",
+          "when_where_to_administer": "EXAMPLE/PLACEHOLDER text — the ACTUAL when/where comes verbatim from the student's signed plan; do not rely on this example.",
+          "signed_by": "PLACEHOLDER physician + guardian",
+          "effective_dates": "2025-08 to 2026-07 (example)",
+          "source": "signed Allergy & Anaphylaxis Action Plan on file with the school nurse"
+        }
+      ],
+      "provenance": "placeholder-example",
+      "last_verified": "2026-06-23",
+      "access": {"minimum_necessary": true, "note": "Surfaced to staff with legitimate educational interest; medical specifics defer to the nurse / signed plan / 911."}
+    },
+    {
+      "student_id": "S-000456",
+      "first_name": "Taylor",
+      "last_name": "Example",
+      "grade": "4",
+      "guardians": [
+        {"name": "Morgan Example", "relationship": "guardian", "phone": "555-0102", "email": "guardian3@example.com",
+          "is_emergency_contact": true, "primary": true, "contact_preferences": "call"}
+      ],
+      "plan_flags": {"iep": true, "section_504": false, "ell": true, "gifted": false, "medical_action_plan": false, "behavior_plan": false},
+      "health_plans": [],
+      "provenance": "placeholder-example",
+      "last_verified": "2026-06-23",
+      "access": {"minimum_necessary": true, "note": "IEP specifics validate against the student's actual plan; placeholders only here."}
+    }
+  ]
+}
