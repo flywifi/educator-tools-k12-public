@@ -28,6 +28,10 @@ the shared references.
 
 ### 2. Protocol Enforcement
 Before generating, satisfy the governance protocols:
+- **context** — resolve the teaching-context contract (`shared/context/`): state / district /
+  school_type / program(s) / instructional_model / mandates / uploaded SOPs. Apply the school-type
+  exception rule-set + authority precedence, carry it through every handoff (overrides logged), and
+  default to traditional-public Florida when unstated. Context is resolved **first**.
 - **assumptions** — log anything the request didn't specify (`protocols/assumptions-protocol.md`);
 - **metadata** — initialize the artifact metadata block (`protocols/metadata-schema.md`);
 - **standards-verification** — arm verification for any standards to be cited
@@ -36,10 +40,15 @@ Before generating, satisfy the governance protocols:
 ### 3. Generation  *(owned by the capability skill)*
 The domain work, itself a mini-pipeline:
 `Analysis → Standards Alignment → Differentiation → Generation`.
-- **Analysis** — interpret intent, audience, constraints.
-- **Standards Alignment** — select + cite standards (`shared/standards/`).
+- **Analysis** — interpret intent, audience, constraints, and the **resolved context** (school type,
+  instructional model, mandates, SOPs).
+- **Standards Alignment** — select + cite standards (`shared/standards/`); **applicability follows
+  context** (`shared/context/`): home-education / private-scholarship contexts make alignment advisory,
+  not mandated, while public/charter/virtual keep B.E.S.T./NGSSS.
 - **Differentiation** — apply UDL / tiering / EL / IEP supports (`shared/differentiation/`).
-- **Generation** — produce the artifact from the domain template.
+- **Generation** — produce the artifact from the domain template, **adapted to context**
+  (`shared/context/adaptation.md`): instructional model, calendar, school-type overrides, and
+  SOP-driven templates/policies.
 
 ### 4. Validation
 Minimum-correctness check before the gates (QG §7.3): is the requested deliverable present, complete,
