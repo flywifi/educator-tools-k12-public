@@ -1,0 +1,31 @@
+{
+  "framework": "IB",
+  "label": "International Baccalaureate",
+  "type": "international",
+  "applicability": "school_defined",
+  "programmes_or_levels": [
+    "PYP (Primary, ~K-5)",
+    "MYP (Middle, ~6-10)",
+    "DP (Diploma, 11-12)",
+    "CP (Career-related)"
+  ],
+  "subjects": [
+    "Language & Literature",
+    "Language Acquisition",
+    "Individuals & Societies",
+    "Sciences",
+    "Mathematics",
+    "Arts",
+    "Design",
+    "PHE"
+  ],
+  "code_pattern": "programme / subject-group / objective (A-D) + ATL skills",
+  "source": [
+    "https://www.ibo.org/programmes/"
+  ],
+  "version": null,
+  "codes_verified": false,
+  "status": "stub",
+  "note": "Structure only; enumerate standards from the cited source as a later data task. codes_verified=false. Never fabricate codes/statements - verify on source. Updated offline via standards-updater.",
+  "standards": []
+}
