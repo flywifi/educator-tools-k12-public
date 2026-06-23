@@ -43,12 +43,20 @@ When SIS data **conflicts** with the local store, **never silently merge**:
 any shareable artifact reference the student by **student ID**; the real name is shown only in the live
 teacher-facing view and resolved on demand — a pseudonymization option for privacy.
 
-## ePHI safety (medical / health plans)
-- **Surface, do not generate.** A student's medical/anaphylaxis action plan is surfaced from the
-  **actual signed plan** — quote the when/where-to-administer with its `source` + `effective_dates`.
-  **Never fabricate medical instructions, dosages, or protocols.**
-- Treat it as **safety-critical**: defer to the **school nurse / 911 / the signed plan**; escalate any
-  individual-student medical specifics to a human. The tool is not medical advice.
+## ePHI safety (medical / health information)
+- **Surface, do not generate.** Health guidance is surfaced **verbatim from the source on file**, quoted
+  with its `source_type`, `source_authority`, `provided_by`, and `effective_dates`. **Never fabricate
+  medical instructions, dosages, or protocols.**
+- **Trust multiple sources — a signature is not required.** Health info usually lives on **district or
+  school-specific forms, nurse notes, guardian notes, or sick notes**, and a physician signature is
+  rarely available (you do not need a doctor's signature for a sick note or EpiPen instructions). Ingest
+  and trust these; record each item's `source_type` + `source_authority` (official form / action plan =
+  high; nurse or guardian note = medium; verbal / unverified = low) so the basis is visible. `signed` is
+  optional.
+- **Conflicts** between health sources go through the resolver (`shared/context/sot_resolver.py`; the
+  authority tier orders them) — never silently merge.
+- Treat it as **safety-critical**: defer to the **school nurse / 911** and the source on file; escalate
+  any individual-student medical specifics to a human. The tool is not medical advice.
 - Health records are the most sensitive PII — strict minimum-necessary; surface only to staff with
   legitimate educational interest for the task at hand.
 

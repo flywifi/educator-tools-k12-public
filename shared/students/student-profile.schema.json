@@ -51,20 +51,27 @@
         },
         "health_plans": {
           "type": "array",
-          "description": "ePHI — safety-critical. Surface from the student's ACTUAL signed plan; never fabricate.",
+          "description": "ePHI — safety-critical. Surface verbatim from the SOURCE on file (any trusted source — district/school health form, nurse note, guardian note, sick note, or signed action plan; a physician signature is OPTIONAL, not required), attributed with its source + authority + date; never fabricate; defer to the nurse / 911 in an emergency.",
           "items": {
             "type": "object",
             "required": ["condition"],
             "properties": {
               "condition": {"type": "string"},
               "severity": {"type": "string"},
-              "action_plan_ref": {"type": "string"},
+              "instructions": {"type": "string", "description": "what to do — verbatim from the source"},
+              "when_where_to_administer": {"type": "string"},
               "medications": {"type": "array", "items": {"type": "string"}},
               "emergency_protocol": {"type": "string"},
-              "when_where_to_administer": {"type": "string"},
-              "signed_by": {"type": "string"},
+              "action_plan_ref": {"type": "string"},
+              "source_type": {"enum": ["physician_action_plan", "district_health_form", "school_health_form", "nurse_note", "guardian_note", "sick_note", "iep_504_health", "reported"],
+                "description": "where the guidance comes from; no source is privileged by signature alone"},
+              "source_authority": {"enum": ["high", "medium", "low"],
+                "description": "official form / action plan = high; nurse or guardian note = medium; verbal / unverified = low"},
+              "provided_by": {"type": "string", "description": "who provided it (e.g. school nurse, guardian, physician)"},
+              "signed": {"type": "boolean", "description": "OPTIONAL — a signature is not required to trust the source"},
               "effective_dates": {"type": "string"},
-              "source": {"type": "string"}
+              "last_verified": {"type": "string"},
+              "source": {"type": "string", "description": "where it is on file"}
             }
           }
         },
