@@ -18,7 +18,13 @@ enforced by the drift guard). **Latest:** grade/assessment **translation** + cro
 `department` scope (`shared/standards/grade-scales/`, `tools/crosswalk.py`); **connector** feature-flag
 engine + **student** PII/ePHI engine (`shared/connectors/`, `shared/students/`); and the
 **`meeting-classifier`** skill (14th) that classifies a teacher meeting from context clues and routes it
-(`DEPLOYMENT_SURFACES.md` covers Claude Code / web / other-model use).
+(`DEPLOYMENT_SURFACES.md` covers Claude Code / web / other-model use). **Latest update:** docintel gains
+lightweight workplace-evidence parsers — `.ics` calendar invites + `.eml` email
+(`shared/docintel/parsers/calendar_parser.py`, `email_parser.py`), folded into `meeting-classifier` via
+`--file`; and the connector model is reframed so live connectivity is the **host AI's native
+integration** (Claude/OpenAI/Gemini/…) — no provider client is built — with first-class
+**district-restricted-but-active** evidence (`restricted_evidence` + reason; the resolver drops it to the
+next available source and lowers confidence).
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable

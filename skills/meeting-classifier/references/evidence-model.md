@@ -18,10 +18,14 @@ by whatever connectors are on (or by manual paste / uploaded files via `shared/d
 9. **Attachments / filenames** — observation rubric, IEP draft, agenda.
 
 ## Connector → evidence mapping
-Resolve active sources with `shared/connectors/connectors.py`. A signal's provider chain is
-primary→fallbacks among **active** connectors; if the top provider is off/blocked, **drop to the next
-available** source, record it in `execution_trace`, and **lower confidence**. Skip connectors flagged
-off. `sis` is authoritative for **student** data (name/guardians/plan flags) when connected.
+Resolve active sources with `shared/connectors/connectors.py`. Live connectors are the **host AI's
+native integrations** (Claude/OpenAI/Gemini/…); uploaded `.ics`/`.eml` files are read via
+`shared/docintel/` (the `--file` ingest folds them into the clues). A signal's provider chain is
+primary→fallbacks among **active** connectors; if the top provider is off/blocked — or
+**district-restricted for that evidence even while active** (`restricted_sources`, failure class
+`PERMISSION`) — **drop to the next available** source, record it in `execution_trace`, and **lower
+confidence**. Skip connectors flagged off. `sis` is authoritative for **student** data
+(name/guardians/plan flags) when connected.
 
 ## Convergence + confidence
 - **Converge**: corroborate ≥2 weak available signals before asserting a high-stakes type

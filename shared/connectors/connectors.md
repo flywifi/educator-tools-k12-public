@@ -3,10 +3,11 @@
 Teachers work across many tools (email, calendar, drive, LMS, video calls, the SIS). This engine lets a
 skill **use whatever the deployment has connected**, **degrade** to whatever it has permission for, and
 **converge** on an answer via alternate sources — with **unused connectors flagged off** so nothing is
-probed when it's not there. It is a *contract*, not a set of live API clients: actual retrieval happens
-through whatever the deployment connected (or manual paste / uploaded files via `shared/docintel/`); the
-registry says what each connector **would** provide and how to behave when it's off. First consumer:
-`skills/meeting-classifier/`.
+probed when it's not there. It is a *contract*, not a set of live API clients — **we build no provider
+auth/API code**. Live retrieval is realized by the **host AI's native integration** (Claude / OpenAI /
+Gemini / etc.) when the deployment has connected it, or through manual paste / **uploaded files (incl.
+`.ics`/`.eml`)** via `shared/docintel/`; the registry says what each connector **would** provide and how
+to behave when it's off or restricted. First consumer: `skills/meeting-classifier/`.
 
 Files: `connectors.json` (registry), `connector.schema.json` (contract), `feature-flags.example.json`
 (sample per-deployment flags), `connectors.py` (offline resolver). Companion privacy policy for student
@@ -23,6 +24,11 @@ All third-party connectors **default `not_installed`**.
 - A **non-`available`** source is never presented as an active retrieval path.
 - `metadata_only` is **never** treated as content-ingested truth (visibility ≠ extraction).
 - Any degraded/partial path **lowers confidence** and is recorded — never hidden in prose.
+- **Restricted-but-active** (district policy): a connector can be `available` yet limited for **specific
+  evidence types** via a per-deployment object flag `{state, restricted_evidence[], reason}`. Treat that
+  evidence as **blocked for that connector** (failure class `PERMISSION`): drop to the next available
+  source for it, record the reason, and lower confidence — even though the connector is otherwise on.
+  This is *take what you can get; recognize what's withheld and why; look elsewhere.*
 
 ## Normalized evidence types
 `calendar_event · email · roster · attendee_roles · transcript · call_notes · chat_history · file ·
@@ -33,9 +39,9 @@ answer can be reached from whichever connector is live.
 Evidence priority, strong → weak:
 `explicit user statement > calendar_event > email (sender title/role) > attendee roles >
 subject/body keywords > prior thread > transcript / call notes > filename`.
-- If the **top** source for a signal is off/blocked/`not_installed`/`permission_blocked`, **drop to the
-  next available** source for the same signal, **record it** in the execution trace, and **lower
-  confidence**.
+- If the **top** source for a signal is off/blocked/`not_installed`/`permission_blocked`/**district-
+  restricted for that evidence**, **drop to the next available** source for the same signal, **record
+  it** in the execution trace, and **lower confidence**.
 - **Converge**: corroborate several weak available sources (e.g., calendar title + attendee role +
   attachment) before asserting. A **single weak** source ⇒ low confidence / `unknown`.
 - **Skip** connectors that are flagged off — do not probe them (saves time/resources).
@@ -69,7 +75,8 @@ python3 shared/connectors/connectors.py --list
 python3 shared/connectors/connectors.py --flags shared/connectors/feature-flags.example.json --plan
 ```
 `--plan` prints each source's effective state, the active sources, the per-evidence-type provider chain
-(primary + fallbacks), and any evidence-type **gaps** (no active provider).
+(primary + fallbacks), any evidence-type **gaps** (no active provider), and any district **restrictions**
+(an active connector limited for an evidence type + the reason, with the fallback it dropped to).
 
 ## Maintenance
 Offline JSON. Add a connector by appending to `connectors.json` (registry order = tie-break for the
