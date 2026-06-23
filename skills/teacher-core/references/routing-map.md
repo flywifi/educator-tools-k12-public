@@ -1,7 +1,10 @@
 # routing-map.md
 ## teacher-core routing table
 Skill-local copy of the routing logic in `ROUTING_MODEL.md`. Route on **artifact type** first,
-using persona/subject/grade band as supporting signals.
+using persona/subject/grade band as supporting signals. The canonical, data-driven source is the
+**shared router** (`shared/routing/routing.json` + `router.py`) — call
+`router.route({text, artifact_type, persona})` to get the skill + confidence + alternates; this table
+is the readable companion.
 
 | Artifact the user wants | Route to | Status |
 |---|---|---|

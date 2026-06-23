@@ -30,7 +30,12 @@ baseline (incl. assessment results + curriculum) + **11 independent feature-flag
 handoff packages** (skill→skill, teacher→teacher, school-transfer) so student info travels consistently
 across handoffs; reuses students/context/standards/connectors + the metadata block. ePHI revised to a
 **multi-source, attributed** model (district/school forms, nurse/guardian notes, sick notes; signature
-optional; never fabricated).
+optional; never fabricated). **Shared router:** new `shared/routing/` engine (`routing.json` + `router.py`)
+— data-driven request→skill routing with confidence + alternates + a minority report on ties, consumed by
+both `teacher-core` and `meeting-classifier` (one source instead of duplicate tables); drift guard now
+verifies every route target is a real skill. *(This is the first of a 5-area capability roadmap: shared
+router ✓ · anticipated connections (audio/video transcripts) · currency watcher + Cowork/plugin
+provisioning · accumulating/recursive handoff · skill-health & repair.)*
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable
