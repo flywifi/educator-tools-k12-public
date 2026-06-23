@@ -6,6 +6,9 @@
   "sources": [
     "https://www.fldoe.org/accountability/data-sys/school-dis-data/superintendents.stml",
     "https://www.fldoe.org/schools/school-choice/virtual-edu/district-resources/",
+    "https://www.fldoe.org/schools/school-choice/virtual-edu/directories/district-virtual-contacts.stml",
+    "https://www.fldoe.org/schools/school-choice/virtual-edu/district-resources/dis-franchises-of-fl-virtual-school.stml",
+    "https://www.flvs.net/schools-districts/resources/county-virtual-schools",
     "https://fsba.org/membership/school-boards/"
   ],
   "districts": [
@@ -92,12 +95,14 @@
       "board_governance": "elected_school_board",
       "website": null,
       "virtual_instruction_required": true,
-      "district_virtual_school": null,
+      "district_virtual_school": "Broward Virtual School",
       "charter_schools_present": null,
       "sop_dir": "resources/context/florida/06-broward/",
       "rules_and_norms": {},
-      "status": "stub",
-      "sources": []
+      "status": "example_populated",
+      "sources": [
+        "https://www.fldoe.org/schools/school-choice/virtual-edu/directories/district-virtual-contacts.stml"
+      ]
     },
     {
       "fldoe_district_number": 7,
@@ -197,12 +202,14 @@
       "board_governance": "elected_school_board",
       "website": null,
       "virtual_instruction_required": true,
-      "district_virtual_school": null,
+      "district_virtual_school": "Miami-Dade Online Academy",
       "charter_schools_present": null,
       "sop_dir": "resources/context/florida/13-miami-dade/",
       "rules_and_norms": {},
-      "status": "stub",
-      "sources": []
+      "status": "example_populated",
+      "sources": [
+        "https://www.fldoe.org/schools/school-choice/virtual-edu/directories/district-virtual-contacts.stml"
+      ]
     },
     {
       "fldoe_district_number": 14,
@@ -728,7 +735,8 @@
       "rules_and_norms": {},
       "status": "example_populated",
       "sources": [
-        "https://www.fldoe.org/schools/school-choice/virtual-edu/district-resources/"
+        "https://www.fldoe.org/schools/school-choice/virtual-edu/district-resources/",
+        "https://www.fldoe.org/schools/school-choice/virtual-edu/directories/district-virtual-contacts.stml"
       ]
     },
     {
@@ -1016,5 +1024,15 @@
       "status": "stub",
       "sources": []
     }
-  ]
+  ],
+  "key_rules": [
+    {
+      "id": "FAC 6A-1.09441",
+      "title": "Requirements for Programs and Courses that are Funded Through the FEFP and for Which the Student May Earn Credit Toward High School Graduation",
+      "about": "FEFP-funded / credit-bearing courses must be in the Course Code Directory (CCD).",
+      "url": "https://flrules.org/gateway/ruleNo.asp?ID=6A-1.09441",
+      "verified": "2026-06"
+    }
+  ],
+  "virtual_school_note": "Every district offers virtual instruction (s.1002.45); many run a named district virtual school (often an FLVS franchise). Fill each from the FLDOE district-virtual directories above. Verified examples populated below; the rest are stubs."
 }
