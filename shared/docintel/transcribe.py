@@ -51,6 +51,13 @@ class TranscriptionRegistry:
 
 
 def default_transcription_registry() -> TranscriptionRegistry:
-    """Empty by default — no stdlib ASR. Host-AI-native or installed engines register here so audio/video
-    are transcribed when a real engine exists, and reported as a gap (never faked) when one does not."""
-    return TranscriptionRegistry()
+    """No stdlib ASR, so engines are availability-gated: WhisperTranscriber registers but only `select`s
+    when `faster-whisper` is installed; otherwise audio/video is reported as a gap (never faked). Other
+    engines (host-AI-native, cloud) plug in behind the same contract."""
+    reg = TranscriptionRegistry()
+    try:
+        from .parsers.whisper_transcriber import WhisperTranscriber
+        reg.register(WhisperTranscriber())
+    except Exception:  # pragma: no cover - registration must never break the pipeline
+        pass
+    return reg

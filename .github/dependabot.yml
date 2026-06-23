@@ -1,0 +1,17 @@
+# Auto-update optional dependencies (weekly) so they stay current; every bump is gated by CI
+# (drift guard + security scan in .github/workflows/ci.yml). Half of the "auto-updated AND scanned" policy.
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/tools"          # scans tools/requirements-*.txt (docintel, scraper, office, media, cloud)
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "ci"

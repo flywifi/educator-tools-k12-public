@@ -34,4 +34,30 @@ jobs:
 
       - name: Package all skills (validates every skill is installable)
         run: python3 tools/package_skill.py --all
+
+      - name: Skill-health gate (block on any blocking issue)
+        run: |
+          python3 - <<'PY'
+          import json, subprocess, sys
+          rep = json.loads(subprocess.check_output(["python3", "shared/health/health.py", "--scan"]))
+          print(f"readiness {rep['readiness_score']}/100 ({rep['readiness_band']}); "
+                f"blocking={len(rep['blocking_issues'])}")
+          if rep["blocking_issues"]:
+              print("\n".join(rep["blocking_issues"])); sys.exit(1)
+          PY
+
+      - name: Registry currency (informational drift report)
+        run: python3 tools/registry_currency.py --summary || true
       # Phase A+: add eval smoke tests here (skill triggering + Quality Gates pass).
+
+  supply-chain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install scanners
+        run: pip install pip-audit bandit
+      - name: Dependency + code security scan (gate)
+        run: python3 tools/security_scan.py
