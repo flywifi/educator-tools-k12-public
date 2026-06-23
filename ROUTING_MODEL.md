@@ -3,6 +3,14 @@
 Governance document (Quality Gates §2.1). How `teacher-core` classifies a request and routes it to
 the right capability skill (pipeline step 1).
 
+> **Engine (shared router).** Routing is **data-driven**: the canonical registry is
+> `shared/routing/routing.json` and the scorer is `shared/routing/router.py`, consumed by **both**
+> `teacher-core` and `meeting-classifier` so the logic lives in one place.
+> `router.route({text | artifact_type | meeting_type, persona})` returns the recommended skill +
+> confidence + alternates (+ a **minority report** on a tie). The table below is the human-readable
+> companion; when a new skill ships, add it to `routing.json` (and `shared/ontology/artifact-types.json`)
+> and `tools/sync_check.py` verifies every route target is a real skill.
+
 ---
 
 ## 1. Classification signals

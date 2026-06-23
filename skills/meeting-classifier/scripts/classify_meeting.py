@@ -31,6 +31,10 @@ try:
     import docintel             # type: ignore  (uploaded-file ingest: .ics/.eml and more)
 except Exception:               # pragma: no cover - docintel is optional at runtime
     docintel = None
+try:
+    from routing import router  # type: ignore  (shared/routing — canonical skill routing)
+except Exception:               # pragma: no cover - router is optional at runtime
+    router = None
 sys.path.insert(0, str(ROOT / "shared" / "records"))
 try:
     import records             # type: ignore  (emit a shared skill->skill handoff package)
@@ -299,12 +303,16 @@ def classify(d: dict, flags: dict | None = None, emit_package: bool = False) -> 
 
     escalate = meeting_type in ESCALATE_TYPES or (meeting_type == "parent_contact" and medical)
 
-    # Routing (persona-aware for observations)
+    # Routing (persona-aware for observations) — via the shared router (shared/routing/routing.json is
+    # canonical); the local ROUTING table is an offline fallback only.
     persona = d.get("persona", "teacher")
-    next_skill = ROUTING.get(meeting_type, "manual_review")
-    if meeting_type in ("annual_review_observation", "interim_observation", "annual_review_debrief") \
-            and persona in ("administrator", "evaluator", "principal"):
-        next_skill = "school-administration"
+    if router is not None:
+        next_skill = router.meeting_route(meeting_type, persona)
+    else:
+        next_skill = ROUTING.get(meeting_type, "manual_review")
+        if meeting_type in ("annual_review_observation", "interim_observation", "annual_review_debrief") \
+                and persona in ("administrator", "evaluator", "principal"):
+            next_skill = "school-administration"
     if meeting_type == "unknown" or confidence == "low" and t1s == 0:
         next_skill = "manual_review"
 
