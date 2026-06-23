@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tos.local/connectors/connector.schema.json",
+  "title": "TOS connector registry + per-deployment feature-flag config",
+  "description": "Two shapes: (1) the connector REGISTRY (connectors.json) and (2) a per-deployment FLAG CONFIG (feature-flags.*.json) that turns connectors on/off and sets student-identification + storage. Prose: connectors.md.",
+  "$defs": {
+    "state": {"enum": ["available", "disabled", "not_installed", "permission_blocked", "metadata_only", "unsupported", "unknown"]},
+    "connector": {
+      "type": "object",
+      "required": ["id", "label", "default_flag", "provides"],
+      "properties": {
+        "id": {"type": "string"},
+        "label": {"type": "string"},
+        "vendor": {"type": "string"},
+        "default_flag": {"$ref": "#/$defs/state"},
+        "provides": {"type": "array", "items": {"type": "string"}},
+        "authoritative_for": {"type": "array", "items": {"type": "string"}},
+        "privacy_sensitivity": {"enum": ["low", "moderate", "high", "depends_on_content"]},
+        "auth_note": {"type": "string"},
+        "status": {"type": "string"}
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["connectors", "states"],
+      "properties": {
+        "_comment": {"type": "string"},
+        "version": {"type": "string"},
+        "updated": {"type": "string"},
+        "states": {"type": "array", "items": {"type": "string"}},
+        "evidence_types": {"type": "array", "items": {"type": "string"}},
+        "connectors": {"type": "array", "items": {"$ref": "#/$defs/connector"}},
+        "extensible_stubs": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    {
+      "type": "object",
+      "required": ["deployment", "connectors"],
+      "properties": {
+        "deployment": {"type": "string"},
+        "connectors": {"type": "object", "additionalProperties": {"$ref": "#/$defs/state"}},
+        "allowed_sources": {"type": "array", "items": {"type": "string"}},
+        "blocked_sources": {"type": "array", "items": {"type": "string"}},
+        "student_identification": {"type": "object", "properties": {"mode": {"enum": ["name", "id"]}}},
+        "storage_adapter": {"enum": ["auto", "local_gitignored", "session_ephemeral", "uploaded_file", "connector_sis"]}
+      }
+    }
+  ]
+}
