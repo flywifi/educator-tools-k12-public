@@ -9,7 +9,10 @@ The dimensions of a teaching context, how they're resolved, and how conflicts ar
   **exception rule-set**.
 - **program(s)** — general · ese · ell · gifted · cte · ap · ib · aice · dual_enrollment · title_i ·
   acceleration · intervention_mtss (a context can hold several).
-- **subject** · **grade_band** (K-2/3-5/6-8/9-12).
+- **subject** · **grade** (individual K,1…12 — always carried) · **grade_band** (K-2/3-5/6-8/9-12,
+  derived from grade). 8th-grade standards/testing differ from 6th/7th, so the individual grade is kept.
+- **course** (specific CPALMS / FLDOE Course Code Directory number) · **course_level** (remedial ·
+  standard · advanced · gifted · honors · ap · ib · aice · dual_enrollment).
 - **instructional_model** — traditional · blended · hybrid · virtual_synchronous ·
   virtual_asynchronous · self_paced.
 - **calendar** — semester · quarter · trimester · year_round · block.
@@ -20,8 +23,12 @@ The dimensions of a teaching context, how they're resolved, and how conflicts ar
 
 ## Authority precedence (conflict resolution)
 Conflicts are settled by an ordered `authority_precedence`. Two common orderings:
-- **Compliance/mandates (default):** `state → district → school → classroom` — higher authority wins
-  (e.g., a state graduation rule overrides a school preference).
+- **Compliance/mandates (default):**
+  `state → district → school → grade → subject → course (CPALMS #) → course_level → classroom/teacher`
+  — higher authority wins (e.g., a state graduation rule overrides a school preference), then
+  more-specific scopes break ties. `county` sits with `district`; `grade_band` is a convenience just
+  below the individual `grade`; `framework` applies where a school adopts one; `national` is the
+  baseline. The full default order is in `context.DEFAULT_PRECEDENCE` / `SCOPE_RANK`.
 - **Instructional style:** may invert toward `classroom → school → district` — a teacher's
   research-based instructional choices are theirs within policy. Callers pass a custom order when the
   decision is pedagogical rather than compliance-bound.

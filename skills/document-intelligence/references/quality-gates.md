@@ -14,14 +14,28 @@ Evaluate in this order; **stop early on a critical failure**:
 1. **Integrity** (25%) — honest, transparent, no fabrication; assumptions disclosed.
 2. **Safety** (2%) — no harm, no real student PII, no unsafe/legal overreach.
 3. **Governance** (10%) — protocols followed; metadata complete; decision recorded.
-4. **Accuracy** (20%) — facts, calculations, and **standards** correct and verifiable.
-5. **Alignment** (15%) — objectives ↔ instruction ↔ assessment ↔ standards cohere.
+4. **Accuracy** (20%) — facts, calculations, and **standards** correct and verifiable (per the
+   context's standards applicability).
+5. **Alignment** (15%) — objectives ↔ instruction ↔ assessment ↔ **the applicable standards** cohere
+   (context-conditional; see below).
 6. **Educational Quality** (15%) — instructionally effective; differentiated; right cognitive load.
 7. **Accessibility** (3%) — readable, usable, audience-appropriate; UDL applied.
 8. **Professional Quality** (3%) — organized, clear, consistent formatting.
 9. **User Intent** (7%) — the requested deliverable, scope, and constraints were met.
 
 0 = critical failure · 1 major · 2 significant · 3 acceptable · 4 strong · 5 exemplary.
+
+### Context-conditional scoring (school type)
+Read `standards_applicability` from the context (`shared/context/`) before scoring Accuracy/Alignment:
+- **best_ngsss_apply** (public/charter/district-virtual/FLVS) — score against verified FL B.E.S.T./NGSSS codes.
+- **school_defined** (private) — score against the school's framework (`shared/standards/frameworks/`);
+  an optional FL crosswalk is a plus, not a requirement.
+- **parent_selected** (home education) — standards are advisory: score Alignment as
+  objective ↔ instruction ↔ assessment coherence; **not citing state codes is NOT a deduction or a
+  critical failure**. (Offering optional alignment is a plus.)
+
+Fabricating a code/standard/citation is **always** a critical failure, in every context. The point is:
+*absence* of a mandated framework where none applies is correct; *invented* codes never are.
 
 ## Composite & decision
 

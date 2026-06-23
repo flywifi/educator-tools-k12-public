@@ -12,8 +12,11 @@ without changing code or skills. Implemented in `context.py` (`resolve`, `load_o
   "sets": {…}, "adds": {"notes": [...], "mandates": [...]}, "overrides": {…},
   "source": [...], "status": "seed|stub|populated" }
 ```
-- **scope** — `national · state · framework · county · district · school · program · grade · subject ·
-  classroom`. Sets the default merge precedence (`SCOPE_RANK`); state/compliance ranks highest.
+- **scope** — `national · state · framework · county · district · school · program · grade · grade_band ·
+  subject · course · course_level · classroom`. Sets the default merge precedence (`SCOPE_RANK`);
+  state/compliance ranks highest, then more-specific scopes
+  (`state → district → school → grade → subject → course → course_level → classroom`). `grade` is the
+  individual grade level and ranks above `grade_band`.
 - **match** — selector predicate; the overlay activates when every key equals the `resolve()` selector
   (case-insensitive). `{}` = always applies.
 - **sets** — default field values, applied only if the field is still empty (weak).
@@ -29,9 +32,10 @@ without changing code or skills. Implemented in `context.py` (`resolve`, `load_o
 4. Record `overlays_applied[]` (id, scope, precedence) — the resolution is explicit and auditable.
 
 Example: `resolve(school_type="charter_public", district="Orange", framework="IB", subject="Mathematics",
-grade_band="6-8")` stacks the IB (framework), Mathematics (subject), Orange (district), and FL
-(state) overlays — the IB overlay flips `standards_applicability` to `school_defined`, and notes
-accumulate from all four.
+grade="8")` stacks the IB (framework), Mathematics (subject), grade-8 (grade), Orange (district), and
+FL (state) overlays — the band `6-8` is derived from grade `8`, the IB overlay flips
+`standards_applicability` to `school_defined`, the grade-8 overlay adds the 8th-grade testing notes
+(distinct from 6/7), and notes accumulate from all of them.
 
 ## Precedence — compliance vs instructional style
 Default `SCOPE_RANK` makes **state/law win** on conflicting `overrides` (compliance). The contract's
