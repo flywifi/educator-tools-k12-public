@@ -31,7 +31,10 @@ Before generating, satisfy the governance protocols:
 - **context** — resolve the teaching-context contract (`shared/context/`): state / district /
   school_type / program(s) / instructional_model / mandates / uploaded SOPs. Apply the school-type
   exception rule-set + authority precedence, carry it through every handoff (overrides logged), and
-  default to traditional-public Florida when unstated. Context is resolved **first**.
+  default to traditional-public Florida when unstated. Context is resolved **first**. When sources
+  disagree about which standard/rule/SOP governs, settle it with the canonical source-of-truth resolver
+  (`shared/context/sot_resolver.py`) and attach its decision record + minority report
+  (`shared/context/source-of-truth.md`).
 - **assumptions** — log anything the request didn't specify (`protocols/assumptions-protocol.md`);
 - **metadata** — initialize the artifact metadata block (`protocols/metadata-schema.md`);
 - **standards-verification** — arm verification for any standards to be cited
@@ -58,7 +61,8 @@ and internally consistent?
 Score the 9 dimensions in gate order, apply thresholds + critical-failure overrides
 (`shared/quality/quality-gates.md`; full spec `protocols/quality-gates.md`). Outcome: Approved /
 Conditionally Approved / Remediation Required / Rejected. On failure → remediate
-(`protocols/failure-recovery.md`) or resolve conflicts (`protocols/conflict-protocol.md`).
+(`protocols/failure-recovery.md`) or resolve conflicts (`protocols/conflict-protocol.md` — source-vs-source
+conflicts go through the canonical resolver and carry a minority report).
 
 ### 6. Approval / Certification
 Record the decision (`protocols/metadata-schema.md` decision record); assign a certification level
