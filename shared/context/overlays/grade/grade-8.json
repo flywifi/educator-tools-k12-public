@@ -1,0 +1,15 @@
+{
+  "scope": "grade",
+  "id": "grade-8",
+  "label": "Grade 8 (individual)",
+  "match": {"grade": "8"},
+  "adds": {
+    "notes": [
+      "Grade 8 has distinct testing from grades 6 and 7: in public/charter/virtual the FL Statewide Science Assessment is given in grades 5 and 8 (NOT 6 or 7) — an 8th-grade science accountability point. Verify current administration on the FLDOE assessment schedule.",
+      "Grade 8 still takes FAST ELA Reading and FAST Mathematics; an 8th grader enrolled in a high-school-credit course (e.g., Algebra 1, Geometry, Biology 1) takes that course's EOC instead of the grade-level math, which can earn high-school credit. Verify the student's course enrollment.",
+      "Use the individual grade (8) — not just the 6-8 band — when selecting B.E.S.T./NGSSS grade-8 standards, since 8th-grade expectations differ from 6th/7th."
+    ]
+  },
+  "source": ["https://www.fldoe.org/accountability/assessments/k-12-student-assessment/"],
+  "status": "seed"
+}

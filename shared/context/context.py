@@ -18,15 +18,27 @@ DISTRICTS_PATH = HERE / "florida-districts.json"
 SCHOOL_TYPES_PATH = HERE / "school-types.json"
 OVERLAYS_DIR = HERE / "overlays"
 
-# Default precedence for MANDATES/compliance: higher authority wins. Instructional-style
-# decisions may invert this (classroom discretion); callers can pass a custom order.
-DEFAULT_PRECEDENCE = ["state", "district", "school", "classroom"]
+# Default precedence for MANDATES/compliance: higher authority wins, then more-specific scopes.
+# Highest authority FIRST: state > district > county > school > grade (individual) > grade_band >
+# subject > framework > course (CPALMS #) > course_level > program > classroom/teacher; national is
+# the baseline. Instructional-style decisions may invert toward the classroom; pass a custom order.
+_PRECEDENCE_ORDER = ["state", "district", "county", "school", "grade", "grade_band", "subject",
+                     "framework", "course", "course_level", "program", "classroom", "national"]
+DEFAULT_PRECEDENCE = list(_PRECEDENCE_ORDER)
 
-# Overlay merge rank (compliance default): higher = applied later = wins on `overrides` conflicts.
-# State/law ranks highest; framework/grade/subject are mostly additive defaults. Per-overlay
-# `precedence` overrides this.
-SCOPE_RANK = {"national": 1, "framework": 2, "subject": 3, "grade": 4, "program": 5,
-              "county": 6, "school": 7, "district": 8, "classroom": 9, "state": 10}
+# Overlay merge rank: higher = applied later = wins on `overrides`. Inverse of the precedence order
+# (state highest, national baseline lowest). Per-overlay `precedence` overrides this.
+SCOPE_RANK = {scope: len(_PRECEDENCE_ORDER) - i for i, scope in enumerate(_PRECEDENCE_ORDER)}
+
+# Individual grade level always matters (8th grade tests/standards differ from 6th/7th); bands are a
+# convenience derived from it.
+GRADE_TO_BAND = {**{g: "K-2" for g in ("K", "1", "2")}, **{g: "3-5" for g in ("3", "4", "5")},
+                 **{g: "6-8" for g in ("6", "7", "8")},
+                 **{g: "9-12" for g in ("9", "10", "11", "12")}}
+
+
+def grade_to_band(grade) -> Optional[str]:
+    return GRADE_TO_BAND.get(str(grade).strip().upper()) if grade not in (None, "") else None
 
 
 def load_districts() -> Dict[str, Any]:
@@ -66,14 +78,24 @@ def _standards_applicability(school_type: str) -> str:
 
 def build_context(*, school_type: str = "traditional_public", district: Optional[str] = None,
                   school_name: Optional[str] = None, subject: Optional[str] = None,
-                  grade_band: Optional[str] = None, instructional_model: Optional[str] = None,
+                  grade: Optional[str] = None, grade_band: Optional[str] = None,
+                  course: Optional[str] = None, course_level: Optional[str] = None,
+                  instructional_model: Optional[str] = None,
                   calendar: Optional[str] = None, program: Optional[List[str]] = None,
                   mandates: Optional[List[Dict[str, Any]]] = None,
                   sop_refs: Optional[List[Dict[str, Any]]] = None,
                   precedence: Optional[List[str]] = None) -> Dict[str, Any]:
-    """Assemble a context contract. Unknowns are honest nulls; human_review_required is always true."""
+    """Assemble a context contract. Unknowns are honest nulls; human_review_required is always true.
+
+    `grade` is the individual grade level (K, 1..12) and always matters — 8th grade standards/testing
+    differ from 6th/7th. `grade_band` is a convenience derived from `grade` when not given explicitly.
+    `course` is a CPALMS/Course-Code-Directory number; `course_level` is the level enum
+    (remedial/standard/advanced/gifted/honors/ap/ib/aice/dual_enrollment).
+    """
     d = find_district(district) if district else None
     rules = school_type_rules(school_type)
+    grade = str(grade).strip() if grade not in (None, "") else None
+    band = grade_band or grade_to_band(grade)
     return {
         "context_id": f"ctx-{uuid.uuid4().hex[:12]}",
         "state": "FL",
@@ -82,7 +104,10 @@ def build_context(*, school_type: str = "traditional_public", district: Optional
         "school_type": school_type,
         "program": program or ["general"],
         "subject": subject,
-        "grade_band": grade_band,
+        "grade": grade,
+        "grade_band": band,
+        "course": course,
+        "course_level": course_level,
         "instructional_model": instructional_model,
         "calendar": calendar,
         "standards_applicability": _standards_applicability(school_type),
@@ -152,15 +177,18 @@ def resolve(selectors: Optional[Dict[str, Any]] = None, **kw) -> Dict[str, Any]:
     """Resolve a full context by stacking matching OVERLAYS onto the base context contract.
 
     Selectors may include: school_type, district, county, school_name, framework, subject,
-    grade_band, instructional_model, calendar, program, precedence. Overlays whose `match` is a
-    subset of the selectors are merged in precedence order (sets = defaults; adds = accumulate;
-    overrides = highest precedence wins). Records `overlays_applied`.
+    grade, grade_band, course, course_level, instructional_model, calendar, program, precedence.
+    Overlays whose `match` is a subset of the selectors are merged in precedence order
+    (sets = defaults; adds = accumulate; overrides = highest precedence wins). Records
+    `overlays_applied`.
     """
     selectors = {**(selectors or {}), **kw}
     ctx = build_context(
         school_type=selectors.get("school_type", "traditional_public"),
         district=selectors.get("district"), school_name=selectors.get("school_name"),
-        subject=selectors.get("subject"), grade_band=selectors.get("grade_band"),
+        subject=selectors.get("subject"), grade=selectors.get("grade"),
+        grade_band=selectors.get("grade_band"), course=selectors.get("course"),
+        course_level=selectors.get("course_level"),
         instructional_model=selectors.get("instructional_model"),
         calendar=selectors.get("calendar"), program=selectors.get("program"),
         precedence=selectors.get("precedence"))
@@ -170,7 +198,9 @@ def resolve(selectors: Optional[Dict[str, Any]] = None, **kw) -> Dict[str, Any]:
         ctx["county"] = selectors["county"]
 
     sel = {**selectors, "state": ctx["state"], "school_type": ctx["school_type"],
-           "subject": ctx.get("subject"), "grade_band": ctx.get("grade_band"),
+           "subject": ctx.get("subject"), "grade": ctx.get("grade"),
+           "grade_band": ctx.get("grade_band"), "course": ctx.get("course"),
+           "course_level": ctx.get("course_level"),
            "district": (ctx["district"]["name"] if ctx.get("district") else selectors.get("district"))}
     applied: List[Dict[str, Any]] = []
     for ov in sorted(load_overlays(), key=_rank):
@@ -204,13 +234,20 @@ def validate_context(context: Dict[str, Any]) -> Dict[str, Any]:
 
 
 if __name__ == "__main__":  # demo: stacked overlay resolution
+    # grade="8" is carried individually (8th-grade testing/standards differ from 6/7) and the band
+    # 6-8 is derived from it; course/course_level model a specific CPALMS course at a level.
     ctx = resolve(school_type="charter_public", district="Orange", framework="IB",
-                  subject="Mathematics", grade_band="6-8", instructional_model="blended")
+                  subject="Mathematics", grade="8", course="1205070", course_level="advanced",
+                  instructional_model="blended")
     apply_override(ctx, "Use the district pacing guide over the school default", by="teacher")
     print(json.dumps({
         "school_type": ctx["school_type"],
         "district": ctx["district"],
         "framework": ctx.get("framework"),
+        "grade": ctx["grade"],
+        "grade_band": ctx["grade_band"],
+        "course": ctx["course"],
+        "course_level": ctx["course_level"],
         "standards_applicability": ctx["standards_applicability"],
         "overlays_applied": ctx["overlays_applied"],
         "notes": ctx.get("notes", []),
