@@ -46,9 +46,14 @@ readiness scan of every skill + engine, audit-trail diagnosis (Quality Ledger + 
 minority reports), ecosystem-impact analysis for new/renamed skills, and a human-edited/approved repair
 plan (nothing high-stakes auto-applies). Adapted from the prior system's doctor + observability +
 regression skills.
-*(5-area capability roadmap: shared router ✓ · anticipated connections (audio/video transcripts) ✓ ·
-accumulating/recursive handoff ✓ · skill-health & repair ✓ · currency watcher + Cowork/plugin
-provisioning (remaining).)*
+**Provisioning & currency:** the suite now ships as a **Cowork plugin** (`.claude-plugin/plugin.json` +
+`marketplace.json` — install all skills in one step) and a generalized **registry-currency watcher**
+(`tools/registry_currency.py` + `registry-sources.json`/`registry-baselines.json`) flags drift in every
+stored registry (connectors, grade-scales, frameworks, ontology, routing, records catalogs, the plugin
+manifest) and names the authority to re-verify on; standards crawling stays with `standards-updater`.
+*(5-area capability roadmap — COMPLETE: shared router ✓ · anticipated connections (audio/video
+transcripts) ✓ · accumulating/recursive handoff ✓ · skill-health & repair ✓ · currency watcher +
+Cowork/plugin provisioning ✓.)*
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable
