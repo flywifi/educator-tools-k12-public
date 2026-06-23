@@ -40,6 +40,13 @@ INVARIANT_FILES = [ROOT / "protocols" / "quality-gates.md", ROOT / "QUALITY_MODE
 # and the always-on human-review flag.
 REQUIRED_IN_SKILL = ["method.md", "metadata-schema.md", "human_review_required"]
 
+# Every skill ships update instructions (MAINTAINER.md) with these sections (lowercased match),
+# so skills stay consistent and route conflicts through the canonical resolver (tools/skill-maintenance.md).
+REQUIRED_IN_MAINTAINER = [
+    "non-negotiable invariants", "known failure modes", "regression cases",
+    "approval-gated", "minority-report", "update checklist",
+]
+
 # Tokens that must never ship inside a skill's markdown.
 FORBIDDEN = ["TODO", "FIXME", "PLACEHOLDER", "<<<<<<<", ">>>>>>>"]
 
@@ -185,6 +192,16 @@ def main() -> int:
         for w in check_references(sd, body):
             failures.append(f"  x {rel}: {w}")
 
+        # 9. Update instructions: a MAINTAINER.md with the required sections must exist.
+        maint = sd / "MAINTAINER.md"
+        if not maint.exists():
+            failures.append(f"  x {rel}: missing MAINTAINER.md (update instructions; see tools/skill-maintenance.md)")
+        else:
+            low = read(maint).lower()
+            for marker in REQUIRED_IN_MAINTAINER:
+                if marker not in low:
+                    failures.append(f"  x {rel}: MAINTAINER.md missing section '{marker}'")
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")
@@ -197,7 +214,8 @@ def main() -> int:
 
     print(
         f"OK - {len(skill_dirs)} skill(s) checked; {len(REPO_INVARIANTS)} repository invariants "
-        f"present; {len(canonical)} synced reference(s) in sync; frontmatter + resource integrity OK."
+        f"present; {len(canonical)} synced reference(s) in sync; frontmatter + resource integrity OK; "
+        f"MAINTAINER.md present in all skills."
     )
     return 0
 

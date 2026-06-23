@@ -40,10 +40,12 @@ def main(argv: list[str]) -> int:
     # 1. Copy the template tree.
     shutil.copytree(TEMPLATE, dest)
 
-    # 2. Fill the skill name into SKILL.md.
-    skillmd = dest / "SKILL.md"
-    skillmd.write_text(skillmd.read_text(encoding="utf-8").replace("__SKILL_NAME__", name),
-                       encoding="utf-8")
+    # 2. Fill the skill name into SKILL.md and MAINTAINER.md (update instructions).
+    for fn in ("SKILL.md", "MAINTAINER.md"):
+        f = dest / fn
+        if f.exists():
+            f.write_text(f.read_text(encoding="utf-8").replace("__SKILL_NAME__", name),
+                         encoding="utf-8")
 
     # 3. Copy canonical synced references so the skill is self-contained + drift-clean.
     synced = json.loads(MANIFEST.read_text(encoding="utf-8")).get("synced_references", {})
@@ -53,7 +55,8 @@ def main(argv: list[str]) -> int:
         shutil.copyfile(ROOT / relpath, refs_dir / refname)
 
     print(f"created {dest.relative_to(ROOT)} (synced refs: {', '.join(synced) or 'none'})")
-    print("next: edit SKILL.md + references/artifact-types.md, then run: python3 tools/sync_check.py")
+    print("next: edit SKILL.md + references/artifact-types.md + MAINTAINER.md (fill the <…> placeholders),")
+    print("      then run: python3 tools/sync_check.py")
     return 0
 
 

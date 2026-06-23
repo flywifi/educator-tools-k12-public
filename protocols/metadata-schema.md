@@ -33,6 +33,9 @@ score_summary:          # per-dimension 0–5 scores + weighted composite (optio
 risk_summary:           # notable risks (optional)
 audit_reference:        # pointer to ledger entry (optional)
 remediation_reference:  # pointer to remediation record, if any (optional)
+source_decisions:       # when sources disagreed: decision record(s) from the source-of-truth resolver
+                        #   (shared/context/decision.schema.json) — decision_log + minority report
+                        #   (conflicts, failed_to_merge, residual_uncertainty). See conflict-protocol §4a.
 
 # --- Education trailer (TOS) ---
 artifact_type:          # e.g., lesson-plan, rubric, slide-deck
@@ -62,6 +65,11 @@ assumptions:            # list of assumptions made (see assumptions-protocol.md)
   it was built for. Context is resolved first and **preserved across skill handoffs**; an override is
   logged, never silent. School type governs standards applicability (home-ed/private contexts do not
   silently inherit the B.E.S.T./NGSSS mandate).
+- **Minority report.** When sources disagreed about which standard/rule/SOP governs, record the
+  resolver's decision record in `source_decisions` (`shared/context/decision.schema.json`): the chosen
+  interpretation **and** the preserved alternatives (`conflicts`, `failed_to_merge`,
+  `residual_uncertainty`). Material disagreement must not be hidden in prose (conflict-protocol §4a;
+  `shared/context/minority-report.md`). A fabricated source can never be the basis of a decision.
 - **Immutability.** Once an artifact is finalized, its decision record is recorded in the Quality
   Ledger (QG §94) and is not edited; corrections create a new record.
 

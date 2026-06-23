@@ -42,17 +42,47 @@ evidence > opinion. Mirrors the gate execution order (QG §20.2).
 
 1. Identify the conflict explicitly.
 2. Review the evidence on each side.
-3. Apply the authority hierarchy (§2).
+3. Apply the authority hierarchy (§2) and the **canonical source-of-truth resolver** (§4a) when the
+   conflict is between *sources* (which standard/rule/SOP governs).
 4. If unresolved or high-stakes → **escalate** (do not silently pick a side).
-5. Document the conflict and resolution in the artifact metadata `rationale`.
+5. Document the conflict and resolution in the artifact metadata `rationale` **and**, when sources
+   disagreed, attach the decision record + minority report (§4a; `protocols/metadata-schema.md`).
+
+## 4a. Canonical source-of-truth resolution + minority report
+
+When the conflict is about **which source decides** (a standard, course rule, mandate, or operating
+norm), resolve it through the canonical resolver so the path to the decision is auditable and the
+losing-but-meaningful alternative is preserved — never buried in prose.
+
+- **Source roles first.** `shared/context/source-roles.json` declares, per claim type, which sources are
+  *allowed to prove it* and at what rank, and which sources must **not** (e.g., a recurring classroom
+  practice never proves a compliance mandate). The resolver ranks candidates by source role, then by the
+  context's `authority_precedence` scopes as a fallback.
+- **One decision, with a minority report.** `shared/context/sot_resolver.py`
+  (`resolve(claim, claim_type, candidates, context)`) emits a decision record
+  (`shared/context/decision.schema.json`): `decision_log` (chosen interpretation + why it won),
+  `conflicts`, `failed_to_merge` (canon vs current practice / provisional update — never blended), and
+  `residual_uncertainty`. Policy: `shared/context/minority-report.md`.
+- **Hard rules.** Fabrication is never a source (an invented code/citation is excluded and can never win
+  — a critical failure under QG §37); canon is never silently rewritten; repeated practice is not
+  promoted to doctrine just because it recurs; the meaningful alternative is kept when it would change
+  downstream work.
+- **A minority report is required** (not optional) whenever the disagreement changes which standard/rule
+  applies, who is responsible, what scope is in force, or how a policy is read (full triggers in
+  `minority-report.md`).
 
 ## 5. Escalation
 
 Escalate to the user when the conflict involves IEP/504/eligibility, safety, legal determinations,
 or anything needing real student data — consistent with assumptions-protocol.md §4 and QG
-escalation levels (§74).
+escalation levels (§74). The resolver sets `escalate: true` on these claim types
+(`iep_504_requirement`, `eligibility_scholarship`, `graduation_promotion_requirement`,
+`compliance_mandate`) whenever they are contested or low-confidence, so the hand-off to a human is
+explicit in the decision record.
 
 ## 6. Validation
 
 Phase A wires conflict handling into pipeline step 5 (Quality Gates) via `quality-review`, which
-applies the hierarchy and records the resolution.
+applies the hierarchy and records the resolution. Source-vs-source conflicts are resolved through
+`shared/context/sot_resolver.py`, whose decision record (with minority report) is attached to the
+artifact metadata (`protocols/metadata-schema.md`).

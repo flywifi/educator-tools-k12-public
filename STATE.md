@@ -6,7 +6,15 @@ Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 **Last updated:** Phases 0–E delivered + Florida complete; **`document-intelligence` skill +
 `shared/docintel/` engine added** (full-framework skeleton: UDOM, parser-orchestration, governance,
 artifact, validation — runs end to end). 13 skills, 6 protocols, ledger, benchmark, packaging,
-versioning, and the metrics dashboard.
+versioning, and the metrics dashboard. **Multi-constituency support added** (public/charter/private/
+home-ed): composable context **overlays** (`shared/context/overlays/`, `overlay.schema.json`),
+independent **framework registries + crosswalks** (`shared/standards/frameworks/`, `crosswalks/`,
+`tools/crosswalk.py`), ordered authority precedence with individual **grade/course/course_level**, and
+context-conditional Quality Gates. **Canonical source-of-truth resolver + minority report added**
+(`shared/context/sot_resolver.py`, `source-roles.json`, `decision.schema.json`, `minority-report.md`,
+`source-of-truth.md`; wired into `conflict-protocol.md` §4a + `metadata-schema.md` + `method.md`). Every
+skill now ships **`MAINTAINER.md` update instructions** (template + `tools/skill-maintenance.md`;
+enforced by the drift guard).
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable
@@ -92,7 +100,7 @@ SOPs (`sop-model.md`), read offline via docintel; school type governs standards 
 
 ## Last drift-guard result
 `python3 tools/sync_check.py` → **PASS — 13 skills, 8 invariants, 2 synced refs; frontmatter +
-resource integrity validated.**
+resource integrity validated; `MAINTAINER.md` present in all skills.**
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
 ## Validation note

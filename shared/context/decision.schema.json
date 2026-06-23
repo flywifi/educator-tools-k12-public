@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tos.local/context/decision.schema.json",
+  "title": "TOS source-of-truth decision record (with minority report)",
+  "description": "The auditable record produced when the canonical source-of-truth resolver settles a claim. Records the chosen interpretation AND the structured minority report (conflicts, failed_to_merge, residual_uncertainty) so disagreement is preserved, never buried in prose. Canonical prose: shared/context/source-of-truth.md, minority-report.md.",
+  "type": "object",
+  "required": ["decision_id", "claim", "decision_log", "human_review_required"],
+  "additionalProperties": false,
+  "properties": {
+    "decision_id": {"type": "string"},
+    "claim": {"type": "string", "description": "The question/claim being resolved."},
+    "claim_type": {"type": ["string", "null"], "description": "Key into source-roles.json claim_types."},
+    "context_ref": {"type": ["string", "null"], "description": "context_id of the resolved teaching context."},
+    "decision_log": {
+      "type": "object",
+      "description": "The chosen interpretation and why it won.",
+      "required": ["chosen_interpretation", "why_it_won", "confidence"],
+      "properties": {
+        "chosen_interpretation": {"type": "string"},
+        "why_it_won": {"type": "string"},
+        "winning_scope": {"type": ["string", "null"]},
+        "winning_source": {"type": ["string", "null"]},
+        "supporting_claim_ids": {"type": "array", "items": {"type": "string"}},
+        "supporting_source_ids": {"type": "array", "items": {"type": "string"}},
+        "confidence": {"enum": ["high", "medium", "low"]}
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "description": "Direct disagreements between meaningful sources.",
+      "items": {
+        "type": "object",
+        "required": ["source_a", "source_b", "conflict_summary", "materiality"],
+        "properties": {
+          "source_a": {"type": "string"},
+          "source_b": {"type": "string"},
+          "conflict_summary": {"type": "string"},
+          "materiality": {"enum": ["high", "medium", "low"]},
+          "affected_claim_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "failed_to_merge": {
+      "type": "array",
+      "description": "Two or more plausible interpretations that must NOT be blended (e.g., canon vs current practice).",
+      "items": {
+        "type": "object",
+        "required": ["interpretation_a", "interpretation_b", "why_not_mergeable"],
+        "properties": {
+          "interpretation_a": {"type": "string"},
+          "interpretation_b": {"type": "string"},
+          "why_not_mergeable": {"type": "string"},
+          "affected_claim_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "residual_uncertainty": {
+      "type": "array",
+      "description": "Open ambiguity that does not block the main answer but still matters.",
+      "items": {
+        "type": "object",
+        "required": ["statement"],
+        "properties": {
+          "statement": {"type": "string"},
+          "what_would_resolve_it": {"type": ["string", "null"]},
+          "impact_if_wrong": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "minority_report_required": {"type": "boolean"},
+    "escalate": {"type": "boolean", "description": "True when a human must decide (IEP/504, eligibility, graduation, safety, legal)."},
+    "resolved_by": {"type": ["string", "null"]},
+    "human_review_required": {"const": true}
+  }
+}
