@@ -15,7 +15,7 @@ modular and testable.
 
 ```
 skills/        the capabilities (hub + spokes + governance skill)
-shared/        the cross-cutting engines (Standards, Differentiation, Quality)  [canonical]
+shared/        the cross-cutting engines (Standards, Differentiation, Quality, Context, Connectors, Students, DocIntel, Records)  [canonical]
 protocols/     the governance rule sets (the 6 protocols)                       [canonical]
 ```
 

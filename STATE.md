@@ -24,7 +24,12 @@ lightweight workplace-evidence parsers — `.ics` calendar invites + `.eml` emai
 `--file`; and the connector model is reframed so live connectivity is the **host AI's native
 integration** (Claude/OpenAI/Gemini/…) — no provider client is built — with first-class
 **district-restricted-but-active** evidence (`restricted_evidence` + reason; the resolver drops it to the
-next available source and lowers confidence).
+next available source and lowers confidence). **Student records:** new `shared/records/` engine — a core
+baseline + **13 independent feature-flagged modules** (`records_modules`) and **three interconnected
+handoff packages** (skill→skill, teacher→teacher, school-transfer) so student info travels consistently
+across handoffs; reuses students/context/standards/connectors + the metadata block. ePHI revised to a
+**multi-source, attributed** model (district/school forms, nurse/guardian notes, sick notes; signature
+optional; never fabricated).
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable
