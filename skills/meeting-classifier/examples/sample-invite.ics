@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//TOS Example//Meeting Classifier//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+UID:sample-ptc-0001@example.org
+DTSTAMP:20260601T120000Z
+DTSTART;TZID=America/New_York:20260623T150000
+DTEND;TZID=America/New_York:20260623T153000
+SUMMARY:Parent-Teacher Conference about Jordan Sample
+LOCATION:Room 12
+ORGANIZER;CN=Pat Teacher:mailto:pat.teacher@example.org
+ATTENDEE;CN=Alex Sample;ROLE=REQ-PARTICIPANT:mailto:alex.sample@example.org
+ATTENDEE;CN=Pat Teacher;ROLE=CHAIR:mailto:pat.teacher@example.org
+DESCRIPTION:Discuss Jordan's progress in math and reading.\nPlease bring th
+ e latest report card.
+END:VEVENT
+END:VCALENDAR
