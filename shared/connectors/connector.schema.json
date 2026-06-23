@@ -5,6 +5,22 @@
   "description": "Two shapes: (1) the connector REGISTRY (connectors.json) and (2) a per-deployment FLAG CONFIG (feature-flags.*.json) that turns connectors on/off and sets student-identification + storage. Prose: connectors.md.",
   "$defs": {
     "state": {"enum": ["available", "disabled", "not_installed", "permission_blocked", "metadata_only", "unsupported", "unknown"]},
+    "connector_flag": {
+      "description": "Per-deployment connector setting: either a bare state, OR an object that keeps the connector active while a district restricts specific evidence types (with a reason). Skills drop the restricted evidence to the next available source and lower confidence.",
+      "oneOf": [
+        {"$ref": "#/$defs/state"},
+        {
+          "type": "object",
+          "required": ["state"],
+          "additionalProperties": false,
+          "properties": {
+            "state": {"$ref": "#/$defs/state"},
+            "restricted_evidence": {"type": "array", "items": {"type": "string"}},
+            "reason": {"type": "string"}
+          }
+        }
+      ]
+    },
     "connector": {
       "type": "object",
       "required": ["id", "label", "default_flag", "provides"],
@@ -40,7 +56,7 @@
       "required": ["deployment", "connectors"],
       "properties": {
         "deployment": {"type": "string"},
-        "connectors": {"type": "object", "additionalProperties": {"$ref": "#/$defs/state"}},
+        "connectors": {"type": "object", "additionalProperties": {"$ref": "#/$defs/connector_flag"}},
         "allowed_sources": {"type": "array", "items": {"type": "string"}},
         "blocked_sources": {"type": "array", "items": {"type": "string"}},
         "student_identification": {"type": "object", "properties": {"mode": {"enum": ["name", "id"]}}},
