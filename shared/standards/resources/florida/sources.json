@@ -994,7 +994,25 @@
       "graduation",
       "eligibility/English-learners",
       "policy/compliance"
-    ]
+    ],
+    "framework_sources": {
+      "_comment": "Sources for the independent-framework registry (shared/standards/frameworks/), crosswalks, and private/home-ed data. Watch so they stay current offline.",
+      "independent_frameworks": {
+        "IB": "https://www.ibo.org/programmes/",
+        "AP": "https://apcentral.collegeboard.org/courses",
+        "Cambridge": "https://www.cambridgeinternational.org/programmes-and-qualifications/",
+        "Montessori": "https://amshq.org/",
+        "Classical": "https://www.cltexams.com/",
+        "ACSI": "https://www.acsi.org/accreditation"
+      },
+      "scholarships": [
+        "https://www.fldoe.org/finance/financial-aid-scholarships/",
+        "https://www.stepupforstudents.org/"
+      ],
+      "private_schools": [
+        "https://www.fldoe.org/schools/school-choice/private-schools/"
+      ]
+    }
   },
   "watch_pages": [
     {

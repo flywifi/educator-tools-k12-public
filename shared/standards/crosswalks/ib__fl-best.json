@@ -1,0 +1,20 @@
+{
+  "_comment": "Crosswalk between two frameworks for cross-mapping requirements across standards/grades/subjects/domains. relationship: exact|partial|related. Entries are DOMAIN-LEVEL and ILLUSTRATIVE until verified (confidence=low); verify on both sources. Never assert exact benchmark equivalence without a verified source.",
+  "from_framework": "IB",
+  "to_framework": "FL-BEST-Math",
+  "status": "stub",
+  "entries": [
+    {
+      "subject": "Mathematics",
+      "from_code": "MYP Mathematics (yr 1-3)",
+      "to_code": [
+        "MA.6.*",
+        "MA.7.*",
+        "MA.8.*"
+      ],
+      "relationship": "related",
+      "confidence": "low",
+      "note": "illustrative band-level; verify on CPALMS + IB MYP guide"
+    }
+  ]
+}

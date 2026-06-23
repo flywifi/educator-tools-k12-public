@@ -1,0 +1,29 @@
+{
+  "framework": "Cambridge",
+  "label": "Cambridge (incl. AICE)",
+  "type": "international",
+  "applicability": "school_defined",
+  "programmes_or_levels": [
+    "Cambridge Primary",
+    "Lower Secondary",
+    "IGCSE",
+    "AS & A Level (AICE in FL)"
+  ],
+  "subjects": [
+    "English",
+    "Mathematics",
+    "Sciences",
+    "Humanities",
+    "Languages",
+    "ICT"
+  ],
+  "code_pattern": "stage / syllabus code / learning objective",
+  "source": [
+    "https://www.cambridgeinternational.org/programmes-and-qualifications/"
+  ],
+  "version": null,
+  "codes_verified": false,
+  "status": "stub",
+  "note": "Structure only; enumerate standards from the cited source as a later data task. codes_verified=false. Never fabricate codes/statements - verify on source. Updated offline via standards-updater.",
+  "standards": []
+}
