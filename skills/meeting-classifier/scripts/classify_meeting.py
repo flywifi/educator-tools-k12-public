@@ -21,11 +21,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "shared" / "connectors"))
 sys.path.insert(0, str(ROOT / "shared" / "students"))
+sys.path.insert(0, str(ROOT / "shared"))
 try:
     import connectors as conn  # type: ignore
     import students as stu      # type: ignore
 except Exception:               # pragma: no cover - engines are optional at runtime
     conn = stu = None
+try:
+    import docintel             # type: ignore  (uploaded-file ingest: .ics/.eml and more)
+except Exception:               # pragma: no cover - docintel is optional at runtime
+    docintel = None
 
 TYPE_CUES = {
     "faculty_meeting": ["faculty", "all staff", "whole staff", "staff meeting"],
@@ -174,8 +179,68 @@ def build_minority_report(top, second, scores) -> dict:
     }
 
 
+def apply_file_evidence(d: dict, paths: list) -> list:
+    """Ingest uploaded files (.ics/.eml or any docintel-readable doc) and fold the normalized evidence
+    into the clue dict, so a dropped calendar invite / saved email is read instead of retyped. Returns
+    execution_trace notes; honest about missing files or an unavailable engine. Explicit clue fields
+    already set by the user are never overwritten (the user statement outranks a file)."""
+    notes: list = []
+    if not paths:
+        return notes
+    if docintel is None:
+        return [{"event": "file_ingest_unavailable", "class": "UNSUPPORTED",
+                 "detail": "docintel engine not importable; --file inputs skipped"}]
+    pipeline = docintel.Pipeline()
+    recovered_text: list = []
+    for p in paths:
+        path = Path(p)
+        if not path.exists() and not path.is_absolute() and (ROOT / p).exists():
+            path = ROOT / p
+        if not path.exists():
+            notes.append({"event": "file_missing", "class": "NOT_FOUND", "detail": f"{p} not found"})
+            continue
+        doc = pipeline.run(path.read_bytes(), str(path))
+        rec = doc.diagnostics.get("recovery", {})
+        names = d.setdefault("file_names", [])
+        if path.name not in names:
+            names.append(path.name)
+        for ev in rec.get("events", []) or []:
+            cal = d.setdefault("calendar", {})
+            if isinstance(cal, dict):
+                for k in ("summary", "start", "end", "location", "organizer"):
+                    if ev.get(k) and k not in cal:
+                        cal[k] = ev[k]
+            for a in ev.get("attendees", []) or []:
+                if a not in d.setdefault("attendees", []):
+                    d["attendees"].append(a)
+            if ev.get("summary") and not d.get("title"):
+                d["title"] = ev["summary"]
+            notes.append({"event": "file_ingested", "source": "uploaded_file", "class": "SUCCESS",
+                          "detail": f"calendar event '{ev.get('summary', '')}' from {path.name}"})
+        em = rec.get("email")
+        if em:
+            for key in ("subject", "from_name", "from_domain"):
+                if em.get(key) and not d.get(key):
+                    d[key] = em[key]
+            for att in em.get("attachments", []) or []:
+                if att not in names:
+                    names.append(att)
+            notes.append({"event": "file_ingested", "source": "uploaded_file", "class": "SUCCESS",
+                          "detail": f"email '{em.get('subject', '')}' from {path.name}"})
+        text = " ".join(b.text for _, b in doc.iter_blocks() if b.text)
+        if text:
+            recovered_text.append(text)
+        if not (rec.get("events") or em):
+            notes.append({"event": "file_ingested", "source": "uploaded_file", "class": "SUCCESS",
+                          "detail": f"{rec.get('parser', '?')} document {path.name}"})
+    if recovered_text:
+        d["body"] = (str(d.get("body", "")) + "\n" + "\n".join(recovered_text)).strip()
+    return notes
+
+
 def classify(d: dict, flags: dict | None = None) -> dict:
     flags = flags or d.get("connector_flags") or {}
+    file_trace = apply_file_evidence(d, d.pop("files", []) or [])
     text = join_text(d)
     tscores, iscores = score_types(d, text), score_intent(text)
     (t1, t1s), (t2, t2s) = top_two(tscores)
@@ -192,12 +257,18 @@ def classify(d: dict, flags: dict | None = None) -> dict:
 
     plan = connector_plan(flags)
     sources_unavailable = [c for c, s in plan["states"].items() if s != "available"]
-    degraded = bool(plan.get("gaps")) or any(
+    restricted_notes = plan.get("restricted_notes", [])
+    degraded = bool(plan.get("gaps")) or bool(restricted_notes) or any(
         s in ("disabled", "permission_blocked", "not_installed") for s in plan["states"].values())
-    execution_trace = []
+    execution_trace = list(file_trace)
     if degraded:
         execution_trace.append({"event": "degraded_path", "class": "DEGRADED_SUCCESS",
-                                "detail": "one or more sources off/blocked; converged on available evidence; confidence lowered"})
+                                "detail": "one or more sources off/blocked/restricted; converged on available evidence; confidence lowered"})
+    for n in restricted_notes:
+        dest = ", ".join(n.get("fell_back_to") or []) or "no other provider (gap)"
+        execution_trace.append({"event": "restricted_source", "class": n.get("failure_class", "PERMISSION"),
+                                "detail": f"{n['connector']} restricted from {n['evidence']} "
+                                          f"({n['reason']}); looking elsewhere: {dest}"})
 
     medical = any(m in text for m in MEDICAL_TERMS) or meeting_type == "health_plan_meeting"
     student = resolve_student(d)
@@ -257,6 +328,7 @@ def classify(d: dict, flags: dict | None = None) -> dict:
         "escalate_to_human": escalate,
         "source_availability": plan["states"],
         "sources_unavailable": sources_unavailable,
+        "restricted_sources": plan.get("restrictions", {}),
         "degraded": degraded,
         "convergence_path": plan.get("evidence_chain", {}),
         "execution_trace": execution_trace,
@@ -277,6 +349,8 @@ def parse_args():
         ap.add_argument(f"--{f}", default=None)
     ap.add_argument("--attendee", action="append", dest="attendees", default=[])
     ap.add_argument("--file-name", action="append", dest="file_names", default=[])
+    ap.add_argument("--file", action="append", dest="files", default=[],
+                    help="uploaded .ics/.eml (or other docintel-readable) file to ingest")
     return ap.parse_args()
 
 
@@ -292,6 +366,8 @@ def main() -> int:
             "transcript": a.transcript, "user_request": a.user_request, "student_ref": a.student_ref,
             "persona": a.persona, "attendees": a.attendees, "file_names": a.file_names,
         }.items() if v not in (None, [], "")}
+    if a.files:
+        data["files"] = list(data.get("files", []) or []) + a.files
     print(json.dumps(classify(data, flags), indent=2, ensure_ascii=False))
     return 0
 

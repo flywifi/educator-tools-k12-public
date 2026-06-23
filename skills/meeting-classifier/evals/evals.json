@@ -83,6 +83,18 @@
       "input": {"title": "IEP meeting", "from_title": "case manager", "student_ref": "S-000123"},
       "flags": {"student_identification": {"mode": "id"}},
       "assert": {"subject_student": "student S-000123"}
+    },
+    {
+      "name": "ics_upload_classifies_parent_conference",
+      "_note": "A dropped .ics invite is read via shared/docintel (no retyping) and folded into the clues.",
+      "input": {"files": ["skills/meeting-classifier/examples/sample-invite.ics"], "user_request": "talking points"},
+      "assert": {"meeting_type": "parent_teacher_conference", "recommended_next_skill": "family-communication"}
+    },
+    {
+      "name": "eml_upload_classifies_observation",
+      "_note": "A saved .eml from the principal is read via shared/docintel and drives the classification.",
+      "input": {"files": ["skills/meeting-classifier/examples/sample-observation.eml"], "user_request": "help me prepare"},
+      "assert": {"meeting_type": "annual_review_observation", "recommended_next_skill": "professional-learning"}
     }
   ]
 }
