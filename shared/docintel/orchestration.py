@@ -61,6 +61,9 @@ _EXT_MEDIA = {
     ".odp": "application/vnd.oasis.opendocument.presentation",
     ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    # Lightweight workplace evidence files (calendar invites, saved email)
+    ".ics": "text/calendar",
+    ".eml": "message/rfc822",
 }
 
 
@@ -145,6 +148,8 @@ class ParserRegistry:
 def default_registry() -> ParserRegistry:
     """PDF/image/Workspace parsers match by media type; stdlib text parser is the always-on fallback."""
     from .google import GoogleDocsParser
+    from .parsers.calendar_parser import IcsParser
+    from .parsers.email_parser import EmlParser
     from .parsers.image_parser import ImageParser
     from .parsers.plaintext_parser import PlainTextParser
     from .parsers.pymupdf_parser import PyMuPDFParser
@@ -158,6 +163,8 @@ def default_registry() -> ParserRegistry:
     reg.register(CsvParser())                 # Sheets → CSV/TSV
     reg.register(XlsxParser())                # Sheets → XLSX
     reg.register(PptxParser())                # Slides → PPTX
+    reg.register(IcsParser())                 # calendar invite (.ics)
+    reg.register(EmlParser())                 # saved email (.eml)
     reg.register(PlainTextParser())           # .txt/.md/.html/.docx fallback
     return reg
 
