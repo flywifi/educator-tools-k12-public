@@ -31,6 +31,11 @@ try:
     import docintel             # type: ignore  (uploaded-file ingest: .ics/.eml and more)
 except Exception:               # pragma: no cover - docintel is optional at runtime
     docintel = None
+sys.path.insert(0, str(ROOT / "shared" / "records"))
+try:
+    import records             # type: ignore  (emit a shared skill->skill handoff package)
+except Exception:             # pragma: no cover - records is optional at runtime
+    records = None
 
 TYPE_CUES = {
     "faculty_meeting": ["faculty", "all staff", "whole staff", "staff meeting"],
@@ -238,8 +243,9 @@ def apply_file_evidence(d: dict, paths: list) -> list:
     return notes
 
 
-def classify(d: dict, flags: dict | None = None) -> dict:
+def classify(d: dict, flags: dict | None = None, emit_package: bool = False) -> dict:
     flags = flags or d.get("connector_flags") or {}
+    emit_package = emit_package or bool(d.pop("emit_package", False))
     file_trace = apply_file_evidence(d, d.pop("files", []) or [])
     text = join_text(d)
     tscores, iscores = score_types(d, text), score_intent(text)
@@ -315,7 +321,7 @@ def classify(d: dict, flags: dict | None = None) -> dict:
     if not (d.get("calendar") or d.get("transcript") or d.get("body")):
         missing.append("calendar event / body / transcript")
 
-    return {
+    result = {
         "meeting_type": meeting_type,
         "request_intent": request_intent,
         "confidence": confidence,
@@ -338,6 +344,17 @@ def classify(d: dict, flags: dict | None = None) -> dict:
         "human_review_required": True,
         "scores": {"meeting_type": tscores, "request_intent": iscores},
     }
+    # Emit the shared skill->skill handoff package (records engine) so the next skill gets a
+    # consistent, governed record instead of an ad-hoc packet.
+    if emit_package and records is not None and d.get("student_ref"):
+        mode = (flags.get("student_identification") or {}).get("mode", "name")
+        try:
+            result["handoff_package"] = records.build_package(
+                "skill_to_skill", str(d["student_ref"]), mode=mode,
+                modules=records.resolve_modules(flags, None), flags=flags, next_skill=next_skill)
+        except Exception as exc:  # pragma: no cover - records is best-effort here
+            result["handoff_package_error"] = str(exc)
+    return result
 
 
 def parse_args():
@@ -351,6 +368,8 @@ def parse_args():
     ap.add_argument("--file-name", action="append", dest="file_names", default=[])
     ap.add_argument("--file", action="append", dest="files", default=[],
                     help="uploaded .ics/.eml (or other docintel-readable) file to ingest")
+    ap.add_argument("--emit-package", action="store_true", dest="emit_package",
+                    help="also emit the shared skill->skill handoff package (shared/records/)")
     return ap.parse_args()
 
 
@@ -368,7 +387,7 @@ def main() -> int:
         }.items() if v not in (None, [], "")}
     if a.files:
         data["files"] = list(data.get("files", []) or []) + a.files
-    print(json.dumps(classify(data, flags), indent=2, ensure_ascii=False))
+    print(json.dumps(classify(data, flags, emit_package=a.emit_package), indent=2, ensure_ascii=False))
     return 0
 
 

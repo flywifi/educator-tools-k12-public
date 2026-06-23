@@ -72,6 +72,12 @@ assumptions:            # list of assumptions made (see assumptions-protocol.md)
   `shared/context/minority-report.md`). A fabricated source can never be the basis of a decision.
 - **Immutability.** Once an artifact is finalized, its decision record is recorded in the Quality
   Ledger (QG §94) and is not edited; corrections create a new record.
+- **Records & handoffs.** Student records and handoff packages (`shared/records/`) use the universal
+  entity pattern (`*_id/*_code/*_name/*_display_name`) and a `lifecycle` envelope
+  (`created/last_modified/by`, `status`, `active`) that **maps to this metadata block** — audit entries
+  reference the decision record / Quality Ledger id rather than duplicating governance. Every emitted
+  package carries this block + `human_review_required: true`; health is surfaced from the source on file
+  (attributed; a signature is not required), never fabricated.
 
 ## 4. Validation
 
