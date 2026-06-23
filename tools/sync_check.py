@@ -202,6 +202,17 @@ def main() -> int:
                 if marker not in low:
                     failures.append(f"  x {rel}: MAINTAINER.md missing section '{marker}'")
 
+    # 10. Routing integrity: every shared/routing/routing.json target is a real skill (or the fallback).
+    routing_path = ROOT / "shared" / "routing" / "routing.json"
+    if routing_path.exists():
+        rj = json.loads(read(routing_path))
+        skill_names = {d.name for d in skill_dirs}
+        fallback = rj.get("fallback", "manual_review")
+        targets = set(rj.get("skills", {})) | set(rj.get("meeting_routes", {}).values())
+        for t in sorted(targets):
+            if t != fallback and t not in skill_names:
+                failures.append(f"  x routing.json: route target '{t}' is not an installed skill")
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")
