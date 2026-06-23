@@ -1,0 +1,8 @@
+{
+  "name": "teacher-operating-system",
+  "version": "0.1.0",
+  "description": "Teacher Operating System (TOS): a hub-and-spoke ecosystem of governed K-12 teacher skills that generate, validate, differentiate, route, and maintain educational artifacts. Skills under skills/ are auto-discovered; shared engines (standards, context, connectors, students, records, docintel, routing, traversal, health) provide the governed core. Offline/stdlib; decision-support with human_review_required; placeholders only in the repo.",
+  "author": {"name": "Teacher Operating System"},
+  "keywords": ["education", "k-12", "teaching", "lesson-planning", "assessment", "iep", "mtss", "governance"],
+  "license": "SEE LICENSE / district agreement"
+}

@@ -23,6 +23,12 @@ Install the hub plus whatever capability skills are needed (the hub routes to th
 - **Always include `teacher-core`** (the router) + `quality-review` (the gate); add capability skills
   as needed. Skills are self-contained (synced references travel in the bundle).
 
+**Install the whole suite as one Cowork plugin.** The repo root carries a `.claude-plugin/plugin.json`
+(plugin metadata; the `skills/` dir is auto-discovered) and a `.claude-plugin/marketplace.json` so a
+district/school can add TOS from a marketplace in one step instead of per-skill uploads. Bump
+`plugin.json`'s `version` (and refresh `marketplace.json`) when skills are added/removed — the
+registry-currency watcher flags this (below).
+
 ## 3. Update strategy
 - **Versioning:** semantic versioning in `VERSION` + `CHANGELOG.md` (policy in `CHANGE_MANAGEMENT.md`).
 - **Change → release loop:** edit the canonical file in `shared/`/`protocols/` → `python3
@@ -33,6 +39,11 @@ Install the hub plus whatever capability skills are needed (the hub routes to th
 - **Re-sync on shared changes:** because skills carry synced copies of shared references, a change to
   `shared/`/`protocols/` requires re-packaging the affected skills so bundles aren't stale (the drift
   guard catches divergence in-repo).
+- **Registry currency:** `python3 tools/registry_currency.py --summary` watches the stored
+  authoritative registries (connectors, grade-scales, frameworks, ontology, routing, records field
+  catalogs, the plugin manifest) for drift vs. recorded baselines and names the authority to re-verify
+  on; `--update-baselines` after a human approves. (Education-standards crawling stays with
+  `standards-updater` / `tools/standards_refresh.py`.) Structural health is `shared/health/health.py`.
 
 ## 4. Environment notes
 - This repo currently lives at `flywifi/Repo-1`, developed on branch `claude/fervent-hawking-nyrzy5`.
