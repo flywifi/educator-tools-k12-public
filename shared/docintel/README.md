@@ -40,7 +40,8 @@ artifacts are the only consumer-facing outputs.
 ## Python package (runnable skeleton)
 `udom.py` · `governance.py` · `orchestration.py` · `tables.py` · `ocr.py` · `images.py` ·
 `change.py` · `artifact.py` · `validation.py` · `parsers/` (`plaintext_parser.py`, `pymupdf_parser.py`,
-`pdf_table_parser.py`, `image_parser.py`, `tesseract_ocr.py`). Run it via `tools/docintel_run.py`.
+`pdf_table_parser.py`, `image_parser.py`, `tesseract_ocr.py`, `workspace_parsers.py`,
+`calendar_parser.py` (.ics), `email_parser.py` (.eml)). Run it via `tools/docintel_run.py`.
 Stdlib-only by default; uses PyMuPDF/pdfplumber/pytesseract/Docling/etc. **if installed**
 (parser/table/OCR-engine independence).
 
