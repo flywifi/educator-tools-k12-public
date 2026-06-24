@@ -16,6 +16,8 @@
     "standards-updater": ["update-report", "applied-update-record", "currency-check", "currency-brief"],
     "document-intelligence": ["processed-document-record", "udom-document", "recovery-report", "structure-map", "governance-record", "knowledge-artifact", "consumer-artifact"],
     "meeting-classifier": ["meeting-classification-record", "routing-recommendation", "handoff-packet"],
-    "skill-health": ["health-report", "diagnosis", "repair-plan"]
+    "skill-health": ["health-report", "diagnosis", "repair-plan"],
+    "output-validator": ["artifact-validation-report", "document-structural-report", "promoted-regression-case"],
+    "skill-repair": ["proposed-changes-summary", "applied-repair-record", "validation-results"]
   }
 }

@@ -1,0 +1,26 @@
+{
+  "skill_name": "skill-repair",
+  "_note": "Declarative cases for tools/skill_repair.py. Dry-run is default; --apply does only safe mechanical fixes. No real data.",
+  "evals": [
+    {
+      "name": "dry_run_is_default",
+      "command": "python3 tools/skill_repair.py",
+      "assert": {"finalization": "waiting for approval", "auto_applied": false}
+    },
+    {
+      "name": "separates_mechanical_from_judgment",
+      "_note": "Every plan step is classified mechanical (safe) or judgment (human-only).",
+      "assert": {"every_step_classified": true}
+    },
+    {
+      "name": "apply_runs_only_safe_fixes_then_sync_check",
+      "command": "python3 tools/skill_repair.py --apply",
+      "assert": {"applied": "mechanical_only", "reran": "tools/sync_check.py", "judgment_left_for_human": true}
+    },
+    {
+      "name": "never_edits_judgment_items",
+      "_note": "A judgment finding (e.g. SKILL.md name != folder) is proposed, never auto-changed.",
+      "assert": {"auto_changed_judgment": false}
+    }
+  ]
+}
