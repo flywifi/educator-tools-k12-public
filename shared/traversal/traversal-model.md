@@ -30,6 +30,21 @@ dependency-free; `docintel_file_fetcher()` reads file seeds (and turns email att
 seeds for the next layer). `route_handoff()` asks the shared router (`shared/routing/`) for the best next
 skill.
 
+## Parallel scheduler (opt-in)
+`run_traversal(..., scheduler="parallel", max_workers=N)` runs each layer's **independent** fetches
+(file reads, connector calls, external searches) concurrently in a bounded `ThreadPoolExecutor`
+(I/O-bound work — stdlib, no async rewrite), then **merges single-threaded** after the gather so the
+dedup reducer is race-free and the result is identical to sequential. Rules (grounded in proven
+practice):
+- **Sequential is the default**; parallel is opt-in and only safe because state mutation happens after
+  the concurrent gather, the frontier is de-duped against `visited` *before* fetching (no double-fetch),
+  and workers are bounded (`min(max_workers, len(todo))`; I/O heuristic ≈ cores×5).
+- **Each fetcher owns its own rate-limit etiquette** — exponential backoff + jitter, honor
+  `Retry-After`, stay below provider limits (same discipline as `standards_refresh.py`).
+- **Graceful degradation:** one fetch failing is a recorded gap, not a crash — the layer proceeds with
+  the rest (9/10 results still advance the answer).
+The chosen scheduler is recorded in `skill_metadata.scheduler` and each `traversal_log` entry.
+
 ## Output (`to_envelope`)
 Stable field names so any skill can consume it: `objective`, `seed_manifest`, `evidence`,
 `relationship_graph.edges`, `retrieval_gaps`, `traversal_log`, `checkpoint_state`, rolled-up

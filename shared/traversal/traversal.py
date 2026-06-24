@@ -75,6 +75,7 @@ class TraversalState:
     visited: set = field(default_factory=set)
     completed_layers: int = 0
     stop_reason: Optional[str] = None
+    scheduler: str = "sequential"
     _seen_keys: set = field(default_factory=set)
 
     def add_finding(self, f: Finding) -> bool:
@@ -96,12 +97,27 @@ class TraversalState:
 
 
 def run_traversal(objective: str, seeds: List[Seed], fetchers: Dict[str, Fetcher],
-                  max_layers: int = DEFAULT_MAX_LAYERS, max_findings: int = 200) -> TraversalState:
-    """Sequential, breadth-first-by-layer traversal that accumulates findings with provenance and stops on
-    saturation / depth cap / size cap (then a human decides whether to go deeper)."""
-    state = TraversalState(objective=objective, seeds=list(seeds))
+                  max_layers: int = DEFAULT_MAX_LAYERS, max_findings: int = 200,
+                  scheduler: str = "sequential", max_workers: int = 8) -> TraversalState:
+    """Sequential (default) or parallel, breadth-first-by-layer traversal that accumulates findings with
+    provenance and stops on saturation / depth cap / size cap. In `parallel` mode each layer's
+    independent fetches (file reads, connector calls, external searches) run concurrently in a bounded
+    ThreadPoolExecutor (I/O-bound), but the state **merge stays single-threaded** after the gather — so
+    the dedup reducer is race-free and the result is identical to sequential, just faster. Sequential
+    remains the default for stability; parallel is opt-in (the mature traversal-companion rule)."""
+    state = TraversalState(objective=objective, seeds=list(seeds), scheduler=scheduler)
     frontier = list(seeds)
     layer = 0
+
+    def _fetch(seed: Seed):
+        fetcher = fetchers.get(seed.seed_type)
+        if fetcher is None:
+            return seed, None, "no_fetcher"
+        try:
+            return seed, fetcher(seed), None
+        except Exception as exc:  # a source failing is a gap, not a crash
+            return seed, None, f"{exc.__class__.__name__}: {exc}"
+
     while frontier:
         if layer >= max_layers:
             state.stop_reason = "depth_cap_reached"
@@ -111,18 +127,23 @@ def run_traversal(objective: str, seeds: List[Seed], fetchers: Dict[str, Fetcher
             break
         layer += 1
         new_this_layer, next_frontier = 0, []
+        # De-dupe the frontier against visited BEFORE fetching (so parallel workers never double-fetch).
+        todo = []
         for seed in frontier:
             if seed.value in state.visited:
                 continue
             state.visited.add(seed.value)
-            fetcher = fetchers.get(seed.seed_type)
-            if fetcher is None:
-                state.add_gap(seed, "no_fetcher", f"no fetcher for seed_type '{seed.seed_type}'")
-                continue
-            try:
-                result = fetcher(seed)
-            except Exception as exc:  # a source failing is a gap, not a crash
-                state.add_gap(seed, "fetch_error", f"{exc.__class__.__name__}: {exc}")
+            todo.append(seed)
+        # Fetch (concurrent I/O when parallel + >1 task), then MERGE single-threaded (race-free reducer).
+        if scheduler == "parallel" and len(todo) > 1:
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(max_workers=min(max_workers, len(todo))) as ex:
+                results = list(ex.map(_fetch, todo))
+        else:
+            results = [_fetch(s) for s in todo]
+        for seed, result, err in results:
+            if result is None:
+                state.add_gap(seed, "no_fetcher" if err == "no_fetcher" else "fetch_error", err or "")
                 continue
             for f in result.findings:
                 f.layer = layer
@@ -131,7 +152,8 @@ def run_traversal(objective: str, seeds: List[Seed], fetchers: Dict[str, Fetcher
             next_frontier.extend(result.seeds)
             state.gaps.extend(result.gaps)
         state.completed_layers = layer
-        state.log.append({"layer": layer, "expanded": len(frontier), "new_findings": new_this_layer})
+        state.log.append({"layer": layer, "expanded": len(todo), "new_findings": new_this_layer,
+                          "scheduler": scheduler})
         if new_this_layer == 0:                      # saturation: a layer added nothing new
             state.stop_reason = state.stop_reason or "saturated"
             break
@@ -156,7 +178,7 @@ def to_envelope(state: TraversalState, best_next_owner: Optional[str] = None) ->
     """The reusable handoff envelope (stable field names) — accumulated evidence + graph + gaps + log."""
     return {
         "skill_metadata": {"engine": "traversal", "schema_version": "0.1.0", "generated_at": _now(),
-                           "mode": "companion_pass"},
+                           "mode": "companion_pass", "scheduler": state.scheduler},
         "objective": state.objective,
         "seed_manifest": [asdict(s) for s in state.seeds],
         "evidence": [asdict(f) for f in state.findings],
@@ -223,9 +245,13 @@ def main(argv) -> int:
     ap.add_argument("--objective", default="", help="what the traversal is trying to support")
     ap.add_argument("--file", action="append", dest="files", default=[], help="an input file seed (repeatable)")
     ap.add_argument("--max-layers", type=int, default=DEFAULT_MAX_LAYERS)
+    ap.add_argument("--scheduler", choices=["sequential", "parallel"], default="sequential",
+                    help="parallel runs each layer's independent fetches concurrently (I/O-bound)")
+    ap.add_argument("--max-workers", type=int, default=8)
     a = ap.parse_args(argv)
     seeds = [Seed(seed_id=f"seed-{i}", seed_type="file", value=f) for i, f in enumerate(a.files, 1)]
-    state = run_traversal(a.objective, seeds, {"file": docintel_file_fetcher()}, max_layers=a.max_layers)
+    state = run_traversal(a.objective, seeds, {"file": docintel_file_fetcher()}, max_layers=a.max_layers,
+                          scheduler=a.scheduler, max_workers=a.max_workers)
     env = to_envelope(state, best_next_owner=route_handoff(a.objective))
     print(json.dumps(env, indent=2, ensure_ascii=False))
     return 0
