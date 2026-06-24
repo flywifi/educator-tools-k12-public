@@ -46,6 +46,14 @@ Install Google **Noto** (core + CJK + color-emoji) for full Unicode coverage, pl
 script and flags a gap ("this doc uses Calibri/CJK we don't have; glyphs may substitute") instead of
 silently rendering tofu.
 
+## Document authorship (no AI / library trace)
+Authoring libraries stamp themselves in a file's core properties (`python-pptx`, `python-docx`,
+`openpyxl`). `shared/office/` **overwrites** these: the document `author` / `creator` /
+`last_modified_by` is the **individual directing the tool**, resolved as `--author` > `spec.author` >
+`$DOCUMENT_AUTHOR` > blank. It is **never** the library name, "python", "Claude", or any AI marker — if
+no author is configured the field is left blank rather than falsely attributed. Set `DOCUMENT_AUTHOR` per
+deployment (or pass `--author`) so produced Office/Google files carry the teacher's name.
+
 ## Per-deployment flags
 In the connector feature-flags file:
 - `optional_deps`: `{ "<capability>": "allow" | "deny" }` — a district can forbid a local capability.
