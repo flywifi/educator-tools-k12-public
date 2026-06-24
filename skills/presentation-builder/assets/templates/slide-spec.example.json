@@ -1,0 +1,10 @@
+{
+  "_comment": "Slide spec consumed by scripts/build_deck.py -> shared/office -> real .pptx. Placeholders only.",
+  "title": "Equivalent Fractions",
+  "subtitle": "Grade 4 Math (B.E.S.T. MA.4.FR.1.1)",
+  "slides": [
+    {"title": "Learning Goal", "bullets": ["Find and compare equivalent fractions", "Standard: MA.4.FR.1.1 (verify on source)"], "notes": "Connect to prior multiplication work."},
+    {"title": "Warm-Up", "bullets": ["Fold paper into halves, then fourths", "What stays the same?"]},
+    {"title": "Check for Understanding", "bullets": ["Is 1/2 = 2/4? Explain.", "Thumbs up / down"]}
+  ]
+}
