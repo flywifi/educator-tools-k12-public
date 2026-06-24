@@ -53,6 +53,11 @@ registry-currency watcher flags this (below).
   `shared/health/dependency-policy.md`.
 - **Supply chain:** deps are pinned, auto-updated (`.github/dependabot.yml`), and scanned
   (`tools/security_scan.py` = pip-audit + bandit) as a CI gate — so every bump is current AND vetted.
+- **Authoring outputs:** `shared/office/` emits real `.pptx/.docx/.xlsx` (gated on python-pptx/docx/
+  openpyxl; LibreOffice renders PDF/PNG for QA) and `shared/office/google_bridge.py` emits Google
+  Docs/Sheets/Slides (the Office file imports losslessly, plus a generated Apps Script for native/advanced
+  builds). Live Google creation runs through the **host AI's native Google integration** or a deployment
+  **Node/clasp** runner (`@google/clasp` + `googleapis`); credentials come from the environment only.
 
 ## 4. Environment notes
 - This repo currently lives at `flywifi/Repo-1`, developed on branch `claude/fervent-hawking-nyrzy5`.
