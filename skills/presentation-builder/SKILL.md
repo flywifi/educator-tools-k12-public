@@ -20,8 +20,11 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
    keep the cognitive load low (one idea per slide).
 4. **Generation** — draft the deck as a **slide outline** using
    `assets/templates/slide-outline-template.md` and the design rules in
-   `references/slide-design.md`, then **render the `.pptx` with a `pptx` rendering skill** (if one is
-   available in the host environment) — do not re-implement PowerPoint generation.
+   `references/slide-design.md`, then **render a real `.pptx`** with `scripts/build_deck.py` (the shared
+   Office engine `shared/office/`, python-pptx — `--pdf` also renders a PDF via LibreOffice for visual
+   QA). If the Office library isn't installed, it writes the slide spec and reports an honest gap — the
+   host's native `pptx` skill can consume that same spec. Either way, **do not re-implement PowerPoint
+   generation** by hand.
 
 ## 2. Validate, then gate
 Run the universal + slide checks (`shared/quality/verification-checklists.md`), self-score against
