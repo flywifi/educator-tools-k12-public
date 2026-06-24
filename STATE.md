@@ -57,6 +57,12 @@ Stdlib-first so they always run regardless of what the teacher has installed.
 one component to a known-good git ref — **dry-run by default, human approval to `--apply`** (automated
 `--auto` only if a deployment grants `auto_rollback`), logging the failure to `ledger/rollback-log.json`.
 Policy: `CHANGE_MANAGEMENT.md` §7; each `MAINTAINER.md`/`tools/skill-maintenance.md` points to it.
+**Parallelism (started):** the traversal engine gains an opt-in **parallel scheduler** (`scheduler=
+"parallel"`, stdlib `ThreadPoolExecutor`) — each layer's independent fetches (file/connector/external
+search) run concurrently, bounded, with a **single-threaded race-free merge**; sequential stays the
+default. Each fetcher owns backoff/jitter + honors `Retry-After`; a failed fetch degrades to a gap.
+Verified parallel == sequential output. Research-grounded (concurrent.futures fan-out, rate-limit
+backoff, map-reduce reducers).
 **Provisioning & currency:** the suite now ships as a **Cowork plugin** (`.claude-plugin/plugin.json` +
 `marketplace.json` — install all skills in one step) and a generalized **registry-currency watcher**
 (`tools/registry_currency.py` + `registry-sources.json`/`registry-baselines.json`) flags drift in every
