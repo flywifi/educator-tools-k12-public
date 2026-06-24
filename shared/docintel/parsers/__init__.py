@@ -6,11 +6,13 @@ from .calendar_parser import IcsParser
 from .caption_parser import SrtParser, VttParser
 from .email_parser import EmlParser
 from .image_parser import ImageParser
+from .libreoffice_parser import LegacyOfficeParser
 from .media_parser import MediaTranscriptParser
 from .pdf_table_parser import PdfPlumberTableExtractor
 from .plaintext_parser import PlainTextParser
 from .pymupdf_parser import PyMuPDFParser
 from .tesseract_ocr import TesseractEngine
+from .universal_parser import RtfParser, UniversalFallbackParser
 from .workspace_parsers import CsvParser, OdtParser, PptxParser, XlsxParser
 
 __all__ = [
@@ -18,4 +20,5 @@ __all__ = [
     "PdfPlumberTableExtractor", "TesseractEngine",
     "OdtParser", "CsvParser", "XlsxParser", "PptxParser",
     "IcsParser", "EmlParser", "VttParser", "SrtParser", "MediaTranscriptParser",
+    "RtfParser", "LegacyOfficeParser", "UniversalFallbackParser",
 ]
