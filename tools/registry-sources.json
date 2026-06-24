@@ -26,6 +26,9 @@
       "note": "bump version + refresh marketplace.json when skills are added/removed"},
     {"id": "dependencies", "path": "tools/dependencies.json", "class": "internal_registry",
       "authority": "library/binary/font availability + cloud provider APIs (Azure/fal/Nutrient/Firecrawl)",
-      "note": "capability manifest; re-verify pins/providers; auto-update via dependabot, scan via security_scan.py"}
+      "note": "capability manifest; re-verify pins/providers; auto-update via dependabot, scan via security_scan.py"},
+    {"id": "versions", "path": "versions.json", "class": "internal_registry",
+      "authority": "installed skills/engines + the release VERSION/plugin version",
+      "note": "consistency checked by tools/version.py --check; rollback target registry (tools/rollback.py)"}
   ]
 }

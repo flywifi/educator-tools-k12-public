@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T02:29:33.351542+00:00",
+  "updated": "2026-06-24T02:59:11.717589+00:00",
   "hashes": {
     "connectors": "e7946785cef639dd24a22bbd4063cf141bc9c2f59731bfb4aeb1fc049e767494",
     "grade-scales": "2c4afb04ed309f1ead8e2315a50e66762aeb25e19e28996ac47fe7b97dd06fbe",
@@ -8,7 +8,8 @@
     "ontology": "f351c905aebc5f68aab6f35fbd0122e81c93edb6610dc3f28476696946eeab84",
     "routing": "e64d9aba1122d9690d1cfea83c6709fc5fbfeeec5c969d7ce1c10d99cf190ff2",
     "records-catalog": "020d8435984fdb5f88943941f0398e0e4f0bff4903a6c9b32aa8593dffb8954e",
-    "plugin-manifest": "15e0df8654dff51cb828016bc1e1ea795ae169b75361c0c72fa4ddbcfa42f8e9",
-    "dependencies": "d911097b9c0c12d218dba9f203bdd2f6dfe422282381d6bbd80172e0113478e8"
+    "plugin-manifest": "2dad9c40e509b263a798e6667aea0384f8f0142369080f54620d98613c9a7cc5",
+    "dependencies": "d911097b9c0c12d218dba9f203bdd2f6dfe422282381d6bbd80172e0113478e8",
+    "versions": "cb981213561199a28a6c18906781c211ba1f37182b3f4ada0a0638162a0011cb"
   }
 }

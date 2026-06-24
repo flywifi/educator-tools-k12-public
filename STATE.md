@@ -52,6 +52,11 @@ schema + a no-fabrication / no-real-PII rule catalog before it ships; promotes f
 spec-grounded references (a stdlib `tools/validate_document.py` catches OOXML/PDF/ODF corruption classes
 documented by the Open XML SDK + veraPDF; font coverage per Noto; reader booster microsoft/markitdown).
 Stdlib-first so they always run regardless of what the teacher has installed.
+**Versioning & rollback:** `versions.json` gives every skill + engine a semver aligned to the ecosystem
+`VERSION`/plugin (`tools/version.py --check`, a CI gate); on a major failure `tools/rollback.py` restores
+one component to a known-good git ref — **dry-run by default, human approval to `--apply`** (automated
+`--auto` only if a deployment grants `auto_rollback`), logging the failure to `ledger/rollback-log.json`.
+Policy: `CHANGE_MANAGEMENT.md` §7; each `MAINTAINER.md`/`tools/skill-maintenance.md` points to it.
 **Provisioning & currency:** the suite now ships as a **Cowork plugin** (`.claude-plugin/plugin.json` +
 `marketplace.json` — install all skills in one step) and a generalized **registry-currency watcher**
 (`tools/registry_currency.py` + `registry-sources.json`/`registry-baselines.json`) flags drift in every

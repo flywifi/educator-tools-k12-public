@@ -43,3 +43,11 @@ with the required sections**). New skills get the template automatically via
 The shared invariants live in `CLAUDE.md` and `shared/quality/quality-gates.md`; the minority-report
 policy lives in `shared/context/minority-report.md`. Edit those canonical sources — do not fork
 shared rules into a single skill's `MAINTAINER.md`.
+
+## Versioning & rollback
+Every skill + engine carries a semver in `versions.json` (checked by `python3 tools/version.py --check`).
+On a **major failure**, roll the affected component back to a known-good version with
+`python3 tools/rollback.py --target <path> --to <git-ref> --reason "…"` — **dry-run by default, human
+approval to `--apply`** (automated `--auto` only if the deployment granted `auto_rollback`). Every
+rollback is logged to `ledger/rollback-log.json`. Full policy: `CHANGE_MANAGEMENT.md` §7. A skill's
+`MAINTAINER.md` does not restate this — it points here.
