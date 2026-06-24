@@ -30,6 +30,14 @@ def _have(mod: str) -> bool:
         return False
 
 
+def _resolve_author(spec: dict, author: Optional[str]) -> str:
+    """Who the document is BY. Priority: explicit arg > spec.author > $DOCUMENT_AUTHOR > "" (blank).
+    Never the library/AI — we overwrite python-pptx/python-docx/openpyxl defaults so no 'python' or AI
+    trace is left in the file's author/properties. The author is the individual directing the tool."""
+    import os
+    return (author or spec.get("author") or os.environ.get("DOCUMENT_AUTHOR") or "").strip()
+
+
 def _gap(out: Path, spec: dict, capability: str) -> dict:
     sidecar = out.with_suffix(out.suffix + ".spec.json")
     sidecar.write_text(json.dumps(spec, indent=2), encoding="utf-8")
@@ -39,7 +47,7 @@ def _gap(out: Path, spec: dict, capability: str) -> dict:
                     "install tools/requirements-office.txt to emit the real document"}
 
 
-def build_pptx(spec: dict, out: Path) -> dict:
+def build_pptx(spec: dict, out: Path, author: Optional[str] = None) -> dict:
     if not _have("pptx"):
         return _gap(out, spec, "office_authoring:python-pptx")
     from pptx import Presentation
@@ -59,12 +67,19 @@ def build_pptx(spec: dict, out: Path) -> dict:
                 (tf.paragraphs[0] if i == 0 else tf.add_paragraph()).text = str(b)
         if sl.get("notes"):
             slide.notes_slide.notes_text_frame.text = str(sl["notes"])
+    a = _resolve_author(spec, author)
+    cp = prs.core_properties
+    cp.author = a            # overwrite python-pptx default; never "python"/AI
+    cp.last_modified_by = a
+    if spec.get("title"):
+        cp.title = spec["title"]
     out.parent.mkdir(parents=True, exist_ok=True)
     prs.save(str(out))
-    return {"status": "ok", "path": str(out), "slides": len(spec.get("slides", [])) + (1 if spec.get("title") else 0)}
+    return {"status": "ok", "path": str(out), "author": a,
+            "slides": len(spec.get("slides", [])) + (1 if spec.get("title") else 0)}
 
 
-def build_docx(spec: dict, out: Path) -> dict:
+def build_docx(spec: dict, out: Path, author: Optional[str] = None) -> dict:
     if not _have("docx"):
         return _gap(out, spec, "office_authoring:python-docx")
     from docx import Document
@@ -83,12 +98,18 @@ def build_docx(spec: dict, out: Path) -> dict:
                 for ri, row in enumerate(rows):
                     for ci, cell in enumerate(row):
                         t.rows[ri].cells[ci].text = str(cell)
+    a = _resolve_author(spec, author)
+    cp = doc.core_properties
+    cp.author = a            # overwrite python-docx default; never "python"/AI
+    cp.last_modified_by = a
+    if spec.get("title"):
+        cp.title = spec["title"]
     out.parent.mkdir(parents=True, exist_ok=True)
     doc.save(str(out))
-    return {"status": "ok", "path": str(out), "sections": len(spec.get("sections", []))}
+    return {"status": "ok", "path": str(out), "author": a, "sections": len(spec.get("sections", []))}
 
 
-def build_xlsx(spec: dict, out: Path) -> dict:
+def build_xlsx(spec: dict, out: Path, author: Optional[str] = None) -> dict:
     if not _have("openpyxl"):
         return _gap(out, spec, "office_authoring:openpyxl")
     from openpyxl import Workbook
@@ -100,9 +121,14 @@ def build_xlsx(spec: dict, out: Path) -> dict:
         first = False
         for row in sh.get("rows", []):
             ws.append(list(row))
+    a = _resolve_author(spec, author)
+    wb.properties.creator = a            # overwrite openpyxl default; never "openpyxl"/AI
+    wb.properties.lastModifiedBy = a
+    if spec.get("title"):
+        wb.properties.title = spec["title"]
     out.parent.mkdir(parents=True, exist_ok=True)
     wb.save(str(out))
-    return {"status": "ok", "path": str(out), "sheets": len(spec.get("sheets", [])) or 1}
+    return {"status": "ok", "path": str(out), "author": a, "sheets": len(spec.get("sheets", [])) or 1}
 
 
 def convert(path: Path, to: str = "pdf", outdir: Optional[Path] = None) -> dict:
@@ -129,10 +155,11 @@ def main(argv) -> int:
     ap.add_argument("--spec", required=True, help="path to a JSON spec")
     ap.add_argument("--out", required=True, help="output file path")
     ap.add_argument("--pdf", action="store_true", help="also render a PDF via LibreOffice (QA)")
+    ap.add_argument("--author", help="document author (the individual directing the tool); never AI/library")
     a = ap.parse_args(argv)
     spec = json.loads(Path(a.spec).read_text(encoding="utf-8"))
     out = Path(a.out)
-    result = BUILDERS[a.type](spec, out)
+    result = BUILDERS[a.type](spec, out, author=a.author)
     if a.pdf and result.get("status") == "ok":
         result["pdf"] = convert(out, "pdf")
     print(json.dumps(result, indent=2))

@@ -24,6 +24,7 @@ def main(argv) -> int:
     ap.add_argument("--spec", required=True, help="JSON slide spec (see assets/templates/slide-spec.example.json)")
     ap.add_argument("--out", required=True, help="output .pptx path")
     ap.add_argument("--pdf", action="store_true", help="also render a PDF via LibreOffice (QA)")
+    ap.add_argument("--author", help="document author (the directing teacher); never AI/library")
     a = ap.parse_args(argv)
     try:
         from office import build_pptx, convert  # type: ignore
@@ -31,7 +32,7 @@ def main(argv) -> int:
         print(json.dumps({"status": "engine_unavailable", "detail": str(exc)}, indent=2))
         return 0
     spec = json.loads(Path(a.spec).read_text(encoding="utf-8"))
-    res = build_pptx(spec, Path(a.out))
+    res = build_pptx(spec, Path(a.out), author=a.author)
     if a.pdf and res.get("status") == "ok":
         res["pdf"] = convert(Path(a.out), "pdf")
     print(json.dumps(res, indent=2))
