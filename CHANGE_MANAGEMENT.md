@@ -42,3 +42,25 @@ branch → make the change → run the drift guard → (Phase A+) run evals → 
 A change is mergeable when: the drift guard passes; affected skills' evals pass; docs are updated;
 no critical-failure conditions (fabrication, real PII, unsafe output) are present; and `STATE.md`
 reflects reality.
+
+## 7. Component versioning & rollback
+**One source of truth:** `versions.json` carries the `ecosystem` semver (mirrors `VERSION` +
+`.claude-plugin/plugin.json`) plus a semver for **every skill and shared engine**, so each component is
+traceable and can move independently. `python3 tools/version.py --check` enforces agreement (ecosystem ==
+VERSION == plugin; skill list == installed) and runs in CI; `--bump <target> <semver>` updates it.
+
+**Rollback on a major failure.** When a change breaks something, restore just the affected component to a
+known-good version instead of unwinding everything:
+```
+python3 tools/rollback.py --target skills/<skill> --to <git-ref> --reason "<failure>"    # dry-run
+python3 tools/rollback.py --target skills/<skill> --to <git-ref> --reason "..." --apply   # human-approved
+```
+- **Human approval is required by default** — `--apply` is the human approving. An automated caller
+  (e.g. `skill-health` / `skill-repair`) must pass `--auto`, which is **refused unless** the deployment
+  set `auto_rollback: true` in its flags. That flag is the "automatic permission" grant.
+- **The failure is noted**: every rollback (reason, target, ref, mode) is appended to
+  `ledger/rollback-log.json`; the drift guard re-runs afterward; a human reviews the working-tree diff
+  and commits to finalize.
+- **MAINTAINER tie-in**: each skill's `MAINTAINER.md` update checklist + `tools/skill-maintenance.md`
+  point here, so versioning + rollback work the same way across every skill. Prefer the smallest rollback
+  that achieves the goal (one skill/engine), paired with a `skill-health` diagnosis.

@@ -46,6 +46,9 @@ jobs:
               print("\n".join(rep["blocking_issues"])); sys.exit(1)
           PY
 
+      - name: Version consistency (versions.json == VERSION == plugin; skills match)
+        run: python3 tools/version.py --check
+
       - name: Validate committed example artifacts (output-validator)
         run: python3 tools/validate_examples.py
 
