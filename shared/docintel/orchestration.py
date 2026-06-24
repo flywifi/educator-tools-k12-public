@@ -72,6 +72,18 @@ _EXT_MEDIA = {
     ".ogg": "audio/ogg", ".flac": "audio/flac",
     ".mp4": "video/mp4", ".mov": "video/quicktime", ".webm": "video/webm",
     ".mkv": "video/x-matroska", ".avi": "video/x-msvideo",
+    # Rich text + legacy/ODF office (read via LibreOffice when present, else universal fallback)
+    ".rtf": "application/rtf",
+    ".doc": "application/msword", ".ppt": "application/vnd.ms-powerpoint", ".xls": "application/vnd.ms-excel",
+    ".odp": "application/vnd.oasis.opendocument.presentation",
+    ".ods": "application/vnd.oasis.opendocument.spreadsheet",
+    ".odg": "application/vnd.oasis.opendocument.graphics",
+    # Common text/code/markup -> the stdlib text parser; anything unmapped -> universal fallback
+    ".xml": "text/plain", ".yaml": "text/plain", ".yml": "text/plain", ".toml": "text/plain",
+    ".ini": "text/plain", ".cfg": "text/plain", ".log": "text/plain", ".rst": "text/plain",
+    ".tex": "text/plain", ".py": "text/plain", ".js": "text/plain", ".ts": "text/plain",
+    ".java": "text/plain", ".c": "text/plain", ".cpp": "text/plain", ".h": "text/plain",
+    ".go": "text/plain", ".rb": "text/plain", ".sh": "text/plain", ".sql": "text/plain",
 }
 
 
@@ -160,9 +172,11 @@ def default_registry() -> ParserRegistry:
     from .parsers.caption_parser import SrtParser, VttParser
     from .parsers.email_parser import EmlParser
     from .parsers.image_parser import ImageParser
+    from .parsers.libreoffice_parser import LegacyOfficeParser
     from .parsers.media_parser import MediaTranscriptParser
     from .parsers.plaintext_parser import PlainTextParser
     from .parsers.pymupdf_parser import PyMuPDFParser
+    from .parsers.universal_parser import RtfParser, UniversalFallbackParser
     from .parsers.workspace_parsers import CsvParser, OdtParser, PptxParser, XlsxParser
 
     reg = ParserRegistry()
@@ -178,7 +192,10 @@ def default_registry() -> ParserRegistry:
     reg.register(VttParser())                 # WebVTT caption/transcript
     reg.register(SrtParser())                 # SubRip caption/transcript
     reg.register(MediaTranscriptParser())     # audio/video → transcription engine (gap if none)
-    reg.register(PlainTextParser())           # .txt/.md/.html/.docx fallback
+    reg.register(RtfParser())                 # .rtf
+    reg.register(LegacyOfficeParser())        # .doc/.ppt/.xls/.odp/.ods via LibreOffice (gated on soffice)
+    reg.register(PlainTextParser())           # .txt/.md/.html/.docx
+    reg.register(UniversalFallbackParser())   # last resort: read ANY file (text decode, else binary metadata)
     return reg
 
 
