@@ -1,0 +1,37 @@
+{
+  "skill_name": "output-validator",
+  "_note": "Declarative cases for tools/validate_outputs.py + tools/validate_document.py. Stdlib-first; no real data.",
+  "evals": [
+    {
+      "name": "governed_artifact_passes",
+      "command": "python3 tools/validate_outputs.py --input <records-package.json>",
+      "assert": {"status": "pass", "human_review_required": true}
+    },
+    {
+      "name": "missing_human_review_fails",
+      "_note": "human_review_required: false must be a blocking rule_failure.",
+      "assert": {"status": "fail", "rule_failures_includes": "human_review_required"}
+    },
+    {
+      "name": "real_pii_blocks",
+      "_note": "An SSN-pattern value anywhere triggers no_real_pii (blocking).",
+      "assert": {"status": "fail", "rule_failures_includes": "no_real_pii"}
+    },
+    {
+      "name": "valid_pptx_structural_pass",
+      "command": "python3 tools/validate_document.py deck.pptx",
+      "assert": {"kind": "pptx", "valid": true}
+    },
+    {
+      "name": "truncated_ooxml_detected",
+      "_note": "A truncated/partial .pptx is not a valid zip -> blocking.",
+      "command": "python3 tools/validate_document.py truncated.pptx",
+      "assert": {"valid": false, "findings_include": "bad_zip"}
+    },
+    {
+      "name": "truncated_pdf_detected",
+      "command": "python3 tools/validate_document.py truncated.pdf",
+      "assert": {"valid": false, "findings_include": "pdf_missing_eof"}
+    }
+  ]
+}
