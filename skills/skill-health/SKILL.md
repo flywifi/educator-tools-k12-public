@@ -21,6 +21,12 @@ canonical prose: `shared/health/health-model.md`.
   `STATE.md`, `METRICS.md`, `shared/ontology/artifact-types.json`) so docs/routing/ontology never drift.
 - **Repair plan** — an ordered, severity-tagged plan (each step marked mechanical or judgment) that you
   **edit or approve**; nothing high-stakes is auto-applied.
+- **Apply (guided)** — `tools/skill_repair.py` consumes the approved plan, prints a plain-language
+  approval summary, and on `--apply` performs only the **safe mechanical** fixes (regenerate derived
+  files; re-run the drift guard); judgment items always stay with you.
+- **Validate outputs** — `tools/validate_outputs.py` checks a governed artifact against its JSON Schema
+  plus a governance / no-fabrication / no-real-PII rule catalog before it ships, and can promote a
+  failing case into a regression eval.
 
 ## How it works — the unified pipeline
 Follow `references/method.md` (`Request → Routing → Protocol Enforcement → Generation → Validation →
@@ -34,6 +40,8 @@ canonical resolver (`shared/context/minority-report.md`).
 python3 shared/health/health.py --summary
 python3 shared/health/health.py --impact some-skill
 python3 shared/health/health.py --diagnose --traces runtime/traces
+python3 tools/skill_repair.py            # dry-run; --apply does safe mechanical fixes only
+python3 tools/validate_outputs.py --input artifact.json --schema records
 ```
 
 ## Artifacts

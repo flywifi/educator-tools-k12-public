@@ -45,7 +45,9 @@ docintel retrieval-state ladder.
 readiness scan of every skill + engine, audit-trail diagnosis (Quality Ledger + saved execution traces /
 minority reports), ecosystem-impact analysis for new/renamed skills, and a human-edited/approved repair
 plan (nothing high-stakes auto-applies). Adapted from the prior system's doctor + observability +
-regression skills.
+regression skills. Now also `tools/skill_repair.py` (guided apply of an approved plan — safe mechanical
+fixes only, dry-run by default) and `tools/validate_outputs.py` (validate a governed artifact vs its
+schema + a no-fabrication / no-real-PII rule catalog before it ships; promotes failures to regressions).
 **Provisioning & currency:** the suite now ships as a **Cowork plugin** (`.claude-plugin/plugin.json` +
 `marketplace.json` — install all skills in one step) and a generalized **registry-currency watcher**
 (`tools/registry_currency.py` + `registry-sources.json`/`registry-baselines.json`) flags drift in every
