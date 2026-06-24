@@ -46,6 +46,9 @@ jobs:
               print("\n".join(rep["blocking_issues"])); sys.exit(1)
           PY
 
+      - name: Validate committed example artifacts (output-validator)
+        run: python3 tools/validate_examples.py
+
       - name: Registry currency (informational drift report)
         run: python3 tools/registry_currency.py --summary || true
       # Phase A+: add eval smoke tests here (skill triggering + Quality Gates pass).
