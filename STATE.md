@@ -62,7 +62,11 @@ Policy: `CHANGE_MANAGEMENT.md` §7; each `MAINTAINER.md`/`tools/skill-maintenanc
 search) run concurrently, bounded, with a **single-threaded race-free merge**; sequential stays the
 default. Each fetcher owns backoff/jitter + honors `Retry-After`; a failed fetch degrades to a gap.
 Verified parallel == sequential output. Research-grounded (concurrent.futures fan-out, rate-limit
-backoff, map-reduce reducers).
+backoff, map-reduce reducers). **External parallel search:** `shared/traversal/parallel_search.py` adds a
+token-bucket `RateLimiter`, a graceful `parallel_map`, a `web_fetch_fetcher` (url seeds; requests +
+Retry-After/backoff, gap otherwise), and a `search_fetcher(search_fn)` that wraps an injected
+host/native search into a query→results→pages fan-out — same provenance/dedup/gaps/stops. Verified
+offline (rate limiting, graceful failure, query→url recursion under the parallel scheduler).
 **Provisioning & currency:** the suite now ships as a **Cowork plugin** (`.claude-plugin/plugin.json` +
 `marketplace.json` — install all skills in one step) and a generalized **registry-currency watcher**
 (`tools/registry_currency.py` + `registry-sources.json`/`registry-baselines.json`) flags drift in every

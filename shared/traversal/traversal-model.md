@@ -51,10 +51,22 @@ Stable field names so any skill can consume it: `objective`, `seed_manifest`, `e
 `confidence`, `handoff` (`what_this_pass_added`, `best_next_owner`), `human_review_required: true`.
 Schema: `traversal.schema.json`.
 
+## External searches (parallel, rate-limited)
+`shared/traversal/parallel_search.py` supplies the external-fan-out pieces, all plugging into the same
+scheduler: `RateLimiter` (token bucket — stay below provider limits), `parallel_map` (bounded fan-out;
+a failed item is a gap, not a crash), `web_fetch_fetcher` (a `url`-seed Fetcher using `requests` when
+present, honoring `Retry-After` + backoff; gap otherwise), and `search_fetcher(search_fn)` which wraps an
+**injected** search callable (the host AI's native web search, or a configured API — we build no search
+client) into a `query`-seed Fetcher that emits findings + `url` seeds for the next layer. So a query fans
+out to results, then to pages, concurrently — with the same provenance, dedup, gaps, and stop rules.
+
 ## Use
 ```bash
 python3 shared/traversal/traversal.py --objective "prepare for the IEP meeting" \
     --file skills/meeting-classifier/examples/sample-invite.ics \
     --file skills/meeting-classifier/examples/sample-meeting.vtt
+# external, concurrent + rate-limited:
+python3 shared/traversal/traversal.py --objective "FL grade-4 fractions standard" \
+    --url https://www.cpalms.org/... --scheduler parallel --rate 5
 ```
 Governance: offline, placeholders only in the repo, decision-support (a human owns the conclusion).

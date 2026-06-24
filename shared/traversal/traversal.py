@@ -244,13 +244,18 @@ def main(argv) -> int:
     ap = argparse.ArgumentParser(description="Accumulate evidence across multiple inputs via traversal (offline).")
     ap.add_argument("--objective", default="", help="what the traversal is trying to support")
     ap.add_argument("--file", action="append", dest="files", default=[], help="an input file seed (repeatable)")
+    ap.add_argument("--url", action="append", dest="urls", default=[], help="a public URL seed (repeatable)")
     ap.add_argument("--max-layers", type=int, default=DEFAULT_MAX_LAYERS)
     ap.add_argument("--scheduler", choices=["sequential", "parallel"], default="sequential",
                     help="parallel runs each layer's independent fetches concurrently (I/O-bound)")
     ap.add_argument("--max-workers", type=int, default=8)
+    ap.add_argument("--rate", type=float, default=5.0, help="max external fetches/sec (token bucket)")
     a = ap.parse_args(argv)
-    seeds = [Seed(seed_id=f"seed-{i}", seed_type="file", value=f) for i, f in enumerate(a.files, 1)]
-    state = run_traversal(a.objective, seeds, {"file": docintel_file_fetcher()}, max_layers=a.max_layers,
+    seeds = [Seed(seed_id=f"f-{i}", seed_type="file", value=f) for i, f in enumerate(a.files, 1)]
+    seeds += [Seed(seed_id=f"u-{i}", seed_type="url", value=u) for i, u in enumerate(a.urls, 1)]
+    from .parallel_search import RateLimiter, web_fetch_fetcher
+    fetchers = {"file": docintel_file_fetcher(), "url": web_fetch_fetcher(RateLimiter(a.rate))}
+    state = run_traversal(a.objective, seeds, fetchers, max_layers=a.max_layers,
                           scheduler=a.scheduler, max_workers=a.max_workers)
     env = to_envelope(state, best_next_owner=route_handoff(a.objective))
     print(json.dumps(env, indent=2, ensure_ascii=False))
