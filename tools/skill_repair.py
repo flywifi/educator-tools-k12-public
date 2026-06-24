@@ -24,7 +24,11 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "shared" / "health"))
 
 
-def _plan() -> list[dict]:
+def _plan(plan_path: str | None = None) -> list[dict]:
+    """Read the repair plan from a saved skill-health report (--plan) or compute it live."""
+    if plan_path:
+        data = json.loads(Path(plan_path).read_text(encoding="utf-8"))
+        return data.get("repair_plan", data if isinstance(data, list) else [])
     import health  # type: ignore
     return health.build_report().get("repair_plan", [])
 
@@ -37,9 +41,10 @@ def _run(cmd: list[str]) -> tuple[int, str]:
 def main(argv) -> int:
     ap = argparse.ArgumentParser(description="Apply an approved skill-health repair plan (minimally).")
     ap.add_argument("--apply", action="store_true", help="apply safe mechanical fixes (default: dry-run)")
+    ap.add_argument("--plan", metavar="PATH", help="read the plan from a saved skill-health report (--out)")
     a = ap.parse_args(argv)
 
-    plan = _plan()
+    plan = _plan(a.plan)
     mechanical = [s for s in plan if s.get("mechanical")]
     judgment = [s for s in plan if not s.get("mechanical")]
 

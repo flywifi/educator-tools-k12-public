@@ -247,6 +247,7 @@ def main(argv) -> int:
     ap.add_argument("--impact", metavar="SKILL", help="which ecosystem files must update for this skill")
     ap.add_argument("--capabilities", action="store_true", help="optional-dependency + font + cloud preflight")
     ap.add_argument("--traces", metavar="DIR", help="dir of saved decision records / observability traces")
+    ap.add_argument("--out", metavar="PATH", help="write the full JSON report (incl. repair_plan) to a file")
     a = ap.parse_args(argv)
     if a.capabilities:
         from capabilities import report as cap_report, to_summary as cap_summary  # type: ignore
@@ -258,7 +259,13 @@ def main(argv) -> int:
     elif a.summary:
         print(to_summary_md(build_report(a.traces)), end="")
     else:
-        print(json.dumps(build_report(a.traces), indent=2, ensure_ascii=False))
+        rep = build_report(a.traces)
+        if a.out:
+            __import__("pathlib").Path(a.out).write_text(json.dumps(rep, indent=2, ensure_ascii=False), encoding="utf-8")
+            print(f"wrote health report (readiness {rep['readiness_score']}/100, "
+                  f"{len(rep['repair_plan'])} repair step(s)) -> {a.out}")
+        else:
+            print(json.dumps(rep, indent=2, ensure_ascii=False))
     return 0
 
 
