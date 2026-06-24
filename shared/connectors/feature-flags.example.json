@@ -18,5 +18,6 @@
   "storage_adapter": "auto",
   "records_modules": ["gradebook"],
   "optional_deps": {"office_authoring": "allow", "transcription": "allow", "render_convert": "allow"},
-  "cloud_providers": {"azure": "not_installed", "fal": "not_installed", "nutrient": "not_installed", "firecrawl": "not_installed"}
+  "cloud_providers": {"azure": "not_installed", "fal": "not_installed", "nutrient": "not_installed", "firecrawl": "not_installed"},
+  "auto_rollback": false
 }
