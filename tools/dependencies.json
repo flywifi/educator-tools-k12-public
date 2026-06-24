@@ -46,6 +46,11 @@
     {"id": "cloud_web_crawl", "tier": "cloud_optional", "default": "off", "provider": "firecrawl",
       "beats_baseline": "managed JS-rendered web crawl/extract (handles SPAs the polite stdlib crawler reports as js_required)",
       "python": ["firecrawl"], "secrets": ["FIRECRAWL_API_KEY"],
-      "requirements": "tools/requirements-cloud.txt", "privacy": "moderate"}
+      "requirements": "tools/requirements-cloud.txt", "privacy": "moderate"},
+    {"id": "google_authoring", "tier": "cloud_optional", "default": "off", "provider": "google",
+      "beats_baseline": "produce advanced NATIVE Google Docs/Sheets/Slides (lossless import + Apps Script automation via shared/office/google_bridge.py)",
+      "python": [], "bins": ["node"], "node_packages": ["@google/clasp", "googleapis"],
+      "secrets": ["GOOGLE_APPLICATION_CREDENTIALS"], "requirements": null,
+      "privacy": "high — Drive/Workspace content; district opt-in; live calls via host-AI native Google integration or a deployment Node runner (no OAuth client built here)"}
   ]
 }

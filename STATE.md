@@ -65,6 +65,12 @@ A real gated `WhisperTranscriber` fills the audio/video contract. Supply chain: 
 `requirements-*.txt` + `.github/dependabot.yml` (auto-update) + `tools/security_scan.py` (pip-audit +
 bandit) as a CI gate; fonts = Noto + Liberation/Carlito/Caladea with a coverage check. Policy:
 `shared/health/dependency-policy.md`.
+**Authoring + universal read:** `shared/office/` produces real **.pptx/.docx/.xlsx** (python-pptx/docx/
+openpyxl + LibreOffice render) — wired into `presentation-builder` — and **Google Docs/Sheets/Slides**
+via `google_bridge.py` (lossless Office import + generated Apps Script; live calls go through the host's
+native Google integration or a deployment Node/clasp runner, no OAuth client built). docintel now reads
+**any file type**: typed parsers for known formats, legacy/ODF office via LibreOffice, and a never-fail
+universal fallback (text decode, else binary metadata/strings) so every input yields at least metadata.
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable
