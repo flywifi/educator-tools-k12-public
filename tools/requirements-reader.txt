@@ -1,0 +1,5 @@
+# Universal-reader booster (local_optional) — microsoft/markitdown: high-fidelity any-file -> markdown
+# (PDF/PPTX/DOCX/XLSX/images/audio/HTML/CSV/JSON/XML + zip iteration). Optional; the stdlib universal
+# fallback still reads everything without it. Version managed by .github/dependabot.yml; scanned by
+# tools/security_scan.py. https://github.com/microsoft/markitdown
+markitdown[all]

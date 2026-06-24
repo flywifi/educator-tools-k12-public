@@ -37,6 +37,8 @@ From the request (and conversation), determine:
 | walkthrough, implementation/monitoring plan | `school-administration` | available |
 | classify a meeting/invite + route it (faculty, observation, IEP/504, conference, MTSS, planning, PD, safety) | `meeting-classifier` | available |
 | diagnose/repair the ecosystem itself (skill + engine health, audit-trail diagnosis, impact analysis, repair plan) | `skill-health` | available |
+| validate one output before it ships (artifact schema/rules + document structure) | `output-validator` | available |
+| apply an approved repair plan minimally (mechanical fixes; judgment stays human) | `skill-repair` | available |
 
 ## 3. Routing rules
 - **Single best match:** route to the one skill whose artifact family fits. If a request bundles

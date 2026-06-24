@@ -20,6 +20,8 @@ is the readable companion.
 | walkthrough, implementation/monitoring plan | `school-administration` | available |
 | classify a meeting/invite + route it (observation, IEP/504, conference, MTSS, planning, PD, safety) | `meeting-classifier` | available |
 | diagnose/repair the ecosystem itself (skill + engine health, diagnosis, impact, repair plan) | `skill-health` | available |
+| validate one output before it ships (artifact + document structure) | `output-validator` | available |
+| apply an approved repair plan minimally (mechanical only; judgment stays human) | `skill-repair` | available |
 
 ## Rules
 - **Single best match** → that skill. **Bundled request** → sequence one skill per artifact, each

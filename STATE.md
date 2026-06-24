@@ -5,7 +5,7 @@ Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 
 **Last updated:** Phases 0–E delivered + Florida complete; **`document-intelligence` skill +
 `shared/docintel/` engine added** (full-framework skeleton: UDOM, parser-orchestration, governance,
-artifact, validation — runs end to end). 15 skills, 6 protocols, ledger, benchmark, packaging,
+artifact, validation — runs end to end). 17 skills, 6 protocols, ledger, benchmark, packaging,
 versioning, and the metrics dashboard. **Multi-constituency support added** (public/charter/private/
 home-ed): composable context **overlays** (`shared/context/overlays/`, `overlay.schema.json`),
 independent **framework registries + crosswalks** (`shared/standards/frameworks/`, `crosswalks/`,
@@ -48,6 +48,10 @@ plan (nothing high-stakes auto-applies). Adapted from the prior system's doctor 
 regression skills. Now also `tools/skill_repair.py` (guided apply of an approved plan — safe mechanical
 fixes only, dry-run by default) and `tools/validate_outputs.py` (validate a governed artifact vs its
 schema + a no-fabrication / no-real-PII rule catalog before it ships; promotes failures to regressions).
+**Split into small, robust skills (17th/18th — `output-validator`, `skill-repair`)** with thorough,
+spec-grounded references (a stdlib `tools/validate_document.py` catches OOXML/PDF/ODF corruption classes
+documented by the Open XML SDK + veraPDF; font coverage per Noto; reader booster microsoft/markitdown).
+Stdlib-first so they always run regardless of what the teacher has installed.
 **Provisioning & currency:** the suite now ships as a **Cowork plugin** (`.claude-plugin/plugin.json` +
 `marketplace.json` — install all skills in one step) and a generalized **registry-currency watcher**
 (`tools/registry_currency.py` + `registry-sources.json`/`registry-baselines.json`) flags drift in every
@@ -90,7 +94,7 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 | D — Repository Hardening | packaging, CI, catalog, security review, **versioning** (`VERSION`/`CHANGELOG`) | ✅ Complete (per-skill READMEs omitted — redundant with each `SKILL.md`) |
 | E — Advanced Architecture | analytics (`metrics.py`/`METRICS.md`), artifact registry, `DEPLOYMENT.md`, AI-systems doc | ✅ Largely complete (ontology can deepen later) |
 
-## Skill status (15 built)
+## Skill status (17 built)
 | Skill | Role | Status |
 |---|---|---|
 | `teacher-core` | hub / router | ✅ built |
@@ -108,6 +112,8 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 | `document-intelligence` | capability (document understanding; parser-independent, artifact-centric, governed) | ✅ built (skeleton) |
 | `meeting-classifier` | triage/router (classifies a teacher meeting + intent from context clues; connector-aware, PII/ePHI-aware; routes) | ✅ built |
 | `skill-health` | governance / maintenance (ecosystem readiness scan, audit-trail diagnosis, impact analysis, human-approved repair plan; engine `shared/health/`) | ✅ built |
+| `output-validator` | governance (validate one output before it ships: artifact schema/rules + document structure; engines `tools/validate_outputs.py` + `tools/validate_document.py`) | ✅ built |
+| `skill-repair` | governance (apply an approved repair plan minimally — mechanical only, judgment stays human; engine `tools/skill_repair.py`) | ✅ built |
 
 ## Document Intelligence engine (`shared/docintel/`)
 TOS-native platform: documents → governed knowledge assets (provenance/lineage/confidence/evidence).
@@ -171,7 +177,7 @@ Markdown, portable. First consumer: `meeting-classifier`.
   (enforced by the drift guard).
 
 ## Last drift-guard result
-`python3 tools/sync_check.py` → **PASS — 15 skills, 8 invariants, 2 synced refs; frontmatter +
+`python3 tools/sync_check.py` → **PASS — 17 skills, 8 invariants, 2 synced refs; frontmatter +
 resource integrity validated; `MAINTAINER.md` present in all skills.**
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
@@ -192,6 +198,6 @@ names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protoc
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
-Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 15 skills ·
-57 artifact types · 55 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
-protocols · 100% ledger approval (seed) · 15/15 skills emit `human_review_required`.
+Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 17 skills ·
+63 artifact types · 65 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
+protocols · 100% ledger approval (seed) · 17/17 skills emit `human_review_required`.

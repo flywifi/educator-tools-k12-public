@@ -33,7 +33,11 @@
     "document-intelligence": {"status": "available",
       "keywords": ["read this", "parse", "extract", "ocr", "open this file", "what's in this", "attachment", "transcript"]},
     "skill-health": {"status": "available",
-      "keywords": ["ecosystem health", "skill health", "audit the skills", "diagnose", "repair plan", "why did this skill fail", "readiness", "what needs updating"]}
+      "keywords": ["ecosystem health", "skill health", "audit the skills", "diagnose", "repair plan", "why did this skill fail", "readiness", "what needs updating"]},
+    "output-validator": {"status": "available",
+      "keywords": ["validate output", "is this valid", "check this file", "will this open", "lint the output", "validate artifact", "verify document", "validate the docx", "validate the pdf"]},
+    "skill-repair": {"status": "available",
+      "keywords": ["apply the repair plan", "fix the skill", "patch this skill", "run the approved fixes", "repair skill", "apply the fix"]}
   },
   "meeting_routes": {
     "parent_teacher_conference": "family-communication",
