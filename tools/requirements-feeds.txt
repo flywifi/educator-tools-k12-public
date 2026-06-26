@@ -1,0 +1,6 @@
+# Optional feed-parsing boosters (local_optional, on_if_present) for shared/feeds + tools/verify_feeds.py.
+# The engine is stdlib-first (xml.etree.ElementTree always works); these only make parsing faster and
+# more robust on messy feeds. Absent => stdlib fallback, reported as a capability gap, never faked.
+# Parser preference: fastfeedparser -> feedparser -> stdlib ElementTree.
+fastfeedparser>=0.3.0   # kagisearch — ~25x faster than feedparser, feedparser-compatible API (RSS/Atom/RDF)
+# feedparser is also honored if present (already listed in tools/requirements-scraper.txt).
