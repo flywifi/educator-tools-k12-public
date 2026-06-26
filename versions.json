@@ -19,7 +19,8 @@
     "meeting-classifier": "1.0.0",
     "skill-health": "1.0.0",
     "output-validator": "1.0.0",
-    "skill-repair": "1.0.0"
+    "skill-repair": "1.0.0",
+    "teacher-profile": "0.1.0"
   },
   "engines": {
     "docintel": "0.1.0",

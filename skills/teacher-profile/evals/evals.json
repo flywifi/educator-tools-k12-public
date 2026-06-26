@@ -1,0 +1,17 @@
+{
+  "skill_name": "teacher-profile",
+  "evals": [
+    {"id": "tp-demo-valid", "intent": "build a profile from the example and validate it",
+      "input": "python3 skills/teacher-profile/scripts/profile_wizard.py --demo",
+      "expect": "status profile_written; roles non-empty; gitignored true"},
+    {"id": "tp-missing-name-invalid", "intent": "a profile with no display_name / no roles is rejected",
+      "input": "answers with empty teacher.display_name and roles=[]",
+      "expect": "status invalid; issues include display_name and at least one role"},
+    {"id": "tp-register-fragment", "intent": "register emits a classroom sop_ref + overrides + role map",
+      "input": "python3 skills/teacher-profile/scripts/profile_wizard.py --register",
+      "expect": "sop_refs[0].scope == classroom; role_interaction_map present; human_review_required true"},
+    {"id": "tp-handoff-shape", "intent": "a handoff missing counterparty_role fails validation",
+      "input": "answers with a handoff lacking counterparty_role",
+      "expect": "status invalid; issues include handoff[..] missing counterparty_role"}
+  ]
+}

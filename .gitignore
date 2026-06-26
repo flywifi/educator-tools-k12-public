@@ -17,6 +17,10 @@ shared/records/records.local.json
 shared/records/local/
 *.records.local.json
 
+# TOS: teacher operating profiles — the teacher's own data; only teacher.example.json is committed
+shared/context/profiles/teacher.local.json
+shared/context/profiles/*.local.json
+
 # TOS: cloud-provider API keys / secrets — env only, NEVER commit (see shared/health/dependency-policy.md)
 .env
 *.env
