@@ -54,10 +54,13 @@ Schema: `traversal.schema.json`.
 ## External searches (parallel, rate-limited)
 `shared/traversal/parallel_search.py` supplies the external-fan-out pieces, all plugging into the same
 scheduler: `RateLimiter` (token bucket — stay below provider limits), `parallel_map` (bounded fan-out;
-a failed item is a gap, not a crash), `web_fetch_fetcher` (a `url`-seed Fetcher using `requests` when
-present, honoring `Retry-After` + backoff; gap otherwise), and `search_fetcher(search_fn)` which wraps an
-**injected** search callable (the host AI's native web search, or a configured API — we build no search
-client) into a `query`-seed Fetcher that emits findings + `url` seeds for the next layer. So a query fans
+a failed item is a gap, not a crash), `web_fetch_fetcher` (a `url`-seed Fetcher that **prefers Firecrawl
+when configured** — `firecrawl_config()` auto-detects `FIRECRAWL_API_KEY` or a self-host
+`FIRECRAWL_BASE_URL`, so JS-rendered district pages work with no per-use setup — else a polite `requests`
+GET honoring `Retry-After` + backoff; gap otherwise), `rss_fetcher` (a `feed`-seed Fetcher for RSS/Atom,
+`feedparser` or stdlib fallback), and `search_fetcher(search_fn)` which wraps an **injected** search
+callable (the host AI's native web search, or a configured API — we build no search client) into a
+`query`-seed Fetcher that emits findings + `url` seeds for the next layer. So a query fans
 out to results, then to pages, concurrently — with the same provenance, dedup, gaps, and stop rules.
 
 ## Use

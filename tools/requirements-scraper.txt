@@ -4,6 +4,7 @@
 requests>=2.31.0
 beautifulsoup4>=4.12.0
 lxml>=4.9.0
+feedparser>=6.0.0   # RSS/Atom parsing for the source-currency engine (stdlib fallback if absent)
 # JS-rendered SPA pages only (e.g., CPALMS search) — install one if needed:
 # selenium>=4.15.0
 # playwright>=1.40.0
