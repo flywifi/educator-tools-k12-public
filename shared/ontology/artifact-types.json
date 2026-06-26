@@ -18,6 +18,7 @@
     "meeting-classifier": ["meeting-classification-record", "routing-recommendation", "handoff-packet"],
     "skill-health": ["health-report", "diagnosis", "repair-plan"],
     "output-validator": ["artifact-validation-report", "document-structural-report", "promoted-regression-case"],
-    "skill-repair": ["proposed-changes-summary", "applied-repair-record", "validation-results"]
+    "skill-repair": ["proposed-changes-summary", "applied-repair-record", "validation-results"],
+    "teacher-profile": ["teacher-operating-profile", "context-registration-fragment"]
   }
 }

@@ -1,0 +1,48 @@
+{
+  "_comment": "EXAMPLE teacher profile (placeholders only — committed to show the shape). A real profile lives in teacher.local.json (GITIGNORED). Generated/maintained by the teacher-profile skill's wizard; registered into shared/context as classroom/teacher-scope sop_refs + overrides. No real PII.",
+  "schema_version": "0.1.0",
+  "teacher": {
+    "display_name": "EXAMPLE Teacher",
+    "school_msid": "480002",
+    "school_name": "EXAMPLE Magnet Middle School",
+    "district": "Orange",
+    "contact_local_only": null
+  },
+  "roles": [
+    {"role": "Classroom Teacher", "subject": "Science", "grade": "7", "primary": true,
+      "provenance": "teacher_stated", "confidence": "high"},
+    {"role": "MTSS Lead", "department": "Student Services", "primary": false,
+      "provenance": "teacher_stated", "confidence": "high"}
+  ],
+  "duties": [
+    {"duty": "Teach 5 sections of 7th-grade science", "cadence": "daily", "workload": "~150 students",
+      "provenance": "teacher_stated", "confidence": "high"},
+    {"duty": "Chair the grade-level MTSS data meetings", "cadence": "biweekly",
+      "provenance": "teacher_stated", "confidence": "high"}
+  ],
+  "handoffs": [
+    {"what": "IEP accommodation needs for shared students", "direction": "to",
+      "counterparty_role": "case_manager", "trigger": "new IEP or revision", "cadence": "as needed",
+      "notes": "case manager owns the IEP; I implement classroom accommodations"},
+    {"what": "Tier 2/3 referral packets", "direction": "to", "counterparty_role": "assistant_principal",
+      "trigger": "data meeting decision", "cadence": "biweekly", "notes": null},
+    {"what": "Attendance/behavior concerns", "direction": "to", "counterparty_role": "counselor",
+      "trigger": "threshold reached", "cadence": "as needed", "notes": null}
+  ],
+  "meetings": [
+    {"name": "Science PLC", "cadence": "weekly", "role_in_meeting": "member"},
+    {"name": "MTSS data meeting", "cadence": "biweekly", "role_in_meeting": "chair"}
+  ],
+  "preferences": {
+    "tone": "warm but concise",
+    "lesson_template": "5E model",
+    "communication_rules": "no contact home after 5pm; CC the AP on disciplinary emails",
+    "pacing_norm": "follow the district science scope & sequence"
+  },
+  "overrides": [
+    {"instruction": "Default family-communication letters to a 6th-grade reading level",
+      "by": "teacher", "timestamp": "2026-06-26T00:00:00Z"}
+  ],
+  "updated": "2026-06-26",
+  "human_review_required": true
+}
