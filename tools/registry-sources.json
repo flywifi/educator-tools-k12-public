@@ -38,6 +38,9 @@
       "note": "external source list for the OCPS schools index; source_currency watches the live sources"},
     {"id": "schools-ocps", "path": "shared/schools/ocps/schools.json", "class": "primary_external",
       "authority": "FLDOE MSID (school list/status) + OCPS School Choice (magnet/choice programs)",
-      "note": "public non-PII school+program index; schools open/close regularly — verify against MSID, re-baseline"}
+      "note": "public non-PII school+program index; schools open/close regularly — verify against MSID, re-baseline"},
+    {"id": "feeds-catalog", "path": "shared/feeds/feeds.json", "class": "internal_registry",
+      "authority": "the feed self-update catalog (L7); curated by the seed-curator (L8, tools/seed_curator.py)",
+      "note": "watches the feeds catalog file itself drifting; source_currency/seed_curator watch the live feeds. Catalog changes are logged to ledger/feeds-change-log.json"}
   ]
 }

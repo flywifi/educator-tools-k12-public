@@ -66,6 +66,10 @@
     {"id": "local_semantic", "tier": "local_optional", "default": "off",
       "beats_baseline": "opt-in OFFLINE semantic recall over the L1 standards cache via sqlite-vec (paraphrase matches that keyword search misses); embeddings computed locally once and reused. Activated only with teacher consent (teacher-profile local_first.consents.local_semantic). Absent or declined => graceful fallback to L1 keyword search, reported as a gap — never faked. No data leaves the machine.",
       "python": ["sqlite_vec"], "bins": [], "requirements": "tools/requirements-semantic.txt",
-      "privacy": "low — local-only; vectors derived from PUBLIC standards text, no student data"}
+      "privacy": "low — local-only; vectors derived from PUBLIC standards text, no student data"},
+    {"id": "local_feeds", "tier": "builtin", "default": "on",
+      "beats_baseline": "self-update from a tiered catalog of trusted education feeds (shared/feeds): polite conditional GET (304-skip), dedupe, local SQLite store, zero-token 'what's new' digest (tools/feeds_update.py); curated by the seed-curator (tools/seed_curator.py). stdlib-only; the optional 'read_feeds' (feedparser) capability just makes parsing nicer.",
+      "python": [], "bins": [], "requirements": null,
+      "privacy": "low — public feed content only; advisory + human-reviewed; no student data"}
   ]
 }
