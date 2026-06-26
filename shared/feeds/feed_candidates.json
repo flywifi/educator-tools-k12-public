@@ -1,0 +1,51 @@
+{
+  "_comment": "Candidate feeds to VERIFY with tools/verify_feeds.py where the internet is open (the build container's egress is blocked). URLs are best-known leads (round 1 of discovery) — NOT yet confirmed feeds. Each carries the labels the catalog needs; verify_feeds.py fetches each, autodiscovers the RSS link if it's a page, parses it, and emits a verified catalog entry (or marks it unverified with a reason). Nothing here is assumed live.",
+  "feeds": [
+    {"id": "ed-gov-news", "url": "https://www.ed.gov/feed",
+      "label": "U.S. Dept of Education — news", "category": "program", "authority": "secondary",
+      "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": null,
+      "cadence_days": 7, "purpose": "federal education policy/funding news affecting teachers and students",
+      "discover_from": "https://www.ed.gov/"},
+
+    {"id": "fl-senate-calendars", "url": "https://www.flsenate.gov/PublishedContent/RSS/Calendars.xml",
+      "label": "Florida Senate — calendars", "category": "legislation", "authority": "primary",
+      "tier": "canonical", "scope": "state", "grade_band": "K-12", "subject": null,
+      "cadence_days": 7, "purpose": "Florida Senate calendar/legislation feed (education bills, Title XLVIII)",
+      "discover_from": "https://www.flsenate.gov/Tracker/RSS/"},
+
+    {"id": "fldoe-news", "url": "https://www.fldoe.org/newsroom/",
+      "label": "Florida DOE — newsroom", "category": "program", "authority": "primary",
+      "tier": "canonical", "scope": "state", "grade_band": "K-12", "subject": null,
+      "cadence_days": 7, "purpose": "Florida DOE program/policy announcements (state canonical source)",
+      "discover_from": "https://www.fldoe.org/newsroom/",
+      "_hint": "page; autodiscover RSS, else check FLDOE GovDelivery topics for an RSS endpoint"},
+
+    {"id": "cpalms-updates", "url": "https://www.cpalms.org/",
+      "label": "CPALMS — updates", "category": "standards", "authority": "primary",
+      "tier": "canonical", "scope": "state", "grade_band": "K-12", "subject": null,
+      "cadence_days": 30, "purpose": "Florida B.E.S.T./NGSSS standards repository updates",
+      "discover_from": "https://www.cpalms.org/",
+      "_hint": "page; autodiscover RSS, else likely a JSON API — provide the feed/API URL directly"},
+
+    {"id": "wida-news", "url": "https://wida.wisc.edu/news/feed",
+      "label": "WIDA — news", "category": "standards", "authority": "primary",
+      "tier": "canonical", "scope": "national", "grade_band": "K-12", "subject": "ELD",
+      "cadence_days": 30, "purpose": "WIDA English-language-development standards + assessment news",
+      "discover_from": "https://wida.wisc.edu/news",
+      "_hint": "Drupal; try /news/feed or /rss.xml"},
+
+    {"id": "ocps-news", "url": "https://www.ocps.net/departments/media_relations/newsroom",
+      "label": "Orange County Public Schools — newsroom", "category": "news", "authority": "primary",
+      "tier": "canonical", "scope": "district", "grade_band": "K-12", "subject": null,
+      "cadence_days": 7, "purpose": "OCPS (district 48, Orange County FL) official district news affecting teachers and students",
+      "discover_from": "https://www.ocps.net/departments/media_relations/newsroom",
+      "_hint": "Finalsite; autodiscover the RSS <link>, else try a /site/RSS URL found in the page source"},
+
+    {"id": "monarch-news", "url": "https://www.monarchlearningacademy.com/",
+      "label": "Monarch Learning Academy — school news", "category": "news", "authority": "secondary",
+      "tier": "news_teacher_student", "scope": "school", "grade_band": "PK-8", "subject": null,
+      "cadence_days": 14, "purpose": "Monarch Learning Academy (private PK-8 Christian, College Park/Orlando FL) school news/calendar",
+      "discover_from": "https://www.monarchlearningacademy.com/",
+      "_hint": "FACTS/ParentsWeb site; likely no RSS — check for an .ics/iCal calendar export instead"}
+  ]
+}
