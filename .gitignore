@@ -29,6 +29,7 @@ shared/staff/local/
 # TOS: Local-First cache (L1) — regenerable build artifact (SQLite index); rebuild with cache.py --build
 shared/cache/*.local.db
 shared/cache/local/
+shared/cache/semantic.local.db
 
 # TOS: cloud-provider API keys / secrets — env only, NEVER commit (see shared/health/dependency-policy.md)
 .env
