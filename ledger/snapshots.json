@@ -1,0 +1,15 @@
+{
+  "_comment": "Durable known-good ECOSYSTEM snapshots — the 'saved versions' that tools/rollback.py restores to (whole-tree, per the approved plan). Each snapshot is anchored on a COMMIT SHA, not a git tag: in this managed environment write access is ref-scoped to the feature branch, so tag pushes are rejected by egress policy (HTTP 403) and would not survive the ephemeral container. Commit SHAs DO ride along with the branch push, so they are the durable anchor. 'local_tag' is a convenience label that may exist only locally. Record a snapshot with `python3 tools/rollback.py --record --label '...'`; restore with `python3 tools/rollback.py --to <id|commit|tag>`.",
+  "version": "0.1.0",
+  "snapshots": [
+    {
+      "id": "F1",
+      "commit": "909e7d4d8ec8207bf7ee9ef0edb7909cc160e82d",
+      "label": "F1: firecrawl always-on + RSS fetcher + whole-ecosystem rollback (shell)",
+      "reason": "phase F1 known-good: traversal firecrawl/RSS/--feed verified; drift guard clean (17 skills)",
+      "timestamp": "2026-06-26T04:41:26Z",
+      "drift_guard": "pass",
+      "local_tag": "snapshot-f1"
+    }
+  ]
+}
