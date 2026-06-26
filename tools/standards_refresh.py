@@ -134,7 +134,7 @@ class Fetcher:
                 return 0, b"", "", {}
         req = urllib.request.Request(url, headers=headers)
         try:
-            with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+            with urllib.request.urlopen(req, timeout=self.timeout) as resp:  # nosec B310
                 return resp.status, resp.read(), resp.headers.get("Content-Type", ""), dict(resp.headers)
         except urllib.error.HTTPError as e:
             return e.code, b"", "", dict(getattr(e, "headers", {}) or {})

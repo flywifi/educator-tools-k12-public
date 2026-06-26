@@ -100,7 +100,7 @@ def _conditional_get(url: str, etag: str | None, last_modified: str | None, time
             return 0, b"", {}
     req = urllib.request.Request(url, headers=headers)
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:  # nosec B310
             return resp.status, resp.read(), {k.lower(): v for k, v in resp.headers.items()}
     except urllib.error.HTTPError as e:
         return e.code, b"", {k.lower(): v for k, v in dict(getattr(e, "headers", {}) or {}).items()}
