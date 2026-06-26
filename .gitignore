@@ -21,6 +21,11 @@ shared/records/local/
 shared/context/profiles/teacher.local.json
 shared/context/profiles/*.local.json
 
+# TOS: staff directory — staff personal data; only staff.example.json is committed (gated, authorized-first)
+shared/staff/staff.local.json
+shared/staff/local/
+*.staff.local.json
+
 # TOS: cloud-provider API keys / secrets — env only, NEVER commit (see shared/health/dependency-policy.md)
 .env
 *.env
