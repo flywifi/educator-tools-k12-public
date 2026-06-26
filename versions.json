@@ -35,6 +35,7 @@
     "standards": "0.1.0",
     "sources": "0.1.0",
     "schools": "0.1.0",
-    "staff": "0.1.0"
+    "staff": "0.1.0",
+    "graph": "0.1.0"
   }
 }
