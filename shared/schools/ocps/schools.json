@@ -1,0 +1,43 @@
+{
+  "_comment": "Orange County Public Schools (OCPS) school + program index. SEED ONLY — a small representative sample of public, NON-PII school facts to exercise the engine. The full ~200-school index must be populated from the FLDOE MSID (Master School Identification) file + the OCPS magnet/choice site by tools/standards_refresh.py / the traversal crawler (firecrawl handles the JS-rendered OCPS pages). Open/close + program changes are monitored by tools/source_currency.py via shared/sources/ocps-schools.json. NEVER add student or unconsented staff PII here. Each record's `verified` date + `source` make provenance auditable; values below are placeholders/representative and must be verified against the authority before any reliance.",
+  "district_name": "Orange County Public Schools",
+  "district_number": "48",
+  "snapshot": "2026-27",
+  "generated": "2026-06-26",
+  "completeness": "seed",
+  "authority": {
+    "school_list": "https://www.fldoe.org/accountability/data-sys/school-fin-data/master-school-id-files.stml",
+    "magnet_choice": "https://www.ocps.net/departments/school_choice",
+    "note": "MSID is canonical for the school list + open/closed status; OCPS School Choice is canonical for magnet/choice programs."
+  },
+  "schools": [
+    {"msid": "480001", "district_number": "48", "district_name": "Orange",
+      "school_name": "EXAMPLE Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
+      "locale": "Orlando", "programs": [], "source": "FLDOE MSID (to verify)", "verified": null},
+    {"msid": "480002", "district_number": "48", "district_name": "Orange",
+      "school_name": "EXAMPLE Magnet Middle School", "type": "magnet", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
+      "locale": "Orlando",
+      "programs": [
+        {"program_name": "STEM Magnet", "program_type": "magnet", "focus": "STEM",
+          "grades": "6-8", "application_required": true, "status": "active",
+          "source": "OCPS School Choice (to verify)"}
+      ],
+      "source": "FLDOE MSID (to verify)", "verified": null},
+    {"msid": "480003", "district_number": "48", "district_name": "Orange",
+      "school_name": "EXAMPLE High School", "type": "combination", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
+      "locale": "Orlando",
+      "programs": [
+        {"program_name": "International Baccalaureate", "program_type": "ib", "focus": "IB Diploma",
+          "grades": "11-12", "application_required": true, "status": "active",
+          "source": "OCPS School Choice (to verify)"}
+      ],
+      "source": "FLDOE MSID (to verify)", "verified": null},
+    {"msid": "480099", "district_number": "48", "district_name": "Orange",
+      "school_name": "EXAMPLE Consolidated School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "closed", "status_effective": "2025-06-01", "charter": false,
+      "locale": "Orlando", "programs": [], "source": "FLDOE MSID (to verify)", "verified": null}
+  ]
+}

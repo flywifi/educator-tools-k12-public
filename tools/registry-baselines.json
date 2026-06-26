@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T04:48:07.137865+00:00",
+  "updated": "2026-06-26T04:51:08.661579+00:00",
   "hashes": {
     "connectors": "e7946785cef639dd24a22bbd4063cf141bc9c2f59731bfb4aeb1fc049e767494",
     "grade-scales": "2c4afb04ed309f1ead8e2315a50e66762aeb25e19e28996ac47fe7b97dd06fbe",
@@ -10,7 +10,9 @@
     "records-catalog": "020d8435984fdb5f88943941f0398e0e4f0bff4903a6c9b32aa8593dffb8954e",
     "plugin-manifest": "2dad9c40e509b263a798e6667aea0384f8f0142369080f54620d98613c9a7cc5",
     "dependencies": "69635113231ed2a64e910608cb88aac230e6d34841522ebd4ee64b126d3e9136",
-    "versions": "04002ca2882f939f8390dc597257e8e8af32080568c40860bc9dcd6a70d6e3ae",
-    "source-registry-florida": "992f12a35db4e75298447a723b33fc3a1c480da17cfb9f245ddebb82b1b26689"
+    "versions": "bd025db55097a05aaee27ff966c1eb2c9640c08a03c7290ced92d8725ec934a9",
+    "source-registry-florida": "992f12a35db4e75298447a723b33fc3a1c480da17cfb9f245ddebb82b1b26689",
+    "source-registry-ocps-schools": "5157f592ac1d7288c572bdafa6cb962b97cb17f72df515d0537e71a3b750a717",
+    "schools-ocps": "258c645d4c6595b62b7d0b2777e75f06fb9bb9027650cba664c3d6138dd1a45a"
   }
 }
