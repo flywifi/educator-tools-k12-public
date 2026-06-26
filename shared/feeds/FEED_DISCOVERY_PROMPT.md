@@ -1,9 +1,29 @@
-# Feed-discovery prompt (give this to a web-enabled AI chatbot)
+# Feed-discovery prompt — Option B (give this to a web-enabled AI chatbot)
 
-Paste everything in the fenced block below into a chatbot that can browse the live web.
-Paste its JSON answer back to the TOS assistant; it drops straight into `shared/feeds/feeds.json`.
+This is the **current** verification method (see `skills/feed-curator/references/verification-methods.md`).
+Browser tools usually can't read raw `.xml`, so this prompt fetches each feed **through a reader-proxy**
+(`https://r.jina.ai/<URL>`) that renders XML as text. Paste the fenced block below into a web-enabled
+chatbot, then paste its JSON answer back to the TOS assistant; it drops into `shared/feeds/feeds.json`.
 
 ```
+You have web access. Verify each candidate RSS/Atom feed below. Browser tools can't read raw
+XML, so fetch each feed THROUGH THE READER PROXY by prepending https://r.jina.ai/ to the URL,
+e.g.  https://r.jina.ai/https://www.ed.gov/feed
+A feed is VERIFIED only if the proxied content shows real items (titles/links/dates). Do NOT
+guess — if it doesn't render as a feed, mark it unverified with what you saw. If a URL is a
+normal web page, fetch https://r.jina.ai/<page> first, find its RSS/Atom link, then verify that.
+
+Candidates (id : url):
+- ed-gov-news : https://www.ed.gov/feed
+- fl-senate-calendars : https://www.flsenate.gov/PublishedContent/RSS/Calendars.xml
+- fldoe-news : https://www.fldoe.org/newsroom/        (page — find its feed link)
+- cpalms-updates : https://www.cpalms.org/             (page — find its feed/API)
+- wida-news : https://wida.wisc.edu/news/feed
+- ocps-news : https://www.ocps.net/departments/media_relations/newsroom  (Finalsite page — find /site/RSS link)
+- monarch-news : https://www.monarchlearningacademy.com/  (FACTS site — likely iCal, not RSS)
+
+(Original discovery prompt, for finding NEW feeds beyond the candidates, follows below.)
+
 You are a feed-discovery assistant with live web access. Find REAL, WORKING RSS or Atom
 feeds for K-12 education sources and return them as JSON in the exact schema below.
 
