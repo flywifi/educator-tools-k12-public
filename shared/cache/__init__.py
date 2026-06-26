@@ -7,9 +7,10 @@ Canonical docs: README.md.
 """
 from .cache import (
     build,
+    drift_report,
     query,
     stats,
     verify,
 )
 
-__all__ = ["build", "query", "stats", "verify"]
+__all__ = ["build", "query", "stats", "verify", "drift_report"]

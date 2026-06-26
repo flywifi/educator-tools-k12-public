@@ -218,15 +218,15 @@ def stats() -> int:
     return 0
 
 
-def verify() -> int:
+def drift_report() -> dict:
     """Compare current source files against the baseline recorded at build time.
 
-    Reports added / removed / changed / current so a later sync (L3) can rebuild
-    only what moved. Never re-baselines on its own.
+    Returns {"built": bool, "stale": bool, changed/removed/added/current lists} so the
+    sync orchestrator (L3) can rebuild only what moved. Never re-baselines on its own.
     """
     if not DB.exists():
-        print("index not built — run: python3 shared/cache/cache.py --build", file=sys.stderr)
-        return 1
+        return {"built": False, "stale": True, "changed": [], "removed": [], "added": [],
+                "current": [], "note": "index not built — run cache.py --build"}
     conn = sqlite3.connect(DB)
     try:
         baselines = _meta(conn, "baselines") or {}
@@ -245,8 +245,13 @@ def verify() -> int:
         if name not in baselines:
             report["added"].append(name)
     drift = bool(report["changed"] or report["removed"] or report["added"])
-    print(json.dumps({"stale": drift, **report}, indent=2))
-    return 1 if drift else 0
+    return {"built": True, "stale": drift, **report}
+
+
+def verify() -> int:
+    rep = drift_report()
+    print(json.dumps(rep, indent=2))
+    return 1 if rep["stale"] else 0
 
 
 def _print_human(rows: list[dict]) -> None:
