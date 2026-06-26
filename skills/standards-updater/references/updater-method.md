@@ -73,10 +73,23 @@ Detection finds *what moved*; this turns it into *what matters*. The policy is c
    the catalog, `STATE.md`, `CHANGELOG.md`.
 6. **Gate + record:** `quality-review` + an update record with `human_review_required: true`.
 
+## Staleness monitoring (`tools/source_currency.py`)
+The crawler above finds NEW/CHANGED files; the source-currency engine is its complement — it watches the
+authoritative *web sources* for going stale, moving, being superseded, or disappearing:
+`python3 tools/source_currency.py --summary` classifies each watched source in
+`shared/sources/<domain>.json` as `current · changed · superseded · removed_404 · stale_age ·
+unreachable · uncertain` (conditional GET + content sha256 + supersession sentinel keywords +
+recency/effective-date + a 404 sweep), and emits a stale-source list with a reason + recommended action.
+It degrades to age-only triage offline and **never fabricates** a change — every standards/legal/program
+change stays advisory until verified on the PRIMARY source. After a human approves, record new baselines
+with `--update-baselines --domain <domain>`. (Internal drift of the source list itself is watched by
+`tools/registry_currency.py`.)
+
 ## Cadence
 Run before a new school year and when a source announces revisions (e.g., Florida's standalone CS
 standards). The standards *content* changes rarely; assessment fact sheets/schedules change yearly —
-the live FLDOE/CPALMS pages always hold the newest.
+the live FLDOE/CPALMS pages always hold the newest. Run `source_currency.py` on a regular cadence (e.g.,
+monthly) to catch sources that quietly go stale or disappear between school-year refreshes.
 
 ## Failure handling (`protocols/failure-recovery.md`)
 If a source is unreachable, JS-gated, or robots-disallowed: **report it and stop** for that source —
