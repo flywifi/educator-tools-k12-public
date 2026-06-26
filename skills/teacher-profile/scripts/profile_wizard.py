@@ -138,9 +138,13 @@ def register_fragment(prof: dict) -> dict:
 OFFLINE_TIERS = ["cached_python", "local_semantic", "local_llm"]
 RETRIEVAL_MODES = ["stdlib_keyword", "vector"]
 LOCAL_MODELS = ["off", "ollama", "llamafile"]
+FEED_UPDATE_MODES = ["manual", "on_session_start", "scheduled"]
 # choice -> consent capability it requires (None = no consent needed; always safe + offline)
 _TIER_CONSENT = {"cached_python": None, "local_semantic": "local_semantic", "local_llm": "local_llm"}
 _MODE_CONSENT = {"stdlib_keyword": None, "vector": "local_semantic"}
+# Feed self-update cadence default DERIVED from the offline tier (separately overridable, L7).
+_TIER_FEED_DEFAULT = {"cached_python": "manual", "local_semantic": "on_session_start",
+                      "local_llm": "on_session_start"}
 
 
 def default_prefs() -> dict:
@@ -149,6 +153,8 @@ def default_prefs() -> dict:
         "offline_tier": "cached_python",
         "retrieval_mode": "stdlib_keyword",
         "local_model": "off",
+        "feed_update_mode": "manual",          # L7 trigger; default derived from offline_tier
+        "feed_update_mode_source": "derived",  # "derived" follows the tier; "explicit" is teacher-pinned
         "consents": {},                # capability_id -> {"granted": bool, "at": iso}
         "school_scope": None,          # {"school":..., "msid":...} — re-pointed on a school change
         "provenance": "teacher_stated",
@@ -196,6 +202,21 @@ def apply_prefs(prefs: dict, updates: dict) -> list[str]:
             warnings.append(f"local_model '{lm}' invalid (choose {LOCAL_MODELS}) — unchanged")
         else:
             prefs["local_model"] = lm
+    # Feed-update cadence (L7): an explicit set pins it; otherwise it follows the offline tier.
+    if "feed_update_mode" in updates:
+        fm = updates["feed_update_mode"]
+        if fm not in FEED_UPDATE_MODES:
+            warnings.append(f"feed_update_mode '{fm}' invalid (choose {FEED_UPDATE_MODES}) — unchanged")
+        else:
+            prefs["feed_update_mode"] = fm
+            prefs["feed_update_mode_source"] = "explicit"
+    elif "offline_tier" in updates and prefs.get("feed_update_mode_source") != "explicit":
+        # tier changed and the teacher hasn't pinned the cadence — derive the sensible default
+        derived = _TIER_FEED_DEFAULT.get(prefs["offline_tier"], "manual")
+        if derived != prefs.get("feed_update_mode"):
+            prefs["feed_update_mode"] = derived
+            warnings.append(f"feed_update_mode derived '{derived}' from offline_tier "
+                            f"'{prefs['offline_tier']}' (override with --set '{{\"feed_update_mode\":...}}')")
     # Coherence: a local_llm tier with no model selected is inert — flag it, don't silently fix.
     if prefs["offline_tier"] == "local_llm" and prefs["local_model"] == "off":
         warnings.append("offline_tier 'local_llm' selected but local_model is 'off' — "
@@ -214,6 +235,8 @@ def revoke_consent(prefs: dict, cap: str) -> list[str]:
     if _TIER_CONSENT.get(prefs.get("offline_tier")) == cap:
         prefs["offline_tier"] = "cached_python"
         notes.append(f"offline_tier rolled back to 'cached_python' (consent '{cap}' revoked)")
+        if prefs.get("feed_update_mode_source") != "explicit":
+            prefs["feed_update_mode"] = _TIER_FEED_DEFAULT["cached_python"]
     if _MODE_CONSENT.get(prefs.get("retrieval_mode")) == cap:
         prefs["retrieval_mode"] = "stdlib_keyword"
         notes.append(f"retrieval_mode rolled back to 'stdlib_keyword' (consent '{cap}' revoked)")
