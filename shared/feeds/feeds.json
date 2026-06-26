@@ -1,7 +1,7 @@
 {
-  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Every feed is notated with category/authority/tier/purpose so the updater can prioritize and the curator (L8) can keep it accurate. URLs marked verified:false are SEED CANDIDATES pending curator validation (tools/seed_curator.py) — never assume an unverified URL is live or correct. Standards/program changes are advisory + human-verified; nothing is fabricated.",
+  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Every feed is notated with category/authority/tier/purpose so the updater can prioritize and the curator (L8, tools/seed_curator.py) can keep it accurate. URLs marked verified:false are confirmed PAGE URLs whose RSS/Atom endpoint must be discovered + human-approved (seed_curator.py --discover-from) — type:page entries are discovery targets, not yet harvestable, and no RSS endpoint is ever fabricated. Standards/program changes are advisory + human-verified.",
   "domain": "education-feeds",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "updated": "2026-06-26",
   "freshness_policy": {
     "stale_age_days": 365,
@@ -11,17 +11,28 @@
     "product_updates": {"enabled": false, "note": "edtech/vendor product-update feeds — OFF unless a teacher opts in"}
   },
   "feeds": [
-    {"id": "usde-press", "url": "https://www.ed.gov/feed", "label": "U.S. Dept of Education — news",
-      "category": "program", "authority": "secondary", "tier": "news_teacher_student",
-      "purpose": "federal education policy/funding news that affects teachers and students",
-      "grade_band": "K-12", "subject": null, "scope": "national", "type": "feed", "parser": "rss",
-      "cadence_days": 7, "verified": false,
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}},
     {"id": "fldoe-news", "url": "https://www.fldoe.org/newsroom/", "label": "Florida DOE — newsroom",
       "category": "program", "authority": "primary", "tier": "canonical",
-      "purpose": "Florida DOE program/policy announcements (newsroom may need an RSS link the curator discovers)",
-      "grade_band": "K-12", "subject": null, "scope": "state", "type": "feed", "parser": "rss",
+      "purpose": "Florida DOE program/policy announcements (state canonical source)",
+      "grade_band": "K-12", "subject": null, "scope": "state", "type": "page", "parser": "rss",
+      "cadence_days": 7, "verified": false, "discover_from": "https://www.fldoe.org/newsroom/",
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}},
+    {"id": "ocps-news", "url": "https://www.ocps.net/departments/media_relations/newsroom",
+      "label": "Orange County Public Schools — newsroom",
+      "category": "news", "authority": "primary", "tier": "canonical",
+      "purpose": "OCPS (district 48, Orange County FL) official district news/announcements affecting teachers and students",
+      "grade_band": "K-12", "subject": null, "scope": "district", "type": "page", "parser": "rss",
       "cadence_days": 7, "verified": false,
+      "discover_from": "https://www.ocps.net/departments/media_relations/newsroom",
+      "note": "Finalsite site; RSS endpoint to be discovered + human-approved before harvest",
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}},
+    {"id": "monarch-news", "url": "https://www.monarchlearningacademy.com/",
+      "label": "Monarch Learning Academy — school news",
+      "category": "news", "authority": "secondary", "tier": "news_teacher_student",
+      "purpose": "Monarch Learning Academy (private PK-8 Christian school, College Park / Orlando FL, 1914 Edgewater Dr) school news and calendar — first private-school example",
+      "grade_band": "PK-8", "subject": null, "scope": "school", "type": "page", "parser": "rss",
+      "cadence_days": 14, "verified": false, "discover_from": "https://www.monarchlearningacademy.com/",
+      "note": "private school; secondary authority — never a canonical change. RSS/calendar feed to be discovered + human-approved",
       "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}}
   ]
 }

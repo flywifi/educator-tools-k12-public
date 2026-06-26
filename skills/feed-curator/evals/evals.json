@@ -1,0 +1,40 @@
+{
+  "skill_name": "feed-curator",
+  "_note": "Declarative regression cases for the seed curator (tools/seed_curator.py) over shared/feeds/feeds.json. Real-world scope uses OCPS (public) and Monarch Learning Academy (private). No real student data — feed metadata is public.",
+  "evals": [
+    {
+      "name": "validate_reports_state_and_labels",
+      "command": "python3 tools/seed_curator.py --validate --offline",
+      "assert": {"has": ["feeds", "state_counts", "reports"], "human_review_required": true,
+                 "each_report_has": ["state", "label_issues"]}
+    },
+    {
+      "name": "safe_404_removal_is_logged_and_revertible",
+      "_note": "A confirmed removed_404 feed auto-applies a remove with mode:auto; --revert restores it.",
+      "assert": {"auto_applies": "removed_404 -> remove", "log_entry_mode": "auto",
+                 "revertible": true, "log_file": "ledger/feeds-change-log.json"}
+    },
+    {
+      "name": "unreachable_does_not_auto_remove",
+      "_note": "Only removed_404/410 is a safe removal; unreachable (transient/egress) must NOT auto-apply.",
+      "command": "python3 tools/seed_curator.py --apply --offline",
+      "assert": {"applied": []}
+    },
+    {
+      "name": "mislabeled_feed_flagged_not_auto_relabeled",
+      "_note": "A feed with bad authority / missing purpose appears in label_issues but relabel needs approval.",
+      "assert": {"label_issues_nonempty_for": "mislabeled", "relabel_requires": "--apply-proposal --approve"}
+    },
+    {
+      "name": "discovery_from_ocps_is_proposal_only_and_reports_blocked_host",
+      "_note": "OCPS newsroom (ocps.net, Finalsite) — autodiscovery surfaces candidates as proposals; an egress/policy-blocked host is reported, never bypassed.",
+      "command": "python3 tools/seed_curator.py --discover-from https://www.ocps.net/94816_3",
+      "assert": {"candidates_are": "verified:false proposals", "blocked_host": "reported_not_routed_around"}
+    },
+    {
+      "name": "monarch_private_school_labeled_secondary",
+      "_note": "Monarch Learning Academy (Orlando FL private PK-8) enters as authority:secondary, scope:school — never treated as a canonical source.",
+      "assert": {"authority": "secondary", "never": "canonical_change"}
+    }
+  ]
+}
