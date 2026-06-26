@@ -53,3 +53,22 @@ python3 shared/cache/semantic.py --search "adding parts of a whole" --subject ma
 Install the optional backend with `pip install -r tools/requirements-semantic.txt`
 (`sqlite-vec` + a local embedder such as `sentence-transformers`). No data leaves the
 machine — only public standards text is embedded; no student data.
+
+## L3 (manifest-driven sync) usage
+
+`tools/sync_cache.py` keeps the cache fresh and portable by reusing existing engines —
+the F2 currency checker (`tools/source_currency.py`) for upstream web-source freshness,
+the L1 sha256 baseline for local drift, and a Scoop-style **bucket manifest** for
+distribution. Human-approved by default: `--sync` is a dry-run; rebuilding needs
+`--apply`; moving upstream baselines stays behind `source_currency.py --update-baselines`.
+
+```bash
+python3 tools/sync_cache.py --status --offline      # combined upstream + local + L2 view
+python3 tools/sync_cache.py --manifest --write bucket.manifest.json   # portable, hash-verified
+python3 tools/sync_cache.py --sync                  # dry-run: what would rebuild
+python3 tools/sync_cache.py --apply                 # rebuild L1 (+ L2 if opted-in & ready)
+```
+
+The status view surfaces the F2 baseline gap honestly: until
+`source_currency.py --update-baselines` is run (human-approved), upstream sources read
+`uncertain` rather than guessing they changed.
