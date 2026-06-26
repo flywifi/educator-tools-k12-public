@@ -1,5 +1,5 @@
 {
-  "_comment": "Durable known-good ECOSYSTEM snapshots — the 'saved versions' that tools/rollback.py restores to (whole-tree, per the approved plan). Each snapshot is anchored on a COMMIT SHA, not a git tag: in this managed environment write access is ref-scoped to the feature branch, so tag pushes are rejected by egress policy (HTTP 403) and would not survive the ephemeral container. Commit SHAs DO ride along with the branch push, so they are the durable anchor. 'local_tag' is a convenience label that may exist only locally. Record a snapshot with `python3 tools/rollback.py --record --label '...'`; restore with `python3 tools/rollback.py --to <id|commit|tag>`.",
+  "_comment": "Durable known-good ECOSYSTEM snapshots \u2014 the 'saved versions' that tools/rollback.py restores to (whole-tree, per the approved plan). Each snapshot is anchored on a COMMIT SHA, not a git tag: in this managed environment write access is ref-scoped to the feature branch, so tag pushes are rejected by egress policy (HTTP 403) and would not survive the ephemeral container. Commit SHAs DO ride along with the branch push, so they are the durable anchor. 'local_tag' is a convenience label that may exist only locally. Record a snapshot with `python3 tools/rollback.py --record --label '...'`; restore with `python3 tools/rollback.py --to <id|commit|tag>`.",
   "version": "0.1.0",
   "snapshots": [
     {
@@ -10,6 +10,15 @@
       "timestamp": "2026-06-26T04:41:26Z",
       "drift_guard": "pass",
       "local_tag": "snapshot-f1"
+    },
+    {
+      "id": "F2",
+      "commit": "6d69ff6bb35032d8d28d56f52e59e8ad362bc680",
+      "label": "F2: source-currency + staleness engine",
+      "reason": "phase F2 known-good: classifier verified (9 states); drift/version/sync all clean",
+      "timestamp": "2026-06-26T04:48:29.035398+00:00",
+      "drift_guard": "pass",
+      "local_tag": null
     }
   ]
 }
