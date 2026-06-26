@@ -1,0 +1,32 @@
+{
+  "_comment": "Source-currency registry (domain: florida-standards). The EXTERNAL counterpart to tools/registry-sources.json (which watches internal files): this lists authoritative WEB sources to monitor for freshness. tools/source_currency.py fetches each (conditional GET), classifies a freshness state (current/changed/superseded/removed_404/stale_age/unreachable/uncertain), and reports a stale-source list with a reason + recommended action. Standards/legal/program changes are ADVISORY + human-verified — never auto-applied, never fabricated. Seeded from shared/standards/resources/florida/sources.json watch_pages. After a human approves a change, run `source_currency.py --update-baselines --domain florida-standards` to record the new etag/last_modified/content_sha256.",
+  "domain": "florida-standards",
+  "version": "0.1.0",
+  "updated": "2026-06-26",
+  "authority_note": "PRIMARY sources only count for a confirmed change (CPALMS, FLDOE, FL Legislature, FL Admin Code, WIDA, district boards). Secondary sources are discovery-only and route to gaps, never results.",
+  "freshness_policy": {
+    "stale_age_days": 365,
+    "new_window_days": 90,
+    "forward_looking_window_days": 730,
+    "supersession_keywords": [
+      "rescinded", "repealed", "archived", "superseded", "no longer available",
+      "no longer in effect", "discontinued", "program eliminated", "sunset",
+      "replaced by", "this page has moved", "page not found", "retired"
+    ]
+  },
+  "sources": [
+    {"id": "fl-statutes-title-48", "url": "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Index&Title_Request=XLVIII",
+      "label": "FL Statutes Title XLVIII (Education Code)", "category": "legislation",
+      "authority": "primary", "type": "page",
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null,
+                "last_status": null, "effective_date": null, "superseded_by": null}},
+    {"id": "cpalms-standards", "url": "https://www.cpalms.org", "label": "CPALMS standards repository",
+      "category": "standards", "authority": "primary", "type": "page",
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null,
+                "last_status": null, "effective_date": null, "superseded_by": null}},
+    {"id": "fldoe-standards", "url": "https://www.fldoe.org/academics/standards/", "label": "FLDOE academic standards",
+      "category": "standards", "authority": "primary", "type": "page",
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null,
+                "last_status": null, "effective_date": null, "superseded_by": null}}
+  ]
+}

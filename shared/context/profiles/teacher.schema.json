@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Teacher operating profile",
+  "description": "One teacher's self-described operating context: roles, duties, handoff/role-interaction map, and preferences. Written to a GITIGNORED local store (teacher.local.json) by the teacher-profile skill and registered into shared/context as classroom/teacher-scope sop_refs + overrides. NO student PII; teacher contact is minimum-necessary and stays local. Every fact carries provenance (teacher_stated outranks crawled) + confidence.",
+  "type": "object",
+  "required": ["schema_version", "teacher", "roles", "human_review_required"],
+  "$defs": {
+    "provenanced": {
+      "type": "object",
+      "properties": {
+        "provenance": {"enum": ["teacher_stated", "crawled", "inferred", "imported"]},
+        "confidence": {"enum": ["high", "medium", "low"]},
+        "source": {"type": ["string", "null"]},
+        "verified": {"type": ["string", "null"]}
+      }
+    }
+  },
+  "properties": {
+    "schema_version": {"type": "string"},
+    "teacher": {
+      "type": "object",
+      "required": ["display_name"],
+      "properties": {
+        "display_name": {"type": "string"},
+        "school_msid": {"type": ["string", "null"], "description": "links to shared/schools/ (FLDOE MSID)"},
+        "school_name": {"type": ["string", "null"]},
+        "district": {"type": ["string", "null"]},
+        "contact_local_only": {"type": ["string", "null"], "description": "minimum-necessary; never committed"}
+      }
+    },
+    "roles": {
+      "type": "array",
+      "description": "Supports multiple roles (e.g. classroom teacher + MTSS lead).",
+      "items": {
+        "type": "object",
+        "required": ["role"],
+        "properties": {
+          "role": {"type": "string"},
+          "subject": {"type": ["string", "null"]},
+          "grade": {"type": ["string", "null"]},
+          "department": {"type": ["string", "null"]},
+          "primary": {"type": "boolean"},
+          "provenance": {"enum": ["teacher_stated", "crawled", "inferred", "imported"]},
+          "confidence": {"enum": ["high", "medium", "low"]}
+        }
+      }
+    },
+    "duties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["duty"],
+        "properties": {
+          "duty": {"type": "string"},
+          "cadence": {"type": ["string", "null"]},
+          "workload": {"type": ["string", "null"]},
+          "provenance": {"enum": ["teacher_stated", "crawled", "inferred", "imported"]},
+          "confidence": {"enum": ["high", "medium", "low"]}
+        }
+      }
+    },
+    "handoffs": {
+      "type": "array",
+      "description": "Role-interaction map. Counterparties are ROLES (survive turnover); an optional person link comes only from the gated shared/staff/.",
+      "items": {
+        "type": "object",
+        "required": ["what", "direction", "counterparty_role"],
+        "properties": {
+          "what": {"type": "string", "description": "what is handed off, e.g. 'IEP accommodations draft'"},
+          "direction": {"enum": ["to", "from", "bidirectional"]},
+          "counterparty_role": {"type": "string", "description": "e.g. case_manager, assistant_principal, counselor, nurse, co_teacher, grade_team, department_head"},
+          "trigger": {"type": ["string", "null"]},
+          "cadence": {"type": ["string", "null"]},
+          "notes": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "meetings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {"type": "string"},
+          "cadence": {"type": ["string", "null"]},
+          "role_in_meeting": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "description": "Generation/behavior defaults applied as context overrides.",
+      "additionalProperties": true
+    },
+    "overrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["instruction"],
+        "properties": {
+          "instruction": {"type": "string"},
+          "by": {"type": ["string", "null"]},
+          "timestamp": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "updated": {"type": ["string", "null"]},
+    "human_review_required": {"const": true}
+  }
+}

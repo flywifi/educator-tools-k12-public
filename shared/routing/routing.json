@@ -37,7 +37,9 @@
     "output-validator": {"status": "available",
       "keywords": ["validate output", "is this valid", "check this file", "will this open", "lint the output", "validate artifact", "verify document", "validate the docx", "validate the pdf"]},
     "skill-repair": {"status": "available",
-      "keywords": ["apply the repair plan", "fix the skill", "patch this skill", "run the approved fixes", "repair skill", "apply the fix"]}
+      "keywords": ["apply the repair plan", "fix the skill", "patch this skill", "run the approved fixes", "repair skill", "apply the fix"]},
+    "teacher-profile": {"status": "available",
+      "keywords": ["set up my profile", "my role", "my situation", "i am a co-teacher", "case manager", "my duties", "my preferences", "who handles", "handoff", "role interaction", "my sop", "remember my preferences", "establish my profile"]}
   },
   "meeting_routes": {
     "parent_teacher_conference": "family-communication",

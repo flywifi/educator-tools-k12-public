@@ -245,6 +245,7 @@ def main(argv) -> int:
     ap.add_argument("--objective", default="", help="what the traversal is trying to support")
     ap.add_argument("--file", action="append", dest="files", default=[], help="an input file seed (repeatable)")
     ap.add_argument("--url", action="append", dest="urls", default=[], help="a public URL seed (repeatable)")
+    ap.add_argument("--feed", action="append", dest="feeds", default=[], help="an RSS/Atom feed seed (repeatable)")
     ap.add_argument("--max-layers", type=int, default=DEFAULT_MAX_LAYERS)
     ap.add_argument("--scheduler", choices=["sequential", "parallel"], default="sequential",
                     help="parallel runs each layer's independent fetches concurrently (I/O-bound)")
@@ -253,8 +254,10 @@ def main(argv) -> int:
     a = ap.parse_args(argv)
     seeds = [Seed(seed_id=f"f-{i}", seed_type="file", value=f) for i, f in enumerate(a.files, 1)]
     seeds += [Seed(seed_id=f"u-{i}", seed_type="url", value=u) for i, u in enumerate(a.urls, 1)]
-    from .parallel_search import RateLimiter, web_fetch_fetcher
-    fetchers = {"file": docintel_file_fetcher(), "url": web_fetch_fetcher(RateLimiter(a.rate))}
+    seeds += [Seed(seed_id=f"r-{i}", seed_type="feed", value=f) for i, f in enumerate(a.feeds, 1)]
+    from .parallel_search import RateLimiter, rss_fetcher, web_fetch_fetcher
+    limiter = RateLimiter(a.rate)
+    fetchers = {"file": docintel_file_fetcher(), "url": web_fetch_fetcher(limiter), "feed": rss_fetcher(limiter)}
     state = run_traversal(a.objective, seeds, fetchers, max_layers=a.max_layers,
                           scheduler=a.scheduler, max_workers=a.max_workers)
     env = to_envelope(state, best_next_owner=route_handoff(a.objective))
@@ -263,4 +266,10 @@ def main(argv) -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv[1:]))
+    if __package__:
+        raise SystemExit(main(sys.argv[1:]))
+    # Script mode: re-enter as a package so relative imports (parallel_search -> traversal) resolve.
+    import os
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from traversal.traversal import main as _pmain
+    raise SystemExit(_pmain(sys.argv[1:]))

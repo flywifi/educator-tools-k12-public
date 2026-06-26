@@ -3,6 +3,28 @@
 Update at every phase boundary and after each skill ships. Recovery package = the charters + Quality
 Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 
+## Context-First expansion (RFC-F001 V2) — F1–F6 shipped
+A six-phase build (plan: approved RFC-F001 V2) adding currency, a school/program index, a per-teacher SOP
+skill, a gated staff directory, always-on web crawl, and a light context spine — stdlib-first, gated,
+governed. **18 skills · 14 engines.** All phases verified (drift guard + `version --check` +
+`registry_currency` clean) and committed on `claude/fervent-hawking-nyrzy5`; each is a durable
+commit-anchored snapshot in `ledger/snapshots.json` (`tools/rollback.py --list`).
+- **F1 — Firecrawl always-on + RSS + whole-ecosystem rollback.** `shared/traversal/parallel_search.py`
+  auto-detects `FIRECRAWL_API_KEY`/`FIRECRAWL_BASE_URL` and prefers Firecrawl (else polite `requests`);
+  `rss_fetcher` (`feed` seeds, `feedparser`/stdlib). Rollback is whole-tree to a known-good **commit**
+  (tags can't be pushed here — egress policy 403), recorded in `ledger/snapshots.json`.
+- **F2 — Source-currency + staleness engine.** `tools/source_currency.py` + `shared/sources/<domain>.json`:
+  states `current/changed/superseded/removed_404/stale_age/unreachable/uncertain` via conditional GET +
+  content sha256 + supersession keywords + recency + 404 sweep; offline-graceful, advisory + human-verified.
+- **F3 — OCPS schools + programs index.** `shared/schools/` (+ `ocps/` seed) keyed on FLDOE MSID;
+  open/close + program changes watched by F2 (`shared/sources/ocps-schools.json`). Public, non-PII only.
+- **F4 — `teacher-profile` skill (18th) + setup wizard.** Roles, duties, role-based handoff map, prefs →
+  gitignored `teacher.local.json` + context `sop_refs`/`overrides`; teacher-stated outranks crawled.
+- **F5 — Staff/role directory (gated).** `shared/staff/` OFF by default (`STAFF_INGEST_AUTHORIZED`),
+  authorized-first, gitignored, `staff-data-policy.md`; resolves handoff roles → people with honest gaps.
+- **F6 — Context-confirmation spine (light).** `shared/graph/spine.py` composes profile+schools+staff into
+  a snapshot + relationship graph + a confirm-what's-inferred checklist. Full knowledge-graph deferred.
+
 **Last updated:** Phases 0–E delivered + Florida complete; **`document-intelligence` skill +
 `shared/docintel/` engine added** (full-framework skeleton: UDOM, parser-orchestration, governance,
 artifact, validation — runs end to end). 17 skills, 6 protocols, ledger, benchmark, packaging,
@@ -192,7 +214,7 @@ Markdown, portable. First consumer: `meeting-classifier`.
   (enforced by the drift guard).
 
 ## Last drift-guard result
-`python3 tools/sync_check.py` → **PASS — 17 skills, 8 invariants, 2 synced refs; frontmatter +
+`python3 tools/sync_check.py` → **PASS — 18 skills, 8 invariants, 2 synced refs; frontmatter +
 resource integrity validated; `MAINTAINER.md` present in all skills.**
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
@@ -213,6 +235,6 @@ names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protoc
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
-Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 17 skills ·
-63 artifact types · 65 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
-protocols · 100% ledger approval (seed) · 17/17 skills emit `human_review_required`.
+Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 18 skills ·
+65 artifact types · 65 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
+protocols · 100% ledger approval (seed) · 18/18 skills emit `human_review_required`.
