@@ -35,6 +35,21 @@ full-text `--query` (AND). `--code` does prefix matching like `tools/fl_lookup.p
 - `--verify` compares source files against the sha256 baseline recorded at build
   time, so the future manifest-driven sync (L3) can rebuild only what changed. It
   reuses the same conditional-GET + sha256 currency idea as `tools/source_currency.py`.
-- A later opt-in semantic index (L2, `sqlite-vec`) layers vector recall onto this
-  same SQLite file; absent or declined, queries fall back here. Keyword search is
-  always available.
+- An opt-in semantic index (**L2**, `semantic.py` + `sqlite-vec`) layers offline
+  vector recall over this same data for paraphrase matches. It is **off by default**
+  and activates only when the optional deps are installed *and* the teacher granted
+  consent (`local_first.consents.local_semantic`, set via the teacher-profile
+  wizard). Absent or declined, `semantic.search()` transparently falls back to L1
+  keyword search and reports the gap — never faked. Keyword search is always available.
+
+## L2 (optional semantic) usage
+
+```bash
+python3 shared/cache/semantic.py --status                 # availability + consent state
+python3 shared/cache/semantic.py --build                  # build vector index (needs deps + consent)
+python3 shared/cache/semantic.py --search "adding parts of a whole" --subject math --k 5
+```
+
+Install the optional backend with `pip install -r tools/requirements-semantic.txt`
+(`sqlite-vec` + a local embedder such as `sentence-transformers`). No data leaves the
+machine — only public standards text is embedded; no student data.

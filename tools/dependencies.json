@@ -57,11 +57,15 @@
       "beats_baseline": "resolve teacher-profile handoff ROLES to real people (case manager, AP, counselor) from an AUTHORIZED directory/connector or a teacher-provided list; polite public crawl only where robots.txt + ToS permit",
       "python": [], "bins": [], "secrets": ["STAFF_INGEST_AUTHORIZED"],
       "requirements": null,
-      "privacy": "high — staff personal data (work email/role); OFF by default, authorized-first, minimum-necessary, gitignored local store. Bulk-harvesting public emails carries ToS/privacy risk — see shared/staff/staff-data-policy.md. Lookup of placeholder data needs no authorization; INGEST requires STAFF_INGEST_AUTHORIZED=true."}
+      "privacy": "high — staff personal data (work email/role); OFF by default, authorized-first, minimum-necessary, gitignored local store. Bulk-harvesting public emails carries ToS/privacy risk — see shared/staff/staff-data-policy.md. Lookup of placeholder data needs no authorization; INGEST requires STAFF_INGEST_AUTHORIZED=true."},
     {"id": "google_authoring", "tier": "cloud_optional", "default": "off", "provider": "google",
       "beats_baseline": "produce advanced NATIVE Google Docs/Sheets/Slides (lossless import + Apps Script automation via shared/office/google_bridge.py)",
       "python": [], "bins": ["node"], "node_packages": ["@google/clasp", "googleapis"],
       "secrets": ["GOOGLE_APPLICATION_CREDENTIALS"], "requirements": null,
-      "privacy": "high — Drive/Workspace content; district opt-in; live calls via host-AI native Google integration or a deployment Node runner (no OAuth client built here)"}
+      "privacy": "high — Drive/Workspace content; district opt-in; live calls via host-AI native Google integration or a deployment Node runner (no OAuth client built here)"},
+    {"id": "local_semantic", "tier": "local_optional", "default": "off",
+      "beats_baseline": "opt-in OFFLINE semantic recall over the L1 standards cache via sqlite-vec (paraphrase matches that keyword search misses); embeddings computed locally once and reused. Activated only with teacher consent (teacher-profile local_first.consents.local_semantic). Absent or declined => graceful fallback to L1 keyword search, reported as a gap — never faked. No data leaves the machine.",
+      "python": ["sqlite_vec"], "bins": [], "requirements": "tools/requirements-semantic.txt",
+      "privacy": "low — local-only; vectors derived from PUBLIC standards text, no student data"}
   ]
 }
