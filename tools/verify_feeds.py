@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import re
 import sys
@@ -26,6 +27,10 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+
+# Common feed locations to probe when a page declares no <link rel=alternate> (the chatbot's step 4).
+COMMON_FEED_PATHS = ("/feed", "/feed/", "/rss", "/rss.xml", "/atom.xml", "/feed.xml",
+                     "/index.xml", "/news/feed", "/blog/feed", "/?feed=rss2")
 
 UA = "Mozilla/5.0 (compatible; TOS-feed-verifier/0.1; +k12-education)"
 LABEL_KEYS = ("id", "label", "category", "authority", "tier", "purpose",
@@ -53,6 +58,24 @@ def autodiscover(html: bytes, base: str) -> list[str]:
 
 
 def parse_items(raw: bytes):
+    """Return (kind, items) where kind is 'rss'/'feed'/None. Parser preference: fastfeedparser ->
+    feedparser -> stdlib ElementTree. Boosters are optional; stdlib always works. Never fabricates."""
+    for modname in ("fastfeedparser", "feedparser"):
+        if importlib.util.find_spec(modname) is None:
+            continue
+        try:
+            mod = importlib.import_module(modname)
+            d = mod.parse(raw)
+            entries = getattr(d, "entries", []) or []
+            if entries:
+                items = [{"title": getattr(e, "title", ""),
+                          "link": getattr(e, "link", ""),
+                          "date": getattr(e, "published", "") or getattr(e, "updated", "")}
+                         for e in entries]
+                kind = "feed" if "atom" in (getattr(d, "version", "") or "").lower() else "rss"
+                return kind, items
+        except Exception:  # booster choked — fall through to stdlib, never fake
+            pass
     try:
         root = ET.fromstring(raw)  # nosec B314 - operator-supplied feed
     except ET.ParseError:
@@ -74,41 +97,75 @@ def parse_items(raw: bytes):
     return root.tag.split("}")[-1], items
 
 
-def verify_one(cand: dict, timeout: int) -> tuple[dict | None, dict | None]:
-    url = cand["url"]
+def _try_feed(url: str, timeout: int):
+    """Fetch + parse one URL. Return (entry_state, items) if it's a real feed, else (None, reason)."""
     try:
         status, body, headers, final = fetch(url, timeout)
     except (urllib.error.URLError, urllib.error.HTTPError, OSError, ValueError) as e:
-        return None, {"id": cand.get("id"), "url": url,
-                      "finding": f"fetch failed: {e.__class__.__name__}: {e}"}
+        return None, f"fetch failed: {e.__class__.__name__}: {e}"
     root, items = parse_items(body)
-    # If we landed on an HTML page, try to autodiscover the real feed link.
-    if root not in ("rss", "feed") and (b"<html" in body[:2000].lower()
-                                        or "html" in headers.get("content-type", "")):
-        feeds = autodiscover(body, final)
-        if not feeds:
-            return None, {"id": cand.get("id"), "url": url,
-                          "finding": "page has no rss/atom <link rel=alternate>; "
-                                     "provide the feed URL directly or check for an iCal/.ics export"}
-        url = feeds[0]
-        try:
-            status, body, headers, final = fetch(url, timeout)
-        except (urllib.error.URLError, urllib.error.HTTPError, OSError, ValueError) as e:
-            return None, {"id": cand.get("id"), "url": url,
-                          "finding": f"discovered feed fetch failed: {e.__class__.__name__}: {e}"}
-        root, items = parse_items(body)
-    if root not in ("rss", "feed") or not items:
-        return None, {"id": cand.get("id"), "url": url,
-                      "finding": f"not a valid feed (root={root!r}, items={len(items)})"}
-    entry = {k: cand.get(k) for k in LABEL_KEYS}
-    entry.update({
-        "url": final, "type": "feed", "parser": "atom" if root == "feed" else "rss", "verified": True,
-        "discover_from": cand.get("discover_from", cand["url"]),
-        "proof_latest_item": items[0],
-        "state": {"etag": headers.get("etag"), "last_modified": headers.get("last-modified"),
-                  "content_sha256": hashlib.sha256(body).hexdigest(),
-                  "last_checked": None, "last_status": status}})
-    return entry, None
+    if root in ("rss", "feed") and items:
+        return {"final": final, "root": root, "items": items, "headers": headers,
+                "status": status, "sha256": hashlib.sha256(body).hexdigest()}, items
+    return None, (body, headers, final)  # not a feed — carry the page back for autodiscovery
+
+
+def verify_one(cand: dict, timeout: int) -> tuple[dict | None, dict | None]:
+    """Robust verification (the chatbot's recommended chain): try the URL directly, then autodiscover
+    a feed link from the HTML, then probe common feed paths. Only truly-unresolvable => unverified."""
+    start = cand["url"]
+    tried: list[str] = []
+
+    def _ok(hit) -> tuple[dict, None]:
+        entry = {k: cand.get(k) for k in LABEL_KEYS}
+        entry.update({
+            "url": hit["final"], "type": "feed",
+            "parser": "atom" if hit["root"] == "feed" else "rss", "verified": True,
+            "discover_from": cand.get("discover_from", start),
+            "proof_latest_item": hit["items"][0],
+            "state": {"etag": hit["headers"].get("etag"),
+                      "last_modified": hit["headers"].get("last-modified"),
+                      "content_sha256": hit["sha256"], "last_checked": None,
+                      "last_status": hit["status"]}})
+        return entry, None
+
+    # 1. the candidate URL directly
+    hit, rest = _try_feed(start, timeout)
+    if hit:
+        return _ok(hit)
+    if isinstance(rest, str):  # hard fetch failure on the candidate itself
+        first_fail = rest
+        page = None
+    else:
+        first_fail = None
+        page = rest  # (body, headers, final) of a non-feed page
+
+    # 2. autodiscover <link rel=alternate> from the page (if we got HTML)
+    probe_urls: list[str] = []
+    if page:
+        body, headers, final = page
+        if b"<html" in body[:2000].lower() or "html" in headers.get("content-type", ""):
+            probe_urls += autodiscover(body, final)
+
+    # 3. probe common feed paths off the site origin
+    parsed = urllib.parse.urlsplit(start)
+    origin = f"{parsed.scheme}://{parsed.netloc}"
+    probe_urls += [origin + p for p in COMMON_FEED_PATHS]
+
+    seen = set()
+    for u in probe_urls:
+        if u in seen:
+            continue
+        seen.add(u)
+        tried.append(u)
+        hit, _ = _try_feed(u, timeout)
+        if hit:
+            return _ok(hit)
+
+    reason = (f"candidate fetch failed ({first_fail})" if first_fail
+              else "no valid feed via direct fetch, autodiscovery, or common-path probe "
+                   f"(tried {len(tried)} candidates); may be JS-only or iCal — verify by hand")
+    return None, {"id": cand.get("id"), "url": start, "finding": reason, "tried": tried[:12]}
 
 
 def run(cands: list[dict], timeout: int) -> dict:

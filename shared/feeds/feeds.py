@@ -36,6 +36,7 @@ DB = HERE / "feed_items.local.db"
 sys.path.insert(0, str(ROOT / "tools"))
 import source_currency as sc  # noqa: E402
 
+_HAVE_FFP = importlib.util.find_spec("fastfeedparser") is not None
 _HAVE_FP = importlib.util.find_spec("feedparser") is not None
 
 
@@ -93,20 +94,39 @@ def _tag(el) -> str:
     return el.tag.split("}")[-1]
 
 
+def _entries_to_items(entries) -> list[dict]:
+    """Normalize feedparser-style entries (feedparser AND fastfeedparser share this API)."""
+    out = []
+    for e in entries:
+        out.append({
+            "guid": getattr(e, "id", "") or getattr(e, "link", ""),
+            "title": getattr(e, "title", ""),
+            "link": getattr(e, "link", ""),
+            "summary": getattr(e, "summary", "") or getattr(e, "description", ""),
+            "published": getattr(e, "published", "") or getattr(e, "updated", ""),
+        })
+    return out
+
+
 def parse_feed(raw: bytes) -> list[dict]:
-    """Return [{guid,title,link,summary,published}] from RSS or Atom bytes. feedparser if present."""
-    items: list[dict] = []
+    """Return [{guid,title,link,summary,published}] from RSS or Atom bytes.
+
+    Parser preference (all optional; stdlib always works): fastfeedparser (~25x faster, robust) →
+    feedparser (gold standard) → stdlib ElementTree. A booster that errors falls through to the next.
+    """
+    if _HAVE_FFP:
+        try:
+            import fastfeedparser
+            return _entries_to_items(fastfeedparser.parse(raw).entries)
+        except Exception:  # malformed-for-FFP: fall through to the next parser, never fake
+            pass
     if _HAVE_FP:
-        import feedparser
-        for e in feedparser.parse(raw).entries:
-            items.append({
-                "guid": getattr(e, "id", "") or getattr(e, "link", ""),
-                "title": getattr(e, "title", ""),
-                "link": getattr(e, "link", ""),
-                "summary": getattr(e, "summary", ""),
-                "published": getattr(e, "published", "") or getattr(e, "updated", ""),
-            })
-        return items
+        try:
+            import feedparser
+            return _entries_to_items(feedparser.parse(raw).entries)
+        except Exception:
+            pass
+    items: list[dict] = []
     import xml.etree.ElementTree as ET
     try:
         root = ET.fromstring(raw)  # nosec B314 - catalog URLs are operator-controlled
