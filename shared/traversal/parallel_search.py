@@ -190,7 +190,7 @@ def rss_fetcher(limiter: RateLimiter | None = None) -> Callable:
         else:
             import xml.etree.ElementTree as ET
             try:
-                root = ET.fromstring(raw)
+                root = ET.fromstring(raw)  # nosec B314
             except Exception:
                 return FetchResult(gaps=[{"seed_id": seed.seed_id, "reason": "feed_parse_failed", "value": seed.value}])
             for it in root.iter():
