@@ -46,6 +46,15 @@
       "timestamp": "2026-06-26T05:01:55.962910+00:00",
       "drift_guard": "pass",
       "local_tag": null
+    },
+    {
+      "id": "F6",
+      "commit": "58f1348275c55d4ea2cf52e742498ee2a3798bb4",
+      "label": "F6: context-confirmation spine (light)",
+      "reason": "phase F6 known-good: spine snapshot/graph/confirm verified; 18 skills, drift/version/sync clean; F1-F6 complete",
+      "timestamp": "2026-06-26T14:15:10.144126+00:00",
+      "drift_guard": "pass",
+      "local_tag": null
     }
   ]
 }
