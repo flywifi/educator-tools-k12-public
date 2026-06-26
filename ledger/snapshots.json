@@ -19,6 +19,15 @@
       "timestamp": "2026-06-26T04:48:29.035398+00:00",
       "drift_guard": "pass",
       "local_tag": null
+    },
+    {
+      "id": "F3",
+      "commit": "1fdd00cc715f696cdb5daf4a4a67c873260bef47",
+      "label": "F3: OCPS schools + programs index",
+      "reason": "phase F3 known-good: schools engine verified; 13 registries 0 drift; version/sync clean",
+      "timestamp": "2026-06-26T04:51:33.198550+00:00",
+      "drift_guard": "pass",
+      "local_tag": null
     }
   ]
 }
