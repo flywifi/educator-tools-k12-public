@@ -34,13 +34,15 @@ Whichever method runs, the verified JSON must travel from the **open-net writer*
 **egress-blocked reader** (this repo). Two strategies, mirroring OpenCLAW's `crawlkit` and Firebase:
 
 ### Primary — local-first git snapshot (OpenCLAW / `crawlkit` model)
-The writer (Option A/B, or a `crawlkit`-style crawler) produces SQLite + a `manifest.json` and **commits
-a snapshot to a git "share repo"**; the reader **clones/pulls and imports** it with **live sources
-disabled** — exactly our situation. This is what TOS already does: `ledger/snapshots.json`
-(git-anchored snapshots), the L3 bucket manifest (`tools/sync_cache.py`), and `verify_feeds.py` output →
-`shared/feeds/feeds.json` → `git pull`. crawlkit adds incremental **shard fingerprints** so only changed
-tail shards transfer and local FTS rows are preserved — a good future upgrade for the feed store. This
-is the **recommended** hand-off: it needs no live network in the reader.
+The writer produces SQLite + a `manifest.json` and **commits a snapshot to git**; the reader
+**pulls and imports** it with **live sources disabled** — exactly our situation. **Implemented:**
+`tools/feeds_publish.py` (writer, open net) exports the feed store to `shared/feeds/snapshot/`
+(`feed_items.jsonl` + a sha256-fingerprinted `manifest.json`), which is committed to git;
+`tools/feeds_import.py` (reader, offline) verifies the fingerprint and imports rows with
+`INSERT OR IGNORE` (dedupe by content hash), recording the manifest sha so an unchanged snapshot is a
+no-op (incremental) and a corrupt pack is refused. Complements `ledger/snapshots.json` + the L3 bucket
+manifest. crawlkit's per-shard fingerprints (vs. our single-table pack) are the next upgrade. This is
+the **recommended** hand-off: it needs no live network in the reader.
 - crawlkit: https://github.com/openclaw/crawlkit · openclaw: https://github.com/openclaw/openclaw
 
 ### Optional — Firebase realtime (for ONLINE teacher deployments)
