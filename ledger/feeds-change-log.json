@@ -1,0 +1,5 @@
+{
+  "version": "0.1.0",
+  "_comment": "Append-only audit trail of feed-catalog changes (auto-applied safe repairs + approved edits). Each entry records before/after + reason + source + mode (auto|approved) and is reversible via tools/seed_curator.py --revert <id>. Mirrors ledger/rollback-log.json. Seeded empty.",
+  "entries": []
+}
