@@ -37,6 +37,15 @@
       "timestamp": "2026-06-26T04:58:43.715854+00:00",
       "drift_guard": "pass",
       "local_tag": null
+    },
+    {
+      "id": "F5",
+      "commit": "9c9108b207901b58ddbe5bbad0d3c78a690f92e7",
+      "label": "F5: staff/role directory (gated)",
+      "reason": "phase F5 known-good: gate off-by-default verified; authorized ingest writes gitignored store; handoff resolution works; drift/version/sync clean",
+      "timestamp": "2026-06-26T05:01:55.962910+00:00",
+      "drift_guard": "pass",
+      "local_tag": null
     }
   ]
 }
