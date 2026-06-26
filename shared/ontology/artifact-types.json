@@ -19,6 +19,7 @@
     "skill-health": ["health-report", "diagnosis", "repair-plan"],
     "output-validator": ["artifact-validation-report", "document-structural-report", "promoted-regression-case"],
     "skill-repair": ["proposed-changes-summary", "applied-repair-record", "validation-results"],
-    "teacher-profile": ["teacher-operating-profile", "context-registration-fragment"]
+    "teacher-profile": ["teacher-operating-profile", "context-registration-fragment"],
+    "feed-curator": ["catalog-health-report", "discovery-candidate-list", "seed-change-proposal", "applied-change-log-entry"]
   }
 }
