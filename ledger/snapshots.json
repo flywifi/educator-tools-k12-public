@@ -28,6 +28,15 @@
       "timestamp": "2026-06-26T04:51:33.198550+00:00",
       "drift_guard": "pass",
       "local_tag": null
+    },
+    {
+      "id": "F4",
+      "commit": "353b72ebb92472a11ebc0a05605662c621622cbc",
+      "label": "F4: teacher-profile skill + setup wizard",
+      "reason": "phase F4 known-good: wizard verified (demo/validate/register); routing+ontology+version+drift all clean (18 skills)",
+      "timestamp": "2026-06-26T04:58:43.715854+00:00",
+      "drift_guard": "pass",
+      "local_tag": null
     }
   ]
 }
