@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-"""Versioned rollback — restore a skill/engine/file to a prior version on a major failure (offline, git).
+"""Whole-ecosystem rollback — restore the entire repo to the most recently saved good snapshot (git).
 
-Roll back ONE component to a known-good git ref to achieve a specific goal, while **noting the failure**.
-Safe by construction:
+Per the approved plan, rollback is a SINGLE whole-ecosystem restore to a known-good tagged snapshot — not
+per-skill (that invites cross-version mismatch). Safe by construction:
   - **Dry-run by default** — shows exactly which files would change (`git diff --stat`); nothing moves.
   - **Human approval required** — `--apply` is the human approving. An automated caller must pass
     `--auto`, which is refused unless the deployment granted `auto_rollback: true` in its flags.
   - **Always logged** — every rollback (and its failure reason) is appended to ledger/rollback-log.json.
   - **Re-verified** — after a restore it re-runs the drift guard.
-Restores the working tree only (via `git checkout <ref> -- <target>`); a human reviews + commits.
+Restores the working tree (via `git checkout <ref> -- <target>`, target defaults to the whole repo); a
+human reviews + commits. Tag known-good snapshots with `git tag` (see tools/version.py).
 
 Usage:
-  python3 tools/rollback.py --target skills/lesson-planner --to <git-ref> --reason "broke on X"   # dry-run
-  python3 tools/rollback.py --target skills/lesson-planner --to <git-ref> --reason "..." --apply
-  python3 tools/rollback.py --target shared/office --to <ref> --reason "..." --auto --flags cfg.json
+  python3 tools/rollback.py --to <last-good-tag> --reason "major failure: X"            # dry-run, whole repo
+  python3 tools/rollback.py --to <last-good-tag> --reason "..." --apply                  # human-approved
+  python3 tools/rollback.py --to <tag> --reason "..." --auto --flags cfg.json            # if auto_rollback granted
 """
 from __future__ import annotations
 
@@ -50,8 +51,8 @@ def _log(entry: dict) -> None:
 
 def main(argv) -> int:
     ap = argparse.ArgumentParser(description="Approval-gated versioned rollback (offline, git).")
-    ap.add_argument("--target", required=True, help="path to restore (a skill dir, engine dir, or file)")
-    ap.add_argument("--to", required=True, metavar="GIT_REF", help="commit/tag to restore the target from")
+    ap.add_argument("--target", default=".", help="path to restore (default '.' = the whole ecosystem)")
+    ap.add_argument("--to", required=True, metavar="GIT_REF", help="known-good tag/commit to restore from")
     ap.add_argument("--reason", default="", help="the failure being addressed (logged)")
     ap.add_argument("--apply", action="store_true", help="perform the rollback (human approval)")
     ap.add_argument("--auto", action="store_true", help="automated apply — requires auto_rollback in --flags")
