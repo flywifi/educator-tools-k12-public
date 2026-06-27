@@ -1,0 +1,20 @@
+{
+  "_comment": "Declarative workflow definition for meeting-classifier. Classifies a meeting from available evidence clues, attaches IEP/504/medical advisories, and routes to the appropriate TOS skill. It classifies and routes — it does NOT author meeting artifacts.",
+  "id": "meeting-classifier",
+  "description": "Meeting classification: gather clues → classify type + intent → attach advisories → route to owning skill → quality gate",
+  "steps": [
+    {"step": 1, "action": "gather_clues",    "input_from": "teacher request (email/invite/notes/calendar)", "output_to": "step2",
+     "note": "Collect evidence per references/evidence-model.md: explicit statement, calendar event, sender title, attendee roles, subject/body, prior thread, transcript. Strong clues override weak ones."},
+    {"step": 2, "action": "classify",        "input_from": "step1.evidence",                               "output_to": "step3",
+     "uses": "scripts/classify_meeting.py (fast first-pass label)",
+     "note": "Classify meeting type (from references/meeting-taxonomy.md) and request intent (prep/draft/summarize/schedule/compliance/extract). When two types are materially plausible, emit a MINORITY REPORT — do not guess."},
+    {"step": 3, "action": "attach_advisories", "input_from": "step2.classification",                       "output_to": "step4",
+     "note": "IEP/504 meetings: attach required-cadence advisory (IDEA/Section 504 cite). Medical meetings: surface action plan from source on file (never fabricate). Flag safety-critical."},
+    {"step": 4, "action": "route",           "input_from": "step2.meeting_type + step3.advisories",        "output_to": "step5",
+     "note": "Route per references/meeting-taxonomy.md: parent contact → family-communication; IEP/504 → special-education-support; MTSS → intervention-mtss; observations → professional-learning / school-administration; planning → curriculum-mapping / lesson-planner."},
+    {"step": 5, "atom": "atom-quality-check", "input_from": "classification_record",                       "output_to": "final",
+     "gates": ["no_fabricated_medical_data", "minority_report_on_ambiguity", "no_eligibility_determination", "routing_to_existing_skill_only"]}
+  ],
+  "shortcut_atoms": [],
+  "note": "meeting-classifier ROUTES — it does not author IEP/504 content, lesson plans, or letters. Never makes a determination about a student's plan, medical, or legal status — escalates those to a human/team."
+}
