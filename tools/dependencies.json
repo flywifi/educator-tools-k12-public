@@ -82,6 +82,10 @@
     {"id": "feed_gen", "tier": "local_optional", "default": "on_if_present",
       "beats_baseline": "emit real RSS 2.0 / Atom XML from scraped items (feedgen library) for tools/make_feed.py --output-rss; lets TOS act as a feed publisher, not just a consumer. Absent => JSON output only (still importable by feeds_import.py).",
       "python": ["feedgen"], "bins": [], "requirements": "tools/requirements-feeds.txt",
-      "privacy": "low — generates public feed metadata only; no student data"}
+      "privacy": "low — generates public feed metadata only; no student data"},
+    {"id": "local_render", "tier": "local_optional", "default": "on_if_present",
+      "beats_baseline": "LOCAL, offline-capable headless-browser render of JS-required SPA pages (e.g. CPALMS search) using the pre-installed Chromium at /opt/pw-browsers — NOT impersonation/evasion: same honest identifying User-Agent, robots.txt-respecting, just runs the site's own JavaScript the way a browser is meant to. Powers the render + screenshot prongs in shared/render/render_prongs.py and tools/render_fetch.py. Absent => the prong chain falls back to the offline-docintel parse of static HTML, then reports js_required honestly (never faked). Prefer this LOCAL prong over the cloud_web_crawl (firecrawl) prong when offline-first.",
+      "python": ["playwright"], "bins": [], "requirements": "tools/requirements-render.txt",
+      "privacy": "low — renders public education pages locally; no data leaves the machine; no student data"}
   ]
 }

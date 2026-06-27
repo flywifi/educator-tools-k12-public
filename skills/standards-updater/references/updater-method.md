@@ -42,22 +42,35 @@ Detection finds *what moved*; this turns it into *what matters*. The policy is c
 |---|---|---|
 | robots.txt analysis | ✅ respect + skip disallowed | compliance |
 | polite crawling (random 2–4s delays) | ✅ randomized jitter delays | be a good citizen |
-| JS-required detection (`noscript`, "enable javascript", tiny page) | ✅ detect + **report** | CPALMS *search* is a JS SPA; don't fake it — use downloads/CDN or a browser render |
+| JS-required detection (`noscript`, "enable javascript", tiny page) | ✅ detect + **report** | CPALMS *search* is a JS SPA; don't fake it — escalate to the render prongs below |
+| **LOCAL browser render** of a js_required page | ✅ `shared/render` prong 2 (Playwright + pre-installed Chromium) | run the site's OWN JavaScript the way a browser is meant to — this is rendering, not impersonation |
+| **download full HTML + offline docintel parse** | ✅ `shared/render` prong 3 (reuses `shared/docintel`) | structure the page (and linked docs) fully offline; zero further requests |
+| **screenshot → OCR** of the rendered page | ✅ `shared/render` prong 4 (Playwright capture + docintel/tesseract OCR) | last-resort offline recovery for canvas/image-only content |
+| **managed cloud render** (firecrawl) | ✅ `shared/render` prong 5 — **off by default**, opt-in (`--render-enable-cloud`) | offline prongs are preferred; cloud only when explicitly enabled + configured |
 | rate-limit detection (429 / latency) | ✅ detect + **back off** | never hammer a public site |
 | **honor `Retry-After` / `RateLimit-Reset`** | ✅ wait the server's own backoff (bounded retry) | use the platform's published limit, not a guess |
 | **resumable checkpoint** (frontier + visited) | ✅ `--checkpoint` / `--resume` | a long crawl can pause/resume without re-hammering |
 | **saturation / stop rule** | ✅ `--saturation N` (stop when no new docs appear) | don't crawl deeper than the evidence justifies |
 | realistic headers | ✅ Accept/Accept-Language | basic compatibility |
 | structured JSON report | ✅ timestamped report | auditable, reviewable |
-| **User-Agent rotation / browser impersonation** | ❌ **not used** | one honest UA; we identify ourselves, not evade |
-| **CAPTCHA bypass / rate-limit bypass** | ❌ **not used** | bypassing protections is out of scope/unethical |
+| **User-Agent rotation / browser impersonation** | ❌ **not used** | one honest UA; we identify ourselves, not evade. The render prongs above use the SAME honest UA |
+| **CAPTCHA bypass / rate-limit bypass** | ❌ **not used** | bypassing protections is out of scope/unethical. A detected CAPTCHA STOPS the render chain — reported, never defeated |
 
 ## The tools
 - `tools/standards_refresh.py` — the crawler/reporter (`--check` offline, `--crawl`, `--download`,
   `--report`). Reads `crawl_seeds` from each state's `sources.json`. Stdlib-only; uses
   `requests`/`bs4` if installed (`tools/requirements-scraper.txt`). Hardened crawl options:
   `--max-retries` (honor `Retry-After`/`RateLimit-Reset`), `--saturation N` (stop when no new docs),
-  `--checkpoint PATH` + `--resume` (resumable), `--max-wait` (cap a single backoff).
+  `--checkpoint PATH` + `--resume` (resumable), `--max-wait` (cap a single backoff). When a page is
+  `js_required`, the render fallback runs automatically (`--no-render-fallback` to disable,
+  `--render-out DIR` to save artifacts, `--render-enable-cloud` to also allow the cloud prong).
+- `shared/render/render_prongs.py` + `tools/render_fetch.py` — the resilient render prong chain for
+  js_required pages: **LOCAL browser render → offline docintel parse → screenshot+OCR → optional
+  cloud**, first-success-wins (or `--all` for redundancy). Capability-gated (`local_render` = Playwright,
+  `ocr` = tesseract, `cloud_web_crawl` = firecrawl); honest gaps when deps are absent; same honest UA,
+  robots respected, CAPTCHA never bypassed. `python3 tools/render_fetch.py --check` lists prong availability.
+- `tools/docintel_run.py` + `shared/docintel/` — the offline document-ingestion pipeline the render
+  prongs reuse (PDF/HTML/.docx/image+OCR → governed knowledge artifact).
 - `tools/parse_fl_standards.py` — re-enumerate the queryable standards JSON after applying updates.
 - `tools/fl_lookup.py` — query the enumerated standards.
 
