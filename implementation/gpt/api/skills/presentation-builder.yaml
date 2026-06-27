@@ -1,0 +1,125 @@
+# TOS Skill: presentation-builder
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: presentation_builder
+  description: |
+    Build structured slide deck outlines, speaker notes, and (when office_authoring capability is
+    available) real .pptx files for K-12 professional and instructional contexts. Produces
+    audience-appropriate presentations for students, parents, staff, school board, and PD sessions.
+
+    Trigger phrases: "make a slide deck about", "build a presentation on", "create slides for",
+    "I need a PowerPoint on", "design a presentation for my PLC", "build a parent night deck",
+    "create a PD presentation about", "slide outline for", "presentation for my principal on".
+
+    When office_authoring capability is present (python-pptx installed), generates real .pptx via
+    scripts/build_deck.py. When absent, outputs a complete structured outline with slide-by-slide
+    content, speaker notes, and design guidance the teacher can manually build.
+
+    Slide design follows UDL principles: minimal text per slide, clear visual hierarchy,
+    meaningful headings, accommodation for low-vision (color contrast). Student-facing slides
+    use age-appropriate vocabulary and grade-band reading levels.
+
+    Output always includes human_review_required: true, a metadata block, and a speaker-notes
+    section for every content slide. Routes completed artifact to quality-review.
+
+    Do NOT use presentation-builder to write lesson plans (use lesson-planner). Do NOT use it
+    to create rubrics or assessments (use assessment-designer). Do NOT use it to produce legally
+    required documents or IEP-related materials.
+  parameters:
+    type: object
+    required:
+      - topic
+      - audience
+    properties:
+      topic:
+        type: string
+        description: >
+          Presentation topic or purpose. Examples: "photosynthesis for 5th graders",
+          "reading data at our October parent night", "new math curriculum overview for staff",
+          "PBIS implementation plan for school board".
+      audience:
+        type: string
+        enum:
+          - students_elementary
+          - students_middle
+          - students_high
+          - parents_families
+          - teachers_staff
+          - leadership_team
+          - school_board
+          - professional_development
+          - mixed_staff_and_parents
+        description: >
+          Intended audience. Determines vocabulary, complexity, design style, and tone.
+      grade:
+        type: string
+        description: >
+          Grade level if audience is students. Examples: "3rd grade", "9-12", "K-2".
+      subject:
+        type: string
+        description: >
+          Subject area if this is an instructional presentation. Examples: "ELA", "Science".
+      slide_count:
+        type: integer
+        description: >
+          Target number of slides. Typical: 8-12 for a 15-min presentation, 15-20 for 30 min,
+          25-40 for a full PD session. Skill adjusts content density accordingly.
+      duration_minutes:
+        type: integer
+        description: >
+          Presentation duration in minutes. Used to calibrate slide count and depth if
+          slide_count is not specified.
+      output_format:
+        type: string
+        enum:
+          - structured_outline
+          - pptx_file
+          - markdown_with_speaker_notes
+          - json
+        description: >
+          Output format. structured_outline (default when office_authoring absent) = slide-by-slide
+          content with speaker notes. pptx_file = real .pptx (requires office_authoring capability).
+          markdown_with_speaker_notes = clean markdown ready to paste into Google Slides or Canva.
+      standards:
+        type: array
+        items:
+          type: string
+        description: >
+          Standards to reference in student-facing slides. Adds a "Learning Target" opener slide.
+          Optional for non-instructional presentations.
+      key_sections:
+        type: array
+        items:
+          type: string
+        description: >
+          Required section headers or topics to include. The skill builds slides within each section.
+          Examples: ["What is PBIS?", "Our School Data", "Tier 1 Practices", "Next Steps"].
+      include_discussion_prompts:
+        type: boolean
+        description: >
+          If true, add interactive discussion prompts (turn and talk, think-pair-share, poll
+          questions) appropriate for the audience. Defaults to true for PD and parent audiences.
+      include_data_slides:
+        type: boolean
+        description: >
+          If true, include placeholder data visualization slides (chart/graph frames with
+          instructions for adding real data). Recommended for data-review and board presentations.
+      design_theme:
+        type: string
+        enum:
+          - clean_professional
+          - student_friendly_colorful
+          - district_neutral
+          - high_contrast_accessible
+        description: >
+          Visual design guidance. Defaults to clean_professional for staff/board; student_friendly
+          for student-facing decks.
+      presenter_name:
+        type: string
+        description: >
+          Presenter name or role for the title slide. Use placeholder if real name not available.
+          Examples: "Ms. Rodriguez", "The Grade 3 Team", "[TEACHER NAME]".
+    additionalProperties: false

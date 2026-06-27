@@ -1,0 +1,84 @@
+# TOS Skill: skill-repair
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: skill_repair
+  description: |
+    Apply an approved skill-health repair plan with the smallest durable change. Separates
+    mechanical fixes (safe to automate) from judgment fixes (always human-only). Shows a
+    plain-language approval summary before applying anything. On approval, applies ONLY safe
+    mechanical fixes, then re-runs the drift guard (tools/sync_check.py).
+
+    Trigger phrases: "apply the repair plan", "fix the broken skill", "patch this skill",
+    "run the approved fixes", "apply mechanical fixes", "skill repair dry run", "what would
+    the repair change", "execute the approved patch".
+
+    Workflow (patch-principles.md):
+    1. Confirm basis — prefer approved plan from skill-health; if none, produce diagnosis + stop
+    2. Prepare — read full skill; identify only files that truly need changes; snapshot before edit
+    3. Patch minimally — mechanical (safe, automate) vs. judgment (human-only); fix root cause
+    4. Validate — re-run sync_check.py, re-read changed files; call out anything untestable
+    5. Summarize for approval — plain language: what changed, why, what stayed, any risk
+
+    Dry-run by default: shows what would change. --apply performs ONLY safe mechanical fixes.
+    Judgment items (architectural changes, logic rewrites, new skill design) always stay human.
+
+    Never presents a patch as complete if risky parts could not be validated. If the real problem
+    is broad architectural drift, says so and recommends a larger refactor — does not hide it.
+
+    Do NOT use skill-repair to diagnose issues (use skill-health first). Do NOT use it to
+    redesign a skill from scratch. Do NOT use it to make judgment calls about which approach
+    is architecturally correct — those belong with the human developer.
+    human_review_required: true on all output.
+  parameters:
+    type: object
+    required:
+      - action
+    properties:
+      action:
+        type: string
+        enum:
+          - dry_run
+          - apply
+          - summarize_plan
+        description: >
+          Action to perform.
+          dry_run (default): show exactly what would change, which items are mechanical vs.
+          judgment, and the risk assessment — but change nothing.
+          apply: perform ONLY the safe mechanical fixes from the approved plan; judgment items
+          stay as a TODO list for the human. Re-runs sync_check.py after.
+          summarize_plan: parse a repair plan and produce a plain-language approval summary
+          without running any fixes.
+      repair_plan:
+        type: string
+        description: >
+          The repair plan to execute. Accepts either:
+          (a) a JSON repair plan object produced by skill-health's diagnose action, or
+          (b) a path to a saved repair plan file (e.g. "reports/repair-plan-2026-06-27.json"),
+          or (c) a plain-text description of what needs to be fixed (skill-repair will parse it
+          into mechanical vs. judgment items and stop for your confirmation before proceeding).
+      skill_name:
+        type: string
+        description: >
+          The specific skill to repair (e.g. "lesson-planner", "atom-standards-match"). When
+          provided alongside a repair plan, validates that the plan targets the correct skill
+          before applying any changes.
+      confirmation_acknowledged:
+        type: boolean
+        description: >
+          For apply action: must be true to proceed with changes. Acts as an explicit
+          acknowledgment that the human has reviewed the dry_run output and approved it.
+          apply will refuse to run without this set to true.
+      snapshot_before:
+        type: boolean
+        description: >
+          If true, save a snapshot of all target files before applying any changes. Snapshots
+          go to ledger/repair-snapshots/<timestamp>/. Defaults to true for apply action.
+      stop_on_first_failure:
+        type: boolean
+        description: >
+          If true, halt the apply run if any mechanical fix fails validation after application.
+          Defaults to true (safer; prevents cascading partial repairs).
+    additionalProperties: false

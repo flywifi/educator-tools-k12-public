@@ -1,0 +1,81 @@
+# TOS Skill: atom-reading-level
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+#
+# ATOM SKILL — single operation, minimal token footprint.
+
+type: function
+function:
+  name: reading_level
+  description: |
+    Estimate the reading level of a text passage (up to ~500 words). Returns a grade-band
+    estimate, Lexile estimate, and brief readability analysis. Used to verify that
+    teacher-generated or AI-generated content is accessible to the intended audience, or to
+    check parent communications for appropriate reading level.
+
+    When the textstat library is available (local_optional capability), computes exact
+    Flesch-Kincaid Grade Level, Flesch Reading Ease, and Gunning Fog Index. When absent,
+    returns a rubric-based estimate with honest capability gap noted.
+
+    Called by: family-communication (verifies parent letter readability), atom-differentiate
+    (verifies the modified version hit the target reading level), lesson-planner (checks
+    that instructional text is at the right level for the grade), and quality-review
+    (accessibility dimension scoring).
+
+    Trigger phrases: "what reading level is this", "check the readability of", "is this at a
+    6th grade reading level", "Lexile estimate for", "is this too hard for 4th graders",
+    "reading level check", "Flesch-Kincaid for this passage", "readability of this text".
+
+    Do NOT use atom-reading-level to assess student reading ability or generate Lexile
+    scores for student placement (those require standardized assessments). This skill rates
+    TEXT complexity, not reader ability. human_review_required: true.
+  parameters:
+    type: object
+    required:
+      - passage
+    properties:
+      passage:
+        type: string
+        description: >
+          The text to analyze. Maximum ~500 words for best results. For longer documents,
+          provide a representative excerpt (e.g., the first paragraph, a middle section,
+          and a final paragraph) to get a representative estimate.
+      grade_context:
+        type: string
+        description: >
+          The intended grade level or audience. Examples: "3rd grade students", "4th grade ELL
+          students", "parents of K-5 students", "middle school teachers". Used to contextualize
+          the estimate — a text at 9th grade Lexile is appropriate for a 9th grade audience but
+          flagged as too hard for 3rd grade.
+      purpose:
+        type: string
+        enum:
+          - student_instructional_text
+          - student_independent_reading
+          - parent_communication
+          - teacher_professional_document
+          - assessment_item
+        description: >
+          What the text is for. Affects what reading level is "appropriate." Parent
+          communications target grade 6-8; student instructional text targets grade band;
+          assessment items typically match or are 1-2 grades below instructional level.
+      output_format:
+        type: string
+        enum:
+          - grade_band_estimate
+          - lexile_estimate
+          - full_analysis
+          - pass_fail_for_purpose
+        description: >
+          What to return.
+          grade_band_estimate (default): K-2, 3-5, 6-8, 9-10, 11-12 band + brief rationale.
+          lexile_estimate: numeric Lexile range (e.g. "760L-820L") + confidence note.
+          full_analysis: all readability metrics available + recommendations for adjustment.
+          pass_fail_for_purpose: simple PASS/WARN/FAIL against the grade_context and purpose.
+      flag_accessibility_issues:
+        type: boolean
+        description: >
+          If true, flag specific phrases, sentences, or vocabulary that push the level up —
+          with suggestions to simplify each flagged item. Useful when you want targeted edits
+          rather than a general estimate. Defaults to false.
+    additionalProperties: false
