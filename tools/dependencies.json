@@ -74,6 +74,14 @@
     {"id": "fast_feeds", "tier": "local_optional", "default": "on_if_present",
       "beats_baseline": "parse RSS/Atom ~25x faster + more robustly on messy feeds (kagisearch/fastfeedparser, feedparser-compatible API) for shared/feeds + tools/verify_feeds.py; preferred over feedparser, which is preferred over the stdlib ElementTree fallback. Absent => stdlib still parses every feed.",
       "python": ["fastfeedparser"], "bins": [], "requirements": "tools/requirements-feeds.txt",
-      "privacy": "low — local parsing of public feed XML; no student data"}
+      "privacy": "low — local parsing of public feed XML; no student data"},
+    {"id": "scrape_feed", "tier": "local_optional", "default": "on_if_present",
+      "beats_baseline": "CSS-selector-based news extraction from sites without RSS (beautifulsoup4) — powers tools/make_feed.py and the type='page' path in shared/feeds/feeds.py; stdlib html.parser fallback always available but less precise. Use to build RSS-style feeds from FLDOE, OCPS, CPALMS, Monarch, and any other site missing a native feed.",
+      "python": ["bs4"], "bins": [], "requirements": "tools/requirements-discovery.txt",
+      "privacy": "low — scrapes public education news pages only; no student data"},
+    {"id": "feed_gen", "tier": "local_optional", "default": "on_if_present",
+      "beats_baseline": "emit real RSS 2.0 / Atom XML from scraped items (feedgen library) for tools/make_feed.py --output-rss; lets TOS act as a feed publisher, not just a consumer. Absent => JSON output only (still importable by feeds_import.py).",
+      "python": ["feedgen"], "bins": [], "requirements": "tools/requirements-feeds.txt",
+      "privacy": "low — generates public feed metadata only; no student data"}
   ]
 }

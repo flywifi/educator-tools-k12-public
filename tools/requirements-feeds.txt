@@ -3,4 +3,5 @@
 # more robust on messy feeds. Absent => stdlib fallback, reported as a capability gap, never faked.
 # Parser preference: fastfeedparser -> feedparser -> stdlib ElementTree.
 fastfeedparser>=0.3.0   # kagisearch — ~25x faster than feedparser, feedparser-compatible API (RSS/Atom/RDF)
+feedgen>=0.9.0          # emit real RSS 2.0/Atom XML for tools/make_feed.py --output-rss (feed_gen capability)
 # feedparser is also honored if present (already listed in tools/requirements-scraper.txt).

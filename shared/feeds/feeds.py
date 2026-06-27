@@ -38,6 +38,7 @@ import source_currency as sc  # noqa: E402
 
 _HAVE_FFP = importlib.util.find_spec("fastfeedparser") is not None
 _HAVE_FP = importlib.util.find_spec("feedparser") is not None
+_HAVE_BS4 = importlib.util.find_spec("bs4") is not None
 
 
 def _now() -> datetime:
@@ -153,6 +154,106 @@ def parse_feed(raw: bytes) -> list[dict]:
     return items
 
 
+def scrape_page_items(feed: dict, html_bytes: bytes) -> list[dict]:
+    """Extract news items from an HTML page (for feeds with type='page' + a scrape_config).
+
+    The scrape_config block in feeds.json drives selector behaviour:
+      items  — CSS selector for news-item containers (BS4 preferred)
+      title  — CSS selectors to try (comma-separated)
+      link   — CSS selector for the anchor (falls back to first <a href>)
+      date   — CSS selectors to try (reads datetime attr or text)
+      summary — CSS selectors to try
+
+    BS4 (beautifulsoup4) is used when installed; otherwise a stdlib html.parser fallback
+    extracts headline-bearing <a> tags. Both paths are advisory — scraped items carry
+    human_review_required. Selectors are site-specific; tune via scrape_config in feeds.json.
+    """
+    import urllib.parse as _up
+    cfg = feed.get("scrape_config", {})
+    base_url = cfg.get("news_list_url") or feed.get("url", "")
+    items: list[dict] = []
+
+    if _HAVE_BS4:
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(html_bytes, "html.parser")
+        container_sel = cfg.get("items", "article, .news-item, .post-item, li.item, .fs-entry-digest")
+        containers = soup.select(container_sel)[:60]
+        for c in containers:
+            # title — try selectors left to right until one hits
+            title = ""
+            for ts in (cfg.get("title", "h2, h3, h4, .title, .headline, .fs-entry-summary-header")).split(","):
+                el = c.select_one(ts.strip())
+                if el:
+                    title = el.get_text(separator=" ", strip=True)
+                    break
+            if not title:
+                continue
+            # link
+            link = ""
+            for ls in (cfg.get("link", "a")).split(","):
+                el = c.select_one(ls.strip())
+                if el and el.get("href"):
+                    link = el["href"]
+                    break
+            if link and not link.startswith("http"):
+                link = _up.urljoin(base_url, link)
+            # date
+            date = ""
+            for ds in (cfg.get("date", "time, .date, .published, .news-date, .fs-entry-summary-date")).split(","):
+                el = c.select_one(ds.strip())
+                if el:
+                    date = el.get("datetime") or el.get_text(strip=True)
+                    break
+            # summary
+            summary = ""
+            for ss in (cfg.get("summary", "p, .excerpt, .description, .fs-entry-summary-description")).split(","):
+                el = c.select_one(ss.strip())
+                if el:
+                    summary = el.get_text(separator=" ", strip=True)[:500]
+                    break
+            items.append({"guid": link or title, "title": title, "link": link,
+                          "summary": summary, "published": date})
+    else:
+        # stdlib fallback — pull headline-bearing <a> tags from the page
+        from html.parser import HTMLParser
+
+        class _HeadingLinks(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.items: list[dict] = []
+                self._h = False
+                self._htext = ""
+                self._href = ""
+
+            def handle_starttag(self, tag, attrs):
+                d = dict(attrs)
+                if tag in ("h2", "h3", "h4"):
+                    self._h = True; self._htext = ""; self._href = ""
+                if tag == "a":
+                    href = d.get("href", "")
+                    if href and not href.startswith("#") and "javascript" not in href:
+                        self._href = _up.urljoin(base_url, href)
+
+            def handle_data(self, data):
+                if self._h:
+                    self._htext += data
+
+            def handle_endtag(self, tag):
+                if tag in ("h2", "h3", "h4") and self._htext.strip() and self._href:
+                    self.items.append({"guid": self._href, "title": self._htext.strip(),
+                                       "link": self._href, "summary": "", "published": ""})
+                    self._h = False; self._htext = ""; self._href = ""
+
+        p = _HeadingLinks()
+        try:
+            p.feed(html_bytes.decode("utf-8", "replace"))
+        except Exception:
+            pass
+        items = p.items[:50]
+
+    return items
+
+
 def _item_hash(feed_id: str, item: dict) -> str:
     key = f"{feed_id}|{item.get('guid') or item.get('link')}|{item.get('title')}"
     return hashlib.sha256(key.encode("utf-8")).hexdigest()
@@ -221,7 +322,15 @@ def fetch_and_store(feed: dict, offline: bool, timeout: int) -> dict:
         result["reason"] = "transport error / empty body — could not verify"
         return result
     digest_sha = sc._content_hash(body)
-    items = parse_feed(body)
+    feed_type = feed.get("type", "feed")
+    if feed_type == "page":
+        # Scrape HTML → synthetic RSS items; mark source so curator knows they're scraped
+        items = scrape_page_items(feed, body)
+        result["source"] = "scraped"
+        result["scrape_note"] = ("items extracted by page scraper (not a real RSS feed) — "
+                                 "tune scrape_config selectors if count is 0 or items look wrong")
+    else:
+        items = parse_feed(body)
     if not items and digest_sha != st.get("content_sha256"):
         result["state"] = "uncertain"
         result["reason"] = "fetched but no items parsed — possible format change; flag for the curator"
