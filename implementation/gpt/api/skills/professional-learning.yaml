@@ -1,0 +1,137 @@
+# TOS Skill: professional-learning
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: professional_learning
+  description: |
+    Design professional learning artifacts for K-12 educators: instructional coaching guides,
+    classroom observation look-fors, PD session plans, collaborative inquiry protocols, and
+    lesson study frameworks. All artifacts are non-evaluative (coaching/learning-focused, not
+    teacher-rating documents), grounded in adult-learning principles, and tied to instructional
+    practice improvement.
+
+    Trigger phrases: "write a coaching guide for", "create observation look-fors", "design a
+    PD session on", "build a collaborative inquiry protocol", "lesson study cycle", "coaching
+    conversation template", "what should I look for when observing", "PLC agenda for",
+    "professional learning plan on".
+
+    Non-evaluative by design: all observation tools specify they are FOR learning conversations,
+    not teacher ratings or formal evaluations (which are HR/administrative functions). Coaches
+    and peers use these; administrators may adapt them but should not use them as formal eval
+    instruments without district HR review.
+
+    Grounded in: Marzano High-Yield Strategies, Bloom's Taxonomy, Understanding by Design,
+    Visible Learning (Hattie), adult-learning theory (Knowles andragogy), and Florida
+    Educator Accomplished Practices (FEAPs) where relevant.
+
+    Integrates with presentation-builder (for PD slide decks), atom-activity-generate (PD
+    activities), and quality-review. Routes completed artifact to quality-review.
+
+    Do NOT use professional-learning to produce formal evaluation rubrics or conduct teacher
+    performance ratings (those are HR/administrative). Do NOT use it to write IEP-related
+    professional training (use special-education-support for the IEP content, then wrap in PD
+    format here). human_review_required: true on all outputs.
+  parameters:
+    type: object
+    required:
+      - artifact_type
+      - topic
+    properties:
+      artifact_type:
+        type: string
+        enum:
+          - coaching_guide
+          - observation_look_fors
+          - pd_session_plan
+          - collaborative_inquiry_protocol
+          - lesson_study_protocol
+          - coaching_conversation_template
+          - plc_agenda
+          - professional_learning_plan
+          - book_study_guide
+          - learning_walk_protocol
+        description: >
+          Type of professional learning artifact to produce.
+      topic:
+        type: string
+        description: >
+          Professional learning focus. Examples: "close reading strategies", "math discourse",
+          "co-teaching models", "culturally responsive teaching", "PBIS Tier 1 implementation",
+          "data-driven instruction", "differentiation for ELLs".
+      grade_band:
+        type: string
+        enum:
+          - K_2
+          - 3_5
+          - 6_8
+          - 9_12
+          - K_12
+          - elementary
+          - secondary
+        description: >
+          Grade band of the teachers this PL targets. Affects example content and standards
+          references in the artifact.
+      subject:
+        type: string
+        description: >
+          Subject focus if topic is content-specific. Examples: "ELA", "Mathematics". Omit for
+          cross-curricular PL topics.
+      participant_role:
+        type: string
+        enum:
+          - classroom_teacher
+          - instructional_coach
+          - department_head
+          - assistant_principal
+          - principal
+          - district_administrator
+          - paraprofessional
+          - mixed_staff
+        description: >
+          Role of the PL participants. Determines voice, examples, and reflection depth.
+      duration_minutes:
+        type: integer
+        description: >
+          Duration of the PD session or coaching cycle phase in minutes. Examples: 60, 90, 120,
+          180 for PD sessions; 30-45 for coaching conversations. Informs agenda time allocations.
+      session_count:
+        type: integer
+        description: >
+          For multi-session series: number of sessions. Defaults to 1. For lesson study or
+          collaborative inquiry cycles, typically 3-5 sessions.
+      desired_outcomes:
+        type: array
+        items:
+          type: string
+        description: >
+          Specific teacher competencies or classroom practices participants should be able to
+          demonstrate after PL. Examples: ["use accountable talk stems during math discourse",
+          "provide oral sentence frames for ELL students in content vocabulary instruction"].
+      non_evaluative:
+        type: boolean
+        description: >
+          If false, generates observation tools that include rating dimensions (for instructional
+          coaches doing formal observations in a non-HR capacity). Defaults to true (coaching
+          language, no ratings).
+      feap_connections:
+        type: array
+        items:
+          type: string
+        description: >
+          Florida Educator Accomplished Practices to reference. Examples: ["1a", "1b", "2a", "3b"].
+          Omit if not connecting to FEAPs explicitly.
+      materials_available:
+        type: array
+        items:
+          type: string
+        description: >
+          Materials available for the session (e.g. ["chart paper", "markers", "Chromebooks",
+          "student work samples"]). Informs activity design.
+      follow_up_plan:
+        type: boolean
+        description: >
+          If true, include a follow-up action plan section with accountability check-in dates
+          and reflection questions for between-session practice. Defaults to true.
+    additionalProperties: false

@@ -22,7 +22,7 @@ jobs:
           python3 - <<'PY'
           import json, glob, sys
           bad = []
-          for f in glob.glob("skills/*/evals/evals.json"):
+          for f in glob.glob("skills/**/evals/evals.json", recursive=True):
               try:
                   json.load(open(f))
               except Exception as e:

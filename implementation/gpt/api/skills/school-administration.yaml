@@ -1,0 +1,145 @@
+# TOS Skill: school-administration
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: school_administration
+  description: |
+    Generate school and system-level administrative artifacts: classroom walkthrough instruments,
+    initiative implementation plans, data-review meeting agendas, professional communication
+    templates, school improvement planning tools, and policy explanation documents for K-12
+    school leaders.
+
+    Trigger phrases: "create a walkthrough observation tool", "build an implementation plan for",
+    "school improvement plan component", "meeting agenda for the leadership team", "data review
+    protocol for administrators", "communication to staff about", "policy rollout plan",
+    "faculty meeting agenda", "write a memo to staff about", "principal walkthrough form".
+
+    Artifacts are produced at the SCHOOL or SYSTEM level — they govern how a school or district
+    operates, not what happens in an individual classroom lesson. Walkthrough instruments focus on
+    instructional practice patterns at scale, not individual teacher evaluation.
+
+    Grounded in: Florida School Improvement Planning requirements, MTSS system-level practices,
+    PBIS school-wide implementation, Florida Principal Leadership Standards, and Title I/Title III
+    compliance frameworks where relevant.
+
+    Integrates with professional-learning (for staff PD planning within initiatives),
+    presentation-builder (for board/leadership presentations), and quality-review. All outputs
+    carry human_review_required: true.
+
+    Do NOT use school-administration to write individual teacher formal evaluation instruments
+    (those are HR/district functions). Do NOT use it to determine special education eligibility
+    or produce IEP-related documents (use special-education-support). Do NOT use it to write
+    individual lesson plans (use lesson-planner).
+  parameters:
+    type: object
+    required:
+      - artifact_type
+      - topic
+    properties:
+      artifact_type:
+        type: string
+        enum:
+          - walkthrough_instrument
+          - initiative_implementation_plan
+          - data_review_protocol
+          - faculty_meeting_agenda
+          - leadership_meeting_agenda
+          - staff_memo
+          - school_improvement_component
+          - policy_explanation_document
+          - parent_community_communication
+          - crisis_communication_template
+          - school_calendar_planning_tool
+          - compliance_checklist
+        description: >
+          Type of administrative artifact to produce.
+      topic:
+        type: string
+        description: >
+          Subject of the artifact. Examples: "PBIS Tier 1 walkthrough", "new math curriculum
+          implementation", "reading data review Q1", "FCAT/FSA testing protocol rollout",
+          "attendance improvement initiative", "Title I parent engagement plan".
+      grade_band:
+        type: string
+        enum:
+          - K_2
+          - 3_5
+          - 6_8
+          - 9_12
+          - K_5
+          - K_8
+          - K_12
+          - elementary_school
+          - middle_school
+          - high_school
+        description: >
+          Grade band of the school or the students affected by the initiative.
+      subject_area:
+        type: string
+        description: >
+          Academic subject focus if the initiative is content-specific. Omit for school-wide or
+          cross-curricular topics.
+      audience:
+        type: string
+        enum:
+          - classroom_teachers
+          - instructional_staff
+          - all_staff
+          - leadership_team
+          - school_board
+          - district_leadership
+          - parents_community
+          - students
+          - mixed
+        description: >
+          Intended audience for the artifact.
+      walkthrough_focus_areas:
+        type: array
+        items:
+          type: string
+        description: >
+          For walkthrough_instrument: specific instructional practices to look for. Examples:
+          ["student discourse", "learning target posted and referenced", "data wall updated",
+          "small group instruction", "technology integration", "ELL supports visible"].
+      implementation_phases:
+        type: array
+        items:
+          type: string
+        description: >
+          For initiative_implementation_plan: phase names (e.g. ["Awareness", "Build Capacity",
+          "Implementation", "Sustainability"]) or ["Q1", "Q2", "Q3", "Q4"]. Defaults to a
+          standard 4-phase rollout if not specified.
+      timeline:
+        type: string
+        description: >
+          Implementation timeline. Examples: "6 months", "1 school year", "Q2 through Q4",
+          "August–November 2026".
+      key_stakeholders:
+        type: array
+        items:
+          type: string
+        description: >
+          Roles responsible for or affected by this initiative. Examples: ["principal",
+          "grade-level coaches", "classroom teachers", "ESE coordinator", "parents"].
+      compliance_requirements:
+        type: array
+        items:
+          type: string
+        description: >
+          Any federal, state, or district compliance requirements this must address. Examples:
+          ["Title I Annual Meeting requirement", "Florida SIP (s.1001.42)", "IDEA Child Find"].
+      data_sources:
+        type: array
+        items:
+          type: string
+        description: >
+          For data_review_protocol: data sources to include in the protocol. Examples:
+          ["FAST PM3", "iReady diagnostics", "ODR rates", "attendance data", "GPA trends"].
+      meeting_duration_minutes:
+        type: integer
+        description: >
+          For meeting agenda artifacts: duration of the meeting in minutes. Informs time
+          allocation per agenda item.
+    additionalProperties: false

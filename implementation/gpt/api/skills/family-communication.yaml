@@ -1,0 +1,139 @@
+# TOS Skill: family-communication
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: family_communication
+  description: |
+    Draft family-facing communications for K-12 educators: parent emails, classroom newsletters,
+    conference notes, progress updates, behavior notes, celebration messages, and permission forms.
+    All output targets a grade 6-8 reading level by default (Flesch-Kincaid), is professional in
+    tone, uses placeholders for all student and family names, and carries human_review_required: true
+    for teacher review before sending.
+
+    Trigger phrases: "write a parent email about", "draft a newsletter for", "help me communicate
+    with families about", "write a note home", "draft conference talking points", "parent letter
+    about", "translate this for families", "make this easier to read for parents".
+
+    Integrates with atom-parent-comm (single-message drafting) and atom-reading-level (reading
+    level check). Documents with sensitive content (behavior, academic concern, special education)
+    include a plain-language "key message" summary at the top.
+
+    PRIVACY RULES (always enforced):
+    - All student names replaced with placeholder "Student" or [STUDENT NAME]
+    - All family names replaced with "Family" or [FAMILY NAME]
+    - No real PII (SSN, address, phone, ID numbers) in any output
+    - Behavior notes use observable, non-labeling language only
+    - Communications about special education services never identify disability category to
+      unauthorized recipients
+
+    Do NOT use family-communication to produce legally required special education notices (Prior
+    Written Notices, Procedural Safeguards) — those require the district's official forms. Do NOT
+    use it to draft communications that make eligibility or placement decisions.
+  parameters:
+    type: object
+    required:
+      - communication_type
+      - grade
+    properties:
+      communication_type:
+        type: string
+        enum:
+          - parent_email
+          - classroom_newsletter
+          - conference_note
+          - conference_talking_points
+          - progress_update
+          - behavior_note
+          - celebration_note
+          - permission_form
+          - volunteer_request
+          - supply_list
+          - event_announcement
+          - general_letter
+        description: >
+          The type of family communication artifact to produce.
+      grade:
+        type: string
+        description: >
+          Grade level of the class or student. Examples: "3rd grade", "9th grade", "Kindergarten".
+      subject:
+        type: string
+        description: >
+          Subject area if relevant (e.g. "Math", "ELA"). Omit for whole-class communications.
+      key_points:
+        type: array
+        items:
+          type: string
+        description: >
+          Main points the communication must convey. Examples: ["upcoming field trip on Oct 3",
+          "permission form due by Sept 25", "students need $5 for materials"]. The skill drafts
+          fluent prose around these points.
+      topic_summary:
+        type: string
+        description: >
+          Brief description of what happened or what you want to communicate. Use for behavior
+          notes or academic updates. Example: "Student disrupted class three times this week by
+          calling out; prior interventions have included verbal reminders and proximity."
+      tone:
+        type: string
+        enum:
+          - warm
+          - professional
+          - urgent
+          - celebratory
+          - neutral
+        description: >
+          Desired tone. Defaults to professional for most types; warm for celebration notes.
+      reading_level_target:
+        type: string
+        enum:
+          - grade_4_6
+          - grade_6_8
+          - grade_8_10
+        description: >
+          Target reading level for the output. Defaults to grade_6_8 (Flesch-Kincaid ~7th grade).
+          Use grade_4_6 for communities where simpler language is preferred.
+      language:
+        type: string
+        description: >
+          Output language code. Defaults to "en". Use "es" for Spanish, "ht" for Haitian Creole,
+          etc. Dual-language output (both languages in one document) is supported — specify as
+          "en+es".
+      newsletter_sections:
+        type: array
+        items:
+          type: string
+        description: >
+          For classroom_newsletter: list of sections to include. Examples: ["This Week's Learning",
+          "Upcoming Events", "Volunteer Opportunities", "Star Students", "Reminders"].
+      conference_student_strengths:
+        type: array
+        items:
+          type: string
+        description: >
+          For conference notes/talking points: observable academic or behavioral strengths to
+          highlight. Placeholders only — no real names.
+      conference_growth_areas:
+        type: array
+        items:
+          type: string
+        description: >
+          For conference notes/talking points: areas for growth, stated in positive, actionable
+          language.
+      conference_action_items:
+        type: array
+        items:
+          type: string
+        description: >
+          For conference notes: agreed next steps for teacher and/or family. Example:
+          ["Teacher will provide reading log template", "Family will ensure student reads 20
+          min/night", "Follow-up call in 4 weeks"].
+      include_translation_note:
+        type: boolean
+        description: >
+          If true, add a footer note in English and the target language that a translation was
+          AI-assisted and the family can request clarification. Recommended for non-English output.
+        default: true
+    additionalProperties: false

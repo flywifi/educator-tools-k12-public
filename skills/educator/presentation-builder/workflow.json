@@ -1,0 +1,20 @@
+{
+  "_comment": "Declarative workflow definition for presentation-builder. Designs classroom slide decks by anchoring to a standard, writing clear objectives, checking reading level, differentiating for the grade band, and gating quality.",
+  "id": "presentation-builder",
+  "description": "Instructional slide deck: standards anchor → objectives → reading-level check → differentiation → quality gate",
+  "steps": [
+    {"step": 1, "atom": "standards-match",   "input_from": "teacher request",          "output_to": "step2",
+     "note": "Anchor the deck to one verified FL B.E.S.T. or NGSSS standard"},
+    {"step": 2, "atom": "objective-write",   "input_from": "step1.standards",          "output_to": "step3",
+     "note": "Write 1-3 slide-level SWBAT objectives to structure the deck's gradual-release arc"},
+    {"step": 3, "atom": "reading-level",     "input_from": "draft_slide_text",         "output_to": "step4",
+     "note": "Check that body text is at the appropriate grade-band reading level (one idea per slide)"},
+    {"step": 4, "atom": "differentiate",     "input_from": "slide_content",            "output_to": "step5",
+     "repeat": "per_profile",
+     "note": "Add UDL annotations: alt text, simplified language, vocabulary support, high-contrast notes"},
+    {"step": 5, "atom": "quality-check",     "input_from": "assembled_deck",           "output_to": "final",
+     "gates": ["standard_alignment", "reading_level", "differentiation_present", "no_real_student_data"]}
+  ],
+  "shortcut_atoms": ["atom-standards-match", "atom-reading-level"],
+  "note": "Render the final .pptx via scripts/build_deck.py (shared/office/). If python-pptx is absent, write the slide spec and report an honest gap."
+}

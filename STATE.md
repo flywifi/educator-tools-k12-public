@@ -228,6 +228,17 @@ regressions. Details in **`BENCHMARK.md`**. Widening to the full eval set is a f
 Full-K-12 breadth-first standards; FULL §33.1 9-dimension weighting authoritative; QG canonical
 names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protocols are approved.
 
+## Local-First / Modular (L-series) — in progress on `claude/educator-tools-k12-plan-f49yju`
+Offline / low-token-overhead track extending F1–F6. Shipped: L1 local SQLite/FTS5 standards cache
+(`shared/cache/`), L0 reversible setup preferences + L7 feed cadence (`profile_wizard.py --preferences`),
+L2 opt-in `sqlite-vec` semantic index, L3 manifest-driven sync (`tools/sync_cache.py`), **L7 feed
+self-update** (`shared/feeds/` + `tools/feeds_update.py`), and **L8 seed curation** — the
+**`feed-curator` skill (19th)** + `tools/seed_curator.py` (validate/discover/propose, auto-apply only
+mechanically-safe repairs, audit trail in `ledger/feeds-change-log.json` with `--revert`). Real-world
+scope: OCPS (public, district 48) + Monarch Learning Academy (private, Orlando). Live web fetch is gated
+by network policy — feed endpoints stay `verified:false` pending discovery where network
+is open.
+
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
 2. Florida wired + **corpus stored** (`resources/florida/` + `sources.json`, 104 files) with
@@ -235,6 +246,6 @@ names; build on `pptx/docx/pdf` for rendered outputs; the 5 reconstructed protoc
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
-Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 18 skills ·
+Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 19 skills ·
 65 artifact types · 65 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
-protocols · 100% ledger approval (seed) · 18/18 skills emit `human_review_required`.
+protocols · 100% ledger approval (seed) · 19/19 skills emit `human_review_required`.

@@ -1,0 +1,135 @@
+# TOS Skill: atom-assessment-item
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+#
+# ATOM SKILL — single operation, minimal token footprint.
+
+type: function
+function:
+  name: assessment_item
+  description: |
+    Generate ONE assessment item with its answer key. Supports multiple choice (with distractor
+    analysis), short answer, constructed response, true/false, and matching. Every item maps to
+    a verified standard code, carries a Bloom's level and DOK level tag, and includes a scoring
+    guide or answer key.
+
+    Each call generates exactly ONE item. Use assessment-designer to generate a full assessment
+    with multiple items, item-type distribution, and rubric.
+
+    For multiple choice: generates 4 answer options (one correct, three plausible distractors)
+    plus distractor analysis explaining the misconception each wrong answer targets.
+
+    For constructed response: generates a multi-point scoring guide with score-point descriptors
+    (what earns full credit, partial credit, and no credit).
+
+    Called by: assessment-designer (populates an item bank item-by-item), lesson-planner
+    (generates exit-ticket items), and any workflow needing a single verified assessment item.
+
+    Trigger phrases: "write a multiple choice question about", "create a short answer question for",
+    "make a constructed response item on", "write one test question about", "assessment item for
+    this standard", "write a true/false question on".
+
+    Do NOT use atom-assessment-item to write a full assessment (use assessment-designer). Do NOT
+    use it to write IEP progress-monitoring probes (use special-education-support). Every item
+    carries human_review_required: true — teacher reviews before use with students.
+  parameters:
+    type: object
+    required:
+      - topic
+      - grade
+      - subject
+      - item_type
+    properties:
+      topic:
+        type: string
+        description: >
+          Concept or skill the item assesses. Examples: "the water cycle", "long division",
+          "main idea vs. supporting detail", "causes of World War I".
+      grade:
+        type: string
+        description: >
+          Grade level. Examples: "4th grade", "8th grade", "11th grade".
+      subject:
+        type: string
+        description: >
+          Subject area. Examples: "Science", "Mathematics", "ELA", "US History".
+      item_type:
+        type: string
+        enum:
+          - multiple_choice
+          - short_answer
+          - constructed_response
+          - true_false
+          - matching
+          - fill_in_the_blank
+          - essay
+          - performance_task_component
+        description: >
+          The format of the assessment item to generate.
+      standard:
+        type: string
+        description: >
+          Florida B.E.S.T. or NGSSS standard code the item maps to. If omitted,
+          atom-standards-match is called internally to find the most relevant standard.
+      bloom_level:
+        type: string
+        enum:
+          - remember
+          - understand
+          - apply
+          - analyze
+          - evaluate
+          - create
+        description: >
+          Target Bloom's taxonomy level. Defaults to understand for most formative items;
+          apply or analyze for summative items.
+      dok_level:
+        type: integer
+        enum: [1, 2, 3, 4]
+        description: >
+          Target Depth of Knowledge level. DOK 1 = recall; DOK 2 = skill/concept; DOK 3 =
+          strategic thinking; DOK 4 = extended thinking. Defaults to 2.
+      include_answer_key:
+        type: boolean
+        description: >
+          Include the correct answer with rationale. Always true for MC and T/F. For
+          constructed_response, includes the full scoring guide. Defaults to true.
+      include_distractor_analysis:
+        type: boolean
+        description: >
+          For multiple_choice only: include an explanation of why each wrong answer is plausible
+          and what misconception it targets. Defaults to true.
+      point_value:
+        type: integer
+        description: >
+          Point value for the item. For constructed_response, this is the total possible points
+          (determines how many score-point levels are described). Defaults to 1 for MC/T/F, 4
+          for short_answer, 6 for constructed_response.
+      stimulus:
+        type: string
+        description: >
+          Optional passage, graph, data table, diagram description, or scenario to base the item
+          on. If provided, the item stems from this stimulus rather than asking about the topic
+          abstractly. For ELA reading comprehension items, provide the text excerpt here.
+      difficulty_level:
+        type: string
+        enum:
+          - introductory
+          - grade_level
+          - advanced
+          - honors
+        description: >
+          Item difficulty. Defaults to grade_level.
+      accessibility_features:
+        type: array
+        items:
+          type: string
+          enum:
+            - simplified_language
+            - visual_support_note
+            - ell_scaffolded
+            - extended_time_version
+        description: >
+          Accessibility modifications to embed. The base item is unchanged; modifications are
+          listed as "Accessibility version" notes at the end.
+    additionalProperties: false

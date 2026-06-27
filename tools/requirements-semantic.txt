@@ -1,0 +1,10 @@
+# Optional OFFLINE semantic index (local_optional, default OFF) for the L1 standards cache
+# (shared/cache). Activated ONLY with teacher consent (teacher-profile local_first.consents.
+# local_semantic). Absent or declined => the cache falls back to L1 keyword search and reports the
+# gap honestly — never faked. Pinned for supply-chain safety; scanned by tools/security_scan.py.
+sqlite-vec>=0.1.6          # embedded vector search in the same SQLite file (pure C, zero deps)
+
+# Pick ONE local embedding backend (all optional, local-first — no data leaves the machine):
+#   sentence-transformers>=2.6.0   # local CPU embeddings (default; all-MiniLM-L6-v2, 384-dim)
+#   # or the `llm` CLI (simonw) + llm-sentence-transformers
+#   # or sqlite-rembed             # embeddings via a local Ollama server or a cloud API

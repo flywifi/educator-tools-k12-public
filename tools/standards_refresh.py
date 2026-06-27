@@ -239,6 +239,60 @@ def crawl(seeds, fetcher, max_pages, max_depth, min_delay, max_delay,
     return docs, report
 
 
+def _render_with_fallback(urls, trigger_reason, ua, timeout, out_dir, respect_robots,
+                          enable_cloud, confidence_threshold=0.95):
+    """Recover content via the shared/render prong chain for any obstacle or low-confidence fetch.
+
+    Triggers: js_required, HTTP error, low confidence (<threshold), obstacle/bot-gate, rate-limit.
+    Not limited to js_required detection. Results are aggregated across prongs; discrepancies go to
+    the minority report and ledger/render-discrepancy-log.json. Honest UA; robots respected;
+    CAPTCHA never bypassed. Returns a per-URL summary with honest capability gaps.
+    """
+    try:
+        sys.path.insert(0, str(ROOT / "shared"))
+        import render  # noqa
+    except Exception as e:
+        print(f"  [render] shared/render unavailable ({e}); affected pages left for manual fetch.")
+        return [{"url": u, "prong_succeeded": "none", "trigger_reason": trigger_reason,
+                 "note": "render engine unavailable"} for u in urls]
+    caps = render.capability_report()
+    avail = [n for n, i in caps.items() if i["available"]]
+    print(f"  [render] fallback prongs on {len(urls)} URL(s) "
+          f"(trigger: {trigger_reason}); available: {', '.join(avail)}")
+    results = []
+    for u in urls:
+        sub = (Path(out_dir) / re.sub(r"\W+", "_", u)[:60]) if out_dir else None
+        rep = render.resilient_fetch(
+            u, out_dir=str(sub) if sub else None, timeout=timeout, ua=ua,
+            respect_robots=respect_robots, enable_cloud=enable_cloud,
+            confidence_threshold=confidence_threshold)
+        chars = len(rep.get("text", "") or "")
+        minority = rep.get("minority_report", False)
+        wayback = rep.get("wayback_compare") or {}
+        print(f"    - {rep['prong_succeeded']:<16} conf={rep.get('confidence', 0):.2f} "
+              f"{chars:>6} chars  {'[minority]' if minority else ''} {u}")
+        results.append({
+            "url": u,
+            "trigger_reason": trigger_reason,
+            "trigger_reasons": rep.get("trigger_reasons", []),
+            "prong_succeeded": rep["prong_succeeded"],
+            "chars": chars,
+            "confidence": rep.get("confidence", 0.0),
+            "minority_report": minority,
+            "wayback_overlap": wayback.get("overlap_score"),
+            "wayback_changed": wayback.get("changed"),
+            "page_removed": wayback.get("page_removed", False),
+            "capability_gaps": rep.get("capability_gaps", []),
+            "captcha_detected": rep.get("captcha_detected", False),
+            "human_review_required": True,
+        })
+    return results
+
+
+# Keep the old name as an alias for any callers in external scripts.
+_render_js_required = _render_with_fallback
+
+
 def main(argv) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
@@ -261,6 +315,14 @@ def main(argv) -> int:
     ap.add_argument("--report", metavar="PATH")
     ap.add_argument("--no-robots", action="store_true", help="(not recommended) ignore robots.txt")
     ap.add_argument("--update-hashes", action="store_true", help="save watch-page baseline hashes to the manifest")
+    ap.add_argument("--no-render-fallback", action="store_false", dest="render_fallback", default=True,
+                    help="disable the render/screenshot/OCR fallback prongs for js_required pages "
+                         "(by default, when a page needs a browser render, shared/render is tried "
+                         "automatically — LOCAL render -> offline docintel -> screenshot+OCR)")
+    ap.add_argument("--render-out", metavar="DIR", help="save rendered HTML / screenshots / extracted text per js_required page")
+    ap.add_argument("--render-enable-cloud", action="store_true",
+                    help="also allow the firecrawl cloud render prong if FIRECRAWL_* configured (off by default)")
+    ap.add_argument("--render-max", type=int, default=10, help="cap how many js_required pages to render (default 10)")
     a = ap.parse_args(argv)
 
     man = json.loads(Path(a.manifest).read_text(encoding="utf-8"))
@@ -337,6 +399,13 @@ def main(argv) -> int:
     if rep["js_required"]:
         print(f"  [note] {len(rep['js_required'])} page(s) need a browser render (JS) — e.g. CPALMS "
               f"search; use a Selenium/Playwright fetch for those, or the static downloads page.")
+        if a.render_fallback:
+            report["rendered"] = _render_with_fallback(
+                rep["js_required"][: a.render_max], "js_required", a.user_agent, a.timeout,
+                a.render_out, not a.no_robots, a.render_enable_cloud)
+    if rep["captcha"]:
+        print(f"  [note] {len(rep['captcha'])} page(s) show a CAPTCHA wall — reported, NOT bypassed "
+              f"(we never defeat access controls). Fetch those manually if authorized.")
     if rep["skipped_robots"] or any(p["status"] == "skipped_robots" for p in page_changes):
         print("  [note] some URL(s) skipped per robots.txt (respected).")
 

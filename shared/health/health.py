@@ -28,8 +28,8 @@ ROUTING = ROOT / "shared" / "routing" / "routing.json"
 LEDGER = ROOT / "ledger" / "ledger.json"
 ONTOLOGY = ROOT / "shared" / "ontology" / "artifact-types.json"
 # Files that must mention a skill so nothing drifts when one is added/renamed (impact analysis targets).
-ECOSYSTEM_REFS = ["shared/routing/routing.json", "ROUTING_MODEL.md",
-                  "skills/teacher-core/references/routing-map.md", "STATE.md", "METRICS.md",
+ECOSYSTEM_REFS = ["shared/routing/routing.json", "docs/ROUTING_MODEL.md",
+                  "skills/core/teacher-core/references/routing-map.md", "STATE.md", "docs/METRICS.md",
                   "shared/ontology/artifact-types.json"]
 # Shared engines we expect to import cleanly (module, dir-on-path).
 ENGINES = [("docintel", "shared"), ("routing.router", "shared"), ("traversal", "shared"),
@@ -56,8 +56,14 @@ def _frontmatter_name(skill_md: Path) -> Optional[str]:
     return None
 
 
+def _skill_dirs() -> List[Path]:
+    # Skills are sub-grouped (core/ educator/ operations/ atoms/); a skill is any dir holding a
+    # SKILL.md, found recursively. Leaf folder names stay unique across groups.
+    return sorted((p.parent for p in SKILLS.rglob("SKILL.md")), key=lambda p: p.name) if SKILLS.exists() else []
+
+
 def discover_skills() -> List[str]:
-    return sorted(d.name for d in SKILLS.iterdir() if (d / "SKILL.md").exists()) if SKILLS.exists() else []
+    return [d.name for d in _skill_dirs()]
 
 
 def _load_routing() -> dict:
@@ -69,8 +75,8 @@ def scan_skills() -> List[dict]:
     routing = _load_routing()
     routed = set(routing.get("skills", {})) | set(routing.get("meeting_routes", {}).values())
     out = []
-    for name in discover_skills():
-        d = SKILLS / name
+    for d in _skill_dirs():
+        name = d.name
         issues: List[dict] = []
         if _frontmatter_name(d / "SKILL.md") != name:
             issues.append({"severity": "blocking", "issue": "SKILL.md name != folder", "mechanical": False})
@@ -209,7 +215,7 @@ def build_report(traces_dir: Optional[str] = None) -> dict:
         "skills": skills, "engines": engines, "routing_problems": routing_problems,
         "diagnostics": diagnose(traces_dir),
         "repair_plan": required,
-        "must_review_docs": ["CHANGE_MANAGEMENT.md", "tools/skill-maintenance.md", "protocols/quality-gates.md"] if required else [],
+        "must_review_docs": ["changes/CHANGE_MANAGEMENT.md", "tools/skill-maintenance.md", "protocol-layer/quality-gates.md"] if required else [],
         "human_review_required": True,
     }
 

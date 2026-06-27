@@ -14,9 +14,10 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 HERE = Path(__file__).resolve().parent
-DISTRICTS_PATH = HERE / "florida-districts.json"
-SCHOOL_TYPES_PATH = HERE / "school-types.json"
-OVERLAYS_DIR = HERE / "overlays"
+_ROOT = HERE.parent.parent  # repo root
+DISTRICTS_PATH = _ROOT / "canonical-sources" / "florida-districts.json"
+SCHOOL_TYPES_PATH = _ROOT / "canonical-sources" / "school-types.json"
+OVERLAYS_DIR = _ROOT / "canonical-sources" / "overlays" / "context"
 
 # Default precedence for MANDATES/compliance: higher authority wins, then more-specific scopes.
 # Highest authority FIRST: state > district > county > school > grade (individual) > grade_band >

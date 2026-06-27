@@ -34,7 +34,7 @@ REPO_INVARIANTS = [
     "Quality decisions remain auditable",
     "Certification requires evidence",
 ]
-INVARIANT_FILES = [ROOT / "protocols" / "quality-gates.md", ROOT / "QUALITY_MODEL.md"]
+INVARIANT_FILES = [ROOT / "protocol-layer" / "quality-gates.md", ROOT / "docs" / "QUALITY_MODEL.md"]
 
 # Markers every SKILL.md must contain: the pipeline pointer, the metadata schema,
 # and the always-on human-review flag.
@@ -60,7 +60,7 @@ MAX_NAME, MAX_DESC = 64, 1024
 # `shared/...` both work). Conservative anchors/extensions on purpose; assets/ is intentionally
 # excluded (output templates may be absent by design).
 _REF_ANCHORS = ("references/", "scripts/", "evals/", "examples/",
-                "protocols/", "shared/", "tools/", "ledger/")
+                "protocol-layer/", "protocols/", "shared/", "tools/", "ledger/")
 _REF_EXTS = (".md", ".py", ".json", ".yaml", ".yml", ".txt", ".csv")
 
 
@@ -150,8 +150,9 @@ def main() -> int:
             if inv not in text:
                 failures.append(f'  x invariant absent: "{inv}" not in {f.relative_to(ROOT)}')
 
-    # Per-skill checks.
-    skill_dirs = sorted(d for d in SKILLS.iterdir() if d.is_dir()) if SKILLS.exists() else []
+    # Per-skill checks. Skills are now sub-grouped (core/, educator/, operations/, atoms/);
+    # find every directory that contains a SKILL.md, recursively.
+    skill_dirs = sorted(p.parent for p in SKILLS.rglob("SKILL.md")) if SKILLS.exists() else []
     for sd in skill_dirs:
         rel = sd.relative_to(ROOT)
         skillmd = sd / "SKILL.md"
@@ -206,7 +207,7 @@ def main() -> int:
     routing_path = ROOT / "shared" / "routing" / "routing.json"
     if routing_path.exists():
         rj = json.loads(read(routing_path))
-        skill_names = {d.name for d in skill_dirs}
+        skill_names = {d.name for d in skill_dirs}  # leaf names are stable after sub-grouping
         fallback = rj.get("fallback", "manual_review")
         targets = set(rj.get("skills", {})) | set(rj.get("meeting_routes", {}).values())
         for t in sorted(targets):

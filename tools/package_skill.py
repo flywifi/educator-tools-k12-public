@@ -55,11 +55,18 @@ def main(argv: list[str]) -> int:
         print("usage: python3 tools/package_skill.py <skill-name> | --all")
         return 2
 
-    targets = (
-        sorted(d for d in SKILLS.iterdir() if d.is_dir())
-        if argv[0] == "--all"
-        else [SKILLS / argv[0]]
-    )
+    if argv[0] == "--all":
+        # Skills are sub-grouped (core/ educator/ operations/ atoms/); a skill is any directory
+        # that contains a SKILL.md, found recursively — not just the top-level group folders.
+        targets = sorted(p.parent for p in SKILLS.rglob("SKILL.md"))
+    else:
+        # Accept either a sub-grouped path ("atoms/rubric-build") or a bare leaf name
+        # ("rubric-build"); resolve the leaf by searching for its SKILL.md.
+        direct = SKILLS / argv[0]
+        if (direct / "SKILL.md").exists():
+            targets = [direct]
+        else:
+            targets = [p.parent for p in SKILLS.rglob("SKILL.md") if p.parent.name == argv[0]] or [direct]
 
     rc = 0
     for sd in targets:

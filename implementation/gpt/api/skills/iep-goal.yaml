@@ -1,0 +1,145 @@
+# TOS Skill: atom-iep-goal
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+#
+# ATOM SKILL — single operation, minimal token footprint.
+
+type: function
+function:
+  name: iep_goal
+  description: |
+    Write ONE SMART IEP annual goal following the IDEA-compliant three-part formula:
+    Condition + Behavior + Criterion. Each goal ties to a domain (academic, behavioral,
+    communication, adaptive, social-emotional, motor, or transition), maps to a grade-level
+    or near-grade-level standard when applicable, and includes suggested progress-monitoring
+    frequency and measurement method.
+
+    SMART goal formula:
+    - S: Specific (observable behavior named)
+    - M: Measurable (criterion stated with accuracy/frequency/rate)
+    - A: Achievable (realistic for the annual period given PLOP)
+    - R: Relevant (connected to standard or functional need)
+    - T: Time-bound (by the annual IEP date)
+
+    Three-part structure:
+    [Condition]: Given [materials/support/setting/cue]...
+    [Behavior]: ...[student] will [observable verb + skill]...
+    [Criterion]: ...with [accuracy/frequency/rate] as measured by [tool] across [trials/sessions].
+
+    Example output:
+    "Given a grade-level informational text and a graphic organizer, [STUDENT] will identify the
+    main idea and two supporting details with 80% accuracy across 4 of 5 consecutive trials as
+    measured by teacher-administered running records, by the annual IEP date."
+
+    Called by: special-education-support (builds full IEP goal sections), and can be called
+    directly for a fast single-goal draft.
+
+    LEGAL NOTICE (included in every output):
+    - This is a DRAFT for review and approval by the IEP team, not a final IEP document
+    - This skill does not determine eligibility, placement, or services
+    - The IEP team must review, modify, and approve all goals per IDEA procedures
+    - Present Level of Performance (PLOP) data must come from the teacher/team, not generated here
+
+    Trigger phrases: "write an IEP goal for", "draft an annual goal", "IEP reading goal",
+    "behavior goal for IEP", "communication goal draft", "transition goal for", "SMART IEP goal".
+
+    Do NOT use atom-iep-goal to write lesson plan objectives (use atom-objective-write).
+    Do NOT use it to determine eligibility or make placement decisions.
+    human_review_required: true on every output.
+  parameters:
+    type: object
+    required:
+      - domain
+      - grade
+      - present_level_of_performance
+      - legal_notice_acknowledged
+    properties:
+      domain:
+        type: string
+        enum:
+          - academic_reading
+          - academic_math
+          - academic_writing
+          - behavioral
+          - communication_expressive
+          - communication_receptive
+          - adaptive_daily_living
+          - social_emotional
+          - fine_motor
+          - gross_motor
+          - transition_employment
+          - transition_postsecondary_education
+          - transition_independent_living
+          - assistive_technology
+        description: >
+          IEP goal domain. Determines the observable behavior vocabulary and criterion norms
+          used in the draft.
+      grade:
+        type: string
+        description: >
+          Student's current grade level. Examples: "3rd grade", "9th grade", "K".
+      present_level_of_performance:
+        type: string
+        description: >
+          Teacher-supplied baseline data describing what the student can currently do, at what
+          level, and with what accuracy. THIS MUST COME FROM REAL ASSESSMENT DATA — never
+          fabricate. Use "[INSERT BASELINE DATA]" as a placeholder if data is not yet available.
+          Example: "Student currently reads at a 1st grade level (38 wcpm on a Grade 1 oral
+          reading fluency probe); decodes CVC and CVCe words with 70% accuracy."
+      annual_goal_focus:
+        type: string
+        description: >
+          The specific skill or behavior the goal should target over the coming year. Be precise.
+          Examples: "decode multisyllabic words with prefixes and suffixes", "initiate peer
+          interactions during unstructured time", "complete multi-step math problems using a
+          graphic organizer", "use 'I need a break' card to request sensory regulation break".
+      measurement_criterion:
+        type: string
+        description: >
+          The performance criterion (accuracy, frequency, rate, duration). Examples: "80%
+          accuracy across 4 of 5 trials", "3 times per week", "within 3 minutes", "9 of 10
+          consecutive opportunities". If omitted, a research-normed criterion is drafted with
+          a placeholder for team review.
+      measurement_tool:
+        type: string
+        description: >
+          Progress-monitoring tool. Examples: "teacher-administered CBM", "DIBELS 8th Ed ORF
+          probes", "behavior frequency count", "work sample analysis", "observation checklist".
+          If omitted, an appropriate tool is recommended.
+      condition:
+        type: string
+        description: >
+          The condition/context for the goal: given what materials, supports, or cues will the
+          student demonstrate the skill? Examples: "given a grade-level informational text and
+          a graphic organizer", "given a visual behavior support chart", "given a calculator and
+          a step-by-step problem-solving guide". If omitted, a standard condition is drafted.
+      standard:
+        type: string
+        description: >
+          Florida B.E.S.T. or NGSSS standard the goal connects to (for academic goals).
+          Optional for behavioral/functional goals. If omitted and domain is academic, the skill
+          attempts to connect to the nearest appropriate standard.
+      progress_monitoring_frequency:
+        type: string
+        enum:
+          - weekly
+          - biweekly
+          - monthly
+          - quarterly
+          - at_each_iep_review
+        description: >
+          How often progress on this goal will be measured. Defaults to biweekly for academic
+          goals, weekly for behavioral goals.
+      short_term_objectives:
+        type: boolean
+        description: >
+          If true, include 2-3 short-term objectives / benchmarks as interim steps toward the
+          annual goal. Required for students with significant cognitive disabilities in Florida.
+          Defaults to false.
+      legal_notice_acknowledged:
+        type: boolean
+        description: >
+          REQUIRED — must be true to proceed. Confirms that the requestor understands this is
+          a DRAFT requiring IEP team review and approval, and that this skill never determines
+          eligibility, placement, or services.
+    additionalProperties: false

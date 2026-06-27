@@ -1,0 +1,23 @@
+{
+  "_comment": "Declarative workflow definition for skill-health. Diagnoses the TOS ecosystem by scanning skills/engines for readiness, reading the audit trail for recurring problems, running impact analysis for changes, and generating an ordered repair plan for human approval.",
+  "id": "skill-health",
+  "description": "Ecosystem diagnostics: scan readiness → diagnose audit trail → impact analysis → repair plan (human-approved) → quality gate",
+  "steps": [
+    {"step": 1, "action": "scan",       "input_from": "ecosystem (skills/ + shared/ + routing)",  "output_to": "step2",
+     "uses": "python3 shared/health/health.py --summary",
+     "note": "Sweep every skill (MAINTAINER.md, synced refs, evals, routing) + every shared engine (importable) + routing integrity. Emit readiness score + band + blocking issues."},
+    {"step": 2, "action": "diagnose",   "input_from": "ledger/ledger.json + runtime/traces",      "output_to": "step3",
+     "uses": "python3 shared/health/health.py --diagnose --traces runtime/traces",
+     "note": "Read audit trail and summarize recurring problems in plain language: validation failures, connector failure classes, minority reports."},
+    {"step": 3, "action": "impact",     "input_from": "skill name (when add/rename requested)",   "output_to": "step4",
+     "uses": "python3 shared/health/health.py --impact <skill-name>",
+     "condition": "when a skill is being added or renamed",
+     "note": "List every file that must update: routing.json, ROUTING_MODEL.md, routing-map.md, STATE.md, METRICS.md, artifact-types.json"},
+    {"step": 4, "action": "repair_plan", "input_from": "step1.issues + step2.diagnosis",          "output_to": "step5",
+     "note": "Ordered severity-tagged plan: each step marked mechanical (safe to automate) or judgment (human-only). Stop for human approval before applying."},
+    {"step": 5, "atom": "quality-check", "input_from": "health_report",                      "output_to": "final",
+     "gates": ["no_auto_apply_without_approval", "audit_trail_readable", "repair_plan_actionable"]}
+  ],
+  "shortcut_atoms": [],
+  "note": "skill-health governs the SYSTEM, not classroom artifacts. Nothing high-stakes is auto-applied — repair plan is advisory; skill-repair consumes the approved plan."
+}
