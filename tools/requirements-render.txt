@@ -1,0 +1,18 @@
+# Local headless-browser render prong (capability: local_render, local_optional / on_if_present).
+# Powers shared/render/render_prongs.py and tools/render_fetch.py — the LOCAL render + screenshot
+# fallbacks for JS-required SPA pages (e.g. CPALMS search) that the polite stdlib crawler reports
+# as js_required.
+#
+# This is NOT an evasion tool: the render prong sends the same honest identifying User-Agent,
+# respects robots.txt, and simply runs the site's own JavaScript the way a browser is meant to.
+# No User-Agent rotation, no browser impersonation, no CAPTCHA/rate-limit bypass.
+#
+# Chromium is PRE-INSTALLED in this environment at /opt/pw-browsers — do NOT run
+# `playwright install`. Set executablePath to the bundled chromium if a version pins differently.
+# PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers and PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 are honored.
+#
+# The screenshot->OCR prong additionally uses the docintel OCR engine (capability: ocr —
+# pytesseract + Pillow + the tesseract binary; see tools/requirements-docintel.txt). Without OCR
+# present, the screenshot prong degrades to "image captured, text not recovered" (honest gap),
+# and the chain still returns whatever the render/offline-docintel prongs recovered.
+playwright>=1.40
