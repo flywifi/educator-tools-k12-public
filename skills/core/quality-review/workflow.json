@@ -25,6 +25,6 @@
      "uses": "python3 scripts/score.py '{\"integrity\":N,...}'",
      "note": "Apply QG §33.1 weights + §35.3 thresholds. Approved ≥4.0 · Conditionally Approved 3.0-3.99 · Remediation 2.0-2.99 · Rejected <2.0. Any 0 = auto-Rejected. Do NOT hand-compute — use the script."}
   ],
-  "shortcut_atoms": ["atom-quality-check"],
+  "shortcut_atoms": ["quality-check"],
   "note": "quality-review EVALUATES, not creates. On not-Approved, give specific actionable remediation per failed dimension. Resolve contradictions per protocols/conflict-protocol.md (integrity > safety > governance > accuracy/alignment > preference > presentation)."
 }

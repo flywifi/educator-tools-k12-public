@@ -8,6 +8,6 @@
     {"step": 2, "atom": "quality-check",     "input_from": "assembled_admin_artifact", "output_to": "final",
      "gates": ["observable_indicators_present", "implementation_phases_defined", "data_measures_present", "no_real_staff_student_data"]}
   ],
-  "shortcut_atoms": [],
+  "shortcut_atoms": ["email-draft", "meeting-agenda", "meeting-minutes"],
   "note": "School-administration operates at school/system scope (implementation monitoring), not individual classroom level. Walkthrough tools here are NOT formal personnel evaluation — those are governed by district policy and human judgment."
 }

@@ -3,7 +3,7 @@ name: quality-check
 description: "Run ONE specific quality gate check on a draft artifact and return pass/fail + a corrective action. Use this when a workflow needs to validate a specific dimension (standard alignment, measurable objectives, reading level, differentiation coverage, etc.) before finalizing an artifact. Do NOT use for a full quality audit — use quality-review for that. Do NOT use on final published artifacts — this is a pre-release check."
 ---
 
-# atom-quality-check
+# quality-check
 
 Runs a single quality gate from `references/quality-gates.md` and returns a structured pass/fail result with a corrective action. Designed to be called once per gate, not all at once. Workflow skills call this atom after each generation step to catch issues early without spending tokens on a full review.
 
@@ -27,7 +27,7 @@ Runs a single quality gate from `references/quality-gates.md` and returns a stru
 
 ```json
 {
-  "tool": "atom-quality-check",
+  "tool": "quality-check",
   "gate": "measurable_objective",
   "result": "pass | fail | warn",
   "finding": "Objective uses measurable verb 'place' (Apply level); condition and criteria are explicit.",
