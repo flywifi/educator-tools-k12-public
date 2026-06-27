@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://tos.local/context/overlay.schema.json",
   "title": "TOS context overlay",
-  "description": "A composable, scoped rule-set that patches the resolved teaching-context contract. Overlays stack by precedence (state/compliance wins on conflict) and accumulate mandates/SOPs/notes. Stored offline under shared/context/overlays/<scope>/<id>.json and filled in over time. Canonical prose: shared/context/overlays.md.",
+  "description": "A composable, scoped rule-set that patches the resolved teaching-context contract. Overlays stack by precedence (state/compliance wins on conflict) and accumulate mandates/SOPs/notes. Stored offline under canonical-sources/overlays/context/<scope>/<id>.json and filled in over time. Canonical prose: shared/context/overlays.md.",
   "type": "object",
   "required": ["scope", "id", "match"],
   "additionalProperties": false,

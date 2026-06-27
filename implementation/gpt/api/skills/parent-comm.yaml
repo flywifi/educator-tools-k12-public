@@ -1,0 +1,125 @@
+# TOS Skill: atom-parent-comm
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+#
+# ATOM SKILL — single operation, minimal token footprint.
+
+type: function
+function:
+  name: parent_comm
+  description: |
+    Draft ONE parent/guardian communication: email, text-home note, or brief letter. Purpose-
+    driven templates for common educator scenarios. All output uses placeholder names (never real
+    student/family names), targets grade 6-8 reading level by default, and carries
+    human_review_required: true for teacher review before sending.
+
+    This is the FOCUSED single-message version. Use family-communication for complex multi-section
+    documents (newsletters, full conference notes, multi-language packets).
+
+    Communication purposes:
+    - positive_update: celebrate an achievement, share growth, highlight a classroom success
+    - academic_concern: communicate academic struggle or falling grades — strength-based framing
+    - behavior_note: observable behavior description (non-labeling, objective language only)
+    - conference_request: invite family to an in-person or virtual meeting
+    - academic_progress: structured academic progress update (mid-grading period, end of unit)
+    - attendance: attendance concern or commendation
+    - general_information: supplies, schedule change, event reminder, logistical information
+    - crisis_or_urgent: urgent situation requiring immediate parent contact (brief, factual, no
+      speculation about cause — route serious safety situations to administration first)
+
+    Privacy rules enforced on every output:
+    - Student names → "your child" or [STUDENT NAME]
+    - Family names → "Dear Family" or [FAMILY NAME]
+    - No SSN, address, phone, student ID, or disability label to unauthorized recipients
+
+    Trigger phrases: "write a parent note about", "draft an email to parents", "text home about",
+    "quick parent communication", "write a note home", "parent email for", "family message about".
+
+    Do NOT use atom-parent-comm for legally required IDEA notices (Prior Written Notice,
+    Procedural Safeguards) — use district official forms. human_review_required: true.
+  parameters:
+    type: object
+    required:
+      - communication_purpose
+      - grade
+    properties:
+      communication_purpose:
+        type: string
+        enum:
+          - positive_update
+          - academic_concern
+          - behavior_note
+          - conference_request
+          - academic_progress
+          - attendance
+          - general_information
+          - crisis_or_urgent
+        description: >
+          The reason for contacting the family. Determines template structure and tone guidance.
+      grade:
+        type: string
+        description: >
+          Student's grade level. Examples: "3rd grade", "10th grade", "Kindergarten".
+      subject:
+        type: string
+        description: >
+          Subject area if relevant (e.g., "Math", "ELA"). Omit for whole-class or behavior
+          communications.
+      key_points:
+        type: array
+        items:
+          type: string
+        description: >
+          The main facts or messages to convey. The skill wraps these in fluent, professional
+          prose. Examples for a behavior note: ["Student called out 4 times during reading block",
+          "Verbal reminder given twice", "Would like family to reinforce hand-raising at home"].
+          Always use observable descriptions — never labels or diagnoses.
+      tone:
+        type: string
+        enum:
+          - warm
+          - professional
+          - urgent
+          - celebratory
+          - neutral
+        description: >
+          Communication tone. Defaults: warm for positive_update/celebration; professional for
+          academic concerns; urgent for crisis_or_urgent. Override if needed.
+      medium:
+        type: string
+        enum:
+          - email
+          - printed_note
+          - text_message
+          - app_message
+        description: >
+          Delivery medium. Affects length and formatting. text_message produces a brief 2-3
+          sentence version. Defaults to email.
+      reading_level_target:
+        type: string
+        enum:
+          - grade_4_6
+          - grade_6_8
+          - grade_8_10
+        description: >
+          Target Flesch-Kincaid reading level. Defaults to grade_6_8.
+      language:
+        type: string
+        description: >
+          Output language. Defaults to "en" (English). Use "es" for Spanish, "ht" for
+          Haitian Creole. Dual-language (e.g. "en+es") writes both versions together.
+      next_steps_for_family:
+        type: array
+        items:
+          type: string
+        description: >
+          Specific, actionable next steps you want the family to take. Examples: ["Please sign
+          and return the behavior chart", "Let us know a good time for a phone conference",
+          "Review the study guide together before Friday"]. Included as a bulleted list
+          near the close of the message.
+      teacher_name_placeholder:
+        type: string
+        description: >
+          Name or role to sign the message with. Defaults to "[Your Name]". Examples:
+          "Ms. Rivera", "The 5th Grade Team", "[TEACHER NAME]".
+    additionalProperties: false

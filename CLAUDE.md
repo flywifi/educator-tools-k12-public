@@ -3,25 +3,29 @@ Conventions for working in the Teacher Operating System (TOS) repository.
 
 ## What this repo is
 A hub-and-spoke ecosystem of Claude Agent Skills that generate, validate, differentiate, and govern
-K-12 educational artifacts. Read `ARCHITECTURE.md` for the design and
-`TOS_ECOSYSTEM_BUILD_OUTLINE.md` for the full build plan. Live status: `STATE.md`.
+K-12 educational artifacts. Read `docs/ARCHITECTURE.md` for the design. Live status: `STATE.md`.
 
 ## Layout
-- `skills/` — the skills (`teacher-core` hub; capability spokes; `quality-review` governance skill).
+- `skills/` — sub-grouped: `core/` (hub + governance), `educator/` (content skills), `operations/` (tools/feeds/profile), `atoms/` (single-operation sub-skills).
 - `shared/` — canonical cross-cutting engines (Standards, Differentiation, Quality). **Source of truth.**
-- `protocols/` — the 6 governance protocols. **Source of truth.** `quality-gates.md` is authoritative.
+- `protocol-layer/` — the 6 governance protocols. **Source of truth.** `quality-gates.md` is authoritative.
+- `canonical-sources/` — authoritative reference data: `registries/` (FL standards + OCPS registries), `schools/` (school indexes), `districts/` (district overlays), `overlays/` (context overlays), root FL district + school-type JSON.
 - `tools/` — `sync_check.py` (drift guard), `new_skill.py` (scaffolder), `skill-template/`, `sync_manifest.json`.
-- `examples/` — cross-skill example library (Phase C).
+- `implementation/` — platform packaging: `gpt/api/` (OpenAI function YAMLs), `gpt/web/` (ChatGPT web doc), `claude/`, `gemini/`.
+- `docs/` — architecture, deployment, model, and benchmark docs.
+- `security/` — security and safety policies.
+- `changes/` — changelog and change management.
+- `examples/` — cross-skill example library.
 
 ## Branching & git
-- Develop on the feature branch (currently `claude/fervent-hawking-nyrzy5`). **Never push to `main`.**
+- Develop on the feature branch (currently `claude/educator-tools-k12-plan-f49yju`). **Never push to `main`.**
 - Push with `git push -u origin <branch>`; retry network failures with backoff.
 - Do not open a PR unless explicitly asked.
 
 ## The two-copy / sync rule (important)
 Each skill carries byte-identical **synced copies** of shared references (see
-`tools/sync_manifest.json`). **Edit the canonical file in `shared/` or `protocols/`, never the
-per-skill copy.** After any change to `shared/` or `protocols/`, run the drift guard:
+`tools/sync_manifest.json`). **Edit the canonical file in `shared/` or `protocol-layer/`, never the
+per-skill copy.** After any change to `shared/` or `protocol-layer/`, run the drift guard:
 
 ```bash
 python3 tools/sync_check.py     # exit 0 = clean; 1 = drift report

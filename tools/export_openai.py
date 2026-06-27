@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """export_openai.py — build the combined OpenAI tools array from individual skill YAML files.
 
-Reads every YAML file in platforms/openai/skills/ and combines them into:
-  - platforms/openai/tools.yaml   (YAML tools array, for passing to client.chat.completions.create)
-  - platforms/openai/tools.json   (JSON equivalent, for direct API use)
+Reads every YAML file in implementation/gpt/api/skills/ and combines them into:
+  - implementation/gpt/api/tools.yaml   (YAML tools array, for passing to client.chat.completions.create)
+  - implementation/gpt/api/tools.json   (JSON equivalent, for direct API use)
 
 Usage:
   python3 tools/export_openai.py                  # write tools.yaml + tools.json
@@ -23,7 +23,7 @@ Output format (YAML):
       ...
 
 JSON format is the raw list (no "tools:" wrapper) since the Python openai SDK takes a list:
-  tools = json.load(open("platforms/openai/tools.json"))
+  tools = json.load(open("implementation/gpt/api/tools.json"))
   client.chat.completions.create(model="gpt-4o", tools=tools, messages=[...])
 """
 from __future__ import annotations
@@ -35,9 +35,9 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SKILLS_DIR = ROOT / "platforms" / "openai" / "skills"
-OUT_YAML = ROOT / "platforms" / "openai" / "tools.yaml"
-OUT_JSON = ROOT / "platforms" / "openai" / "tools.json"
+SKILLS_DIR = ROOT / "implementation" / "gpt" / "api" / "skills"
+OUT_YAML = ROOT / "implementation" / "gpt" / "api" / "tools.yaml"
+OUT_JSON = ROOT / "implementation" / "gpt" / "api" / "tools.json"
 
 # YAML is stdlib-free — we write it ourselves (only the structure matters).
 # If PyYAML is installed, we use it for reliable round-tripping.

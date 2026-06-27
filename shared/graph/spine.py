@@ -85,7 +85,7 @@ def snapshot() -> dict:
                     "school_msid": teacher.get("school_msid")},
         "school": ({"msid": school.get("msid"), "name": school.get("school_name"),
                     "status": school.get("status"), "programs": [p.get("program_name") for p in school.get("programs", [])]}
-                   if school else {"resolved": False, "gap": "school_msid not found in shared/schools/"}),
+                   if school else {"resolved": False, "gap": "school_msid not found in canonical-sources/schools/"}),
         "roles": [{"role": r.get("role"), "primary": r.get("primary", False),
                    "provenance": r.get("provenance"), "confidence": r.get("confidence")} for r in roles],
         "handoffs": handoffs,
@@ -140,7 +140,7 @@ def confirmation_checklist(snap: dict | None = None) -> dict:
                           f"confidence={r.get('confidence')}", "action": "confirm or correct"})
     if not snap["school"].get("name"):
         items.append({"field": "school", "why": snap["school"].get("gap", "unresolved"),
-                      "action": "set a valid school_msid (shared/schools/)"})
+                      "action": "set a valid school_msid (canonical-sources/schools/)"})
     for h in snap["handoffs"]:
         if h["gap"]:
             items.append({"field": f"handoff: {h['what']} -> {h['counterparty_role']}", "why": h["gap"],
