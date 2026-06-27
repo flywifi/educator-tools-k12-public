@@ -86,6 +86,27 @@
     {"id": "local_render", "tier": "local_optional", "default": "on_if_present",
       "beats_baseline": "LOCAL, offline-capable headless-browser render of JS-required SPA pages (e.g. CPALMS search) using the pre-installed Chromium at /opt/pw-browsers — NOT impersonation/evasion: same honest identifying User-Agent, robots.txt-respecting, just runs the site's own JavaScript the way a browser is meant to. Powers the render + screenshot prongs in shared/render/render_prongs.py and tools/render_fetch.py. Absent => the prong chain falls back to the offline-docintel parse of static HTML, then reports js_required honestly (never faked). Prefer this LOCAL prong over the cloud_web_crawl (firecrawl) prong when offline-first.",
       "python": ["playwright"], "bins": [], "requirements": "tools/requirements-render.txt",
-      "privacy": "low — renders public education pages locally; no data leaves the machine; no student data"}
+      "privacy": "low — renders public education pages locally; no data leaves the machine; no student data"},
+    {"id": "crawl_full", "tier": "local_optional", "default": "on_if_present",
+      "beats_baseline": "recursive site crawling (scrapy), stateful session handling (mechanize), transparent TTL-aware request caching (requests-cache), and HTML→PDF export (weasyprint) for full offline archival of public education sites — powers tools/standards_refresh.py deep crawl mode and full-site mirror downloads. Absent => requests + urllib stdlib crawl still works, just less capable.",
+      "python": ["scrapy", "mechanize", "weasyprint", "requests_cache"],
+      "bins": [], "requirements": "tools/requirements-crawl.txt",
+      "privacy": "low — public sites only; all caching is local; no student data"},
+    {"id": "feed_discover", "tier": "local_optional", "default": "on_if_present",
+      "beats_baseline": "news-article extraction from any URL (newspaper4k), OPML/FOAF bundle parsing (listparser), and strict RFC-compliant feed validation (atoma) — turn any public news page into a structured feed item without manual scraping. Powers tools/make_feed.py article mode and shared/feeds autodiscovery. Absent => bs4 scrape_feed fallback still runs.",
+      "python": ["newspaper4k", "listparser", "atoma"],
+      "bins": [], "requirements": "tools/requirements-crawl.txt",
+      "privacy": "low — public news/feed pages only; no student data"},
+    {"id": "ocr_advanced", "tier": "local_optional", "default": "off",
+      "beats_baseline": "deep-learning OCR (easyocr / surya) + document layout analysis (layoutparser / unstructured) + table extraction (img2table / camelot) — recovers text and structure from scanned PDFs, complex multi-column layouts, handwritten notes, and image-heavy pages that tesseract misses; integrates with shared/docintel and shared/render prong chain. Absent => tesseract ocr capability still runs.",
+      "python": ["easyocr", "surya", "layoutparser", "unstructured", "img2table", "camelot"],
+      "bins": [], "requirements": "tools/requirements-ocr-advanced.txt",
+      "privacy": "low — offline processing of local documents; no content or student data sent anywhere",
+      "note": "default:off — large model downloads (~300 MB–1 GB); teacher opts in after storage check"},
+    {"id": "web_archive", "tier": "local_optional", "default": "on_if_present",
+      "beats_baseline": "cross-checks any current fetch against the most recent Wayback Machine snapshot (archive.org CDX API, free/no-auth) to confirm whether a page genuinely changed, was removed, or whether the current fetch is unreliable — raises confidence score on agreement, generates minority_report entry on discrepancy. Powers _wayback_compare() in shared/render/render_prongs.py. Absent => stdlib urllib fallback attempts the same CDX query.",
+      "python": ["waybackpy"],
+      "bins": [], "requirements": "tools/requirements-crawl.txt",
+      "privacy": "low — sends only the public page URL to archive.org CDX API; no page content; no student data"}
   ]
 }
