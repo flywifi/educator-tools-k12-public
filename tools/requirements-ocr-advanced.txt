@@ -1,0 +1,29 @@
+# Advanced OCR and document-layout parsing (local_optional; default OFF — large model downloads).
+# Teacher opts in after a storage check; see tools/dependencies.json capability "ocr_advanced".
+# Install with: pip install -r tools/requirements-ocr-advanced.txt
+#
+# NOTE: These packages require ~300 MB–1 GB of model downloads on first use.
+# All processing is fully local and offline — no page content or student data is sent anywhere.
+
+# --- Deep-learning OCR (better than tesseract on complex / handwritten layouts) ---
+easyocr>=1.7            # deep-learning OCR; ~300 MB models; CPU-capable; 80+ languages
+surya-ocr>=0.5          # state-of-the-art PDF OCR + layout detection + table + math recognition
+                        # (by VikParuchuri/Datalab; Apache-2.0; ~500 MB models)
+
+# --- Document layout analysis ---
+layoutparser>=0.3.4     # document layout analysis with pre-trained detection models
+                        # (Detectron2 optional for GPU; CPU-only mode works without it)
+unstructured>=0.14      # full-pipeline document parsing (PDF/HTML/DOCX/images) with table and
+                        # figure detection; integrates with the shared/docintel pipeline
+
+# --- Table extraction ---
+img2table>=1.2          # table extraction from images and PDFs; output to DataFrame / HTML / JSON
+camelot-py[cv]>=0.11    # lattice + stream PDF table extraction; best for grid tables (needs cv2)
+
+# --- Form / document OCR ---
+doctr>=0.9              # document text recognition from mindee (TF/PyTorch backend; CPU-capable)
+
+# System dependencies (install separately):
+# - libgl1 / libglib2.0-0 (required by opencv-python used by camelot and layoutparser)
+# - poppler-utils (pdftoppm; required by camelot PDF handling)
+# These are already present in most Linux environments; check with: which pdftoppm

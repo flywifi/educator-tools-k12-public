@@ -1,0 +1,29 @@
+# Tier 1 crawl/archival boosters (local_optional, on_if_present for most; see deps below).
+# stdlib fallbacks exist for every consumer function; these only improve accuracy and coverage.
+# Install with: pip install -r tools/requirements-crawl.txt
+
+# --- Full-site crawling and link aggregation ---
+scrapy>=2.11            # recursive crawl framework; resumable; link extractors; robots respected
+crawl4ai>=0.3           # async AI-friendly crawler; structured extraction; no evasion features
+mechanize>=0.4.9        # stateful browser emulation (cookies, forms); stdlib requests fallback
+
+# --- HTML → PDF (offline archival of rendered pages) ---
+weasyprint>=62          # HTML/CSS → PDF; pure Python; no binary deps beyond Pango/Cairo
+
+# --- Content extraction from news/article pages ---
+newspaper4k>=0.9        # news-article extraction (text + metadata + publish-date) from any URL
+                        # turns any public news page into a structured item for the feed catalog
+
+# --- Request caching (polite, avoids re-downloading unchanged pages) ---
+requests-cache>=1.2     # transparent TTL-aware disk cache for requests; sqlite backend; local-only
+
+# --- Feed discovery and parsing ---
+listparser>=0.19        # parse OPML / FOAF subscription lists to import feed bundles
+atoma>=0.0.17           # strict RFC-compliant RSS 2.0 / Atom parser; better error reporting
+
+# --- Web archive comparison (change verification) ---
+waybackpy>=3.0          # Wayback Machine CDX API client — fetch archived snapshots to confirm
+                        # whether a page genuinely changed vs. the archived version.
+                        # Used by shared/render/render_prongs.py _wayback_compare().
+                        # Stdlib urllib fallback always available; waybackpy improves reliability.
+                        # Requires network access to web.archive.org (gracefully degraded offline).
