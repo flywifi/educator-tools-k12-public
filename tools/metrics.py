@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SKILLS = ROOT / "skills"
 REGISTRY = ROOT / "shared" / "ontology" / "artifact-types.json"
 LEDGER = ROOT / "ledger" / "ledger.json"
-PROTOCOLS = ROOT / "protocols"
+PROTOCOLS = ROOT / "protocol-layer"
 DIFF = ROOT / "shared" / "differentiation"
 
 
@@ -33,7 +33,8 @@ def main(argv: list[str]) -> int:
     frameworks = reg.get("frameworks", [])
     artifact_types = sorted({t for ts in reg.get("skills", {}).values() for t in ts})
 
-    skill_dirs = sorted(d for d in SKILLS.iterdir() if d.is_dir())
+    # Skills are sub-grouped (core/ educator/ operations/ atoms/) — every dir holding a SKILL.md.
+    skill_dirs = sorted((p.parent for p in SKILLS.rglob("SKILL.md")), key=lambda p: p.name)
     rows = []
     for sd in skill_dirs:
         tmpl = has_md(sd / "assets" / "templates")
@@ -96,7 +97,7 @@ def main(argv: list[str]) -> int:
     out.append("> output templates — the template/example metric targets artifact-producing skills.")
     text = "\n".join(out) + "\n"
 
-    (ROOT / "METRICS.md").write_text(text, encoding="utf-8")
+    (ROOT / "docs" / "METRICS.md").write_text(text, encoding="utf-8")
     print(f"wrote METRICS.md — {n_skills} skills, {len(artifact_types)} artifact types, "
           f"approval {appr_rate:.0f}%")
     if "--print" in argv:

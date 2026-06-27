@@ -21,7 +21,17 @@
     "output-validator": "1.0.0",
     "skill-repair": "1.0.0",
     "teacher-profile": "0.1.0",
-    "feed-curator": "0.1.0"
+    "feed-curator": "0.1.0",
+    "standards-match": "0.1.0",
+    "objective-write": "0.1.0",
+    "activity-generate": "0.1.0",
+    "assessment-item": "0.1.0",
+    "differentiate": "0.1.0",
+    "quality-check": "0.1.0",
+    "reading-level": "0.1.0",
+    "misconception": "0.1.0",
+    "parent-comm": "0.1.0",
+    "iep-goal": "0.1.0"
   },
   "engines": {
     "docintel": "0.1.0",

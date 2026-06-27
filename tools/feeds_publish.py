@@ -40,7 +40,7 @@ def _rows() -> list[dict]:
         return []
     conn = engine._connect()
     try:
-        cur = conn.execute(f"SELECT {', '.join(COLS)} FROM feed_items "
+        cur = conn.execute(f"SELECT {', '.join(COLS)} FROM feed_items "  # nosec B608 - COLS is a hardcoded constant column list, never user input
                            "ORDER BY first_seen, content_sha256")
         return [dict(zip(COLS, r)) for r in cur.fetchall()]
     finally:
