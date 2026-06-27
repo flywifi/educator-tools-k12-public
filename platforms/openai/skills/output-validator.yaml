@@ -1,0 +1,111 @@
+# TOS Skill: output-validator
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: output_validator
+  description: |
+    Validate TOS-generated JSON artifacts against their JSON Schema and a governance rule catalog
+    (no fabrication, no real PII, metadata block present, human_review_required: true, standard
+    codes verified). Also validates Office documents and PDFs for structural integrity. Promotes
+    failing cases to regression evals when requested.
+
+    Use output-validator AFTER an artifact is generated and BEFORE it goes to quality-review.
+    It catches structural and governance failures early — quality-review handles pedagogical
+    scoring. Together they form the TOS validation pipeline:
+    Generation → output-validator (schema + governance) → quality-review (9-dimension scoring)
+    → Approved / Revision Required / Rejected.
+
+    Trigger phrases: "validate this artifact", "check the schema", "does this JSON conform",
+    "governance check", "check for PII", "verify the metadata block", "is the standard code
+    real", "validate this document structure", "pre-flight check on this output".
+
+    Runs: tools/validate_outputs.py (schema + governance) and tools/validate_document.py
+    (Office/PDF structural integrity). Both are stdlib-compatible; capability improvements
+    come from pdf_hifi and office_authoring when installed.
+
+    Output: validation_result (pass/fail/warn), violations list with field paths and
+    corrective actions, governance_flags (PII risk, missing metadata, unverified standard codes),
+    and human_review_required: true.
+
+    Do NOT use output-validator to score pedagogical quality (use quality-review). Do NOT use
+    it to generate artifacts (it validates, never generates). Do NOT use it on student-submitted
+    work — it validates TOS-generated educator artifacts only.
+  parameters:
+    type: object
+    required:
+      - artifact
+    properties:
+      artifact:
+        type: string
+        description: >
+          The artifact to validate. Accepts JSON string, markdown text, or base64-encoded binary
+          (for Office/PDF structural validation). For JSON: the full artifact JSON. For
+          documents: the file content encoded as "data:<mimetype>;base64,<content>".
+      schema_type:
+        type: string
+        enum:
+          - lesson_plan
+          - unit_plan
+          - assessment
+          - rubric
+          - iep_goal
+          - accommodation_plan
+          - pacing_guide
+          - curriculum_map
+          - parent_communication
+          - professional_learning
+          - health_report
+          - repair_plan
+          - feed_currency_brief
+          - standards_update_brief
+          - metadata_block_only
+          - generic_governed_artifact
+          - office_document
+          - pdf_document
+        description: >
+          Schema to validate against. Determines which JSON Schema rules and governance rules
+          apply. Use generic_governed_artifact when the specific type is unknown.
+      validation_mode:
+        type: string
+        enum:
+          - full
+          - governance_only
+          - schema_only
+          - no_pii_check_only
+          - structural_only
+        description: >
+          full (default): runs all checks — schema conformance, governance rules, PII scan,
+          standard code verification. governance_only: checks metadata block, human_review flag,
+          no-fabrication markers. schema_only: JSON Schema conformance only. structural_only:
+          for Office/PDF — checks document structure, no text content analysis.
+      standards_to_verify:
+        type: array
+        items:
+          type: string
+        description: >
+          Standard codes the artifact claims to cite. Validator checks each against the FL
+          standards corpus. If omitted, codes are extracted from the artifact automatically.
+      promote_to_eval:
+        type: boolean
+        description: >
+          If true and validation fails, register the artifact + violation set as a regression
+          eval case in the eval catalog. Defaults to false.
+      strict_mode:
+        type: boolean
+        description: >
+          If true, any governance warning (not just violation) fails validation. Use for
+          high-stakes artifacts (IEP documents, formal communications). Defaults to false.
+      pii_scan_depth:
+        type: string
+        enum:
+          - surface
+          - deep
+          - name_pattern_only
+        description: >
+          How thoroughly to scan for PII. surface (default): regex patterns for SSN, phone,
+          email, student ID formats. deep: also checks for name patterns and contextual PII
+          (e.g., "Student at [specific school] with [specific identifier]"). name_pattern_only:
+          fastest — checks for proper name patterns only.
+    additionalProperties: false

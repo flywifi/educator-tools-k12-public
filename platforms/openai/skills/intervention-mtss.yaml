@@ -1,0 +1,149 @@
+# TOS Skill: intervention-mtss
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: intervention_mtss
+  description: |
+    Design Tier 1, Tier 2, and Tier 3 MTSS/RTI intervention plans, progress-monitoring protocols,
+    and data-review meeting tools for K-12. Every plan includes a specific, measurable
+    progress-monitoring measure and decision rules (what data triggers a tier change). Plans are
+    evidence-based and cite the research base for recommended interventions.
+
+    Trigger phrases: "write a Tier 2 intervention plan", "create an MTSS plan for", "design an
+    RTI support plan", "help with progress monitoring", "data review protocol", "what intervention
+    should I use for", "write a behavior intervention plan", "Tier 3 intensive support for",
+    "progress monitoring schedule".
+
+    Tier 1: universal, whole-class, core instruction adjustments with built-in differentiation.
+    Tier 2: targeted small-group supplemental intervention, typically 3x/week 20-30 min.
+    Tier 3: intensive individualized intervention, data-driven, usually daily.
+
+    Progress-monitoring is REQUIRED: every plan specifies the tool (CBM, DIBELS, AIMSweb, teacher-
+    made probe), frequency (weekly/biweekly), goal line, and decision rule (when to intensify,
+    continue, or fade the intervention).
+
+    Integrates with atom-standards-match (standards alignment for academic interventions),
+    atom-differentiate (differentiation layers), assessment-designer (progress monitoring probes),
+    and quality-review. Routes to special-education-support when IDEA eligibility is the question.
+
+    IMPORTANT BOUNDARIES:
+    - MTSS/RTI is a general education process; this skill does NOT determine special education
+      eligibility — that requires evaluation by qualified school psychologist / evaluation team
+    - Never recommend a specific student for special education referral as a plan output
+    - Progress data must be teacher-supplied — never fabricated
+    - human_review_required: true on all outputs
+
+    Do NOT use intervention-mtss to write IEP goals (use special-education-support). Do NOT use
+    it to determine eligibility. Do NOT use it for disciplinary interventions unrelated to
+    academic or behavioral support (use school-administration).
+  parameters:
+    type: object
+    required:
+      - tier
+      - concern_area
+      - grade
+    properties:
+      tier:
+        type: string
+        enum:
+          - tier_1
+          - tier_2
+          - tier_3
+        description: >
+          MTSS tier. tier_1 = universal core adjustments; tier_2 = targeted small-group
+          supplemental; tier_3 = intensive individualized.
+      concern_area:
+        type: string
+        enum:
+          - reading_decoding
+          - reading_fluency
+          - reading_comprehension
+          - math_computation
+          - math_problem_solving
+          - writing
+          - behavior_academic_engagement
+          - behavior_social_emotional
+          - attendance
+          - language_development
+          - executive_function
+        description: >
+          Primary area of concern the intervention addresses.
+      grade:
+        type: string
+        description: >
+          Student or group grade level. Examples: "2nd grade", "6th grade", "9th grade".
+      subject:
+        type: string
+        description: >
+          Academic subject if concern_area is academic. Examples: "ELA", "Mathematics".
+      student_profile_description:
+        type: string
+        description: >
+          Anonymous description of the student's current performance level, strengths, and prior
+          interventions tried. Use "the student" or placeholder names — never real names.
+          Examples: "The student reads at a late-1st grade level in 3rd grade; prior classroom
+          differentiation and partner reading have not moved the needle."
+      current_performance_data:
+        type: string
+        description: >
+          Current assessment data: scores, rates, levels. Examples: "ORF: 42 wcpm (grade 3 goal
+          90 wcpm)", "Math facts: 8/min addition (goal 20/min)", "ODRs: 3 per week (goal: 0-1)".
+          If no data yet, use "[INSERT BASELINE DATA]" — never fabricate.
+      intervention_frequency_per_week:
+        type: integer
+        description: >
+          Number of intervention sessions per week. Typical: Tier 2 = 3-4, Tier 3 = 5. If
+          omitted, defaults to standard for the tier.
+      intervention_duration_minutes:
+        type: integer
+        description: >
+          Duration of each intervention session in minutes. Typical: 20-30 min for Tier 2,
+          30-45 min for Tier 3.
+      intervention_setting:
+        type: string
+        enum:
+          - small_group
+          - individual
+          - whole_class
+          - pull_out
+          - push_in
+          - co_taught
+        description: >
+          Intervention delivery setting. Defaults based on tier if omitted.
+      evidence_based_programs_available:
+        type: array
+        items:
+          type: string
+        description: >
+          Evidence-based programs available at the school (e.g. ["Fundations", "Read Naturally",
+          "Zearn", "Check-In Check-Out"]). The plan recommends from this list when available;
+          cites research base for alternatives when not.
+      progress_monitoring_tool:
+        type: string
+        description: >
+          Specific progress-monitoring tool available (e.g. "DIBELS 8th Ed", "AIMSweb Plus",
+          "easyCBM", "teacher-made running record"). If omitted, skill recommends an appropriate
+          tool with a citation.
+      goal_line:
+        type: string
+        description: >
+          Target performance criterion at the end of the intervention period. Examples:
+          "60 wcpm by 12 weeks", "90% accuracy on addition facts by 8 weeks". If omitted, a
+          research-normed goal is drafted with a placeholder.
+      decision_rule_weeks:
+        type: integer
+        description: >
+          How many data points (weeks) before a tier-change decision is made. Typical: 6-8 for
+          Tier 2, 4-6 for Tier 3. Defaults to 8.
+      include_data_review_protocol:
+        type: boolean
+        description: >
+          If true, include a data-review meeting protocol (agenda, data display recommendations,
+          decision-making framework). Defaults to true for Tier 2 and Tier 3.
+      co_teacher_present:
+        type: boolean
+        description: >
+          True if a co-teacher is in the room. Affects delivery model recommendations.
+    additionalProperties: false

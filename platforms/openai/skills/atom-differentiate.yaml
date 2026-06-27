@@ -1,0 +1,110 @@
+# TOS Skill: atom-differentiate
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+#
+# ATOM SKILL — single operation, minimal token footprint.
+
+type: function
+function:
+  name: atom_differentiate
+  description: |
+    Apply ONE differentiation profile to a piece of educational content. Returns a modified
+    version of the content alongside explicit notes on what was changed and why. The learning
+    target is ALWAYS preserved — differentiation adjusts ACCESS to the content, never the
+    standard itself.
+
+    Supported profiles:
+    - ell: English Language Learners — vocabulary scaffolds, sentence frames, visual support cues,
+      cognate highlighting, simplified syntax without dumbing down content
+    - iep: Students with IEPs — modifications based on common IEP accommodation categories
+      (extended time notation, reduced item count, chunked directions, visual schedules, graphic
+      organizers). NOTE: this generates generic IEP-tier differentiation, not student-specific
+      accommodations (use special-education-support for student-specific IEP work)
+    - gifted: Gifted/advanced learners — enrichment extensions, higher-order questioning,
+      independent research options, cross-curricular connections, complexity increases
+    - 504: Section 504 accommodations — presentation/response/setting modifications
+    - below_grade: Below grade-level students — scaffolded version with prerequisite skill
+      supports, visual aids, partner work modifications
+    - above_grade: Above grade-level students — accelerated version with extension tasks and
+      connections to advanced content
+
+    Called by: lesson-planner, assessment-designer, curriculum-mapping, atom-activity-generate.
+    Can be called directly when a teacher has a piece of content and wants one differentiated version.
+
+    Trigger phrases: "differentiate this for ELL students", "modify this for my IEP students",
+    "make a gifted version of", "adapt this for below-grade readers", "ELL scaffold for",
+    "504 accommodations for this activity", "differentiated version for".
+
+    Do NOT use atom-differentiate to write student-specific IEP goals (use atom-iep-goal or
+    special-education-support). Do NOT use it to produce legally binding accommodation plans.
+    human_review_required: true — teacher confirms modifications fit each student's actual needs.
+  parameters:
+    type: object
+    required:
+      - content
+      - differentiation_profile
+      - grade
+      - subject
+    properties:
+      content:
+        type: string
+        description: >
+          The educational content to differentiate. Accepts: lesson segment text, activity
+          instructions, assessment item text, reading passage excerpt, discussion prompt,
+          homework assignment, or any instructional text. For best results: provide the full
+          piece of content, not a summary.
+      differentiation_profile:
+        type: string
+        enum:
+          - ell
+          - iep
+          - gifted
+          - "504"
+          - below_grade
+          - above_grade
+        description: >
+          The differentiation profile to apply. Each call applies exactly one profile.
+          To generate multiple versions, call atom-differentiate once per profile.
+      grade:
+        type: string
+        description: >
+          Grade level of the original content. Examples: "3rd grade", "8th grade".
+      subject:
+        type: string
+        description: >
+          Subject area. Examples: "ELA", "Mathematics", "Science".
+      learning_target:
+        type: string
+        description: >
+          The core learning target / standard the content addresses. atom-differentiate uses this
+          to verify the modified version still achieves the target. If omitted, the target is
+          inferred from the content (less reliable — provide it when you have it).
+      ell_proficiency_level:
+        type: string
+        enum:
+          - entering
+          - emerging
+          - developing
+          - expanding
+          - bridging
+        description: >
+          For ell profile: WIDA English proficiency level. Scaffolds are calibrated to this level.
+          Defaults to developing (most common middle level).
+      output_format:
+        type: string
+        enum:
+          - modified_content_only
+          - side_by_side_comparison
+          - annotated_with_change_notes
+        description: >
+          How to present the output. modified_content_only (default): just the differentiated
+          version. side_by_side_comparison: original + modified in parallel columns.
+          annotated_with_change_notes: modified version with inline notes on each change made
+          and why — useful for teacher professional learning.
+      preserve_item_count:
+        type: boolean
+        description: >
+          For assessment item differentiation: if true, maintain the same number of items/questions
+          in the modified version (adjusting scaffolding but not reducing quantity). Defaults to
+          false (IEP/504 versions may appropriately reduce item count).
+    additionalProperties: false

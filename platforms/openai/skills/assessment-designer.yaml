@@ -1,0 +1,149 @@
+# TOS Skill: assessment-designer
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: assessment_designer
+  description: |
+    Design standards-aligned formative and summative assessments, rubrics, and performance tasks
+    for K-12. Every item maps to a verified standard code. Outputs include answer keys, distractor
+    analysis (for MC), scoring guides, and Bloom's level tags for every item. Produces DOK-labeled
+    items and complete rubrics with descriptors at each score level.
+
+    Trigger phrases: "write me a quiz", "create a test on", "make a rubric for", "design a
+    performance task", "build a formative assessment", "I need an exit ticket assessment",
+    "create a unit test", "write 10 multiple choice questions on".
+
+    Integrates with atom-assessment-item (individual item generation), atom-standards-match
+    (standard resolution), and atom-quality-check. Routes to quality-review before marking final.
+
+    Do NOT use assessment-designer for IEP progress-monitoring measures (use
+    special-education-support). Do NOT use it to design the full lesson plan around an assessment
+    (use lesson-planner with assessment-designer called as part of the workflow). Do NOT fabricate
+    standard codes — every item carries a verified standard citation or is flagged as needing one.
+
+    Output artifacts: quiz, test, rubric, performance_task, exit_ticket_assessment, item_bank.
+    Always outputs a metadata block with standard codes, Bloom's distribution, DOK levels,
+    and human_review_required: true.
+  parameters:
+    type: object
+    required:
+      - grade
+      - subject
+      - topic
+    properties:
+      grade:
+        type: string
+        description: >
+          Grade level or band. Examples: "3rd grade", "9-12", "6-8", "Kindergarten".
+      subject:
+        type: string
+        description: >
+          Subject area. Examples: "ELA", "Mathematics", "Science", "Algebra 1", "US History".
+      topic:
+        type: string
+        description: >
+          Specific concept or unit being assessed. Examples: "polynomial operations",
+          "figurative language in poetry", "cell division".
+      assessment_type:
+        type: string
+        enum:
+          - formative_quiz
+          - summative_test
+          - exit_ticket
+          - performance_task
+          - rubric
+          - self_assessment
+          - peer_assessment
+          - item_bank
+        description: >
+          The type of assessment artifact. Defaults to formative_quiz if not specified.
+      item_count:
+        type: integer
+        description: >
+          Number of items/questions to generate. For rubrics, this is the number of criteria rows.
+          Typical range: 5–30 for quizzes/tests, 3–8 for rubrics.
+      item_types:
+        type: array
+        items:
+          type: string
+          enum:
+            - multiple_choice
+            - short_answer
+            - constructed_response
+            - true_false
+            - matching
+            - fill_in_the_blank
+            - essay
+        description: >
+          Desired item format(s). Mix supported. If omitted, a balanced mix is selected based on
+          assessment_type.
+      standards:
+        type: array
+        items:
+          type: string
+        description: >
+          Florida B.E.S.T. or NGSSS standard codes to align to. If omitted, atom-standards-match
+          resolves them from grade/subject/topic.
+      bloom_levels:
+        type: array
+        items:
+          type: string
+          enum:
+            - remember
+            - understand
+            - apply
+            - analyze
+            - evaluate
+            - create
+        description: >
+          Bloom's taxonomy levels to target. Defaults to a balanced lower/higher distribution if
+          not specified.
+      dok_levels:
+        type: array
+        items:
+          type: integer
+          enum: [1, 2, 3, 4]
+        description: >
+          Depth of Knowledge levels to include. Defaults to DOK 1-2 for formative, 1-3 for
+          summative if not specified.
+      include_answer_key:
+        type: boolean
+        description: >
+          Include a full answer key with rationale for each item. Always true for MC and T/F.
+          Defaults to true.
+      include_distractor_analysis:
+        type: boolean
+        description: >
+          For multiple_choice items: include distractor analysis explaining why each wrong answer
+          is plausible and what misconception it targets. Defaults to true.
+      differentiation_profiles:
+        type: array
+        items:
+          type: string
+          enum:
+            - ell
+            - iep
+            - gifted
+            - "504"
+            - below_grade
+            - above_grade
+        description: >
+          Generate differentiated versions of the assessment for these profiles. Each profile gets
+          its own modified form; the learning target stays constant.
+      rubric_scale:
+        type: integer
+        enum: [3, 4, 5, 6]
+        description: >
+          For rubrics: number of score levels (e.g. 4 = 1-4 scale). Defaults to 4.
+      time_limit_minutes:
+        type: integer
+        description: >
+          Intended time limit. Informs item difficulty distribution and instructions.
+      additional_context:
+        type: string
+        description: >
+          Any additional context: prior assessment results, prerequisite knowledge, co-teaching
+          format. Never include real student names or PII.
+    additionalProperties: false
