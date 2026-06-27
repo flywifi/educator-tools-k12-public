@@ -1,0 +1,21 @@
+{
+  "_comment": "Declarative workflow definition for teacher-profile. Captures one teacher's operating context via a wizard, models their role/handoffs/preferences, registers into shared context as sop_refs + overrides, and stores in a gitignored local profile.",
+  "id": "teacher-profile",
+  "description": "Profile setup: wizard intake → role/handoff modeling → context registration → validation → quality gate",
+  "steps": [
+    {"step": 1, "action": "wizard_intake",     "input_from": "teacher request",              "output_to": "step2",
+     "uses": "skills/teacher-profile/scripts/profile_wizard.py --init | --preferences | --update",
+     "note": "Interview per references/wizard.md: display name, school, role(s), duties, handoff map, preferences/defaults. Teacher-stated facts are provenance:teacher_stated (always wins)."},
+    {"step": 2, "action": "model_handoffs",    "input_from": "step1.raw_input",              "output_to": "step3",
+     "note": "Build role-based handoff map (case manager, AP, counselor, co-teacher) per references/profile-model.md. Role-based, not person-based — survives staff turnover."},
+    {"step": 3, "action": "register_context",  "input_from": "step2.profile",                "output_to": "step4",
+     "uses": "shared/context/ sop_refs + overrides registration",
+     "note": "Register profile into shared context so lesson-planner, family-communication, meeting-classifier etc. adapt automatically."},
+    {"step": 4, "action": "write_local",       "input_from": "step3.context_contract",       "output_to": "step5",
+     "note": "Write to gitignored shared/context/profiles/teacher.local.json. Validate against teacher.schema.json. Never commit real teacher data."},
+    {"step": 5, "atom": "quality-check",  "input_from": "profile_registration_record",  "output_to": "final",
+     "gates": ["no_real_pii_committed", "schema_valid", "school_link_resolved", "provenance_tagged"]}
+  ],
+  "shortcut_atoms": [],
+  "note": "Profile is gitignored (teacher's own data, opt-in, never pushed). No student PII ever. Updating the profile updates behavior on the next run — no skill edit, no redeploy."
+}
