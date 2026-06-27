@@ -1,0 +1,120 @@
+# TOS Skill: skill-health
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: skill_health
+  description: |
+    Diagnose and audit the TOS ecosystem itself. Sweeps every skill (MAINTAINER.md, synced
+    references, evals, routing membership), shared engines (importable), and routing integrity.
+    Reads the audit trail (Quality Ledger, runtime traces, minority reports) to surface recurring
+    failure patterns. Produces human-readable repair plans the teacher/developer reviews and
+    approves — nothing high-stakes is auto-applied.
+
+    Trigger phrases: "is the ecosystem healthy", "why did this skill fail", "audit the skills",
+    "diagnose the environment", "what needs updating for the new skill", "repair plan",
+    "check drift", "run health check", "what's broken", "scan all skills", "impact analysis
+    for renaming a skill", "tos_check".
+
+    Governs the SYSTEM, not classroom artifacts. Engine: shared/health/health.py (offline,
+    stdlib); orchestrator: tools/tos_check.py (runs all diagnostic tools and writes
+    tos_report.json + tos_report.md).
+
+    Five capabilities:
+    1. Scan readiness — sweep every skill + shared engine + routing; emit readiness score,
+       blocking issues, and release-gate recommendation
+    2. Diagnose — read ledger/ledger.json + traces; surface recurring problems in plain language
+       (connector failures, minority reports, validation failures)
+    3. Impact analysis — when a skill is added/renamed, list every ecosystem file that must
+       update (routing.json, ROUTING_MODEL.md, routing-map.md, STATE.md, METRICS.md,
+       artifact-types.json)
+    4. Repair plan — ordered severity-tagged plan (mechanical vs. judgment); you edit or approve
+    5. Validate outputs — artifact JSON schema check + governance / no-fabrication / no-real-PII
+       rule catalog before the artifact ships
+
+    Do NOT use skill-health to author lessons, assessments, or IEP documents (wrong skill).
+    Do NOT use it to score classroom artifacts (use quality-review). human_review_required: true
+    on all reports and repair plans.
+  parameters:
+    type: object
+    required:
+      - action
+    properties:
+      action:
+        type: string
+        enum:
+          - summary
+          - impact_analysis
+          - diagnose
+          - validate_artifact
+          - full_tos_check
+        description: >
+          Action to perform.
+          summary: sweep all skills + engines + routing; return readiness score and blocking
+          issues. Equivalent to shared/health/health.py --summary.
+          impact_analysis: for a named skill being added or renamed, list every ecosystem file
+          that must change. Equivalent to health.py --impact <skill_name>.
+          diagnose: read the audit trail (ledger, traces) and surface recurring failure patterns
+          in plain language. Produces a diagnosis document.
+          validate_artifact: check a specific artifact against its schema + governance rules
+          (calls tools/validate_outputs.py). Returns violations and corrective actions.
+          full_tos_check: run tools/tos_check.py — all 10 diagnostic groups (drift, version,
+          caps, render, feeds, cache, seeds, registry, sources, security) and write
+          tos_report.json + tos_report.md.
+      skill_name:
+        type: string
+        description: >
+          For impact_analysis: the skill being added, renamed, or removed. Examples:
+          "lesson-planner", "atom-standards-match", "my-new-skill".
+      traces_dir:
+        type: string
+        description: >
+          For diagnose: directory containing saved runtime execution traces. Defaults to
+          runtime/traces if it exists.
+      artifact:
+        type: string
+        description: >
+          For validate_artifact: the artifact JSON string to validate.
+      artifact_schema:
+        type: string
+        enum:
+          - lesson_plan
+          - assessment
+          - iep_goal
+          - accommodation_plan
+          - pacing_guide
+          - curriculum_map
+          - parent_communication
+          - health_report
+          - repair_plan
+          - generic
+        description: >
+          For validate_artifact: schema to validate against.
+      tos_check_groups:
+        type: array
+        items:
+          type: string
+          enum:
+            - drift
+            - version
+            - caps
+            - render
+            - feeds
+            - cache
+            - seeds
+            - registry
+            - sources
+            - security
+        description: >
+          For full_tos_check: specific check groups to run. If omitted, all 10 groups run.
+      tos_check_timeout:
+        type: integer
+        description: >
+          For full_tos_check: per-check timeout in seconds. Defaults to 30.
+      out_dir:
+        type: string
+        description: >
+          For full_tos_check: directory to write tos_report.json and tos_report.md.
+          If omitted, results are returned inline.
+    additionalProperties: false

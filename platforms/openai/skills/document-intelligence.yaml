@@ -1,0 +1,133 @@
+# TOS Skill: document-intelligence
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: document_intelligence
+  description: |
+    Parse, extract, and structure content from education-sector documents: PDFs, DOCX, HTML
+    pages, and scanned images. Produces governed knowledge artifacts: structured JSON with
+    provenance, section headings, extracted tables, cited page numbers, and an honest
+    record of any regions that could not be recovered.
+
+    Trigger phrases: "read this PDF and extract", "parse this document", "what does this say",
+    "extract the standards from this file", "pull the tables from this report", "summarize this
+    document", "read this FLDOE guidance document", "ingest this curriculum document",
+    "what standards are cited in this file", "extract text from this scanned packet".
+
+    Capability-gated pipeline (shared/docintel/):
+    - pdf_hifi: high-fidelity PDF parse with layout and column awareness (requires PyMuPDF/pdfplumber)
+    - ocr: offline OCR for scanned documents (requires tesseract + pytesseract)
+    - ocr_advanced: deep-learning OCR for complex/handwritten layouts (requires easyocr/surya)
+    - read_any_markitdown: universal format converter via markitdown (15+ formats)
+    - local_render: JS-rendered HTML pages via Playwright
+    When a capability is absent, the gap is honestly reported and a fallback runs if available.
+
+    NEVER fabricates text it cannot recover. Every output includes:
+    - human_review_required: true
+    - recovery_rate: fraction of document successfully parsed
+    - unrecovered_regions: list of pages/sections that could not be read
+    - provenance: source URL or filename, extraction timestamp, capability used
+
+    Do NOT use document-intelligence to make educational decisions from a document — it extracts
+    and structures content, it does not interpret or apply it. Do NOT use it to process
+    documents containing real student PII without authorization and appropriate security measures.
+  parameters:
+    type: object
+    required:
+      - document_source
+    properties:
+      document_source:
+        type: string
+        description: >
+          File path, URL, or base64-encoded document content. For URLs: the crawler respects
+          robots.txt and uses polite fetch delays. For local files: provide the absolute path
+          or filename. For base64: prefix with "data:<mimetype>;base64,<content>".
+      document_type:
+        type: string
+        enum:
+          - pdf
+          - docx
+          - xlsx
+          - pptx
+          - html
+          - image_png
+          - image_jpg
+          - image_tiff
+          - text
+          - markdown
+          - auto_detect
+        description: >
+          Document format. Defaults to auto_detect if not specified.
+      extraction_goal:
+        type: string
+        enum:
+          - full_text
+          - structured_data
+          - tables_only
+          - standards_references
+          - citations_and_links
+          - summary
+          - headings_and_outline
+          - key_dates_and_deadlines
+          - contact_information
+          - page_range
+        description: >
+          What to extract. Determines which pipeline stages run. Defaults to full_text.
+      page_range:
+        type: string
+        description: >
+          Page range to extract (e.g. "1-5", "10", "3,7,12-15"). For large documents, specify
+          the relevant pages to minimize processing time.
+      output_format:
+        type: string
+        enum:
+          - json
+          - markdown
+          - plain_text
+          - structured_tables_json
+        description: >
+          Output format. json (default) includes provenance and metadata. markdown is best for
+          display. plain_text strips all markup. structured_tables_json extracts tabular data only.
+      ocr_enabled:
+        type: boolean
+        description: >
+          Enable OCR for scanned/image-based pages. Requires tesseract capability. Defaults to
+          true (falls back gracefully if tesseract absent).
+      ocr_language:
+        type: string
+        description: >
+          Tesseract OCR language code(s). Examples: "eng", "eng+spa", "eng+hea" (Haitian Creole).
+          Defaults to "eng".
+      standards_corpus:
+        type: string
+        enum:
+          - florida_best
+          - florida_ngsss
+          - florida_all
+          - ccss
+          - ngss
+          - auto_detect
+        description: >
+          When extraction_goal is standards_references: which standards corpus to match against.
+          Defaults to florida_all.
+      table_extraction_format:
+        type: string
+        enum:
+          - json_records
+          - csv
+          - markdown_table
+          - html_table
+        description: >
+          For tables_only extraction: output format per table. Defaults to json_records.
+      include_page_numbers:
+        type: boolean
+        description: >
+          Include source page number with each extracted section/paragraph. Defaults to true.
+      split_by_section:
+        type: boolean
+        description: >
+          Split output by document heading/section rather than returning flat text. Defaults to
+          true when extraction_goal is full_text or structured_data.
+    additionalProperties: false

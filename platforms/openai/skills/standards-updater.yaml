@@ -1,0 +1,124 @@
+# TOS Skill: standards-updater
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: standards_updater
+  description: |
+    Crawl, detect, verify, and report on changes to Florida K-12 standards corpora: B.E.S.T.,
+    NGSSS, CTE frameworks, Florida Statutes Title XLVIII (ch.1000-1013), State Board rules
+    (FAC 6A), FAST/B.E.S.T./EOC assessment fact sheets, graduation requirements (s.1003.4282 F.S.),
+    and WIDA/ELD standards. Produces a currency brief: what changed, why it matters, and what
+    downstream TOS artifacts need updating.
+
+    Trigger phrases: "check if standards have changed", "crawl FLDOE for updates", "are the
+    standards current", "what changed in Florida standards", "update the standards corpus",
+    "currency brief", "crawl CPALMS", "check the source URLs", "standards refresh", "is my
+    pacing guide still current".
+
+    Two detection modes:
+    - document discovery: new/changed files found via crawl_seeds in sources.json
+    - content-change monitoring: sha256 of watch_pages (statute/rule/guidance pages)
+
+    Change intelligence (triage → verify → brief):
+    1. Discover broadly — secondary sources are discovery only, never confirmation
+    2. Verify on PRIMARY source (CPALMS, FLDOE, FL Legislature, FAC/flrules.org, WIDA)
+    3. Score confidence: high (primary states it directly) / medium (scope needs interpretation)
+       / low (partial access / ambiguity)
+    4. Brief the impact across 8 dimensions: standards, courses/curriculum, pacing/guidance,
+       instructional materials, assessment, graduation, EL, policy/compliance
+
+    Render prong chain fires on ANY obstacle or confidence < 0.95 (not only js_required):
+    http_static → local_render → offline_docintel → screenshot_ocr → cloud_render (opt-in).
+    Multiple prongs aggregate; discrepancies → minority report. Wayback Machine CDX API
+    confirms genuine change vs. transient fetch failure.
+
+    Ethics: one honest User-Agent; robots.txt respected; no CAPTCHA bypass; no UA rotation.
+    If a source is unreachable or robots-disallowed: report and stop for that source.
+
+    Do NOT use standards-updater to write lesson plans or assessments. Do NOT use it to
+    auto-apply standards changes — every confirmed change is advisory and human-reviewed.
+    human_review_required: true on all outputs.
+  parameters:
+    type: object
+    required:
+      - action
+    properties:
+      action:
+        type: string
+        enum:
+          - check
+          - crawl
+          - download
+          - report
+          - update_hashes
+          - source_currency
+          - render_check
+        description: >
+          Action to perform.
+          check: offline check against existing snapshot (no network fetch).
+          crawl: live crawl of all seeds in sources.json; detect new/changed files.
+          download: download accepted updates to out/ directory.
+          report: generate currency brief from last crawl results.
+          update_hashes: save new content sha256 baselines for watch_pages.
+          source_currency: run source_currency.py to check if watched source URLs have gone
+          stale, moved, been superseded, or disappeared (separate from file discovery).
+          render_check: check render prong availability (offline capability check).
+      state:
+        type: string
+        enum:
+          - florida
+        description: >
+          State standards corpus to target. Currently only Florida is implemented.
+          Defaults to florida.
+      report_path:
+        type: string
+        description: >
+          For report or crawl: path to write the JSON currency brief. Defaults to report.json.
+      out_dir:
+        type: string
+        description: >
+          For download: directory to save downloaded files before they are moved into
+          resources/<state>/<category>/. Defaults to out/.
+      max_retries:
+        type: integer
+        description: >
+          Maximum retries per URL, honoring Retry-After / RateLimit-Reset headers.
+          Defaults to 3.
+      saturation_n:
+        type: integer
+        description: >
+          Stop crawling when no new documents appear in N consecutive seed fetches.
+          Defaults to 5.
+      checkpoint_path:
+        type: string
+        description: >
+          Path to save/load checkpoint file for resumable crawls. Required for --resume.
+      resume:
+        type: boolean
+        description: >
+          Resume from the checkpoint at checkpoint_path. Defaults to false.
+      max_wait:
+        type: integer
+        description: >
+          Maximum seconds to wait on a single rate-limit backoff. Defaults to 300 (5 min).
+      no_render_fallback:
+        type: boolean
+        description: >
+          Disable the render prong chain. By default, any obstacle or confidence < 0.95
+          triggers the chain automatically. Use this only for quick offline checks.
+        default: false
+      render_enable_cloud:
+        type: boolean
+        description: >
+          Enable the cloud render prong (firecrawl). Off by default — the offline prongs
+          (local_render, offline_docintel, screenshot_ocr) are always preferred.
+        default: false
+      confidence_threshold:
+        type: number
+        description: >
+          Minimum confidence score (0.0-1.0) before the render prong chain fires. Defaults
+          to 0.95 per the TOS render policy.
+        default: 0.95
+    additionalProperties: false

@@ -1,0 +1,116 @@
+# TOS Skill: lesson-planner
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: lesson_planner
+  description: |
+    Design and produce standards-aligned K-12 lesson plans, unit plans, pacing guides, daily
+    agendas, warm-ups, and exit tickets. Every item ties to a verified Florida B.E.S.T. or NGSSS
+    standard (or the state/standard set the teacher provides). Outputs are differentiation-ready
+    and always carry human_review_required: true before classroom use.
+
+    Trigger phrases: "write me a lesson plan", "plan a unit on", "make a pacing guide", "I need a
+    warm-up for", "create an exit ticket", "build a week of lessons", "design a lesson for".
+
+    Supports all grade bands (K–12) and all Florida core + elective subjects. Integrates with
+    atom-standards-match (to resolve standard codes), atom-objective-write (SWBAT objectives),
+    atom-activity-generate (individual activities), and atom-differentiate (differentiation layers).
+    Routes completed artifact to quality-review before marking final.
+
+    Do NOT use lesson-planner to write IEP goals, accommodation plans, or progress-monitoring
+    tools (use special-education-support). Do NOT use it to design cumulative assessments or
+    rubrics that are the primary artifact (use assessment-designer).
+
+    Output artifacts: lesson_plan, unit_plan, daily_agenda, pacing_guide, warm_up, exit_ticket.
+    Always outputs a metadata block with standard codes, author, date, human_review_required: true.
+    Nothing is Final until it passes the Quality Gates (quality-review).
+  parameters:
+    type: object
+    required:
+      - grade
+      - subject
+      - topic
+    properties:
+      grade:
+        type: string
+        description: >
+          Grade level or band. Examples: "3rd grade", "Grade 5", "6-8", "9-12", "Kindergarten".
+      subject:
+        type: string
+        description: >
+          Subject area. Examples: "ELA", "Mathematics", "Science", "Social Studies", "Biology",
+          "Algebra 1", "US History", "Spanish 1", "Physical Education", "Art".
+      topic:
+        type: string
+        description: >
+          Specific topic or concept for the lesson or unit. Examples: "photosynthesis",
+          "fractions greater than 1", "civil rights movement", "argumentative writing".
+      artifact_type:
+        type: string
+        enum:
+          - lesson_plan
+          - unit_plan
+          - daily_agenda
+          - pacing_guide
+          - warm_up
+          - exit_ticket
+          - weekly_plan
+        description: >
+          Type of planning artifact to produce. Defaults to lesson_plan if not specified.
+      lesson_duration_minutes:
+        type: integer
+        description: >
+          Length of the lesson in minutes. Common values: 45, 50, 60, 90. Defaults to 50 if
+          omitted.
+      standards:
+        type: array
+        items:
+          type: string
+        description: >
+          Florida B.E.S.T. or NGSSS standard codes to align to (e.g. ["LAFS.4.RI.1.1",
+          "MAFS.5.NF.1.1"]). If omitted, atom-standards-match is called automatically based on
+          grade/subject/topic.
+      learning_objectives:
+        type: array
+        items:
+          type: string
+        description: >
+          Pre-written SWBAT objectives. If omitted, atom-objective-write is called to generate them
+          from the standards.
+      differentiation_profiles:
+        type: array
+        items:
+          type: string
+          enum:
+            - ell
+            - iep
+            - gifted
+            - "504"
+            - below_grade
+            - above_grade
+        description: >
+          Differentiation layers to embed. atom-differentiate is called for each profile to
+          generate modifications that keep the learning target constant.
+      materials:
+        type: array
+        items:
+          type: string
+        description: >
+          Available materials (e.g. ["Chromebooks", "whiteboards", "base-ten blocks"]). Informs
+          activity generation; omit if no constraints.
+      unit_weeks:
+        type: integer
+        description: >
+          For unit_plan or pacing_guide: number of weeks. Ignored for single lesson artifacts.
+      language:
+        type: string
+        description: >
+          Output language. Defaults to "en" (English). Use "es" for Spanish dual-language contexts.
+      additional_context:
+        type: string
+        description: >
+          Any additional teacher context: prior unit knowledge, classroom setup, co-teacher
+          present, testing schedule constraints. Never include real student names or PII.
+    additionalProperties: false

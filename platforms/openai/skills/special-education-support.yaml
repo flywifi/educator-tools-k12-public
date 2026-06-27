@@ -1,0 +1,144 @@
+# TOS Skill: special-education-support
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: special_education_support
+  description: |
+    Generate IDEA-compliant IEP goal drafts, accommodation and modification plans, behavior
+    support plans, transition planning documents, and progress notes for K-12 special education
+    professionals. Every output cites the relevant legal basis (IDEA §300, ADA, Section 504).
+    All outputs are DRAFTS for qualified professionals to review, edit, and approve — never final
+    documents.
+
+    Trigger phrases: "write an IEP goal for", "draft accommodations for", "create a behavior
+    support plan", "help with transition planning", "write progress notes", "draft a modification
+    plan", "accommodation vs modification", "IDEA-compliant goal".
+
+    Integrates with atom-iep-goal (SMART goal drafting), atom-differentiate (modification
+    layer), and quality-review (governance gate). Routes complex eligibility questions to a
+    human — this skill never determines eligibility.
+
+    LEGAL BOUNDARIES (non-negotiable, always stated in output):
+    - Never determines eligibility for special education services
+    - Never overrides or supplements an existing IEP without the IEP team's approval
+    - All output is a DRAFT for the IEP team to review, modify, and approve per IDEA procedures
+    - Never includes real student names, SSN, or identifying PII — placeholders only
+    - Progress data fields require teacher-supplied actual data — never fabricated
+    - Output always includes: "DRAFT — requires IEP team review and approval before use"
+    - human_review_required: true on every output
+
+    Do NOT use this skill to determine eligibility, make placement decisions, or produce legally
+    binding documents. Do NOT use it to write general lesson accommodations (use lesson-planner
+    with differentiation_profiles instead for whole-class differentiation).
+  parameters:
+    type: object
+    required:
+      - request_type
+      - grade
+    properties:
+      request_type:
+        type: string
+        enum:
+          - iep_goal
+          - accommodation_plan
+          - modification_plan
+          - behavior_support_plan
+          - transition_plan
+          - progress_note
+          - present_level_of_performance
+          - service_summary
+        description: >
+          Type of special education document to draft. iep_goal generates one SMART annual goal
+          (use multiple calls for multiple goals); accommodation_plan generates the full
+          accommodations section; modification_plan generates curriculum modification recommendations.
+      grade:
+        type: string
+        description: >
+          Student's current grade level. Examples: "3rd grade", "9th grade", "K".
+      disability_category:
+        type: string
+        description: >
+          IDEA disability category (optional — do not guess if unknown). Examples:
+          "Specific Learning Disability", "Autism Spectrum Disorder", "Other Health Impairment",
+          "Emotional Behavioral Disorder", "Intellectual Disability", "Speech/Language Impairment".
+          This informs goal writing; does not determine eligibility.
+      domain:
+        type: string
+        enum:
+          - academic
+          - behavioral
+          - communication
+          - adaptive
+          - social_emotional
+          - motor
+          - transition
+          - reading
+          - math
+          - writing
+        description: >
+          Domain for the goal or plan. Required for iep_goal. For progress_note or present_level,
+          describe the domain in present_level_of_performance.
+      subject:
+        type: string
+        description: >
+          Academic subject if domain is academic/reading/math/writing. Examples: "ELA", "Math".
+      standards:
+        type: array
+        items:
+          type: string
+        description: >
+          Standards the goal should connect to. Goals should tie to grade-level or near-grade-level
+          standards even when modified. Provide FL B.E.S.T. codes when known.
+      present_level_of_performance:
+        type: string
+        description: >
+          Current performance data: what the student can do, at what level, with what accuracy.
+          Use placeholders for names (e.g. "the student", "Student A"). Required for iep_goal and
+          behavior_support_plan. Never fabricate — provide real teacher-observed data or
+          placeholder markers like "[INSERT ASSESSMENT DATA]".
+      annual_goal_focus:
+        type: string
+        description: >
+          For iep_goal: the specific skill or behavior the goal targets over the coming year.
+          Examples: "decode multisyllabic words", "initiate peer interactions", "manage
+          frustration using a coping strategy".
+      measurement_criteria:
+        type: string
+        description: >
+          For iep_goal: desired accuracy/frequency criterion (e.g. "80% accuracy across 3 of 4
+          trials", "4 out of 5 consecutive opportunities"). If omitted, a standard criterion is
+          drafted with a placeholder.
+      behavior_of_concern:
+        type: string
+        description: >
+          For behavior_support_plan: observable description of the behavior (topography, frequency,
+          intensity, duration). Use objective language; no labels or diagnoses.
+      function_of_behavior:
+        type: string
+        enum:
+          - attention
+          - escape_avoidance
+          - tangible
+          - sensory
+          - unknown_requires_fba
+        description: >
+          For behavior_support_plan: hypothesized function from FBA. Use unknown_requires_fba if
+          an FBA has not been completed.
+      age_at_transition:
+        type: integer
+        description: >
+          For transition_plan: student's current age. Florida requires transition planning to
+          begin by age 14 (or earlier if the IEP team determines appropriate).
+      post_secondary_goals:
+        type: object
+        description: >
+          For transition_plan: post-secondary vision across domains. Keys: education, employment,
+          independent_living. Values: plain-language goal statements from the student/family.
+      legal_notice_acknowledged:
+        type: boolean
+        description: >
+          Must be true to proceed. Confirms the requestor understands all output is a DRAFT
+          requiring IEP team review and approval, and that this skill never determines eligibility.
+    additionalProperties: false

@@ -1,0 +1,70 @@
+# TOS Skill: teacher-core
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+# Usage: include in client.chat.completions.create(tools=[...]) or Assistants API
+#
+# teacher-core is the routing hub — it receives any teacher request and returns a routing decision
+# (which skill to call, what parameters to pass, and why). In a full TOS deployment the system prompt
+# encodes routing logic so GPT calls specialized skills directly; include teacher_core here when you
+# want an EXPLICIT routing step or when routing ambiguity should surface a minority report.
+
+type: function
+function:
+  name: teacher_core
+  description: |
+    TOS routing hub. Receives any K-12 educator request and returns a structured routing decision:
+    which TOS skill to invoke next, what parameters to pass it, and the confidence in that routing
+    choice. Use teacher_core when routing is ambiguous (overlapping skills) or when you want the
+    routing rationale recorded. Returns a minority report when two or more skills are plausible
+    within 10 points of confidence.
+
+    Trigger phrases: any educator request that does not obviously map to one skill — "help me with
+    a lesson", "I need something for my IEP meeting", "make me a quiz", "can you draft a parent
+    note", "audit my skills", "what skill should I use for this?"
+
+    Do NOT use teacher_core to produce the actual artifact — it routes only. After receiving the
+    routing decision, call the target skill with the parameters teacher_core recommends.
+
+    Routes to: lesson-planner, assessment-designer, special-education-support, family-communication,
+    meeting-classifier, quality-review, curriculum-mapping, intervention-mtss, presentation-builder,
+    professional-learning, school-administration, document-intelligence, output-validator,
+    feed-curator, standards-updater, teacher-profile, skill-health, skill-repair, and all
+    atom-* sub-skills.
+
+    Output always includes human_review_required: true and a metadata block.
+  parameters:
+    type: object
+    required:
+      - request
+    properties:
+      request:
+        type: string
+        description: >
+          The teacher's raw request, question, or description of what they need. Provide as much
+          context as possible — grade, subject, student context, urgency, artifact type desired.
+      grade:
+        type: string
+        description: >
+          Grade level hint (e.g. "3rd grade", "9-12", "K-2"). Helps narrow routing when multiple
+          skills are plausible.
+      subject:
+        type: string
+        description: >
+          Subject area hint (e.g. "ELA", "Algebra 1", "Biology"). Optional — extracted from
+          request if not provided.
+      artifact_type_hint:
+        type: string
+        description: >
+          Optional hint about the desired output type (e.g. "lesson plan", "quiz", "IEP goal",
+          "parent email"). teacher_core will confirm or correct this from request context.
+      teacher_context:
+        type: string
+        description: >
+          Optional background: teacher role, school, district, current unit, known student needs.
+          Improves routing precision. Never include real student names or PII — placeholders only.
+      force_minority_report:
+        type: boolean
+        description: >
+          If true, always emit a minority report showing all plausible routes with confidence
+          scores, even when one route is clearly dominant.
+    additionalProperties: false
