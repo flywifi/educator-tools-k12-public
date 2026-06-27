@@ -1,0 +1,21 @@
+{
+  "_comment": "Declarative workflow definition for standards-updater. Politely crawls official Florida sources for standards/legislation/policy changes, triages with change intelligence, requires human verification on CPALMS before any update is applied.",
+  "id": "standards-updater",
+  "description": "Standards currency: crawl → detect changes → triage → human verify on CPALMS → apply (human-approved) → quality gate",
+  "steps": [
+    {"step": 1, "action": "crawl",     "input_from": "resources/florida/sources.json crawl_seeds", "output_to": "step2",
+     "uses": "tools/standards_refresh.py --crawl --report /tmp/fl_update_report.json",
+     "note": "Polite crawl — respects robots.txt, no CAPTCHA bypass, honest User-Agent. Reports JS-required pages as gaps, never fakes them."},
+    {"step": 2, "action": "triage",    "input_from": "step1.report",                               "output_to": "step3",
+     "note": "Apply monitoring_policy from sources.json: confirm primary source only, score confidence, weight recency + forward-looking effective dates"},
+    {"step": 3, "action": "verify",    "input_from": "step2.candidates",                           "output_to": "step4",
+     "note": "Human verifies each candidate change on CPALMS (the live authority). Never trust a crawled change without CPALMS confirmation. Never invent codes."},
+    {"step": 4, "action": "apply",     "input_from": "step3.verified_changes",                     "output_to": "step5",
+     "uses": "python3 tools/parse_fl_standards.py && python3 tools/sync_check.py",
+     "note": "Human-approved only. Drop accepted files into resources/<state>/<category>/, re-enumerate, refresh hashes. Update sources.json + STATE.md + CHANGELOG.md."},
+    {"step": 5, "atom": "atom-quality-check", "input_from": "update_record",                      "output_to": "final",
+     "gates": ["no_fabricated_codes", "primary_source_verified", "human_approved", "drift_guard_clean"]}
+  ],
+  "shortcut_atoms": [],
+  "note": "Standards changes are NEVER auto-applied. Human verifies on CPALMS; human approves before any write to resources/. Egress-blocked environments: use Option B (FEED_DISCOVERY_PROMPT.md via web chatbot) to verify then handoff via git."
+}

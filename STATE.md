@@ -236,7 +236,7 @@ self-update** (`shared/feeds/` + `tools/feeds_update.py`), and **L8 seed curatio
 **`feed-curator` skill (19th)** + `tools/seed_curator.py` (validate/discover/propose, auto-apply only
 mechanically-safe repairs, audit trail in `ledger/feeds-change-log.json` with `--revert`). Real-world
 scope: OCPS (public, district 48) + Monarch Learning Academy (private, Orlando). Live web fetch is gated
-by this container's egress policy — feed endpoints stay `verified:false` pending discovery where network
+by network policy — feed endpoints stay `verified:false` pending discovery where network
 is open.
 
 ## Open items (optional follow-ups — core build complete)

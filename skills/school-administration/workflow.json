@@ -1,0 +1,13 @@
+{
+  "_comment": "Declarative workflow definition for school-administration. Builds school/system-level leadership tools — walkthrough instruments, implementation plans, progress-monitoring systems — focused on concrete observable indicators.",
+  "id": "school-administration",
+  "description": "Leadership tool: initiative analysis → observable indicators → reading-level check → quality gate",
+  "steps": [
+    {"step": 1, "atom": "atom-reading-level",     "input_from": "draft_admin_content",      "output_to": "step2",
+     "note": "Ensure walkthrough look-fors and plan text are concise and readable for school-wide audiences"},
+    {"step": 2, "atom": "atom-quality-check",     "input_from": "assembled_admin_artifact", "output_to": "final",
+     "gates": ["observable_indicators_present", "implementation_phases_defined", "data_measures_present", "no_real_staff_student_data"]}
+  ],
+  "shortcut_atoms": [],
+  "note": "School-administration operates at school/system scope (implementation monitoring), not individual classroom level. Walkthrough tools here are NOT formal personnel evaluation — those are governed by district policy and human judgment."
+}

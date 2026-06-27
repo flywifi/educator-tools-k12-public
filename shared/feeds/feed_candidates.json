@@ -1,5 +1,5 @@
 {
-  "_comment": "Candidate feeds to VERIFY with tools/verify_feeds.py where the internet is open (the build container's egress is blocked). URLs are best-known leads (round 1 of discovery) — NOT yet confirmed feeds. Each carries the labels the catalog needs; verify_feeds.py fetches each, autodiscovers the RSS link if it's a page, parses it, and emits a verified catalog entry (or marks it unverified with a reason). Nothing here is assumed live.",
+  "_comment": "Candidate feeds to VERIFY with tools/verify_feeds.py where the internet is open. URLs are best-known leads (round 1 of discovery) — NOT yet confirmed feeds. Each carries the labels the catalog needs; verify_feeds.py fetches each, autodiscovers the RSS link if it's a page, parses it, and emits a verified catalog entry (or marks it unverified with a reason). Nothing here is assumed live.",
   "feeds": [
     {"id": "ed-gov-news", "url": "https://www.ed.gov/feed",
       "label": "U.S. Dept of Education — news", "category": "program", "authority": "secondary",

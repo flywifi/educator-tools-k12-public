@@ -1,0 +1,13 @@
+{
+  "_comment": "Declarative workflow definition for professional-learning. Creates coaching and PD resources (look-fors, coaching guides, PD session plans) grounded in adult-learning principles and observable teacher practice.",
+  "id": "professional-learning",
+  "description": "Coaching/PD resource: observable practice anchor → reading-level check → quality gate",
+  "steps": [
+    {"step": 1, "atom": "atom-reading-level",     "input_from": "draft_pl_content",         "output_to": "step2",
+     "note": "Verify that look-fors and coaching prompts are written at a professional adult reading level"},
+    {"step": 2, "atom": "atom-quality-check",     "input_from": "assembled_pl_artifact",    "output_to": "final",
+     "gates": ["observable_indicators_present", "non_evaluative_tone", "adult_learning_principles", "no_real_staff_data"]}
+  ],
+  "shortcut_atoms": ["atom-reading-level"],
+  "note": "Professional-learning is adult-facing and practice-anchored, not standards-anchored. No atom-standards-match needed unless the PL focus is directly tied to a student standard. No evaluative judgment — coaching only."
+}

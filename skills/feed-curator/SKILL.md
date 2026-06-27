@@ -46,15 +46,15 @@ python3 tools/seed_curator.py --revert ENTRY_ID           # undo a logged change
   `shared/context/sot_resolver.py`.
 
 ## Verifying feeds (two methods — Option B is current)
-This container's egress is blocked, so feeds are verified **where the internet is open** and handed back
+When live network access is unavailable, feeds are verified **where the internet is open** and handed back
 (see `references/verification-methods.md`):
 - **Option A** — run `tools/verify_feeds.py shared/feeds/feed_candidates.json` (most reliable; needs
   Python on an open network or a code-interpreter chatbot).
 - **Option B (current)** — paste `shared/feeds/FEED_DISCOVERY_PROMPT.md` into a web chatbot; it verifies
   each feed through a reader-proxy (`r.jina.ai`) and returns catalog-ready JSON.
 
-Both emit the same JSON, which drops into `shared/feeds/feeds.json`. The verified result reaches this
-egress-blocked repo via a **local-first git snapshot** (the OpenCLAW/`crawlkit` model TOS already uses:
+Both emit the same JSON, which drops into `shared/feeds/feeds.json`. The verified result reaches an
+offline repo via a **local-first git snapshot** (the OpenCLAW/`crawlkit` model TOS already uses:
 `ledger/snapshots.json` + `git pull`), with **Firebase** realtime as an optional online-deployment
 backend — details in `references/verification-methods.md`.
 
