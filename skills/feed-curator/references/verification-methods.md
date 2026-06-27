@@ -1,8 +1,8 @@
 # Verifying feeds — two methods + the open-net hand-off
 
-The TOS build/run container's **egress is blocked** (every outbound URL 403s), so feeds cannot be
-fetched or verified *inside* it. Verification happens **where the internet is open** and the result is
-handed back. The curator supports two methods; **Option B is the current default.**
+TOS may run in environments without live network access (air-gapped deployments, restricted containers).
+In those cases, feeds cannot be fetched or verified locally. Verification happens **where the internet is
+open** and the result is handed back. The curator supports two methods; **Option B is the current default.**
 
 ## Option A — portable verifier script (most reliable)
 Run `tools/verify_feeds.py` anywhere with open network (a laptop, a CI job, or a chatbot that has a
@@ -29,13 +29,13 @@ chatbot returns the same JSON schema as Option A, which drops straight into `sha
 > web-enabled chat. Promote to A when a teacher/admin can run Python where the net is open (it is exact
 > and scriptable).
 
-## The hand-off — how verified feeds reach the egress-blocked TOS
+## The hand-off — how verified feeds reach an offline TOS instance
 Whichever method runs, the verified JSON must travel from the **open-net writer** to the
-**egress-blocked reader** (this repo). Two strategies, mirroring OpenCLAW's `crawlkit` and Firebase:
+**offline reader** (a restricted or air-gapped deployment). Two strategies, mirroring OpenCLAW's `crawlkit` and Firebase:
 
 ### Primary — local-first git snapshot (OpenCLAW / `crawlkit` model)
 The writer produces SQLite + a `manifest.json` and **commits a snapshot to git**; the reader
-**pulls and imports** it with **live sources disabled** — exactly our situation. **Implemented:**
+**pulls and imports** it with **live sources disabled** — ideal for offline environments. **Implemented:**
 `tools/feeds_publish.py` (writer, open net) exports the feed store to `shared/feeds/snapshot/`
 (`feed_items.jsonl` + a sha256-fingerprinted `manifest.json`), which is committed to git;
 `tools/feeds_import.py` (reader, offline) verifies the fingerprint and imports rows with
@@ -48,7 +48,7 @@ the **recommended** hand-off: it needs no live network in the reader.
 ### Optional — Firebase realtime (for ONLINE teacher deployments)
 The writer pushes verified feeds to **Firebase Realtime Database** (JSON; offline edits merge on
 reconnect) and online teacher clients subscribe in realtime. Useful for a deployed, networked teacher
-environment, but **not** for the egress-blocked container (it can't reach Firebase). Treat Firebase as a
+environment, but **not** for offline/restricted deployments (they can't reach Firebase). Treat Firebase as a
 `cloud_optional` backend, off by default, bound by `shared/students/student-data-policy.md`; never send
 student data, only public feed metadata.
 

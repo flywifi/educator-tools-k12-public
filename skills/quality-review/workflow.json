@@ -1,0 +1,30 @@
+{
+  "_comment": "Declarative workflow definition for quality-review (the Quality Gates executor). Runs the 9-dimension Quality Gates Protocol on an artifact by evaluating each dimension in order with evidence, checking critical failures first, computing the composite via the score script, and emitting a deterministic decision record.",
+  "id": "quality-review",
+  "description": "Quality Gates: score 9 dimensions in gate order → critical-failure check → composite computation → decision record",
+  "steps": [
+    {"step": 1, "atom": "atom-quality-check", "input_from": "artifact + context (persona/grade/subject/standards/request)", "output_to": "step2",
+     "note": "Dimension 1 — Integrity (0-5). STOP if 0: critical failure overrides everything."},
+    {"step": 2, "atom": "atom-quality-check", "input_from": "artifact",                "output_to": "step3",
+     "note": "Dimension 2 — Safety (0-5). Check for unsafe content, legal-overreach language. STOP if 0."},
+    {"step": 3, "atom": "atom-quality-check", "input_from": "artifact",                "output_to": "step4",
+     "note": "Dimension 3 — Governance (0-5). human_review_required:true present, no auto-Approval claim. STOP if 0."},
+    {"step": 4, "atom": "atom-quality-check", "input_from": "artifact",                "output_to": "step5",
+     "note": "Dimension 4 — Accuracy (0-5). No fabricated standards/citations/scores. STOP if 0."},
+    {"step": 5, "atom": "atom-quality-check", "input_from": "artifact",                "output_to": "step6",
+     "note": "Dimension 5 — Alignment (0-5). Standards cited and verified against FL corpus."},
+    {"step": 6, "atom": "atom-quality-check", "input_from": "artifact",                "output_to": "step7",
+     "note": "Dimension 6 — Educational Quality (0-5). Measurable objectives, appropriate DOK, coherence."},
+    {"step": 7, "atom": "atom-quality-check", "input_from": "artifact",                "output_to": "step8",
+     "note": "Dimension 7 — Accessibility (0-5). UDL, grade-level reading, differentiation present."},
+    {"step": 8, "atom": "atom-quality-check", "input_from": "artifact",                "output_to": "step9",
+     "note": "Dimension 8 — Professional Quality (0-5). Format, completeness, usability for a teacher."},
+    {"step": 9, "atom": "atom-quality-check", "input_from": "artifact + original_request", "output_to": "step10",
+     "note": "Dimension 9 — User Intent (0-5). Does the artifact do what the teacher asked?"},
+    {"step": 10, "action": "compute_composite", "input_from": "steps 1-9 scores",      "output_to": "final",
+     "uses": "python3 scripts/score.py '{\"integrity\":N,...}'",
+     "note": "Apply QG §33.1 weights + §35.3 thresholds. Approved ≥4.0 · Conditionally Approved 3.0-3.99 · Remediation 2.0-2.99 · Rejected <2.0. Any 0 = auto-Rejected. Do NOT hand-compute — use the script."}
+  ],
+  "shortcut_atoms": ["atom-quality-check"],
+  "note": "quality-review EVALUATES, not creates. On not-Approved, give specific actionable remediation per failed dimension. Resolve contradictions per protocols/conflict-protocol.md (integrity > safety > governance > accuracy/alignment > preference > presentation)."
+}
