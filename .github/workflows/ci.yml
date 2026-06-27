@@ -54,6 +54,9 @@ jobs:
 
       - name: Registry currency (informational drift report)
         run: python3 tools/registry_currency.py --summary || true
+
+      - name: Repair loop (advisory — detect, propose, verify)
+        run: python3 tools/repair_loop.py || true
       # Phase A+: add eval smoke tests here (skill triggering + Quality Gates pass).
 
   supply-chain:
@@ -64,6 +67,6 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install scanners
-        run: pip install pip-audit bandit
+        run: pip install pip-audit bandit semgrep
       - name: Dependency + code security scan (gate)
         run: python3 tools/security_scan.py
