@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atom-io.schema.json",
+  "_comment": "IO contract schema for TOS atoms. Every atom accepts input conforming to the 'input' sub-schema and returns output conforming to the 'output' sub-schema. Orchestrators use this to validate hand-offs between atoms in a workflow chain.",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "description": "Atom input envelope. Common fields shared by all atoms; atom-specific fields extend this.",
+      "properties": {
+        "atom": {
+          "type": "string",
+          "description": "Name of the atom to invoke (must exist in atoms.json)."
+        },
+        "grade": {
+          "type": "string",
+          "description": "Grade level (e.g. '3', 'K', '9-10')."
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject area (e.g. 'ELA', 'Math', 'Science')."
+        },
+        "standard_code": {
+          "type": "string",
+          "description": "Florida BEST or other standard code. Never fabricated."
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional teacher-profile context passed from the orchestrator.",
+          "properties": {
+            "district": { "type": "string" },
+            "school_type": { "type": "string" },
+            "role": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "required": ["atom"],
+      "additionalProperties": true
+    },
+    "output": {
+      "type": "object",
+      "description": "Atom output envelope. Every atom MUST return these fields; atom-specific fields extend this.",
+      "properties": {
+        "tool": {
+          "type": "string",
+          "description": "Name of the atom that produced this output (matches input.atom)."
+        },
+        "human_review_required": {
+          "type": "boolean",
+          "const": true,
+          "description": "Always true. No atom output is final without human review."
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low"],
+          "description": "Self-assessed confidence in the output quality."
+        },
+        "standard_code": {
+          "type": "string",
+          "description": "Echo of the input standard code for traceability."
+        },
+        "warnings": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Any advisory flags or caveats the atom wants to surface."
+        }
+      },
+      "required": ["tool", "human_review_required"],
+      "additionalProperties": true
+    }
+  },
+  "required": ["input", "output"]
+}

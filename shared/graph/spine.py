@@ -24,7 +24,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "shared"))
-sys.path.insert(0, str(ROOT / "shared" / "schools"))
+sys.path.insert(0, str(ROOT / "canonical-sources" / "schools"))
 sys.path.insert(0, str(ROOT / "shared" / "staff"))
 
 PROFILE_LOCAL = ROOT / "shared" / "context" / "profiles" / "teacher.local.json"

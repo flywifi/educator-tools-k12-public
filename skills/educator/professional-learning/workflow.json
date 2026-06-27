@@ -8,6 +8,6 @@
     {"step": 2, "atom": "quality-check",     "input_from": "assembled_pl_artifact",    "output_to": "final",
      "gates": ["observable_indicators_present", "non_evaluative_tone", "adult_learning_principles", "no_real_staff_data"]}
   ],
-  "shortcut_atoms": ["atom-reading-level"],
+  "shortcut_atoms": ["reading-level"],
   "note": "Professional-learning is adult-facing and practice-anchored, not standards-anchored. No atom-standards-match needed unless the PL focus is directly tied to a student standard. No evaluative judgment — coaching only."
 }

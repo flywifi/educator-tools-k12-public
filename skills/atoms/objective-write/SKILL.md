@@ -3,7 +3,7 @@ name: objective-write
 description: "Write 1–3 measurable learning objectives for a given standard code, grade, and topic. Use this atom directly when a teacher says 'write me an objective for standard X' or when a workflow (lesson-planner, unit planner) needs objectives before generating activities. Do NOT use for writing a full lesson plan — that is lesson-planner. Do NOT use for IEP goals — use atom-iep-goal."
 ---
 
-# atom-objective-write
+# objective-write
 
 Generates measurable learning objectives (Students will be able to...) aligned to a specific standard. Returns Bloom's level tag for each objective. Takes verified standard codes from atom-standards-match; never fabricates a standard.
 
@@ -27,7 +27,7 @@ Generates measurable learning objectives (Students will be able to...) aligned t
 
 ```json
 {
-  "tool": "atom-objective-write",
+  "tool": "objective-write",
   "objectives": [
     {
       "text": "Students will be able to represent fractions greater than one on a number line by partitioning equal intervals.",

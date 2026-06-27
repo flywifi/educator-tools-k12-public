@@ -3,7 +3,7 @@ name: iep-goal
 description: "Draft ONE IEP annual goal for a given area, present-level descriptor, and standard alignment. Use this when a teacher or SPED team member says 'draft an IEP goal for reading fluency' or when special-education-support needs a goal before review. Do NOT use for full IEP document generation — use special-education-support. Do NOT use without a present-level baseline — goals must be grounded in PLOP. Never use real student names or data."
 ---
 
-# atom-iep-goal
+# iep-goal
 
 Drafts a single SMART IEP annual goal in the standard format (condition + behavior + criterion). Includes a measurement method and a suggested short-term objective. Requires a present-level baseline (PLOP) and a target area. Always advisory — IEP goals must be finalized by a qualified SPED professional.
 
@@ -27,7 +27,7 @@ Drafts a single SMART IEP annual goal in the standard format (condition + behavi
 
 ```json
 {
-  "tool": "atom-iep-goal",
+  "tool": "iep-goal",
   "area": "reading_fluency",
   "goal": {
     "condition": "When given a grade 3 reading passage,",

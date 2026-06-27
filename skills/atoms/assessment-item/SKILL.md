@@ -3,7 +3,7 @@ name: assessment-item
 description: "Generate exactly ONE assessment item (question + answer key) for a given objective and item type. Use this when a teacher says 'write me a question for this standard' or when assessment-designer needs items one at a time. Do NOT use for generating a full assessment — use assessment-designer. Do NOT use for rubrics — use a separate rubric atom or assessment-designer."
 ---
 
-# atom-assessment-item
+# assessment-item
 
 Generates a single assessment item with answer key. Supports multiple-choice, short-answer, constructed-response, true/false, and matching. Accepts a verified standard and objective; returns item text + answer key + DOK level.
 
@@ -27,7 +27,7 @@ Generates a single assessment item with answer key. Supports multiple-choice, sh
 
 ```json
 {
-  "tool": "atom-assessment-item",
+  "tool": "assessment-item",
   "item": {
     "stem": "Which point on the number line below shows the location of 7/4?",
     "type": "multiple_choice",

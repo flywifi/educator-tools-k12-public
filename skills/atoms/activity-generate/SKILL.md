@@ -3,7 +3,7 @@ name: activity-generate
 description: "Generate exactly ONE learning activity for a given objective, grade, and subject. Use this atom when a teacher says 'give me an activity for this objective' or when lesson-planner needs to generate activities one at a time. Do NOT use for generating a full lesson plan — use lesson-planner. Do NOT use for assessment questions — use atom-assessment-item. Call this atom once per activity needed."
 ---
 
-# atom-activity-generate
+# activity-generate
 
 Generates a single, structured learning activity (not a whole lesson). Each activity includes a procedure, materials, timing, and DOK level. Accepts an objective from atom-objective-write and optional differentiation flags.
 
@@ -28,7 +28,7 @@ Generates a single, structured learning activity (not a whole lesson). Each acti
 
 ```json
 {
-  "tool": "atom-activity-generate",
+  "tool": "activity-generate",
   "activity": {
     "title": "Number Line Fraction Hunt",
     "type": "hands_on",

@@ -3,7 +3,7 @@ name: reading-level
 description: "Estimate the reading level of a text snippet and return a grade-band label + Lexile estimate. Use this atom when a workflow needs to check whether a passage, question, or artifact draft is appropriate for the target students BEFORE generating differentiated versions. Do NOT use for full document analysis — this atom takes a single passage (( 500 words). Do NOT use for student data analysis or grading."
 ---
 
-# atom-reading-level
+# reading-level
 
 Estimates reading level of a text passage and returns a grade-band label, approximate Lexile range, and a brief rationale. Zero-token path when the `readability` library is installed (Flesch-Kincaid); model-based estimate otherwise. Used by lesson-planner, assessment-item, and differentiate atoms to verify appropriateness before passing content downstream.
 
@@ -23,7 +23,7 @@ Estimates reading level of a text passage and returns a grade-band label, approx
 
 ```json
 {
-  "tool": "atom-reading-level",
+  "tool": "reading-level",
   "estimated_grade_band": "4-5",
   "lexile_estimate": "700-750L",
   "match_for_target": true,
