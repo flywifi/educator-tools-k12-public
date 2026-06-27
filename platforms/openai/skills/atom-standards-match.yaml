@@ -1,0 +1,83 @@
+# TOS Skill: atom-standards-match
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+#
+# ATOM SKILL — single operation, minimal token footprint.
+# Called by orchestrator skills (lesson-planner, assessment-designer, curriculum-mapping, etc.)
+# and can be called directly for a fast standards lookup.
+
+type: function
+function:
+  name: atom_standards_match
+  description: |
+    Look up Florida B.E.S.T. or NGSSS standards matching a topic, grade, and subject. Returns a
+    ranked list of matching standard codes with full text, strand, and cluster. Uses the local
+    SQLite/FTS5 standards cache (shared/cache/) when available for zero-token offline lookup;
+    falls back to keyword search over the standards JSON.
+
+    This is the FASTEST standards lookup in TOS — no large files are read, no fabrication is
+    possible (codes come from the verified 6,583-FL-standard corpus). Every code returned is real
+    and verifiable on CPALMS.
+
+    Trigger phrases: "what standards cover", "find the standard for", "which FL standard applies
+    to", "look up the B.E.S.T. standard", "what code is this", "standards for this topic".
+
+    Used by: lesson-planner, assessment-designer, curriculum-mapping, intervention-mtss,
+    atom-objective-write, atom-assessment-item, and any skill that needs a verified standard code
+    before generating content.
+
+    Do NOT use atom-standards-match to write lesson plans or assessments — it returns codes only.
+    Output always includes human_review_required: true (teacher confirms the code fits the lesson
+    before using it in a formal artifact).
+  parameters:
+    type: object
+    required:
+      - topic
+      - grade
+      - subject
+    properties:
+      topic:
+        type: string
+        description: >
+          Concept or skill to match standards for. Examples: "fractions greater than 1",
+          "photosynthesis", "argumentative writing", "civil rights movement", "linear equations".
+      grade:
+        type: string
+        description: >
+          Grade level. Examples: "3rd grade", "5th grade", "9th grade", "K", "Grade 8".
+      subject:
+        type: string
+        description: >
+          Subject area. Examples: "Mathematics", "ELA", "Science", "Social Studies",
+          "Biology", "US History".
+      standards_corpus:
+        type: string
+        enum:
+          - florida_best
+          - florida_ngsss
+          - florida_all
+          - ccss
+        description: >
+          Which standards corpus to search. Defaults to florida_all (B.E.S.T. + NGSSS combined).
+          Use florida_best for the current adopted standard; florida_ngsss for legacy alignment.
+      max_results:
+        type: integer
+        description: >
+          Maximum number of matching standards to return. Defaults to 5. Range: 1-20.
+      keyword_override:
+        type: string
+        description: >
+          Alternate search keywords if the topic phrase doesn't surface good matches. The
+          standards search will use these words instead of (not in addition to) the topic.
+      include_related_standards:
+        type: boolean
+        description: >
+          If true, also return standards in adjacent strands that relate to the topic (supporting
+          standards, prerequisite standards). Defaults to false.
+      strand_filter:
+        type: string
+        description: >
+          Limit results to a specific strand code prefix. Examples: "LAFS.4.RI" (grade 4
+          informational text), "MAFS.5.NF" (grade 5 fractions), "SC.8.L" (grade 8 life science).
+          Useful when you know which strand the standard lives in.
+    additionalProperties: false

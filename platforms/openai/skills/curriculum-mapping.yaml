@@ -1,0 +1,132 @@
+# TOS Skill: curriculum-mapping
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: curriculum_mapping
+  description: |
+    Build standards-based curriculum maps, pacing guides, scope and sequence documents, and
+    standards-alignment matrices for K-12. Ensures complete coverage of all required standards
+    with zero unplanned gaps, identifies instructional time allocations, and produces editable
+    planning grids teachers can adapt.
+
+    Trigger phrases: "map the curriculum for", "create a pacing guide for the year", "build a
+    scope and sequence", "align my curriculum to standards", "find gaps in my curriculum",
+    "standards coverage map", "year-at-a-glance", "map all standards for", "pacing calendar".
+
+    Every map cites verified Florida B.E.S.T. or NGSSS standards. Coverage analysis flags any
+    state-required standard not addressed in the proposed sequence. Output includes an
+    instructional-days estimate per unit and a standards-coverage matrix showing which standards
+    are addressed when.
+
+    Integrates with atom-standards-match (standard resolution), lesson-planner (unit breakdowns),
+    and quality-review (coverage completeness gate). The completed artifact routes to quality-review
+    before being marked Approved.
+
+    Do NOT use curriculum-mapping to write individual lesson plans (use lesson-planner). Do NOT
+    use it to generate assessments (use assessment-designer). Do NOT use it to produce IEP-based
+    curriculum modifications (use special-education-support).
+
+    Output artifacts: pacing_guide, scope_and_sequence, standards_alignment_matrix,
+    curriculum_gap_analysis, year_at_a_glance. Always includes human_review_required: true and
+    a metadata block with standard codes and coverage percentage.
+  parameters:
+    type: object
+    required:
+      - grade
+      - subject
+    properties:
+      grade:
+        type: string
+        description: >
+          Grade level or band. Examples: "3rd grade", "9-12", "6-8", "Kindergarten",
+          "High School Biology".
+      subject:
+        type: string
+        description: >
+          Subject area. Examples: "ELA", "Mathematics", "Science", "Social Studies",
+          "Algebra 1", "AP Biology", "World History".
+      artifact_type:
+        type: string
+        enum:
+          - pacing_guide
+          - scope_and_sequence
+          - standards_alignment_matrix
+          - curriculum_gap_analysis
+          - year_at_a_glance
+          - unit_sequence
+        description: >
+          Type of curriculum planning artifact. Defaults to pacing_guide.
+      time_period:
+        type: string
+        enum:
+          - full_year
+          - semester
+          - quarter
+          - trimester
+          - unit
+        description: >
+          Time span the map should cover. Defaults to full_year.
+      total_instructional_days:
+        type: integer
+        description: >
+          Total instructional days available. Florida K-12 = typically 180 days. Adjust for
+          assessment windows, holidays, review periods. Defaults to 160 (accounting for 20 days
+          lost to testing/non-instructional time).
+      standards:
+        type: array
+        items:
+          type: string
+        description: >
+          Standard codes to map. If omitted, the full FL B.E.S.T./NGSSS standard set for the
+          grade/subject is used. Provide codes when mapping to a specific subset (e.g., only
+          Reading standards, or standards for an advanced/honors course).
+      course_name:
+        type: string
+        description: >
+          Official course name if relevant. Examples: "Algebra 1 Honors", "AP Environmental
+          Science", "Grade 3 Mathematics". Used in document headers.
+      existing_units:
+        type: array
+        items:
+          type: object
+          properties:
+            unit_name:
+              type: string
+            standards_addressed:
+              type: array
+              items:
+                type: string
+            estimated_days:
+              type: integer
+        description: >
+          Existing unit sequence to analyze for gaps. Provide to run gap analysis against current
+          curriculum. Omit to generate a new sequence from scratch.
+      district_pacing_constraints:
+        type: string
+        description: >
+          District or school pacing requirements (e.g., "FSA writing window Feb 1-March 15 — no
+          new content that week", "benchmark assessments every 9 weeks"). Informs day allocation.
+      assessment_windows:
+        type: array
+        items:
+          type: string
+        description: >
+          Known assessment dates/windows to exclude from instructional days. Examples:
+          ["FSA ELA: April 14-18", "District Benchmark: Oct 7-9", "EOC: May 12-16"].
+      differentiation_notes:
+        type: string
+        description: >
+          Notes about differentiation needs across the class (e.g., "25% of students on IEPs in
+          reading", "2 sections are honors, 1 is inclusion"). Informs pacing recommendations.
+      output_format:
+        type: string
+        enum:
+          - markdown_table
+          - json
+          - narrative_with_table
+        description: >
+          Output format. markdown_table (default) is ready for copy-paste into district planning
+          templates. json is machine-readable for further processing.
+    additionalProperties: false

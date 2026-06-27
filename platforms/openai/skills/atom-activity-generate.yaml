@@ -1,0 +1,117 @@
+# TOS Skill: atom-activity-generate
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+#
+# ATOM SKILL — single operation, minimal token footprint.
+
+type: function
+function:
+  name: atom_activity_generate
+  description: |
+    Generate ONE complete learning activity for a given objective, grade, and subject. Output
+    includes: activity title, procedure (step-by-step teacher and student actions), materials,
+    estimated timing, DOK level, grouping structure, and a formative check at the end.
+
+    Each activity maps to exactly ONE learning objective (call this skill once per activity you
+    need; use lesson-planner to sequence multiple activities into a full lesson).
+
+    Activity types supported: direct instruction sequence, think-pair-share, stations/centers,
+    gallery walk, Socratic seminar, jigsaw, problem-based learning task, project component,
+    reader's theater, math workshop model, and teacher-directed guided practice.
+
+    Called by: lesson-planner (populates the lesson body), curriculum-mapping (generates sample
+    activities per unit), and any workflow building modular instructional sequences.
+
+    Trigger phrases: "generate an activity for", "what's a good activity for this objective",
+    "create a classroom activity about", "design one activity for", "build an activity for",
+    "I need an activity that teaches".
+
+    Do NOT use atom-activity-generate to write a complete multi-activity lesson (use
+    lesson-planner). Do NOT use it to write assessments (use atom-assessment-item or
+    assessment-designer). human_review_required: true.
+  parameters:
+    type: object
+    required:
+      - objective
+      - grade
+      - subject
+    properties:
+      objective:
+        type: string
+        description: >
+          The learning objective this activity should achieve. Should be a SWBAT statement or
+          measurable goal. Examples: "SWBAT explain photosynthesis stages by completing a labeled
+          diagram", "SWBAT solve two-step word problems involving multiplication".
+      grade:
+        type: string
+        description: >
+          Grade level. Examples: "3rd grade", "7th grade", "High School Biology".
+      subject:
+        type: string
+        description: >
+          Subject area. Examples: "Science", "Mathematics", "ELA", "Social Studies".
+      activity_type:
+        type: string
+        enum:
+          - direct_instruction
+          - think_pair_share
+          - stations_centers
+          - gallery_walk
+          - socratic_seminar
+          - jigsaw
+          - problem_based_learning
+          - project_component
+          - readers_theater
+          - math_workshop
+          - guided_practice
+          - independent_practice
+          - cooperative_learning
+          - auto_select
+        description: >
+          Instructional format. Defaults to auto_select (skill picks the format that best fits
+          the objective and DOK level).
+      dok_level:
+        type: integer
+        enum: [1, 2, 3, 4]
+        description: >
+          Target Depth of Knowledge level. Defaults to 2 (skill and concept). Use 3-4 for
+          higher-order reasoning and extended thinking tasks.
+      duration_minutes:
+        type: integer
+        description: >
+          Time budget for this activity in minutes. Examples: 10-15 for a quick warm-up activity,
+          20-30 for a main lesson activity, 45-60 for a full project work period.
+      grouping:
+        type: string
+        enum:
+          - individual
+          - partner
+          - small_group_3_4
+          - whole_class
+          - flexible
+        description: >
+          Student grouping structure. Defaults to flexible (skill chooses based on activity type).
+      materials_available:
+        type: array
+        items:
+          type: string
+        description: >
+          Materials already available in the classroom (e.g. ["Chromebooks", "base-ten blocks",
+          "chart paper", "whiteboard markers"]). Activity will use only these materials, or note
+          when a better material is worth acquiring.
+      standard:
+        type: string
+        description: >
+          Standard code the activity addresses (e.g. "MAFS.4.NBT.2.5"). Optional — extracted
+          from objective if not provided.
+      differentiation_embedded:
+        type: boolean
+        description: >
+          If true, embed one differentiation move within the activity procedure (e.g. a sentence
+          frame for ELL students, a tiered problem set, a challenge extension). Defaults to true.
+      include_formative_check:
+        type: boolean
+        description: >
+          If true, include a quick formative check at the end of the activity (exit ticket, show
+          me, whiteboard). Defaults to true.
+    additionalProperties: false
