@@ -239,6 +239,34 @@ def crawl(seeds, fetcher, max_pages, max_depth, min_delay, max_delay,
     return docs, report
 
 
+def _render_js_required(urls, ua, timeout, out_dir, respect_robots, enable_cloud):
+    """Recover content from js_required pages via the shared/render prong chain (LOCAL render ->
+    offline docintel -> screenshot+OCR -> optional cloud). Honest UA; robots respected; CAPTCHA
+    never bypassed. Returns a per-URL summary; honest capability gaps when render deps are absent."""
+    try:
+        sys.path.insert(0, str(ROOT / "shared"))
+        import render  # noqa
+    except Exception as e:
+        print(f"  [render] shared/render unavailable ({e}); js_required pages left for manual fetch.")
+        return [{"url": u, "prong_succeeded": "none", "note": "render engine unavailable"} for u in urls]
+    caps = render.capability_report()
+    avail = [n for n, i in caps.items() if i["available"]]
+    print(f"  [render] trying fallback prongs on {len(urls)} js_required page(s); available: {', '.join(avail)}")
+    results = []
+    for u in urls:
+        sub = (Path(out_dir) / re.sub(r"\W+", "_", u)[:60]) if out_dir else None
+        rep = render.resilient_fetch(u, out_dir=str(sub) if sub else None, timeout=timeout, ua=ua,
+                                     respect_robots=respect_robots, enable_cloud=enable_cloud)
+        chars = len(rep.get("text", "") or "")
+        print(f"    - {rep['prong_succeeded']:<16} {chars:>6} chars  {u}")
+        results.append({"url": u, "prong_succeeded": rep["prong_succeeded"], "chars": chars,
+                        "confidence": rep.get("confidence", 0.0),
+                        "capability_gaps": rep.get("capability_gaps", []),
+                        "captcha_detected": rep.get("captcha_detected", False),
+                        "human_review_required": True})
+    return results
+
+
 def main(argv) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
@@ -261,6 +289,14 @@ def main(argv) -> int:
     ap.add_argument("--report", metavar="PATH")
     ap.add_argument("--no-robots", action="store_true", help="(not recommended) ignore robots.txt")
     ap.add_argument("--update-hashes", action="store_true", help="save watch-page baseline hashes to the manifest")
+    ap.add_argument("--no-render-fallback", action="store_false", dest="render_fallback", default=True,
+                    help="disable the render/screenshot/OCR fallback prongs for js_required pages "
+                         "(by default, when a page needs a browser render, shared/render is tried "
+                         "automatically — LOCAL render -> offline docintel -> screenshot+OCR)")
+    ap.add_argument("--render-out", metavar="DIR", help="save rendered HTML / screenshots / extracted text per js_required page")
+    ap.add_argument("--render-enable-cloud", action="store_true",
+                    help="also allow the firecrawl cloud render prong if FIRECRAWL_* configured (off by default)")
+    ap.add_argument("--render-max", type=int, default=10, help="cap how many js_required pages to render (default 10)")
     a = ap.parse_args(argv)
 
     man = json.loads(Path(a.manifest).read_text(encoding="utf-8"))
@@ -337,6 +373,13 @@ def main(argv) -> int:
     if rep["js_required"]:
         print(f"  [note] {len(rep['js_required'])} page(s) need a browser render (JS) — e.g. CPALMS "
               f"search; use a Selenium/Playwright fetch for those, or the static downloads page.")
+        if a.render_fallback:
+            report["rendered"] = _render_js_required(
+                rep["js_required"][: a.render_max], a.user_agent, a.timeout,
+                a.render_out, not a.no_robots, a.render_enable_cloud)
+    if rep["captcha"]:
+        print(f"  [note] {len(rep['captcha'])} page(s) show a CAPTCHA wall — reported, NOT bypassed "
+              f"(we never defeat access controls). Fetch those manually if authorized.")
     if rep["skipped_robots"] or any(p["status"] == "skipped_robots" for p in page_changes):
         print("  [note] some URL(s) skipped per robots.txt (respected).")
 
