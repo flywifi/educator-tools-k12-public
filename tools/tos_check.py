@@ -80,6 +80,13 @@ def _sources_note(out: str, err: str) -> str | None:
     return None
 
 
+def _repair_note(out: str, err: str) -> str | None:
+    for line in out.splitlines():
+        if "Issues found:" in line:
+            return line.strip().replace("**", "")
+    return None
+
+
 CHECKS: list[tuple[str, list[str], bool, object]] = [
     ("drift",    [TOOL, "tools/sync_check.py"],                          True,  None),
     ("version",  [TOOL, "tools/version.py", "--check"],                  False, None),
@@ -91,6 +98,7 @@ CHECKS: list[tuple[str, list[str], bool, object]] = [
     ("registry", [TOOL, "tools/registry_currency.py"],                   False, None),
     ("sources",  [TOOL, "tools/source_currency.py", "--summary"],        False, _sources_note),
     ("security", [TOOL, "tools/security_scan.py"],                       False, None),
+    ("repair",   [TOOL, "tools/repair_loop.py"],                         False, _repair_note),
 ]
 
 CHECK_NAMES = [c[0] for c in CHECKS]
