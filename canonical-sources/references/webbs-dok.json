@@ -1,0 +1,60 @@
+{
+  "_comment": "Webb's Depth of Knowledge (DOK) framework. Four complexity levels for aligning standards, instruction, and assessment. Used by cognitive-rigor atom alongside Bloom's. Source: Norman Webb (1997, 2002), WCEPS. Public framework.",
+  "version": "1.0.0",
+  "source": "Webb, N.L. (1997). Criteria for Alignment of Expectations and Assessments. CCSSO/WCEPS.",
+  "levels": [
+    {
+      "dok": 1,
+      "name": "Recall & Reproduction",
+      "description": "Recall a fact, definition, term, or perform a simple procedure. Requires rote responses, use of formulas, or one-step processes.",
+      "student_role": "The student recalls, observes, or completes a routine task.",
+      "typical_verbs": ["recall", "recognize", "identify", "define", "list", "label", "state", "measure", "use", "calculate"],
+      "examples": {
+        "ELA": "Identify the setting of a story.",
+        "Math": "Recall the formula for area of a rectangle.",
+        "Science": "Label the parts of a cell."
+      },
+      "assessment_ceiling": "Selected-response items testing isolated facts or simple procedures."
+    },
+    {
+      "dok": 2,
+      "name": "Skill / Concept",
+      "description": "Requires mental processing beyond recall — decisions about how to approach a problem, requires two or more steps.",
+      "student_role": "The student makes decisions about approach, classifies, organizes, compares, or interprets information.",
+      "typical_verbs": ["classify", "compare", "contrast", "organize", "interpret", "estimate", "summarize", "infer", "predict", "cause/effect", "distinguish", "explain why"],
+      "examples": {
+        "ELA": "Compare two characters' motivations using text evidence.",
+        "Math": "Solve a two-step word problem choosing the correct operations.",
+        "Science": "Classify organisms based on observable characteristics."
+      },
+      "assessment_ceiling": "Short constructed-response items, items requiring application of a concept."
+    },
+    {
+      "dok": 3,
+      "name": "Strategic Thinking",
+      "description": "Requires reasoning, planning, developing a plan or sequence of steps. Requires justification, complex and abstract thinking.",
+      "student_role": "The student reasons, plans, uses evidence, thinks abstractly. More than one possible answer.",
+      "typical_verbs": ["analyze", "justify", "prove", "formulate", "hypothesize", "cite evidence", "draw conclusions", "construct", "critique", "investigate", "differentiate"],
+      "examples": {
+        "ELA": "Write an argument using multiple sources and address a counterclaim.",
+        "Math": "Solve a non-routine problem requiring multiple approaches.",
+        "Science": "Design an experiment to test a hypothesis."
+      },
+      "assessment_ceiling": "Extended constructed-response, multi-step problems with justification."
+    },
+    {
+      "dok": 4,
+      "name": "Extended Thinking",
+      "description": "Requires investigation, complex reasoning over time, and connecting and applying multiple concepts. Typically takes days or weeks.",
+      "student_role": "The student connects and synthesizes ideas across content areas, applies knowledge to real-world problems.",
+      "typical_verbs": ["design", "synthesize", "apply concepts", "connect", "create", "critique across sources", "conduct research", "analyze multiple sources"],
+      "examples": {
+        "ELA": "Write a research paper synthesizing multiple perspectives on a social issue.",
+        "Math": "Design and conduct a statistical study to answer a real-world question.",
+        "Science": "Conduct a multi-week investigation, analyze data, and present findings."
+      },
+      "assessment_ceiling": "Performance tasks, research projects, portfolios — rarely used in on-demand testing."
+    }
+  ],
+  "alignment_note": "A standard's DOK is the CEILING — the most complex thinking the standard demands. Assessment items should match the standard's DOK, not default to DOK 1. Use alongside Bloom's: Bloom's identifies the cognitive PROCESS; DOK identifies the COMPLEXITY of that process."
+}

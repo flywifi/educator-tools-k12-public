@@ -1,0 +1,87 @@
+{
+  "_comment": "Florida Educator Accomplished Practices (FEAPs). 6 practices with indicators per Rule 6A-5.065, F.A.C. Used by professional-learning and school-administration atoms for observation alignment. Source: FLDOE (revised June 2025). Public data.",
+  "version": "2025-06",
+  "source": "Florida Department of Education. Rule 6A-5.065, F.A.C. https://www.fldoe.org/teaching/professional-dev/the-fl-educator-accomplished-practices.stml",
+  "practices": [
+    {
+      "practice": 1,
+      "name": "Instructional Design and Lesson Planning",
+      "description": "Applying concepts from human development and learning theories, the effective educator consistently designs standards-based lessons, plans instruction, and selects strategies to engage and meet the needs of learners.",
+      "indicators": [
+        "Aligns instruction with state-adopted standards at the appropriate level of rigor",
+        "Sequences lessons and concepts to ensure coherence and required prior knowledge",
+        "Designs instruction for students to achieve mastery",
+        "Selects appropriate formative assessments to monitor learning",
+        "Uses diagnostic student data to plan lessons",
+        "Develops learning experiences that require students to demonstrate a variety of applicable skills and competencies"
+      ]
+    },
+    {
+      "practice": 2,
+      "name": "The Learning Environment",
+      "description": "To maintain a student-centered learning environment that is safe, organized, equitable, flexible, inclusive, and collaborative, the effective educator consistently arranges and manages the physical and social conditions of the learning environment.",
+      "indicators": [
+        "Organizes, allocates, and manages the resources of time, space, and attention",
+        "Manages individual and class behaviors through a well-planned management system",
+        "Conveys high expectations to all students",
+        "Respects students' cultural, linguistic, and family background",
+        "Models clear, acceptable oral and written communication skills",
+        "Maintains a climate of openness, inquiry, fairness, and support",
+        "Integrates current information and communication technologies",
+        "Adapts the learning environment to accommodate the differing needs and diversity of students",
+        "Utilizes current and emerging assistive technologies that enable students to participate in high-quality communication and interaction"
+      ]
+    },
+    {
+      "practice": 3,
+      "name": "Instructional Delivery and Facilitation",
+      "description": "The effective educator consistently utilizes a deep and comprehensive knowledge of the subject taught to deliver engaging and relevant lessons and facilitate student achievement.",
+      "indicators": [
+        "Delivers engaging and challenging lessons",
+        "Deepens and enriches students' understanding through content area literacy strategies, verbalization of thought, and application of the subject matter",
+        "Identifies gaps in students' subject matter knowledge",
+        "Modifies instruction to respond to preconceptions or misconceptions",
+        "Relates and integrates the subject matter with other disciplines and life experiences",
+        "Employs higher-order questioning techniques",
+        "Applies varied instructional strategies and resources, including appropriate technology",
+        "Differentiates instruction based on an assessment of student learning needs and recognition of individual differences",
+        "Supports, encourages, and provides immediate and specific feedback to students to promote student achievement",
+        "Utilizes student feedback to monitor instructional needs and to adjust instruction"
+      ]
+    },
+    {
+      "practice": 4,
+      "name": "Assessment",
+      "description": "The effective educator consistently gathers, analyzes, and uses data and evidence to inform decisions about teaching and learning.",
+      "indicators": [
+        "Analyzes and applies data from multiple assessments and measures",
+        "Designs and aligns formative and summative assessments that match learning objectives and lead to mastery",
+        "Uses a variety of assessment tools to monitor student progress, achievement, and learning gains",
+        "Modifies assessments and testing conditions to accommodate learning styles and varying levels of knowledge",
+        "Shares the importance and outcomes of student assessment data with the student and the student's parent/caregiver(s)",
+        "Applies technology to organize and integrate assessment information"
+      ]
+    },
+    {
+      "practice": 5,
+      "name": "Continuous Professional Improvement",
+      "description": "The effective educator consistently designs purposeful professional goals to strengthen the effectiveness of instruction based on students' needs.",
+      "indicators": [
+        "Designs purposeful professional goals to strengthen the effectiveness of instruction based on students' needs",
+        "Examines and uses data-informed research to improve instruction and student achievement",
+        "Uses a variety of data, independently and in collaboration with colleagues, to evaluate learning outcomes, adjust planning, and continuously improve the effectiveness of lessons",
+        "Collaborates with the home, school, and larger communities to foster communication and to support student learning and continuous improvement",
+        "Applies knowledge of emerging trends in education to enhance professional practice"
+      ]
+    },
+    {
+      "practice": 6,
+      "name": "Professional Responsibility and Ethical Conduct",
+      "description": "Understanding that educators are held to a high moral standard in a community, the effective educator adheres to the Code of Ethics and the Principles of Professional Conduct of the Education Profession of Florida.",
+      "indicators": [
+        "Understands and adheres to the Code of Ethics and Principles of Professional Conduct",
+        "Fulfills the expected obligations to students, the public, and the education profession"
+      ]
+    }
+  ]
+}
