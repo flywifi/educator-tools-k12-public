@@ -3,7 +3,7 @@ name: standards-match
 description: "Look up and return a focused set of Florida K-12 standards matching a grade, subject, and keyword or topic. Use this atom when a workflow or teacher needs the exact standard codes + descriptions for a topic WITHOUT generating any instructional artifact. Do NOT use for generating lesson plans, activities, or assessments — hand those off to atom-objective-write or atom-activity-generate. Do NOT use if the teacher needs all standards for a whole subject; use tools/fl_lookup.py directly."
 ---
 
-# atom-standards-match
+# standards-match
 
 Returns the 1–5 most relevant Florida standards for a given topic/grade/subject. No generation — lookup and return only. Used by lesson-planner, assessment-designer, and any skill needing verified standard codes before generating content.
 
@@ -25,7 +25,7 @@ Returns the 1–5 most relevant Florida standards for a given topic/grade/subjec
 
 ```json
 {
-  "tool": "atom-standards-match",
+  "tool": "standards-match",
   "query": {"grade": "4", "subject": "Math", "topic": "fractions on a number line"},
   "standards": [
     {"code": "MA.4.FR.1.1", "description": "Model and express a fraction including mixed numbers...", "source": "FL B.E.S.T.", "confidence": "high"},

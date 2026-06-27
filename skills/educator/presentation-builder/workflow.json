@@ -15,6 +15,6 @@
     {"step": 5, "atom": "quality-check",     "input_from": "assembled_deck",           "output_to": "final",
      "gates": ["standard_alignment", "reading_level", "differentiation_present", "no_real_student_data"]}
   ],
-  "shortcut_atoms": ["atom-standards-match", "atom-reading-level"],
+  "shortcut_atoms": ["standards-match", "reading-level"],
   "note": "Render the final .pptx via scripts/build_deck.py (shared/office/). If python-pptx is absent, write the slide spec and report an honest gap."
 }

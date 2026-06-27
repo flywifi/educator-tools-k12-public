@@ -213,6 +213,28 @@ def main() -> int:
         for t in sorted(targets):
             if t != fallback and t not in skill_names:
                 failures.append(f"  x routing.json: route target '{t}' is not an installed skill")
+        for t in sorted(rj.get("atom_routes", {})):
+            if t.startswith("_"):
+                continue
+            if t not in skill_names:
+                failures.append(f"  x routing.json: atom_route '{t}' is not an installed skill")
+
+    # 11. Workflow atom resolution: every atom named in a workflow.json must be an installed skill.
+    for wf_path in sorted(SKILLS.rglob("workflow.json")):
+        try:
+            wf = json.loads(read(wf_path))
+        except Exception:
+            failures.append(f"  x {wf_path.relative_to(ROOT)}: invalid JSON")
+            continue
+        wf_atoms = set()
+        for step in wf.get("steps", []):
+            if "atom" in step:
+                wf_atoms.add(step["atom"])
+        for a in wf.get("shortcut_atoms", []):
+            wf_atoms.add(a)
+        for a in sorted(wf_atoms):
+            if a not in skill_names:
+                failures.append(f"  x {wf_path.relative_to(ROOT)}: atom '{a}' not an installed skill")
 
     print("TOS ecosystem - drift guard\n")
     if failures:

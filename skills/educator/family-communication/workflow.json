@@ -1,11 +1,12 @@
 {
   "_comment": "Declarative workflow definition for family-communication.",
   "id": "family-communication",
-  "description": "Parent/guardian communications of all types",
+  "description": "Parent/guardian communications of all types with translation and reading-level checks",
   "steps": [
-    {"step": 1, "atom": "parent-comm",    "input_from": "teacher request", "output_to": "step2"},
-    {"step": 2, "atom": "reading-level",  "input_from": "step1.draft",     "output_to": "step3"},
-    {"step": 3, "atom": "quality-check",  "input_from": "step1.draft",     "output_to": "final", "gates": ["student_data_policy"]}
+    {"step": 1, "atom": "parent-comm",       "input_from": "teacher request",   "output_to": "step2"},
+    {"step": 2, "atom": "reading-level",     "input_from": "step1.draft",       "output_to": "step3"},
+    {"step": 3, "atom": "translate-comm",    "input_from": "step1.draft",       "output_to": "step4", "condition": "target_language_specified"},
+    {"step": 4, "atom": "quality-check",     "input_from": "step1.draft",       "output_to": "final", "gates": ["student_data_policy"]}
   ],
-  "shortcut_atoms": ["atom-parent-comm"]
+  "shortcut_atoms": ["parent-comm", "translate-comm", "report-card-comment", "email-draft"]
 }
