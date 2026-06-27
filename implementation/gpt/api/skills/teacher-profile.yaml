@@ -1,0 +1,161 @@
+# TOS Skill: teacher-profile
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: teacher_profile
+  description: |
+    Initialize, manage, and query the TOS teacher operating context: role, grade band, subject,
+    school, district, student demographics, local constraints, collaboration network, and system
+    preferences (offline tier, retrieval mode, feed update mode). Teacher-stated facts outrank
+    crawled inference in all downstream routing and artifact generation.
+
+    Trigger phrases: "set up my TOS profile", "update my profile", "what's in my profile",
+    "change my school", "reset my preferences", "I moved to a new school", "set my grade level",
+    "update my subject", "configure TOS for my class", "show my profile", "what does TOS know
+    about me", "teacher profile setup", "preferences wizard".
+
+    The local profile is stored in shared/context/profiles/ (gitignored — never committed).
+    Teacher-stated facts carry provenance: teacher_stated / confidence: high and outrank
+    any crawled or inferred context via shared/context/sot_resolver.py.
+
+    All preferences are REVERSIBLE:
+    - --preferences --reset clears preferences without deleting identity/role
+    - school_change re-runs school/standards scope questions
+    - Individual fields updatable without re-running the full wizard
+
+    System preferences (L0 roadmap):
+    - offline_tier: cached_python (default) | local_semantic | local_llm
+    - retrieval_mode: stdlib_keyword (always available) | vector (opt-in, gated on consent)
+    - feed_update_mode: manual (default) | on_session_start | scheduled
+
+    PRIVACY:
+    - All profile data is stored LOCALLY and gitignored — never committed to the repo
+    - Never includes real student names, SSNs, or PII — placeholders only
+    - Staff directory integration requires STAFF_INGEST_AUTHORIZED=true environment variable
+
+    Do NOT use teacher-profile to generate lesson plans, assessments, or IEP documents (route
+    those to the appropriate skill). Do NOT use it to read or modify the standards corpus
+    (use standards-updater).
+  parameters:
+    type: object
+    required:
+      - action
+    properties:
+      action:
+        type: string
+        enum:
+          - init
+          - show
+          - validate
+          - register
+          - preferences
+          - reset
+          - school_change
+          - update_field
+          - export_context_fragment
+        description: >
+          Action to perform.
+          init: run the full setup wizard (guided questions for role, grade, subject, school,
+          student context, collaboration network, preferences).
+          show: display current profile in readable format.
+          validate: check profile completeness and flag missing fields that affect routing.
+          register: write the current profile to the context overlay so downstream skills
+          inherit it automatically.
+          preferences: view or modify L0 system preferences (offline_tier, retrieval_mode,
+          feed_update_mode) without re-running the full wizard.
+          reset: clear preferences (with reset_scope); identity/role preserved unless scope=full.
+          school_change: re-run school, district, and standards-scope questions when the teacher
+          moves to a new school. Other preferences preserved.
+          update_field: update a single profile field without running the full wizard.
+          export_context_fragment: return the profile as a context fragment string suitable for
+          prepending to any skill's system prompt.
+      field_name:
+        type: string
+        description: >
+          For update_field: the profile field to update. Examples: "grade_band", "subject",
+          "school_name", "district", "student_demographics", "co_teacher_present",
+          "offline_tier", "feed_update_mode".
+      field_value:
+        type: string
+        description: >
+          For update_field: the new value for the field. For boolean fields use "true"/"false".
+          For array fields use comma-separated values (e.g. "ELL,IEP,gifted").
+      reset_scope:
+        type: string
+        enum:
+          - preferences_only
+          - school_and_standards_only
+          - full_profile
+        description: >
+          For reset: what to clear. preferences_only resets offline_tier/retrieval_mode/
+          feed_update_mode. school_and_standards_only resets school/district/standards scope.
+          full_profile clears everything and prompts re-init.
+      preference_updates:
+        type: object
+        description: >
+          For preferences action: key-value pairs to set. Keys: offline_tier, retrieval_mode,
+          feed_update_mode, local_model. Example: {"offline_tier":"local_semantic",
+          "feed_update_mode":"on_session_start"}.
+        properties:
+          offline_tier:
+            type: string
+            enum:
+              - cached_python
+              - local_semantic
+              - local_llm
+          retrieval_mode:
+            type: string
+            enum:
+              - stdlib_keyword
+              - vector
+          feed_update_mode:
+            type: string
+            enum:
+              - manual
+              - on_session_start
+              - scheduled
+          local_model:
+            type: string
+            enum:
+              - "off"
+              - ollama
+              - llamafile
+      teacher_context:
+        type: object
+        description: >
+          For init or update: teacher context object. All fields optional — wizard prompts for
+          missing required fields. Never include real student names or PII.
+        properties:
+          role:
+            type: string
+            description: "Teaching role (e.g. 'general education teacher', 'special education teacher', 'instructional coach', 'department head', 'principal')"
+          grade_band:
+            type: string
+            description: "Grade band (e.g. 'K-2', '3-5', '6-8', '9-12', 'K-12')"
+          grade_specific:
+            type: string
+            description: "Specific grade(s) taught (e.g. '3rd grade', 'grades 9 and 10')"
+          subject:
+            type: string
+            description: "Subject area(s) taught"
+          school_name:
+            type: string
+            description: "School name (placeholder acceptable)"
+          district:
+            type: string
+            description: "District name (e.g. 'Orange County Public Schools', 'Miami-Dade County')"
+          state:
+            type: string
+            description: "State (default: Florida)"
+          student_demographics:
+            type: string
+            description: "Anonymized class profile (e.g. '25 students, 30% ELL, 20% with IEPs, 1 gifted pull-out')"
+          co_teacher_present:
+            type: boolean
+            description: "Whether a co-teacher is in the classroom"
+          current_unit:
+            type: string
+            description: "Current instructional unit or topic"
+    additionalProperties: false

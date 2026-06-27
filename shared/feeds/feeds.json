@@ -1,0 +1,199 @@
+{
+  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. Nothing fabricated.",
+  "domain": "education-feeds",
+  "version": "0.3.0",
+  "updated": "2026-06-27",
+  "freshness_policy": {
+    "stale_age_days": 365,
+    "supersession_keywords": ["rescinded", "repealed", "archived", "superseded", "discontinued", "program eliminated", "retired"]
+  },
+  "layers": {
+    "product_updates": {"enabled": false, "note": "edtech/vendor product-update feeds — OFF unless a teacher opts in"}
+  },
+  "feeds": [
+    {
+      "id": "ed-gov-news",
+      "url": "https://blog.ed.gov/feed/",
+      "label": "U.S. Dept of Education — blog/news",
+      "category": "program",
+      "authority": "secondary",
+      "tier": "news_teacher_student",
+      "purpose": "federal education policy, funding, and program news affecting teachers and students (US DOE official blog)",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "national",
+      "type": "feed",
+      "parser": "rss",
+      "cadence_days": 7,
+      "verified": true,
+      "discover_from": "https://www.ed.gov/about/news",
+      "note": "Confirmed RSS at blog.ed.gov/feed — US DOE blog. Newsroom page: https://www.ed.gov/about/news",
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+    },
+
+    {
+      "id": "fl-senate-calendars",
+      "url": "https://www.flsenate.gov/PublishedContent/RSS/Calendars.xml",
+      "label": "Florida Senate — calendars",
+      "category": "legislation",
+      "authority": "primary",
+      "tier": "canonical",
+      "purpose": "Florida Senate session calendar / legislation feed (education bills, Title XLVIII); primary canonical source for FL education law",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "state",
+      "type": "feed",
+      "parser": "rss",
+      "cadence_days": 7,
+      "verified": false,
+      "discover_from": "https://www.flsenate.gov/tracker/rss",
+      "note": "Candidate URL — the FL Senate tracker/rss page lists available feeds. Run tools/verify_feeds.py --url URL on an open-net machine to confirm. Try also: https://www.flsenate.gov/tracker/rss for the full list of available FL Senate RSS feeds.",
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+    },
+
+    {
+      "id": "fldoe-news",
+      "url": "https://www.fldoe.org/newsroom/latest-news/",
+      "label": "Florida DOE — newsroom",
+      "category": "program",
+      "authority": "primary",
+      "tier": "canonical",
+      "purpose": "Florida DOE program/policy announcements (state canonical source for FL K-12 education policy)",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "state",
+      "type": "page",
+      "parser": "scraped",
+      "cadence_days": 7,
+      "verified": false,
+      "discover_from": "https://www.fldoe.org/newsroom/",
+      "note": "FLDOE does not publish a public RSS feed. This entry scrapes the news-listing page. Run tools/make_feed.py --url https://www.fldoe.org/newsroom/latest-news/ to discover actual selectors and tune scrape_config. GovDelivery email subscriptions available at fldoe.org but no RSS endpoint confirmed as of 2026-06.",
+      "scrape_config": {
+        "news_list_url": "https://www.fldoe.org/newsroom/latest-news/",
+        "items": "article, .news-item, .newsroom-item, li.news, .fldoe-news-entry",
+        "title": "h2, h3, h4, .news-title, .headline, a",
+        "link": "a",
+        "date": "time, .news-date, .date, .published",
+        "summary": "p, .excerpt, .news-description",
+        "_note": "Selectors are best-guess defaults — tune after running tools/make_feed.py --url against the live page"
+      },
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+    },
+
+    {
+      "id": "cpalms-updates",
+      "url": "https://www.cpalms.org/",
+      "label": "CPALMS — standards updates",
+      "category": "standards",
+      "authority": "primary",
+      "tier": "canonical",
+      "purpose": "Florida B.E.S.T./NGSSS standards repository updates — primary canonical source for FL curriculum standards",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "state",
+      "type": "page",
+      "parser": "scraped",
+      "cadence_days": 30,
+      "verified": false,
+      "discover_from": "https://www.cpalms.org/",
+      "note": "CPALMS has an iCPALMS app RSS reader (https://www.cpalms.org/icpalms/app_rss.aspx) but no public site-wide news RSS. Scrapes the homepage/news page for announcements. Also explore: https://www.cpalms.org/downloads for data exports. Run tools/make_feed.py --url https://www.cpalms.org/ to discover selectors.",
+      "scrape_config": {
+        "news_list_url": "https://www.cpalms.org/",
+        "items": "article, .news-item, .update-item, .announcement, li.news, .cpalms-news",
+        "title": "h2, h3, h4, .title, .headline, a",
+        "link": "a",
+        "date": "time, .date, .published",
+        "summary": "p, .excerpt",
+        "_note": "Selectors are best-guess defaults — tune after running tools/make_feed.py --url against the live page"
+      },
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+    },
+
+    {
+      "id": "wida-news",
+      "url": "https://wida.wisc.edu/news/feed",
+      "label": "WIDA — news",
+      "category": "standards",
+      "authority": "primary",
+      "tier": "canonical",
+      "purpose": "WIDA English-language-development standards + assessment news — primary canonical source for ELD/ELL educators",
+      "grade_band": "K-12",
+      "subject": "ELD",
+      "scope": "national",
+      "type": "feed",
+      "parser": "rss",
+      "cadence_days": 30,
+      "verified": false,
+      "discover_from": "https://wida.wisc.edu/news",
+      "note": "WIDA is hosted on UW-Madison (Drupal/WordPress). UW sites expose feeds at /news/feed — URL is the standard pattern, not yet confirmed by live fetch. If 404 try: https://wida.wisc.edu/rss.xml or fall back to page scraping the /news listing. Verify with tools/verify_feeds.py --url https://wida.wisc.edu/news/feed on open-net machine.",
+      "scrape_config": {
+        "news_list_url": "https://wida.wisc.edu/news",
+        "items": "article, .news-item, .views-row, li.news",
+        "title": "h2, h3, .title, .views-field-title",
+        "link": "a",
+        "date": "time, .date, .views-field-created",
+        "summary": "p, .views-field-body, .field--name-body",
+        "_note": "Fallback scrape config if /news/feed 404s — tune after running tools/make_feed.py --url https://wida.wisc.edu/news"
+      },
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+    },
+
+    {
+      "id": "ocps-news",
+      "url": "https://www.ocps.net/departments/media_relations/newsroom",
+      "label": "Orange County Public Schools — newsroom",
+      "category": "news",
+      "authority": "primary",
+      "tier": "canonical",
+      "purpose": "OCPS (district 48, Orange County FL) official district news/announcements affecting teachers and students",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "district",
+      "type": "page",
+      "parser": "scraped",
+      "cadence_days": 7,
+      "verified": false,
+      "discover_from": "https://www.ocps.net/departments/media_relations/newsroom",
+      "note": "OCPS uses Finalsite CMS. Finalsite supports RSS but it must be enabled per-page by the district admin. Try: https://www.ocps.net/site/RSS?type=news — a common Finalsite RSS pattern. Also try checking https://www.ocps.net/94816_3 (newsroom alternate URL). Run tools/make_feed.py --url https://www.ocps.net/departments/media_relations/newsroom to discover selectors. Contact PIO@ocps.net to request an RSS feed.",
+      "scrape_config": {
+        "news_list_url": "https://www.ocps.net/departments/media_relations/newsroom",
+        "items": ".app-post-block, .fs-news-listing, article, .news-item, li.item",
+        "title": ".app-post-block-header, h2, h3, .fs-entry-summary-header, .title",
+        "link": "a",
+        "date": "time, .app-post-block-date, .fs-entry-summary-date, .date",
+        "summary": ".app-post-block-body, p, .fs-entry-summary-description, .excerpt",
+        "_note": "Finalsite-specific selectors — tune after running tools/make_feed.py --url against the live OCPS newsroom. Try also the alternate newsroom URL: https://www.ocps.net/94816_3"
+      },
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+    },
+
+    {
+      "id": "monarch-news",
+      "url": "https://www.monarchlearningacademy.com/",
+      "label": "Monarch Learning Academy — school news",
+      "category": "news",
+      "authority": "secondary",
+      "tier": "news_teacher_student",
+      "purpose": "Monarch Learning Academy (private PK-8 Christian school, College Park/Orlando FL, 1914 Edgewater Dr) school news and calendar — first private-school example",
+      "grade_band": "PK-8",
+      "subject": null,
+      "scope": "school",
+      "type": "page",
+      "parser": "scraped",
+      "cadence_days": 14,
+      "verified": false,
+      "discover_from": "https://www.monarchlearningacademy.com/",
+      "note": "Small private Christian school. No public RSS or Atom feed found. The school uses a FACTS/ParentsWeb-style or basic WordPress site. Try scraping the homepage and /news or /blog paths. Check for iCal/ICS calendar export at /calendar or similar. Run tools/make_feed.py --url https://www.monarchlearningacademy.com/ to discover what news content is available. Instagram (@monarchlearningacademy) may be the primary public news channel.",
+      "scrape_config": {
+        "news_list_url": "https://www.monarchlearningacademy.com/",
+        "items": "article, .news-item, .post, .entry, li.news, .blog-post",
+        "title": "h2, h3, h4, .entry-title, .post-title, .title",
+        "link": "a",
+        "date": "time, .entry-date, .post-date, .date, .published",
+        "summary": "p, .entry-summary, .excerpt",
+        "_note": "Generic WordPress-style selectors — run tools/make_feed.py --url against the live site to discover what's actually there. May need /news or /blog path instead of homepage."
+      },
+      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+    }
+  ]
+}

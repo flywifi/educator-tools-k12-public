@@ -1,0 +1,86 @@
+# TOS Skill: atom-objective-write
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+#
+# ATOM SKILL — single operation, minimal token footprint.
+
+type: function
+function:
+  name: objective_write
+  description: |
+    Write 1-3 measurable SWBAT (Students Will Be Able To) learning objectives for a given
+    grade, subject, and standard. Each objective includes: the SWBAT statement, Bloom's taxonomy
+    level tag, DOK level, a suggested assessment method, and the standard code it maps to.
+
+    Objectives follow the SWBAT formula: observable verb + content + condition + criterion.
+    Example: "SWBAT explain (Bloom's: Understand / DOK 2) the water cycle stages by labeling a
+    diagram with 85% accuracy."
+
+    Called by: lesson-planner (auto-generates objectives from standards), curriculum-mapping
+    (unit learning targets), and any workflow needing measurable objectives before building
+    activities or assessments.
+
+    Trigger phrases: "write learning objectives for", "SWBAT for", "what's the learning target",
+    "write objectives for this standard", "measurable objectives for", "learning goals for".
+
+    Do NOT use atom-objective-write to write the full lesson plan (use lesson-planner). Do NOT use
+    it to write IEP goals (use atom-iep-goal or special-education-support — IEP goals have
+    different legal requirements than lesson objectives). human_review_required: true.
+  parameters:
+    type: object
+    required:
+      - topic
+      - grade
+      - subject
+    properties:
+      topic:
+        type: string
+        description: >
+          Concept or skill the objective targets. Examples: "inferring author's purpose",
+          "multiplying fractions", "identifying cause and effect in science texts".
+      grade:
+        type: string
+        description: >
+          Grade level. Examples: "3rd grade", "7th grade", "10th grade".
+      subject:
+        type: string
+        description: >
+          Subject area. Examples: "ELA", "Mathematics", "Science".
+      standards:
+        type: array
+        items:
+          type: string
+        description: >
+          Standard codes the objectives should address. If omitted, atom-standards-match is called
+          internally to find the most relevant standard. Provide codes when you already have them
+          (faster, no secondary lookup).
+      bloom_level:
+        type: string
+        enum:
+          - remember
+          - understand
+          - apply
+          - analyze
+          - evaluate
+          - create
+          - mixed
+        description: >
+          Bloom's level to target. Use mixed (default) to get a spread across the unit.
+          Specify a single level for focused practice or skills work.
+      count:
+        type: integer
+        enum: [1, 2, 3]
+        description: >
+          Number of objectives to write. Defaults to 2. For a single-lesson focus, 1-2 is
+          recommended. For a unit or multi-day lesson, use 3.
+      lesson_context:
+        type: string
+        description: >
+          Optional context: where in the unit this lesson falls, prior knowledge students have,
+          the lesson's role in a larger sequence. Helps calibrate Bloom's level and specificity.
+      include_assessment_suggestion:
+        type: boolean
+        description: >
+          If true, add a suggested formative assessment method for each objective (exit ticket,
+          thumbs up/down, whiteboard check, quick write). Defaults to true.
+    additionalProperties: false

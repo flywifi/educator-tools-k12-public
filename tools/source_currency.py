@@ -3,7 +3,7 @@
 
 The EXTERNAL counterpart to tools/registry_currency.py (which watches internal files for drift): this
 monitors authoritative WEB sources for freshness and tells you which have gone stale, moved, been
-superseded, or disappeared. It reads domain registries under shared/sources/<domain>.json, fetches each
+superseded, or disappeared. It reads domain registries under canonical-sources/registries/<domain>.json, fetches each
 source with a polite conditional GET, and classifies a freshness state:
 
   current      reachable + content unchanged (304, or content_sha256 matches the recorded baseline)
@@ -44,7 +44,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SOURCES_DIR = ROOT / "shared" / "sources"
+SOURCES_DIR = ROOT / "canonical-sources" / "registries"
 DEFAULT_UA = "TOS-source-currency/0.1 (+polite freshness checker; respects robots.txt)"
 DEFAULT_TIMEOUT = 30
 
@@ -282,7 +282,7 @@ def main(argv) -> int:
     ap.add_argument("--check", action="store_true", help="JSON freshness report (default)")
     ap.add_argument("--summary", action="store_true", help="human-readable report + stale-source list")
     ap.add_argument("--offline", action="store_true", help="age-only triage; no network fetch")
-    ap.add_argument("--domain", help="limit to one shared/sources/<domain>.json registry")
+    ap.add_argument("--domain", help="limit to one canonical-sources/registries/<domain>.json registry")
     ap.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT)
     ap.add_argument("--update-baselines", action="store_true",
                     help="record current etag/last_modified/content_sha256 (after human approval)")

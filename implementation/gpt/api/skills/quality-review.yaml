@@ -1,0 +1,123 @@
+# TOS Skill: quality-review
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: quality_review
+  description: |
+    Score any TOS-generated K-12 artifact against the full 9-dimension Quality Gates rubric.
+    Produces a per-dimension score (0-5), a composite score (weighted average), an
+    Approved/Rejected/Revision Required verdict, and specific corrective actions for every
+    dimension that scores below 4.0.
+
+    The 9 Quality Gate dimensions:
+    1. Integrity — no fabrication, citations verifiable, standards codes real
+    2. Safety — no harmful content, age-appropriate, no real PII
+    3. Governance — metadata block present, human_review_required: true, no auto-approval
+    4. Accuracy — factually correct, standards-aligned, legally sound for SpEd/504
+    5. Alignment — tied to stated standards; objectives match assessment matches activity
+    6. Educational Quality — pedagogically sound, Bloom's/DOK appropriate, differentiation present
+    7. Accessibility — reading level appropriate, UDL considerations, language clarity
+    8. Professional Quality — formatting, completeness, usable as-is after teacher review
+    9. User Intent — addresses what the teacher actually asked for
+
+    Composite ≥ 4.0 = Approved. Any dimension scoring 0 (critical failure) = auto-Rejected
+    regardless of composite. Composite 3.0–3.9 = Revision Required. Below 3.0 = Rejected.
+
+    Trigger phrases: "review this artifact", "does this pass quality gates", "score this lesson
+    plan", "check this IEP goal", "validate this assessment", "is this good enough to use",
+    "run quality gates on", "does this meet the rubric".
+
+    Integrates with atom-quality-check (per-dimension spot checks) and output-validator (schema
+    + governance rule validation). Produces a detailed Quality Report artifact.
+
+    Do NOT use quality-review to score student work (it reviews educator-generated artifacts).
+    Do NOT use it to determine IEP eligibility or make legal determinations.
+    Nothing produced by TOS is Final until quality-review Approves it.
+  parameters:
+    type: object
+    required:
+      - artifact
+      - artifact_type
+    properties:
+      artifact:
+        type: string
+        description: >
+          The full text or JSON of the artifact to review. For large documents, provide the
+          complete artifact — quality-review needs the full content to score all 9 dimensions.
+          Accepts plain text, markdown, or JSON string.
+      artifact_type:
+        type: string
+        enum:
+          - lesson_plan
+          - unit_plan
+          - assessment
+          - rubric
+          - performance_task
+          - iep_goal
+          - accommodation_plan
+          - behavior_support_plan
+          - pacing_guide
+          - curriculum_map
+          - parent_communication
+          - professional_learning
+          - walkthrough_instrument
+          - document_intelligence_output
+          - health_report
+          - repair_plan
+          - feed_brief
+          - standards_update_brief
+          - generic
+        description: >
+          Type of the artifact being reviewed. Determines which rubric weighting profile and
+          critical failure rules apply.
+      scoring_mode:
+        type: string
+        enum:
+          - full_review
+          - quick_check
+          - gate_only
+          - single_dimension
+        description: >
+          full_review (default): scores all 9 dimensions with detailed corrective actions.
+          quick_check: composite score + pass/fail verdict only (faster, less detail).
+          gate_only: checks only critical failure conditions (Safety=0, Governance=0, Integrity=0).
+          single_dimension: score only the dimension specified in dimension_focus.
+      dimension_focus:
+        type: string
+        enum:
+          - integrity
+          - safety
+          - governance
+          - accuracy
+          - alignment
+          - educational_quality
+          - accessibility
+          - professional_quality
+          - user_intent
+        description: >
+          Required when scoring_mode is single_dimension. Ignored for other modes.
+      standards_to_verify:
+        type: array
+        items:
+          type: string
+        description: >
+          Standard codes the artifact claims to address. quality-review checks these against the
+          FL standards corpus. If omitted, extracts standard codes from the artifact text.
+      original_request:
+        type: string
+        description: >
+          The teacher's original request that produced this artifact. Used to score the User Intent
+          dimension — whether the artifact actually addresses what was asked.
+      rubric_version:
+        type: string
+        description: >
+          Quality Gates rubric version to use. Defaults to the current version in
+          protocols/quality-gates.md. Provide only when testing against a specific version.
+      promote_failures_to_eval:
+        type: boolean
+        description: >
+          If true and the artifact is Rejected, register the failing case as a regression eval so
+          it can be retested after correction. Defaults to false.
+    additionalProperties: false
