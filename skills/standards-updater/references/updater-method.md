@@ -42,11 +42,15 @@ Detection finds *what moved*; this turns it into *what matters*. The policy is c
 |---|---|---|
 | robots.txt analysis | ✅ respect + skip disallowed | compliance |
 | polite crawling (random 2–4s delays) | ✅ randomized jitter delays | be a good citizen |
-| JS-required detection (`noscript`, "enable javascript", tiny page) | ✅ detect + **report** | CPALMS *search* is a JS SPA; don't fake it — escalate to the render prongs below |
-| **LOCAL browser render** of a js_required page | ✅ `shared/render` prong 2 (Playwright + pre-installed Chromium) | run the site's OWN JavaScript the way a browser is meant to — this is rendering, not impersonation |
+| any-obstacle detection (HTTP error, bot gate, low confidence, encoding issue, rate-limit — not only JS) | ✅ `_score_confidence()` + expanded `detect()` in `shared/render` | fallbacks fire on ANY obstacle or confidence < 0.95, not only when js_required is flagged |
+| JS-required detection (`noscript`, "enable javascript", tiny page) | ✅ detect + **escalate** | CPALMS *search* is a JS SPA; one of many trigger conditions — escalates to the render prong chain |
+| **LOCAL browser render** of a js_required or low-confidence page | ✅ `shared/render` prong 2 (Playwright + pre-installed Chromium) | run the site's OWN JavaScript the way a browser is meant to — this is rendering, not impersonation |
 | **download full HTML + offline docintel parse** | ✅ `shared/render` prong 3 (reuses `shared/docintel`) | structure the page (and linked docs) fully offline; zero further requests |
 | **screenshot → OCR** of the rendered page | ✅ `shared/render` prong 4 (Playwright capture + docintel/tesseract OCR) | last-resort offline recovery for canvas/image-only content |
 | **managed cloud render** (firecrawl) | ✅ `shared/render` prong 5 — **off by default**, opt-in (`--render-enable-cloud`) | offline prongs are preferred; cloud only when explicitly enabled + configured |
+| **multi-prong aggregation → single contract** | ✅ `_aggregate_results()` in `shared/render` | when multiple prongs succeed, results are compared and merged; the highest-agreement version is returned as the handoff contract |
+| **minority report on prong discrepancy** | ✅ `ledger/render-discrepancy-log.json` + `minority_report: true` flag | when prongs disagree (token overlap < 0.70), the discrepancy is logged for audit; never suppressed |
+| **Wayback Machine archive comparison** | ✅ `_wayback_compare()` in `shared/render` (archive.org CDX API, no auth) | after aggregation, compare current content against archived snapshot to confirm genuine change vs. transient failure; detect removed pages (`page_removed: true`) |
 | rate-limit detection (429 / latency) | ✅ detect + **back off** | never hammer a public site |
 | **honor `Retry-After` / `RateLimit-Reset`** | ✅ wait the server's own backoff (bounded retry) | use the platform's published limit, not a guess |
 | **resumable checkpoint** (frontier + visited) | ✅ `--checkpoint` / `--resume` | a long crawl can pause/resume without re-hammering |
