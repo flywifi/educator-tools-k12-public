@@ -38,7 +38,8 @@ def check() -> dict:
         pv = json.loads(PLUGIN.read_text(encoding="utf-8")).get("version")
         if pv != eco:
             issues.append(f".claude-plugin/plugin.json version ({pv}) != ecosystem ({eco})")
-    on_disk = {d.name for d in SKILLS.iterdir() if (d / "SKILL.md").exists()} if SKILLS.exists() else set()
+    # Skills are sub-grouped (core/ educator/ operations/ atoms/) — find every dir holding a SKILL.md.
+    on_disk = {p.parent.name for p in SKILLS.rglob("SKILL.md")} if SKILLS.exists() else set()
     listed = set(v.get("skills", {}))
     for missing in sorted(on_disk - listed):
         issues.append(f"skill '{missing}' installed but missing from versions.json")
