@@ -13,12 +13,14 @@
   },
   "schools": [
     {
-      "msid": "641962",
+      "msid": "644634",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Beachside Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -29,12 +31,14 @@
       "verified": null
     },
     {
-      "msid": "642415",
+      "msid": "640621",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Blue Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -45,12 +49,14 @@
       "verified": null
     },
     {
-      "msid": "641979",
+      "msid": "642734",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Champion Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -61,12 +67,14 @@
       "verified": null
     },
     {
-      "msid": "641963",
+      "msid": "640949",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Chisholm Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -77,12 +85,14 @@
       "verified": null
     },
     {
-      "msid": "641964",
+      "msid": "647981",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Citrus Grove Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -93,12 +103,14 @@
       "verified": null
     },
     {
-      "msid": "641967",
+      "msid": "641237",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Coronado Beach Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -109,12 +121,14 @@
       "verified": null
     },
     {
-      "msid": "642105",
+      "msid": "647921",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Cypress Creek Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -125,12 +139,14 @@
       "verified": null
     },
     {
-      "msid": "641969",
+      "msid": "647761",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "DeBary Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -141,12 +157,14 @@
       "verified": null
     },
     {
-      "msid": "642416",
+      "msid": "641811",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Deltona Lakes Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -157,12 +175,14 @@
       "verified": null
     },
     {
-      "msid": "641975",
+      "msid": "646751",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Discovery Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -173,12 +193,14 @@
       "verified": null
     },
     {
-      "msid": "641988",
+      "msid": "643697",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Edgewater Public Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -189,12 +211,14 @@
       "verified": null
     },
     {
-      "msid": "642010",
+      "msid": "646441",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Edith I. Starke Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -205,12 +229,14 @@
       "verified": null
     },
     {
-      "msid": "641973",
+      "msid": "641931",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Enterprise Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -221,12 +247,14 @@
       "verified": null
     },
     {
-      "msid": "643129",
+      "msid": "647751",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Forest Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -237,12 +265,14 @@
       "verified": null
     },
     {
-      "msid": "644455",
+      "msid": "647781",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Freedom Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -253,12 +283,14 @@
       "verified": null
     },
     {
-      "msid": "641977",
+      "msid": "646851",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Friendship Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -269,12 +301,14 @@
       "verified": null
     },
     {
-      "msid": "641987",
+      "msid": "643631",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "George W. Marks Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -285,12 +319,14 @@
       "verified": null
     },
     {
-      "msid": "642709",
+      "msid": "643451",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Horizon Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -301,12 +337,14 @@
       "verified": null
     },
     {
-      "msid": "642795",
+      "msid": "643651",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Indian River Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -317,12 +355,14 @@
       "verified": null
     },
     {
-      "msid": "641983",
+      "msid": "643234",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "R. J. Longstreet Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -333,12 +373,14 @@
       "verified": null
     },
     {
-      "msid": "641971",
+      "msid": "641631",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Louise S. McInnis Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -349,12 +391,14 @@
       "verified": null
     },
     {
-      "msid": "647034",
+      "msid": "647881",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Manatee Cove Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -365,12 +409,14 @@
       "verified": null
     },
     {
-      "msid": "641992",
+      "msid": "644131",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Orange City Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -381,12 +427,14 @@
       "verified": null
     },
     {
-      "msid": "641966",
+      "msid": "641114",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Ormond Beach Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -397,12 +445,14 @@
       "verified": null
     },
     {
-      "msid": "641994",
+      "msid": "644334",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Ortona Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -413,12 +463,14 @@
       "verified": null
     },
     {
-      "msid": "641996",
+      "msid": "64XXXX",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Osceola Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -429,12 +481,14 @@
       "verified": null
     },
     {
-      "msid": "642267",
+      "msid": "642021",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Osteen Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -445,12 +499,14 @@
       "verified": null
     },
     {
-      "msid": "641196",
+      "msid": "642451",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Palm Terrace Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -461,12 +517,14 @@
       "verified": null
     },
     {
-      "msid": "643275",
+      "msid": "640761",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Pathways Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -477,12 +535,14 @@
       "verified": null
     },
     {
-      "msid": "641998",
+      "msid": "644831",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Pierson Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -493,12 +553,14 @@
       "verified": null
     },
     {
-      "msid": "642269",
+      "msid": "640821",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Pine Trail Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -509,12 +571,14 @@
       "verified": null
     },
     {
-      "msid": "641999",
+      "msid": "644934",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Port Orange Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -525,12 +589,14 @@
       "verified": null
     },
     {
-      "msid": "647444",
+      "msid": "647931",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Pride Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -541,12 +607,14 @@
       "verified": null
     },
     {
-      "msid": "642000",
+      "msid": "645037",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Read-Pattillo Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -557,12 +625,14 @@
       "verified": null
     },
     {
-      "msid": "642008",
+      "msid": "646234",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "South Daytona Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -573,12 +643,14 @@
       "verified": null
     },
     {
-      "msid": "643990",
+      "msid": "647871",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Spirit Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -589,12 +661,14 @@
       "verified": null
     },
     {
-      "msid": "642105",
+      "msid": "644531",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Spruce Creek Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -605,12 +679,14 @@
       "verified": null
     },
     {
-      "msid": "642271",
+      "msid": "644621",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Sugar Mill Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -621,12 +697,14 @@
       "verified": null
     },
     {
-      "msid": "642969",
+      "msid": "644951",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Sweetwater Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -637,12 +715,14 @@
       "verified": null
     },
     {
-      "msid": "642272",
+      "msid": "646781",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Timbercrest Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -653,12 +733,14 @@
       "verified": null
     },
     {
-      "msid": "641962",
+      "msid": "640734",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Tomoka Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -669,12 +751,14 @@
       "verified": null
     },
     {
-      "msid": "642012",
+      "msid": "646144",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Turie T. Small Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -685,12 +769,14 @@
       "verified": null
     },
     {
-      "msid": "642014",
+      "msid": "646871",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Volusia Pines Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -701,12 +787,14 @@
       "verified": null
     },
     {
-      "msid": "642016",
+      "msid": "643251",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Westside Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -717,12 +805,14 @@
       "verified": null
     },
     {
-      "msid": "642018",
+      "msid": "641491",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Woodward Avenue Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -733,12 +823,14 @@
       "verified": null
     },
     {
-      "msid": "642274",
+      "msid": "646841",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Sunrise Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -749,12 +841,14 @@
       "verified": null
     },
     {
-      "msid": "642020",
+      "msid": "640745",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Campbell Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -765,12 +859,14 @@
       "verified": null
     },
     {
-      "msid": "642022",
+      "msid": "647791",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Creekside Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -781,12 +877,14 @@
       "verified": null
     },
     {
-      "msid": "642024",
+      "msid": "641453",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "DeLand Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -797,12 +895,14 @@
       "verified": null
     },
     {
-      "msid": "642026",
+      "msid": "646761",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Deltona Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -813,12 +913,14 @@
       "verified": null
     },
     {
-      "msid": "642028",
+      "msid": "646791",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Galaxy Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -829,12 +931,14 @@
       "verified": null
     },
     {
-      "msid": "642030",
+      "msid": "647771",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Heritage Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -845,12 +949,14 @@
       "verified": null
     },
     {
-      "msid": "642032",
+      "msid": "647831",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "David C. Hinson Sr. Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -861,12 +967,14 @@
       "verified": null
     },
     {
-      "msid": "642034",
+      "msid": "643839",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "New Smyrna Beach Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -877,12 +985,14 @@
       "verified": null
     },
     {
-      "msid": "642036",
+      "msid": "641114",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Ormond Beach Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -893,12 +1003,14 @@
       "verified": null
     },
     {
-      "msid": "642038",
+      "msid": "647741",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "River Springs Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -909,12 +1021,14 @@
       "verified": null
     },
     {
-      "msid": "642040",
+      "msid": "643431",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Silver Sands Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -925,12 +1039,14 @@
       "verified": null
     },
     {
-      "msid": "642042",
+      "msid": "646343",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Southwestern Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -941,156 +1057,195 @@
       "verified": null
     },
     {
-      "msid": "642051",
+      "msid": "644941",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Atlantic High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Port Orange",
-      "programs": ["CTE Academies"],
+      "programs": [
+        "CTE Academies"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "642053",
+      "msid": "641453",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "DeLand High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "DeLand",
-      "programs": ["CTE Academies"],
+      "programs": [
+        "CTE Academies"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "642055",
+      "msid": "646761",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Deltona High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Deltona",
-      "programs": ["CTE Academies"],
+      "programs": [
+        "CTE Academies"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "642057",
+      "msid": "643436",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Mainland High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
       "title_i": true,
       "locale": "Daytona Beach",
-      "programs": ["CTE Academies"],
+      "programs": [
+        "CTE Academies"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "642059",
+      "msid": "643839",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "New Smyrna Beach High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "New Smyrna Beach",
-      "programs": ["CTE Academies"],
+      "programs": [
+        "CTE Academies"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "642061",
+      "msid": "646881",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Pine Ridge High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Deltona",
-      "programs": ["CTE Academies"],
+      "programs": [
+        "CTE Academies"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "642063",
+      "msid": "645836",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Seabreeze High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Daytona Beach",
-      "programs": ["CTE Academies"],
+      "programs": [
+        "CTE Academies"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "642065",
+      "msid": "644531",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Spruce Creek High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Port Orange",
-      "programs": ["CTE Academies"],
+      "programs": [
+        "CTE Academies"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "647281",
+      "msid": "641551",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "University High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Orange City",
-      "programs": ["CTE Academies"],
+      "programs": [
+        "CTE Academies"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "642268",
+      "msid": "642721",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Holly Hill School",
       "type": "combination",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": false,
@@ -1101,12 +1256,15 @@
       "verified": null
     },
     {
-      "msid": "642011",
+      "msid": "646633",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "T. DeWitt Taylor Middle-High School",
       "type": "combination",
-      "levels": ["MS", "HS"],
+      "levels": [
+        "MS",
+        "HS"
+      ],
       "grades": "6-12",
       "status": "open",
       "charter": false,
@@ -1117,76 +1275,97 @@
       "verified": null
     },
     {
-      "msid": "648038",
+      "msid": "647631",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Burns Science and Technology Charter School",
       "type": "charter",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": true,
       "title_i": null,
       "locale": "Oak Hill",
-      "programs": ["STEM"],
+      "programs": [
+        "STEM"
+      ],
       "source": "FLDOE MSID / VCS charter school office",
       "verified": null
     },
     {
-      "msid": "647795",
+      "msid": "647621",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Ivy Hawn Charter School of the Arts",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,
       "title_i": null,
       "locale": "Lake Helen",
-      "programs": ["Arts Integration"],
+      "programs": [
+        "Arts Integration"
+      ],
       "source": "FLDOE MSID / VCS charter school office",
       "verified": null
     },
     {
-      "msid": "645749",
+      "msid": "647891",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Richard Milburn Academy",
       "type": "charter",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": true,
       "title_i": null,
       "locale": "Daytona Beach",
-      "programs": ["Alternative Education"],
+      "programs": [
+        "Alternative Education"
+      ],
       "source": "FLDOE MSID / VCS charter school office",
       "verified": null
     },
     {
-      "msid": "643515",
+      "msid": "646891",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "The Reading Edge Academy",
       "type": "charter",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "K-5",
       "status": "open",
       "charter": true,
       "title_i": null,
       "locale": "DeBary",
-      "programs": ["Reading Focus"],
+      "programs": [
+        "Reading Focus"
+      ],
       "source": "FLDOE MSID / VCS charter school office",
       "verified": null
     },
     {
-      "msid": "643516",
+      "msid": "647951",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Samsula Academy",
       "type": "charter",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "K-5",
       "status": "open",
       "charter": true,
@@ -1197,114 +1376,159 @@
       "verified": null
     },
     {
-      "msid": "643939",
+      "msid": "647841",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "The Chiles Academy",
       "type": "charter",
-      "levels": ["MS", "HS"],
+      "levels": [
+        "MS",
+        "HS"
+      ],
       "grades": "6-12",
       "status": "open",
       "charter": true,
       "title_i": null,
       "locale": "Daytona Beach",
-      "programs": ["Teen Parent Program"],
+      "programs": [
+        "Teen Parent Program"
+      ],
       "source": "FLDOE MSID / VCS charter school office",
       "verified": null
     },
     {
-      "msid": "649100",
+      "msid": "642041",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Highbanks Learning Center",
       "type": "alternative",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Deltona",
-      "programs": ["Alternative Education", "Behavioral Support"],
+      "programs": [
+        "Alternative Education",
+        "Behavioral Support"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "649102",
+      "msid": "645434",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Riverview Learning Center",
       "type": "alternative",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Ormond Beach",
-      "programs": ["Alternative Education", "Behavioral Support"],
+      "programs": [
+        "Alternative Education",
+        "Behavioral Support"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "649104",
+      "msid": "649802",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Halifax Behavioral Services",
       "type": "alternative",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Daytona Beach",
-      "programs": ["Behavioral Health"],
+      "programs": [
+        "Behavioral Health"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "649106",
+      "msid": "64XXXX",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Pace Center for Girls - Volusia/Flagler",
       "type": "alternative",
-      "levels": ["MS", "HS"],
+      "levels": [
+        "MS",
+        "HS"
+      ],
       "grades": "6-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Ormond Beach",
-      "programs": ["Girls Education", "Alternative Education"],
+      "programs": [
+        "Girls Education",
+        "Alternative Education"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "647653",
+      "msid": "647001",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Volusia County Virtual Instruction Program",
       "type": "virtual",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "DeLand",
-      "programs": ["Full-time Virtual", "FLVS Franchise"],
+      "programs": [
+        "Full-time Virtual",
+        "FLVS Franchise"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     },
     {
-      "msid": "648707",
+      "msid": "647004",
       "district_number": "64",
       "district_name": "Volusia",
       "school_name": "Volusia Online Learning (FLVS Franchise)",
       "type": "virtual",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "DeBary",
-      "programs": ["Full-time Virtual", "FLVS Franchise"],
+      "programs": [
+        "Full-time Virtual",
+        "FLVS Franchise"
+      ],
       "source": "FLDOE MSID / VCS website",
       "verified": null
     }

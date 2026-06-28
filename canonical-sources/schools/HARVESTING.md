@@ -1,23 +1,46 @@
-# Harvesting real school data (token-free, run locally)
+# Harvesting real school data (token-free, offline parsing)
 
-The school indexes in this directory are **curated seeds** with placeholder MSIDs
-(`48XXXX`). Real FLDOE Master School IDs and live OCPS resource data are filled in by
-running the harvester **on a machine with normal internet** — the Claude Code web
-sandbox is behind an allowlist egress policy and cannot reach `ocps.net` / `fldoe.org`.
+The school indexes here are **curated seeds**; real FLDOE Master School IDs are stamped in by
+parsing the authoritative FLDOE source **offline** with `tools/msid_lookup.py` — no live network,
+no model tokens.
 
-## One command
+## The MSID source is a saved web page, not a download
+
+FLDOE does **not** publish the Master School ID as a file. The authoritative list is an interactive
+app — the **Education Data System (EDS)**:
+
+> https://eds.fldoe.org/EDS/MasterSchoolID/Selection.cfm
+
+It renders every Florida school as an HTML list with `DIST`/`SCHL` numbers in the links
+(`...Schooldisplay.cfm?DIST=48&SCHL=1401` → MSID `481401`). The reliable workflow:
+
+1. **Open that EDS page in a browser** and **Save it** (`Ctrl+S` → "Webpage, HTML Only").
+2. **Parse it offline** — inspect first, then apply:
 
 ```bash
-# inside the repo, on your own computer:
-python3 tools/local_harvest.py --push
+# 1. INSPECT (no writes): see detected schools + a match preview like "192/206 would match"
+python3 tools/msid_lookup.py --inspect --district 48 --msid-file "C:\path\to\SavedEDSPage.html"
+
+# 2. APPLY: stamp real MSIDs into canonical-sources/schools/ocps/schools.json
+python3 tools/msid_lookup.py --match --district 48 --apply --confirm --msid-file "C:\path\to\SavedEDSPage.html"
 ```
 
-That runs three deterministic, **token-free** steps (plain Python, no model calls):
+One saved EDS page covers **all 67 districts at once** (it lists all ~7,180 FL schools), so you can
+stamp every district from a single file: `--district 48,59,49,35,05,64,53` or omit `--district` for all.
 
-1. `msid_lookup.py --fetch` — download the FLDOE Master School ID file (cached).
-2. `msid_lookup.py --match --apply` — stamp real 6-digit MSIDs onto every district's
-   `schools.json` (fuzzy name match, threshold-gated — unmatched names are reported,
-   never silently wrong).
+`--msid-file` also accepts `.xlsx`/`.csv` if a future year ships a file. Matching is fuzzy but
+threshold-gated: exact normalized-name match first, else Jaccard overlap ≥ `--threshold` (0.65);
+anything below stays a placeholder and is reported UNMATCHED — **never fabricated**.
+
+## Optional: the all-in-one local runner
+
+`tools/local_harvest.py` chains the steps for all 7 Central FL districts + writes `HARVEST_REPORT.md`
+and (with `--push`) commits the results. Its `--fetch` step is best-effort (FLDOE blocks bots), so
+in practice pass the saved EDS page via the per-district `msid_lookup.py` commands above — that path
+is the dependable one. The runner's other steps (matching, reporting, push) are token-free:
+
+1. `msid_lookup.py` — stamp real 6-digit MSIDs onto every district's `schools.json`
+   (fuzzy name match, threshold-gated — unmatched names reported, never silently wrong).
 3. `ocps_resources.py --fetch` — crawl OCPS public pages → `districts/ocps/resources.json`.
 
 Then it writes `HARVEST_REPORT.md` (match rates + gaps) and, with `--push`, commits and

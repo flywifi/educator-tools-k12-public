@@ -13,12 +13,14 @@
   },
   "schools": [
     {
-      "msid": "350011",
+      "msid": "350271",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Astatula Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -29,12 +31,14 @@
       "verified": null
     },
     {
-      "msid": "350021",
+      "msid": "350031",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Beverly Shores Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -45,12 +49,14 @@
       "verified": null
     },
     {
-      "msid": "350031",
+      "msid": "350041",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Clermont Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -61,33 +67,19 @@
       "verified": null
     },
     {
-      "msid": "350041",
+      "msid": "350597",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Cypress Ridge Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
       "title_i": null,
       "locale": "Clermont",
-      "programs": [],
-      "source": "FLDOE MSID / Lake County Schools website",
-      "verified": null
-    },
-    {
-      "msid": "350051",
-      "district_number": "35",
-      "district_name": "Lake",
-      "school_name": "Eustis Elementary School",
-      "type": "traditional",
-      "levels": ["ES"],
-      "grades": "PK-5",
-      "status": "open",
-      "charter": false,
-      "title_i": null,
-      "locale": "Eustis",
       "programs": [],
       "source": "FLDOE MSID / Lake County Schools website",
       "verified": null
@@ -96,9 +88,11 @@
       "msid": "350061",
       "district_number": "35",
       "district_name": "Lake",
-      "school_name": "Eustis Heights Elementary School",
+      "school_name": "Eustis Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -112,9 +106,29 @@
       "msid": "350071",
       "district_number": "35",
       "district_name": "Lake",
+      "school_name": "Eustis Heights Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Eustis",
+      "programs": [],
+      "source": "FLDOE MSID / Lake County Schools website",
+      "verified": null
+    },
+    {
+      "msid": "350101",
+      "district_number": "35",
+      "district_name": "Lake",
       "school_name": "Fruitland Park Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "K-5",
       "status": "open",
       "charter": false,
@@ -125,12 +139,14 @@
       "verified": null
     },
     {
-      "msid": "350081",
+      "msid": "350068",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Grassy Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "K-5",
       "status": "open",
       "charter": false,
@@ -141,12 +157,14 @@
       "verified": null
     },
     {
-      "msid": "350091",
+      "msid": "350382",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Groveland Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -157,12 +175,14 @@
       "verified": null
     },
     {
-      "msid": "350101",
+      "msid": "359043",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Lake Success Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -173,12 +193,14 @@
       "verified": null
     },
     {
-      "msid": "350111",
+      "msid": "350291",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Leesburg Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -189,12 +211,14 @@
       "verified": null
     },
     {
-      "msid": "350121",
+      "msid": "350281",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Lost Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -205,12 +229,14 @@
       "verified": null
     },
     {
-      "msid": "350131",
+      "msid": "350261",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Minneola Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "K-5",
       "status": "open",
       "charter": false,
@@ -221,12 +247,14 @@
       "verified": null
     },
     {
-      "msid": "350141",
+      "msid": "350591",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Pine Ridge Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -237,12 +265,14 @@
       "verified": null
     },
     {
-      "msid": "350151",
+      "msid": "350067",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Sawgrass Bay Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -253,12 +283,14 @@
       "verified": null
     },
     {
-      "msid": "350161",
+      "msid": "350141",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Seminole Springs Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -269,12 +301,14 @@
       "verified": null
     },
     {
-      "msid": "350171",
+      "msid": "350069",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Sorrento Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -285,12 +319,14 @@
       "verified": null
     },
     {
-      "msid": "350181",
+      "msid": "350551",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Tavares Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "K-5",
       "status": "open",
       "charter": false,
@@ -301,12 +337,14 @@
       "verified": null
     },
     {
-      "msid": "350191",
+      "msid": "350241",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Treadway Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -317,12 +355,14 @@
       "verified": null
     },
     {
-      "msid": "350201",
+      "msid": "350521",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Triangle Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -333,12 +373,14 @@
       "verified": null
     },
     {
-      "msid": "350211",
+      "msid": "350561",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Umatilla Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -349,12 +391,15 @@
       "verified": null
     },
     {
-      "msid": "350221",
+      "msid": "350421",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Rimes Early Learning & Literacy Center",
       "type": "traditional",
-      "levels": ["PK", "ES"],
+      "levels": [
+        "PK",
+        "ES"
+      ],
       "grades": "PK-2",
       "status": "open",
       "charter": false,
@@ -365,12 +410,14 @@
       "verified": null
     },
     {
-      "msid": "351011",
+      "msid": "350351",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Carver Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -381,12 +428,14 @@
       "verified": null
     },
     {
-      "msid": "351021",
+      "msid": "35XXXX",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Cecil E. Gray Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -397,12 +446,14 @@
       "verified": null
     },
     {
-      "msid": "351031",
+      "msid": "350041",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Clermont Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -413,12 +464,14 @@
       "verified": null
     },
     {
-      "msid": "351041",
+      "msid": "350801",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "East Ridge Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -429,12 +482,14 @@
       "verified": null
     },
     {
-      "msid": "351051",
+      "msid": "350061",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Eustis Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -445,12 +500,14 @@
       "verified": null
     },
     {
-      "msid": "351061",
+      "msid": "35XXXX",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Mount Dora Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -461,12 +518,14 @@
       "verified": null
     },
     {
-      "msid": "351071",
+      "msid": "350251",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Oak Park Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -477,12 +536,14 @@
       "verified": null
     },
     {
-      "msid": "351081",
+      "msid": "350551",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Tavares Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -493,12 +554,14 @@
       "verified": null
     },
     {
-      "msid": "351091",
+      "msid": "350561",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Umatilla Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -509,12 +572,14 @@
       "verified": null
     },
     {
-      "msid": "351101",
+      "msid": "350481",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Windy Hill Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -525,12 +590,14 @@
       "verified": null
     },
     {
-      "msid": "352011",
+      "msid": "350801",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "East Ridge High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -541,12 +608,14 @@
       "verified": null
     },
     {
-      "msid": "352021",
+      "msid": "350061",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Eustis High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -557,12 +626,14 @@
       "verified": null
     },
     {
-      "msid": "352031",
+      "msid": "350901",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Lake Minneola High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -573,12 +644,14 @@
       "verified": null
     },
     {
-      "msid": "352041",
+      "msid": "350291",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Leesburg High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -589,12 +662,14 @@
       "verified": null
     },
     {
-      "msid": "352051",
+      "msid": "35XXXX",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Mount Dora High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -605,12 +680,14 @@
       "verified": null
     },
     {
-      "msid": "352061",
+      "msid": "350701",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "South Lake High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -621,12 +698,14 @@
       "verified": null
     },
     {
-      "msid": "352071",
+      "msid": "350551",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Tavares High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -637,12 +716,14 @@
       "verified": null
     },
     {
-      "msid": "352081",
+      "msid": "350561",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Umatilla High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -653,12 +734,15 @@
       "verified": null
     },
     {
-      "msid": "353011",
+      "msid": "350471",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Aurelia M. Cole Academy",
       "type": "combination",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": false,
@@ -669,12 +753,16 @@
       "verified": null
     },
     {
-      "msid": "353021",
+      "msid": "350533",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Lake Hills School",
       "type": "exceptional",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "PK-12",
       "status": "open",
       "charter": false,
@@ -685,12 +773,16 @@
       "verified": null
     },
     {
-      "msid": "353031",
+      "msid": "350532",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Academy at Lake Hills South",
       "type": "exceptional",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "PK-12",
       "status": "open",
       "charter": false,
@@ -701,12 +793,15 @@
       "verified": null
     },
     {
-      "msid": "353041",
+      "msid": "359043",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Lake Success Academy",
       "type": "alternative",
-      "levels": ["MS", "HS"],
+      "levels": [
+        "MS",
+        "HS"
+      ],
       "grades": "6-12",
       "status": "open",
       "charter": false,
@@ -717,12 +812,14 @@
       "verified": null
     },
     {
-      "msid": "353051",
+      "msid": "350119",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Villages Elementary of Lady Lake",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -733,12 +830,14 @@
       "verified": null
     },
     {
-      "msid": "357001",
+      "msid": "350531",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Lake Technical College",
       "type": "career_technical",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12+",
       "status": "open",
       "charter": false,
@@ -759,12 +858,16 @@
       "verified": null
     },
     {
-      "msid": "358001",
+      "msid": "350531",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Lake Virtual School",
       "type": "virtual",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
@@ -775,12 +878,14 @@
       "verified": null
     },
     {
-      "msid": "359001",
+      "msid": "359028",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Altoona School",
       "type": "charter",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "K-5",
       "status": "open",
       "charter": true,
@@ -791,12 +896,14 @@
       "verified": null
     },
     {
-      "msid": "359011",
+      "msid": "350541",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Mascotte Charter School",
       "type": "charter",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-6",
       "status": "open",
       "charter": true,
@@ -807,12 +914,15 @@
       "verified": null
     },
     {
-      "msid": "359021",
+      "msid": "350261",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Minneola Charter School",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": true,
@@ -823,12 +933,14 @@
       "verified": null
     },
     {
-      "msid": "359031",
+      "msid": "350149",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Round Lake Charter School",
       "type": "charter",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "K-5",
       "status": "open",
       "charter": true,
@@ -839,12 +951,15 @@
       "verified": null
     },
     {
-      "msid": "359041",
+      "msid": "350631",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Spring Creek Charter School",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": true,
@@ -855,12 +970,15 @@
       "verified": null
     },
     {
-      "msid": "359051",
+      "msid": "359031",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Imagine Schools at South Lake",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,
@@ -871,12 +989,14 @@
       "verified": null
     },
     {
-      "msid": "359061",
+      "msid": "359018",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Alee Academy Charter High School",
       "type": "charter",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": true,
@@ -897,12 +1017,15 @@
       "verified": null
     },
     {
-      "msid": "359071",
+      "msid": "359041",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Pinecrest Lakes Academy",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": true,
@@ -923,12 +1046,15 @@
       "verified": null
     },
     {
-      "msid": "359081",
+      "msid": "359039",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Pinecrest Academy Tavares",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": true,
@@ -939,12 +1065,15 @@
       "verified": null
     },
     {
-      "msid": "359091",
+      "msid": "350431",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Lake Pointe Academy",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": true,
@@ -955,12 +1084,14 @@
       "verified": null
     },
     {
-      "msid": "359101",
+      "msid": "359032",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Cherry Lake Preparatory Academy",
       "type": "charter",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "K-6",
       "status": "open",
       "charter": true,
@@ -981,12 +1112,15 @@
       "verified": null
     },
     {
-      "msid": "359111",
+      "msid": "359027",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Pinecrest Academy Four Corners",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": true,
@@ -997,12 +1131,15 @@
       "verified": null
     },
     {
-      "msid": "359121",
+      "msid": "359002",
       "district_number": "35",
       "district_name": "Lake",
       "school_name": "Hope Forest Academy",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,

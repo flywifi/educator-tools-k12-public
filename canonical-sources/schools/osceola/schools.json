@@ -12,549 +12,1618 @@
     "note": "MSID is canonical for the school list + open/closed status; Osceola School Choice site is canonical for magnet/choice programs. NCES district ID is 1201470."
   },
   "schools": [
-
-    {"msid": "490021", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Boggy Creek Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490031", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Central Avenue Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490041", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Chestnut Elementary School for Science and Engineering", "type": "magnet", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee",
-      "programs": [
-        {"program_name": "Science and Engineering Magnet", "program_type": "magnet", "focus": "STEM",
-          "grades": "PK-5", "application_required": true, "status": "active",
-          "source": "myosceolachoice.school (to verify)"}
+    {
+      "msid": "490401",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Boggy Creek Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
       ],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490051", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Cypress Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490061", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Deerwood Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490071", "district_number": "49", "district_name": "Osceola",
-      "school_name": "East Lake Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490081", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Flora Ridge Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490091", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Hickory Tree Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490101", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Highlands Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490111", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Island Village Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Celebration", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490121", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Kissimmee Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490131", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Koa Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Poinciana", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490141", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Lakeview Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490151", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Michigan Avenue Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490161", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Mill Creek Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490171", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Narcoossee Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490181", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Neptune Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490191", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Partin Settlement Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490201", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Pleasant Hill Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490211", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Poinciana Academy of Fine Arts", "type": "magnet", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee",
-      "programs": [
-        {"program_name": "Fine Arts Magnet", "program_type": "magnet", "focus": "Fine Arts (Visual Art, Music, Dance, Drama, Strings)",
-          "grades": "K-5", "application_required": true, "status": "active",
-          "source": "myosceolachoice.school (to verify)"}
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490061",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Central Avenue Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
       ],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490221", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Reedy Creek Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490231", "district_number": "49", "district_name": "Osceola",
-      "school_name": "St. Cloud Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490241", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Sunrise Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490251", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Thacker Avenue Elementary School for International Studies", "type": "magnet", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee",
-      "programs": [
-        {"program_name": "International Studies Magnet", "program_type": "magnet", "focus": "International Studies",
-          "grades": "PK-5", "application_required": true, "status": "active",
-          "source": "myosceolachoice.school (to verify)"}
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490957",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Chestnut Elementary School for Science and Engineering",
+      "type": "magnet",
+      "levels": [
+        "ES"
       ],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490261", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Ventura Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-
-
-    {"msid": "491021", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Denn John Middle School", "type": "traditional", "levels": ["MS"],
-      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "491031", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Discovery Intermediate School", "type": "traditional", "levels": ["MS"],
-      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "491041", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Harmony Middle School", "type": "traditional", "levels": ["MS"],
-      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Harmony", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "491051", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Horizon Middle School", "type": "traditional", "levels": ["MS"],
-      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "491061", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Kissimmee Middle School", "type": "traditional", "levels": ["MS"],
-      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "491071", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Narcoossee Middle School", "type": "traditional", "levels": ["MS"],
-      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "491081", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Neptune Middle School", "type": "traditional", "levels": ["MS"],
-      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "491091", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Parkway Middle School", "type": "traditional", "levels": ["MS"],
-      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "491101", "district_number": "49", "district_name": "Osceola",
-      "school_name": "St. Cloud Middle School", "type": "traditional", "levels": ["MS"],
-      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-
-
-    {"msid": "490301", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Celebration K-8 School", "type": "combination", "levels": ["ES", "MS"],
-      "grades": "PK-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Celebration",
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "Dual Language", "program_type": "choice", "focus": "Dual Language Immersion",
-          "grades": "K-8", "application_required": true, "status": "active",
-          "source": "myosceolachoice.school (to verify)"}
+        {
+          "program_name": "Science and Engineering Magnet",
+          "program_type": "magnet",
+          "focus": "STEM",
+          "grades": "PK-5",
+          "application_required": true,
+          "status": "active",
+          "source": "myosceolachoice.school (to verify)"
+        }
       ],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490311", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Canoe Creek K-8 School", "type": "combination", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490321", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Harmony Community School", "type": "combination", "levels": ["ES", "MS"],
-      "grades": "PK-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Harmony", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490331", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Voyager K-8 School", "type": "combination", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490851",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Cypress Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490831",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Deerwood Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490961",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "East Lake Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490931",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Flora Ridge Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490501",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Hickory Tree Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490071",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Highlands Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490903",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Island Village Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Celebration",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490866",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Kissimmee Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490300",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Koa Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Poinciana",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490801",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Lakeview Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490271",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Michigan Avenue Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490701",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Mill Creek Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490043",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Narcoossee Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490933",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Neptune Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490904",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Partin Settlement Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490811",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Pleasant Hill Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490901",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Poinciana Academy of Fine Arts",
+      "type": "magnet",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "Environmental STEM", "program_type": "choice", "focus": "Environmental Science / STEM",
-          "grades": "K-8", "application_required": true, "status": "active",
-          "source": "myosceolachoice.school (to verify)"}
+        {
+          "program_name": "Fine Arts Magnet",
+          "program_type": "magnet",
+          "focus": "Fine Arts (Visual Art, Music, Dance, Drama, Strings)",
+          "grades": "K-5",
+          "application_required": true,
+          "status": "active",
+          "source": "myosceolachoice.school (to verify)"
+        }
       ],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "490341", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Westside K-8 School", "type": "combination", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-
-
-    {"msid": "492011", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Celebration High School", "type": "combination", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Celebration",
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490301",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Reedy Creek Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490111",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "St. Cloud Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490958",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Sunrise Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490101",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Thacker Avenue Elementary School for International Studies",
+      "type": "magnet",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "International Baccalaureate Diploma Programme", "program_type": "ib", "focus": "IB Diploma",
-          "grades": "11-12", "application_required": true, "status": "active",
-          "source": "myosceolachoice.school (to verify)"},
-        {"program_name": "IB Career-Related Programme", "program_type": "ib", "focus": "IB Career + CTE",
-          "grades": "11-12", "application_required": true, "status": "active",
-          "source": "myosceolachoice.school (to verify)"}
+        {
+          "program_name": "International Studies Magnet",
+          "program_type": "magnet",
+          "focus": "International Studies",
+          "grades": "PK-5",
+          "application_required": true,
+          "status": "active",
+          "source": "myosceolachoice.school (to verify)"
+        }
       ],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "492021", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Gateway High School", "type": "traditional", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "492031", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Harmony High School", "type": "traditional", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Harmony", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "492041", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Liberty High School", "type": "traditional", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "492051", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Nova Lakes High School", "type": "traditional", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "491469", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Osceola High School", "type": "traditional", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "NCES 120147001469 + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "492071", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Poinciana High School", "type": "traditional", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Poinciana", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "492081", "district_number": "49", "district_name": "Osceola",
-      "school_name": "St. Cloud High School", "type": "traditional", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "492091", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Tohopekaliga High School", "type": "combination", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490321",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Ventura Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490091",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Denn John Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490041",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Discovery Intermediate School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490011",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Harmony Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Harmony",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490341",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Horizon Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490866",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Kissimmee Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490043",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Narcoossee Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490933",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Neptune Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490821",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Parkway Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490111",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "St. Cloud Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490711",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Celebration K-8 School",
+      "type": "combination",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "PK-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Celebration",
       "programs": [
-        {"program_name": "STEAM Focus", "program_type": "choice", "focus": "Science, Technology, Engineering, Arts, and Mathematics",
-          "grades": "9-12", "application_required": false, "status": "active",
-          "source": "osceolaschools.net (to verify)"}
+        {
+          "program_name": "Dual Language",
+          "program_type": "choice",
+          "focus": "Dual Language Immersion",
+          "grades": "K-8",
+          "application_required": true,
+          "status": "active",
+          "source": "myosceolachoice.school (to verify)"
+        }
       ],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-
-
-    {"msid": "494119", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Osceola County School for the Arts", "type": "magnet", "levels": ["MS", "HS"],
-      "grades": "6-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490991",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Canoe Creek K-8 School",
+      "type": "combination",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490011",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Harmony Community School",
+      "type": "combination",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "PK-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Harmony",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "492942",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Voyager K-8 School",
+      "type": "combination",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "Arts Magnet", "program_type": "magnet", "focus": "Visual Arts, Theater, Vocal Music, Instrumental Music, Dance, Orchestra, Communication Arts",
-          "grades": "6-12", "application_required": true, "status": "active",
-          "source": "NCES 120147004119 + myosceolachoice.school (to verify)"}
+        {
+          "program_name": "Environmental STEM",
+          "program_type": "choice",
+          "focus": "Environmental Science / STEM",
+          "grades": "K-8",
+          "application_required": true,
+          "status": "active",
+          "source": "myosceolachoice.school (to verify)"
+        }
       ],
-      "source": "NCES 120147004119 + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "498640", "district_number": "49", "district_name": "Osceola",
-      "school_name": "NeoCity Academy", "type": "magnet", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490302",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Westside K-8 School",
+      "type": "combination",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490902",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Celebration High School",
+      "type": "combination",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Celebration",
       "programs": [
-        {"program_name": "STEM Magnet", "program_type": "magnet", "focus": "STEM — inquiry-driven, project-based learning",
-          "grades": "9-12", "application_required": true, "status": "active",
-          "source": "NCES 120147008640 + myosceolachoice.school (to verify)"}
+        {
+          "program_name": "International Baccalaureate Diploma Programme",
+          "program_type": "ib",
+          "focus": "IB Diploma",
+          "grades": "11-12",
+          "application_required": true,
+          "status": "active",
+          "source": "myosceolachoice.school (to verify)"
+        },
+        {
+          "program_name": "IB Career-Related Programme",
+          "program_type": "ib",
+          "focus": "IB Career + CTE",
+          "grades": "11-12",
+          "application_required": true,
+          "status": "active",
+          "source": "myosceolachoice.school (to verify)"
+        }
       ],
-      "source": "NCES 120147008640 + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "493011", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Professional and Technical High School", "type": "career_technical", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490601",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Gateway High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490011",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Harmony High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Harmony",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490842",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Liberty High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490009",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Nova Lakes High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490081",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Osceola High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "NCES 120147001469 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490841",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Poinciana High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Poinciana",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490111",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "St. Cloud High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490005",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Tohopekaliga High School",
+      "type": "combination",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "Career and Technical Education", "program_type": "career_academy", "focus": "CTE pathways",
-          "grades": "9-12", "application_required": true, "status": "active",
-          "source": "osceolaschools.net (to verify)"}
+        {
+          "program_name": "STEAM Focus",
+          "program_type": "choice",
+          "focus": "Science, Technology, Engineering, Arts, and Mathematics",
+          "grades": "9-12",
+          "application_required": false,
+          "status": "active",
+          "source": "osceolaschools.net (to verify)"
+        }
       ],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "493021", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Osceola Technical College", "type": "career_technical", "levels": ["HS"],
-      "grades": "postsecondary", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490921",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Osceola County School for the Arts",
+      "type": "magnet",
+      "levels": [
+        "MS",
+        "HS"
+      ],
+      "grades": "6-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "Technical / Career Programs", "program_type": "career_academy", "focus": "Nursing, Cosmetology, Culinary, Cybersecurity, Welding, HVAC, and others",
-          "grades": "postsecondary", "application_required": true, "status": "active",
-          "source": "osceolaschools.net (to verify)"}
+        {
+          "program_name": "Arts Magnet",
+          "program_type": "magnet",
+          "focus": "Visual Arts, Theater, Vocal Music, Instrumental Music, Dance, Orchestra, Communication Arts",
+          "grades": "6-12",
+          "application_required": true,
+          "status": "active",
+          "source": "NCES 120147004119 + myosceolachoice.school (to verify)"
+        }
       ],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-
-
-    {"msid": "493031", "district_number": "49", "district_name": "Osceola",
-      "school_name": "New Beginnings Education Center", "type": "alternative", "levels": ["MS", "HS"],
-      "grades": "6-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "493041", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Zenith Accelerated Learning Academy", "type": "alternative", "levels": ["MS", "HS"],
-      "grades": "8-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "497537", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Osceola Virtual School", "type": "virtual", "levels": ["ES", "MS", "HS"],
-      "grades": "K-12", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "NCES 120147004119 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490962",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "NeoCity Academy",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "Full-Time Virtual", "program_type": "other", "focus": "Online instruction",
-          "grades": "K-12", "application_required": true, "status": "active",
-          "source": "NCES 120147007537 + osceolaschools.net (to verify)"}
+        {
+          "program_name": "STEM Magnet",
+          "program_type": "magnet",
+          "focus": "STEM — inquiry-driven, project-based learning",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "NCES 120147008640 + myosceolachoice.school (to verify)"
+        }
       ],
-      "source": "NCES 120147007537 + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "497641", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Osceola Center for Early Learning", "type": "other", "levels": ["PK"],
-      "grades": "PK", "status": "open", "status_effective": null, "charter": false,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "NCES 120147007641 + osceolaschools.net (to verify)", "verified": null},
-
-
-
-    {"msid": "494012", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Bellalago Charter Academy", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "NCES 120147008640 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "49XXXX",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Professional and Technical High School",
+      "type": "career_technical",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "Dual Language K-3", "program_type": "other", "focus": "Dual Language Immersion",
-          "grades": "K-3", "application_required": false, "status": "active",
-          "source": "osceolaschools.net (to verify)"}
+        {
+          "program_name": "Career and Technical Education",
+          "program_type": "career_academy",
+          "focus": "CTE pathways",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "osceolaschools.net (to verify)"
+        }
       ],
-      "source": "NCES 120147004012 + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495011", "district_number": "49", "district_name": "Osceola",
-      "school_name": "BridgePrep Academy of Osceola", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "499034", "district_number": "49", "district_name": "Osceola",
-      "school_name": "BridgePrep Academy of St. Cloud", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "NCES 120147009034 + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495021", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Mater Brighton Lakes Academy", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "498767", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Mater Brighton Lakes Academy Preparatory High School", "type": "charter", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "NCES 120147008767 + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495031", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Mater Palms Academy", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Poinciana", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495041", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Mater Academy at St. Cloud", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495051", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Renaissance Charter School at Boggy Creek", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495061", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Renaissance Charter School at Poinciana", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "VPK-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Poinciana",
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490081",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Osceola Technical College",
+      "type": "career_technical",
+      "levels": [
+        "HS"
+      ],
+      "grades": "postsecondary",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "Dual Language / College Prep", "program_type": "other", "focus": "Dual Language and College Prep",
-          "grades": "VPK-8", "application_required": false, "status": "active",
-          "source": "osceolaschools.net (to verify)"}
+        {
+          "program_name": "Technical / Career Programs",
+          "program_type": "career_academy",
+          "focus": "Nursing, Cosmetology, Culinary, Cybersecurity, Welding, HVAC, and others",
+          "grades": "postsecondary",
+          "application_required": true,
+          "status": "active",
+          "source": "osceolaschools.net (to verify)"
+        }
       ],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495071", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Renaissance Charter School at Tapestry", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "498627", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Sports Leadership and Management Academy (SLAM Osceola)", "type": "charter", "levels": ["MS", "HS"],
-      "grades": "6-12", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "499036",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "New Beginnings Education Center",
+      "type": "alternative",
+      "levels": [
+        "MS",
+        "HS"
+      ],
+      "grades": "6-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "499003",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Zenith Accelerated Learning Academy",
+      "type": "alternative",
+      "levels": [
+        "MS",
+        "HS"
+      ],
+      "grades": "8-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490081",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Osceola Virtual School",
+      "type": "virtual",
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
+      "grades": "K-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "Sports Leadership & Management", "program_type": "career_academy", "focus": "Sports-themed career academies",
-          "grades": "6-12", "application_required": true, "status": "active",
-          "source": "NCES 120147008627 + slamosceola.com (to verify)"}
+        {
+          "program_name": "Full-Time Virtual",
+          "program_type": "other",
+          "focus": "Online instruction",
+          "grades": "K-12",
+          "application_required": true,
+          "status": "active",
+          "source": "NCES 120147007537 + osceolaschools.net (to verify)"
+        }
       ],
-      "source": "NCES 120147008627 + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495081", "district_number": "49", "district_name": "Osceola",
-      "school_name": "St. Cloud Preparatory Academy", "type": "charter", "levels": ["ES", "MS", "HS"],
-      "grades": "K-12", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "St. Cloud", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495091", "district_number": "49", "district_name": "Osceola",
-      "school_name": "New Dimensions High School", "type": "charter", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495101", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Osceola Science Charter School", "type": "charter", "levels": ["MS", "HS"],
-      "grades": "6-12", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "NCES 120147007537 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490141",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Osceola Center for Early Learning",
+      "type": "other",
+      "levels": [
+        "PK"
+      ],
+      "grades": "PK",
+      "status": "open",
+      "status_effective": null,
+      "charter": false,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "NCES 120147007641 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490932",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Bellalago Charter Academy",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
       "programs": [
-        {"program_name": "STEM Focus", "program_type": "other", "focus": "STEM — Robotics, Science Olympiad, advanced lab courses",
-          "grades": "6-12", "application_required": true, "status": "active",
-          "source": "osceolascience.org (to verify)"}
+        {
+          "program_name": "Dual Language K-3",
+          "program_type": "other",
+          "focus": "Dual Language Immersion",
+          "grades": "K-3",
+          "application_required": false,
+          "status": "active",
+          "source": "osceolaschools.net (to verify)"
+        }
       ],
-      "source": "FLDOE MSID + osceolascience.org (to verify)", "verified": null},
-
-    {"msid": "495111", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Avant Garde Academy of Osceola", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "493752", "district_number": "49", "district_name": "Osceola",
-      "school_name": "UCP Osceola Charter School", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee",
+      "source": "NCES 120147004012 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "49XXXX",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "BridgePrep Academy of Osceola",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490131",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "BridgePrep Academy of St. Cloud",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "NCES 120147009034 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490163",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Mater Brighton Lakes Academy",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490163",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Mater Brighton Lakes Academy Preparatory High School",
+      "type": "charter",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "NCES 120147008767 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490185",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Mater Palms Academy",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Poinciana",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490202",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Mater Academy at St. Cloud",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "49XXXX",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Renaissance Charter School at Boggy Creek",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490149",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Renaissance Charter School at Poinciana",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "VPK-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Poinciana",
       "programs": [
-        {"program_name": "Inclusive Education", "program_type": "ese", "focus": "Inclusive classroom for learners of all abilities",
-          "grades": "K-8", "application_required": true, "status": "active",
-          "source": "NCES 120147003752 + ucpcharter.org (to verify)"}
+        {
+          "program_name": "Dual Language / College Prep",
+          "program_type": "other",
+          "focus": "Dual Language and College Prep",
+          "grades": "VPK-8",
+          "application_required": false,
+          "status": "active",
+          "source": "osceolaschools.net (to verify)"
+        }
       ],
-      "source": "NCES 120147003752 + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "498079", "district_number": "49", "district_name": "Osceola",
-      "school_name": "Florida Cyber Charter Academy at Osceola", "type": "charter", "levels": ["ES", "MS", "HS"],
-      "grades": "K-12", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "NCES 120147008079 + osceolaschools.net (to verify)", "verified": null},
-
-    {"msid": "495121", "district_number": "49", "district_name": "Osceola",
-      "school_name": "P.M. Wells Charter Academy", "type": "charter", "levels": ["ES", "MS"],
-      "grades": "K-8", "status": "open", "status_effective": null, "charter": true,
-      "title_i": null, "locale": "Kissimmee", "programs": [],
-      "source": "FLDOE MSID + osceolaschools.net (to verify)", "verified": null}
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490171",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Renaissance Charter School at Tapestry",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "49XXXX",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Sports Leadership and Management Academy (SLAM Osceola)",
+      "type": "charter",
+      "levels": [
+        "MS",
+        "HS"
+      ],
+      "grades": "6-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [
+        {
+          "program_name": "Sports Leadership & Management",
+          "program_type": "career_academy",
+          "focus": "Sports-themed career academies",
+          "grades": "6-12",
+          "application_required": true,
+          "status": "active",
+          "source": "NCES 120147008627 + slamosceola.com (to verify)"
+        }
+      ],
+      "source": "NCES 120147008627 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490111",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "St. Cloud Preparatory Academy",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
+      "grades": "K-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "St. Cloud",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490853",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "New Dimensions High School",
+      "type": "charter",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490181",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Osceola Science Charter School",
+      "type": "charter",
+      "levels": [
+        "MS",
+        "HS"
+      ],
+      "grades": "6-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [
+        {
+          "program_name": "STEM Focus",
+          "program_type": "other",
+          "focus": "STEM — Robotics, Science Olympiad, advanced lab courses",
+          "grades": "6-12",
+          "application_required": true,
+          "status": "active",
+          "source": "osceolascience.org (to verify)"
+        }
+      ],
+      "source": "FLDOE MSID + osceolascience.org (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "49XXXX",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Avant Garde Academy of Osceola",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490900",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "UCP Osceola Charter School",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [
+        {
+          "program_name": "Inclusive Education",
+          "program_type": "ese",
+          "focus": "Inclusive classroom for learners of all abilities",
+          "grades": "K-8",
+          "application_required": true,
+          "status": "active",
+          "source": "NCES 120147003752 + ucpcharter.org (to verify)"
+        }
+      ],
+      "source": "NCES 120147003752 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490153",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "Florida Cyber Charter Academy at Osceola",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
+      "grades": "K-12",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "NCES 120147008079 + osceolaschools.net (to verify)",
+      "verified": null
+    },
+    {
+      "msid": "490881",
+      "district_number": "49",
+      "district_name": "Osceola",
+      "school_name": "P.M. Wells Charter Academy",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "status_effective": null,
+      "charter": true,
+      "title_i": null,
+      "locale": "Kissimmee",
+      "programs": [],
+      "source": "FLDOE MSID + osceolaschools.net (to verify)",
+      "verified": null
+    }
   ]
 }

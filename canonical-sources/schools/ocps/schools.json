@@ -12,16 +12,19 @@
     "magnet_choice": "https://www.ocps.net/departments/school_choice",
     "charter_list": "https://www.ocps.net/current-list-of-charter-schools",
     "nces_district_id": "1201440",
+    "msid_provenance": "192/206 MSIDs matched against the FLDOE EDS Master School ID list (eds.fldoe.org/EDS/MasterSchoolID/Selection.cfm), parsed OFFLINE via tools/msid_lookup.py on 2026-06-28. 14 remain 48XXXX placeholders (unmatched — likely closed/renamed or listed differently by FLDOE) and are intentionally NOT fabricated.",
     "note": "MSID is canonical for school list + open/closed status; OCPS School Choice is canonical for magnet/choice programs. NCES District ID 1201440 covers 275 total school entries (includes programs, annexes, and inactive)."
   },
   "schools": [
     {
-      "msid": "48XXXX",
+      "msid": "481401",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Aloma Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -32,12 +35,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480321",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Andover Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -48,12 +53,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481282",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Apopka Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -64,12 +71,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481692",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Atwater Bay Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -80,12 +89,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480222",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Avalon Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -96,12 +107,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480611",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Azalea Park Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -112,12 +125,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480531",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Baldwin Park Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -128,12 +143,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481392",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Bay Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -144,12 +161,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481071",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Bay Meadows Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -160,12 +179,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480871",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Bonneville Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -176,12 +197,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480751",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Brookshire Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -192,12 +215,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480217",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Camelot Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -208,12 +233,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481612",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Castle Creek Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -224,12 +251,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481012",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Castleview Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -240,12 +269,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480701",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Catalina Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -256,12 +287,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480711",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Cheney Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -272,12 +305,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480831",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Chickasaw Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -288,12 +323,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480216",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Citrus Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -309,7 +346,9 @@
       "district_name": "Orange",
       "school_name": "Clarcona Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -320,12 +359,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480991",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Clay Springs Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -336,12 +377,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481451",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Columbia Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -352,12 +395,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480551",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Conway Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -373,7 +418,9 @@
       "district_name": "Orange",
       "school_name": "Cypress Park Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -384,12 +431,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480156",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Cypress Springs Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -400,12 +449,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481601",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Deerwood Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -416,12 +467,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480511",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Dillard Street Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -432,12 +485,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481181",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Dommerich Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -448,12 +503,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480781",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Dover Shores Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -464,12 +521,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481591",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Dr. Phillips Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -480,12 +539,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480541",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Dream Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -496,12 +557,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480801",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Durrance Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -512,12 +575,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481921",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Eagle Creek Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -528,12 +593,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480259",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "East Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -544,12 +611,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "485841",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Eccleston Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -560,12 +629,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480681",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Engelwood Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -576,12 +647,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480181",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Fern Creek Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -592,12 +665,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481971",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Forsyth Woods Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -608,12 +683,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480191",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Grand Avenue Primary Learning Center",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-2",
       "status": "open",
       "charter": false,
@@ -624,12 +701,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480472",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Hamlin Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -640,12 +719,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480881",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Hiawassee Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -656,12 +737,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481461",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Hidden Oaks Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -672,12 +755,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480201",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Hillcrest Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -688,12 +773,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481351",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Hungerford Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -704,12 +791,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481191",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Hunter's Creek Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -720,12 +809,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481421",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Ivey Lane Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -736,12 +827,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481791",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Keene's Crossing Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -752,12 +845,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480311",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Killarney Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -768,12 +863,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480301",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lake George Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -784,12 +881,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480521",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lake Silver Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -800,12 +899,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481221",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lake Sybelia Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -816,12 +917,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480651",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lake Weston Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -832,12 +935,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481571",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lake Whitney Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -848,12 +953,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480561",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lakemont Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -864,12 +971,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480141",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lakeville Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -880,12 +989,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480851",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lancaster Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -896,12 +1007,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480213",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lawton Chiles Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -912,12 +1025,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480421",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lockhart Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -933,7 +1048,9 @@
       "district_name": "Orange",
       "school_name": "Lorna Doone Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -944,12 +1061,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480821",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lovell Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -965,7 +1084,9 @@
       "district_name": "Orange",
       "school_name": "Maxey Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -981,7 +1102,9 @@
       "district_name": "Orange",
       "school_name": "McCoy Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -992,12 +1115,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481041",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Meadow Woods Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1008,12 +1133,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481021",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "MetroWest Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1024,12 +1151,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481553",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Millennia Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1040,12 +1169,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481492",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Millennia Gardens Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1056,12 +1187,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481582",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Moss Park Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1072,12 +1205,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481501",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Oak Hill Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1088,12 +1223,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480212",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Oakshire Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1104,12 +1241,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481531",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Ocoee Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1120,12 +1259,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481331",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Orange Center Elementary School",
       "type": "magnet",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1147,12 +1288,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481491",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Palmetto Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1163,12 +1306,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480411",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Pine Castle Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1179,12 +1324,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480621",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Pine Hills Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1195,12 +1342,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480231",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Pineloch Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1211,12 +1360,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481541",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Pinar Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1227,12 +1378,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480941",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Prairie Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1243,12 +1396,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480251",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Princeton Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1259,12 +1414,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481431",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Ridgewood Park Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1275,12 +1432,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481251",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Riverside Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1291,12 +1450,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480641",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Rock Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1307,12 +1468,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481011",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Rock Springs Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1323,12 +1486,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480861",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Rolling Hills Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1339,12 +1504,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481271",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Rosemont Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1355,12 +1522,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481261",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Sadler Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1371,12 +1540,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481731",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Sand Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1387,12 +1558,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481621",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Shingle Creek Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1403,12 +1576,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480841",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Spring Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1419,12 +1594,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481771",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Stone Lakes Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1435,12 +1612,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481831",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Sun Blaze Elementary School",
       "type": "choice",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1461,12 +1640,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481821",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "SunRidge Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1477,12 +1658,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481776",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Sunset Park Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1493,12 +1676,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480811",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Tangelo Park Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1509,12 +1694,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480235",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Thornebrooke Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1525,12 +1712,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480361",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Tildenville Elementary School",
       "type": "magnet",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1552,12 +1741,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481991",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Timber Lakes Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1568,12 +1759,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480971",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Ventura Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1584,12 +1777,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481752",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Vista Lakes Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1600,12 +1795,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481051",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Waterbridge Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1616,12 +1813,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481091",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Waterford Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1632,12 +1831,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480232",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "West Creek Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1648,12 +1849,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480253",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "West Oaks Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1664,12 +1867,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481562",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Westbrooke Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1680,12 +1885,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481201",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Westpointe Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1696,12 +1903,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480322",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Whispering Oak Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1712,12 +1921,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481231",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Windermere Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1728,12 +1939,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481751",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Wolf Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1744,12 +1957,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481741",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Wyndham Lakes Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1760,12 +1975,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480461",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Zellwood Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1775,14 +1992,16 @@
       "source": "OCPS website",
       "verified": null
     },
-
     {
-      "msid": "48XXXX",
+      "msid": "480981",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Arbor Ridge K-8 School",
       "type": "traditional",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": false,
@@ -1793,12 +2012,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480631",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Blankner K-8 School",
       "type": "traditional",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": false,
@@ -1809,12 +2031,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480221",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lake Como School",
       "type": "traditional",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": false,
@@ -1825,12 +2050,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480771",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "NorthLake Park Community School",
       "type": "traditional",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": false,
@@ -1841,12 +2069,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480062",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Nap Ford Community School",
       "type": "traditional",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": false,
@@ -1857,12 +2088,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480901",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Pershing School",
       "type": "choice",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": false,
@@ -1873,12 +2107,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480215",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Three Points Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -1889,12 +2125,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481861",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Wedgefield School",
       "type": "choice",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": false,
@@ -1905,12 +2144,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481061",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Windy Ridge K-8 School",
       "type": "choice",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": false,
@@ -1920,14 +2162,15 @@
       "source": "OCPS website",
       "verified": null
     },
-
     {
-      "msid": "48XXXX",
+      "msid": "481762",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Bridgewater Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -1938,12 +2181,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "485871",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Carver Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -1964,12 +2209,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481291",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Chain of Lakes Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -1990,12 +2237,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480581",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "College Park Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2006,12 +2255,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480551",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Conway Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2022,12 +2273,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481281",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Corner Lake Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2038,12 +2291,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481121",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Discovery Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2064,12 +2319,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481662",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Freedom Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2080,12 +2337,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480571",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Glenridge Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2106,12 +2365,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481681",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Gotha Middle School",
       "type": "choice",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2132,12 +2393,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481022",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Horizon West Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2148,12 +2411,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480131",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Howard Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2174,12 +2439,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481191",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Hunter's Creek Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2200,12 +2467,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481761",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Innovation Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2221,7 +2490,9 @@
       "district_name": "Orange",
       "school_name": "Jackson Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2232,12 +2503,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481951",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lake Nona Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2248,12 +2521,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480352",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lakeview Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2274,12 +2549,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480119",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Legacy Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2290,12 +2567,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481551",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Liberty Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2316,12 +2595,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480421",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lockhart Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2342,12 +2623,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481444",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Luminary Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2358,12 +2641,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480731",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Maitland Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2374,12 +2659,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481041",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Meadow Woods Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2390,12 +2677,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481241",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Meadowbrook Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2406,12 +2695,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480151",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Memorial Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2432,12 +2723,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481531",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Ocoee Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2448,12 +2741,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481682",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Odyssey Middle School",
       "type": "choice",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2474,12 +2769,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481671",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Piedmont Lakes Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2490,12 +2787,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481111",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Roberto Clemente Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2517,12 +2816,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480921",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Robinswood Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2533,12 +2834,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481703",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "South Creek Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2549,12 +2852,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481031",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Southwest Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2565,12 +2870,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481821",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "SunRidge Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2581,12 +2888,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481852",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Timber Springs Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2597,12 +2906,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480431",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Union Park Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2613,12 +2924,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481151",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Judson B. Walker Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2629,12 +2942,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481024",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Water Spring Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2645,12 +2960,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481133",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Westridge Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2661,12 +2978,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481751",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Wolf Lake Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -2676,14 +2995,15 @@
       "source": "OCPS website",
       "verified": null
     },
-
     {
-      "msid": "48XXXX",
+      "msid": "480111",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "William R. Boone High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2704,12 +3024,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480661",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Colonial High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2730,12 +3052,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481651",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Cypress Creek High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2756,12 +3080,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481591",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Dr. Phillips High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2772,12 +3098,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481801",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "East River High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2798,12 +3126,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480121",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Edgewater High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2829,7 +3159,9 @@
       "district_name": "Orange",
       "school_name": "Evans High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2850,12 +3182,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481662",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Freedom High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2876,12 +3210,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481471",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Horizon High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2893,12 +3229,14 @@
       "note": "Opened August 2021"
     },
     {
-      "msid": "48XXXX",
+      "msid": "481761",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Innovation High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2909,12 +3247,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "485711",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Jones High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2935,12 +3275,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480932",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lake Buena Vista High School",
       "type": "choice",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2962,12 +3304,14 @@
       "note": "Opened August 2021"
     },
     {
-      "msid": "48XXXX",
+      "msid": "481951",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Lake Nona High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -2978,12 +3322,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480691",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Oak Ridge High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3004,12 +3350,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481531",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Ocoee High School",
       "type": "choice",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3030,12 +3378,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481632",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Olympia High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3046,12 +3396,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481631",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Timber Creek High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3062,12 +3414,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481001",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "University High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3088,12 +3442,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481542",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Wekiva High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3104,12 +3460,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481511",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "West Orange High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3120,12 +3478,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481231",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Windermere High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3136,12 +3496,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481411",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Winter Park High School",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3161,14 +3523,15 @@
       "source": "OCPS website",
       "verified": null
     },
-
     {
       "msid": "48XXXX",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Orange Technical College - Orlando Campus",
       "type": "career_technical",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "postsecondary",
       "status": "open",
       "charter": false,
@@ -3195,7 +3558,9 @@
       "district_name": "Orange",
       "school_name": "Orange Technical College - Mid-Florida Campus",
       "type": "career_technical",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "postsecondary",
       "status": "open",
       "charter": false,
@@ -3222,7 +3587,9 @@
       "district_name": "Orange",
       "school_name": "Orange Technical College - Westside Campus",
       "type": "career_technical",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "postsecondary",
       "status": "open",
       "charter": false,
@@ -3249,7 +3616,9 @@
       "district_name": "Orange",
       "school_name": "Orange Technical College - Winter Park Campus",
       "type": "career_technical",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "postsecondary",
       "status": "open",
       "charter": false,
@@ -3271,12 +3640,14 @@
       "note": "Formerly Webster Adult Education Center"
     },
     {
-      "msid": "48XXXX",
+      "msid": "481901",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Orange Technical College - Avalon Campus",
       "type": "career_technical",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "postsecondary",
       "status": "open",
       "charter": false,
@@ -3298,12 +3669,14 @@
       "note": "Opened in 2007"
     },
     {
-      "msid": "48XXXX",
+      "msid": "485852",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Orange Technical College - East Campus",
       "type": "career_technical",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "postsecondary",
       "status": "open",
       "charter": false,
@@ -3324,12 +3697,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481131",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Orange Technical College - South Campus",
       "type": "career_technical",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "postsecondary",
       "status": "open",
       "charter": false,
@@ -3349,14 +3724,17 @@
       "source": "OCPS website / orangetechcollege.net",
       "verified": null
     },
-
     {
-      "msid": "48XXXX",
+      "msid": "480206",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Orange County Virtual School (OCVS)",
       "type": "virtual",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
@@ -3386,14 +3764,17 @@
       "verified": null,
       "note": "Established 2010; one of FL's largest district virtual schools with 40,000+ students; accredited by Cognia"
     },
-
     {
-      "msid": "48XXXX",
+      "msid": "481014",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "OCPS Academic Center for Excellence (ACE)",
       "type": "choice",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
@@ -3415,12 +3796,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480601",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Orlando Gifted Academy",
       "type": "choice",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": false,
@@ -3440,14 +3824,17 @@
       "source": "OCPS website",
       "verified": null
     },
-
     {
-      "msid": "48XXXX",
+      "msid": "481561",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Magnolia School",
       "type": "exceptional",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "PK-12",
       "status": "open",
       "charter": false,
@@ -3469,12 +3856,14 @@
       "note": "ESE center school"
     },
     {
-      "msid": "48XXXX",
+      "msid": "480122",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Positive Pathways Transition Center",
       "type": "alternative",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3486,12 +3875,16 @@
       "note": "Alternative education transition program"
     },
     {
-      "msid": "48XXXX",
+      "msid": "480591",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Silver Pines Academy K-12 Learning Center",
       "type": "alternative",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
@@ -3503,12 +3896,14 @@
       "note": "Alternative education K-12 learning center"
     },
     {
-      "msid": "48XXXX",
+      "msid": "480032",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "ESTEEM Academy",
       "type": "exceptional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3534,7 +3929,10 @@
       "district_name": "Orange",
       "school_name": "Alternative Education Center",
       "type": "alternative",
-      "levels": ["MS", "HS"],
+      "levels": [
+        "MS",
+        "HS"
+      ],
       "grades": "6-12",
       "status": "open",
       "charter": false,
@@ -3546,12 +3944,14 @@
       "note": "Umbrella for 9 alternative education school sites"
     },
     {
-      "msid": "48XXXX",
+      "msid": "481811",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Acceleration East High School",
       "type": "alternative",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3572,12 +3972,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "481841",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Acceleration West High School",
       "type": "alternative",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -3597,14 +3999,16 @@
       "source": "OCPS website",
       "verified": null
     },
-
     {
       "msid": "48XXXX",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "UCP Charter School - Orlando",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,
@@ -3625,12 +4029,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480172",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Innovation Montessori Ocoee High School",
       "type": "charter",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": true,
@@ -3651,12 +4057,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480074",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Workforce Advantage Academy",
       "type": "charter",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "11-12",
       "status": "open",
       "charter": true,
@@ -3677,12 +4085,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480133",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Cornerstone Academy Charter School",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,
@@ -3698,7 +4109,10 @@
       "district_name": "Orange",
       "school_name": "Pinecrest Academy of Orlando",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,
@@ -3709,12 +4123,16 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480200",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Orlando Science Charter Schools",
       "type": "charter",
-      "levels": ["ES", "MS", "HS"],
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": true,
@@ -3735,12 +4153,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480033",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Renaissance Charter School at Goldenrod",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,
@@ -3751,12 +4172,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480133",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Cornerstone Charter Academy",
       "type": "charter",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": true,
@@ -3767,12 +4190,14 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480119",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Legacy Charter High School",
       "type": "charter",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": true,
@@ -3783,12 +4208,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480177",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Access Charter School",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,
@@ -3799,12 +4227,15 @@
       "verified": null
     },
     {
-      "msid": "48XXXX",
+      "msid": "480172",
       "district_number": "48",
       "district_name": "Orange",
       "school_name": "Innovation Montessori Ocoee",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,
