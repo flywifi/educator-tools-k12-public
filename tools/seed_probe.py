@@ -160,6 +160,45 @@ def probe(url: str, timeout: float = 25.0, retries: int = 2, delay: float = 1.0)
     return out
 
 
+def probe_resilient(url: str, delay: float = 1.0) -> dict:
+    """Same return shape as probe(), but fetched via the multi-prong resilient chain so 403 bot-walls
+    on public pages can be recovered (browser headers / headless browser / Wayback)."""
+    out = {"url": url, "ok": False, "status": None, "final_url": url, "content_type": None,
+           "bytes": 0, "is_feed": False, "discovered_feeds": [], "supersession": [],
+           "error": None, "sha256": None, "prong": None}
+    try:
+        from fetch_resilient import resilient_get
+    except Exception as e:
+        out["error"] = f"fetch_resilient unavailable: {e.__class__.__name__}"
+        return out
+    r = resilient_get(url, run_all=False, delay=delay)
+    out["prong"] = r.get("prong")
+    out["status"] = r.get("status")
+    out["final_url"] = r.get("final_url", url)
+    out["ok"] = r.get("ok", False)
+    data = r.get("content") or b""
+    out["bytes"] = len(data)
+    if not r.get("ok"):
+        out["error"] = r.get("note")
+        return out
+    out["sha256"] = hashlib.sha256(data).hexdigest()
+    text = data.decode("utf-8", errors="replace")
+    head = text[:8000].lower()
+    out["is_feed"] = "<rss" in head or "<feed" in head or "<rdf" in head
+    if not out["is_feed"] and "<html" in head:
+        f = _FeedLinkFinder()
+        try:
+            f.feed(text)
+        except Exception:
+            pass
+        out["discovered_feeds"] = sorted({_abs(out["final_url"], h) for h in f.feeds})[:20]
+    for kw in ("rescinded", "repealed", "archived", "superseded", "discontinued",
+               "program eliminated", "page not found", "retired"):
+        if kw in text.lower():
+            out["supersession"].append(kw)
+    return out
+
+
 def load_seeds(only: str | None) -> list[dict]:
     """Collect every probeable seed: feeds + source-currency registry sources."""
     seeds = []
@@ -244,6 +283,9 @@ def main(argv=None) -> int:
     ap.add_argument("--apply", action="store_true", help="write confirmations/candidates back (with --probe)")
     ap.add_argument("--only", choices=["feeds", "registries"], help="limit to one kind")
     ap.add_argument("--delay", type=float, default=1.0, help="polite delay between fetches (s); 0 = fastest")
+    ap.add_argument("--resilient", action="store_true",
+                    help="use the multi-prong fetch chain (fetch_resilient.py: browser headers -> "
+                         "requests -> headless browser -> Wayback) to get past 403 bot-walls on public data")
     args = ap.parse_args(argv)
 
     seeds = load_seeds(args.only)
@@ -260,15 +302,17 @@ def main(argv=None) -> int:
     results = []
     counts: dict[str, int] = {}
     for s in seeds:
-        p = probe(s["url"], delay=args.delay)
+        p = probe_resilient(s["url"], delay=args.delay) if args.resilient else probe(s["url"], delay=args.delay)
         cls = classify(p)
         counts[cls] = counts.get(cls, 0) + 1
         results.append({"seed": s, "probe": p, "class": cls})
         extra = ""
+        if p.get("prong"):
+            extra += f"  via {p['prong']}"
         if p["discovered_feeds"]:
-            extra = "  -> FEED: " + p["discovered_feeds"][0]
+            extra += "  -> FEED: " + p["discovered_feeds"][0]
         if p["error"]:
-            extra = "  " + p["error"]
+            extra += "  " + p["error"]
         print(f"  {cls:16} {s['id']:30} {p['status'] or '---'}{extra}")
 
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
