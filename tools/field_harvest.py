@@ -72,12 +72,14 @@ def _venv_python(venv: Path) -> Path:
 
 
 def _venv_healthy(vpy: Path) -> bool:
-    """A venv is only 'healthy' if its python exists AND the deps actually import."""
+    """A venv is only 'healthy' if its python exists AND the deps actually import. When --with-browser
+    is requested, playwright must also be present — otherwise we report unhealthy so the venv rebuilds
+    and actually installs the browser prong (fixes --with-browser being a no-op on an existing venv)."""
     if not vpy.exists():
         return False
+    check = "import requests" + ("; import playwright" if "--with-browser" in sys.argv else "")
     try:
-        r = subprocess.run([str(vpy), "-c", "import requests"],
-                           capture_output=True, timeout=30)
+        r = subprocess.run([str(vpy), "-c", check], capture_output=True, timeout=30)
         return r.returncode == 0
     except Exception:
         return False
