@@ -1,32 +1,33 @@
 #!/usr/bin/env python3
 """FLDOE MSID lookup — match school names in TOS school indexes to real FLDOE Master School IDs.
 
-The FLDOE publishes a Master School Identification (MSID) file each year as a downloadable CSV/Excel
-(district=2-digit + school=4-digit = 6-digit MSID). This tool:
+The FLDOE Master School ID (MSID = 2-digit district + 4-digit school = 6 digits) is NOT a downloadable
+file. The authoritative source is an interactive web app — the Education Data System (EDS) at
+eds.fldoe.org/EDS/MasterSchoolID/Selection.cfm — which renders every Florida school as an HTML list
+with DIST/SCHL numbers in the links. The reliable, offline-friendly workflow is therefore:
 
-  1. --fetch      Downloads the current MSID file from FLDOE to a local cache (requires network).
-  2. --match      Matches school names in a TOS schools.json against the cached MSID file (offline).
-  3. --apply      Writes matched MSIDs back to the schools.json (in-place, dry-run default).
-  4. --stats      Reports match rate and unmatched schools.
+    SAVE the EDS page from a browser (Ctrl+S → "Webpage, HTML only"), then parse it OFFLINE here.
 
-Matching strategy (fuzzy, offline):
-  - Exact name match (case-insensitive, stripped)
-  - Stripped-suffix match (removes "School", "Elementary", "Middle", "High", etc.)
-  - Token-overlap score ≥ 0.7 (Jaccard on word sets)
-  - Tie-break by district number
-  Anything below the score threshold is flagged UNMATCHED — never silently wrong.
+This tool reads that saved .html (and also .xlsx/.csv if a future year ships a file), matches school
+names against a TOS schools.json, and stamps the real MSIDs — all offline, no tokens, no live network.
 
-MSID source: FLDOE Master School Identification files
-  https://www.fldoe.org/accountability/data-sys/school-fin-data/master-school-id-files.stml
+  --inspect   Show detected columns/links + a match preview (no writes). RUN THIS FIRST.
+  --match     Match school names in a TOS schools.json against the MSID source (offline).
+  --apply     Write matched MSIDs back to the schools.json (dry-run unless --confirm).
+  --stats     Report match rate + unmatched schools.
+
+Matching (fuzzy, offline, safe): exact normalized-name match first; else Jaccard token overlap above
+--threshold (default 0.65). Apostrophes/suffixes ("School/Elementary/...") are normalized away.
+Anything below threshold is left as a placeholder and reported UNMATCHED — never silently wrong,
+never fabricated.
 
 Usage:
-  python3 tools/msid_lookup.py --fetch                          # download latest MSID file
-  python3 tools/msid_lookup.py --match --district 48            # match OCPS schools (offline)
-  python3 tools/msid_lookup.py --match --district 48 --apply    # write matched IDs back (dry-run)
-  python3 tools/msid_lookup.py --match --district 48 --apply --confirm   # actually write
-  python3 tools/msid_lookup.py --stats --district 48            # match rate report
+  python3 tools/msid_lookup.py --inspect --district 48 --msid-file SavedEDSPage.html
+  python3 tools/msid_lookup.py --match   --district 48 --msid-file SavedEDSPage.html            # preview
+  python3 tools/msid_lookup.py --match   --district 48 --apply --confirm --msid-file SavedEDSPage.html
 
-Stdlib only. Optional: `requests` for --fetch; `openpyxl` for XLSX MSID files.
+Accepts --msid-file as .html (saved EDS page, preferred), .xlsx/.xls (openpyxl), or .csv (stdlib).
+--fetch is best-effort only (FLDOE blocks bots + relocates URLs); the saved-page path is the reliable one.
 """
 from __future__ import annotations
 
@@ -108,6 +109,21 @@ def load_msid_csv(path: Path) -> list[dict]:
     """
     suffix = path.suffix.lower()
     rows: list[dict] = []
+
+    if suffix in (".html", ".htm"):
+        # FLDOE EDS Master School ID page (eds.fldoe.org/EDS/MasterSchoolID/Selection.cfm)
+        # saved from a browser: every school is a link Schooldisplay.cfm?DIST=##&SCHL=####>NAME</a>.
+        # This is the authoritative list and the ONLY reliable way to get it (no file download exists).
+        import html as _html
+        text = path.read_text(encoding="utf-8", errors="replace")
+        pat = re.compile(r'Schooldisplay\.cfm\?DIST=(\d+)&(?:amp;)?SCHL=(\d+)">([^<]+)</a>', re.I)
+        for dist, schl, name in pat.findall(text):
+            rows.append(_normalize_row({
+                "district_number": dist,
+                "school_number": schl,
+                "school_name": _html.unescape(name).strip(),
+            }))
+        return rows
 
     if suffix in (".xlsx", ".xlsm", ".xls"):
         try:
@@ -195,7 +211,9 @@ _SUFFIX_RE = re.compile(
 def _normalize(name: str) -> str:
     """Lower-case, strip punctuation and common school suffixes for fuzzy matching."""
     n = name.lower()
-    n = re.sub(r"[''\".,/-]", " ", n)
+    # Apostrophes are DELETED (not spaced) so FLDOE's "HUNTERS CREEK" == our "Hunter's Creek".
+    n = re.sub(r"['’‘]", "", n)
+    n = re.sub(r"[\".,/()&-]", " ", n)
     n = _SUFFIX_RE.sub(" ", n)
     return re.sub(r"\s+", " ", n).strip()
 
@@ -252,14 +270,20 @@ def _district_folder(district_number: str) -> Path | None:
 
 def match_district(district_number: str, msid_rows: list[dict],
                    apply: bool = False, confirm: bool = False,
-                   threshold: float = 0.65) -> dict:
-    """Match one district's schools.json against MSID rows. Returns stats dict."""
+                   threshold: float = 0.65, force: bool = False) -> dict:
+    """Match one district's schools.json against MSID rows. Returns stats dict.
+
+    force=True re-matches EVERY school against the authoritative FLDOE list and OVERWRITES any
+    existing MSID, resetting non-matches to a 'DDXXXX' placeholder. Use this when existing MSIDs
+    can't be trusted (e.g. seeded by a generator) so no unverified number survives. Without force,
+    a school that already carries a 6-digit non-placeholder MSID is left untouched ('kept')."""
     schools_path = _district_folder(district_number)
     if schools_path is None:
         return {"error": f"No schools.json found for district {district_number}"}
 
     data = json.loads(schools_path.read_text(encoding="utf-8"))
     schools = data.get("schools", [])
+    placeholder = f"{district_number.zfill(2)}XXXX"
 
     # Filter MSID rows to this district
     dist_rows = [r for r in msid_rows if _district_col(r).zfill(2) == district_number.zfill(2)]
@@ -270,11 +294,13 @@ def match_district(district_number: str, msid_rows: list[dict],
     for r in dist_rows:
         r["_norm"] = _normalize(_school_col(r))
 
-    matched, unmatched = [], []
+    matched, unmatched, reset = [], [], 0
     for school in schools:
-        # Skip if already has a real MSID (not placeholder)
         current = school.get("msid", "")
-        if current and "X" not in current.upper() and len(current) == 6:
+        is_placeholder = (not current) or ("X" in current.upper()) or (len(current) != 6)
+
+        # Without --force, trust an existing real-looking MSID and leave it alone.
+        if not force and not is_placeholder:
             matched.append({"name": school["school_name"], "msid": current, "action": "kept"})
             continue
 
@@ -293,6 +319,10 @@ def match_district(district_number: str, msid_rows: list[dict],
                     school["status"] = "closed"
         else:
             unmatched.append(school["school_name"])
+            # In force mode, clear any untrusted/fabricated MSID back to an honest placeholder.
+            if apply and force and not is_placeholder:
+                school["msid"] = placeholder
+                reset += 1
 
     stats = {
         "district": district_number,
@@ -303,6 +333,8 @@ def match_district(district_number: str, msid_rows: list[dict],
         "match_rate": f"{100 * len(matched) / max(len(schools), 1):.1f}%",
         "unmatched_names": unmatched[:20],
     }
+    if force:
+        stats["reset_to_placeholder"] = reset
 
     if apply and confirm:
         schools_path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -330,6 +362,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--confirm", action="store_true", help="Actually write changes (requires --apply)")
     p.add_argument("--district", help="District number(s), comma-separated (e.g. 48,59)")
     p.add_argument("--threshold", type=float, default=0.65, help="Jaccard match threshold 0-1 (default 0.65)")
+    p.add_argument("--force", action="store_true",
+                   help="Re-match EVERY school against FLDOE, overwriting existing MSIDs and resetting "
+                        "non-matches to a DDXXXX placeholder. Use when existing MSIDs can't be trusted.")
     p.add_argument("--msid-file", help="Path to cached MSID CSV (default: auto)")
     args = p.parse_args(argv)
 
@@ -370,7 +405,8 @@ def main(argv: list[str] | None = None) -> int:
             print(f"\n=== DISTRICT {d}: {len(dist_rows)} MSID rows found ===")
             for r in dist_rows[:5]:
                 print(f"  {_msid_col(r)}  {_school_col(r)}")
-            prev = match_district(d, msid_rows, apply=False, confirm=False, threshold=args.threshold)
+            prev = match_district(d, msid_rows, apply=False, confirm=False,
+                                  threshold=args.threshold, force=args.force)
             print(f"  preview: {prev.get('matched')}/{prev.get('total')} would match "
                   f"({prev.get('match_rate')}); unmatched sample: {prev.get('unmatched_names', [])[:5]}")
         return 0
@@ -387,6 +423,7 @@ def main(argv: list[str] | None = None) -> int:
             apply=args.apply,
             confirm=args.confirm,
             threshold=args.threshold,
+            force=args.force,
         )
         all_stats.append(stats)
         if args.stats or not args.apply:

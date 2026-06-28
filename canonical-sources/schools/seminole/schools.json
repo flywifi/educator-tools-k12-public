@@ -13,12 +13,14 @@
   },
   "schools": [
     {
-      "msid": "590021",
+      "msid": "590561",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Altamonte Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -34,7 +36,9 @@
       "district_name": "Seminole",
       "school_name": "Bear Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -45,12 +49,14 @@
       "verified": null
     },
     {
-      "msid": "590041",
+      "msid": "590801",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Bentley Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -61,12 +67,14 @@
       "verified": null
     },
     {
-      "msid": "590061",
+      "msid": "590441",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Carillon Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -77,12 +85,14 @@
       "verified": null
     },
     {
-      "msid": "590071",
+      "msid": "590202",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Casselberry Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -93,12 +103,14 @@
       "verified": null
     },
     {
-      "msid": "590081",
+      "msid": "590821",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Crystal Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -109,12 +121,14 @@
       "verified": null
     },
     {
-      "msid": "590091",
+      "msid": "590531",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Eastbrook Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -125,12 +139,14 @@
       "verified": null
     },
     {
-      "msid": "590101",
+      "msid": "590041",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "English Estates Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -146,7 +162,9 @@
       "district_name": "Seminole",
       "school_name": "Evans Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -157,12 +175,14 @@
       "verified": null
     },
     {
-      "msid": "590121",
+      "msid": "590502",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Forest City Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -173,12 +193,14 @@
       "verified": null
     },
     {
-      "msid": "590131",
+      "msid": "590051",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Geneva Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -189,12 +211,14 @@
       "verified": null
     },
     {
-      "msid": "590141",
+      "msid": "590271",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Goldsboro Elementary Magnet School",
       "type": "magnet",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -215,12 +239,14 @@
       "verified": null
     },
     {
-      "msid": "590151",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Hamilton Elementary School of Engineering and Technology",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -241,12 +267,14 @@
       "verified": null
     },
     {
-      "msid": "590161",
+      "msid": "590691",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Heathrow Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -257,12 +285,14 @@
       "verified": null
     },
     {
-      "msid": "590171",
+      "msid": "590331",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Highlands Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -273,12 +303,14 @@
       "verified": null
     },
     {
-      "msid": "590181",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Idyllwilde Elementary Future Ready Academy",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -299,12 +331,14 @@
       "verified": null
     },
     {
-      "msid": "590191",
+      "msid": "590661",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Keeth Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -315,12 +349,14 @@
       "verified": null
     },
     {
-      "msid": "590201",
+      "msid": "590081",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Lake Mary Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -331,12 +367,14 @@
       "verified": null
     },
     {
-      "msid": "590211",
+      "msid": "590601",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Lake Orienta Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -347,12 +385,14 @@
       "verified": null
     },
     {
-      "msid": "590221",
+      "msid": "590131",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Lawton Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -363,12 +403,14 @@
       "verified": null
     },
     {
-      "msid": "590231",
+      "msid": "590121",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Layer Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -379,12 +421,14 @@
       "verified": null
     },
     {
-      "msid": "590241",
+      "msid": "590091",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Longwood Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -395,12 +439,14 @@
       "verified": null
     },
     {
-      "msid": "590251",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Midway Elementary School of the Arts",
       "type": "magnet",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -421,12 +467,14 @@
       "verified": null
     },
     {
-      "msid": "590261",
+      "msid": "590701",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Partin Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -437,12 +485,14 @@
       "verified": null
     },
     {
-      "msid": "590271",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Pine Crest Elementary School of Innovation",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -463,12 +513,14 @@
       "verified": null
     },
     {
-      "msid": "590281",
+      "msid": "590361",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Rainbow Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -479,12 +531,14 @@
       "verified": null
     },
     {
-      "msid": "590291",
+      "msid": "590511",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Red Bug Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -495,12 +549,14 @@
       "verified": null
     },
     {
-      "msid": "590301",
+      "msid": "590581",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Sabal Point Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -511,12 +567,14 @@
       "verified": null
     },
     {
-      "msid": "590311",
+      "msid": "590401",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Spring Lake Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -527,12 +585,14 @@
       "verified": null
     },
     {
-      "msid": "590321",
+      "msid": "590681",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Stenstrom Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -543,12 +603,14 @@
       "verified": null
     },
     {
-      "msid": "590331",
+      "msid": "590611",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Sterling Park Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -559,12 +621,14 @@
       "verified": null
     },
     {
-      "msid": "590341",
+      "msid": "590651",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Wekiva Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -575,12 +639,14 @@
       "verified": null
     },
     {
-      "msid": "590351",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Wicklow Elementary School for Global Pathways",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -601,12 +667,14 @@
       "verified": null
     },
     {
-      "msid": "590361",
+      "msid": "590231",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Wilson Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -617,12 +685,14 @@
       "verified": null
     },
     {
-      "msid": "590371",
+      "msid": "590391",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Winter Springs Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -633,12 +703,14 @@
       "verified": null
     },
     {
-      "msid": "590381",
+      "msid": "590591",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Woodlands Elementary School",
       "type": "traditional",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-5",
       "status": "open",
       "charter": false,
@@ -649,12 +721,14 @@
       "verified": null
     },
     {
-      "msid": "591021",
+      "msid": "590671",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Greenwood Lakes Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -665,12 +739,14 @@
       "verified": null
     },
     {
-      "msid": "591031",
+      "msid": "590711",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Indian Trails Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -681,12 +757,14 @@
       "verified": null
     },
     {
-      "msid": "591041",
+      "msid": "590291",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Jackson Heights Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -697,12 +775,14 @@
       "verified": null
     },
     {
-      "msid": "591051",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Lawton Chiles Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -713,12 +793,14 @@
       "verified": null
     },
     {
-      "msid": "591061",
+      "msid": "590731",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Markham Woods Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -729,12 +811,14 @@
       "verified": null
     },
     {
-      "msid": "591071",
+      "msid": "590182",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Millennium Middle School",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -764,12 +848,14 @@
       "verified": null
     },
     {
-      "msid": "591081",
+      "msid": "590101",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Milwee Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -790,12 +876,14 @@
       "verified": null
     },
     {
-      "msid": "591091",
+      "msid": "590621",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Rock Lake Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -806,12 +894,14 @@
       "verified": null
     },
     {
-      "msid": "591101",
+      "msid": "590151",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Sanford Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -832,12 +922,14 @@
       "verified": null
     },
     {
-      "msid": "591111",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "South Seminole Academy of Leadership, Law and Advanced Studies",
       "type": "magnet",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -867,12 +959,14 @@
       "verified": null
     },
     {
-      "msid": "591121",
+      "msid": "590501",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Teague Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -883,12 +977,14 @@
       "verified": null
     },
     {
-      "msid": "591131",
+      "msid": "590541",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Tuskawilla Middle School",
       "type": "traditional",
-      "levels": ["MS"],
+      "levels": [
+        "MS"
+      ],
       "grades": "6-8",
       "status": "open",
       "charter": false,
@@ -899,12 +995,14 @@
       "verified": null
     },
     {
-      "msid": "592011",
+      "msid": "590251",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Crooms Academy of Information Technology",
       "type": "magnet",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -934,12 +1032,14 @@
       "verified": null
     },
     {
-      "msid": "592021",
+      "msid": "590931",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Hagerty High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -960,12 +1060,14 @@
       "verified": null
     },
     {
-      "msid": "592031",
+      "msid": "590491",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Lake Brantley High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -986,12 +1088,14 @@
       "verified": null
     },
     {
-      "msid": "592041",
+      "msid": "590551",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Lake Howell High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -1012,12 +1116,14 @@
       "verified": null
     },
     {
-      "msid": "592051",
+      "msid": "590081",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Lake Mary High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -1038,12 +1144,14 @@
       "verified": null
     },
     {
-      "msid": "592061",
+      "msid": "590431",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Lyman High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -1064,12 +1172,14 @@
       "verified": null
     },
     {
-      "msid": "592071",
+      "msid": "590421",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Oviedo High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -1090,12 +1200,14 @@
       "verified": null
     },
     {
-      "msid": "592081",
+      "msid": "590181",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Seminole High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -1125,12 +1237,14 @@
       "verified": null
     },
     {
-      "msid": "592082",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Seminole High School 9th Grade Center",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9",
       "status": "open",
       "charter": false,
@@ -1141,12 +1255,14 @@
       "verified": null
     },
     {
-      "msid": "592091",
+      "msid": "590391",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Winter Springs High School",
       "type": "traditional",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -1176,12 +1292,14 @@
       "verified": null
     },
     {
-      "msid": "592101",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "PSI High (Problem Solving Incubator)",
       "type": "choice",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": false,
@@ -1211,12 +1329,14 @@
       "verified": null
     },
     {
-      "msid": "593011",
+      "msid": "590311",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Endeavor School",
       "type": "exceptional",
-      "levels": ["combo"],
+      "levels": [
+        "combo"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
@@ -1237,12 +1357,14 @@
       "verified": null
     },
     {
-      "msid": "593021",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "SCPS Consequence Unit (Eugene Gregory Memorial Youth Academy)",
       "type": "alternative",
-      "levels": ["combo"],
+      "levels": [
+        "combo"
+      ],
       "grades": "6-12",
       "status": "open",
       "charter": false,
@@ -1263,12 +1385,14 @@
       "verified": null
     },
     {
-      "msid": "593031",
+      "msid": "597023",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Seminole County Virtual School",
       "type": "virtual",
-      "levels": ["combo"],
+      "levels": [
+        "combo"
+      ],
       "grades": "K-12",
       "status": "open",
       "charter": false,
@@ -1289,12 +1413,14 @@
       "verified": null
     },
     {
-      "msid": "599001",
+      "msid": "599229",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Choices in Learning Elementary Charter School",
       "type": "charter",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "K-5",
       "status": "open",
       "charter": true,
@@ -1305,12 +1431,15 @@
       "verified": null
     },
     {
-      "msid": "599002",
+      "msid": "599236",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Seminole Science Charter School",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,
@@ -1331,12 +1460,15 @@
       "verified": null
     },
     {
-      "msid": "599003",
+      "msid": "599255",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Galileo School for Gifted Learning - Skyway Campus",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "PK-8",
       "status": "open",
       "charter": true,
@@ -1357,12 +1489,15 @@
       "verified": null
     },
     {
-      "msid": "599004",
+      "msid": "59XXXX",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Galileo School for Gifted Learning - Riverbend Campus",
       "type": "charter",
-      "levels": ["ES", "MS"],
+      "levels": [
+        "ES",
+        "MS"
+      ],
       "grades": "K-8",
       "status": "open",
       "charter": true,
@@ -1383,12 +1518,14 @@
       "verified": null
     },
     {
-      "msid": "599005",
+      "msid": "599228",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "UCP Seminole Child Development Center",
       "type": "charter",
-      "levels": ["ES"],
+      "levels": [
+        "ES"
+      ],
       "grades": "PK-2",
       "status": "open",
       "charter": true,
@@ -1409,12 +1546,14 @@
       "verified": null
     },
     {
-      "msid": "599006",
+      "msid": "599263",
       "district_number": "59",
       "district_name": "Seminole",
       "school_name": "Elevation High School",
       "type": "charter",
-      "levels": ["HS"],
+      "levels": [
+        "HS"
+      ],
       "grades": "9-12",
       "status": "open",
       "charter": true,
