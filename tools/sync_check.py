@@ -248,6 +248,17 @@ def main() -> int:
     except Exception as e:  # health engine optional — never let it crash the guard
         print(f"[note] dependency guard skipped: {e.__class__.__name__}: {e}")
 
+    # 13. URL-provenance guard (anti-fabrication): every external URL hardcoded in tools/*.py and
+    # shared/**/*.py must be DECLARED in tools/url-provenance.json. An undeclared URL is the
+    # confabulation risk — a plausible-looking address that was never verified. Catch it here, not
+    # as a 403 on a teacher's machine.
+    try:
+        from health.health import scan_url_provenance
+        for p in scan_url_provenance():
+            failures.append(f"  x {p['file']}: {p['issue']}")
+    except Exception as e:
+        print(f"[note] url-provenance guard skipped: {e.__class__.__name__}: {e}")
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")
