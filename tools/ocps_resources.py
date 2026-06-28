@@ -401,7 +401,7 @@ def run_fetch(refresh: bool = False) -> None:
         "verified": None,
     }
 
-    RESOURCES_FILE.write_text(json.dumps(resources, indent=2, ensure_ascii=False) + "\n")
+    RESOURCES_FILE.write_text(json.dumps(resources, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Written: {RESOURCES_FILE}", file=sys.stderr)
 
     # Programs file from school choice page
@@ -416,7 +416,7 @@ def run_fetch(refresh: bool = False) -> None:
             "note": "Auto-extracted snippets — verify each program against OCPS School Choice office",
             "programs_detected": programs,
         }
-        PROGRAMS_FILE.write_text(json.dumps(prog_doc, indent=2, ensure_ascii=False) + "\n")
+        PROGRAMS_FILE.write_text(json.dumps(prog_doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         print(f"Written: {PROGRAMS_FILE} ({len(programs)} snippets)", file=sys.stderr)
 
 
@@ -424,7 +424,7 @@ def run_check() -> None:
     if not RESOURCES_FILE.exists():
         print("resources.json not found. Run --fetch first.", file=sys.stderr)
         return
-    data = json.loads(RESOURCES_FILE.read_text())
+    data = json.loads(RESOURCES_FILE.read_text(encoding="utf-8"))
     print(json.dumps(data, indent=2))
 
 
