@@ -1,14 +1,25 @@
 {
-  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. Nothing fabricated.",
+  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. PROVENANCE: no feed URL in this catalog has been confirmed by a live fetch in the build environment (egress-restricted); every entry is verified:false + url_status:'unverified_candidate' and must be confirmed with tools/verify_feeds.py on an open network before it is trusted. Base domains are real; deep RSS/news paths are best-guess patterns. Nothing is presented as confirmed that was not actually fetched.",
   "domain": "education-feeds",
-  "version": "0.3.0",
-  "updated": "2026-06-27",
+  "version": "0.4.0",
+  "updated": "2026-06-28",
   "freshness_policy": {
     "stale_age_days": 365,
-    "supersession_keywords": ["rescinded", "repealed", "archived", "superseded", "discontinued", "program eliminated", "retired"]
+    "supersession_keywords": [
+      "rescinded",
+      "repealed",
+      "archived",
+      "superseded",
+      "discontinued",
+      "program eliminated",
+      "retired"
+    ]
   },
   "layers": {
-    "product_updates": {"enabled": false, "note": "edtech/vendor product-update feeds — OFF unless a teacher opts in"}
+    "product_updates": {
+      "enabled": false,
+      "note": "edtech/vendor product-update feeds — OFF unless a teacher opts in"
+    }
   },
   "feeds": [
     {
@@ -25,12 +36,18 @@
       "type": "feed",
       "parser": "rss",
       "cadence_days": 7,
-      "verified": true,
+      "verified": false,
       "discover_from": "https://www.ed.gov/about/news",
-      "note": "Confirmed RSS at blog.ed.gov/feed — US DOE blog. Newsroom page: https://www.ed.gov/about/news",
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "note": "[corrected 2026-06-28: was marked verified without a live fetch] Confirmed RSS at blog.ed.gov/feed — US DOE blog. Newsroom page: https://www.ed.gov/about/news",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "fl-senate-calendars",
       "url": "https://www.flsenate.gov/PublishedContent/RSS/Calendars.xml",
@@ -48,9 +65,15 @@
       "verified": false,
       "discover_from": "https://www.flsenate.gov/tracker/rss",
       "note": "Candidate URL — the FL Senate tracker/rss page lists available feeds. Run tools/verify_feeds.py --url URL on an open-net machine to confirm. Try also: https://www.flsenate.gov/tracker/rss for the full list of available FL Senate RSS feeds.",
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "fldoe-news",
       "url": "https://www.fldoe.org/newsroom/latest-news/",
@@ -77,9 +100,15 @@
         "summary": "p, .excerpt, .news-description",
         "_note": "Selectors are best-guess defaults — tune after running tools/make_feed.py --url against the live page"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "cpalms-updates",
       "url": "https://www.cpalms.org/",
@@ -106,9 +135,15 @@
         "summary": "p, .excerpt",
         "_note": "Selectors are best-guess defaults — tune after running tools/make_feed.py --url against the live page"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "wida-news",
       "url": "https://wida.wisc.edu/news/feed",
@@ -135,9 +170,15 @@
         "summary": "p, .views-field-body, .field--name-body",
         "_note": "Fallback scrape config if /news/feed 404s — tune after running tools/make_feed.py --url https://wida.wisc.edu/news"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "ocps-news",
       "url": "https://www.ocps.net/departments/media_relations/newsroom",
@@ -164,9 +205,15 @@
         "summary": ".app-post-block-body, p, .fs-entry-summary-description, .excerpt",
         "_note": "Finalsite-specific selectors — tune after running tools/make_feed.py --url against the live OCPS newsroom. Try also the alternate newsroom URL: https://www.ocps.net/94816_3"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "monarch-news",
       "url": "https://www.monarchlearningacademy.com/",
@@ -193,9 +240,15 @@
         "summary": "p, .entry-summary, .excerpt",
         "_note": "Generic WordPress-style selectors — run tools/make_feed.py --url against the live site to discover what's actually there. May need /news or /blog path instead of homepage."
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "edutopia-teaching-strategies",
       "url": "https://www.edutopia.org/rss.xml",
@@ -213,9 +266,15 @@
       "verified": false,
       "discover_from": "https://www.edutopia.org",
       "note": "Edutopia is a well-known education media site. Standard WordPress/Drupal RSS at /rss.xml. Verify with tools/verify_feeds.py.",
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "ascd-blog",
       "url": "https://www.ascd.org/blogs/ascd-blog",
@@ -242,9 +301,15 @@
         "summary": "p, .excerpt, .card-description",
         "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "cast-udl-news",
       "url": "https://www.cast.org/news",
@@ -271,9 +336,15 @@
         "summary": "p, .excerpt, .description",
         "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "fldoe-fast-updates",
       "url": "https://flfast.org",
@@ -300,9 +371,15 @@
         "summary": "p, .description",
         "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "fl-house-education",
       "url": "https://www.myfloridahouse.gov/Sections/Committees/committeesdetail.aspx?CommitteeId=3277",
@@ -319,7 +396,7 @@
       "cadence_days": 7,
       "verified": false,
       "discover_from": "https://www.myfloridahouse.gov",
-      "note": "FL House education committee page. Check for RSS feeds on myfloridahouse.gov. Committee ID may change by session — verify the current committee page.",
+      "note": "CommitteeId is UNVERIFIED and inconsistent across drafts (3277 vs 3210); the real current Education Committee ID must be confirmed on myfloridahouse.gov before use. FL House education committee page. Check for RSS feeds on myfloridahouse.gov. Committee ID may change by session — verify the current committee page.",
       "scrape_config": {
         "news_list_url": "https://www.myfloridahouse.gov/Sections/Committees/committeesdetail.aspx?CommitteeId=3277",
         "items": ".bill-row, .committee-bill, tr, .agenda-item",
@@ -329,9 +406,15 @@
         "summary": ".bill-summary, .short-title",
         "_note": "ASP.NET site — selectors need tuning. May need session-specific committee ID."
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "nctm-news",
       "url": "https://www.nctm.org/News-and-Calendar/",
@@ -358,9 +441,15 @@
         "summary": "p, .excerpt",
         "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     },
-
     {
       "id": "ncte-blog",
       "url": "https://ncte.org/blog/",
@@ -387,7 +476,14 @@
         "summary": "p, .entry-summary, .excerpt",
         "_note": "WordPress site — standard selectors likely work"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": null,
+        "last_status": null
+      },
+      "url_status": "unverified_candidate"
     }
   ]
 }
