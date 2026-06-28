@@ -42,12 +42,13 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": "c9baccac7f1fbd9785bf312a6cd351c5d7db17688d7c35f2dbaffad5338af251",
+        "content_sha256": "ea6a7dd185e35bd7de27f8527f5fa534eb9406c04b989c771524d967d0acbd02",
         "last_checked": "2026-06-28",
-        "last_status": 200
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
       },
-      "url_status": "redirected_no_feed",
-      "probe_note": "[2026-06-28] redirected to https://www.ed.gov/about/homeroom-blog (HTML, not a feed); original path moved",
+      "url_status": "redirected",
+      "probe_note": "[2026-06-28] redirected to https://www.ed.gov/about/homeroom-blog (HTML, not a feed)",
       "url_moved_to": "https://www.ed.gov/about/homeroom-blog"
     },
     {
@@ -72,10 +73,11 @@
         "last_modified": null,
         "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 404
+        "last_status": null,
+        "fetch_prong": null
       },
-      "url_status": "dead_link",
-      "probe_note": "[2026-06-28] HTTP 404: URL confirmed wrong/gone — needs a real replacement"
+      "url_status": "dead_confirmed",
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
     },
     {
       "id": "fldoe-news",
@@ -108,10 +110,11 @@
         "last_modified": null,
         "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 403
+        "last_status": null,
+        "fetch_prong": null
       },
-      "url_status": "exists_bot_blocked",
-      "probe_note": "[2026-06-28] HTTP 403: real page but blocks automated fetch — browser-save only, NOT dead"
+      "url_status": "pending_ignore_robots",
+      "probe_note": "[2026-06-28] robots-blocked — real page; re-probe with --ignore-robots"
     },
     {
       "id": "cpalms-updates",
@@ -144,10 +147,11 @@
         "last_modified": null,
         "content_sha256": "5dc74c11b4788ee996f38d27e0875adc27116de82072b6f75f92302e3ca55b9c",
         "last_checked": "2026-06-28",
-        "last_status": 200
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS"
     },
     {
       "id": "wida-news",
@@ -180,10 +184,11 @@
         "last_modified": null,
         "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 404
+        "last_status": null,
+        "fetch_prong": null
       },
-      "url_status": "dead_link",
-      "probe_note": "[2026-06-28] HTTP 404: URL confirmed wrong/gone — needs a real replacement"
+      "url_status": "dead_confirmed",
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
     },
     {
       "id": "ocps-news",
@@ -216,10 +221,11 @@
         "last_modified": null,
         "content_sha256": "298abd251d45140e9ad7f33c2061205894c222ed6251b3489b28bbdb49406606",
         "last_checked": "2026-06-28",
-        "last_status": 200
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS"
     },
     {
       "id": "monarch-news",
@@ -252,10 +258,11 @@
         "last_modified": null,
         "content_sha256": "1779d6b4d694071269cb6f767ca15aecdc93b4b607ad860a242d6bf3d34fe3ac",
         "last_checked": "2026-06-28",
-        "last_status": 200
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS"
     },
     {
       "id": "edutopia-teaching-strategies",
@@ -279,10 +286,11 @@
         "last_modified": null,
         "content_sha256": "3d4d7d39c92775997e2653594b77866a439664b321e0655233957e6d98d49f72",
         "last_checked": "2026-06-28",
-        "last_status": 200
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
       },
-      "url_status": "not_a_feed_returns_html",
-      "probe_note": "[2026-06-28] returns HTML, not a feed — the RSS path is wrong"
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS"
     },
     {
       "id": "ascd-blog",
@@ -315,10 +323,11 @@
         "last_modified": null,
         "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 404
+        "last_status": null,
+        "fetch_prong": null
       },
-      "url_status": "dead_link",
-      "probe_note": "[2026-06-28] HTTP 404: URL confirmed wrong/gone — needs a real replacement"
+      "url_status": "dead_confirmed",
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
     },
     {
       "id": "cast-udl-news",
@@ -351,10 +360,11 @@
         "last_modified": null,
         "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 404
+        "last_status": null,
+        "fetch_prong": null
       },
-      "url_status": "dead_link",
-      "probe_note": "[2026-06-28] HTTP 404: URL confirmed wrong/gone — needs a real replacement"
+      "url_status": "dead_confirmed",
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
     },
     {
       "id": "fldoe-fast-updates",
@@ -385,12 +395,13 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": "c1162b708ae1e2cdfa04a5db4df91dda1883e9b989f5141ae913acc3b1f2975b",
+        "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 200
+        "last_status": null,
+        "fetch_prong": null
       },
-      "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
+      "url_status": "pending_ignore_robots",
+      "probe_note": "[2026-06-28] robots-blocked — real page; re-probe with --ignore-robots"
     },
     {
       "id": "fl-house-education",
@@ -421,12 +432,13 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": "4d02b97ce738b3ae85c10fe0a9360a572d8561a0df6ac2797d00364b6cf91410",
+        "content_sha256": "2cea3cf9830dda96726d8c7a2bca0d8a22d3bbe9d7a70de814668cb84b0d45b2",
         "last_checked": "2026-06-28",
-        "last_status": 200
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
       },
-      "url_status": "redirected_no_feed",
-      "probe_note": "[2026-06-28] redirected to https://www.flhouse.gov/ (HTML, not a feed); original path moved",
+      "url_status": "redirected",
+      "probe_note": "[2026-06-28] redirected to https://www.flhouse.gov/ (HTML, not a feed)",
       "url_moved_to": "https://www.flhouse.gov/"
     },
     {
@@ -458,12 +470,14 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
+        "content_sha256": "7d20a20afd5ba838260ad8b156aece241db96ca7d2192e2c7f1ab369eeb85f21",
         "last_checked": "2026-06-28",
-        "last_status": 404
+        "last_status": 200,
+        "fetch_prong": "wayback"
       },
-      "url_status": "dead_link",
-      "probe_note": "[2026-06-28] HTTP 404: URL confirmed wrong/gone — needs a real replacement"
+      "url_status": "archived_only_stale",
+      "probe_note": "[2026-06-28] recovered ONLY from Internet Archive snapshot 20221006 — STALE, not live",
+      "url_moved_to": "http://web.archive.org/web/20221006052809/http://www.nctm.org/News-and-Calendar/"
     },
     {
       "id": "ncte-blog",
@@ -496,10 +510,11 @@
         "last_modified": null,
         "content_sha256": "2c5508d93f96a3b2c6c47b805ad3865d5e5001c6be4881bfd37da17c3164207d",
         "last_checked": "2026-06-28",
-        "last_status": 200
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS"
     }
   ]
 }
