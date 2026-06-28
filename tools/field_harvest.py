@@ -87,6 +87,10 @@ def _build_venv() -> bool:
     """Create the isolated venv + install pure-Python deps. Verifies, and cleans up on failure
     so a half-built venv can never strand future runs. Returns True only if deps import."""
     import shutil as _sh
+    deps = list(PINNED_DEPS)
+    want_browser = "--with-browser" in sys.argv  # opt-in headless-browser prong for resilient fetch
+    if want_browser:
+        deps.append("playwright>=1.40")  # pure-Python wheel; the browser is downloaded separately
     print(f"[venv] building isolated environment at {VENV_DIR} (one-time)...", file=sys.stderr)
     try:
         _sh.rmtree(VENV_DIR, ignore_errors=True)  # start clean
@@ -94,8 +98,11 @@ def _build_venv() -> bool:
         vpy = _venv_python(VENV_DIR)
         subprocess.run([str(vpy), "-m", "pip", "install", "--quiet", "--upgrade", "pip"], check=True)
         # --only-binary=:all: guarantees NO source build (no compiler ever); pure-Python deps qualify.
-        subprocess.run([str(vpy), "-m", "pip", "install", "--quiet", "--only-binary=:all:", *PINNED_DEPS],
+        subprocess.run([str(vpy), "-m", "pip", "install", "--quiet", "--only-binary=:all:", *deps],
                        check=True)
+        if want_browser:  # download Chromium into the venv (no system install, no compile)
+            print("[venv] installing Chromium for the headless-browser prong...", file=sys.stderr)
+            subprocess.run([str(vpy), "-m", "playwright", "install", "chromium"], check=False)
         if not _venv_healthy(vpy):
             raise RuntimeError("deps did not import after install")
         print("[venv] ready.", file=sys.stderr)
@@ -217,6 +224,9 @@ def main(argv=None) -> int:
     ap.add_argument("--inbox-only", action="store_true", help="skip live fetches; only ingest saved pages")
     ap.add_argument("--no-venv", action="store_true", help="force stdlib-only mode (no venv/installs)")
     ap.add_argument("--reset-venv", action="store_true", help="delete + rebuild the isolated venv")
+    ap.add_argument("--with-browser", action="store_true",
+                    help="add Playwright + Chromium to the venv for the headless-browser fetch prong "
+                         "(pure-Python wheel; browser downloaded separately — no compiler)")
     args = ap.parse_args(argv)
 
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
