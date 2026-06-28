@@ -1,0 +1,924 @@
+{
+  "_comment": "Polk County Public Schools school + program index. SEED DATA — compiled from web research of the FLDOE MSID database, NCES Common Core of Data (NCES district ID 1201590), and the official Polk County Schools website (polkschoolsfl.com). MSIDs use the '53XXXX' pattern (district 53 + 4-digit school number); where the exact 4-digit school number was not confirmed via FLDOE MSID, a placeholder 'XXXX' suffix is used. Open/close status and program details must be verified against the FLDOE MSID authority before any reliance. NEVER add student or unconsented staff PII here.",
+  "district_name": "Polk County Public Schools",
+  "district_number": "53",
+  "snapshot": "2026-27",
+  "generated": "2026-06-28",
+  "completeness": "partial",
+  "authority": {
+    "school_list": "FLDOE MSID + Polk County Schools website",
+    "district_site": "https://www.polkschoolsfl.com",
+    "nces_district_id": "1201590",
+    "note": "MSID is canonical for the school list + open/closed status. Polk County is Florida district 53, the 6th-largest district in the state with 165+ schools. Key cities: Lakeland, Winter Haven, Bartow (county seat), Haines City, Lake Wales, Auburndale, Mulberry, Davenport, Frostproof, Fort Meade, Eagle Lake, Lake Alfred, Dundee, Poinciana."
+  },
+  "schools": [
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Alta Vista Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Auburndale Central Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Auburndale", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Bartow Elementary Academy", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Ben Hill Griffin Jr. Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Frostproof", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Bethune Academy", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Haines City", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Carlton Palmore Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Chain of Lakes Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "R. Clem Churchwell Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Citrus Ridge: A Civics Academy", "type": "choice", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Davenport", "programs": [
+        {"program_name": "Civics Academy", "program_type": "choice", "focus": "Civics",
+          "grades": "PK-5", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Clarence Boswell Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Auburndale", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Cleveland Court Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Combee Academy of Design and Engineering", "type": "choice", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Design and Engineering Academy", "program_type": "choice", "focus": "STEM",
+          "grades": "PK-5", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Crystal Lake Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Dale R. Fair Babson Park Elementary School", "type": "charter", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": true,
+      "title_i": null, "locale": "Babson Park", "programs": [],
+      "source": "Lake Wales Charter Schools / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Davenport Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Davenport", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Dixieland Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Dr. N.E. Roberts Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Dundee Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Dundee", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Eagle Lake Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Eagle Lake", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Edgar L. Padgett Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Floral Avenue Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Fred G. Garner Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Garden Grove Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Gibbons Street Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Highland City Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Highland City", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Highlands Grove Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Hillcrest Elementary School", "type": "charter", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lake Wales", "programs": [],
+      "source": "Lake Wales Charter Schools / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Horizons Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Davenport", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Inwood Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "James E. Stephens Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Janie Howard Wilson Elementary School", "type": "charter", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lake Wales", "programs": [],
+      "source": "Lake Wales Charter Schools / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Jesse Keen Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Kathleen Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Kingsford Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lake Alfred Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lake Alfred", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lake Shipp Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Laurel Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lena Vista Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Auburndale", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lincoln Avenue Academy", "type": "traditional", "levels": ["ES"],
+      "grades": "K-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Loughman Oaks Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Davenport", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Medulla Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Mulberry Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Mulberry", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "North Lakeland Elementary School of Choice", "type": "choice", "levels": ["ES"],
+      "grades": "K-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "School of Choice", "program_type": "choice", "focus": "General",
+          "grades": "K-5", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Oscar J. Pope Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Haines City", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Palmetto Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Poinciana", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Philip O'Brien Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Pinewood Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Polk Avenue Elementary School", "type": "charter", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lake Wales", "programs": [],
+      "source": "Lake Wales Charter Schools / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Polk City Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "K-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Polk City", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Purcell Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Mulberry", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "R. Bruce Wagner Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Sandhill Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Haines City", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Scott Lake Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Sleepy Hill Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Socrum Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Southwest Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Spessard L. Holland Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Spook Hill Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lake Wales", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Valleyview Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Wahneta Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Walter Caldwell Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Auburndale", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Wendell H. Watson Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Winston Academy of Engineering", "type": "magnet", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Engineering Magnet", "program_type": "magnet", "focus": "STEM / Engineering",
+          "grades": "PK-5", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Jewett School of the Arts", "type": "magnet", "levels": ["ES", "MS"],
+      "grades": "K-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [
+        {"program_name": "Fine Arts Magnet", "program_type": "magnet", "focus": "Fine Arts",
+          "grades": "K-8", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Rochelle School of the Arts", "type": "magnet", "levels": ["ES", "MS"],
+      "grades": "K-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Fine Arts Magnet", "program_type": "magnet", "focus": "Fine Arts",
+          "grades": "K-8", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Davenport School of the Arts", "type": "magnet", "levels": ["ES", "MS"],
+      "grades": "PK-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Davenport", "programs": [
+        {"program_name": "Fine Arts Magnet", "program_type": "magnet", "focus": "Fine Arts",
+          "grades": "PK-8", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Shelley S. Boone Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Haines City", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Crystal Lake Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Denison Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Dundee Ridge Middle Academy", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Dundee", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Edward W. Bok Academy", "type": "charter", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lake Wales", "programs": [],
+      "source": "Lake Wales Charter Schools / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Haines City Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Haines City", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Jere L. Stambaugh Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Auburndale", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lake Alfred-Addair Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lake Alfred", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lake Marion Creek Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Poinciana", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lakeland Highlands Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lawton Chiles Middle Academy", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "McLaughlin Middle School and Fine Arts Academy", "type": "magnet", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lake Wales", "programs": [
+        {"program_name": "Fine Arts Academy", "program_type": "magnet", "focus": "Fine Arts",
+          "grades": "6-8", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Mulberry Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Mulberry", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Sleepy Hill Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Southwest Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Union Academy", "type": "magnet", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [
+        {"program_name": "Magnet Program", "program_type": "magnet", "focus": "General",
+          "grades": "6-8", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Westwood Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Auburndale Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Auburndale", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Bartow Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Davenport High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Davenport", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Fort Meade Middle-Senior High School", "type": "combination", "levels": ["MS", "HS"],
+      "grades": "6-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Fort Meade", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Frostproof Middle-Senior High School", "type": "combination", "levels": ["MS", "HS"],
+      "grades": "6-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Frostproof", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "George W. Jenkins Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Haines City Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Haines City", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Harrison School for the Arts", "type": "magnet", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Performing and Visual Arts Magnet", "program_type": "magnet", "focus": "Performing Arts / Visual Arts",
+          "grades": "9-12", "application_required": true, "status": "active",
+          "source": "harrisonarts.com / polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / harrisonarts.com / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Kathleen Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lake Gibson Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lake Region Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Eagle Lake", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lake Wales Senior High School", "type": "charter", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lake Wales", "programs": [],
+      "source": "Lake Wales Charter Schools / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lakeland Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Mulberry Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Mulberry", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Ridge Community High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Davenport", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Tenoroc Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Winter Haven Senior High School", "type": "traditional", "levels": ["HS"],
+      "grades": "9-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "McKeel Academy of Technology", "type": "charter", "levels": ["MS", "HS"],
+      "grades": "6-12", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Technology-Focused College Preparatory", "program_type": "charter", "focus": "Technology",
+          "grades": "6-12", "application_required": true, "status": "active",
+          "source": "mckeelschools.com (to verify)"}
+      ],
+      "source": "mckeelschools.com / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "McKeel Academy Central", "type": "charter", "levels": ["ES"],
+      "grades": "PK-6", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Technology-Focused College Preparatory", "program_type": "charter", "focus": "Technology",
+          "grades": "PK-6", "application_required": true, "status": "active",
+          "source": "mckeelschools.com (to verify)"}
+      ],
+      "source": "mckeelschools.com / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "South McKeel Academy", "type": "charter", "levels": ["ES", "MS"],
+      "grades": "K-8", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Technology-Focused College Preparatory", "program_type": "charter", "focus": "Technology",
+          "grades": "K-8", "application_required": true, "status": "active",
+          "source": "mckeelschools.com (to verify)"}
+      ],
+      "source": "mckeelschools.com / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Berkley Accelerated Middle School", "type": "charter", "levels": ["MS", "HS"],
+      "grades": "6-10", "status": "open", "charter": true,
+      "title_i": null, "locale": "Auburndale", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Ridgeview Global Studies Academy", "type": "charter", "levels": ["ES", "MS", "HS"],
+      "grades": "K-12", "status": "open", "charter": true,
+      "title_i": null, "locale": "Davenport", "programs": [
+        {"program_name": "Global Studies", "program_type": "charter", "focus": "International / Global Studies",
+          "grades": "K-12", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Magnolia Montessori Academy", "type": "charter", "levels": ["ES", "MS"],
+      "grades": "K-8", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Montessori", "program_type": "charter", "focus": "Montessori",
+          "grades": "K-8", "application_required": true, "status": "active",
+          "source": "magnoliamontessoriacademy.com (to verify)"}
+      ],
+      "source": "magnoliamontessoriacademy.com / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lakeland Montessori School House", "type": "charter", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Montessori", "program_type": "charter", "focus": "Montessori",
+          "grades": "PK-5", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Mi Escuela Montessori", "type": "charter", "levels": ["ES", "MS"],
+      "grades": "K-8", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Dual-Language Montessori", "program_type": "charter", "focus": "Montessori / Dual-Language Immersion",
+          "grades": "K-8", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Discovery Academy of Lake Alfred", "type": "charter", "levels": ["ES", "MS"],
+      "grades": "K-8", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lake Alfred", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Achievement Academy", "type": "charter", "levels": ["ES", "MS"],
+      "grades": "K-8", "status": "open", "charter": true,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Polk State College Collegiate High School (Lakeland)", "type": "charter", "levels": ["HS"],
+      "grades": "10-12", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Dual Enrollment Collegiate", "program_type": "charter", "focus": "Dual Enrollment / College Preparatory",
+          "grades": "10-12", "application_required": true, "status": "active",
+          "source": "polk.edu (to verify)"}
+      ],
+      "source": "polk.edu / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Polk State Chain of Lakes Collegiate High School", "type": "charter", "levels": ["HS"],
+      "grades": "10-12", "status": "open", "charter": true,
+      "title_i": null, "locale": "Winter Haven", "programs": [
+        {"program_name": "Dual Enrollment Collegiate", "program_type": "charter", "focus": "Dual Enrollment / College Preparatory",
+          "grades": "10-12", "application_required": true, "status": "active",
+          "source": "polk.edu (to verify)"}
+      ],
+      "source": "polk.edu / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Polk Pre-Collegiate Academy", "type": "charter", "levels": ["MS"],
+      "grades": "6-9", "status": "open", "charter": true,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Pre-Collegiate", "program_type": "charter", "focus": "College Preparatory",
+          "grades": "6-9", "application_required": true, "status": "active",
+          "source": "polk.edu (to verify)"}
+      ],
+      "source": "polk.edu / FLDOE MSID", "verified": null},
+
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Ridge Technical College", "type": "career_technical", "levels": ["HS"],
+      "grades": "9-12+", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [
+        {"program_name": "Career and Technical Education", "program_type": "career_technical", "focus": "CTE / Industry Certifications",
+          "grades": "9-12+", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Maynard E. Traviss Technical College", "type": "career_technical", "levels": ["HS"],
+      "grades": "9-12+", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Career and Technical Education", "program_type": "career_technical", "focus": "CTE / Industry Certifications",
+          "grades": "9-12+", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Daniel Jenkins Academy of Technology", "type": "alternative", "levels": ["MS", "HS"],
+      "grades": "6-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Haines City", "programs": [
+        {"program_name": "Technology Academy (Alternative)", "program_type": "alternative", "focus": "Technology / Alternative Education",
+          "grades": "6-12", "application_required": false, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Bill Duncan Opportunity Center", "type": "alternative", "levels": ["MS", "HS"],
+      "grades": "6-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Jean O'Dell Learning Center", "type": "exceptional", "levels": ["ES", "MS", "HS"],
+      "grades": "PK-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [
+        {"program_name": "Exceptional Student Education Center", "program_type": "ESE", "focus": "ESE / Special Needs",
+          "grades": "PK-12", "application_required": false, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Doris A. Sanders Learning Center", "type": "exceptional", "levels": ["ES", "MS", "HS"],
+      "grades": "PK-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [
+        {"program_name": "Exceptional Student Education Center", "program_type": "ESE", "focus": "ESE / Special Needs",
+          "grades": "PK-12", "application_required": false, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Frank E. Brigham Academy", "type": "exceptional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [
+        {"program_name": "Exceptional Student Education", "program_type": "ESE", "focus": "ESE / Special Needs",
+          "grades": "PK-5", "application_required": false, "status": "active",
+          "source": "polkschoolsfl.com (to verify)"}
+      ],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Polk Virtual School", "type": "virtual", "levels": ["ES", "MS", "HS"],
+      "grades": "K-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [
+        {"program_name": "Virtual Instruction Program", "program_type": "virtual", "focus": "Full-time Virtual Education",
+          "grades": "K-12", "application_required": true, "status": "active",
+          "source": "polkschoolsfl.com — note: district announced closure of PVS program; verify current status"}
+      ],
+      "source": "FLDOE MSID / polkschoolsfl.com", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Polk Virtual Franchise", "type": "virtual", "levels": ["ES", "MS", "HS"],
+      "grades": "K-12", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [
+        {"program_name": "Virtual Franchise (Florida Virtual School)", "program_type": "virtual", "focus": "Virtual Education via FLVS",
+          "grades": "K-12", "application_required": true, "status": "active",
+          "source": "FLDOE MSID (NCES ID 120159004180)"}
+      ],
+      "source": "FLDOE MSID / NCES", "verified": null},
+
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Haines City Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Haines City", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Bartow Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Bartow", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Kathleen Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lake Gibson Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lakeland", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Winter Haven Middle School", "type": "traditional", "levels": ["MS"],
+      "grades": "6-8", "status": "open", "charter": false,
+      "title_i": null, "locale": "Winter Haven", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Fort Meade Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Fort Meade", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Frostproof Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Frostproof", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Lake Wales Elementary School", "type": "traditional", "levels": ["ES"],
+      "grades": "PK-5", "status": "open", "charter": false,
+      "title_i": null, "locale": "Lake Wales", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID", "verified": null},
+
+    {"msid": "53XXXX", "district_number": "53", "district_name": "Polk",
+      "school_name": "Auburndale High School Ninth Grade Center", "type": "traditional", "levels": ["HS"],
+      "grades": "9", "status": "open", "charter": false,
+      "title_i": null, "locale": "Auburndale", "programs": [],
+      "source": "Polk County Schools website / FLDOE MSID — verify if separate campus", "verified": null}
+  ]
+}
