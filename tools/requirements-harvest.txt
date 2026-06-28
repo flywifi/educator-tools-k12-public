@@ -1,0 +1,6 @@
+# Pinned deps for tools/field_harvest.py — installed ONLY into its isolated .harvest-venv/,
+# never your system Python. Rebuild anytime with:  python tools/field_harvest.py --reset-venv
+requests==2.32.3
+beautifulsoup4==4.12.3
+lxml==5.2.2
+certifi>=2024.2.2
