@@ -45,6 +45,11 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "canonical-sources" / "registries" / "msid-cache"
 SCHOOLS_DIR = ROOT / "canonical-sources" / "schools"
 
+# NOTE: FLDOE relocates this file every year and blocks non-browser requests, so the
+# auto-fetch URL is UNVERIFIED and may 403. The reliable path is to download the current
+# "Master School Identification File" by hand from the FLDOE page below (one click in a
+# browser) and point the tool at it with --msid-file. Auto-fetch is best-effort only.
+MSID_PAGE = "https://www.fldoe.org/accountability/data-sys/school-fin-data/master-school-id-files.stml"
 MSID_URL = (
     "https://www.fldoe.org/core/fileparse.php/7584/urlt/MasterSchoolID.csv"
 )
@@ -199,7 +204,7 @@ def _district_folder(district_number: str) -> Path | None:
     # Fallback: any folder whose schools.json has matching district_number
     for p in SCHOOLS_DIR.rglob("schools.json"):
         try:
-            d = json.loads(p.read_text())
+            d = json.loads(p.read_text(encoding="utf-8"))
             if str(d.get("district_number", "")).zfill(2) == district_number.zfill(2):
                 return p
         except Exception:
@@ -219,7 +224,7 @@ def match_district(district_number: str, msid_rows: list[dict],
     if schools_path is None:
         return {"error": f"No schools.json found for district {district_number}"}
 
-    data = json.loads(schools_path.read_text())
+    data = json.loads(schools_path.read_text(encoding="utf-8"))
     schools = data.get("schools", [])
 
     # Filter MSID rows to this district
@@ -266,7 +271,7 @@ def match_district(district_number: str, msid_rows: list[dict],
     }
 
     if apply and confirm:
-        schools_path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+        schools_path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         stats["written"] = True
     elif apply:
         stats["dry_run"] = True
