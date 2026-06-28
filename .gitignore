@@ -40,3 +40,7 @@ shared/feeds/*.local.db
 secrets.json
 *.secrets.json
 *.local.env
+.harvest-venv/
+harvest_inbox/
+tos_update_*.zip
+_harvest_*/
