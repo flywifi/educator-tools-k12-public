@@ -39,10 +39,12 @@
         "last_checked": "2026-06-28",
         "last_status": 200,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
       },
       "probe_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS",
+      "verified": false
     },
     {
       "id": "cpalms-standards",
@@ -58,10 +60,12 @@
         "last_checked": "2026-06-28",
         "last_status": 200,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
       },
       "probe_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS",
+      "verified": false
     },
     {
       "id": "fldoe-standards",
@@ -75,12 +79,13 @@
         "last_modified": null,
         "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 403,
+        "last_status": null,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": null
       },
-      "probe_status": "exists_bot_blocked",
-      "probe_note": "[2026-06-28] HTTP 403: real page but blocks automated fetch — browser-save only, NOT dead"
+      "probe_status": "pending_ignore_robots",
+      "probe_note": "[2026-06-28] robots-blocked — real page; re-probe with --ignore-robots"
     },
     {
       "id": "fldoe-feaps",
@@ -94,12 +99,13 @@
         "last_modified": null,
         "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 403,
+        "last_status": null,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": null
       },
-      "probe_status": "exists_bot_blocked",
-      "probe_note": "[2026-06-28] HTTP 403: real page but blocks automated fetch — browser-save only, NOT dead"
+      "probe_status": "pending_ignore_robots",
+      "probe_note": "[2026-06-28] robots-blocked — real page; re-probe with --ignore-robots"
     },
     {
       "id": "fldoe-fast",
@@ -113,12 +119,13 @@
         "last_modified": null,
         "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 403,
+        "last_status": null,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": null
       },
-      "probe_status": "exists_bot_blocked",
-      "probe_note": "[2026-06-28] HTTP 403: real page but blocks automated fetch — browser-save only, NOT dead"
+      "probe_status": "pending_ignore_robots",
+      "probe_note": "[2026-06-28] robots-blocked — real page; re-probe with --ignore-robots"
     },
     {
       "id": "fl-admin-code-6a",
@@ -130,14 +137,15 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": "09eb05692d3c051d381c52c93684ca6879fe6982bab87e9a64b20bb4d8e49677",
+        "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 200,
+        "last_status": null,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": null
       },
-      "probe_status": "redirected_no_feed",
-      "probe_note": "[2026-06-28] redirected to https://flrules.org/gateway/ChapterHome.asp?Chapter=6A-1 (HTML, not a feed); original path moved",
+      "probe_status": "pending_ignore_robots",
+      "probe_note": "[2026-06-28] robots-blocked — real page; re-probe with --ignore-robots",
       "supersession_flag": [
         "repealed"
       ]
@@ -156,10 +164,12 @@
         "last_checked": "2026-06-28",
         "last_status": 200,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
       },
       "probe_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS",
+      "verified": false
     },
     {
       "id": "fl-house-education",
@@ -171,14 +181,17 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": "782b7aecb0a3402707bc8b04414fd17cf271e9ee107cf36a3fbb44e2ccb73ed2",
+        "content_sha256": "fa2bcdf091e516c6f3e097b668780071cc4b8347a533ab593637814b856c65b2",
         "last_checked": "2026-06-28",
         "last_status": 200,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
       },
-      "probe_status": "redirected_no_feed",
-      "probe_note": "[2026-06-28] redirected to https://www.flhouse.gov/ (HTML, not a feed); original path moved"
+      "probe_status": "redirected",
+      "probe_note": "[2026-06-28] redirected to https://www.flhouse.gov/ (HTML, not a feed)",
+      "verified": false,
+      "url_moved_to": "https://www.flhouse.gov/"
     },
     {
       "id": "wida-standards",
@@ -194,10 +207,12 @@
         "last_checked": "2026-06-28",
         "last_status": 200,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
       },
       "probe_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS",
+      "verified": false
     },
     {
       "id": "asn-standards",
@@ -209,14 +224,17 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
+        "content_sha256": "0a2b41b350308bafa086caed32a3a3e8f4e00ad4af49ddc1fb6640be75bff4e7",
         "last_checked": "2026-06-28",
-        "last_status": null,
+        "last_status": 200,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": "wayback"
       },
-      "probe_status": "dead_host_unreachable",
-      "probe_note": "[2026-06-28] host refused connection (dead) — replace/remove"
+      "probe_status": "archived_only_stale",
+      "probe_note": "[2026-06-28] recovered ONLY from Internet Archive snapshot 20150302 — STALE, not live",
+      "verified": false,
+      "url_moved_to": "http://web.archive.org/web/20150302080252/http://asn.desire2learn.com:80/resources/ASNJurisdiction/FL"
     }
   ]
 }

@@ -32,12 +32,13 @@
         "last_modified": null,
         "content_sha256": null,
         "last_checked": "2026-06-28",
-        "last_status": 403,
+        "last_status": null,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": null
       },
-      "probe_status": "exists_bot_blocked",
-      "probe_note": "[2026-06-28] HTTP 403: real page but blocks automated fetch — browser-save only, NOT dead"
+      "probe_status": "pending_ignore_robots",
+      "probe_note": "[2026-06-28] robots-blocked — real page; re-probe with --ignore-robots"
     },
     {
       "id": "ocps-school-choice",
@@ -53,10 +54,12 @@
         "last_checked": "2026-06-28",
         "last_status": 200,
         "effective_date": null,
-        "superseded_by": null
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
       },
       "probe_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS",
+      "verified": false
     }
   ]
 }
