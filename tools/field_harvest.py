@@ -42,12 +42,11 @@ from pathlib import Path
 # third-party import. Pinned, isolated, disposable.
 # ---------------------------------------------------------------------------
 
-PINNED_DEPS = [
-    "requests==2.32.3",
-    "beautifulsoup4==4.12.3",
-    "lxml==5.2.2",
-    "certifi>=2024.2.2",
-]
+# PURE-PYTHON ONLY — no C extensions, so nothing ever compiles (no lxml/bs4 needed; the parsing
+# is stdlib regex in msid_lookup.py). `requests` ships universal wheels and pulls only pure-Python
+# deps (urllib3, certifi, idna, charset-normalizer). This is the whole anti-dependency-hell trick:
+# if a wheel would need a compiler, it does NOT belong here.
+PINNED_DEPS = ["requests>=2.31,<3"]
 
 
 def _find_root(start: Path) -> Path:
@@ -72,18 +71,39 @@ def _venv_python(venv: Path) -> Path:
     return venv / sub / exe
 
 
+def _venv_healthy(vpy: Path) -> bool:
+    """A venv is only 'healthy' if its python exists AND the deps actually import."""
+    if not vpy.exists():
+        return False
+    try:
+        r = subprocess.run([str(vpy), "-c", "import requests"],
+                           capture_output=True, timeout=30)
+        return r.returncode == 0
+    except Exception:
+        return False
+
+
 def _build_venv() -> bool:
-    """Create the isolated venv + install pinned deps. Returns True on success."""
+    """Create the isolated venv + install pure-Python deps. Verifies, and cleans up on failure
+    so a half-built venv can never strand future runs. Returns True only if deps import."""
+    import shutil as _sh
     print(f"[venv] building isolated environment at {VENV_DIR} (one-time)...", file=sys.stderr)
     try:
+        _sh.rmtree(VENV_DIR, ignore_errors=True)  # start clean
         subprocess.run([sys.executable, "-m", "venv", str(VENV_DIR)], check=True)
         vpy = _venv_python(VENV_DIR)
         subprocess.run([str(vpy), "-m", "pip", "install", "--quiet", "--upgrade", "pip"], check=True)
-        subprocess.run([str(vpy), "-m", "pip", "install", "--quiet", *PINNED_DEPS], check=True)
+        # --only-binary=:all: guarantees NO source build (no compiler ever); pure-Python deps qualify.
+        subprocess.run([str(vpy), "-m", "pip", "install", "--quiet", "--only-binary=:all:", *PINNED_DEPS],
+                       check=True)
+        if not _venv_healthy(vpy):
+            raise RuntimeError("deps did not import after install")
         print("[venv] ready.", file=sys.stderr)
         return True
     except Exception as e:
-        print(f"[venv] could not build venv ({e}); falling back to stdlib-only mode.", file=sys.stderr)
+        print(f"[venv] could not build venv ({e}); cleaning up, using stdlib-only mode "
+              f"(urllib fetch — fully functional).", file=sys.stderr)
+        _sh.rmtree(VENV_DIR, ignore_errors=True)
         return False
 
 
@@ -99,7 +119,8 @@ def bootstrap() -> None:
         shutil.rmtree(VENV_DIR, ignore_errors=True)
         print("[venv] reset.", file=sys.stderr)
     vpy = _venv_python(VENV_DIR)
-    if not vpy.exists():
+    # Rebuild if missing OR unhealthy (e.g. a previous half-finished install).
+    if not _venv_healthy(vpy):
         if not _build_venv():
             return  # fall through to stdlib-only in this same process
     # re-run this script using the venv's python
@@ -212,7 +233,9 @@ def main(argv=None) -> int:
     say("=" * 68)
     say(f"TOS field harvest  —  {stamp} UTC")
     say(f"Repo root: {ROOT}")
-    say(f"Mode: {'venv (requests available)' if _HAS_REQUESTS else 'stdlib-only'}")
+    _in_venv = os.environ.get("HARVEST_VENV") == "1"
+    _fetcher = "requests" if _HAS_REQUESTS else "urllib (stdlib)"
+    say(f"Mode: {'isolated venv' if _in_venv else 'stdlib-only'}  |  fetcher: {_fetcher}")
     say("=" * 68)
 
     # 1. Environment doctor
