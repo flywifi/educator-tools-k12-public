@@ -187,17 +187,30 @@ def verdict(rep: dict) -> list[str]:
                     "workflow needs NOTHING else installed.")
 
     pythons = rep["all_pythons_found"]
-    distinct = {p["path"] for p in pythons}
-    if len(distinct) > 1:
-        msgs.append(f"[WARN] {len(distinct)} different Python interpreters found on PATH:")
-        for p in pythons:
+
+    def _is_store_alias(path: str) -> bool:
+        # Microsoft Store shims live under ...\Microsoft\WindowsApps\ — they are redirects to a
+        # real install (or the Store), NOT separate interpreters. Benign unless there is NO real one.
+        return "windowsapps" in path.lower()
+
+    real = [p for p in pythons if not _is_store_alias(p["path"])]
+    aliases = [p for p in pythons if _is_store_alias(p["path"])]
+    distinct_real = {p["path"] for p in real}
+
+    if len(distinct_real) > 1:
+        msgs.append(f"[WARN] {len(distinct_real)} DIFFERENT real Python installs found "
+                    "(this is the split that causes pip/import mismatches):")
+        for p in real:
             here = "  <-- running THIS one" if p["path"] == sys.executable else ""
             msgs.append(f"        {p['name']}: {p['version']}  {p['path']}{here}")
         msgs.append("        If `pip install X` says 'already satisfied' but a script says "
                     "'ModuleNotFoundError: X', they're pointing at different installs. FIX: always use")
         msgs.append(f"        {Path(sys.executable).name} -m pip install <pkg>   (binds pip to the python that runs the tools)")
     else:
-        msgs.append("[OK] One Python on PATH — no interpreter/pip split to worry about.")
+        msgs.append("[OK] One real Python install — no interpreter/pip split to worry about.")
+    if aliases:
+        msgs.append(f"[INFO] {len(aliases)} Microsoft Store alias(es) in WindowsApps (benign redirects, "
+                    "not separate installs): " + ", ".join(sorted({Path(a['path']).name for a in aliases})))
 
     if not rep["running_python"]["in_repo_root"]:
         msgs.append(f"[NOTE] You're not in the repo root ({rep['running_python']['repo_root']}). "
