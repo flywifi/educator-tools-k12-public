@@ -1,5 +1,29 @@
 # Harvesting real school data (token-free, offline parsing)
 
+## Dependencies — what you actually need
+
+**The reliable workflow (save EDS page → parse `.html` → stamp MSIDs → query) needs NOTHING but
+Python 3.8+.** It is pure standard library. No `pip install`, ever.
+
+| If you do this | You need |
+|---|---|
+| Save the EDS page + `msid_lookup.py` (`.html`) + `schools.py` query | **nothing** (stdlib) |
+| Read an `.xlsx` MSID file (only if FLDOE ships one) | `openpyxl` |
+| Live `--fetch` / `ocps_resources.py` crawl (FLDOE blocks bots anyway) | `requests`, `beautifulsoup4` |
+
+**If anything dependency-related misbehaves, run the doctor first** (also pure stdlib, always runs):
+
+```bash
+python tools/doctor_env.py          # full report + verdict
+python tools/doctor_env.py --json   # paste this back to Claude if stuck
+```
+
+It finds every Python install on your machine (the common Windows trap is having one under your
+user profile AND one in a shared/all-users location), tells you which one runs the tools, whether
+`pip` installs into that same one, and the exact fix. **Golden rule when two Pythons exist:** install
+with `python -m pip install <pkg>` (binds pip to the python that runs the tools), never bare `pip`.
+
+
 The school indexes here are **curated seeds**; real FLDOE Master School IDs are stamped in by
 parsing the authoritative FLDOE source **offline** with `tools/msid_lookup.py` — no live network,
 no model tokens.
