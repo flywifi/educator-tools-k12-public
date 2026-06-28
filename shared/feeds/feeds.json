@@ -108,13 +108,13 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
+        "content_sha256": "5869c034302d063fda4204a9f79a876c69b3eb417525474633638aefa89fbfb0",
         "last_checked": "2026-06-28",
-        "last_status": null,
-        "fetch_prong": null
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
       },
-      "url_status": "pending_ignore_robots",
-      "probe_note": "[2026-06-28] robots-blocked — real page; re-probe with --ignore-robots"
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     },
     {
       "id": "cpalms-updates",
@@ -151,7 +151,7 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     },
     {
       "id": "wida-news",
@@ -225,7 +225,7 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     },
     {
       "id": "monarch-news",
@@ -262,7 +262,7 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     },
     {
       "id": "edutopia-teaching-strategies",
@@ -290,7 +290,7 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     },
     {
       "id": "ascd-blog",
@@ -395,13 +395,13 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
+        "content_sha256": "c1162b708ae1e2cdfa04a5db4df91dda1883e9b989f5141ae913acc3b1f2975b",
         "last_checked": "2026-06-28",
-        "last_status": null,
-        "fetch_prong": null
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
       },
-      "url_status": "pending_ignore_robots",
-      "probe_note": "[2026-06-28] robots-blocked — real page; re-probe with --ignore-robots"
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     },
     {
       "id": "fl-house-education",
@@ -432,7 +432,7 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": "2cea3cf9830dda96726d8c7a2bca0d8a22d3bbe9d7a70de814668cb84b0d45b2",
+        "content_sha256": "b6e1aeb6b66a38edf29c9e9aeba63c118a63f407f84d94039ceaf4e63d0f0ff9",
         "last_checked": "2026-06-28",
         "last_status": 200,
         "fetch_prong": "browser_headers"
@@ -470,13 +470,13 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": "7d20a20afd5ba838260ad8b156aece241db96ca7d2192e2c7f1ab369eeb85f21",
+        "content_sha256": "1a278a4e1e789a20bd58d0024b3dcdb4abcfe174d88ef6825905145eae965096",
         "last_checked": "2026-06-28",
         "last_status": 200,
         "fetch_prong": "wayback"
       },
       "url_status": "archived_only_stale",
-      "probe_note": "[2026-06-28] recovered ONLY from Internet Archive snapshot 20221006 — STALE, not live",
+      "probe_note": "[2026-06-28] recovered ONLY from an OLD Wayback snapshot (1361d old) — STALE, likely defunct",
       "url_moved_to": "http://web.archive.org/web/20221006052809/http://www.nctm.org/News-and-Calendar/"
     },
     {
@@ -514,7 +514,7 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     }
   ]
 }
