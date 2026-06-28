@@ -42,11 +42,13 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "content_sha256": "c9baccac7f1fbd9785bf312a6cd351c5d7db17688d7c35f2dbaffad5338af251",
+        "last_checked": "2026-06-28",
+        "last_status": 200
       },
-      "url_status": "unverified_candidate"
+      "url_status": "redirected_no_feed",
+      "probe_note": "[2026-06-28] redirected to https://www.ed.gov/about/homeroom-blog (HTML, not a feed); original path moved",
+      "url_moved_to": "https://www.ed.gov/about/homeroom-blog"
     },
     {
       "id": "fl-senate-calendars",
@@ -69,10 +71,11 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "last_checked": "2026-06-28",
+        "last_status": 404
       },
-      "url_status": "unverified_candidate"
+      "url_status": "dead_link",
+      "probe_note": "[2026-06-28] HTTP 404: URL confirmed wrong/gone — needs a real replacement"
     },
     {
       "id": "fldoe-news",
@@ -104,10 +107,11 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "last_checked": "2026-06-28",
+        "last_status": 403
       },
-      "url_status": "unverified_candidate"
+      "url_status": "exists_bot_blocked",
+      "probe_note": "[2026-06-28] HTTP 403: real page but blocks automated fetch — browser-save only, NOT dead"
     },
     {
       "id": "cpalms-updates",
@@ -138,11 +142,12 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "content_sha256": "5dc74c11b4788ee996f38d27e0875adc27116de82072b6f75f92302e3ca55b9c",
+        "last_checked": "2026-06-28",
+        "last_status": 200
       },
-      "url_status": "unverified_candidate"
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
     },
     {
       "id": "wida-news",
@@ -174,10 +179,11 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "last_checked": "2026-06-28",
+        "last_status": 404
       },
-      "url_status": "unverified_candidate"
+      "url_status": "dead_link",
+      "probe_note": "[2026-06-28] HTTP 404: URL confirmed wrong/gone — needs a real replacement"
     },
     {
       "id": "ocps-news",
@@ -208,11 +214,12 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "content_sha256": "298abd251d45140e9ad7f33c2061205894c222ed6251b3489b28bbdb49406606",
+        "last_checked": "2026-06-28",
+        "last_status": 200
       },
-      "url_status": "unverified_candidate"
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
     },
     {
       "id": "monarch-news",
@@ -243,11 +250,12 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "content_sha256": "1779d6b4d694071269cb6f767ca15aecdc93b4b607ad860a242d6bf3d34fe3ac",
+        "last_checked": "2026-06-28",
+        "last_status": 200
       },
-      "url_status": "unverified_candidate"
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
     },
     {
       "id": "edutopia-teaching-strategies",
@@ -269,11 +277,12 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "content_sha256": "3d4d7d39c92775997e2653594b77866a439664b321e0655233957e6d98d49f72",
+        "last_checked": "2026-06-28",
+        "last_status": 200
       },
-      "url_status": "unverified_candidate"
+      "url_status": "not_a_feed_returns_html",
+      "probe_note": "[2026-06-28] returns HTML, not a feed — the RSS path is wrong"
     },
     {
       "id": "ascd-blog",
@@ -305,10 +314,11 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "last_checked": "2026-06-28",
+        "last_status": 404
       },
-      "url_status": "unverified_candidate"
+      "url_status": "dead_link",
+      "probe_note": "[2026-06-28] HTTP 404: URL confirmed wrong/gone — needs a real replacement"
     },
     {
       "id": "cast-udl-news",
@@ -340,10 +350,11 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "last_checked": "2026-06-28",
+        "last_status": 404
       },
-      "url_status": "unverified_candidate"
+      "url_status": "dead_link",
+      "probe_note": "[2026-06-28] HTTP 404: URL confirmed wrong/gone — needs a real replacement"
     },
     {
       "id": "fldoe-fast-updates",
@@ -374,11 +385,12 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "content_sha256": "c1162b708ae1e2cdfa04a5db4df91dda1883e9b989f5141ae913acc3b1f2975b",
+        "last_checked": "2026-06-28",
+        "last_status": 200
       },
-      "url_status": "unverified_candidate"
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
     },
     {
       "id": "fl-house-education",
@@ -409,11 +421,13 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "content_sha256": "4d02b97ce738b3ae85c10fe0a9360a572d8561a0df6ac2797d00364b6cf91410",
+        "last_checked": "2026-06-28",
+        "last_status": 200
       },
-      "url_status": "unverified_candidate"
+      "url_status": "redirected_no_feed",
+      "probe_note": "[2026-06-28] redirected to https://www.flhouse.gov/ (HTML, not a feed); original path moved",
+      "url_moved_to": "https://www.flhouse.gov/"
     },
     {
       "id": "nctm-news",
@@ -445,10 +459,11 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "last_checked": "2026-06-28",
+        "last_status": 404
       },
-      "url_status": "unverified_candidate"
+      "url_status": "dead_link",
+      "probe_note": "[2026-06-28] HTTP 404: URL confirmed wrong/gone — needs a real replacement"
     },
     {
       "id": "ncte-blog",
@@ -479,11 +494,12 @@
       "state": {
         "etag": null,
         "last_modified": null,
-        "content_sha256": null,
-        "last_checked": null,
-        "last_status": null
+        "content_sha256": "2c5508d93f96a3b2c6c47b805ad3865d5e5001c6be4881bfd37da17c3164207d",
+        "last_checked": "2026-06-28",
+        "last_status": 200
       },
-      "url_status": "unverified_candidate"
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] page is live (200) but exposes no discoverable RSS feed"
     }
   ]
 }
