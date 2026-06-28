@@ -70,7 +70,7 @@ def _district_stats(alias: str) -> dict:
     path = SCHOOLS_DIR / alias / "schools.json"
     if not path.exists():
         return {"file": str(path), "exists": False}
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding="utf-8"))
     schools = data.get("schools", [])
     real = sum(1 for s in schools
                if s.get("msid") and "X" not in str(s["msid"]).upper() and len(str(s["msid"])) == 6)
@@ -94,19 +94,24 @@ def harvest(districts: list[str], do_resources: bool, do_push: bool) -> None:
     note(f"# Local harvest started {started}")
 
     # --- Step 1: fetch the FLDOE MSID file (once) -------------------------------
-    note("\n## Step 1 — fetch FLDOE Master School ID file")
+    note("\n## Step 1 - fetch FLDOE Master School ID file")
     rc, out = _run([sys.executable, str(TOOLS / "msid_lookup.py"), "--fetch"])
     note(f"  exit={rc}")
     msid_ok = rc == 0
     if not msid_ok:
-        note("  MSID fetch FAILED — MSID matching will be skipped. (Check network / FLDOE URL.)")
-        note("  " + out.strip().splitlines()[-1] if out.strip() else "")
+        note("  MSID auto-fetch FAILED (FLDOE relocates this file yearly and blocks bots).")
+        note("  RELIABLE PATH: download the 'Master School Identification File' in a browser from")
+        note("    https://www.fldoe.org/accountability/data-sys/school-fin-data/master-school-id-files.stml")
+        note("  then re-run, e.g.:")
+        note("    python3 tools/msid_lookup.py --match --district 48 --apply --confirm \\")
+        note("      --msid-file C:\\path\\to\\MasterSchoolID.csv")
+        note("  " + (out.strip().splitlines()[-1] if out.strip() else ""))
 
     # --- Step 2: match + apply MSIDs per district -------------------------------
     before = {DISTRICTS[d]: _district_stats(DISTRICTS[d]) for d in districts if d in DISTRICTS}
 
     if msid_ok:
-        note("\n## Step 2 — match + apply real MSIDs")
+        note("\n## Step 2 - match + apply real MSIDs")
         for d in districts:
             alias = DISTRICTS.get(d)
             if not alias:
@@ -119,22 +124,22 @@ def harvest(districts: list[str], do_resources: bool, do_push: bool) -> None:
             tail = out.strip().splitlines()[-1] if out.strip() else ""
             note(f"  {alias} (district {d}): exit={rc}  {tail}")
     else:
-        note("\n## Step 2 — SKIPPED (no MSID file)")
+        note("\n## Step 2 - SKIPPED (no MSID file)")
 
     after = {DISTRICTS[d]: _district_stats(DISTRICTS[d]) for d in districts if d in DISTRICTS}
 
     # --- Step 3: OCPS resources crawl (only if OCPS in scope) -------------------
     if do_resources and "48" in districts:
-        note("\n## Step 3 — crawl OCPS public resource pages")
+        note("\n## Step 3 - crawl OCPS public resource pages")
         rc, out = _run([sys.executable, str(TOOLS / "ocps_resources.py"), "--fetch"])
         note(f"  exit={rc}")
         if rc != 0 and out.strip():
             note("  " + out.strip().splitlines()[-1])
     else:
-        note("\n## Step 3 — resources crawl skipped")
+        note("\n## Step 3 - resources crawl skipped")
 
     # --- Step 4: write the report -----------------------------------------------
-    note("\n## Step 4 — write HARVEST_REPORT.md")
+    note("\n## Step 4 - write HARVEST_REPORT.md")
     lines = [
         "# School Data Harvest Report",
         "",
@@ -143,7 +148,7 @@ def harvest(districts: list[str], do_resources: bool, do_push: bool) -> None:
         f"- **MSID file fetched:** {'yes' if msid_ok else 'NO — fetch failed'}",
         f"- **Districts processed:** {', '.join(DISTRICTS[d] for d in districts if d in DISTRICTS)}",
         "",
-        "## MSID coverage (before → after)",
+        "## MSID coverage (before vs after)",
         "",
         "| District | Schools | Real MSID before | Real MSID after | Still placeholder |",
         "|---|---|---|---|---|",
@@ -170,12 +175,12 @@ def harvest(districts: list[str], do_resources: bool, do_push: bool) -> None:
         "`source`/`verified` provenance. `human_review_required: true`.",
         "",
     ]
-    REPORT.write_text("\n".join(lines) + "\n")
+    REPORT.write_text("\n".join(lines) + "\n", encoding="utf-8")
     note(f"  wrote {REPORT}")
 
     # --- Step 5: optional push --------------------------------------------------
     if do_push:
-        note("\n## Step 5 — commit + push (token-free report-back channel)")
+        note("\n## Step 5 - commit + push (token-free report-back channel)")
         rc, branch = _run(["git", "rev-parse", "--abbrev-ref", "HEAD"])
         branch = branch.strip() or "HEAD"
         _run(["git", "add",
@@ -194,9 +199,9 @@ def harvest(districts: list[str], do_resources: bool, do_push: bool) -> None:
             rc, out = _run(["git", "push", "-u", "origin", branch])
             note(f"  push exit={rc} (branch {branch})")
             if rc == 0:
-                note("  ✅ Pushed. Claude will read HARVEST_REPORT.md + updated JSON next session.")
+                note("  [OK] Pushed. Claude will read HARVEST_REPORT.md + updated JSON next session.")
     else:
-        note("\n## Step 5 — push skipped (run with --push to report back to Claude)")
+        note("\n## Step 5 - push skipped (run with --push to report back to Claude)")
 
     note("\n# Done.")
     print("\n" + "=" * 60)
