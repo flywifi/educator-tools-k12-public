@@ -183,8 +183,13 @@ def load_seeds(only: str | None) -> list[dict]:
 
 
 def classify(p: dict) -> str:
-    if p["error"] or (p["status"] and p["status"] >= 400):
+    # 401/403 = the page EXISTS but refuses automated access (bot protection) — NOT dead.
+    if p["status"] in (401, 403):
+        return "BLOCKED"
+    if (p["error"] and "refused" in p["error"].lower()) or (p["status"] in (404, 410)):
         return "DEAD"
+    if p["error"] or (p["status"] and p["status"] >= 400):
+        return "ERROR"
     if p["final_url"].rstrip("/") != p["url"].rstrip("/"):
         return "REDIRECT"
     if p["is_feed"]:
@@ -219,6 +224,13 @@ def apply_back(results: list[dict]) -> list[str]:
             elif cls == "DEAD":
                 f["url_status"] = "dead_link"
                 notes.append(f"flagged {f['id']} DEAD ({p.get('error') or p['status']})")
+            elif cls == "BLOCKED":  # 403/401 — real page, automation refused; NOT dead
+                f["url_status"] = "exists_bot_blocked"
+                notes.append(f"flagged {f['id']} BLOCKED ({p['status']}) — exists, browser-save only")
+            elif cls == "REDIRECT":
+                f["url_moved_to"] = p["final_url"]
+                f["url_status"] = "redirected"
+                notes.append(f"{f['id']} redirected -> {p['final_url']}")
             if p["discovered_feeds"]:
                 f["discovered_feed_candidates"] = p["discovered_feeds"]
                 notes.append(f"{f['id']}: found {len(p['discovered_feeds'])} candidate feed(s)")
