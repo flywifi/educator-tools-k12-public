@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import importlib
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -121,6 +122,77 @@ def check_routing() -> List[dict]:
     return problems
 
 
+# Packages that build a C/C++/Rust extension from source when no prebuilt wheel matches the
+# platform/Python version — the "dependency hell" class. Listing one in a requirements file
+# without an --only-binary guard risks a compiler error (e.g. lxml needing libxml2) on a
+# teacher's machine. Map: dist name -> why it's risky / the safer alternative.
+COMPILE_FROM_SOURCE = {
+    "lxml": "needs libxml2+libxslt; use stdlib html.parser or --only-binary",
+    "numpy": "C/Fortran build; install via wheel only (--only-binary)",
+    "scipy": "C/Fortran build; wheel only",
+    "pandas": "C build; wheel only",
+    "pillow": "C imaging libs; ships wheels — pin --only-binary",
+    "pymupdf": "C (MuPDF); ships wheels — pin --only-binary",
+    "cryptography": "Rust/OpenSSL build; ships wheels — pin --only-binary",
+    "hnswlib": "C++ build, often NO wheel — avoid or --only-binary",
+    "annoy": "C++ build, often NO wheel — avoid or --only-binary",
+    "faiss-cpu": "C++ build; wheel only",
+    "tokenizers": "Rust build; ships wheels — pin --only-binary",
+    "psycopg2": "needs libpq+compiler; use psycopg2-binary instead",
+    "python-levenshtein": "C build; use the pure-Python 'rapidfuzz' instead",
+    "sqlite-vec": "C extension; ships wheels — pin --only-binary",
+}
+
+
+def scan_dependencies() -> List[dict]:
+    """Audit every requirements-*.txt for compile-from-source packages without an --only-binary
+    guard, and for packages declared but never imported (dead weight). This is the proactive
+    'dependency-hell' guard — the failure class is a build error on a teacher's machine, not ours."""
+    problems: List[dict] = []
+    req_files = sorted(ROOT.glob("tools/requirements-*.txt")) + sorted(ROOT.glob("requirements*.txt"))
+    # Cheap "is it imported anywhere" index (import name may differ from dist name).
+    import_alias = {"beautifulsoup4": "bs4", "pillow": "PIL", "pymupdf": "fitz",
+                    "python-docx": "docx", "python-pptx": "pptx", "scikit-learn": "sklearn",
+                    "pyyaml": "yaml", "opencv-python": "cv2"}
+    py_text = ""
+    for pyf in ROOT.rglob("*.py"):
+        if ".harvest-venv" in str(pyf) or "/_" in str(pyf):
+            continue
+        try:
+            py_text += pyf.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            pass
+    for rf in req_files:
+        try:
+            lines = rf.read_text(encoding="utf-8", errors="ignore").splitlines()
+        except Exception:
+            continue
+        has_only_binary = any("--only-binary" in ln for ln in lines)  # documented guard counts
+        rel = rf.relative_to(ROOT).as_posix()
+        for ln in lines:
+            s = ln.strip()
+            if not s or s.startswith("#"):
+                continue  # comments / commented-out deps are not active installs
+            name = re.split(r"[<>=!~;\[\s]", s, 1)[0].strip().lower()
+            if not name:
+                continue
+            if name in COMPILE_FROM_SOURCE and not has_only_binary:
+                problems.append({
+                    "severity": "warning", "mechanical": False, "file": rel, "package": name,
+                    "issue": f"compile-from-source dep '{name}' without --only-binary guard "
+                             f"({COMPILE_FROM_SOURCE[name]})",
+                    "action": f"add '--only-binary=:all:' guidance in {rel}, or drop '{name}' if unused"})
+            # dead-weight: a heavy dep that is never imported anywhere
+            alias = import_alias.get(name, name.replace("-", "_"))
+            if name in COMPILE_FROM_SOURCE and alias not in py_text and f"import {name}" not in py_text:
+                problems.append({
+                    "severity": "warning", "mechanical": False, "file": rel, "package": name,
+                    "issue": f"'{name}' is declared but never imported (dead weight that can still "
+                             f"trigger a source build)",
+                    "action": f"remove '{name}' from {rel} unless a runtime path needs it"})
+    return problems
+
+
 # --------------------------------------------------------------------------- 2. DIAGNOSE
 def diagnose(traces_dir: Optional[str] = None) -> dict:
     findings: List[dict] = []
@@ -177,6 +249,7 @@ def build_report(traces_dir: Optional[str] = None) -> dict:
     skills = scan_skills()
     engines = scan_engines()
     routing_problems = check_routing()
+    dependency_problems = scan_dependencies()
     score = 100
     blocking, required = [], []
     for s in skills:
@@ -202,6 +275,10 @@ def build_report(traces_dir: Optional[str] = None) -> dict:
         required.append({"severity": "blocking", "area": "routing", "issue": p["issue"],
                          "action": "add the skill or remove the dangling route in shared/routing/routing.json",
                          "mechanical": False})
+    for p in dependency_problems:
+        score -= 4
+        required.append({"severity": p["severity"], "area": f"dependency:{p['file']}",
+                         "issue": p["issue"], "action": p["action"], "mechanical": p["mechanical"]})
     score = max(0, score)
     band = _band(score)
     required.sort(key=lambda r: {"blocking": 0, "warning": 1, "info": 2}.get(r["severity"], 3))
@@ -213,6 +290,7 @@ def build_report(traces_dir: Optional[str] = None) -> dict:
         "release_gate_recommendation": "block_until_resolved" if blocking else ("review_before_proceed" if required else "proceed"),
         "blocking_issues": blocking,
         "skills": skills, "engines": engines, "routing_problems": routing_problems,
+        "dependency_problems": dependency_problems,
         "diagnostics": diagnose(traces_dir),
         "repair_plan": required,
         "must_review_docs": ["changes/CHANGE_MANAGEMENT.md", "tools/skill-maintenance.md", "protocol-layer/quality-gates.md"] if required else [],
