@@ -18,6 +18,8 @@
      "status": "well_known", "note": "Internet Archive CDX API (documented public endpoint) for the render wayback prong."},
     {"url": "https://web.archive.org/web/",
      "status": "well_known", "note": "Internet Archive Wayback snapshot path (documented)."},
+    {"url": "https://archive.org/wayback/available",
+     "status": "well_known", "note": "Internet Archive Wayback availability API (documented public endpoint) — fetch_resilient.py wayback prong."},
     {"url": "https://www.ocps.net",
      "status": "well_known", "note": "Orange County Public Schools root domain (confirmed real district site)."},
 
