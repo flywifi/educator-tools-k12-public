@@ -37,8 +37,9 @@
         "superseded_by": null,
         "fetch_prong": null
       },
-      "probe_status": "pending_ignore_robots",
-      "probe_note": "[2026-06-28] robots-blocked — real page; re-probe with --ignore-robots"
+      "probe_status": "needs_browser_save",
+      "probe_note": "[2026-06-28] direct fetch fails (bot-blocked, no archive); MSID DATA is obtained via the eds.fldoe.org EDS app browser-save — see canonical-sources/schools/HARVESTING.md",
+      "verified": false
     },
     {
       "id": "ocps-school-choice",
@@ -58,7 +59,7 @@
         "fetch_prong": "browser_headers"
       },
       "probe_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
       "verified": false
     }
   ]
