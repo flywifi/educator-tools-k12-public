@@ -288,6 +288,9 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--fetch", action="store_true", help="Download latest MSID CSV from FLDOE")
     p.add_argument("--match", action="store_true", help="Match school names to MSID rows")
+    p.add_argument("--inspect", action="store_true",
+                   help="Show detected columns + column mapping + a match preview (no writes). "
+                        "Run this FIRST to confirm the parser understands your MSID file.")
     p.add_argument("--stats", action="store_true", help="Print match-rate statistics")
     p.add_argument("--apply", action="store_true", help="Write matched MSIDs back (dry-run unless --confirm)")
     p.add_argument("--confirm", action="store_true", help="Actually write changes (requires --apply)")
@@ -304,11 +307,39 @@ def main(argv: list[str] | None = None) -> int:
     # Find MSID cache
     cache_file = Path(args.msid_file) if args.msid_file else CACHE_DIR / "MasterSchoolID.csv"
     if not cache_file.exists():
-        print(f"MSID cache not found at {cache_file}. Run --fetch first.", file=sys.stderr)
+        print(f"MSID cache not found at {cache_file}. Run --fetch first, or pass --msid-file.", file=sys.stderr)
         return 1
 
     msid_rows = load_msid_csv(cache_file)
     print(f"Loaded {len(msid_rows)} MSID rows from {cache_file}", file=sys.stderr)
+
+    # --inspect: show what the parser DETECTED so we can confirm the column mapping is right
+    # before changing any data. This is the anti-"guessed and shipped" check.
+    if args.inspect:
+        cols = list(msid_rows[0].keys()) if msid_rows else []
+        print("\n=== DETECTED COLUMNS (normalized) ===")
+        print(cols)
+        print("\n=== COLUMN MAPPING the tool will use ===")
+        sample = msid_rows[0] if msid_rows else {}
+        print(f"  district -> _district_col() = {_district_col(sample)!r}")
+        print(f"  school   -> _school_col()   = {_school_col(sample)!r}")
+        print(f"  msid     -> _msid_col()     = {_msid_col(sample)!r}")
+        print(f"  status   -> _status_col()   = {_status_col(sample)!r}")
+        print("\n=== FIRST 3 RAW ROWS ===")
+        for r in msid_rows[:3]:
+            print("  " + json.dumps({k: v for k, v in r.items() if k != "_norm"}, ensure_ascii=False))
+        # Per-district match preview (dry-run, no writes)
+        districts_p = [d.strip().zfill(2) for d in (args.district or "").split(",") if d.strip()] \
+            or list(DISTRICT_NAMES.keys())
+        for d in districts_p:
+            dist_rows = [r for r in msid_rows if _district_col(r).zfill(2) == d.zfill(2)]
+            print(f"\n=== DISTRICT {d}: {len(dist_rows)} MSID rows found ===")
+            for r in dist_rows[:5]:
+                print(f"  {_msid_col(r)}  {_school_col(r)}")
+            prev = match_district(d, msid_rows, apply=False, confirm=False, threshold=args.threshold)
+            print(f"  preview: {prev.get('matched')}/{prev.get('total')} would match "
+                  f"({prev.get('match_rate')}); unmatched sample: {prev.get('unmatched_names', [])[:5]}")
+        return 0
 
     districts = [d.strip() for d in (args.district or "").split(",") if d.strip()]
     if not districts:
