@@ -94,15 +94,49 @@ def fetch_msid(url: str = MSID_URL, cache_dir: Path = CACHE_DIR) -> Path:
 # MSID file parsing
 # ---------------------------------------------------------------------------
 
+def _normalize_row(raw: dict) -> dict:
+    """Lower-case + underscore the keys; strip values. FLDOE varies caps/spacing across years."""
+    return {str(k).strip().lower().replace(" ", "_"): ("" if v is None else str(v).strip())
+            for k, v in raw.items()}
+
+
 def load_msid_csv(path: Path) -> list[dict]:
-    """Parse FLDOE MSID CSV into list of dicts. Handles BOM, varying column names."""
+    """Parse a FLDOE MSID file (CSV or XLSX) into normalized dict rows.
+
+    FLDOE publishes the Master School ID file as Excel (.xlsx) most years and CSV some years,
+    so this reads either. XLSX needs `openpyxl` (pip install openpyxl); CSV is stdlib.
+    """
+    suffix = path.suffix.lower()
+    rows: list[dict] = []
+
+    if suffix in (".xlsx", ".xlsm", ".xls"):
+        try:
+            import openpyxl
+        except ImportError:
+            raise SystemExit(
+                f"\n{path.name} is an Excel file. Install the reader once:\n"
+                f"    pip install openpyxl\n"
+                f"...then re-run. (Or open it in Excel and Save As CSV and point --msid-file at that.)"
+            )
+        wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
+        ws = wb.active
+        header: list[str] = []
+        for i, row in enumerate(ws.iter_rows(values_only=True)):
+            if i == 0:
+                header = [str(c).strip() if c is not None else f"col{j}" for j, c in enumerate(row)]
+                continue
+            if row is None or all(c is None for c in row):
+                continue
+            raw = {header[j]: row[j] for j in range(min(len(header), len(row)))}
+            rows.append(_normalize_row(raw))
+        wb.close()
+        return rows
+
+    # default: CSV (handles BOM)
     text = path.read_text(encoding="utf-8-sig", errors="replace")
     reader = csv.DictReader(io.StringIO(text))
-    rows = []
     for row in reader:
-        # Normalize key names (FLDOE uses inconsistent caps/spacing across years)
-        norm = {k.strip().lower().replace(" ", "_"): v.strip() for k, v in row.items()}
-        rows.append(norm)
+        rows.append(_normalize_row(row))
     return rows
 
 
