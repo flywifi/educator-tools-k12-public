@@ -160,7 +160,7 @@ def probe(url: str, timeout: float = 25.0, retries: int = 2, delay: float = 1.0)
     return out
 
 
-def probe_resilient(url: str, delay: float = 1.0) -> dict:
+def probe_resilient(url: str, delay: float = 1.0, ignore_robots: bool = False) -> dict:
     """Same return shape as probe(), but fetched via the multi-prong resilient chain so 403 bot-walls
     on public pages can be recovered (browser headers / headless browser / Wayback)."""
     out = {"url": url, "ok": False, "status": None, "final_url": url, "content_type": None,
@@ -171,7 +171,7 @@ def probe_resilient(url: str, delay: float = 1.0) -> dict:
     except Exception as e:
         out["error"] = f"fetch_resilient unavailable: {e.__class__.__name__}"
         return out
-    r = resilient_get(url, run_all=False, delay=delay)
+    r = resilient_get(url, run_all=False, delay=delay, ignore_robots=ignore_robots)
     out["prong"] = r.get("prong")
     out["status"] = r.get("status")
     out["final_url"] = r.get("final_url", url)
@@ -286,6 +286,10 @@ def main(argv=None) -> int:
     ap.add_argument("--resilient", action="store_true",
                     help="use the multi-prong fetch chain (fetch_resilient.py: browser headers -> "
                          "requests -> headless browser -> Wayback) to get past 403 bot-walls on public data")
+    ap.add_argument("--ignore-robots", action="store_true",
+                    help="maintainer override: fetch even where robots.txt disallows crawlers "
+                         "(use only for PUBLIC data you are authorized to access, e.g. FLDOE standards). "
+                         "Applies to --resilient prongs.")
     args = ap.parse_args(argv)
 
     seeds = load_seeds(args.only)
@@ -302,7 +306,8 @@ def main(argv=None) -> int:
     results = []
     counts: dict[str, int] = {}
     for s in seeds:
-        p = probe_resilient(s["url"], delay=args.delay) if args.resilient else probe(s["url"], delay=args.delay)
+        p = (probe_resilient(s["url"], delay=args.delay, ignore_robots=args.ignore_robots)
+             if args.resilient else probe(s["url"], delay=args.delay))
         cls = classify(p)
         counts[cls] = counts.get(cls, 0) + 1
         results.append({"seed": s, "probe": p, "class": cls})
