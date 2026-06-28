@@ -236,6 +236,18 @@ def main() -> int:
             if a not in skill_names:
                 failures.append(f"  x {wf_path.relative_to(ROOT)}: atom '{a}' not an installed skill")
 
+    # 12. Dependency-safety guard (anti "dependency hell"): no compile-from-source package may be
+    # listed in a requirements file without an --only-binary guard. Reuses the health engine so
+    # there is one source of truth. Catches the lxml-class build failures before they reach a teacher.
+    sys.path.insert(0, str(ROOT / "shared"))
+    try:
+        from health.health import scan_dependencies
+        for p in scan_dependencies():
+            if "without --only-binary guard" in p["issue"]:
+                failures.append(f"  x {p['file']}: {p['issue']}")
+    except Exception as e:  # health engine optional — never let it crash the guard
+        print(f"[note] dependency guard skipped: {e.__class__.__name__}: {e}")
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")
