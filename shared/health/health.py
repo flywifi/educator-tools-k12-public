@@ -193,6 +193,55 @@ def scan_dependencies() -> List[dict]:
     return problems
 
 
+URL_PROVENANCE = ROOT / "tools" / "url-provenance.json"
+# Skip well-known infra/spec hosts that aren't fetch targets we'd ever fabricate.
+_URL_SKIP = ("schemastore", "json-schema.org", "w3.org", "python.org", "example.com",
+             "localhost", "127.0.0.1", "0.0.0.0", "anthropic.com")
+_URL_RE = re.compile(r"https?://[a-zA-Z0-9.\-_/]+")
+
+
+def scan_url_provenance() -> List[dict]:
+    """Every external URL hardcoded in tools/*.py and shared/**/*.py must be DECLARED in
+    tools/url-provenance.json with an honest status. An undeclared URL is the fabrication risk
+    (an AI can emit a plausible-looking URL that was never verified); this catches it at check
+    time instead of as a dead link / 403 on a user's machine."""
+    problems: List[dict] = []
+    declared: Dict[str, str] = {}
+    if URL_PROVENANCE.exists():
+        try:
+            reg = json.loads(URL_PROVENANCE.read_text(encoding="utf-8"))
+            declared = {u["url"].rstrip("/"): u.get("status", "unverified") for u in reg.get("urls", [])}
+        except Exception as exc:
+            return [{"severity": "blocking", "mechanical": False, "file": "tools/url-provenance.json",
+                     "issue": f"url-provenance.json unreadable: {exc}", "action": "fix the JSON"}]
+    else:
+        return [{"severity": "blocking", "mechanical": False, "file": "tools/url-provenance.json",
+                 "issue": "url-provenance.json missing", "action": "create the URL provenance registry"}]
+
+    scan_dirs = [ROOT / "tools", ROOT / "shared"]
+    for base in scan_dirs:
+        for pyf in base.rglob("*.py"):
+            if ".harvest-venv" in str(pyf):
+                continue
+            try:
+                text = pyf.read_text(encoding="utf-8", errors="ignore")
+            except Exception:
+                continue
+            rel = pyf.relative_to(ROOT).as_posix()
+            for m in _URL_RE.findall(text):
+                url = m.rstrip("/.,)\"'")
+                if any(s in url for s in _URL_SKIP):
+                    continue
+                if url.rstrip("/") not in declared:
+                    problems.append({
+                        "severity": "warning", "mechanical": False, "file": rel, "url": url,
+                        "issue": f"undeclared external URL '{url}' — not in url-provenance.json "
+                                 f"(could be fabricated/unverified)",
+                        "action": f"add '{url}' to tools/url-provenance.json with an honest status, "
+                                  f"or remove it"})
+    return problems
+
+
 # --------------------------------------------------------------------------- 2. DIAGNOSE
 def diagnose(traces_dir: Optional[str] = None) -> dict:
     findings: List[dict] = []
@@ -250,6 +299,7 @@ def build_report(traces_dir: Optional[str] = None) -> dict:
     engines = scan_engines()
     routing_problems = check_routing()
     dependency_problems = scan_dependencies()
+    url_problems = scan_url_provenance()
     score = 100
     blocking, required = [], []
     for s in skills:
@@ -279,6 +329,12 @@ def build_report(traces_dir: Optional[str] = None) -> dict:
         score -= 4
         required.append({"severity": p["severity"], "area": f"dependency:{p['file']}",
                          "issue": p["issue"], "action": p["action"], "mechanical": p["mechanical"]})
+    for p in url_problems:
+        score -= (10 if p["severity"] == "blocking" else 4)
+        if p["severity"] == "blocking":
+            blocking.append(p["issue"])
+        required.append({"severity": p["severity"], "area": f"url:{p['file']}",
+                         "issue": p["issue"], "action": p["action"], "mechanical": p["mechanical"]})
     score = max(0, score)
     band = _band(score)
     required.sort(key=lambda r: {"blocking": 0, "warning": 1, "info": 2}.get(r["severity"], 3))
@@ -291,6 +347,7 @@ def build_report(traces_dir: Optional[str] = None) -> dict:
         "blocking_issues": blocking,
         "skills": skills, "engines": engines, "routing_problems": routing_problems,
         "dependency_problems": dependency_problems,
+        "url_provenance_problems": url_problems,
         "diagnostics": diagnose(traces_dir),
         "repair_plan": required,
         "must_review_docs": ["changes/CHANGE_MANAGEMENT.md", "tools/skill-maintenance.md", "protocol-layer/quality-gates.md"] if required else [],
