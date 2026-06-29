@@ -19,7 +19,21 @@
       "provenance": {
         "provided_by": "maintainer (browser-saved/downloaded)",
         "captured": "2026-06-28"
-      }
+      },
+      "extracted": true,
+      "content_file": "toolkit-content/MGScienceToolkit.json",
+      "standards_count": 191,
+      "standards_sample": [
+        "SC.3.E.5.1",
+        "SC.3.E.5.2",
+        "SC.3.E.5.3",
+        "SC.3.E.5.4",
+        "SC.3.E.6.1",
+        "SC.3.L.15.1",
+        "SC.3.L.15.2",
+        "SC.3.L.17.2"
+      ],
+      "embedded_links": 415
     },
     {
       "id": "ThirdGradeToolkit",
@@ -34,7 +48,21 @@
       "provenance": {
         "provided_by": "maintainer (browser-saved/downloaded)",
         "captured": "2026-06-28"
-      }
+      },
+      "extracted": true,
+      "content_file": "toolkit-content/ThirdGradeToolkit.json",
+      "standards_count": 42,
+      "standards_sample": [
+        "LAFS.3.L.1.1",
+        "LAFS.3.L.1.2",
+        "LAFS.3.L.2.3",
+        "LAFS.3.L.3.4",
+        "LAFS.3.L.3.5",
+        "LAFS.3.L.3.6",
+        "LAFS.3.RF.3.3",
+        "LAFS.3.RF.4.4"
+      ],
+      "embedded_links": 60
     },
     {
       "id": "2ndGMIT",
@@ -49,7 +77,21 @@
       "provenance": {
         "provided_by": "maintainer (browser-saved/downloaded)",
         "captured": "2026-06-28"
-      }
+      },
+      "extracted": true,
+      "content_file": "toolkit-content/2ndGMIT.json",
+      "standards_count": 37,
+      "standards_sample": [
+        "MAFS.2.G.1",
+        "MAFS.2.G.1.1",
+        "MAFS.2.G.1.2",
+        "MAFS.2.G.1.3",
+        "MAFS.2.MD.1",
+        "MAFS.2.MD.1.1",
+        "MAFS.2.MD.1.2",
+        "MAFS.2.MD.1.3"
+      ],
+      "embedded_links": 188
     },
     {
       "id": "Grade3ScienceToolkit",
@@ -64,7 +106,21 @@
       "provenance": {
         "provided_by": "maintainer (browser-saved/downloaded)",
         "captured": "2026-06-28"
-      }
+      },
+      "extracted": true,
+      "content_file": "toolkit-content/Grade3ScienceToolkit.json",
+      "standards_count": 15,
+      "standards_sample": [
+        "SC.3.E.5.1",
+        "SC.3.E.5.2",
+        "SC.3.E.5.3",
+        "SC.3.E.5.4",
+        "SC.3.E.6.1",
+        "SC.3.L.14.1",
+        "SC.3.L.14.2",
+        "SC.3.L.15.1"
+      ],
+      "embedded_links": 32
     },
     {
       "id": "FifthGradeToolkit",
@@ -79,7 +135,21 @@
       "provenance": {
         "provided_by": "maintainer (browser-saved/downloaded)",
         "captured": "2026-06-28"
-      }
+      },
+      "extracted": true,
+      "content_file": "toolkit-content/FifthGradeToolkit.json",
+      "standards_count": 43,
+      "standards_sample": [
+        "LAFS.5.L.1.1",
+        "LAFS.5.L.1.2",
+        "LAFS.5.L.2.3",
+        "LAFS.5.L.3.4",
+        "LAFS.5.L.3.5",
+        "LAFS.5.L.3.6",
+        "LAFS.5.RF.3.3",
+        "LAFS.5.RF.4.4"
+      ],
+      "embedded_links": 69
     },
     {
       "id": "health2023",
@@ -94,7 +164,21 @@
       "provenance": {
         "provided_by": "maintainer (browser-saved/downloaded)",
         "captured": "2026-06-28"
-      }
+      },
+      "extracted": true,
+      "content_file": "toolkit-content/health2023.json",
+      "standards_count": 539,
+      "standards_sample": [
+        "HE.1.CEH.1",
+        "HE.1.CEH.1.1",
+        "HE.1.CEH.1.2",
+        "HE.1.CEH.2",
+        "HE.1.CEH.2.1",
+        "HE.1.CEH.3",
+        "HE.1.CEH.3.1",
+        "HE.1.CEH.4"
+      ],
+      "embedded_links": 0
     },
     {
       "id": "BESTTransitionResource",
@@ -109,13 +193,27 @@
       "provenance": {
         "provided_by": "maintainer (browser-saved/downloaded)",
         "captured": "2026-06-28"
-      }
+      },
+      "extracted": true,
+      "content_file": "toolkit-content/BESTTransitionResource.json",
+      "standards_count": 71,
+      "standards_sample": [
+        "MA.1.AR.1.1",
+        "MA.1.GR.1.1",
+        "MA.1.GR.1.4",
+        "MA.1.M.1.1",
+        "MA.1.M.2.3",
+        "MA.1.NSO.1.1",
+        "MA.1.NSO.1.2",
+        "MA.1.NSO.1.4"
+      ],
+      "embedded_links": 0
     },
     {
       "id": "pgg5standards",
       "title": "Parent Guide to Grade 5 B.E.S.T. Standards",
       "title_confirmed": true,
-      "subject": "B.E.S.T. (subject not specified in excerpt)",
+      "subject": "ELA",
       "grade": "5",
       "type": "parent_guide",
       "pages": 3,
@@ -124,13 +222,18 @@
       "provenance": {
         "provided_by": "maintainer (browser-saved/downloaded)",
         "captured": "2026-06-28"
-      }
+      },
+      "extracted": true,
+      "content_file": "toolkit-content/pgg5standards.json",
+      "standards_count": 0,
+      "standards_sample": [],
+      "embedded_links": 0
     },
     {
       "id": "pgg4standards",
       "title": "Parent Guide to Grade 4 B.E.S.T. Standards",
       "title_confirmed": true,
-      "subject": "B.E.S.T. (subject not specified in excerpt)",
+      "subject": "ELA",
       "grade": "4",
       "type": "parent_guide",
       "pages": 3,
@@ -139,7 +242,13 @@
       "provenance": {
         "provided_by": "maintainer (browser-saved/downloaded)",
         "captured": "2026-06-28"
-      }
+      },
+      "extracted": true,
+      "content_file": "toolkit-content/pgg4standards.json",
+      "standards_count": 0,
+      "standards_sample": [],
+      "embedded_links": 0
     }
-  ]
+  ],
+  "extraction_note": "Full text + embedded links + FL standard codes extracted offline via pymupdf 2026-06-28; per-resource content in toolkit-content/. 938 standard codes total."
 }
