@@ -10,10 +10,11 @@
       "url": "https://www.cpalms.org/Standards/Standards_API.aspx",
       "label": "CPALMS Standards API",
       "category": "standards",
-      "data_format": "API (machine-readable — primary target for an offline standards DB)",
+      "data_format": "API (machine-readable)",
       "authority": "primary",
-      "priority": "high",
-      "status": "discovered_unprobed",
+      "priority": "skip",
+      "status": "access_gated",
+      "access_note": "Maintainer reports NO API access (2026-06-29). Treat as access-gated/unusable until confirmed FREE + keyless. Do NOT depend on it. FREE alternative for the same data: download the CPALMS standards export from the downloads page and parse it offline (same workflow as fl-course-codes) — see cpalms-downloads / cpalms-search-standard below.",
       "provenance": {
         "from_saved_page": "https://www.cpalms.org/downloads",
         "captured": "2026-06-28"
