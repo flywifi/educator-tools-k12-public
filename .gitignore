@@ -45,3 +45,4 @@ harvest_inbox/
 tos_update_*.zip
 _harvest_*/
 seed_report_*
+canonical-sources/index/
