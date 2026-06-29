@@ -32,6 +32,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PRIV_DIR = ROOT / "canonical-sources" / "schools" / "private"
 COURSES = ROOT / "canonical-sources" / "references" / "fl-course-codes.json"
+INGESTED = ROOT / "canonical-sources" / "registries" / "ingested-sources.json"
 
 
 def _clean(v: str) -> str:
@@ -40,6 +41,44 @@ def _clean(v: str) -> str:
 
 def _norm_name(n: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", n.lower()).strip()
+
+
+def _saved_url(text: str) -> str | None:
+    m = re.search(r"saved from url=\(\d+\)(\S+)", text)
+    return m.group(1).strip() if m else None
+
+
+def _title(text: str) -> str | None:
+    m = re.search(r"<title[^>]*>(.*?)</title>", text, re.S | re.I)
+    return _clean(m.group(1))[:120] if m else None
+
+
+def catalog_base(entries: list[dict]) -> int:
+    """Record EVERY ingested file at a base level in ingested-sources.json — URL, type, status, rows
+    — so even unparsed sources are cataloged for later enrichment (no per-type parser needed up front).
+    Deduped by source_url (else filename). Merges/refreshes existing entries."""
+    reg = {"_comment": "Base-level manifest of every file fed to tools/ingest_sources.py. Captures the "
+           "saved-from URL, a type guess, parse status, and row count for each — so an UNPARSED source "
+           "is still logged (with its URL) and a parser/registry can be added later. Nothing fabricated.",
+           "domain": "ingested-sources", "version": "1.0.0", "sources": []}
+    if INGESTED.exists():
+        try:
+            reg = json.loads(INGESTED.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    by_key = {(s.get("source_url") or s.get("file")): s for s in reg.get("sources", [])}
+    n_new = 0
+    for e in entries:
+        k = e.get("source_url") or e.get("file")
+        if k in by_key:
+            by_key[k].update({kk: vv for kk, vv in e.items() if vv})
+        else:
+            by_key[k] = e; n_new += 1
+    reg["sources"] = sorted(by_key.values(), key=lambda s: (s.get("status", ""), s.get("file", "")))
+    reg["updated"] = "2026-06-29"
+    INGESTED.parent.mkdir(parents=True, exist_ok=True)
+    INGESTED.write_text(json.dumps(reg, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return n_new
 
 
 # ---- type detection + parsers -------------------------------------------------
@@ -168,13 +207,17 @@ def main(argv=None) -> int:
     if not inbox.exists():
         print(f"inbox not found: {inbox}", file=sys.stderr); return 1
 
-    priv_incoming, course_incoming, report = [], [], []
+    priv_incoming, course_incoming, report, base_entries = [], [], [], []
     for f in sorted(inbox.iterdir()):
-        if not f.is_file() or f.suffix.lower() in (".zip", ".png", ".jpg", ".jpeg", ".gif"):
+        if not f.is_file() or f.suffix.lower() in (".png", ".jpg", ".jpeg", ".gif"):
             continue
         is_xlsx = f.suffix.lower() == ".xlsx"
+        is_binary = f.suffix.lower() in (".zip", ".pdf", ".xls") and not is_xlsx
         text = "" if is_xlsx else f.read_text(encoding="utf-8", errors="replace")
-        kind = detect(f, text)  # signature scan over the FULL text, not just a head slice
+        # .xls files are usually Office-HTML (readable); .zip/.pdf are opaque here
+        if f.suffix.lower() == ".xls":
+            is_binary = "<html" not in text[:200].lower()
+        kind = detect(f, text)
         src = f.name
         if kind == "nces_pss":
             recs = parse_nces_pss(text, src); priv_incoming += recs
@@ -185,6 +228,14 @@ def main(argv=None) -> int:
         else:
             recs = []
         report.append((f.name, kind, len(recs)))
+        # base-level catalog entry for EVERY file (parsed or not)
+        status = "parsed" if recs else ("opaque_binary" if is_binary else "captured_unparsed")
+        base_entries.append({
+            "file": f.name, "source_url": _saved_url(text) if text else None,
+            "title": _title(text) if text else None, "detected_type": kind,
+            "status": status, "rows": len(recs), "captured": "2026-06-29",
+            "note": None if recs else "no parser yet — URL/title captured at base level for later enrichment",
+        })
 
     print("INGEST PLAN:")
     for name, kind, n in report:
@@ -199,8 +250,11 @@ def main(argv=None) -> int:
     print(f"\nprivate schools: +{added} new, {merged} merged/deduped -> {len(merged_list)} total")
 
     if a.dry_run:
-        print("\n[dry-run] no files written.")
+        print(f"\n[dry-run] would catalog {len(base_entries)} source files at base level; no files written.")
         return 0
+
+    n_cat = catalog_base(base_entries)
+    print(f"base catalog: {len(base_entries)} files recorded in {INGESTED.relative_to(ROOT)} ({n_cat} new)")
 
     PRIV_DIR.mkdir(parents=True, exist_ok=True)
     consolidated.write_text(json.dumps({
