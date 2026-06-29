@@ -175,7 +175,9 @@ def _q(table, search_cols, text, filters, limit):
             where.append(f"{col} = ?"); params.append(val)
         if text and engine == "fts5":
             import re as _re
-            match = " ".join(f'"{t}"' for t in _re.findall(r"[A-Za-z0-9.]+", text))
+            # PREFIX match (token*) so "fraction" also matches "fractions"/"fractional" — FTS5
+            # unicode61 does not stem, and exact-token match silently misses inflected forms.
+            match = " ".join(f'"{t}"*' for t in _re.findall(r"[A-Za-z0-9.]+", text))
             sql = f"SELECT * FROM {table} WHERE {table} MATCH ?"
             params = [match] + params
             if where:

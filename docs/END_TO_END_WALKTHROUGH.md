@@ -98,3 +98,40 @@ data can't silently go stale.
 Setup → context → task runs entirely offline, deterministically, at ~0.1% of the token cost of
 loading the reference corpora, with **no fabrication** anywhere in the chain, and with drift
 detection so the offline copy is never silently wrong.
+
+---
+
+## Critical evaluation — hard multi-skill workflow (2-week differentiated fractions unit)
+
+Chained **curriculum-mapping → lesson-planner → special-education-support → assessment-designer**,
+all against the offline index, to find where the data holds vs. breaks. Honest findings:
+
+**Bug found + fixed — no stemming/prefix match.** FTS5 (`unicode61`) matched tokens exactly, so
+`--standards "fraction"` returned **1** standard while `"fractions"` returned 9 — a teacher searching
+the singular silently missed standards. Fixed with prefix matching (`token*`): `"fraction"` now
+returns **10** (covers fraction/fractions/fractional). Rebuilt; verified.
+
+**Test-harness bug found.** The first pass reported "0/5 access points" — a false negative from a
+flawed check in the *eval script* (it searched the benchmark code, not the strand). Corrected:
+true coverage is **5 benchmarks + 5 access points, both strands covered**. Lesson: the evaluation
+itself needs verifying, not just the system.
+
+**Coverage — what's strong vs thin (verified):**
+
+| capability | result | verdict |
+|---|---|---|
+| Standards (benchmarks) | 5/5 for the unit, verbatim | ✅ strong |
+| **Access points (ESE)** | 5 APs, both strands covered | ✅ strong — ESE alt-alignment is grounded |
+| Course anchor | `5012050 Grade Three Mathematics` | ✅ strong |
+| CPALMS toolkit links (Science/ELA) | SC.3.E.5.1, LAFS.5.RI.1.1, SC.5.P.10.1 → have links | ✅ strong where a toolkit exists |
+| CPALMS toolkit links (**grade-3 math**) | MA.3.FR.* → indexed but **no per-standard link** | ⚠️ gap — provide the 3rd-grade Math toolkit PDF (Science/ELA already rich) |
+| **Pacing / scope & sequence** | 0 rows | ⚠️ gap — index has no OCPS pacing; curriculum-mapping generates pacing unanchored. Provide an OCPS scope&sequence to anchor it |
+| **Assessment item bank** | 0 items (endpoints only) | ⚠️ inherent — assessment-designer *generates* items; no offline bank to ground difficulty/DOK |
+
+**Where the offline index helps vs. where the model still generates:** lookups (standards, access
+points, courses, schools, vetted CPALMS links) are deterministic + zero-token + non-fabricating.
+*Pacing realism* and *assessment items* remain model-generated — the index can't anchor them until a
+real OCPS scope&sequence and (optionally) an item-spec source are added. That boundary is now explicit.
+
+**Actionable next inputs (close the gaps on the free path):** a 3rd-grade **Math** instructional
+toolkit PDF (for per-standard CPALMS links), and an **OCPS scope & sequence / pacing** doc.
