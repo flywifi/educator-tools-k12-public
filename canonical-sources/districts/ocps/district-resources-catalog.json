@@ -1,0 +1,42 @@
+{
+  "_comment": "OCPS district curriculum resources (at-home plans, CERP) provided by maintainer 2026-06-29. Metadata + provenance; full text not committed (large district PDFs). District-specific OCPS context.",
+  "district": "Orange County Public Schools",
+  "district_number": "48",
+  "captured": "2026-06-29",
+  "count": 3,
+  "resources": [
+    {
+      "id": "ocps-best-math-at-home",
+      "source_file": "e16740d4-ocps_best_math_at_home_plan_112025.pdf",
+      "pages": 72,
+      "district": "OCPS",
+      "title_excerpt": "Math-At-Home Plan Grades VPK-5 2025-2026 Orange County Public Schools Curriculum & Instruction",
+      "standards_mentioned": 0,
+      "type": "district_curriculum_resource",
+      "captured": "2026-06-29",
+      "provenance": "maintainer-provided OCPS PDF, text extracted offline"
+    },
+    {
+      "id": "orange-2526-CERP",
+      "source_file": "db043d8d-Orange2526CERP.pdf",
+      "pages": 47,
+      "district": "OCPS",
+      "title_excerpt": "District Comprehensive Evidence-Based Reading Plan Annually, school districts must develop a Comprehensive Evidence-Based Reading Plan (CERP",
+      "standards_mentioned": 0,
+      "type": "district_curriculum_resource",
+      "captured": "2026-06-29",
+      "provenance": "maintainer-provided OCPS PDF, text extracted offline"
+    },
+    {
+      "id": "ocps-read-at-home-2526",
+      "source_file": "fd3483c0-ocps_readathome_plan_2526_update.pdf",
+      "pages": 30,
+      "district": "OCPS",
+      "title_excerpt": "Read-At-Home Plan Grades VPK-5 2025-2026 Orange County Public Schools Curriculum & Instruction",
+      "standards_mentioned": 0,
+      "type": "district_curriculum_resource",
+      "captured": "2026-06-29",
+      "provenance": "maintainer-provided OCPS PDF, text extracted offline"
+    }
+  ]
+}
