@@ -20,11 +20,11 @@ silent — and consent + choices can be reset or re-pointed when a teacher moves
 mind. Defaults are the safest, fully-offline path: cached_python + stdlib_keyword.
 
 Usage:
-  python3 skills/teacher-profile/scripts/profile_wizard.py --init answers.json     # write the local profile
-  python3 skills/teacher-profile/scripts/profile_wizard.py --demo                  # init from the example
-  python3 skills/teacher-profile/scripts/profile_wizard.py --show                  # print current profile
-  python3 skills/teacher-profile/scripts/profile_wizard.py --validate              # check vs schema (light)
-  python3 skills/teacher-profile/scripts/profile_wizard.py --register              # emit context sop_refs/overrides
+  python3 skills/operations/teacher-profile/scripts/profile_wizard.py --init answers.json     # write the local profile
+  python3 skills/operations/teacher-profile/scripts/profile_wizard.py --demo                  # init from the example
+  python3 skills/operations/teacher-profile/scripts/profile_wizard.py --show                  # print current profile
+  python3 skills/operations/teacher-profile/scripts/profile_wizard.py --validate              # check vs schema (light)
+  python3 skills/operations/teacher-profile/scripts/profile_wizard.py --register              # emit context sop_refs/overrides
   python3 .../profile_wizard.py --preferences                                      # show Local-First prefs
   python3 .../profile_wizard.py --preferences --consent local_semantic --set '{"retrieval_mode":"vector"}'
   python3 .../profile_wizard.py --preferences --reset                              # revert to safe defaults
@@ -38,7 +38,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = next((p for p in Path(__file__).resolve().parents if (p / "tools" / "sync_check.py").exists()), Path(__file__).resolve().parents[3])  # repo root by marker (relocation-proof)
 PROFILES = ROOT / "shared" / "context" / "profiles"
 LOCAL = PROFILES / "teacher.local.json"
 EXAMPLE = PROFILES / "teacher.example.json"
