@@ -52,6 +52,8 @@
     {"url": "https://www.fldoe.org/core/fileparse.php/7584/urlt/MasterSchoolID.csv",
      "status": "unverified", "note": "FABRICATED FLDOE download URL. 403s / does not exist. Retained only so the auto-fetch path is honestly flagged; the reliable path is the saved EDS page."},
     {"url": "https://www.ed.gov/feed",
-     "status": "unverified", "note": "Example/placeholder feed URL in verify_feeds.py; not confirmed."}
+     "status": "unverified", "note": "Example/placeholder feed URL in verify_feeds.py; not confirmed."},
+    {"url": "https://github.com/UB-Mannheim/tesseract/wiki",
+     "status": "well_known", "note": "UB-Mannheim Tesseract OCR Windows installer wiki — the standard Windows tesseract binary source. Printed by tools/deps_preflight.py as an install hint when the tesseract system binary is missing (tesseract is NOT pip-installable)."}
   ]
 }

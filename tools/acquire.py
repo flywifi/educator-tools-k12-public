@@ -191,7 +191,19 @@ def main(argv=None) -> int:
     ap.add_argument("--max-files", type=int, default=40)
     ap.add_argument("--max-pages", type=int, default=10)
     ap.add_argument("--no-ocr", action="store_true")
+    # dependency-preflight flags (consumed by deps_preflight via sys.argv; declared here so argparse
+    # accepts them and they survive the re-exec into the isolated venv)
+    ap.add_argument("--update-deps", action="store_true", help="force an upgrade pass of all deps now")
+    ap.add_argument("--no-update", action="store_true", help="skip the deps upgrade pass (verify presence only)")
+    ap.add_argument("--no-venv", action="store_true", help="use the current interpreter (probe-only, no installs)")
+    ap.add_argument("--reset-venv", action="store_true", help="delete + rebuild the isolated .harvest-venv")
+    ap.add_argument("--no-deps", action="store_true", help="disable the dependency preflight entirely")
     a = ap.parse_args(argv)
+    # Dependency preflight FIRST: ensure every OCR + document-parsing + browser tool this run might
+    # touch (playwright/chromium, pytesseract+tesseract, pymupdf, pdfplumber, pillow, openpyxl,
+    # beautifulsoup4, markitdown, requests) is present and current in the isolated .harvest-venv.
+    import deps_preflight  # local; stdlib-only at import time  # noqa: E402
+    deps_preflight.preflight()
     slug = re.sub(r"[^a-zA-Z0-9]+", "_", a.url)[:70]
     out = Path(a.out) / slug
     m = acquire(a.url, out, a.ignore_robots, a.depth, a.max_files, a.max_pages, not a.no_ocr)
