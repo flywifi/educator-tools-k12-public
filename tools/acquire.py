@@ -9,8 +9,10 @@ files get mirrored regardless.
 
 PER URL it gathers (each independent — one failing never stops the others):
   1. browser_headers   full-browser-header GET                 -> raw.html        (beats naive 403)
-  2. render            headless Chromium, runs JS              -> rendered.html   (beats JS + bot walls)
-  3. screenshot[+OCR]  full-page screenshot (+ tesseract OCR)  -> page.png/ocr.txt(beats image-only)
+  2. render            REAL Chromium: runs JS/WASM/SPA, waits   -> rendered.html   (beats JS-built pages)
+                       network-idle, auto-scrolls (lazy/infinite),  + frame_*.html (iframes)
+                       captures the page's OWN xhr/fetch data    + network/*       (the real API data)
+  3. screenshot[+OCR]  full-page screenshot (+ tesseract OCR)  -> page.png/ocr.txt (canvas/WASM text)
   4. mirror            download linked FILES (+ same-domain     -> files/*         (gets the actual data)
                        pages to --depth) found in the HTML
   5. wayback           closest Internet Archive snapshot        -> wayback.html    (404/403 backstop)
@@ -68,13 +70,58 @@ def _same_domain(a: str, b: str) -> bool:
            urllib.parse.urlparse(b).netloc.split(":")[0].replace("www.", "")
 
 
-# ---- prong 2/3: headless render + screenshot (one browser pass) ---------------
-def render_and_shot(url: str, outdir: Path, timeout: float = 45.0) -> dict:
+DATA_CT = ("application/json", "text/json", "application/ld+json", "application/xml",
+           "text/xml", "application/x-ndjson", "text/csv")
+
+
+def _autoscroll(pg, max_steps: int = 25, pause: int = 600) -> None:
+    """Scroll to the bottom repeatedly so lazy-load / infinite-scroll content actually loads, until
+    the page height stops growing (or a step cap). Best-effort; never raises."""
+    try:
+        last = -1
+        for _ in range(max_steps):
+            h = pg.evaluate("() => (document.body ? document.body.scrollHeight : 0)")
+            if h == last:
+                break
+            last = h
+            pg.evaluate("() => window.scrollTo(0, document.body.scrollHeight)")
+            pg.wait_for_timeout(pause)
+    except Exception:  # noqa: BLE001
+        pass
+
+
+# ---- prong 2/3: REAL headless browser — runs JS/WASM/SPA, then captures everything --------------
+def render_and_shot(url: str, outdir: Path, timeout: float = 45.0,
+                    scroll: bool = True, capture_network: bool = True) -> dict:
+    """Drive a real Chromium so the site's own JavaScript (any framework), WASM, and async loads
+    execute, then capture the FULLY-rendered result so nothing client-side is missed:
+      - rendered.html  : the final DOM after JS + network-idle + auto-scroll (lazy/infinite content)
+      - frame_*.html   : same-pass content of iframes
+      - network/*      : the page's OWN XHR/fetch responses (JSON/XML/CSV) — often the real data
+      - page.png       : full-page screenshot (OCR backstop for canvas/WASM-drawn text)
+    Honest gap when Playwright/Chromium isn't installed (run tools/deps_preflight.py)."""
     try:
         from playwright.sync_api import sync_playwright
     except Exception:
-        return {"render": False, "screenshot": False, "note": "playwright not installed"}
-    res = {"render": False, "screenshot": False, "note": ""}
+        return {"render": False, "screenshot": False, "network": 0, "frames": 0,
+                "note": "playwright not installed (tools/deps_preflight.py installs it)"}
+    res = {"render": False, "screenshot": False, "network": 0, "frames": 0, "note": ""}
+    captured: list = []
+
+    def _on_response(resp):
+        if len(captured) >= 150:
+            return
+        try:
+            ct = (resp.headers or {}).get("content-type", "").lower()
+            u = resp.url
+            if any(t in ct for t in DATA_CT) or u.split("?")[0].lower().endswith(
+                    (".json", ".xml", ".geojson", ".csv", ".ndjson")):
+                body = resp.body()
+                if body and len(body) <= 12_000_000:
+                    captured.append((u, ct, body))
+        except Exception:  # noqa: BLE001
+            pass
+
     try:
         with sync_playwright() as p:
             kw = {}
@@ -82,18 +129,52 @@ def render_and_shot(url: str, outdir: Path, timeout: float = 45.0) -> dict:
                 if Path(c).exists():
                     kw["executable_path"] = c
             b = p.chromium.launch(headless=True, **kw)
-            pg = b.new_page(user_agent=FR.BROWSER_HEADERS["User-Agent"])
+            ctx = b.new_context(user_agent=FR.BROWSER_HEADERS["User-Agent"],
+                                viewport={"width": 1366, "height": 1000})
+            pg = ctx.new_page()
+            if capture_network:
+                pg.on("response", _on_response)
             pg.goto(url, wait_until="domcontentloaded", timeout=timeout * 1000)
-            pg.wait_for_timeout(2500)
+            try:
+                pg.wait_for_load_state("networkidle", timeout=timeout * 1000)  # let async fetches settle
+            except Exception:  # noqa: BLE001
+                pass
+            if scroll:
+                _autoscroll(pg)
+            pg.wait_for_timeout(1200)
             (outdir / "rendered.html").write_text(pg.content(), encoding="utf-8")
             res["render"] = True
+            for i, fr in enumerate(f for f in pg.frames if f is not pg.main_frame):
+                try:
+                    fh = fr.content()
+                    if fh and len(fh) > 200:
+                        (outdir / f"frame_{i}.html").write_text(fh, encoding="utf-8")
+                        res["frames"] += 1
+                except Exception:  # noqa: BLE001
+                    pass
             try:
                 pg.screenshot(path=str(outdir / "page.png"), full_page=True)
                 res["screenshot"] = True
-            except Exception as e:
-                res["note"] = f"screenshot failed: {e}"
+            except Exception as e:  # noqa: BLE001
+                res["note"] = f"screenshot failed: {e.__class__.__name__}"
+            if captured:
+                ndir = outdir / "network"; ndir.mkdir(exist_ok=True)
+                used = set()
+                for u, ct, body in captured:
+                    stem = re.sub(r"[^a-zA-Z0-9._-]+", "_", u.split("?")[0].rsplit("/", 1)[-1] or "resp")[:60]
+                    ext = ".json" if "json" in ct or u.lower().split("?")[0].endswith(".json") else \
+                          ".xml" if "xml" in ct else ".csv" if "csv" in ct else ".txt"
+                    name = stem if stem.lower().endswith(ext) else stem + ext
+                    k = 0
+                    while name in used:
+                        k += 1; name = f"{k}_{stem}{ext}"
+                    used.add(name)
+                    try:
+                        (ndir / name).write_bytes(body); res["network"] += 1
+                    except Exception:  # noqa: BLE001
+                        pass
             b.close()
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         res["note"] = f"render failed: {e.__class__.__name__}"
     return res
 
@@ -249,8 +330,11 @@ def acquire(url: str, outdir: Path, ignore_robots: bool = False, depth: int = 1,
         gov.wait(url)
         rs = render_and_shot(url, outdir)
     else:
-        rs = {"render": False, "screenshot": False, "note": "skipped (breaker/budget)"}
-    manifest["artifacts"].update({"rendered_html": rs["render"], "screenshot": rs["screenshot"]})
+        rs = {"render": False, "screenshot": False, "network": 0, "frames": 0,
+              "note": "skipped (breaker/budget)"}
+    manifest["artifacts"].update({"rendered_html": rs["render"], "screenshot": rs["screenshot"],
+                                  "iframes": rs.get("frames", 0),
+                                  "network_responses": rs.get("network", 0)})
     if rs["render"]:
         manifest["ok_any"] = True
         rendered = (outdir / "rendered.html").read_text(encoding="utf-8", errors="replace")
