@@ -1,0 +1,145 @@
+{
+  "_comment": "Catalog of FLDOE/CPALMS instructional toolkits + standards documents the maintainer provided (browser-saved/downloaded) on 2026-06-28. METADATA ONLY — the PDF binaries are not committed (large, copyrighted FLDOE materials); this indexes what exists, its grade/subject/pages, and a first-page excerpt so the ecosystem knows the resource exists and where it came from. title_confirmed=false means the title was taken from the first-page text, not a verified document title.",
+  "domain": "fl-instructional-toolkits",
+  "version": "0.1.0",
+  "captured": "2026-06-28",
+  "count": 9,
+  "human_review_required": true,
+  "resources": [
+    {
+      "id": "MGScienceToolkit",
+      "title": "Middle Grades Science Instructional Focus Toolkit",
+      "title_confirmed": true,
+      "subject": "Science",
+      "grade": "6-8",
+      "type": "instructional_toolkit",
+      "pages": 54,
+      "first_page_excerpt": "1 Middle Grades Science Toolkit The Middle Grades Instructional Focus Toolkit has been created to assist teachers with planning instruction. This toolkit is not intended to replace your district’s cur",
+      "source": "FLDOE / CPALMS instructional materials",
+      "provenance": {
+        "provided_by": "maintainer (browser-saved/downloaded)",
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "ThirdGradeToolkit",
+      "title": "Third Grade Toolkit — Standards & Site Links (CPALMS)",
+      "title_confirmed": true,
+      "subject": "ELA",
+      "grade": "3",
+      "type": "instructional_toolkit",
+      "pages": 17,
+      "first_page_excerpt": "Third Grade Toolkit Standards and Site Links CPALMS Lesson Plans CPALMS Related Resources LAFS.3.L.1.1 - Demonstrate command of the conventions of standard English grammar and usage when writing or sp",
+      "source": "FLDOE / CPALMS instructional materials",
+      "provenance": {
+        "provided_by": "maintainer (browser-saved/downloaded)",
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "2ndGMIT",
+      "title": "2nd Grade Mathematics Instructional Toolkit",
+      "title_confirmed": true,
+      "subject": "Math",
+      "grade": "2",
+      "type": "instructional_toolkit",
+      "pages": 23,
+      "first_page_excerpt": "1 | P a g e 2nd Grade Mathematics Instructional Toolkit The 2nd Grade Mathematics Instructional Toolkit is intended to assist teachers with planning lessons aligned to the Florida Standards. This tool",
+      "source": "FLDOE / CPALMS instructional materials",
+      "provenance": {
+        "provided_by": "maintainer (browser-saved/downloaded)",
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "Grade3ScienceToolkit",
+      "title": "Grade 3 Science Instructional Focus Toolkit",
+      "title_confirmed": true,
+      "subject": "Science",
+      "grade": "3",
+      "type": "instructional_toolkit",
+      "pages": 10,
+      "first_page_excerpt": "1 Grade 3 Science Instructional Focus / Toolkit The Grade 3 Science Instructional Focus Toolkit has been created to assist teachers in identifying activities that are well aligned to the benchmarks. T",
+      "source": "FLDOE / CPALMS instructional materials",
+      "provenance": {
+        "provided_by": "maintainer (browser-saved/downloaded)",
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "FifthGradeToolkit",
+      "title": "Fifth Grade Toolkit — Standards & Site Links (CPALMS)",
+      "title_confirmed": true,
+      "subject": "ELA",
+      "grade": "5",
+      "type": "instructional_toolkit",
+      "pages": 20,
+      "first_page_excerpt": "Fifth Grade Toolkit Standards and Site Links CPALMS Lesson Plans CPALMS Related Resources LAFS.5.L.1.1 - Demonstrate command of the conventions of standard English grammar and usage when writing or sp",
+      "source": "FLDOE / CPALMS instructional materials",
+      "provenance": {
+        "provided_by": "maintainer (browser-saved/downloaded)",
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "health2023",
+      "title": "Florida's State Academic Standards — Health Education (2023)",
+      "title_confirmed": true,
+      "subject": "Health",
+      "grade": "K-12",
+      "type": "standards_document",
+      "pages": 95,
+      "first_page_excerpt": "1 Florida’s State Academic Standards, Health Education, 2023 • The Health Education standards review process began January 2023, to establish the core content of health education curriculum to be taug",
+      "source": "FLDOE / CPALMS instructional materials",
+      "provenance": {
+        "provided_by": "maintainer (browser-saved/downloaded)",
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "BESTTransitionResource",
+      "title": "Instructional Guidance for Transition to the New B.E.S.T. Standards for Mathematics",
+      "title_confirmed": true,
+      "subject": "Math",
+      "grade": "K-12",
+      "type": "transition_resource",
+      "pages": 35,
+      "first_page_excerpt": "1 | Page Instructional Guidance for Transition to the New B.E.S.T. Standards for Mathematics The purpose of this document is to provide educators with an overview of major changes in mathematical conc",
+      "source": "FLDOE / CPALMS instructional materials",
+      "provenance": {
+        "provided_by": "maintainer (browser-saved/downloaded)",
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "pgg5standards",
+      "title": "Parent Guide to Grade 5 B.E.S.T. Standards",
+      "title_confirmed": true,
+      "subject": "B.E.S.T. (subject not specified in excerpt)",
+      "grade": "5",
+      "type": "parent_guide",
+      "pages": 3,
+      "first_page_excerpt": "STANDARDS a ------------------------------------•- THE FLORIDA BENCHMARKS FOR EXCELLENT STUDENT THINKING (B.E.S.T.) STANDARDS Parent Guide for Grade 5 English Language Arts PREPARING FLORIDA CHILDREN ",
+      "source": "FLDOE / CPALMS instructional materials",
+      "provenance": {
+        "provided_by": "maintainer (browser-saved/downloaded)",
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "pgg4standards",
+      "title": "Parent Guide to Grade 4 B.E.S.T. Standards",
+      "title_confirmed": true,
+      "subject": "B.E.S.T. (subject not specified in excerpt)",
+      "grade": "4",
+      "type": "parent_guide",
+      "pages": 3,
+      "first_page_excerpt": "STANDARDS a ------------------------------------•- THE FLORIDA BENCHMARKS FOR EXCELLENT STUDENT THINKING (B.E.S.T.) STANDARDS Parent Guide for Grade 4 English Language Arts PREPARING FLORIDA CHILDREN ",
+      "source": "FLDOE / CPALMS instructional materials",
+      "provenance": {
+        "provided_by": "maintainer (browser-saved/downloaded)",
+        "captured": "2026-06-28"
+      }
+    }
+  ]
+}
