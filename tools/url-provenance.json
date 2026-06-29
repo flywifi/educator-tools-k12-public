@@ -22,6 +22,9 @@
      "status": "well_known", "note": "Internet Archive Wayback availability API (documented public endpoint) — fetch_resilient.py wayback prong."},
     {"url": "https://www.ocps.net",
      "status": "well_known", "note": "Orange County Public Schools root domain (confirmed real district site)."},
+    {"url": "https://www.fldoe.org/academics/standards/",
+     "status": "exists_bot_blocked", "checked": "2026-06-28",
+     "note": "FLDOE academic standards page (also tracked in registries/florida-standards.json). Real page, 403s scripts directly; used as a docstring usage example in tools/acquire.py."},
 
     {"url": "https://www.ocps.net/school-directory",
      "status": "unverified", "note": "GUESSED path for the OCPS school directory. Not confirmed to exist/return what we expect. Verify before relying on it."},
