@@ -1,0 +1,439 @@
+{
+  "id": "FifthGradeToolkit",
+  "source_file": "bb123856-FifthGradeToolkit.pdf",
+  "pages": 20,
+  "standards_covered": [
+    "LAFS.5.L.1.1",
+    "LAFS.5.L.1.2",
+    "LAFS.5.L.2.3",
+    "LAFS.5.L.3.4",
+    "LAFS.5.L.3.5",
+    "LAFS.5.L.3.6",
+    "LAFS.5.RF.3.3",
+    "LAFS.5.RF.4.4",
+    "LAFS.5.RI.1.1",
+    "LAFS.5.RI.1.2",
+    "LAFS.5.RI.1.3",
+    "LAFS.5.RI.2.4",
+    "LAFS.5.RI.2.5",
+    "LAFS.5.RI.2.6",
+    "LAFS.5.RI.3.7",
+    "LAFS.5.RI.3.8",
+    "LAFS.5.RI.3.9",
+    "LAFS.5.RI.4.10",
+    "LAFS.5.RL.1.1",
+    "LAFS.5.RL.1.2",
+    "LAFS.5.RL.1.3",
+    "LAFS.5.RL.2.4",
+    "LAFS.5.RL.2.5",
+    "LAFS.5.RL.2.6",
+    "LAFS.5.RL.3.7",
+    "LAFS.5.RL.3.9",
+    "LAFS.5.RL.4.10",
+    "LAFS.5.SL.1.1",
+    "LAFS.5.SL.1.2",
+    "LAFS.5.SL.1.3",
+    "LAFS.5.SL.2.4",
+    "LAFS.5.SL.2.5",
+    "LAFS.5.SL.2.6",
+    "LAFS.5.W.1.1",
+    "LAFS.5.W.1.2",
+    "LAFS.5.W.1.3",
+    "LAFS.5.W.2.4",
+    "LAFS.5.W.2.5",
+    "LAFS.5.W.2.6",
+    "LAFS.5.W.3.7",
+    "LAFS.5.W.3.8",
+    "LAFS.5.W.3.9",
+    "LAFS.5.W.4.10"
+  ],
+  "all_links": [
+    "http://www.cpalms.org/Public/PreviewResource/Preview/109317",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/113196",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/114438",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/115377",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/116158",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/119957",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/122053",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/126471",
+    "http://www.cpalms.org/Public/PreviewResourcePreview/126688",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5717",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5718",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5719",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5720",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5721",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5722",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5723",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5724",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5725",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5776",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5777",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5778",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5779",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5780",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5781",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5782",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5783",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5784",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5800",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5801",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5842",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5843",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5844",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5845",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5846",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5847",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5848",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5849",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5850",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5851",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5882",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5883",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5884",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5885",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5886",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5938",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5939",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5940",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5941",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5942",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5943",
+    "http://www.cpalms.org/uploads/resources/109317/AccessibleVersion_WhatsTheMatterInTheGalaxy.pdf",
+    "http://www.cpalms.org/uploads/resources/113196/AccessibleVersion_MarvelousSolidMixtures_LetsSortThemOut.pdf",
+    "http://www.cpalms.org/uploads/resources/114438/AccessibleVersion-Whats%20the%20Meaning.pdf",
+    "http://www.cpalms.org/uploads/resources/115377/AccessibleVersion_Idioms.pdf",
+    "http://www.cpalms.org/uploads/resources/119957/AccessibleVersion-Quote%20From%20Text.pdf",
+    "http://www.cpalms.org/uploads/resources/122053/AccessibleVersion_SeriesWinners.pdf",
+    "http://www.cpalms.org/uploads/resources/126471/Accessible%20Answering%20Research%20Questions_%20Extreme%20Snowboarding.pdf",
+    "http://www.cpalms.org/uploads/resources/126688/AccessibleVersion_WhyDidTheAuthorWriteThat.pdf",
+    "http://www.readworks.org/lessons/grade5/bridge-terabithia",
+    "http://www.readworks.org/lessons/grade5/dogs-dont-tell-jokes",
+    "http://www.readworks.org/lessons/grade5/great-gilly-hopkins",
+    "http://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe",
+    "http://www.readworks.org/lessons/grade5/maniac-magee",
+    "http://www.readworks.org/lessons/grade5/riding-freedom",
+    "http://www.readworks.org/lessons/grade5/story-jackie-robinson-bravest-man-baseball",
+    "http://www.readworks.org/lessons/grade5/wizard-oz",
+    "http://www.readworks.org/lessons/grade5/words-wings-treasury-african-american-poetry-and-art",
+    "http://www.readwritethink.org/files/resources/interactives/factfrenzy/opening.html",
+    "http://www.tv411.org/vocabulary/dictionary-thesaurus/words-multiple-meanings"
+  ],
+  "content": [
+    {
+      "page": 1,
+      "text": " \nFifth Grade Toolkit \nStandards and Site Links \nCPALMS Lesson Plans  \nCPALMS Related Resources \nLAFS.5.L.1.1 - Demonstrate command of the conventions of \nstandard English grammar and usage when writing or speaking. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5938 \n \n \nCPALMS  Lesson Plans \n-Free Flight in Return for your Ranking - STEM \n-Beach on a Budget - STEM \n-Interplanetary Zoo - STEM \n-Walking to Learn - STEM \n-The Drama of Superheroes \n-Superhero Comic Strips \n-Create a Superhero \n-Birds Now - STEM \n-Rava’s Florida Fusion Catering - STEM \n-Seed Starters - STEM \n-Stand Up and Cheer - STEM \n-Blow Me Away - STEM \n-More Bang for Your Buck - STEM \n-Cereal Box Volume Varying Predicament - STEM \n-Telescope Tally - STEM \n-Baseball Dilemma  - STEM \n-Getting Dry - STEM \n-Sammy’s Solar Fountains - STEM \n-Property Picking Pickle – STEM \n \n-4 Related Courses \n-3 Access Points \n \n \n \nLAFS.5.L.1.2 - Demonstrate command of the conventions of \nstandard English capitalization, punctuation, and spelling \nwhen writing. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5939 \n \n \nCPALMS Lesson Plans \n-Mars Exploration Administration - STEM \n-Bakery Boxes in the Mail - STEM \n-The Drama of Superheroes \n-Superhero Comic Strips \n-Create a Superhero \n-Rava’s Florida Fusion Catering - STEM \n-Seed Starters - STEM \n-Cereal Box Volume Varying Predicament - STEM \n-Telescope Tally - STEM \n-Black Out in an Ice Cream Shop - STEM \n-Pick A Pet - STEM \n-10 Student Center Activities \n-4 Related Courses \n-3 Access Point \n-Original Student Tutorial: Series Winner \nhttp://www.cpalms.org/Public/PreviewResource/Preview/122053 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/122053/AccessibleVersion_Series\nWinners.pdf \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/122053",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5938",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5939",
+        "http://www.cpalms.org/uploads/resources/122053/AccessibleVersion_SeriesWinners.pdf"
+      ],
+      "standards": [
+        "LAFS.5.L.1.1",
+        "LAFS.5.L.1.2"
+      ]
+    },
+    {
+      "page": 2,
+      "text": " \nFifth Grade Toolkit \n-Building Pools - STEM \n-Scuba Diving Mask Search - STEM \n-Storage for Storage - STEM \n-Shoe Closet - STEM \n-Property Picking Pickle - STEM \n-Sunshine Beach Hotel – STEM \n \nLAFS.5.L.2.3 - Use knowledge of language and its conventions \nwhen writing, speaking, reading, or listening. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5940 \n \n \nCPALMS Lesson Plans \n-Bait Shop Baffle - STEM \n-The Drama of Superheroes \n-Superhero Comic Strips \n-Create a Superhero \n-Bridge to Perfection – STEM \n \n-8 Related Courses \n-1 Access Point \nLAFS.5.L.3.4. - Determine or clarify the meaning of unknown \nand multiple-meaning words and phrases based on grade 5 \nreading and content, choosing flexibly from a range of \nstrategies. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5941 \n \n \nCPALMS Lesson Plans \n-An Excerpt from A Corner of the Universe \n-When Stars Explode \n-Animal Farm \n-A Well-Kept Secret \n-Save the Plants - STEM \n-Affix-a-Go-Go \n-Now You See Me! Now You Don’t! \n-Mission to Mars \n-The Making of a Scientist \n-It’s Greek to Me! \n \n \n-29  Student Center Activities \n-5 Related Courses \n-4 Access Points \n-1 Virtual Manipulatives: Words With Multiple Meanings \nhttp://www.tv411.org/vocabulary/dictionary-thesaurus/words-multiple-\nmeanings \n \n-7 Units or Lesson Sequences:  \nWords with Wings: A Treasury of African-American Poetry and Art \nhttp://www.readworks.org/lessons/grade5/words-wings-treasury-african-\namerican-poetry-and-art \nThe Wizard of Oz: http://www.readworks.org/lessons/grade5/wizard-oz \nManiac Magee : http://www.readworks.org/lessons/grade5/maniac-magee \nDogs Don’t Tell Jokes: http://www.readworks.org/lessons/grade5/dogs-dont-\ntell-jokes \nRiding Freedom: http://www.readworks.org/lessons/grade5/riding-freedom \nThe Great Gilly Hopkins: http://www.readworks.org/lessons/grade5/great-\ngilly-hopkins \nThe Lion, the Witch and the Wardrobe:  \nhttp://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5940",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5941",
+        "http://www.readworks.org/lessons/grade5/dogs-dont-tell-jokes",
+        "http://www.readworks.org/lessons/grade5/great-gilly-hopkins",
+        "http://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe",
+        "http://www.readworks.org/lessons/grade5/maniac-magee",
+        "http://www.readworks.org/lessons/grade5/riding-freedom",
+        "http://www.readworks.org/lessons/grade5/wizard-oz",
+        "http://www.readworks.org/lessons/grade5/words-wings-treasury-african-american-poetry-and-art",
+        "http://www.tv411.org/vocabulary/dictionary-thesaurus/words-multiple-meanings"
+      ],
+      "standards": [
+        "LAFS.5.L.2.3",
+        "LAFS.5.L.3.4"
+      ]
+    },
+    {
+      "page": 3,
+      "text": " \nFifth Grade Toolkit \n -Original Student Tutorial: What’s the Meaning of This? \nhttp://www.cpalms.org/Public/PreviewResource/Preview/114438 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/114438/AccessibleVersion-\nWhats%20the%20Meaning.pdf \n \nLAFS.5.L.3.5 - Demonstrate understanding of figurative \nlanguage, word relationships, and nuances in word meanings. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5942 \n \n \n \n \nCPALMS  Lesson Plans \n-The Tiger Rising: Literature Circles \n-Do You Ever Feel Like a Plastic Bag? \n-Are You Pulling My Leg! \n-Sing Your Heart Out, Figuratively \n-Figuratively Speaking \n-Personification is Calling You \n-The Making of a Scientist \n \n \n21 Student Center Activities \n-5 Related Courses \n-4 Access Points \n-3 Unit or Lesson Sequence: \nWords with Wings: A Treasury of African-American Poetry and Art \nhttp://www.readworks.org/lessons/grade5/words-wings-treasury-african-\namerican-poetry-and-art \n The Lion, the Witch and the Wardrobe:  \nhttp://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe \nManiac Magee : http://www.readworks.org/lessons/grade5/maniac-magee \n \n-2 Original Student Tutorials: \nAdages and Proverbs: Revealing Hidden Meanings \nhttp://www.cpalms.org/Public/PreviewResource/Preview/116158 \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/116158/AccessibleVersion_Adage\nsProverbs.pdf \n \nIdioms: Revealing Hidden Meaning \nhttp://www.cpalms.org/Public/PreviewResource/Preview/115377 \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/115377/AccessibleVersion_Idiom\ns.pdf \n \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/114438",
+        "http://www.cpalms.org/Public/PreviewResource/Preview/115377",
+        "http://www.cpalms.org/Public/PreviewResource/Preview/116158",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5942",
+        "http://www.cpalms.org/uploads/resources/114438/AccessibleVersion-Whats%20the%20Meaning.pdf",
+        "http://www.cpalms.org/uploads/resources/115377/AccessibleVersion_Idioms.pdf",
+        "http://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe",
+        "http://www.readworks.org/lessons/grade5/maniac-magee",
+        "http://www.readworks.org/lessons/grade5/words-wings-treasury-african-american-poetry-and-art"
+      ],
+      "standards": [
+        "LAFS.5.L.3.5"
+      ]
+    },
+    {
+      "page": 4,
+      "text": " \nFifth Grade Toolkit \nLAFS.5.L.3.6 - Acquire and use accurately general academic and \ndomain-specific words and phrases as found in grade level \nappropriate texts, including those that signal contrast, addition, \nand other logical relationships (e.g., however, although, \nnevertheless, similarly, moreover, in addition). \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5943 \n \nCPALMS Lesson Plans \n-Vacation Destination: An Introduction to Advertising \n-We Learned About the Challenger \n-Now You See Me! Now You Don’t \n-The Making of a Scientist \n-Vocabulary Words in Context \n \n \n-4 Student Center Activities \n-5 Related Courses \n-2 Access Points \n \n \nLAFS.5.RF.3.3 - Know and apply grade-level phonics and word \nanalysis skills in decoding words. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5800 \n \nCPALMS Lesson Plan \n-Affix-a-Go-Go \n \n \n \n-14 Student Center Activities \n-4 Related Courses \n-2 Access Points \n \n \nLAFS.5.RF.4.4 - Read with sufficient accuracy and fluency to \nsupport comprehension. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5801 \n \nCPALMS Lesson Plans \n-Shady Day - STEM \n-Poetry Parade \n \n \n \n-16 Student Center Activities \n-5 Related Courses \n-2 Access Points \n-2 Unit/Lesson Sequences \nWords with Wings: A Treasury of African-American Poetry and Art \nhttp://www.readworks.org/lessons/grade5/words-wings-treasury-african-\namerican-poetry-and-art \nManiac Magee : http://www.readworks.org/lessons/grade5/maniac-magee \n \nLAFS.5.RI.1.1 - Quote accurately from a text when explaining \nwhat the text says explicitly and when drawing inferences \nfrom the text. \n \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5776 \n \n \n \n \nCPALMS  Lesson Plans \n-We Learned About the Challenger \n-When Stars Explode \n-Civil Rights on a City Bus \n-Animal Farm \n-The Great Chicago Fire \n-A Well-Kept Secret \n-Inferring Informational Text \n-Space and President Kennedy \n-Now You See Me! Now You Don’t \n-What’s New at the Zoo? \n-Mission to Mars \n-11 Student Center Activities \n-3 Teaching Ideas \n-7 Related Courses \n-2 Access Points \n-3 Units or Lesson Sequences:  \nThe Great Gilly Hopkins: http://www.readworks.org/lessons/grade5/great-\ngilly-hopkins \nManiac Magee : http://www.readworks.org/lessons/grade5/maniac-magee \nThe Story of Jackie Robinson, Bravest Man in Baseball \nhttp://www.readworks.org/lessons/grade5/story-jackie-robinson-bravest-\nman-baseball \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5776",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5800",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5801",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5943",
+        "http://www.readworks.org/lessons/grade5/great-gilly-hopkins",
+        "http://www.readworks.org/lessons/grade5/maniac-magee",
+        "http://www.readworks.org/lessons/grade5/story-jackie-robinson-bravest-man-baseball",
+        "http://www.readworks.org/lessons/grade5/words-wings-treasury-african-american-poetry-and-art"
+      ],
+      "standards": [
+        "LAFS.5.L.3.6",
+        "LAFS.5.RF.3.3",
+        "LAFS.5.RF.4.4",
+        "LAFS.5.RI.1.1"
+      ]
+    },
+    {
+      "page": 5,
+      "text": " \nFifth Grade Toolkit \n-The Making of a Scientist \n-Making the Cut – STEM \n \n \n-Original Student Tutorial:  Quote From Text \nhttp://www.cpalms.org/Public/PreviewResource/Preview/119957 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/119957/AccessibleVersion-\nQuote%20From%20Text.pdf \n \nLAFS.5.RI.1.2 - Determine two or more main ideas of a text and \nexplain how they are supported by key details; summarize the \ntext. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5777 \n \n \nCPALMS Lesson Plans \n-Calling All Kid Presidents \n-Beach on a Budget - STEM \n-When Stars Explode \n-The Great Chicago Fire \n-A Well-Kept Secret \n-Human Rights and Discrimination \n-X-treme Roller Coasters -  STEM \n-The Making of a Scientist \n-Exploring the Civil Rights Dreams of Abraham Lincoln and \nMartin Luther King, Jr. \n-8 Student Centered Activities \n-3 Teaching Ideas \n-7 Related Courses \n-3 Access Points \n-1 text Resource \n-Original Student Tutorial: Fact Fragment Frenzy \nhttp://www.readwritethink.org/files/resources/interactives/factfrenzy/openin\ng.html \n \n \n \n \nLAFS.5.RI.1.3 - Explain the relationships or interactions between \ntwo or more individuals, events, ideas, or concepts in a \nhistorical, scientific, or technical text based on specific \ninformation in the text. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5778 \n \n \nCPALMS Lesson Plans \n-Air Time 3D Printing - STEM \n-Human Rights and Discrimination \n-Inventions and Innovations - STEM \n-Space and President Kennedy \n-Wazzup Character Schools Playground - STEM \n-A Revolutionary Approach to Learning History \n-Informational Texts: Analyzing Relationships and Points of \nView Across Multiple Texts \n \n-10 Text Resource \n-9 Related Courses \n-3 Access Points \n-2 Teaching Ideas \n \n \nLAFS.5.RI.2.4 - Determine the meaning of general academic and \ndomain-specific words and phrases in a text relevant to a grade \n5 topic or subject area. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5779 \nCPALMS Lesson Plans \n-Name That Organ \n-We Learned About the Challenger \n-When Stars Explode \n-Civil Rights on a City Bus \n-10 Student Centered Activities \n-19 Text Resources \n-13 Related Courses \n-2 Access Points \n-Original Student Tutorial: What’s the Matter in the Galaxy? \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/119957",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5777",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5778",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5779",
+        "http://www.cpalms.org/uploads/resources/119957/AccessibleVersion-Quote%20From%20Text.pdf",
+        "http://www.readwritethink.org/files/resources/interactives/factfrenzy/opening.html"
+      ],
+      "standards": [
+        "LAFS.5.RI.1.2",
+        "LAFS.5.RI.1.3",
+        "LAFS.5.RI.2.4"
+      ]
+    },
+    {
+      "page": 6,
+      "text": " \nFifth Grade Toolkit \n \n \n-Animal Farm \n-The Great Chicago Fire \n-A Well-Kept Secret \n-The Three Main Sections of the Brain \n-Newton’s Third Law of Motion \n-Newton’s  Law of Motion Parts 1-3  \n-Inventions and Innovations- STEM \n-Make Connections- STEM \n-Space and President Kennedy \n-X-treme Roller Coasters- STEM \n-All Sorts of Energy \n-Sammy’s Solar Fountains- STEM \n-Now You See Me! Now You Don’t \n-What’s New at the Zoo? \n-Mission to Mars \n-The Making of a Scientist \n-Making the Cut \n-Proverbs \n-The Water Cycle-Back and Forth \n-What It’s Made of: A Solute to Mixture or Solution \n \nhttp://www.cpalms.org/Public/PreviewResource/Preview/109317 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/109317/AccessibleVersion_Whats\nTheMatterInTheGalaxy.pdf \n \n \nLAFS.5.RI.2.5 - Compare and contrast the overall structure (e.g., \nchronology, comparison, cause/effect, problem/solution) of \nevents, ideas, concepts, or information in two or more texts. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5780 \n \nCPALMS Lesson Plans \n-Baseball Dilemma - STEM \n-Wazzup Charter Schools Playground Dilemma - STEM \n \n \n-2 Student Centered Activities \n-7 Related Courses \n-4 Access Points \n \n \nLAFS.5.RI.2.6 - Analyze multiple accounts of the same event \nor topic, noting important similarities and differences in the \npoint of view they represent. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5781 \n \n \nCPALMS Lesson Plans \n-Informational Texts: Analyzing Relationships and Points of \nView Across Multiple Texts \n-Tone: From Understanding to Application - Using Tone to \nCreate an Original Memoir \n \n \n-6 Related Courses \n-2 Access Points \n-1 Student Center Activity \n-Original Student Tutorials: Why did the Author Write That? \nhttp://www.cpalms.org/Public/PreviewResourcePreview/126688 \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/109317",
+        "http://www.cpalms.org/Public/PreviewResourcePreview/126688",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5780",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5781",
+        "http://www.cpalms.org/uploads/resources/109317/AccessibleVersion_WhatsTheMatterInTheGalaxy.pdf"
+      ],
+      "standards": [
+        "LAFS.5.RI.2.5",
+        "LAFS.5.RI.2.6"
+      ]
+    },
+    {
+      "page": 7,
+      "text": " \nFifth Grade Toolkit \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/126688/AccessibleVersion_WhyD\nidTheAuthorWriteThat.pdf \n \nLAFS.5.RI.3.7 - Draw on information from multiple print or \ndigital sources, demonstrating the ability to locate an answer to \na question quickly or to solve a problem efficiently. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5782 \n \n \nCPALMS Lesson Plans \n-Camping Supply Innovators - STEM \n-Inferring Informational Text \n-You Be the Judge - STEM \n-Are You Ready for a Hurricane? - STEM \n-Florida Animals and Plants Research \n-Styrofoam Eliminators - STEM \n-Solar Energy QR Hunt \n-I Will Survive \n-Amazing Adaptations \n-Anita Balance: Climate - STEM \n-Is My Epidermis Showing? \n-Survival of the Fittest \n \n-1 Student Center Activity \n-7 Related Courses \n-3 Access Points \n-Original Student Tutorials: Answering Research Questions: Extreme \nSnowboarding \nhttp://www.cpalms.org/Public/PreviewResource/Preview/126471 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/126471/Accessible%20Answering\n%20Research%20Questions_%20Extreme%20Snowboarding.pdf \n \nLAFS.5.RI.3.8 - Explain how an author uses reasons and \nevidence to support particular points in a text, identifying which \nreasons and evidence support which point(s). \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5783 \n \n \n \nCPALMS Lesson Plans \n-We Learned About the Challenger \n-Civil Rights on a City Bus \n-Human Rights and Discrimination \n-You Be the Judge \n-Space and President Kennedy \n-The Making of a Scientist \n-What It’s Made Of: A Solute to Mixture or Solution \n \n-2 Student Center Activities \n-8 Related Courses \n-4 Access Points \n-1 Lesson Study- Exploring Diversity and Evolution \n-1 Unit/Lesson Sequence: The Story of Jackie Robinson, Bravest Man in \nBaseball \nhttp://www.readworks.org/lessons/grade5/story-jackie-robinson-bravest-\nman-baseball \n \nLAFS.5.RI.3.9 - Integrate information from several texts on the \nsame topic in order to write or speak about the subject \nknowledgeably. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5784 \n \n \nCPALMS Lesson Plans \n-Bill of Rights Billboard - STEM \n-Go Fly A Kite - STEM \n-You Be the Judge - STEM \n-A Country Divided \n-Styrofoam Eliminators - STEM \n-Sell This Habitat \n-6 Related Courses \n-2 Access Points \n-1 Student Center Activity \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/126471",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5782",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5783",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5784",
+        "http://www.cpalms.org/uploads/resources/126471/Accessible%20Answering%20Research%20Questions_%20Extreme%20Snowboarding.pdf",
+        "http://www.cpalms.org/uploads/resources/126688/AccessibleVersion_WhyDidTheAuthorWriteThat.pdf",
+        "http://www.readworks.org/lessons/grade5/story-jackie-robinson-bravest-man-baseball"
+      ],
+      "standards": [
+        "LAFS.5.RI.3.7",
+        "LAFS.5.RI.3.8",
+        "LAFS.5.RI.3.9"
+      ]
+    },
+    {
+      "page": 8,
+      "text": " \nFifth Grade Toolkit \n-A “Revolutionary” Approach to Learning History  \n-A Reading/Writing/Speaking Approach to the Ways in \nWhich Geography Shapes How People Live \n-Exploring the Civil Rights Dreams of Abraham Lincoln and \nMartin Luther King Jr. \n-Relationships and Points of View Across Multiple Texts \n-Letter from the Front \n-Using Tone to Create an Original Memoir \n-Water, Water Everywhere! Research the Water Cycle \n \nLAFS.5.RI.4.10 - By the end of the year, read and comprehend \ninformational texts, including history/social studies, science, \nand technical texts, at the high end of the grades 4–5 text \ncomplexity band independently and proficiently. \n \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5725 \n \n \nCPALMS Lesson Plans \n-Banana Bonanza - STEM \n-Calling All Kid Presidents \n-Solar Cooking - STEM \n-We Learned About the Challenger \n-Animal Farm \n-The Great Chicago Fire \n-A Well-Kept Secret \n \n-24 Student Center Activities \n-8 Related Courses \n-2 Access Points \n-21 Text Resources \n  \n \nLAFS.5.RL.1.1 - Quote accurately from a text when explaining \nwhat the text says explicitly and when drawing inferences from \nthe text. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5717 \n \n \nCPALMS  Lesson Plans \n-The Hangashore \n-Rules \n-The Tiger Rising: Literature Circles \n-A Corner of the Universe \n-Tall Tales: A Tale of Our Own \n-The Great Chicago Fire \n-Esperanza Rising \n-Esperanza Rising-What Do Chapter Titles Tell a Reader? \n-Solar Energy QR Hunt \n-Utopias: Are Perfect Worlds Possible? \n-Using Music & Poetry to Identify Speaker’s Voice and Point \nof View \n-The North Wind and the Sun \n-Esperanza Rising, Chapters 1- 3 \n-11 Student Center Activities \n-5 Related Courses \n-2 Access Points \n-1 Teaching Idea \n- 1 Text Resource \n-8 Unit/Lesson Sequences:  \nWords with Wings: A Treasury of African-American Poetry and Art \nhttp://www.readworks.org/lessons/grade5/words-wings-treasury-african-\namerican-poetry-and-art \nThe Wizard of Oz: http://www.readworks.org/lessons/grade5/wizard-oz \nThe Lion, the Witch and the Wardrobe: \nhttp://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe \nManiac Magee : http://www.readworks.org/lessons/grade5/maniac-magee \nThe Great Gilly Hopkins: http://www.readworks.org/lessons/grade5/great-\ngilly-hopkins \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5717",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5725",
+        "http://www.readworks.org/lessons/grade5/great-gilly-hopkins",
+        "http://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe",
+        "http://www.readworks.org/lessons/grade5/maniac-magee",
+        "http://www.readworks.org/lessons/grade5/wizard-oz",
+        "http://www.readworks.org/lessons/grade5/words-wings-treasury-african-american-poetry-and-art"
+      ],
+      "standards": [
+        "LAFS.5.RI.4.10",
+        "LAFS.5.RL.1.1"
+      ]
+    },
+    {
+      "page": 9,
+      "text": " \nFifth Grade Toolkit \n \n \nDogs Don’t Tell Jokes: http://www.readworks.org/lessons/grade5/dogs-dont-\ntell-jokes \nRiding Freedom: http://www.readworks.org/lessons/grade5/riding-freedom \nBridge to Terabithia: http://www.readworks.org/lessons/grade5/bridge-\nterabithia \n \nLAFS.5.RL.1.2 - Determine a theme of a story, drama, or poem \nfrom details in the text, including how characters in a story or \ndrama respond to challenges or how the speaker in a poem \nreflects upon a topic; summarize the text. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5718 \n \n \n \n \n \n \nCPALMS Lesson Plans \n-The Hangashore \n-Rules \n-Tall Tales: A Tale of Our Own \n-Human Rights and Discrimination \n-Utopias: Are Perfect Worlds Possible? \n-The North Wind and the Sun \n \n \n-13 Student Center Activities \n-5 Related Courses \n-5 Access Points \n-8 Unit/Lesson Sequences: \nWords with Wings: A Treasury of African-American Poetry and Art \nhttp://www.readworks.org/lessons/grade5/words-wings-treasury-african-\namerican-poetry-and-art \nThe Wizard of Oz: http://www.readworks.org/lessons/grade5/wizard-oz \nThe Lion, the Witch and the Wardrobe: \nhttp://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe \nManiac Magee : http://www.readworks.org/lessons/grade5/maniac-magee \nThe Great Gilly Hopkins: http://www.readworks.org/lessons/grade5/great-\ngilly-hopkins \nDogs Don’t Tell Jokes: http://www.readworks.org/lessons/grade5/dogs-dont-\ntell-jokes \nRiding Freedom: http://www.readworks.org/lessons/grade5/riding-freedom \nBridge to Terabithia: http://www.readworks.org/lessons/grade5/bridge-\nterabithia \n \nLAFS.5.RL.1.3 - Compare and contrast two or more characters, \nsettings, or events in a story or drama, drawing on specific \ndetails in the text (e.g., how characters interact). \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/57\n19 \n \n \n \nCPALMS Lesson Plans \n-The Tiger Rising: Literature Circles \n-Human Rights and Discrimination \n-Caricature Character Tour \n-Comparing/Contrasting Character Traits and the \nApproaches to Two Themes \n \n \n-7 Student Center Activities \n-1 Teaching Idea \n-5 Related Courses \n-2 Access Point \n-7 Unit or Lesson Sequence:  \nThe Wizard of Oz: http://www.readworks.org/lessons/grade5/wizard-oz \nThe Lion, the Witch and the Wardrobe: \nhttp://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe \nManiac Magee : http://www.readworks.org/lessons/grade5/maniac-magee \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5718",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5719",
+        "http://www.readworks.org/lessons/grade5/bridge-terabithia",
+        "http://www.readworks.org/lessons/grade5/dogs-dont-tell-jokes",
+        "http://www.readworks.org/lessons/grade5/great-gilly-hopkins",
+        "http://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe",
+        "http://www.readworks.org/lessons/grade5/maniac-magee",
+        "http://www.readworks.org/lessons/grade5/riding-freedom",
+        "http://www.readworks.org/lessons/grade5/wizard-oz",
+        "http://www.readworks.org/lessons/grade5/words-wings-treasury-african-american-poetry-and-art"
+      ],
+      "standards": [
+        "LAFS.5.RL.1.2",
+        "LAFS.5.RL.1.3"
+      ]
+    },
+    {
+      "page": 10,
+      "text": " \nFifth Grade Toolkit \n \nThe Great Gilly Hopkins: http://www.readworks.org/lessons/grade5/great-\ngilly-hopkins \nDogs Don’t Tell Jokes: http://www.readworks.org/lessons/grade5/dogs-dont-\ntell-jokes \nRiding Freedom: http://www.readworks.org/lessons/grade5/riding-freedom \nBridge to Terabithia: http://www.readworks.org/lessons/grade5/bridge-\nterabithia \n \nLAFS.5.RL.2.4 - Determine the meaning of words and phrases as \nthey are used in a text, including figurative language such as \nmetaphors and similes. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5720 \n \n \n \n \n \nCPALMS Lesson Plans \n-The Hangashore \n-The Tiger Rising: Literature Circles \n-An Excerpt from A Corner of the Universe \n-The Great Chicago Fire \n-Esperanza Rising - What Do Chapter Titles Tell a Reader? \n-Personification is Calling You \n-Color Poems-Using the Five Senses to Guide Prewriting \n-Dancing Minds and Shouting Smiles \n-The North Wind and the Sun \n-Esperanza Rising, Chapters 1 &2 \n-Using Proverbs to Create an Original Narrative \n \n \n \n-9 Student Center Activities \n-5 Related Courses \n-2 Access Points \n-1 Unit or Lesson Sequence:  \nWords with Wings: A Treasury of African-American Poetry and Art \nhttp://www.readworks.org/lessons/grade5/words-wings-treasury-african-\namerican-poetry-and-art \nLAFS.5.RL.2.5 - Explain how a series of chapters, scenes, or \nstanzas fits together to provide the overall structure of a \nparticular story, drama, or poem. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5721 \n \n \nCPALMS Lesson Plan \n-Esperanza Rising, Chapters 1 &2 \n \n \n \n-4 Related Courses \n-3 Access Points \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5720",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5721",
+        "http://www.readworks.org/lessons/grade5/bridge-terabithia",
+        "http://www.readworks.org/lessons/grade5/dogs-dont-tell-jokes",
+        "http://www.readworks.org/lessons/grade5/great-gilly-hopkins",
+        "http://www.readworks.org/lessons/grade5/riding-freedom",
+        "http://www.readworks.org/lessons/grade5/words-wings-treasury-african-american-poetry-and-art"
+      ],
+      "standards": [
+        "LAFS.5.RL.2.4",
+        "LAFS.5.RL.2.5"
+      ]
+    },
+    {
+      "page": 11,
+      "text": " \nFifth Grade Toolkit \nLAFS.5.RL.2.6 - Describe how a narrator’s or speaker’s point of \nview influences how events are described. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5722 \n \n \nCPALMS Lesson Plans \n-An Excerpt for A Corner of the Universe \n-Analyzing How a Narrator’s Point of View Influences a \nStory \n-Novel  Study- Esperanza Rising \n-Using Music & Poetry to Identify Speaker’s Voice and Point \nof View \n \n \n-5 Related Courses \n-5 Access Points \n-1 Teaching Idea \nLAFS.5.RL.3.7 - Analyze how visual and multimedia elements \ncontribute to the meaning, tone, or beauty of a text (e.g., \ngraphic novel, multimedia presentation of fiction, folktale, \nmyth, poem). \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5723 \n \n \n \n-5 Related Courses \n-2 Access Points \nLAFS.5.RL.3.9 - Compare and contrast stories in the same genre \n(e.g., mysteries and adventure stories) on their approaches to \nsimilar themes and topics. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5724 \n \nCPALMS Lesson Plan \n-Pourquoi Challenge \n-Comparing/Contrasting Character Traits and the \nApproaches to Two Themes \n \n \n-1 Student Center Activity \n-4 Related Courses \n-3 Access Points \n  \nLAFS.5.RL.4.10 - By the end of the year, read and comprehend \nliterature, including stories, dramas, and poetry, at the high end \nof the grades 4–5 text complexity band independently and \nproficiently. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5725 \n \n \nCPALMS Lesson Plans \n-Figuratively Speaking \n-Utopias: Are Perfect Worlds Possible? \n-Dancing Minds and Shouting Smiles \n-Esperanza Rising \n \n \n-32 Student Center Activities \n-4 Related Courses \n-2 Access Point \n-1 Text Resource \n-3 Unit/Lesson Sequences: \nThe Wizard of Oz: http://www.readworks.org/lessons/grade5/wizard-oz \nThe Lion, the Witch and the Wardrobe: \nhttp://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe \n \nThe Great Gilly Hopkins: http://www.readworks.org/lessons/grade5/great-\ngilly-hopkins \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5722",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5723",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5724",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5725",
+        "http://www.readworks.org/lessons/grade5/great-gilly-hopkins",
+        "http://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe",
+        "http://www.readworks.org/lessons/grade5/wizard-oz"
+      ],
+      "standards": [
+        "LAFS.5.RL.2.6",
+        "LAFS.5.RL.3.7",
+        "LAFS.5.RL.3.9",
+        "LAFS.5.RL.4.10"
+      ]
+    },
+    {
+      "page": 12,
+      "text": " \nFifth Grade Toolkit \nLAFS.5.SL.1.1 - Engage effectively in a range of collaborative \ndiscussions (one-on-one, in groups, and teacher-led) with \ndiverse partners on grade 5 topics and texts, building on \nothers’ ideas and expressing their own clearly. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5882 \n \n \n \nCPALMS  Lesson Plans \n-Separating Solid Mixtures \n-Banana Bonanza - STEM \n-Clean Dat “SPACE” Inc. - STEM \n-Not that Hot Anymore - STEM \n-Getting the Top Mini-Fridge not a “Small” Deal - STEM \n-Workouts That Work - STEM \n-Keeping Your Cool With Your Lunch Bag - STEM \n-Evan’s Family Vacation - STEM \n-When Weather is Right….We Camp! - STEM \n-Museum Dilemma - STEM \n-Pounds to Ounces: Is There Profit? - STEM \n-Wildlife Refuge - STEM \n-Pendulum Inquiry  - Wrecking Balls \n-The Tiger Rising: Literature Circles \n-Build Your Own Water Cycle Model \n-Pendulum Inquiry \n-Let It Flow \n-We Learned About the Challenger \n-Human Rights and Discrimination \n-Inventions and Innovations - STEM \n-What’s in a Name? Where am I in the Universe? \n-Which Sweets for the Bakery? - STEM \n-The Dazzling Painting Co. - STEM \n-Kelly’s Café-Mixing It Up! - STEM \n-Building a Better Baseball Team - STEM \n-Are You Ready for a Hurricane? - STEM \n-Are You Pulling My Leg! \n-Balls Galore: Evaluating Playground Ball Companies - STEM \n-Stand Up and Cheer - STEM \n-Blow Me Away - STEM \n-Soccer Team Uniform Decision - STEM \n-How Many Gigabytes Does Lathan Really Need? - STEM \n-Cereal Box Volume Varying Predicament - STEM \n-13 Related Courses \n-4 Access Points \n-3 Teaching Ideas \n-3 Unit/Lesson Sequences:  \nThe Great Gilly Hopkins: http://www.readworks.org/lessons/grade5/great-\ngilly-hopkins \nManiac Magee : http://www.readworks.org/lessons/grade5/maniac-magee \nWords with Wings: A Treasury of African-American Poetry and Art \nhttp://www.readworks.org/lessons/grade5/words-wings-treasury-african-\namerican-poetry-and-art \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5882",
+        "http://www.readworks.org/lessons/grade5/great-gilly-hopkins",
+        "http://www.readworks.org/lessons/grade5/maniac-magee",
+        "http://www.readworks.org/lessons/grade5/words-wings-treasury-african-american-poetry-and-art"
+      ],
+      "standards": [
+        "LAFS.5.SL.1.1"
+      ]
+    },
+    {
+      "page": 13,
+      "text": " \nFifth Grade Toolkit \n-Telescope Tally - STEM \n-Come Sail Away! - STEM \n-Black Out in an Ice Cream Shop! - STEM \n-Pick A Pet - STEM \n-Bridge to Perfection – STEM \n-Getting Dry - STEM \n-New Frozen Yogurt Store - STEM \n-Transformation of Electrical Energy \n-Scuba Diving Mask Search - STEM \n-Storage for Storage - STEM \n-Jay Wilder’s Snorkeling Adventures - STEM \n-Caladocious Skate Parks - STEM \n-Exploring Forms of Energy \n-Pop Goes the Balloon, A Rube Goldberg Design Project \n-Body Swatter \n-Fantastic Fable for Teamwork \n-Now You See Me! Now You Don’t! \n-What’s New at the Zoo? \n-I Will Survive! - An Engineering Design Challenge \n-Shoe Closet - STEM \n-Mission to mars \n-Amazing Adaptations \n-The Making of a Scientist \n-The North Wind and the Sun \n-Informational Texts \n-Property Picking Pickle \n-Sunshine Beach Hotel - STEM \n-We’re Curious! \nLAFS.5.SL.1.2 - Summarize a written text read aloud or \ninformation presented in diverse media and formats, including \nvisually, quantitatively, and orally. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5883 \n \nCPALMS Lesson Plans \n-Family Preparedness Plan-Natural Disasters \n-What’s in a Name? Where am I in the Universe? \n-To Dissolve or Not To Dissolve, Part 1 & 2 \n \n \n-17 Related Courses \n-2 Access Point \n-Original Student Tutorial: Marvelous Solid Mixtures: Let’s Sort Them Out! \nhttp://www.cpalms.org/Public/PreviewResource/Preview/113196 \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/113196",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5883"
+      ],
+      "standards": [
+        "LAFS.5.SL.1.2"
+      ]
+    },
+    {
+      "page": 14,
+      "text": " \nFifth Grade Toolkit \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/113196/AccessibleVersion_Marv\nelousSolidMixtures_LetsSortThemOut.pdf \n \nLAFS.5.SL.1.3 - Summarize the points a speaker makes and \nexplain how each claim is supported by reasons and evidence. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5884 \n \nCPALMS Lesson  Plans \n-Calling All Kid Presidents \n-Exploring Forms of Energy \n-Sail Away - An Engineering Design Challenge \n-17 Related Courses \n-4 Access Point \n \nLAFS.5.SL.2.4 - Report on a topic or text or present an opinion, \nsequencing ideas logically and using appropriate facts and \nrelevant, descriptive details to support main ideas or themes; \nspeak clearly at an understandable pace. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5885 \n \n \nCPALMS  Lesson Plans \n-Calling All Presidents \n-Textbook Predicament - STEM \n-The Shocking Truth About Circuits \n-Planetary Exploration \n-Kelly’s Café-Mixing It Up! - STEM \n-Animal Tracks - STEM \n-Sing Your Heart Out, Figuratively \n-Wondrous Water Parks - STEM \n-Bridge to Perfection - STEM \n-Storage for Storage - STEM \n-Vacation, All I Ever Wanted - STEM \n-Town of Newberry - STEM \n-I Will Survive! \n-Shoe Closet - STEM \n-A Reading/Writing/Speaking Approach to the Ways in \nWhich Geography Shapes How People Live-Part II \n-Amazing Adaptations! \n-Informational Texts \n-Letter from the Front \n-6 Related Courses \n-3 Access Points \n-1 Teaching Idea \n \nLAFS.5.SL.2.5 - Include multimedia components (e.g., graphics, \nsound) and visual displays in presentations when appropriate to \nenhance the development of main ideas or themes. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5886 \nCPALMS  Lesson Plans \n-Sing Your Heart Out, Figuratively \n-A Reading/Writing/Speaking Approach to the Ways in \nWhich Geography Shapes How People Live-Part II \n \n-5 Related Courses \n-1 Access Point \n-1 Unit/Lesson Sequence: \nManiac Magee : http://www.readworks.org/lessons/grade5/maniac-magee \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5884",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5885",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5886",
+        "http://www.cpalms.org/uploads/resources/113196/AccessibleVersion_MarvelousSolidMixtures_LetsSortThemOut.pdf",
+        "http://www.readworks.org/lessons/grade5/maniac-magee"
+      ],
+      "standards": [
+        "LAFS.5.SL.1.3",
+        "LAFS.5.SL.2.4",
+        "LAFS.5.SL.2.5"
+      ]
+    },
+    {
+      "page": 15,
+      "text": " \nFifth Grade Toolkit \nLAFS.5.SL.2.6 - Describe how a narrator’s or speaker’s point of \nview influences how events are described. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5722 \n \n \nCPALMS Lesson Plan \n-A Close Reading: An Excerpt from A Corner of the Universe \n-Human Rights and Discrimination \n-Esperanza Rising \n-Using Music & Poetry to Identify Speaker’s Voice and Point \nof View \n \n-5 Related Courses \n-5 Access Points \n \nLAFS.5.W.1.1 - Write opinion pieces on topics or texts, \nsupporting a point of view with reasons and information. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5842 \n \n \nCPALMS Lesson Plans \n-The Hangashore \n-Rules \n-Calling All Kid Presidents \n-Wire We All Wet? - STEM \n-Bakery Boxes in the Mail - STEM \n-Fly Runners Order of Operations - STEM \n-Buy Buy Toy Store is Relocating - STEM \n-Which Cell Phone for Mia? - STEM \n-You’re Moving Where? - STEM \n-Tablets for Mrs. Tomlinson’s Class - STEM \n-Field Day Fun - STEM \n-Growing Needs with Economy Boom! - STEM \n-Animal Tracks - STEM \n-Cameras on Campus - STEM \n-Sell this Habitat \n-Fantastic Fable for Teamwork \n-Exploring the Civil Rights Dream of Abraham Lincoln and \nMartin Luther King Jr. \n \n-7 Related Courses \n-5 Access Points \n-1 Teaching Idea  \n-1 Text Resource \nLAFS.5.W.1.2 - Write informative/explanatory texts to examine \na topic and convey ideas and information clearly. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5843 \n \n \nCPALMS Lesson Plans \n-Handle with Care: Spacecraft Handles \n-Weather Tools International - STEM \n-We Learned About the Challenger \n-When Stars Explode \n-Civil Rights on a City Bus \n-Animal Farm \n-10 Related Courses \n-7 Access Points \n-3 Teaching Ideas \n-21 Text Resources \n \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5722",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5842",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5843"
+      ],
+      "standards": [
+        "LAFS.5.SL.2.6",
+        "LAFS.5.W.1.1",
+        "LAFS.5.W.1.2"
+      ]
+    },
+    {
+      "page": 16,
+      "text": " \nFifth Grade Toolkit \n-The Great Chicago Fire \n-A Well-Kept Secret \n-Bridges \n-Human Rights and Discrimination \n-Space and President Kennedy \n-Panther Protection 101 - STEM \n-All-Star Track Runners - STEM \n-Water Cycle in a Sack \n-Circuit Circus \n-Inner and Outer Planets \n-Exploring Habitats \n-Frankenchicken \n-A Reading/Writing/Speaking Approach to the Ways in  \nWhich Geography Shapes How People Live-Part I \n-The Making of a Scientist \n-The North Wind and the Sun \n \n \nLAFS.5.W.1.3 - Write narratives to develop real or imagined \nexperiences or events using effective technique, descriptive \ndetails, and clear event sequences. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5844 \n \n \nCPALMS Lesson Plans \n-A Corner of the Universe \n-Describe the Graph \n-Tall Tale: A Tale of Our Own \n-The Drama of Superheroes \n-Superhero Comic Strips \n-Create a Superhero \n-Pourquoi Challenge \n-Esperanza Rising \n-A “Revolutionary” Approach to Learning History \n-Descriptive Sensory Writing \n-Proverbs \n \n \n \n-7 Related Courses \n-7 Access Points \n-1 Teaching Idea \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5844"
+      ],
+      "standards": [
+        "LAFS.5.W.1.3"
+      ]
+    },
+    {
+      "page": 17,
+      "text": " \nFifth Grade Toolkit \nLAFS.5.W.2.4 - Produce clear and coherent writing in which the \ndevelopment and organization are appropriate to task, \npurpose, and audience. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5845 \n \n \nCPALMS Lesson Plans \n-An Excerpt from A Corner of the Universe \n-Amazing Bathing Suits- STEM \n-Animal Tracks- STEM \n-Are You Ready for a Hurricane? - STEM \n-Babysitter’s Club Fun with Fractions- STEM \n-Beach on a Budget- STEM \n-Birds Now- STEM \n-Blessings in a Bag!! - STEM \n-Calling All Kid Presidents \n-The North Wind and the Sun \n-Color Poems \n-Dancing Minds and Shouting Smiles \n-EuroTravel- STEM \n-Experiment or Investigation? \n-Fast Food Decision- STEM \n-Inventions and Innovations- STEM \n-Letter from the Front \n-Mars Exploration Administration- STEM \n-More Bang for Your Buck! - STEM \n-New Frozen Yogurt Store- STEM \n-New Snack Shack Snack- STEM  \n-Esperanza Rising \n-Oak Tree Engineers- STEM \n-Patty’s Party Planning- STEM \n-Pendulum Inquiry – Wrecking Balls \n-Pourquoi Challenge \n-Rank Our Pressure Cleaners- STEM \n-Scuba Diving Mask Search- STEM \n-Shady Day- STEM \n-Solve the Dissolving Problem \n-Space and President Kennedy \n-SPS2064 Inc. Energy of the Future- STEM \n-Storage for Storage- STEM \n-6 Related Courses \n-3 Access Pints \n-2 Teaching Ideas \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5845"
+      ],
+      "standards": [
+        "LAFS.5.W.2.4"
+      ]
+    },
+    {
+      "page": 18,
+      "text": " \nFifth Grade Toolkit \n-Sunshine Beach Hotel- STEM \n-Superhero Comic Strips \n-Talented Divas - STEM \n-Tell  Tales: A Tale of Our Own \n-The Dazzling Painting Co. - STEM \n-The Drama of Superheroes \n-The Water Cycle – Back and Forth \n -To Oregon by Wagon- STEM \n-Vegetables for Our Farm- STEM \n-Vending Machine Snacks- STEM \n-We Learned About the Challenger \n-What’s New at the Zoo? \n-Which Sweets for the Bakery? - STEM \n-Women Warriors- STEM \n-Work that Body – Human Organs- STEM \nLAFS.5.W.2.5 - With guidance and support from peers and \nadults, develop and strengthen writing as needed by planning, \nrevising, editing, rewriting, or trying a new approach. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5846 \n \n \nCPALMS  Lesson Plans \n-We Learned About the Challenger \n-Superhero Comic Strips \n-Talented Divas- STEM \n-Color Poems \n-Dancing Minds and Shouting Smiles \n-Esperanza Rising-Chapter 3 \n \n-6 Related Courses \n-5 Access Points \n \nLAFS.5.W.2.6 - With some guidance and support from adults, \nuse technology, including the Internet, to produce and publish \nwriting as well as to interact and collaborate with others; \ndemonstrate sufficient command of keyboarding skills to type a \nminimum of two pages in a single sitting. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5847 \n \n \nCPALMS Lesson Plan \n-Talented Divas - STEM \n-A Reading/Writing/Speaking Approach to the Ways in \nWhich Geography Shapes How People Live-Part 1 &2 \n \n \n-7 Related Courses \n-2 Access Points \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5846",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5847"
+      ],
+      "standards": [
+        "LAFS.5.W.2.5",
+        "LAFS.5.W.2.6"
+      ]
+    },
+    {
+      "page": 19,
+      "text": " \nFifth Grade Toolkit \nLAFS.5.W.3.7 - Conduct short research projects that use several \nsources to build knowledge through investigation of different \naspects of a topic. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5848 \n \n \nCPALMS Lesson Plans \n-Family Preparedness Plan \n-Exploring Adaptations \n-Are You Ready for a Hurricane? - STEM \n-Sell This Habitat \n-“Licensed” to Drive: Old West Figures \n-Friction Time \n-Water, Water Everywhere! \n \n-1 Teaching Idea \n-9 Related Courses \n-1 Access Point \n \nLAFS.5.W.3.8 - Recall relevant information from experiences or \ngather relevant information from print and digital sources; \nsummarize or paraphrase information in notes and finished \nwork, and provide a list of sources. \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5849 \n \nCPALMS Lesson Plans \n-This Place is Pretty Big. Where am I in the Universe? \n-A Country Divided \n-I Used My Own Words! \n-A Reading/Writing/Speaking Approach to the Ways in \nWhich Geography Shapes How People Live-Part I & II \n-Anita Balance: Climate - STEM \n-Informational Texts \n-Survival of the Fittest \n \n-10 Related Courses \n-4 Access Points \n-Original Student Tutorial- Fact Fragment Frenzy \nhttp://www.readwritethink.org/files/resources/interactives/factfrenzy/openi\nng.html \n \nLAFS.5.W.3.9 - Draw evidence from literary or informational \ntexts to support analysis, reflection, and research. \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5850 \n \n \n \nCPALMS Lesson Plans \n-Getting the top Mini-Fridge not a “Small” Deal - STEM \n-Keeping Your Cool With Your Lunch Bag - STEM \n-The Tiger Rising: Literature Circles \n-We Learned About the Challenger \n-When Stars Explode \n-Civil Rights on  a City Bus \n-Animal Farm \n-The Great Chicago Fire \n-A Well-Kept Secret \n-Bridges \n-Human Rights and Discrimination \n-Inventions and Innovations - STEM \n-A Country Divided \n-Sell This Habitat! \n-2 Teaching Ideas \n-10 Related Courses \n-2 Access Points \n-22 Text Resources \n-8 Unit/Lesson Sequences: \nThe Wizard of Oz: http://www.readworks.org/lessons/grade5/wizard-oz \nThe Story of Jackie Robinson, Bravest Man in Baseball- \nhttp://www.readworks.org/lessons/grade5/story-jackie-robinson-bravest-\nman-baseball \nThe Lion, the Witch and the Wardrobe: \nhttp://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe \nManiac Magee : http://www.readworks.org/lessons/grade5/maniac-magee \nThe Great Gilly Hopkins: http://www.readworks.org/lessons/grade5/great-\ngilly-hopkins \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5848",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5849",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5850",
+        "http://www.readworks.org/lessons/grade5/great-gilly-hopkins",
+        "http://www.readworks.org/lessons/grade5/lion-witch-and-wardrobe",
+        "http://www.readworks.org/lessons/grade5/maniac-magee",
+        "http://www.readworks.org/lessons/grade5/story-jackie-robinson-bravest-man-baseball",
+        "http://www.readworks.org/lessons/grade5/wizard-oz",
+        "http://www.readwritethink.org/files/resources/interactives/factfrenzy/opening.html"
+      ],
+      "standards": [
+        "LAFS.5.W.3.7",
+        "LAFS.5.W.3.8",
+        "LAFS.5.W.3.9"
+      ]
+    },
+    {
+      "page": 20,
+      "text": " \nFifth Grade Toolkit \n-The Making of a Scientist \n-The North Wind and the Sun \n-Comparing/Contrasting Character Traits and the \nApproaches to Two Themes \n-Informational Texts \n-Letter from the Front \n \nDogs Don’t Tell Jokes: http://www.readworks.org/lessons/grade5/dogs-dont-\ntell-jokes \nRiding Freedom: http://www.readworks.org/lessons/grade5/riding-freedom \nBridge to Terabithia: http://www.readworks.org/lessons/grade5/bridge-\nterabithia \n \nLAFS.5.W.4.10 - Write routinely over extended time frames \n(time for research, reflection, and revision) and shorter time \nframes (a single sitting or a day or two) for a range of discipline-\nspecific tasks, purposes, and audiences. \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5851 \n \n \nCPALMS Lesson Plans \n-Pioneer Places - STEM \n-Pendulum Inquiry \n-Vacation Destination: An Introduction to Advertising \n-Do You Ever Feel Like a Plastic Bag? \n-I Need Directions! Where Am I in the Universe? \n-Sing Your Heart Out, Figuratively \n-Utopias: Are Perfect Worlds Possible? \n-Using Music & Poetry to Identify Speaker’s Voice and Point \nof View \n-Personification is Calling You \n-I Used My Own Words! \n-Dancing Minds and Shouting Smiles \n-“Licensed” to Drive: Old West Figures \n-From Text to Art: Exploring the Civil Rights Dream of \nAbraham Lincoln and Martin Luther King Jr. \n-Solve the Dissolving Problem \n-Using Tone to Create an Original Memoir \n \n-6 Related Courses \n-2 Access Points \n-1 Teaching Idea \n-1 Unit/Lesson Sequence: \nRiding Freedom: http://www.readworks.org/lessons/grade5/riding-freedom \n \n \n \n \n \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5851",
+        "http://www.readworks.org/lessons/grade5/bridge-terabithia",
+        "http://www.readworks.org/lessons/grade5/dogs-dont-tell-jokes",
+        "http://www.readworks.org/lessons/grade5/riding-freedom"
+      ],
+      "standards": [
+        "LAFS.5.W.4.10"
+      ]
+    }
+  ],
+  "captured": "2026-06-28",
+  "provenance": "maintainer-provided PDF, full text+links extracted offline via pymupdf"
+}

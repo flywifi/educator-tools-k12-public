@@ -1,0 +1,359 @@
+{
+  "id": "ThirdGradeToolkit",
+  "source_file": "7d4747ac-ThirdGradeToolkit.pdf",
+  "pages": 17,
+  "standards_covered": [
+    "LAFS.3.L.1.1",
+    "LAFS.3.L.1.2",
+    "LAFS.3.L.2.3",
+    "LAFS.3.L.3.4",
+    "LAFS.3.L.3.5",
+    "LAFS.3.L.3.6",
+    "LAFS.3.RF.3.3",
+    "LAFS.3.RF.4.4",
+    "LAFS.3.RI.1.1",
+    "LAFS.3.RI.1.2",
+    "LAFS.3.RI.1.3",
+    "LAFS.3.RI.2.4",
+    "LAFS.3.RI.2.5",
+    "LAFS.3.RI.2.6",
+    "LAFS.3.RI.3.7",
+    "LAFS.3.RI.3.8",
+    "LAFS.3.RI.3.9",
+    "LAFS.3.RI.4.10",
+    "LAFS.3.RL.1.1",
+    "LAFS.3.RL.1.2",
+    "LAFS.3.RL.1.3",
+    "LAFS.3.RL.2.4",
+    "LAFS.3.RL.2.5",
+    "LAFS.3.RL.2.6",
+    "LAFS.3.RL.3.7",
+    "LAFS.3.RL.3.9",
+    "LAFS.3.RL.4.10",
+    "LAFS.3.SL.1.1",
+    "LAFS.3.SL.1.2",
+    "LAFS.3.SL.1.3",
+    "LAFS.3.SL.2.4",
+    "LAFS.3.SL.2.5",
+    "LAFS.3.SL.2.6",
+    "LAFS.3.W.1.1",
+    "LAFS.3.W.1.2",
+    "LAFS.3.W.1.3",
+    "LAFS.3.W.2.4",
+    "LAFS.3.W.2.5",
+    "LAFS.3.W.2.6",
+    "LAFS.3.W.3.7",
+    "LAFS.3.W.3.8",
+    "LAFS.3.W.4.10"
+  ],
+  "all_links": [
+    "http://www.cpalms.org/Public/PreviewResource/Preview/100182",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/118997",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/119061",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/119062",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/119068",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/119139",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/119328",
+    "http://www.cpalms.org/Public/PreviewResource/Preview/126477",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5699",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5700",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5701",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5702",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5703",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5704",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5705",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5706",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5707",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5756",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5757",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5758",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5759",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5760",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5761",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5762",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5763",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5764",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5765",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5796",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5797",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5823",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5824",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5825",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5826",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5827",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5828",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5829",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5830",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5831",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5870",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5871",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5873",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5874",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5875",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5926",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5927",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5928",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5929",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5930",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5931",
+    "http://www.cpalms.org/uploads/resources/100182/AccessibleVersion_DetailDetectives.pdf",
+    "http://www.cpalms.org/uploads/resources/118997/AccessibleVersion-ExploringForDetails.pdf",
+    "http://www.cpalms.org/uploads/resources/119061/AccessibleVersion-ExploringSequencingInText.pdf",
+    "http://www.cpalms.org/uploads/resources/119062/AccessibleVersion_MakingMeaning.pdf",
+    "http://www.cpalms.org/uploads/resources/119068/AccessibleVersion_DivingintoInformativeWriting.pdf",
+    "http://www.cpalms.org/uploads/resources/119139/AccessibleVersion_TerrificTraits.pdf",
+    "http://www.cpalms.org/uploads/resources/119328/AccessibleVersion_Bon%20Voyage%20.pdf",
+    "http://www.cpalms.org/uploads/resources/126477/AccessibleVersion_VerbMania.pdf",
+    "http://www.learnnc.org/lp/pages/4233?ref=search",
+    "http://www.readwritethink.org/classroom-resources/lesson-plans/inferring-characters-change-858.html?tab=1#tabs",
+    "http://www.readwritethink.org/classroom-resources/lesson-plans/using-science-texts-teach-413.html"
+  ],
+  "content": [
+    {
+      "page": 1,
+      "text": " \nThird Grade Toolkit \n Standards and Site Links \nCPALMS Lesson Plans \nCPALMS Related Resources \nLAFS.3.L.1.1 - Demonstrate command of the conventions of \nstandard English grammar and usage when writing or speaking. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5926 \n \n \nCPALMS Lesson Plans \n-Chess Wish List \n-Sparks of Color \n-Pattern Writing Using Nouns and Adjectives \n \n \n-4 Related Courses \n-5 Access Points \n-1 Worksheet \n-Original Student Tutorial: Verb Mania \nhttp://www.cpalms.org/Public/PreviewResource/Preview/126477 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/126477/AccessibleVersion_Verb\nMania.pdf \n \nLAFS.3.L.1.2 - Demonstrate command of the conventions of \nstandard English capitalization, punctuation, and spelling when \nwriting. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5927 \n \n \nCPALMS Lesson Plans \n-How Long is Your Music Lesson? \n-Time to Play \n-Sparks of Color \n-Raincoats Are Us \n-Animal Habitat \n-Scheduling a School Day: Creating Your Own Classroom \nSchedule \n-Picking Pets \n-I-SPY Something Important \n-Rocking through the Regions \n-Crickwing: Using Strong Words \n-Teaching Sequential Organization of a Narrative Essay \nUsing a Picture book \n \n \n-10 Student Center Activities \n-1 Text Resource \n-1 Teaching Idea \n-4 Related Courses \n-6 Access Point \n \n \nLAFS.3.L.2.3 - Use knowledge of language and its conventions \nwhen writing, speaking, reading, or listening. \n \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5928 \n \n \nCPALMS Lesson Plans \n-Spin Beyblades - STEM \n-A Vegetable Garden for All Seasons – STEM \n \n \n \n \n-1 Teaching Idea \n-5 Related Courses \n-2 Access Points \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/126477",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5926",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5927",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5928",
+        "http://www.cpalms.org/uploads/resources/126477/AccessibleVersion_VerbMania.pdf"
+      ],
+      "standards": [
+        "LAFS.3.L.1.1",
+        "LAFS.3.L.1.2",
+        "LAFS.3.L.2.3"
+      ]
+    },
+    {
+      "page": 2,
+      "text": " \nThird Grade Toolkit \nLAFS.3.L.3.4 - Determine or clarify the meaning of unknown and \nmultiple-meaning word and phrases based on grade 3 reading \nand content, choosing flexibly from a range of strategies. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5929 \n \n \n \nCPALMS Lesson Plans \n-Charlotte’s Web: Chapter 1 \n-Two Bad Ants \n-The Raft \n-A Schema-Building Study \n-The Real Princess, A Fairy Tale \n-The Sweetest Fig \n-The Ballad of Mulan \n-Whose Fault Is It? \n-Our Amazing World \n-And the Moral Is… \n-Can You Find a Clue \n-Multiple Meaning Words \n-Building Strong Verbs \n-Because of Winn-Dixie \n-Fairy Tales/Folk Tales \n \n \n-49 Student Center Activities \n-5 Related Courses \n-4 Access Points \n \n \n \n \nLAFS.3.L.3.5 - Demonstrate understanding of word relationships \nand nuances in word meanings. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5930 \n \n \n CPALMS Lesson Plans \n-“Roar-ing” for Nonliteral Language \n-The Most Interesting Animal Campaign \n-Crickwing: Using Strong Words \n-Building Strong Verbs \n \n-34 Student Center Activities \n-5 Related Courses \n-4 Access Points \n \n-1 Unit or Lesson Sequence: Inside and Outside: Paradox of the Box \nhttp://www.learnnc.org/lp/pages/4233?ref=search \n \n-Original Tutorials: Making Meaning \nhttp://www.cpalms.org/Public/PreviewResource/Preview/119062 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/119062/AccessibleVersion_Makin\ngMeaning.pdf \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/119062",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5929",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5930",
+        "http://www.cpalms.org/uploads/resources/119062/AccessibleVersion_MakingMeaning.pdf",
+        "http://www.learnnc.org/lp/pages/4233?ref=search"
+      ],
+      "standards": [
+        "LAFS.3.L.3.4",
+        "LAFS.3.L.3.5"
+      ]
+    },
+    {
+      "page": 3,
+      "text": " \nThird Grade Toolkit \nLAFS.3.L.3.6 - Acquire and use accurately conversational, \ngeneral academic, and domain specific words and phrases as \nfound in grade appropriate texts, including those that signal \nspatial and temporal relationships (e.g., After dinner that night \nwe went looking for them). \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5931 \n \n \n \n-5 Student Center Activities \n-7 Related Courses \n-3 Access Points \n \n \n \nLAFS.3.RF.3.3 - Know and apply grade-level phonics and word \nanalysis skills in decoding words. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5796 \n \nCPALMS Lesson Plans \n-Prefix Lesson \n-Spelling Words Correctly Using Prefixes \n \n \n-39 Student Center Activities \n-4 Related Courses \n-4 Access Points \n \nLAFS.3.RF.4.4 - Read with sufficient accuracy and fluency to \nsupport comprehension. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5797 \n \nCPALMS Lesson Plans \n-Perfect Pool Plans - STEM \n-Animal Habitat - STEM \n-Poetry Parade \n-Teaching Fluency Using Readers Theatre \n \n \n \n-34 Student Center Activities \n-1 Teaching Idea \n-5 Related Courses \n-4 Access Points \n \nLAFS.3.RI.1.1 - Ask and answer questions to demonstrate \nunderstanding of a text, referring explicitly to the text as the \nbasis for the answers. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5756 \n \n \n \nCPALMS Lesson Plans \n-What is Tourette Syndrome? \n-Escaping Slavery: Sweet Clara and the Freedom Quilt \n-Amazing Dolphins \n-Florida Fish Aquarium Challenge - STEM \n-Comparing and Contrasting Washington and Lincoln \n-The Most Interesting Animal \n-The Journey of a Tiny Turtle \n-Mapping My Way Around School \n-Is it Energy? \n-What Does Your Garden Grow? -STEM \n-I-SPY Something Important \n-15 Student Center Activities \n-4 Teaching Ideas \n-3 Text Resources \n-10 Related Courses \n-3 Access Point \n-Original Student Tutorial: Exploring for Details \nhttp://www.cpalms.org/Public/PreviewResource/Preview/118997 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/118997/AccessibleVersion-\nExploringForDetails.pdf \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/118997",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5756",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5796",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5797",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5931",
+        "http://www.cpalms.org/uploads/resources/118997/AccessibleVersion-ExploringForDetails.pdf"
+      ],
+      "standards": [
+        "LAFS.3.L.3.6",
+        "LAFS.3.RF.3.3",
+        "LAFS.3.RF.4.4",
+        "LAFS.3.RI.1.1"
+      ]
+    },
+    {
+      "page": 4,
+      "text": " \nThird Grade Toolkit \n-Our Amazing World \n-States of Water-Part 1 \n-Non-Fiction with Mammals \n-Gravity \n-Non-fiction with Reptiles \n-Spacesuits Unlimited - STEM \n-Get to Work! \n-Going Batty! \n-Using Biographies for Sequencing, Main Idea and Details \n-Which Do You Prefer? \n \nLAFS.3.RI.1.2 - Determine the main idea of a text; recount the \nkey details and explain how they support the main idea. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5757 \n \n \n \nCPALMS  Lesson Plans \n-Amazing Dolphins \n-Choose the Best Basketball Coach \n-Comparing and Contrasting Washington and Lincoln \n-The Most Interesting Animal \n-Our United States Government: What’s the Main Idea? \n-Main Idea-Think About Three Questions \n-Is it Energy? \n-I-Spy Something  Important \n-Our Amazing World \n-Adding Up to the Main Idea \n-Turn Up the Heat \n-Light the Way \n-Circuit Circus \n-Non-Fiction with Mammals \n-Gravity \n-Non-fiction with Reptiles \n-Get to Work! \n-Going Batty! \n-What’s the Big Idea? \n-Energetic Main Idea \n-Using Biographies for Sequencing, Main Idea and Details \n-Animal Main Idea \n-15 Student Centered Activities \n-2 Teaching Ideas \n-7 Related Courses \n-3 Access Points \n  \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5757"
+      ],
+      "standards": [
+        "LAFS.3.RI.1.2"
+      ]
+    },
+    {
+      "page": 5,
+      "text": " \nThird Grade Toolkit \n-Distinguishing the Author’s Purpose \n-Landmark Main Idea \n-Pitch Me A Sound \n \n \nLAFS.3.RI.1.3 - Describe the relationship between a series of \nhistorical events, scientific ideas or concepts, or steps in \ntechnical procedures in a text, using language that pertains to \ntime, sequence, and cause/effect. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5758 \n \n \n \nCPALMS Lesson Plans \n-Great American Inventors \n-Fertilizing Fun \n-In Order to Understand, You Must First Understand the \nOrder! \n-Changing the State of Water: From Liquid to Vapor \n-The Cause and Effect of Motion \n-Using Biographies for Sequencing, Main Idea and Details \n-Exploring Cause and Effect Using Expository Texts about \nNatural Disasters \n-Changing the State of Water: Freezing \n-Matter, Matter Everywhere \n \n \n-3 Student Center Activity \n-1 Text Resource \n-9 Related Courses \n-3 Access Points \n-Original Tutorial-Exploring Sequencing in Text \nhttp://www.cpalms.org/Public/PreviewResource/Preview/119061 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/119061/AccessibleVersion-\nExploringSequencingInText.pdf \n \nLAFS.3.RI.2.4 - Determine the meaning of general academic and \ndomain-specific words and phrases in a text relevant to a grade \n3 topic or subject area. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5759 \n \n \n \nCPALMS Lesson Plans \n-Who’s at the Zoo? \n-Is It Energy? \n-Our Amazing World \n-Turn Up the Heat \n-Can You Find a Clue? \n-Light the Way \n-Circuit Circus \n-Classifying Plants \n-Gravity \n-Do Not Disturb! \n-Changing the State of Water: Freezing \n-Pitch Me a Sound \n \n \n-12 Student Centered Activities \n-3 Text Resources \n-1 Teaching Idea \n-13 Related Courses \n-2 Access Points \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/119061",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5758",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5759",
+        "http://www.cpalms.org/uploads/resources/119061/AccessibleVersion-ExploringSequencingInText.pdf"
+      ],
+      "standards": [
+        "LAFS.3.RI.1.3",
+        "LAFS.3.RI.2.4"
+      ]
+    },
+    {
+      "page": 6,
+      "text": " \nThird Grade Toolkit \nLAFS.3.RI.2.5 - Use text features and search tools (e.g., key \nwords, sidebars, hyperlinks) to locate information relevant to a \ngiven topic efficiently. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5760 \n \n \n \nCPALMS Lesson Plans \n-Rocking Through the Regions \n-What am I? \n-Exploring the States of Water \n-Non-Fiction with Mammals \n-Non-fiction with Reptiles \n-Get to Work! \n-Going Batty! \n-Which do You Prefer? \n-Who’s Who? \n \n-2 Student Centered Activities \n-7 Related Courses \n-3 Access Points \n-1 Unit or Lesson Sequence: Using Science Texts to Teach the Organizational \nFeatures of Nonfiction \nhttp://www.readwritethink.org/classroom-resources/lesson-plans/using-\nscience-texts-teach-413.html \n \nLAFS.3.RI.2.6 - Distinguish their own point of view from that of \nthe author of a text. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5761 \n \n \nCPALMS Lesson Plan \n-What is Tourette Syndrome? \n \n \n \n \n-7 Related Courses \n-3 Access Points \n \nLAFS.3.RI.3.7 - Use information gained from illustrations (e.g., \nmaps, photographs) and the words in a text to demonstrate \nunderstanding of the text (e.g., where, when, why, and how key \nevents occur). \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5762 \n \n \n \nCPALMS  Lesson Plans \n-In Order to Understand, You must First Understand the \nOrder! \n-States of Water Part 2 \n-Exploring the States of Water \n-Non-fiction with Reptiles \n-Which Do You Prefer? \n \n \n-2 Student Center Activities \n-1 Lesson Study \n-6 Related Courses \n-4 Access Points \n-1 Unit or Lesson Sequence: Using Science Texts to Teach the Organizational \nFeatures of Nonfiction \nhttp://www.readwritethink.org/classroom-resources/lesson-plans/using-\nscience-texts-teach-413.html \n \nLAFS.3.RI.3.8 - Describe the logical connection between \nparticular sentences and paragraphs in a text (e.g., comparison, \ncause/effect, first/second/third in a sequence). \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5763 \n \n \n \nCPALMS  Lesson Plans \n-The Most Interesting Animal Campaign \n-Compare and Contrast Signals \n-What a Contrast \n-Exploring Cause and Effect: Natural Disasters \n-Cause and Effect Relationships \n-Cause and Effect Signal Words \n-Implicit Cause and Effect Relationships \n-2 Student Center Activities \n-7 Related Courses \n-2 Access Points \n-1 Teaching Idea \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5760",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5761",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5762",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5763",
+        "http://www.readwritethink.org/classroom-resources/lesson-plans/using-science-texts-teach-413.html"
+      ],
+      "standards": [
+        "LAFS.3.RI.2.5",
+        "LAFS.3.RI.2.6",
+        "LAFS.3.RI.3.7",
+        "LAFS.3.RI.3.8"
+      ]
+    },
+    {
+      "page": 7,
+      "text": " \nThird Grade Toolkit \n \nLAFS.3.RI.3.9 - Compare and contrast the most important \npoints and key details presented in two texts on the same topic. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5764 \n \n \nCPALMS Lesson Plans \n-Amazing Dolphins \n-Field Trip Fundraiser - STEM \n-Comparing and Contrasting Washington and Lincoln \n \n \n-6 Related Courses \n-3 Access Points \n \nLAFS.3.RI.4.10 - By the end of the year, read and comprehend \ninformational texts, including history/social studies, science, \nand technical texts, at the high end of the grades 2–3 text \ncomplexity band independently and proficiently. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5765 \n \n \nCPALMS Lesson Plans \n-Rocking through the Regions \n-Which Do You Prefer? \n \n \n-45 Student Center Activities \n-3 Text Resources \n-1 Teaching Idea \n-8 Related Courses \n-1 Access Point \nLAFS.3.RL.1.1 - Ask and answer questions to demonstrate \nunderstanding of a text, referring explicitly to the text as the \nbasis for the answers. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5699 \n \n \n \nCPALMS  Lesson Plans \n-Sosu’s Call \n-Escaping Slavery: Sweet Clara and the Freedom Quilt \n-Determining the Lesson in Tops & Bottoms \n-Charlotte’s Web: Chapter 1 \n-Poppin’ Central Message \n-City, City: A Comparison \n-A River of Words \n-Two Bad Ants: A Close Reading \n-The Tale of Despereaux \n-Faithful Elephants \n-Two Bad Ants: Point of View \n-The Raft \n-A Schema-Building Study with Patricia Polacco \n-The Real Princess, A Fairy Tale \n-The Junkyard Wonders \n-Lewis and Clark and Me \n-The Sweetest Fig \n-Just a Dream \n-19 Student Center Activities \n-5 Related Courses \n-4 Access Points \n-2 Teaching Ideas \n-2 Units or Lesson Sequences: Inside and Outside: Paradox of the Box  \nhttp://www.learnnc.org/lp/pages/4233?ref=search \n \nInferring How and Why Characters Change \nhttp://www.readwritethink.org/classroom-resources/lesson-plans/inferring-\ncharacters-change-858.html?tab=1#tabs \n \n-Original Tutorials: Detail Detectives \nhttp://www.cpalms.org/Public/PreviewResource/Preview/100182 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/100182/AccessibleVersion_Detail\nDetectives.pdf \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/100182",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5699",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5764",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5765",
+        "http://www.cpalms.org/uploads/resources/100182/AccessibleVersion_DetailDetectives.pdf",
+        "http://www.learnnc.org/lp/pages/4233?ref=search",
+        "http://www.readwritethink.org/classroom-resources/lesson-plans/inferring-characters-change-858.html?tab=1#tabs"
+      ],
+      "standards": [
+        "LAFS.3.RI.3.9",
+        "LAFS.3.RI.4.10",
+        "LAFS.3.RL.1.1"
+      ]
+    },
+    {
+      "page": 8,
+      "text": " \nThird Grade Toolkit \n-The Lion and the Mouse \n-The Fisherman and His Wife \n-14 Cows for America \n-The Ballad of Mulan \n-Whose Fault Is It? \n-My Secret Bully \n-Questions for My Mother \n-And the Moral Is… \n-Thank You, Mr. Falker \n-A Monster of a Helper \n-Implicit Effects \n-Because of Winn-Dixie \n-Fairy Tales/Folk Tales \n-Figurative Language Awards Ceremony \n \n \nLAFS.3.RL.1.2 - Recount stories, including fables, folktales, and \nmyths from diverse cultures; determine the central message, \nlesson, or moral and explain how it is conveyed through key \ndetails in the text. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5700 \n \n \n \nCPALMS Lesson Plans \n-Determining the Lesson in Tops & Bottoms \n-Poppin’ Central Message \n-“Roar-ing” for Nonliteral Language \n-Faithful Elephants \n-The Raft \n-The Real Princess, a Fairy Tale \n-The Junkyard Wonders \n-The Lion and the Mouse \n-The Fisherman and His Wife \n-The Ballad of Mulan \n-My Secret Bully \n-And the Moral Is… \n-Thank You, Mr. Falker \n-Theme Worksheets \n-Fairy Tales/Folk Tales \n-Figurative Language Awards Ceremony \n \n-18 Student Center Activities \n-5 Related Courses \n-4 Access Points \n-1 Teaching Idea \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5700"
+      ],
+      "standards": [
+        "LAFS.3.RL.1.2"
+      ]
+    },
+    {
+      "page": 9,
+      "text": " \nThird Grade Toolkit \nLAFS.3.RL.1.3 - Describe characters in a story (e.g., their traits, \nmotivations, or feelings) and explain how their actions \ncontribute to the sequence of events. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5701 \n \n \n \nCPALMS Lesson Plans \n-Sosu’s Call \n-Escaping Slavery: Sweet Clara and the Freedom Quilt \n-Determining the Lesson in Tops & Bottoms \n-Charlotte’s Web: Chapter 1 \n-A River of Words \n-The Tale of Despereaux \n-The Raft \n-A Schema-Building Study with Patricia Polacco \n-The Real Princess, A Fairy Tale \n-The Junkyard Wonders \n-Lewis and Clark and Me \n-The Sweetest Fig \n-Just a Dream \n-The Lion and the Mouse \n-The Fisherman and His Wife \n-14 Cows for America \n-The Ballad of Mulan \n-Caricature Character Tour \n-Character Conflict \n-Memories, A Connection to the Past \n-A Monster of a Helper \n-Implicit Effects \n-Identifying Descriptive Language \n-Because of Winn-Dixie \n-Fairy Tales/Folk Tales \n-Identifying Mood in Children’s Literature \n  \n-14 Student Center Activities \n-2 Teaching Ideas \n-5 Related Courses \n-6 Access Points \n-1 Unit or Lesson Sequence: Inferring How and Why Characters Change \nhttp://www.readwritethink.org/classroom-resources/lesson-plans/inferring-\ncharacters-change-858.html?tab=1#tabs \n \n-Original Student Tutorial: Terrific Traits \nhttp://www.cpalms.org/Public/PreviewResource/Preview/119139 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/119139/AccessibleVersion_Terrifi\ncTraits.pdf \n  \nLAFS.3.RL.2.4 - Determine the meaning of words and phrases as \nthey are used in a text, distinguishing literal from nonliteral \nlanguage. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5702 \n \nCPALMS Lesson Plan \n-“Roar-ing” for Nonliteral Language \n-City, City: A Comparison \n-The Tale of Despereaux \n-The Fisherman and his Wife \n-Vocabulary Detective \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/119139",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5701",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5702",
+        "http://www.cpalms.org/uploads/resources/119139/AccessibleVersion_TerrificTraits.pdf",
+        "http://www.readwritethink.org/classroom-resources/lesson-plans/inferring-characters-change-858.html?tab=1#tabs"
+      ],
+      "standards": [
+        "LAFS.3.RL.1.3",
+        "LAFS.3.RL.2.4"
+      ]
+    },
+    {
+      "page": 10,
+      "text": " \nThird Grade Toolkit \n \n \n-And the Moral Is… \n-Cause and Effect Signal Words \n-Because of Winn-Dixie \n \nLAFS.3.RL.2.5 - Refer to parts of stories, dramas, and poems \nwhen writing or speaking about a text, using terms such as \nchapter, scene, and stanza; describe how each successive part \nbuilds on earlier sections. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5703 \n \nCPALMS Lesson Plan \n- City, City: A Comparison \n \n \n-4 Student Center Activity \n-4 Access Points \n \n \nLAFS.3.RL.2.6 - Distinguish their own point of view from that of \nthe narrator or those of the characters. \n \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5704 \n \n \nCPALMS  Lesson Plans \n-Two Bad Ants-Point of View \n-Two Bad Ants-Characters’ Point of View \n-A Schema-Building with Patricia Polacco \n-First Person Point of View \n-Identifying Descriptive Language \n \n-5 Related Courses \n-3 Access Point \n-1 Teaching Idea \n \n \n \n \nLAFS.3.RL.3.7 - Explain how specific aspects of a text’s \nillustrations contribute to what is conveyed by the words in a \nstory (e.g., create mood, emphasize aspects of a character or \nsetting). \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5705 \n \n \n \nCPALMS Lesson Plans \n-A River of Words \n-Two Bad Ants - Point of View \n-Two Bad Ants - Characters’ Point of View \n-The Raft \n-The Real Princess, A Fairy Tale \n-The Junkyard Wonders \n-14 Cows for America \n-Identifying Mood in Children’s Literature \n \n-5 Related Courses \n-3 Access Points \nLAFS.3.RL.3.9 - Compare and contrast the themes, settings, and \nplots of stories written by the same author about the same or \nsimilar characters (e.g., in books from a series). \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5706 \n \nCPALMS Lesson Plan \n-Strega Nona vs Big Anthony \n \n \n-3 Student Center Activities \n-4 Related Courses \n-2 Access Points \n  \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5703",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5704",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5705",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5706"
+      ],
+      "standards": [
+        "LAFS.3.RL.2.5",
+        "LAFS.3.RL.2.6",
+        "LAFS.3.RL.3.7",
+        "LAFS.3.RL.3.9"
+      ]
+    },
+    {
+      "page": 11,
+      "text": " \nThird Grade Toolkit \n \nLAFS.3.RL.4.10 - By the end of the year, read and comprehend \nliterature, including stories, dramas, and poetry, at the high end \nof the grades 2–3 text complexity band independently and \nproficiently. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5707 \n \n \nCPALMS Lesson Plans \n-City, City: A Comparison \n-Two Bad Ants \n-The Fisherman and His Wife \n-It’s All in the Details!  \n-This is What I Think! \n-Exploring the Three Levels of Understanding \n \n-54 Student Center Activities \n-4 Related Courses \n-1 Access Point \nLAFS.3.SL.1.1 - Engage effectively in a range of collaborative \ndiscussions (one-on-one, in groups, and teacher-led) with \ndiverse partners on grade 3 topics and texts, building on others’ \nideas and expressing their own clearly. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5870 \n \n \nCPALMS Lesson Plans \n-Rockin’ Road Trip \n-Tops and Bottoms \n-An Energetic Place to Live \n-Surf’s Up Dude \n-Peace Love Baseball \n-Kick The Can Man \n-Tricky Rice Math Patterns \n-Treehouse Makeover \n-Group Singing Lessons \n-The Tale of Despereaux \n-The Two Bad Ants \n-The Raft \n-A Schema-Building Study With Patricia Polacco \n-The Real Princess, A Fairy Tale \n-The Sweetest Fig \n-Just a Dream \n-The Lion and the Mouse \n-The Fisherman and his Wife \n-Parts of a Plant \n-Whose Fault Is It? \n-Saving Dodgeball \n-Fertilizing Fun \n-Fairies to the Rescue \n-Playground Protection \n-12 Related Courses \n-4 Access Points \n-1 Teaching Idea \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5707",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5870"
+      ],
+      "standards": [
+        "LAFS.3.RL.4.10",
+        "LAFS.3.SL.1.1"
+      ]
+    },
+    {
+      "page": 12,
+      "text": " \nThird Grade Toolkit \n-Scheduling a School Day \n-Questions for My Mother \n-Nail it with Great Nail Polish \n-Water Woes \n-Stop the Drop \n-And the Moral is…. \n-Thrift Town Melt-Down - Let’s Cool Up! \n-Do Not Disturb! Hibernating and Migration \n-A Monster of a Helper \n-Because of Winn-Dixie \n-Fairy Tales/Folk Tales \n-Dr. Friendly’s Zoo Exhibit \n \nLAFS.3.SL.1.2 - Determine the main ideas and supporting \ndetails of a text read aloud or information presented in \ndiverse media and formats, including visually, quantitatively, \nand orally. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5871 \n \nCPALMS Lesson Plans \n-Distinguishing the Author’s Purpose \n-Implicit Effects \n-Because of Winn-Dixie \n \n \n-17 Related Courses \n-3 Access Points \n \nLAFS.3.SL.1.3 - Describe characters in a story (e.g., their traits, \nmotivations, or feelings) and explain how their actions \ncontribute to the sequence of events. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5701 \n \n \n \nCPALMS  Lesson  Plans \n-Sosu’s Call \n-Sweet Clara and the Freedom Quilt \n-Determining the Lesson in Tops & Bottoms \n-Charlotte’s Web: Chapter 1 \n-A River of Words \n-The Tale of Despereaux \n-The Raft \n-A Schema-Building Study with Patricia Polocco \n-The Real Princess, A Fairy Tale \n-The Junkyard Wonders \n-Lewis and Clark and Me \n-The Sweetest Fig \n-Just a Dream \n-14 Student Center Activities \n-13 Related Courses \n-2 Access Points \n-2 Teaching Ideas \n-1 Unit or Lesson Sequence: Inferring How and Why characters Change \nhttp://www.readwritethink.org/classroom-resources/lesson-plans/inferring-\ncharacters-change-858.html?tab=1#tabs \n \n-Original Tutorials: Terrific Traits \nhttp://www.cpalms.org/Public/PreviewResource/Preview/119139 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/119139/AccessibleVersion_Terrifi\ncTraits.pdf \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/119139",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5701",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5871",
+        "http://www.readwritethink.org/classroom-resources/lesson-plans/inferring-characters-change-858.html?tab=1#tabs"
+      ],
+      "standards": [
+        "LAFS.3.SL.1.2",
+        "LAFS.3.SL.1.3"
+      ]
+    },
+    {
+      "page": 13,
+      "text": " \nThird Grade Toolkit \n-The Lion and the Mouse \n-The Fisherman and his Wife \n-14 Cows for America \n-The Ballad of Mulan \n-Caricature Character Tour \n-Character Caused by the Plot \n-Memories, A Connection to the Past \n-A Monster of a Helper \n-Implicit Effects \n-Identifying Descriptive Language \n-Because of Winn Dixie \n-Fairy Tales/Folk Tales \n-Identifying Mood in Children’s Literature \nLAFS.3.SL.2.4 - Report on a topic or text, tell a story, or recount \nan experience with appropriate facts and relevant, descriptive \ndetails, speaking clearly at an understandable pace. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5873 \n \n \nCPALMS  Lesson Plans \n-Great American Inventors \n-Parts of a Plant \n-Rocking Through the Regions \n-Favorite Family Traditions \n-Figurative Language Awards Ceremony \n-Who’s Who? \n-Rabbit Brochure Presentation \n \n-7 Related Courses \n-3 Access Points \n-1 Teaching Idea \n \nLAFS.3.SL.2.5 - Demonstrate fluid reading at an understandable \npace, adding visual displays and engaging audio recordings \nwhen appropriate to emphasize or enhance certain facts or \ndetails. \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5874 \n \n \n-5 Related Courses \n-1 Access Point \nLAFS.3.SL.2.6 - Speak in complete sentences when appropriate \nto task and situation in order to provide requested detail or \nclarification. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5875 \n \nCPALMS Lesson Plans \n-Cuts In A Rush - STEM \n-Rift Raft Floating - STEM \n-Playground Protection – STEM \n \n-4 Related Courses \n-1 Access Point \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5873",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5874",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5875"
+      ],
+      "standards": [
+        "LAFS.3.SL.2.4",
+        "LAFS.3.SL.2.5",
+        "LAFS.3.SL.2.6"
+      ]
+    },
+    {
+      "page": 14,
+      "text": " \nThird Grade Toolkit \nLAFS.3.W.1.1 - Write opinion pieces on topics or texts, \nsupporting a point of view with reasons. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5823 \n \n \n \n \n \n \n \nCPALMS Lesson Plans \n-Sosu’s Call \n-What is Tourette Syndrome? \n-Determining the Lesson in Tops & Bottoms \n-Charlotte’s Web: Chapter 1 \n-“Roar-ing” for Nonliteral Language \n-How Long is Your Music Lesson? - STEM \n-Reading is Fun! - STEM \n-An Energetic Place to Live - STEM \n-Having a Field Day - STEM \n-Happy Feet! - STEM \n-The Cookie Jar Wants a New Cookie! - STEM \n-The Tale of Despereaux \n-Faithful Elephants \n-The Real Princess, A Fairy  Tale \n-The Fisherman and His Wife \n-Lizard Lights - STEM \n-This is What I Think! \n-Dining Dilemma - STEM \n-Pick a Pet - STEM \n-Kites for Education - STEM \n-Dream Skates - STEM \n-Spacesuits Unlimited - STEM \n-Who’s Who? \n \n-7 Related Courses \n-4 Access Points \n-Original Student Tutorial: Bon Voyage! \nhttp://www.cpalms.org/Public/PreviewResource/Preview/119328 \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/119328/AccessibleVersion_Bon%\n20Voyage%20.pdf \n \nLAFS.3.W.1.2 - Write informative/explanatory texts to examine \na topic and convey ideas and information clearly. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5824 \n \n \n \nCPALMS Lesson Plans \n-Chess Wish List \n-Amazing Dolphins \n-Cupid’s Carnival Rides - STEM \n-City, City: A Comparison \n-Comparing and Contrasting Washington and Lincoln \n-Two Bad Ants \n-A Schema-Building Study with Patricia Polacco \n-The Junkyard Wonders \n-10 Related Courses \n-5 Access Points \n-3 Teaching Ideas \n-3 Text Resources \n-1 Student Center Activity \n-Original Student Tutorial: Diving into Informative Writing \nhttp://www.cpalms.org/Public/PreviewResource/Preview/119068 \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResource/Preview/119068",
+        "http://www.cpalms.org/Public/PreviewResource/Preview/119328",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5823",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5824",
+        "http://www.cpalms.org/uploads/resources/119328/AccessibleVersion_Bon%20Voyage%20.pdf"
+      ],
+      "standards": [
+        "LAFS.3.W.1.1",
+        "LAFS.3.W.1.2"
+      ]
+    },
+    {
+      "page": 15,
+      "text": " \nThird Grade Toolkit \n-The Sweetest Fig \n-Just A Dream \n-The Lion and the Mouse \n-14 Cows for America \n-Our United States Government: What’s the Main Idea? \n-The Journey of a Tiny Turtle \n-Animal Habitat - STEM \n-Fertilizing Fun - STEM \n-Dream Skates - STEM \n-Rocking through the Regions \n-Parts of a Plant \n-Gravity \n-Because of Winn-Dixie \n \nAccessible version of the tutorial in PDF format: \nhttp://www.cpalms.org/uploads/resources/119068/AccessibleVersion_Diving\nintoInformativeWriting.pdf \n \nLAFS.3.W.1.3 - Write narratives to develop real or imagined \nexperiences or events using effective technique, descriptive \ndetails, and clear event sequences. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5825 \n \n \nCPALMS Lesson Plans \n-Charlotte’s Web: Chapter 1 \n-Two Bad Ants \n-The Raft \n-A Schema-Building Study With Patricia Polacco \n-Lewis and Clark and Me \n-Sparks of Color \n-It’s All in the Details! \n-Crickwing: Using Strong Words to Convey Precise Meaning \n-Teaching Sequential Organization of Narrative Essay \n \n \n-7 Related Courses \n-5 Access Points \n-1 Unit or Lesson Sequence: Inside and Outside: Paradox of the Box  \nhttp://www.learnnc.org/lp/pages/4233?ref=search \nLAFS.3.W.2.4 – With guidance and support from adults, \nproduce writing in which the development and organization are \nappropriate to task and purpose.  \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5826 \n \n \nCPALMS Lesson Plans \n-A Close Reading of The Junkyard Wonders by Patricia \nPolacco \n-A Schema-Building Study With Patricia Polacco \n-Close Reading Exemplar: “Because of Winn-Dixie” \n-Close Reading of A River of Words \n-Exploring Cause and Effect Using Expository Texts About \nNatural Disasters \n-6 Related Courses \n-1 Access Point \n-3 Teaching Ideas \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5825",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5826",
+        "http://www.cpalms.org/uploads/resources/119068/AccessibleVersion_DivingintoInformativeWriting.pdf",
+        "http://www.learnnc.org/lp/pages/4233?ref=search"
+      ],
+      "standards": [
+        "LAFS.3.W.1.3",
+        "LAFS.3.W.2.4"
+      ]
+    },
+    {
+      "page": 16,
+      "text": " \nThird Grade Toolkit \n-Favorite Family Traditions \n-Group Singing Lessons- STEM \n-Healthy Habits- STEM \n-I-SPY Something Important \n-It’s All in the Details! Responding Personally using the Text \nMy Secret Bully by Trudy Ludwig \n-Lizard Lights- STEM \n-Nail it with Great Nail Polish! - STEM \n-Spacesuits Unlimited MEA- STEM \n-Spin Beyblades- STEM \n-The Ballad of Mulan: A Close Reading Activity \n-The Journey of a Tiny Turtle \n-This is What I Think! Using Opinion Writing to Respond to \nthe Text My Secret Bully by Trudy Ludwig \n-Water Park Fun Day- STEM \n-Writing With a Purpose \n \nLAFS.3.W.2.5 - With guidance and support from peers and \nadults, develop and strengthen writing as needed by planning, \nrevising, and editing. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5827 \n \n \nCPALMS Lesson Plans \n-Lett’uce Begin Our Area - STEM \n-Sparks of Color \n-Lizard Lights - STEM \n-Favorite Family Traditions \n-Building Strong Verbs with Patricia Polacco \n-Who’s Who \n \n-6 Related Courses \n-9 Access Points \nLAFS.3.W.2.6 - With guidance and support from adults, use \ntechnology to produce and publish writing (using keyboarding \nskills) as well as to interact and collaborate with others. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5828 \n \n \n \nCPALMS Lesson Plan \n- A Schema-Building Study with Patricia Polacco \n-Rocking through the Region \n \n \n-7 Related Courses \n-2 Access Points \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5827",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5828"
+      ],
+      "standards": [
+        "LAFS.3.W.2.5",
+        "LAFS.3.W.2.6"
+      ]
+    },
+    {
+      "page": 17,
+      "text": " \nThird Grade Toolkit \nLAFS.3.W.3.7 - Conduct short research projects that build \nknowledge about a topic. \n \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5829 \n \n \n \nCPALMS Lesson Plans \n-Lizard Lights - STEM \n-Rocking through the Regions \n-What Am I? \n-Exploring the States of Water \n-Using Biographies for Sequencing, Main Idea and Details \n-3 Teaching Idea \n-8 Related Courses \n-1 Access Point \nLAFS.3.W.3.8 - Recall information from experiences or gather \ninformation from print and digital sources; take brief notes on \nsources and sort evidence into provided categories. \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5830 \n \nCPALMS Lesson Plans \n-Science Space Camp \n-Bulletin Board Brainaics Graphing \n-The Journey of a Tiny Turtle \n-Feathered Friends: A Lesson about Birds \n-My Secret Bully \n-Rocking through the Regions \n-Gravity \n-Animap \n-Sunsational \n \n-5 Teaching Idea \n-1 Student Center Activity \n-10 Related Courses \n-10 Access Points \nLAFS.3.W.4.10 - Write routinely over extended time frames \n(time for research, reflection, and revision) and shorter time \nframes (a single sitting or a day or two) for a range of discipline-\nspecific tasks, purposes, and audiences. \nhttp://www.cpalms.org/Public/PreviewStandard/Preview/5831 \n \n \nCPALMS Lesson Plans \n-Tricky Rice Math Patterns \n-Feathered Friends: A Lesson about Birds \n-Rocking through the Regions \n-Memories, A Connection to the Past \n \n \n-2 Teaching Ideas \n-6 Related Courses \n-2 Access Points \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5829",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5830",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5831"
+      ],
+      "standards": [
+        "LAFS.3.W.3.7",
+        "LAFS.3.W.3.8",
+        "LAFS.3.W.4.10"
+      ]
+    }
+  ],
+  "captured": "2026-06-28",
+  "provenance": "maintainer-provided PDF, full text+links extracted offline via pymupdf"
+}

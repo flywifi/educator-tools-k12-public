@@ -16,6 +16,6 @@
     {"step": 5, "atom": "quality-check",     "input_from": "assembled_map",            "output_to": "final",
      "gates": ["standard_alignment", "coverage_complete", "pacing_realistic", "no_fabrication"]}
   ],
-  "shortcut_atoms": ["atom-standards-match", "atom-objective-write"],
+  "shortcut_atoms": ["standards-match", "objective-write", "standards-crosswalk"],
   "note": "Coverage check (all required standards placed once) and pacing realism are the critical gates for this skill."
 }

@@ -1,0 +1,37 @@
+# Prune educational content and non-code assets from static analysis scans.
+# Keeps Semgrep / code analysis focused on executable Python and configuration,
+# not lesson plans, curriculum examples, or reference data.
+
+# Skill-level educational assets (templates, examples, rubrics)
+skills/*/assets/
+skills/*/*/assets/
+skills/*/examples/
+skills/*/*/examples/
+
+# Authoritative reference data (standards registries, school indexes)
+canonical-sources/
+
+# Cross-skill example library
+examples/
+
+# Documentation (prose, not code)
+docs/
+
+# Platform packaging (implementation wrappers for GPT/Gemini/Claude)
+implementation/
+
+# Security policy docs (prose)
+security/
+
+# Changelog / change management (prose)
+changes/
+
+# Non-executable file types
+*.md
+*.pdf
+*.docx
+*.pptx
+*.xlsx
+*.odt
+*.ods
+*.odp

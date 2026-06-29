@@ -14,7 +14,7 @@
   "config_overrides": {
     "default_scope": "district",
     "feeds_filter": ["ocps-news"],
-    "school_index": "shared/schools/ocps/schools.json"
+    "school_index": "canonical-sources/schools/ocps/schools.json"
   },
   "version": "0.1.0",
   "updated": "2026-06-27",

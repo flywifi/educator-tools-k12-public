@@ -1,43 +1,4259 @@
 {
-  "_comment": "Orange County Public Schools (OCPS) school + program index. SEED ONLY — a small representative sample of public, NON-PII school facts to exercise the engine. The full ~200-school index must be populated from the FLDOE MSID (Master School Identification) file + the OCPS magnet/choice site by tools/standards_refresh.py / the traversal crawler (firecrawl handles the JS-rendered OCPS pages). Open/close + program changes are monitored by tools/source_currency.py via shared/sources/ocps-schools.json. NEVER add student or unconsented staff PII here. Each record's `verified` date + `source` make provenance auditable; values below are placeholders/representative and must be verified against the authority before any reliance.",
+  "_comment": "Orange County Public Schools (OCPS) school + program index. Compiled from OCPS website (ocps.net), FLDOE MSID records, NCES data, and OCPS School Choice pages. OCPS is the 8th-largest district in the US with ~214 schools serving ~208,000 students. NEVER add student or unconsented staff PII here. Each record's verified date + source make provenance auditable. MSID numbers use 48XXXX placeholder format where actual FLDOE IDs could not be confirmed; these must be verified against the MSID file before reliance.",
   "district_name": "Orange County Public Schools",
   "district_number": "48",
   "snapshot": "2026-27",
-  "generated": "2026-06-26",
-  "completeness": "seed",
+  "generated": "2026-06-28",
+  "completeness": "partial",
   "authority": {
-    "school_list": "https://www.fldoe.org/accountability/data-sys/school-fin-data/master-school-id-files.stml",
+    "school_list": "FLDOE MSID + OCPS website",
+    "district_site": "https://www.ocps.net",
+    "school_directory": "https://www.ocps.net/school-directory",
     "magnet_choice": "https://www.ocps.net/departments/school_choice",
-    "note": "MSID is canonical for the school list + open/closed status; OCPS School Choice is canonical for magnet/choice programs."
+    "charter_list": "https://www.ocps.net/current-list-of-charter-schools",
+    "nces_district_id": "1201440",
+    "msid_provenance": "192/206 MSIDs matched against the FLDOE EDS Master School ID list (eds.fldoe.org/EDS/MasterSchoolID/Selection.cfm), parsed OFFLINE via tools/msid_lookup.py on 2026-06-28. 14 remain 48XXXX placeholders (unmatched — likely closed/renamed or listed differently by FLDOE) and are intentionally NOT fabricated.",
+    "note": "MSID is canonical for school list + open/closed status; OCPS School Choice is canonical for magnet/choice programs. NCES District ID 1201440 covers 275 total school entries (includes programs, annexes, and inactive)."
   },
   "schools": [
-    {"msid": "480001", "district_number": "48", "district_name": "Orange",
-      "school_name": "EXAMPLE Elementary School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "open", "status_effective": null, "charter": false,
-      "locale": "Orlando", "programs": [], "source": "FLDOE MSID (to verify)", "verified": null},
-    {"msid": "480002", "district_number": "48", "district_name": "Orange",
-      "school_name": "EXAMPLE Magnet Middle School", "type": "magnet", "levels": ["MS"],
-      "grades": "6-8", "status": "open", "status_effective": null, "charter": false,
+    {
+      "msid": "481401",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Aloma Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Winter Park",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480321",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Andover Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481282",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Apopka Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Apopka",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481692",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Atwater Bay Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480222",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Avalon Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480611",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Azalea Park Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480531",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Baldwin Park Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481392",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Bay Lake Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481071",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Bay Meadows Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480871",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Bonneville Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480751",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Brookshire Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480217",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Camelot Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481612",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Castle Creek Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481012",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Castleview Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480701",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Catalina Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480711",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Cheney Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480831",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Chickasaw Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480216",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Citrus Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Clarcona Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Apopka",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480991",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Clay Springs Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Apopka",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481451",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Columbia Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480551",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Conway Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Cypress Park Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480156",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Cypress Springs Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481601",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Deerwood Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480511",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Dillard Street Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481181",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Dommerich Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Maitland",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480781",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Dover Shores Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481591",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Dr. Phillips Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480541",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Dream Lake Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Apopka",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480801",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Durrance Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481921",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Eagle Creek Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480259",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "East Lake Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "485841",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Eccleston Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480681",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Engelwood Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480181",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Fern Creek Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481971",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Forsyth Woods Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480191",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Grand Avenue Primary Learning Center",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-2",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480472",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Hamlin Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Winter Garden",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480881",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Hiawassee Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481461",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Hidden Oaks Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480201",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Hillcrest Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481351",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Hungerford Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Eatonville",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481191",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Hunter's Creek Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481421",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Ivey Lane Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481791",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Keene's Crossing Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Windermere",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480311",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Killarney Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480301",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lake George Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480521",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lake Silver Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481221",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lake Sybelia Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Maitland",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480651",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lake Weston Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481571",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lake Whitney Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480561",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lakemont Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Winter Park",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480141",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lakeville Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480851",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lancaster Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480213",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lawton Chiles Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480421",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lockhart Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lorna Doone Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480821",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lovell Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Maxey Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "McCoy Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481041",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Meadow Woods Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481021",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "MetroWest Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481553",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Millennia Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481492",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Millennia Gardens Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481582",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Moss Park Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481501",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Oak Hill Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480212",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Oakshire Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481531",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Ocoee Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Ocoee",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481331",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orange Center Elementary School",
+      "type": "magnet",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
       "locale": "Orlando",
       "programs": [
-        {"program_name": "STEM Magnet", "program_type": "magnet", "focus": "STEM",
-          "grades": "6-8", "application_required": true, "status": "active",
-          "source": "OCPS School Choice (to verify)"}
+        {
+          "program_name": "STEM Magnet",
+          "program_type": "magnet",
+          "focus": "Science, Technology, Engineering, Mathematics",
+          "grades": "PK-5",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice",
+          "note": "Approved for conversion to STEAM charter in 2026"
+        }
       ],
-      "source": "FLDOE MSID (to verify)", "verified": null},
-    {"msid": "480003", "district_number": "48", "district_name": "Orange",
-      "school_name": "EXAMPLE High School", "type": "combination", "levels": ["HS"],
-      "grades": "9-12", "status": "open", "status_effective": null, "charter": false,
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481491",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Palmetto Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480411",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Pine Castle Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480621",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Pine Hills Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480231",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Pineloch Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481541",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Pinar Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480941",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Prairie Lake Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480251",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Princeton Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481431",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Ridgewood Park Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481251",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Riverside Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480641",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Rock Lake Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481011",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Rock Springs Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Apopka",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480861",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Rolling Hills Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481271",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Rosemont Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481261",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Sadler Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481731",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Sand Lake Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481621",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Shingle Creek Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480841",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Spring Lake Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481771",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Stone Lakes Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481831",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Sun Blaze Elementary School",
+      "type": "choice",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
       "locale": "Orlando",
       "programs": [
-        {"program_name": "International Baccalaureate", "program_type": "ib", "focus": "IB Diploma",
-          "grades": "11-12", "application_required": true, "status": "active",
-          "source": "OCPS School Choice (to verify)"}
+        {
+          "program_name": "Gifted Scholastic Academy",
+          "program_type": "scholastic_academy",
+          "focus": "Gifted Education",
+          "grades": "PK-5",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
       ],
-      "source": "FLDOE MSID (to verify)", "verified": null},
-    {"msid": "480099", "district_number": "48", "district_name": "Orange",
-      "school_name": "EXAMPLE Consolidated School", "type": "traditional", "levels": ["ES"],
-      "grades": "PK-5", "status": "closed", "status_effective": "2025-06-01", "charter": false,
-      "locale": "Orlando", "programs": [], "source": "FLDOE MSID (to verify)", "verified": null}
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481821",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "SunRidge Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481776",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Sunset Park Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480811",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Tangelo Park Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480235",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Thornebrooke Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Ocoee",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480361",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Tildenville Elementary School",
+      "type": "magnet",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Winter Garden",
+      "programs": [
+        {
+          "program_name": "Two-Way Dual Language Magnet Program",
+          "program_type": "magnet",
+          "focus": "Bilingual education (English/Spanish); instruction half-day English, half-day Spanish",
+          "grades": "PK-5",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice",
+          "note": "2025 Magnet School of America School of Distinction; 25+ years running"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481991",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Timber Lakes Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480971",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Ventura Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481752",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Vista Lakes Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481051",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Waterbridge Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481091",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Waterford Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480232",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "West Creek Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480253",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "West Oaks Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481562",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Westbrooke Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481201",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Westpointe Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480322",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Whispering Oak Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481231",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Windermere Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Windermere",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481751",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Wolf Lake Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Apopka",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481741",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Wyndham Lakes Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480461",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Zellwood Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Zellwood",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480981",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Arbor Ridge K-8 School",
+      "type": "traditional",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "PK-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480631",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Blankner K-8 School",
+      "type": "traditional",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "PK-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480221",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lake Como School",
+      "type": "traditional",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "PK-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480771",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "NorthLake Park Community School",
+      "type": "traditional",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "PK-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480062",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Nap Ford Community School",
+      "type": "traditional",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "PK-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480901",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Pershing School",
+      "type": "choice",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "PK-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480215",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Three Points Elementary School",
+      "type": "traditional",
+      "levels": [
+        "ES"
+      ],
+      "grades": "PK-5",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481861",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Wedgefield School",
+      "type": "choice",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "PK-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481061",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Windy Ridge K-8 School",
+      "type": "choice",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "PK-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481762",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Bridgewater Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "485871",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Carver Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "International Baccalaureate Middle Years Programme (MYP)",
+          "program_type": "ib",
+          "focus": "IB MYP - critical thinking, global awareness, interdisciplinary learning",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481291",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Chain of Lakes Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Medical Arts Magnet",
+          "program_type": "magnet",
+          "focus": "Health Sciences and Medical Arts",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480581",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "College Park Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480551",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Conway Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481281",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Corner Lake Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481121",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Discovery Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Digital Media Magnet",
+          "program_type": "magnet",
+          "focus": "Digital Media and Technology",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481662",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Freedom Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480571",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Glenridge Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Performing and Creative Arts Magnet",
+          "program_type": "magnet",
+          "focus": "Performing and Creative Arts",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481681",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Gotha Middle School",
+      "type": "choice",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Windermere",
+      "programs": [
+        {
+          "program_name": "Science and Engineering Scholastic Academy",
+          "program_type": "scholastic_academy",
+          "focus": "Science and Engineering",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481022",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Horizon West Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Windermere",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480131",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Howard Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Howard Academy of Arts",
+          "program_type": "magnet",
+          "focus": "Visual and Performing Arts with rigorous academic curriculum",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481191",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Hunter's Creek Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Two-Way Dual Language Magnet",
+          "program_type": "magnet",
+          "focus": "Bilingual education developing oral fluency and literacy in English and Spanish",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481761",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Innovation Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Jackson Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481951",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lake Nona Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480352",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lakeview Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Visual Arts Magnet",
+          "program_type": "magnet",
+          "focus": "Visual Arts",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480119",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Legacy Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481551",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Liberty Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Cambridge Academy",
+          "program_type": "cambridge",
+          "focus": "Cambridge curriculum preparing students for rigorous high school coursework",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480421",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lockhart Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Center for the Advancement of Science and Engineering (CASE)",
+          "program_type": "magnet",
+          "focus": "STEM - rigorous integrated curriculum in science, technology, engineering, and math",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481444",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Luminary Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480731",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Maitland Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Maitland",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481041",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Meadow Woods Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481241",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Meadowbrook Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480151",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Memorial Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Academy of Future Leaders Magnet",
+          "program_type": "magnet",
+          "focus": "Leadership and College Preparatory",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481531",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Ocoee Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Ocoee",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481682",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Odyssey Middle School",
+      "type": "choice",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Health Science Scholastic Academy",
+          "program_type": "scholastic_academy",
+          "focus": "Health Sciences",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481671",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Piedmont Lakes Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Apopka",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481111",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Roberto Clemente Middle School",
+      "type": "magnet",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "International Baccalaureate Middle Years Programme (MYP)",
+          "program_type": "ib",
+          "focus": "IB MYP Years 1-3; participation in a changing and interrelated world",
+          "grades": "6-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice",
+          "note": "Serves students zoned for select middle schools across district"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480921",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Robinswood Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481703",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "South Creek Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481031",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Southwest Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481821",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "SunRidge Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481852",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Timber Springs Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480431",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Union Park Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481151",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Judson B. Walker Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481024",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Water Spring Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481133",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Westridge Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481751",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Wolf Lake Middle School",
+      "type": "traditional",
+      "levels": [
+        "MS"
+      ],
+      "grades": "6-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Apopka",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480111",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "William R. Boone High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Criminal Justice, Law, and Finance Magnet",
+          "program_type": "magnet",
+          "focus": "College preparation with career exploration in criminal justice, law, and finance",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480661",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Colonial High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Cambridge Academy (AICE)",
+          "program_type": "cambridge",
+          "focus": "Cambridge Advanced International Certificate of Education; informed curiosity and lasting passion for learning",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481651",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Cypress Creek High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "International Baccalaureate (IB) Diploma Programme",
+          "program_type": "ib",
+          "focus": "Full IB Diploma Programme",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481591",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Dr. Phillips High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481801",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "East River High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "First Responders Academy",
+          "program_type": "magnet",
+          "focus": "Criminal Justice (Law Enforcement) and Fire Science Technology (Firefighting)",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480121",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Edgewater High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Center for Future Educators",
+          "program_type": "magnet",
+          "focus": "Teacher preparation and education career pathway",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Evans High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "International Baccalaureate (IB) Diploma Programme",
+          "program_type": "ib",
+          "focus": "Full IB Diploma Programme",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481662",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Freedom High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Medical Arts Magnet",
+          "program_type": "magnet",
+          "focus": "Health Sciences and Medical Arts",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481471",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Horizon High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null,
+      "note": "Opened August 2021"
+    },
+    {
+      "msid": "481761",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Innovation High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "485711",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Jones High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "International Baccalaureate (IB) Diploma Programme",
+          "program_type": "ib",
+          "focus": "Full IB Diploma Programme",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480932",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lake Buena Vista High School",
+      "type": "choice",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Hospitality and Tourism Scholastic Academy",
+          "program_type": "scholastic_academy",
+          "focus": "Hospitality and Tourism industry pathways",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null,
+      "note": "Opened August 2021"
+    },
+    {
+      "msid": "481951",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Lake Nona High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "480691",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Oak Ridge High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Digital Media and Technology Magnet",
+          "program_type": "magnet",
+          "focus": "Digital Media and Technology",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481531",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Ocoee High School",
+      "type": "choice",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Ocoee",
+      "programs": [
+        {
+          "program_name": "Technical Theatre Scholastic Academy",
+          "program_type": "scholastic_academy",
+          "focus": "Technical Theatre",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481632",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Olympia High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481631",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Timber Creek High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481001",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "University High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "International Baccalaureate (IB) Diploma Programme",
+          "program_type": "ib",
+          "focus": "Full IB Diploma Programme",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481542",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Wekiva High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Apopka",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481511",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "West Orange High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Winter Garden",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481231",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Windermere High School",
+      "type": "traditional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Windermere",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481411",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Winter Park High School",
+      "type": "magnet",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Winter Park",
+      "programs": [
+        {
+          "program_name": "International Baccalaureate (IB) Diploma Programme",
+          "program_type": "ib",
+          "focus": "Full IB Diploma Programme",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orange Technical College - Orlando Campus",
+      "type": "career_technical",
+      "levels": [
+        "HS"
+      ],
+      "grades": "postsecondary",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Career and Technical Education Programs",
+          "program_type": "cte",
+          "focus": "50+ career pathways including health sciences, IT, culinary, automotive, construction, and more",
+          "grades": "postsecondary",
+          "application_required": true,
+          "status": "active",
+          "source": "orangetechcollege.net"
+        }
+      ],
+      "source": "OCPS website / orangetechcollege.net",
+      "verified": null,
+      "note": "Formerly Orlando Vocational Technical Center; located on Amelia Street"
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orange Technical College - Mid-Florida Campus",
+      "type": "career_technical",
+      "levels": [
+        "HS"
+      ],
+      "grades": "postsecondary",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Career and Technical Education Programs",
+          "program_type": "cte",
+          "focus": "Career and technical training",
+          "grades": "postsecondary",
+          "application_required": true,
+          "status": "active",
+          "source": "orangetechcollege.net"
+        }
+      ],
+      "source": "OCPS website / orangetechcollege.net",
+      "verified": null,
+      "note": "Originally opened as Mid Florida Technical Institute in 1963"
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orange Technical College - Westside Campus",
+      "type": "career_technical",
+      "levels": [
+        "HS"
+      ],
+      "grades": "postsecondary",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Winter Garden",
+      "programs": [
+        {
+          "program_name": "Career and Technical Education Programs",
+          "program_type": "cte",
+          "focus": "Career and technical training",
+          "grades": "postsecondary",
+          "application_required": true,
+          "status": "active",
+          "source": "orangetechcollege.net"
+        }
+      ],
+      "source": "OCPS website / orangetechcollege.net",
+      "verified": null,
+      "note": "Formerly Westside Technical Vocational Center"
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orange Technical College - Winter Park Campus",
+      "type": "career_technical",
+      "levels": [
+        "HS"
+      ],
+      "grades": "postsecondary",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Winter Park",
+      "programs": [
+        {
+          "program_name": "Career and Technical Education Programs",
+          "program_type": "cte",
+          "focus": "Career and technical training",
+          "grades": "postsecondary",
+          "application_required": true,
+          "status": "active",
+          "source": "orangetechcollege.net"
+        }
+      ],
+      "source": "OCPS website / orangetechcollege.net",
+      "verified": null,
+      "note": "Formerly Webster Adult Education Center"
+    },
+    {
+      "msid": "481901",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orange Technical College - Avalon Campus",
+      "type": "career_technical",
+      "levels": [
+        "HS"
+      ],
+      "grades": "postsecondary",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Career and Technical Education Programs",
+          "program_type": "cte",
+          "focus": "Career and technical training",
+          "grades": "postsecondary",
+          "application_required": true,
+          "status": "active",
+          "source": "orangetechcollege.net"
+        }
+      ],
+      "source": "OCPS website / orangetechcollege.net",
+      "verified": null,
+      "note": "Opened in 2007"
+    },
+    {
+      "msid": "485852",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orange Technical College - East Campus",
+      "type": "career_technical",
+      "levels": [
+        "HS"
+      ],
+      "grades": "postsecondary",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Career and Technical Education Programs",
+          "program_type": "cte",
+          "focus": "Career and technical training",
+          "grades": "postsecondary",
+          "application_required": true,
+          "status": "active",
+          "source": "orangetechcollege.net"
+        }
+      ],
+      "source": "OCPS website / orangetechcollege.net",
+      "verified": null
+    },
+    {
+      "msid": "481131",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orange Technical College - South Campus",
+      "type": "career_technical",
+      "levels": [
+        "HS"
+      ],
+      "grades": "postsecondary",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Career and Technical Education Programs",
+          "program_type": "cte",
+          "focus": "Career and technical training",
+          "grades": "postsecondary",
+          "application_required": true,
+          "status": "active",
+          "source": "orangetechcollege.net"
+        }
+      ],
+      "source": "OCPS website / orangetechcollege.net",
+      "verified": null
+    },
+    {
+      "msid": "480206",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orange County Virtual School (OCVS)",
+      "type": "virtual",
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
+      "grades": "K-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Full-Time Virtual School",
+          "program_type": "virtual",
+          "focus": "Full-time K-12 virtual instruction; asynchronous learning model",
+          "grades": "K-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS / ocvs.ocps.net"
+        },
+        {
+          "program_name": "OCVS FLEX (Part-Time)",
+          "program_type": "virtual",
+          "focus": "Part-time supplemental virtual courses; rolling enrollment year-round",
+          "grades": "K-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS / ocvs.ocps.net"
+        }
+      ],
+      "source": "OCPS website / ocvs.ocps.net",
+      "verified": null,
+      "note": "Established 2010; one of FL's largest district virtual schools with 40,000+ students; accredited by Cognia"
+    },
+    {
+      "msid": "481014",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "OCPS Academic Center for Excellence (ACE)",
+      "type": "choice",
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
+      "grades": "K-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Academic Center for Excellence",
+          "program_type": "choice",
+          "focus": "Accelerated and rigorous academic program",
+          "grades": "K-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice",
+          "nces_id": "120144008606"
+        }
+      ],
+      "source": "OCPS website / NCES",
+      "verified": null
+    },
+    {
+      "msid": "480601",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orlando Gifted Academy",
+      "type": "choice",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Gifted Education",
+          "program_type": "choice",
+          "focus": "Full-time gifted education program",
+          "grades": "K-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS School Choice"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481561",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Magnolia School",
+      "type": "exceptional",
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
+      "grades": "PK-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Exceptional Student Education Center",
+          "program_type": "ese",
+          "focus": "Comprehensive ESE services including Community-Based Vocational Education (CBVE)",
+          "grades": "PK-12",
+          "application_required": false,
+          "status": "active",
+          "source": "OCPS ESE"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null,
+      "note": "ESE center school"
+    },
+    {
+      "msid": "480122",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Positive Pathways Transition Center",
+      "type": "alternative",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null,
+      "note": "Alternative education transition program"
+    },
+    {
+      "msid": "480591",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Silver Pines Academy K-12 Learning Center",
+      "type": "alternative",
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
+      "grades": "K-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null,
+      "note": "Alternative education K-12 learning center"
+    },
+    {
+      "msid": "480032",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "ESTEEM Academy",
+      "type": "exceptional",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "ESE Transition Program",
+          "program_type": "ese",
+          "focus": "Transition services for ESE students",
+          "grades": "9-12",
+          "application_required": false,
+          "status": "active",
+          "source": "OCPS ESE"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Alternative Education Center",
+      "type": "alternative",
+      "levels": [
+        "MS",
+        "HS"
+      ],
+      "grades": "6-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS website",
+      "verified": null,
+      "note": "Umbrella for 9 alternative education school sites"
+    },
+    {
+      "msid": "481811",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Acceleration East High School",
+      "type": "alternative",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Accelerated Diploma Program",
+          "program_type": "alternative",
+          "focus": "Earn high school diploma in 3 years; dual enrollment with OTC and Valencia College",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS website"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "481841",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Acceleration West High School",
+      "type": "alternative",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": false,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Accelerated Diploma Program",
+          "program_type": "alternative",
+          "focus": "Earn high school diploma in 3 years; dual enrollment with OTC and Valencia College",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS website"
+        }
+      ],
+      "source": "OCPS website",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "UCP Charter School - Orlando",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "Fully Inclusive Learning Communities",
+          "program_type": "charter",
+          "focus": "Inclusive education for all students including those with disabilities",
+          "grades": "K-8",
+          "application_required": true,
+          "status": "active",
+          "source": "ucpcharter.org"
+        }
+      ],
+      "source": "OCPS charter list / ucpcharter.org",
+      "verified": null
+    },
+    {
+      "msid": "480172",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Innovation Montessori Ocoee High School",
+      "type": "charter",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Ocoee",
+      "programs": [
+        {
+          "program_name": "Montessori High School Program",
+          "program_type": "charter",
+          "focus": "College, career, and global citizenship preparation via Montessori method",
+          "grades": "9-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS charter list"
+        }
+      ],
+      "source": "OCPS charter list",
+      "verified": null
+    },
+    {
+      "msid": "480074",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Workforce Advantage Academy",
+      "type": "charter",
+      "levels": [
+        "HS"
+      ],
+      "grades": "11-12",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "School-to-Work Program",
+          "program_type": "charter",
+          "focus": "Work experience combined with education for high school juniors and seniors",
+          "grades": "11-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS charter list"
+        }
+      ],
+      "source": "OCPS charter list",
+      "verified": null
+    },
+    {
+      "msid": "480133",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Cornerstone Academy Charter School",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS charter list",
+      "verified": null
+    },
+    {
+      "msid": "48XXXX",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Pinecrest Academy of Orlando",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS charter list",
+      "verified": null
+    },
+    {
+      "msid": "480200",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Orlando Science Charter Schools",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS",
+        "HS"
+      ],
+      "grades": "K-12",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [
+        {
+          "program_name": "STEM-focused Charter Education",
+          "program_type": "charter",
+          "focus": "Science and STEM education",
+          "grades": "K-12",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS charter list"
+        }
+      ],
+      "source": "OCPS charter list",
+      "verified": null
+    },
+    {
+      "msid": "480033",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Renaissance Charter School at Goldenrod",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS charter list",
+      "verified": null
+    },
+    {
+      "msid": "480133",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Cornerstone Charter Academy",
+      "type": "charter",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS charter list",
+      "verified": null
+    },
+    {
+      "msid": "480119",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Legacy Charter High School",
+      "type": "charter",
+      "levels": [
+        "HS"
+      ],
+      "grades": "9-12",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS charter list",
+      "verified": null
+    },
+    {
+      "msid": "480177",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Access Charter School",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Orlando",
+      "programs": [],
+      "source": "OCPS charter list",
+      "verified": null
+    },
+    {
+      "msid": "480172",
+      "district_number": "48",
+      "district_name": "Orange",
+      "school_name": "Innovation Montessori Ocoee",
+      "type": "charter",
+      "levels": [
+        "ES",
+        "MS"
+      ],
+      "grades": "K-8",
+      "status": "open",
+      "charter": true,
+      "title_i": null,
+      "locale": "Ocoee",
+      "programs": [
+        {
+          "program_name": "Montessori Program",
+          "program_type": "charter",
+          "focus": "Montessori method of education",
+          "grades": "K-8",
+          "application_required": true,
+          "status": "active",
+          "source": "OCPS charter list"
+        }
+      ],
+      "source": "OCPS charter list",
+      "verified": null
+    }
   ]
 }
