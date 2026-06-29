@@ -21,44 +21,54 @@ from __future__ import annotations
 import re
 import urllib.parse
 
-# vendor -> (header/cookie/server tells, body markers). Static, well-documented signatures only.
+# vendor -> (header/cookie/server tells, body markers). Static signatures, cross-checked verbatim
+# against the MIT-licensed corpus in github.com/mmewni/antibot-detect (the real, current detector;
+# the "antibot-print" repo named in the source Reddit thread does not exist — confirmed 404 + 0 search
+# hits, so its list was never used). Header tells match by line-start PREFIX (catches cf-*, x-datadome*,
+# x-kpsdk-*, etc.). Detection only — used to back off honestly, never to evade.
 _VENDORS = [
     ("Cloudflare", {
-        "headers": ["cf-ray", "cf-mitigated", "cf-chl-bypass"],
+        "headers": ["cf-ray", "cf-mitigated", "cf-chl-bypass", "cf-cache-status"],
         "server": ["cloudflare"],
         "cookies": ["__cf_bm", "cf_clearance"],
         "body": ["just a moment", "/cdn-cgi/challenge-platform", "attention required",
-                 "cf-challenge", "checking if the site connection is secure"],
+                 "cf-challenge", "checking if the site connection is secure", "window._cf_chl_opt"],
     }),
     ("DataDome", {
         "headers": ["x-datadome", "x-dd-b"],
         "server": [],
         "cookies": ["datadome"],
-        "body": ["datadome", "geo.captcha-delivery.com", "dd_cookie"],
+        "body": ["geo.captcha-delivery.com", "captcha-delivery.com", "js.datadome.co", "datadome"],
     }),
     ("PerimeterX/HUMAN", {
-        "headers": ["x-px", "x-px-block"],
+        "headers": ["x-px"],
         "server": [],
-        "cookies": ["_px", "_pxhd", "_pxvid"],
-        "body": ["px-captcha", "/px/", "perimeterx", "human challenge"],
+        "cookies": ["_px", "_pxhd", "_pxvid", "_px2", "_px3", "pxcts"],
+        "body": ["px-captcha", "client.perimeterx.net", "window._pxappid", "perimeterx", "/api/v1/px/"],
     }),
     ("Akamai Bot Manager", {
-        "headers": [],
-        "server": ["akamaighost"],
-        "cookies": ["_abck", "ak_bmsc", "bm_sz"],
-        "body": ["akamai", "reference #18."],
+        "headers": ["x-akamai", "akamai-"],
+        "server": ["akamaighost", "akamai"],
+        "cookies": ["_abck", "ak_bmsc", "bm_sz", "bm_sv", "bm_mi", "bm_so"],
+        "body": [],
     }),
     ("Imperva/Incapsula", {
         "headers": ["x-iinfo", "x-cdn"],
         "server": ["incapsula"],
-        "cookies": ["incap_ses", "visid_incap", "nlbi_"],
-        "body": ["incapsula", "_incapsula_resource", "request unsuccessful"],
+        "cookies": ["incap_ses", "visid_incap", "nlbi_", "reese84"],
+        "body": ["_incapsula_resource", "incapsula incident", "request unsuccessful"],
     }),
     ("AWS WAF", {
         "headers": ["x-amzn-waf-action"],
         "server": ["awselb"],
         "cookies": ["aws-waf-token"],
-        "body": ["aws waf", "awswafintegration"],
+        "body": ["token.awswaf.com", "captcha.awswaf.com", "awswaf"],
+    }),
+    ("Kasada", {
+        "headers": ["x-kpsdk"],
+        "server": [],
+        "cookies": [],
+        "body": ["/ips.js", "kpsdk", "kasada"],
     }),
 ]
 
@@ -90,7 +100,7 @@ def classify_block(status: int | None, headers: dict | None = None, body: str = 
     for name, sig in _VENDORS:
         hits = []
         for h in sig["headers"]:
-            if re.search(rf"(^|\n){re.escape(h)}:", hdr):
+            if re.search(rf"(?:^|\n){re.escape(h)}", hdr):  # line-start prefix: catches cf-*, x-datadome*, ...
                 hits.append(f"header {h}")
         for s in sig["server"]:
             if re.search(rf"server:.*{re.escape(s)}", hdr):
