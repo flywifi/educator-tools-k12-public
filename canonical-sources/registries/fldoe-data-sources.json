@@ -1,9 +1,9 @@
 {
   "_comment": "Authoritative FL education DATA SOURCES — a 'places to search' index for building the offline database. Every entry was EXTRACTED from a real page the maintainer saved in a browser (provenance.from_saved_page records which one + date); none are guessed. status='discovered_unprobed' means the URL is real (it appeared on an authoritative page) but has not yet been individually fetched/verified — run tools/seed_probe.py --probe --resilient (add to a registry it scans, or probe directly with fetch_resilient.py) to confirm reachability + data format before relying on it. This file grows as more source pages are provided. NEVER fabricate an endpoint here; only add what appears on a real saved authoritative page.",
   "domain": "fldoe-data-sources",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "updated": "2026-06-28",
-  "discovery_note": "Seeded from maintainer-provided saved pages on 2026-06-28; more sources pending.",
+  "discovery_note": "Seeded 2026-06-28 from maintainer saved pages; 45 endpoints added from HTML menu/nav harvest. More pending.",
   "sources": [
     {
       "id": "cpalms-standards-api",
@@ -14,7 +14,10 @@
       "authority": "primary",
       "priority": "high",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://www.cpalms.org/downloads", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://www.cpalms.org/downloads",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "cpalms-coding-schema",
@@ -24,7 +27,10 @@
       "data_format": "HTML reference (how FL standard codes are structured)",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://www.cpalms.org/Standards/Standards_Coding_Schema.aspx", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://www.cpalms.org/Standards/Standards_Coding_Schema.aspx",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "cpalms-downloads",
@@ -34,7 +40,10 @@
       "data_format": "HTML downloads index (standards exports, books)",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://www.cpalms.org/downloads", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://www.cpalms.org/downloads",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "cpalms-search-standard",
@@ -44,7 +53,10 @@
       "data_format": "HTML search app",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://www.cpalms.org/downloads", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://www.cpalms.org/downloads",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "cpalms-search-accesspoint",
@@ -54,7 +66,10 @@
       "data_format": "HTML search app",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://www.cpalms.org/public/search/AccessPoint", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://www.cpalms.org/public/search/AccessPoint",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "cpalms-search-course",
@@ -64,7 +79,10 @@
       "data_format": "HTML search app",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://www.cpalms.org/downloads", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://www.cpalms.org/downloads",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "cpalms-search-resource",
@@ -74,7 +92,10 @@
       "data_format": "HTML search app",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://www.cpalms.org/downloads", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://www.cpalms.org/downloads",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "edudata-portal",
@@ -84,7 +105,10 @@
       "data_format": "HTML portal",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "edudata-advanced-reports",
@@ -95,7 +119,10 @@
       "authority": "primary",
       "priority": "high",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "edudata-assessments-tableau",
@@ -106,7 +133,10 @@
       "authority": "primary",
       "priority": "high",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "edudata-reportcards-schools",
@@ -116,7 +146,10 @@
       "data_format": "HTML (per-school grade/data; ?school=DDDD&district=DD)",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "edudata-reportcards-mapping",
@@ -126,7 +159,10 @@
       "data_format": "HTML map (school locations/lookup)",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "fldoe-school-grades",
@@ -136,7 +172,10 @@
       "data_format": "HTML + downloadable files",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "floridacims-districts",
@@ -146,7 +185,10 @@
       "data_format": "HTML directory",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true",
+        "captured": "2026-06-28"
+      }
     },
     {
       "id": "floridacims-essa-downloads",
@@ -156,7 +198,687 @@
       "data_format": "downloadable files (ESSA)",
       "authority": "primary",
       "status": "discovered_unprobed",
-      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+      "provenance": {
+        "from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true",
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "fldoe-org-academics-career-adult-edu-career-tech-edu-curricu",
+      "url": "http://www.fldoe.org/academics/career-adult-edu/career-tech-edu/curriculum-frameworks/2020-21-frameworks/finance.stml",
+      "label": null,
+      "category": "cte_frameworks",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_Course_search"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "fldoe-org-academics-career-adult-edu-career-tech-edu-curricu",
+      "url": "http://www.fldoe.org/academics/career-adult-edu/career-tech-edu/curriculum-frameworks/2020-21-frameworks/manufacturing.stml",
+      "label": null,
+      "category": "cte_frameworks",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_Course_search"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "fldoe-org-academics-essa-stml",
+      "url": "http://www.fldoe.org/academics/essa.stml",
+      "label": null,
+      "category": "accountability",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "fldoe-org-accountability-accountability-reporting-school-gra",
+      "url": "http://www.fldoe.org/accountability/accountability-reporting/school-grades/index.stml",
+      "label": null,
+      "category": "accountability",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "fldoe-org-core-fileparse-php-14196-urlt-fl-essa-stateplan-pd",
+      "url": "http://www.fldoe.org/core/fileparse.php/14196/urlt/FL-ESSA-StatePlan.pdf",
+      "label": null,
+      "category": "accountability",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "analytics-fldoe-org",
+      "url": "https://analytics.fldoe.org/",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "analytics-fldoe-org-t-fladoeexternal-views-collegeandcareera",
+      "url": "https://analytics.fldoe.org/t/fladoeexternal/views/CollegeandCareerAccelerationCredit/MAP",
+      "label": null,
+      "category": "data_viz_tableau",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "analytics-fldoe-org-t-fladoeexternal-views-fastprogressmonit",
+      "url": "https://analytics.fldoe.org/t/fladoeexternal/views/FASTProgressMonitoringGrades3-10/ACKNOWLEDGEMENT",
+      "label": null,
+      "category": "data_viz_tableau",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "analytics-fldoe-org-t-fladoeexternal-views-fastprogressmonit",
+      "url": "https://analytics.fldoe.org/t/fladoeexternal/views/FASTProgressMonitoringGradesK-2/ACKNOWLEDGEMENT",
+      "label": null,
+      "category": "data_viz_tableau",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "analytics-fldoe-org-t-fladoeexternal-views-floridacollegesys",
+      "url": "https://analytics.fldoe.org/t/fladoeexternal/views/FloridaCollegeSystem-Courses_17164816656510/COURSEENROLLMENTMAP",
+      "label": null,
+      "category": "data_viz_tableau",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "analytics-fldoe-org-t-fladoeexternal-views-floridacollegesys",
+      "url": "https://analytics.fldoe.org/t/fladoeexternal/views/FloridaCollegeSystem-GraduationRates_17164816685480/FLORIDACOLLEGESYSTEM-GRADUATIONRATESMAP",
+      "label": null,
+      "category": "data_viz_tableau",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "analytics-fldoe-org-t-fladoeexternal-views-pk12-courseenroll",
+      "url": "https://analytics.fldoe.org/t/fladoeexternal/views/PK12-CourseEnrollments_17164816952780/PK-5COURSESBUILDATABLE",
+      "label": null,
+      "category": "data_viz_tableau",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "analytics-fldoe-org-t-fladoeexternal-views-pk12-enrollment-1",
+      "url": "https://analytics.fldoe.org/t/fladoeexternal/views/PK12-Enrollment_17164816793180/ENROLLMENTMAP",
+      "label": null,
+      "category": "data_viz_tableau",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "analytics-fldoe-org-t-fladoeexternal-views-pk12-highschoolgr",
+      "url": "https://analytics.fldoe.org/t/fladoeexternal/views/PK12-HighSchoolGraduationCohort_17164816668990/HIGHSCHOOLGRADUATIONCOHORT-MAP",
+      "label": null,
+      "category": "data_viz_tableau",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "analytics-fldoe-org-t-fladoeexternal-views-pk12-pathwaystogr",
+      "url": "https://analytics.fldoe.org/t/fladoeexternal/views/PK12-PathwaystoGraduation_17164816655650/GRADUATEPATHWAYS-MAP",
+      "label": null,
+      "category": "data_viz_tableau",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cims2-floridacims-org-public-access",
+      "url": "https://cims2.floridacims.org/public_access",
+      "label": null,
+      "category": "school_improvement",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "eds-fldoe-org-eds-nclbspar-index-cfm",
+      "url": "https://eds.fldoe.org/eds/nclbspar/index.cfm",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "edudata-fldoe-org-reportcards-schools-html-school-0000-distr",
+      "url": "https://edudata.fldoe.org/ReportCards/Schools.html?school=0000&district=00",
+      "label": null,
+      "category": "school_data",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "edudata-fldoe-org-strategicplan-strategicplan-html",
+      "url": "https://edudata.fldoe.org/StrategicPlan/StrategicPlan.html",
+      "label": null,
+      "category": "school_data",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "edudata-fldoe-org-strategicplan-reports-closingthegap-html",
+      "url": "https://edudata.fldoe.org/StrategicPlan/reports/ClosingTheGap.html",
+      "label": null,
+      "category": "school_data",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "edudata-fldoe-org-doc-fl-reportcardquickstartguide-pdf",
+      "url": "https://edudata.fldoe.org/doc/FL_ReportCardQuickStartGuide.pdf",
+      "label": null,
+      "category": "school_data",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "flinnovates-org-tri",
+      "url": "https://flinnovates.org/TRI/",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-course-gifted-coursework-aspx",
+      "url": "https://www.cpalms.org/Course/Gifted_Coursework.aspx",
+      "label": null,
+      "category": "courses",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-homepage-index-aspx",
+      "url": "https://www.cpalms.org/Homepage/index.aspx",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-previewaccesspoint-preview-17962-isfrombackend-fa",
+      "url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17962?IsFromBackEnd=false",
+      "label": null,
+      "category": "preview_sample",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-previewcourse-preview-22945",
+      "url": "https://www.cpalms.org/PreviewCourse/Preview/22945",
+      "label": null,
+      "category": "courses",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_Course_search"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-public-resourcecollection-preview-87",
+      "url": "https://www.cpalms.org/Public/ResourceCollection/Preview/87",
+      "label": null,
+      "category": "resources",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-resource-cte-related-resources-aspx",
+      "url": "https://www.cpalms.org/Resource/CTE_Related_Resources.aspx",
+      "label": null,
+      "category": "resources",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-resource-mea-aspx",
+      "url": "https://www.cpalms.org/Resource/MEA.aspx",
+      "label": null,
+      "category": "resources",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-resource-perspectives-stem-videos-aspx",
+      "url": "https://www.cpalms.org/Resource/Perspectives_STEM_Videos.aspx",
+      "label": null,
+      "category": "resources",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-resource-mfas-aspx",
+      "url": "https://www.cpalms.org/Resource/mfas.aspx",
+      "label": null,
+      "category": "resources",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-resource-originalstudenttutorials-aspx",
+      "url": "https://www.cpalms.org/Resource/originalstudenttutorials.aspx",
+      "label": null,
+      "category": "resources",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-standards-best-standards-aspx",
+      "url": "https://www.cpalms.org/Standards/BEST_Standards.aspx",
+      "label": null,
+      "category": "standards",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_Course_search"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-standards-standardsbooks-aspx",
+      "url": "https://www.cpalms.org/Standards/Standardsbooks.aspx",
+      "label": null,
+      "category": "standards",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-standards-standards-viewer-app-aspx",
+      "url": "https://www.cpalms.org/Standards/standards_viewer_app.aspx",
+      "label": null,
+      "category": "standards",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-page836-aspx",
+      "url": "https://www.cpalms.org/page836.aspx",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-public-dashboar",
+      "url": "https://www.cpalms.org/public/Dashboar",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-public-graduationrequirement-browse",
+      "url": "https://www.cpalms.org/public/GraduationRequirement/Browse",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-public-search-certificatio",
+      "url": "https://www.cpalms.org/public/search/certificatio",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-terms-privacy-aspx",
+      "url": "https://www.cpalms.org/terms/privacy.aspx",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "cpalms-org-terms-terms-aspx",
+      "url": "https://www.cpalms.org/terms/terms.aspx",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_AccessPoint_search",
+          "CPALMS_Course_search",
+          "CPALMS_Download_Standards",
+          "Standards_Coding_Scheme"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "fldoe-org-academics-career-adult-edu-career-technical-edu-ag",
+      "url": "https://www.fldoe.org/academics/career-adult-edu/career-technical-edu-agreements/industry-certification.stml",
+      "label": null,
+      "category": "other",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_Course_search"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "fldoe-org-core-fileparse-php-19861-urlt-doeorderno2020-eo-01",
+      "url": "https://www.fldoe.org/core/fileparse.php/19861/urlt/DOEORDERNO2020-EO-01.pdf",
+      "label": null,
+      "category": "document",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "fldoe-org-core-fileparse-php-7746-urlt-1819compsci-pdf",
+      "url": "https://www.fldoe.org/core/fileparse.php/7746/urlt/1819CompSci.pdf",
+      "label": null,
+      "category": "document",
+      "priority": "low",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "CPALMS_Course_search"
+        ],
+        "captured": "2026-06-28"
+      }
+    },
+    {
+      "id": "floridacims-org-downloads-category-unisig",
+      "url": "https://www.floridacims.org/downloads?category=unisig",
+      "label": null,
+      "category": "school_improvement",
+      "priority": "medium",
+      "status": "discovered_unprobed",
+      "provenance": {
+        "from_saved_page_set": [
+          "PK12_Assessments"
+        ],
+        "captured": "2026-06-28"
+      }
     }
   ]
 }
