@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tos.local/context/overlay.schema.json",
+  "title": "TOS context overlay",
+  "description": "A composable, scoped rule-set that patches the resolved teaching-context contract. Overlays stack by precedence (state/compliance wins on conflict) and accumulate mandates/SOPs/notes. Stored offline under canonical-sources/overlays/context/<scope>/<id>.json and filled in over time. Canonical prose: shared/context/overlays.md.",
+  "type": "object",
+  "required": ["scope", "id", "match"],
+  "additionalProperties": false,
+  "properties": {
+    "scope": {
+      "enum": ["national", "state", "framework", "county", "district", "school",
+                "program", "grade", "grade_band", "subject", "department", "course",
+                "course_level", "classroom"]
+    },
+    "id": {"type": "string"},
+    "label": {"type": ["string", "null"]},
+    "match": {
+      "type": "object",
+      "description": "Selector predicate; the overlay applies when every key here equals the resolve() selector. {} = always applies.",
+      "additionalProperties": {"type": ["string", "number", "boolean", "null"]}
+    },
+    "precedence": {"type": ["integer", "null"],
+                    "description": "Higher wins on `overrides` conflicts; defaults to the scope rank."},
+    "sets": {"type": "object", "description": "Default field values, applied only if the field is empty."},
+    "overrides": {"type": "object", "description": "Forced field values (highest precedence wins)."},
+    "adds": {"type": "object",
+              "description": "List contributions appended (never lost): mandates, sop_refs, notes, exceptions, frameworks."},
+    "source": {"type": ["string", "array", "null"], "items": {"type": "string"}},
+    "status": {"enum": ["seed", "stub", "populated"]}
+  }
+}

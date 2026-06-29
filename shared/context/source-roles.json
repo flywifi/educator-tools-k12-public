@@ -1,0 +1,307 @@
+{
+  "_comment": "Canonical source-of-truth registry for the teaching domain. For each kind of CLAIM, it says which source is authoritative (and at what rank), and which sources must NOT be used to prove it. The sot_resolver consumes this to pick a winner and to build an auditable decision + minority report. Offline JSON; fill in over time. Edit here (canonical) and run tools/sync_check.py. Prose: shared/context/source-of-truth.md.",
+  "version": "0.1.0",
+  "updated": "2026-06-23",
+  "compliance_source_ladder": {
+    "_comment": "Default ranking for COMPLIANCE/MANDATE claims, highest authority first. Reused by several claim types. Mirrors authority_precedence but for legal/regulatory sources.",
+    "order": [
+      {
+        "source": "statute",
+        "rank": 100,
+        "example": "s.1003.4282 F.S."
+      },
+      {
+        "source": "state_rule",
+        "rank": 90,
+        "example": "FAC 6A-1.09441"
+      },
+      {
+        "source": "fldoe_guidance",
+        "rank": 80,
+        "example": "FLDOE technical assistance paper"
+      },
+      {
+        "source": "district_policy",
+        "rank": 60,
+        "example": "district school-board policy / pacing guide"
+      },
+      {
+        "source": "school_sop",
+        "rank": 40,
+        "example": "school handbook / uploaded SOP"
+      },
+      {
+        "source": "classroom_practice",
+        "rank": 20,
+        "example": "teacher routine / current practice"
+      }
+    ]
+  },
+  "claim_types": {
+    "standard_code": {
+      "proves": "Which learning standard/benchmark applies, and its exact code.",
+      "depends_on": "context.standards_applicability",
+      "authoritative_sources": [
+        {
+          "source": "fl_best_ngsss_corpus",
+          "when": "best_ngsss_apply",
+          "rank": 100,
+          "ref": "shared/standards/resources/florida/",
+          "note": "verified CPALMS B.E.S.T./NGSSS"
+        },
+        {
+          "source": "framework_registry",
+          "when": "school_defined",
+          "rank": 100,
+          "ref": "shared/standards/frameworks/",
+          "note": "the school's adopted framework (IB/AP/Cambridge/Montessori/classical/ACSI)"
+        },
+        {
+          "source": "parent_stated_objective",
+          "when": "parent_selected",
+          "rank": 60,
+          "note": "advisory objective; not a mandated code"
+        }
+      ],
+      "must_not_prove_from": [
+        "a remembered code that has not been verified on the framework source",
+        "a vendor/blog crosswalk presented as the native code"
+      ],
+      "hard_rule": "Never invent a code. Absence of a mandated code where none applies (home-ed/private) is correct, not a defect.",
+      "escalates": false,
+      "status": "seed"
+    },
+    "course_code": {
+      "proves": "A specific course number and its requirements (credit, level, EOC linkage).",
+      "authoritative_sources": [
+        {
+          "source": "fldoe_course_code_directory",
+          "rank": 100,
+          "ref": "CPALMS / FLDOE Course Code Directory",
+          "note": "authoritative for course numbers, titles, credit, and required EOCs"
+        }
+      ],
+      "must_not_prove_from": [
+        "a school's internal course nickname",
+        "a master-schedule label alone"
+      ],
+      "hard_rule": "Cite the course number; verify level/EOC linkage on the Course Code Directory.",
+      "escalates": false,
+      "status": "seed"
+    },
+    "assessment_requirement": {
+      "proves": "Which statewide assessment a student takes and when (e.g., FAST, EOC, Statewide Science).",
+      "authoritative_sources": [
+        {
+          "source": "fldoe_assessment_schedule",
+          "rank": 100,
+          "note": "FLDOE statewide assessment schedule"
+        },
+        {
+          "source": "state_rule",
+          "rank": 90
+        },
+        {
+          "source": "district_policy",
+          "rank": 60,
+          "note": "local testing windows within the state schedule"
+        }
+      ],
+      "must_not_prove_from": [
+        "last year's calendar assumed unchanged"
+      ],
+      "hard_rule": "Grade and course matter (8th-grade science vs none in 6/7; EOC for credit-bearing courses). Verify the current schedule.",
+      "escalates": false,
+      "status": "seed"
+    },
+    "graduation_promotion_requirement": {
+      "proves": "Credits, EOC/assessment, and promotion/graduation rules for a student.",
+      "authoritative_sources": [
+        {
+          "source": "statute",
+          "rank": 100
+        },
+        {
+          "source": "state_rule",
+          "rank": 90
+        },
+        {
+          "source": "district_policy",
+          "rank": 60,
+          "note": "district may add to, not subtract from, state minimums"
+        }
+      ],
+      "must_not_prove_from": [
+        "a counselor's recollection without the statute/rule"
+      ],
+      "hard_rule": "State sets the floor; district may exceed it. Escalate individual student determinations to a human.",
+      "escalates": true,
+      "status": "seed"
+    },
+    "compliance_mandate": {
+      "proves": "An administrative/legal mandate in force (what MUST or MUST NOT happen).",
+      "uses_ladder": "compliance_source_ladder",
+      "must_not_prove_from": [
+        "current classroom practice promoted to doctrine just because it recurs"
+      ],
+      "hard_rule": "Higher legal authority wins; a recurring local practice never overrides statute/rule. Record the citation.",
+      "escalates": true,
+      "status": "seed"
+    },
+    "operating_rule": {
+      "proves": "Pacing, calendar, grading scale, and local norms for how work is done.",
+      "authoritative_sources": [
+        {
+          "source": "district_policy",
+          "rank": 60
+        },
+        {
+          "source": "school_sop",
+          "rank": 40
+        },
+        {
+          "source": "classroom_practice",
+          "rank": 20,
+          "note": "teacher discretion within policy"
+        }
+      ],
+      "must_not_prove_from": [
+        "a single hallway conversation treated as policy"
+      ],
+      "hard_rule": "More-local is allowed within higher policy; an uploaded SOP outranks unwritten habit. Log overrides.",
+      "escalates": false,
+      "status": "seed"
+    },
+    "instructional_method": {
+      "proves": "How to teach something (strategy, sequence, grouping).",
+      "authoritative_sources": [
+        {
+          "source": "classroom_practice",
+          "rank": 80,
+          "note": "teacher's research-based choice within policy"
+        },
+        {
+          "source": "school_sop",
+          "rank": 60,
+          "note": "adopted program/model the school requires"
+        },
+        {
+          "source": "district_policy",
+          "rank": 50
+        }
+      ],
+      "must_not_prove_from": [
+        "a mandate that does not actually constrain pedagogy"
+      ],
+      "hard_rule": "Pedagogy is teacher discretion WITHIN policy; invert precedence toward the classroom for style decisions.",
+      "escalates": false,
+      "status": "seed"
+    },
+    "iep_504_requirement": {
+      "proves": "Required accommodations/modifications/services for a specific student.",
+      "authoritative_sources": [
+        {
+          "source": "student_plan",
+          "rank": 100,
+          "note": "the student's IEP/504/service plan (placeholder data only)"
+        },
+        {
+          "source": "statute",
+          "rank": 95,
+          "note": "IDEA / Section 504 / FAC 6A-6"
+        },
+        {
+          "source": "district_ese_policy",
+          "rank": 70
+        }
+      ],
+      "must_not_prove_from": [
+        "assumptions about a disability without the plan",
+        "any real student PII"
+      ],
+      "hard_rule": "The plan governs; never fabricate plan contents. ALWAYS escalate eligibility/placement to a human.",
+      "escalates": true,
+      "status": "seed"
+    },
+    "eligibility_scholarship": {
+      "proves": "Eligibility/accountability for a scholarship-funded private placement or service.",
+      "authoritative_sources": [
+        {
+          "source": "statute",
+          "rank": 100,
+          "note": "e.g., s.1002.394/1002.395 F.S."
+        },
+        {
+          "source": "fldoe_scholarship_guidance",
+          "rank": 90
+        },
+        {
+          "source": "sfo_policy",
+          "rank": 70,
+          "note": "scholarship-funding organization policy"
+        }
+      ],
+      "must_not_prove_from": [
+        "a school's marketing claim of eligibility"
+      ],
+      "hard_rule": "Cite the statute/guidance; escalate individual eligibility to a human.",
+      "escalates": true,
+      "status": "seed"
+    },
+    "accreditation_requirement": {
+      "proves": "A private school's accreditation/framework obligations.",
+      "authoritative_sources": [
+        {
+          "source": "accrediting_body",
+          "rank": 100,
+          "note": "e.g., Cognia/AdvancED, ACSI, IB authorization"
+        },
+        {
+          "source": "framework_registry",
+          "rank": 80,
+          "ref": "shared/standards/frameworks/"
+        },
+        {
+          "source": "school_sop",
+          "rank": 60
+        }
+      ],
+      "must_not_prove_from": [
+        "state public-school rules assumed to bind a private school"
+      ],
+      "hard_rule": "Private obligations come from the accreditor/framework, not the B.E.S.T./NGSSS mandate.",
+      "escalates": false,
+      "status": "seed"
+    },
+    "student_record": {
+      "proves": "A student's profile facts: name, grade, guardians/contacts, plan flags (IEP/504/EL), and medical action plans.",
+      "authoritative_sources": [
+        {
+          "source": "sis",
+          "rank": 100,
+          "ref": "live SIS connector (shared/connectors/: sis)",
+          "note": "authoritative for student data when connected; updates regularly; used first unless the teacher overrides"
+        },
+        {
+          "source": "local_student_store",
+          "rank": 60,
+          "ref": "shared/students/students.local.json (gitignored)",
+          "note": "teacher-maintained fallback/cache; secondary to a live SIS"
+        },
+        {
+          "source": "signed_health_plan",
+          "rank": 100,
+          "ref": "the student's medical/health information on file (district/school health form, nurse/guardian note, sick note, or action plan)",
+          "note": "the source(s) on file are the basis for ePHI/medical instructions (trusted by attribution, not signature); never fabricate; defer to nurse/911"
+        }
+      ],
+      "must_not_prove_from": [
+        "a remembered/guessed name, contact, or medical instruction",
+        "fabricated medical dosages, timing, or protocols (quote the source on file verbatim)"
+      ],
+      "hard_rule": "On SIS<->local conflict, never auto-merge: raise with the user (which source wins + update local?). Real student data never enters a tracked/committed file.",
+      "escalates": true,
+      "status": "seed"
+    }
+  }
+}

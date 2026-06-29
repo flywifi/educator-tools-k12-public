@@ -1,0 +1,13 @@
+{
+  "scope": "subject",
+  "id": "mathematics",
+  "label": "Mathematics",
+  "match": {"subject": "Mathematics"},
+  "adds": {
+    "notes": [
+      "Cite the most specific benchmark for the objective; in FL include the MA.K12.MTR practices.",
+      "Prefer a few well-aligned standards over a long shallow list."
+    ]
+  },
+  "status": "seed"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "ib-1-7",
+  "label": "IB 1-7 assessment",
+  "type": "points",
+  "common_in": "International Baccalaureate (MYP/DP) subject assessment.",
+  "levels": [
+    {"level": 7, "meaning": "excellent"},
+    {"level": 6, "meaning": "very good"},
+    {"level": 5, "meaning": "good"},
+    {"level": 4, "meaning": "satisfactory"},
+    {"level": 3, "meaning": "mediocre"},
+    {"level": 2, "meaning": "poor"},
+    {"level": 1, "meaning": "very poor"}
+  ],
+  "source": ["https://www.ibo.org/programmes/"],
+  "institution_dependent": true,
+  "status": "seed",
+  "note": "IB reports 1-7 (7 highest). Conversion to a US letter grade or GPA is INSTITUTION-DEPENDENT — schools/colleges set their own IB-to-letter tables. Do not assert a universal 7=A; treat any conversion as the institution's, flagged for confirmation. Verify on the school's IB policy."
+}

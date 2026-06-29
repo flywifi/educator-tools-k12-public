@@ -1,0 +1,6 @@
+# Office authoring capability (local_optional) — create/edit real .pptx/.docx/.xlsx.
+# Activates when present (docintel/skills gate on import); absent => honest gap, never faked.
+# Pinned for supply-chain safety; auto-updated by .github/dependabot.yml; scanned by tools/security_scan.py.
+python-pptx==1.0.2
+python-docx==1.1.2
+openpyxl==3.1.5

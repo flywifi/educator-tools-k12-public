@@ -1,0 +1,106 @@
+# TOS Skill: feed-curator
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: feed_curator
+  description: |
+    Manage the TOS RSS/Atom feed catalog: validate existing feeds for health (dead links,
+    redirects, stale content, wrong labels), discover new feed candidates from authoritative
+    education sources, propose a human-reviewable change set, and apply only mechanically-safe
+    repairs automatically. Every change is appended to ledger/feeds-change-log.json for audit
+    and revert.
+
+    Trigger phrases: "validate the feed catalog", "find new education feeds", "check for broken
+    feed links", "propose feed repairs", "update the seed catalog", "add a new feed source",
+    "check which feeds are dead", "curator status", "revert a feed change", "auto-repair feeds".
+
+    Feed catalog tiers:
+    - canonical: primary government/standards sources (FLDOE, CPALMS, FL Legislature, WIDA) —
+      the ONLY tier that can confirm a standards/policy change
+    - news_teacher_student: curated news on issues affecting teachers and students (secondary)
+    - product_updates: edtech/vendor feeds — OFF by default, opt-in only
+
+    Auto-apply rules (safe, logged, reversible):
+    - Remove confirmed 404/410 dead feeds
+    - Follow verified 301/302 redirects to new URL
+    Everything else (new feeds, relabeling, removals beyond dead links) = human-approved proposals.
+
+    All changes append to ledger/feeds-change-log.json:
+    {ts, feed_id, action, before, after, reason, source, mode: auto|approved}
+    Revert via --revert <entry_id> replays the log backwards.
+
+    Do NOT use feed-curator to harvest or process feed items (use tools/feeds_update.py for that).
+    Do NOT approve removal of a canonical-tier feed without verifying the source has moved or
+    closed on the primary site. human_review_required: true on all proposals.
+  parameters:
+    type: object
+    required:
+      - action
+    properties:
+      action:
+        type: string
+        enum:
+          - validate_catalog
+          - discover_feeds
+          - propose_repairs
+          - apply_safe_repairs
+          - apply_approved_proposal
+          - status_report
+          - revert
+          - update_baseline
+        description: >
+          Action to perform.
+          validate_catalog: health-check every feed in feeds.json (404, redirect, staleness,
+          label accuracy) — returns a per-feed status table.
+          discover_feeds: search for new feed candidates from a seed URL or topic.
+          propose_repairs: generate a human-reviewable change set (add/remove/repair/relabel)
+          with reason + source + confidence for each entry.
+          apply_safe_repairs: auto-apply only 404/redirect fixes from the current proposal;
+          log every change to ledger.
+          apply_approved_proposal: apply a human-approved proposal file; log all changes.
+          status_report: quick summary of catalog health (N feeds, N due, N unreachable, N
+          uncertain).
+          revert: undo a previous change by log entry ID.
+          update_baseline: after human approval, record new etag/sha256 baselines for a feed.
+      seed_url:
+        type: string
+        description: >
+          For discover_feeds: URL of an authoritative education page to mine for RSS/Atom links
+          (e.g. "https://www.fldoe.org/newsroom"). The crawler respects robots.txt.
+      discovery_topic:
+        type: string
+        description: >
+          For discover_feeds: topic to search for feeds (e.g. "Florida DOE news", "OCPS district
+          updates", "WIDA ELL standards", "education legislation Florida 2026").
+      proposal_file:
+        type: string
+        description: >
+          For apply_approved_proposal: path to the approved proposal JSON file produced by
+          propose_repairs.
+      audit_log_entry_id:
+        type: string
+        description: >
+          For revert: the entry ID from ledger/feeds-change-log.json to undo.
+      feed_id:
+        type: string
+        description: >
+          For update_baseline or targeted validate_catalog: specific feed ID to operate on.
+          If omitted, operates on all feeds in the catalog.
+      tier_filter:
+        type: string
+        enum:
+          - canonical
+          - news_teacher_student
+          - product_updates
+          - all
+        description: >
+          For validate_catalog and status_report: limit to a specific tier. Defaults to all.
+      include_product_updates_tier:
+        type: boolean
+        description: >
+          For discover_feeds: whether to surface product_updates tier candidates. Defaults to
+          false (off by default per design).
+        default: false
+    additionalProperties: false

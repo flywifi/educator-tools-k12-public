@@ -1,0 +1,16 @@
+{
+  "id": "standards-based-4",
+  "label": "Standards-based 4-3-2-1",
+  "type": "sbg",
+  "common_in": "Standards-based grading classrooms/schools (incl. many elementary report cards).",
+  "levels": [
+    {"level": 4, "meaning": "exceeds the standard"},
+    {"level": 3, "meaning": "meets the standard (proficient)"},
+    {"level": 2, "meaning": "approaching the standard"},
+    {"level": 1, "meaning": "beginning / well below"}
+  ],
+  "source": ["school standards-based grading policy"],
+  "institution_dependent": true,
+  "status": "seed",
+  "note": "Reports proficiency, not a percentage. SBG-to-letter conversion is contested and institution-dependent — do NOT assert 3=B or 4=A as universal; offer it only as the school's stated conversion, flagged."
+}

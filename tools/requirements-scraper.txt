@@ -1,0 +1,14 @@
+# Optional dependencies for tools/standards_refresh.py (the standards-updater).
+# The crawler runs on the Python standard library alone; these only make fetching
+# and parsing nicer, and enable JS-rendered pages (e.g., the CPALMS standards search).
+# ALL PURE-PYTHON — no C extensions, so nothing compiles from source.
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+# NOTE: lxml is intentionally NOT listed. The code parses with BeautifulSoup's stdlib
+# "html.parser" (see shared/feeds/feeds.py, tools/make_feed.py), so lxml is unnecessary — and
+# on a platform without a prebuilt wheel it would try to compile from source (needs libxml2 + a
+# C toolchain) and fail. If you specifically want lxml's speed: pip install --only-binary=:all: lxml
+feedparser>=6.0.0   # RSS/Atom parsing for the source-currency engine (stdlib fallback if absent)
+# JS-rendered SPA pages only (e.g., CPALMS search) — install one if needed:
+# selenium>=4.15.0
+# playwright>=1.40.0

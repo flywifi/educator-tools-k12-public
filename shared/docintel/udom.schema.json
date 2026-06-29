@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tos.local/docintel/udom.schema.json",
+  "title": "UDOM",
+  "description": "Unified Document Object Model - parser-independent representation of a recovered document. Canonical prose: shared/docintel/udom.md.",
+  "type": "object",
+  "required": ["udom_version", "document_id", "source", "provenance", "lineage", "pages"],
+  "additionalProperties": false,
+  "properties": {
+    "udom_version": {"type": "string"},
+    "document_id": {"type": "string"},
+    "source": {"$ref": "#/$defs/source"},
+    "properties": {"type": "object"},
+    "provenance": {"$ref": "#/$defs/provenance"},
+    "lineage": {"type": "array", "items": {"$ref": "#/$defs/lineage_event"}},
+    "confidence": {"$ref": "#/$defs/confidence"},
+    "diagnostics": {"type": "object"},
+    "pages": {"type": "array", "items": {"$ref": "#/$defs/page"}}
+  },
+  "$defs": {
+    "bbox": {
+      "type": "array",
+      "description": "[x0, y0, x1, y1] in page units; may be null when unknown.",
+      "items": {"type": "number"},
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "source": {
+      "type": "object",
+      "required": ["filename", "media_type"],
+      "properties": {
+        "filename": {"type": "string"},
+        "media_type": {"type": "string"},
+        "sha256": {"type": ["string", "null"]},
+        "byte_length": {"type": ["integer", "null"]}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_id", "parser", "extraction_method"],
+      "properties": {
+        "source_id": {"type": "string"},
+        "parser": {"type": "string"},
+        "parser_version": {"type": ["string", "null"]},
+        "extraction_method": {"enum": ["native", "ocr", "heuristic", "manual"]},
+        "page_number": {"type": ["integer", "null"]},
+        "bbox": {"oneOf": [{"$ref": "#/$defs/bbox"}, {"type": "null"}]},
+        "timestamp": {"type": ["string", "null"]}
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required": ["value", "level"],
+      "properties": {
+        "value": {"type": "number", "minimum": 0, "maximum": 1},
+        "method": {"type": ["string", "null"]},
+        "level": {"enum": ["text", "cell", "table", "page", "document"]}
+      }
+    },
+    "lineage_event": {
+      "type": "object",
+      "required": ["event_id", "stage", "operation", "tool"],
+      "properties": {
+        "event_id": {"type": "string"},
+        "stage": {"type": "string"},
+        "operation": {"type": "string"},
+        "tool": {"type": "string"},
+        "tool_version": {"type": ["string", "null"]},
+        "timestamp": {"type": ["string", "null"]},
+        "inputs": {"type": "array", "items": {"type": "string"}},
+        "outputs": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["page", "bbox"],
+      "properties": {
+        "page": {"type": ["integer", "null"]},
+        "bbox": {"oneOf": [{"$ref": "#/$defs/bbox"}, {"type": "null"}]},
+        "char_range": {"type": ["array", "null"], "items": {"type": "integer"}}
+      }
+    },
+    "span": {
+      "type": "object",
+      "required": ["text"],
+      "properties": {
+        "text": {"type": "string"},
+        "bbox": {"oneOf": [{"$ref": "#/$defs/bbox"}, {"type": "null"}]},
+        "confidence": {"oneOf": [{"$ref": "#/$defs/confidence"}, {"type": "null"}]}
+      }
+    },
+    "cell": {
+      "type": "object",
+      "required": ["row", "col", "text"],
+      "properties": {
+        "row": {"type": "integer"},
+        "col": {"type": "integer"},
+        "rowspan": {"type": "integer", "minimum": 1},
+        "colspan": {"type": "integer", "minimum": 1},
+        "text": {"type": "string"},
+        "bbox": {"oneOf": [{"$ref": "#/$defs/bbox"}, {"type": "null"}]},
+        "confidence": {"oneOf": [{"$ref": "#/$defs/confidence"}, {"type": "null"}]}
+      }
+    },
+    "table": {
+      "type": "object",
+      "required": ["rows", "cols", "cells"],
+      "properties": {
+        "rows": {"type": "integer", "minimum": 0},
+        "cols": {"type": "integer", "minimum": 0},
+        "header_rows": {"type": "integer", "minimum": 0},
+        "cells": {"type": "array", "items": {"$ref": "#/$defs/cell"}}
+      }
+    },
+    "block": {
+      "type": "object",
+      "required": ["block_id", "type", "page_number", "provenance", "confidence"],
+      "properties": {
+        "block_id": {"type": "string"},
+        "type": {"enum": ["heading", "paragraph", "list", "list_item", "table", "figure",
+                            "caption", "header", "footer", "formula", "page_number", "other"]},
+        "bbox": {"oneOf": [{"$ref": "#/$defs/bbox"}, {"type": "null"}]},
+        "page_number": {"type": "integer"},
+        "text": {"type": ["string", "null"]},
+        "level": {"type": ["integer", "null"]},
+        "spans": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+        "table": {"oneOf": [{"$ref": "#/$defs/table"}, {"type": "null"}]},
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "confidence": {"$ref": "#/$defs/confidence"}
+      }
+    },
+    "page": {
+      "type": "object",
+      "required": ["page_number", "blocks", "reading_order"],
+      "properties": {
+        "page_number": {"type": "integer"},
+        "width": {"type": ["number", "null"]},
+        "height": {"type": ["number", "null"]},
+        "unit": {"type": ["string", "null"]},
+        "blocks": {"type": "array", "items": {"$ref": "#/$defs/block"}},
+        "reading_order": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

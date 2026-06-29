@@ -1,0 +1,17 @@
+{
+  "district": "REPLACE — full district name",
+  "abbreviation": "REPLACE — e.g. OCPS",
+  "state": "FL",
+  "msid": "REPLACE — FLDOE MSID (district number)",
+  "city": "REPLACE",
+  "website": "https://REPLACE",
+  "standards_framework": "FL B.E.S.T.",
+  "grading_scale": {"A": "90-100", "B": "80-89", "C": "70-79", "D": "60-69", "F": "0-59"},
+  "ell_program": "ESOL",
+  "config_overrides": {
+    "default_scope": "district"
+  },
+  "version": "0.1.0",
+  "updated": "YYYY-MM-DD",
+  "note": "Copy this template to districts/<district-name>/ and fill in the REPLACE fields."
+}

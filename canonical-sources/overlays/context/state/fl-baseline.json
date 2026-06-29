@@ -1,0 +1,14 @@
+{
+  "scope": "state",
+  "id": "fl-baseline",
+  "label": "Florida statewide baseline",
+  "match": {"state": "FL"},
+  "adds": {
+    "notes": [
+      "Florida public & charter: B.E.S.T. (Math/ELA) + NGSSS (Science/SS) apply; statewide assessment (FAST/EOC/FCLE).",
+      "Home-education and private-scholarship contexts are NOT bound to B.E.S.T./NGSSS (see standards_applicability)."
+    ]
+  },
+  "source": ["https://www.cpalms.org", "https://www.fldoe.org/academics/standards/"],
+  "status": "seed"
+}

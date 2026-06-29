@@ -1,0 +1,5 @@
+# Pinned deps for tools/field_harvest.py — installed ONLY into its isolated .harvest-venv/.
+# PURE-PYTHON ONLY (universal wheels, no compiler ever). Do NOT add C-extension packages
+# (lxml, numpy, pandas, Pillow, pymupdf, cryptography, ...) here — they trigger source builds
+# on platforms without prebuilt wheels and cause dependency hell. The HTML parsing is stdlib regex.
+requests>=2.31,<3

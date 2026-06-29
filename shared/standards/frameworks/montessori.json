@@ -1,0 +1,30 @@
+{
+  "framework": "Montessori",
+  "label": "Montessori",
+  "type": "pedagogical",
+  "applicability": "school_defined",
+  "programmes_or_levels": [
+    "Infant/Toddler",
+    "Primary (3-6)",
+    "Lower Elementary (6-9)",
+    "Upper Elementary (9-12)",
+    "Adolescent (12-15)"
+  ],
+  "subjects": [
+    "Practical Life",
+    "Sensorial",
+    "Language",
+    "Mathematics",
+    "Cultural (Geography/History/Science)"
+  ],
+  "code_pattern": "area / material sequence by developmental plane (scope & sequence, not coded standards)",
+  "source": [
+    "https://amshq.org/",
+    "https://montessori-ami.org/"
+  ],
+  "version": null,
+  "codes_verified": false,
+  "status": "stub",
+  "note": "Structure only; enumerate standards from the cited source as a later data task. codes_verified=false. Never fabricate codes/statements - verify on source. Updated offline via standards-updater.",
+  "standards": []
+}

@@ -1,6 +1,6 @@
 {
   "_comment": "Knowledge architecture (Phase E1): the registry of every artifact type the ecosystem produces, by skill, plus the wired standards frameworks. Read by tools/metrics.py. Keep in sync with each skill's references/artifact-types.md.",
-  "frameworks": ["CCSS-Math", "CCSS-ELA", "NGSS", "state-standards-model"],
+  "frameworks": ["CCSS-Math", "CCSS-ELA", "NGSS", "state-standards-model", "FL-BEST-Math", "FL-BEST-ELA", "FL-NGSSS-Sci", "FL-SS", "FL-CS", "FL-ELD"],
   "skills": {
     "teacher-core": ["routing", "multi-skill-workflow"],
     "quality-review": ["decision-record", "remediation-list", "batch-quality-report"],
@@ -12,6 +12,14 @@
     "intervention-mtss": ["intervention-plan", "mtss-documentation", "progress-monitoring-schedule", "data-based-decision-note"],
     "family-communication": ["newsletter", "parent-letter", "conference-talking-points", "progress-report-comments"],
     "professional-learning": ["observation-tool", "coaching-conversation-guide", "pd-session-plan"],
-    "school-administration": ["walkthrough-instrument", "implementation-plan", "monitoring-plan"]
+    "school-administration": ["walkthrough-instrument", "implementation-plan", "monitoring-plan"],
+    "standards-updater": ["update-report", "applied-update-record", "currency-check", "currency-brief"],
+    "document-intelligence": ["processed-document-record", "udom-document", "recovery-report", "structure-map", "governance-record", "knowledge-artifact", "consumer-artifact"],
+    "meeting-classifier": ["meeting-classification-record", "routing-recommendation", "handoff-packet"],
+    "skill-health": ["health-report", "diagnosis", "repair-plan"],
+    "output-validator": ["artifact-validation-report", "document-structural-report", "promoted-regression-case"],
+    "skill-repair": ["proposed-changes-summary", "applied-repair-record", "validation-results"],
+    "teacher-profile": ["teacher-operating-profile", "context-registration-fragment"],
+    "feed-curator": ["catalog-health-report", "discovery-candidate-list", "seed-change-proposal", "applied-change-log-entry"]
   }
 }

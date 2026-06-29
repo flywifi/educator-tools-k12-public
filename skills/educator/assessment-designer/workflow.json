@@ -1,0 +1,18 @@
+{
+  "_comment": "Declarative workflow definition for assessment-designer.",
+  "id": "assessment-designer",
+  "description": "Assessment with aligned items, answer key, rubric, and reading-level check",
+  "steps": [
+    {"step": 1, "atom": "standards-match",       "input_from": "teacher request",       "output_to": "step2"},
+    {"step": 2, "atom": "misconception",         "input_from": "step1.standards",       "output_to": "step3"},
+    {"step": 3, "atom": "assessment-item",       "input_from": "step1.standards",       "output_to": "step4", "repeat": "n_items"},
+    {"step": 4, "atom": "distractor-generate",   "input_from": "step2.misconceptions + step3.items", "output_to": "step5", "repeat": "per_mc_item", "condition": "item_type == multiple_choice"},
+    {"step": 5, "atom": "answer-key",            "input_from": "step3.items",           "output_to": "step6"},
+    {"step": 6, "atom": "rubric-build",          "input_from": "step1.standards",       "output_to": "step7", "condition": "has_constructed_response"},
+    {"step": 7, "atom": "cognitive-rigor",        "input_from": "step3.items",           "output_to": "step8", "repeat": "per_item"},
+    {"step": 8, "atom": "reading-level",         "input_from": "step3.item_text",       "output_to": "step9", "repeat": "per_item"},
+    {"step": 9, "atom": "differentiate",         "input_from": "step3.items",           "output_to": "step10", "repeat": "per_profile"},
+    {"step": 10, "atom": "quality-check",        "input_from": "assembled_assessment",  "output_to": "final", "gates": ["standard_alignment", "dok_appropriate", "reading_level"]}
+  ],
+  "shortcut_atoms": ["assessment-item", "standards-match", "rubric-build", "answer-key", "distractor-generate", "cognitive-rigor", "misconception"]
+}

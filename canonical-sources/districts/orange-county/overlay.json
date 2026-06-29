@@ -1,0 +1,22 @@
+{
+  "district": "Orange County Public Schools",
+  "abbreviation": "OCPS",
+  "state": "FL",
+  "msid": "48",
+  "city": "Orlando",
+  "website": "https://www.ocps.net",
+  "newsroom": "https://www.ocps.net/departments/media_relations/newsroom",
+  "standards_framework": "FL B.E.S.T.",
+  "grading_scale": {"A": "90-100", "B": "80-89", "C": "70-79", "D": "60-69", "F": "0-59"},
+  "ell_program": "ESOL",
+  "iep_platform": "FOCUS (Tyler SIS)",
+  "lesson_plan_format": "OCPS Standard Lesson Plan Template",
+  "config_overrides": {
+    "default_scope": "district",
+    "feeds_filter": ["ocps-news"],
+    "school_index": "canonical-sources/schools/ocps/schools.json"
+  },
+  "version": "0.1.0",
+  "updated": "2026-06-27",
+  "note": "Active overlay for OCPS district 48. Activated via: profile_wizard.py --preferences --district orange-county"
+}

@@ -1,0 +1,23 @@
+{
+  "district": "Orange County Public Schools",
+  "district_number": "48",
+  "abbreviation": "OCPS",
+  "snapshot": "2026-27",
+  "generated": "2026-06-28",
+  "source": "OCPS public website (ocps.net) — auto-extracted, human review required",
+  "human_review_required": true,
+  "completeness": "seed",
+  "verified": null,
+  "sis": {
+    "platform": "FOCUS (Tyler Technologies)",
+    "note": "OCPS uses FOCUS SIS — published in district communications",
+    "source": "OCPS public communications",
+    "verified": "2026-06-28"
+  },
+  "evaluation_framework": {
+    "name": "unverified — check OCPS HR / Professional Development pages",
+    "note": "Florida requires use of an approved evaluation system (Marzano or Danielson common in FL)",
+    "source": "unverified",
+    "verified": null
+  }
+}

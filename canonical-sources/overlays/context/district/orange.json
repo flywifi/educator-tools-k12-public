@@ -1,0 +1,14 @@
+{
+  "scope": "district",
+  "id": "orange",
+  "label": "Orange County Public Schools (OCPS)",
+  "match": {"district": "Orange"},
+  "adds": {
+    "notes": [
+      "OCPS runs its own Orange County Virtual School (OCVS); blended/virtual options are available.",
+      "Populate OCPS pacing guides / calendars / mandates here as district SOPs are gathered."
+    ]
+  },
+  "source": ["https://www.fldoe.org/schools/school-choice/virtual-edu/directories/district-virtual-contacts.stml"],
+  "status": "seed"
+}
