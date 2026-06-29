@@ -50,6 +50,7 @@ from pathlib import Path
 # best-effort. dist name -> import name lives in IMPORT_NAME below. ----------------------------------
 PINNED_DEPS = [
     "requests>=2.31,<3",        # resilient fetch
+    "charset-normalizer>=3,<4", # encoding detection for i18n decode (foreign scripts/legacy encodings)
     "beautifulsoup4>=4.12,<5",  # HTML parsing helper
     "openpyxl>=3.1,<4",         # .xlsx (CPALMS course exports)
     "pymupdf>=1.24",            # PDF text + links (ships wheels; --only-binary keeps it source-free)
@@ -65,6 +66,7 @@ PINNED_DEPS = [
 
 IMPORT_NAME = {
     "requests": "requests",
+    "charset-normalizer": "charset_normalizer",
     "beautifulsoup4": "bs4",
     "openpyxl": "openpyxl",
     "pymupdf": "fitz",
@@ -248,8 +250,9 @@ def _tesseract_install_hint() -> str:
                 "https://github.com/UB-Mannheim/tesseract/wiki, then add it to PATH "
                 "(or set pytesseract.pytesseract.tesseract_cmd to the tesseract.exe path).")
     if sys.platform == "darwin":
-        return "macOS: brew install tesseract"
-    return "Linux: sudo apt-get install -y tesseract-ocr   (Fedora/RHEL: sudo dnf install tesseract)"
+        return "macOS: brew install tesseract tesseract-lang  (tesseract-lang = non-English OCR scripts)"
+    return ("Linux: sudo apt-get install -y tesseract-ocr   (add language packs for foreign scripts, "
+            "e.g. tesseract-ocr-jpn / -chi-sim / -ara / -spa; Fedora/RHEL: sudo dnf install tesseract)")
 
 
 def _detect_tesseract() -> dict:

@@ -53,6 +53,17 @@ python3 tools/docintel_run.py --process-queue --queue inbox_queue      # parse a
   above. A queued item is registered honestly (content hash + media type, `retrieval_state:
   referenced`) and only becomes `content_ingested` once actually parsed; an item needing an absent
   optional parser stays queued with an honest status rather than being faked.
+- **Recursive / nested documents** — `--recursive` parses documents *contained inside* the upload:
+  a `.zip` of reports, an `.eml`'s attachments, or an OOXML file that **embeds** another (e.g. a
+  `.pptx` pulled from a download link that itself embeds an `.xlsx`). It builds a depth-bounded tree
+  with a content-hash cycle guard. (Following a *web* download link to fetch the linked file is the
+  harvest layer's job — `tools/acquire.py`; those fetched files then feed this pipeline.)
+- **Internationalization** — text is decoded encoding-aware (BOM → declared/`<meta charset>` →
+  detector → UTF-8 → Latin-1), never `utf-8/ignore`, then NFC-normalized — so non-Latin scripts
+  (CJK, Arabic, Cyrillic…), legacy system encodings (Windows-1252, Shift-JIS, Mac Roman, ISO-8859-*),
+  and the full range of special characters and language punctuation are preserved, not mangled. PDF
+  glyph→Unicode is handled by PyMuPDF; scanned foreign text needs the matching tesseract language pack
+  (see `tools/deps_preflight.py`).
 - **Structure** — reading order, headings, and tables into the UDOM
   (`shared/docintel/udom.md` + `udom.schema.json`).
 - **Governance** — provenance/lineage/confidence/evidence on every object

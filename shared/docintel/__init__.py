@@ -42,6 +42,8 @@ from .orchestration import (
 )
 from .udom import Block, Cell, Page, Source, Table, TextSpan, UDOMDocument, UDOM_VERSION
 from .validation import validate
+from .recurse import iter_children, parse_recursive
+from .html_util import decode_bytes, get_links, get_tables, get_text_blocks
 
 __version__ = "0.1.0"
 
@@ -52,6 +54,8 @@ __all__ = [
     "UDOMDocument", "Source", "Page", "Block", "Table", "Cell", "TextSpan", "UDOM_VERSION",
     "Provenance", "Confidence", "LineageEvent", "Evidence",
     "build_knowledge_artifact", "build_consumer_artifact", "validate",
+    "iter_children", "parse_recursive",
+    "decode_bytes", "get_links", "get_tables", "get_text_blocks",
     "ChangeClass", "ChangeRecord", "IMPACT_DIMENSIONS", "build_change_record", "validate_change",
     "TableExtractor", "TableRegistry", "StdlibTableExtractor", "default_table_registry",
     "extract_docx_tables", "extract_html_tables", "extract_markdown_tables",
