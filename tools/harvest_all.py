@@ -140,9 +140,14 @@ def fetch_phase(urls: list[str], inbox: Path, ignore_robots: bool, report: list[
         slug = re.sub(r"[^a-zA-Z0-9]+", "_", u)[:70]
         m = acquire(u, inbox / slug, ignore_robots=ignore_robots, depth=depth, gov=gov)
         arts = m.get("artifacts", {})
-        got = "+".join(k for k, v in arts.items() if v) or "none"
+        got = "+".join(k for k, v in arts.items() if isinstance(v, bool) and v) or "none"
         note = f"  ({m['note']})" if m.get("note") else ""
         report.append(f"  [fetch] {'OK' if m.get('ok_any') else 'FAIL'}: {u}  [{got}]{note}")
+        blk = m.get("block", {})
+        if blk.get("blocked"):
+            report.append(f"           block: {blk['vendor'] or blk['kind']} ({blk['confidence']}) — {blk['advice'][:90]}")
+        if m.get("diag"):
+            report.append(f"           {m['diag']}")
     gov.save()
     for host, st in gov.summary().items():
         brk = "  BREAKER-OPEN" if st["breaker_open"] else ""
