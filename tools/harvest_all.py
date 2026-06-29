@@ -42,9 +42,42 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(ROOT / "shared"))  # for the docintel offline pipeline (Tier 2.4 generic parse)
 
 # reuse the existing ingester's parsers / dedup / base-catalog (single source of truth)
 import ingest_sources as ING  # noqa: E402
+
+GENERIC_EXT = (".html", ".htm", ".json", ".xml", ".txt", ".md")  # routed through docintel when "unknown"
+DOC_LINK_EXT = (".pdf", ".xlsx", ".xls", ".docx", ".doc", ".csv", ".html", ".htm")
+
+
+def _read_text(path) -> str:
+    """i18n-aware decode (foreign scripts / legacy encodings preserved), stdlib-safe fallback."""
+    data = path.read_bytes()
+    try:
+        import docintel
+        return docintel.decode_bytes(data)
+    except Exception:
+        return data.decode("utf-8", "replace")
+
+
+def _generic_extract(path) -> "dict | None":
+    """Tier 2.4: pull text + standard codes + links from a generic HTML / rendered DOM / network-JSON
+    file via the offline docintel pipeline (resilient + i18n) so a captured page isn't left unparsed."""
+    try:
+        import docintel
+        data = path.read_bytes()
+        doc = docintel.Pipeline().run(data, path.name)
+        text = " ".join(b.text for _, b in doc.iter_blocks() if b.text)
+        links = docintel.get_links(docintel.decode_bytes(data), "") \
+            if path.suffix.lower() in (".html", ".htm") else []
+        return {"blocks": doc.properties.get("block_count", 0),
+                "standards": sorted(set(STD_RE.findall(text))),
+                "links": [u for u in links if u.startswith("http")
+                          and u.split("?")[0].lower().endswith(DOC_LINK_EXT)],
+                "retrieval_state": doc.diagnostics.get("retrieval_state")}
+    except Exception:
+        return None
 
 TOOLKIT_DIR = ROOT / "canonical-sources" / "references" / "toolkit-content"
 STD_RE = re.compile(r"\b(?:LAFS|MAFS|SC|SS|HE|PE|VA|MU|TH|DA|ELA|MA|ELD)\.[K0-9]{1,2}"
@@ -115,7 +148,7 @@ def scan(inbox: Path) -> list[dict]:
         elif suf == ".zip":
             kind = "zip"
         else:
-            text = f.read_text(encoding="utf-8", errors="replace")
+            text = _read_text(f)
             kind = ING.detect(f, text)
         out.append({"file": f, "kind": kind})
     return out
@@ -230,10 +263,11 @@ def main(argv=None) -> int:
     # ---- PARSE ----
     report.append("\n## PARSE")
     priv_in, course_in, base, all_codes = [], [], [], set()
+    discovered: set = set()   # doc links found in generic pages -> next-pass seeds (discover offline)
     TOOLKIT_DIR.mkdir(parents=True, exist_ok=True)
     for it in items:
         f, kind = it["file"], it["kind"]
-        text = "" if f.suffix.lower() in (".xlsx", ".pdf", ".zip", ".docx") else f.read_text(encoding="utf-8", errors="replace")
+        text = "" if f.suffix.lower() in (".xlsx", ".pdf", ".zip", ".docx") else _read_text(f)
         recs = 0; status = "captured_unparsed"; tk = None
         if kind == "nces_pss":
             r = ING.parse_nces_pss(text, f.name); priv_in += r; recs = len(r); status = "parsed"
@@ -247,6 +281,13 @@ def main(argv=None) -> int:
         elif kind == "docx_toolkit":
             tk = parse_docx_toolkit(f, f.stem)
             status = "parsed" if tk else "captured_unparsed"
+        elif f.suffix.lower() in GENERIC_EXT:
+            # Tier 2.4: generic captured HTML / rendered DOM / network JSON -> offline docintel pipeline
+            gx = _generic_extract(f)
+            if gx and gx["blocks"]:
+                recs = gx["blocks"]; status = "parsed_generic"
+                all_codes |= set(gx["standards"])
+                discovered.update(gx["links"])
         if tk:
             recs = len(tk["standards_covered"]); all_codes |= set(tk["standards_covered"])
             if not a.dry_run:
@@ -263,6 +304,9 @@ def main(argv=None) -> int:
     merged, added, dedup = ING.merge_private(existing, priv_in)
     report.append(f"  [validate] private schools: +{added} new, {dedup} deduped -> {len(merged)} total")
     val = validate_standards(all_codes, report)
+    if discovered:
+        report.append(f"  [validate] {len(discovered)} document link(s) discovered in parsed pages "
+                      f"(offline) -> next-pass fetch seeds")
 
     if a.dry_run:
         report.append("\n[dry-run] no writes, no index rebuild, no commit.")
@@ -286,6 +330,11 @@ def main(argv=None) -> int:
     report.append("\n## HANDOFF")
     needs_review = [b for b in base if b["status"].startswith(("captured_unparsed", "capability_gap"))]
     report.append(f"  human_review_required: {len(needs_review)} unparsed/gap source(s) cataloged by URL for later")
+    if discovered:
+        seeds = inbox / "_discovered_urls.txt"
+        seeds.write_text("\n".join(sorted(discovered)) + "\n", encoding="utf-8")
+        report.append(f"  next-pass seeds: {len(discovered)} document link(s) -> {seeds} "
+                      f"(feed the next fetch with --urls {seeds})")
     (ROOT / "HARVEST_HANDOFF.md").write_text("\n".join(report) + "\n", encoding="utf-8")
     print("\n".join(report))
     print(f"\nHandoff report: HARVEST_HANDOFF.md")
