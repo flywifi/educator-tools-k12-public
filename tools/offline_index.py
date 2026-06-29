@@ -176,18 +176,30 @@ def build() -> int:
 
 
 # --------------------------------------------------------------------------- query
+# SQL identifiers (table/column names) cannot be bound as parameters, so every interpolated
+# identifier is restricted to this allow-list (table) or to the table's real columns (filters/search
+# cols). Search TEXT is always bound as a parameter — never interpolated — so there is no injection
+# surface even though the SQL is assembled as f-strings.
+_TABLES = {"standards", "courses", "schools", "private_schools", "toolkit_resources", "data_sources"}
+
+
 def _q(table, search_cols, text, filters, limit):
+    if table not in _TABLES:
+        raise ValueError(f"unknown table: {table!r}")
     if not DB.exists():
         raise FileNotFoundError("index not built — run: python3 tools/offline_index.py --build")
     conn = sqlite3.connect(DB)
     try:
         engine = conn.execute("SELECT value FROM idx_meta WHERE key='engine'").fetchone()
         engine = engine[0] if engine else "like_fallback"
-        # get column names
-        cur = conn.execute(f"SELECT * FROM {table} LIMIT 0")
+        # column names — also the allow-list for any column identifier interpolated below
+        cur = conn.execute(f"SELECT * FROM {table} LIMIT 0")  # nosemgrep  (table allow-listed above; identifier cannot be a bound param)
         colnames = [d[0] for d in cur.description]
+        valid = set(colnames)
         where, params = [], []
         for col, val in (filters or {}):
+            if col not in valid:
+                raise ValueError(f"unknown filter column: {col!r}")
             where.append(f"{col} = ?"); params.append(val)
         if text and engine == "fts5":
             import re as _re
@@ -201,15 +213,16 @@ def _q(table, search_cols, text, filters, limit):
             sql += f" ORDER BY bm25({table}) LIMIT ?"
         else:
             if text:
-                ors = " OR ".join(f"{c} LIKE ?" for c in search_cols)
-                where.insert(0, f"({ors})")
-                params = [f"%{text}%"] * len(search_cols) + params
+                cols = [c for c in search_cols if c in valid] or sorted(valid)
+                where.insert(0, "(" + " OR ".join(f"{c} LIKE ?" for c in cols) + ")")
+                params = [f"%{text}%"] * len(cols) + params
             sql = f"SELECT * FROM {table}"
             if where:
                 sql += " WHERE " + " AND ".join(where)
             sql += " LIMIT ?"
         params.append(limit)
-        return [dict(zip(colnames, r)) for r in conn.execute(sql, params).fetchall()]
+        # identifiers allow-listed above; all values bound via ? -> no injection surface
+        return [dict(zip(colnames, r)) for r in conn.execute(sql, params).fetchall()]  # nosemgrep  (identifiers allow-listed; all values bound via ? -> no injection surface)
     finally:
         conn.close()
 
