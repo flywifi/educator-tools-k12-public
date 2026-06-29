@@ -57,6 +57,9 @@ PINNED_DEPS = [
     "pillow>=10.0",             # imaging for OCR (ships wheels; --only-binary keeps it source-free)
     "pytesseract>=0.3.10",      # OCR wrapper — DRIVES the tesseract SYSTEM binary (detected separately)
     "markitdown>=0.0.1a2",      # universal document -> markdown (best-effort; isolated so it can't sink the rest)
+    "scrapling>=0.2",           # PARSER ONLY (no [fetchers]/stealth) — resilient HTML extraction via lxml;
+                                # best-effort + wheels-only so its lxml dep installs from a wheel or is an
+                                # honest gap (the docintel HTML parser falls back to stdlib either way)
     "playwright>=1.40",         # headless Chromium render + screenshot (browser fetched separately)
 ]
 
@@ -69,11 +72,13 @@ IMPORT_NAME = {
     "pillow": "PIL",
     "pytesseract": "pytesseract",
     "markitdown": "markitdown",
+    "scrapling": "scrapling",
     "playwright": "playwright",
 }
 
-# markitdown pulls a wider transitive set than the others; keep its failure from blocking the run.
-BEST_EFFORT = {"markitdown"}
+# markitdown + scrapling pull wider transitive sets (scrapling -> lxml) than the others; keep their
+# failure from blocking the run — each is isolated and best-effort, with a stdlib fallback downstream.
+BEST_EFFORT = {"markitdown", "scrapling"}
 
 _UPGRADE_INTERVAL = 24 * 3600  # upgrade pass at most once/day unless --update-deps forces it
 _LAST_REPORT: dict | None = None

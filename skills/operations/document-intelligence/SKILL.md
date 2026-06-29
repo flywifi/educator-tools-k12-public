@@ -35,11 +35,24 @@ engine (`shared/docintel/`):
 ```bash
 python3 tools/docintel_run.py --check                      # list parsers + availability (offline)
 python3 tools/docintel_run.py <file> --out artifact.json --udom udom.json
+# Capture-now, parse-later: register an upload for deferred parsing, then process the batch when ready
+python3 tools/docintel_run.py <upload> --enqueue --queue inbox_queue   # register only (no parse yet)
+python3 tools/docintel_run.py --process-queue --queue inbox_queue      # parse all pending uploads now
 ```
 - **Recovery** — the orchestrator selects a parser by *capability*, not by name
   (`shared/docintel/parser-orchestration.md`). Stdlib-only by default (.txt/.md/.html/.docx); PDF
   support activates automatically when PyMuPDF is installed; add Docling/Surya/Camelot/etc. as new
   plugins with **no consumer changes**.
+- **Resilient HTML** — uploaded/saved HTML routes to `resilient_html`, which prefers Scrapling's
+  parser / lxml for robust extraction of messy or restructured pages and **falls back to stdlib
+  automatically** (always runs; records which engine actually ran). Parser only — no fetching, no
+  anti-bot evasion. The optional Scrapling/lxml wheels install via `tools/deps_preflight.py`; absent
+  them, stdlib still parses, just less robustly.
+- **Deferred parsing** — when someone uploads a document, you can parse it immediately *or* capture it
+  now and parse it **separately / at a later time** via the `--enqueue` / `--process-queue` queue
+  above. A queued item is registered honestly (content hash + media type, `retrieval_state:
+  referenced`) and only becomes `content_ingested` once actually parsed; an item needing an absent
+  optional parser stays queued with an honest status rather than being faked.
 - **Structure** — reading order, headings, and tables into the UDOM
   (`shared/docintel/udom.md` + `udom.schema.json`).
 - **Governance** — provenance/lineage/confidence/evidence on every object
