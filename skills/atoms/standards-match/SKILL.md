@@ -37,7 +37,14 @@ Returns the 1–5 most relevant Florida standards for a given topic/grade/subjec
 }
 ```
 
-`match_method` is `L1_cache` when the local standards cache (shared/cache/cache.py) is built, `keyword` for tools/fl_lookup.py direct search, `uncertain` when the index is absent and the match is model-inferred. Never fabricate a standard code — return empty `standards` and explain in `note` instead.
+`match_method` is `unified_index` when the unified offline index is built
+(`python3 tools/offline_index.py --standards "<topic>" --grade <g> --subject <s>` — a deterministic
+zero-token SQLite/FTS5 lookup that returns only the matching rows; see `canonical-sources/index/README.md`),
+`L1_cache` for the standards-only cache (shared/cache/cache.py), `keyword` for tools/fl_lookup.py direct
+search, `uncertain` when no index is built and the match is model-inferred. **Prefer the index** — it
+returns verbatim canonical rows (~100–350 tokens) instead of loading the ~470k-token standards corpus or
+recalling from memory, so it cannot fabricate a code. Never fabricate a standard code — return empty
+`standards` and explain in `note` instead.
 
 ## How to use this atom
 
