@@ -71,9 +71,15 @@ Every Florida standard + access point is extracted from the official documents i
 | ELD | 5 | — | — |
 | **Total** | **6,583** | | |
 
-Query: `python3 tools/fl_lookup.py --subject math --grade 3 --search fraction`. **Always verify on
-CPALMS** before citing. Social Studies is best-effort from a legacy `.doc` — verify there. Re-extract
-after a refresh with `tools/parse_fl_standards.py`.
+**Low-token lookup (preferred):** `python3 tools/offline_index.py --standards "fraction" --grade 3
+--subject math` — the unified offline index (SQLite/FTS5) returns only the matching rows (~100–350
+tokens) instead of loading the ~470k-token corpus, and returns verbatim canonical data so it cannot
+fabricate a code. It also indexes **courses** (`--course`), **schools** (`--school`), **CPALMS
+toolkit resources per standard** (`--resource <code>`), and **data sources** (`--source`). Build once
+with `--build`; see `canonical-sources/index/README.md`. Fallbacks: `tools/fl_lookup.py` (standards
+only) and `shared/cache/cache.py` (L1 standards cache). **Always verify on CPALMS** before citing.
+Social Studies is best-effort from a legacy `.doc` — verify there. Re-extract after a refresh with
+`tools/parse_fl_standards.py`, then rebuild the index.
 
 ## Access points (Special Education) — important
 Florida publishes **Access Points** for students with significant cognitive disabilities, embedded in
@@ -81,7 +87,10 @@ the same documents:
 - B.E.S.T. (Math/ELA): `…​.AP.<n>` (e.g., `MA.K.NSO.1.AP.1`, `ELA.K.F.1.AP.1a`).
 - NGSSS (Science): `.In.` (Independent), `.Su.` (Supported), `.Pa.` (Participatory) — e.g.,
   `SC.K.L.14.In.1`.
-These are the canonical hooks `special-education-support` should reference for FL alignment.
+These are the canonical hooks `special-education-support` should reference for FL alignment. The
+offline index returns access points alongside benchmarks — e.g. `tools/offline_index.py --standards
+"fraction" --grade 3 --subject math` includes `MA.3.FR.2.AP.2` — so ESE alignment is a zero-token,
+no-fabrication lookup, not a recall.
 
 ## Grade → band mapping
 K, 1, 2 → **K-2** · 3, 4, 5 → **3-5** · 6, 7, 8 → **6-8** · 9-12 → **9-12** (HS math by course = `912`).
