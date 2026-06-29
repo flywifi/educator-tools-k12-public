@@ -46,3 +46,4 @@ tos_update_*.zip
 _harvest_*/
 seed_report_*
 canonical-sources/index/*.db
+source_inbox/
