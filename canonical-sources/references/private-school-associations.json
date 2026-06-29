@@ -1,0 +1,156 @@
+{
+  "_comment": "Private-school membership/accreditation association taxonomy — transcribed from the maintainer's FLDOE private-school affiliation picker screenshots (2026-06-29). A controlled vocabulary for classifying a private school's affiliations (feeds school_type=private_scholarship context). 'Other ...' entries are picker free-text placeholders, flagged. Public reference data.",
+  "domain": "private-school-associations",
+  "version": "1.0.0",
+  "captured": "2026-06-29",
+  "source": "FLDOE private-school affiliation picker (maintainer screenshots)",
+  "categories": {
+    "religious": [
+      [
+        "ACE",
+        "Accelerated Christian Education (or School of Tomorrow)"
+      ],
+      [
+        "AIA",
+        "Agudath Israel of America"
+      ],
+      [
+        "AACS",
+        "American Association of Christian Schools"
+      ],
+      [
+        "ACSI",
+        "Association of Christian Schools International"
+      ],
+      [
+        "ACTS",
+        "Association of Christian Teachers and Schools"
+      ],
+      [
+        "ACCS",
+        "Association of Classical Christian Schools"
+      ],
+      [
+        "CSI",
+        "Christian Schools International"
+      ],
+      [
+        "CISNA",
+        "Council of Islamic Schools in North America"
+      ],
+      [
+        "ELEA",
+        "Evangelical Lutheran Education Association"
+      ],
+      [
+        "FCE",
+        "Friends Council on Education"
+      ],
+      [
+        "GCSDAC",
+        "General Conference of the Seventh-Day Adventist Church"
+      ],
+      [
+        "ISLA",
+        "Islamic School League of America"
+      ],
+      [
+        "JSN",
+        "Jesuit Schools Network"
+      ],
+      [
+        "NACS",
+        "National Alliance of Christian Schools"
+      ],
+      [
+        "NAES",
+        "National Association of Episcopal Schools"
+      ],
+      [
+        "NCEA",
+        "National Catholic Educational Association"
+      ],
+      [
+        "NCSA",
+        "National Christian School Association"
+      ],
+      [
+        "Torah Umesorah",
+        "National Society for Hebrew Day Schools"
+      ],
+      [
+        "ORUEF",
+        "Oral Roberts University Educational Fellowship"
+      ],
+      [
+        "PRIZMAH",
+        "Prizmah: Center for Jewish Day Schools"
+      ]
+    ],
+    "special_emphasis": [
+      [
+        "AMS",
+        "American Montessori Society"
+      ],
+      [
+        "AMI",
+        "Association Montessori International"
+      ],
+      [
+        "AMCS",
+        "Association of Military Colleges and Schools"
+      ],
+      [
+        "AWSNA",
+        "Association of Waldorf Schools of North America"
+      ],
+      [
+        "NAPSEC",
+        "National Association of Private Special Education Centers"
+      ],
+      [
+        "ECIS",
+        "European Council for International Schools"
+      ],
+      [
+        "NAEYC",
+        "National Association for the Education of Young Children"
+      ],
+      [
+        "NALS",
+        "National Association of Laboratory Schools"
+      ],
+      [
+        "NCGS",
+        "National Coalition of Girls' Schools"
+      ]
+    ],
+    "other": [
+      [
+        "ASN",
+        "Alternative School Network"
+      ],
+      [
+        "NAIS",
+        "National Association of Independent Schools"
+      ],
+      [
+        "NIPSA",
+        "National Independent Private Schools Association"
+      ],
+      [
+        "TABS",
+        "The Association of Boarding Schools"
+      ]
+    ]
+  },
+  "freetext_placeholders": [
+    "Other religious school association(s)",
+    "Other Montessori association(s)",
+    "Other association(s) for exceptional children",
+    "Other special emphasis association(s)",
+    "State or regional independent school association",
+    "Other school association(s)",
+    "School does NOT belong to ANY associations or organizations"
+  ]
+}
