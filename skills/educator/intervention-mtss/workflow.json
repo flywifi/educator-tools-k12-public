@@ -1,0 +1,27 @@
+{
+  "_comment": "Declarative workflow definition for intervention-mtss. Builds Tier 1/2/3 MTSS plans by anchoring the target skill to a verified standard, scaffolding differentiation, and defining progress-monitoring decision rules.",
+  "id": "intervention-mtss",
+  "description": "MTSS/RTI plan: target skill → standards anchor → intervention → differentiation → progress monitoring → quality gate",
+  "steps": [
+    {"step": 1, "atom": "standards-match",       "input_from": "teacher request",          "output_to": "step2",
+     "note": "Tie the target skill (e.g., decoding CVC) to a verified grade-level standard"},
+    {"step": 2, "atom": "misconception",         "input_from": "step1.standards",          "output_to": "step3",
+     "note": "Identify common student misconceptions in the target skill to inform the intervention routine"},
+    {"step": 3, "atom": "intervention-select",   "input_from": "step1.standards + step2",  "output_to": "step4",
+     "note": "Match an evidence-based intervention to the student need at the specified MTSS tier"},
+    {"step": 4, "atom": "behavior-strategy",     "input_from": "student_need",             "output_to": "step5",
+     "condition": "behavior_concern_documented",
+     "note": "Add function-based behavior support strategy if behavior is a contributing factor"},
+    {"step": 5, "atom": "differentiate",         "input_from": "intervention_content",     "output_to": "step6",
+     "repeat": "per_tier",
+     "note": "Apply UDL + scaffolds appropriate to the tier and group size (T2 targeted / T3 intensive)"},
+    {"step": 6, "atom": "progress-monitor-plan", "input_from": "step3.intervention",       "output_to": "step7",
+     "note": "Create a progress-monitoring schedule with probes and decision rules"},
+    {"step": 7, "atom": "reading-level",         "input_from": "step5.materials_text",     "output_to": "step8",
+     "note": "Verify intervention materials are at the right instructional reading level"},
+    {"step": 8, "atom": "quality-check",         "input_from": "assembled_plan",           "output_to": "final",
+     "gates": ["standard_alignment", "progress_monitoring_defined", "decision_rules_present", "student_data_policy"]}
+  ],
+  "shortcut_atoms": ["standards-match", "differentiate", "intervention-select", "behavior-strategy", "progress-monitor-plan", "referral-draft"],
+  "note": "MTSS tiers are instructional tiers, NOT special-education eligibility. Route IEP/504 work to special-education-support."
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Staff / role directory (GATED)",
+  "description": "Authorized-first staff directory so teacher-profile handoffs can resolve a role to a real person. OFF by default (see staff-data-policy.md). Committed files are PLACEHOLDERS only; real data lives in staff.local.json (gitignored). Minimum-necessary fields; every record carries provenance + an authorized flag.",
+  "type": "object",
+  "required": ["school_msid", "staff"],
+  "$defs": {
+    "staff_member": {
+      "type": "object",
+      "required": ["display_name", "role", "provenance", "authorized"],
+      "properties": {
+        "staff_id": {"type": ["string", "null"], "description": "directory/HR id if available (not SSN)"},
+        "display_name": {"type": "string"},
+        "role": {"type": "string", "description": "normalized role key, e.g. case_manager, assistant_principal, counselor, nurse, co_teacher, department_head, teacher"},
+        "position_title": {"type": ["string", "null"], "description": "the site's free-text title"},
+        "department": {"type": ["string", "null"]},
+        "work_email": {"type": ["string", "null"], "description": "minimum-necessary; local-only unless from an authorized source"},
+        "school_msid": {"type": ["string", "null"], "description": "links to shared/schools/"},
+        "provenance": {"enum": ["authorized_directory", "teacher_provided", "public_crawl", "imported"]},
+        "authorized": {"type": "boolean", "description": "true only when sourced under an explicit authorization"},
+        "consent": {"type": ["string", "null"], "description": "how/when consent or authorization was recorded"},
+        "source": {"type": ["string", "null"]},
+        "verified": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    }
+  },
+  "properties": {
+    "school_msid": {"type": "string"},
+    "school_name": {"type": ["string", "null"]},
+    "ingest_mode": {"enum": ["off", "authorized_directory", "teacher_provided", "public_crawl"], "description": "off = placeholder/read-only (default)"},
+    "authorized": {"type": "boolean", "description": "deployment-level STAFF_INGEST_AUTHORIZED state at write time"},
+    "generated": {"type": ["string", "null"]},
+    "staff": {"type": "array", "items": {"$ref": "#/$defs/staff_member"}}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_comment": "Declarative workflow definition for feed-curator. Keeps the education-feeds catalog accurate by validating existing feeds, discovering candidates, proposing a human-reviewable change set, and auto-applying only mechanically-safe repairs — all logged for audit/revert.",
+  "id": "feed-curator",
+  "description": "Catalog librarian: validate feeds → discover candidates → propose changes → auto-apply safe repairs → audit log → quality gate",
+  "steps": [
+    {"step": 1, "atom": "feed-validate",  "input_from": "shared/feeds/feeds.json",          "output_to": "step2",
+     "repeat": "per_feed",
+     "note": "Check each feed URL for liveness, staleness, redirects, label accuracy"},
+    {"step": 2, "atom": "feed-discover", "input_from": "authoritative page URL (optional)", "output_to": "step3",
+     "condition": "seed_url_provided",
+     "note": "RSS autodiscovery (rel=alternate); polite, robots.txt-respecting; candidates are proposals, never auto-added"},
+    {"step": 3, "atom": "safe-apply",    "input_from": "step1.health + step2.candidates",  "output_to": "step4",
+     "note": "Classify changes as mechanical (safe) or judgment (human review); auto-apply only safe repairs"},
+    {"step": 4, "atom": "quality-check", "input_from": "catalog_health_report",            "output_to": "final",
+     "gates": ["no_fabricated_urls", "audit_log_written", "safe_repairs_only_auto_applied"]}
+  ],
+  "shortcut_atoms": ["feed-validate", "feed-discover", "safe-apply"],
+  "note": "Every change — auto or approved — is appended to ledger/feeds-change-log.json and is reversible with --revert. Only tier:canonical / authority:primary confirms a change. Never fabricate a feed URL or verified status."
+}

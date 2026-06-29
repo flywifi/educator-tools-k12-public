@@ -1,0 +1,9 @@
+# Cloud / SaaS capabilities (cloud_optional) — OFF by default. Install ONLY for a deployment that opts in.
+# Each needs an API key read from the ENVIRONMENT (never the repo; see dependency-policy.md + .gitignore).
+# These may send data off-site, so they are bound by shared/students/student-data-policy.md and the
+# connector restriction model (a district can deny them). Pinned; auto-updated by dependabot; scanned.
+azure-cognitiveservices-speech==1.40.0   # cloud_transcription
+azure-ai-vision-imageanalysis==1.0.0     # cloud_vision_ocr
+fal-client==0.5.6                        # cloud_media_gen (image/video/voice)
+firecrawl-py==1.6.3                      # cloud_web_crawl
+# Nutrient DWS (cloud_doc_processing) is a REST API — no pinned client; call via requests with NUTRIENT_API_KEY.

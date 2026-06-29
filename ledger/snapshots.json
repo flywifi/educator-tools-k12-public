@@ -1,0 +1,60 @@
+{
+  "_comment": "Durable known-good ECOSYSTEM snapshots \u2014 the 'saved versions' that tools/rollback.py restores to (whole-tree, per the approved plan). Each snapshot is anchored on a COMMIT SHA, not a git tag: in this managed environment write access is ref-scoped to the feature branch, so tag pushes are rejected by egress policy (HTTP 403) and would not survive the ephemeral container. Commit SHAs DO ride along with the branch push, so they are the durable anchor. 'local_tag' is a convenience label that may exist only locally. Record a snapshot with `python3 tools/rollback.py --record --label '...'`; restore with `python3 tools/rollback.py --to <id|commit|tag>`.",
+  "version": "0.1.0",
+  "snapshots": [
+    {
+      "id": "F1",
+      "commit": "909e7d4d8ec8207bf7ee9ef0edb7909cc160e82d",
+      "label": "F1: firecrawl always-on + RSS fetcher + whole-ecosystem rollback (shell)",
+      "reason": "phase F1 known-good: traversal firecrawl/RSS/--feed verified; drift guard clean (17 skills)",
+      "timestamp": "2026-06-26T04:41:26Z",
+      "drift_guard": "pass",
+      "local_tag": "snapshot-f1"
+    },
+    {
+      "id": "F2",
+      "commit": "6d69ff6bb35032d8d28d56f52e59e8ad362bc680",
+      "label": "F2: source-currency + staleness engine",
+      "reason": "phase F2 known-good: classifier verified (9 states); drift/version/sync all clean",
+      "timestamp": "2026-06-26T04:48:29.035398+00:00",
+      "drift_guard": "pass",
+      "local_tag": null
+    },
+    {
+      "id": "F3",
+      "commit": "1fdd00cc715f696cdb5daf4a4a67c873260bef47",
+      "label": "F3: OCPS schools + programs index",
+      "reason": "phase F3 known-good: schools engine verified; 13 registries 0 drift; version/sync clean",
+      "timestamp": "2026-06-26T04:51:33.198550+00:00",
+      "drift_guard": "pass",
+      "local_tag": null
+    },
+    {
+      "id": "F4",
+      "commit": "353b72ebb92472a11ebc0a05605662c621622cbc",
+      "label": "F4: teacher-profile skill + setup wizard",
+      "reason": "phase F4 known-good: wizard verified (demo/validate/register); routing+ontology+version+drift all clean (18 skills)",
+      "timestamp": "2026-06-26T04:58:43.715854+00:00",
+      "drift_guard": "pass",
+      "local_tag": null
+    },
+    {
+      "id": "F5",
+      "commit": "9c9108b207901b58ddbe5bbad0d3c78a690f92e7",
+      "label": "F5: staff/role directory (gated)",
+      "reason": "phase F5 known-good: gate off-by-default verified; authorized ingest writes gitignored store; handoff resolution works; drift/version/sync clean",
+      "timestamp": "2026-06-26T05:01:55.962910+00:00",
+      "drift_guard": "pass",
+      "local_tag": null
+    },
+    {
+      "id": "F6",
+      "commit": "58f1348275c55d4ea2cf52e742498ee2a3798bb4",
+      "label": "F6: context-confirmation spine (light)",
+      "reason": "phase F6 known-good: spine snapshot/graph/confirm verified; 18 skills, drift/version/sync clean; F1-F6 complete",
+      "timestamp": "2026-06-26T14:15:10.144126+00:00",
+      "drift_guard": "pass",
+      "local_tag": null
+    }
+  ]
+}

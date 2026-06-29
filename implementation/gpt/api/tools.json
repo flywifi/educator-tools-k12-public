@@ -1,0 +1,2501 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "assessment_designer",
+      "description": "Design standards-aligned formative and summative assessments, rubrics, and performance tasks\nfor K-12. Every item maps to a verified standard code. Outputs include answer keys, distractor\nanalysis (for MC), scoring guides, and Bloom's level tags for every item. Produces DOK-labeled\nitems and complete rubrics with descriptors at each score level.\n\nTrigger phrases: \"write me a quiz\", \"create a test on\", \"make a rubric for\", \"design a\nperformance task\", \"build a formative assessment\", \"I need an exit ticket assessment\",\n\"create a unit test\", \"write 10 multiple choice questions on\".\n\nIntegrates with atom-assessment-item (individual item generation), atom-standards-match\n(standard resolution), and atom-quality-check. Routes to quality-review before marking final.\n\nDo NOT use assessment-designer for IEP progress-monitoring measures (use\nspecial-education-support). Do NOT use it to design the full lesson plan around an assessment\n(use lesson-planner with assessment-designer called as part of the workflow). Do NOT fabricate\nstandard codes — every item carries a verified standard citation or is flagged as needing one.\n\nOutput artifacts: quiz, test, rubric, performance_task, exit_ticket_assessment, item_bank.\nAlways outputs a metadata block with standard codes, Bloom's distribution, DOK levels,\nand human_review_required: true.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "grade",
+          "subject",
+          "topic"
+        ],
+        "properties": {
+          "grade": {
+            "type": "string",
+            "description": "Grade level or band. Examples: \"3rd grade\", \"9-12\", \"6-8\", \"Kindergarten\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area. Examples: \"ELA\", \"Mathematics\", \"Science\", \"Algebra 1\", \"US History\".\n"
+          },
+          "topic": {
+            "type": "string",
+            "description": "Specific concept or unit being assessed. Examples: \"polynomial operations\", \"figurative language in poetry\", \"cell division\".\n"
+          },
+          "assessment_type": {
+            "type": "string",
+            "enum": [
+              "formative_quiz",
+              "summative_test",
+              "exit_ticket",
+              "performance_task",
+              "rubric",
+              "self_assessment",
+              "peer_assessment",
+              "item_bank"
+            ],
+            "description": "The type of assessment artifact. Defaults to formative_quiz if not specified.\n"
+          },
+          "item_count": {
+            "type": "integer",
+            "description": "Number of items/questions to generate. For rubrics, this is the number of criteria rows. Typical range: 5–30 for quizzes/tests, 3–8 for rubrics.\n"
+          },
+          "item_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "multiple_choice",
+                "short_answer",
+                "constructed_response",
+                "true_false",
+                "matching",
+                "fill_in_the_blank",
+                "essay"
+              ]
+            },
+            "description": "Desired item format(s). Mix supported. If omitted, a balanced mix is selected based on assessment_type.\n"
+          },
+          "standards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Florida B.E.S.T. or NGSSS standard codes to align to. If omitted, atom-standards-match resolves them from grade/subject/topic.\n"
+          },
+          "bloom_levels": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "remember",
+                "understand",
+                "apply",
+                "analyze",
+                "evaluate",
+                "create"
+              ]
+            },
+            "description": "Bloom's taxonomy levels to target. Defaults to a balanced lower/higher distribution if not specified.\n"
+          },
+          "dok_levels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                1,
+                2,
+                3,
+                4
+              ]
+            },
+            "description": "Depth of Knowledge levels to include. Defaults to DOK 1-2 for formative, 1-3 for summative if not specified.\n"
+          },
+          "include_answer_key": {
+            "type": "boolean",
+            "description": "Include a full answer key with rationale for each item. Always true for MC and T/F. Defaults to true.\n"
+          },
+          "include_distractor_analysis": {
+            "type": "boolean",
+            "description": "For multiple_choice items: include distractor analysis explaining why each wrong answer is plausible and what misconception it targets. Defaults to true.\n"
+          },
+          "differentiation_profiles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ell",
+                "iep",
+                "gifted",
+                "504",
+                "below_grade",
+                "above_grade"
+              ]
+            },
+            "description": "Generate differentiated versions of the assessment for these profiles. Each profile gets its own modified form; the learning target stays constant.\n"
+          },
+          "rubric_scale": {
+            "type": "integer",
+            "enum": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "description": "For rubrics: number of score levels (e.g. 4 = 1-4 scale). Defaults to 4.\n"
+          },
+          "time_limit_minutes": {
+            "type": "integer",
+            "description": "Intended time limit. Informs item difficulty distribution and instructions.\n"
+          },
+          "additional_context": {
+            "type": "string",
+            "description": "Any additional context: prior assessment results, prerequisite knowledge, co-teaching format. Never include real student names or PII.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "atom_activity_generate",
+      "description": "Generate ONE complete learning activity for a given objective, grade, and subject. Output\nincludes: activity title, procedure (step-by-step teacher and student actions), materials,\nestimated timing, DOK level, grouping structure, and a formative check at the end.\n\nEach activity maps to exactly ONE learning objective (call this skill once per activity you\nneed; use lesson-planner to sequence multiple activities into a full lesson).\n\nActivity types supported: direct instruction sequence, think-pair-share, stations/centers,\ngallery walk, Socratic seminar, jigsaw, problem-based learning task, project component,\nreader's theater, math workshop model, and teacher-directed guided practice.\n\nCalled by: lesson-planner (populates the lesson body), curriculum-mapping (generates sample\nactivities per unit), and any workflow building modular instructional sequences.\n\nTrigger phrases: \"generate an activity for\", \"what's a good activity for this objective\",\n\"create a classroom activity about\", \"design one activity for\", \"build an activity for\",\n\"I need an activity that teaches\".\n\nDo NOT use atom-activity-generate to write a complete multi-activity lesson (use\nlesson-planner). Do NOT use it to write assessments (use atom-assessment-item or\nassessment-designer). human_review_required: true.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "objective",
+          "grade",
+          "subject"
+        ],
+        "properties": {
+          "objective": {
+            "type": "string",
+            "description": "The learning objective this activity should achieve. Should be a SWBAT statement or measurable goal. Examples: \"SWBAT explain photosynthesis stages by completing a labeled diagram\", \"SWBAT solve two-step word problems involving multiplication\".\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade level. Examples: \"3rd grade\", \"7th grade\", \"High School Biology\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area. Examples: \"Science\", \"Mathematics\", \"ELA\", \"Social Studies\".\n"
+          },
+          "activity_type": {
+            "type": "string",
+            "enum": [
+              "direct_instruction",
+              "think_pair_share",
+              "stations_centers",
+              "gallery_walk",
+              "socratic_seminar",
+              "jigsaw",
+              "problem_based_learning",
+              "project_component",
+              "readers_theater",
+              "math_workshop",
+              "guided_practice",
+              "independent_practice",
+              "cooperative_learning",
+              "auto_select"
+            ],
+            "description": "Instructional format. Defaults to auto_select (skill picks the format that best fits the objective and DOK level).\n"
+          },
+          "dok_level": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "description": "Target Depth of Knowledge level. Defaults to 2 (skill and concept). Use 3-4 for higher-order reasoning and extended thinking tasks.\n"
+          },
+          "duration_minutes": {
+            "type": "integer",
+            "description": "Time budget for this activity in minutes. Examples: 10-15 for a quick warm-up activity, 20-30 for a main lesson activity, 45-60 for a full project work period.\n"
+          },
+          "grouping": {
+            "type": "string",
+            "enum": [
+              "individual",
+              "partner",
+              "small_group_3_4",
+              "whole_class",
+              "flexible"
+            ],
+            "description": "Student grouping structure. Defaults to flexible (skill chooses based on activity type).\n"
+          },
+          "materials_available": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Materials already available in the classroom (e.g. [\"Chromebooks\", \"base-ten blocks\", \"chart paper\", \"whiteboard markers\"]). Activity will use only these materials, or note when a better material is worth acquiring.\n"
+          },
+          "standard": {
+            "type": "string",
+            "description": "Standard code the activity addresses (e.g. \"MAFS.4.NBT.2.5\"). Optional — extracted from objective if not provided.\n"
+          },
+          "differentiation_embedded": {
+            "type": "boolean",
+            "description": "If true, embed one differentiation move within the activity procedure (e.g. a sentence frame for ELL students, a tiered problem set, a challenge extension). Defaults to true.\n"
+          },
+          "include_formative_check": {
+            "type": "boolean",
+            "description": "If true, include a quick formative check at the end of the activity (exit ticket, show me, whiteboard). Defaults to true.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "atom_assessment_item",
+      "description": "Generate ONE assessment item with its answer key. Supports multiple choice (with distractor\nanalysis), short answer, constructed response, true/false, and matching. Every item maps to\na verified standard code, carries a Bloom's level and DOK level tag, and includes a scoring\nguide or answer key.\n\nEach call generates exactly ONE item. Use assessment-designer to generate a full assessment\nwith multiple items, item-type distribution, and rubric.\n\nFor multiple choice: generates 4 answer options (one correct, three plausible distractors)\nplus distractor analysis explaining the misconception each wrong answer targets.\n\nFor constructed response: generates a multi-point scoring guide with score-point descriptors\n(what earns full credit, partial credit, and no credit).\n\nCalled by: assessment-designer (populates an item bank item-by-item), lesson-planner\n(generates exit-ticket items), and any workflow needing a single verified assessment item.\n\nTrigger phrases: \"write a multiple choice question about\", \"create a short answer question for\",\n\"make a constructed response item on\", \"write one test question about\", \"assessment item for\nthis standard\", \"write a true/false question on\".\n\nDo NOT use atom-assessment-item to write a full assessment (use assessment-designer). Do NOT\nuse it to write IEP progress-monitoring probes (use special-education-support). Every item\ncarries human_review_required: true — teacher reviews before use with students.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "topic",
+          "grade",
+          "subject",
+          "item_type"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string",
+            "description": "Concept or skill the item assesses. Examples: \"the water cycle\", \"long division\", \"main idea vs. supporting detail\", \"causes of World War I\".\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade level. Examples: \"4th grade\", \"8th grade\", \"11th grade\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area. Examples: \"Science\", \"Mathematics\", \"ELA\", \"US History\".\n"
+          },
+          "item_type": {
+            "type": "string",
+            "enum": [
+              "multiple_choice",
+              "short_answer",
+              "constructed_response",
+              "true_false",
+              "matching",
+              "fill_in_the_blank",
+              "essay",
+              "performance_task_component"
+            ],
+            "description": "The format of the assessment item to generate.\n"
+          },
+          "standard": {
+            "type": "string",
+            "description": "Florida B.E.S.T. or NGSSS standard code the item maps to. If omitted, atom-standards-match is called internally to find the most relevant standard.\n"
+          },
+          "bloom_level": {
+            "type": "string",
+            "enum": [
+              "remember",
+              "understand",
+              "apply",
+              "analyze",
+              "evaluate",
+              "create"
+            ],
+            "description": "Target Bloom's taxonomy level. Defaults to understand for most formative items; apply or analyze for summative items.\n"
+          },
+          "dok_level": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "description": "Target Depth of Knowledge level. DOK 1 = recall; DOK 2 = skill/concept; DOK 3 = strategic thinking; DOK 4 = extended thinking. Defaults to 2.\n"
+          },
+          "include_answer_key": {
+            "type": "boolean",
+            "description": "Include the correct answer with rationale. Always true for MC and T/F. For constructed_response, includes the full scoring guide. Defaults to true.\n"
+          },
+          "include_distractor_analysis": {
+            "type": "boolean",
+            "description": "For multiple_choice only: include an explanation of why each wrong answer is plausible and what misconception it targets. Defaults to true.\n"
+          },
+          "point_value": {
+            "type": "integer",
+            "description": "Point value for the item. For constructed_response, this is the total possible points (determines how many score-point levels are described). Defaults to 1 for MC/T/F, 4 for short_answer, 6 for constructed_response.\n"
+          },
+          "stimulus": {
+            "type": "string",
+            "description": "Optional passage, graph, data table, diagram description, or scenario to base the item on. If provided, the item stems from this stimulus rather than asking about the topic abstractly. For ELA reading comprehension items, provide the text excerpt here.\n"
+          },
+          "difficulty_level": {
+            "type": "string",
+            "enum": [
+              "introductory",
+              "grade_level",
+              "advanced",
+              "honors"
+            ],
+            "description": "Item difficulty. Defaults to grade_level.\n"
+          },
+          "accessibility_features": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "simplified_language",
+                "visual_support_note",
+                "ell_scaffolded",
+                "extended_time_version"
+              ]
+            },
+            "description": "Accessibility modifications to embed. The base item is unchanged; modifications are listed as \"Accessibility version\" notes at the end.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "atom_differentiate",
+      "description": "Apply ONE differentiation profile to a piece of educational content. Returns a modified\nversion of the content alongside explicit notes on what was changed and why. The learning\ntarget is ALWAYS preserved — differentiation adjusts ACCESS to the content, never the\nstandard itself.\n\nSupported profiles:\n- ell: English Language Learners — vocabulary scaffolds, sentence frames, visual support cues,\n  cognate highlighting, simplified syntax without dumbing down content\n- iep: Students with IEPs — modifications based on common IEP accommodation categories\n  (extended time notation, reduced item count, chunked directions, visual schedules, graphic\n  organizers). NOTE: this generates generic IEP-tier differentiation, not student-specific\n  accommodations (use special-education-support for student-specific IEP work)\n- gifted: Gifted/advanced learners — enrichment extensions, higher-order questioning,\n  independent research options, cross-curricular connections, complexity increases\n- 504: Section 504 accommodations — presentation/response/setting modifications\n- below_grade: Below grade-level students — scaffolded version with prerequisite skill\n  supports, visual aids, partner work modifications\n- above_grade: Above grade-level students — accelerated version with extension tasks and\n  connections to advanced content\n\nCalled by: lesson-planner, assessment-designer, curriculum-mapping, atom-activity-generate.\nCan be called directly when a teacher has a piece of content and wants one differentiated version.\n\nTrigger phrases: \"differentiate this for ELL students\", \"modify this for my IEP students\",\n\"make a gifted version of\", \"adapt this for below-grade readers\", \"ELL scaffold for\",\n\"504 accommodations for this activity\", \"differentiated version for\".\n\nDo NOT use atom-differentiate to write student-specific IEP goals (use atom-iep-goal or\nspecial-education-support). Do NOT use it to produce legally binding accommodation plans.\nhuman_review_required: true — teacher confirms modifications fit each student's actual needs.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "content",
+          "differentiation_profile",
+          "grade",
+          "subject"
+        ],
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The educational content to differentiate. Accepts: lesson segment text, activity instructions, assessment item text, reading passage excerpt, discussion prompt, homework assignment, or any instructional text. For best results: provide the full piece of content, not a summary.\n"
+          },
+          "differentiation_profile": {
+            "type": "string",
+            "enum": [
+              "ell",
+              "iep",
+              "gifted",
+              "504",
+              "below_grade",
+              "above_grade"
+            ],
+            "description": "The differentiation profile to apply. Each call applies exactly one profile. To generate multiple versions, call atom-differentiate once per profile.\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade level of the original content. Examples: \"3rd grade\", \"8th grade\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area. Examples: \"ELA\", \"Mathematics\", \"Science\".\n"
+          },
+          "learning_target": {
+            "type": "string",
+            "description": "The core learning target / standard the content addresses. atom-differentiate uses this to verify the modified version still achieves the target. If omitted, the target is inferred from the content (less reliable — provide it when you have it).\n"
+          },
+          "ell_proficiency_level": {
+            "type": "string",
+            "enum": [
+              "entering",
+              "emerging",
+              "developing",
+              "expanding",
+              "bridging"
+            ],
+            "description": "For ell profile: WIDA English proficiency level. Scaffolds are calibrated to this level. Defaults to developing (most common middle level).\n"
+          },
+          "output_format": {
+            "type": "string",
+            "enum": [
+              "modified_content_only",
+              "side_by_side_comparison",
+              "annotated_with_change_notes"
+            ],
+            "description": "How to present the output. modified_content_only (default): just the differentiated version. side_by_side_comparison: original + modified in parallel columns. annotated_with_change_notes: modified version with inline notes on each change made and why — useful for teacher professional learning.\n"
+          },
+          "preserve_item_count": {
+            "type": "boolean",
+            "description": "For assessment item differentiation: if true, maintain the same number of items/questions in the modified version (adjusting scaffolding but not reducing quantity). Defaults to false (IEP/504 versions may appropriately reduce item count).\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "atom_iep_goal",
+      "description": "Write ONE SMART IEP annual goal following the IDEA-compliant three-part formula:\nCondition + Behavior + Criterion. Each goal ties to a domain (academic, behavioral,\ncommunication, adaptive, social-emotional, motor, or transition), maps to a grade-level\nor near-grade-level standard when applicable, and includes suggested progress-monitoring\nfrequency and measurement method.\n\nSMART goal formula:\n- S: Specific (observable behavior named)\n- M: Measurable (criterion stated with accuracy/frequency/rate)\n- A: Achievable (realistic for the annual period given PLOP)\n- R: Relevant (connected to standard or functional need)\n- T: Time-bound (by the annual IEP date)\n\nThree-part structure:\n[Condition]: Given [materials/support/setting/cue]...\n[Behavior]: ...[student] will [observable verb + skill]...\n[Criterion]: ...with [accuracy/frequency/rate] as measured by [tool] across [trials/sessions].\n\nExample output:\n\"Given a grade-level informational text and a graphic organizer, [STUDENT] will identify the\nmain idea and two supporting details with 80% accuracy across 4 of 5 consecutive trials as\nmeasured by teacher-administered running records, by the annual IEP date.\"\n\nCalled by: special-education-support (builds full IEP goal sections), and can be called\ndirectly for a fast single-goal draft.\n\nLEGAL NOTICE (included in every output):\n- This is a DRAFT for review and approval by the IEP team, not a final IEP document\n- This skill does not determine eligibility, placement, or services\n- The IEP team must review, modify, and approve all goals per IDEA procedures\n- Present Level of Performance (PLOP) data must come from the teacher/team, not generated here\n\nTrigger phrases: \"write an IEP goal for\", \"draft an annual goal\", \"IEP reading goal\",\n\"behavior goal for IEP\", \"communication goal draft\", \"transition goal for\", \"SMART IEP goal\".\n\nDo NOT use atom-iep-goal to write lesson plan objectives (use atom-objective-write).\nDo NOT use it to determine eligibility or make placement decisions.\nhuman_review_required: true on every output.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "domain",
+          "grade",
+          "present_level_of_performance",
+          "legal_notice_acknowledged"
+        ],
+        "properties": {
+          "domain": {
+            "type": "string",
+            "enum": [
+              "academic_reading",
+              "academic_math",
+              "academic_writing",
+              "behavioral",
+              "communication_expressive",
+              "communication_receptive",
+              "adaptive_daily_living",
+              "social_emotional",
+              "fine_motor",
+              "gross_motor",
+              "transition_employment",
+              "transition_postsecondary_education",
+              "transition_independent_living",
+              "assistive_technology"
+            ],
+            "description": "IEP goal domain. Determines the observable behavior vocabulary and criterion norms used in the draft.\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Student's current grade level. Examples: \"3rd grade\", \"9th grade\", \"K\".\n"
+          },
+          "present_level_of_performance": {
+            "type": "string",
+            "description": "Teacher-supplied baseline data describing what the student can currently do, at what level, and with what accuracy. THIS MUST COME FROM REAL ASSESSMENT DATA — never fabricate. Use \"[INSERT BASELINE DATA]\" as a placeholder if data is not yet available. Example: \"Student currently reads at a 1st grade level (38 wcpm on a Grade 1 oral reading fluency probe); decodes CVC and CVCe words with 70% accuracy.\"\n"
+          },
+          "annual_goal_focus": {
+            "type": "string",
+            "description": "The specific skill or behavior the goal should target over the coming year. Be precise. Examples: \"decode multisyllabic words with prefixes and suffixes\", \"initiate peer interactions during unstructured time\", \"complete multi-step math problems using a graphic organizer\", \"use 'I need a break' card to request sensory regulation break\".\n"
+          },
+          "measurement_criterion": {
+            "type": "string",
+            "description": "The performance criterion (accuracy, frequency, rate, duration). Examples: \"80% accuracy across 4 of 5 trials\", \"3 times per week\", \"within 3 minutes\", \"9 of 10 consecutive opportunities\". If omitted, a research-normed criterion is drafted with a placeholder for team review.\n"
+          },
+          "measurement_tool": {
+            "type": "string",
+            "description": "Progress-monitoring tool. Examples: \"teacher-administered CBM\", \"DIBELS 8th Ed ORF probes\", \"behavior frequency count\", \"work sample analysis\", \"observation checklist\". If omitted, an appropriate tool is recommended.\n"
+          },
+          "condition": {
+            "type": "string",
+            "description": "The condition/context for the goal: given what materials, supports, or cues will the student demonstrate the skill? Examples: \"given a grade-level informational text and a graphic organizer\", \"given a visual behavior support chart\", \"given a calculator and a step-by-step problem-solving guide\". If omitted, a standard condition is drafted.\n"
+          },
+          "standard": {
+            "type": "string",
+            "description": "Florida B.E.S.T. or NGSSS standard the goal connects to (for academic goals). Optional for behavioral/functional goals. If omitted and domain is academic, the skill attempts to connect to the nearest appropriate standard.\n"
+          },
+          "progress_monitoring_frequency": {
+            "type": "string",
+            "enum": [
+              "weekly",
+              "biweekly",
+              "monthly",
+              "quarterly",
+              "at_each_iep_review"
+            ],
+            "description": "How often progress on this goal will be measured. Defaults to biweekly for academic goals, weekly for behavioral goals.\n"
+          },
+          "short_term_objectives": {
+            "type": "boolean",
+            "description": "If true, include 2-3 short-term objectives / benchmarks as interim steps toward the annual goal. Required for students with significant cognitive disabilities in Florida. Defaults to false.\n"
+          },
+          "legal_notice_acknowledged": {
+            "type": "boolean",
+            "description": "REQUIRED — must be true to proceed. Confirms that the requestor understands this is a DRAFT requiring IEP team review and approval, and that this skill never determines eligibility, placement, or services.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "atom_misconception",
+      "description": "Identify 2-5 common student misconceptions for a given topic, grade, and subject. For each\nmisconception, explains WHY it occurs (cognitive origin or prior knowledge conflict) and\nprovides a specific instructional remedy — an activity, question, or approach that directly\naddresses the misconception.\n\nResearch-grounded: misconceptions draw from known literature in math/science education\nresearch, cognitive load theory, and documented common errors in FL assessment data. Not\nfabricated — when a misconception is inferred rather than documented, it is flagged as\n\"commonly observed\" rather than \"research-documented.\"\n\nCalled by: lesson-planner (embeds misconception awareness in the lesson), assessment-designer\n(informs distractor design for MC questions), atom-assessment-item (when generating\ndistractors), and atom-activity-generate (builds activities that proactively address errors).\n\nTrigger phrases: \"what misconceptions do students have about\", \"common mistakes on\",\n\"why do students struggle with\", \"what errors do students make on\", \"misconceptions for\",\n\"common student errors in\", \"what do kids get wrong about\".\n\nDo NOT use atom-misconception to diagnose an individual student's specific misconception\n(that requires looking at the student's actual work). This skill returns COMMON misconceptions\nfor a topic at a grade level, not individual student assessment. human_review_required: true.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "topic",
+          "grade",
+          "subject"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string",
+            "description": "The concept or skill to surface misconceptions for. Be specific for best results. Examples: \"multiplying fractions by whole numbers\" (better than just \"fractions\"), \"inferring author's purpose\" (better than just \"reading\"), \"photosynthesis vs. respiration\" (better than just \"cell processes\").\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade level. Examples: \"4th grade\", \"7th grade\", \"10th grade\". More specific = better-calibrated misconceptions for the developmental level.\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area. Examples: \"Mathematics\", \"ELA\", \"Science\", \"Social Studies\".\n"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of misconceptions to return. Range: 2-5. Defaults to 3. Use 2 for a quick check; 5 when doing thorough lesson prep or assessment design.\n"
+          },
+          "standard": {
+            "type": "string",
+            "description": "Florida B.E.S.T. or NGSSS standard code if you want misconceptions scoped to a specific standard's demands. Optional — inferred from topic/grade/subject if omitted.\n"
+          },
+          "include_instructional_remedy": {
+            "type": "boolean",
+            "description": "If true (default), include a specific instructional remedy for each misconception — an activity, question sequence, or instructional approach that directly addresses it.\n"
+          },
+          "include_assessment_probes": {
+            "type": "boolean",
+            "description": "If true, include a diagnostic question or prompt (an \"assessment probe\") that can elicit each misconception for formative monitoring. These are different from remedies — they help the teacher DETECT the misconception, not fix it. Defaults to false.\n"
+          },
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "research_documented",
+              "commonly_observed",
+              "both"
+            ],
+            "description": "Filter misconceptions by evidence base. research_documented returns only misconceptions with documented research citations. commonly_observed includes teacher-reported and assessment-data-inferred patterns. Defaults to both.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "atom_objective_write",
+      "description": "Write 1-3 measurable SWBAT (Students Will Be Able To) learning objectives for a given\ngrade, subject, and standard. Each objective includes: the SWBAT statement, Bloom's taxonomy\nlevel tag, DOK level, a suggested assessment method, and the standard code it maps to.\n\nObjectives follow the SWBAT formula: observable verb + content + condition + criterion.\nExample: \"SWBAT explain (Bloom's: Understand / DOK 2) the water cycle stages by labeling a\ndiagram with 85% accuracy.\"\n\nCalled by: lesson-planner (auto-generates objectives from standards), curriculum-mapping\n(unit learning targets), and any workflow needing measurable objectives before building\nactivities or assessments.\n\nTrigger phrases: \"write learning objectives for\", \"SWBAT for\", \"what's the learning target\",\n\"write objectives for this standard\", \"measurable objectives for\", \"learning goals for\".\n\nDo NOT use atom-objective-write to write the full lesson plan (use lesson-planner). Do NOT use\nit to write IEP goals (use atom-iep-goal or special-education-support — IEP goals have\ndifferent legal requirements than lesson objectives). human_review_required: true.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "topic",
+          "grade",
+          "subject"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string",
+            "description": "Concept or skill the objective targets. Examples: \"inferring author's purpose\", \"multiplying fractions\", \"identifying cause and effect in science texts\".\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade level. Examples: \"3rd grade\", \"7th grade\", \"10th grade\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area. Examples: \"ELA\", \"Mathematics\", \"Science\".\n"
+          },
+          "standards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Standard codes the objectives should address. If omitted, atom-standards-match is called internally to find the most relevant standard. Provide codes when you already have them (faster, no secondary lookup).\n"
+          },
+          "bloom_level": {
+            "type": "string",
+            "enum": [
+              "remember",
+              "understand",
+              "apply",
+              "analyze",
+              "evaluate",
+              "create",
+              "mixed"
+            ],
+            "description": "Bloom's level to target. Use mixed (default) to get a spread across the unit. Specify a single level for focused practice or skills work.\n"
+          },
+          "count": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "description": "Number of objectives to write. Defaults to 2. For a single-lesson focus, 1-2 is recommended. For a unit or multi-day lesson, use 3.\n"
+          },
+          "lesson_context": {
+            "type": "string",
+            "description": "Optional context: where in the unit this lesson falls, prior knowledge students have, the lesson's role in a larger sequence. Helps calibrate Bloom's level and specificity.\n"
+          },
+          "include_assessment_suggestion": {
+            "type": "boolean",
+            "description": "If true, add a suggested formative assessment method for each objective (exit ticket, thumbs up/down, whiteboard check, quick write). Defaults to true.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "atom_parent_comm",
+      "description": "Draft ONE parent/guardian communication: email, text-home note, or brief letter. Purpose-\ndriven templates for common educator scenarios. All output uses placeholder names (never real\nstudent/family names), targets grade 6-8 reading level by default, and carries\nhuman_review_required: true for teacher review before sending.\n\nThis is the FOCUSED single-message version. Use family-communication for complex multi-section\ndocuments (newsletters, full conference notes, multi-language packets).\n\nCommunication purposes:\n- positive_update: celebrate an achievement, share growth, highlight a classroom success\n- academic_concern: communicate academic struggle or falling grades — strength-based framing\n- behavior_note: observable behavior description (non-labeling, objective language only)\n- conference_request: invite family to an in-person or virtual meeting\n- academic_progress: structured academic progress update (mid-grading period, end of unit)\n- attendance: attendance concern or commendation\n- general_information: supplies, schedule change, event reminder, logistical information\n- crisis_or_urgent: urgent situation requiring immediate parent contact (brief, factual, no\n  speculation about cause — route serious safety situations to administration first)\n\nPrivacy rules enforced on every output:\n- Student names → \"your child\" or [STUDENT NAME]\n- Family names → \"Dear Family\" or [FAMILY NAME]\n- No SSN, address, phone, student ID, or disability label to unauthorized recipients\n\nTrigger phrases: \"write a parent note about\", \"draft an email to parents\", \"text home about\",\n\"quick parent communication\", \"write a note home\", \"parent email for\", \"family message about\".\n\nDo NOT use atom-parent-comm for legally required IDEA notices (Prior Written Notice,\nProcedural Safeguards) — use district official forms. human_review_required: true.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "communication_purpose",
+          "grade"
+        ],
+        "properties": {
+          "communication_purpose": {
+            "type": "string",
+            "enum": [
+              "positive_update",
+              "academic_concern",
+              "behavior_note",
+              "conference_request",
+              "academic_progress",
+              "attendance",
+              "general_information",
+              "crisis_or_urgent"
+            ],
+            "description": "The reason for contacting the family. Determines template structure and tone guidance.\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Student's grade level. Examples: \"3rd grade\", \"10th grade\", \"Kindergarten\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area if relevant (e.g., \"Math\", \"ELA\"). Omit for whole-class or behavior communications.\n"
+          },
+          "key_points": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The main facts or messages to convey. The skill wraps these in fluent, professional prose. Examples for a behavior note: [\"Student called out 4 times during reading block\", \"Verbal reminder given twice\", \"Would like family to reinforce hand-raising at home\"]. Always use observable descriptions — never labels or diagnoses.\n"
+          },
+          "tone": {
+            "type": "string",
+            "enum": [
+              "warm",
+              "professional",
+              "urgent",
+              "celebratory",
+              "neutral"
+            ],
+            "description": "Communication tone. Defaults: warm for positive_update/celebration; professional for academic concerns; urgent for crisis_or_urgent. Override if needed.\n"
+          },
+          "medium": {
+            "type": "string",
+            "enum": [
+              "email",
+              "printed_note",
+              "text_message",
+              "app_message"
+            ],
+            "description": "Delivery medium. Affects length and formatting. text_message produces a brief 2-3 sentence version. Defaults to email.\n"
+          },
+          "reading_level_target": {
+            "type": "string",
+            "enum": [
+              "grade_4_6",
+              "grade_6_8",
+              "grade_8_10"
+            ],
+            "description": "Target Flesch-Kincaid reading level. Defaults to grade_6_8.\n"
+          },
+          "language": {
+            "type": "string",
+            "description": "Output language. Defaults to \"en\" (English). Use \"es\" for Spanish, \"ht\" for Haitian Creole. Dual-language (e.g. \"en+es\") writes both versions together.\n"
+          },
+          "next_steps_for_family": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific, actionable next steps you want the family to take. Examples: [\"Please sign and return the behavior chart\", \"Let us know a good time for a phone conference\", \"Review the study guide together before Friday\"]. Included as a bulleted list near the close of the message.\n"
+          },
+          "teacher_name_placeholder": {
+            "type": "string",
+            "description": "Name or role to sign the message with. Defaults to \"[Your Name]\". Examples: \"Ms. Rivera\", \"The 5th Grade Team\", \"[TEACHER NAME]\".\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "atom_quality_check",
+      "description": "Run ONE quality gate check on an artifact excerpt and return pass/fail/warn with a score,\nexplanation, and corrective action. Operates on a single dimension of the 9-dimension TOS\nQuality Gates rubric.\n\nThis is the FASTEST quality check in TOS — scores one dimension only, low token cost.\nUse quality-review for a full 9-dimension review. Use atom-quality-check for:\n- Pre-flight spot checks during generation (\"is the safety dimension clean before I proceed?\")\n- Single-dimension re-checks after a correction (\"did my fix resolve the governance gap?\")\n- Pipeline validation at each step of a multi-step workflow\n\nThe 9 dimensions (check one per call):\n1. integrity — no fabrication, citations verifiable, standard codes real\n2. safety — no harmful content, age-appropriate, no real PII\n3. governance — metadata block present, human_review_required: true, no auto-approval\n4. accuracy — factually correct, standards-aligned, legally sound for SpEd/504\n5. alignment — objectives match assessment match activities; tied to stated standards\n6. educational_quality — pedagogically sound, Bloom's/DOK appropriate, differentiation present\n7. accessibility — reading level appropriate, UDL considerations, language clarity\n8. professional_quality — formatting, completeness, usable as-is after teacher review\n9. user_intent — addresses what the teacher actually asked for\n\nScoring: 0 (critical failure — blocks Approval) / 1-2 (fail) / 3 (warn) / 4 (pass) / 5 (exemplary).\n\nCalled by: all orchestrator skills during their generation pipeline, quality-review for\nparallel dimension scoring, and output-validator for governance pre-flight.\n\nTrigger phrases: \"quick check on the safety of this\", \"does this pass the governance gate\",\n\"check the integrity of this\", \"is this educationally sound\", \"accessibility check on this\".\n\nDo NOT use atom-quality-check as a substitute for the full quality-review (use quality-review\nto get the composite score and Approved/Rejected verdict). human_review_required: true.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "artifact_excerpt",
+          "dimension"
+        ],
+        "properties": {
+          "artifact_excerpt": {
+            "type": "string",
+            "description": "The artifact text to check. For targeted checks, provide only the relevant section (e.g. for governance: the metadata block; for safety: the full text of the artifact). For comprehensive single-dimension scoring, provide the full artifact.\n"
+          },
+          "dimension": {
+            "type": "string",
+            "enum": [
+              "integrity",
+              "safety",
+              "governance",
+              "accuracy",
+              "alignment",
+              "educational_quality",
+              "accessibility",
+              "professional_quality",
+              "user_intent"
+            ],
+            "description": "The Quality Gates dimension to evaluate. One dimension per call.\n"
+          },
+          "artifact_type": {
+            "type": "string",
+            "enum": [
+              "lesson_plan",
+              "assessment",
+              "iep_goal",
+              "accommodation_plan",
+              "parent_communication",
+              "professional_learning",
+              "walkthrough_instrument",
+              "generic"
+            ],
+            "description": "Type of the artifact being checked. Determines which rubric criteria apply for the selected dimension. Defaults to generic.\n"
+          },
+          "original_request": {
+            "type": "string",
+            "description": "Required for user_intent dimension: the teacher's original request that produced this artifact, so the check can verify the output actually addresses what was asked.\n"
+          },
+          "standards_claimed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For integrity and alignment dimensions: the standard codes the artifact claims to address. atom-quality-check verifies these codes exist in the FL standards corpus. If omitted, codes are extracted from artifact_excerpt text.\n"
+          },
+          "include_corrective_action": {
+            "type": "boolean",
+            "description": "If true (default), include a specific corrective action when score < 4. The corrective action describes the minimum change needed to pass the dimension.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "atom_reading_level",
+      "description": "Estimate the reading level of a text passage (up to ~500 words). Returns a grade-band\nestimate, Lexile estimate, and brief readability analysis. Used to verify that\nteacher-generated or AI-generated content is accessible to the intended audience, or to\ncheck parent communications for appropriate reading level.\n\nWhen the textstat library is available (local_optional capability), computes exact\nFlesch-Kincaid Grade Level, Flesch Reading Ease, and Gunning Fog Index. When absent,\nreturns a rubric-based estimate with honest capability gap noted.\n\nCalled by: family-communication (verifies parent letter readability), atom-differentiate\n(verifies the modified version hit the target reading level), lesson-planner (checks\nthat instructional text is at the right level for the grade), and quality-review\n(accessibility dimension scoring).\n\nTrigger phrases: \"what reading level is this\", \"check the readability of\", \"is this at a\n6th grade reading level\", \"Lexile estimate for\", \"is this too hard for 4th graders\",\n\"reading level check\", \"Flesch-Kincaid for this passage\", \"readability of this text\".\n\nDo NOT use atom-reading-level to assess student reading ability or generate Lexile\nscores for student placement (those require standardized assessments). This skill rates\nTEXT complexity, not reader ability. human_review_required: true.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "passage"
+        ],
+        "properties": {
+          "passage": {
+            "type": "string",
+            "description": "The text to analyze. Maximum ~500 words for best results. For longer documents, provide a representative excerpt (e.g., the first paragraph, a middle section, and a final paragraph) to get a representative estimate.\n"
+          },
+          "grade_context": {
+            "type": "string",
+            "description": "The intended grade level or audience. Examples: \"3rd grade students\", \"4th grade ELL students\", \"parents of K-5 students\", \"middle school teachers\". Used to contextualize the estimate — a text at 9th grade Lexile is appropriate for a 9th grade audience but flagged as too hard for 3rd grade.\n"
+          },
+          "purpose": {
+            "type": "string",
+            "enum": [
+              "student_instructional_text",
+              "student_independent_reading",
+              "parent_communication",
+              "teacher_professional_document",
+              "assessment_item"
+            ],
+            "description": "What the text is for. Affects what reading level is \"appropriate.\" Parent communications target grade 6-8; student instructional text targets grade band; assessment items typically match or are 1-2 grades below instructional level.\n"
+          },
+          "output_format": {
+            "type": "string",
+            "enum": [
+              "grade_band_estimate",
+              "lexile_estimate",
+              "full_analysis",
+              "pass_fail_for_purpose"
+            ],
+            "description": "What to return. grade_band_estimate (default): K-2, 3-5, 6-8, 9-10, 11-12 band + brief rationale. lexile_estimate: numeric Lexile range (e.g. \"760L-820L\") + confidence note. full_analysis: all readability metrics available + recommendations for adjustment. pass_fail_for_purpose: simple PASS/WARN/FAIL against the grade_context and purpose.\n"
+          },
+          "flag_accessibility_issues": {
+            "type": "boolean",
+            "description": "If true, flag specific phrases, sentences, or vocabulary that push the level up — with suggestions to simplify each flagged item. Useful when you want targeted edits rather than a general estimate. Defaults to false.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "atom_standards_match",
+      "description": "Look up Florida B.E.S.T. or NGSSS standards matching a topic, grade, and subject. Returns a\nranked list of matching standard codes with full text, strand, and cluster. Uses the local\nSQLite/FTS5 standards cache (shared/cache/) when available for zero-token offline lookup;\nfalls back to keyword search over the standards JSON.\n\nThis is the FASTEST standards lookup in TOS — no large files are read, no fabrication is\npossible (codes come from the verified 6,583-FL-standard corpus). Every code returned is real\nand verifiable on CPALMS.\n\nTrigger phrases: \"what standards cover\", \"find the standard for\", \"which FL standard applies\nto\", \"look up the B.E.S.T. standard\", \"what code is this\", \"standards for this topic\".\n\nUsed by: lesson-planner, assessment-designer, curriculum-mapping, intervention-mtss,\natom-objective-write, atom-assessment-item, and any skill that needs a verified standard code\nbefore generating content.\n\nDo NOT use atom-standards-match to write lesson plans or assessments — it returns codes only.\nOutput always includes human_review_required: true (teacher confirms the code fits the lesson\nbefore using it in a formal artifact).\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "topic",
+          "grade",
+          "subject"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string",
+            "description": "Concept or skill to match standards for. Examples: \"fractions greater than 1\", \"photosynthesis\", \"argumentative writing\", \"civil rights movement\", \"linear equations\".\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade level. Examples: \"3rd grade\", \"5th grade\", \"9th grade\", \"K\", \"Grade 8\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area. Examples: \"Mathematics\", \"ELA\", \"Science\", \"Social Studies\", \"Biology\", \"US History\".\n"
+          },
+          "standards_corpus": {
+            "type": "string",
+            "enum": [
+              "florida_best",
+              "florida_ngsss",
+              "florida_all",
+              "ccss"
+            ],
+            "description": "Which standards corpus to search. Defaults to florida_all (B.E.S.T. + NGSSS combined). Use florida_best for the current adopted standard; florida_ngsss for legacy alignment.\n"
+          },
+          "max_results": {
+            "type": "integer",
+            "description": "Maximum number of matching standards to return. Defaults to 5. Range: 1-20.\n"
+          },
+          "keyword_override": {
+            "type": "string",
+            "description": "Alternate search keywords if the topic phrase doesn't surface good matches. The standards search will use these words instead of (not in addition to) the topic.\n"
+          },
+          "include_related_standards": {
+            "type": "boolean",
+            "description": "If true, also return standards in adjacent strands that relate to the topic (supporting standards, prerequisite standards). Defaults to false.\n"
+          },
+          "strand_filter": {
+            "type": "string",
+            "description": "Limit results to a specific strand code prefix. Examples: \"LAFS.4.RI\" (grade 4 informational text), \"MAFS.5.NF\" (grade 5 fractions), \"SC.8.L\" (grade 8 life science). Useful when you know which strand the standard lives in.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "curriculum_mapping",
+      "description": "Build standards-based curriculum maps, pacing guides, scope and sequence documents, and\nstandards-alignment matrices for K-12. Ensures complete coverage of all required standards\nwith zero unplanned gaps, identifies instructional time allocations, and produces editable\nplanning grids teachers can adapt.\n\nTrigger phrases: \"map the curriculum for\", \"create a pacing guide for the year\", \"build a\nscope and sequence\", \"align my curriculum to standards\", \"find gaps in my curriculum\",\n\"standards coverage map\", \"year-at-a-glance\", \"map all standards for\", \"pacing calendar\".\n\nEvery map cites verified Florida B.E.S.T. or NGSSS standards. Coverage analysis flags any\nstate-required standard not addressed in the proposed sequence. Output includes an\ninstructional-days estimate per unit and a standards-coverage matrix showing which standards\nare addressed when.\n\nIntegrates with atom-standards-match (standard resolution), lesson-planner (unit breakdowns),\nand quality-review (coverage completeness gate). The completed artifact routes to quality-review\nbefore being marked Approved.\n\nDo NOT use curriculum-mapping to write individual lesson plans (use lesson-planner). Do NOT\nuse it to generate assessments (use assessment-designer). Do NOT use it to produce IEP-based\ncurriculum modifications (use special-education-support).\n\nOutput artifacts: pacing_guide, scope_and_sequence, standards_alignment_matrix,\ncurriculum_gap_analysis, year_at_a_glance. Always includes human_review_required: true and\na metadata block with standard codes and coverage percentage.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "grade",
+          "subject"
+        ],
+        "properties": {
+          "grade": {
+            "type": "string",
+            "description": "Grade level or band. Examples: \"3rd grade\", \"9-12\", \"6-8\", \"Kindergarten\", \"High School Biology\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area. Examples: \"ELA\", \"Mathematics\", \"Science\", \"Social Studies\", \"Algebra 1\", \"AP Biology\", \"World History\".\n"
+          },
+          "artifact_type": {
+            "type": "string",
+            "enum": [
+              "pacing_guide",
+              "scope_and_sequence",
+              "standards_alignment_matrix",
+              "curriculum_gap_analysis",
+              "year_at_a_glance",
+              "unit_sequence"
+            ],
+            "description": "Type of curriculum planning artifact. Defaults to pacing_guide.\n"
+          },
+          "time_period": {
+            "type": "string",
+            "enum": [
+              "full_year",
+              "semester",
+              "quarter",
+              "trimester",
+              "unit"
+            ],
+            "description": "Time span the map should cover. Defaults to full_year.\n"
+          },
+          "total_instructional_days": {
+            "type": "integer",
+            "description": "Total instructional days available. Florida K-12 = typically 180 days. Adjust for assessment windows, holidays, review periods. Defaults to 160 (accounting for 20 days lost to testing/non-instructional time).\n"
+          },
+          "standards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Standard codes to map. If omitted, the full FL B.E.S.T./NGSSS standard set for the grade/subject is used. Provide codes when mapping to a specific subset (e.g., only Reading standards, or standards for an advanced/honors course).\n"
+          },
+          "course_name": {
+            "type": "string",
+            "description": "Official course name if relevant. Examples: \"Algebra 1 Honors\", \"AP Environmental Science\", \"Grade 3 Mathematics\". Used in document headers.\n"
+          },
+          "existing_units": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "unit_name": {
+                  "type": "string"
+                },
+                "standards_addressed": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "estimated_days": {
+                  "type": "integer"
+                }
+              }
+            },
+            "description": "Existing unit sequence to analyze for gaps. Provide to run gap analysis against current curriculum. Omit to generate a new sequence from scratch.\n"
+          },
+          "district_pacing_constraints": {
+            "type": "string",
+            "description": "District or school pacing requirements (e.g., \"FSA writing window Feb 1-March 15 — no new content that week\", \"benchmark assessments every 9 weeks\"). Informs day allocation.\n"
+          },
+          "assessment_windows": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Known assessment dates/windows to exclude from instructional days. Examples: [\"FSA ELA: April 14-18\", \"District Benchmark: Oct 7-9\", \"EOC: May 12-16\"].\n"
+          },
+          "differentiation_notes": {
+            "type": "string",
+            "description": "Notes about differentiation needs across the class (e.g., \"25% of students on IEPs in reading\", \"2 sections are honors, 1 is inclusion\"). Informs pacing recommendations.\n"
+          },
+          "output_format": {
+            "type": "string",
+            "enum": [
+              "markdown_table",
+              "json",
+              "narrative_with_table"
+            ],
+            "description": "Output format. markdown_table (default) is ready for copy-paste into district planning templates. json is machine-readable for further processing.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "document_intelligence",
+      "description": "Parse, extract, and structure content from education-sector documents: PDFs, DOCX, HTML\npages, and scanned images. Produces governed knowledge artifacts: structured JSON with\nprovenance, section headings, extracted tables, cited page numbers, and an honest\nrecord of any regions that could not be recovered.\n\nTrigger phrases: \"read this PDF and extract\", \"parse this document\", \"what does this say\",\n\"extract the standards from this file\", \"pull the tables from this report\", \"summarize this\ndocument\", \"read this FLDOE guidance document\", \"ingest this curriculum document\",\n\"what standards are cited in this file\", \"extract text from this scanned packet\".\n\nCapability-gated pipeline (shared/docintel/):\n- pdf_hifi: high-fidelity PDF parse with layout and column awareness (requires PyMuPDF/pdfplumber)\n- ocr: offline OCR for scanned documents (requires tesseract + pytesseract)\n- ocr_advanced: deep-learning OCR for complex/handwritten layouts (requires easyocr/surya)\n- read_any_markitdown: universal format converter via markitdown (15+ formats)\n- local_render: JS-rendered HTML pages via Playwright\nWhen a capability is absent, the gap is honestly reported and a fallback runs if available.\n\nNEVER fabricates text it cannot recover. Every output includes:\n- human_review_required: true\n- recovery_rate: fraction of document successfully parsed\n- unrecovered_regions: list of pages/sections that could not be read\n- provenance: source URL or filename, extraction timestamp, capability used\n\nDo NOT use document-intelligence to make educational decisions from a document — it extracts\nand structures content, it does not interpret or apply it. Do NOT use it to process\ndocuments containing real student PII without authorization and appropriate security measures.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "document_source"
+        ],
+        "properties": {
+          "document_source": {
+            "type": "string",
+            "description": "File path, URL, or base64-encoded document content. For URLs: the crawler respects robots.txt and uses polite fetch delays. For local files: provide the absolute path or filename. For base64: prefix with \"data:<mimetype>;base64,<content>\".\n"
+          },
+          "document_type": {
+            "type": "string",
+            "enum": [
+              "pdf",
+              "docx",
+              "xlsx",
+              "pptx",
+              "html",
+              "image_png",
+              "image_jpg",
+              "image_tiff",
+              "text",
+              "markdown",
+              "auto_detect"
+            ],
+            "description": "Document format. Defaults to auto_detect if not specified.\n"
+          },
+          "extraction_goal": {
+            "type": "string",
+            "enum": [
+              "full_text",
+              "structured_data",
+              "tables_only",
+              "standards_references",
+              "citations_and_links",
+              "summary",
+              "headings_and_outline",
+              "key_dates_and_deadlines",
+              "contact_information",
+              "page_range"
+            ],
+            "description": "What to extract. Determines which pipeline stages run. Defaults to full_text.\n"
+          },
+          "page_range": {
+            "type": "string",
+            "description": "Page range to extract (e.g. \"1-5\", \"10\", \"3,7,12-15\"). For large documents, specify the relevant pages to minimize processing time.\n"
+          },
+          "output_format": {
+            "type": "string",
+            "enum": [
+              "json",
+              "markdown",
+              "plain_text",
+              "structured_tables_json"
+            ],
+            "description": "Output format. json (default) includes provenance and metadata. markdown is best for display. plain_text strips all markup. structured_tables_json extracts tabular data only.\n"
+          },
+          "ocr_enabled": {
+            "type": "boolean",
+            "description": "Enable OCR for scanned/image-based pages. Requires tesseract capability. Defaults to true (falls back gracefully if tesseract absent).\n"
+          },
+          "ocr_language": {
+            "type": "string",
+            "description": "Tesseract OCR language code(s). Examples: \"eng\", \"eng+spa\", \"eng+hea\" (Haitian Creole). Defaults to \"eng\".\n"
+          },
+          "standards_corpus": {
+            "type": "string",
+            "enum": [
+              "florida_best",
+              "florida_ngsss",
+              "florida_all",
+              "ccss",
+              "ngss",
+              "auto_detect"
+            ],
+            "description": "When extraction_goal is standards_references: which standards corpus to match against. Defaults to florida_all.\n"
+          },
+          "table_extraction_format": {
+            "type": "string",
+            "enum": [
+              "json_records",
+              "csv",
+              "markdown_table",
+              "html_table"
+            ],
+            "description": "For tables_only extraction: output format per table. Defaults to json_records.\n"
+          },
+          "include_page_numbers": {
+            "type": "boolean",
+            "description": "Include source page number with each extracted section/paragraph. Defaults to true.\n"
+          },
+          "split_by_section": {
+            "type": "boolean",
+            "description": "Split output by document heading/section rather than returning flat text. Defaults to true when extraction_goal is full_text or structured_data.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "family_communication",
+      "description": "Draft family-facing communications for K-12 educators: parent emails, classroom newsletters,\nconference notes, progress updates, behavior notes, celebration messages, and permission forms.\nAll output targets a grade 6-8 reading level by default (Flesch-Kincaid), is professional in\ntone, uses placeholders for all student and family names, and carries human_review_required: true\nfor teacher review before sending.\n\nTrigger phrases: \"write a parent email about\", \"draft a newsletter for\", \"help me communicate\nwith families about\", \"write a note home\", \"draft conference talking points\", \"parent letter\nabout\", \"translate this for families\", \"make this easier to read for parents\".\n\nIntegrates with atom-parent-comm (single-message drafting) and atom-reading-level (reading\nlevel check). Documents with sensitive content (behavior, academic concern, special education)\ninclude a plain-language \"key message\" summary at the top.\n\nPRIVACY RULES (always enforced):\n- All student names replaced with placeholder \"Student\" or [STUDENT NAME]\n- All family names replaced with \"Family\" or [FAMILY NAME]\n- No real PII (SSN, address, phone, ID numbers) in any output\n- Behavior notes use observable, non-labeling language only\n- Communications about special education services never identify disability category to\n  unauthorized recipients\n\nDo NOT use family-communication to produce legally required special education notices (Prior\nWritten Notices, Procedural Safeguards) — those require the district's official forms. Do NOT\nuse it to draft communications that make eligibility or placement decisions.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "communication_type",
+          "grade"
+        ],
+        "properties": {
+          "communication_type": {
+            "type": "string",
+            "enum": [
+              "parent_email",
+              "classroom_newsletter",
+              "conference_note",
+              "conference_talking_points",
+              "progress_update",
+              "behavior_note",
+              "celebration_note",
+              "permission_form",
+              "volunteer_request",
+              "supply_list",
+              "event_announcement",
+              "general_letter"
+            ],
+            "description": "The type of family communication artifact to produce.\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade level of the class or student. Examples: \"3rd grade\", \"9th grade\", \"Kindergarten\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area if relevant (e.g. \"Math\", \"ELA\"). Omit for whole-class communications.\n"
+          },
+          "key_points": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Main points the communication must convey. Examples: [\"upcoming field trip on Oct 3\", \"permission form due by Sept 25\", \"students need $5 for materials\"]. The skill drafts fluent prose around these points.\n"
+          },
+          "topic_summary": {
+            "type": "string",
+            "description": "Brief description of what happened or what you want to communicate. Use for behavior notes or academic updates. Example: \"Student disrupted class three times this week by calling out; prior interventions have included verbal reminders and proximity.\"\n"
+          },
+          "tone": {
+            "type": "string",
+            "enum": [
+              "warm",
+              "professional",
+              "urgent",
+              "celebratory",
+              "neutral"
+            ],
+            "description": "Desired tone. Defaults to professional for most types; warm for celebration notes.\n"
+          },
+          "reading_level_target": {
+            "type": "string",
+            "enum": [
+              "grade_4_6",
+              "grade_6_8",
+              "grade_8_10"
+            ],
+            "description": "Target reading level for the output. Defaults to grade_6_8 (Flesch-Kincaid ~7th grade). Use grade_4_6 for communities where simpler language is preferred.\n"
+          },
+          "language": {
+            "type": "string",
+            "description": "Output language code. Defaults to \"en\". Use \"es\" for Spanish, \"ht\" for Haitian Creole, etc. Dual-language output (both languages in one document) is supported — specify as \"en+es\".\n"
+          },
+          "newsletter_sections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For classroom_newsletter: list of sections to include. Examples: [\"This Week's Learning\", \"Upcoming Events\", \"Volunteer Opportunities\", \"Star Students\", \"Reminders\"].\n"
+          },
+          "conference_student_strengths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For conference notes/talking points: observable academic or behavioral strengths to highlight. Placeholders only — no real names.\n"
+          },
+          "conference_growth_areas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For conference notes/talking points: areas for growth, stated in positive, actionable language.\n"
+          },
+          "conference_action_items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For conference notes: agreed next steps for teacher and/or family. Example: [\"Teacher will provide reading log template\", \"Family will ensure student reads 20 min/night\", \"Follow-up call in 4 weeks\"].\n"
+          },
+          "include_translation_note": {
+            "type": "boolean",
+            "description": "If true, add a footer note in English and the target language that a translation was AI-assisted and the family can request clarification. Recommended for non-English output.\n",
+            "default": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "feed_curator",
+      "description": "Manage the TOS RSS/Atom feed catalog: validate existing feeds for health (dead links,\nredirects, stale content, wrong labels), discover new feed candidates from authoritative\neducation sources, propose a human-reviewable change set, and apply only mechanically-safe\nrepairs automatically. Every change is appended to ledger/feeds-change-log.json for audit\nand revert.\n\nTrigger phrases: \"validate the feed catalog\", \"find new education feeds\", \"check for broken\nfeed links\", \"propose feed repairs\", \"update the seed catalog\", \"add a new feed source\",\n\"check which feeds are dead\", \"curator status\", \"revert a feed change\", \"auto-repair feeds\".\n\nFeed catalog tiers:\n- canonical: primary government/standards sources (FLDOE, CPALMS, FL Legislature, WIDA) —\n  the ONLY tier that can confirm a standards/policy change\n- news_teacher_student: curated news on issues affecting teachers and students (secondary)\n- product_updates: edtech/vendor feeds — OFF by default, opt-in only\n\nAuto-apply rules (safe, logged, reversible):\n- Remove confirmed 404/410 dead feeds\n- Follow verified 301/302 redirects to new URL\nEverything else (new feeds, relabeling, removals beyond dead links) = human-approved proposals.\n\nAll changes append to ledger/feeds-change-log.json:\n{ts, feed_id, action, before, after, reason, source, mode: auto|approved}\nRevert via --revert <entry_id> replays the log backwards.\n\nDo NOT use feed-curator to harvest or process feed items (use tools/feeds_update.py for that).\nDo NOT approve removal of a canonical-tier feed without verifying the source has moved or\nclosed on the primary site. human_review_required: true on all proposals.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "validate_catalog",
+              "discover_feeds",
+              "propose_repairs",
+              "apply_safe_repairs",
+              "apply_approved_proposal",
+              "status_report",
+              "revert",
+              "update_baseline"
+            ],
+            "description": "Action to perform. validate_catalog: health-check every feed in feeds.json (404, redirect, staleness, label accuracy) — returns a per-feed status table. discover_feeds: search for new feed candidates from a seed URL or topic. propose_repairs: generate a human-reviewable change set (add/remove/repair/relabel) with reason + source + confidence for each entry. apply_safe_repairs: auto-apply only 404/redirect fixes from the current proposal; log every change to ledger. apply_approved_proposal: apply a human-approved proposal file; log all changes. status_report: quick summary of catalog health (N feeds, N due, N unreachable, N uncertain). revert: undo a previous change by log entry ID. update_baseline: after human approval, record new etag/sha256 baselines for a feed.\n"
+          },
+          "seed_url": {
+            "type": "string",
+            "description": "For discover_feeds: URL of an authoritative education page to mine for RSS/Atom links (e.g. \"https://www.fldoe.org/newsroom\"). The crawler respects robots.txt.\n"
+          },
+          "discovery_topic": {
+            "type": "string",
+            "description": "For discover_feeds: topic to search for feeds (e.g. \"Florida DOE news\", \"OCPS district updates\", \"WIDA ELL standards\", \"education legislation Florida 2026\").\n"
+          },
+          "proposal_file": {
+            "type": "string",
+            "description": "For apply_approved_proposal: path to the approved proposal JSON file produced by propose_repairs.\n"
+          },
+          "audit_log_entry_id": {
+            "type": "string",
+            "description": "For revert: the entry ID from ledger/feeds-change-log.json to undo.\n"
+          },
+          "feed_id": {
+            "type": "string",
+            "description": "For update_baseline or targeted validate_catalog: specific feed ID to operate on. If omitted, operates on all feeds in the catalog.\n"
+          },
+          "tier_filter": {
+            "type": "string",
+            "enum": [
+              "canonical",
+              "news_teacher_student",
+              "product_updates",
+              "all"
+            ],
+            "description": "For validate_catalog and status_report: limit to a specific tier. Defaults to all.\n"
+          },
+          "include_product_updates_tier": {
+            "type": "boolean",
+            "description": "For discover_feeds: whether to surface product_updates tier candidates. Defaults to false (off by default per design).\n",
+            "default": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "intervention_mtss",
+      "description": "Design Tier 1, Tier 2, and Tier 3 MTSS/RTI intervention plans, progress-monitoring protocols,\nand data-review meeting tools for K-12. Every plan includes a specific, measurable\nprogress-monitoring measure and decision rules (what data triggers a tier change). Plans are\nevidence-based and cite the research base for recommended interventions.\n\nTrigger phrases: \"write a Tier 2 intervention plan\", \"create an MTSS plan for\", \"design an\nRTI support plan\", \"help with progress monitoring\", \"data review protocol\", \"what intervention\nshould I use for\", \"write a behavior intervention plan\", \"Tier 3 intensive support for\",\n\"progress monitoring schedule\".\n\nTier 1: universal, whole-class, core instruction adjustments with built-in differentiation.\nTier 2: targeted small-group supplemental intervention, typically 3x/week 20-30 min.\nTier 3: intensive individualized intervention, data-driven, usually daily.\n\nProgress-monitoring is REQUIRED: every plan specifies the tool (CBM, DIBELS, AIMSweb, teacher-\nmade probe), frequency (weekly/biweekly), goal line, and decision rule (when to intensify,\ncontinue, or fade the intervention).\n\nIntegrates with atom-standards-match (standards alignment for academic interventions),\natom-differentiate (differentiation layers), assessment-designer (progress monitoring probes),\nand quality-review. Routes to special-education-support when IDEA eligibility is the question.\n\nIMPORTANT BOUNDARIES:\n- MTSS/RTI is a general education process; this skill does NOT determine special education\n  eligibility — that requires evaluation by qualified school psychologist / evaluation team\n- Never recommend a specific student for special education referral as a plan output\n- Progress data must be teacher-supplied — never fabricated\n- human_review_required: true on all outputs\n\nDo NOT use intervention-mtss to write IEP goals (use special-education-support). Do NOT use\nit to determine eligibility. Do NOT use it for disciplinary interventions unrelated to\nacademic or behavioral support (use school-administration).\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "tier",
+          "concern_area",
+          "grade"
+        ],
+        "properties": {
+          "tier": {
+            "type": "string",
+            "enum": [
+              "tier_1",
+              "tier_2",
+              "tier_3"
+            ],
+            "description": "MTSS tier. tier_1 = universal core adjustments; tier_2 = targeted small-group supplemental; tier_3 = intensive individualized.\n"
+          },
+          "concern_area": {
+            "type": "string",
+            "enum": [
+              "reading_decoding",
+              "reading_fluency",
+              "reading_comprehension",
+              "math_computation",
+              "math_problem_solving",
+              "writing",
+              "behavior_academic_engagement",
+              "behavior_social_emotional",
+              "attendance",
+              "language_development",
+              "executive_function"
+            ],
+            "description": "Primary area of concern the intervention addresses.\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Student or group grade level. Examples: \"2nd grade\", \"6th grade\", \"9th grade\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Academic subject if concern_area is academic. Examples: \"ELA\", \"Mathematics\".\n"
+          },
+          "student_profile_description": {
+            "type": "string",
+            "description": "Anonymous description of the student's current performance level, strengths, and prior interventions tried. Use \"the student\" or placeholder names — never real names. Examples: \"The student reads at a late-1st grade level in 3rd grade; prior classroom differentiation and partner reading have not moved the needle.\"\n"
+          },
+          "current_performance_data": {
+            "type": "string",
+            "description": "Current assessment data: scores, rates, levels. Examples: \"ORF: 42 wcpm (grade 3 goal 90 wcpm)\", \"Math facts: 8/min addition (goal 20/min)\", \"ODRs: 3 per week (goal: 0-1)\". If no data yet, use \"[INSERT BASELINE DATA]\" — never fabricate.\n"
+          },
+          "intervention_frequency_per_week": {
+            "type": "integer",
+            "description": "Number of intervention sessions per week. Typical: Tier 2 = 3-4, Tier 3 = 5. If omitted, defaults to standard for the tier.\n"
+          },
+          "intervention_duration_minutes": {
+            "type": "integer",
+            "description": "Duration of each intervention session in minutes. Typical: 20-30 min for Tier 2, 30-45 min for Tier 3.\n"
+          },
+          "intervention_setting": {
+            "type": "string",
+            "enum": [
+              "small_group",
+              "individual",
+              "whole_class",
+              "pull_out",
+              "push_in",
+              "co_taught"
+            ],
+            "description": "Intervention delivery setting. Defaults based on tier if omitted.\n"
+          },
+          "evidence_based_programs_available": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evidence-based programs available at the school (e.g. [\"Fundations\", \"Read Naturally\", \"Zearn\", \"Check-In Check-Out\"]). The plan recommends from this list when available; cites research base for alternatives when not.\n"
+          },
+          "progress_monitoring_tool": {
+            "type": "string",
+            "description": "Specific progress-monitoring tool available (e.g. \"DIBELS 8th Ed\", \"AIMSweb Plus\", \"easyCBM\", \"teacher-made running record\"). If omitted, skill recommends an appropriate tool with a citation.\n"
+          },
+          "goal_line": {
+            "type": "string",
+            "description": "Target performance criterion at the end of the intervention period. Examples: \"60 wcpm by 12 weeks\", \"90% accuracy on addition facts by 8 weeks\". If omitted, a research-normed goal is drafted with a placeholder.\n"
+          },
+          "decision_rule_weeks": {
+            "type": "integer",
+            "description": "How many data points (weeks) before a tier-change decision is made. Typical: 6-8 for Tier 2, 4-6 for Tier 3. Defaults to 8.\n"
+          },
+          "include_data_review_protocol": {
+            "type": "boolean",
+            "description": "If true, include a data-review meeting protocol (agenda, data display recommendations, decision-making framework). Defaults to true for Tier 2 and Tier 3.\n"
+          },
+          "co_teacher_present": {
+            "type": "boolean",
+            "description": "True if a co-teacher is in the room. Affects delivery model recommendations.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "lesson_planner",
+      "description": "Design and produce standards-aligned K-12 lesson plans, unit plans, pacing guides, daily\nagendas, warm-ups, and exit tickets. Every item ties to a verified Florida B.E.S.T. or NGSSS\nstandard (or the state/standard set the teacher provides). Outputs are differentiation-ready\nand always carry human_review_required: true before classroom use.\n\nTrigger phrases: \"write me a lesson plan\", \"plan a unit on\", \"make a pacing guide\", \"I need a\nwarm-up for\", \"create an exit ticket\", \"build a week of lessons\", \"design a lesson for\".\n\nSupports all grade bands (K–12) and all Florida core + elective subjects. Integrates with\natom-standards-match (to resolve standard codes), atom-objective-write (SWBAT objectives),\natom-activity-generate (individual activities), and atom-differentiate (differentiation layers).\nRoutes completed artifact to quality-review before marking final.\n\nDo NOT use lesson-planner to write IEP goals, accommodation plans, or progress-monitoring\ntools (use special-education-support). Do NOT use it to design cumulative assessments or\nrubrics that are the primary artifact (use assessment-designer).\n\nOutput artifacts: lesson_plan, unit_plan, daily_agenda, pacing_guide, warm_up, exit_ticket.\nAlways outputs a metadata block with standard codes, author, date, human_review_required: true.\nNothing is Final until it passes the Quality Gates (quality-review).\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "grade",
+          "subject",
+          "topic"
+        ],
+        "properties": {
+          "grade": {
+            "type": "string",
+            "description": "Grade level or band. Examples: \"3rd grade\", \"Grade 5\", \"6-8\", \"9-12\", \"Kindergarten\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area. Examples: \"ELA\", \"Mathematics\", \"Science\", \"Social Studies\", \"Biology\", \"Algebra 1\", \"US History\", \"Spanish 1\", \"Physical Education\", \"Art\".\n"
+          },
+          "topic": {
+            "type": "string",
+            "description": "Specific topic or concept for the lesson or unit. Examples: \"photosynthesis\", \"fractions greater than 1\", \"civil rights movement\", \"argumentative writing\".\n"
+          },
+          "artifact_type": {
+            "type": "string",
+            "enum": [
+              "lesson_plan",
+              "unit_plan",
+              "daily_agenda",
+              "pacing_guide",
+              "warm_up",
+              "exit_ticket",
+              "weekly_plan"
+            ],
+            "description": "Type of planning artifact to produce. Defaults to lesson_plan if not specified.\n"
+          },
+          "lesson_duration_minutes": {
+            "type": "integer",
+            "description": "Length of the lesson in minutes. Common values: 45, 50, 60, 90. Defaults to 50 if omitted.\n"
+          },
+          "standards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Florida B.E.S.T. or NGSSS standard codes to align to (e.g. [\"LAFS.4.RI.1.1\", \"MAFS.5.NF.1.1\"]). If omitted, atom-standards-match is called automatically based on grade/subject/topic.\n"
+          },
+          "learning_objectives": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Pre-written SWBAT objectives. If omitted, atom-objective-write is called to generate them from the standards.\n"
+          },
+          "differentiation_profiles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ell",
+                "iep",
+                "gifted",
+                "504",
+                "below_grade",
+                "above_grade"
+              ]
+            },
+            "description": "Differentiation layers to embed. atom-differentiate is called for each profile to generate modifications that keep the learning target constant.\n"
+          },
+          "materials": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Available materials (e.g. [\"Chromebooks\", \"whiteboards\", \"base-ten blocks\"]). Informs activity generation; omit if no constraints.\n"
+          },
+          "unit_weeks": {
+            "type": "integer",
+            "description": "For unit_plan or pacing_guide: number of weeks. Ignored for single lesson artifacts.\n"
+          },
+          "language": {
+            "type": "string",
+            "description": "Output language. Defaults to \"en\" (English). Use \"es\" for Spanish dual-language contexts.\n"
+          },
+          "additional_context": {
+            "type": "string",
+            "description": "Any additional teacher context: prior unit knowledge, classroom setup, co-teacher present, testing schedule constraints. Never include real student names or PII.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "meeting_classifier",
+      "description": "Classify an educator meeting from contextual clues and route it to the right TOS skill. Reads\na description or brief excerpt from a meeting context and determines meeting type with\nconfidence score. When two meeting types are plausible within 10 confidence points, emits a\nminority report showing both options and asks for clarification.\n\nTrigger phrases: \"what kind of meeting is this\", \"classify this meeting\", \"I'm not sure which\nskill to use for my meeting\", \"is this an IEP or a 504\", \"what should I prepare for this\nmeeting\", \"route this meeting\".\n\nClassifies into: IEP_meeting, 504_meeting, MTSS_RTI_meeting, parent_teacher_conference,\nPLCteam_meeting, data_review, professional_development, administrative_observation,\ndiscipline_hearing, transition_planning, manifestation_determination, general_staff_meeting,\ndepartment_meeting, school_board_meeting, crisis_response.\n\nRoutes to: special-education-support (IEP, 504, transition, manifestation), intervention-mtss\n(MTSS/RTI, data review), family-communication (conference prep), professional-learning (PLC,\nPD), school-administration (admin observation, discipline, board), teacher-core (ambiguous).\n\nLEGAL BOUNDARIES:\n- Never determines IEP or 504 eligibility from meeting context\n- Never interprets legal status of a meeting\n- Ambiguous classification always surfaces a minority report rather than guessing\n- human_review_required: true on every output\n\nDo NOT use meeting-classifier to produce meeting artifacts (use the routed skill). Do NOT use\nit to make eligibility or placement determinations.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "meeting_context"
+        ],
+        "properties": {
+          "meeting_context": {
+            "type": "string",
+            "description": "Description of the meeting, participants, purpose, or a brief excerpt from a meeting invitation, agenda, or notes. The richer the context, the more confident the classification. Examples: \"Annual IEP review for a 4th grader with SLD; team includes parent, gen ed teacher, sped teacher, school psych\" or \"Principal wants to observe my class next Tuesday for my formal eval\".\n"
+          },
+          "participants": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of participant roles present (not names). Examples: [\"parent\", \"general ed teacher\", \"special education teacher\", \"school psychologist\", \"principal\", \"district ESE coordinator\", \"student\"]. Helps distinguish IEP from 504 from MTSS.\n"
+          },
+          "trigger_document": {
+            "type": "string",
+            "description": "Name of a document that triggered the meeting, if known. Examples: \"annual IEP review\", \"progress monitoring data showing insufficient response\", \"discipline referral\", \"parent request letter\".\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Student or teacher grade/level if relevant. Helps narrow routing.\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area if relevant (e.g., for a data review of math scores).\n"
+          },
+          "output_format": {
+            "type": "string",
+            "enum": [
+              "classification_and_routing",
+              "classification_only",
+              "routing_only",
+              "full_report_with_minority"
+            ],
+            "description": "What to return. classification_and_routing (default) gives the meeting type, confidence, and recommended TOS skill. full_report_with_minority always includes the minority report showing alternative classifications with confidence deltas.\n"
+          },
+          "force_minority_report": {
+            "type": "boolean",
+            "description": "If true, always emit the minority report showing all plausible classifications with confidence scores, even when one type clearly dominates.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "output_validator",
+      "description": "Validate TOS-generated JSON artifacts against their JSON Schema and a governance rule catalog\n(no fabrication, no real PII, metadata block present, human_review_required: true, standard\ncodes verified). Also validates Office documents and PDFs for structural integrity. Promotes\nfailing cases to regression evals when requested.\n\nUse output-validator AFTER an artifact is generated and BEFORE it goes to quality-review.\nIt catches structural and governance failures early — quality-review handles pedagogical\nscoring. Together they form the TOS validation pipeline:\nGeneration → output-validator (schema + governance) → quality-review (9-dimension scoring)\n→ Approved / Revision Required / Rejected.\n\nTrigger phrases: \"validate this artifact\", \"check the schema\", \"does this JSON conform\",\n\"governance check\", \"check for PII\", \"verify the metadata block\", \"is the standard code\nreal\", \"validate this document structure\", \"pre-flight check on this output\".\n\nRuns: tools/validate_outputs.py (schema + governance) and tools/validate_document.py\n(Office/PDF structural integrity). Both are stdlib-compatible; capability improvements\ncome from pdf_hifi and office_authoring when installed.\n\nOutput: validation_result (pass/fail/warn), violations list with field paths and\ncorrective actions, governance_flags (PII risk, missing metadata, unverified standard codes),\nand human_review_required: true.\n\nDo NOT use output-validator to score pedagogical quality (use quality-review). Do NOT use\nit to generate artifacts (it validates, never generates). Do NOT use it on student-submitted\nwork — it validates TOS-generated educator artifacts only.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "artifact"
+        ],
+        "properties": {
+          "artifact": {
+            "type": "string",
+            "description": "The artifact to validate. Accepts JSON string, markdown text, or base64-encoded binary (for Office/PDF structural validation). For JSON: the full artifact JSON. For documents: the file content encoded as \"data:<mimetype>;base64,<content>\".\n"
+          },
+          "schema_type": {
+            "type": "string",
+            "enum": [
+              "lesson_plan",
+              "unit_plan",
+              "assessment",
+              "rubric",
+              "iep_goal",
+              "accommodation_plan",
+              "pacing_guide",
+              "curriculum_map",
+              "parent_communication",
+              "professional_learning",
+              "health_report",
+              "repair_plan",
+              "feed_currency_brief",
+              "standards_update_brief",
+              "metadata_block_only",
+              "generic_governed_artifact",
+              "office_document",
+              "pdf_document"
+            ],
+            "description": "Schema to validate against. Determines which JSON Schema rules and governance rules apply. Use generic_governed_artifact when the specific type is unknown.\n"
+          },
+          "validation_mode": {
+            "type": "string",
+            "enum": [
+              "full",
+              "governance_only",
+              "schema_only",
+              "no_pii_check_only",
+              "structural_only"
+            ],
+            "description": "full (default): runs all checks — schema conformance, governance rules, PII scan, standard code verification. governance_only: checks metadata block, human_review flag, no-fabrication markers. schema_only: JSON Schema conformance only. structural_only: for Office/PDF — checks document structure, no text content analysis.\n"
+          },
+          "standards_to_verify": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Standard codes the artifact claims to cite. Validator checks each against the FL standards corpus. If omitted, codes are extracted from the artifact automatically.\n"
+          },
+          "promote_to_eval": {
+            "type": "boolean",
+            "description": "If true and validation fails, register the artifact + violation set as a regression eval case in the eval catalog. Defaults to false.\n"
+          },
+          "strict_mode": {
+            "type": "boolean",
+            "description": "If true, any governance warning (not just violation) fails validation. Use for high-stakes artifacts (IEP documents, formal communications). Defaults to false.\n"
+          },
+          "pii_scan_depth": {
+            "type": "string",
+            "enum": [
+              "surface",
+              "deep",
+              "name_pattern_only"
+            ],
+            "description": "How thoroughly to scan for PII. surface (default): regex patterns for SSN, phone, email, student ID formats. deep: also checks for name patterns and contextual PII (e.g., \"Student at [specific school] with [specific identifier]\"). name_pattern_only: fastest — checks for proper name patterns only.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "presentation_builder",
+      "description": "Build structured slide deck outlines, speaker notes, and (when office_authoring capability is\navailable) real .pptx files for K-12 professional and instructional contexts. Produces\naudience-appropriate presentations for students, parents, staff, school board, and PD sessions.\n\nTrigger phrases: \"make a slide deck about\", \"build a presentation on\", \"create slides for\",\n\"I need a PowerPoint on\", \"design a presentation for my PLC\", \"build a parent night deck\",\n\"create a PD presentation about\", \"slide outline for\", \"presentation for my principal on\".\n\nWhen office_authoring capability is present (python-pptx installed), generates real .pptx via\nscripts/build_deck.py. When absent, outputs a complete structured outline with slide-by-slide\ncontent, speaker notes, and design guidance the teacher can manually build.\n\nSlide design follows UDL principles: minimal text per slide, clear visual hierarchy,\nmeaningful headings, accommodation for low-vision (color contrast). Student-facing slides\nuse age-appropriate vocabulary and grade-band reading levels.\n\nOutput always includes human_review_required: true, a metadata block, and a speaker-notes\nsection for every content slide. Routes completed artifact to quality-review.\n\nDo NOT use presentation-builder to write lesson plans (use lesson-planner). Do NOT use it\nto create rubrics or assessments (use assessment-designer). Do NOT use it to produce legally\nrequired documents or IEP-related materials.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "topic",
+          "audience"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string",
+            "description": "Presentation topic or purpose. Examples: \"photosynthesis for 5th graders\", \"reading data at our October parent night\", \"new math curriculum overview for staff\", \"PBIS implementation plan for school board\".\n"
+          },
+          "audience": {
+            "type": "string",
+            "enum": [
+              "students_elementary",
+              "students_middle",
+              "students_high",
+              "parents_families",
+              "teachers_staff",
+              "leadership_team",
+              "school_board",
+              "professional_development",
+              "mixed_staff_and_parents"
+            ],
+            "description": "Intended audience. Determines vocabulary, complexity, design style, and tone.\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade level if audience is students. Examples: \"3rd grade\", \"9-12\", \"K-2\".\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area if this is an instructional presentation. Examples: \"ELA\", \"Science\".\n"
+          },
+          "slide_count": {
+            "type": "integer",
+            "description": "Target number of slides. Typical: 8-12 for a 15-min presentation, 15-20 for 30 min, 25-40 for a full PD session. Skill adjusts content density accordingly.\n"
+          },
+          "duration_minutes": {
+            "type": "integer",
+            "description": "Presentation duration in minutes. Used to calibrate slide count and depth if slide_count is not specified.\n"
+          },
+          "output_format": {
+            "type": "string",
+            "enum": [
+              "structured_outline",
+              "pptx_file",
+              "markdown_with_speaker_notes",
+              "json"
+            ],
+            "description": "Output format. structured_outline (default when office_authoring absent) = slide-by-slide content with speaker notes. pptx_file = real .pptx (requires office_authoring capability). markdown_with_speaker_notes = clean markdown ready to paste into Google Slides or Canva.\n"
+          },
+          "standards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Standards to reference in student-facing slides. Adds a \"Learning Target\" opener slide. Optional for non-instructional presentations.\n"
+          },
+          "key_sections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Required section headers or topics to include. The skill builds slides within each section. Examples: [\"What is PBIS?\", \"Our School Data\", \"Tier 1 Practices\", \"Next Steps\"].\n"
+          },
+          "include_discussion_prompts": {
+            "type": "boolean",
+            "description": "If true, add interactive discussion prompts (turn and talk, think-pair-share, poll questions) appropriate for the audience. Defaults to true for PD and parent audiences.\n"
+          },
+          "include_data_slides": {
+            "type": "boolean",
+            "description": "If true, include placeholder data visualization slides (chart/graph frames with instructions for adding real data). Recommended for data-review and board presentations.\n"
+          },
+          "design_theme": {
+            "type": "string",
+            "enum": [
+              "clean_professional",
+              "student_friendly_colorful",
+              "district_neutral",
+              "high_contrast_accessible"
+            ],
+            "description": "Visual design guidance. Defaults to clean_professional for staff/board; student_friendly for student-facing decks.\n"
+          },
+          "presenter_name": {
+            "type": "string",
+            "description": "Presenter name or role for the title slide. Use placeholder if real name not available. Examples: \"Ms. Rodriguez\", \"The Grade 3 Team\", \"[TEACHER NAME]\".\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "professional_learning",
+      "description": "Design professional learning artifacts for K-12 educators: instructional coaching guides,\nclassroom observation look-fors, PD session plans, collaborative inquiry protocols, and\nlesson study frameworks. All artifacts are non-evaluative (coaching/learning-focused, not\nteacher-rating documents), grounded in adult-learning principles, and tied to instructional\npractice improvement.\n\nTrigger phrases: \"write a coaching guide for\", \"create observation look-fors\", \"design a\nPD session on\", \"build a collaborative inquiry protocol\", \"lesson study cycle\", \"coaching\nconversation template\", \"what should I look for when observing\", \"PLC agenda for\",\n\"professional learning plan on\".\n\nNon-evaluative by design: all observation tools specify they are FOR learning conversations,\nnot teacher ratings or formal evaluations (which are HR/administrative functions). Coaches\nand peers use these; administrators may adapt them but should not use them as formal eval\ninstruments without district HR review.\n\nGrounded in: Marzano High-Yield Strategies, Bloom's Taxonomy, Understanding by Design,\nVisible Learning (Hattie), adult-learning theory (Knowles andragogy), and Florida\nEducator Accomplished Practices (FEAPs) where relevant.\n\nIntegrates with presentation-builder (for PD slide decks), atom-activity-generate (PD\nactivities), and quality-review. Routes completed artifact to quality-review.\n\nDo NOT use professional-learning to produce formal evaluation rubrics or conduct teacher\nperformance ratings (those are HR/administrative). Do NOT use it to write IEP-related\nprofessional training (use special-education-support for the IEP content, then wrap in PD\nformat here). human_review_required: true on all outputs.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "artifact_type",
+          "topic"
+        ],
+        "properties": {
+          "artifact_type": {
+            "type": "string",
+            "enum": [
+              "coaching_guide",
+              "observation_look_fors",
+              "pd_session_plan",
+              "collaborative_inquiry_protocol",
+              "lesson_study_protocol",
+              "coaching_conversation_template",
+              "plc_agenda",
+              "professional_learning_plan",
+              "book_study_guide",
+              "learning_walk_protocol"
+            ],
+            "description": "Type of professional learning artifact to produce.\n"
+          },
+          "topic": {
+            "type": "string",
+            "description": "Professional learning focus. Examples: \"close reading strategies\", \"math discourse\", \"co-teaching models\", \"culturally responsive teaching\", \"PBIS Tier 1 implementation\", \"data-driven instruction\", \"differentiation for ELLs\".\n"
+          },
+          "grade_band": {
+            "type": "string",
+            "enum": [
+              "K_2",
+              35,
+              68,
+              912,
+              "K_12",
+              "elementary",
+              "secondary"
+            ],
+            "description": "Grade band of the teachers this PL targets. Affects example content and standards references in the artifact.\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject focus if topic is content-specific. Examples: \"ELA\", \"Mathematics\". Omit for cross-curricular PL topics.\n"
+          },
+          "participant_role": {
+            "type": "string",
+            "enum": [
+              "classroom_teacher",
+              "instructional_coach",
+              "department_head",
+              "assistant_principal",
+              "principal",
+              "district_administrator",
+              "paraprofessional",
+              "mixed_staff"
+            ],
+            "description": "Role of the PL participants. Determines voice, examples, and reflection depth.\n"
+          },
+          "duration_minutes": {
+            "type": "integer",
+            "description": "Duration of the PD session or coaching cycle phase in minutes. Examples: 60, 90, 120, 180 for PD sessions; 30-45 for coaching conversations. Informs agenda time allocations.\n"
+          },
+          "session_count": {
+            "type": "integer",
+            "description": "For multi-session series: number of sessions. Defaults to 1. For lesson study or collaborative inquiry cycles, typically 3-5 sessions.\n"
+          },
+          "desired_outcomes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific teacher competencies or classroom practices participants should be able to demonstrate after PL. Examples: [\"use accountable talk stems during math discourse\", \"provide oral sentence frames for ELL students in content vocabulary instruction\"].\n"
+          },
+          "non_evaluative": {
+            "type": "boolean",
+            "description": "If false, generates observation tools that include rating dimensions (for instructional coaches doing formal observations in a non-HR capacity). Defaults to true (coaching language, no ratings).\n"
+          },
+          "feap_connections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Florida Educator Accomplished Practices to reference. Examples: [\"1a\", \"1b\", \"2a\", \"3b\"]. Omit if not connecting to FEAPs explicitly.\n"
+          },
+          "materials_available": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Materials available for the session (e.g. [\"chart paper\", \"markers\", \"Chromebooks\", \"student work samples\"]). Informs activity design.\n"
+          },
+          "follow_up_plan": {
+            "type": "boolean",
+            "description": "If true, include a follow-up action plan section with accountability check-in dates and reflection questions for between-session practice. Defaults to true.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "quality_review",
+      "description": "Score any TOS-generated K-12 artifact against the full 9-dimension Quality Gates rubric.\nProduces a per-dimension score (0-5), a composite score (weighted average), an\nApproved/Rejected/Revision Required verdict, and specific corrective actions for every\ndimension that scores below 4.0.\n\nThe 9 Quality Gate dimensions:\n1. Integrity — no fabrication, citations verifiable, standards codes real\n2. Safety — no harmful content, age-appropriate, no real PII\n3. Governance — metadata block present, human_review_required: true, no auto-approval\n4. Accuracy — factually correct, standards-aligned, legally sound for SpEd/504\n5. Alignment — tied to stated standards; objectives match assessment matches activity\n6. Educational Quality — pedagogically sound, Bloom's/DOK appropriate, differentiation present\n7. Accessibility — reading level appropriate, UDL considerations, language clarity\n8. Professional Quality — formatting, completeness, usable as-is after teacher review\n9. User Intent — addresses what the teacher actually asked for\n\nComposite ≥ 4.0 = Approved. Any dimension scoring 0 (critical failure) = auto-Rejected\nregardless of composite. Composite 3.0–3.9 = Revision Required. Below 3.0 = Rejected.\n\nTrigger phrases: \"review this artifact\", \"does this pass quality gates\", \"score this lesson\nplan\", \"check this IEP goal\", \"validate this assessment\", \"is this good enough to use\",\n\"run quality gates on\", \"does this meet the rubric\".\n\nIntegrates with atom-quality-check (per-dimension spot checks) and output-validator (schema\n+ governance rule validation). Produces a detailed Quality Report artifact.\n\nDo NOT use quality-review to score student work (it reviews educator-generated artifacts).\nDo NOT use it to determine IEP eligibility or make legal determinations.\nNothing produced by TOS is Final until quality-review Approves it.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "artifact",
+          "artifact_type"
+        ],
+        "properties": {
+          "artifact": {
+            "type": "string",
+            "description": "The full text or JSON of the artifact to review. For large documents, provide the complete artifact — quality-review needs the full content to score all 9 dimensions. Accepts plain text, markdown, or JSON string.\n"
+          },
+          "artifact_type": {
+            "type": "string",
+            "enum": [
+              "lesson_plan",
+              "unit_plan",
+              "assessment",
+              "rubric",
+              "performance_task",
+              "iep_goal",
+              "accommodation_plan",
+              "behavior_support_plan",
+              "pacing_guide",
+              "curriculum_map",
+              "parent_communication",
+              "professional_learning",
+              "walkthrough_instrument",
+              "document_intelligence_output",
+              "health_report",
+              "repair_plan",
+              "feed_brief",
+              "standards_update_brief",
+              "generic"
+            ],
+            "description": "Type of the artifact being reviewed. Determines which rubric weighting profile and critical failure rules apply.\n"
+          },
+          "scoring_mode": {
+            "type": "string",
+            "enum": [
+              "full_review",
+              "quick_check",
+              "gate_only",
+              "single_dimension"
+            ],
+            "description": "full_review (default): scores all 9 dimensions with detailed corrective actions. quick_check: composite score + pass/fail verdict only (faster, less detail). gate_only: checks only critical failure conditions (Safety=0, Governance=0, Integrity=0). single_dimension: score only the dimension specified in dimension_focus.\n"
+          },
+          "dimension_focus": {
+            "type": "string",
+            "enum": [
+              "integrity",
+              "safety",
+              "governance",
+              "accuracy",
+              "alignment",
+              "educational_quality",
+              "accessibility",
+              "professional_quality",
+              "user_intent"
+            ],
+            "description": "Required when scoring_mode is single_dimension. Ignored for other modes.\n"
+          },
+          "standards_to_verify": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Standard codes the artifact claims to address. quality-review checks these against the FL standards corpus. If omitted, extracts standard codes from the artifact text.\n"
+          },
+          "original_request": {
+            "type": "string",
+            "description": "The teacher's original request that produced this artifact. Used to score the User Intent dimension — whether the artifact actually addresses what was asked.\n"
+          },
+          "rubric_version": {
+            "type": "string",
+            "description": "Quality Gates rubric version to use. Defaults to the current version in protocols/quality-gates.md. Provide only when testing against a specific version.\n"
+          },
+          "promote_failures_to_eval": {
+            "type": "boolean",
+            "description": "If true and the artifact is Rejected, register the failing case as a regression eval so it can be retested after correction. Defaults to false.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "school_administration",
+      "description": "Generate school and system-level administrative artifacts: classroom walkthrough instruments,\ninitiative implementation plans, data-review meeting agendas, professional communication\ntemplates, school improvement planning tools, and policy explanation documents for K-12\nschool leaders.\n\nTrigger phrases: \"create a walkthrough observation tool\", \"build an implementation plan for\",\n\"school improvement plan component\", \"meeting agenda for the leadership team\", \"data review\nprotocol for administrators\", \"communication to staff about\", \"policy rollout plan\",\n\"faculty meeting agenda\", \"write a memo to staff about\", \"principal walkthrough form\".\n\nArtifacts are produced at the SCHOOL or SYSTEM level — they govern how a school or district\noperates, not what happens in an individual classroom lesson. Walkthrough instruments focus on\ninstructional practice patterns at scale, not individual teacher evaluation.\n\nGrounded in: Florida School Improvement Planning requirements, MTSS system-level practices,\nPBIS school-wide implementation, Florida Principal Leadership Standards, and Title I/Title III\ncompliance frameworks where relevant.\n\nIntegrates with professional-learning (for staff PD planning within initiatives),\npresentation-builder (for board/leadership presentations), and quality-review. All outputs\ncarry human_review_required: true.\n\nDo NOT use school-administration to write individual teacher formal evaluation instruments\n(those are HR/district functions). Do NOT use it to determine special education eligibility\nor produce IEP-related documents (use special-education-support). Do NOT use it to write\nindividual lesson plans (use lesson-planner).\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "artifact_type",
+          "topic"
+        ],
+        "properties": {
+          "artifact_type": {
+            "type": "string",
+            "enum": [
+              "walkthrough_instrument",
+              "initiative_implementation_plan",
+              "data_review_protocol",
+              "faculty_meeting_agenda",
+              "leadership_meeting_agenda",
+              "staff_memo",
+              "school_improvement_component",
+              "policy_explanation_document",
+              "parent_community_communication",
+              "crisis_communication_template",
+              "school_calendar_planning_tool",
+              "compliance_checklist"
+            ],
+            "description": "Type of administrative artifact to produce.\n"
+          },
+          "topic": {
+            "type": "string",
+            "description": "Subject of the artifact. Examples: \"PBIS Tier 1 walkthrough\", \"new math curriculum implementation\", \"reading data review Q1\", \"FCAT/FSA testing protocol rollout\", \"attendance improvement initiative\", \"Title I parent engagement plan\".\n"
+          },
+          "grade_band": {
+            "type": "string",
+            "enum": [
+              "K_2",
+              35,
+              68,
+              912,
+              "K_5",
+              "K_8",
+              "K_12",
+              "elementary_school",
+              "middle_school",
+              "high_school"
+            ],
+            "description": "Grade band of the school or the students affected by the initiative.\n"
+          },
+          "subject_area": {
+            "type": "string",
+            "description": "Academic subject focus if the initiative is content-specific. Omit for school-wide or cross-curricular topics.\n"
+          },
+          "audience": {
+            "type": "string",
+            "enum": [
+              "classroom_teachers",
+              "instructional_staff",
+              "all_staff",
+              "leadership_team",
+              "school_board",
+              "district_leadership",
+              "parents_community",
+              "students",
+              "mixed"
+            ],
+            "description": "Intended audience for the artifact.\n"
+          },
+          "walkthrough_focus_areas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For walkthrough_instrument: specific instructional practices to look for. Examples: [\"student discourse\", \"learning target posted and referenced\", \"data wall updated\", \"small group instruction\", \"technology integration\", \"ELL supports visible\"].\n"
+          },
+          "implementation_phases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For initiative_implementation_plan: phase names (e.g. [\"Awareness\", \"Build Capacity\", \"Implementation\", \"Sustainability\"]) or [\"Q1\", \"Q2\", \"Q3\", \"Q4\"]. Defaults to a standard 4-phase rollout if not specified.\n"
+          },
+          "timeline": {
+            "type": "string",
+            "description": "Implementation timeline. Examples: \"6 months\", \"1 school year\", \"Q2 through Q4\", \"August–November 2026\".\n"
+          },
+          "key_stakeholders": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Roles responsible for or affected by this initiative. Examples: [\"principal\", \"grade-level coaches\", \"classroom teachers\", \"ESE coordinator\", \"parents\"].\n"
+          },
+          "compliance_requirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Any federal, state, or district compliance requirements this must address. Examples: [\"Title I Annual Meeting requirement\", \"Florida SIP (s.1001.42)\", \"IDEA Child Find\"].\n"
+          },
+          "data_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For data_review_protocol: data sources to include in the protocol. Examples: [\"FAST PM3\", \"iReady diagnostics\", \"ODR rates\", \"attendance data\", \"GPA trends\"].\n"
+          },
+          "meeting_duration_minutes": {
+            "type": "integer",
+            "description": "For meeting agenda artifacts: duration of the meeting in minutes. Informs time allocation per agenda item.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "skill_health",
+      "description": "Diagnose and audit the TOS ecosystem itself. Sweeps every skill (MAINTAINER.md, synced\nreferences, evals, routing membership), shared engines (importable), and routing integrity.\nReads the audit trail (Quality Ledger, runtime traces, minority reports) to surface recurring\nfailure patterns. Produces human-readable repair plans the teacher/developer reviews and\napproves — nothing high-stakes is auto-applied.\n\nTrigger phrases: \"is the ecosystem healthy\", \"why did this skill fail\", \"audit the skills\",\n\"diagnose the environment\", \"what needs updating for the new skill\", \"repair plan\",\n\"check drift\", \"run health check\", \"what's broken\", \"scan all skills\", \"impact analysis\nfor renaming a skill\", \"tos_check\".\n\nGoverns the SYSTEM, not classroom artifacts. Engine: shared/health/health.py (offline,\nstdlib); orchestrator: tools/tos_check.py (runs all diagnostic tools and writes\ntos_report.json + tos_report.md).\n\nFive capabilities:\n1. Scan readiness — sweep every skill + shared engine + routing; emit readiness score,\n   blocking issues, and release-gate recommendation\n2. Diagnose — read ledger/ledger.json + traces; surface recurring problems in plain language\n   (connector failures, minority reports, validation failures)\n3. Impact analysis — when a skill is added/renamed, list every ecosystem file that must\n   update (routing.json, ROUTING_MODEL.md, routing-map.md, STATE.md, METRICS.md,\n   artifact-types.json)\n4. Repair plan — ordered severity-tagged plan (mechanical vs. judgment); you edit or approve\n5. Validate outputs — artifact JSON schema check + governance / no-fabrication / no-real-PII\n   rule catalog before the artifact ships\n\nDo NOT use skill-health to author lessons, assessments, or IEP documents (wrong skill).\nDo NOT use it to score classroom artifacts (use quality-review). human_review_required: true\non all reports and repair plans.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "summary",
+              "impact_analysis",
+              "diagnose",
+              "validate_artifact",
+              "full_tos_check"
+            ],
+            "description": "Action to perform. summary: sweep all skills + engines + routing; return readiness score and blocking issues. Equivalent to shared/health/health.py --summary. impact_analysis: for a named skill being added or renamed, list every ecosystem file that must change. Equivalent to health.py --impact <skill_name>. diagnose: read the audit trail (ledger, traces) and surface recurring failure patterns in plain language. Produces a diagnosis document. validate_artifact: check a specific artifact against its schema + governance rules (calls tools/validate_outputs.py). Returns violations and corrective actions. full_tos_check: run tools/tos_check.py — all 10 diagnostic groups (drift, version, caps, render, feeds, cache, seeds, registry, sources, security) and write tos_report.json + tos_report.md.\n"
+          },
+          "skill_name": {
+            "type": "string",
+            "description": "For impact_analysis: the skill being added, renamed, or removed. Examples: \"lesson-planner\", \"atom-standards-match\", \"my-new-skill\".\n"
+          },
+          "traces_dir": {
+            "type": "string",
+            "description": "For diagnose: directory containing saved runtime execution traces. Defaults to runtime/traces if it exists.\n"
+          },
+          "artifact": {
+            "type": "string",
+            "description": "For validate_artifact: the artifact JSON string to validate.\n"
+          },
+          "artifact_schema": {
+            "type": "string",
+            "enum": [
+              "lesson_plan",
+              "assessment",
+              "iep_goal",
+              "accommodation_plan",
+              "pacing_guide",
+              "curriculum_map",
+              "parent_communication",
+              "health_report",
+              "repair_plan",
+              "generic"
+            ],
+            "description": "For validate_artifact: schema to validate against.\n"
+          },
+          "tos_check_groups": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "drift",
+                "version",
+                "caps",
+                "render",
+                "feeds",
+                "cache",
+                "seeds",
+                "registry",
+                "sources",
+                "security"
+              ]
+            },
+            "description": "For full_tos_check: specific check groups to run. If omitted, all 10 groups run.\n"
+          },
+          "tos_check_timeout": {
+            "type": "integer",
+            "description": "For full_tos_check: per-check timeout in seconds. Defaults to 30.\n"
+          },
+          "out_dir": {
+            "type": "string",
+            "description": "For full_tos_check: directory to write tos_report.json and tos_report.md. If omitted, results are returned inline.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "skill_repair",
+      "description": "Apply an approved skill-health repair plan with the smallest durable change. Separates\nmechanical fixes (safe to automate) from judgment fixes (always human-only). Shows a\nplain-language approval summary before applying anything. On approval, applies ONLY safe\nmechanical fixes, then re-runs the drift guard (tools/sync_check.py).\n\nTrigger phrases: \"apply the repair plan\", \"fix the broken skill\", \"patch this skill\",\n\"run the approved fixes\", \"apply mechanical fixes\", \"skill repair dry run\", \"what would\nthe repair change\", \"execute the approved patch\".\n\nWorkflow (patch-principles.md):\n1. Confirm basis — prefer approved plan from skill-health; if none, produce diagnosis + stop\n2. Prepare — read full skill; identify only files that truly need changes; snapshot before edit\n3. Patch minimally — mechanical (safe, automate) vs. judgment (human-only); fix root cause\n4. Validate — re-run sync_check.py, re-read changed files; call out anything untestable\n5. Summarize for approval — plain language: what changed, why, what stayed, any risk\n\nDry-run by default: shows what would change. --apply performs ONLY safe mechanical fixes.\nJudgment items (architectural changes, logic rewrites, new skill design) always stay human.\n\nNever presents a patch as complete if risky parts could not be validated. If the real problem\nis broad architectural drift, says so and recommends a larger refactor — does not hide it.\n\nDo NOT use skill-repair to diagnose issues (use skill-health first). Do NOT use it to\nredesign a skill from scratch. Do NOT use it to make judgment calls about which approach\nis architecturally correct — those belong with the human developer.\nhuman_review_required: true on all output.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "dry_run",
+              "apply",
+              "summarize_plan"
+            ],
+            "description": "Action to perform. dry_run (default): show exactly what would change, which items are mechanical vs. judgment, and the risk assessment — but change nothing. apply: perform ONLY the safe mechanical fixes from the approved plan; judgment items stay as a TODO list for the human. Re-runs sync_check.py after. summarize_plan: parse a repair plan and produce a plain-language approval summary without running any fixes.\n"
+          },
+          "repair_plan": {
+            "type": "string",
+            "description": "The repair plan to execute. Accepts either: (a) a JSON repair plan object produced by skill-health's diagnose action, or (b) a path to a saved repair plan file (e.g. \"reports/repair-plan-2026-06-27.json\"), or (c) a plain-text description of what needs to be fixed (skill-repair will parse it into mechanical vs. judgment items and stop for your confirmation before proceeding).\n"
+          },
+          "skill_name": {
+            "type": "string",
+            "description": "The specific skill to repair (e.g. \"lesson-planner\", \"atom-standards-match\"). When provided alongside a repair plan, validates that the plan targets the correct skill before applying any changes.\n"
+          },
+          "confirmation_acknowledged": {
+            "type": "boolean",
+            "description": "For apply action: must be true to proceed with changes. Acts as an explicit acknowledgment that the human has reviewed the dry_run output and approved it. apply will refuse to run without this set to true.\n"
+          },
+          "snapshot_before": {
+            "type": "boolean",
+            "description": "If true, save a snapshot of all target files before applying any changes. Snapshots go to ledger/repair-snapshots/<timestamp>/. Defaults to true for apply action.\n"
+          },
+          "stop_on_first_failure": {
+            "type": "boolean",
+            "description": "If true, halt the apply run if any mechanical fix fails validation after application. Defaults to true (safer; prevents cascading partial repairs).\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "special_education_support",
+      "description": "Generate IDEA-compliant IEP goal drafts, accommodation and modification plans, behavior\nsupport plans, transition planning documents, and progress notes for K-12 special education\nprofessionals. Every output cites the relevant legal basis (IDEA §300, ADA, Section 504).\nAll outputs are DRAFTS for qualified professionals to review, edit, and approve — never final\ndocuments.\n\nTrigger phrases: \"write an IEP goal for\", \"draft accommodations for\", \"create a behavior\nsupport plan\", \"help with transition planning\", \"write progress notes\", \"draft a modification\nplan\", \"accommodation vs modification\", \"IDEA-compliant goal\".\n\nIntegrates with atom-iep-goal (SMART goal drafting), atom-differentiate (modification\nlayer), and quality-review (governance gate). Routes complex eligibility questions to a\nhuman — this skill never determines eligibility.\n\nLEGAL BOUNDARIES (non-negotiable, always stated in output):\n- Never determines eligibility for special education services\n- Never overrides or supplements an existing IEP without the IEP team's approval\n- All output is a DRAFT for the IEP team to review, modify, and approve per IDEA procedures\n- Never includes real student names, SSN, or identifying PII — placeholders only\n- Progress data fields require teacher-supplied actual data — never fabricated\n- Output always includes: \"DRAFT — requires IEP team review and approval before use\"\n- human_review_required: true on every output\n\nDo NOT use this skill to determine eligibility, make placement decisions, or produce legally\nbinding documents. Do NOT use it to write general lesson accommodations (use lesson-planner\nwith differentiation_profiles instead for whole-class differentiation).\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "request_type",
+          "grade"
+        ],
+        "properties": {
+          "request_type": {
+            "type": "string",
+            "enum": [
+              "iep_goal",
+              "accommodation_plan",
+              "modification_plan",
+              "behavior_support_plan",
+              "transition_plan",
+              "progress_note",
+              "present_level_of_performance",
+              "service_summary"
+            ],
+            "description": "Type of special education document to draft. iep_goal generates one SMART annual goal (use multiple calls for multiple goals); accommodation_plan generates the full accommodations section; modification_plan generates curriculum modification recommendations.\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Student's current grade level. Examples: \"3rd grade\", \"9th grade\", \"K\".\n"
+          },
+          "disability_category": {
+            "type": "string",
+            "description": "IDEA disability category (optional — do not guess if unknown). Examples: \"Specific Learning Disability\", \"Autism Spectrum Disorder\", \"Other Health Impairment\", \"Emotional Behavioral Disorder\", \"Intellectual Disability\", \"Speech/Language Impairment\". This informs goal writing; does not determine eligibility.\n"
+          },
+          "domain": {
+            "type": "string",
+            "enum": [
+              "academic",
+              "behavioral",
+              "communication",
+              "adaptive",
+              "social_emotional",
+              "motor",
+              "transition",
+              "reading",
+              "math",
+              "writing"
+            ],
+            "description": "Domain for the goal or plan. Required for iep_goal. For progress_note or present_level, describe the domain in present_level_of_performance.\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Academic subject if domain is academic/reading/math/writing. Examples: \"ELA\", \"Math\".\n"
+          },
+          "standards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Standards the goal should connect to. Goals should tie to grade-level or near-grade-level standards even when modified. Provide FL B.E.S.T. codes when known.\n"
+          },
+          "present_level_of_performance": {
+            "type": "string",
+            "description": "Current performance data: what the student can do, at what level, with what accuracy. Use placeholders for names (e.g. \"the student\", \"Student A\"). Required for iep_goal and behavior_support_plan. Never fabricate — provide real teacher-observed data or placeholder markers like \"[INSERT ASSESSMENT DATA]\".\n"
+          },
+          "annual_goal_focus": {
+            "type": "string",
+            "description": "For iep_goal: the specific skill or behavior the goal targets over the coming year. Examples: \"decode multisyllabic words\", \"initiate peer interactions\", \"manage frustration using a coping strategy\".\n"
+          },
+          "measurement_criteria": {
+            "type": "string",
+            "description": "For iep_goal: desired accuracy/frequency criterion (e.g. \"80% accuracy across 3 of 4 trials\", \"4 out of 5 consecutive opportunities\"). If omitted, a standard criterion is drafted with a placeholder.\n"
+          },
+          "behavior_of_concern": {
+            "type": "string",
+            "description": "For behavior_support_plan: observable description of the behavior (topography, frequency, intensity, duration). Use objective language; no labels or diagnoses.\n"
+          },
+          "function_of_behavior": {
+            "type": "string",
+            "enum": [
+              "attention",
+              "escape_avoidance",
+              "tangible",
+              "sensory",
+              "unknown_requires_fba"
+            ],
+            "description": "For behavior_support_plan: hypothesized function from FBA. Use unknown_requires_fba if an FBA has not been completed.\n"
+          },
+          "age_at_transition": {
+            "type": "integer",
+            "description": "For transition_plan: student's current age. Florida requires transition planning to begin by age 14 (or earlier if the IEP team determines appropriate).\n"
+          },
+          "post_secondary_goals": {
+            "type": "object",
+            "description": "For transition_plan: post-secondary vision across domains. Keys: education, employment, independent_living. Values: plain-language goal statements from the student/family.\n"
+          },
+          "legal_notice_acknowledged": {
+            "type": "boolean",
+            "description": "Must be true to proceed. Confirms the requestor understands all output is a DRAFT requiring IEP team review and approval, and that this skill never determines eligibility.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "standards_updater",
+      "description": "Crawl, detect, verify, and report on changes to Florida K-12 standards corpora: B.E.S.T.,\nNGSSS, CTE frameworks, Florida Statutes Title XLVIII (ch.1000-1013), State Board rules\n(FAC 6A), FAST/B.E.S.T./EOC assessment fact sheets, graduation requirements (s.1003.4282 F.S.),\nand WIDA/ELD standards. Produces a currency brief: what changed, why it matters, and what\ndownstream TOS artifacts need updating.\n\nTrigger phrases: \"check if standards have changed\", \"crawl FLDOE for updates\", \"are the\nstandards current\", \"what changed in Florida standards\", \"update the standards corpus\",\n\"currency brief\", \"crawl CPALMS\", \"check the source URLs\", \"standards refresh\", \"is my\npacing guide still current\".\n\nTwo detection modes:\n- document discovery: new/changed files found via crawl_seeds in sources.json\n- content-change monitoring: sha256 of watch_pages (statute/rule/guidance pages)\n\nChange intelligence (triage → verify → brief):\n1. Discover broadly — secondary sources are discovery only, never confirmation\n2. Verify on PRIMARY source (CPALMS, FLDOE, FL Legislature, FAC/flrules.org, WIDA)\n3. Score confidence: high (primary states it directly) / medium (scope needs interpretation)\n   / low (partial access / ambiguity)\n4. Brief the impact across 8 dimensions: standards, courses/curriculum, pacing/guidance,\n   instructional materials, assessment, graduation, EL, policy/compliance\n\nRender prong chain fires on ANY obstacle or confidence < 0.95 (not only js_required):\nhttp_static → local_render → offline_docintel → screenshot_ocr → cloud_render (opt-in).\nMultiple prongs aggregate; discrepancies → minority report. Wayback Machine CDX API\nconfirms genuine change vs. transient fetch failure.\n\nEthics: one honest User-Agent; robots.txt respected; no CAPTCHA bypass; no UA rotation.\nIf a source is unreachable or robots-disallowed: report and stop for that source.\n\nDo NOT use standards-updater to write lesson plans or assessments. Do NOT use it to\nauto-apply standards changes — every confirmed change is advisory and human-reviewed.\nhuman_review_required: true on all outputs.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "check",
+              "crawl",
+              "download",
+              "report",
+              "update_hashes",
+              "source_currency",
+              "render_check"
+            ],
+            "description": "Action to perform. check: offline check against existing snapshot (no network fetch). crawl: live crawl of all seeds in sources.json; detect new/changed files. download: download accepted updates to out/ directory. report: generate currency brief from last crawl results. update_hashes: save new content sha256 baselines for watch_pages. source_currency: run source_currency.py to check if watched source URLs have gone stale, moved, been superseded, or disappeared (separate from file discovery). render_check: check render prong availability (offline capability check).\n"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "florida"
+            ],
+            "description": "State standards corpus to target. Currently only Florida is implemented. Defaults to florida.\n"
+          },
+          "report_path": {
+            "type": "string",
+            "description": "For report or crawl: path to write the JSON currency brief. Defaults to report.json.\n"
+          },
+          "out_dir": {
+            "type": "string",
+            "description": "For download: directory to save downloaded files before they are moved into resources/<state>/<category>/. Defaults to out/.\n"
+          },
+          "max_retries": {
+            "type": "integer",
+            "description": "Maximum retries per URL, honoring Retry-After / RateLimit-Reset headers. Defaults to 3.\n"
+          },
+          "saturation_n": {
+            "type": "integer",
+            "description": "Stop crawling when no new documents appear in N consecutive seed fetches. Defaults to 5.\n"
+          },
+          "checkpoint_path": {
+            "type": "string",
+            "description": "Path to save/load checkpoint file for resumable crawls. Required for --resume.\n"
+          },
+          "resume": {
+            "type": "boolean",
+            "description": "Resume from the checkpoint at checkpoint_path. Defaults to false.\n"
+          },
+          "max_wait": {
+            "type": "integer",
+            "description": "Maximum seconds to wait on a single rate-limit backoff. Defaults to 300 (5 min).\n"
+          },
+          "no_render_fallback": {
+            "type": "boolean",
+            "description": "Disable the render prong chain. By default, any obstacle or confidence < 0.95 triggers the chain automatically. Use this only for quick offline checks.\n",
+            "default": false
+          },
+          "render_enable_cloud": {
+            "type": "boolean",
+            "description": "Enable the cloud render prong (firecrawl). Off by default — the offline prongs (local_render, offline_docintel, screenshot_ocr) are always preferred.\n",
+            "default": false
+          },
+          "confidence_threshold": {
+            "type": "number",
+            "description": "Minimum confidence score (0.0-1.0) before the render prong chain fires. Defaults to 0.95 per the TOS render policy.\n",
+            "default": 0.95
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "teacher_core",
+      "description": "TOS routing hub. Receives any K-12 educator request and returns a structured routing decision:\nwhich TOS skill to invoke next, what parameters to pass it, and the confidence in that routing\nchoice. Use teacher_core when routing is ambiguous (overlapping skills) or when you want the\nrouting rationale recorded. Returns a minority report when two or more skills are plausible\nwithin 10 points of confidence.\n\nTrigger phrases: any educator request that does not obviously map to one skill — \"help me with\na lesson\", \"I need something for my IEP meeting\", \"make me a quiz\", \"can you draft a parent\nnote\", \"audit my skills\", \"what skill should I use for this?\"\n\nDo NOT use teacher_core to produce the actual artifact — it routes only. After receiving the\nrouting decision, call the target skill with the parameters teacher_core recommends.\n\nRoutes to: lesson-planner, assessment-designer, special-education-support, family-communication,\nmeeting-classifier, quality-review, curriculum-mapping, intervention-mtss, presentation-builder,\nprofessional-learning, school-administration, document-intelligence, output-validator,\nfeed-curator, standards-updater, teacher-profile, skill-health, skill-repair, and all\natom-* sub-skills.\n\nOutput always includes human_review_required: true and a metadata block.\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "request"
+        ],
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The teacher's raw request, question, or description of what they need. Provide as much context as possible — grade, subject, student context, urgency, artifact type desired.\n"
+          },
+          "grade": {
+            "type": "string",
+            "description": "Grade level hint (e.g. \"3rd grade\", \"9-12\", \"K-2\"). Helps narrow routing when multiple skills are plausible.\n"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject area hint (e.g. \"ELA\", \"Algebra 1\", \"Biology\"). Optional — extracted from request if not provided.\n"
+          },
+          "artifact_type_hint": {
+            "type": "string",
+            "description": "Optional hint about the desired output type (e.g. \"lesson plan\", \"quiz\", \"IEP goal\", \"parent email\"). teacher_core will confirm or correct this from request context.\n"
+          },
+          "teacher_context": {
+            "type": "string",
+            "description": "Optional background: teacher role, school, district, current unit, known student needs. Improves routing precision. Never include real student names or PII — placeholders only.\n"
+          },
+          "force_minority_report": {
+            "type": "boolean",
+            "description": "If true, always emit a minority report showing all plausible routes with confidence scores, even when one route is clearly dominant.\n"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "teacher_profile",
+      "description": "Initialize, manage, and query the TOS teacher operating context: role, grade band, subject,\nschool, district, student demographics, local constraints, collaboration network, and system\npreferences (offline tier, retrieval mode, feed update mode). Teacher-stated facts outrank\ncrawled inference in all downstream routing and artifact generation.\n\nTrigger phrases: \"set up my TOS profile\", \"update my profile\", \"what's in my profile\",\n\"change my school\", \"reset my preferences\", \"I moved to a new school\", \"set my grade level\",\n\"update my subject\", \"configure TOS for my class\", \"show my profile\", \"what does TOS know\nabout me\", \"teacher profile setup\", \"preferences wizard\".\n\nThe local profile is stored in shared/context/profiles/ (gitignored — never committed).\nTeacher-stated facts carry provenance: teacher_stated / confidence: high and outrank\nany crawled or inferred context via shared/context/sot_resolver.py.\n\nAll preferences are REVERSIBLE:\n- --preferences --reset clears preferences without deleting identity/role\n- school_change re-runs school/standards scope questions\n- Individual fields updatable without re-running the full wizard\n\nSystem preferences (L0 roadmap):\n- offline_tier: cached_python (default) | local_semantic | local_llm\n- retrieval_mode: stdlib_keyword (always available) | vector (opt-in, gated on consent)\n- feed_update_mode: manual (default) | on_session_start | scheduled\n\nPRIVACY:\n- All profile data is stored LOCALLY and gitignored — never committed to the repo\n- Never includes real student names, SSNs, or PII — placeholders only\n- Staff directory integration requires STAFF_INGEST_AUTHORIZED=true environment variable\n\nDo NOT use teacher-profile to generate lesson plans, assessments, or IEP documents (route\nthose to the appropriate skill). Do NOT use it to read or modify the standards corpus\n(use standards-updater).\n",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "init",
+              "show",
+              "validate",
+              "register",
+              "preferences",
+              "reset",
+              "school_change",
+              "update_field",
+              "export_context_fragment"
+            ],
+            "description": "Action to perform. init: run the full setup wizard (guided questions for role, grade, subject, school, student context, collaboration network, preferences). show: display current profile in readable format. validate: check profile completeness and flag missing fields that affect routing. register: write the current profile to the context overlay so downstream skills inherit it automatically. preferences: view or modify L0 system preferences (offline_tier, retrieval_mode, feed_update_mode) without re-running the full wizard. reset: clear preferences (with reset_scope); identity/role preserved unless scope=full. school_change: re-run school, district, and standards-scope questions when the teacher moves to a new school. Other preferences preserved. update_field: update a single profile field without running the full wizard. export_context_fragment: return the profile as a context fragment string suitable for prepending to any skill's system prompt.\n"
+          },
+          "field_name": {
+            "type": "string",
+            "description": "For update_field: the profile field to update. Examples: \"grade_band\", \"subject\", \"school_name\", \"district\", \"student_demographics\", \"co_teacher_present\", \"offline_tier\", \"feed_update_mode\".\n"
+          },
+          "field_value": {
+            "type": "string",
+            "description": "For update_field: the new value for the field. For boolean fields use \"true\"/\"false\". For array fields use comma-separated values (e.g. \"ELL,IEP,gifted\").\n"
+          },
+          "reset_scope": {
+            "type": "string",
+            "enum": [
+              "preferences_only",
+              "school_and_standards_only",
+              "full_profile"
+            ],
+            "description": "For reset: what to clear. preferences_only resets offline_tier/retrieval_mode/ feed_update_mode. school_and_standards_only resets school/district/standards scope. full_profile clears everything and prompts re-init.\n"
+          },
+          "preference_updates": {
+            "type": "object",
+            "description": "For preferences action: key-value pairs to set. Keys: offline_tier, retrieval_mode, feed_update_mode, local_model. Example: {\"offline_tier\":\"local_semantic\", \"feed_update_mode\":\"on_session_start\"}.\n",
+            "properties": {
+              "offline_tier": {
+                "type": "string",
+                "enum": [
+                  "cached_python",
+                  "local_semantic",
+                  "local_llm"
+                ]
+              },
+              "retrieval_mode": {
+                "type": "string",
+                "enum": [
+                  "stdlib_keyword",
+                  "vector"
+                ]
+              },
+              "feed_update_mode": {
+                "type": "string",
+                "enum": [
+                  "manual",
+                  "on_session_start",
+                  "scheduled"
+                ]
+              },
+              "local_model": {
+                "type": "string",
+                "enum": [
+                  "off",
+                  "ollama",
+                  "llamafile"
+                ]
+              }
+            }
+          },
+          "teacher_context": {
+            "type": "object",
+            "description": "For init or update: teacher context object. All fields optional — wizard prompts for missing required fields. Never include real student names or PII.\n",
+            "properties": {
+              "role": {
+                "type": "string",
+                "description": "Teaching role (e.g. 'general education teacher', 'special education teacher', 'instructional coach', 'department head', 'principal')"
+              },
+              "grade_band": {
+                "type": "string",
+                "description": "Grade band (e.g. 'K-2', '3-5', '6-8', '9-12', 'K-12')"
+              },
+              "grade_specific": {
+                "type": "string",
+                "description": "Specific grade(s) taught (e.g. '3rd grade', 'grades 9 and 10')"
+              },
+              "subject": {
+                "type": "string",
+                "description": "Subject area(s) taught"
+              },
+              "school_name": {
+                "type": "string",
+                "description": "School name (placeholder acceptable)"
+              },
+              "district": {
+                "type": "string",
+                "description": "District name (e.g. 'Orange County Public Schools', 'Miami-Dade County')"
+              },
+              "state": {
+                "type": "string",
+                "description": "State (default: Florida)"
+              },
+              "student_demographics": {
+                "type": "string",
+                "description": "Anonymized class profile (e.g. '25 students, 30% ELL, 20% with IEPs, 1 gifted pull-out')"
+              },
+              "co_teacher_present": {
+                "type": "boolean",
+                "description": "Whether a co-teacher is in the classroom"
+              },
+              "current_unit": {
+                "type": "string",
+                "description": "Current instructional unit or topic"
+              }
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+]

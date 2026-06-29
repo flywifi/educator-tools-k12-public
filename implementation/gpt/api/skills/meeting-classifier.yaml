@@ -1,0 +1,86 @@
+# TOS Skill: meeting-classifier
+# Platform: OpenAI Function Calling
+# Format: OpenAI API tools[] item
+
+type: function
+function:
+  name: meeting_classifier
+  description: |
+    Classify an educator meeting from contextual clues and route it to the right TOS skill. Reads
+    a description or brief excerpt from a meeting context and determines meeting type with
+    confidence score. When two meeting types are plausible within 10 confidence points, emits a
+    minority report showing both options and asks for clarification.
+
+    Trigger phrases: "what kind of meeting is this", "classify this meeting", "I'm not sure which
+    skill to use for my meeting", "is this an IEP or a 504", "what should I prepare for this
+    meeting", "route this meeting".
+
+    Classifies into: IEP_meeting, 504_meeting, MTSS_RTI_meeting, parent_teacher_conference,
+    PLCteam_meeting, data_review, professional_development, administrative_observation,
+    discipline_hearing, transition_planning, manifestation_determination, general_staff_meeting,
+    department_meeting, school_board_meeting, crisis_response.
+
+    Routes to: special-education-support (IEP, 504, transition, manifestation), intervention-mtss
+    (MTSS/RTI, data review), family-communication (conference prep), professional-learning (PLC,
+    PD), school-administration (admin observation, discipline, board), teacher-core (ambiguous).
+
+    LEGAL BOUNDARIES:
+    - Never determines IEP or 504 eligibility from meeting context
+    - Never interprets legal status of a meeting
+    - Ambiguous classification always surfaces a minority report rather than guessing
+    - human_review_required: true on every output
+
+    Do NOT use meeting-classifier to produce meeting artifacts (use the routed skill). Do NOT use
+    it to make eligibility or placement determinations.
+  parameters:
+    type: object
+    required:
+      - meeting_context
+    properties:
+      meeting_context:
+        type: string
+        description: >
+          Description of the meeting, participants, purpose, or a brief excerpt from a meeting
+          invitation, agenda, or notes. The richer the context, the more confident the
+          classification. Examples: "Annual IEP review for a 4th grader with SLD; team includes
+          parent, gen ed teacher, sped teacher, school psych" or "Principal wants to observe my
+          class next Tuesday for my formal eval".
+      participants:
+        type: array
+        items:
+          type: string
+        description: >
+          List of participant roles present (not names). Examples: ["parent", "general ed teacher",
+          "special education teacher", "school psychologist", "principal", "district ESE
+          coordinator", "student"]. Helps distinguish IEP from 504 from MTSS.
+      trigger_document:
+        type: string
+        description: >
+          Name of a document that triggered the meeting, if known. Examples: "annual IEP review",
+          "progress monitoring data showing insufficient response", "discipline referral",
+          "parent request letter".
+      grade:
+        type: string
+        description: >
+          Student or teacher grade/level if relevant. Helps narrow routing.
+      subject:
+        type: string
+        description: >
+          Subject area if relevant (e.g., for a data review of math scores).
+      output_format:
+        type: string
+        enum:
+          - classification_and_routing
+          - classification_only
+          - routing_only
+          - full_report_with_minority
+        description: >
+          What to return. classification_and_routing (default) gives the meeting type, confidence,
+          and recommended TOS skill. full_report_with_minority always includes the minority report
+          showing alternative classifications with confidence deltas.
+      force_minority_report:
+        type: boolean
+        description: >
+          If true, always emit the minority report showing all plausible classifications with
+          confidence scores, even when one type clearly dominates.
+    additionalProperties: false

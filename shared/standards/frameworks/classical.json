@@ -1,0 +1,31 @@
+{
+  "framework": "Classical",
+  "label": "Classical education (Trivium / CLT)",
+  "type": "classical",
+  "applicability": "school_defined",
+  "programmes_or_levels": [
+    "Grammar stage (K-5)",
+    "Logic/Dialectic stage (6-8)",
+    "Rhetoric stage (9-12)"
+  ],
+  "subjects": [
+    "Grammar",
+    "Logic",
+    "Rhetoric",
+    "Great Books / Literature",
+    "Latin",
+    "History",
+    "Math",
+    "Science"
+  ],
+  "code_pattern": "trivium stage / discipline / outcome (CLT framework where used)",
+  "source": [
+    "https://www.cltexams.com/",
+    "https://classicalchristian.org/"
+  ],
+  "version": null,
+  "codes_verified": false,
+  "status": "stub",
+  "note": "Structure only; enumerate standards from the cited source as a later data task. codes_verified=false. Never fabricate codes/statements - verify on source. Updated offline via standards-updater.",
+  "standards": []
+}

@@ -1,0 +1,86 @@
+# metadata-schema.md
+## Metadata Schema Protocol
+Version: 1.0 (reconstructed from the Quality Gates references; approved)
+Derived from: QG §3.3 (Quality Gates depend on metadata), §39 & §93 (decision records),
+§92 (traceability), §12.2 (metadata compliance).
+
+> **Status note.** Reconstructed from the Quality Gates references (§2.1, §39, §93) and approved for
+> use (v1.0). Amend if an original surfaces.
+
+---
+
+## 1. Purpose
+
+Every artifact the ecosystem produces carries a **metadata block** so that decisions are
+traceable, auditable, and reconstructable (QG Invariants §96: "history remains traceable",
+"quality decisions remain auditable"). Metadata is an input to Quality Gates, not an afterthought.
+
+## 2. The artifact metadata block
+
+Appended as a trailer (or front-matter) on every generated artifact. Two parts: the **quality
+decision record** (from QG §93) and the **education trailer** (TOS-specific).
+
+```yaml
+# --- Quality decision record (QG §93) ---
+decision_id:            # unique id for this evaluation
+artifact_id:            # unique id for the artifact
+reviewer:               # "quality-review" skill, or named human reviewer
+date:                   # ISO-8601
+decision:               # Approved | Conditionally Approved | Remediation Required | Rejected
+evidence:               # what was checked; links/excerpts supporting the decision
+rationale:              # why this decision
+score_summary:          # per-dimension 0–5 scores + weighted composite (optional but recommended)
+risk_summary:           # notable risks (optional)
+audit_reference:        # pointer to ledger entry (optional)
+remediation_reference:  # pointer to remediation record, if any (optional)
+source_decisions:       # when sources disagreed: decision record(s) from the source-of-truth resolver
+                        #   (shared/context/decision.schema.json) — decision_log + minority report
+                        #   (conflicts, failed_to_merge, residual_uncertainty). See conflict-protocol §4a.
+
+# --- Education trailer (TOS) ---
+artifact_type:          # e.g., lesson-plan, rubric, slide-deck
+persona:                # requesting persona (see shared/personas/personas.md)
+grade_band:             # e.g., K-2, 3-5, 6-8, 9-12
+subject:                # e.g., Math, ELA, Science
+standards_set:          # framework + version, e.g., "CCSS-Math 2010"
+standards_cited:        # list of standard codes referenced
+differentiation:        # UDL / tiering / EL / IEP supports applied
+context:                # teaching-context contract (shared/context/context.schema.json): state,
+                        #   district, school_type, program(s), instructional_model, mandates, SOPs,
+                        #   authority_precedence, overrides — what this artifact was built FOR
+human_review_required:  # true (always — artifacts are decision support, not final determinations)
+assumptions:            # list of assumptions made (see assumptions-protocol.md)
+```
+
+## 3. Rules
+
+- **`human_review_required` is always `true`.** Every artifact is decision support; a professional
+  must validate it (Charter V3 §12; SECURITY_AND_SAFETY.md). The drift guard checks this flag.
+- **No real student data.** Any student reference uses placeholders ("Student A"). PII in metadata
+  is an Integrity/Safety automatic failure (QG §37; SECURITY_AND_SAFETY.md).
+- **Standards must be cited with framework + version** so they are verifiable
+  (standards-verification.md).
+- **Context envelope.** When a teaching context is known, record the `context` contract
+  (`shared/context/`) so the artifact is auditable against the district / school-type / mandates / SOPs
+  it was built for. Context is resolved first and **preserved across skill handoffs**; an override is
+  logged, never silent. School type governs standards applicability (home-ed/private contexts do not
+  silently inherit the B.E.S.T./NGSSS mandate).
+- **Minority report.** When sources disagreed about which standard/rule/SOP governs, record the
+  resolver's decision record in `source_decisions` (`shared/context/decision.schema.json`): the chosen
+  interpretation **and** the preserved alternatives (`conflicts`, `failed_to_merge`,
+  `residual_uncertainty`). Material disagreement must not be hidden in prose (conflict-protocol §4a;
+  `shared/context/minority-report.md`). A fabricated source can never be the basis of a decision.
+- **Immutability.** Once an artifact is finalized, its decision record is recorded in the Quality
+  Ledger (QG §94) and is not edited; corrections create a new record.
+- **Records & handoffs.** Student records and handoff packages (`shared/records/`) use the universal
+  entity pattern (`*_id/*_code/*_name/*_display_name`) and a `lifecycle` envelope
+  (`created/last_modified/by`, `status`, `active`) that **maps to this metadata block** — audit entries
+  reference the decision record / Quality Ledger id rather than duplicating governance. Every emitted
+  package carries this block + `human_review_required: true`; health is surfaced from the source on file
+  (attributed; a signature is not required), never fabricated.
+
+## 4. Validation
+
+`tools/sync_check.py` asserts that each `SKILL.md` references this schema and emits the
+`human-review-required` flag. Field-level validation of emitted artifacts is added with the
+`quality-review` skill in Phase A.

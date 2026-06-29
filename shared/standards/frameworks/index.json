@@ -1,0 +1,53 @@
+{
+  "_comment": "Independent / non-public framework registry. Each framework is its own JSON in the normalized standard shape (framework/version/code/grade/band/subject/domain/statement) so requirements can be cross-mapped (see ../crosswalks/). Stubs now; populated from source over time via standards-updater. Used when context.standards_applicability=school_defined.",
+  "frameworks": [
+    {
+      "id": "ib",
+      "label": "International Baccalaureate",
+      "file": "ib.json",
+      "type": "international",
+      "status": "stub",
+      "codes_verified": false
+    },
+    {
+      "id": "ap",
+      "label": "Advanced Placement (College Board)",
+      "file": "ap.json",
+      "type": "college_board",
+      "status": "stub",
+      "codes_verified": false
+    },
+    {
+      "id": "cambridge",
+      "label": "Cambridge (incl. AICE)",
+      "file": "cambridge.json",
+      "type": "international",
+      "status": "stub",
+      "codes_verified": false
+    },
+    {
+      "id": "montessori",
+      "label": "Montessori",
+      "file": "montessori.json",
+      "type": "pedagogical",
+      "status": "stub",
+      "codes_verified": false
+    },
+    {
+      "id": "classical",
+      "label": "Classical education (Trivium / CLT)",
+      "file": "classical.json",
+      "type": "classical",
+      "status": "stub",
+      "codes_verified": false
+    },
+    {
+      "id": "acsi",
+      "label": "Faith-based (ACSI accreditation)",
+      "file": "acsi.json",
+      "type": "faith_based",
+      "status": "stub",
+      "codes_verified": false
+    }
+  ]
+}

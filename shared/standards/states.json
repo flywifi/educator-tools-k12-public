@@ -1,0 +1,2917 @@
+{
+  "_comment": "National standards overlay. ONLY Florida is fully populated (status=populated, verified codes + adapter + corpus). Every other state is a STUB with room to fill in: set its status to 'populated', fill subjects[*].framework/source/example, set codes_verified, and add adapter + resources_dir. See state-standards-map.md 'Populating a state'. Verified June 2026.",
+  "updated": "2026-06-22",
+  "schema": {
+    "status": [
+      "populated",
+      "stub"
+    ],
+    "per_state": [
+      "code",
+      "name",
+      "status",
+      "adapter",
+      "resources_dir",
+      "math_ela",
+      "science",
+      "state_set",
+      "doe",
+      "subjects",
+      "note"
+    ],
+    "per_subject": [
+      "framework",
+      "codes_verified",
+      "source",
+      "example",
+      "notes"
+    ],
+    "subjects": [
+      "math",
+      "ela",
+      "science",
+      "social_studies",
+      "computer_science",
+      "eld"
+    ]
+  },
+  "populate_checklist": [
+    "Confirm the state's frameworks on its DOE (and CCSS/NGSS status).",
+    "Create shared/standards/<state>-best.md with VERIFIED coding schemes (mirror florida-best.md).",
+    "Optionally add resources/<state>/ corpus + sources.json (mirror florida/).",
+    "In states.json: set status=populated, fill subjects[*], set adapter + resources_dir.",
+    "Never invent codes \u2014 verify on the DOE (protocols/standards-verification.md)."
+  ],
+  "national_sources": {
+    "ccss": "https://www.thecorestandards.org/standards-in-your-state/",
+    "ngss": "https://www.nextgenscience.org/lead-state-partners",
+    "overview": "https://ballotpedia.org/K-12_education_content_standards_in_the_states"
+  },
+  "deep_state": "FL",
+  "states": [
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Alaska Standards",
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": "never adopted CCSS"
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Arizona Academic Standards",
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "status": "populated",
+      "adapter": "shared/standards/florida-best.md",
+      "resources_dir": "shared/standards/resources/florida/",
+      "math_ela": "independent",
+      "science": "independent",
+      "state_set": "B.E.S.T. (Math/ELA) + NGSSS (Science/SS)",
+      "doe": "https://www.cpalms.org",
+      "subjects": {
+        "math": {
+          "framework": "FL-BEST-Math",
+          "codes_verified": true,
+          "source": "https://www.cpalms.org/search/Standard",
+          "example": "MA.K.NSO.1.1",
+          "data": "data/math.json",
+          "count": 1127
+        },
+        "ela": {
+          "framework": "FL-BEST-ELA",
+          "codes_verified": true,
+          "source": "https://www.cpalms.org/search/Standard",
+          "example": "ELA.K.F.1.1",
+          "data": "data/ela.json",
+          "count": 719
+        },
+        "science": {
+          "framework": "FL-NGSSS-Sci",
+          "codes_verified": true,
+          "source": "https://www.cpalms.org/search/Standard",
+          "example": "SC.K.L.14.1",
+          "data": "data/science.json",
+          "count": 1450
+        },
+        "social_studies": {
+          "framework": "FL-SS",
+          "codes_verified": true,
+          "source": "https://www.cpalms.org/search/Standard",
+          "example": "SS.*",
+          "data": "data/social_studies.json",
+          "count": 2713
+        },
+        "computer_science": {
+          "framework": "FL-CS",
+          "codes_verified": false,
+          "source": "https://www.cpalms.org/search/Standard",
+          "example": "SC.K12.CTR.*",
+          "notes": "FL moving CS to a standalone framework (2025+); verify on CPALMS",
+          "data": "data/computer_science.json",
+          "count": 569
+        },
+        "eld": {
+          "framework": "FL-ELD",
+          "codes_verified": true,
+          "source": "https://wida.wisc.edu/memberships/consortium/fl",
+          "example": "ELD.K12.ELL.*",
+          "data": "data/eld.json",
+          "count": 5
+        }
+      },
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced); fully enumerated (6,583 codes in resources/florida/data/)",
+      "enumerated_codes": 6583
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Georgia Standards of Excellence",
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "ID",
+      "name": "Idaho",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Indiana Academic Standards",
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "MT",
+      "name": "Montana",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "NE",
+      "name": "Nebraska",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Nebraska College & Career Ready Standards",
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": "never adopted CCSS"
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Oklahoma Academic Standards",
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "SC College- and Career-Ready",
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "independent",
+      "science": "NGSS-based",
+      "state_set": "Tennessee Academic Standards",
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced)"
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "independent",
+      "science": "independent",
+      "state_set": "TEKS",
+      "doe": "https://tea.texas.gov/academics/curriculum-standards",
+      "subjects": {
+        "math": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": "https://tea.texas.gov/academics/curriculum-standards",
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": "https://tea.texas.gov/academics/curriculum-standards",
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": "https://tea.texas.gov/academics/curriculum-standards",
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": "https://tea.texas.gov/academics/curriculum-standards",
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": "https://tea.texas.gov/academics/curriculum-standards",
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": "https://tea.texas.gov/academics/curriculum-standards",
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": "never adopted CCSS"
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "independent",
+      "science": "independent",
+      "state_set": "SOL",
+      "doe": "https://www.doe.virginia.gov",
+      "subjects": {
+        "math": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": "https://www.doe.virginia.gov",
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": "https://www.doe.virginia.gov",
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "independent",
+          "codes_verified": false,
+          "source": "https://www.doe.virginia.gov",
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": "https://www.doe.virginia.gov",
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": "https://www.doe.virginia.gov",
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": "https://www.doe.virginia.gov",
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": "never adopted CCSS"
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "status": "stub",
+      "adapter": null,
+      "resources_dir": null,
+      "math_ela": "CCSS-aligned",
+      "science": "NGSS-based",
+      "state_set": null,
+      "doe": null,
+      "subjects": {
+        "math": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "ela": {
+          "framework": "CCSS",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "science": {
+          "framework": "NGSS-based",
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "social_studies": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "computer_science": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        },
+        "eld": {
+          "framework": null,
+          "codes_verified": false,
+          "source": null,
+          "example": null,
+          "notes": "to be populated"
+        }
+      },
+      "note": null
+    }
+  ]
+}

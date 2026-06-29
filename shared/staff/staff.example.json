@@ -1,0 +1,20 @@
+{
+  "_comment": "EXAMPLE staff directory (placeholders only — committed to show the shape). Real data lives in staff.local.json (GITIGNORED) and is written ONLY under an explicit authorization (see staff-data-policy.md). ingest_mode 'off' = the default placeholder/read-only state. No real PII.",
+  "school_msid": "480002",
+  "school_name": "EXAMPLE Magnet Middle School",
+  "ingest_mode": "off",
+  "authorized": false,
+  "generated": "2026-06-26",
+  "staff": [
+    {"staff_id": null, "display_name": "EXAMPLE Case Manager", "role": "case_manager",
+      "position_title": "ESE Case Manager", "department": "Exceptional Student Education",
+      "work_email": "example.casemanager@example.k12.fl.us", "school_msid": "480002",
+      "provenance": "teacher_provided", "authorized": false, "consent": "placeholder (no real consent)",
+      "source": "example", "verified": null},
+    {"staff_id": null, "display_name": "EXAMPLE Assistant Principal", "role": "assistant_principal",
+      "position_title": "Assistant Principal", "department": "Administration",
+      "work_email": "example.ap@example.k12.fl.us", "school_msid": "480002",
+      "provenance": "teacher_provided", "authorized": false, "consent": "placeholder (no real consent)",
+      "source": "example", "verified": null}
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "_comment": "Coxhead Academic Word List (AWL). 570 word families in 10 sublists ordered by frequency in academic texts. Used by vocabulary-select atom for identifying academic vocabulary. Source: Coxhead, A. (2000). Victoria University of Wellington. Public data.",
+  "version": "1.0.0",
+  "source": "Coxhead, A. (2000). A New Academic Word List. TESOL Quarterly 34(2), pp.213-238.",
+  "total_word_families": 570,
+  "sublists": [
+    {
+      "sublist": 1,
+      "frequency_note": "Most frequent 60 word families in academic text",
+      "words": ["analyse", "approach", "area", "assess", "assume", "authority", "available", "benefit", "concept", "consist", "constitute", "context", "contract", "create", "data", "define", "derive", "distribute", "economy", "environment", "establish", "estimate", "evident", "export", "factor", "finance", "formula", "function", "identify", "income", "indicate", "individual", "interpret", "involve", "issue", "labour", "legal", "legislate", "major", "method", "occur", "percent", "period", "policy", "principle", "proceed", "process", "require", "research", "respond", "role", "section", "sector", "significant", "similar", "source", "specific", "structure", "theory", "vary"]
+    },
+    {
+      "sublist": 2,
+      "frequency_note": "Next most frequent 60 word families",
+      "words": ["achieve", "acquire", "administrate", "affect", "appropriate", "aspect", "assist", "category", "chapter", "commission", "community", "complex", "compute", "conclude", "conduct", "consequent", "construct", "consume", "credit", "culture", "design", "distinct", "element", "equate", "evaluate", "feature", "final", "focus", "impact", "injure", "institute", "invest", "item", "journal", "maintain", "normal", "obtain", "participate", "perceive", "positive", "potential", "previous", "primary", "purchase", "range", "region", "regulate", "relevant", "reside", "resource", "restrict", "secure", "seek", "select", "site", "strategy", "survey", "text", "tradition", "transfer"]
+    },
+    {
+      "sublist": 3,
+      "frequency_note": "60 word families",
+      "words": ["alternative", "circumstance", "comment", "compensate", "component", "consent", "considerable", "constant", "constrain", "contribute", "convene", "coordinate", "core", "corporate", "correspond", "criteria", "deduce", "demonstrate", "document", "dominate", "emphasis", "ensure", "exclude", "framework", "fund", "illustrate", "immigrate", "imply", "initial", "instance", "interact", "justify", "layer", "link", "locate", "maximise", "minor", "negate", "outcome", "partner", "philosophy", "physical", "proportion", "publish", "react", "register", "rely", "remove", "scheme", "sequence", "sex", "shift", "specify", "sufficient", "task", "technical", "technique", "technology", "valid", "volume"]
+    },
+    {
+      "sublist": 4,
+      "frequency_note": "60 word families",
+      "words": ["access", "adequate", "annual", "apparent", "approximate", "attitude", "attribute", "civil", "code", "commit", "communicate", "concentrate", "confer", "contrast", "cycle", "debate", "despite", "dimension", "domestic", "emerge", "error", "ethnic", "goal", "grant", "hence", "hypothesis", "implement", "implicate", "impose", "integrate", "internal", "investigate", "job", "label", "mechanism", "obvious", "occupy", "option", "output", "overall", "parallel", "parameter", "phase", "predict", "principal", "prior", "professional", "project", "promote", "regime", "resolve", "retain", "series", "statistic", "status", "stress", "subsequent", "sum", "summary", "undertake"]
+    },
+    {
+      "sublist": 5,
+      "frequency_note": "60 word families",
+      "words": ["academy", "adjust", "alter", "amend", "aware", "capacity", "challenge", "clause", "compound", "conflict", "consult", "contact", "decline", "discrete", "draft", "enable", "energy", "enforce", "entity", "equivalent", "evolve", "expand", "expose", "external", "facilitate", "fundamental", "generate", "generation", "image", "liberal", "licence", "logic", "margin", "medical", "mental", "modify", "monitor", "network", "notion", "objective", "orient", "perspective", "precise", "prime", "psychology", "pursue", "ratio", "reject", "revenue", "stable", "style", "substitute", "sustain", "symbol", "target", "transit", "trend", "version", "welfare", "whereas"]
+    },
+    {
+      "sublist": 6,
+      "frequency_note": "60 word families",
+      "words": ["abstract", "accurate", "acknowledge", "aggregate", "allocate", "assign", "attach", "author", "bond", "brief", "capable", "cite", "cooperate", "discriminate", "display", "diverse", "domain", "edit", "enhance", "estate", "exceed", "expert", "explicit", "federal", "fee", "flexible", "furthermore", "gender", "ignorant", "incentive", "incidence", "incorporate", "index", "inhibit", "initiate", "input", "instruct", "intelligent", "interval", "lecture", "migrate", "minimum", "ministry", "motive", "neutral", "nevertheless", "overseas", "precede", "presume", "rational", "recover", "reveal", "scope", "subsidiary", "tape", "trace", "transform", "transport", "underlie", "utilise"]
+    },
+    {
+      "sublist": 7,
+      "frequency_note": "60 word families",
+      "words": ["adapt", "adult", "advocate", "aid", "channel", "chemical", "classic", "comprehensive", "comprise", "confirm", "contrary", "convert", "couple", "decade", "definite", "deny", "differentiate", "dispose", "dynamic", "eliminate", "empirical", "equip", "extract", "file", "finite", "foundation", "globe", "grade", "guarantee", "hierarchy", "identical", "ideology", "infer", "innovate", "insert", "intervene", "isolate", "media", "mode", "paradigm", "phenomenon", "priority", "prohibit", "publication", "quote", "release", "reverse", "simulate", "sole", "somewhat", "submit", "successor", "supplement", "survive", "thesis", "topic", "transmit", "ultimate", "unique", "visible"]
+    },
+    {
+      "sublist": 8,
+      "frequency_note": "60 word families",
+      "words": ["abandon", "accompany", "accumulate", "ambiguous", "append", "appreciate", "arbitrary", "automate", "bias", "chart", "clarify", "commodity", "complement", "conform", "contemporary", "contradict", "crucial", "currency", "denote", "detect", "deviate", "displace", "drama", "eventual", "exhibit", "exploit", "fluctuate", "guideline", "highlight", "implicit", "induce", "inevitable", "infrastructure", "inspect", "intense", "manipulate", "minimise", "nuclear", "offset", "paragraph", "plus", "practitioner", "predominant", "prospect", "radical", "random", "reinforce", "restore", "revise", "schedule", "tense", "terminate", "theme", "thereby", "uniform", "vehicle", "via", "virtual", "visual", "widespread"]
+    },
+    {
+      "sublist": 9,
+      "frequency_note": "60 word families",
+      "words": ["accommodate", "analogy", "anticipate", "assure", "attain", "behalf", "bulk", "cease", "coherent", "coincide", "commence", "compatible", "concurrent", "confine", "controversy", "converse", "device", "devote", "diminish", "distort", "duration", "erode", "ethic", "format", "found", "inherent", "insight", "integral", "intermediate", "manual", "mature", "mediate", "medium", "military", "minimal", "mutual", "norm", "overlap", "passive", "portion", "preliminary", "protocol", "qualitative", "refine", "relax", "restrain", "revolution", "rigid", "route", "scenario", "sphere", "subordinate", "supplement", "suspend", "team", "temporary", "trigger", "unify", "violate", "vision"]
+    },
+    {
+      "sublist": 10,
+      "frequency_note": "30 word families (least frequent in academic text)",
+      "words": ["adjacent", "albeit", "assemble", "collapse", "colleague", "compile", "conceive", "convince", "depress", "encounter", "enormous", "forthcoming", "incline", "integrity", "intrinsic", "invoke", "levy", "likewise", "nonetheless", "notwithstanding", "odd", "ongoing", "panel", "persist", "pose", "reluctance", "so-called", "straightforward", "undergo", "whereby"]
+    }
+  ]
+}

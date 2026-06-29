@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tos.local/context/context.schema.json",
+  "title": "TOS teaching-context contract",
+  "description": "The operating context an artifact is generated for. Resolved first (operating-reference pattern), threaded into every artifact's metadata, and carried across skill handoffs. Canonical prose: shared/context/context-model.md.",
+  "type": "object",
+  "required": ["context_id", "state", "school_type", "authority_precedence", "human_review_required"],
+  "properties": {
+    "context_id": {"type": "string"},
+    "state": {"type": "string", "default": "FL"},
+    "county": {"type": ["string", "null"]},
+    "framework": {"type": ["string", "null"],
+                   "description": "Independent framework when school_defined (e.g., IB, AP, Cambridge, Montessori, classical, ACSI)."},
+    "district": {
+      "type": ["object", "null"],
+      "properties": {
+        "fldoe_district_number": {"type": ["integer", "null"]},
+        "name": {"type": ["string", "null"]}
+      }
+    },
+    "school": {
+      "type": ["object", "null"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "type": {"type": ["string", "null"]}
+      }
+    },
+    "school_type": {
+      "enum": ["traditional_public", "magnet_public", "charter_public",
+                "district_virtual_instruction", "flvs_statewide", "home_education",
+                "private_scholarship"]
+    },
+    "program": {
+      "type": "array",
+      "items": {"enum": ["general", "ese", "ell", "gifted", "cte", "ap", "ib", "aice",
+                          "dual_enrollment", "title_i", "acceleration", "intervention_mtss"]}
+    },
+    "subject": {"type": ["string", "null"]},
+    "grade": {"type": ["string", "null"], "enum": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", null],
+               "description": "Individual grade level. Always carried (8th-grade standards/testing differ from 6th/7th); the band is derived from it."},
+    "grade_band": {"type": ["string", "null"], "enum": ["K-2", "3-5", "6-8", "9-12", null]},
+    "course": {"type": ["string", "null"],
+                "description": "Specific course number (CPALMS / FLDOE Course Code Directory), e.g. 1205070."},
+    "course_level": {"type": ["string", "null"],
+                      "enum": ["remedial", "standard", "advanced", "gifted", "honors", "ap", "ib",
+                                "aice", "dual_enrollment", null],
+                      "description": "Course level when applicable."},
+    "instructional_model": {
+      "enum": ["traditional", "blended", "hybrid", "virtual_synchronous",
+                "virtual_asynchronous", "self_paced", null]
+    },
+    "calendar": {"enum": ["semester", "quarter", "trimester", "year_round", "block", null]},
+    "standards_applicability": {
+      "enum": ["best_ngsss_apply", "parent_selected", "school_defined", "unknown"]
+    },
+    "mandates": {
+      "type": "array",
+      "description": "Administrative mandates in force (district/school/state).",
+      "items": {
+        "type": "object",
+        "required": ["text", "scope"],
+        "properties": {
+          "text": {"type": "string"},
+          "scope": {"enum": ["national", "state", "framework", "county", "district", "school", "program", "grade", "grade_band", "subject", "department", "course", "course_level", "classroom"]},
+          "source": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "sop_refs": {
+      "type": "array",
+      "description": "Uploaded SOP files that shape behavior in this context.",
+      "items": {
+        "type": "object",
+        "required": ["id", "scope", "path"],
+        "properties": {
+          "id": {"type": "string"},
+          "scope": {"enum": ["national", "state", "framework", "county", "district", "school", "program", "grade", "grade_band", "subject", "department", "course", "course_level", "classroom"]},
+          "path": {"type": "string"},
+          "label": {"type": ["string", "null"]},
+          "effective": {"type": ["string", "null"]},
+          "source": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "authority_precedence": {
+      "type": "array",
+      "description": "Ordered scopes, highest authority first, for resolving conflicts.",
+      "items": {"enum": ["national", "state", "framework", "county", "district", "school", "program", "grade", "grade_band", "subject", "department", "course", "course_level", "classroom"]}
+    },
+    "overrides": {
+      "type": "array",
+      "description": "Override log (control-plane resets): explicit instructions to prefer/avoid a rule or source.",
+      "items": {
+        "type": "object",
+        "required": ["instruction"],
+        "properties": {
+          "instruction": {"type": "string"},
+          "by": {"type": ["string", "null"]},
+          "timestamp": {"type": ["string", "null"]},
+          "effect": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "resolved_by": {"type": ["string", "null"]},
+    "confidence": {"enum": ["high", "medium", "low"]},
+    "human_review_required": {"const": true},
+    "assumptions": {"type": "array", "items": {"type": "string"}},
+    "school_type_exceptions": {"type": "array", "items": {"type": "string"}},
+    "sop_override_targets": {"type": "array", "items": {"type": "string"}},
+    "frameworks": {"type": "array", "items": {"type": "string"},
+                    "description": "Independent frameworks contributed by overlays (IB/AP/Cambridge/...)."},
+    "notes": {"type": "array", "items": {"type": "string"}},
+    "overlays_applied": {
+      "type": "array",
+      "description": "Overlays merged into this context, in precedence order.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": ["string", "null"]},
+          "scope": {"type": ["string", "null"]},
+          "precedence": {"type": ["integer", "null"]}
+        }
+      }
+    }
+  }
+}

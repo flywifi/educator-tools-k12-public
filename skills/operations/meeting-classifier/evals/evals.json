@@ -1,0 +1,106 @@
+{
+  "skill_name": "meeting-classifier",
+  "_note": "Each case feeds scripts/classify_meeting.py (offline). assertions describe the expected classification record fields. Real student data is never used — student_ref points at placeholder profiles in shared/students/students.example.json.",
+  "evals": [
+    {
+      "name": "iep_annual_required_and_escalates",
+      "input": {"title": "IEP Annual Review", "from_title": "ESE Case Manager",
+                "attendees": ["LEA rep", "case manager"], "user_request": "help me prepare",
+                "student_ref": "S-000456"},
+      "assert": {"meeting_type": "iep_meeting", "recommended_next_skill": "special-education-support",
+                 "escalate_to_human": true, "required_cadence.required": true,
+                 "required_cadence.authority": "IDEA", "required_cadence.verify_on_source": true}
+    },
+    {
+      "name": "section_504_required",
+      "input": {"title": "504 plan meeting", "from_title": "504 Coordinator", "user_request": "agenda for this"},
+      "assert": {"meeting_type": "section_504_meeting", "recommended_next_skill": "special-education-support",
+                 "required_cadence.authority": "Section 504", "escalate_to_human": true}
+    },
+    {
+      "name": "observation_vs_interim_minority_report",
+      "input": {"title": "Observation on Tuesday", "body": "I'll stop by your room", "user_request": "what to expect"},
+      "assert": {"meeting_type": "annual_review_observation", "confidence": "low",
+                 "minority_report.alternates": ["interim_observation"]}
+    },
+    {
+      "name": "formal_observation_corroborated_no_minority",
+      "input": {"title": "Formal observation / evaluation", "from_title": "Principal",
+                "body": "summative evaluation using the Marzano rubric", "user_request": "help me prepare"},
+      "assert": {"meeting_type": "annual_review_observation", "confidence": "high",
+                 "minority_report": null, "recommended_next_skill": "professional-learning"}
+    },
+    {
+      "name": "observation_evaluator_persona_routes_to_admin",
+      "input": {"title": "Formal observation", "persona": "administrator", "body": "Marzano evaluation"},
+      "assert": {"meeting_type": "annual_review_observation", "recommended_next_skill": "school-administration"}
+    },
+    {
+      "name": "parent_conference_routes_family_communication",
+      "input": {"title": "Parent-teacher conference", "from_title": "parent", "user_request": "talking points"},
+      "assert": {"meeting_type": "parent_teacher_conference", "recommended_next_skill": "family-communication"}
+    },
+    {
+      "name": "medical_parent_contact_surfaces_action_plan_and_escalates",
+      "input": {"user_request": "I need to call home, the student had an allergic reaction",
+                "from_title": "School Nurse", "student_ref": "S-000123"},
+      "assert": {"escalate_to_human": true, "medical_action_plan.safety_critical": true,
+                 "recommended_next_skill": "family-communication"}
+    },
+    {
+      "name": "mtss_routes_intervention",
+      "input": {"title": "MTSS problem-solving / Tier 2", "user_request": "prep an intervention plan"},
+      "assert": {"meeting_type": "mtss_meeting", "recommended_next_skill": "intervention-mtss"}
+    },
+    {
+      "name": "department_meeting_routes_professional_learning",
+      "input": {"title": "Math department meeting", "user_request": "agenda"},
+      "assert": {"meeting_type": "department_meeting", "recommended_next_skill": "professional-learning"}
+    },
+    {
+      "name": "schedule_triage_intent",
+      "input": {"user_request": "what are today's meetings and how should I prioritize"},
+      "assert": {"request_intent": "schedule_or_triage"}
+    },
+    {
+      "name": "safety_training_manual_review",
+      "input": {"title": "Active-threat safety training", "user_request": "what is this"},
+      "assert": {"meeting_type": "safety_training", "recommended_next_skill": "manual_review"}
+    },
+    {
+      "name": "weak_evidence_unknown",
+      "input": {"title": "quick meeting", "user_request": "help with this meeting"},
+      "assert": {"meeting_type": "unknown", "recommended_next_skill": "manual_review"}
+    },
+    {
+      "name": "connector_degradation_lowers_confidence",
+      "input": {"title": "Observation", "body": "stop by"},
+      "flags": {"connectors": {"google_workspace": "permission_blocked"}},
+      "assert": {"degraded": true}
+    },
+    {
+      "name": "id_only_mode_uses_student_id_not_name",
+      "input": {"title": "IEP meeting", "from_title": "case manager", "student_ref": "S-000123"},
+      "flags": {"student_identification": {"mode": "id"}},
+      "assert": {"subject_student": "student S-000123"}
+    },
+    {
+      "name": "ics_upload_classifies_parent_conference",
+      "_note": "A dropped .ics invite is read via shared/docintel (no retyping) and folded into the clues.",
+      "input": {"files": ["skills/meeting-classifier/examples/sample-invite.ics"], "user_request": "talking points"},
+      "assert": {"meeting_type": "parent_teacher_conference", "recommended_next_skill": "family-communication"}
+    },
+    {
+      "name": "eml_upload_classifies_observation",
+      "_note": "A saved .eml from the principal is read via shared/docintel and drives the classification.",
+      "input": {"files": ["skills/meeting-classifier/examples/sample-observation.eml"], "user_request": "help me prepare"},
+      "assert": {"meeting_type": "annual_review_observation", "recommended_next_skill": "professional-learning"}
+    },
+    {
+      "name": "vtt_transcript_classifies_iep",
+      "_note": "A dropped .vtt video-call transcript is read via shared/docintel (captions -> text) and classified.",
+      "input": {"files": ["skills/meeting-classifier/examples/sample-meeting.vtt"], "user_request": "summarize this meeting"},
+      "assert": {"meeting_type": "iep_meeting", "recommended_next_skill": "special-education-support", "escalate_to_human": true}
+    }
+  ]
+}

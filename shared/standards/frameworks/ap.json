@@ -1,0 +1,26 @@
+{
+  "framework": "AP",
+  "label": "Advanced Placement (College Board)",
+  "type": "college_board",
+  "applicability": "school_defined",
+  "programmes_or_levels": [
+    "AP courses (HS); ~38 courses"
+  ],
+  "subjects": [
+    "Math & CS",
+    "Sciences",
+    "English",
+    "History & Social Sciences",
+    "World Languages",
+    "Arts"
+  ],
+  "code_pattern": "Course > CED Unit > Topic; + course Skills/Practices (e.g., science practices, math practices)",
+  "source": [
+    "https://apcentral.collegeboard.org/courses"
+  ],
+  "version": null,
+  "codes_verified": false,
+  "status": "stub",
+  "note": "Structure only; enumerate standards from the cited source as a later data task. codes_verified=false. Never fabricate codes/statements - verify on source. Updated offline via standards-updater.",
+  "standards": []
+}

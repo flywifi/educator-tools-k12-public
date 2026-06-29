@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tos.local/students/student-profile.schema.json",
+  "title": "TOS student profile (roster) — PII/ePHI",
+  "description": "A student profile keyed by the school student_id, with guardians (to contact home) and health_plans (ePHI — e.g. an anaphylaxis action plan stating when/where to administer epinephrine). REPO RULE: any tracked/committed file using this schema MUST use placeholders only; real data lives only in the gitignored local store or a live SIS. Policy + precedence/conflict rules: student-data-policy.md.",
+  "type": "object",
+  "required": ["students"],
+  "properties": {
+    "_comment": {"type": "string"},
+    "version": {"type": "string"},
+    "updated": {"type": "string"},
+    "is_placeholder": {"type": "boolean", "description": "true for the committed example; real stores set false"},
+    "students": {"type": "array", "items": {"$ref": "#/$defs/profile"}}
+  },
+  "$defs": {
+    "profile": {
+      "type": "object",
+      "required": ["student_id"],
+      "properties": {
+        "student_id": {"type": "string", "description": "unique school identifier (the join key)"},
+        "first_name": {"type": "string"},
+        "last_name": {"type": "string"},
+        "preferred_name": {"type": "string"},
+        "grade": {"type": "string"},
+        "guardians": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {"type": "string"},
+              "relationship": {"type": "string"},
+              "phone": {"type": "string"},
+              "email": {"type": "string"},
+              "is_emergency_contact": {"type": "boolean"},
+              "primary": {"type": "boolean"},
+              "contact_preferences": {"type": "string"}
+            }
+          }
+        },
+        "plan_flags": {
+          "type": "object",
+          "properties": {
+            "iep": {"type": "boolean"},
+            "section_504": {"type": "boolean"},
+            "ell": {"type": "boolean"},
+            "gifted": {"type": "boolean"},
+            "medical_action_plan": {"type": "boolean"},
+            "behavior_plan": {"type": "boolean"}
+          }
+        },
+        "health_plans": {
+          "type": "array",
+          "description": "ePHI — safety-critical. Surface verbatim from the SOURCE on file (any trusted source — district/school health form, nurse note, guardian note, sick note, or signed action plan; a physician signature is OPTIONAL, not required), attributed with its source + authority + date; never fabricate; defer to the nurse / 911 in an emergency.",
+          "items": {
+            "type": "object",
+            "required": ["condition"],
+            "properties": {
+              "condition": {"type": "string"},
+              "severity": {"type": "string"},
+              "instructions": {"type": "string", "description": "what to do — verbatim from the source"},
+              "when_where_to_administer": {"type": "string"},
+              "medications": {"type": "array", "items": {"type": "string"}},
+              "emergency_protocol": {"type": "string"},
+              "action_plan_ref": {"type": "string"},
+              "source_type": {"enum": ["physician_action_plan", "district_health_form", "school_health_form", "nurse_note", "guardian_note", "sick_note", "iep_504_health", "reported"],
+                "description": "where the guidance comes from; no source is privileged by signature alone"},
+              "source_authority": {"enum": ["high", "medium", "low"],
+                "description": "official form / action plan = high; nurse or guardian note = medium; verbal / unverified = low"},
+              "provided_by": {"type": "string", "description": "who provided it (e.g. school nurse, guardian, physician)"},
+              "signed": {"type": "boolean", "description": "OPTIONAL — a signature is not required to trust the source"},
+              "effective_dates": {"type": "string"},
+              "last_verified": {"type": "string"},
+              "source": {"type": "string", "description": "where it is on file"}
+            }
+          }
+        },
+        "provenance": {"type": "string", "description": "where this record came from (sis | local | teacher-entered)"},
+        "last_verified": {"type": "string"},
+        "access": {
+          "type": "object",
+          "properties": {
+            "minimum_necessary": {"type": "boolean"},
+            "note": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}

@@ -33,10 +33,15 @@ state_adapter:
   independent of CCSS. `relationship: independent`.
 - **Virginia (SOL):** `framework: VA-Math`, codes like `3.2` (grade.standard); `relationship:
   independent`.
-- **Florida (B.E.S.T.):** `framework: FL-ELA`, codes like `ELA.3.R.1.1`; `relationship: independent`.
+- **Florida (B.E.S.T. + NGSSS):** ✅ **fully populated** — see `florida-best.md` (verified
+  Math/ELA/Science/SS/CS/ELD coding schemes, Access Points, and the `resources/` catalog of
+  standards + assessment materials). Codes like `MA.K.NSO.1.1`, `ELA.K.F.1.1`, `SC.K.L.14.1`;
+  `relationship: independent`. **Use it as the template for the next state.**
 
 ## 4. Selection rule
 
+Look the state up in `state-standards-map.md` / `states.json` to see which framework it follows
+(CCSS-aligned, NGSS/NGSS-based, or an independent named set).
 When the user names a state, prefer that state's set over the national default; record the state
 framework + version in metadata. If the state set isn't loaded yet, fall back to the closest
 national framework, **log the substitution as an assumption** (assumptions-protocol.md), and tell

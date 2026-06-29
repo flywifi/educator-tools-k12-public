@@ -1,0 +1,66 @@
+{
+  "_comment": "Source-currency registry (domain: ocps-schools). Watches the authoritative sources behind the OCPS school + program index (shared/schools/ocps/) so open/close + magnet/choice program changes are caught between refreshes. tools/source_currency.py classifies each source's freshness; standards/program changes stay ADVISORY + human-verified. FLDOE MSID is canonical for the school list/status; OCPS School Choice for programs.",
+  "domain": "ocps-schools",
+  "version": "0.1.0",
+  "updated": "2026-06-26",
+  "authority_note": "FLDOE MSID is authoritative for the FL school list + open/closed status; OCPS School Choice is authoritative for magnet/choice programs. Confirm any open/close or program change on these PRIMARY sources before updating the index.",
+  "freshness_policy": {
+    "stale_age_days": 180,
+    "new_window_days": 90,
+    "forward_looking_window_days": 365,
+    "supersession_keywords": [
+      "closed",
+      "consolidated",
+      "program eliminated",
+      "no longer accepting",
+      "phased out",
+      "relocated",
+      "renamed",
+      "this school is closed"
+    ]
+  },
+  "sources": [
+    {
+      "id": "fldoe-msid",
+      "url": "https://www.fldoe.org/accountability/data-sys/school-fin-data/master-school-id-files.stml",
+      "label": "FLDOE Master School ID (MSID) files",
+      "category": "directory",
+      "authority": "primary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": "2026-06-28",
+        "last_status": null,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": null
+      },
+      "probe_status": "needs_browser_save",
+      "probe_note": "[2026-06-28] direct fetch fails (bot-blocked, no archive); MSID DATA is obtained via the eds.fldoe.org EDS app browser-save — see canonical-sources/schools/HARVESTING.md",
+      "verified": false
+    },
+    {
+      "id": "ocps-school-choice",
+      "url": "https://www.ocps.net/departments/school_choice",
+      "label": "OCPS School Choice (magnet/choice programs)",
+      "category": "program",
+      "authority": "primary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "298abd251d45140e9ad7f33c2061205894c222ed6251b3489b28bbdb49406606",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
+      },
+      "probe_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "verified": false
+    }
+  ]
+}

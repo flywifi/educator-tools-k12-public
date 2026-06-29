@@ -1,0 +1,26 @@
+{
+  "skill_name": "skill-health",
+  "_note": "Declarative regression cases for the health engine (shared/health/health.py). Each maps to a MAINTAINER regression case; no real data — the engine reads repo structure + the placeholder ledger.",
+  "evals": [
+    {
+      "name": "clean_repo_scans_strong",
+      "command": "python3 shared/health/health.py --scan",
+      "assert": {"readiness_band": "strong", "blocking_issues": 0, "human_review_required": true}
+    },
+    {
+      "name": "impact_flags_missing_references",
+      "command": "python3 shared/health/health.py --impact skill-health",
+      "assert": {"update_needed_in_includes": "shared/ontology/artifact-types.json"}
+    },
+    {
+      "name": "diagnose_rolls_up_failure_classes",
+      "command": "python3 shared/health/health.py --diagnose --traces <saved-traces>",
+      "assert": {"runtime_traces.failure_classes": ["PERMISSION", "DEGRADED_SUCCESS"], "minority_reports": ">=1"}
+    },
+    {
+      "name": "dangling_route_is_blocking",
+      "_note": "A routing.json target that is not an installed skill must appear in blocking_issues.",
+      "assert": {"blocking_issues_includes": "routing target"}
+    }
+  ]
+}

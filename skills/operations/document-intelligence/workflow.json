@@ -1,0 +1,17 @@
+{
+  "_comment": "Declarative workflow definition for document-intelligence. Runs the parser-independent docintel pipeline (ingest → recover/OCR → structure → govern → knowledge → artifact) and emits governed knowledge assets with provenance.",
+  "id": "document-intelligence",
+  "description": "Document pipeline: ingest → recover/OCR → structure → govern → reading-level check → quality gate",
+  "steps": [
+    {"step": 1, "atom": "document-parse", "input_from": "teacher-supplied file (PDF/DOCX/HTML/scan)", "output_to": "step2",
+     "note": "Parse raw file into UDOM — select parser by capability (stdlib .txt/.html default; PyMuPDF for PDF; Docling/Surya as plugins)"},
+    {"step": 2, "atom": "govern-artifact",  "input_from": "step1.udom",              "output_to": "step3",
+     "note": "Attach provenance/lineage/confidence/evidence per governance-contract.md"},
+    {"step": 3, "atom": "reading-level",    "input_from": "step1.body_text",         "output_to": "step4",
+     "note": "Estimate reading level of extracted body text for consumer artifact metadata"},
+    {"step": 4, "atom": "quality-check",    "input_from": "governed_artifact",       "output_to": "final",
+     "gates": ["provenance_present", "confidence_scored", "no_fabrication", "no_real_student_data"]}
+  ],
+  "shortcut_atoms": ["reading-level", "document-parse", "govern-artifact"],
+  "note": "document-intelligence reads/structures documents you already have. It does NOT fetch from the web or Google Drive — discovery/crawling is standards-updater. Never fabricate: unrecovered regions → low confidence + capability-gap note."
+}

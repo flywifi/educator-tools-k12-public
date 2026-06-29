@@ -1,0 +1,73 @@
+{
+  "_comment": "PLACEHOLDER example roster — committed for documentation/tests ONLY. All data is fake (note the obviously-fake student_ids/names/phones). NEVER put real student data in this or any tracked file; the real store is gitignored (students.local.json) or a live SIS. Schema: student-profile.schema.json. Policy: student-data-policy.md.",
+  "version": "0.1.0",
+  "updated": "2026-06-23",
+  "is_placeholder": true,
+  "students": [
+    {
+      "student_id": "S-000123",
+      "first_name": "Jordan",
+      "last_name": "Sample",
+      "preferred_name": "Jordan",
+      "grade": "4",
+      "guardians": [
+        {"name": "Alex Sample", "relationship": "parent", "phone": "555-0100", "email": "guardian1@example.com",
+          "is_emergency_contact": true, "primary": true, "contact_preferences": "call or text after 3pm"},
+        {"name": "Casey Sample", "relationship": "parent", "phone": "555-0101", "email": "guardian2@example.com",
+          "is_emergency_contact": true, "primary": false, "contact_preferences": "email"}
+      ],
+      "plan_flags": {"iep": false, "section_504": true, "ell": false, "gifted": false, "medical_action_plan": true, "behavior_plan": false},
+      "health_plans": [
+        {
+          "condition": "Severe food allergy (peanut) — anaphylaxis risk",
+          "severity": "life-threatening",
+          "instructions": "EXAMPLE/PLACEHOLDER — the ACTUAL steps come verbatim from the form on file; do not rely on this example.",
+          "when_where_to_administer": "EXAMPLE/PLACEHOLDER — verbatim from the source on file.",
+          "medications": ["epinephrine auto-injector (EpiPen)", "antihistamine per plan"],
+          "emergency_protocol": "On signs of anaphylaxis, administer the auto-injector and call 911; notify the school nurse and guardians.",
+          "action_plan_ref": "PLACEHOLDER-AAP-2026",
+          "source_type": "district_health_form",
+          "source_authority": "high",
+          "provided_by": "school nurse",
+          "signed": true,
+          "effective_dates": "2025-08 to 2026-07 (example)",
+          "last_verified": "2026-06-23",
+          "source": "District Allergy & Anaphylaxis Action Plan on file with the school nurse"
+        },
+        {
+          "condition": "Exercise-induced asthma",
+          "severity": "moderate",
+          "instructions": "EXAMPLE/PLACEHOLDER — per the note: allow a rescue inhaler before PE/recess as needed.",
+          "when_where_to_administer": "EXAMPLE/PLACEHOLDER — verbatim from the note on file.",
+          "medications": ["albuterol rescue inhaler"],
+          "emergency_protocol": "If breathing does not improve after inhaler use, call the nurse / 911.",
+          "source_type": "guardian_note",
+          "source_authority": "medium",
+          "provided_by": "guardian",
+          "signed": false,
+          "effective_dates": "2026 school year (example)",
+          "last_verified": "2026-06-23",
+          "source": "guardian note on file (no physician signature — trusted as a medium-authority source)"
+        }
+      ],
+      "provenance": "placeholder-example",
+      "last_verified": "2026-06-23",
+      "access": {"minimum_necessary": true, "note": "Surfaced to staff with legitimate educational interest; medical specifics are quoted from the source on file (attributed) and defer to the nurse / 911."}
+    },
+    {
+      "student_id": "S-000456",
+      "first_name": "Taylor",
+      "last_name": "Example",
+      "grade": "4",
+      "guardians": [
+        {"name": "Morgan Example", "relationship": "guardian", "phone": "555-0102", "email": "guardian3@example.com",
+          "is_emergency_contact": true, "primary": true, "contact_preferences": "call"}
+      ],
+      "plan_flags": {"iep": true, "section_504": false, "ell": true, "gifted": false, "medical_action_plan": false, "behavior_plan": false},
+      "health_plans": [],
+      "provenance": "placeholder-example",
+      "last_verified": "2026-06-23",
+      "access": {"minimum_necessary": true, "note": "IEP specifics validate against the student's actual plan; placeholders only here."}
+    }
+  ]
+}
