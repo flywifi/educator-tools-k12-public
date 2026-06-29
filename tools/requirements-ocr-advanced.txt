@@ -1,0 +1,23 @@
+# Advanced OCR and document-layout parsing (local_optional; default OFF — large model downloads).
+# Teacher opts in after a storage check; see tools/dependencies.json capability "ocr_advanced".
+#
+# STATUS: DEFERRED — not yet wired into shipping code (0 import sites across shared/ tools/ skills/).
+# Every package in this stack pulls vulnerable transitive deps that cannot currently be pinned to a
+# fixed version without a resolution conflict with the stack's own constraints:
+#   - pillow 10.4.0      (PYSEC-2026-165, CVE-2026-25990, CVE-2026-40192, CVE-2026-42310, CVE-2026-42311)
+#   - transformers 4.57.6 (CVE-2026-1839; fixed only in a 5.0.0 pre-release)
+# They are therefore commented out until the advanced-OCR capability is actually built, at which point
+# each is re-added with a then-current, audited pin. Until then, the builtin `ocr` capability
+# (tesseract) remains the supported path. Nothing here is installed in the default posture.
+#
+# Install (only once un-deferred): pip install -r tools/requirements-ocr-advanced.txt
+#
+#   easyocr>=1.7          # deep-learning OCR; ~300 MB models; CPU-capable; 80+ languages
+#   surya-ocr>=0.5        # SOTA PDF OCR + layout + table + math recognition (Apache-2.0; ~500 MB)
+#   layoutparser>=0.3.4   # document layout analysis with pre-trained detection models
+#   unstructured>=0.14    # full-pipeline document parsing (PDF/HTML/DOCX/images) with table detection
+#   img2table>=1.2        # table extraction from images and PDFs; output to DataFrame / HTML / JSON
+#   camelot-py[cv]>=0.11  # lattice + stream PDF table extraction; best for grid tables (needs cv2)
+#   doctr>=0.9            # document text recognition from mindee (TF/PyTorch backend; CPU-capable)
+#
+# System deps (only once un-deferred): libgl1 / libglib2.0-0 (opencv), poppler-utils (pdftoppm).

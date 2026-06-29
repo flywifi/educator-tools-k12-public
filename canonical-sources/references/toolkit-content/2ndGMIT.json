@@ -1,0 +1,645 @@
+{
+  "id": "2ndGMIT",
+  "source_file": "fc4160ed-2ndGMIT.pdf",
+  "pages": 23,
+  "standards_covered": [
+    "MAFS.2.G.1",
+    "MAFS.2.G.1.1",
+    "MAFS.2.G.1.2",
+    "MAFS.2.G.1.3",
+    "MAFS.2.MD.1",
+    "MAFS.2.MD.1.1",
+    "MAFS.2.MD.1.2",
+    "MAFS.2.MD.1.3",
+    "MAFS.2.MD.1.4",
+    "MAFS.2.MD.2",
+    "MAFS.2.MD.2.5",
+    "MAFS.2.MD.2.6",
+    "MAFS.2.MD.3",
+    "MAFS.2.MD.3.7",
+    "MAFS.2.MD.3.8",
+    "MAFS.2.MD.4",
+    "MAFS.2.MD.4.10",
+    "MAFS.2.MD.4.9",
+    "MAFS.2.NBT.1",
+    "MAFS.2.NBT.1.1",
+    "MAFS.2.NBT.1.2",
+    "MAFS.2.NBT.1.3",
+    "MAFS.2.NBT.1.4",
+    "MAFS.2.NBT.2",
+    "MAFS.2.NBT.2.5",
+    "MAFS.2.NBT.2.6",
+    "MAFS.2.NBT.2.7",
+    "MAFS.2.NBT.2.8",
+    "MAFS.2.NBT.2.9",
+    "MAFS.2.OA.1",
+    "MAFS.2.OA.1.1",
+    "MAFS.2.OA.1.a",
+    "MAFS.2.OA.2",
+    "MAFS.2.OA.2.2",
+    "MAFS.2.OA.3",
+    "MAFS.2.OA.3.3",
+    "MAFS.2.OA.3.4"
+  ],
+  "all_links": [
+    "http://floridastudents.org/#37|5|13034|0",
+    "http://flstudentsachieve.s3.amazonaws.com/CMS/2119/fsa_parent_guide_grade_2_mathematics.pdf",
+    "http://www.cpalms.org/",
+    "http://www.cpalms.org/Public/PreviewCourse/Preview/10321",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1434",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1435",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1436",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1437",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1438",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1439",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1440",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1441",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1442",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1443",
+    "http://www.cpalms.org/Public/PreviewIdea/Preview/1834",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/116347",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/116354",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/121295",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/123627",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/123639",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/123641",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/123642",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39660",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39663",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39821",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39869",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39884",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39946",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39954",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40269",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40270",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40271",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40276",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40339",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40340",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40807",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40809",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40997",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41003",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41006",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41076",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41079",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41083",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41085",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41086",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42329",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42541",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42546",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42689",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42691",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42807",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/43590",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/43593",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/44071",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/44072",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/45930",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/45934",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46015",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46017",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46246",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46247",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46254",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46256",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46259",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46262",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46269",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46271",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46273",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46278",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46459",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46461",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46468",
+    "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46470",
+    "http://www.cpalms.org/Public/PreviewResourceExternal/Preview/31677",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/28645",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/28758",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/30139",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/30445",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/30501",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/30503",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/30504",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/31064",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/31169",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/31344",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/31389",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/32615",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/34814",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/35439",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/35468",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/35545",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/41107",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/41681",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/42297",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/42350",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/43069",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/45578",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/46500",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/46724",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/46787",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/48662",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/48856",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/48982",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49074",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49499",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49757",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49774",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49840",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49862",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/72819",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/72907",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/73076",
+    "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/73435",
+    "http://www.cpalms.org/Public/PreviewResourceStudentTutorial/Preview/119690",
+    "http://www.cpalms.org/Public/PreviewResourceStudentTutorial/Preview/127340",
+    "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43407",
+    "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43432",
+    "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43434",
+    "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43438",
+    "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43440",
+    "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43442",
+    "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43457",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/1096",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/1113",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/125659",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/125663",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/126438",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/14023",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/1463",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/20661",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/23184",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/65770",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/76409",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/76498",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/77048",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/78769",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/80297",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/81030",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/83546",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/85455",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/86782",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/87939",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/87969",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/88124",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/89238",
+    "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/89280",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5328",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5330",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5331",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5332",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5333",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5334",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5335",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5336",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5337",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5338",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5339",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5340",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5341",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5342",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5343",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5344",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5345",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5346",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5347",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5348",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5349",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5350",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5351",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5352",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5353",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/5354",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/6327",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/6328",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/6329",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/6331",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/6332",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/6333",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/6334",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/6335",
+    "http://www.cpalms.org/Public/PreviewStandard/Preview/8468",
+    "http://www.cpalms.org/Resource/mfas.aspx",
+    "http://www.cpalms.org/Standards/Standards_Coding_Schema.aspx",
+    "http://www.cpalms.org/standards/dok.aspx",
+    "http://www.cpalms.org/uploads/docs/standards/eld/MA.pdf",
+    "http://www.fldoe.org/academics/standards/subject-areas/literacy/",
+    "http://www.fldoe.org/academics/standards/subject-areas/math-science/mathematics/ele-math.stml",
+    "http://www.fldoe.org/academics/standards/subject-areas/math-science/mathematics/ele-standards.stml",
+    "https://www.khanacademy.org/math/cc-2nd-grade-math"
+  ],
+  "content": [
+    {
+      "page": 1,
+      "text": "1 | P a g e  \n \n2nd Grade Mathematics Instructional Toolkit \n \nThe 2nd Grade Mathematics Instructional Toolkit is intended to assist teachers with planning \nlessons aligned to the Florida Standards. This toolkit is not intended to replace your district’s \ncurriculum, but rather it serves to support the teaching and learning of the 2nd grade \nMathematics Florida Standards. This toolkit includes a breakdown of the standards, standards \naligned resources and information related to mathematics instruction. The resources presented in \nthis document may only cover portions of the aligned standard and represent only a small sample \nof those available on CPALMS. \n \nCPALMS: Official Source of Florida Standards \n \nThis section features information and tools that are found on CPALMS. These resources include \ncourse descriptions, formative assessment resources, mathematical practices, depth of \nknowledge ratings and FloridaStudents.org resources.  \n \n2nd Grade Mathematics Course Description \nCourse descriptions provide an overview for a course and designate which standards are in that \ncourse. The 2nd grade mathematics course description includes resources for all 41 standards \nwithin the 2nd grade mathematics course. \n \nMathematics Formative Assessment System (MFAS) \nOne resource available on CPALMS that has been designed specifically for mathematics instruction \nis the Mathematics Formative Assessment System (MFAS). The system includes a task or problem \nthat teachers can implement with their students. It also includes various levels of rubrics that help \nthe teacher interpret students’ responses. In addition to using the MFAS tasks as formative \nassessments, these tasks can be used to plan lessons that are closely aligned to the standards. \n \nMathematical Practices \nThe Mathematical Practices are habits of mind that describe varieties of expertise that mathematics \neducators at all levels should seek to develop in their students. The Mathematical Practices should \nbe infused during the 2nd grade mathematics course. More information about each Mathematical \nPractice can be found by clicking on the links below. \nMAFS.K12.MP.1.1 Make sense of problems and persevere in solving them. \nMAFS.K12.MP.2.1 Reason abstractly and quantitatively. \nMAFS.K12.MP.3.1 Construct viable arguments and critique the reasoning of others. \nMAFS.K12.MP.4.1 Model with mathematics. \nMAFS.K12.MP.5.1 Use appropriate tools strategically. \nMAFS.K12.MP.6.1 Attend to precision. \nMAFS.K12.MP.7.1 Look for and make use of structure. \nMAFS.K12.MP.8.1 Look for and express regularity in repeated reasoning. \n",
+      "links": [
+        "http://www.cpalms.org/",
+        "http://www.cpalms.org/Public/PreviewCourse/Preview/10321",
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1834",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/6327",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/6328",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/6329",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/6331",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/6332",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/6333",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/6334",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/6335",
+        "http://www.cpalms.org/Resource/mfas.aspx"
+      ],
+      "standards": []
+    },
+    {
+      "page": 2,
+      "text": "2 | P a g e  \n \nDepth of Knowledge \nFlorida has adopted Webb’s four-level Depth of Knowledge (DOK) model of content complexity as \na means of classifying the cognitive demand presented by the Florida Standards. Content \ncomplexity increases as the levels progress from Level 1 Recall to Level 4 Extended Thinking. The \nDOK Levels are identified for each standard throughout this document. Please visit the CPALMS \nContent Complexity page for more information about the DOK complexity for standards. \n \nFlorida Students \nResources specifically designed with students in mind are available on Florida Students. Florida \nStudents is an interactive site that provides educational resources aligned to the Florida Standards.  \n \n2nd Grade Mathematics Resources \n \nThis section features links to resources and tools for mathematics educators in Florida. There are \nresources for teachers, parents and students. \nTeacher, Student and Parent Resources \n \nStandards Coding Scheme \n \n2nd Grade Mathematics Parent Guide \n \n2nd Grade Mathematics Student Resources \n \nInstructional Resources \n \nElementary Mathematics Resources \n \nElementary Standards Progressions \n \nLiteracy for Learning in the Content Areas   \n \nEnglish Language Learners Assistance   \n \nKhan Academy 2nd Grade Math Mission \n \n \n \n \n \n \n \n \n \n",
+      "links": [
+        "http://floridastudents.org/#37|5|13034|0",
+        "http://flstudentsachieve.s3.amazonaws.com/CMS/2119/fsa_parent_guide_grade_2_mathematics.pdf",
+        "http://www.cpalms.org/Standards/Standards_Coding_Schema.aspx",
+        "http://www.cpalms.org/standards/dok.aspx",
+        "http://www.cpalms.org/uploads/docs/standards/eld/MA.pdf",
+        "http://www.fldoe.org/academics/standards/subject-areas/literacy/",
+        "http://www.fldoe.org/academics/standards/subject-areas/math-science/mathematics/ele-math.stml",
+        "http://www.fldoe.org/academics/standards/subject-areas/math-science/mathematics/ele-standards.stml",
+        "https://www.khanacademy.org/math/cc-2nd-grade-math"
+      ],
+      "standards": []
+    },
+    {
+      "page": 3,
+      "text": "3 | P a g e  \n \nOperations and Algebraic Thinking \nMAFS.2.OA.1 Represent and solve problems involving addition and subtraction. \nMAFS.2.OA.1.1 \nDOK Level 2: Basic Application of Skills & Concepts \nUse addition and subtraction within 100 to solve one- and two-step word problems \ninvolving situations of adding to, taking from, putting together, taking apart, and \ncomparing, with unknowns in all positions, e.g., by using drawings and equations with a \nsymbol for the unknown number to represent the problem.   \n \nResources: \nSolving a Multi-Step Word Problem with a Bar Model \nResource Type: Tutorial \nThis tutorial will assist learners with a further understanding of how to successfully read \nmulti-step word problems by creating a bar model representation of the information \npresented.  \nMath Doctor: Which Operation?  \nResource Type: Lesson Plan \nIn this lesson, students will learn interpretation strategies for addition and subtraction \nword problems, such as circling numbers, underlining key words, choosing operations, and \nshowing their work to solve word problems. \nAmazing Animal Athletes \nResource Type: Lesson Plan \nIn this lesson, students will be able to solve one and two step word problems using \naddition and subtraction to compare human and animal athletic abilities. This lesson \nfocuses on identifying the information given, comparing numbers, and identifying the \nmissing information needed to solve the word problem using either addition or \nsubtraction. \nAdd To and Take From \nResource Type: MFAS Formative Assessment \nStudents are asked to solve two word problems: add to (start unknown) and take from \n(start unknown). \nSolving a Two-Step Word Problem: Eating Grapes \nResource Type: MFAS Formative Assessment \nStudents are asked to solve a two-step word problem that combines a compare (bigger \nunknown) problem and a compare (smaller unknown) problem. \nSolving a Two-Step Word Problem: Marbles in a Bag \nResource Type: MFAS Formative Assessment \nStudents are asked to solve a two-step word problem that combines a put together (result \nunknown) problem and a take from (result unknown) problem. \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1434",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39821",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39869",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39884",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/31344",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/42350",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/78769",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5328"
+      ],
+      "standards": [
+        "MAFS.2.OA.1",
+        "MAFS.2.OA.1.1"
+      ]
+    },
+    {
+      "page": 4,
+      "text": "4 | P a g e  \n \nMAFS.2.OA.1.a \nDOK Level 2: Basic Application of Skills & Concepts \nDetermine the unknown whole number in an equation relating four or more whole \nnumbers. For example, determine the unknown number that makes the equation true in \nthe equations 37 + 10 + 10 = ______ + 18, ? – 6 = 13 – 4, and 15 – 9 = 6 +       .   \n \nResources:     \nSolving Subtraction Problems Using a Number Line  \nResource Type: Tutorial \nThis tutorial for student audiences will assist learners with a further understanding of \nmodeling whole number subtraction problems on a number line. The tutorial supports \nstudent learning with visuals of using a number line to subtract 2-digit numbers. \nCreating a Balanced Equation \nResource Type: Lesson Plan \nStudents will relate using a balance to the mathematical symbol, the equal sign. Students \nwill use their knowledge of the equal sign and addition and subtraction to find the \nunknown number in an equation with four or more numbers. \nThe Mystery of the Missing Number \nResource Type: Lesson Plan \nThis lesson uses a fun math mystery theme to help your students determine an unknown \nwhole number to balance an equation. \nRelating Four Whole Numbers \nResource Type: MFAS Formative Assessment \nStudents find the missing number in an equation relating four whole numbers that \ninvolves addition and subtraction. \nWhat Number Makes the Equation True? \nResource Type: MFAS Formative Assessment \nStudents find the missing number in an equation relating four whole numbers. \n \n \nMAFS.2.OA.2 Add and subtract within 20. \nMAFS.2.OA.2.2 \nDOK Level 1: Recall \nFluently add and subtract within 20 using mental strategies. By end of Grade 2, know \nfrom memory all sums of two one-digit numbers.   \n \nResources:     \nPiece of Coke Mental Math! \nResource Type: Lesson Plan \nIn this lesson, you will find activities that you can use to enable student learning and \napplication of mental math without using rote memorization. \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1435",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/116347",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/116354",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/48662",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/72907",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/73435",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/77048",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5330",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/8468"
+      ],
+      "standards": [
+        "MAFS.2.OA.1.a",
+        "MAFS.2.OA.2",
+        "MAFS.2.OA.2.2"
+      ]
+    },
+    {
+      "page": 5,
+      "text": "5 | P a g e  \n \nLet’s Learn Those Facts: Addend Pairs to 12 \nResource Type: Lesson Plan \nIn this lesson, students will practice addition facts for sums up to 12. Students will be put \nin pairs and given a game to play in which they have to roll 2 number cubes and cover up \nthe resulting sum on a game board numbered 2-12. They will study remaining \ncommutative addition facts and make flashcards to practice in pairs. \nNumber Facts Bingo \nResource Type: Educational Game \nThis Flash applet generates number fact questions for the game of Bingo. Each of the six \nlevels focuses on a different range of number facts (addition, subtraction, and \nmultiplication), which are displayed one at a time in a variety of question formats. The \napplet is intended for use in a class/group setting with a projector or interactive \nwhiteboard. Downloadable cards for each level are available from the menu page. At any \ntime in a game the \"number facts so far\" feature will reveal all the questions presented in \nthe current round to facilitate review or verification of a winning board. \nFluency for Addition Within 20 \nResource Type: MFAS Formative Assessment \nStudents are asked to solve six addition problems within 20 and to explain their strategies \nfor solving each problem. \nFluency for Subtraction Within 20 \nResource Type: MFAS Formative Assessment \nStudents are asked to solve six subtraction problems within 20 problems and to explain \ntheir strategies for solving each problem. \n \n \nMAFS.2.OA.3 Work with equal groups of objects to gain foundations for multiplication. \nMAFS.2.OA.3.3 \nDOK Level 2: Basic Application of Skills & Concepts \nDetermine whether a group of objects (up to 20) has an odd or even number of \nmembers, e.g., by pairing objects or counting them by 2s; write an equation to express an \neven number as a sum of two equal addends.   \n \nResources:     \nUsing the Digit in the Ones Place to Determine if a Number is Even or Odd \nResource Type: Tutorial \nThis tutorial for student audiences will assist learners with a further understanding of how \nto identify a number as even or odd by using number patterns in the ones place. The \ntutorial supports student learning with visual representations of larger two-digit numbers \nand highlighting the number in the ones place to determine if the two-digit number is odd \nor even. \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1436",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40339",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40340",
+        "http://www.cpalms.org/Public/PreviewResourceExternal/Preview/31677",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/23184",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/80297",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5331"
+      ],
+      "standards": [
+        "MAFS.2.OA.3",
+        "MAFS.2.OA.3.3"
+      ]
+    },
+    {
+      "page": 6,
+      "text": "6 | P a g e  \n \nEven and Odd Go on a Picnic \nResource Type: Lesson Plan \nIn this lesson, the class will be guided through solving even and odd questions involving a \npicnic scenario. Students will explore and discover various strategies for determining if \nnumbers are even or odd based on whether they can be divided into two equal teams for a \nkickball game or whether everyone will have a buddy to pair up with on the picnic. A follow \nup lesson will need to be completed to address the second section of the standard \ninvolving writing an equation to express an even number as a sum of two equal addends. \nOdds and Evens \nResource Type: Lesson Plan \nThis lesson helps students identify numbers as odd or even using a hands on method. It also \nleads them to understand that all even numbers can be written as a sum of equal addends. \nThis lesson can be spread over multiple mini sessions if needed. \nIs it Even or Odd? \nResource Type: MFAS Formative Assessment \nStudents are asked to determine if a given number is even or odd. \nEven Numbers as the Sum of Two Equal Addends \nResource Type: MFAS Formative Assessment \nStudents are asked to write even numbers within 20 as the sum of two equal addends. \n \nMAFS.2.OA.3.4 \nDOK Level 1: Recall \nUse addition to find the total number of objects arranged in rectangular arrays with up to \n5 rows and up to 5 columns; write an equation to express the total as a sum of equal \naddends.   \n \nResources:     \nArray Addition \nResource Type: Lesson Plan \nThis is a lesson in which students will practice making rectangular arrays and writing \nequations, with and without story problems, using repeated addition from the array to \nfind a sum. This is lesson designed to help prepare students for 3rd grade multiplication. \nI Array + You Array = Arrays! \nResource Type: Lesson Plan \nAn engaging activity that includes writing addition equations and making equal sets of \nobjects in an organized manner. \nCounting Dots in Arrays \nResource Type: Problem-Solving Task \nStudents who work on this task will benefit in seeing that given a quantity, there is often \nmore than one way to represent it, which is a precursor to understanding the concept of \nequivalent expressions. This particular question also lays a foundation for students to \nunderstand the commutative property of multiplication in third grade.  \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40269",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40270",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/46787",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/48982",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49074",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/72819",
+        "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43407",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5332"
+      ],
+      "standards": [
+        "MAFS.2.OA.3.4"
+      ]
+    },
+    {
+      "page": 7,
+      "text": "7 | P a g e  \n \nCounting by Rows or Columns \nResource Type: MFAS Formative Assessment \nStudents are asked to make an array from pennies and then skip count to find the total \nnumber of pennies and write an addition equation to represent the array. \nWriting an Equal Addends Equation \nResource Type: MFAS Formative Assessment \nStudents are asked to write an equal addends equation that corresponds to a given array. \n \n \n \nNumber and Operations in Base Ten \nMAFS.2.NBT.1 Understand place value. \nMAFS.2.NBT.1.1 \nDOK Level 2: Basic Application of Skills & Concepts \nUnderstand that the three digits of a three-digit number represent amounts of hundreds, \ntens, and ones; e.g., 706 equals 7 hundreds, 0 tens, and 6 ones. Understand the following \nas special cases:  \na. 100 can be thought of as a bundle of ten tens — called a “hundred.” \nb. The numbers 100, 200, 300, 400, 500, 600, 700, 800, 900 refer to one, two, three, \nfour, five, six, seven, eight, or nine hundreds (and 0 tens and 0 ones). \n \nResources:     \nHundreds, and Tens, and Ones! Oh, My! \nResource Type: Lesson Plan \nThe students will extend their base-ten understanding to hundreds and represent 3-digit \nnumbers in a variety of ways, using 3-digits, words, base-ten blocks, drawings, and \nequations. \nBundles and Combos \nResource Type: Lesson Plan \nThis lesson will help students learn that a 3 digit number can be composed of different \ncombinations of hundreds, tens and ones. \nPlace Value- 3 Digit Numbers \nResource Type: Lesson Plan \nStudents will decompose numbers by place value and represent them using concrete and \npictorial models. \nBundling and Unbundling \nResource Type: Problem-Solving Task \nStudents determine the number of hundreds, tens and ones that are necessary to write \nequations when some digits are provided. Student must, in some cases, decompose \nhundreds to tens and tens to ones.  \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1437",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40807",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40809",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/35439",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/35468",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/48856",
+        "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43440",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5333"
+      ],
+      "standards": [
+        "MAFS.2.NBT.1",
+        "MAFS.2.NBT.1.1"
+      ]
+    },
+    {
+      "page": 8,
+      "text": "8 | P a g e  \n \nLargest Number Game \nResource Type: Problem-Solving Task \nThis task asks students to build the largest three-digit number. Students must explain their \nthinking and answer higher order thinking questions. Students have to use error analysis \nto complete the questions. \nCan You Write the Number? \nResource Type: MFAS Formative Assessment \nStudents are asked to write numbers given descriptions of the number of hundreds, tens, \nand ones each contains. \nModeling Numbers with Base Ten Blocks \nResource Type: MFAS Formative Assessment \nStudents use base ten blocks to model each of four numbers and then describe the number \nof hundreds, tens, and ones in each number. \n \nMAFS.2.NBT.1.2 \nDOK Level 1: Recall \nCount within 1000; skip-count by 5s, 10s, and 100s.   \n \nResources:     \nCount Objects by 5s, 10s, and 100s \nResource Type: Tutorial \nThis tutorial will assist learners with a further understanding of how to skip count \nspecifically by 5s, 10s, and 100s. The tutorial supports student learning with visual \nrepresentations of counting groups of 5, 10 and 100 objects. \nSkip Count by 5s \nResource Type: Lesson Plan \nHelp the Third Little Pig skip count to 1,000 bricks in groups of 5. (Note students are not \nexpected to count from 0-1,000 by 5s, but this activity allows them to experience counting \nwithin a variety of contexts between 0 and 1,000.) \nCounting by Fives Within 1000 \nResource Type: MFAS Formative Assessment \nStudents are asked to count by fives, starting at various numbers, up to 1000. \nCount by Tens and Hundreds Within 1000 \nResource Type: MFAS Formative Assessment \nStudents are asked to count by tens, starting at various numbers, up to 1000 and to count \nby hundreds up to 1000. \n \nMAFS.2.NBT.1.3 \nDOK Level 1: Recall \nRead and write numbers to 1000 using base-ten numerals, number names, and expanded \nform.   \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39660",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39663",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40997",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41003",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/30139",
+        "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43432",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/81030",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5334",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5335"
+      ],
+      "standards": [
+        "MAFS.2.NBT.1.2",
+        "MAFS.2.NBT.1.3"
+      ]
+    },
+    {
+      "page": 9,
+      "text": "9 | P a g e  \n \nResources:     \nAnd the Number Is \nResource Type: Lesson Plan \nStudents create their own mystery numbers by giving clues about the name, value, and \nmultiples of the digits which comprise the number. \nDifferent Ways to Represent 3-Digit Numbers \nResource Type: Lesson Plan \nIn this lesson, students will demonstrate their understanding of how to read and write \nnumbers to 1000 using base-ten blocks and expanded form. \nWriting Numerals from Number Names \nResource Type: MFAS Formative Assessment \nStudents write numerals that correspond to spoken number names. \nWriting the Expanded Form of a Number \nResource Type: MFAS Formative Assessment \nStudents write the expanded form of a number from hearing the word name of a number. \n \nMAFS.2.NBT.1.4 \nDOK Level 2: Basic Application of Skills & Concepts \nCompare two three-digit numbers based on meanings of the hundreds, tens, and ones \ndigits, using >, =, and < symbols to record the results of comparisons.   \n \nResources:     \nComparing Three-Digit Numbers \nResource Type: Lesson Plan \nThe students use place value to compare two three-digit numbers and write the \nappropriate sign, >, =, < . \nCan I Put You in Your Place? \nResource Type: Educational Game \nStudents play a game that allows them to place number cards in an order to make the \nleast three digit number possible using place value. Students compare these numbers with \na partner to see who has the least three digit number. \nComparisons 1 \nResource Type: Problem-Solving Task \nThis task requires students to compare numbers that are identified by word names and \nnot just digits. The order of the numbers described in words are intentionally placed in a \ndifferent order than their base-ten counterparts so that students need to think carefully \nabout the value of the numbers. Some students might need to write the equivalent \nnumeral as an intermediate step to solving the problem. \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40271",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/40276",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/30445",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/32615",
+        "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43438",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/1096",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/1113",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5336"
+      ],
+      "standards": [
+        "MAFS.2.NBT.1.4"
+      ]
+    },
+    {
+      "page": 10,
+      "text": "10 | P a g e  \n \nInequalities Using Symbols \nResource Type: MFAS Formative Assessment \nStudents are asked to compare numbers and then use the greater than, less than, or equal \nto symbols to complete inequality statements. \nWho Has More? \nResource Type: MFAS Formative Assessment \nStudents are asked to compare two numbers used in a word problem and to write an \ninequality statement showing the relationship between the numbers. \n \nMAFS.2.NBT.2 Use place value understanding and properties of operations to add and \nsubtract. \n \nMAFS.2.NBT.2.5 \nDOK Level 1: Recall \nFluently add and subtract within 100 using strategies based on place value, properties of \noperations, and/or the relationship between addition and subtraction.   \n \nResources:     \nSubtraction with Stanley \nResource Type: Original Tutorial \nBy the end of this tutorial, you will be able to use place value to solve subtraction \nproblems within 100. \nAdding and Subtracting on a Hundred Chart \nResource Type: Lesson Plan \nThis lesson is not an introduction to adding and subtracting on the hundreds chart, but \nrather a practice of strategies to help build fluency. Students will use make-a-ten, \ndecomposition, and other number sense strategies to create hidden designs on a \nhundreds chart then check their design against the answer key. \nAdding Within 100 Using Place Value \nResource Type: MFAS Formative Assessment \nStudents are asked to solve two addition problems and are observed for the use of place \nvalue strategies. \nFluently Subtract Within 100 \nResource Type: MFAS Formative Assessment \nStudents are asked to solve three subtraction within 100 problems and are observed for \nthe use of place value strategies. \nUsing Properties and Place Value to Add and Subtract \nResource Type: MFAS Formative Assessment \nStudents are asked to complete addition and subtraction problems that can be done \nefficiently by using properties of operations. \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1438",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41006",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41076",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41079",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/45930",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/45934",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/42297",
+        "http://www.cpalms.org/Public/PreviewResourceStudentTutorial/Preview/127340",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5337"
+      ],
+      "standards": [
+        "MAFS.2.NBT.2",
+        "MAFS.2.NBT.2.5"
+      ]
+    },
+    {
+      "page": 11,
+      "text": "11 | P a g e  \n \nMAFS.2.NBT.2.6 \nDOK Level 1: Recall \nAdd up to four two-digit numbers using strategies based on place value and properties of \noperations.   \n \nResources:     \nAlternative Addition Strategies \nResource Type: Lesson Plan \nThis lesson explores recall of multiple alternative addition strategies of two-digit numbers. \nThe lesson focus is to encourage students to use more than one strategy to solve addition \nproblems. By reinforcing the multiple alternative addition strategies students will develop \na strong understanding of addition structures and mechanics before moving on to three-\ndigit addition.  \nToll Bridge Puzzle \nResource Type: Problem-Solving Task \nThis task is intended to have students add four numbers as given in the standard while still \nbeing placed in a problem-solving context.  \nAdding Four Two-Digit Numbers \nResource Type: MFAS Formative Assessment \nStudents add four two-digit numbers without the context of a word problem. \nAdding Two Digit Numbers Using Place Value \nResource Type: MFAS Formative Assessment \nStudents are asked to add four two digit numbers by adding the tens first. \n \nMAFS.2.NBT.2.7 \nDOK Level 2: Basic Application of Skills & Concepts \nAdd and subtract within 1000, using concrete models or drawings and strategies based \non place value, properties of operations, and/or the relationship between addition and \nsubtraction; relate the strategy to a written method. Understand that in adding or \nsubtracting three digit numbers, one adds or subtracts hundreds and hundreds, tens and \ntens, ones and ones; and sometimes it is necessary to compose or decompose tens or \nhundreds.   \n \nResources:     \nAdding 3-Digit Numbers with Base Ten Blocks \nResource Type: Tutorial \nThis tutorial for student audiences will assist learners with a further understanding of how \nto add two three-digit numbers together by drawing out base ten blocks based on the \ndigits in each place.  \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39946",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/39954",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/31169",
+        "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43442",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/83546",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5338",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5339"
+      ],
+      "standards": [
+        "MAFS.2.NBT.2.6",
+        "MAFS.2.NBT.2.7"
+      ]
+    },
+    {
+      "page": 12,
+      "text": "12 | P a g e  \n \nSubtracting 3-Digit Numbers by Decomposing \nResource Type: Tutorial \nThis tutorial will assist learners with a further understanding of how to regroup when \nsubtracting by decomposing hundreds or tens.  \nStrategy-Based Instruction in Three-Digit Subtraction \nResource Type: Lesson Plan \nStudents will learn how to subtract three-digit subtraction problems using various \nsubtraction strategies (expanded form and place value). These strategies help to build \nconceptual understanding, which will benefit in the development of their understanding of \nthe standard algorithm. \nHow Many Days Until Summer Vacation? \nResource Type: Problem-Solving Task \nThe purpose of the task is to allow children an opportunity to subtract a three-digit \nnumber including a zero that requires regrouping. The solutions show how students can \nsolve this problem before they have learned the traditional algorithm. \nAdding Within 1000 \nResource Type: MFAS Formative Assessment \nStudents are asked to solve an addition problem within 1,000. \nSubtracting Within 1000 \nResource Type: MFAS Formative Assessment \nStudents are asked to solve a subtraction problem within 1,000. \nPlace Value Strategies for Addition and Subtraction \nResource Type: MFAS Formative Assessment \nStudents explain another student's written strategy for adding and written strategy for \nsubtracting three-digit numbers. \n \nMAFS.2.NBT.2.8 \nDOK Level 1: Recall \nMentally add 10 or 100 to a given number 100–900, and mentally subtract 10 or 100 \nfrom a given number 100–900.   \n \nResources:     \nMentally Add or Subtract 10 or 100 Using Expanded Form \nResource Type: Tutorial \nThis tutorial will assist learners with a further understanding of how to add or subtract 10 \nor 100 to a 3-digit number by using expanded form. The tutorial supports student learning \nwith visuals of decomposing 3-digit numbers into hundreds, tens and ones to solve \naddition or subtraction equations where 10 or 100 is either being added or subtracted. \nHop Up, Hop Down \nResource Type: Lesson Plan \nIn this lesson, the students will mentally add and subtract 10 and 100. The students will \nrecognize that they are repeating the same calculation of \"1 more\" and \"1 less\". \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41083",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41085",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/41086",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/41681",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49862",
+        "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43434",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/85455",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/86782",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5340"
+      ],
+      "standards": [
+        "MAFS.2.NBT.2.8"
+      ]
+    },
+    {
+      "page": 13,
+      "text": "13 | P a g e  \n \nAdd 100 Mentally \nResource Type: MFAS Formative Assessment \nStudents are given three-digit numbers and asked to mentally add 100 to each number. \nSubtract 10 Mentally \nResource Type: MFAS Formative Assessment \nStudents are given three-digit numbers and asked to mentally subtract 10 from each \nnumber. \n \nMAFS.2.NBT.2.9 \nDOK Level 3: Strategic Thinking & Complex Reasoning \nExplain why addition and subtraction strategies work, using place value and the \nproperties of operations.   \n \nResources:     \nExplaining Addition by Decomposing Numbers \nResource Type: Tutorial \nThis tutorial will assist learners with a further understanding of how to explain addition by \nbreaking apart numbers. The tutorial supports student learning with visuals of using base \nten blocks, drawn pictures, actions, place value, words and properties of operations to \nexplain the work done in an addition problem. \nExplaining Subtraction by Decomposing Numbers \nResource Type: Tutorial \nThis tutorial will assist learners with a further understanding of how to explain subtraction \nby breaking apart numbers. The tutorial supports student learning with visuals of using \nbase ten blocks, drawn pictures, actions, place value, words and open number lines to \nexplain the work done in a subtraction problem. \nUsing Place Value \nResource Type: MFAS Formative Assessment \nStudents are asked to solve a two-digit addition problem using a place value strategy and \nthen are asked to explain why this strategy works. \n \n \n \nMeasurement and Data \nMAFS.2.MD.1 Measure and estimate lengths in standard units. \nMAFS.2.MD.1.1 \nDOK Level 2: Basic Application of Skills & Concepts  \nMeasure the length of an object to the nearest inch, foot, centimeter, or meter by \nselecting and using appropriate tools such as rulers, yardsticks, meter sticks, and \nmeasuring tapes. \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1439",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42329",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46259",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46262",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/87939",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/87969",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5341",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5342"
+      ],
+      "standards": [
+        "MAFS.2.MD.1",
+        "MAFS.2.MD.1.1",
+        "MAFS.2.NBT.2.9"
+      ]
+    },
+    {
+      "page": 14,
+      "text": "14 | P a g e  \n \nResources:     \nMight We Measure This \nResource Type: Lesson Plan \nStudents will explore the use of measuring tools, such as rulers, yard sticks, meter sticks, \nand soft measuring tapes. They will decide which tool to use to measure a specific object, \nbased on the object's overall length. They will compare tools used for measurement and \nuse a ruler to measure inches and a foot. \nMeasuring Mania \nResource Type: Lesson Plan \nThis lesson is a culminating activity for the end of a unit on measurement. Students focus \non selecting tools for measuring various objects, justifying why they picked a certain tool. \nMeasuring to the Nearest Foot \nResource Type: MFAS Formative Assessment \nStudents use a ruler or yardstick to measure a length to the nearest foot. \nMeasuring to the Nearest Inch and Centimeter \nResource Type: MFAS Formative Assessment \nStudents use a ruler to measure one segment to the nearest inch and one segment to the \nnearest centimeter. \nRulers and Meter Sticks \nResource Type: MFAS Formative Assessment \nStudents choose an appropriate tool to measure a hallway. \n \nMAFS.2.MD.1.2 \nDOK Level 2: Basic Application of Skills & Concepts \n \nDescribe the inverse relationship between the size of a unit and number of units needed \nto measure a given object. Example: Suppose the perimeter of a room is lined with one-\nfoot rulers. Now, suppose we want to line it with yardsticks instead of rulers. Will we \nneed more or fewer yardsticks than rulers to do the job? Explain your answer.  \n \nResources:     \nHow Long Is It? \nResource Type: Lesson Plan \nThis is a lesson designed to help students gain a better understanding of how different \nunits of measurement (inches to feet) change in relationship to the size of the object. \nStudents will get hands-on practice measuring objects using at least two different tools \n(inch/centimeter ruler, yardstick, meter stick, tape measure). \nHow Many Inches, Feet and Yards? \nResource Type: Lesson Plan \nThe students will measure the length of given objects using a long tape measure as a \nmeasuring tool. The students will measure these objects using length units of different \nlengths for the measurements and describe how the two measurements relate. \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/121295",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/43590",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/43593",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/43069",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/46500",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/46724",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49499",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5343"
+      ],
+      "standards": [
+        "MAFS.2.MD.1.2"
+      ]
+    },
+    {
+      "page": 15,
+      "text": "15 | P a g e  \n \nCentimeters and Meters \nResource Type: MFAS Formative Assessment \nStudents measure the length of a line segment twice and are given an opportunity to \nexplain why the line segment measures in fewer meters than centimeters.  \nFeet and Yards \nResource Type: MFAS Formative Assessment \nStudents are given the length of an alligator in both feet and yards and are asked to \nexplain why the measure given in feet is greater than the measure given in yards. \n \nMAFS.2.MD.1.3 \nDOK Level 2: Basic Application of Skills & Concepts \n \nEstimate lengths using units of inches, feet, yards, centimeters, and meters.   \n \nResources:     \nCan I Make a Reasonable Guess? \nResource Type: Lesson Plan \nThis lesson uses a discovery approach to estimate the length of objects using inches, feet, \nmeters and centimeters. The students will utilize math standard(s) as they analyze math \nsolutions and explain their solutions. Since this lesson uses estimation, it is a good lesson \nto use to gain knowledge of how realistic students are with units of measurements. \nEstimating Lengths & Distances \nResource Type: Lesson Plan \nThis lesson is designed to help students estimate lengths using standard and metric units \nof measure. They will participate in a teacher-guided activity, estimating then measuring \nhow far a ball rolls on 3 different surfaces. They will also estimate then measure about 10 \nitems that are found around the classroom. While they are estimating and measuring, \nthey have to decide what unit of measure is best suited for the specific object. \nEstimating in Centimeters \nResource Type: MFAS Formative Assessment \nStudents are asked to estimate the length of a line segment in centimeters. \nEstimating in Yards \nResource Type: MFAS Formative Assessment \nStudents are asked to estimate a predetermined length in yards. \n \nMAFS.2.MD.1.4 \nDOK Level 2: Basic Application of Skills & Concepts \n \nMeasure to determine how much longer one object is than another, expressing the \nlength difference in terms of a standard length unit.   \n \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/123627",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42807",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/44071",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/44072",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49757",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49774",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5344",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5345"
+      ],
+      "standards": [
+        "MAFS.2.MD.1.3",
+        "MAFS.2.MD.1.4"
+      ]
+    },
+    {
+      "page": 16,
+      "text": "16 | P a g e  \n \nResources:     \nComparing Inch by Inch \nResource Type: Lesson Plan \nThis is a hands-on lesson that allows students to practice measuring different sized objects \nand writing equations to determine how much longer one object is than the other. \nMeasure Both and Find the Difference \nResource Type: Lesson Plan \nStudents will measure the lengths of two objects to the nearest inch and determine how \nmuch longer one object is than the other. \nDragonflies and Grasshoppers \nResource Type: MFAS Formative Assessment \nStudents shown images of a grasshopper and a dragonfly and are asked to determine how \nmuch longer one is than the other. \nHow Much Longer? \nResource Type: MFAS Formative Assessment \nStudents are asked to determine how many inches longer one line segment is than \nanother. \n \nMAFS.2.MD.2 Relate addition and subtraction to length. \nMAFS.2.MD.2.5 \nDOK Level 2: Basic Application of Skills & Concepts \n \nUse addition and subtraction within 100 to solve word problems involving lengths that \nare given in the same units, e.g., by using drawings (such as drawings of rulers) and \nequations with a symbol for the unknown number to represent the problem.   \n \nResources:     \nRacing Riley Adds Lengths \nResource Type: Original Tutorial \nThis tutorial will help students with addition strategies and solving problems involving \nlengths in the same unit. \nAdding and Subtracting with Color Tiles \nResource Type: Lesson Plan \nThis tutorial for student audiences will assist learners with a further understanding of how \nto solve length word problems using addition and subtraction. The tutorial includes visual \nmodels of lining up the measurement tools (ruler and color tiles) appropriately to take \naccurate measurements and subtracting or adding one measurement from the other to \ndetermine the difference. \nHeading Home \nResource Type: MFAS Formative Assessment \nStudents determine the distance walked by a student on her way home from her friend's \nhouse. \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1440",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46015",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46017",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46247",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/30501",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/31064",
+        "http://www.cpalms.org/Public/PreviewResourceStudentTutorial/Preview/119690",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/76409",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5346"
+      ],
+      "standards": [
+        "MAFS.2.MD.2",
+        "MAFS.2.MD.2.5"
+      ]
+    },
+    {
+      "page": 17,
+      "text": "17 | P a g e  \n \nSubtracting Measures \nResource Type: MFAS Formative Assessment \nStudents use subtraction to solve problems requiring subtraction of measures. \n \nMAFS.2.MD.2.6 \nDOK Level 2: Basic Application of Skills & Concepts \n \nRepresent whole numbers as lengths from 0 on a number line diagram with equally \nspaced points corresponding to the numbers 0, 1, 2, ..., and represent whole-number \nsums and differences within 100 on a number line diagram. \n \nResources:     \nSolving Length Word Problems Using a Number Line \nResource Type: Tutorial \nThis tutorial for student audiences will assist learners with a further understanding of \nsolving length word problems using a number line. The tutorial includes visual models of \ndifferent examples of adding on using a number line to solve word problems. \nGet Up and Go! With Addition and Subtraction \nResource Type: Lesson Plan \nThe lesson uses a number line to facilitate addition and subtraction. \nRepresenting Nine on the Number Line \nResource Type: MFAS Formative Assessment \nStudents are asked to scale a number line and use it to draw a segment of length nine. \nRepresenting Numbers with Length \nResource Type: MFAS Formative Assessment \nStudents are asked to find a number that was represented by a length on an incomplete \nnumber line. \n \n \nMAFS.2.MD.3 Work with time and money.  \n \nMAFS.2.MD.3.7 \nDOK Level 1: Recall \nTell and write time from analog and digital clocks to the nearest five minutes.   \n \nResources:     \nTelling Time Examples #1 \nResource Type: Tutorial \nTell time on a labeled analog clock to the nearest five minutes. \n \nTelling Time Examples #2 \nResource Type: Tutorial \nDemonstrates how to tell time on unlabeled analog clocks to the nearest five minutes. \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1441",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42541",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42546",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46246",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/30503",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/125659",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/125663",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/76498",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5347",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5348"
+      ],
+      "standards": [
+        "MAFS.2.MD.2.6",
+        "MAFS.2.MD.3",
+        "MAFS.2.MD.3.7"
+      ]
+    },
+    {
+      "page": 18,
+      "text": "18 | P a g e  \n \nExcuse Me! Can you please give me the time? \nResource Type: Lesson Plan \nIn this lesson, the students will work together to create story problems that will allow them \nto tell and write time to the nearest five minutes. \nClipart Clocks \nResource Type: Image \nThis website has over 2,000 illustrations of analog clocks. There are clocks with a variety of \nnumeral fonts, and plain faces showing all possible times in one-minute increments. There \nare also an assortment of antique clocks, pocket watches, pendulums, hour glasses, and \nthe interior devices of time pieces. \n \nA Good Night’s Sleep \nResource Type: MFAS Formative Assessment \nStudents are asked to write times shown on an analog clock. \n \nWrite Times on Digital Clocks \nResource Type: MFAS Formative Assessment \nStudents are read three times to the nearest five minutes and asked to write the times on \ndigital clocks. \n \n \nMAFS.2.MD.3.8 \nDOK Level 2: Basic Application of Skills & Concepts \nSolve one- and two-step word problems involving dollar bills (singles, fives, tens, \ntwenties, and hundreds) or coins (quarters, dimes, nickels, and pennies) using $ and ¢ \nsymbols appropriately. Word problems may involve addition, subtraction, and equal \ngroups situations1. Example: The cash register shows that the total for your purchase is \n59¢. You gave the cashier three quarters. How much change should you receive from the \ncashier?  \na. Identify the value of coins and paper currency.  \nb. Compute the value of any combination of coins within one dollar.   \nc. Compute the value of any combinations of dollars (e.g., If you have three ten-\ndollar bills, one five-dollar bill, and two one-dollar bills, how much money do you \nhave?).   \nd. Relate the value of pennies, nickels, dimes, and quarters to other coins and to the \ndollar (e.g., There are five nickels in one quarter. There are two nickels in one \ndime. There are two and a half dimes in one quarter. There are twenty nickels in \none dollar). \n \n \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46254",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46256",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/49840",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/14023",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5349"
+      ],
+      "standards": [
+        "MAFS.2.MD.3.8"
+      ]
+    },
+    {
+      "page": 19,
+      "text": "19 | P a g e  \n \nResources:     \nCoin Combinations: How else can you pay for that? \nResource Type: Tutorial \nIn this lesson, students will learn that there can be multiple ways (multiple coin \ncombinations) to reach a given money amount. Using money manipulatives, students will \nwork cooperatively and independently to practice finding different coin combinations for a \ngiven money amount. Students will also become comfortable knowing that there are \nmultiple ways to reach a correct answer. \n \n \nLet’s Go Shopping- Counting, Adding, and Subtracting Coins \nResource Type: Lesson Plan \nWho doesn't love to shop?!? In this fun, interactive activity, students review how to count \ngroups of coins, learn how to add and subtract groups of coins, and go \"shopping\" to buy \nitems and determine how much change they would receive. \nCash Out! \nResource Type: Educational Game \nThis fun interactive game helps your students practice making change! Students get to be \na cashier of a store full of fun characters. Choose from different difficulty levels and \nchoose to display hints or not (for differentiated instruction). \nCombinations of Bills \nResource Type: MFAS Formative Assessment \nStudents are asked to combine the values of bills and write the total value using the dollar \nsymbol. \nCombinations of Coins \nResource Type: MFAS Formative Assessment \nStudents are asked to combine the values of coins and write the total value using the cent \nsymbol. \nRelating Coins \nResource Type: MFAS Formative Assessment \nStudents are asked to relate the values of pennies, nickels, dimes, and quarters to other \ncoins and to the dollar. \n \n \n \nMAFS.2.MD.4 Represent and interpret data. \n \nMAFS.2.MD.4.9 \nDOK Level 2: Basic Application of Skills & Concepts \n \nGenerate measurement data by measuring lengths of several objects to the nearest \nwhole unit, or by making repeated measurements of the same object. Show the \nmeasurements by making a line plot, where the horizontal scale is marked off in whole-\nnumber units.   \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1442",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/123639",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/123641",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/123642",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/28758",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/41107",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/20661",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5350"
+      ],
+      "standards": [
+        "MAFS.2.MD.4",
+        "MAFS.2.MD.4.9"
+      ]
+    },
+    {
+      "page": 20,
+      "text": "20 | P a g e  \n \nResources:     \nIntroduction to Perimeter \nResource Type: Tutorial \nThis Khan Academy video tutorial presents finding perimeter by adding side-lengths of \nvarious polygons. \nX Marks the Spot \nResource Type: Lesson Plan \nIn this lesson, students will make multiple measurements and record the measurements \non a line plot. \nHand Span Measures \nResource Type: Problem-Solving Task \nHand span is a measure that has been used for many years. By placing the hand on the \nedge of a piece of paper and marking the tips of the thumb and little finger, the student \ncan measure a straight line. This is a better method than placing the hand directly on the \nruler. Discuss rounding conventions. This could be used as a class activity, or students \ncould gather and plot data on separate line plots from different age groups. \nMeasuring Our Pencils- Part One \nResource Type: MFAS Formative Assessment \nStudents measure their pencils to the nearest whole inch. \nMeasuring Our Pencils- Part Two \nResource Type: MFAS Formative Assessment \nStudents make a line plot from a set of measurement data that includes measurements to \nthe nearest whole inch. \n \nMAFS.2.MD.4.10 \nDOK Level 2: Basic Application of Skills & Concepts \n \nDraw a picture graph and a bar graph (with single-unit scale) to represent a data set with \nup to four categories. Solve simple put-together, take-apart, and compare problems \nusing information presented in a bar graph. \n \nResources:     \nGraphing Away \nResource Type: Lesson Plan \nIn this lesson, students will be introduced to bar graphs. The knowledge they learn about \nbar graphs will be applied when they draw their own bar graph using a survey question of \ntheir choice. \nM & M Lab \nResource Type: Lesson Plan \nStudents use a bag of M & M’s to complete a tally chart, a bar chart, a line graph and a \npictograph by recording the different colors of the M & Ms. \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46269",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46271",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/30504",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/35545",
+        "http://www.cpalms.org/Public/PreviewResourceUpload/Preview/43457",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/126438",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/1463",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5351"
+      ],
+      "standards": [
+        "MAFS.2.MD.4.10"
+      ]
+    },
+    {
+      "page": 21,
+      "text": "21 | P a g e  \n \nFavorite Books \nResource Type: MFAS Formative Assessment \nStudents are asked to answer questions about a given bar graph. \n \nNumber of Players \nResource Type: MFAS Formative Assessment \nStudents are asked to create a picture graph from a given set of data. \n \n \nGeometry \nMAFS.2.G.1 Reason with shapes and their attributes. \nMAFS.2.G.1.1 \nDOK Level 1: Recall \n \nRecognize and draw shapes having specified attributes, such as a given number of angles \nor a given number of equal faces. Identify triangles, quadrilaterals, pentagons, hexagons, \nand cubes.   \n \nResources:     \nIdentifying Quadrilaterals \nResource Type: Tutorial \nThis tutorial will assist learners with a further understanding of how to identify \nquadrilaterals by finding shapes with 4 straight sides that meet at 4 corners. The tutorial \nsupports student learning with visual representations to help identify various shaped and \nsized quadrilaterals, including non-examples. \n \nAttributes of Geometric Shapes \nResource Type: Lesson Plan \nThis resource is a fun and engaging activity that will allow the students to identify and \nname shapes by their attributes. The students will move around and construct various \ngeometric figures in order to build a solid understanding of the figures. \n \nIt’s All About the Shapes \nResource Type: Lesson Plan \nThe teacher begins the lesson by reading The Greedy Triangle to the class to review shape \nnames and attributes. The students create shapes using geoboards and follow up their \nexploration with Shape Concentration (a game played with a partner). The teacher gathers \nthe students together (whole group) and completes a large Venn Diagram comparing two \ndifferent shapes. The students write in their journals observations they discovered during \nthe lesson. \n \nLet’s “Face” It! \nResource Type: Lesson Plan \nTriangles, Quadrilaterals, Pentagons, and Hexagons! Oh My! Students will get into shape \nafter reading \"The Greedy Triangle\" by Marilyn Burns. They will explore their own \nclassroom and identify the many shapes that can be found! They will also be able to \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewIdea/Preview/1443",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42689",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/42691",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/28645",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/31389",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/73076",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/88124",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5352"
+      ],
+      "standards": [
+        "MAFS.2.G.1",
+        "MAFS.2.G.1.1"
+      ]
+    },
+    {
+      "page": 22,
+      "text": "22 | P a g e  \n \nidentify the plane shapes on three-dimensional figures as the faces of the figures. The \nlesson includes some printable solid figures that the students can construct themselves! \n \nFour Sided Figures \nResource Type: MFAS Formative Assessment \nStudents are shown a quadrilateral and asked to identify it. Then students are asked to \ndraw another example of a quadrilateral that is different from the one that they were \nshown. \n \nWhich of These are Cubes? \nResource Type: MFAS Formative Assessment \nStudents are shown a set of three-dimensional figures and are asked to identify the cubes. \nIn addition, they are asked to explain why the other figures are not cubes. \n \nMAFS.2.G.1.2 \nDOK Level 1: Recall \n \nPartition a rectangle into rows and columns of same-size squares and count to find the \ntotal number of them.   \n \nResources:     \nFinding the Number of Same-Size Squares in a Rectangle \nResource Type: Tutorial \nThis tutorial for student audiences will assist learners with a further understanding of how \nto find the total number of same-size squares in a rectangle by dividing it into rows and \ncolumns. The tutorial supports student learning with visuals of how to equally partition \nrectangles into rows and columns and count the number of equally sized squares within \nthe entire rectangle. \n \nWhich Rectangle is Bigger? \nResource Type: Lesson Plan \nStudents will learn how to partition rectangles into equal parts and write equations to \nrepresent the parts. They will gain a basic understanding of area from the book Bigger, \nBetter, BEST! by Stuart J. Murphy. \n \nComplete the Rectangle  \nResource Type: MFAS Formative Assessment \nStudents are given a rectangle with one column and one row of unit squares (same size \nsquares) drawn. Students are asked to complete and then find the total number of same \nsize squares in the partition. \n \nConstruct Rows and Columns \nResource Type: MFAS Formative Assessment \nStudents are given a rectangle with tick marks drawn horizontally on one side of the \nrectangle and vertically on the bottom of the rectangle. Students are asked to partition the \nrectangle into columns and rows and then determine how many unit squares (same-size \nsquares) are in the rectangle. \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46273",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46278",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46468",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46470",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/45578",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/89238",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5353"
+      ],
+      "standards": [
+        "MAFS.2.G.1.2"
+      ]
+    },
+    {
+      "page": 23,
+      "text": "23 | P a g e  \n \n \nMAFS.2.G.1.3 \nDOK Level 1: Recall \n \nPartition circles and rectangles into two, three, or four equal shares, describe the shares \nusing the words halves, thirds, half of, a third of, etc., and describe the whole as two \nhalves, three thirds, four fourths. Recognize that equal shares of identical wholes need \nnot have the same shape.   \n \nResources:     \nDescribe Fractions of Rectangles \nResource Type: Tutorial \nThis tutorial will assist students in understanding how to describe fractions of a rectangle \nby partitioning the whole into 2, 3 and 4 equal shares. The tutorial provides visual models \nof examples and non-examples of partitioning a rectangle. \n \nPartitioning Rectangles into Equal Shares Multiple Ways \nResource Type: Tutorial \nThis tutorial for student audiences will assist learners with a further understanding of how \nto partition a rectangle into equal shares multiple ways. The tutorial supports student \nlearning with visuals of how to equally partition examples of various rectangles into thirds \nand fourths. \n \nFraction Action \nResource Type: Lesson Plan \nIn this lesson students will begin to recognize how to partition circles and rectangles \nequally into halves, thirds, and fourths. The students will be introduced to the concept \nusing a video and literature, delve deeper into their own understanding by dividing \npastries, and conclude the lesson with a game played with a partner. \n \nHalves, Thirds, and Fourths \nResource Type: MFAS Formative Assessment \nStudents partition three different circles into two, three, and four equal parts and consider \nwhat fraction each part represents. \n \nDifferent Halves \nResource Type: MFAS Formative Assessment \nStudents consider if two different shaped halves of the same rectangle represent equal \nshares. \n \n \n \n \n \n \n",
+      "links": [
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46459",
+        "http://www.cpalms.org/Public/PreviewResourceAssessment/Preview/46461",
+        "http://www.cpalms.org/Public/PreviewResourceLesson/Preview/34814",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/65770",
+        "http://www.cpalms.org/Public/PreviewResourceUrl/Preview/89280",
+        "http://www.cpalms.org/Public/PreviewStandard/Preview/5354"
+      ],
+      "standards": [
+        "MAFS.2.G.1.3"
+      ]
+    }
+  ],
+  "captured": "2026-06-28",
+  "provenance": "maintainer-provided PDF, full text+links extracted offline via pymupdf"
+}

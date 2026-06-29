@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TOS schools + programs index",
+  "description": "District school/program directory. Public, NON-PII data only (school facts + magnet/choice programs — never student or unconsented staff PII). Authoritative source for the FL school list is the FLDOE MSID (Master School Identification) file; magnet/choice programs come from the district (e.g., OCPS). Open/close + program changes are monitored by tools/source_currency.py via shared/sources/<district>-schools.json. Identity pattern mirrors shared/records (every entity carries *_id/*_name).",
+  "type": "object",
+  "$defs": {
+    "school": {
+      "type": "object",
+      "required": ["msid", "school_name", "status"],
+      "properties": {
+        "msid": {"type": "string", "description": "FLDOE MSID 'DDSSSS' = 2-digit district + 4-digit school (Orange district = 48)"},
+        "district_number": {"type": "string", "description": "FLDOE district number (Orange = 48)"},
+        "district_name": {"type": "string"},
+        "school_number": {"type": "string"},
+        "school_name": {"type": "string"},
+        "school_display_name": {"type": "string"},
+        "type": {"enum": ["traditional", "magnet", "charter", "choice", "career_technical", "exceptional", "virtual", "alternative", "combination", "other"]},
+        "levels": {"type": "array", "items": {"enum": ["PK", "ES", "MS", "HS", "combo"]}},
+        "grades": {"type": "string", "description": "grade span, e.g. 'PK-5' or '9-12'"},
+        "status": {"enum": ["open", "closed", "planned", "consolidated", "renamed"]},
+        "status_effective": {"type": ["string", "null"], "description": "ISO date the status took effect"},
+        "charter": {"type": "boolean"},
+        "title_i": {"type": ["boolean", "null"]},
+        "locale": {"type": ["string", "null"], "description": "city/area (public, non-PII)"},
+        "programs": {"type": "array", "items": {"$ref": "#/$defs/program"}},
+        "source": {"type": ["string", "null"], "description": "authoritative URL/file this record came from"},
+        "verified": {"type": ["string", "null"], "description": "ISO date last verified against the authority"}
+      },
+      "additionalProperties": true
+    },
+    "program": {
+      "type": "object",
+      "required": ["program_name"],
+      "properties": {
+        "program_id": {"type": ["string", "null"]},
+        "program_name": {"type": "string"},
+        "program_type": {"enum": ["magnet", "choice", "ib", "ap_capstone", "cambridge", "dual_enrollment", "career_academy", "ese", "ell", "gifted", "other"]},
+        "focus": {"type": ["string", "null"], "description": "e.g. STEM, performing arts, IB, aviation"},
+        "grades": {"type": ["string", "null"]},
+        "application_required": {"type": ["boolean", "null"]},
+        "status": {"enum": ["active", "eliminated", "planned", "paused"]},
+        "source": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    },
+    "index": {
+      "type": "object",
+      "required": ["district_name", "schools"],
+      "properties": {
+        "district_name": {"type": "string"},
+        "district_number": {"type": "string"},
+        "snapshot": {"type": "string", "description": "school year, e.g. '2026-27'"},
+        "generated": {"type": "string"},
+        "authority": {"type": "object", "description": "where the canonical data lives (MSID + district magnet pages)"},
+        "completeness": {"enum": ["seed", "partial", "complete"], "description": "seed = representative sample to be populated from MSID; honest about coverage"},
+        "schools": {"type": "array", "items": {"$ref": "#/$defs/school"}}
+      },
+      "additionalProperties": true
+    }
+  },
+  "$ref": "#/$defs/index"
+}

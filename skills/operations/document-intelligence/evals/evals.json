@@ -1,0 +1,50 @@
+{
+  "skill_name": "document-intelligence",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Read this DOCX properly and give me a structured, governed version I can reuse.",
+      "expected_output": "Runs the docintel pipeline (ingestion -> recovery -> structure -> governance -> knowledge -> artifact), emits a UDOM + knowledge-artifact with provenance/lineage/confidence on every block and explicit reading order, and ends with the metadata block (human_review_required: true). Not certified until quality-review runs.",
+      "assertions": [
+        "Selects a parser by capability, not by name (parser-independent)",
+        "Every block carries provenance and confidence; lineage covers every stage",
+        "Emits a knowledge-artifact with the metadata block and human_review_required: true",
+        "Does not certify the artifact itself; defers final decision to quality-review"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "This is a scanned PDF and we have no OCR engine installed. Extract the text.",
+      "expected_output": "Reports that the required OCR capability is unavailable (capability_gaps), recovers whatever native extraction can, and flags the rest with low/zero confidence — without inventing any text. Points to installing an OCR plugin (Surya/OCRmyPDF) to fill the gap.",
+      "assertions": [
+        "Detects and reports the capability gap (ocr unavailable) instead of fabricating text",
+        "Keeps unrecovered regions with low/zero confidence; never guesses content",
+        "Explains how to add an OCR parser plugin behind the same contract"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Swap our PDF parser for a different engine without breaking downstream consumers.",
+      "expected_output": "Adds the new engine as a Parser plugin in shared/docintel/parsers/ and registers it; the artifact contract and UDOM are unchanged, so consumers keep working. Parser replaceability is an acceptance guarantee.",
+      "assertions": [
+        "New parser is added behind the Parser contract with no consumer/artifact changes",
+        "Selection is by capability/availability; artifact schema_version is stable",
+        "Validation re-runs; nothing is certified until quality-review approves"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Turn off the experimental table-reconstruction stage for this run.",
+      "expected_output": "Uses PipelineConfig.flags to keep the experimental stage OFF (the default), running only the validated governed path; explains flags are per-run/per-environment and experimental stages default off.",
+      "assertions": [
+        "Experimental stages default OFF and are controlled via PipelineConfig.flags",
+        "The default governed pipeline is unaffected by experimental toggles",
+        "No fabrication; staged metrics reported honestly as 'staged'"
+      ],
+      "files": []
+    }
+  ]
+}

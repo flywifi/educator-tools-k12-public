@@ -29,12 +29,31 @@ Each framework file provides an **adapter**: how to parse its codes, how grades 
 how to resolve a code to a statement. National frameworks (CCSS, NGSS) ship as first-class adapters;
 state sets plug in via `state-standards-model.md`.
 
+## 1a. Standards applicability (context-conditional)
+
+Before selecting standards, read `standards_applicability` from the resolved context
+(`shared/context/`). It decides whether — and which — standards apply:
+
+- **`best_ngsss_apply`** (traditional public, charter, district-virtual, FLVS) — select + cite +
+  **verify** FL B.E.S.T./NGSSS as in §2–§4.
+- **`school_defined`** (private) — use the school's framework registry
+  `shared/standards/frameworks/<id>.json` (IB/AP/Cambridge/Montessori/classical/ACSI) as **primary**;
+  cite that framework. Optionally **crosswalk** to FL (`shared/standards/crosswalks/`) to show coverage.
+- **`parent_selected`** (home education) — standards are **advisory**: state clear learning objectives
+  and offer *optional* alignment/crosswalk for the family's reference; do **not** force a mandated
+  framework. Absence of state codes here is correct, not a defect.
+
+Independent frameworks: `frameworks.md`. Cross-mapping: `crosswalks.md`. **Never invent a code in any
+mode** — verify on the framework's source, or state the objective without a code.
+
 ## 2. Selecting standards (pipeline step 3, "Standards Alignment")
 
 1. From the request, determine **subject + grade band** (assume + log if missing — assumptions
    protocol).
 2. Choose the **framework**: default CCSS (ELA/Math) and NGSS (Science); use a state set when the
-   user names a state (`state-standards-model.md`).
+   user names a state (`state-standards-model.md`). **Florida is fully wired** — `florida-best.md`
+   (B.E.S.T. Math/ELA, NGSSS Science/SS, CS, ELD) + the `resources/` catalog. The national overlay
+   `state-standards-map.md` / `states.json` says which framework each state follows.
 3. Select the **most specific aligned standard(s)** for the objective — not merely topically
    adjacent (alignment matters; QG §26).
 4. Prefer a small number of well-aligned standards over a long shallow list.

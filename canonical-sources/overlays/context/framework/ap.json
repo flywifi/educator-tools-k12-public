@@ -1,0 +1,15 @@
+{
+  "scope": "framework",
+  "id": "ap",
+  "label": "Advanced Placement (College Board)",
+  "match": {"framework": "AP"},
+  "adds": {
+    "frameworks": ["AP"],
+    "notes": [
+      "AP is course-specific (CED units/skills) and layers ON TOP of the base standards, not a replacement.",
+      "Use shared/standards/frameworks/ap.json; align items to the course CED; AP Exam alignment matters."
+    ]
+  },
+  "source": ["https://apcentral.collegeboard.org/courses"],
+  "status": "seed"
+}

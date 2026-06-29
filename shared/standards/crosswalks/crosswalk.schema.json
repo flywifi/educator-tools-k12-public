@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tos.local/standards/crosswalk.schema.json",
+  "title": "TOS crosswalk (framework or grade-scale)",
+  "description": "A crosswalk translates requirements or grades across frameworks/scales. Two kinds: a FRAMEWORK crosswalk (from_framework/to_framework + code entries) and a GRADE-SCALE crosswalk (kind=grade_scale_crosswalk + scale entries). Every entry carries relationship + coverage (how much carries over) + confidence; most are illustrative/institution-dependent until verified. Prose: ../crosswalks.md, ../grade-scales.md.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["from_framework", "to_framework", "entries"],
+      "properties": {
+        "_comment": {"type": "string"},
+        "from_framework": {"type": "string"},
+        "to_framework": {"type": "string"},
+        "status": {"enum": ["seed", "stub", "populated"]},
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["from_code", "to_code", "relationship", "coverage", "confidence"],
+            "properties": {
+              "subject": {"type": "string"},
+              "from_code": {"type": "string"},
+              "to_code": {"type": "array", "items": {"type": "string"}},
+              "relationship": {"enum": ["exact", "partial", "related", "none"]},
+              "coverage": {"enum": ["full", "most", "partial", "minimal", "none"]},
+              "confidence": {"enum": ["high", "medium", "low"]},
+              "note": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["kind", "entries"],
+      "properties": {
+        "_comment": {"type": "string"},
+        "kind": {"const": "grade_scale_crosswalk"},
+        "status": {"enum": ["seed", "stub", "populated"]},
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["from_scale", "from_grade", "to_scale", "to", "relationship", "coverage", "confidence"],
+            "properties": {
+              "from_scale": {"type": "string"},
+              "from_grade": {"type": "string"},
+              "to_scale": {"type": "string"},
+              "to": {"type": "array", "items": {"type": "string"}},
+              "relationship": {"enum": ["exact", "partial", "related", "none"]},
+              "coverage": {"enum": ["full", "most", "partial", "minimal", "none"]},
+              "confidence": {"enum": ["high", "medium", "low"]},
+              "institution_dependent": {"type": "boolean"},
+              "note": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

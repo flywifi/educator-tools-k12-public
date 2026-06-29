@@ -1,0 +1,78 @@
+{
+  "_comment": "Base-level manifest of every file fed to tools/ingest_sources.py. Captures the saved-from URL, a type guess, parse status, and row count for each — so an UNPARSED source is still logged (with its URL) and a parser/registry can be added later. Nothing fabricated.",
+  "domain": "ingested-sources",
+  "version": "1.0.0",
+  "sources": [
+    {
+      "file": "chirho.htm",
+      "source_url": "https://floridacps.org/our-schools-chirho",
+      "title": null,
+      "detected_type": "unknown",
+      "status": "captured_unparsed",
+      "rows": 0,
+      "captured": "2026-06-29",
+      "note": "no parser yet — URL/title captured at base level for later enrichment"
+    },
+    {
+      "file": "floridacps.html",
+      "source_url": "https://floridacps.org/",
+      "title": null,
+      "detected_type": "unknown",
+      "status": "captured_unparsed",
+      "rows": 0,
+      "captured": "2026-06-29",
+      "note": "no parser yet — URL/title captured at base level for later enrichment"
+    },
+    {
+      "file": "nces_search_32025.html",
+      "source_url": "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_list.asp?Search=1&Zip=32025&Miles=20",
+      "title": "Search for Private Schools - Search Results",
+      "detected_type": "unknown",
+      "status": "captured_unparsed",
+      "rows": 0,
+      "captured": "2026-06-29",
+      "note": "no parser yet — URL/title captured at base level for later enrichment"
+    },
+    {
+      "file": "virtual_options.html",
+      "source_url": "https://www.fldoe.org/schools/school-choice/virtual-edu/parent-resources/district-virtual-options.stml",
+      "title": "District Virtual Options for Students",
+      "detected_type": "unknown",
+      "status": "captured_unparsed",
+      "rows": 0,
+      "captured": "2026-06-29",
+      "note": "no parser yet — URL/title captured at base level for later enrichment"
+    },
+    {
+      "file": "aisf_2.html",
+      "source_url": "https://aisfl.com/member-directory/",
+      "title": "Member Directory - External - Association of Independent Schools of Florida",
+      "detected_type": "aisf_directory",
+      "status": "parsed",
+      "rows": 114,
+      "captured": "2026-06-29",
+      "note": null
+    },
+    {
+      "file": "nces_pss_32803.html",
+      "source_url": null,
+      "title": "National Center for Education Statistics",
+      "detected_type": "nces_pss",
+      "status": "parsed",
+      "rows": 409,
+      "captured": "2026-06-29",
+      "note": null
+    },
+    {
+      "file": "nces_pss_dup.html",
+      "source_url": null,
+      "title": "National Center for Education Statistics",
+      "detected_type": "nces_pss",
+      "status": "parsed",
+      "rows": 409,
+      "captured": "2026-06-29",
+      "note": null
+    }
+  ],
+  "updated": "2026-06-29"
+}

@@ -1,0 +1,15 @@
+{
+  "_comment": "Declarative workflow definition for special-education-support.",
+  "id": "special-education-support",
+  "description": "IEP goal drafting, accommodation plans, progress monitoring, and differentiated materials for SPED contexts",
+  "steps": [
+    {"step": 1, "atom": "standards-match",        "input_from": "teacher request",        "output_to": "step2"},
+    {"step": 2, "atom": "present-levels",         "input_from": "placeholder data points","output_to": "step3"},
+    {"step": 3, "atom": "iep-goal",               "input_from": "step2.plaafp + step1",   "output_to": "step4"},
+    {"step": 4, "atom": "accommodation-match",    "input_from": "step2.needs",            "output_to": "step5"},
+    {"step": 5, "atom": "progress-monitor-plan",  "input_from": "step3.goal",             "output_to": "step6"},
+    {"step": 6, "atom": "differentiate",          "input_from": "content + profile",      "output_to": "step7"},
+    {"step": 7, "atom": "quality-check",          "input_from": "assembled_artifact",     "output_to": "final", "gates": ["standard_alignment", "student_data_policy"]}
+  ],
+  "shortcut_atoms": ["iep-goal", "differentiate", "present-levels", "accommodation-match", "progress-monitor-plan", "sentence-frame"]
+}

@@ -1,0 +1,28 @@
+{
+  "framework": "ACSI",
+  "label": "Faith-based (ACSI accreditation)",
+  "type": "faith_based",
+  "applicability": "school_defined",
+  "programmes_or_levels": [
+    "Elementary",
+    "Middle",
+    "High"
+  ],
+  "subjects": [
+    "Bible / Biblical integration",
+    "English",
+    "Mathematics",
+    "Sciences",
+    "Social Studies",
+    "Electives"
+  ],
+  "code_pattern": "school-selected curriculum + biblical integration outcomes (accreditation standards)",
+  "source": [
+    "https://www.acsi.org/accreditation"
+  ],
+  "version": null,
+  "codes_verified": false,
+  "status": "stub",
+  "note": "Structure only; enumerate standards from the cited source as a later data task. codes_verified=false. Never fabricate codes/statements - verify on source. Updated offline via standards-updater.",
+  "standards": []
+}
