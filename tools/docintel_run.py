@@ -105,6 +105,9 @@ def main(argv: list[str]) -> int:
                     help="register the given file into --queue for LATER parsing (does not parse now)")
     ap.add_argument("--process-queue", action="store_true",
                     help="parse every pending item in --queue now, writing artifacts to <queue>/artifacts/")
+    ap.add_argument("--recursive", action="store_true",
+                    help="also parse documents NESTED inside the file (zip / .eml attachments / OOXML "
+                         "embeddings), depth-bounded with a cycle guard")
     a = ap.parse_args(argv)
 
     registry = docintel.default_registry()
@@ -151,6 +154,24 @@ def main(argv: list[str]) -> int:
     if not path.exists():
         print(f"[!] not found: {path}")
         return 1
+
+    if a.recursive:
+        tree = docintel.parse_recursive(path.read_bytes(), str(path))
+
+        def _show(n, indent=0):
+            pad = "  " * indent
+            kids = n.get("children", [])
+            print(f"{pad}- {n['filename']} [{n.get('status')}] parser={n.get('parser')} "
+                  f"blocks={n.get('blocks', 0)} state={n.get('retrieval_state')}"
+                  + (f"  (+{len(kids)} nested)" if kids else ""))
+            for k in kids:
+                _show(k, indent + 1)
+        print(f"recursive parse of {path.name}:")
+        _show(tree)
+        if a.out:
+            Path(a.out).write_text(json.dumps(tree, indent=2), encoding="utf-8")
+            print(f"wrote tree -> {a.out}")
+        return 0
 
     data = path.read_bytes()
     pipeline = docintel.Pipeline(registry=registry)

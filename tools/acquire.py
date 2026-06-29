@@ -35,6 +35,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent / "shared"))  # for the shared docintel.html_util toolkit
 import fetch_resilient as FR  # reuse BROWSER_HEADERS, prong_browser_headers, prong_wayback, _robots_ok, _decompress  # noqa
 import rate_governor as RG  # per-host pacing + lockout avoidance (Crawl-delay/Retry-After/breaker/budget)  # noqa
 import fetch_diag as FD  # detect WHY blocked (vendor/challenge) + structured-source hints (no evasion)  # noqa
@@ -45,6 +46,15 @@ FILE_EXT = (".pdf", ".xlsx", ".xls", ".docx", ".doc", ".csv", ".zip", ".json", "
 
 
 def _links(html_text: str, base: str) -> list[str]:
+    # Prefer the shared lxml link discovery (finds more links in messy/rendered HTML); fall back to
+    # the stdlib regex if the docintel toolkit / lxml isn't available.
+    try:
+        from docintel.html_util import get_links
+        links = get_links(html_text, base)
+        if links:
+            return links
+    except Exception:  # noqa: BLE001
+        pass
     out = []
     for href in re.findall(r'href=["\']([^"\']+)["\']', html_text, re.I):
         if href.startswith(("javascript:", "#", "mailto:")):
