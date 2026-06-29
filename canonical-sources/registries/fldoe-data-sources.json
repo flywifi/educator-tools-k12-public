@@ -1,0 +1,162 @@
+{
+  "_comment": "Authoritative FL education DATA SOURCES — a 'places to search' index for building the offline database. Every entry was EXTRACTED from a real page the maintainer saved in a browser (provenance.from_saved_page records which one + date); none are guessed. status='discovered_unprobed' means the URL is real (it appeared on an authoritative page) but has not yet been individually fetched/verified — run tools/seed_probe.py --probe --resilient (add to a registry it scans, or probe directly with fetch_resilient.py) to confirm reachability + data format before relying on it. This file grows as more source pages are provided. NEVER fabricate an endpoint here; only add what appears on a real saved authoritative page.",
+  "domain": "fldoe-data-sources",
+  "version": "0.1.0",
+  "updated": "2026-06-28",
+  "discovery_note": "Seeded from maintainer-provided saved pages on 2026-06-28; more sources pending.",
+  "sources": [
+    {
+      "id": "cpalms-standards-api",
+      "url": "https://www.cpalms.org/Standards/Standards_API.aspx",
+      "label": "CPALMS Standards API",
+      "category": "standards",
+      "data_format": "API (machine-readable — primary target for an offline standards DB)",
+      "authority": "primary",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://www.cpalms.org/downloads", "captured": "2026-06-28"}
+    },
+    {
+      "id": "cpalms-coding-schema",
+      "url": "https://www.cpalms.org/Standards/Standards_Coding_Schema.aspx",
+      "label": "CPALMS State Academic Standards Coding Scheme",
+      "category": "standards",
+      "data_format": "HTML reference (how FL standard codes are structured)",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://www.cpalms.org/Standards/Standards_Coding_Schema.aspx", "captured": "2026-06-28"}
+    },
+    {
+      "id": "cpalms-downloads",
+      "url": "https://www.cpalms.org/downloads",
+      "label": "CPALMS Download Standards",
+      "category": "standards",
+      "data_format": "HTML downloads index (standards exports, books)",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://www.cpalms.org/downloads", "captured": "2026-06-28"}
+    },
+    {
+      "id": "cpalms-search-standard",
+      "url": "https://www.cpalms.org/public/search/Standard",
+      "label": "CPALMS public Standard search",
+      "category": "standards",
+      "data_format": "HTML search app",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://www.cpalms.org/downloads", "captured": "2026-06-28"}
+    },
+    {
+      "id": "cpalms-search-accesspoint",
+      "url": "https://www.cpalms.org/public/search/AccessPoint",
+      "label": "CPALMS public Access Point search (ESE/access standards)",
+      "category": "standards_access",
+      "data_format": "HTML search app",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://www.cpalms.org/public/search/AccessPoint", "captured": "2026-06-28"}
+    },
+    {
+      "id": "cpalms-search-course",
+      "url": "https://www.cpalms.org/public/search/Course",
+      "label": "CPALMS public Course search (course codes/descriptions)",
+      "category": "courses",
+      "data_format": "HTML search app",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://www.cpalms.org/downloads", "captured": "2026-06-28"}
+    },
+    {
+      "id": "cpalms-search-resource",
+      "url": "https://www.cpalms.org/public/search/Resource",
+      "label": "CPALMS public Resource search (vetted instructional resources)",
+      "category": "resources",
+      "data_format": "HTML search app",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://www.cpalms.org/downloads", "captured": "2026-06-28"}
+    },
+    {
+      "id": "edudata-portal",
+      "url": "https://edudata.fldoe.org/index.html",
+      "label": "FLDOE EduData portal (Know Your Schools / report cards)",
+      "category": "school_data",
+      "data_format": "HTML portal",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+    },
+    {
+      "id": "edudata-advanced-reports",
+      "url": "https://edudata.fldoe.org/AdvancedReports.html",
+      "label": "FLDOE EduData Advanced Reports",
+      "category": "assessment",
+      "data_format": "HTML + Tableau",
+      "authority": "primary",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+    },
+    {
+      "id": "edudata-assessments-tableau",
+      "url": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true",
+      "label": "FLDOE EduData PK-12 Assessments (Tableau)",
+      "category": "assessment",
+      "data_format": "Tableau viz (statewide assessment results — FAST/B.E.S.T.)",
+      "authority": "primary",
+      "priority": "high",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+    },
+    {
+      "id": "edudata-reportcards-schools",
+      "url": "https://edudata.fldoe.org/ReportCards/Schools.html",
+      "label": "FLDOE School Report Cards",
+      "category": "school_data",
+      "data_format": "HTML (per-school grade/data; ?school=DDDD&district=DD)",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+    },
+    {
+      "id": "edudata-reportcards-mapping",
+      "url": "https://edudata.fldoe.org/ReportCards/Mapping.html",
+      "label": "FLDOE Report-Card school mapping",
+      "category": "school_data",
+      "data_format": "HTML map (school locations/lookup)",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+    },
+    {
+      "id": "fldoe-school-grades",
+      "url": "https://www.fldoe.org/accountability/accountability-reporting/school-grades/",
+      "label": "FLDOE School Grades (accountability)",
+      "category": "accountability",
+      "data_format": "HTML + downloadable files",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+    },
+    {
+      "id": "floridacims-districts",
+      "url": "https://www.floridacims.org/districts",
+      "label": "Florida CIMS — district school-improvement directory",
+      "category": "school_improvement",
+      "data_format": "HTML directory",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+    },
+    {
+      "id": "floridacims-essa-downloads",
+      "url": "https://www.floridacims.org/downloads?category=essa",
+      "label": "Florida CIMS — ESSA data downloads",
+      "category": "accountability",
+      "data_format": "downloadable files (ESSA)",
+      "authority": "primary",
+      "status": "discovered_unprobed",
+      "provenance": {"from_saved_page": "https://edudata.fldoe.org/AdvancedReports_Tableau.html?Assessments=true", "captured": "2026-06-28"}
+    }
+  ]
+}
