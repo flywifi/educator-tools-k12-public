@@ -119,8 +119,8 @@ def build() -> int:
     conn.enable_load_extension(True)
     sqlite_vec.load(conn)
     conn.enable_load_extension(False)
-    dim = len(vectors[0]) if vectors else EMBED_DIM
-    conn.execute(f"CREATE VIRTUAL TABLE vec_standards USING vec0(embedding float[{dim}])")
+    dim = int(len(vectors[0]) if vectors else EMBED_DIM)  # integer vector-column dimension
+    conn.execute(f"CREATE VIRTUAL TABLE vec_standards USING vec0(embedding float[{dim}])")  # nosemgrep  (dim is an int; DDL dimensions cannot be bound params)
     conn.execute("CREATE TABLE meta_standards (rowid INTEGER PRIMARY KEY, code TEXT, statement TEXT, "
                  "subject TEXT, grade TEXT, type TEXT)")
     for i, ((code, stmt, subj, grade, typ), vec) in enumerate(zip(rows, vectors), start=1):
@@ -143,11 +143,12 @@ def vector_query(text: str, k: int, subject: str | None, grade: str | None) -> l
     conn.enable_load_extension(True)
     sqlite_vec.load(conn)
     conn.enable_load_extension(False)
-    sql = ("SELECT m.code, m.statement, m.subject, m.grade, m.type, v.distance "
-           "FROM vec_standards v JOIN meta_standards m ON m.rowid = v.rowid "
-           "WHERE v.embedding MATCH ? AND k = ? ")
     params: list = [sqlite_vec.serialize_float32(qv), k]
-    rows = conn.execute(sql + "ORDER BY v.distance", params).fetchall()
+    # Fully static SQL (adjacent string literals, not runtime concatenation); values are bound via ?.
+    rows = conn.execute(
+        "SELECT m.code, m.statement, m.subject, m.grade, m.type, v.distance "
+        "FROM vec_standards v JOIN meta_standards m ON m.rowid = v.rowid "
+        "WHERE v.embedding MATCH ? AND k = ? ORDER BY v.distance", params).fetchall()
     conn.close()
     out = []
     for code, stmt, subj, grade_, typ, dist in rows:
