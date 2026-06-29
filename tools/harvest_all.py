@@ -219,6 +219,8 @@ def main(argv=None) -> int:
                     help="polite floor (seconds) between same-host requests; robots Crawl-delay wins if slower")
     ap.add_argument("--push", action="store_true", help="git add+commit+push the catalogued data")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--out-root", help="write all catalogued data under this dir instead of the repo "
+                                       "(test isolation; skips the index rebuild and --push)")
     # dependency-preflight flags (consumed by deps_preflight via sys.argv; declared so argparse accepts
     # them and they survive the re-exec into the isolated venv)
     ap.add_argument("--update-deps", action="store_true", help="force an upgrade pass of all deps now")
@@ -233,6 +235,15 @@ def main(argv=None) -> int:
     # beautifulsoup4, markitdown, requests) are present and current in the isolated .harvest-venv.
     import deps_preflight  # local; stdlib-only at import time  # noqa: E402
     deps_preflight.preflight()
+
+    handoff_path = ROOT / "HARVEST_HANDOFF.md"
+    if a.out_root:
+        global TOOLKIT_DIR
+        _oroot = Path(a.out_root).resolve()
+        ING.set_out_root(_oroot)                       # redirect consolidated schools + base catalog
+        TOOLKIT_DIR = _oroot / "canonical-sources" / "references" / "toolkit-content"
+        handoff_path = _oroot / "HARVEST_HANDOFF.md"
+        print(f"[out-root] writing data under {_oroot} (repo registries untouched)")
 
     inbox = Path(a.inbox)
     inbox.mkdir(parents=True, exist_ok=True)
@@ -320,11 +331,12 @@ def main(argv=None) -> int:
         "captured": _now()[:10], "count": len(merged), "human_review_required": True, "members": merged,
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     n_cat = ING.catalog_base(base)
-    report.append(f"  base catalog: {len(base)} files ({n_cat} new) in {ING.INGESTED.relative_to(ROOT)}")
-    rc, out = _run([sys.executable, str(HERE / "offline_index.py"), "--build"])
-    report.append("  " + (out.strip().splitlines()[-1] if out.strip() else f"index build rc={rc}"))
-    rc, out = _run([sys.executable, str(HERE / "sync_check.py")])
-    report.append(f"  drift guard: {'PASS' if rc == 0 else 'FAIL'} ({out.strip().splitlines()[-1][:70]})")
+    report.append(f"  base catalog: {len(base)} files ({n_cat} new) in {ING.INGESTED}")
+    if not a.out_root:                                  # the index reads/writes real repo paths
+        rc, out = _run([sys.executable, str(HERE / "offline_index.py"), "--build"])
+        report.append("  " + (out.strip().splitlines()[-1] if out.strip() else f"index build rc={rc}"))
+        rc, out = _run([sys.executable, str(HERE / "sync_check.py")])
+        report.append(f"  drift guard: {'PASS' if rc == 0 else 'FAIL'} ({out.strip().splitlines()[-1][:70]})")
 
     # ---- HANDOFF ----
     report.append("\n## HANDOFF")
@@ -335,11 +347,11 @@ def main(argv=None) -> int:
         seeds.write_text("\n".join(sorted(discovered)) + "\n", encoding="utf-8")
         report.append(f"  next-pass seeds: {len(discovered)} document link(s) -> {seeds} "
                       f"(feed the next fetch with --urls {seeds})")
-    (ROOT / "HARVEST_HANDOFF.md").write_text("\n".join(report) + "\n", encoding="utf-8")
+    handoff_path.write_text("\n".join(report) + "\n", encoding="utf-8")
     print("\n".join(report))
-    print(f"\nHandoff report: HARVEST_HANDOFF.md")
+    print(f"\nHandoff report: {handoff_path}")
 
-    if a.push:
+    if a.push and not a.out_root:
         _run(["git", "add", "canonical-sources/schools/private", "canonical-sources/references",
               "canonical-sources/registries/ingested-sources.json"])
         rc, out = _run(["git", "commit", "-m", f"data: harvest_all ingest {_now()[:10]}"])

@@ -35,6 +35,15 @@ COURSES = ROOT / "canonical-sources" / "references" / "fl-course-codes.json"
 INGESTED = ROOT / "canonical-sources" / "registries" / "ingested-sources.json"
 
 
+def set_out_root(root: Path) -> None:
+    """Redirect ALL data writes under `root` instead of the repo — test isolation: a run against a
+    throwaway inbox can't touch the committed registries. Mirrors the canonical-sources/ layout."""
+    global PRIV_DIR, COURSES, INGESTED
+    PRIV_DIR = root / "canonical-sources" / "schools" / "private"
+    COURSES = root / "canonical-sources" / "references" / "fl-course-codes.json"
+    INGESTED = root / "canonical-sources" / "registries" / "ingested-sources.json"
+
+
 def _clean(v: str) -> str:
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", v))).strip()
 
@@ -221,7 +230,12 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--inbox", required=True, help="folder of saved source files to ingest")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--out-root", help="write all data under this dir instead of the repo "
+                                       "(test isolation; the offline index rebuild is skipped)")
     a = ap.parse_args(argv)
+    if a.out_root:
+        set_out_root(Path(a.out_root).resolve())
+        print(f"[out-root] writing data under {a.out_root} (repo registries untouched)")
     inbox = Path(a.inbox)
     if not inbox.exists():
         print(f"inbox not found: {inbox}", file=sys.stderr); return 1
@@ -285,9 +299,10 @@ def main(argv=None) -> int:
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"wrote {consolidated.relative_to(ROOT)}")
 
-    # rebuild the offline index
-    print("\nrebuilding offline index ...")
-    subprocess.run([sys.executable, str(ROOT / "tools" / "offline_index.py"), "--build"])
+    # rebuild the offline index (skipped under --out-root: the index reads/writes real repo paths)
+    if not a.out_root:
+        print("\nrebuilding offline index ...")
+        subprocess.run([sys.executable, str(ROOT / "tools" / "offline_index.py"), "--build"])
     return 0
 
 
