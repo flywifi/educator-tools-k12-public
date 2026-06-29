@@ -176,6 +176,7 @@ def default_registry() -> ParserRegistry:
     from .parsers.media_parser import MediaTranscriptParser
     from .parsers.plaintext_parser import PlainTextParser
     from .parsers.pymupdf_parser import PyMuPDFParser
+    from .parsers.resilient_html_parser import ResilientHtmlParser
     from .parsers.universal_parser import RtfParser, UniversalFallbackParser
     from .parsers.workspace_parsers import CsvParser, OdtParser, PptxParser, XlsxParser
 
@@ -194,6 +195,7 @@ def default_registry() -> ParserRegistry:
     reg.register(MediaTranscriptParser())     # audio/video → transcription engine (gap if none)
     reg.register(RtfParser())                 # .rtf
     reg.register(LegacyOfficeParser())        # .doc/.ppt/.xls/.odp/.ods via LibreOffice (gated on soffice)
+    reg.register(ResilientHtmlParser())       # text/html: scrapling/lxml -> stdlib (preferred for HTML)
     reg.register(PlainTextParser())           # .txt/.md/.html/.docx
     reg.register(UniversalFallbackParser())   # last resort: read ANY file (text decode, else binary metadata)
     return reg

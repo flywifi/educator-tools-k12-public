@@ -13,14 +13,84 @@ that is quality-review's job (protocols/quality-gates.md).
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import shutil
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "shared"))
 
 import docintel  # noqa: E402  (path set above)
+
+
+# --------------------------------------------------------------------------- deferred parse queue
+# "Parse separately or at a later time": an upload can be CAPTURED now (registered with its bytes +
+# metadata, retrieval_state 'referenced') and PARSED later in a batch. Nothing is fabricated; an item
+# that can't be parsed yet (missing optional dep) stays queued with an honest status.
+def _queue_manifest(qdir: Path) -> Path:
+    return qdir / "queue.json"
+
+
+def _load_queue(qdir: Path) -> dict:
+    mf = _queue_manifest(qdir)
+    if mf.exists():
+        try:
+            return json.loads(mf.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {"items": []}
+
+
+def _save_queue(qdir: Path, q: dict) -> None:
+    qdir.mkdir(parents=True, exist_ok=True)
+    _queue_manifest(qdir).write_text(json.dumps(q, indent=2), encoding="utf-8")
+
+
+def enqueue(path: Path, qdir: Path) -> dict:
+    """Register an upload for later parsing (capture-now, parse-later). Dedups by content hash."""
+    data = path.read_bytes()
+    sha = hashlib.sha256(data).hexdigest()
+    q = _load_queue(qdir)
+    if any(it["sha256"] == sha for it in q["items"]):
+        return {"status": "duplicate", "sha256": sha, "filename": path.name}
+    files = qdir / "files"; files.mkdir(parents=True, exist_ok=True)
+    stored = files / f"{sha[:16]}_{path.name}"
+    shutil.copyfile(path, stored)
+    item = {"id": f"q_{sha[:12]}", "filename": path.name, "stored": stored.name,
+            "sha256": sha, "media_type": docintel.guess_media_type(path.name),
+            "retrieval_state": "referenced", "status": "pending",
+            "queued_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "parsed_at": None}
+    q["items"].append(item)
+    _save_queue(qdir, q)
+    return item
+
+
+def process_queue(qdir: Path, registry) -> list[dict]:
+    """Parse every pending item now. Writes artifacts to <qdir>/artifacts/<id>.json and updates state."""
+    q = _load_queue(qdir)
+    arts = qdir / "artifacts"; arts.mkdir(parents=True, exist_ok=True)
+    out = []
+    pipeline = docintel.Pipeline(registry=registry)
+    for it in q["items"]:
+        if it["status"] == "parsed":
+            continue
+        src = qdir / "files" / it["stored"]
+        if not src.exists():
+            it["status"] = "missing_file"; out.append(it); continue
+        doc = pipeline.run(src.read_bytes(), it["filename"], it["media_type"])
+        artifact = docintel.build_knowledge_artifact(doc)
+        artifact["metadata"]["score_summary"] = docintel.validate(doc, artifact)
+        (arts / f"{it['id']}.json").write_text(json.dumps(artifact, indent=2), encoding="utf-8")
+        it["retrieval_state"] = doc.diagnostics.get("retrieval_state", "referenced")
+        it["status"] = "parsed"
+        it["parsed_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+        it["recovery"] = doc.diagnostics.get("recovery", {})
+        out.append(it)
+    _save_queue(qdir, q)
+    return out
 
 
 def main(argv: list[str]) -> int:
@@ -30,9 +100,33 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--out", help="write the knowledge artifact JSON here")
     ap.add_argument("--udom", help="write the raw UDOM JSON here")
     ap.add_argument("--quiet", action="store_true", help="only print the validation summary")
+    ap.add_argument("--queue", help="deferred-parse queue directory (capture-now, parse-later)")
+    ap.add_argument("--enqueue", action="store_true",
+                    help="register the given file into --queue for LATER parsing (does not parse now)")
+    ap.add_argument("--process-queue", action="store_true",
+                    help="parse every pending item in --queue now, writing artifacts to <queue>/artifacts/")
     a = ap.parse_args(argv)
 
     registry = docintel.default_registry()
+
+    # deferred-parse modes: capture an upload now, parse it (or a whole batch) at a later time
+    if a.enqueue or a.process_queue:
+        if not a.queue:
+            ap.error("--enqueue/--process-queue require --queue <dir>")
+        qdir = Path(a.queue)
+        if a.enqueue:
+            if not a.file or not Path(a.file).exists():
+                ap.error("--enqueue needs an existing file to register")
+            item = enqueue(Path(a.file), qdir)
+            print(f"queued for later parsing: {item.get('filename')} "
+                  f"[{item.get('status')}] -> {qdir}/  (run --process-queue {qdir} when ready)")
+            return 0
+        results = process_queue(qdir, registry)
+        parsed = sum(1 for r in results if r["status"] == "parsed")
+        print(f"processed deferred queue {qdir}: {parsed}/{len(results)} item(s) parsed")
+        for r in results:
+            print(f"  {r['status']:12} {r['filename'][:50]}  retrieval_state={r.get('retrieval_state')}")
+        return 0
 
     if a.check:
         print(f"docintel {docintel.__version__} - registered parsers:")
