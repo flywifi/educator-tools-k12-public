@@ -17,7 +17,10 @@ Within **Generation**, work `Analysis → Standards Alignment → Differentiatio
    (`protocol-layer/assumptions-protocol.md`); ask only if a choice is high-stakes.
 2. **Standards Alignment** — select the most specific aligned standard(s) and cite with
    framework + version (`shared/standards/`). **Verify** every code
-   (`protocol-layer/standards-verification.md`); never invent a code.
+   (`protocol-layer/standards-verification.md`); never invent a code. Use the offline index for a
+   zero-token, verbatim lookup — `tools/offline_index.py --standards "<topic>" --grade <g> --subject
+   <s>` (returns benchmarks + ESE access points), and `--resource <code>` to surface vetted **CPALMS
+   lesson/resource links** already mapped to that standard from the FL instructional toolkits.
 3. **Differentiation** — apply **UDL by default** (`shared/differentiation/udl.md`), then add
    tiering, EL supports, and IEP accommodations as relevant. Keep cognitive demand at grade level.
 4. **Generation** — fill the matching template in `assets/templates/`, following the design

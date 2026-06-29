@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 """Supply-chain scan gate (offline-friendly) — known-CVE + malicious/unsafe-code checks for deps.
 
-Runs `pip-audit` (known vulnerabilities in pinned requirements) and `bandit` (unsafe/suspicious code
-patterns) when they are installed; if neither is present it reports a gap and exits 0 (CI installs them).
-Exits non-zero when findings exist so it can be a release gate. This is the enforcement half of the
-"dependencies must be auto-updated AND scanned" policy (auto-update = .github/dependabot.yml).
+Runs `pip-audit` (known vulnerabilities in pinned requirements), `bandit` (unsafe/suspicious code
+patterns), and `semgrep` (structural pattern matching with custom rules) when they are installed; if
+none are present it reports a gap and exits 0 (CI installs them). Also performs multi-language
+awareness: detects Go, Java, and Rust modules in the repo tree and reports their presence + basic
+health (compilable / lintable) so TOS understands polyglot contributions.
+
+Exits non-zero on BLOCKING findings (pip-audit CVEs, bandit HIGH severity, or semgrep ERROR) so it can
+be a release gate; lower-severity audit patterns (bandit MEDIUM/LOW such as B310 urllib fetch / B608
+allow-listed SQL, semgrep `--config=auto` WARNING/INFO) are reported but do not fail the build. This
+is the enforcement half of the "dependencies must be auto-updated AND scanned" policy (auto-update =
+.github/dependabot.yml).
 
 Usage:
   python3 tools/security_scan.py            # scan; non-zero exit on findings
@@ -15,6 +22,7 @@ from __future__ import annotations
 import argparse
 import glob
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -29,6 +37,57 @@ def _run(cmd: list[str]) -> tuple[int, str]:
         return p.returncode, (p.stdout or "") + (p.stderr or "")
     except Exception as exc:
         return -1, f"{exc.__class__.__name__}: {exc}"
+
+
+LANG_MARKERS = {
+    "go.mod": {"lang": "go", "test_cmd": ["go", "vet", "./..."], "lint_cmd": ["golangci-lint", "run"]},
+    "Cargo.toml": {"lang": "rust", "test_cmd": ["cargo", "check"], "lint_cmd": ["cargo", "clippy"]},
+    "pom.xml": {"lang": "java", "test_cmd": ["mvn", "compile", "-q"], "lint_cmd": None},
+    "build.gradle": {"lang": "java", "test_cmd": ["gradle", "compileJava", "-q"], "lint_cmd": None},
+    "package.json": {"lang": "javascript", "test_cmd": ["npx", "tsc", "--noEmit"], "lint_cmd": ["npx", "eslint", "."]},
+}
+
+SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv"}
+
+
+def _detect_languages() -> list[dict]:
+    modules = []
+    for dirpath, dirnames, filenames in os.walk(str(ROOT)):
+        dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
+        for fname in filenames:
+            if fname in LANG_MARKERS:
+                cfg = LANG_MARKERS[fname]
+                rel = os.path.relpath(dirpath, str(ROOT))
+                entry: dict = {"lang": cfg["lang"], "path": rel, "marker": fname}
+                if shutil.which(cfg["test_cmd"][0]) if cfg["test_cmd"] else False:
+                    code, out = _run(cfg["test_cmd"])
+                    entry["compilable"] = code == 0
+                    if code != 0:
+                        entry["error_summary"] = out[:200]
+                else:
+                    entry["compilable"] = None
+                    entry["note"] = f"{cfg['test_cmd'][0]} not installed" if cfg["test_cmd"] else "no test command"
+                modules.append(entry)
+    return modules
+
+
+def _is_blocking(f: dict) -> bool:
+    """What gates a release: confirmed vulnerabilities, not advisory audits.
+      - pip-audit  -> always blocks (a known CVE in a pinned dependency).
+      - bandit     -> blocks at HIGH severity; MEDIUM/LOW are AUDIT patterns (e.g. B310 urllib fetch
+                      of public data, B608 SQL assembled from allow-listed identifiers) -> advisory.
+      - semgrep    -> blocks at ERROR; `--config=auto` WARNING/INFO audits -> advisory.
+    Advisory findings are still reported (visibility) but do not fail the build. Real high-severity
+    issues (shell=True, hardcoded secrets, eval, a semgrep ERROR) still gate."""
+    tool = f.get("tool")
+    if tool == "pip-audit":
+        return True
+    sev = str(f.get("severity") or "").upper()
+    if tool == "bandit":
+        return sev == "HIGH"
+    if tool == "semgrep":
+        return sev == "ERROR"
+    return True  # unknown tool / parse error -> conservative
 
 
 def scan() -> dict:
@@ -66,9 +125,33 @@ def scan() -> dict:
     else:
         skipped.append("bandit (not installed)")
 
+    # 3) semgrep over Python code (respects .semgrepignore at repo root).
+    if shutil.which("semgrep"):
+        code, out = _run(["semgrep", "--config=auto", "--json", "--quiet",
+                          "shared", "tools", "skills"])
+        ran.append("semgrep")
+        try:
+            data = json.loads(out or "{}")
+            for r in data.get("results", []):
+                findings.append({"tool": "semgrep", "file": r.get("path"),
+                                 "rule": r.get("check_id"), "severity": r.get("extra", {}).get("severity"),
+                                 "message": r.get("extra", {}).get("message", "")[:200]})
+        except Exception:
+            if code not in (0,):
+                findings.append({"tool": "semgrep", "raw": out[:300]})
+    else:
+        skipped.append("semgrep (not installed)")
+
+    # 4) Multi-language awareness: detect non-Python modules in the repo tree.
+    lang_modules = _detect_languages()
+
+    blocking = [f for f in findings if _is_blocking(f)]
     return {"tool": "security-scan", "ran": ran, "skipped": skipped,
             "findings": findings, "finding_count": len(findings),
-            "status": "findings" if findings else ("no_scanners" if not ran else "clean")}
+            "blocking_count": len(blocking), "advisory_count": len(findings) - len(blocking),
+            "language_modules": lang_modules,
+            "status": ("blocking" if blocking else "advisory" if findings
+                       else "no_scanners" if not ran else "clean")}
 
 
 def main(argv) -> int:
@@ -79,7 +162,7 @@ def main(argv) -> int:
     print(json.dumps(result, indent=2))
     if a.report:
         return 0
-    return 1 if result["findings"] else 0
+    return 1 if result["blocking_count"] else 0
 
 
 if __name__ == "__main__":

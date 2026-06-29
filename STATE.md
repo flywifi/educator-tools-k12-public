@@ -13,11 +13,11 @@ commit-anchored snapshot in `ledger/snapshots.json` (`tools/rollback.py --list`)
   auto-detects `FIRECRAWL_API_KEY`/`FIRECRAWL_BASE_URL` and prefers Firecrawl (else polite `requests`);
   `rss_fetcher` (`feed` seeds, `feedparser`/stdlib). Rollback is whole-tree to a known-good **commit**
   (tags can't be pushed here — egress policy 403), recorded in `ledger/snapshots.json`.
-- **F2 — Source-currency + staleness engine.** `tools/source_currency.py` + `shared/sources/<domain>.json`:
+- **F2 — Source-currency + staleness engine.** `tools/source_currency.py` + `canonical-sources/registries/<domain>.json`:
   states `current/changed/superseded/removed_404/stale_age/unreachable/uncertain` via conditional GET +
   content sha256 + supersession keywords + recency + 404 sweep; offline-graceful, advisory + human-verified.
 - **F3 — OCPS schools + programs index.** `shared/schools/` (+ `ocps/` seed) keyed on FLDOE MSID;
-  open/close + program changes watched by F2 (`shared/sources/ocps-schools.json`). Public, non-PII only.
+  open/close + program changes watched by F2 (`canonical-sources/registries/ocps-schools.json`). Public, non-PII only.
 - **F4 — `teacher-profile` skill (18th) + setup wizard.** Roles, duties, role-based handoff map, prefs →
   gitignored `teacher.local.json` + context `sop_refs`/`overrides`; teacher-stated outranks crawled.
 - **F5 — Staff/role directory (gated).** `shared/staff/` OFF by default (`STAFF_INGEST_AUTHORIZED`),

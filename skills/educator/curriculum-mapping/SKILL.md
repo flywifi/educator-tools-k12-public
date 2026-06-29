@@ -16,7 +16,10 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
    (calendar, period length) where not given.
 2. **Standards Alignment** — gather the full set of standards for the span and **verify** them
    (`shared/standards/`, `protocol-layer/standards-verification.md`); the goal is **complete coverage**
-   with no gaps or unnecessary duplication.
+   with no gaps or unnecessary duplication. Pull standards AND the **FL course code** from the offline
+   index (zero-token, verbatim — `tools/offline_index.py --standards "<topic>" --grade <g> --subject
+   <s>` and `--course "<title>"`, e.g. `Grade Three Mathematics → 5012050`) so the map anchors to the
+   real FL Course Code Directory entry, not a recalled one.
 3. **Coherence & differentiation** — sequence so prerequisites precede dependents (vertical
    coherence) and connections across subjects are noted (horizontal); flag where differentiation
    will be needed at the unit level.

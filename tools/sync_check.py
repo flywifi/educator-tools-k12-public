@@ -213,6 +213,51 @@ def main() -> int:
         for t in sorted(targets):
             if t != fallback and t not in skill_names:
                 failures.append(f"  x routing.json: route target '{t}' is not an installed skill")
+        for t in sorted(rj.get("atom_routes", {})):
+            if t.startswith("_"):
+                continue
+            if t not in skill_names:
+                failures.append(f"  x routing.json: atom_route '{t}' is not an installed skill")
+
+    # 11. Workflow atom resolution: every atom named in a workflow.json must be an installed skill.
+    for wf_path in sorted(SKILLS.rglob("workflow.json")):
+        try:
+            wf = json.loads(read(wf_path))
+        except Exception:
+            failures.append(f"  x {wf_path.relative_to(ROOT)}: invalid JSON")
+            continue
+        wf_atoms = set()
+        for step in wf.get("steps", []):
+            if "atom" in step:
+                wf_atoms.add(step["atom"])
+        for a in wf.get("shortcut_atoms", []):
+            wf_atoms.add(a)
+        for a in sorted(wf_atoms):
+            if a not in skill_names:
+                failures.append(f"  x {wf_path.relative_to(ROOT)}: atom '{a}' not an installed skill")
+
+    # 12. Dependency-safety guard (anti "dependency hell"): no compile-from-source package may be
+    # listed in a requirements file without an --only-binary guard. Reuses the health engine so
+    # there is one source of truth. Catches the lxml-class build failures before they reach a teacher.
+    sys.path.insert(0, str(ROOT / "shared"))
+    try:
+        from health.health import scan_dependencies
+        for p in scan_dependencies():
+            if "without --only-binary guard" in p["issue"]:
+                failures.append(f"  x {p['file']}: {p['issue']}")
+    except Exception as e:  # health engine optional — never let it crash the guard
+        print(f"[note] dependency guard skipped: {e.__class__.__name__}: {e}")
+
+    # 13. URL-provenance guard (anti-fabrication): every external URL hardcoded in tools/*.py and
+    # shared/**/*.py must be DECLARED in tools/url-provenance.json. An undeclared URL is the
+    # confabulation risk — a plausible-looking address that was never verified. Catch it here, not
+    # as a 403 on a teacher's machine.
+    try:
+        from health.health import scan_url_provenance
+        for p in scan_url_provenance():
+            failures.append(f"  x {p['file']}: {p['issue']}")
+    except Exception as e:
+        print(f"[note] url-provenance guard skipped: {e.__class__.__name__}: {e}")
 
     print("TOS ecosystem - drift guard\n")
     if failures:

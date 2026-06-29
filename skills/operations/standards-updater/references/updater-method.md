@@ -94,7 +94,7 @@ Detection finds *what moved*; this turns it into *what matters*. The policy is c
 The crawler above finds NEW/CHANGED files; the source-currency engine is its complement — it watches the
 authoritative *web sources* for going stale, moving, being superseded, or disappearing:
 `python3 tools/source_currency.py --summary` classifies each watched source in
-`shared/sources/<domain>.json` as `current · changed · superseded · removed_404 · stale_age ·
+`canonical-sources/registries/<domain>.json` as `current · changed · superseded · removed_404 · stale_age ·
 unreachable · uncertain` (conditional GET + content sha256 + supersession sentinel keywords +
 recency/effective-date + a 404 sweep), and emits a stale-source list with a reason + recommended action.
 It degrades to age-only triage offline and **never fabricates** a change — every standards/legal/program

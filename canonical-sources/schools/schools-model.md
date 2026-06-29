@@ -12,14 +12,14 @@ campus, a transfer's destination). It is reference data, not a system of record.
   get eliminated independently of the school.
 
 ## Layout
-- `shared/schools/<district>/schools.json` — the committed snapshot (e.g. `ocps/`). Validates against
+- `canonical-sources/schools/<district>/schools.json` — the committed snapshot (e.g. `ocps/`). Validates against
   `schools.schema.json`. Carries `completeness: seed | partial | complete` so coverage is never overstated.
-- `shared/schools/schools.py` — offline loader + query (list/filter by level/type/status, magnet lookup,
+- `canonical-sources/schools/schools.py` — offline loader + query (list/filter by level/type/status, magnet lookup,
   MSID/name find, coverage stats).
 
 ## How it stays current
 Schools open and close regularly, so the index is **monitored, not assumed**: the source-currency engine
-(`tools/source_currency.py` + `shared/sources/ocps-schools.json`) watches the MSID file and the OCPS
+(`tools/source_currency.py` + `canonical-sources/registries/ocps-schools.json`) watches the MSID file and the OCPS
 School Choice page and flags `changed / removed_404 / superseded / stale_age`. A flagged change is
 **advisory + human-verified** before the index is updated. Bulk population of the full ~200-school index
 is a crawl job (`tools/standards_refresh.py` / the traversal crawler — firecrawl renders the JS OCPS

@@ -1,14 +1,25 @@
 {
-  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. Nothing fabricated.",
+  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. PROVENANCE: no feed URL in this catalog has been confirmed by a live fetch in the build environment (egress-restricted); every entry is verified:false + url_status:'unverified_candidate' and must be confirmed with tools/verify_feeds.py on an open network before it is trusted. Base domains are real; deep RSS/news paths are best-guess patterns. Nothing is presented as confirmed that was not actually fetched.",
   "domain": "education-feeds",
-  "version": "0.3.0",
-  "updated": "2026-06-27",
+  "version": "0.4.0",
+  "updated": "2026-06-28",
   "freshness_policy": {
     "stale_age_days": 365,
-    "supersession_keywords": ["rescinded", "repealed", "archived", "superseded", "discontinued", "program eliminated", "retired"]
+    "supersession_keywords": [
+      "rescinded",
+      "repealed",
+      "archived",
+      "superseded",
+      "discontinued",
+      "program eliminated",
+      "retired"
+    ]
   },
   "layers": {
-    "product_updates": {"enabled": false, "note": "edtech/vendor product-update feeds — OFF unless a teacher opts in"}
+    "product_updates": {
+      "enabled": false,
+      "note": "edtech/vendor product-update feeds — OFF unless a teacher opts in"
+    }
   },
   "feeds": [
     {
@@ -25,12 +36,21 @@
       "type": "feed",
       "parser": "rss",
       "cadence_days": 7,
-      "verified": true,
+      "verified": false,
       "discover_from": "https://www.ed.gov/about/news",
-      "note": "Confirmed RSS at blog.ed.gov/feed — US DOE blog. Newsroom page: https://www.ed.gov/about/news",
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "note": "[corrected 2026-06-28: was marked verified without a live fetch] Confirmed RSS at blog.ed.gov/feed — US DOE blog. Newsroom page: https://www.ed.gov/about/news",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "ea6a7dd185e35bd7de27f8527f5fa534eb9406c04b989c771524d967d0acbd02",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
+      },
+      "url_status": "redirected",
+      "probe_note": "[2026-06-28] redirected to https://www.ed.gov/about/homeroom-blog (HTML, not a feed)",
+      "url_moved_to": "https://www.ed.gov/about/homeroom-blog"
     },
-
     {
       "id": "fl-senate-calendars",
       "url": "https://www.flsenate.gov/PublishedContent/RSS/Calendars.xml",
@@ -48,9 +68,17 @@
       "verified": false,
       "discover_from": "https://www.flsenate.gov/tracker/rss",
       "note": "Candidate URL — the FL Senate tracker/rss page lists available feeds. Run tools/verify_feeds.py --url URL on an open-net machine to confirm. Try also: https://www.flsenate.gov/tracker/rss for the full list of available FL Senate RSS feeds.",
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": "2026-06-28",
+        "last_status": null,
+        "fetch_prong": null
+      },
+      "url_status": "dead_confirmed",
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
     },
-
     {
       "id": "fldoe-news",
       "url": "https://www.fldoe.org/newsroom/latest-news/",
@@ -77,9 +105,17 @@
         "summary": "p, .excerpt, .news-description",
         "_note": "Selectors are best-guess defaults — tune after running tools/make_feed.py --url against the live page"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "5869c034302d063fda4204a9f79a876c69b3eb417525474633638aefa89fbfb0",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
+      },
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     },
-
     {
       "id": "cpalms-updates",
       "url": "https://www.cpalms.org/",
@@ -106,9 +142,17 @@
         "summary": "p, .excerpt",
         "_note": "Selectors are best-guess defaults — tune after running tools/make_feed.py --url against the live page"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "5dc74c11b4788ee996f38d27e0875adc27116de82072b6f75f92302e3ca55b9c",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
+      },
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     },
-
     {
       "id": "wida-news",
       "url": "https://wida.wisc.edu/news/feed",
@@ -135,9 +179,17 @@
         "summary": "p, .views-field-body, .field--name-body",
         "_note": "Fallback scrape config if /news/feed 404s — tune after running tools/make_feed.py --url https://wida.wisc.edu/news"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": "2026-06-28",
+        "last_status": null,
+        "fetch_prong": null
+      },
+      "url_status": "dead_confirmed",
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
     },
-
     {
       "id": "ocps-news",
       "url": "https://www.ocps.net/departments/media_relations/newsroom",
@@ -164,9 +216,17 @@
         "summary": ".app-post-block-body, p, .fs-entry-summary-description, .excerpt",
         "_note": "Finalsite-specific selectors — tune after running tools/make_feed.py --url against the live OCPS newsroom. Try also the alternate newsroom URL: https://www.ocps.net/94816_3"
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "298abd251d45140e9ad7f33c2061205894c222ed6251b3489b28bbdb49406606",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
+      },
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     },
-
     {
       "id": "monarch-news",
       "url": "https://www.monarchlearningacademy.com/",
@@ -193,7 +253,268 @@
         "summary": "p, .entry-summary, .excerpt",
         "_note": "Generic WordPress-style selectors — run tools/make_feed.py --url against the live site to discover what's actually there. May need /news or /blog path instead of homepage."
       },
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null, "last_status": null}
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "1779d6b4d694071269cb6f767ca15aecdc93b4b607ad860a242d6bf3d34fe3ac",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
+      },
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
+    },
+    {
+      "id": "edutopia-teaching-strategies",
+      "url": "https://www.edutopia.org/rss.xml",
+      "label": "Edutopia — teaching strategies",
+      "category": "instruction",
+      "authority": "secondary",
+      "tier": "news_teacher_student",
+      "purpose": "Research-backed teaching strategies, differentiation techniques, and classroom management from the George Lucas Educational Foundation",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "national",
+      "type": "feed",
+      "parser": "rss",
+      "cadence_days": 7,
+      "verified": false,
+      "discover_from": "https://www.edutopia.org",
+      "note": "Edutopia is a well-known education media site. Standard WordPress/Drupal RSS at /rss.xml. Verify with tools/verify_feeds.py.",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "3d4d7d39c92775997e2653594b77866a439664b321e0655233957e6d98d49f72",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
+      },
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
+    },
+    {
+      "id": "ascd-blog",
+      "url": "https://www.ascd.org/blogs/ascd-blog",
+      "label": "ASCD — curriculum & instruction blog",
+      "category": "instruction",
+      "authority": "secondary",
+      "tier": "news_teacher_student",
+      "purpose": "ASCD (formerly Association for Supervision and Curriculum Development) blog on curriculum design, assessment, and instructional leadership",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "national",
+      "type": "page",
+      "parser": "scraped",
+      "cadence_days": 14,
+      "verified": false,
+      "discover_from": "https://www.ascd.org/blogs",
+      "note": "ASCD may have RSS at /feed or /rss. Try autodiscovery first. ASCD publishes Educational Leadership journal and Whole Child frameworks.",
+      "scrape_config": {
+        "news_list_url": "https://www.ascd.org/blogs/ascd-blog",
+        "items": "article, .blog-post, .card, .content-card",
+        "title": "h2, h3, .card-title, .blog-title",
+        "link": "a",
+        "date": "time, .date, .published",
+        "summary": "p, .excerpt, .card-description",
+        "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
+      },
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": "2026-06-28",
+        "last_status": null,
+        "fetch_prong": null
+      },
+      "url_status": "dead_confirmed",
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
+    },
+    {
+      "id": "cast-udl-news",
+      "url": "https://www.cast.org/news",
+      "label": "CAST — UDL news & updates",
+      "category": "standards",
+      "authority": "primary",
+      "tier": "canonical",
+      "purpose": "CAST Universal Design for Learning framework updates and guidance — primary canonical source for UDL (used by udl-options and differentiation atoms)",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "national",
+      "type": "page",
+      "parser": "scraped",
+      "cadence_days": 30,
+      "verified": false,
+      "discover_from": "https://www.cast.org",
+      "note": "CAST hosts udlguidelines.cast.org (UDL 3.0). Check for RSS at cast.org/feed or cast.org/rss.xml. Also monitor udlguidelines.cast.org for guideline revisions.",
+      "scrape_config": {
+        "news_list_url": "https://www.cast.org/news",
+        "items": "article, .news-item, .post, .card",
+        "title": "h2, h3, .title, .card-title",
+        "link": "a",
+        "date": "time, .date, .published",
+        "summary": "p, .excerpt, .description",
+        "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
+      },
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null,
+        "last_checked": "2026-06-28",
+        "last_status": null,
+        "fetch_prong": null
+      },
+      "url_status": "dead_confirmed",
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
+    },
+    {
+      "id": "fldoe-fast-updates",
+      "url": "https://flfast.org",
+      "label": "Florida FAST — assessment updates",
+      "category": "standards",
+      "authority": "primary",
+      "tier": "canonical",
+      "purpose": "Florida Assessment of Student Thinking (FAST) updates, blueprints, and item specifications — primary source for FL statewide assessment alignment",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "state",
+      "type": "page",
+      "parser": "scraped",
+      "cadence_days": 30,
+      "verified": false,
+      "discover_from": "https://flfast.org",
+      "note": "FAST replaced FSA. Test blueprints, achievement-level descriptions, and practice tests available. Also check https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/ for item specs.",
+      "scrape_config": {
+        "news_list_url": "https://flfast.org",
+        "items": "article, .news-item, .update, .announcement",
+        "title": "h2, h3, .title",
+        "link": "a",
+        "date": "time, .date",
+        "summary": "p, .description",
+        "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
+      },
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "c1162b708ae1e2cdfa04a5db4df91dda1883e9b989f5141ae913acc3b1f2975b",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
+      },
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
+    },
+    {
+      "id": "fl-house-education",
+      "url": "https://www.myfloridahouse.gov/Sections/Committees/committeesdetail.aspx?CommitteeId=3277",
+      "label": "FL House — Education & Employment Committee",
+      "category": "legislation",
+      "authority": "primary",
+      "tier": "canonical",
+      "purpose": "Florida House Education & Employment Committee bills and hearings — complement to fl-senate-calendars for legislative tracking",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "state",
+      "type": "page",
+      "parser": "scraped",
+      "cadence_days": 7,
+      "verified": false,
+      "discover_from": "https://www.myfloridahouse.gov",
+      "note": "CommitteeId is UNVERIFIED and inconsistent across drafts (3277 vs 3210); the real current Education Committee ID must be confirmed on myfloridahouse.gov before use. FL House education committee page. Check for RSS feeds on myfloridahouse.gov. Committee ID may change by session — verify the current committee page.",
+      "scrape_config": {
+        "news_list_url": "https://www.myfloridahouse.gov/Sections/Committees/committeesdetail.aspx?CommitteeId=3277",
+        "items": ".bill-row, .committee-bill, tr, .agenda-item",
+        "title": ".bill-number, .bill-title, td:first-child",
+        "link": "a",
+        "date": ".date, .filed-date",
+        "summary": ".bill-summary, .short-title",
+        "_note": "ASP.NET site — selectors need tuning. May need session-specific committee ID."
+      },
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "b6e1aeb6b66a38edf29c9e9aeba63c118a63f407f84d94039ceaf4e63d0f0ff9",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
+      },
+      "url_status": "redirected",
+      "probe_note": "[2026-06-28] redirected to https://www.flhouse.gov/ (HTML, not a feed)",
+      "url_moved_to": "https://www.flhouse.gov/"
+    },
+    {
+      "id": "nctm-news",
+      "url": "https://www.nctm.org/News-and-Calendar/",
+      "label": "NCTM — mathematics education news",
+      "category": "instruction",
+      "authority": "secondary",
+      "tier": "news_teacher_student",
+      "purpose": "National Council of Teachers of Mathematics — standards, research, and practice news for math educators",
+      "grade_band": "K-12",
+      "subject": "Math",
+      "scope": "national",
+      "type": "page",
+      "parser": "scraped",
+      "cadence_days": 14,
+      "verified": false,
+      "discover_from": "https://www.nctm.org",
+      "note": "NCTM publishes Principles to Actions and CCSS-M alignment resources. Check for RSS at nctm.org/feed or nctm.org/rss.",
+      "scrape_config": {
+        "news_list_url": "https://www.nctm.org/News-and-Calendar/",
+        "items": "article, .news-item, .card",
+        "title": "h2, h3, .title",
+        "link": "a",
+        "date": "time, .date",
+        "summary": "p, .excerpt",
+        "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
+      },
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "1a278a4e1e789a20bd58d0024b3dcdb4abcfe174d88ef6825905145eae965096",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "fetch_prong": "wayback"
+      },
+      "url_status": "archived_only_stale",
+      "probe_note": "[2026-06-28] recovered ONLY from an OLD Wayback snapshot (1361d old) — STALE, likely defunct",
+      "url_moved_to": "http://web.archive.org/web/20221006052809/http://www.nctm.org/News-and-Calendar/"
+    },
+    {
+      "id": "ncte-blog",
+      "url": "https://ncte.org/blog/",
+      "label": "NCTE — English language arts blog",
+      "category": "instruction",
+      "authority": "secondary",
+      "tier": "news_teacher_student",
+      "purpose": "National Council of Teachers of English — literacy, ELA instruction, and position statements",
+      "grade_band": "K-12",
+      "subject": "ELA",
+      "scope": "national",
+      "type": "page",
+      "parser": "scraped",
+      "cadence_days": 14,
+      "verified": false,
+      "discover_from": "https://ncte.org",
+      "note": "NCTE publishes position statements on literacy and ELA standards. WordPress site — try /feed or /rss for RSS.",
+      "scrape_config": {
+        "news_list_url": "https://ncte.org/blog/",
+        "items": "article, .post, .entry, .blog-post",
+        "title": "h2, h3, .entry-title",
+        "link": "a",
+        "date": "time, .entry-date, .published",
+        "summary": "p, .entry-summary, .excerpt",
+        "_note": "WordPress site — standard selectors likely work"
+      },
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "2c5508d93f96a3b2c6c47b805ad3865d5e5001c6be4881bfd37da17c3164207d",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "fetch_prong": "browser_headers"
+      },
+      "url_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
     }
   ]
 }

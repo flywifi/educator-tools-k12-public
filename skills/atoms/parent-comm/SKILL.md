@@ -3,7 +3,7 @@ name: parent-comm
 description: "Draft ONE parent or guardian communication (email, note, or text-message summary) for a specific purpose. Use this when a teacher says 'write me a parent email about the upcoming unit' or 'draft a note home about behavior'. Do NOT use for IEP-related parent communications — use special-education-support. Do NOT use for formal legal notices. Do NOT include real student names or data — placeholders only."
 ---
 
-# atom-parent-comm
+# parent-comm
 
 Drafts a single parent/guardian communication. Supports email, paper note, and short text-message summary formats. The tone is warm, professional, and jargon-free. No student PII — uses placeholders ([Student Name], [Parent/Guardian]).
 
@@ -28,7 +28,7 @@ Drafts a single parent/guardian communication. Supports email, paper note, and s
 
 ```json
 {
-  "tool": "atom-parent-comm",
+  "tool": "parent-comm",
   "format": "email",
   "purpose": "upcoming_unit",
   "draft": {

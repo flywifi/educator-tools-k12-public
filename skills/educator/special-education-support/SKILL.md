@@ -21,7 +21,11 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
    band, and the general-ed context. Do not invent disability/eligibility facts — log assumptions or
    escalate.
 2. **Standards Alignment** — where goals connect to academic standards, cite real, verified standards
-   (`shared/standards/`); IEP goals may also be functional/behavioral.
+   (`shared/standards/`); IEP goals may also be functional/behavioral. For students with significant
+   cognitive disabilities, pull the matching **Access Points** from the offline index (zero-token,
+   verbatim — it cannot fabricate a code): `tools/offline_index.py --standards "<topic>" --grade <g>
+   --subject <s>` returns AP codes (`.AP.`, `.In./.Su./.Pa.`) alongside the parent benchmark, so the
+   alternate-standard alignment is grounded, not recalled.
 3. **Differentiation core** — ground supports in `shared/differentiation/accommodations-catalog.md`.
    **Accommodation** = changes *how* a student accesses/shows learning (expectation unchanged).
    **Modification** = changes *what* is expected (significant team decision — flag it, don't assume).

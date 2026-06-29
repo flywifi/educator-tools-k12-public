@@ -225,14 +225,42 @@ class StdlibTableExtractor(TableExtractor):
         return media_type in (DOCX_TYPE, "text/html", "text/markdown")
 
     def extract(self, data: bytes, media_type: str, source: Source) -> List[Block]:
+        from .html_util import decode_bytes
         if media_type == DOCX_TYPE:
             with zipfile.ZipFile(BytesIO(data)) as z:
-                xml = z.read("word/document.xml").decode("utf-8", "ignore")
+                xml = z.read("word/document.xml").decode("utf-8", "ignore")  # OOXML is always UTF-8
             candidates = extract_docx_tables(xml)
         elif media_type == "text/html":
-            candidates = extract_html_tables(data.decode("utf-8", "ignore"))
+            candidates = extract_html_tables(decode_bytes(data))   # i18n-aware decode
         else:
-            candidates = extract_markdown_tables(data.decode("utf-8", "ignore"))
+            candidates = extract_markdown_tables(decode_bytes(data))
+        return _to_blocks(candidates, source, self.name, self.version)
+
+
+class LxmlHtmlTableExtractor(TableExtractor):
+    """Resilient HTML table engine: lxml DOM (robust on malformed/restructured pages) + i18n-safe
+    cell text. Preferred for text/html when lxml is available; falls back to StdlibTableExtractor."""
+    name = "lxml-html-tables"
+    version = "0.1.0"
+
+    def available(self) -> bool:
+        try:
+            import lxml.html  # noqa: F401
+            return True
+        except Exception:  # noqa: BLE001
+            return False
+
+    def supports(self, media_type: str) -> bool:
+        return media_type == "text/html"
+
+    def extract(self, data: bytes, media_type: str, source: Source) -> List[Block]:
+        from .html_util import decode_bytes, get_tables
+        candidates: List[TableCandidate] = []
+        for rows, header_rows in get_tables(decode_bytes(data)):
+            cells = _place(rows)
+            if cells:
+                candidates.append((table_from_cells(cells, header_rows=header_rows), 0.92,
+                                   {"format": "html", "engine": "lxml"}))
         return _to_blocks(candidates, source, self.name, self.version)
 
 
@@ -259,10 +287,12 @@ class TableRegistry:
 
 
 def default_table_registry() -> TableRegistry:
-    """PDF table engine preferred for PDFs when available; stdlib engine always handles docx/html/md."""
+    """PDF table engine preferred for PDFs; lxml engine preferred for HTML when available; the stdlib
+    engine is the always-on fallback for docx/html/md."""
     from .parsers.pdf_table_parser import PdfPlumberTableExtractor
 
     reg = TableRegistry()
     reg.register(PdfPlumberTableExtractor())
-    reg.register(StdlibTableExtractor())
+    reg.register(LxmlHtmlTableExtractor())   # resilient HTML tables (preferred when lxml present)
+    reg.register(StdlibTableExtractor())     # always-on fallback (docx/html/md)
     return reg

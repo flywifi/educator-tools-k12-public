@@ -1,4 +1,4 @@
-# Source-currency registries (`shared/sources/`)
+# Source-currency registries (`canonical-sources/registries/`)
 
 Domain registries of **authoritative web sources** to monitor for freshness. The engine
 `tools/source_currency.py` reads each `<domain>.json` here, fetches every source with a polite

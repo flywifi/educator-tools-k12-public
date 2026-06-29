@@ -76,16 +76,18 @@
       "fldoe_district_number": 5,
       "name": "Brevard",
       "lea_name": "Brevard County Public Schools",
-      "superintendent": null,
+      "superintendent": "Dr. Mark Rendell",
       "board_governance": "elected_school_board",
-      "website": null,
+      "website": "http://www.brevardschools.org",
       "virtual_instruction_required": true,
       "district_virtual_school": null,
       "charter_schools_present": null,
       "sop_dir": "resources/context/florida/05-brevard/",
       "rules_and_norms": {},
       "status": "stub",
-      "sources": []
+      "sources": [],
+      "superintendent_source": "FLDOE Superintendents directory (fldoe.org/accountability/data-sys/school-dis-data/superintendents.stml)",
+      "verified": "2026-06-28"
     },
     {
       "fldoe_district_number": 6,
@@ -197,7 +199,7 @@
     {
       "fldoe_district_number": 13,
       "name": "Miami-Dade",
-      "lea_name": "Miami-Dade County County Public Schools",
+      "lea_name": "Miami-Dade County Public Schools",
       "superintendent": null,
       "board_governance": "elected_school_board",
       "website": null,
@@ -530,16 +532,18 @@
       "fldoe_district_number": 35,
       "name": "Lake",
       "lea_name": "Lake County Public Schools",
-      "superintendent": null,
+      "superintendent": "Diane Kornegay",
       "board_governance": "elected_school_board",
-      "website": null,
+      "website": "https://www.lake.k12.fl.us",
       "virtual_instruction_required": true,
       "district_virtual_school": null,
       "charter_schools_present": null,
       "sop_dir": "resources/context/florida/35-lake/",
       "rules_and_norms": {},
       "status": "stub",
-      "sources": []
+      "sources": [],
+      "superintendent_source": "FLDOE Superintendents directory (fldoe.org/accountability/data-sys/school-dis-data/superintendents.stml)",
+      "verified": "2026-06-28"
     },
     {
       "fldoe_district_number": 36,
@@ -725,9 +729,9 @@
       "fldoe_district_number": 48,
       "name": "Orange",
       "lea_name": "Orange County Public Schools (OCPS)",
-      "superintendent": null,
+      "superintendent": "Dr. Maria Vazquez",
       "board_governance": "elected_school_board",
-      "website": "https://www.ocps.net",
+      "website": "http://www.ocps.net",
       "virtual_instruction_required": true,
       "district_virtual_school": "Orange County Virtual School (OCVS)",
       "charter_schools_present": null,
@@ -737,22 +741,26 @@
       "sources": [
         "https://www.fldoe.org/schools/school-choice/virtual-edu/district-resources/",
         "https://www.fldoe.org/schools/school-choice/virtual-edu/directories/district-virtual-contacts.stml"
-      ]
+      ],
+      "superintendent_source": "FLDOE Superintendents directory (fldoe.org/accountability/data-sys/school-dis-data/superintendents.stml)",
+      "verified": "2026-06-28"
     },
     {
       "fldoe_district_number": 49,
       "name": "Osceola",
       "lea_name": "Osceola County Public Schools",
-      "superintendent": null,
+      "superintendent": "Dr. Mark Shanoff",
       "board_governance": "elected_school_board",
-      "website": null,
+      "website": "http://www.osceolaschools.net",
       "virtual_instruction_required": true,
       "district_virtual_school": null,
       "charter_schools_present": null,
       "sop_dir": "resources/context/florida/49-osceola/",
       "rules_and_norms": {},
       "status": "stub",
-      "sources": []
+      "sources": [],
+      "superintendent_source": "FLDOE Superintendents directory (fldoe.org/accountability/data-sys/school-dis-data/superintendents.stml)",
+      "verified": "2026-06-28"
     },
     {
       "fldoe_district_number": 50,
@@ -803,16 +811,18 @@
       "fldoe_district_number": 53,
       "name": "Polk",
       "lea_name": "Polk County Public Schools",
-      "superintendent": null,
+      "superintendent": "Frederick Heid",
       "board_governance": "elected_school_board",
-      "website": null,
+      "website": "http://www.polk-fl.net",
       "virtual_instruction_required": true,
       "district_virtual_school": null,
       "charter_schools_present": null,
       "sop_dir": "resources/context/florida/53-polk/",
       "rules_and_norms": {},
       "status": "stub",
-      "sources": []
+      "sources": [],
+      "superintendent_source": "FLDOE Superintendents directory (fldoe.org/accountability/data-sys/school-dis-data/superintendents.stml)",
+      "verified": "2026-06-28"
     },
     {
       "fldoe_district_number": 54,
@@ -893,16 +903,18 @@
       "fldoe_district_number": 59,
       "name": "Seminole",
       "lea_name": "Seminole County Public Schools",
-      "superintendent": null,
+      "superintendent": "Serita D. Beamon",
       "board_governance": "elected_school_board",
-      "website": null,
+      "website": "http://www.scps.k12.fl.us",
       "virtual_instruction_required": true,
       "district_virtual_school": null,
       "charter_schools_present": null,
       "sop_dir": "resources/context/florida/59-seminole/",
       "rules_and_norms": {},
       "status": "stub",
-      "sources": []
+      "sources": [],
+      "superintendent_source": "FLDOE Superintendents directory (fldoe.org/accountability/data-sys/school-dis-data/superintendents.stml)",
+      "verified": "2026-06-28"
     },
     {
       "fldoe_district_number": 60,
@@ -968,16 +980,18 @@
       "fldoe_district_number": 64,
       "name": "Volusia",
       "lea_name": "Volusia County Public Schools",
-      "superintendent": null,
+      "superintendent": "Dr. Carmen J. Balgobin",
       "board_governance": "elected_school_board",
-      "website": null,
+      "website": "https://www.vcsedu.org",
       "virtual_instruction_required": true,
       "district_virtual_school": null,
       "charter_schools_present": null,
       "sop_dir": "resources/context/florida/64-volusia/",
       "rules_and_norms": {},
       "status": "stub",
-      "sources": []
+      "sources": [],
+      "superintendent_source": "FLDOE Superintendents directory (fldoe.org/accountability/data-sys/school-dis-data/superintendents.stml)",
+      "verified": "2026-06-28"
     },
     {
       "fldoe_district_number": 65,

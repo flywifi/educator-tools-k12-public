@@ -1,0 +1,49 @@
+{
+  "_comment": "Revised Bloom's Taxonomy (Anderson & Krathwohl, 2001). Six cognitive process dimensions with action verbs. Used by cognitive-rigor atom to classify objectives and assessment items. Source: public-domain summary of the published taxonomy.",
+  "version": "revised-2001",
+  "source": "Anderson, L.W. & Krathwohl, D.R. (2001). A Taxonomy for Learning, Teaching, and Assessing.",
+  "levels": [
+    {
+      "level": 1,
+      "name": "Remember",
+      "definition": "Retrieve relevant knowledge from long-term memory.",
+      "verbs": ["define", "list", "recall", "recognize", "identify", "name", "state", "describe", "label", "match", "memorize", "recite", "select"]
+    },
+    {
+      "level": 2,
+      "name": "Understand",
+      "definition": "Construct meaning from instructional messages, including oral, written, and graphic communication.",
+      "verbs": ["explain", "summarize", "paraphrase", "classify", "compare", "interpret", "exemplify", "infer", "discuss", "distinguish", "predict", "restate"]
+    },
+    {
+      "level": 3,
+      "name": "Apply",
+      "definition": "Carry out or use a procedure in a given situation.",
+      "verbs": ["apply", "demonstrate", "solve", "use", "execute", "implement", "calculate", "illustrate", "show", "complete", "construct", "operate"]
+    },
+    {
+      "level": 4,
+      "name": "Analyze",
+      "definition": "Break material into constituent parts and determine how parts relate to one another and to an overall structure or purpose.",
+      "verbs": ["analyze", "differentiate", "organize", "attribute", "compare", "contrast", "deconstruct", "examine", "distinguish", "categorize", "investigate", "outline"]
+    },
+    {
+      "level": 5,
+      "name": "Evaluate",
+      "definition": "Make judgments based on criteria and standards.",
+      "verbs": ["evaluate", "judge", "critique", "justify", "defend", "assess", "argue", "support", "prioritize", "rank", "recommend", "appraise"]
+    },
+    {
+      "level": 6,
+      "name": "Create",
+      "definition": "Put elements together to form a coherent or functional whole; reorganize elements into a new pattern or structure.",
+      "verbs": ["create", "design", "develop", "formulate", "compose", "construct", "plan", "produce", "invent", "generate", "hypothesize", "synthesize"]
+    }
+  ],
+  "knowledge_dimensions": [
+    {"dimension": "Factual", "description": "Basic elements students must know — terminology, specific details."},
+    {"dimension": "Conceptual", "description": "Interrelationships among basic elements — categories, principles, theories."},
+    {"dimension": "Procedural", "description": "How to do something — methods, techniques, algorithms, criteria for use."},
+    {"dimension": "Metacognitive", "description": "Knowledge of cognition and awareness of one's own cognition."}
+  ]
+}
