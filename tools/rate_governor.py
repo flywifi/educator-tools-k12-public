@@ -162,6 +162,16 @@ class RateGovernor:
         st.last_request = time.time()
         st.count += 1
 
+    def cooldown(self, url: str, reason: str = "", seconds: float = BREAKER_COOLDOWN) -> None:
+        """Proactively open the breaker for a host — e.g. when a block DETECTOR (fetch_diag) is already
+        confident the host is serving a challenge/IP-block, so we rest it now instead of waiting for the
+        consecutive-failure count to add up (and risk a real lockout in the meantime)."""
+        st = self._state(url)
+        st.breaker_until = max(st.breaker_until, time.time() + seconds)
+        st.consecutive_bad = 0
+        self._log(f"{host_of(url)}: cooldown {int(seconds/60)} min ({reason or 'detector-directed'})")
+        self.save()
+
     def note(self, url: str, status: int | None, headers: dict | None = None) -> float | None:
         """Record a response. On a throttle, return how long to wait before retrying the SAME url
         (None = don't retry). Trips the per-host breaker after repeated blocks to avoid a lockout."""

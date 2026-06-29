@@ -37,6 +37,8 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import fetch_resilient as FR  # reuse BROWSER_HEADERS, prong_browser_headers, prong_wayback, _robots_ok, _decompress  # noqa
 import rate_governor as RG  # per-host pacing + lockout avoidance (Crawl-delay/Retry-After/breaker/budget)  # noqa
+import fetch_diag as FD  # detect WHY blocked (vendor/challenge) + structured-source hints (no evasion)  # noqa
+import fetch_cache as FC  # conditional/incremental fetch — only re-download what changed  # noqa
 
 CHROME_CANDIDATES = ["/opt/pw-browsers/chromium-1194/chrome-linux/chrome"]
 FILE_EXT = (".pdf", ".xlsx", ".xls", ".docx", ".doc", ".csv", ".zip", ".json", ".xml")
@@ -100,23 +102,35 @@ def ocr_screenshot(outdir: Path) -> bool:
         return False
 
 
-def _governed_get(gov: "RG.RateGovernor", url: str, timeout: float, cap: int):
+def _governed_get(gov: "RG.RateGovernor", url: str, timeout: float, cap: int,
+                  cache: "FC.FetchCache" = None):
     """One host-paced GET. Honors the per-host breaker/budget (and robots, unless the governor was
     built with respect_robots=False), spaces requests, and on a 429/503 backs off the server-directed
-    amount and retries the SAME url. Returns (raw_bytes, headers) or (None, reason)."""
+    amount and retries the SAME url. With a cache, sends a CONDITIONAL GET and skips unchanged content.
+    Returns (raw_bytes, headers), (b"", {"unchanged": True}) when nothing changed, or (None, reason)."""
     ok, why = gov.can_request(url)
     if not ok:
         return None, why
     for attempt in range(3):
         gov.wait(url)
         try:
-            req = urllib.request.Request(url, headers=FR.BROWSER_HEADERS)
+            headers = dict(FR.BROWSER_HEADERS)
+            if cache:
+                headers.update(cache.validators(url))  # If-None-Match / If-Modified-Since
+            req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 raw = r.read(cap)
                 hdrs = dict(r.headers)
             gov.note(url, getattr(r, "status", 200), hdrs)
+            if cache and not cache.update(url, hdrs, raw):
+                return b"", {"unchanged": True}     # server re-sent byte-identical content -> skip write
             return raw, hdrs
         except urllib.error.HTTPError as e:
+            if e.code == 304:                        # Not Modified: cheapest "unchanged" signal
+                gov.note(url, 304, {})
+                if cache:
+                    cache.note_unchanged(url)
+                return b"", {"unchanged": True}
             hdrs = dict(getattr(e, "headers", {}) or {})
             wait = gov.note(url, e.code, hdrs)
             if wait is not None and attempt < 2:
@@ -131,11 +145,12 @@ def _governed_get(gov: "RG.RateGovernor", url: str, timeout: float, cap: int):
 
 # ---- prong 4: mirror (download linked files + same-domain pages) --------------
 def mirror(seed_html: str, base_url: str, outdir: Path, depth: int, max_files: int,
-           max_pages: int, ignore_robots: bool, gov: "RG.RateGovernor" = None) -> dict:
+           max_pages: int, ignore_robots: bool, gov: "RG.RateGovernor" = None,
+           cache: "FC.FetchCache" = None) -> dict:
     if gov is None:
         gov = RG.RateGovernor(FR.BROWSER_HEADERS["User-Agent"], respect_robots=not ignore_robots)
     files_dir = outdir / "files"; files_dir.mkdir(exist_ok=True)
-    got_files, got_pages, seen = [], [], {base_url}
+    got_files, got_pages, unchanged, seen = [], [], 0, {base_url}
     queue = [(base_url, seed_html, 0)]
     while queue:
         cur_url, cur_html, d = queue.pop(0)
@@ -143,23 +158,27 @@ def mirror(seed_html: str, base_url: str, outdir: Path, depth: int, max_files: i
             low = link.lower().split("?")[0]
             if low.endswith(FILE_EXT) and link not in seen and len(got_files) < max_files:
                 seen.add(link)
-                data, _ = _governed_get(gov, link, 25, 30_000_000)
+                data, info = _governed_get(gov, link, 25, 30_000_000, cache)
                 if data is None:
                     continue
+                if isinstance(info, dict) and info.get("unchanged"):
+                    unchanged += 1; got_files.append(link); continue  # already have it; don't re-write
                 name = re.sub(r"[^a-zA-Z0-9._-]+", "_", urllib.parse.urlparse(link).path.split("/")[-1] or "file")[:80]
                 (files_dir / name).write_bytes(data)
                 got_files.append(link)
             elif d < depth and _same_domain(link, base_url) and link not in seen and len(got_pages) < max_pages:
                 seen.add(link)
-                raw, hdrs = _governed_get(gov, link, 20, 10_000_000)
+                raw, info = _governed_get(gov, link, 20, 10_000_000, cache)
                 if raw is None:
                     continue
-                enc = (hdrs.get("Content-Encoding") or "").lower() if isinstance(hdrs, dict) else ""
+                if isinstance(info, dict) and info.get("unchanged"):
+                    unchanged += 1; got_pages.append(link); continue
+                enc = (info.get("Content-Encoding") or "").lower() if isinstance(info, dict) else ""
                 sub = _decode(raw, enc)
                 pname = re.sub(r"[^a-zA-Z0-9]+", "_", link)[:70] + ".html"
                 (outdir / pname).write_text(sub, encoding="utf-8")
                 got_pages.append(link); queue.append((link, sub, d + 1))
-    return {"files": got_files, "pages": got_pages}
+    return {"files": got_files, "pages": got_pages, "unchanged": unchanged}
 
 
 def _decode(raw: bytes, content_encoding: str) -> str:
@@ -197,15 +216,24 @@ def acquire(url: str, outdir: Path, ignore_robots: bool = False, depth: int = 1,
         gov.save()
         return manifest
 
+    cache = FC.FetchCache()
     seed_html = ""
     # 1. browser-headers GET (host-paced; feeds the governor so repeated 403/429 trips the breaker)
     gov.wait(url)
     r1 = FR.prong_browser_headers(url)
     gov.note(url, r1.get("status"), None)
+    static_body = r1["content"].decode("utf-8", "replace") if r1.get("content") else ""
     if r1.get("ok") and r1.get("content"):
-        seed_html = r1["content"].decode("utf-8", "replace")
+        seed_html = static_body
         (outdir / "raw.html").write_text(seed_html, encoding="utf-8")
         manifest["artifacts"]["raw_html"] = True; manifest["ok_any"] = True
+    # DETECT (not evade) why a block happened, from static signatures. A high-confidence vendor
+    # challenge / IP block that a plain GET can't pass -> proactively rest the host (the real-browser
+    # render below may still legitimately load it; otherwise we lean on Wayback / the official source).
+    block = FD.classify_block(r1.get("status"), None, static_body)
+    manifest["block"] = block
+    if block["blocked"] and not block["retry_worthwhile"] and block["confidence"] != "low":
+        gov.cooldown(url, reason=f"{block['vendor'] or block['kind']} block")
     # 2/3. render + screenshot (a real browser hit — pace it too; better DOM beats a thin/blocked static page)
     if gov.can_request(url)[0]:
         gov.wait(url)
@@ -227,17 +255,24 @@ def acquire(url: str, outdir: Path, ignore_robots: bool = False, depth: int = 1,
         manifest["artifacts"]["wayback_html"] = True; manifest["ok_any"] = True
         if not seed_html:
             seed_html = rw["content"].decode("utf-8", "replace")
-    # 4. mirror linked files + same-domain pages from whatever HTML we got (same governor)
+    # "Is there an API?" — spot structured sources already on the page so a later pass can prefer them
+    # over scraping rendered HTML (more accurate, nothing inferred; and it sidesteps the anti-bot wall).
+    manifest["data_sources"] = FD.find_data_sources(seed_html, url)
+    # 4. mirror linked files + same-domain pages from whatever HTML we got (same governor + fetch cache)
     if seed_html:
-        m = mirror(seed_html, url, outdir, depth, max_files, max_pages, ignore_robots, gov)
+        m = mirror(seed_html, url, outdir, depth, max_files, max_pages, ignore_robots, gov, cache)
         manifest["artifacts"]["mirrored_files"] = len(m["files"])
         manifest["artifacts"]["mirrored_pages"] = len(m["pages"])
+        manifest["artifacts"]["unchanged_skipped"] = m["unchanged"]
         if m["files"] or m["pages"]:
             manifest["ok_any"] = True
 
     manifest["rate"] = gov.summary()
+    manifest["incremental"] = cache.summary()
+    manifest["diag"] = FD.summarize(block, manifest["data_sources"])
     (outdir / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
     gov.save()
+    cache.save()
     return manifest
 
 
