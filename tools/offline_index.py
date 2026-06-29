@@ -113,6 +113,22 @@ def build() -> int:
                 n += 1
         counts["schools"] = n
 
+        # ---- private_schools (AISF + other private directories; no FLDOE MSID) ----
+        conn.execute(f"CREATE {V} private_schools {using}(school_name, association UNINDEXED, "
+                     f"accreditation UNINDEXED, head UNINDEXED, source UNINDEXED)" if fts else
+                     "CREATE TABLE private_schools (school_name TEXT, association TEXT, accreditation TEXT, head TEXT, source TEXT)")
+        n = 0
+        priv_dir = SCHOOLS / "private"
+        for pf in sorted(priv_dir.glob("*.json")) if priv_dir.exists() else []:
+            doc = json.loads(pf.read_text(encoding="utf-8"))
+            assoc = doc.get("association", "")
+            for s in doc.get("members", []) + doc.get("schools", []):
+                conn.execute("INSERT INTO private_schools VALUES (?,?,?,?,?)",
+                             (s.get("school_name", ""), assoc, s.get("accreditation", "") or "",
+                              s.get("head", "") or "", doc.get("source", "")))
+                n += 1
+        counts["private_schools"] = n
+
         # ---- toolkit_resources (standard -> CPALMS resource links, page-level proximity) ----
         conn.execute(f"CREATE {V} toolkit_resources {using}(standard, toolkit UNINDEXED, subject UNINDEXED, "
                      f"page UNINDEXED, links UNINDEXED)" if fts else
@@ -247,6 +263,7 @@ def main(argv) -> int:
     ap.add_argument("--build", action="store_true")
     ap.add_argument("--stats", action="store_true")
     ap.add_argument("--course"); ap.add_argument("--school"); ap.add_argument("--standards")
+    ap.add_argument("--private", help="search private/independent schools (AISF, etc.)")
     ap.add_argument("--resource", help="toolkit resource links for a standard code")
     ap.add_argument("--source", help="search the data-source endpoint index")
     ap.add_argument("--district"); ap.add_argument("--grade"); ap.add_argument("--subject")
@@ -265,6 +282,8 @@ def main(argv) -> int:
         elif a.school is not None:
             filt = [("district", a.district)] if a.district else []
             rows = _q("schools", ["school_name", "locale", "programs"], a.school, filt, a.limit); label = "schools"
+        elif a.private is not None:
+            rows = _q("private_schools", ["school_name", "head"], a.private, [], a.limit); label = "private_schools"
         elif a.standards is not None:
             filt = [(c, v) for c, v in [("subject", a.subject), ("grade", a.grade)] if v]
             rows = _q("standards", ["code", "statement"], a.standards, filt, a.limit); label = "standards"
