@@ -5,7 +5,7 @@ Loads district school/program indexes from canonical-sources/schools/<district>/
 about them: list/filter schools (by level, type, status), find magnet/choice programs, look up a school
 by MSID or name, and surface what's stale. Public NON-PII data only — the authoritative school list is
 the FLDOE MSID file; magnet/choice programs come from the district site. Open/close + program changes are
-monitored by the source-currency engine (shared/sources/<district>-schools.json); this engine just reads
+monitored by the source-currency engine (canonical-sources/registries/<district>-schools.json); this engine just reads
 the committed snapshot and is honest about `completeness` (seed / partial / complete).
 
 Usage:

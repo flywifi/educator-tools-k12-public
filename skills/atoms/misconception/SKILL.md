@@ -3,7 +3,7 @@ name: misconception
 description: "Return the most common student misconceptions for a specific topic, grade, and subject. Use this when a teacher says 'what do students get wrong about fractions?' or when lesson-planner or assessment-designer needs to proactively address misconceptions in activities or distractors. Do NOT use for generating content — just returns a misconception list. Do NOT use for diagnosing an individual student's misunderstanding."
 ---
 
-# atom-misconception
+# misconception
 
 Returns a short list (2–5) of documented common student misconceptions for a topic, with a brief note on why each occurs and how instruction can address it. Used to seed distractor analysis in atom-assessment-item and to inform activity design in atom-activity-generate.
 
@@ -22,7 +22,7 @@ Returns a short list (2–5) of documented common student misconceptions for a t
 
 ```json
 {
-  "tool": "atom-misconception",
+  "tool": "misconception",
   "topic": "fractions greater than one",
   "grade": "4",
   "misconceptions": [

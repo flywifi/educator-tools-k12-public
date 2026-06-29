@@ -2,31 +2,250 @@
   "_comment": "Source-currency registry (domain: florida-standards). The EXTERNAL counterpart to tools/registry-sources.json (which watches internal files): this lists authoritative WEB sources to monitor for freshness. tools/source_currency.py fetches each (conditional GET), classifies a freshness state (current/changed/superseded/removed_404/stale_age/unreachable/uncertain), and reports a stale-source list with a reason + recommended action. Standards/legal/program changes are ADVISORY + human-verified — never auto-applied, never fabricated. Seeded from shared/standards/resources/florida/sources.json watch_pages. After a human approves a change, run `source_currency.py --update-baselines --domain florida-standards` to record the new etag/last_modified/content_sha256.",
   "domain": "florida-standards",
   "version": "0.1.0",
-  "updated": "2026-06-26",
+  "updated": "2026-06-27",
   "authority_note": "PRIMARY sources only count for a confirmed change (CPALMS, FLDOE, FL Legislature, FL Admin Code, WIDA, district boards). Secondary sources are discovery-only and route to gaps, never results.",
   "freshness_policy": {
     "stale_age_days": 365,
     "new_window_days": 90,
     "forward_looking_window_days": 730,
     "supersession_keywords": [
-      "rescinded", "repealed", "archived", "superseded", "no longer available",
-      "no longer in effect", "discontinued", "program eliminated", "sunset",
-      "replaced by", "this page has moved", "page not found", "retired"
+      "rescinded",
+      "repealed",
+      "archived",
+      "superseded",
+      "no longer available",
+      "no longer in effect",
+      "discontinued",
+      "program eliminated",
+      "sunset",
+      "replaced by",
+      "this page has moved",
+      "page not found",
+      "retired"
     ]
   },
   "sources": [
-    {"id": "fl-statutes-title-48", "url": "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Index&Title_Request=XLVIII",
-      "label": "FL Statutes Title XLVIII (Education Code)", "category": "legislation",
-      "authority": "primary", "type": "page",
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null,
-                "last_status": null, "effective_date": null, "superseded_by": null}},
-    {"id": "cpalms-standards", "url": "https://www.cpalms.org", "label": "CPALMS standards repository",
-      "category": "standards", "authority": "primary", "type": "page",
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null,
-                "last_status": null, "effective_date": null, "superseded_by": null}},
-    {"id": "fldoe-standards", "url": "https://www.fldoe.org/academics/standards/", "label": "FLDOE academic standards",
-      "category": "standards", "authority": "primary", "type": "page",
-      "state": {"etag": null, "last_modified": null, "content_sha256": null, "last_checked": null,
-                "last_status": null, "effective_date": null, "superseded_by": null}}
+    {
+      "id": "fl-statutes-title-48",
+      "url": "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Index&Title_Request=XLVIII",
+      "label": "FL Statutes Title XLVIII (Education Code)",
+      "category": "legislation",
+      "authority": "primary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "c04a9c117b5862f6e66020686ca240fdbe1ffff7489077e027fd1c7937abf00b",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
+      },
+      "probe_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "verified": false
+    },
+    {
+      "id": "cpalms-standards",
+      "url": "https://www.cpalms.org",
+      "label": "CPALMS standards repository",
+      "category": "standards",
+      "authority": "primary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "5dc74c11b4788ee996f38d27e0875adc27116de82072b6f75f92302e3ca55b9c",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
+      },
+      "probe_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "verified": false
+    },
+    {
+      "id": "fldoe-standards",
+      "url": "https://www.fldoe.org/academics/standards/",
+      "label": "FLDOE academic standards",
+      "category": "standards",
+      "authority": "primary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "dc3e67b999114ee723de3061d89b92e604208ec86ef3f0ca105231a6c4387623",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "wayback"
+      },
+      "probe_status": "archived_recent",
+      "probe_note": "[2026-06-28] direct fetch blocked; usable RECENT Wayback snapshot (10d old) — re-verify against live before relying",
+      "verified": false,
+      "url_moved_to": "http://web.archive.org/web/20260618084433/https://www.fldoe.org/academics/standards/"
+    },
+    {
+      "id": "fldoe-feaps",
+      "url": "https://www.fldoe.org/teaching/professional-dev/the-fl-educator-accomplished-practices.stml",
+      "label": "Florida Educator Accomplished Practices (FEAPs) — Rule 6A-5.065",
+      "category": "standards",
+      "authority": "primary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "d7cd2104e1dcb23bf14432408bcc8f28571d91a3ba3b4148b46bbefe878ea832",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "wayback"
+      },
+      "probe_status": "archived_recent",
+      "probe_note": "[2026-06-28] direct fetch blocked; usable RECENT Wayback snapshot (44d old) — re-verify against live before relying",
+      "verified": false,
+      "url_moved_to": "http://web.archive.org/web/20260515174726/https://www.fldoe.org/teaching/professional-dev/the-fl-educator-accomplished-practices.stml"
+    },
+    {
+      "id": "fldoe-fast",
+      "url": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/fast/",
+      "label": "Florida Assessment of Student Thinking (FAST) — statewide progress monitoring",
+      "category": "standards",
+      "authority": "primary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "bb8120740def2f25a46dbf244c48ed14933b44695d380737b99319b10ef87537",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
+      },
+      "probe_status": "redirected",
+      "probe_note": "[2026-06-28] redirected to https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/ (HTML, not a feed)",
+      "verified": false,
+      "url_moved_to": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/",
+      "supersession_flag": [
+        "archived"
+      ]
+    },
+    {
+      "id": "fl-admin-code-6a",
+      "url": "https://www.flrules.org/gateway/ChapterHome.asp?Chapter=6A-1",
+      "label": "FL Administrative Code Chapter 6A — Education rules",
+      "category": "legislation",
+      "authority": "primary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "09eb05692d3c051d381c52c93684ca6879fe6982bab87e9a64b20bb4d8e49677",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
+      },
+      "probe_status": "redirected",
+      "probe_note": "[2026-06-28] redirected to https://flrules.org/gateway/ChapterHome.asp?Chapter=6A-1 (HTML, not a feed)",
+      "supersession_flag": [
+        "repealed"
+      ],
+      "verified": false,
+      "url_moved_to": "https://flrules.org/gateway/ChapterHome.asp?Chapter=6A-1"
+    },
+    {
+      "id": "cast-udl-guidelines",
+      "url": "https://udlguidelines.cast.org",
+      "label": "CAST Universal Design for Learning Guidelines 3.0",
+      "category": "standards",
+      "authority": "secondary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "752afad0b3a72dc006b724a810ab512f2258a22e8e83edc74b42bf026ae9ee20",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
+      },
+      "probe_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "verified": false
+    },
+    {
+      "id": "fl-house-education",
+      "url": "https://www.myfloridahouse.gov/Sections/Committees/committeesdetail.aspx?CommitteeId=3210",
+      "label": "FL House Education & Employment Committee — bill filings and hearing agendas",
+      "category": "legislation",
+      "authority": "secondary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "f1f6e48c34a6747025cb35dc9da450aba75246fe970f4d6e9cf3502486f6f1eb",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
+      },
+      "probe_status": "redirected",
+      "probe_note": "[2026-06-28] redirected to https://www.flhouse.gov/ (HTML, not a feed)",
+      "verified": false,
+      "url_moved_to": "https://www.flhouse.gov/"
+    },
+    {
+      "id": "wida-standards",
+      "url": "https://wida.wisc.edu/teach/standards",
+      "label": "WIDA English Language Development Standards Framework (ELL)",
+      "category": "standards",
+      "authority": "secondary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "9b3ebca888868956a734658a9c8e938ad349340ae8d98f2d9545992e06c99e87",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "browser_headers"
+      },
+      "probe_status": "live_page_no_feed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "verified": false
+    },
+    {
+      "id": "asn-standards",
+      "url": "http://asn.desire2learn.com/resources/ASNJurisdiction/FL",
+      "label": "Achievement Standards Network — FL jurisdiction (machine-readable RDF/JSON-LD)",
+      "category": "standards",
+      "authority": "secondary",
+      "type": "page",
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "6469eec0d297ff4a5f82444c1f32d4c78ec8085e5d93853a7150e22066bf38cd",
+        "last_checked": "2026-06-28",
+        "last_status": 200,
+        "effective_date": null,
+        "superseded_by": null,
+        "fetch_prong": "wayback"
+      },
+      "probe_status": "archived_only_stale",
+      "probe_note": "[2026-06-28] recovered ONLY from an OLD Wayback snapshot (4136d old) — STALE, likely defunct",
+      "verified": false,
+      "url_moved_to": "http://web.archive.org/web/20150302080252/http://asn.desire2learn.com:80/resources/ASNJurisdiction/FL"
+    }
   ]
 }

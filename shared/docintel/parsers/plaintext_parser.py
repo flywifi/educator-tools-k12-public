@@ -13,6 +13,7 @@ from io import BytesIO
 from typing import List, Optional, Tuple
 
 from ..governance import Confidence, Provenance, new_id
+from ..html_util import decode_bytes
 from ..orchestration import Parser, RecoveryResult
 from ..tables import _is_md_sep
 from ..udom import Block, Source
@@ -37,11 +38,11 @@ class PlainTextParser(Parser):
             paras = self._docx_paragraphs(data)
             method, base_conf = "native", 0.97
         elif media_type == "text/html":
-            paras = self._html_paragraphs(data.decode("utf-8", "ignore"))
+            paras = self._html_paragraphs(decode_bytes(data))
             method, base_conf = "heuristic", 0.85
         else:
             markdown = media_type == "text/markdown"
-            paras = self._text_paragraphs(data.decode("utf-8", "ignore"), markdown=markdown)
+            paras = self._text_paragraphs(decode_bytes(data), markdown=markdown)
             method, base_conf = "native", 0.95
 
         blocks: List[Block] = []

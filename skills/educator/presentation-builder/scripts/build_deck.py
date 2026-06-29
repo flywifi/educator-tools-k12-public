@@ -15,7 +15,7 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = next((p for p in Path(__file__).resolve().parents if (p / "tools" / "sync_check.py").exists()), Path(__file__).resolve().parents[3])  # repo root by marker (relocation-proof)
 sys.path.insert(0, str(ROOT / "shared"))
 
 

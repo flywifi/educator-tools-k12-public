@@ -1,0 +1,266 @@
+{
+  "_comment": "Atom registry — canonical list of all single-operation atoms. Source of truth for routing, workflow dispatch, and health checks. Regenerate with: python3 -c from SKILL.md frontmatter.",
+  "version": "0.1.0",
+  "updated": "2026-06-27",
+  "count": 43,
+  "atoms": {
+    "accommodation-match": {
+      "description": "Match accommodations to a documented student need (IEP, 504, ELL, or learning profile). Use this atom when special-education-support or intervention-mtss needs to suggest specific accommodations for a documented need. Do NOT use without a documented need — accommodations must be tied to identified barriers. Do NOT use for UDL (use atom-udl-options).",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/accommodation-match"
+    },
+    "activity-generate": {
+      "description": "Generate exactly ONE learning activity for a given objective, grade, and subject. Use this atom when a teacher says 'give me an activity for this objective' or when lesson-planner needs to generate activities one at a time. Do NOT use for generating a full lesson plan — use lesson-planner. Do NOT use for assessment questions — use atom-assessment-item. Call this atom once per activity needed.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/activity-generate"
+    },
+    "answer-key": {
+      "description": "Generate an answer key with scoring notes for a set of assessment items. Use this atom when assessment-designer needs answer keys after items are generated. Do NOT use for generating the items themselves — that is atom-assessment-item. Do NOT use for grading student responses.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/answer-key"
+    },
+    "assessment-item": {
+      "description": "Generate exactly ONE assessment item (question + answer key) for a given objective and item type. Use this when a teacher says 'write me a question for this standard' or when assessment-designer needs items one at a time. Do NOT use for generating a full assessment — use assessment-designer. Do NOT use for rubrics — use a separate rubric atom or assessment-designer.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/assessment-item"
+    },
+    "behavior-strategy": {
+      "description": "Suggest ONE function-based behavior support strategy for a documented behavior concern. Use this atom when intervention-mtss or special-education-support needs a BIP component. Do NOT use for crisis intervention or restraint/seclusion guidance.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/behavior-strategy"
+    },
+    "cognitive-rigor": {
+      "description": "Classify an objective or assessment item by Bloom's Taxonomy level and Webb's Depth of Knowledge (DOK). Use this atom when lesson-planner, assessment-designer, or question-set needs to verify cognitive rigor before finalizing. Do NOT use for generating objectives — that is atom-objective-write.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/cognitive-rigor"
+    },
+    "differentiate": {
+      "description": "Apply ONE differentiation profile (ELL, IEP/SPED, Gifted, 504, Below-grade, Above-grade) to a SINGLE piece of existing content. Use this when a teacher says 'make this activity ELL-friendly' or 'add IEP supports to this passage'. Do NOT use for full lesson differentiation — call this atom once per content piece. Do NOT generate new content from scratch — use atom-activity-generate or atom-assessment-item first, then differentiate.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/differentiate"
+    },
+    "distractor-generate": {
+      "description": "Generate plausible multiple-choice distractors tied to common misconceptions for an assessment item. Use this atom when assessment-designer needs realistic wrong answer choices. Do NOT use for generating the item stem — that is atom-assessment-item. Do NOT use for open-response items.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/distractor-generate"
+    },
+    "document-parse": {
+      "description": "Parse a raw file (PDF, DOCX, XLSX, PPTX, HTML, or scanned image) into a structured document representation (UDOM). Use this atom when a workflow needs to extract text, tables, and layout from an uploaded or crawled file BEFORE applying governance or analysis. Do NOT use for web page scraping — this handles file-based documents only. Do NOT use for reading-level estimation (call atom-reading-level on the extracted text).",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/document-parse"
+    },
+    "email-draft": {
+      "description": "Draft ONE professional email for staff, family, or vendor communication. Use this atom when school-administration or any workflow needs a polished email draft. Do NOT use for parent-teacher conference notes (use atom-parent-comm) or mass communications.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/email-draft"
+    },
+    "feed-discover": {
+      "description": "Discover RSS/Atom feed URLs from a seed web page using autodiscovery (link tags, common paths, MIME sniffing). Use this atom when feed-curator needs to find new feeds from an authoritative page. Do NOT use for validating existing feeds — that is atom-feed-validate. Do NOT use for content extraction.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/feed-discover"
+    },
+    "feed-validate": {
+      "description": "Check a single RSS/Atom feed URL for liveness, staleness, redirects, and label accuracy. Use this atom when feed-curator needs to verify individual feed health or when any monitoring system needs a per-URL health check. Do NOT use for feed discovery — that is atom-feed-discover. Do NOT use for content extraction from feeds.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/feed-validate"
+    },
+    "feedback-write": {
+      "description": "Write actionable feedback on a placeholder student response compared to a rubric. Use this atom when a workflow needs to model what good feedback looks like for a given rubric and response. Do NOT use with real student data — placeholders only. Do NOT use for grading.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/feedback-write"
+    },
+    "govern-artifact": {
+      "description": "Attach governance metadata (provenance, lineage, confidence, evidence) to any artifact. Use this atom when document-intelligence, output-validator, or any skill needs to stamp an artifact with its origin, processing chain, and confidence level. Do NOT use for quality gating — that is atom-quality-check. Do NOT use for content generation.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/govern-artifact"
+    },
+    "graphic-organizer": {
+      "description": "Select and scaffold ONE graphic organizer (Frayer model, T-chart, Venn diagram, concept map, etc.) for a given activity or objective. Use this atom when lesson-planner needs a visual thinking tool. Do NOT use for generating the content that fills the organizer.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/graphic-organizer"
+    },
+    "hook": {
+      "description": "Generate ONE anticipatory set or engagement hook for a lesson objective. Use this atom when lesson-planner needs a compelling opening that draws students into the topic. Do NOT use for warm-ups (use atom-warm-up) or full lessons.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/hook"
+    },
+    "iep-goal": {
+      "description": "Draft ONE IEP annual goal for a given area, present-level descriptor, and standard alignment. Use this when a teacher or SPED team member says 'draft an IEP goal for reading fluency' or when special-education-support needs a goal before review. Do NOT use for full IEP document generation — use special-education-support. Do NOT use without a present-level baseline — goals must be grounded in PLOP. Never use real student names or data.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/iep-goal"
+    },
+    "intervention-select": {
+      "description": "Match a tiered intervention to a documented student need at a specified MTSS tier (1/2/3). Use this atom when intervention-mtss needs to suggest evidence-based interventions. Do NOT fabricate intervention program names or research citations.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/intervention-select"
+    },
+    "meeting-agenda": {
+      "description": "Create ONE meeting agenda from a stated purpose and attendee list. Use this atom when school-administration or meeting-classifier needs a structured agenda. Do NOT use for meeting minutes (use atom-meeting-minutes).",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/meeting-agenda"
+    },
+    "meeting-classify": {
+      "description": "Classify a meeting from available evidence (email subject/body, sender role, attendees, calendar event, prior thread) and return the meeting type, intent, and confidence. Use this atom when meeting-classifier or teacher-core needs to determine what kind of meeting is being discussed BEFORE routing or attaching advisories. Do NOT use for meeting prep, agenda creation, or minutes — those are separate atoms/skills.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/meeting-classify"
+    },
+    "meeting-minutes": {
+      "description": "Summarize meeting notes or a transcript into structured minutes with action items. Use this atom when school-administration or meeting-classifier needs post-meeting documentation. Do NOT use for meeting agendas (use atom-meeting-agenda).",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/meeting-minutes"
+    },
+    "misconception": {
+      "description": "Return the most common student misconceptions for a specific topic, grade, and subject. Use this when a teacher says 'what do students get wrong about fractions?' or when lesson-planner or assessment-designer needs to proactively address misconceptions in activities or distractors. Do NOT use for generating content — just returns a misconception list. Do NOT use for diagnosing an individual student's misunderstanding.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/misconception"
+    },
+    "objective-write": {
+      "description": "Write 1–3 measurable learning objectives for a given standard code, grade, and topic. Use this atom directly when a teacher says 'write me an objective for standard X' or when a workflow (lesson-planner, unit planner) needs objectives before generating activities. Do NOT use for writing a full lesson plan — that is lesson-planner. Do NOT use for IEP goals — use atom-iep-goal.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/objective-write"
+    },
+    "parent-comm": {
+      "description": "Draft ONE parent or guardian communication (email, note, or text-message summary) for a specific purpose. Use this when a teacher says 'write me a parent email about the upcoming unit' or 'draft a note home about behavior'. Do NOT use for IEP-related parent communications — use special-education-support. Do NOT use for formal legal notices. Do NOT include real student names or data — placeholders only.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/parent-comm"
+    },
+    "present-levels": {
+      "description": "Draft a Present Levels of Academic Achievement and Functional Performance (PLAAFP) statement from placeholder data points. Use this atom when special-education-support needs a PLAAFP draft before writing IEP goals. Do NOT use with real student data — placeholders only.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/present-levels"
+    },
+    "progress-monitor-plan": {
+      "description": "Create ONE progress-monitoring schedule and probe plan for an IEP goal or MTSS intervention. Use this atom when special-education-support or intervention-mtss needs a measurement plan. Do NOT use for generating the goals themselves (use atom-iep-goal).",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/progress-monitor-plan"
+    },
+    "quality-check": {
+      "description": "Run ONE specific quality gate check on a draft artifact and return pass/fail + a corrective action. Use this when a workflow needs to validate a specific dimension (standard alignment, measurable objectives, reading level, differentiation coverage, etc.) before finalizing an artifact. Do NOT use for a full quality audit — use quality-review for that. Do NOT use on final published artifacts — this is a pre-release check.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/quality-check"
+    },
+    "question-set": {
+      "description": "Generate a set of discussion or text-dependent questions at a target cognitive rigor level. Use this atom when lesson-planner needs questions for guided discussion, Socratic seminar, or close reading. Do NOT use for assessment items (use atom-assessment-item).",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/question-set"
+    },
+    "reading-level": {
+      "description": "Estimate the reading level of a text snippet and return a grade-band label + Lexile estimate. Use this atom when a workflow needs to check whether a passage, question, or artifact draft is appropriate for the target students BEFORE generating differentiated versions. Do NOT use for full document analysis — this atom takes a single passage (( 500 words). Do NOT use for student data analysis or grading.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/reading-level"
+    },
+    "referral-draft": {
+      "description": "Draft ONE referral (MTSS, evaluation, counselor, or outside agency) with required fields. Use this atom when intervention-mtss or special-education-support needs a referral template filled with placeholder data. Do NOT use with real student data.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/referral-draft"
+    },
+    "report-card-comment": {
+      "description": "Draft ONE standards-based report card comment for a student using placeholder performance data. Use this atom when family-communication or school-administration needs a single report-card narrative. Do NOT use with real student data — placeholders only. Do NOT use for IEP progress reports (use atom-iep-goal).",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/report-card-comment"
+    },
+    "rubric-build": {
+      "description": "Build ONE rubric (criteria x performance levels) for a given objective or standard. Use this atom when assessment-designer or any workflow needs a scoring rubric for a task or assignment. Do NOT use for generating assessment items — that is atom-assessment-item. Do NOT use for scoring student work.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/rubric-build"
+    },
+    "safe-apply": {
+      "description": "Separate a change proposal into mechanical (safe to auto-apply) and judgment (needs human review) items based on categorization rules. Use this atom when feed-curator, skill-repair, standards-updater, or any approval workflow needs to split changes by safety level. Do NOT use for actually applying changes — this atom classifies only. Do NOT use for content generation.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/safe-apply"
+    },
+    "sentence-frame": {
+      "description": "Generate ELL or scaffolding sentence frames and stems for a given academic task and proficiency level. Use this atom when differentiate or lesson-planner needs language scaffolds for English Language Learners or struggling writers. Do NOT use for translation.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/sentence-frame"
+    },
+    "standards-crosswalk": {
+      "description": "Map a standard from one framework to its closest equivalent in another framework. Use this atom when curriculum-mapping or standards-match needs to align across state frameworks. NEVER fabricate standard codes — return an honest gap if no match exists.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/standards-crosswalk"
+    },
+    "standards-match": {
+      "description": "Look up and return a focused set of Florida K-12 standards matching a grade, subject, and keyword or topic. Use this atom when a workflow or teacher needs the exact standard codes + descriptions for a topic WITHOUT generating any instructional artifact. Do NOT use for generating lesson plans, activities, or assessments — hand those off to atom-objective-write or atom-activity-generate. Do NOT use if the teacher needs all standards for a whole subject; use tools/fl_lookup.py directly.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/standards-match"
+    },
+    "text-leveler": {
+      "description": "Rewrite a text passage to a target reading level while preserving key content and meaning. Use this atom when differentiate or lesson-planner needs a passage adapted for below-grade or above-grade readers. Do NOT use for translation — that is atom-translate-comm. Do NOT use for original content generation.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/text-leveler"
+    },
+    "translate-comm": {
+      "description": "Render a family communication into a target home language with advisory flags. Use this atom when family-communication or parent-comm needs to provide a translation of a school message. ADVISORY ONLY — always flag that a fluent speaker should review. Do NOT use for certified translation of legal documents.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/translate-comm"
+    },
+    "udl-options": {
+      "description": "Suggest Universal Design for Learning (UDL) checkpoint options for a barrier or activity. Use this atom when differentiate or lesson-planner needs UDL-aligned accommodations for a specific learning barrier. References CAST UDL Guidelines 3.0. Do NOT use for IEP accommodations (use atom-accommodation-match).",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/udl-options"
+    },
+    "vocabulary-select": {
+      "description": "Select key academic vocabulary for a topic or text passage and return definitions, tiers, and teaching suggestions. Use this atom when lesson-planner or any content skill needs to identify vocabulary that students must know. Do NOT use for vocabulary assessment — that is atom-assessment-item.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/vocabulary-select"
+    },
+    "warm-up": {
+      "description": "Generate ONE bell-ringer or do-now warm-up activity aligned to a standard or objective. Use this atom when lesson-planner needs an opening activity. Do NOT use for full lesson planning — that is lesson-planner. Do NOT use for assessment items.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/warm-up"
+    },
+    "wizard-interview": {
+      "description": "Run a structured Q&A intake wizard from a question schema and return validated responses. Use this atom when teacher-profile or any coached workflow needs guided user intake with defaults, validation, and branching. Do NOT use for content generation — this collects user input only. Do NOT use for assessment item generation.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/wizard-interview"
+    },
+    "worked-example": {
+      "description": "Generate ONE worked example with clear step-by-step solution for a given objective. Use this atom when lesson-planner needs a model problem for direct instruction or guided practice. Do NOT use for generating practice sets or assessments.",
+      "version": "0.1.0",
+      "group": "atoms",
+      "path": "skills/atoms/worked-example"
+    }
+  }
+}

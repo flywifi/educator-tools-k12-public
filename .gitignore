@@ -40,3 +40,14 @@ shared/feeds/*.local.db
 secrets.json
 *.secrets.json
 *.local.env
+.harvest-venv/
+harvest_inbox/
+tos_update_*.zip
+_harvest_*/
+seed_report_*
+canonical-sources/index/*.db
+source_inbox/
+HARVEST_HANDOFF.md
+
+# per-host rate-limit memory (governor)
+.harvest-cache/
