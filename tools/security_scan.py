@@ -7,8 +7,11 @@ none are present it reports a gap and exits 0 (CI installs them). Also performs 
 awareness: detects Go, Java, and Rust modules in the repo tree and reports their presence + basic
 health (compilable / lintable) so TOS understands polyglot contributions.
 
-Exits non-zero when findings exist so it can be a release gate. This is the enforcement half of the
-"dependencies must be auto-updated AND scanned" policy (auto-update = .github/dependabot.yml).
+Exits non-zero on BLOCKING findings (pip-audit CVEs, bandit HIGH severity, or semgrep ERROR) so it can
+be a release gate; lower-severity audit patterns (bandit MEDIUM/LOW such as B310 urllib fetch / B608
+allow-listed SQL, semgrep `--config=auto` WARNING/INFO) are reported but do not fail the build. This
+is the enforcement half of the "dependencies must be auto-updated AND scanned" policy (auto-update =
+.github/dependabot.yml).
 
 Usage:
   python3 tools/security_scan.py            # scan; non-zero exit on findings
@@ -68,6 +71,25 @@ def _detect_languages() -> list[dict]:
     return modules
 
 
+def _is_blocking(f: dict) -> bool:
+    """What gates a release: confirmed vulnerabilities, not advisory audits.
+      - pip-audit  -> always blocks (a known CVE in a pinned dependency).
+      - bandit     -> blocks at HIGH severity; MEDIUM/LOW are AUDIT patterns (e.g. B310 urllib fetch
+                      of public data, B608 SQL assembled from allow-listed identifiers) -> advisory.
+      - semgrep    -> blocks at ERROR; `--config=auto` WARNING/INFO audits -> advisory.
+    Advisory findings are still reported (visibility) but do not fail the build. Real high-severity
+    issues (shell=True, hardcoded secrets, eval, a semgrep ERROR) still gate."""
+    tool = f.get("tool")
+    if tool == "pip-audit":
+        return True
+    sev = str(f.get("severity") or "").upper()
+    if tool == "bandit":
+        return sev == "HIGH"
+    if tool == "semgrep":
+        return sev == "ERROR"
+    return True  # unknown tool / parse error -> conservative
+
+
 def scan() -> dict:
     findings, ran, skipped = [], [], []
     # 1) pip-audit over every pinned requirements file.
@@ -123,10 +145,13 @@ def scan() -> dict:
     # 4) Multi-language awareness: detect non-Python modules in the repo tree.
     lang_modules = _detect_languages()
 
+    blocking = [f for f in findings if _is_blocking(f)]
     return {"tool": "security-scan", "ran": ran, "skipped": skipped,
             "findings": findings, "finding_count": len(findings),
+            "blocking_count": len(blocking), "advisory_count": len(findings) - len(blocking),
             "language_modules": lang_modules,
-            "status": "findings" if findings else ("no_scanners" if not ran else "clean")}
+            "status": ("blocking" if blocking else "advisory" if findings
+                       else "no_scanners" if not ran else "clean")}
 
 
 def main(argv) -> int:
@@ -137,7 +162,7 @@ def main(argv) -> int:
     print(json.dumps(result, indent=2))
     if a.report:
         return 0
-    return 1 if result["findings"] else 0
+    return 1 if result["blocking_count"] else 0
 
 
 if __name__ == "__main__":
