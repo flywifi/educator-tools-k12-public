@@ -38,8 +38,48 @@ def _nfc(s: str) -> str:
     return unicodedata.normalize("NFC", s)
 
 
+# Labels the HTML5 standard decodes AS windows-1252 (the dominant real-world Western encoding; bytes
+# 0x80-0x9F are printable punctuation there, but C1 controls in ISO-8859-1).
+_WIN1252_ALIASES = {"iso-8859-1", "iso8859-1", "latin-1", "latin1", "l1", "ascii", "us-ascii",
+                    "cp819", "windows-1252", "cp1252", "8859-1"}
+
+
+def _canon(enc: str, has_c1: bool) -> str:
+    return "cp1252" if (has_c1 and enc.strip().lower() in _WIN1252_ALIASES) else enc
+
+
+def _declared(data: bytes, declared: Optional[str]) -> List[str]:
+    out: List[str] = []
+    if declared:
+        out.append(declared)
+    m = _CHARSET_RE.search(data[:4096]) or _XMLENC_RE.search(data[:4096])
+    if m:
+        try:
+            out.append(m.group(1).decode("ascii", "ignore"))
+        except Exception:  # noqa: BLE001
+            pass
+    return out
+
+
+def _detect(data: bytes) -> Optional[str]:
+    try:
+        from charset_normalizer import from_bytes
+        best = from_bytes(data).best()
+        if best and best.encoding:
+            return best.encoding
+    except Exception:  # noqa: BLE001
+        try:
+            import chardet
+            return chardet.detect(data).get("encoding")
+        except Exception:  # noqa: BLE001
+            pass
+    return None
+
+
 def decode_bytes(data: bytes, declared: Optional[str] = None) -> str:
-    """Best-effort, lossless-leaning decode of arbitrary document bytes to NFC-normalized text."""
+    """Best-effort, lossless-leaning decode of arbitrary document bytes to NFC-normalized text.
+    Order: BOM -> declared/<meta charset> -> UTF-8 strict (self-validating) -> statistical detector
+    (Western single-byte ambiguity resolved toward Windows-1252) -> Latin-1 (never fails)."""
     if not data:
         return ""
     for bom, enc in _BOMS:
@@ -48,41 +88,41 @@ def decode_bytes(data: bytes, declared: Optional[str] = None) -> str:
                 return _nfc(data.decode(enc))
             except Exception:  # noqa: BLE001
                 break
-    candidates: List[str] = []
-    if declared:
-        candidates.append(declared)
-    head = data[:4096]
-    m = _CHARSET_RE.search(head) or _XMLENC_RE.search(head)
-    if m:
+    has_c1 = any(0x80 <= b <= 0x9F for b in data[:65536])
+    # 1. declared / <meta charset> / <?xml encoding?> — authoritative (HTML5 latin1->win1252 mapping).
+    for enc in _declared(data, declared):
         try:
-            candidates.append(m.group(1).decode("ascii", "ignore"))
-        except Exception:  # noqa: BLE001
-            pass
-    try:  # statistical detector (pure-Python; ships with requests as charset-normalizer)
-        from charset_normalizer import from_bytes
-        best = from_bytes(data).best()
-        if best and best.encoding:
-            candidates.append(best.encoding)
-    except Exception:  # noqa: BLE001
-        try:
-            import chardet
-            enc = chardet.detect(data).get("encoding")
-            if enc:
-                candidates.append(enc)
-        except Exception:  # noqa: BLE001
-            pass
-    seen = set()
-    for enc in candidates + ["utf-8"]:
-        key = (enc or "").lower().replace("-", "").replace("_", "")
-        if not enc or key in seen:
-            continue
-        seen.add(key)
-        try:
-            return _nfc(data.decode(enc))
+            return _nfc(data.decode(_canon(enc, has_c1)))
         except (LookupError, UnicodeDecodeError):
             continue
-    # Last resort: Latin-1 maps every byte 1:1, so it never raises and never drops content.
-    return _nfc(data.decode("latin-1", "replace"))
+    # 2. UTF-8 strict — self-validating, so a clean decode is almost certainly correct.
+    try:
+        return _nfc(data.decode("utf-8"))
+    except UnicodeDecodeError:
+        pass
+    # 3. Western single-byte text -> Windows-1252. A high ASCII ratio means Latin script (markup +
+    #    mostly-English text with occasional accents); this also corrects a detector that mis-guesses
+    #    short Latin text as a non-Latin codepage. CJK/Cyrillic/Arabic are byte-dense (LOW ASCII ratio)
+    #    so they skip this and keep their detected encoding below.
+    sample = data[:65536]
+    ascii_ratio = sum(1 for b in sample if b < 0x80) / len(sample)
+    if ascii_ratio >= 0.70:
+        try:
+            return _nfc(data.decode("cp1252"))
+        except (LookupError, UnicodeDecodeError):
+            pass
+    # 4. statistical detector (CJK / Cyrillic / Arabic / Thai / ...).
+    guess = _detect(data)
+    if guess:
+        try:
+            return _nfc(data.decode(guess))
+        except (LookupError, UnicodeDecodeError):
+            pass
+    # 5. last resort — maps every byte, never raises, never drops content.
+    try:
+        return _nfc(data.decode("cp1252"))
+    except (LookupError, UnicodeDecodeError):
+        return _nfc(data.decode("latin-1", "replace"))
 
 
 def scrapling_present() -> bool:
