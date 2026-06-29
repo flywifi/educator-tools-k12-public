@@ -71,6 +71,11 @@ Every Florida standard + access point is extracted from the official documents i
 | ELD | 5 | — | — |
 | **Total** | **6,583** | | |
 
+**Verification (2026-06-29):** cross-checked the enumerated **Math** benchmarks against the official
+*B.E.S.T. Mathematics Standards (final)* PDF — **298/298 (100%)** of the document's benchmark codes are
+present in the index, zero gaps. Re-run any source doc against the index with a benchmark-code diff to
+re-verify after a refresh.
+
 **Low-token lookup (preferred):** `python3 tools/offline_index.py --standards "fraction" --grade 3
 --subject math` — the unified offline index (SQLite/FTS5) returns only the matching rows (~100–350
 tokens) instead of loading the ~470k-token corpus, and returns verbatim canonical data so it cannot
