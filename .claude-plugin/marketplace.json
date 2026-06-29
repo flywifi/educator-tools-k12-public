@@ -10,7 +10,6 @@
       "name": "teacher-operating-system",
       "source": "./",
       "description": "The full TOS suite: 15 governed K-12 teacher skills (hub + capability spokes + governance) over shared engines. Install to add lesson/assessment/presentation generation, curriculum mapping, special-ed/MTSS support, family communication, professional learning, school administration, standards currency, document intelligence, meeting classification, and skill-health/repair.",
-      "version": "1.0.0",
       "category": "education"
     }
   ]
