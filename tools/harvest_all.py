@@ -104,8 +104,8 @@ def parse_docx_toolkit(path: Path, tid: str):
 # --------------------------------------------------------------------------- pipeline
 def scan(inbox: Path) -> list[dict]:
     out = []
-    for f in sorted(inbox.iterdir()):
-        if not f.is_file() or f.suffix.lower() in (".png", ".jpg", ".jpeg", ".gif"):
+    for f in sorted(inbox.rglob("*")):  # recursive: picks up acquired subfolders (rendered/wayback/files/)
+        if not f.is_file() or f.suffix.lower() in (".png", ".jpg", ".jpeg", ".gif") or f.name == "manifest.json":
             continue
         suf = f.suffix.lower()
         if suf in (".pdf",):
@@ -121,20 +121,20 @@ def scan(inbox: Path) -> list[dict]:
     return out
 
 
-def fetch_phase(urls: list[str], inbox: Path, ignore_robots: bool, report: list[str]) -> None:
+def fetch_phase(urls: list[str], inbox: Path, ignore_robots: bool, report: list[str], depth: int) -> None:
+    """Combined redundant acquisition per URL (token-free): browser-headers + headless render +
+    screenshot/OCR + mirror linked files/pages + Wayback backstop. Keeps every artifact for parsing."""
     try:
-        from fetch_resilient import resilient_get
+        from acquire import acquire
     except Exception as e:
-        report.append(f"  [fetch] unavailable: {e.__class__.__name__}")
+        report.append(f"  [fetch] acquirer unavailable: {e.__class__.__name__}")
         return
     for u in urls:
-        r = resilient_get(u, ignore_robots=ignore_robots, run_all=False)
-        if r.get("ok") and r.get("content"):
-            name = re.sub(r"[^a-zA-Z0-9]+", "_", u)[:80] + ".html"
-            (inbox / name).write_bytes(r["content"])
-            report.append(f"  [fetch] OK via {r['prong']}: {u} -> {name}")
-        else:
-            report.append(f"  [fetch] FAILED: {u} ({r.get('note')})")
+        slug = re.sub(r"[^a-zA-Z0-9]+", "_", u)[:70]
+        m = acquire(u, inbox / slug, ignore_robots=ignore_robots, depth=depth)
+        arts = m.get("artifacts", {})
+        got = "+".join(k for k, v in arts.items() if v) or "none"
+        report.append(f"  [fetch] {'OK' if m.get('ok_any') else 'FAIL'}: {u}  [{got}]")
 
 
 def validate_standards(all_codes: set[str], report: list[str]) -> dict:
@@ -162,6 +162,7 @@ def main(argv=None) -> int:
     ap.add_argument("--urls", help="file of URLs to resilient-fetch into the inbox (one per line)")
     ap.add_argument("--fetch", action="store_true", help="run the unrestricted fetch phase")
     ap.add_argument("--ignore-robots", action="store_true", help="maintainer override for public data")
+    ap.add_argument("--depth", type=int, default=1, help="mirror depth for same-domain pages (default 1)")
     ap.add_argument("--push", action="store_true", help="git add+commit+push the catalogued data")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)
@@ -182,9 +183,9 @@ def main(argv=None) -> int:
                 if s.get("status") == "captured_unparsed" and s.get("source_url"):
                     urls.append(s["source_url"])
         urls = sorted(set(urls))
-        report.append(f"  {len(urls)} URL(s) to acquire")
+        report.append(f"  {len(urls)} URL(s) to acquire (browser+render+screenshot/OCR+mirror+wayback)")
         if not a.dry_run:
-            fetch_phase(urls, inbox, a.ignore_robots, report)
+            fetch_phase(urls, inbox, a.ignore_robots, report, a.depth)
 
     # ---- SCAN ----
     report.append("\n## SCAN")
