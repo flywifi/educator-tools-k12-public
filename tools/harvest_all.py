@@ -121,20 +121,32 @@ def scan(inbox: Path) -> list[dict]:
     return out
 
 
-def fetch_phase(urls: list[str], inbox: Path, ignore_robots: bool, report: list[str], depth: int) -> None:
+def fetch_phase(urls: list[str], inbox: Path, ignore_robots: bool, report: list[str], depth: int,
+                per_host_budget: int, min_interval: float) -> None:
     """Combined redundant acquisition per URL (token-free): browser-headers + headless render +
-    screenshot/OCR + mirror linked files/pages + Wayback backstop. Keeps every artifact for parsing."""
+    screenshot/OCR + mirror linked files/pages + Wayback backstop. Keeps every artifact for parsing.
+    ONE shared rate governor spans the whole batch, so per-host pacing, the budget, and the lockout
+    breaker accumulate across every URL — not reset per URL — which is what actually prevents a ban."""
     try:
         from acquire import acquire
+        import fetch_resilient as FR
+        import rate_governor as RG
     except Exception as e:
         report.append(f"  [fetch] acquirer unavailable: {e.__class__.__name__}")
         return
+    gov = RG.RateGovernor(FR.BROWSER_HEADERS["User-Agent"], per_host_budget=per_host_budget,
+                          min_interval=min_interval, respect_robots=not ignore_robots)
     for u in urls:
         slug = re.sub(r"[^a-zA-Z0-9]+", "_", u)[:70]
-        m = acquire(u, inbox / slug, ignore_robots=ignore_robots, depth=depth)
+        m = acquire(u, inbox / slug, ignore_robots=ignore_robots, depth=depth, gov=gov)
         arts = m.get("artifacts", {})
         got = "+".join(k for k, v in arts.items() if v) or "none"
-        report.append(f"  [fetch] {'OK' if m.get('ok_any') else 'FAIL'}: {u}  [{got}]")
+        note = f"  ({m['note']})" if m.get("note") else ""
+        report.append(f"  [fetch] {'OK' if m.get('ok_any') else 'FAIL'}: {u}  [{got}]{note}")
+    gov.save()
+    for host, st in gov.summary().items():
+        brk = "  BREAKER-OPEN" if st["breaker_open"] else ""
+        report.append(f"  [rate] {host}: {st['requests']} req, ~{st['min_interval']}s/req{brk}")
 
 
 def validate_standards(all_codes: set[str], report: list[str]) -> dict:
@@ -163,6 +175,10 @@ def main(argv=None) -> int:
     ap.add_argument("--fetch", action="store_true", help="run the unrestricted fetch phase")
     ap.add_argument("--ignore-robots", action="store_true", help="maintainer override for public data")
     ap.add_argument("--depth", type=int, default=1, help="mirror depth for same-domain pages (default 1)")
+    ap.add_argument("--per-host-budget", type=int, default=200,
+                    help="max requests per host across the whole run before self-limiting (lockout guard)")
+    ap.add_argument("--min-interval", type=float, default=1.5,
+                    help="polite floor (seconds) between same-host requests; robots Crawl-delay wins if slower")
     ap.add_argument("--push", action="store_true", help="git add+commit+push the catalogued data")
     ap.add_argument("--dry-run", action="store_true")
     # dependency-preflight flags (consumed by deps_preflight via sys.argv; declared so argparse accepts
@@ -198,7 +214,7 @@ def main(argv=None) -> int:
         urls = sorted(set(urls))
         report.append(f"  {len(urls)} URL(s) to acquire (browser+render+screenshot/OCR+mirror+wayback)")
         if not a.dry_run:
-            fetch_phase(urls, inbox, a.ignore_robots, report, a.depth)
+            fetch_phase(urls, inbox, a.ignore_robots, report, a.depth, a.per_host_budget, a.min_interval)
 
     # ---- SCAN ----
     report.append("\n## SCAN")

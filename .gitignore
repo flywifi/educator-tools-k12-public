@@ -48,3 +48,6 @@ seed_report_*
 canonical-sources/index/*.db
 source_inbox/
 HARVEST_HANDOFF.md
+
+# per-host rate-limit memory (governor)
+.harvest-cache/
