@@ -43,6 +43,25 @@ def _norm_name(n: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", n.lower()).strip()
 
 
+def _read_text(path: Path) -> str:
+    """i18n-aware decode so foreign school names / accents survive (NOT utf-8/replace, which mangles
+    Windows-1252 / Shift-JIS / etc.). Prefers the shared docintel decoder; stdlib-safe fallback."""
+    data = path.read_bytes()
+    try:
+        sys.path.insert(0, str(ROOT / "shared"))
+        from docintel.html_util import decode_bytes
+        return decode_bytes(data)
+    except Exception:
+        try:
+            from charset_normalizer import from_bytes
+            best = from_bytes(data).best()
+            if best is not None:
+                return str(best)
+        except Exception:
+            pass
+        return data.decode("utf-8", "replace")
+
+
 def _saved_url(text: str) -> str | None:
     m = re.search(r"saved from url=\(\d+\)(\S+)", text)
     return m.group(1).strip() if m else None
@@ -213,7 +232,7 @@ def main(argv=None) -> int:
             continue
         is_xlsx = f.suffix.lower() == ".xlsx"
         is_binary = f.suffix.lower() in (".zip", ".pdf", ".xls") and not is_xlsx
-        text = "" if is_xlsx else f.read_text(encoding="utf-8", errors="replace")
+        text = "" if is_xlsx else _read_text(f)
         # .xls files are usually Office-HTML (readable); .zip/.pdf are opaque here
         if f.suffix.lower() == ".xls":
             is_binary = "<html" not in text[:200].lower()
