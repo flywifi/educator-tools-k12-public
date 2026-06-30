@@ -1,8 +1,10 @@
 # Skills catalog
 
-The Teacher Operating System ships as a hub-and-spoke set of Claude Agent Skills. The hub routes;
-the spokes produce artifacts; `quality-review` gates them. All share the governed core (`shared/`,
-`protocols/`) via synced references; the drift guard (`tools/sync_check.py`) keeps them in sync.
+The Teacher Operating System is a set of focused AI assistants ("skills"). One **coordinator**
+(`teacher-core`) reads each request and routes it to the right specialized skill; those skills
+produce the actual materials; and `quality-review` checks them before they're considered done. Every
+skill shares one source of truth in `shared/` and `protocol-layer/`, and an automated checker
+(`tools/sync_check.py`) keeps each skill's copy of those shared rules identical to the originals.
 
 | Skill | Role | Produces |
 |---|---|---|
@@ -28,4 +30,4 @@ python3 tools/new_skill.py <name>      # scaffold a new skill (drift-clean)
 python3 tools/sync_check.py            # drift guard — must pass
 python3 tools/package_skill.py --all   # build installable .skill bundles into dist/
 ```
-Edit canonical files in `shared/` or `protocols/` — never a skill's synced copy. See `../CLAUDE.md`.
+Edit canonical files in `shared/` or `protocol-layer/` — never a skill's synced copy. See `../CLAUDE.md`.

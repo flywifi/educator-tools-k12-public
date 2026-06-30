@@ -1,4 +1,5 @@
 # CLAUDE.md
+**For developers/contributors working in this repo** — not needed to *use* TOS (see `README.md` for that).
 Conventions for working in the Teacher Operating System (TOS) repository.
 
 ## What this repo is
