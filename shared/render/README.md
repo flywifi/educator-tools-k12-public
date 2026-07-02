@@ -62,7 +62,7 @@ Every prong sends the **same single honest, identifying User-Agent** and **respe
 The browser prongs simply run the site's own JavaScript the way a browser is meant to. There is
 deliberately **no** User-Agent rotation, **no** browser impersonation, and **no** CAPTCHA /
 rate-limit bypass — a detected CAPTCHA wall **stops** the chain and is reported honestly, never
-defeated. This mirrors the design table in `skills/standards-updater/references/updater-method.md`.
+defeated. This mirrors the design table in `skills/operations/standards-updater/references/updater-method.md`.
 
 ## Capability-gated, honest gaps
 A prong whose dependencies are absent is **skipped and recorded as a `capability_gap`**, never

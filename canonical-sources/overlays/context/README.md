@@ -1,7 +1,7 @@
 # Overlays registry
 
 Composable, scoped rule-sets that stack onto the resolved context contract (see
-`../overlays.md` for the model and `../overlay.schema.json` for the shape). One JSON per overlay:
+`shared/context/overlays.md` for the model and `shared/context/overlay.schema.json` for the shape). One JSON per overlay:
 `overlays/<scope>/<id>.json`.
 
 ```
@@ -10,7 +10,7 @@ overlays/
   school/     program/ grade/       subject/   classroom/
 ```
 
-- **scope** — where the rule lives; sets the default merge precedence (`SCOPE_RANK` in `context.py`;
+- **scope** — where the rule lives; sets the default merge precedence (`SCOPE_RANK` in `shared/context/context.py`;
   state/compliance wins on conflict).
 - **match** — selectors that activate the overlay (e.g., `{"district":"Orange"}`); `{}` = always.
 - **sets** (defaults, weak) · **adds** (accumulate: mandates/notes/sop_refs/exceptions, never lost) ·

@@ -2,7 +2,7 @@
 
 Cross-skill worked examples (Charter Phase C3). Per-skill examples live inside each skill's
 `examples/`; this library holds **multi-skill bundles** produced by `teacher-core` orchestration
-(`skills/teacher-core/references/workflows.md`).
+(`skills/core/teacher-core/references/workflows.md`).
 
 | Bundle | Workflow | Pieces |
 |---|---|---|

@@ -13,7 +13,7 @@ artifact, who decided, the outcome, and a pointer to the full decision record.
 - **Append-only / immutable.** Once written, an entry is not edited; a correction adds a **new** entry
   (QG §94.4).
 - **Full record lives with the artifact.** Each artifact carries its complete decision record in its
-  metadata block (`protocols/metadata-schema.md`); the ledger is the index + audit trail.
+  metadata block (`protocol-layer/metadata-schema.md`); the ledger is the index + audit trail.
 - **No real student data.** Ledger entries reference placeholder artifacts only.
 
 ## Format
@@ -26,5 +26,5 @@ Two views, kept in sync:
 The seed entries correspond to the worked examples bundled in each skill.
 
 ## Roadmap
-Phase E adds an analytics pass over this ledger to populate the success metrics in `QUALITY_MODEL.md`
+Phase E adds an analytics pass over this ledger to populate the success metrics in `docs/QUALITY_MODEL.md`
 / `STATE.md` (approval rate, longitudinal trends — QG §95).

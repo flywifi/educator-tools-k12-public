@@ -21,7 +21,7 @@ districts/<name>/
 ```
 
 ## How overlays work
-TOS reads `shared/context/overlays/` for active overlays. A district overlay is activated by the teacher profile wizard (`profile_wizard.py --preferences --district orange-county`), which registers it as a context fragment. The `sot_resolver.py` precedence hierarchy:
+TOS reads `canonical-sources/overlays/context/` for active overlays. A district overlay is activated by the teacher profile wizard (`skills/operations/teacher-profile/scripts/profile_wizard.py --preferences --district orange-county`), which registers it as a context fragment. The `shared/context/sot_resolver.py` precedence hierarchy:
 
 ```
 teacher_stated > district_overlay > school_profile > shared_defaults
@@ -32,5 +32,5 @@ Overlays are reversible — `--district reset` removes the overlay without chang
 ## Adding a new district overlay
 1. Copy `_template/` to `districts/<district-name>/`.
 2. Fill in `overlay.json` with the district's name, MSID, state, and any config overrides.
-3. Add a pointer in `shared/context/overlays/` (follow the existing OCPS entry as a pattern).
+3. Add a pointer in `canonical-sources/overlays/context/` (follow the existing OCPS entry as a pattern).
 4. Run `python3 tools/sync_check.py`.

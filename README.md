@@ -12,16 +12,21 @@ of skills that share one governed core.
 
 | Path | What |
 |---|---|
-| `skills/teacher-core/` | the hub: mission, personas, the pipeline, and routing |
-| `skills/` (Phase A+) | capability skills: `quality-review`, `lesson-planner`, `assessment-designer`, `presentation-builder`, then the expansion set |
+| `skills/core/` | the hub (`teacher-core`), governance (`quality-review`), and health/repair skills |
+| `skills/educator/` | capability skills: `lesson-planner`, `assessment-designer`, `presentation-builder`, `curriculum-mapping`, `special-education-support`, `intervention-mtss`, `family-communication`, `professional-learning`, `school-administration` |
+| `skills/operations/` | operational skills: `document-intelligence`, `feed-curator`, `meeting-classifier`, `standards-updater`, `teacher-profile` |
+| `skills/atoms/` | single-operation sub-skills composed by the capability skills |
 | `shared/` | cross-cutting engines: Standards, Differentiation, Quality (source of truth) |
-| `protocols/` | 6 governance protocols, incl. the authoritative `quality-gates.md` |
-| `tools/` | `sync_check.py` drift guard, `new_skill.py` scaffolder, skill template |
+| `protocol-layer/` | 6 governance protocols, incl. the authoritative `quality-gates.md` |
+| `canonical-sources/` | authoritative reference data: FL standards/course registries, school indexes, district overlays |
+| `tools/` | `sync_check.py` drift guard, `new_skill.py` scaffolder, offline index, harvest pipeline, skill template |
+| `implementation/` | platform packaging: `gpt/api/`, `gpt/web/`, `claude/`, `gemini/` |
+| `docs/` · `security/` · `changes/` | architecture/benchmark docs, security policies, changelog |
 
 ## Key documents
-- `TOS_ECOSYSTEM_BUILD_OUTLINE.md` — the full, phase-gated build plan.
-- `ARCHITECTURE.md` · `QUALITY_MODEL.md` · `SECURITY_AND_SAFETY.md` · `ROUTING_MODEL.md` ·
-  `CHANGE_MANAGEMENT.md` — governance.
+- `docs/ARCHITECTURE.md` · `docs/QUALITY_MODEL.md` · `docs/ROUTING_MODEL.md` — design and governance.
+- `security/SECURITY_AND_SAFETY.md` · `security/SECURITY_REVIEW.md` — security and safety.
+- `changes/CHANGE_MANAGEMENT.md` · `changes/CHANGELOG.md` — change management.
 - `STATE.md` — live status + recovery pointer.
 - `CLAUDE.md` — working conventions.
 
@@ -32,13 +37,15 @@ Approval/Certification → Release`. Standards-aligned, differentiated (UDL by d
 determination, and uses placeholder data only — never real student information.**
 
 ## Status
-**Core build complete — Phases 0–E delivered.** 11 skills (hub `teacher-core` + `quality-review` + 9
-capability skills), 6 approved protocols, the live **Quality Ledger**, cross-skill **orchestration**
-(+ Example Library), a passing **eval benchmark** (`BENCHMARK.md`), installable **packaging**
-(`tools/package_skill.py`), hardened **CI**, **semantic versioning** (`VERSION` / `CHANGELOG.md`), a
-**security review** (`SECURITY_REVIEW.md`), and a live **success-metrics dashboard** (`METRICS.md`,
-via `tools/metrics.py`). The drift guard passes across all 11 skills. Optional follow-ups in
-`STATE.md`.
+**Core build complete.** 19 skills (5 core incl. the hub `teacher-core`, 9 educator capability
+skills, 5 operations skills) plus 43 atoms, 6 approved protocols (`protocol-layer/`), the live
+**Quality Ledger** (`ledger/`), cross-skill **orchestration** (+ Example Library, `examples/`), a
+passing **eval benchmark** (`docs/BENCHMARK.md`), installable **packaging**
+(`tools/package_skill.py`), hardened **CI**, **semantic versioning** (`VERSION` /
+`changes/CHANGELOG.md`), a **security review** (`security/SECURITY_REVIEW.md`), a
+**success-metrics dashboard** (`docs/METRICS.md`, via `tools/metrics.py`), and an offline-first
+data layer (`tools/offline_index.py`, harvest pipeline). The drift guard (`tools/sync_check.py`)
+passes across all skills. Live status in `STATE.md`.
 
 ## Provenance
 Built from the TOS Master Project Charters (V2–V4) and the Quality Gates Protocol v3.0.0

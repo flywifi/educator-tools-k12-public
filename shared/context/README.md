@@ -14,10 +14,10 @@ context **once**, and every skill then adapts and carries that context through i
 ## Files
 | File | What it is |
 |---|---|
-| `florida-districts.json` | **Log of all 67 FL county districts** (LEAs) — fillable stubs for rules/norms/superintendent/district-run virtual school; Orange/OCPS populated as the worked example. |
-| `school-types.json` | School-type **taxonomy + exception rule-sets** (traditional/magnet/charter/district-virtual/FLVS/home-ed/private-scholarship): how each overrides the baseline. |
+| `canonical-sources/florida-districts.json` | **Log of all 67 FL county districts** (LEAs) — fillable stubs for rules/norms/superintendent/district-run virtual school; Orange/OCPS populated as the worked example. |
+| `canonical-sources/school-types.json` | School-type **taxonomy + exception rule-sets** (traditional/magnet/charter/district-virtual/FLVS/home-ed/private-scholarship): how each overrides the baseline. |
 | `context.schema.json` | The **context contract** envelope (machine-readable). |
-| `overlay.schema.json` + `overlays/` | **Composable scoped overlays** (state/county/district/school/framework/grade/subject/program/classroom) — `overlays.md`. |
+| `overlay.schema.json` + `canonical-sources/overlays/context/` | **Composable scoped overlays** (state/county/district/school/framework/grade/subject/program/classroom) — `overlays.md`. |
 | `context.py` | Resolver: `resolve()` stacks overlays; build/validate a context, apply school-type exceptions, precedence + overrides. Stdlib. |
 | `context-model.md` | The dimensions, authority-precedence, and override model. |
 | `sop-model.md` | How teachers **upload/update SOP files** and how they map into the contract. |
@@ -29,7 +29,7 @@ calendar · standards_applicability · mandates[] · sop_refs[] · authority_pre
 
 ## How it changes the contracts & handoffs
 - **Metadata contract:** every artifact's metadata block gains a `context` envelope
-  (`protocols/metadata-schema.md`) — so an artifact records the district/school-type/mandates it was
+  (`protocol-layer/metadata-schema.md`) — so an artifact records the district/school-type/mandates it was
   built for, and is auditable against them.
 - **Routing (teacher-core):** the hub **resolves context first** (operating-reference), then routes;
   the resolved contract is passed to capability skills and **preserved across handoffs** (a skill
@@ -40,7 +40,7 @@ calendar · standards_applicability · mandates[] · sop_refs[] · authority_pre
 
 ## School-type exceptions (why one size never fits)
 `traditional_public` is the baseline; every other type declares `overrides_baseline` + `sop_overrides`
-in `school-types.json`. Examples: **charter** → independent board governance + sponsor reporting;
+in `canonical-sources/school-types.json`. Examples: **charter** → independent board governance + sponsor reporting;
 **district-virtual / FLVS** → delivery/attendance/pacing; **home education** → annual evaluation
 instead of statewide assessment, standards optional; **private-scholarship** → school-defined
 curriculum + scholarship accountability. A district like **Orange (OCPS)** runs its **own** virtual
