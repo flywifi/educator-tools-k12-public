@@ -92,6 +92,20 @@
       "key_authorities": ["https://www.fldoe.org/finance/financial-aid-scholarships/",
         "https://www.fldoe.org/schools/school-choice/other-school-choice-options/"],
       "status": "stub"
+    },
+    "private_independent": {
+      "label": "Private school (independent — not enrolling FL scholarship students)",
+      "governing_authority": "private school governance",
+      "standards_applicability": "B.E.S.T. NOT binding; school selects curriculum/standards",
+      "assessment": "school-selected assessment; no statewide assessment mandate and no scholarship-required norm-referenced assessment",
+      "certification": "varies by school",
+      "overrides_baseline": ["own curriculum/standards", "own calendar", "own assessment regime",
+                              "no scholarship accountability reporting"],
+      "sop_overrides": ["curriculum-selection SOPs",
+                         "standards alignment becomes school-defined"],
+      "key_authorities": ["s.1002.42 F.S. (Private schools)",
+        "https://www.fldoe.org/schools/school-choice/private-schools/"],
+      "status": "stub"
     }
   }
 }
