@@ -39,12 +39,38 @@ verify standards against their own state's site.
 
 ## Save your profile (one-time, 2 minutes)
 
-1. In your Project, say **"set up my profile"** and answer the short interview
+1. In your Project, say **"set up my profile"**. The built-in Setup Wizard takes over:
+   one question at a time, each with the reason it's asked, everything skippable
    (grade, subject, school — placeholders only, never real student names).
-2. The assistant gives you back one file called `my-teacher-profile.md` — save it.
-3. Add it to the same Project. From now on, every chat starts already knowing your
-   grade, subject, and school. To change it later, say "update my profile" and
-   replace the file.
+2. At the end the assistant writes your complete profile into one block of text
+   titled `my-teacher-profile.md` — and helps you save it: it will offer a
+   downloadable file when it can, or walk you through copy → Notepad/TextEdit →
+   save as `my-teacher-profile.md`.
+3. Add that file to the same Project. Why a file? Chats don't remember each other —
+   the Project's files are the assistant's only memory of you. From now on, every
+   chat starts already knowing your grade, subject, and school. To change it later,
+   say "update my profile" and replace the file.
+
+## Switching devices, or using the ChatGPT desktop app
+
+Nothing to redo. Projects live in your ChatGPT **account**, not on one device —
+install the desktop app (or open ChatGPT on any computer), sign in with the same
+account, and your TOS Project is already there with all its files, your profile,
+and your chats. Same plan limits apply. If something looks missing, first check
+you're signed into the same account.
+
+One thing you do **not** need: building a "Custom GPT". TOS on ChatGPT is just
+Project files — this guide plus the pack. (The `implementation/gpt/api/` folder in
+the project repository is for software developers, not for teachers.)
+
+## A note on privacy
+
+On personal ChatGPT plans, your conversations may be used to help train models
+unless you turn that off (Settings → **Data Controls** → "Improve the model for
+everyone" — as of 2026; the menu wording changes occasionally). School/enterprise
+workspaces (Team/Edu) don't train on your content by default. This is also why the
+Setup Wizard never accepts real student names: everything about students stays a
+placeholder, so there is nothing private to protect.
 
 ## Your requirements map
 

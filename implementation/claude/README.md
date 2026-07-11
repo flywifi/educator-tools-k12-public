@@ -37,11 +37,12 @@ It's a draft for your review, always.
 No files live on your computer, so it works like a Project:
 
 1. Create a Project on claude.ai.
-2. Add `implementation/gpt/web/TOS-skills.md` **and the 11 files in
-   `implementation/gpt/web/reference-pack/`** as Project files. (The pack is plain
-   data — the same verified Florida standards, course codes, districts, and school
-   types the full deployment uses. Origins and verification links:
-   `reference-pack/MANIFEST.md`.)
+2. Add `implementation/gpt/web/TOS-skills.md` **and the Reference Pack** as Project
+   files — either the 11 files in `implementation/gpt/web/reference-pack/` (sharper
+   file search) or, for the fewest uploads, the single
+   `reference-pack/tos-reference-pack-onefile.json`. (The pack is plain data — the
+   same verified Florida standards, course codes, districts, and school types the
+   full deployment uses. Origins and verification links: `reference-pack/MANIFEST.md`.)
 3. Say **"set up my profile"**, answer the short interview, and save the
    `my-teacher-profile.md` file the assistant gives you back into the Project.
 
