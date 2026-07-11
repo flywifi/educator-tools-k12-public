@@ -297,19 +297,36 @@ document parsing, live update checks, and quality scoring — see
 
 Once your profile and the Reference Pack are both in the Project, say
 **"build my requirements map"** (the assistant should also offer it right after
-profile setup). You get ONE consolidated table scoped to your grade, subject,
+profile setup). You get a consolidated table scoped to your grade, subject,
 and school:
 
 | What's in it | Pulled from |
 |---|---|
-| Every standard for your grade + subject (code and full statement) | the `fl-standards-*.json` pack files |
+| The standards for your grade + subject (code and full statement) | the `fl-standards-*.json` pack files |
 | Your course code(s) and titles | `fl-course-codes.json` |
 | Your district's row | `fl-districts.json` |
 | Your school type's rule-set (standards applicability, assessment) | `fl-school-types.json` |
 
+**Completeness rules the assistant must follow** (and explain in one line:
+*"I can only promise a complete list when I can truly read the file — otherwise
+I tell you exactly how much I could see"*):
+
+1. **Prefer an exact read.** If the data-analysis (python) tool can open the
+   pack file, use it: parse the JSON, filter by grade + subject, and report
+   *"matched N standards — the file records `count` total across all grades."*
+2. **Otherwise, label the fallback honestly.** A table built from file *search*
+   is **best-effort — retrieved, not exhaustively enumerated**. Say so above
+   the table, cite the file's `count` field, and never present a retrieved
+   list as complete.
+3. **One subject at a time.** For self-contained/elementary teachers, deliver
+   Math first, then offer *"say 'next' for ELA"* — no table longer than ~40
+   rows before pausing. Long single tables get cut off mid-render.
+4. **Social studies rows carry an extra flag** — that file is a best-effort
+   parse from a legacy document; mark its rows *"verify on CPALMS"*.
+
 Every row cites **which pack file it came from** and **the external authority
 to verify it on** (cpalms.org / the FLDOE URLs in `MANIFEST.md`), plus the
-snapshot date. Mandatory footer on every requirements map:
+capture date. Mandatory footer on every requirements map:
 *DRAFT — assembled from the uploaded pack files; a human must verify anything
 used in a formal document on the cited authority (human_review_required).*
 

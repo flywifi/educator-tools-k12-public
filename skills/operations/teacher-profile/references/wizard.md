@@ -44,7 +44,11 @@ Keep it short — smaller is more robust; depth can be added later.
    from and the external authority to verify it on (CPALMS / the FLDOE URLs those files cite), plus
    the capture date.** Mandatory footer: *DRAFT — verify anything used in a formal document on the
    cited authority (`human_review_required`)*. On chat platforms without these tools, the same map is
-   assembled from the uploaded Reference Pack files instead — same columns, same citation rule.
+   assembled from the uploaded Reference Pack files instead — same columns, same citation rule, plus
+   the **completeness contract**: exact enumeration only when the file is truly read (data-analysis
+   tool; report *matched N of the file's `count` total*), otherwise the table is labeled
+   *best-effort — retrieved, not exhaustively enumerated*; one subject per table (~40 rows max,
+   offer "next"); social-studies rows carry an extra "verify on CPALMS" flag (legacy-doc parse).
 
 ## Maintenance
 Re-run any section to update; the profile carries an `updated` timestamp. Because behavior reads the
