@@ -16,7 +16,7 @@ commit-anchored snapshot in `ledger/snapshots.json` (`tools/rollback.py --list`)
 - **F2 — Source-currency + staleness engine.** `tools/source_currency.py` + `canonical-sources/registries/<domain>.json`:
   states `current/changed/superseded/removed_404/stale_age/unreachable/uncertain` via conditional GET +
   content sha256 + supersession keywords + recency + 404 sweep; offline-graceful, advisory + human-verified.
-- **F3 — OCPS schools + programs index.** `shared/schools/` (+ `ocps/` seed) keyed on FLDOE MSID;
+- **F3 — OCPS schools + programs index.** `canonical-sources/schools/` (+ `ocps/` seed) keyed on FLDOE MSID;
   open/close + program changes watched by F2 (`canonical-sources/registries/ocps-schools.json`). Public, non-PII only.
 - **F4 — `teacher-profile` skill (18th) + setup wizard.** Roles, duties, role-based handoff map, prefs →
   gitignored `teacher.local.json` + context `sop_refs`/`overrides`; teacher-stated outranks crawled.

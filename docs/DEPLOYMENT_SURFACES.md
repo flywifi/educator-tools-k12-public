@@ -2,7 +2,7 @@
 
 The TOS core is **model- and surface-neutral**: Markdown policies/schemas/taxonomies + **stdlib-only**
 Python helpers (`shared/connectors/connectors.py`, `shared/students/students.py`,
-`skills/meeting-classifier/scripts/classify_meeting.py`, `tools/crosswalk.py`, `shared/context/context.py`)
+`skills/operations/meeting-classifier/scripts/classify_meeting.py`, `tools/crosswalk.py`, `shared/context/context.py`)
 with no network dependency. The Claude **Skill** packaging is a convenience layer, not a requirement.
 Three surfaces are supported; the difference is mostly **where student data lives** (the storage adapter
 — `shared/students/student-data-policy.md`) and **which connectors** are available

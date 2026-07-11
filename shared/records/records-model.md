@@ -6,7 +6,7 @@ re-described ad hoc each time. Modeled on an enterprise education data model but
 governance-first, placeholders-in-repo**. Identity/guardians/health come from `shared/students/`;
 School/District/AcademicYear/course context links to `shared/context/`; standards use
 `shared/standards/`; availability/restrictions use `shared/connectors/`. First consumer:
-`skills/meeting-classifier/` (the skill→skill package).
+`skills/operations/meeting-classifier/` (the skill→skill package).
 
 Files: `records.schema.json` (contract), `records.example.json` (placeholder store), `records.py`
 (offline assembler), this prose. Real records live in `records.local.json` (gitignored) or a live SIS.

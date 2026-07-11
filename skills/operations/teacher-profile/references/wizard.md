@@ -12,7 +12,8 @@ Keep it short — smaller is more robust; depth can be added later.
 - **No student PII.** If the teacher volunteers a student name, drop it; profiles describe roles, not kids.
 
 ## Flow
-1. **Who & where** — display name; school (offer a `shared/schools/` lookup by name → MSID); district.
+1. **Who & where** — display name; school (offer a lookup by name → MSID via
+   `python3 tools/offline_index.py --school "<name>"`; data: `canonical-sources/schools/`); district.
 2. **Role(s)** — "What are all your roles this year?" Capture each (subject/grade/department; mark the
    primary). Multi-role is normal (e.g. teacher + MTSS lead).
 3. **Duties / workload** — "What are your recurring responsibilities?" with cadence + rough load.
@@ -33,8 +34,8 @@ before anything person-specific is stored.
 
 ## Commands
 ```bash
-python3 skills/teacher-profile/scripts/profile_wizard.py --demo        # build from the example
-python3 skills/teacher-profile/scripts/profile_wizard.py --init answers.json
-python3 skills/teacher-profile/scripts/profile_wizard.py --validate
-python3 skills/teacher-profile/scripts/profile_wizard.py --register    # context sop_refs/overrides fragment
+python3 skills/operations/teacher-profile/scripts/profile_wizard.py --demo        # build from the example
+python3 skills/operations/teacher-profile/scripts/profile_wizard.py --init answers.json
+python3 skills/operations/teacher-profile/scripts/profile_wizard.py --validate
+python3 skills/operations/teacher-profile/scripts/profile_wizard.py --register    # context sop_refs/overrides fragment
 ```

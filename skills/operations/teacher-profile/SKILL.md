@@ -1,6 +1,6 @@
 ---
 name: teacher-profile
-description: "Establish, update, and maintain a single teacher's operating context — their role(s), duties/workload, the handoff & role-interaction map (who they pass work to and receive it from: case manager, AP, counselor, nurse, co-teacher, grade/department team), their school assignment, and personal preferences/defaults — then register it into the shared context as classroom/teacher-scope sop_refs + overrides so every other skill adapts to THIS teacher's reality. Use when a teacher says 'set up my profile', 'this is my role/situation', 'I'm a co-teacher / case manager / department head', 'who handles X at my school', 'remember my preferences', or when another skill needs to know a teacher's duties/handoffs. The profile is a GITIGNORED local store (their data, never committed). Do NOT use for student records (shared/records/), for the school/program directory (shared/schools/), or for bulk staff directories (shared/staff/, gated) — this is the one teacher's own self-described SOP."
+description: "Establish, update, and maintain a single teacher's operating context — their role(s), duties/workload, the handoff & role-interaction map (who they pass work to and receive it from: case manager, AP, counselor, nurse, co-teacher, grade/department team), their school assignment, and personal preferences/defaults — then register it into the shared context as classroom/teacher-scope sop_refs + overrides so every other skill adapts to THIS teacher's reality. Use when a teacher says 'set up my profile', 'this is my role/situation', 'I'm a co-teacher / case manager / department head', 'who handles X at my school', 'remember my preferences', or when another skill needs to know a teacher's duties/handoffs. The profile is a GITIGNORED local store (their data, never committed). Do NOT use for student records (shared/records/), for the school/program directory (canonical-sources/schools/), or for bulk staff directories (shared/staff/, gated) — this is the one teacher's own self-described SOP."
 ---
 
 # teacher-profile
@@ -33,7 +33,7 @@ See `references/wizard.md` for the interview script and `references/profile-mode
   teacher** before it shapes behavior. Teacher-stated always wins (`shared/context/source-of-truth.md`).
 - **Handoffs are role-based, not person-based** — map to roles (case manager, AP, counselor) so the
   profile survives staff turnover; an optional person link comes only from the gated `shared/staff/`.
-- **School link** — the teacher's school resolves against `shared/schools/` (MSID), so the profile stays
+- **School link** — the teacher's school resolves against `canonical-sources/schools/` (MSID), so the profile stays
   consistent with the district index.
 - **Quality** — self-check against `references/quality-gates.md`, then hand to `quality-review`.
 

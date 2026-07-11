@@ -4,7 +4,7 @@
   "description": "Profile setup: wizard intake → role/handoff modeling → context registration → validation → quality gate",
   "steps": [
     {"step": 1, "action": "wizard_intake",     "input_from": "teacher request",              "output_to": "step2",
-     "uses": "skills/teacher-profile/scripts/profile_wizard.py --init | --preferences | --update",
+     "uses": "skills/operations/teacher-profile/scripts/profile_wizard.py --init | --preferences | --update",
      "note": "Interview per references/wizard.md: display name, school, role(s), duties, handoff map, preferences/defaults. Teacher-stated facts are provenance:teacher_stated (always wins)."},
     {"step": 2, "action": "model_handoffs",    "input_from": "step1.raw_input",              "output_to": "step3",
      "note": "Build role-based handoff map (case manager, AP, counselor, co-teacher) per references/profile-model.md. Role-based, not person-based — survives staff turnover."},

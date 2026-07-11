@@ -27,7 +27,7 @@ User-Agent, respects robots.txt, and (for the browser prongs) simply runs the si
 JavaScript the way a browser is meant to. There is deliberately NO User-Agent rotation, NO
 browser impersonation, and NO CAPTCHA / rate-limit bypass: if a CAPTCHA wall is detected the
 chain STOPS and reports it honestly rather than attempting to defeat it. (See the design table in
-skills/standards-updater/references/updater-method.md.)
+skills/operations/standards-updater/references/updater-method.md.)
 
 Capability-gated + honest gaps: a prong whose deps are absent is skipped and recorded as a
 `capability_gap`, never faked. Output always carries `human_review_required: true`. Stdlib-only at

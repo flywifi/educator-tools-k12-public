@@ -27,7 +27,7 @@ Skill-specific:
 - silently filling roles/duties from a public site as if teacher-stated (provenance must be `crawled` +
   confirmed);
 - person-specific handoff data leaking in before the gated staff workstream + consent exist;
-- school link drifting from `shared/schools/` (use the MSID, not a free-text school name only).
+- school link drifting from `canonical-sources/schools/` (use the MSID, not a free-text school name only).
 
 ## Fragile fallbacks that must not become defaults
 - an **empty/partial profile** is acceptable (gaps, not guesses) but must never be silently completed

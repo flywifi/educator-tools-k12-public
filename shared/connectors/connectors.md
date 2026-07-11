@@ -7,7 +7,7 @@ probed when it's not there. It is a *contract*, not a set of live API clients â€
 auth/API code**. Live retrieval is realized by the **host AI's native integration** (Claude / OpenAI /
 Gemini / etc.) when the deployment has connected it, or through manual paste / **uploaded files (incl.
 `.ics`/`.eml`)** via `shared/docintel/`; the registry says what each connector **would** provide and how
-to behave when it's off or restricted. First consumer: `skills/meeting-classifier/`.
+to behave when it's off or restricted. First consumer: `skills/operations/meeting-classifier/`.
 
 Files: `connectors.json` (registry), `connector.schema.json` (contract), `feature-flags.example.json`
 (sample per-deployment flags), `connectors.py` (offline resolver). Companion privacy policy for student

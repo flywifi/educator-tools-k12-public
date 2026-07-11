@@ -33,7 +33,7 @@ python3 tools/feeds_update.py --digest --since 2026-06-01 --category program   #
 
 ## Trigger (tied to setup, separately overridable)
 The cadence is driven by the teacher's L0 `feed_update_mode` preference (default derived from their
-`offline_tier`; set via `skills/teacher-profile/scripts/profile_wizard.py --preferences`):
+`offline_tier`; set via `skills/operations/teacher-profile/scripts/profile_wizard.py --preferences`):
 `manual` (pull on demand), `on_session_start` (an opt-in hook refreshes on open), or `scheduled` (a
 documented cron/CI line for deployments). The runner reads the preference and falls back to `manual`
 with no profile. Changing the mode is data — never a rebuild.
