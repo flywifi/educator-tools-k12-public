@@ -1,5 +1,7 @@
 # DEPLOYMENT_SURFACES.md — where the TOS runs (and how data is handled per surface)
 
+> Teacher-friendly version of this: [`implementation/claude/README.md`](../implementation/claude/README.md).
+
 The TOS core is **model- and surface-neutral**: Markdown policies/schemas/taxonomies + **stdlib-only**
 Python helpers (`shared/connectors/connectors.py`, `shared/students/students.py`,
 `skills/operations/meeting-classifier/scripts/classify_meeting.py`, `tools/crosswalk.py`, `shared/context/context.py`)

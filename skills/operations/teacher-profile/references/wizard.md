@@ -25,6 +25,17 @@ Keep it short — smaller is more robust; depth can be added later.
    pacing norms, reading-level defaults.
 7. **Confirm & register** — show a summary; on approval write `teacher.local.json` and run `--register`
    to contribute the sop_ref + overrides + role map to the context.
+8. **Offer the requirements map.** After registering, offer to assemble the teacher's consolidated
+   requirements map — one table scoped to their profile: every standard for their grade + subject
+   (code + full statement, via `python3 tools/fl_lookup.py` or `tools/offline_index.py --standards`;
+   data: `shared/standards/resources/florida/data/`), their course code(s)
+   (`canonical-sources/references/fl-course-codes.json`), their district
+   (`canonical-sources/florida-districts.json`), and their school-type rule-set
+   (`canonical-sources/school-types.json`). **Citation rule: every row names the source file it came
+   from and the external authority to verify it on (CPALMS / the FLDOE URLs those files cite), plus
+   the capture date.** Mandatory footer: *DRAFT — verify anything used in a formal document on the
+   cited authority (`human_review_required`)*. On chat platforms without these tools, the same map is
+   assembled from the uploaded Reference Pack files instead — same columns, same citation rule.
 
 ## Maintenance
 Re-run any section to update; the profile carries an `updated` timestamp. Because behavior reads the

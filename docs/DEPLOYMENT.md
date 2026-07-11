@@ -23,7 +23,8 @@ Install the hub plus whatever capability skills are needed (the hub routes to th
 - **Always include `teacher-core`** (the router) + `quality-review` (the gate); add capability skills
   as needed. Skills are self-contained (synced references travel in the bundle).
 
-**Install the whole suite as one Cowork plugin.** The repo root carries a `.claude-plugin/plugin.json`
+**Install the whole suite as one plugin — Claude Code and Cowork (the Claude desktop app), one
+bundle, both surfaces.** The repo root carries a `.claude-plugin/plugin.json`
 (plugin metadata; the `skills/` dir is auto-discovered) and a `.claude-plugin/marketplace.json` so a
 district/school can add TOS from a marketplace in one step instead of per-skill uploads. Bump
 `plugin.json`'s `version` (and refresh `marketplace.json`) when skills are added/removed — the

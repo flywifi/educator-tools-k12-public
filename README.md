@@ -25,13 +25,17 @@ You don't need to be technical to use it.
 
 ## How you use it
 Ask in plain language — e.g., *"Make me a 5th-grade fractions lesson aligned to my standards"* — and
-the right assistant takes it from there. For a complete real example (a teacher setting up and
-producing a lesson start to finish), see
-**[docs/END_TO_END_WALKTHROUGH.md](docs/END_TO_END_WALKTHROUGH.md)**.
+the right assistant takes it from there. Two doors in, both written for non-technical readers:
 
-Using it in Claude Code: install the plugin with
-`/plugin marketplace add flywifi/educator-tools-k12-public`, then
-`/plugin install teacher-operating-system@tos-marketplace`.
+- **On Claude** (Claude Code or the Cowork desktop app — same plugin; or claude.ai in the
+  browser): **[implementation/claude/README.md](implementation/claude/README.md)** — the full
+  experience, including the setup wizard and your personal requirements map.
+- **On ChatGPT**: **[implementation/gpt/web/README.md](implementation/gpt/web/README.md)** — one
+  file to drag in, plus an optional Reference Pack with the verified Florida data.
+
+For the curious: **[docs/END_TO_END_WALKTHROUGH.md](docs/END_TO_END_WALKTHROUGH.md)** is a
+technical validation log of a real start-to-finish run (shell commands and all — not a
+getting-started guide).
 
 ## Under the hood (for the curious or technical)
 You don't need any of this to use TOS — but here's how it's built:
