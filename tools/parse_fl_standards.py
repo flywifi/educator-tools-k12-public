@@ -105,8 +105,9 @@ def parse_docx(text: str, code_re: str):
             return
         seen.add(code)
         g, strand = info(code)
+        s = re.split(r"\s*Related Access Point", (stmt or "").strip())[0].strip()
         out.append({"code": code, "grade": g, "strand": strand, "type": classify(code),
-                    "statement": (stmt or "").strip()[:300]})
+                    "statement": s})
 
     for i, ln in enumerate(lines):
         m = line_code.match(ln)
@@ -128,6 +129,14 @@ def parse_docx(text: str, code_re: str):
     return out
 
 
+def _sentence_trim(s: str, soft: int = 600) -> str:
+    """Trim overlong best-effort segments at a sentence boundary, never mid-word."""
+    if len(s) <= soft:
+        return s
+    cut = s.rfind(". ", 0, soft)
+    return s[: cut + 1].strip() if cut > 40 else s[:soft].rsplit(" ", 1)[0].strip()
+
+
 def parse_doc(text: str, code_re: str):
     """Best-effort for legacy binary .doc: codes + cleaned trailing text."""
     hits = list(re.finditer(rf"({code_re})", text))
@@ -136,12 +145,13 @@ def parse_doc(text: str, code_re: str):
         code = mm.group(1)
         if code in seen:
             continue
-        seg = text[mm.end(): hits[k + 1].start() if k + 1 < len(hits) else mm.end() + 240]
+        seg = text[mm.end(): hits[k + 1].start() if k + 1 < len(hits) else mm.end() + 700]
         seg = re.sub(r"\s+", " ", re.sub(r"[^\x20-\x7e]", " ", seg)).strip(" :.-")
         seg = re.split(r"Related Access Point", seg)[0].strip(" :.-")
         seen.add(code)
         g, strand = info(code)
-        out.append({"code": code, "grade": g, "strand": strand, "type": classify(code), "statement": seg[:200]})
+        out.append({"code": code, "grade": g, "strand": strand, "type": classify(code),
+                    "statement": _sentence_trim(seg)})
     return out
 
 
