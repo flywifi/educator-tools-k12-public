@@ -14,12 +14,23 @@ ChatGPT and what requires the full Claude TOS deployment.
 
 The pack is the actual Florida data — all 6,583 state standards with their full
 text, the course-code directory, the 67 districts, and the school-type rules — so
-answers quote the real, verified snapshot instead of the model's memory.
+answers quote the real, verified data instead of the model's memory.
 
-1. Download the 11 files in [`reference-pack/`](reference-pack/) from this folder.
-2. Add them to the same Project.
-3. Done. The pack uses 11 of your ~20 Project file slots; `TOS-skills.md` and your
-   profile use 2 more — the rest are yours.
+**Pick the download that fits your ChatGPT plan** (Projects hold a limited number
+of files — as of 2026-07 roughly: Free ~5, Plus ~20-25, Pro ~40; these change, so
+trust what the upload screen tells you):
+
+- **On ChatGPT Free — or if you just want the simplest path:** one file,
+  [`reference-pack/tos-reference-pack-onefile.json`](reference-pack/tos-reference-pack-onefile.json).
+  Same data in a single upload; with this guide and your profile you use only 3 slots.
+- **On Plus/Pro:** [`reference-pack/reference-pack.zip`](reference-pack/reference-pack.zip)
+  — one download, then unzip and add the 11 files. Separate files give the
+  assistant sharper file search, so this is the better experience when your plan
+  allows it.
+
+**How to download a file from this site (GitHub):** click the file's name, then
+the **Download** icon near the top-right of the file view (or right-click **Raw**
+→ "Save link as…"). The zip downloads directly.
 
 Every pack file's origin and how to double-check it is in
 [`reference-pack/MANIFEST.md`](reference-pack/MANIFEST.md). Verified data ships for
