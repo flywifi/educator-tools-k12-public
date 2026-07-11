@@ -49,28 +49,45 @@ def _load(path: Path) -> dict | None:
         # manual extraction of the fields we need
         data: dict = {"type": "function", "function": {}}
         fn = data["function"]
-        for line in clean.splitlines():
+        all_lines = clean.splitlines()
+        for line in all_lines:
             s = line.strip()
             if s.startswith("name:") and "name" not in fn:
                 fn["name"] = s.split(":", 1)[1].strip()
-            if s.startswith("description:") and "description" not in fn:
-                val = s.split(":", 1)[1].strip()
-                if val and val != "|":
-                    fn["description"] = val
-        # grab multiline description after "description: |"
-        if "description" not in fn or not fn["description"]:
-            in_desc = False
-            desc_lines = []
+        # description: honor the FIRST `description:` in file order (the function's own),
+        # whether inline or a block scalar — never a nested parameter's description.
+        for i, line in enumerate(all_lines):
+            s = line.strip()
+            if not s.startswith("description:"):
+                continue
+            val = s.split(":", 1)[1].strip()
+            if val and val not in ("|", ">", "|-", ">-"):
+                fn["description"] = val
+            else:
+                desc_lines = []
+                for nxt in all_lines[i + 1:]:
+                    if nxt and not nxt[0].isspace():
+                        break
+                    desc_lines.append(nxt.lstrip())
+                if desc_lines:
+                    fn["description"] = "\n".join(desc_lines).strip()
+            break
+        # top-level web_note (single line or block scalar) — ChatGPT-specific guidance
+        m = re.search(r"^web_note:\s*(.+)$", clean, re.M)
+        if m and m.group(1).strip() not in ("|", ">", "|-", ">-"):
+            data["web_note"] = m.group(1).strip()
+        else:
+            in_note, note_lines = False, []
             for line in clean.splitlines():
-                if re.match(r"^\s*description:\s*\|", line):
-                    in_desc = True
+                if re.match(r"^web_note:\s*[|>]", line):
+                    in_note = True
                     continue
-                if in_desc:
+                if in_note:
                     if line and not line[0].isspace():
                         break
-                    desc_lines.append(line.lstrip())
-            if desc_lines:
-                fn["description"] = "\n".join(desc_lines).strip()
+                    note_lines.append(line.strip())
+            if any(note_lines):
+                data["web_note"] = " ".join(l for l in note_lines if l).strip()
         return data if fn.get("name") else None
 
 
@@ -93,18 +110,37 @@ def _first_sentence(text: str) -> str:
     return text[:200].strip()
 
 
+def _quoted(text: str) -> list[str]:
+    """All sensible double-quoted phrases in a line (skips punctuation fragments)."""
+    return [p.strip() for p in re.findall(r'"([^"]+)"', text)
+            if len(p.strip()) > 2 and not p.strip().startswith(",")]
+
+
 def _trigger_phrases(description: str) -> list[str]:
-    """Extract trigger phrase examples from the description text."""
+    """Extract trigger phrase examples from the description text.
+
+    Handles BOTH layouts found in the skill YAMLs: quote-/dash-prefixed lines under the
+    marker, and an inline comma-separated quoted list on the marker line itself that may
+    wrap across lines (e.g. teacher-profile.yaml) — the latter used to render empty."""
     phrases = []
-    in_triggers = False
+    in_triggers = inline_style = False
     for line in description.splitlines():
         ls = line.strip()
         if "trigger phrases" in ls.lower() or "say something like" in ls.lower():
             in_triggers = True
+            # inline style: quoted phrases follow the marker on the same line
+            remainder = ls.split(":", 1)[1] if ":" in ls else ""
+            found = _quoted(remainder)
+            if found:
+                inline_style = True
+                phrases.extend(found)
             continue
         if in_triggers:
+            if inline_style and '"' in ls:
+                # wrapped continuation of the inline quoted list
+                phrases.extend(_quoted(ls))
             # collect quoted phrases or dash-prefixed examples
-            if ls.startswith('"') or ls.startswith("'") or ls.startswith("- "):
+            elif ls.startswith('"') or ls.startswith("'") or ls.startswith("- "):
                 phrase = ls.lstrip("- \"'").rstrip("\"',.")
                 if phrase:
                     phrases.append(phrase)
@@ -116,13 +152,26 @@ def _trigger_phrases(description: str) -> list[str]:
 
 
 def _do_not_use(description: str) -> list[str]:
-    """Extract 'Do NOT use' lines."""
-    lines = []
-    for line in description.splitlines():
+    """Extract 'Do NOT use' sentences, following wrapped lines to the sentence end
+    (a hard line-only cut used to render fragments like '... (route')."""
+    out = []
+    src = description.splitlines()
+    for i, line in enumerate(src):
         ls = line.strip()
-        if ls.startswith("Do NOT use"):
-            lines.append(ls.removeprefix("Do NOT use").strip())
-    return lines[:3]
+        if not ls.startswith("Do NOT use"):
+            continue
+        buf = ls.removeprefix("Do NOT use").strip()
+        j = i + 1
+        while not buf.endswith(".") and j < len(src):
+            nxt = src[j].strip()
+            if not nxt or nxt.startswith("Do NOT") or nxt.startswith("#"):
+                break
+            buf += " " + nxt
+            j += 1
+        # keep just the first sentence of the (possibly multi-sentence) buffer
+        m = re.search(r"\.(\s|$)", buf)
+        out.append(buf[: m.start() + 1].strip() if m else buf)
+    return out[:3]
 
 
 def _build_entry(path: Path) -> str | None:
@@ -185,6 +234,11 @@ def _build_entry(path: Path) -> str | None:
         lines.append("")
         lines.append("**Do not use for:** " + "; ".join(do_not))
 
+    web_note = " ".join((data.get("web_note") or "").split())
+    if web_note:
+        lines.append("")
+        lines.append(f"**On ChatGPT:** {web_note}")
+
     lines.append("")
 
     return "\n".join(lines)
@@ -223,7 +277,10 @@ quality scoring — use the Claude deployment.
    that project will reference it automatically.
 2. **Or paste it** into any conversation window for one-time use.
 3. **Tell ChatGPT** which skill you want using the trigger phrases below.
-4. **Always verify** Florida standard codes on cpalms.org before formal use.
+4. **Set up your profile once** — say *"set up my profile"*, answer the short interview,
+   then save the `my-teacher-profile.md` file the assistant gives you into this same
+   Project. Every future chat starts already knowing your grade, subject, and school.
+5. **Always verify** Florida standard codes on cpalms.org before formal use.
 
 ---
 

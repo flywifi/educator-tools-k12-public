@@ -159,3 +159,12 @@ function:
             type: string
             description: "Current instructional unit or topic"
     additionalProperties: false
+# ChatGPT-web-specific guidance rendered by tools/export_chatgpt.py as "On ChatGPT:".
+web_note: |
+  ChatGPT cannot run the TOS profile script, so the profile lives in your Project instead: say
+  "set up my profile" and answer the short interview (role, grade, subject, school/district,
+  class context, preferences — placeholders only, never real student names). The assistant then
+  returns ONE complete file in a fenced block titled my-teacher-profile.md. Save that block as a
+  file and add it to this same Project. Any chat that can see my-teacher-profile.md treats it as
+  your registered profile (teacher-stated facts still outrank everything else). To change it,
+  say "update my profile" and replace the file.
