@@ -176,7 +176,7 @@ Sheets/Slides API JSON.
 Adapts the ecosystem to *where/how* a teacher works (operating-reference pattern). **All 67 FL county
 districts logged** (`florida-districts.json`, fillable stubs; Orange/OCPS populated incl. OCVS).
 School-type **exception rule-sets** (`school-types.json`):
-traditional/magnet/charter/district-virtual/FLVS/home-ed/private-scholarship. **Context contract**
+traditional/magnet/charter/district-virtual/FLVS/home-ed/private-scholarship/private-independent. **Context contract**
 (`context.schema.json` + `context.py`) — state/district/school_type/program/instructional_model/
 mandates/SOPs/authority_precedence/overrides — resolved first by teacher-core and carried into the
 metadata block + handoffs (`protocols/metadata-schema.md` gains a `context` envelope). Teachers upload
@@ -214,9 +214,32 @@ Markdown, portable. First consumer: `meeting-classifier`.
   (enforced by the drift guard).
 
 ## Last drift-guard result
-`python3 tools/sync_check.py` → **PASS — 18 skills, 8 invariants, 2 synced refs; frontmatter +
-resource integrity validated; `MAINTAINER.md` present in all skills.**
+`python3 tools/sync_check.py` → **PASS — 62 skills, 8 invariants, 2 synced refs; frontmatter +
+resource integrity validated; `MAINTAINER.md` present in all skills.** (2026-07-11)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
+
+## 2026-07-11 — onboarding parity, Reference Pack, scenario-test defect fixes
+Shipped on `claude/educator-tools-k12-plan-f49yju` (source: Monarch Learning Academy scenario test):
+- **Onboarding:** `implementation/claude/README.md` (teacher-voice, Claude Code/Cowork + claude.ai
+  doors; naming resolved — one plugin bundle, both surfaces); root README "How you use it" now has
+  the two platform doors; `wizard.md` step 8 defines the **requirements map** (per-row source +
+  external-authority citations, DRAFT footer) once for all platforms.
+- **Reference Pack:** `tools/export_reference_pack.py` → `implementation/gpt/web/reference-pack/`
+  (11 curated files ≈3.3MB: 6 FL standards files w/ full statements, course codes, districts,
+  school types, consolidated teaching-frameworks, generated MANIFEST receipts; build fails on any
+  uncited file; `--check` = sha256 drift guard + ≤15-file cap). TOS-skills.md HEADER: standards
+  corpus ✅-with-pack, "Two ways to set up", requirements-map section. Florida-only honesty line.
+- **Defects fixed:** stale paths repo-wide (old un-grouped `skills/<name>/`, `shared/schools/` →
+  `canonical-sources/schools/`); NCES PSS grade codes decoded in the private-schools index
+  (verified 1–17 map; raw kept as `*_code`; e.g. Monarch = PK–8 not "2–13"); FL standard
+  statements no longer truncated at 300/200 chars (full text regenerated, 6,583 codes unchanged);
+  `private_independent` school type added; ChatGPT profile persistence (`web_note` → "On ChatGPT"
+  blocks) + export generator fixes (inline trigger-phrase parsing, sentence-complete do-not-use,
+  no-PyYAML fallback description bug).
+- **Follow-ups:** decode `religious`/`level` PSS fields once the NCES codebook is verifiable
+  (nces.ed.gov blocked from the build env — no guessed labels); index decoded private-school grade
+  fields in `offline_index.py` at the next db-schema change; optional single-zip pack in `dist/`;
+  requirements-map as a first-class skill.
 
 ## Validation note
 Every skill ships `evals/evals.json` (prompts + assertions) and worked examples. The eval
