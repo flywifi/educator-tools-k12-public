@@ -1,5 +1,5 @@
 {
-  "_comment": "Consolidated + DEDUPED private/independent schools, merged across all ingested sources (AISF, NCES PSS, ...) by ingest_sources.py. Keyed by NCES PSS id, else normalized name; 'sources' lists every directory an entry was seen in. Public, no PII.",
+  "_comment": "Consolidated + DEDUPED private/independent schools, merged across all ingested sources (AISF, NCES PSS, ...) by ingest_sources.py. Keyed by NCES PSS id, else normalized name; 'sources' lists every directory an entry was seen in. Public, no PII. GRADE CODES DECODED: low_grade/high_grade hold grade labels (PK, K, TK, T1, 1-12, UG); the original NCES numeric codes are preserved in low_grade_code/high_grade_code. religious/level remain RAW NCES codes (codebook unverified).",
   "domain": "private-schools-consolidated",
   "captured": "2026-06-29",
   "count": 508,
@@ -1561,8 +1561,8 @@
     {
       "nces_pss_id": "A9501279",
       "school_name": "BALDWIN OAKS ACADEMY",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "1862 E WINTER PARK RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -1574,13 +1574,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "00263194",
       "school_name": "LAKE HIGHLAND PREPARATORY SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "901 HIGHLAND AVE",
       "city": "ORLANDO",
       "state": "FL",
@@ -1592,13 +1594,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1501113",
       "school_name": "ST JAMES CATHEDRAL SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "505 E RIDGEWOOD ST",
       "city": "ORLANDO",
       "state": "FL",
@@ -1610,13 +1614,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2101400",
       "school_name": "UNITED CHRISTIAN ACADEMY PREPARATORY SCHOOL",
-      "low_grade": "2",
-      "high_grade": "15",
+      "low_grade": "PK",
+      "high_grade": "10",
       "address": "3660 MAGUIRE BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -1628,13 +1634,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A0990036",
       "school_name": "QUEST KIDS ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "123 E LIVINGSTON ST",
       "city": "ORLANDO",
       "state": "FL",
@@ -1646,13 +1654,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9701204",
       "school_name": "THE CHRIST SCHOOL",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "106 E CHURCH ST",
       "city": "ORLANDO",
       "state": "FL",
@@ -1664,13 +1674,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "00258027",
       "school_name": "BISHOP MOORE CATHOLIC HIGH SCHOOL",
-      "low_grade": "14",
-      "high_grade": "17",
+      "low_grade": "9",
+      "high_grade": "12",
       "address": "3901 EDGEWATER DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -1682,13 +1694,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "14",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101096",
       "school_name": "J.M.G.C. ACADEMY",
-      "low_grade": "6",
-      "high_grade": "16",
+      "low_grade": "1",
+      "high_grade": "11",
       "address": "2550 W COLONIAL DR STE 300",
       "city": "ORLANDO",
       "state": "FL",
@@ -1700,13 +1714,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "BB180716",
       "school_name": "LODESTONE ACADEMY",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "4710 ADANSON ST",
       "city": "ORLANDO",
       "state": "FL",
@@ -1718,13 +1734,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2392085",
       "school_name": "MASTER TREE ACADEMY",
-      "low_grade": "3",
-      "high_grade": "9",
+      "low_grade": "K",
+      "high_grade": "4",
       "address": "4418 EDGEWATER DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -1736,13 +1754,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "9"
     },
     {
       "nces_pss_id": "A1100670",
       "school_name": "MONARCH LEARNING ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1914 EDGEWATER DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -1754,13 +1774,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1901299",
       "school_name": "MORNING STAR CATHOLIC SCHOOL",
-      "low_grade": "7",
-      "high_grade": "17",
+      "low_grade": "2",
+      "high_grade": "12",
       "address": "930 LEIGH AVE",
       "city": "ORLANDO",
       "state": "FL",
@@ -1772,13 +1794,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "7",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00266708",
       "school_name": "ORLANDO JUNIOR ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "30 E EVANS ST",
       "city": "ORLANDO",
       "state": "FL",
@@ -1790,13 +1814,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2300874",
       "school_name": "REVELATION CHRISTIAN ACADEMY ORLANDO",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "4484 N JOHN YOUNG PKWY",
       "city": "ORLANDO",
       "state": "FL",
@@ -1808,13 +1834,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "00257996",
       "school_name": "ST CHARLES BORROMEO CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "4005 EDGEWATER DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -1826,13 +1854,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "K9301333",
       "school_name": "TRI-L CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "1039 W FAIRBANKS AVE",
       "city": "ORLANDO",
       "state": "FL",
@@ -1844,13 +1874,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2390179",
       "school_name": "XL ACADEMY",
-      "low_grade": "11",
-      "high_grade": "17",
+      "low_grade": "6",
+      "high_grade": "12",
       "address": "825 CTLAND ST",
       "city": "ORLANDO",
       "state": "FL",
@@ -1862,13 +1894,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "11",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2170007",
       "school_name": "ALL SAINTS SCHOOL",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "338 E LYMAN AVE",
       "city": "WINTER PARK",
       "state": "FL",
@@ -1880,13 +1914,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "BB180707",
       "school_name": "METHODIST SCHOOL FOR EARLY EDUCATION",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "125 N INTERLACHEN AVE",
       "city": "WINTER PARK",
       "state": "FL",
@@ -1898,13 +1934,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A9901426",
       "school_name": "PARK MAITLAND SCHOOL SOUTH CAMPUS",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "1776 MINNESOTA AVE",
       "city": "WINTER PARK",
       "state": "FL",
@@ -1916,13 +1954,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "00257828",
       "school_name": "ST MARGARET MARY CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "142 E SWOOPE AVE",
       "city": "WINTER PARK",
       "state": "FL",
@@ -1934,13 +1974,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2300703",
       "school_name": "CONWAY CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "6",
+      "low_grade": "K",
+      "high_grade": "1",
       "address": "2719 CONWAY GARDENS RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -1952,13 +1994,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "6"
     },
     {
       "nces_pss_id": "A1300923",
       "school_name": "TDR LEARNING ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "3057 CURRY FORD RD STE 1",
       "city": "ORLANDO",
       "state": "FL",
@@ -1970,13 +2014,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00265158",
       "school_name": "AZALEA PARK BAPTIST SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "5725 DAHLIA DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -1988,13 +2034,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "01927973",
       "school_name": "BRUSH ARBOR CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2304 N GOLDENROD RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2006,13 +2054,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1700884",
       "school_name": "FAITH GENERATION ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "1840 N GOLDENROD RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2024,13 +2074,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00258016",
       "school_name": "GOOD SHEPHERD CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "5902 OLEANDER DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -2042,13 +2094,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A0700594",
       "school_name": "LEADERS PREPARATORY SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "1021 N GOLDENROD RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2060,13 +2114,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1701040",
       "school_name": "LITTLE STEPS ACADEMY",
-      "low_grade": "2",
-      "high_grade": "14",
+      "low_grade": "PK",
+      "high_grade": "9",
       "address": "26 WILLOW DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -2078,13 +2134,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "14"
     },
     {
       "nces_pss_id": "00263897",
       "school_name": "ORLANDO CHRISTIAN PREP",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "500 S SEMORAN BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2096,13 +2154,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0102647",
       "school_name": "THE CONRAD ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2000 N GOLDENROD RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2114,13 +2174,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0102639",
       "school_name": "ALPHA LEARNING ACADEMY",
-      "low_grade": "3",
-      "high_grade": "10",
+      "low_grade": "K",
+      "high_grade": "5",
       "address": "1960 BRUTON BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2132,13 +2194,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A2300716",
       "school_name": "EH MOTT LEARNING CENTER",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "1436 22ND ST",
       "city": "ORLANDO",
       "state": "FL",
@@ -2150,13 +2214,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9901260",
       "school_name": "HARVEST BAPTIST CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "15",
+      "low_grade": "K",
+      "high_grade": "10",
       "address": "512 S PARRAMORE AVE",
       "city": "ORLANDO",
       "state": "FL",
@@ -2168,13 +2234,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A2101059",
       "school_name": "HIGHER DIMENSION OF LEARNING ACADEMY",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "44 COBURN AVE",
       "city": "ORLANDO",
       "state": "FL",
@@ -2186,13 +2254,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2101103",
       "school_name": "JUDAH TEMPLE ACADEMY OUTREACH CENTER",
-      "low_grade": "3",
-      "high_grade": "15",
+      "low_grade": "K",
+      "high_grade": "10",
       "address": "1210 W ROBINSON ST",
       "city": "ORLANDO",
       "state": "FL",
@@ -2204,13 +2274,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A2101165",
       "school_name": "MERIDIAN CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "1 S COTTAGE HILL RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2222,13 +2294,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2300899",
       "school_name": "SPUR CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "2818 ORANGE CENTER BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2240,13 +2314,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "AA890236",
       "school_name": "THE FIRST ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2667 BRUTON BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2258,13 +2334,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "BB180722",
       "school_name": "THE FIRST HOPE OF THE FIRST ACADEMY",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "2667 BRUTON BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2276,13 +2354,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300952",
       "school_name": "WHITNEY M YOUNG ACADEMY",
-      "low_grade": "2",
-      "high_grade": "6",
+      "low_grade": "PK",
+      "high_grade": "1",
       "address": "595 W CHURCH ST, J",
       "city": "ORLANDO",
       "state": "FL",
@@ -2294,13 +2374,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "6"
     },
     {
       "nces_pss_id": "A1500755",
       "school_name": "ADVANCE LEARNING ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "140 ADVANCE PT",
       "city": "MAITLAND",
       "state": "FL",
@@ -2312,13 +2394,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1700804",
       "school_name": "CELANDINE LIFE-PREP ACADEMY INC",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "331 LAKE AVE",
       "city": "MAITLAND",
       "state": "FL",
@@ -2330,13 +2414,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9901168",
       "school_name": "CENTER ACADEMY",
-      "low_grade": "10",
-      "high_grade": "17",
+      "low_grade": "5",
+      "high_grade": "12",
       "address": "341 N ORLANDO AVE",
       "city": "MAITLAND",
       "state": "FL",
@@ -2348,13 +2434,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "10",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "01927984",
       "school_name": "JEWISH ACADEMY OF ORLANDO",
-      "low_grade": "3",
-      "high_grade": "10",
+      "low_grade": "K",
+      "high_grade": "5",
       "address": "851 N MAITLAND AVE",
       "city": "MAITLAND",
       "state": "FL",
@@ -2366,13 +2454,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "00263081",
       "school_name": "KING OF KINGS LUTHERAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1101 N WYMORE RD",
       "city": "MAITLAND",
       "state": "FL",
@@ -2384,13 +2474,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A9303190",
       "school_name": "MAITLAND MONTESSORI SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "236 N SWOOPE AVE",
       "city": "MAITLAND",
       "state": "FL",
@@ -2402,13 +2494,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2192576",
       "school_name": "ORANGEWOOD CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "1221 TRINITY WOODS LN",
       "city": "MAITLAND",
       "state": "FL",
@@ -2420,13 +2514,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "00264019",
       "school_name": "PARK MAITLAND SCHOOL NORTH - CAMPUS",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1450 S ORLANDO AVE",
       "city": "MAITLAND",
       "state": "FL",
@@ -2438,13 +2534,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A0700660",
       "school_name": "THE LIFE ACADEMY OF EXCELLENCE",
-      "low_grade": "3",
-      "high_grade": "16",
+      "low_grade": "K",
+      "high_grade": "11",
       "address": "107 N WYMORE RD",
       "city": "EATONVILLE",
       "state": "FL",
@@ -2456,13 +2554,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "A1990196",
       "school_name": "CENTRAL CHRISTIAN ACADEMY",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "6927 UNIVERSITY BLVD",
       "city": "WINTER PARK",
       "state": "FL",
@@ -2474,13 +2574,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2380011",
       "school_name": "CHESTERTON ACADEMY OF ORLANDO",
-      "low_grade": "14",
-      "high_grade": "17",
+      "low_grade": "9",
+      "high_grade": "12",
       "address": "2025 STATE ROAD 436",
       "city": "WINTER PARK",
       "state": "FL",
@@ -2492,13 +2594,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "14",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0900858",
       "school_name": "CONDUCTIVE ED CENTER OF ORLANDO",
-      "low_grade": "1",
-      "high_grade": "1",
+      "low_grade": "UG",
+      "high_grade": "UG",
       "address": "931 S SEMORAN BLVD STE 220",
       "city": "WINTER PARK",
       "state": "FL",
@@ -2510,13 +2614,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "1",
+      "high_grade_code": "1"
     },
     {
       "nces_pss_id": "A2300746",
       "school_name": "HIGHLANDS LATIN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "2025 STATE ROAD 436",
       "city": "WINTER PARK",
       "state": "FL",
@@ -2528,13 +2634,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A0301129",
       "school_name": "INTERNATIONAL COMMUNITY SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "4800 HOWELL BRANCH RD",
       "city": "WINTER PARK",
       "state": "FL",
@@ -2546,13 +2654,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0901021",
       "school_name": "LIGHTHOUSE BAPTIST ACADEMY",
-      "low_grade": "10",
-      "high_grade": "17",
+      "low_grade": "5",
+      "high_grade": "12",
       "address": "3834 HOWELL BRANCH RD",
       "city": "WINTER PARK",
       "state": "FL",
@@ -2564,13 +2674,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "10",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1701241",
       "school_name": "THE LYMAN SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1870 STATE ROAD 436",
       "city": "WINTER PARK",
       "state": "FL",
@@ -2582,13 +2694,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00259428",
       "school_name": "TRINITY PREPARATORY SCHOOL",
-      "low_grade": "11",
-      "high_grade": "17",
+      "low_grade": "6",
+      "high_grade": "12",
       "address": "5700 TRINITY PREP LN",
       "city": "WINTER PARK",
       "state": "FL",
@@ -2600,13 +2714,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "11",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0901249",
       "school_name": "WALDEN COMMUNITY SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "4595 HOWELL BRANCH RD",
       "city": "WINTER PARK",
       "state": "FL",
@@ -2618,13 +2734,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2100850",
       "school_name": "BEST MEMORIES ACADEMY",
-      "low_grade": "2",
-      "high_grade": "6",
+      "low_grade": "PK",
+      "high_grade": "1",
       "address": "5135 CURRY FORD RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2636,13 +2754,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "6"
     },
     {
       "nces_pss_id": "A9700931",
       "school_name": "BERYL WISDOM ADVENTIST SCHOOL",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "4955 ROSE AVE",
       "city": "ORLANDO",
       "state": "FL",
@@ -2654,13 +2774,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1901132",
       "school_name": "FAITH ACADEMY",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "3832 W NEW HAMPSHIRE ST",
       "city": "ORLANDO",
       "state": "FL",
@@ -2672,13 +2794,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1700894",
       "school_name": "FIRST PHASE CORE ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "6101 DENSON DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -2690,13 +2814,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2101019",
       "school_name": "FONROSE CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "7",
+      "low_grade": "PK",
+      "high_grade": "2",
       "address": "5324-B SILVER STAR RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2708,13 +2834,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "7"
     },
     {
       "nces_pss_id": "A1500903",
       "school_name": "FUTURE LEADERS ACADEMY",
-      "low_grade": "3",
-      "high_grade": "15",
+      "low_grade": "K",
+      "high_grade": "10",
       "address": "639 N PINE HILLS RD STE 101",
       "city": "ORLANDO",
       "state": "FL",
@@ -2726,13 +2854,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A2300798",
       "school_name": "LITTLE ANGELS CHILDCARE",
-      "low_grade": "3",
-      "high_grade": "7",
+      "low_grade": "K",
+      "high_grade": "2",
       "address": "5700 SILVER STAR RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2744,13 +2874,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "7"
     },
     {
       "nces_pss_id": "A1370356",
       "school_name": "LON OF JUDAH ACADEMY",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "1056 N PINE HILLS RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2762,13 +2894,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "A0301052",
       "school_name": "PEACEFORCE CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "15",
+      "low_grade": "K",
+      "high_grade": "10",
       "address": "501 WILMER AVE",
       "city": "ORLANDO",
       "state": "FL",
@@ -2780,13 +2914,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "00258005",
       "school_name": "ST ANDREW CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "877 N HASTINGS ST",
       "city": "ORLANDO",
       "state": "FL",
@@ -2798,13 +2934,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1100702",
       "school_name": "POTTER'S HOUSE ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "7051 PERSHING AVE",
       "city": "ORLANDO",
       "state": "FL",
@@ -2816,13 +2954,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2392090",
       "school_name": "VIRTUAL INTERNATIONAL MODERN SCHOOL",
-      "low_grade": "11",
-      "high_grade": "12",
+      "low_grade": "6",
+      "high_grade": "7",
       "address": "3303 S SEMORAN BLVD STE 301",
       "city": "ORLANDO",
       "state": "FL",
@@ -2834,13 +2974,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "11",
+      "high_grade_code": "12"
     },
     {
       "nces_pss_id": "A2101418",
       "school_name": "WAY OF WISDOM ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "2053 AMERICANA BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2852,13 +2994,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1370425",
       "school_name": "PRECIOUS CREATIONS II",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "217 N KIRKMAN RD STE 1",
       "city": "ORLANDO",
       "state": "FL",
@@ -2870,13 +3014,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A0301151",
       "school_name": "VICTORY CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "240 N IVEY LN",
       "city": "ORLANDO",
       "state": "FL",
@@ -2888,13 +3034,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300896",
       "school_name": "SOUTHEASTERN PREPARATORY ACADEMY",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "8701 MAITLAND SUMMIT BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2906,13 +3054,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300954",
       "school_name": "WORLD CHANGERS CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "6827 N ORANGE BLOSSOM TRL STE 150",
       "city": "ORLANDO",
       "state": "FL",
@@ -2924,13 +3074,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0700420",
       "school_name": "ACADEMY FOR AUTISM",
-      "low_grade": "1",
-      "high_grade": "1",
+      "low_grade": "UG",
+      "high_grade": "UG",
       "address": "11 E LANCASTER RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2942,13 +3094,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "1",
+      "high_grade_code": "1"
     },
     {
       "nces_pss_id": "A1700771",
       "school_name": "BETHANY LEARNING ACADEMY",
-      "low_grade": "2",
-      "high_grade": "15",
+      "low_grade": "PK",
+      "high_grade": "10",
       "address": "6229 WINEGARD RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2960,13 +3114,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A0501043",
       "school_name": "CALVARY CITY CHRISTIAN ACADEMY & PRESCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2500 W OAK RIDGE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -2978,13 +3134,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2100891",
       "school_name": "CAMEN ACADEMY FOR THE PERFORMING ARTS",
-      "low_grade": "2",
-      "high_grade": "15",
+      "low_grade": "PK",
+      "high_grade": "10",
       "address": "5959 LAKE ELLENOR DR UNIT 100",
       "city": "ORLANDO",
       "state": "FL",
@@ -2996,13 +3154,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A1700812",
       "school_name": "CHANGING LIVES ACADEMY INC.",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "7215 MONETARY DR STE 109",
       "city": "ORLANDO",
       "state": "FL",
@@ -3014,13 +3174,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0501045",
       "school_name": "ELITE PREPARATORY ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1636 W OAK RIDGE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3032,13 +3194,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1100675",
       "school_name": "MONTESSORI SCHOOL OF ORLANDO",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1187 FLORIDA MALL AVE STE 108",
       "city": "ORLANDO",
       "state": "FL",
@@ -3050,13 +3214,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2300838",
       "school_name": "OAK RIDGE CHILDRENS ACADEMY DAYCARE",
-      "low_grade": "3",
-      "high_grade": "8",
+      "low_grade": "K",
+      "high_grade": "3",
       "address": "1118 W OAK RIDGE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3068,13 +3234,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "K9301339",
       "school_name": "PATHWAYS PRIVATE SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1877 W OAK RIDGE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3086,13 +3254,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "AA001159",
       "school_name": "PINE CASTLE CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "7101 LAKE ELLENOR DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -3104,13 +3274,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00257908",
       "school_name": "ST JOHN VIANNEY CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "6200 S ORANGE BLOSSOM TRL BLDG 6108",
       "city": "ORLANDO",
       "state": "FL",
@@ -3122,13 +3294,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "00262044",
       "school_name": "DOWNEY CHRISTIAN SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "10201 E COLONIAL DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -3140,13 +3314,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00265293",
       "school_name": "ALTAMONTE CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "601 PALM SPRINGS DR",
       "city": "ALTAMONTE SPRINGS",
       "state": "FL",
@@ -3158,13 +3334,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2190226",
       "school_name": "DESTINED FOR DESTINY INSTITUTE INC",
-      "low_grade": "3",
-      "high_grade": "15",
+      "low_grade": "K",
+      "high_grade": "10",
       "address": "134 WILSHIRE BLVD",
       "city": "CASSELBERRY",
       "state": "FL",
@@ -3176,13 +3354,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A2300891",
       "school_name": "SMITH PREPARATORY ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "4921 S US HIGHWAY 17/92",
       "city": "CASSELBERRY",
       "state": "FL",
@@ -3194,13 +3374,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1501094",
       "school_name": "SOCRATES PREPARATORY SCHOOL",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "3955 RED BUG LAKE RD",
       "city": "CASSELBERRY",
       "state": "FL",
@@ -3212,13 +3394,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9501389",
       "school_name": "THE GENEVA SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "1775 SEMINOLA BLVD",
       "city": "CASSELBERRY",
       "state": "FL",
@@ -3230,13 +3414,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9700926",
       "school_name": "ANNUNCIATION CATHOLIC ACADEMY",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "593 JAMESTOWN BLVD",
       "city": "ALTAMONTE SPRINGS",
       "state": "FL",
@@ -3248,13 +3434,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1370088",
       "school_name": "BEAR LAKE MONTESSORI ACADEMY",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "843 N SR. 434",
       "city": "ALTAMONTE SPRINGS",
       "state": "FL",
@@ -3266,13 +3454,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A1300641",
       "school_name": "CHRYSALIS SCHOOL INC",
-      "low_grade": "8",
-      "high_grade": "17",
+      "low_grade": "3",
+      "high_grade": "12",
       "address": "1173 SPRING CENTRE S BLVD STE B",
       "city": "ALTAMONTE SPRINGS",
       "state": "FL",
@@ -3284,13 +3474,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "8",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "AA890177",
       "school_name": "FOREST CITY ADVENTIST SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1238 BUNNELL RD",
       "city": "ALTAMONTE SPRINGS",
       "state": "FL",
@@ -3302,13 +3494,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "00262124",
       "school_name": "EDGEWOOD RANCH ACADEMY",
-      "low_grade": "9",
-      "high_grade": "16",
+      "low_grade": "4",
+      "high_grade": "11",
       "address": "1451 EDGEWOOD RANCH RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3320,13 +3514,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "9",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "A2170053",
       "school_name": "FIORELLA PREPARATORY SCHOOL LLC",
-      "low_grade": "2",
-      "high_grade": "8",
+      "low_grade": "PK",
+      "high_grade": "3",
       "address": "6965 PIAZZA GRANDE AVE UNIT 101-102",
       "city": "ORLANDO",
       "state": "FL",
@@ -3338,13 +3534,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "00262113",
       "school_name": "EASTLAND CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "9000 LAKE UNDERHILL RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3356,13 +3554,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "AA000494",
       "school_name": "FAITH CHRISTIAN ACADEMY & PRESCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "9307 CURRY FORD RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3374,13 +3574,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901058",
       "school_name": "CENTRAL FLORIDA CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "700 GOOD HOMES RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3392,13 +3594,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901100",
       "school_name": "CVV PRESCHOOL AND ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "6837 LAKEVILLE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3410,13 +3614,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901110",
       "school_name": "DREAM BIG ACADEMY OF LEARNING CORP.",
-      "low_grade": "2",
-      "high_grade": "14",
+      "low_grade": "PK",
+      "high_grade": "9",
       "address": "3311 N POWERS DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -3428,13 +3634,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "14"
     },
     {
       "nces_pss_id": "A0970697",
       "school_name": "GLAD TIDINGS LEARNING CENTER AND ACADAMEY EAST",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "8550 CLARCONA OCOEE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3446,13 +3654,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101047",
       "school_name": "GREATER OASIS CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "6332 W COLONIAL DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -3464,13 +3674,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0300965",
       "school_name": "KINGSWAY CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "4161 N POWERS DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -3482,13 +3694,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A9701084",
       "school_name": "LAKE ROSE CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "4340 N HIAWASSEE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3500,13 +3714,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2190260",
       "school_name": "LIGHTHOUSE HIGH SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "3311 N POWERS DR 209",
       "city": "ORLANDO",
       "state": "FL",
@@ -3518,13 +3734,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "BB140320",
       "school_name": "NEW DIRECTIONS COMMUNITY SCHOOL OF ORLANDO",
-      "low_grade": "12",
-      "high_grade": "17",
+      "low_grade": "7",
+      "high_grade": "12",
       "address": "2768 N HIAWASSEE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3536,13 +3754,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "12",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9901374",
       "school_name": "RADIANT LIFE ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "8151 CLARCONA OCOEE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3554,13 +3774,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A0501285",
       "school_name": "SAINTS ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "3705 N APOPKA VINELAND RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3572,13 +3794,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "01927995",
       "school_name": "WEST OAKS ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "8624 A D MIMS RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3590,13 +3814,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2100822",
       "school_name": "APOPKA CHRISTIAN LEARNING ACADEMY INC.",
-      "low_grade": "3",
-      "high_grade": "15",
+      "low_grade": "K",
+      "high_grade": "10",
       "address": "750 ROGER WILLIAMS RD",
       "city": "APOPKA",
       "state": "FL",
@@ -3608,13 +3834,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A2300677",
       "school_name": "BRIGHTER JOURNEYS ACADEMY LLC",
-      "low_grade": "3",
-      "high_grade": "10",
+      "low_grade": "K",
+      "high_grade": "5",
       "address": "7600 DR PHILLIPS BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3626,13 +3854,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A1592034",
       "school_name": "ORLANDO JEWISH DAY SCHOOL",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "7347 W SAND LAKE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3644,13 +3874,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1501041",
       "school_name": "ORLANDO JEWISH DAYSCHOOL",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "7347 W SAND LAKE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -3662,13 +3894,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1100688",
       "school_name": "COOPERATIVE SCHOOL AT NORTHLAND",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "530 DOG TRACK RD",
       "city": "LONGWOOD",
       "state": "FL",
@@ -3680,13 +3914,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A1500984",
       "school_name": "LONGWOOD CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "891 E STATE ROAD 434",
       "city": "LONGWOOD",
       "state": "FL",
@@ -3698,13 +3934,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "K9301310",
       "school_name": "OAK ARBOR CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "1902 LONGWOOD LAKE MARY RD",
       "city": "LONGWOOD",
       "state": "FL",
@@ -3716,13 +3954,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A1300875",
       "school_name": "REVIVAL FIRE CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "525 S RONALD REAGAN BLVD STE 113",
       "city": "LONGWOOD",
       "state": "FL",
@@ -3734,13 +3974,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0102529",
       "school_name": "SANLANDO CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "1894 W STATE ROAD 434",
       "city": "LONGWOOD",
       "state": "FL",
@@ -3752,13 +3994,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A1370229",
       "school_name": "GROWING MINDS MONTESSORI SCHOOL",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "1450 CITRUS OAKS AVE",
       "city": "GOTHA",
       "state": "FL",
@@ -3770,13 +4014,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A2300862",
       "school_name": "PATHWAYS FOR LIFE ACADEMY",
-      "low_grade": "11",
-      "high_grade": "17",
+      "low_grade": "6",
+      "high_grade": "12",
       "address": "1450 CITRUS OAKS AVE- BLDG 100 IN THE BA",
       "city": "GOTHA",
       "state": "FL",
@@ -3788,13 +4034,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "11",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0102682",
       "school_name": "THE CRENSHAW SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "2342 HEMPEL AVE",
       "city": "GOTHA",
       "state": "FL",
@@ -3806,13 +4054,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9901182",
       "school_name": "CIRCLE CHRISTIAN SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1491 E STATE ROAD 434 STE 104",
       "city": "WINTER SPRINGS",
       "state": "FL",
@@ -3824,13 +4074,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0901018",
       "school_name": "THE ARBOR SCHOOL OF CENTRAL FLORIDA",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1010 SPRING VILLAS PT",
       "city": "WINTER SPRINGS",
       "state": "FL",
@@ -3842,13 +4094,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0102749",
       "school_name": "TRACE ACADEMY",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "4200 S CHICKASAW TRL",
       "city": "ORLANDO",
       "state": "FL",
@@ -3860,13 +4114,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1700805",
       "school_name": "CENTER ACADEMY - WATERFORD LAKES",
-      "low_grade": "10",
-      "high_grade": "17",
+      "low_grade": "5",
+      "high_grade": "12",
       "address": "1331 S ALAFAYA TRL",
       "city": "ORLANDO",
       "state": "FL",
@@ -3878,13 +4134,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "10",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2100936",
       "school_name": "CREATIVE GLOBAL SCHOOLS",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "3919 PEPPERVINE DR",
       "city": "ORLANDO",
       "state": "FL",
@@ -3896,13 +4154,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0900899",
       "school_name": "FAMILY CHRISTIAN ACADEMY ORLANDO",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "15060 OLD CHENEY HWY",
       "city": "ORLANDO",
       "state": "FL",
@@ -3914,13 +4174,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "BB180770",
       "school_name": "LORDS KINGDOM ACADEMY",
-      "low_grade": "3",
-      "high_grade": "7",
+      "low_grade": "K",
+      "high_grade": "2",
       "address": "570 N ALAFAYA TRL",
       "city": "OVEIDO",
       "state": "FL",
@@ -3932,13 +4194,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "7"
     },
     {
       "nces_pss_id": "A1500819",
       "school_name": "CHAMPION PREPARATORY ACADEMY FDOE #2474",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "251 E LAKE BRANTLEY DR",
       "city": "LONGWOOD",
       "state": "FL",
@@ -3950,13 +4214,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00266151",
       "school_name": "FOREST LAKE EDUCATION CENTER",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1275 LEARNING LOOP",
       "city": "LONGWOOD",
       "state": "FL",
@@ -3968,13 +4234,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A9102091",
       "school_name": "ONE SCHOOL OF THE ARTS",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "1675 DIXON RD",
       "city": "LONGWOOD",
       "state": "FL",
@@ -3986,13 +4254,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1500981",
       "school_name": "LIVING WORD ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "653 E WETHERBEE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -4004,13 +4274,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0501357",
       "school_name": "TREASURE OF KNOWLEDGE CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "13001 LANDSTAR BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -4022,13 +4294,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00931492",
       "school_name": "TREASURE OF KNOWLEDGE CHRISTIAN ADADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "13001 LANDSTAR BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -4040,13 +4314,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300663",
       "school_name": "BAINBRIDGE ACADEMY",
-      "low_grade": "7",
-      "high_grade": "17",
+      "low_grade": "2",
+      "high_grade": "12",
       "address": "50 WINDSORMERE WAY, STE 1010",
       "city": "OVIEDO",
       "state": "FL",
@@ -4058,13 +4334,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "7",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1100760",
       "school_name": "BAINBRIDGE ACADEMY INC",
-      "low_grade": "7",
-      "high_grade": "17",
+      "low_grade": "2",
+      "high_grade": "12",
       "address": "50 WINDSORMERE WAY, SUITE1010",
       "city": "OVIEDO",
       "state": "FL",
@@ -4076,13 +4354,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "7",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2380009",
       "school_name": "CROSSLIFE CHRISTIAN ACADEMY",
-      "low_grade": "6",
-      "high_grade": "6",
+      "low_grade": "1",
+      "high_grade": "1",
       "address": "45 W BROADWAY ST",
       "city": "OVIEDO",
       "state": "FL",
@@ -4094,13 +4374,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "6"
     },
     {
       "nces_pss_id": "00260149",
       "school_name": "ST LUKES LUTHERAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "2025 W STATE ROAD 426",
       "city": "OVIEDO",
       "state": "FL",
@@ -4112,13 +4394,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2101347",
       "school_name": "THE ECCLESIAL SCHOOL AT ST. ALBAN'S",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "3348 W STATE ROAD 426",
       "city": "OVIEDO",
       "state": "FL",
@@ -4130,13 +4414,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2300921",
       "school_name": "THE GODDARD SCHOOL, OVIEDO",
-      "low_grade": "3",
-      "high_grade": "3",
+      "low_grade": "K",
+      "high_grade": "K",
       "address": "240 S CENTRAL AVE",
       "city": "OVIEDO",
       "state": "FL",
@@ -4148,13 +4434,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A1370079",
       "school_name": "ANOINTED WORD FAITH ACADEMY",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "305 S HIGHLAND AVE",
       "city": "APOPKA",
       "state": "FL",
@@ -4166,13 +4454,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A0101742",
       "school_name": "APOPKA CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "441 S HIGHLAND AVE",
       "city": "APOPKA",
       "state": "FL",
@@ -4184,13 +4474,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1500787",
       "school_name": "BEAR LAKE CHRISTIAN ACADEMY",
-      "low_grade": "6",
-      "high_grade": "16",
+      "low_grade": "1",
+      "high_grade": "11",
       "address": "1251 BEAR LAKE RD",
       "city": "APOPKA",
       "state": "FL",
@@ -4202,13 +4494,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "A2100913",
       "school_name": "CHRISTIAN LEARNING ACADEMY APOPKA INC.",
-      "low_grade": "14",
-      "high_grade": "17",
+      "low_grade": "9",
+      "high_grade": "12",
       "address": "820 ROGER WILLIAMS RD",
       "city": "APOPKA",
       "state": "FL",
@@ -4220,13 +4514,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "14",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "02019927",
       "school_name": "FOREST LAKE ACADEMY.",
-      "low_grade": "14",
-      "high_grade": "17",
+      "low_grade": "9",
+      "high_grade": "12",
       "address": "500 EDUCATION LOOP",
       "city": "APOPKA",
       "state": "FL",
@@ -4238,13 +4534,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "14",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "01928037",
       "school_name": "TRINITY CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "16",
+      "low_grade": "PK",
+      "high_grade": "11",
       "address": "1022 S ORANGE BLOSSOM TRL",
       "city": "APOPKA",
       "state": "FL",
@@ -4256,13 +4554,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "A2300657",
       "school_name": "APPOINTED LEARNING ACADEMY INC",
-      "low_grade": "3",
-      "high_grade": "10",
+      "low_grade": "K",
+      "high_grade": "5",
       "address": "325 OCOEE APOPKA RD",
       "city": "OCOEE",
       "state": "FL",
@@ -4274,13 +4574,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A1700900",
       "school_name": "FMI STEM ACADEMY",
-      "low_grade": "11",
-      "high_grade": "17",
+      "low_grade": "6",
+      "high_grade": "12",
       "address": "325 OCOEE APOPKA RD",
       "city": "OCOEE FL",
       "state": "FL",
@@ -4292,13 +4594,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "11",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1500910",
       "school_name": "GLAD TIDINGS ACADEMY",
-      "low_grade": "3",
-      "high_grade": "7",
+      "low_grade": "K",
+      "high_grade": "2",
       "address": "2009 FULLERS CROSS RD",
       "city": "OCOEE",
       "state": "FL",
@@ -4310,13 +4614,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "7"
     },
     {
       "nces_pss_id": "A2300847",
       "school_name": "ORLANDO STEAM ACADEMY",
-      "low_grade": "2",
-      "high_grade": "8",
+      "low_grade": "PK",
+      "high_grade": "3",
       "address": "5554 CLARCONA OCOEE RD",
       "city": "OCOEE",
       "state": "FL",
@@ -4328,13 +4634,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "A2300701",
       "school_name": "CONTINUUM",
-      "low_grade": "6",
-      "high_grade": "16",
+      "low_grade": "1",
+      "high_grade": "11",
       "address": "13205 REAMS ROAD, STE 132",
       "city": "WINDERMERE",
       "state": "FL",
@@ -4346,13 +4654,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "K9301782",
       "school_name": "PREMIER ACADEMY",
-      "low_grade": "2",
-      "high_grade": "6",
+      "low_grade": "PK",
+      "high_grade": "1",
       "address": "9380 GOTHA RD",
       "city": "WINDERMERE",
       "state": "FL",
@@ -4364,13 +4674,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "6"
     },
     {
       "nces_pss_id": "A2101355",
       "school_name": "THE HARVARD LITTLE LEAGUE",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "436 OAKDALE ST",
       "city": "WINDERMERE",
       "state": "FL",
@@ -4382,13 +4694,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300946",
       "school_name": "VANGUARD PREPARATORY ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "9100 CONROY WINDERMERE RD # 200",
       "city": "WINDERMERE",
       "state": "FL",
@@ -4400,13 +4714,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0102835",
       "school_name": "WINDEMERE PREPARATORY SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "6189 STATE ROAD 535",
       "city": "WINDERMERE",
       "state": "FL",
@@ -4418,13 +4734,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901440",
       "school_name": "WINDERMERE PREPARATORY SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "6189 WINTER GARDEN-VINELAND RD",
       "city": "WINDERMERE",
       "state": "FL",
@@ -4436,13 +4754,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300685",
       "school_name": "CENTER ACADEMY HUNTERS CREEK",
-      "low_grade": "10",
-      "high_grade": "17",
+      "low_grade": "5",
+      "high_grade": "12",
       "address": "3430 HUNTERS CREEK BLVD",
       "city": "ORLANDO",
       "state": "FL",
@@ -4454,13 +4774,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "10",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0501124",
       "school_name": "IBN SEENA ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "12908 S ORANGE BLOSSOM TRL STE 102",
       "city": "ORLANDO",
       "state": "FL",
@@ -4472,13 +4794,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0102313",
       "school_name": "MONTESSORI WAY SCHOOL",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "12307 S ORANGE BLOSSOM TRL",
       "city": "ORLANDO",
       "state": "FL",
@@ -4490,13 +4814,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "A1701147",
       "school_name": "RAISING KNOWLEDGE ACADEMY INC.",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "2132 CTRL FL PKWY STE C8",
       "city": "ORLANDO",
       "state": "FL",
@@ -4508,13 +4834,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "AA890213",
       "school_name": "REGENCY CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "11513 S ORANGE BLOSSOM TRL",
       "city": "ORLANDO",
       "state": "FL",
@@ -4526,13 +4854,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300882",
       "school_name": "SEED ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "1900 CENTRAL FLORIDA PKWY",
       "city": "ORLANDO",
       "state": "FL",
@@ -4544,13 +4874,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1501117",
       "school_name": "STARCHILD ACADEMY",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "12050 CRYSTAL COMMERCE WAY",
       "city": "ORLANDO",
       "state": "FL",
@@ -4562,13 +4894,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A2300733",
       "school_name": "FOUNDATION ACADEMY LAKESIDE",
-      "low_grade": "3",
-      "high_grade": "11",
+      "low_grade": "K",
+      "high_grade": "6",
       "address": "8464 WINTER GARDEN VINELAND RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -4580,13 +4914,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "BB180775",
       "school_name": "MEOROS GIRLS HIGH SCHOOL",
-      "low_grade": "14",
-      "high_grade": "17",
+      "low_grade": "9",
+      "high_grade": "12",
       "address": "11200 S APOPKA",
       "city": "VINELAND",
       "state": "FL",
@@ -4598,13 +4934,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "14",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9901159",
       "school_name": "MUSLIM ACADEMY OF GREATER ORLANDO",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "11551 RUBY LAKE RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -4616,13 +4954,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1300738",
       "school_name": "HEATHROW CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "5210 MARKHAM WOODS RD",
       "city": "LAKE MARY",
       "state": "FL",
@@ -4634,13 +4974,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A0300970",
       "school_name": "LAKE MARY PREPARATORY SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "650 RANTOUL LN",
       "city": "LAKE MARY",
       "state": "FL",
@@ -4652,13 +4994,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300817",
       "school_name": "MONARCH MONTESSORI OF LAKE MARY",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "3551 W LAKE MARY BLVD STE 207",
       "city": "LAKE MARY",
       "state": "FL",
@@ -4670,13 +5014,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "A2300890",
       "school_name": "SHINE ACADEMY",
-      "low_grade": "2",
-      "high_grade": "7",
+      "low_grade": "PK",
+      "high_grade": "2",
       "address": "135 PARLIAMENT LOOP STE 1011",
       "city": "LAKE MARY",
       "state": "FL",
@@ -4688,13 +5034,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "7"
     },
     {
       "nces_pss_id": "A9701188",
       "school_name": "ST PETER'S EPISCOPAL PRESCHOOL & KINDERGARTEN",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "700 RINEHART RD",
       "city": "LAKE MARY",
       "state": "FL",
@@ -4706,13 +5054,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A0901180",
       "school_name": "STARCHILD ACADEMY LAKE MARY",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "200 LONGWOOD LAKE MARY RD",
       "city": "LAKE MARY",
       "state": "FL",
@@ -4724,13 +5074,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A0300893",
       "school_name": "GRACE CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "5401 CURRY FORD RD",
       "city": "ORLANDO",
       "state": "FL",
@@ -4742,13 +5094,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "BB180782",
       "school_name": "1702 LAKE ROBERTS LANDING DR",
-      "low_grade": "11",
-      "high_grade": "17",
+      "low_grade": "6",
+      "high_grade": "12",
       "address": "325 OCOEE APOPKA RD",
       "city": "WINTER GARDEN",
       "state": "FL",
@@ -4760,13 +5114,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "11",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "BB180785",
       "school_name": "ACADEMIA PRIVATE SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1150 ELBOC WAY",
       "city": "WINTER GARDEN",
       "state": "FL",
@@ -4778,13 +5134,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1300658",
       "school_name": "CRANIUM ACADEMY",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "4068 WINTER GARDEN VINELAND RD",
       "city": "WINTER GARDEN",
       "state": "FL",
@@ -4796,13 +5154,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A2300718",
       "school_name": "ELISHA PERFORMING ARTS & CHAYAL ACADEMICS",
-      "low_grade": "3",
-      "high_grade": "12",
+      "low_grade": "K",
+      "high_grade": "7",
       "address": "350 E CROWN POINT ROAD, STE #1110",
       "city": "WINTER GARDEN",
       "state": "FL",
@@ -4814,13 +5174,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "12"
     },
     {
       "nces_pss_id": "A1901148",
       "school_name": "FOUNDATION ACADEMY",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "125 E PLANT ST",
       "city": "WINTER GARDEN",
       "state": "FL",
@@ -4832,13 +5194,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "A2300749",
       "school_name": "HOUSE OF ACADEMIA, DBA ACADEMIA PRIVATE SCHL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1150 ELBOC WAY",
       "city": "WINTER GARDEN",
       "state": "FL",
@@ -4850,13 +5214,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0970637",
       "school_name": "STAR CHILD ACADEMY OF WINTER GARDEN",
-      "low_grade": "3",
-      "high_grade": "10",
+      "low_grade": "K",
+      "high_grade": "5",
       "address": "1324 WINTER GARDEN VINELAND RD",
       "city": "WINTER GARDEN",
       "state": "FL",
@@ -4868,13 +5234,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "BB180795",
       "school_name": "STARCHILD ACADEMY WINTER GARDEN",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "1324 WINTER GARDEN VINELAND RD",
       "city": "WINTER GARDEN",
       "state": "FL",
@@ -4886,13 +5254,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A2101353",
       "school_name": "THE GODDARD SCHOOL WINTER GARDEN",
-      "low_grade": "3",
-      "high_grade": "3",
+      "low_grade": "K",
+      "high_grade": "K",
       "address": "2007 AVALON RD",
       "city": "WINTER GARDEN",
       "state": "FL",
@@ -4904,13 +5274,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A1990258",
       "school_name": "THE KING'S ACADEMY",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "1302 EDGEWAY DR",
       "city": "WINTER GARDEN",
       "state": "FL",
@@ -4922,13 +5294,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A2192122",
       "school_name": "CENTRAL FL ACADEMY SANFORD",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1626 W AIRPORT BLVD",
       "city": "SANFORD",
       "state": "FL",
@@ -4940,13 +5314,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901272",
       "school_name": "LIVE OAK MONTESSORI SCHOOL",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "800 W LAKE MARY BLVD",
       "city": "SANFORD",
       "state": "FL",
@@ -4958,13 +5334,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A2300868",
       "school_name": "PRODIGY ACADEMY ADVANCE LEARNING CENTER",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "2921 S ORLANDO DR # 200",
       "city": "SANFORD",
       "state": "FL",
@@ -4976,13 +5354,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2300953",
       "school_name": "WISE ACADEMY",
-      "low_grade": "2",
-      "high_grade": "9",
+      "low_grade": "PK",
+      "high_grade": "4",
       "address": "786 MYRTLE ST",
       "city": "SANFORD",
       "state": "FL",
@@ -4994,13 +5374,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "9"
     },
     {
       "nces_pss_id": "A2300825",
       "school_name": "MY REFUGE CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "1050 PLZ DR UNIT C",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5012,13 +5394,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "BB180698",
       "school_name": "HUNTINGTON LEARNING CENTER-APOPKA",
-      "low_grade": "7",
-      "high_grade": "8",
+      "low_grade": "2",
+      "high_grade": "3",
       "address": "515 N PARK AVE 104",
       "city": "APOPKA",
       "state": "FL",
@@ -5030,13 +5414,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "7",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "A0102612",
       "school_name": "STARCHILD ACADEMY-WEKIVA",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "1550 N WEKIWA SPRINGS RD",
       "city": "APOPKA",
       "state": "FL",
@@ -5048,13 +5434,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "00257872",
       "school_name": "ALL SOULS CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "810 S OAK AVE",
       "city": "SANFORD",
       "state": "FL",
@@ -5066,13 +5454,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1500831",
       "school_name": "CITY CHURCH ACADEMY",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "1701 S ORANGE BLVD",
       "city": "SANFORD",
       "state": "FL",
@@ -5084,13 +5474,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "A2101066",
       "school_name": "HOLY CROSS LUTHERAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "5450 HOLY CROSS CT",
       "city": "SANFORD",
       "state": "FL",
@@ -5102,13 +5494,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A2101067",
       "school_name": "HOLY CROSS LUTHERAN ACADEMY UPPER SCHOOL",
-      "low_grade": "11",
-      "high_grade": "17",
+      "low_grade": "6",
+      "high_grade": "12",
       "address": "100 AERO LN",
       "city": "SANFORD",
       "state": "FL",
@@ -5120,13 +5514,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "11",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1501063",
       "school_name": "PRIMROSE SCHOOL OF LAKE MARY HEATHROW",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "1200 ORANGE BLVD",
       "city": "SANFORD",
       "state": "FL",
@@ -5138,13 +5534,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A9102021",
       "school_name": "RIVERWALK CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "12",
+      "low_grade": "PK",
+      "high_grade": "7",
       "address": "801 W 22ND ST",
       "city": "SANFORD",
       "state": "FL",
@@ -5156,13 +5554,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "12"
     },
     {
       "nces_pss_id": "A2101388",
       "school_name": "TOP KIDZ CHRISTIAN ACADEMY PRIVATE SCHOOL",
-      "low_grade": "3",
-      "high_grade": "14",
+      "low_grade": "K",
+      "high_grade": "9",
       "address": "2581 S SANFORD AVE",
       "city": "SANFORD",
       "state": "FL",
@@ -5174,13 +5574,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "14"
     },
     {
       "nces_pss_id": "A0501061",
       "school_name": "FAMILY CHRISTIAN SCHOOL",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "608 W OAKLAND AVE",
       "city": "OAKLAND",
       "state": "FL",
@@ -5192,13 +5594,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1100691",
       "school_name": "ORANGE COUNTY ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "18415 11TH AVE",
       "city": "ORLANDO",
       "state": "FL",
@@ -5210,13 +5614,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9701062",
       "school_name": "HOLY REDEEMER CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1800 W COLUMBIA AVE",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5228,13 +5634,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1500938",
       "school_name": "INTERNATIONAL SCHOOL FOR AUTISM/GLOBAL LEADERS ACA",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "3501 W VINE ST STE 105",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5246,13 +5654,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1370304",
       "school_name": "KINGDOM KIDS CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "1003 S JOHN YOUNG PKWY",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5264,13 +5674,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "A2190266",
       "school_name": "MT. SINAI ARTS PREPARATORY ACADEMY",
-      "low_grade": "7",
-      "high_grade": "17",
+      "low_grade": "2",
+      "high_grade": "12",
       "address": "1901 S JOHN YOUNG PKWY #106",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5282,13 +5694,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "7",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "BB220250",
       "school_name": "NEW DIRECTION ACADEMY - KISSIMMEE",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "3501 W VINE ST STE 225",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5300,13 +5714,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9701126",
       "school_name": "NORTH KISSIMMEE CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "425 W DONEGAN AVE",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5318,13 +5734,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901342",
       "school_name": "PIECE OF HEAVEN CHRISTIAN ACADEMY INC.",
-      "low_grade": "8",
-      "high_grade": "17",
+      "low_grade": "3",
+      "high_grade": "12",
       "address": "301 CHURCH ST",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5336,13 +5754,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "8",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901369",
       "school_name": "SHINNING STAR CHRISTIAN PREPARATORY ACADEMY",
-      "low_grade": "3",
-      "high_grade": "8",
+      "low_grade": "K",
+      "high_grade": "3",
       "address": "101 W CYPRESS ST UNIT C",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5354,13 +5774,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "AA001547",
       "school_name": "TRINITY LUTHERAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "3016 W VINE ST",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5372,13 +5794,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901034",
       "school_name": "CADEST",
-      "low_grade": "12",
-      "high_grade": "17",
+      "low_grade": "7",
+      "high_grade": "12",
       "address": "1156 E VINE ST",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5390,13 +5814,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "12",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901089",
       "school_name": "CENTRAL POINTE CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "2031 SIMPSON RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5408,13 +5834,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1700878",
       "school_name": "ESTHER'S SCHOOL KISSIMMEE",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "524 SIMPSON RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5426,13 +5854,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0501059",
       "school_name": "FAITH HARVEST CHRISTIAN ACADEMY",
-      "low_grade": "5",
-      "high_grade": "16",
+      "low_grade": "T1",
+      "high_grade": "11",
       "address": "1537 MILL SLOUGH RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5444,13 +5874,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "5",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "A1500900",
       "school_name": "FREEDOMLAND CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "1210 N MAIN ST",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5462,13 +5894,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300745",
       "school_name": "HEART OF A CHILD LEARNING CENTER",
-      "low_grade": "2",
-      "high_grade": "8",
+      "low_grade": "PK",
+      "high_grade": "3",
       "address": "2047 E IRLO BR",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5480,13 +5914,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "A1500929",
       "school_name": "IBCK EDUCATIONAL CENTER",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2275 FORTUNE RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5498,13 +5934,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901200",
       "school_name": "IGNYTE PERFORMING ARTS LEARNING CENTER",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1038 AERONAUTICAL DR",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5516,13 +5954,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1700970",
       "school_name": "INTEGRITY TABERNACLE CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "2151 SIMPSON RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5534,13 +5974,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901215",
       "school_name": "KIDSVILLE ACADEMY 2",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "2563 REMINGTON BLVD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5552,13 +5994,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901224",
       "school_name": "KISSIMMEE CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "415 N MAIN ST",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5570,13 +6014,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A0509046",
       "school_name": "LIFE CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2269 PARTIN SETTLEMENT RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5588,13 +6034,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101154",
       "school_name": "LITTLE STARS FAMILY LEARNING ACADEMY",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "2242 E IBM HWY",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5606,13 +6054,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "AA890207",
       "school_name": "OSCEOLA ADVENTIST CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "2395 FORTUNE RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5624,13 +6074,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A9901408",
       "school_name": "SOUTHLAND CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2464 FORTUNE RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5642,13 +6094,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1701209",
       "school_name": "SUNSHINE STATE ELITE ACADEMY LLC",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "2355 N ORANGE BLOSSOM TRL",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5660,13 +6114,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300937",
       "school_name": "TPT INTERNATIONAL SCHOOL",
-      "low_grade": "13",
-      "high_grade": "17",
+      "low_grade": "8",
+      "high_grade": "12",
       "address": "2856 SPRING BREEZE WAY",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5678,13 +6134,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "13",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00263671",
       "school_name": "MONTVERDE ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "17235 7TH ST",
       "city": "MONTVERDE",
       "state": "FL",
@@ -5696,13 +6154,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300674",
       "school_name": "BEYOND BORDERS CHRISTIAN SCHOOL INC",
-      "low_grade": "-1",
-      "high_grade": "-1",
+      "low_grade": "not reported",
+      "high_grade": "not reported",
       "address": "4853 E IRLO BRONSON MEMORIAL HWY #123",
       "city": "ST CLOUD",
       "state": "FL",
@@ -5714,13 +6174,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "-1",
+      "high_grade_code": "-1"
     },
     {
       "nces_pss_id": "A1901020",
       "school_name": "BILINGUAL CHRISTIAN ACADEMY & TECHNOLOGY",
-      "low_grade": "3",
-      "high_grade": "10",
+      "low_grade": "K",
+      "high_grade": "5",
       "address": "3241 S JOHN YOUNG PKWY",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5732,13 +6194,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "BB220254",
       "school_name": "CENTRAL POINTE CHRISTIAN ACADEMY - POINCIANA",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "3540 PLEASANT HILL RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5750,13 +6214,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101094",
       "school_name": "IZZADEEN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "15",
+      "low_grade": "K",
+      "high_grade": "10",
       "address": "4992 W IBM HWY",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5768,13 +6234,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "BB220255",
       "school_name": "KIDS R KIDS LEARNING ACADEMY",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "3901 REAVES RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5786,13 +6254,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A1701042",
       "school_name": "LIVING WATER CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "7",
+      "low_grade": "PK",
+      "high_grade": "2",
       "address": "4101 PLEASANT HILL RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5804,13 +6274,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "7"
     },
     {
       "nces_pss_id": "A0901110",
       "school_name": "PEACE LUTHERAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "3249 WINDMILL POINT BLVD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5822,13 +6294,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101265",
       "school_name": "REBORN CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "4710 W IBM HWY",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -5840,13 +6314,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0700464",
       "school_name": "CHRIST CENTERED ACADEMICS",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "196 APT 1 13TH SREET",
       "city": "ST CLOUD",
       "state": "FL",
@@ -5858,13 +6334,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300772",
       "school_name": "KCBS ADVANCE ACADEMY",
-      "low_grade": "3",
-      "high_grade": "9",
+      "low_grade": "K",
+      "high_grade": "4",
       "address": "317 COMMERCE CENTER DR",
       "city": "ST CLOUD",
       "state": "FL",
@@ -5876,13 +6354,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "9"
     },
     {
       "nces_pss_id": "A9102044",
       "school_name": "ST THOMAS AQUINAS CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "800 BROWN CHAPEL RD",
       "city": "ST CLOUD",
       "state": "FL",
@@ -5894,13 +6374,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2100802",
       "school_name": "ADONAI ACADEMY INCORPORATED",
-      "low_grade": "7",
-      "high_grade": "16",
+      "low_grade": "2",
+      "high_grade": "11",
       "address": "6909 OLD HWY 441 UNIT 223",
       "city": "MOUNT DORA",
       "state": "FL",
@@ -5912,13 +6394,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "7",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "A2100935",
       "school_name": "CREATE CONSERVATORY",
-      "low_grade": "3",
-      "high_grade": "14",
+      "low_grade": "K",
+      "high_grade": "9",
       "address": "4900 LAKE PARK CT",
       "city": "MOUNT DORA",
       "state": "FL",
@@ -5930,13 +6414,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "14"
     },
     {
       "nces_pss_id": "00260502",
       "school_name": "DBA MOUNT DORA CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "301 W 13TH AVE",
       "city": "MOUNT DORA",
       "state": "FL",
@@ -5948,13 +6434,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1500905",
       "school_name": "GATEWAY CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "18440 US HIGHWAY 441",
       "city": "MOUNT DORA",
       "state": "FL",
@@ -5966,13 +6454,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A9501289",
       "school_name": "MONTESSORI AT ROSEBOROUGH",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "751 E 5TH AVE",
       "city": "MOUNT DORA",
       "state": "FL",
@@ -5984,13 +6474,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "BB180702",
       "school_name": "TANGERINE SCHOOLHOUSE",
-      "low_grade": "2",
-      "high_grade": "8",
+      "low_grade": "PK",
+      "high_grade": "3",
       "address": "7228 EARLWOOD AVE",
       "city": "MOUNT DORA",
       "state": "FL",
@@ -6002,13 +6494,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "A1500842",
       "school_name": "CREATION VILLAGE WORLD SCHOOL",
-      "low_grade": "2",
-      "high_grade": "15",
+      "low_grade": "PK",
+      "high_grade": "10",
       "address": "599 CELEBRATION PL",
       "city": "CELEBRATION",
       "state": "FL",
@@ -6020,13 +6514,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A1700902",
       "school_name": "FOREIGN LANGUAGE IMMERSION SCHOOL",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "1550 CELEBRATION BLVD",
       "city": "CELEBRATION",
       "state": "FL",
@@ -6038,13 +6534,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A2300819",
       "school_name": "MONTESSORI ACADEMY OF CELEBRATION",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "901 BEGONIA RD",
       "city": "CELEBRATION",
       "state": "FL",
@@ -6056,13 +6554,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901010",
       "school_name": "ASTATULA CHRISTIAN SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "13239 FLORIDA AVE",
       "city": "ASTATULA",
       "state": "FL",
@@ -6074,13 +6574,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2100966",
       "school_name": "DREAMPLEX THERAPEUTIC SCHOOL",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "2400 S HWY 27 STE 2104A",
       "city": "CLERMONT",
       "state": "FL",
@@ -6092,13 +6594,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A0900771",
       "school_name": "ALDERSGATE ACADEMY",
-      "low_grade": "1",
-      "high_grade": "1",
+      "low_grade": "UG",
+      "high_grade": "UG",
       "address": "51 CHILDRENS WAY",
       "city": "DELTONA",
       "state": "FL",
@@ -6110,13 +6614,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "1",
+      "high_grade_code": "1"
     },
     {
       "nces_pss_id": "A2300725",
       "school_name": "EXCEPTIONAL LEARNING INSTITUTE",
-      "low_grade": "2",
-      "high_grade": "7",
+      "low_grade": "PK",
+      "high_grade": "2",
       "address": "537 DELTONA BLVD",
       "city": "DELTONA",
       "state": "FL",
@@ -6128,13 +6634,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "7"
     },
     {
       "nces_pss_id": "A9102072",
       "school_name": "TRINITY CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "875 ELKCAM BLVD",
       "city": "DELTONA",
       "state": "FL",
@@ -6146,13 +6654,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "BB220218",
       "school_name": "APPLIED BEHAVIOR EDU AND LIFESKILLS ACADEMY",
-      "low_grade": "2",
-      "high_grade": "14",
+      "low_grade": "PK",
+      "high_grade": "9",
       "address": "350 ACCEPTANCE WAY",
       "city": "CLERMONT",
       "state": "FL",
@@ -6164,13 +6674,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "14"
     },
     {
       "nces_pss_id": "A2300669",
       "school_name": "BELIEVERS CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "20180 US 27 N",
       "city": "CLERMONT",
       "state": "FL",
@@ -6182,13 +6694,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0501001",
       "school_name": "CITRUS HEIGHTS ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "101 S GRAND HWY",
       "city": "CLERMONT",
       "state": "FL",
@@ -6200,13 +6714,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1100569",
       "school_name": "FAMILY CHRISTIAN CENTER SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "2500 S HWY 27",
       "city": "CLERMONT",
       "state": "FL",
@@ -6218,13 +6734,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2400168",
       "school_name": "SKYUKA HALL SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "5600 BRAINERD RD STE A-24",
       "city": "CHATTANOOGA",
       "state": "TN",
@@ -6236,13 +6754,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0102572",
       "school_name": "SOUTH LAKE MONTESSORI SCHOOL",
-      "low_grade": "2",
-      "high_grade": "12",
+      "low_grade": "PK",
+      "high_grade": "7",
       "address": "983 W DESOTO ST",
       "city": "CLERMONT",
       "state": "FL",
@@ -6254,13 +6774,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "12"
     },
     {
       "nces_pss_id": "A1901399",
       "school_name": "THE KEY TO LEARNING",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "10726 LIBBY NUMBER 3 RD",
       "city": "CLERMONT",
       "state": "FL",
@@ -6272,13 +6794,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2392088",
       "school_name": "THE WAY ACADEMY",
-      "low_grade": "11",
-      "high_grade": "13",
+      "low_grade": "6",
+      "high_grade": "8",
       "address": "105 E BAKER ST",
       "city": "MINNEOLA",
       "state": "FL",
@@ -6290,13 +6814,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "11",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A9101755",
       "school_name": "DELTONA ADVENTIST SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1717 CATALINA BLVD BLDG 200",
       "city": "DELTONA",
       "state": "FL",
@@ -6308,13 +6834,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1300718",
       "school_name": "GOOD SHEPHERD ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "751 HOWLAND BLVD",
       "city": "DELTONA",
       "state": "FL",
@@ -6326,13 +6854,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1370422",
       "school_name": "PHA PREPARATORY SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "140 POMPEI DR",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -6344,13 +6874,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0790050",
       "school_name": "PLEASANT HILL ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "140 POMPEI DR",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -6362,13 +6894,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1701128",
       "school_name": "POINCIANA CHRISTIAN PREPARATORY SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2525 TRAFALGAR BLVD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -6380,13 +6914,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "BB220216",
       "school_name": "CHOSEN GENERATION CHRISTIAN ACADEMY - OSCEOLA",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "480 W COUNTY ROAD 44",
       "city": "EUSTIS",
       "state": "FL",
@@ -6398,13 +6934,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00259825",
       "school_name": "FAITH LUTHERAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "2727 S GROVE ST",
       "city": "EUSTIS",
       "state": "FL",
@@ -6416,13 +6954,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2100956",
       "school_name": "DIVINE ACADEMY OF VOLUSIA COUNTY",
-      "low_grade": "3",
-      "high_grade": "15",
+      "low_grade": "K",
+      "high_grade": "10",
       "address": "2407 E GRAVES AVE STE 22",
       "city": "ORANGE CITY",
       "state": "FL",
@@ -6434,13 +6974,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A1701206",
       "school_name": "SUNRISE ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2700 ENTERPRISE RD STE A",
       "city": "ORANGE CITY",
       "state": "FL",
@@ -6452,13 +6994,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "AA890192",
       "school_name": "LIBERTY CHRISTIAN PREP SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2451 DORA AVE",
       "city": "TAVARES",
       "state": "FL",
@@ -6470,13 +7014,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0900839",
       "school_name": "CHOSEN GENERATION CHRISTIAN ACADEMY",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "4906 OLD PLEASANT HILL RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -6488,13 +7034,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300864",
       "school_name": "INDIVIDUAL EDUCATION PLAN ACADEMY, INC",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "601 WALNUT ST",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -6506,13 +7054,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101200",
       "school_name": "NEW JERUSALEM ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "4925 OLD PLEASANT HILL RD",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -6524,13 +7074,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300889",
       "school_name": "SHILOH ACCELERATED CHRISTIAN ACADEMY",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "4545 PLEASANT HILL RD UNIT 104",
       "city": "KISSIMMEE",
       "state": "FL",
@@ -6542,13 +7094,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1990221",
       "school_name": "HUSKY PREP ACADEMY INC",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "204 JOCELYN DR",
       "city": "DAVENPORT",
       "state": "FL",
@@ -6560,13 +7114,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0501280",
       "school_name": "RIDGE CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "41219 HWY 27",
       "city": "DAVENPORT",
       "state": "FL",
@@ -6578,13 +7134,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101289",
       "school_name": "SHALOM CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "14",
+      "low_grade": "K",
+      "high_grade": "9",
       "address": "800 N BLVD W",
       "city": "DAVENPORT",
       "state": "FL",
@@ -6596,13 +7154,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "14"
     },
     {
       "nces_pss_id": "A1300612",
       "school_name": "BLAKE CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "134 N EUCLID AVE",
       "city": "LAKE HELEN",
       "state": "FL",
@@ -6614,13 +7174,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1901055",
       "school_name": "CENTRAL FLORIDA ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "186 INDUSTRIAL CENTER DR",
       "city": "LAKE HELEN",
       "state": "FL",
@@ -6632,13 +7194,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1700944",
       "school_name": "HOPE PREPARATORY ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "13806 STATE ROAD 33",
       "city": "GROVELAND",
       "state": "FL",
@@ -6650,13 +7214,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1500937",
       "school_name": "INTEGRITY CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "7432 STATE ROAD 50",
       "city": "GROVELAND",
       "state": "FL",
@@ -6668,13 +7234,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0301059",
       "school_name": "PRAISE TEMPLE CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "5910 BIBLE CAMP RD",
       "city": "GROVELAND",
       "state": "FL",
@@ -6686,13 +7254,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101158",
       "school_name": "LOVE CENTER CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "11",
+      "low_grade": "K",
+      "high_grade": "6",
       "address": "1220 N CARPENTER RD",
       "city": "TITUSVILLE",
       "state": "FL",
@@ -6704,13 +7274,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "A2101197",
       "school_name": "NEW FELLOWSHIP CHRISTIAN HIGH SCHOOL",
-      "low_grade": "12",
-      "high_grade": "17",
+      "low_grade": "7",
+      "high_grade": "12",
       "address": "1840 OLD DIXIE HWY",
       "city": "TITUSVILLE",
       "state": "FL",
@@ -6722,13 +7294,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "12",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9501380",
       "school_name": "TEMPLE CHRISTIAN SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1400 N US HIGHWAY 1",
       "city": "TITUSVILLE",
       "state": "FL",
@@ -6740,13 +7314,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300808",
       "school_name": "MEANINGFUL MILESTONE ACADEMY INC",
-      "low_grade": "2",
-      "high_grade": "4",
+      "low_grade": "PK",
+      "high_grade": "TK",
       "address": "100 GUERRANT ST",
       "city": "UMATILLA",
       "state": "FL",
@@ -6758,13 +7334,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "4"
     },
     {
       "nces_pss_id": "K9500185",
       "school_name": "CHILDREN'S MONTESSORI ACADEMY",
-      "low_grade": "2",
-      "high_grade": "6",
+      "low_grade": "PK",
+      "high_grade": "1",
       "address": "1300 ARMSTRONG DR",
       "city": "TITUSVILLE",
       "state": "FL",
@@ -6776,13 +7354,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "6"
     },
     {
       "nces_pss_id": "A9101877",
       "school_name": "LAKE FERN MONTESSORI ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "257 AGUINALDO AVE",
       "city": "TITUSVILLE",
       "state": "FL",
@@ -6794,13 +7374,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2101201",
       "school_name": "NEW LIFE ACADEMY",
-      "low_grade": "3",
-      "high_grade": "9",
+      "low_grade": "K",
+      "high_grade": "4",
       "address": "6755 S WASHINGTON AVE",
       "city": "TITUSVILLE",
       "state": "FL",
@@ -6812,13 +7394,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "9"
     },
     {
       "nces_pss_id": "01609994",
       "school_name": "PARK AVENUE CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "2600 S PARK AVE",
       "city": "TITUSVILLE",
       "state": "FL",
@@ -6830,13 +7414,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "00257861",
       "school_name": "ST TERESA CATHOLIC SCHOOL",
-      "low_grade": "8",
-      "high_grade": "10",
+      "low_grade": "3",
+      "high_grade": "5",
       "address": "207 OJIBWAY AVE",
       "city": "TITUSVILLE",
       "state": "FL",
@@ -6848,13 +7434,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "8",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A0900827",
       "school_name": "CASA MONTESSORI",
-      "low_grade": "2",
-      "high_grade": "14",
+      "low_grade": "PK",
+      "high_grade": "9",
       "address": "217 N STONE ST STE B",
       "city": "DELAND",
       "state": "FL",
@@ -6866,13 +7454,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "14"
     },
     {
       "nces_pss_id": "00259392",
       "school_name": "ST BARNABAS EPISCOPAL SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "322 W MICHIGAN AVE",
       "city": "DELAND",
       "state": "FL",
@@ -6884,13 +7474,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "00258173",
       "school_name": "ST PETER CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "421 W NEW YORK AVE",
       "city": "DELAND",
       "state": "FL",
@@ -6902,13 +7494,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "00264631",
       "school_name": "STETSON BAPTIST CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1025 W MINNESOTA AVE",
       "city": "DELAND",
       "state": "FL",
@@ -6920,13 +7514,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1701211",
       "school_name": "T.O.P ACADEMY",
-      "low_grade": "6",
-      "high_grade": "13",
+      "low_grade": "1",
+      "high_grade": "8",
       "address": "330 S THOMPSON AVE",
       "city": "DELAND",
       "state": "FL",
@@ -6938,13 +7534,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1901284",
       "school_name": "MILESTONES COMMUNITY SCHOOL OF LAKE COUNTY",
-      "low_grade": "10",
-      "high_grade": "17",
+      "low_grade": "5",
+      "high_grade": "12",
       "address": "10401 US HIGHWAY 441 STE 136",
       "city": "LEESBURG",
       "state": "FL",
@@ -6956,13 +7554,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "10",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2100869",
       "school_name": "BLUE JAY ACADEMY OF SOUTH DAYTONA",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "107 S CHANDLER AVE",
       "city": "DELAND",
       "state": "FL",
@@ -6974,13 +7574,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901023",
       "school_name": "BLUE JAY ACADEMY WEST VOLUSIA",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "107 S CHANDLER AVE",
       "city": "DELAND",
       "state": "FL",
@@ -6992,13 +7594,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9300250",
       "school_name": "CHILDREN'S HOUSE MONTESSORI SCHOOL",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "509 E PENNSYLVANIA AVE",
       "city": "DELAND",
       "state": "FL",
@@ -7010,13 +7614,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A1901103",
       "school_name": "DELAND PREPARATORY ACADEMY",
-      "low_grade": "10",
-      "high_grade": "17",
+      "low_grade": "5",
+      "high_grade": "12",
       "address": "915 E NEW YORK AVE",
       "city": "DELAND",
       "state": "FL",
@@ -7028,13 +7634,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "10",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1900991",
       "school_name": "ABLE ACADEMICS",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "7075 N US HIGHWAY 1",
       "city": "COCOA",
       "state": "FL",
@@ -7046,13 +7654,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2100787",
       "school_name": "ABA HAINES CITY INC",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "116 N 22ND ST",
       "city": "HAINES CITY",
       "state": "FL",
@@ -7064,13 +7674,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901129",
       "school_name": "ESTHERS SCHOOL INC - HAINES CITY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "964 WOOD AVE",
       "city": "HAINES CITY",
       "state": "FL",
@@ -7082,13 +7694,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0300980",
       "school_name": "KIDS ACADEMY LIGHTHOUSE",
-      "low_grade": "7",
-      "high_grade": "16",
+      "low_grade": "2",
+      "high_grade": "11",
       "address": "706 MELBOURNE AVE",
       "city": "HAINES CITY",
       "state": "FL",
@@ -7100,13 +7714,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "7",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "01928343",
       "school_name": "LANDMARK CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "2020 E HINSON AVE",
       "city": "HAINES CITY",
       "state": "FL",
@@ -7118,13 +7734,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300816",
       "school_name": "MILLENNIUM CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "12",
+      "low_grade": "K",
+      "high_grade": "7",
       "address": "704 MCLEOD AVE",
       "city": "HAINES CITY",
       "state": "FL",
@@ -7136,13 +7754,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "12"
     },
     {
       "nces_pss_id": "A1901311",
       "school_name": "NEW DIRECTION ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "711 E MAIN ST STE 1",
       "city": "HAINES CITY",
       "state": "FL",
@@ -7154,13 +7774,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1700774",
       "school_name": "BETTER LIFE ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1650 W MAIN ST STE 1 # 2-4",
       "city": "LEESBURG",
       "state": "FL",
@@ -7172,13 +7794,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9101785",
       "school_name": "FIRST ACADEMY-LEESBURG",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "219 N 13TH ST",
       "city": "LEESBURG",
       "state": "FL",
@@ -7190,13 +7814,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "02019428",
       "school_name": "LAKE MONTESSORI SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "415 LEE ST",
       "city": "LEESBURG",
       "state": "FL",
@@ -7208,13 +7834,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1390107",
       "school_name": "LAKE PREPARATORY SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1000 W MAIN ST",
       "city": "LEESBURG",
       "state": "FL",
@@ -7226,13 +7854,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "02115519",
       "school_name": "ST PAUL CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1322 SUNSHINE AVE",
       "city": "LEESBURG",
       "state": "FL",
@@ -7244,13 +7874,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1700866",
       "school_name": "EINSTEIN MONTESSORI ACADEMY",
-      "low_grade": "7",
-      "high_grade": "17",
+      "low_grade": "2",
+      "high_grade": "12",
       "address": "5650 KING ST HWY 520",
       "city": "COCOA",
       "state": "FL",
@@ -7262,13 +7894,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "7",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1300608",
       "school_name": "BETHEL CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "14",
+      "low_grade": "K",
+      "high_grade": "9",
       "address": "1407 ENTERPRISE AVE",
       "city": "NEW SMYRNA BEACH",
       "state": "FL",
@@ -7280,13 +7914,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "14"
     },
     {
       "nces_pss_id": "A2400038",
       "school_name": "KNIGHT'S CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "15",
+      "low_grade": "PK",
+      "high_grade": "10",
       "address": "310 DOUGLAS ST",
       "city": "NEW SMYRNA BEACH",
       "state": "FL",
@@ -7298,13 +7934,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "00258049",
       "school_name": "SACRED HEART CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1003 TURNBULL ST",
       "city": "NEW SMYRNA BEACH",
       "state": "FL",
@@ -7316,13 +7954,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1701184",
       "school_name": "SPACE COAST CHRISTIAN ACADEMY",
-      "low_grade": "6",
-      "high_grade": "16",
+      "low_grade": "1",
+      "high_grade": "11",
       "address": "223 N SAMSULA DR",
       "city": "NEW SMYRNA BEACH",
       "state": "FL",
@@ -7334,13 +7974,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "A2101404",
       "school_name": "UPWARD TREND ACADEMY INC",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "311 N ORANGE ST",
       "city": "NEW SMYRNA",
       "state": "FL",
@@ -7352,13 +7994,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1901092",
       "school_name": "CREATIVE PATHWAYS PREPARATORY ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "4233 US HIGHWAY 1",
       "city": "EDGEWATER",
       "state": "FL",
@@ -7370,13 +8014,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0102043",
       "school_name": "HOLY TRINITY EPISCOPAL SCHOOL",
-      "low_grade": "11",
-      "high_grade": "17",
+      "low_grade": "6",
+      "high_grade": "12",
       "address": "2201 SPRING LAKE RD",
       "city": "FRUITLAND PARK",
       "state": "FL",
@@ -7388,13 +8034,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "11",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101411",
       "school_name": "VILLAGE VIEW CHRISTIAN ACADEMY DBA FREEDOM CHRISTI",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "197 E LAVISTA ST",
       "city": "FRUITLAND PARK",
       "state": "FL",
@@ -7406,13 +8054,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2170010",
       "school_name": "ATLANTIS MONTESSORI ACADEMY INC.",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "4390 GRAND AVE",
       "city": "DE LEON SPRINGS",
       "state": "FL",
@@ -7424,13 +8074,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A0300827",
       "school_name": "CREATIVE LEARNING",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "453 KING ST",
       "city": "COCOA",
       "state": "FL",
@@ -7442,13 +8094,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101132",
       "school_name": "LEARNING ACHIEVEMENT ACADEMY",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "1040 W KING ST",
       "city": "COCOA",
       "state": "FL",
@@ -7460,13 +8114,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1100713",
       "school_name": "RFM CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1404 DIXON BLVD",
       "city": "COCOA",
       "state": "FL",
@@ -7478,13 +8134,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00259417",
       "school_name": "ST MARK'S EPISCOPAL ACADEMY",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "2 CHURCH ST",
       "city": "COCOA",
       "state": "FL",
@@ -7496,13 +8154,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "A9501168",
       "school_name": "DISCOVERY ACADEMY",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "227 N RIDGEWOOD AVE",
       "city": "EDGEWATER",
       "state": "FL",
@@ -7514,13 +8174,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A0901041",
       "school_name": "LITTLE EXPLORERS MONTESSORI",
-      "low_grade": "2",
-      "high_grade": "8",
+      "low_grade": "PK",
+      "high_grade": "3",
       "address": "410 N RIDGEWOOD AVE",
       "city": "EDGEWATER",
       "state": "FL",
@@ -7532,13 +8194,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "A1901329",
       "school_name": "OUR CAREER CENTERED ACADEMY INC.",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "515 E HAINES BLVD",
       "city": "LAKE ALFRED",
       "state": "FL",
@@ -7550,13 +8214,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9705253",
       "school_name": "ALPHA LERANING INC",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "3700 N CTENAY PKWY STE 102",
       "city": "MERRITT ISLAND",
       "state": "FL",
@@ -7568,13 +8234,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "A9901161",
       "school_name": "CALVARY CHAPEL CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "8",
+      "low_grade": "PK",
+      "high_grade": "3",
       "address": "3500 N CTENAY PKWY",
       "city": "MERRITT ISLAND",
       "state": "FL",
@@ -7586,13 +8254,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "A1300685",
       "school_name": "FACES",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "5525 N CTENAY PKWY STE A",
       "city": "MERRITT ISLAND",
       "state": "FL",
@@ -7604,13 +8274,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1990226",
       "school_name": "KSCIA INTERNATIONAL SPACE ACADEMY",
-      "low_grade": "12",
-      "high_grade": "17",
+      "low_grade": "7",
+      "high_grade": "12",
       "address": "505 ODYSSEY WAY # 401",
       "city": "MERRITT ISLAND",
       "state": "FL",
@@ -7622,13 +8294,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "12",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00257952",
       "school_name": "FATHER LOPEZ CATHOLIC HIGH SCHOOL",
-      "low_grade": "14",
-      "high_grade": "17",
+      "low_grade": "9",
+      "high_grade": "12",
       "address": "3918 LPGA BLVD",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -7640,13 +8314,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "14",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1100761",
       "school_name": "TLC KIDS CARE",
-      "low_grade": "2",
-      "high_grade": "4",
+      "low_grade": "PK",
+      "high_grade": "TK",
       "address": "1835 TAYLOR RD",
       "city": "PORT ORANGE",
       "state": "FL",
@@ -7658,13 +8334,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "4"
     },
     {
       "nces_pss_id": "A1700769",
       "school_name": "BEHAVIOR EDUCATION CENTER",
-      "low_grade": "7",
-      "high_grade": "17",
+      "low_grade": "2",
+      "high_grade": "12",
       "address": "550 SOLUTIONS WAY",
       "city": "ROCKLEDGE",
       "state": "FL",
@@ -7676,13 +8354,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "7",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1100555",
       "school_name": "EDUCATORS INC PRIVATE CHRISTIAN SCHOOLS",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "400 BARTON BLVD STE 204",
       "city": "ROCKLEDGE",
       "state": "FL",
@@ -7694,13 +8374,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2200014",
       "school_name": "MONTESSORI BILINGUAL ACADEMY",
-      "low_grade": "2",
-      "high_grade": "8",
+      "low_grade": "PK",
+      "high_grade": "3",
       "address": "3260 S FISKE BLVD",
       "city": "ROCKLEDGE",
       "state": "FL",
@@ -7712,13 +8394,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "K9301358",
       "school_name": "MONTESSORI BILINGUAL ACADEMY OF ROCKLEDGE",
-      "low_grade": "2",
-      "high_grade": "8",
+      "low_grade": "PK",
+      "high_grade": "3",
       "address": "3260 S FISKE BLVD",
       "city": "ROCKLEDGE",
       "state": "FL",
@@ -7730,13 +8414,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "A9101999",
       "school_name": "ROCKLEDGE CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "12",
+      "low_grade": "PK",
+      "high_grade": "7",
       "address": "2175 S FISKE BLVD",
       "city": "ROCKLEDGE",
       "state": "FL",
@@ -7748,13 +8434,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "12"
     },
     {
       "nces_pss_id": "A1901368",
       "school_name": "SHINING STARR LEARNING ACADEMY INC.",
-      "low_grade": "9",
-      "high_grade": "16",
+      "low_grade": "4",
+      "high_grade": "11",
       "address": "979 EYSTER BLVD STE 101",
       "city": "ROCKLEDGE",
       "state": "FL",
@@ -7766,13 +8454,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "9",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "K9301359",
       "school_name": "TRINITY LUTHERAN CHURCH & SCHOOL",
-      "low_grade": "2",
-      "high_grade": "11",
+      "low_grade": "PK",
+      "high_grade": "6",
       "address": "1330 S FISKE BLVD",
       "city": "ROCKLEDGE",
       "state": "FL",
@@ -7784,13 +8474,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "11"
     },
     {
       "nces_pss_id": "A0101769",
       "school_name": "BEYMER UNITED METHODIST PRESCHOOL & KINDERGARTEN",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "700 N LAKE HOWARD DR",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -7802,13 +8494,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A1901157",
       "school_name": "GCTE CENTER INC",
-      "low_grade": "11",
-      "high_grade": "17",
+      "low_grade": "6",
+      "high_grade": "12",
       "address": "P.O. Box 3608",
       "city": "Winter Haven",
       "state": "FL",
@@ -7820,13 +8514,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "11",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101077",
       "school_name": "IMMANUEL LUTHERAN",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "1449 34TH ST NW",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -7838,13 +8534,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "00257806",
       "school_name": "ST JOSEPH CATHOLIC SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "535 AVE M NW",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -7856,13 +8554,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1501163",
       "school_name": "TREASURES OF LIFE ACADEMY",
-      "low_grade": "3",
-      "high_grade": "15",
+      "low_grade": "K",
+      "high_grade": "10",
       "address": "1202 HAVENDALE BLVD NW",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -7874,13 +8574,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "00262259",
       "school_name": "WINTER HAVEN CHRISTIAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "1700 BUCKEYE LOOP RD",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -7892,13 +8594,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101053",
       "school_name": "HERITAGE CHRISTIAN ACADEMY",
-      "low_grade": "6",
-      "high_grade": "15",
+      "low_grade": "1",
+      "high_grade": "10",
       "address": "432 COUNTY ROAD 466",
       "city": "LADY LAKE",
       "state": "FL",
@@ -7910,13 +8614,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "15"
     },
     {
       "nces_pss_id": "A2300768",
       "school_name": "JORDAN CHRISTIAN PREPARATORY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "420 CHARLOTTE RD",
       "city": "AUBURNDALE",
       "state": "FL",
@@ -7928,13 +8634,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1901424",
       "school_name": "VALOR CHRISTIAN LEADERSHIP ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1104 CYPRESS GARDENS BLVD STE C",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -7946,13 +8654,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9701240",
       "school_name": "WISE INDEPENDENT PRIVATE SCHOOL SYSTEM",
-      "low_grade": "7",
-      "high_grade": "16",
+      "low_grade": "2",
+      "high_grade": "11",
       "address": "250 POINCIANA AVE",
       "city": "PORT ORANGE",
       "state": "FL",
@@ -7964,13 +8674,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "7",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "00261958",
       "school_name": "DAYTONA BEACH CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1850 S CLYDE MORRIS BLVD",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -7982,13 +8694,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300842",
       "school_name": "ON TRACK SCHOOL",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1845 S PALMETTO AVE",
       "city": "SOUTH DAYTONA",
       "state": "FL",
@@ -8000,13 +8714,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1100745",
       "school_name": "THE CHASE ACADEMY, INC.",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "2400 S RIDGEWOOD AVE STE 17",
       "city": "SOUTH DAYTONA",
       "state": "FL",
@@ -8018,13 +8734,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00260036",
       "school_name": "WARNER CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "1730 S RIDGEWOOD AVE",
       "city": "SOUTH DAYTONA",
       "state": "FL",
@@ -8036,13 +8754,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1700729",
       "school_name": "ALL SAINTS ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "5001 STATE ROAD 540 W",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -8054,13 +8774,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0507342",
       "school_name": "GRACE LUTHERAN SCHOOL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "320 BATES AVE SE",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -8072,13 +8794,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "01928296",
       "school_name": "OASIS CHRISTIAN ACADEMY",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "151 KING RD",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -8090,13 +8814,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1701106",
       "school_name": "OVELLS CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "8",
+      "low_grade": "K",
+      "high_grade": "3",
       "address": "105 AVE G SE",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -8108,13 +8834,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "8"
     },
     {
       "nces_pss_id": "A0102838",
       "school_name": "WINTER HAVEN ADVENTIST ACADEMY",
-      "low_grade": "3",
-      "high_grade": "16",
+      "low_grade": "K",
+      "high_grade": "11",
       "address": "401 AVE K SE",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -8126,13 +8854,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "16"
     },
     {
       "nces_pss_id": "A1300968",
       "school_name": "WINTER HAVEN MONTESSORI",
-      "low_grade": "2",
-      "high_grade": "9",
+      "low_grade": "PK",
+      "high_grade": "4",
       "address": "305 AVE E SW",
       "city": "WINTER HAVEN",
       "state": "FL",
@@ -8144,13 +8874,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "9"
     },
     {
       "nces_pss_id": "A9300298",
       "school_name": "DEVEREUX SCHOOL",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "8000 DEVEREUX DR",
       "city": "VIERA",
       "state": "FL",
@@ -8162,13 +8894,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "K9301354",
       "school_name": "SUNTREE MONTESSORI",
-      "low_grade": "2",
-      "high_grade": "3",
+      "low_grade": "PK",
+      "high_grade": "K",
       "address": "2990 BUSINESS CENTER BLVD STE B",
       "city": "MELBOURNE",
       "state": "FL",
@@ -8180,13 +8914,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "3"
     },
     {
       "nces_pss_id": "A2300935",
       "school_name": "TORAH ACADEMY",
-      "low_grade": "2",
-      "high_grade": "9",
+      "low_grade": "PK",
+      "high_grade": "4",
       "address": "7350 LAKE ANDREW DR",
       "city": "MELBOURNE",
       "state": "FL",
@@ -8198,13 +8934,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "9"
     },
     {
       "nces_pss_id": "A2300667",
       "school_name": "BCAT OF LAKE WALES",
-      "low_grade": "2",
-      "high_grade": "17",
+      "low_grade": "PK",
+      "high_grade": "12",
       "address": "1376 SATE RD 60 E",
       "city": "LAKE WALES",
       "state": "FL",
@@ -8216,13 +8954,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1300623",
       "school_name": "CANAAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "640 S SCENIC HWY",
       "city": "LAKE WALES",
       "state": "FL",
@@ -8234,13 +8974,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A0500981",
       "school_name": "CANDLELIGHT CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "209 E SESSOMS AVE",
       "city": "LAKE WALES",
       "state": "FL",
@@ -8252,13 +8994,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0900888",
       "school_name": "ENDTIME CHRISTIAN SCHOOL OF EXCELLENCE",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "555 BURNS AVE",
       "city": "LAKE WALES",
       "state": "FL",
@@ -8270,13 +9014,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1992059",
       "school_name": "GRAND ACADEMY",
-      "low_grade": "4",
-      "high_grade": "17",
+      "low_grade": "TK",
+      "high_grade": "12",
       "address": "730 STATE ROAD 60 W",
       "city": "LAKE WALES",
       "state": "FL",
@@ -8288,13 +9034,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "4",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2101080",
       "school_name": "IN HIS STEPS LEARNING ACADEMY INC",
-      "low_grade": "5",
-      "high_grade": "17",
+      "low_grade": "T1",
+      "high_grade": "12",
       "address": "1980 N ATLANTIC AVE STE 125",
       "city": "COCOA BEACH",
       "state": "FL",
@@ -8306,13 +9054,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "5",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2300642",
       "school_name": "AIM HIGH INTL",
-      "low_grade": "14",
-      "high_grade": "17",
+      "low_grade": "9",
+      "high_grade": "12",
       "address": "737 S RIDGEWOOD AVE",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -8324,13 +9074,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "14",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "00257919",
       "school_name": "BASILICA SCHOOL OF ST PAUL",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "317 MULLALLY ST",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -8342,13 +9094,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A9901166",
       "school_name": "HALIFAX ACADEMY",
-      "low_grade": "9",
-      "high_grade": "17",
+      "low_grade": "4",
+      "high_grade": "12",
       "address": "275 N WILLIAMSON BLVD",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -8360,13 +9114,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "9",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "AA890165",
       "school_name": "INDIGO CHRISTIAN JR ACADEMY",
-      "low_grade": "3",
-      "high_grade": "12",
+      "low_grade": "K",
+      "high_grade": "7",
       "address": "401 N WILLIAMSON BLVD",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -8378,13 +9134,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "12"
     },
     {
       "nces_pss_id": "A1901292",
       "school_name": "MONARCH ACADEMY",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "2276 BAYLESS BLVD",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -8396,13 +9154,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A9701110",
       "school_name": "MOUNT CALVARY ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "700 BELLEVUE AVE",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -8414,13 +9174,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1901453",
       "school_name": "ZAMZAM KNOWLEDGE ACADEMY INC",
-      "low_grade": "2",
-      "high_grade": "10",
+      "low_grade": "PK",
+      "high_grade": "5",
       "address": "347 S KEECH ST",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -8432,13 +9194,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "10"
     },
     {
       "nces_pss_id": "A2100836",
       "school_name": "AVENGERS CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "1605 LADY BOWERS TRL",
       "city": "LAKELAND",
       "state": "FL",
@@ -8450,13 +9214,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1500967",
       "school_name": "CES ACADEMY OF LAKELAND",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "615 OLD POLK CITY RD",
       "city": "LAKELAND",
       "state": "FL",
@@ -8468,13 +9234,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1701186",
       "school_name": "SPARROW ACADEMY",
-      "low_grade": "8",
-      "high_grade": "17",
+      "low_grade": "3",
+      "high_grade": "12",
       "address": "8595 US HIGHWAY 98 N",
       "city": "LAKELAND",
       "state": "FL",
@@ -8486,13 +9254,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "8",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1501082",
       "school_name": "ST ANTHONY CATHOLIC SCHOOL",
-      "low_grade": "3",
-      "high_grade": "13",
+      "low_grade": "K",
+      "high_grade": "8",
       "address": "924 MARCUM RD",
       "city": "LAKELAND",
       "state": "FL",
@@ -8504,13 +9274,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A9303061",
       "school_name": "MARANATHA CHRISTIAN ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "10926 S US HIGHWAY 301",
       "city": "WEBSTER",
       "state": "FL",
@@ -8522,13 +9294,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A0901083",
       "school_name": "NO LIMITS ACADEMY",
-      "low_grade": "3",
-      "high_grade": "17",
+      "low_grade": "K",
+      "high_grade": "12",
       "address": "4450 W EAU GALLIE BLVD STE 180",
       "city": "MELBOURNE",
       "state": "FL",
@@ -8540,13 +9314,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A2100868",
       "school_name": "BLUE JAY ACADEMY",
-      "low_grade": "6",
-      "high_grade": "17",
+      "low_grade": "1",
+      "high_grade": "12",
       "address": "630 N WILD OLIVE AVE",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -8558,13 +9334,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "17"
     },
     {
       "nces_pss_id": "A1300754",
       "school_name": "IMAGINATION STATION TOO MONTESSORI",
-      "low_grade": "3",
-      "high_grade": "4",
+      "low_grade": "K",
+      "high_grade": "TK",
       "address": "528 N PENINSULA DR",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -8576,13 +9354,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "3",
+      "high_grade_code": "4"
     },
     {
       "nces_pss_id": "00257941",
       "school_name": "LOURDES ACADEMY",
-      "low_grade": "2",
-      "high_grade": "13",
+      "low_grade": "PK",
+      "high_grade": "8",
       "address": "1014 N HALIFAX AVE",
       "city": "DAYTONA BEACH",
       "state": "FL",
@@ -8594,13 +9374,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A2100797",
       "school_name": "ACADEMY PREP CENTER OF LAKELAND",
-      "low_grade": "10",
-      "high_grade": "13",
+      "low_grade": "5",
+      "high_grade": "8",
       "address": "1021 LAKELAND HILLS BLVD",
       "city": "LAKELAND",
       "state": "FL",
@@ -8612,13 +9394,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "10",
+      "high_grade_code": "13"
     },
     {
       "nces_pss_id": "A1901175",
       "school_name": "GREATER ST. PAUL ACADEMY",
-      "low_grade": "2",
-      "high_grade": "14",
+      "low_grade": "PK",
+      "high_grade": "9",
       "address": "1130 N WEBSTER AVE",
       "city": "LAKELAND",
       "state": "FL",
@@ -8630,13 +9414,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "14"
     },
     {
       "nces_pss_id": "A0970309",
       "school_name": "HEAD OF THE CLASS LEARNING CENTER",
-      "low_grade": "2",
-      "high_grade": "12",
+      "low_grade": "PK",
+      "high_grade": "7",
       "address": "1836 KATHLEEN RD",
       "city": "LAKELAND",
       "state": "FL",
@@ -8648,13 +9434,15 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "2",
+      "high_grade_code": "12"
     },
     {
       "nces_pss_id": "A1901182",
       "school_name": "INSPIRATION ACADEMY OF LAKELAND",
-      "low_grade": "6",
-      "high_grade": "10",
+      "low_grade": "1",
+      "high_grade": "5",
       "address": "1020 N KENTUCKY AVE",
       "city": "LAKELAND",
       "state": "FL",
@@ -8666,7 +9454,9 @@
       "sources": [
         "nces_pss_32803.html",
         "nces_pss_dup.html"
-      ]
+      ],
+      "low_grade_code": "6",
+      "high_grade_code": "10"
     }
   ]
 }
