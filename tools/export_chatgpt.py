@@ -258,16 +258,59 @@ HEADER = """\
 | All 29 skill structures — lesson plans, IEP goals, assessments, parent comms, etc. | ✅ Works |
 | Governance rules — DRAFT label, no student PII, IEP legal boundaries | ✅ Works |
 | Output formats — structured artifacts matching TOS specifications | ✅ Works |
-| Florida B.E.S.T. standard codes | ⚠️ ChatGPT recalls from training data, NOT a verified corpus. **Always verify every standard code on [cpalms.org](https://www.cpalms.org) before using in any formal document.** |
-| Standards corpus search (6,583 FL standards) | ❌ Not available — requires the Claude TOS environment |
+| Standards corpus (6,583 FL standards, full text) | ✅ **With the Reference Pack** added to your Project (see "Two ways to set up") — verified Florida snapshot. ❌ Without it. Either way, **verify every code on [cpalms.org](https://www.cpalms.org) before using in any formal document.** |
+| Florida B.E.S.T. standard codes | ⚠️ Without the pack, ChatGPT recalls codes from training data, NOT a verified corpus — treat every code as unconfirmed until checked on cpalms.org. |
 | Document parsing pipeline (PDFs, DOCX, scanned files) | ❌ Not available — requires the Claude TOS environment |
 | Standards crawler (FLDOE/CPALMS live updates) | ❌ Not available — requires the Claude TOS environment |
 | Quality Gates scoring script | ❌ Not available — ChatGPT can approximate in prose only |
 
 **The bottom line:** ChatGPT will follow TOS skill structure and governance rules.
-It cannot run code, query the verified standards corpus, or crawl live sources.
-For the full TOS experience — including verified standards, document ingestion, and
-quality scoring — use the Claude deployment.
+It cannot run code or crawl live sources; with the Reference Pack it CAN quote the
+verified Florida standards snapshot. For the full TOS experience — document
+ingestion, live update checks, and quality scoring — use the Claude deployment.
+
+---
+
+## Two ways to set up
+
+**Level 1 — this file only.** Add `TOS-skills.md` to a Project and go. Works
+everywhere; standards come from the model's memory, so verify everything on
+cpalms.org before formal use.
+
+**Level 2 — add the Reference Pack (recommended).** Download the 11 files in
+`implementation/gpt/web/reference-pack/` and add them to the same Project
+(the pack uses 11 of your ~20 Project file slots; this file and your profile
+use 2 more). Now standards, course-code, district, and school-type answers
+quote the **actual verified Florida data** (full standard text, captured on the
+dates listed in the pack's `MANIFEST.md`). Honesty line: verified data ships for **Florida only**
+today — for other states the assistant falls back to general knowledge, so
+always verify against your own state's site.
+
+Working on a computer with the full TOS repository? The Claude deployment adds
+document parsing, live update checks, and quality scoring — see
+`implementation/claude/README.md`.
+
+---
+
+## After setup: your requirements map
+
+Once your profile and the Reference Pack are both in the Project, say
+**"build my requirements map"** (the assistant should also offer it right after
+profile setup). You get ONE consolidated table scoped to your grade, subject,
+and school:
+
+| What's in it | Pulled from |
+|---|---|
+| Every standard for your grade + subject (code and full statement) | the `fl-standards-*.json` pack files |
+| Your course code(s) and titles | `fl-course-codes.json` |
+| Your district's row | `fl-districts.json` |
+| Your school type's rule-set (standards applicability, assessment) | `fl-school-types.json` |
+
+Every row cites **which pack file it came from** and **the external authority
+to verify it on** (cpalms.org / the FLDOE URLs in `MANIFEST.md`), plus the
+snapshot date. Mandatory footer on every requirements map:
+*DRAFT — assembled from the uploaded pack files; a human must verify anything
+used in a formal document on the cited authority (human_review_required).*
 
 ---
 

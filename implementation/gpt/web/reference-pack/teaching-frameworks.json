@@ -1,0 +1,1437 @@
+{
+  "_comment": "GENERATED consolidation of six small canonical reference files (source metadata preserved verbatim under each key). Built by tools/export_reference_pack.py — never edit by hand.",
+  "human_review_required": true,
+  "blooms_taxonomy": {
+    "_comment": "Revised Bloom's Taxonomy (Anderson & Krathwohl, 2001). Six cognitive process dimensions with action verbs. Used by cognitive-rigor atom to classify objectives and assessment items. Source: public-domain summary of the published taxonomy.",
+    "version": "revised-2001",
+    "source": "Anderson, L.W. & Krathwohl, D.R. (2001). A Taxonomy for Learning, Teaching, and Assessing.",
+    "levels": [
+      {
+        "level": 1,
+        "name": "Remember",
+        "definition": "Retrieve relevant knowledge from long-term memory.",
+        "verbs": [
+          "define",
+          "list",
+          "recall",
+          "recognize",
+          "identify",
+          "name",
+          "state",
+          "describe",
+          "label",
+          "match",
+          "memorize",
+          "recite",
+          "select"
+        ]
+      },
+      {
+        "level": 2,
+        "name": "Understand",
+        "definition": "Construct meaning from instructional messages, including oral, written, and graphic communication.",
+        "verbs": [
+          "explain",
+          "summarize",
+          "paraphrase",
+          "classify",
+          "compare",
+          "interpret",
+          "exemplify",
+          "infer",
+          "discuss",
+          "distinguish",
+          "predict",
+          "restate"
+        ]
+      },
+      {
+        "level": 3,
+        "name": "Apply",
+        "definition": "Carry out or use a procedure in a given situation.",
+        "verbs": [
+          "apply",
+          "demonstrate",
+          "solve",
+          "use",
+          "execute",
+          "implement",
+          "calculate",
+          "illustrate",
+          "show",
+          "complete",
+          "construct",
+          "operate"
+        ]
+      },
+      {
+        "level": 4,
+        "name": "Analyze",
+        "definition": "Break material into constituent parts and determine how parts relate to one another and to an overall structure or purpose.",
+        "verbs": [
+          "analyze",
+          "differentiate",
+          "organize",
+          "attribute",
+          "compare",
+          "contrast",
+          "deconstruct",
+          "examine",
+          "distinguish",
+          "categorize",
+          "investigate",
+          "outline"
+        ]
+      },
+      {
+        "level": 5,
+        "name": "Evaluate",
+        "definition": "Make judgments based on criteria and standards.",
+        "verbs": [
+          "evaluate",
+          "judge",
+          "critique",
+          "justify",
+          "defend",
+          "assess",
+          "argue",
+          "support",
+          "prioritize",
+          "rank",
+          "recommend",
+          "appraise"
+        ]
+      },
+      {
+        "level": 6,
+        "name": "Create",
+        "definition": "Put elements together to form a coherent or functional whole; reorganize elements into a new pattern or structure.",
+        "verbs": [
+          "create",
+          "design",
+          "develop",
+          "formulate",
+          "compose",
+          "construct",
+          "plan",
+          "produce",
+          "invent",
+          "generate",
+          "hypothesize",
+          "synthesize"
+        ]
+      }
+    ],
+    "knowledge_dimensions": [
+      {
+        "dimension": "Factual",
+        "description": "Basic elements students must know — terminology, specific details."
+      },
+      {
+        "dimension": "Conceptual",
+        "description": "Interrelationships among basic elements — categories, principles, theories."
+      },
+      {
+        "dimension": "Procedural",
+        "description": "How to do something — methods, techniques, algorithms, criteria for use."
+      },
+      {
+        "dimension": "Metacognitive",
+        "description": "Knowledge of cognition and awareness of one's own cognition."
+      }
+    ]
+  },
+  "webbs_dok": {
+    "_comment": "Webb's Depth of Knowledge (DOK) framework. Four complexity levels for aligning standards, instruction, and assessment. Used by cognitive-rigor atom alongside Bloom's. Source: Norman Webb (1997, 2002), WCEPS. Public framework.",
+    "version": "1.0.0",
+    "source": "Webb, N.L. (1997). Criteria for Alignment of Expectations and Assessments. CCSSO/WCEPS.",
+    "levels": [
+      {
+        "dok": 1,
+        "name": "Recall & Reproduction",
+        "description": "Recall a fact, definition, term, or perform a simple procedure. Requires rote responses, use of formulas, or one-step processes.",
+        "student_role": "The student recalls, observes, or completes a routine task.",
+        "typical_verbs": [
+          "recall",
+          "recognize",
+          "identify",
+          "define",
+          "list",
+          "label",
+          "state",
+          "measure",
+          "use",
+          "calculate"
+        ],
+        "examples": {
+          "ELA": "Identify the setting of a story.",
+          "Math": "Recall the formula for area of a rectangle.",
+          "Science": "Label the parts of a cell."
+        },
+        "assessment_ceiling": "Selected-response items testing isolated facts or simple procedures."
+      },
+      {
+        "dok": 2,
+        "name": "Skill / Concept",
+        "description": "Requires mental processing beyond recall — decisions about how to approach a problem, requires two or more steps.",
+        "student_role": "The student makes decisions about approach, classifies, organizes, compares, or interprets information.",
+        "typical_verbs": [
+          "classify",
+          "compare",
+          "contrast",
+          "organize",
+          "interpret",
+          "estimate",
+          "summarize",
+          "infer",
+          "predict",
+          "cause/effect",
+          "distinguish",
+          "explain why"
+        ],
+        "examples": {
+          "ELA": "Compare two characters' motivations using text evidence.",
+          "Math": "Solve a two-step word problem choosing the correct operations.",
+          "Science": "Classify organisms based on observable characteristics."
+        },
+        "assessment_ceiling": "Short constructed-response items, items requiring application of a concept."
+      },
+      {
+        "dok": 3,
+        "name": "Strategic Thinking",
+        "description": "Requires reasoning, planning, developing a plan or sequence of steps. Requires justification, complex and abstract thinking.",
+        "student_role": "The student reasons, plans, uses evidence, thinks abstractly. More than one possible answer.",
+        "typical_verbs": [
+          "analyze",
+          "justify",
+          "prove",
+          "formulate",
+          "hypothesize",
+          "cite evidence",
+          "draw conclusions",
+          "construct",
+          "critique",
+          "investigate",
+          "differentiate"
+        ],
+        "examples": {
+          "ELA": "Write an argument using multiple sources and address a counterclaim.",
+          "Math": "Solve a non-routine problem requiring multiple approaches.",
+          "Science": "Design an experiment to test a hypothesis."
+        },
+        "assessment_ceiling": "Extended constructed-response, multi-step problems with justification."
+      },
+      {
+        "dok": 4,
+        "name": "Extended Thinking",
+        "description": "Requires investigation, complex reasoning over time, and connecting and applying multiple concepts. Typically takes days or weeks.",
+        "student_role": "The student connects and synthesizes ideas across content areas, applies knowledge to real-world problems.",
+        "typical_verbs": [
+          "design",
+          "synthesize",
+          "apply concepts",
+          "connect",
+          "create",
+          "critique across sources",
+          "conduct research",
+          "analyze multiple sources"
+        ],
+        "examples": {
+          "ELA": "Write a research paper synthesizing multiple perspectives on a social issue.",
+          "Math": "Design and conduct a statistical study to answer a real-world question.",
+          "Science": "Conduct a multi-week investigation, analyze data, and present findings."
+        },
+        "assessment_ceiling": "Performance tasks, research projects, portfolios — rarely used in on-demand testing."
+      }
+    ],
+    "alignment_note": "A standard's DOK is the CEILING — the most complex thinking the standard demands. Assessment items should match the standard's DOK, not default to DOK 1. Use alongside Bloom's: Bloom's identifies the cognitive PROCESS; DOK identifies the COMPLEXITY of that process."
+  },
+  "cast_udl_3_0": {
+    "_comment": "CAST Universal Design for Learning (UDL) Guidelines 3.0 (July 2024). 3 principles, 9 guidelines, 31 checkpoints. Used by udl-options and accommodation-match atoms. Source: udlguidelines.cast.org. Licensed under Creative Commons BY-SA 4.0.",
+    "version": "3.0",
+    "released": "2024-07",
+    "source": "CAST (2024). Universal Design for Learning Guidelines version 3.0. https://udlguidelines.cast.org",
+    "license": "CC BY-SA 4.0",
+    "goal": "Develop expert learners who are purposeful and motivated, resourceful and knowledgeable, and strategic and goal-directed.",
+    "principles": [
+      {
+        "principle": "Engagement",
+        "description": "The WHY of learning. Provide multiple means of engagement to tap into learners' interests, challenge them appropriately, and motivate them.",
+        "expert_learner_goal": "Purposeful and motivated learners",
+        "guidelines": [
+          {
+            "guideline": "7",
+            "name": "Recruiting Interest",
+            "checkpoints": [
+              {
+                "id": "7.1",
+                "text": "Optimize individual choice and autonomy"
+              },
+              {
+                "id": "7.2",
+                "text": "Optimize relevance, value, and authenticity"
+              },
+              {
+                "id": "7.3",
+                "text": "Minimize threats and distractions"
+              }
+            ]
+          },
+          {
+            "guideline": "8",
+            "name": "Sustaining Effort & Persistence",
+            "checkpoints": [
+              {
+                "id": "8.1",
+                "text": "Heighten salience of goals and objectives"
+              },
+              {
+                "id": "8.2",
+                "text": "Vary demands and resources to optimize challenge"
+              },
+              {
+                "id": "8.3",
+                "text": "Foster collaboration and community"
+              },
+              {
+                "id": "8.4",
+                "text": "Increase mastery-oriented feedback"
+              }
+            ]
+          },
+          {
+            "guideline": "9",
+            "name": "Self Regulation",
+            "checkpoints": [
+              {
+                "id": "9.1",
+                "text": "Promote expectations and beliefs that optimize motivation"
+              },
+              {
+                "id": "9.2",
+                "text": "Facilitate personal coping skills and strategies"
+              },
+              {
+                "id": "9.3",
+                "text": "Develop self-assessment and reflection"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "principle": "Representation",
+        "description": "The WHAT of learning. Provide multiple means of representation to give learners various ways of acquiring information and knowledge.",
+        "expert_learner_goal": "Resourceful and knowledgeable learners",
+        "guidelines": [
+          {
+            "guideline": "1",
+            "name": "Perception",
+            "checkpoints": [
+              {
+                "id": "1.1",
+                "text": "Offer ways of customizing the display of information"
+              },
+              {
+                "id": "1.2",
+                "text": "Offer alternatives for auditory information"
+              },
+              {
+                "id": "1.3",
+                "text": "Offer alternatives for visual information"
+              }
+            ]
+          },
+          {
+            "guideline": "2",
+            "name": "Language & Symbols",
+            "checkpoints": [
+              {
+                "id": "2.1",
+                "text": "Clarify vocabulary and symbols"
+              },
+              {
+                "id": "2.2",
+                "text": "Clarify syntax and structure"
+              },
+              {
+                "id": "2.3",
+                "text": "Support decoding of text, mathematical notation, and symbols"
+              },
+              {
+                "id": "2.4",
+                "text": "Promote understanding across languages"
+              },
+              {
+                "id": "2.5",
+                "text": "Illustrate through multiple media"
+              }
+            ]
+          },
+          {
+            "guideline": "3",
+            "name": "Comprehension",
+            "checkpoints": [
+              {
+                "id": "3.1",
+                "text": "Activate or supply background knowledge"
+              },
+              {
+                "id": "3.2",
+                "text": "Highlight patterns, critical features, big ideas, and relationships"
+              },
+              {
+                "id": "3.3",
+                "text": "Guide information processing and visualization"
+              },
+              {
+                "id": "3.4",
+                "text": "Maximize transfer and generalization"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "principle": "Action & Expression",
+        "description": "The HOW of learning. Provide multiple means of action and expression to allow learners alternatives for demonstrating what they know.",
+        "expert_learner_goal": "Strategic and goal-directed learners",
+        "guidelines": [
+          {
+            "guideline": "4",
+            "name": "Physical Action",
+            "checkpoints": [
+              {
+                "id": "4.1",
+                "text": "Vary the methods for response and navigation"
+              },
+              {
+                "id": "4.2",
+                "text": "Optimize access to tools and assistive technologies"
+              }
+            ]
+          },
+          {
+            "guideline": "5",
+            "name": "Expression & Communication",
+            "checkpoints": [
+              {
+                "id": "5.1",
+                "text": "Use multiple media for communication"
+              },
+              {
+                "id": "5.2",
+                "text": "Use multiple tools for construction and composition"
+              },
+              {
+                "id": "5.3",
+                "text": "Build fluencies with graduated levels of support for practice and performance"
+              }
+            ]
+          },
+          {
+            "guideline": "6",
+            "name": "Executive Functions",
+            "checkpoints": [
+              {
+                "id": "6.1",
+                "text": "Guide appropriate goal-setting"
+              },
+              {
+                "id": "6.2",
+                "text": "Support planning and strategy development"
+              },
+              {
+                "id": "6.3",
+                "text": "Facilitate managing information and resources"
+              },
+              {
+                "id": "6.4",
+                "text": "Enhance capacity for monitoring progress"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "fl_feaps": {
+    "_comment": "Florida Educator Accomplished Practices (FEAPs). 6 practices with indicators per Rule 6A-5.065, F.A.C. Used by professional-learning and school-administration atoms for observation alignment. Source: FLDOE (revised June 2025). Public data.",
+    "version": "2025-06",
+    "source": "Florida Department of Education. Rule 6A-5.065, F.A.C. https://www.fldoe.org/teaching/professional-dev/the-fl-educator-accomplished-practices.stml",
+    "practices": [
+      {
+        "practice": 1,
+        "name": "Instructional Design and Lesson Planning",
+        "description": "Applying concepts from human development and learning theories, the effective educator consistently designs standards-based lessons, plans instruction, and selects strategies to engage and meet the needs of learners.",
+        "indicators": [
+          "Aligns instruction with state-adopted standards at the appropriate level of rigor",
+          "Sequences lessons and concepts to ensure coherence and required prior knowledge",
+          "Designs instruction for students to achieve mastery",
+          "Selects appropriate formative assessments to monitor learning",
+          "Uses diagnostic student data to plan lessons",
+          "Develops learning experiences that require students to demonstrate a variety of applicable skills and competencies"
+        ]
+      },
+      {
+        "practice": 2,
+        "name": "The Learning Environment",
+        "description": "To maintain a student-centered learning environment that is safe, organized, equitable, flexible, inclusive, and collaborative, the effective educator consistently arranges and manages the physical and social conditions of the learning environment.",
+        "indicators": [
+          "Organizes, allocates, and manages the resources of time, space, and attention",
+          "Manages individual and class behaviors through a well-planned management system",
+          "Conveys high expectations to all students",
+          "Respects students' cultural, linguistic, and family background",
+          "Models clear, acceptable oral and written communication skills",
+          "Maintains a climate of openness, inquiry, fairness, and support",
+          "Integrates current information and communication technologies",
+          "Adapts the learning environment to accommodate the differing needs and diversity of students",
+          "Utilizes current and emerging assistive technologies that enable students to participate in high-quality communication and interaction"
+        ]
+      },
+      {
+        "practice": 3,
+        "name": "Instructional Delivery and Facilitation",
+        "description": "The effective educator consistently utilizes a deep and comprehensive knowledge of the subject taught to deliver engaging and relevant lessons and facilitate student achievement.",
+        "indicators": [
+          "Delivers engaging and challenging lessons",
+          "Deepens and enriches students' understanding through content area literacy strategies, verbalization of thought, and application of the subject matter",
+          "Identifies gaps in students' subject matter knowledge",
+          "Modifies instruction to respond to preconceptions or misconceptions",
+          "Relates and integrates the subject matter with other disciplines and life experiences",
+          "Employs higher-order questioning techniques",
+          "Applies varied instructional strategies and resources, including appropriate technology",
+          "Differentiates instruction based on an assessment of student learning needs and recognition of individual differences",
+          "Supports, encourages, and provides immediate and specific feedback to students to promote student achievement",
+          "Utilizes student feedback to monitor instructional needs and to adjust instruction"
+        ]
+      },
+      {
+        "practice": 4,
+        "name": "Assessment",
+        "description": "The effective educator consistently gathers, analyzes, and uses data and evidence to inform decisions about teaching and learning.",
+        "indicators": [
+          "Analyzes and applies data from multiple assessments and measures",
+          "Designs and aligns formative and summative assessments that match learning objectives and lead to mastery",
+          "Uses a variety of assessment tools to monitor student progress, achievement, and learning gains",
+          "Modifies assessments and testing conditions to accommodate learning styles and varying levels of knowledge",
+          "Shares the importance and outcomes of student assessment data with the student and the student's parent/caregiver(s)",
+          "Applies technology to organize and integrate assessment information"
+        ]
+      },
+      {
+        "practice": 5,
+        "name": "Continuous Professional Improvement",
+        "description": "The effective educator consistently designs purposeful professional goals to strengthen the effectiveness of instruction based on students' needs.",
+        "indicators": [
+          "Designs purposeful professional goals to strengthen the effectiveness of instruction based on students' needs",
+          "Examines and uses data-informed research to improve instruction and student achievement",
+          "Uses a variety of data, independently and in collaboration with colleagues, to evaluate learning outcomes, adjust planning, and continuously improve the effectiveness of lessons",
+          "Collaborates with the home, school, and larger communities to foster communication and to support student learning and continuous improvement",
+          "Applies knowledge of emerging trends in education to enhance professional practice"
+        ]
+      },
+      {
+        "practice": 6,
+        "name": "Professional Responsibility and Ethical Conduct",
+        "description": "Understanding that educators are held to a high moral standard in a community, the effective educator adheres to the Code of Ethics and the Principles of Professional Conduct of the Education Profession of Florida.",
+        "indicators": [
+          "Understands and adheres to the Code of Ethics and Principles of Professional Conduct",
+          "Fulfills the expected obligations to students, the public, and the education profession"
+        ]
+      }
+    ]
+  },
+  "coxhead_awl": {
+    "_comment": "Coxhead Academic Word List (AWL). 570 word families in 10 sublists ordered by frequency in academic texts. Used by vocabulary-select atom for identifying academic vocabulary. Source: Coxhead, A. (2000). Victoria University of Wellington. Public data.",
+    "version": "1.0.0",
+    "source": "Coxhead, A. (2000). A New Academic Word List. TESOL Quarterly 34(2), pp.213-238.",
+    "total_word_families": 570,
+    "sublists": [
+      {
+        "sublist": 1,
+        "frequency_note": "Most frequent 60 word families in academic text",
+        "words": [
+          "analyse",
+          "approach",
+          "area",
+          "assess",
+          "assume",
+          "authority",
+          "available",
+          "benefit",
+          "concept",
+          "consist",
+          "constitute",
+          "context",
+          "contract",
+          "create",
+          "data",
+          "define",
+          "derive",
+          "distribute",
+          "economy",
+          "environment",
+          "establish",
+          "estimate",
+          "evident",
+          "export",
+          "factor",
+          "finance",
+          "formula",
+          "function",
+          "identify",
+          "income",
+          "indicate",
+          "individual",
+          "interpret",
+          "involve",
+          "issue",
+          "labour",
+          "legal",
+          "legislate",
+          "major",
+          "method",
+          "occur",
+          "percent",
+          "period",
+          "policy",
+          "principle",
+          "proceed",
+          "process",
+          "require",
+          "research",
+          "respond",
+          "role",
+          "section",
+          "sector",
+          "significant",
+          "similar",
+          "source",
+          "specific",
+          "structure",
+          "theory",
+          "vary"
+        ]
+      },
+      {
+        "sublist": 2,
+        "frequency_note": "Next most frequent 60 word families",
+        "words": [
+          "achieve",
+          "acquire",
+          "administrate",
+          "affect",
+          "appropriate",
+          "aspect",
+          "assist",
+          "category",
+          "chapter",
+          "commission",
+          "community",
+          "complex",
+          "compute",
+          "conclude",
+          "conduct",
+          "consequent",
+          "construct",
+          "consume",
+          "credit",
+          "culture",
+          "design",
+          "distinct",
+          "element",
+          "equate",
+          "evaluate",
+          "feature",
+          "final",
+          "focus",
+          "impact",
+          "injure",
+          "institute",
+          "invest",
+          "item",
+          "journal",
+          "maintain",
+          "normal",
+          "obtain",
+          "participate",
+          "perceive",
+          "positive",
+          "potential",
+          "previous",
+          "primary",
+          "purchase",
+          "range",
+          "region",
+          "regulate",
+          "relevant",
+          "reside",
+          "resource",
+          "restrict",
+          "secure",
+          "seek",
+          "select",
+          "site",
+          "strategy",
+          "survey",
+          "text",
+          "tradition",
+          "transfer"
+        ]
+      },
+      {
+        "sublist": 3,
+        "frequency_note": "60 word families",
+        "words": [
+          "alternative",
+          "circumstance",
+          "comment",
+          "compensate",
+          "component",
+          "consent",
+          "considerable",
+          "constant",
+          "constrain",
+          "contribute",
+          "convene",
+          "coordinate",
+          "core",
+          "corporate",
+          "correspond",
+          "criteria",
+          "deduce",
+          "demonstrate",
+          "document",
+          "dominate",
+          "emphasis",
+          "ensure",
+          "exclude",
+          "framework",
+          "fund",
+          "illustrate",
+          "immigrate",
+          "imply",
+          "initial",
+          "instance",
+          "interact",
+          "justify",
+          "layer",
+          "link",
+          "locate",
+          "maximise",
+          "minor",
+          "negate",
+          "outcome",
+          "partner",
+          "philosophy",
+          "physical",
+          "proportion",
+          "publish",
+          "react",
+          "register",
+          "rely",
+          "remove",
+          "scheme",
+          "sequence",
+          "sex",
+          "shift",
+          "specify",
+          "sufficient",
+          "task",
+          "technical",
+          "technique",
+          "technology",
+          "valid",
+          "volume"
+        ]
+      },
+      {
+        "sublist": 4,
+        "frequency_note": "60 word families",
+        "words": [
+          "access",
+          "adequate",
+          "annual",
+          "apparent",
+          "approximate",
+          "attitude",
+          "attribute",
+          "civil",
+          "code",
+          "commit",
+          "communicate",
+          "concentrate",
+          "confer",
+          "contrast",
+          "cycle",
+          "debate",
+          "despite",
+          "dimension",
+          "domestic",
+          "emerge",
+          "error",
+          "ethnic",
+          "goal",
+          "grant",
+          "hence",
+          "hypothesis",
+          "implement",
+          "implicate",
+          "impose",
+          "integrate",
+          "internal",
+          "investigate",
+          "job",
+          "label",
+          "mechanism",
+          "obvious",
+          "occupy",
+          "option",
+          "output",
+          "overall",
+          "parallel",
+          "parameter",
+          "phase",
+          "predict",
+          "principal",
+          "prior",
+          "professional",
+          "project",
+          "promote",
+          "regime",
+          "resolve",
+          "retain",
+          "series",
+          "statistic",
+          "status",
+          "stress",
+          "subsequent",
+          "sum",
+          "summary",
+          "undertake"
+        ]
+      },
+      {
+        "sublist": 5,
+        "frequency_note": "60 word families",
+        "words": [
+          "academy",
+          "adjust",
+          "alter",
+          "amend",
+          "aware",
+          "capacity",
+          "challenge",
+          "clause",
+          "compound",
+          "conflict",
+          "consult",
+          "contact",
+          "decline",
+          "discrete",
+          "draft",
+          "enable",
+          "energy",
+          "enforce",
+          "entity",
+          "equivalent",
+          "evolve",
+          "expand",
+          "expose",
+          "external",
+          "facilitate",
+          "fundamental",
+          "generate",
+          "generation",
+          "image",
+          "liberal",
+          "licence",
+          "logic",
+          "margin",
+          "medical",
+          "mental",
+          "modify",
+          "monitor",
+          "network",
+          "notion",
+          "objective",
+          "orient",
+          "perspective",
+          "precise",
+          "prime",
+          "psychology",
+          "pursue",
+          "ratio",
+          "reject",
+          "revenue",
+          "stable",
+          "style",
+          "substitute",
+          "sustain",
+          "symbol",
+          "target",
+          "transit",
+          "trend",
+          "version",
+          "welfare",
+          "whereas"
+        ]
+      },
+      {
+        "sublist": 6,
+        "frequency_note": "60 word families",
+        "words": [
+          "abstract",
+          "accurate",
+          "acknowledge",
+          "aggregate",
+          "allocate",
+          "assign",
+          "attach",
+          "author",
+          "bond",
+          "brief",
+          "capable",
+          "cite",
+          "cooperate",
+          "discriminate",
+          "display",
+          "diverse",
+          "domain",
+          "edit",
+          "enhance",
+          "estate",
+          "exceed",
+          "expert",
+          "explicit",
+          "federal",
+          "fee",
+          "flexible",
+          "furthermore",
+          "gender",
+          "ignorant",
+          "incentive",
+          "incidence",
+          "incorporate",
+          "index",
+          "inhibit",
+          "initiate",
+          "input",
+          "instruct",
+          "intelligent",
+          "interval",
+          "lecture",
+          "migrate",
+          "minimum",
+          "ministry",
+          "motive",
+          "neutral",
+          "nevertheless",
+          "overseas",
+          "precede",
+          "presume",
+          "rational",
+          "recover",
+          "reveal",
+          "scope",
+          "subsidiary",
+          "tape",
+          "trace",
+          "transform",
+          "transport",
+          "underlie",
+          "utilise"
+        ]
+      },
+      {
+        "sublist": 7,
+        "frequency_note": "60 word families",
+        "words": [
+          "adapt",
+          "adult",
+          "advocate",
+          "aid",
+          "channel",
+          "chemical",
+          "classic",
+          "comprehensive",
+          "comprise",
+          "confirm",
+          "contrary",
+          "convert",
+          "couple",
+          "decade",
+          "definite",
+          "deny",
+          "differentiate",
+          "dispose",
+          "dynamic",
+          "eliminate",
+          "empirical",
+          "equip",
+          "extract",
+          "file",
+          "finite",
+          "foundation",
+          "globe",
+          "grade",
+          "guarantee",
+          "hierarchy",
+          "identical",
+          "ideology",
+          "infer",
+          "innovate",
+          "insert",
+          "intervene",
+          "isolate",
+          "media",
+          "mode",
+          "paradigm",
+          "phenomenon",
+          "priority",
+          "prohibit",
+          "publication",
+          "quote",
+          "release",
+          "reverse",
+          "simulate",
+          "sole",
+          "somewhat",
+          "submit",
+          "successor",
+          "supplement",
+          "survive",
+          "thesis",
+          "topic",
+          "transmit",
+          "ultimate",
+          "unique",
+          "visible"
+        ]
+      },
+      {
+        "sublist": 8,
+        "frequency_note": "60 word families",
+        "words": [
+          "abandon",
+          "accompany",
+          "accumulate",
+          "ambiguous",
+          "append",
+          "appreciate",
+          "arbitrary",
+          "automate",
+          "bias",
+          "chart",
+          "clarify",
+          "commodity",
+          "complement",
+          "conform",
+          "contemporary",
+          "contradict",
+          "crucial",
+          "currency",
+          "denote",
+          "detect",
+          "deviate",
+          "displace",
+          "drama",
+          "eventual",
+          "exhibit",
+          "exploit",
+          "fluctuate",
+          "guideline",
+          "highlight",
+          "implicit",
+          "induce",
+          "inevitable",
+          "infrastructure",
+          "inspect",
+          "intense",
+          "manipulate",
+          "minimise",
+          "nuclear",
+          "offset",
+          "paragraph",
+          "plus",
+          "practitioner",
+          "predominant",
+          "prospect",
+          "radical",
+          "random",
+          "reinforce",
+          "restore",
+          "revise",
+          "schedule",
+          "tense",
+          "terminate",
+          "theme",
+          "thereby",
+          "uniform",
+          "vehicle",
+          "via",
+          "virtual",
+          "visual",
+          "widespread"
+        ]
+      },
+      {
+        "sublist": 9,
+        "frequency_note": "60 word families",
+        "words": [
+          "accommodate",
+          "analogy",
+          "anticipate",
+          "assure",
+          "attain",
+          "behalf",
+          "bulk",
+          "cease",
+          "coherent",
+          "coincide",
+          "commence",
+          "compatible",
+          "concurrent",
+          "confine",
+          "controversy",
+          "converse",
+          "device",
+          "devote",
+          "diminish",
+          "distort",
+          "duration",
+          "erode",
+          "ethic",
+          "format",
+          "found",
+          "inherent",
+          "insight",
+          "integral",
+          "intermediate",
+          "manual",
+          "mature",
+          "mediate",
+          "medium",
+          "military",
+          "minimal",
+          "mutual",
+          "norm",
+          "overlap",
+          "passive",
+          "portion",
+          "preliminary",
+          "protocol",
+          "qualitative",
+          "refine",
+          "relax",
+          "restrain",
+          "revolution",
+          "rigid",
+          "route",
+          "scenario",
+          "sphere",
+          "subordinate",
+          "supplement",
+          "suspend",
+          "team",
+          "temporary",
+          "trigger",
+          "unify",
+          "violate",
+          "vision"
+        ]
+      },
+      {
+        "sublist": 10,
+        "frequency_note": "30 word families (least frequent in academic text)",
+        "words": [
+          "adjacent",
+          "albeit",
+          "assemble",
+          "collapse",
+          "colleague",
+          "compile",
+          "conceive",
+          "convince",
+          "depress",
+          "encounter",
+          "enormous",
+          "forthcoming",
+          "incline",
+          "integrity",
+          "intrinsic",
+          "invoke",
+          "levy",
+          "likewise",
+          "nonetheless",
+          "notwithstanding",
+          "odd",
+          "ongoing",
+          "panel",
+          "persist",
+          "pose",
+          "reluctance",
+          "so-called",
+          "straightforward",
+          "undergo",
+          "whereby"
+        ]
+      }
+    ]
+  },
+  "fl_instructional_toolkits": {
+    "_comment": "Catalog of FLDOE/CPALMS instructional toolkits + standards documents the maintainer provided (browser-saved/downloaded) on 2026-06-28. METADATA ONLY — the PDF binaries are not committed (large, copyrighted FLDOE materials); this indexes what exists, its grade/subject/pages, and a first-page excerpt so the ecosystem knows the resource exists and where it came from. title_confirmed=false means the title was taken from the first-page text, not a verified document title.",
+    "domain": "fl-instructional-toolkits",
+    "version": "0.1.0",
+    "captured": "2026-06-28",
+    "count": 9,
+    "human_review_required": true,
+    "resources": [
+      {
+        "id": "MGScienceToolkit",
+        "title": "Middle Grades Science Instructional Focus Toolkit",
+        "title_confirmed": true,
+        "subject": "Science",
+        "grade": "6-8",
+        "type": "instructional_toolkit",
+        "pages": 54,
+        "first_page_excerpt": "1 Middle Grades Science Toolkit The Middle Grades Instructional Focus Toolkit has been created to assist teachers with planning instruction. This toolkit is not intended to replace your district’s cur",
+        "source": "FLDOE / CPALMS instructional materials",
+        "provenance": {
+          "provided_by": "maintainer (browser-saved/downloaded)",
+          "captured": "2026-06-28"
+        },
+        "extracted": true,
+        "content_file": "toolkit-content/MGScienceToolkit.json",
+        "standards_count": 191,
+        "standards_sample": [
+          "SC.3.E.5.1",
+          "SC.3.E.5.2",
+          "SC.3.E.5.3",
+          "SC.3.E.5.4",
+          "SC.3.E.6.1",
+          "SC.3.L.15.1",
+          "SC.3.L.15.2",
+          "SC.3.L.17.2"
+        ],
+        "embedded_links": 415
+      },
+      {
+        "id": "ThirdGradeToolkit",
+        "title": "Third Grade Toolkit — Standards & Site Links (CPALMS)",
+        "title_confirmed": true,
+        "subject": "ELA",
+        "grade": "3",
+        "type": "instructional_toolkit",
+        "pages": 17,
+        "first_page_excerpt": "Third Grade Toolkit Standards and Site Links CPALMS Lesson Plans CPALMS Related Resources LAFS.3.L.1.1 - Demonstrate command of the conventions of standard English grammar and usage when writing or sp",
+        "source": "FLDOE / CPALMS instructional materials",
+        "provenance": {
+          "provided_by": "maintainer (browser-saved/downloaded)",
+          "captured": "2026-06-28"
+        },
+        "extracted": true,
+        "content_file": "toolkit-content/ThirdGradeToolkit.json",
+        "standards_count": 42,
+        "standards_sample": [
+          "LAFS.3.L.1.1",
+          "LAFS.3.L.1.2",
+          "LAFS.3.L.2.3",
+          "LAFS.3.L.3.4",
+          "LAFS.3.L.3.5",
+          "LAFS.3.L.3.6",
+          "LAFS.3.RF.3.3",
+          "LAFS.3.RF.4.4"
+        ],
+        "embedded_links": 60
+      },
+      {
+        "id": "2ndGMIT",
+        "title": "2nd Grade Mathematics Instructional Toolkit",
+        "title_confirmed": true,
+        "subject": "Math",
+        "grade": "2",
+        "type": "instructional_toolkit",
+        "pages": 23,
+        "first_page_excerpt": "1 | P a g e 2nd Grade Mathematics Instructional Toolkit The 2nd Grade Mathematics Instructional Toolkit is intended to assist teachers with planning lessons aligned to the Florida Standards. This tool",
+        "source": "FLDOE / CPALMS instructional materials",
+        "provenance": {
+          "provided_by": "maintainer (browser-saved/downloaded)",
+          "captured": "2026-06-28"
+        },
+        "extracted": true,
+        "content_file": "toolkit-content/2ndGMIT.json",
+        "standards_count": 37,
+        "standards_sample": [
+          "MAFS.2.G.1",
+          "MAFS.2.G.1.1",
+          "MAFS.2.G.1.2",
+          "MAFS.2.G.1.3",
+          "MAFS.2.MD.1",
+          "MAFS.2.MD.1.1",
+          "MAFS.2.MD.1.2",
+          "MAFS.2.MD.1.3"
+        ],
+        "embedded_links": 188
+      },
+      {
+        "id": "Grade3ScienceToolkit",
+        "title": "Grade 3 Science Instructional Focus Toolkit",
+        "title_confirmed": true,
+        "subject": "Science",
+        "grade": "3",
+        "type": "instructional_toolkit",
+        "pages": 10,
+        "first_page_excerpt": "1 Grade 3 Science Instructional Focus / Toolkit The Grade 3 Science Instructional Focus Toolkit has been created to assist teachers in identifying activities that are well aligned to the benchmarks. T",
+        "source": "FLDOE / CPALMS instructional materials",
+        "provenance": {
+          "provided_by": "maintainer (browser-saved/downloaded)",
+          "captured": "2026-06-28"
+        },
+        "extracted": true,
+        "content_file": "toolkit-content/Grade3ScienceToolkit.json",
+        "standards_count": 15,
+        "standards_sample": [
+          "SC.3.E.5.1",
+          "SC.3.E.5.2",
+          "SC.3.E.5.3",
+          "SC.3.E.5.4",
+          "SC.3.E.6.1",
+          "SC.3.L.14.1",
+          "SC.3.L.14.2",
+          "SC.3.L.15.1"
+        ],
+        "embedded_links": 32
+      },
+      {
+        "id": "FifthGradeToolkit",
+        "title": "Fifth Grade Toolkit — Standards & Site Links (CPALMS)",
+        "title_confirmed": true,
+        "subject": "ELA",
+        "grade": "5",
+        "type": "instructional_toolkit",
+        "pages": 20,
+        "first_page_excerpt": "Fifth Grade Toolkit Standards and Site Links CPALMS Lesson Plans CPALMS Related Resources LAFS.5.L.1.1 - Demonstrate command of the conventions of standard English grammar and usage when writing or sp",
+        "source": "FLDOE / CPALMS instructional materials",
+        "provenance": {
+          "provided_by": "maintainer (browser-saved/downloaded)",
+          "captured": "2026-06-28"
+        },
+        "extracted": true,
+        "content_file": "toolkit-content/FifthGradeToolkit.json",
+        "standards_count": 43,
+        "standards_sample": [
+          "LAFS.5.L.1.1",
+          "LAFS.5.L.1.2",
+          "LAFS.5.L.2.3",
+          "LAFS.5.L.3.4",
+          "LAFS.5.L.3.5",
+          "LAFS.5.L.3.6",
+          "LAFS.5.RF.3.3",
+          "LAFS.5.RF.4.4"
+        ],
+        "embedded_links": 69
+      },
+      {
+        "id": "health2023",
+        "title": "Florida's State Academic Standards — Health Education (2023)",
+        "title_confirmed": true,
+        "subject": "Health",
+        "grade": "K-12",
+        "type": "standards_document",
+        "pages": 95,
+        "first_page_excerpt": "1 Florida’s State Academic Standards, Health Education, 2023 • The Health Education standards review process began January 2023, to establish the core content of health education curriculum to be taug",
+        "source": "FLDOE / CPALMS instructional materials",
+        "provenance": {
+          "provided_by": "maintainer (browser-saved/downloaded)",
+          "captured": "2026-06-28"
+        },
+        "extracted": true,
+        "content_file": "toolkit-content/health2023.json",
+        "standards_count": 539,
+        "standards_sample": [
+          "HE.1.CEH.1",
+          "HE.1.CEH.1.1",
+          "HE.1.CEH.1.2",
+          "HE.1.CEH.2",
+          "HE.1.CEH.2.1",
+          "HE.1.CEH.3",
+          "HE.1.CEH.3.1",
+          "HE.1.CEH.4"
+        ],
+        "embedded_links": 0
+      },
+      {
+        "id": "BESTTransitionResource",
+        "title": "Instructional Guidance for Transition to the New B.E.S.T. Standards for Mathematics",
+        "title_confirmed": true,
+        "subject": "Math",
+        "grade": "K-12",
+        "type": "transition_resource",
+        "pages": 35,
+        "first_page_excerpt": "1 | Page Instructional Guidance for Transition to the New B.E.S.T. Standards for Mathematics The purpose of this document is to provide educators with an overview of major changes in mathematical conc",
+        "source": "FLDOE / CPALMS instructional materials",
+        "provenance": {
+          "provided_by": "maintainer (browser-saved/downloaded)",
+          "captured": "2026-06-28"
+        },
+        "extracted": true,
+        "content_file": "toolkit-content/BESTTransitionResource.json",
+        "standards_count": 71,
+        "standards_sample": [
+          "MA.1.AR.1.1",
+          "MA.1.GR.1.1",
+          "MA.1.GR.1.4",
+          "MA.1.M.1.1",
+          "MA.1.M.2.3",
+          "MA.1.NSO.1.1",
+          "MA.1.NSO.1.2",
+          "MA.1.NSO.1.4"
+        ],
+        "embedded_links": 0
+      },
+      {
+        "id": "pgg5standards",
+        "title": "Parent Guide to Grade 5 B.E.S.T. Standards",
+        "title_confirmed": true,
+        "subject": "ELA",
+        "grade": "5",
+        "type": "parent_guide",
+        "pages": 3,
+        "first_page_excerpt": "STANDARDS a ------------------------------------•- THE FLORIDA BENCHMARKS FOR EXCELLENT STUDENT THINKING (B.E.S.T.) STANDARDS Parent Guide for Grade 5 English Language Arts PREPARING FLORIDA CHILDREN ",
+        "source": "FLDOE / CPALMS instructional materials",
+        "provenance": {
+          "provided_by": "maintainer (browser-saved/downloaded)",
+          "captured": "2026-06-28"
+        },
+        "extracted": true,
+        "content_file": "toolkit-content/pgg5standards.json",
+        "standards_count": 0,
+        "standards_sample": [],
+        "embedded_links": 0
+      },
+      {
+        "id": "pgg4standards",
+        "title": "Parent Guide to Grade 4 B.E.S.T. Standards",
+        "title_confirmed": true,
+        "subject": "ELA",
+        "grade": "4",
+        "type": "parent_guide",
+        "pages": 3,
+        "first_page_excerpt": "STANDARDS a ------------------------------------•- THE FLORIDA BENCHMARKS FOR EXCELLENT STUDENT THINKING (B.E.S.T.) STANDARDS Parent Guide for Grade 4 English Language Arts PREPARING FLORIDA CHILDREN ",
+        "source": "FLDOE / CPALMS instructional materials",
+        "provenance": {
+          "provided_by": "maintainer (browser-saved/downloaded)",
+          "captured": "2026-06-28"
+        },
+        "extracted": true,
+        "content_file": "toolkit-content/pgg4standards.json",
+        "standards_count": 0,
+        "standards_sample": [],
+        "embedded_links": 0
+      }
+    ],
+    "extraction_note": "Full text + embedded links + FL standard codes extracted offline via pymupdf 2026-06-28; per-resource content in toolkit-content/. 938 standard codes total."
+  }
+}
