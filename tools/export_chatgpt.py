@@ -28,6 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "implementation" / "gpt" / "api" / "skills"
 OUT_PATH = ROOT / "implementation" / "gpt" / "web" / "TOS-skills.md"
+WIZARD_SRC = ROOT / "implementation" / "gpt" / "api" / "web-wizard.md"
 
 try:
     import yaml as _yaml
@@ -320,14 +321,12 @@ used in a formal document on the cited authority (human_review_required).*
    that project will reference it automatically.
 2. **Or paste it** into any conversation window for one-time use.
 3. **Tell ChatGPT** which skill you want using the trigger phrases below.
-4. **Set up your profile once** — say *"set up my profile"*, answer the short interview,
-   then save the `my-teacher-profile.md` file the assistant gives you into this same
-   Project. Every future chat starts already knowing your grade, subject, and school.
+4. **Set up your profile once** — say *"set up my profile"* and the Setup Wizard section
+   below takes over: a short interview that explains why it asks each question, then helps
+   you save the answers into this Project so every future chat already knows you.
 5. **Always verify** Florida standard codes on cpalms.org before formal use.
 
 ---
-
-## The 29 TOS Skills
 
 """
 
@@ -413,7 +412,13 @@ def main(argv: list[str]) -> int:
         print("--check passed. No files written.")
         return 0
 
-    content = HEADER + "\n".join(entries) + FOOTER
+    if not WIZARD_SRC.exists():
+        print(f"ERROR: wizard source missing: {WIZARD_SRC}", file=sys.stderr)
+        return 2
+    wizard = re.sub(r"<!--.*?-->\s*", "", WIZARD_SRC.read_text(encoding="utf-8"),
+                    count=1, flags=re.S).strip()
+    content = (HEADER + wizard + "\n\n---\n\n## The 29 TOS Skills\n\n"
+               + "\n".join(entries) + FOOTER)
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(content, encoding="utf-8")

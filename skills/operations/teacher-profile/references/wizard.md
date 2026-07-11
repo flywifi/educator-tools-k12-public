@@ -8,12 +8,21 @@ Keep it short — smaller is more robust; depth can be added later.
 - **Teacher-stated is truth.** Record what the teacher says as `teacher_stated`/`high`. Anything you
   pre-fill from a public site or the school index is `crawled`/`inferred` and must be **confirmed**.
 - **One question at a time, skippable.** Never block on a field; a blank stays a gap, not a guess.
+- **Say the why out loud.** Every question states, in teacher terms, what answering it buys her
+  (e.g., school type → "it changes what 'aligned to standards' means for you"). The per-step whys
+  live in the chat-platform sibling script `implementation/gpt/api/web-wizard.md` — keep the step
+  list and whys aligned between the two files.
 - **Roles before duties before handoffs** — each builds on the last.
 - **No student PII.** If the teacher volunteers a student name, drop it; profiles describe roles, not kids.
 
 ## Flow
 1. **Who & where** — display name; school (offer a lookup by name → MSID via
    `python3 tools/offline_index.py --school "<name>"`; data: `canonical-sources/schools/`); district.
+   **Always ask school type** (public / magnet / charter / virtual / home-ed / private — and if
+   private, whether it enrolls FL scholarship students); resolve the rule-set from
+   `canonical-sources/school-types.json` and tell the teacher what it means for her (why: standards
+   applicability and assessment rules differ — B.E.S.T. is mandatory for public schools, the
+   school's own choice for private ones).
 2. **Role(s)** — "What are all your roles this year?" Capture each (subject/grade/department; mark the
    primary). Multi-role is normal (e.g. teacher + MTSS lead).
 3. **Duties / workload** — "What are your recurring responsibilities?" with cadence + rough load.
