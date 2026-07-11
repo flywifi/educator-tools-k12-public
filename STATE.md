@@ -238,8 +238,29 @@ Shipped on `claude/educator-tools-k12-plan-f49yju` (source: Monarch Learning Aca
   no-PyYAML fallback description bug).
 - **Follow-ups:** decode `religious`/`level` PSS fields once the NCES codebook is verifiable
   (nces.ed.gov blocked from the build env — no guessed labels); index decoded private-school grade
-  fields in `offline_index.py` at the next db-schema change; optional single-zip pack in `dist/`;
-  requirements-map as a first-class skill.
+  fields in `offline_index.py` at the next db-schema change; requirements-map as a first-class skill.
+
+## 2026-07-11 (later) — web→desktop audit fixes: explaining wizard + honest data contract + distribution
+Source: 11-finding audit of the "ChatGPT chat → desktop app" teacher scenario. Shipped:
+- **Web Setup Wizard** (`implementation/gpt/api/web-wizard.md`, embedded into TOS-skills.md by the
+  generator): full 7-step interview with a say-it-out-loud WHY per question, plan-tier triage,
+  explicit school-type step (wired to `fl-school-types.json`), and profile save-out help
+  (downloadable-file offer, else exact Notepad/TextEdit steps). Canonical trigger unified to
+  "set up my profile"; Claude wizard.md gains the explain-why principle + school-type sub-step
+  (files name each other as siblings — keep step lists/whys aligned).
+- **Honest completeness contract** (requirements map, both platforms): exact enumeration only via a
+  true file read (data-analysis tool; report matched-N vs the file's `count`), otherwise labeled
+  best-effort/retrieved; one subject per table (~40 rows, offer "next"); SS rows flag the
+  legacy-doc parse.
+- **Distribution:** `tos-reference-pack-onefile.json` (whole pack, one upload — fits ChatGPT Free's
+  ~5-slot Projects) + byte-reproducible `reference-pack.zip`; both rebuild-and-compare guarded in
+  `export_reference_pack.py --check`. Plan limits stated honestly ("trust the upload screen").
+  Generated docs are self-locating: repo URL in TOS-skills HEADER/FOOTER + MANIFEST (URL declared
+  in `tools/url-provenance.json`, enforced by the drift guard).
+- **Docs:** desktop-app/device-switch section (Projects follow the account; no Custom GPT needed),
+  privacy note (personal-plan training toggle, dated wording; Team/Edu default), profile-save
+  wording aligned with the wizard's real flow.
+- **Follow-up:** consider single-sourcing the two wizard scripts (web-wizard.md / wizard.md).
 
 ## Validation note
 Every skill ships `evals/evals.json` (prompts + assertions) and worked examples. The eval
