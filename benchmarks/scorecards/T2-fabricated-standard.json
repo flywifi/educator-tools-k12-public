@@ -32,7 +32,7 @@
         "arm": "tos",
         "task": "T2-fabricated-standard",
         "captured": "2026-07-15",
-        "arm_version": "git:77be3bb",
+        "arm_version": "git:8207403",
         "source": "headless run_benchmark.py (deterministic TOS tooling)"
       }
     },

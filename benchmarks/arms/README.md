@@ -7,7 +7,7 @@ number** (`tools/run_benchmark.py --check` enforces it).
 
 Two run modes:
 
-- **Scripted** (`tos`, and installed `oss_parsers` in Phase B): `run_benchmark.py` produces the
+- **Scripted** (`tos`, and installed `oss_parsers` on the ingestion track): `run_benchmark.py` produces the
   output and captures it automatically.
 - **Hosted / manual-or-subagent** (`claude`, `chatgpt`, `gemini`, `ed_tools`): a person or a
   subagent runs the task in that product and saves the receipts. These results are **dated and

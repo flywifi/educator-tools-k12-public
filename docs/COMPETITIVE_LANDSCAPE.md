@@ -31,7 +31,7 @@ be plausible-but-wrong, and there is no recorded, deterministic verdict. This is
 Python sandbox is the one native path that can *actually* read a file exhaustively — relevant to the
 completeness/enumeration comparison and captured in the `chatgpt` arm.
 
-## Dedicated open-source parsers (Phase B, ingestion axis)
+## Dedicated open-source parsers (ingestion track)
 
 | Engine | Strength (as of 2026) | Notes |
 |---|---|---|
@@ -47,7 +47,7 @@ arxiv 2603.18652 "Benchmarking PDF Parsers on Table Extraction."
 **Honest read for TOS:** `shared/docintel/` is stdlib-first with OCR and advanced tables *staged*;
 it will not out-parse Docling/Marker on raw PDF tables today. Its measurable edge is **honesty** —
 `retrieval_state` (visibility ≠ extraction) and explicit `capability_gaps` instead of silent drops —
-and **governance/provenance** wrapping. Phase B tests parity + that honesty edge, and informs the
+and **governance/provenance** wrapping. The ingestion track tests parity + that honesty edge, and informs the
 wrap-vs-build decision (register a best-in-class engine as a `docintel` parser tier).
 
 ## Consumer education-AI tools (generation arm)

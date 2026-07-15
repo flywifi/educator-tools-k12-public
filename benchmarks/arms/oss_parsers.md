@@ -1,4 +1,4 @@
-# Arm: `oss_parsers` — dedicated open-source document parsers (Phase B, ingestion)
+# Arm: `oss_parsers` — dedicated open-source document parsers (ingestion track)
 
 For the **ingestion/parsing axis (7)** only. These are the best-in-class engines TOS's `docintel`
 is measured against — not to claim supremacy over, but to reach parity and add an honesty edge.
@@ -14,7 +14,7 @@ results can be reproduced, not just cited. If not installed in the benchmark env
 falls back to **public-leaderboard citation** (with the source URL + date in `meta.json`), which is
 weaker evidence and must be labeled as such.
 
-## Per-corpus-doc protocol (Phase B)
+## Per-corpus-doc protocol
 1. Run each engine and TOS `docintel` on the same `benchmarks/corpus/` document.
 2. Score: text-recovery, table-fidelity (TEDS / GriTS), i18n-preservation (do foreign characters
    survive?), container recursion (are nested/embedded docs found?).

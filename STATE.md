@@ -218,13 +218,14 @@ Markdown, portable. First consumer: `meeting-classifier`.
 resource integrity validated; `MAINTAINER.md` present in all skills.** (2026-07-11)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
-## 2026-07-15 — governed document benchmark (Phase A shipped; Phase B scaffolded)
+## 2026-07-15 — governed document benchmark (generation track shipped; ingestion track scaffolded)
 A reproducible, honesty-gated benchmark for "is TOS above and beyond the AI alone for document
 work." Lives under `benchmarks/` + `tools/run_benchmark.py`; report `docs/BENCHMARK_COMPETITIVE.md`
 (generated, `human_review_required`), landscape `docs/COMPETITIVE_LANDSCAPE.md` (dated/cited).
 - **7 axes** (grounding · governance · generation · differentiation · format · cost · ingestion)
   with a per-axis **win-bar** — "above and beyond" is a number with a stated margin, not an
-  adjective. Five arms: native Claude / ChatGPT / Gemini, consumer ed-tools, OSS parsers (Phase B).
+  adjective. Five arms: native Claude / ChatGPT / Gemini, consumer ed-tools, OSS parsers
+  (ingestion track).
 - **Honesty gate:** `run_benchmark.py --check` fails the build on any scored row lacking an evidence
   receipt; a result with no evidence stays `unrun`, never a fabricated number (a fabricated result
   is itself QG §37). Report is generated from scorecards, never hand-edited.
@@ -235,13 +236,13 @@ work." Lives under `benchmarks/` + `tools/run_benchmark.py`; report `docs/BENCHM
   here) rather than a fake binary. Subjective generation quality (axis 3) is blind-judged for ALL
   arms equally — no scripted edge for TOS.
 - **Honest scoping** (approved decision): TOS leads on grounding/governance/generation and proves
-  it now (Phase A); raw PDF parsing is a fight vs Docling/Marker/Unstructured, so Phase B targets
-  parity + a retrieval_state honesty edge, possibly by wrapping a best-in-class engine as a docintel
-  parser tier. The **loss→new-eval loop** (`validate_outputs.py --promote`) is the engine that keeps
-  TOS ahead.
+  it now (generation track); raw PDF parsing is a fight vs Docling/Marker/Unstructured, so the
+  ingestion track targets parity + a retrieval_state honesty edge, possibly by wrapping a
+  best-in-class engine as a docintel parser tier. The **loss→new-eval loop**
+  (`validate_outputs.py --promote`) is the engine that keeps TOS ahead.
 - **Follow-ups:** execute the hosted arms (evidence-backed) to fill competitor cells; synthesize the
-  Phase-B adversarial corpus (CJK/nested-container/merged-cell — the docintel fixture gap);
-  offline.db still carries pre-D3 statement text (regenerable build artifact) — rebuild before any
+  ingestion-track adversarial corpus (CJK/nested-container/merged-cell — the docintel fixture gap);
+  offline.db still carries pre-fix statement text (regenerable build artifact) — rebuild before any
   benchmark that reads statement text rather than just resolving code existence.
 
 ## 2026-07-11 — onboarding parity, Reference Pack, scenario-test defect fixes
