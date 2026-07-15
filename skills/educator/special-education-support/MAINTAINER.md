@@ -26,6 +26,10 @@ Skill-specific:
 - conflating accommodations and modifications
 - presenting a draft as a final or legal determination
 - leaking any PII
+- **stale offline index:** access-point + benchmark *text* comes from `tools/offline_index.py`; if
+  `shared/standards/resources/florida/data/*.json` changed without a rebuild, it serves old text.
+  Now guarded by `offline_index.py --verify` / the `sync_check` freshness gate; rebuild + commit
+  `index-manifest.json` after a data change (see `canonical-sources/index/README.md`).
 
 ## Fragile fallbacks that must not become defaults
 - a generic accommodation list is a starting point, never the student's actual plan

@@ -83,3 +83,36 @@ indexed. Three things then keep the db honest:
 **The rule:** after editing any source in the table above, run `python3 tools/offline_index.py
 --build` and **commit `index-manifest.json`** alongside the data change. (Most producers do this for
 you; the guard catches it if something didn't.)
+
+## Maintainer gotchas (learned the hard way — read before changing the index tooling)
+
+- **The db is content-hashed, not mtime-checked.** Freshness compares sha256 of each source to the
+  manifest, so a `touch` with no content change is *not* stale, and a real edit always is. Don't
+  "optimize" this to mtimes.
+- **`source_files()` is the single source of truth for what's indexed.** If you add a new table to
+  `build()`, you MUST add its inputs to `source_files()` too — otherwise the new source isn't
+  fingerprinted and can drift undetected. (`build()` and the manifest deliberately share the same
+  `_*_files()` helpers so they can't diverge; keep it that way. `stats()` has its own display-only
+  path list — never use it as the input set.)
+- **Two easy-to-miss inputs:** `canonical-sources/schools/private/*.json` (the `private_schools`
+  table) and `canonical-sources/references/fl-instructional-toolkits.json` (the toolkit *subject
+  catalog*, read separately from `toolkit-content/`). Both are fingerprinted; if you refactor,
+  don't drop them.
+- **Manifest keys are POSIX (`as_posix()`), on purpose.** A manifest built on Windows with native
+  backslash keys would make Linux/CI read every path as changed (false "stale", red CI for
+  everyone). Keep `.as_posix()` on both the write and the compare side.
+- **A missing or corrupt `index-manifest.json` is a HARD FAILURE, not a skip.** It's a committed
+  baseline; its absence means it was deleted or a write truncated, so `--verify` exits 1 and
+  `sync_check` fails. Do not "soften" this back to a note — that reopens a silent bypass
+  (`git rm` the manifest → guard goes quiet).
+- **Producers rebuild non-fatally with a `--no-index` escape hatch.** `parse_fl_standards.py`,
+  `msid_lookup.py --apply`, and the harvest tools rebuild after writing a source. `--no-index`
+  skips it (for parse-only runs) — but then YOU must rebuild + commit the manifest, or CI reddens.
+  A build hiccup only warns; it never fails the producer.
+- **`--build` is destructive + non-atomic:** it `unlink`s and fully recreates `offline.db`, and
+  `write_text` on the manifest isn't atomic. A crash mid-build leaves a partial db (fine — it's
+  regenerable) and an *unchanged* manifest (write happens only after a clean build), so `--verify`
+  correctly still reports stale. Don't move `write_manifest()` inside the build's `try` block.
+- **"index fresh" ≠ "db exists."** `--verify` checks sources-vs-manifest, not the db. On a fresh
+  clone it can say fresh before any `--build`; the query path still errors `index not built` until
+  you build. This is intended.

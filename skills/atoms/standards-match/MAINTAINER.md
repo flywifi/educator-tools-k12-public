@@ -13,6 +13,10 @@
 ## Known failure modes
 - Scope creep: being asked to do multiple things (generate + differentiate + check). Refuse and redirect to the appropriate atom.
 - Fabricating a standard code when lookup fails. Always return empty `standards: []` with an honest `note` instead.
+- **stale offline index:** matches come from `tools/offline_index.py`; if the underlying
+  `shared/standards/resources/florida/data/*.json` changed without a rebuild, the returned rows carry
+  old statement text. Now guarded by `offline_index.py --verify` / the `sync_check` freshness gate;
+  rebuild + commit `index-manifest.json` after a data change (see `canonical-sources/index/README.md`).
 
 ## Fragile fallbacks that must not become defaults
 - Model-inferred match_method when L1 cache is absent — must be labeled `uncertain`, never presented as confirmed.
