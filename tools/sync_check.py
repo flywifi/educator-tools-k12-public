@@ -259,6 +259,25 @@ def main() -> int:
     except Exception as e:
         print(f"[note] url-provenance guard skipped: {e.__class__.__name__}: {e}")
 
+    # 14. Offline-index freshness guard: the gitignored canonical-sources/index/offline.db is built
+    # from committed JSON. If a source changed since the last build, the committed
+    # index-manifest.json no longer matches — the index is STALE and would serve out-of-date text.
+    # Compares committed sources to the committed manifest (needs neither the db nor a prior build),
+    # so it fires in CI and on a fresh clone. A missing manifest degrades to a note, not a failure.
+    sys.path.insert(0, str(ROOT / "tools"))
+    try:
+        from offline_index import drift_report
+        rep = drift_report()
+        if rep.get("stale"):
+            failures.append(
+                "  x offline index stale vs canonical-sources/index/index-manifest.json "
+                f"(changed={rep['changed']} added={rep['added']} removed={rep['removed']}) — "
+                "run: python3 tools/offline_index.py --build && commit the manifest")
+        elif not rep.get("built"):
+            print(f"[note] index-freshness guard: {rep.get('reason', 'no manifest')}")
+    except Exception as e:  # index tool optional — never let it crash the guard
+        print(f"[note] index-freshness guard skipped: {e.__class__.__name__}: {e}")
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")
