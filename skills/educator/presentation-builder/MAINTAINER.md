@@ -24,6 +24,12 @@ Skill-specific:
 - text-dense slides; no checks for understanding
 - text/visuals unreadable for the grade band
 - fabricated standard codes
+- **office render silently unavailable:** the real `.pptx` (and optional PDF/PNG) come from
+  `shared/office/office_authoring.py`, which is capability-gated. If `python-pptx` isn't installed it
+  writes a `.spec.json` and reports an honest gap — it must NEVER emit a fake/empty binary. PDF/PNG
+  needs LibreOffice; on Windows/Mac `soffice` isn't on PATH, so discovery also checks the standard
+  install dirs (do not revert to PATH-only). The document `author` must be the directing teacher —
+  never "AI"/a library name.
 
 ## Fragile fallbacks that must not become defaults
 - placeholder images/diagrams must be marked

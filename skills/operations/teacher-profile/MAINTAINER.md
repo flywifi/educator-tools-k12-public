@@ -28,6 +28,13 @@ Skill-specific:
   confirmed);
 - person-specific handoff data leaking in before the gated staff workstream + consent exist;
 - school link drifting from `canonical-sources/schools/` (use the MSID, not a free-text school name only).
+- **profile stranded on one surface:** desktop keeps `teacher.local.json`, the Claude/ChatGPT apps
+  keep `my-teacher-profile.md` — a teacher moving between them must not re-do the interview. Bridge
+  with `--export-md` / `--import-md`. The embedded fenced ```json``` block (marker `_MD_MARKER`) is
+  the exact source of truth; the human-readable text above it is best-effort — never make `from_markdown`
+  parse the prose. Import reads `utf-8-sig` so a Windows/Notepad BOM + CRLF round-trips losslessly.
+- **`--demo` depends on `teacher.example.json`**, which lives in the gitignored profiles dir — so
+  `--demo` fails on a fresh clone until an example exists. Use `--init <answers.json>` or `--import-md`.
 
 ## Fragile fallbacks that must not become defaults
 - an **empty/partial profile** is acceptable (gaps, not guesses) but must never be silently completed
@@ -40,6 +47,8 @@ Skill-specific:
 2. A profile missing `display_name` or with zero roles fails validation (gaps, not guesses).
 3. `--register` emits a classroom-scope `sop_ref` + overrides + a role_interaction_map.
 4. A handoff missing `counterparty_role` is rejected by validation.
+5. `--export-md` then `--import-md` (even after adding a BOM + CRLF to the file) yields a
+   byte-identical profile — the desktop↔app round-trip stays lossless.
 
 ## Approval-gated changes (do not treat as a trivial fix)
 Shared: editing a synced reference (`references/method.md`, `references/quality-gates.md` — edit the

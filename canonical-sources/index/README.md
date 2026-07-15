@@ -101,6 +101,11 @@ you; the guard catches it if something didn't.)
 - **Manifest keys are POSIX (`as_posix()`), on purpose.** A manifest built on Windows with native
   backslash keys would make Linux/CI read every path as changed (false "stale", red CI for
   everyone). Keep `.as_posix()` on both the write and the compare side.
+- **`_sha256` normalizes CRLF→LF before hashing, on purpose.** A Windows `autocrlf=true` checkout
+  turns the LF-committed sources into CRLF in the working tree; without normalization their hashes
+  wouldn't match the LF manifest → false "stale" for the whole clone. `.gitattributes` also pins
+  the text sources to `eol=lf` as a belt. Don't remove either — together they make the fingerprint
+  checkout-mode- and OS-independent. (Both are no-ops on an LF tree, so they never cause churn.)
 - **A missing or corrupt `index-manifest.json` is a HARD FAILURE, not a skip.** It's a committed
   baseline; its absence means it was deleted or a write truncated, so `--verify` exits 1 and
   `sync_check` fails. Do not "soften" this back to a note — that reopens a silent bypass
