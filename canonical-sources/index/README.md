@@ -52,7 +52,7 @@ chars/token), against the corpus you would otherwise have to load:
 | toolkit resources (SC.5.P.10.1) | 169,368 | **191** | 99.89% |
 | data source ("assessment") | 7,236 | **155** | 97.86% |
 
-**Whole corpus ≈ 1,012,896 tokens; a typical lookup returns ≈100–350.** That is a **~99.9% reduction
+**The whole corpus is well over a million tokens** (`--stats` prints the live figure)**; a typical lookup returns ≈100–350.** That is a **~99.9% reduction
 per reference need** — and because ~1 M tokens exceeds the context window, the index doesn't just
 *save* tokens, it makes corpus-wide reference *possible at all* without an external retrieval step.
 

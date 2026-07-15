@@ -108,7 +108,10 @@ def write_manifest(counts: dict) -> None:
     live in the db's idx_meta). That keeps the committed manifest stable: it changes if and only if a
     source's content changes, so a rebuild with no source change produces no diff and its git history
     means exactly "the index inputs changed here."""
-    sources = {str(p.relative_to(ROOT)): {"sha256": _sha256(p), "bytes": p.stat().st_size}
+    # POSIX-style keys (forward slashes) so a manifest built on Windows and verified on Linux/CI
+    # (or vice-versa) compares equal — str(relative_to) would emit backslashes on Windows and make
+    # every path read as changed.
+    sources = {p.relative_to(ROOT).as_posix(): {"sha256": _sha256(p), "bytes": p.stat().st_size}
                for p in source_files()}
     MANIFEST.write_text(json.dumps({
         "_comment": "Source-fingerprint manifest for the gitignored offline.db. Written by "
@@ -117,7 +120,7 @@ def write_manifest(counts: dict) -> None:
                     "index is STALE — run `python3 tools/offline_index.py --build` and commit this "
                     "file. Contains only source hashes + deterministic counts (no timestamp/engine) "
                     "so it changes iff a source changes. Nothing fabricated.",
-        "artifact": str(DB.relative_to(ROOT)),
+        "artifact": DB.relative_to(ROOT).as_posix(),
         "counts": counts, "sources": sources, "human_review_required": True,
     }, indent=2) + "\n", encoding="utf-8")
 
@@ -133,13 +136,23 @@ def read_manifest() -> dict | None:
 
 def drift_report() -> dict:
     """Compare the live source files against the committed manifest. Needs neither the db nor a
-    prior build — reads only committed files, so it is deterministic in CI and on a fresh clone."""
-    man = read_manifest()
-    if man is None:
-        return {"built": False, "stale": False, "reason": "no manifest — run --build",
-                "changed": [], "added": [], "removed": [], "current": []}
+    prior build — reads only committed files, so it is deterministic in CI and on a fresh clone.
+
+    A missing or unreadable manifest is itself a drift condition (stale=True): the manifest is a
+    COMMITTED artifact, so its absence means someone deleted it or a write was truncated — either
+    way the guard's baseline is gone and must fail loudly, never pass silently."""
+    if not MANIFEST.exists():
+        return {"built": False, "stale": True, "changed": [], "added": [], "removed": [],
+                "current": [], "reason": "manifest missing (committed baseline absent) — "
+                "restore it or run `--build` && commit index-manifest.json"}
+    try:
+        man = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    except Exception as e:
+        return {"built": False, "stale": True, "changed": [], "added": [], "removed": [],
+                "current": [], "reason": f"manifest unreadable ({e.__class__.__name__}) — "
+                "run `--build` && commit index-manifest.json"}
     recorded = man.get("sources", {})
-    current = {str(p.relative_to(ROOT)): _sha256(p) for p in source_files()}
+    current = {p.relative_to(ROOT).as_posix(): _sha256(p) for p in source_files()}
     changed, removed, unchanged = [], [], []
     for rel, base in recorded.items():
         if rel not in current:
@@ -158,15 +171,16 @@ def verify(as_json: bool = False) -> int:
     rep = drift_report()
     if as_json:
         print(json.dumps(rep, indent=2))
-    elif not rep.get("built"):
-        print(f"index freshness: {rep.get('reason', 'no manifest')}")
+    elif rep.get("reason"):
+        print(f"index freshness: {rep['reason']}")
     elif rep["stale"]:
         print("index STALE vs canonical-sources/index/index-manifest.json — run --build && commit:")
         for k in ("changed", "added", "removed"):
             if rep[k]:
                 print(f"  {k}: {', '.join(rep[k])}")
     else:
-        print("index fresh — all sources match the manifest.")
+        note = "" if DB.exists() else "  (note: sources match, but offline.db is not built here — run --build)"
+        print("index fresh — all sources match the manifest." + note)
     return 1 if rep.get("stale") else 0
 
 

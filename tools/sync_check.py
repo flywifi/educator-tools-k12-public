@@ -269,13 +269,14 @@ def main() -> int:
         from offline_index import drift_report
         rep = drift_report()
         if rep.get("stale"):
+            # a missing/unreadable manifest reports stale with a `reason` (no changed/added/removed);
+            # a genuine source change reports the file lists. Surface whichever applies.
+            detail = rep.get("reason") or (f"changed={rep['changed']} added={rep['added']} "
+                                           f"removed={rep['removed']}")
             failures.append(
                 "  x offline index stale vs canonical-sources/index/index-manifest.json "
-                f"(changed={rep['changed']} added={rep['added']} removed={rep['removed']}) — "
-                "run: python3 tools/offline_index.py --build && commit the manifest")
-        elif not rep.get("built"):
-            print(f"[note] index-freshness guard: {rep.get('reason', 'no manifest')}")
-    except Exception as e:  # index tool optional — never let it crash the guard
+                f"({detail}) — run: python3 tools/offline_index.py --build && commit the manifest")
+    except Exception as e:  # index tool import optional — never let it crash the guard
         print(f"[note] index-freshness guard skipped: {e.__class__.__name__}: {e}")
 
     print("TOS ecosystem - drift guard\n")
