@@ -50,6 +50,16 @@ Keep it short — smaller is more robust; depth can be added later.
    *best-effort — retrieved, not exhaustively enumerated*; one subject per table (~40 rows max,
    offer "next"); social-studies rows carry an extra "verify on CPALMS" flag (legacy-doc parse).
 
+## Moving the profile between the desktop and the Claude/ChatGPT app
+The desktop tools keep the profile as `teacher.local.json` (gitignored); the apps keep it as
+`my-teacher-profile.md` in a Project. Bridge them so a teacher never re-does the interview:
+- **Desktop → app:** `python3 scripts/profile_wizard.py --export-md my-teacher-profile.md` renders a
+  human-readable file (that the app reads) with the exact profile embedded — add it to the Project.
+- **App → desktop:** download `my-teacher-profile.md` from the Project, then
+  `python3 scripts/profile_wizard.py --import-md my-teacher-profile.md` rebuilds `teacher.local.json`.
+The round-trip is lossless and tolerates a Windows/Notepad BOM + CRLF (import reads `utf-8-sig`; the
+embedded `json` block is the source of truth). Placeholders only — never real student names.
+
 ## Maintenance
 Re-run any section to update; the profile carries an `updated` timestamp. Because behavior reads the
 resolved context, an updated profile changes skill behavior on the next run — no skill edit, no redeploy.

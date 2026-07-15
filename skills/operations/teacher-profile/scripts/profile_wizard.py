@@ -34,6 +34,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -78,6 +79,59 @@ def build_profile(answers: dict) -> dict:
         "human_review_required": True,
     }
     return prof
+
+
+# --------------------------------------------------------------------- desktop <-> web bridge
+# The desktop tools keep the profile as teacher.local.json (gitignored). The Claude/ChatGPT apps
+# keep it as `my-teacher-profile.md` in a Project. Nothing bridged the two, so a teacher moving
+# desktop <-> app had to redo the interview. These render/parse both directions LOSSLESSLY: the
+# markdown is human-readable for the app AND embeds the exact profile JSON for an exact re-import.
+_MD_MARKER = "<!-- TOS-PROFILE-DATA v1 — do not edit; used to re-import on the desktop -->"
+
+
+def _fmt_list(items, fields):
+    out = []
+    for it in items:
+        if isinstance(it, dict):
+            out.append(" ".join(str(it.get(f, "")).strip() for f in fields if it.get(f)))
+        else:
+            out.append(str(it))
+    return "; ".join(x for x in out if x) or "—"
+
+
+def to_markdown(prof: dict) -> str:
+    t = prof.get("teacher", {}) or {}
+    school = t.get("school_name") or t.get("school") or "—"
+    if t.get("school_type"):
+        school += f" — {t['school_type']}"
+    prefs = prof.get("preferences", {}) or {}
+    lines = [
+        "# My Teacher Profile (TOS)", "",
+        f"- **Name:** {t.get('display_name', '—')}",
+        f"- **School:** {school}",
+        f"- **District:** {t.get('district', '—')}",
+        f"- **Roles:** {_fmt_list(prof.get('roles', []), ['role', 'grade', 'subject', 'department'])}",
+        f"- **Duties:** {_fmt_list(prof.get('duties', []), ['duty', 'what', 'cadence'])}",
+        f"- **Handoffs:** {_fmt_list(prof.get('handoffs', []), ['what', 'direction', 'counterparty_role'])}",
+        f"- **Meetings:** {_fmt_list(prof.get('meetings', []), ['name', 'role', 'cadence'])}",
+        f"- **Preferences:** {json.dumps(prefs, ensure_ascii=False) if prefs else '—'}", "",
+        "> Placeholders only — never real student names. Everything TOS makes is a draft you review "
+        "(human_review_required).", "",
+        "Add this file to your Claude/ChatGPT Project so every chat already knows your context. To "
+        "move it back to the desktop tools, run "
+        "`python3 skills/operations/teacher-profile/scripts/profile_wizard.py --import-md my-teacher-profile.md`.",
+        "", _MD_MARKER, "```json", json.dumps(prof, indent=2, ensure_ascii=False), "```", "",
+    ]
+    return "\n".join(lines)
+
+
+def from_markdown(text: str) -> dict:
+    """Recover the exact profile from an exported my-teacher-profile.md (the embedded JSON block)."""
+    m = re.search(r"```json\s*(\{.*\})\s*```", text, re.S)
+    if not m:
+        raise ValueError("no embedded TOS profile data block found — is this a my-teacher-profile.md "
+                         "produced by --export-md?")
+    return json.loads(m.group(1))
 
 
 def validate(prof: dict) -> list[str]:
@@ -267,7 +321,26 @@ def main(argv) -> int:
     ap.add_argument("--reset", action="store_true", help="revert Local-First preferences to safe defaults")
     ap.add_argument("--school-change", metavar="JSON", dest="school_change",
                     help="re-point school scope (inline JSON or @file) and re-confirm preferences")
+    # desktop <-> web profile bridge
+    ap.add_argument("--export-md", nargs="?", const="my-teacher-profile.md", metavar="PATH",
+                    help="render the local profile to a my-teacher-profile.md for the Claude/ChatGPT app")
+    ap.add_argument("--import-md", metavar="PATH",
+                    help="reconstruct the local profile from a my-teacher-profile.md the app produced")
     a = ap.parse_args(argv)
+
+    if a.import_md:
+        text = Path(a.import_md).read_text(encoding="utf-8-sig")  # tolerate a Windows/Notepad BOM
+        prof = from_markdown(text)
+        issues = validate(prof)
+        if issues:
+            print(json.dumps({"status": "invalid", "issues": issues}, indent=2))
+            return 1
+        PROFILES.mkdir(parents=True, exist_ok=True)
+        LOCAL.write_text(json.dumps(prof, indent=2) + "\n", encoding="utf-8")
+        print(json.dumps({"status": "profile_imported", "from": a.import_md,
+                          "path": str(LOCAL.relative_to(ROOT)), "gitignored": True,
+                          "human_review_required": True}, indent=2))
+        return 0
 
     if a.init or a.demo:
         answers = _load(Path(a.init)) if a.init else _load(EXAMPLE)
@@ -290,6 +363,14 @@ def main(argv) -> int:
                           "detail": f"no {LOCAL.relative_to(ROOT)} yet — run --init <answers.json> or --demo"}))
         return 1
     prof = _load(LOCAL)
+    if a.export_md is not None:
+        dest = Path(a.export_md)
+        dest.write_text(to_markdown(prof), encoding="utf-8")
+        print(json.dumps({"status": "profile_exported", "path": str(dest),
+                          "next": "add this file to your Claude/ChatGPT Project; "
+                                  "re-import later with --import-md",
+                          "human_review_required": True}, indent=2))
+        return 0
     if a.validate:
         issues = validate(prof)
         print(json.dumps({"status": "ok" if not issues else "invalid", "issues": issues}, indent=2))
