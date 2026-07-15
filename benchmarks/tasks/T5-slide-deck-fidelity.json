@@ -1,0 +1,17 @@
+{
+  "id": "T5-slide-deck-fidelity",
+  "title": "Turn a lesson into a real .pptx deck (output/format fidelity)",
+  "axes": [5, 3],
+  "artifact_type": "slide_deck",
+  "source_case": "presentation-builder skill",
+  "prompt": "Turn a 4th-grade place-value lesson into an 8-slide instructional deck I can open in PowerPoint.",
+  "input_files": [],
+  "context": {"state": "Florida", "grade": "4", "subject": "math"},
+  "assertions": [
+    "Produces a real, openable .pptx (or .docx/.pdf) file — not just a Markdown outline",
+    "The emitted binary passes tools/validate_document.py structural validation",
+    "Slide content is coherent and standards-aligned for 4th-grade place value",
+    "Any standard cited resolves in tools/offline_index.py"
+  ],
+  "format_probe": {"expect_binary": true, "validators": ["tools/validate_document.py"]}
+}

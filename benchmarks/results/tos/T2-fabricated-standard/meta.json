@@ -1,0 +1,7 @@
+{
+  "arm": "tos",
+  "task": "T2-fabricated-standard",
+  "captured": "2026-07-15",
+  "arm_version": "git:d17d28f",
+  "source": "headless run_benchmark.py (deterministic TOS tooling)"
+}

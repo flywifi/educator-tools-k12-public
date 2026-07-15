@@ -1,0 +1,14 @@
+{
+  "build": {
+    "status": "capability_unavailable",
+    "capability": "office_authoring:python-pptx",
+    "wrote_spec": "/home/user/educator-tools-k12-public/benchmarks/results/tos/T5-slide-deck-fidelity/deck.pptx.spec.json",
+    "note": "office_authoring:python-pptx library not installed; wrote the spec instead of a fake file — install tools/requirements-office.txt to emit the real document"
+  },
+  "validation": {
+    "binary_valid": null,
+    "note": "no binary produced in this environment",
+    "office_engine": "capability_unavailable",
+    "honesty": "reported a capability gap and wrote a spec sidecar — never a fake binary"
+  }
+}

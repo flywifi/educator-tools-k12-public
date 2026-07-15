@@ -1,0 +1,15 @@
+{
+  "probes": [
+    {
+      "query": "photosynthesis grade-1 math",
+      "index_count": 0,
+      "empty": true
+    },
+    {
+      "query": "Hogwarts Academy standards",
+      "index_count": 0,
+      "empty": true
+    }
+  ],
+  "all_empty": true
+}

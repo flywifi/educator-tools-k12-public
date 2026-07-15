@@ -1,0 +1,21 @@
+{
+  "fabrication_detected_empty": true,
+  "verdict": {
+    "composite": 2.04,
+    "decision": "Rejected",
+    "decision_basis": "fabricated citation (standard code does not resolve)",
+    "critical_override": true,
+    "weights_model": "QG §33.1 (9-dimension, authoritative)",
+    "scores": {
+      "integrity": 0,
+      "accuracy": 2,
+      "alignment": 2,
+      "educational_quality": 3,
+      "governance": 4,
+      "user_intent": 3,
+      "accessibility": 3,
+      "professional_quality": 3,
+      "safety": 5
+    }
+  }
+}

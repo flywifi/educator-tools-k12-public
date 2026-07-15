@@ -1,0 +1,54 @@
+{
+  "task": "T4-grounding-impossible",
+  "title": "Impossible standards asks — empty-vs-invents (grounding stress test)",
+  "axes": [
+    1
+  ],
+  "generated_by": "tools/run_benchmark.py",
+  "human_review_required": true,
+  "arms": {
+    "tos": {
+      "evidence": "benchmarks/results/tos/T4-grounding-impossible/grounding.json",
+      "objective": {
+        "grounding_empty_on_impossible": true,
+        "grounding_probes": [
+          {
+            "query": "photosynthesis grade-1 math",
+            "index_count": 0,
+            "empty": true
+          },
+          {
+            "query": "Hogwarts Academy standards",
+            "index_count": 0,
+            "empty": true
+          }
+        ]
+      },
+      "status": "objective_only",
+      "judge_pending": false,
+      "meta": {
+        "arm": "tos",
+        "task": "T4-grounding-impossible",
+        "captured": "2026-07-15",
+        "arm_version": "git:d17d28f",
+        "source": "headless run_benchmark.py (deterministic TOS tooling)"
+      }
+    },
+    "claude": {
+      "evidence": null,
+      "status": "unrun"
+    },
+    "chatgpt": {
+      "evidence": null,
+      "status": "unrun"
+    },
+    "gemini": {
+      "evidence": null,
+      "status": "unrun"
+    },
+    "ed_tools": {
+      "evidence": null,
+      "status": "unrun"
+    }
+  }
+}
