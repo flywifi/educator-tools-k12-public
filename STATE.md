@@ -218,6 +218,26 @@ Markdown, portable. First consumer: `meeting-classifier`.
 resource integrity validated; `MAINTAINER.md` present in all skills.** (2026-07-11)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
+## 2026-07-15 — cross-surface adversarial audit (desktop offline ↔ Claude app on Windows/Mac)
+Audited atoms/skills/canonical files through the lens of multi-step workflows that pass data between
+the offline desktop tools and the Claude/ChatGPT app. Canonical JSON integrity clean (0 malformed).
+Findings + fixes:
+- **CRITICAL — CRLF broke my own freshness guard on Windows.** A `core.autocrlf=true` checkout gives
+  the LF-committed sources CRLF, so their sha256 no longer matched the LF manifest → false "stale"
+  for the whole clone (and rebuilding there breaks Linux/CI). Fixed: `offline_index._sha256` +
+  `registry_currency._sha256` normalize CRLF→LF before hashing (no-op on LF, proven zero churn);
+  `.gitattributes` pins text sources to `eol=lf`. Verified a CRLF copy now hashes identically.
+- **HIGH — profile didn't round-trip.** Desktop kept `teacher.local.json`, apps use
+  `my-teacher-profile.md`, nothing bridged them. Added `profile_wizard.py --export-md/--import-md`
+  (human-readable + embedded exact JSON; lossless through a Notepad BOM + CRLF). Documented in
+  `wizard.md` + `DEPLOYMENT_SURFACES.md`.
+- **MEDIUM — LibreOffice PATH-only discovery** reported a false capability gap on Win/Mac (soffice
+  isn't on PATH there). `office_authoring.convert()` now falls back to the standard per-OS install
+  locations; the document is still produced regardless.
+- **Documented gotchas:** `python3` vs `py`/`python` on Windows; the Notepad `.txt`/"All Files"
+  trap; line-ending safety — all in `DEPLOYMENT_SURFACES.md` "Cross-platform notes" + the gpt/web
+  README save step. Minor open note: `--demo` needs `teacher.example.json` (gitignored) present.
+
 ## 2026-07-15 — offline-index freshness guard (committed manifest + auto-rebuild)
 The gitignored `canonical-sources/index/offline.db` silently went stale when the D3 fix regenerated
 the standards JSON without a rebuild, and nothing detected it. Fixed structurally:

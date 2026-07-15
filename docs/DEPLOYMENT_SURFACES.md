@@ -38,3 +38,23 @@ Three surfaces are supported; the difference is mostly **where student data live
 - Connectors that are off/blocked are never presented as active; degraded paths lower confidence.
 - Identification mode (`name` default, `id`-only available) applies to saved/shared records on all
   surfaces.
+
+## Cross-platform notes (Windows / macOS desktop ↔ the Claude/ChatGPT app)
+The offline tools run on a teacher's desktop; the app runs on Windows or Mac. Things that bite at
+that boundary (found by adversarial audit, mitigations in place):
+- **Python command:** internal calls use `sys.executable` (safe). But doc/command lines say
+  `python3`, which many **Windows** installs don't provide — use `py -3 …` or `python …` there. The
+  assistant driving the tools should pick the platform interpreter, not literally `python3`.
+- **Line endings:** the content-hash guards (`offline_index.py`, `registry_currency.py`) normalize
+  CRLF→LF before hashing, and `.gitattributes` pins `*.json/*.py/*.md/*.yaml` to `eol=lf`, so a
+  Windows `autocrlf` checkout does **not** false-trip the freshness gate. Don't remove either.
+- **LibreOffice (PDF/PNG render + legacy `.doc` parse):** not on PATH by default on Win/Mac;
+  `shared/office/office_authoring.py` now also checks the standard install locations
+  (`C:\Program Files\LibreOffice\…`, `/Applications/LibreOffice.app/…`). If it's not installed the
+  document is still produced — only the PDF/PNG render is skipped, with an honest note.
+- **Profile portability:** move the teacher profile between the desktop store
+  (`teacher.local.json`) and the app file (`my-teacher-profile.md`) with
+  `profile_wizard.py --export-md` / `--import-md` (lossless; tolerates a Notepad BOM + CRLF) — no
+  re-doing the interview per surface.
+- **Notepad trap:** saving `my-teacher-profile.md` in Windows Notepad appends `.txt` unless
+  "Save as type" is set to **All Files**.

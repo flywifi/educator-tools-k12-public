@@ -45,7 +45,9 @@ verify standards against their own state's site.
 2. At the end the assistant writes your complete profile into one block of text
    titled `my-teacher-profile.md` — and helps you save it: it will offer a
    downloadable file when it can, or walk you through copy → Notepad/TextEdit →
-   save as `my-teacher-profile.md`.
+   save as `my-teacher-profile.md`. *(On Windows Notepad, set "Save as type" to
+   **All Files** first, or it saves `my-teacher-profile.md.txt`. A BOM/line-ending
+   quirk is fine — the tools handle it.)*
 3. Add that file to the same Project. Why a file? Chats don't remember each other —
    the Project's files are the assistant's only memory of you. From now on, every
    chat starts already knowing your grade, subject, and school. To change it later,
