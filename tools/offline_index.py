@@ -98,7 +98,11 @@ def source_files() -> list[Path]:
 
 
 def _sha256(p: Path) -> str:
-    return hashlib.sha256(p.read_bytes()).hexdigest()
+    # Normalize CRLF -> LF before hashing so a Windows checkout (git `autocrlf=true` turns the
+    # LF-committed sources into CRLF in the working tree) fingerprints IDENTICALLY to the
+    # LF-committed manifest. Without this, every text source reads as "changed" on Windows and the
+    # freshness gate false-fails for the whole clone. No-op on LF checkouts (bytes unchanged).
+    return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def write_manifest(counts: dict) -> None:

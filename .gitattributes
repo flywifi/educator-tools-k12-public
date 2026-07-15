@@ -1,9 +1,22 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
+# FORCE LF in the working tree (not just in the repo) for the text sources that are content-hashed
+# or byte-compared by the guards. On Windows, `core.autocrlf=true` would otherwise give these files
+# CRLF on checkout, and their sha256 would no longer match the LF-committed index/registry manifests
+# (offline_index.py / registry_currency.py) → false "stale"/"changed" for the whole clone. Belt to
+# the runtime CRLF-normalization in those hashers.
+*.json text eol=lf
+*.py   text eol=lf
+*.md   text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+
 # Standards resource binaries — never line-ending-normalize (prevents corruption)
 *.pdf binary
 *.doc binary
 *.docx binary
 *.xlsx binary
 *.rtf binary
+*.db binary
+*.zip binary
