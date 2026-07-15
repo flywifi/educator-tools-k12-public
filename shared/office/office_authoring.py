@@ -131,12 +131,33 @@ def build_xlsx(spec: dict, out: Path, author: Optional[str] = None) -> dict:
     return {"status": "ok", "path": str(out), "author": a, "sheets": len(spec.get("sheets", [])) or 1}
 
 
+def _find_soffice() -> Optional[str]:
+    """Locate LibreOffice/soffice. PATH first, then the standard per-OS install locations —
+    on Windows and macOS soffice is NOT on PATH by default, so PATH-only discovery would report a
+    false capability gap on the very desktops that run the offline tools."""
+    found = shutil.which("soffice") or shutil.which("libreoffice")
+    if found:
+        return found
+    candidates = []
+    if sys.platform == "win32":
+        candidates = [r"C:\Program Files\LibreOffice\program\soffice.exe",
+                      r"C:\Program Files (x86)\LibreOffice\program\soffice.exe"]
+    elif sys.platform == "darwin":
+        candidates = ["/Applications/LibreOffice.app/Contents/MacOS/soffice"]
+    else:  # linux/other: common non-PATH spots (snap/flatpak/distros)
+        candidates = ["/usr/bin/soffice", "/usr/bin/libreoffice",
+                      "/snap/bin/libreoffice", "/opt/libreoffice/program/soffice"]
+    return next((c for c in candidates if Path(c).exists()), None)
+
+
 def convert(path: Path, to: str = "pdf", outdir: Optional[Path] = None) -> dict:
     """Convert/render via LibreOffice headless (render_convert capability) for visual QA."""
-    soffice = shutil.which("soffice") or shutil.which("libreoffice")
+    soffice = _find_soffice()
     if not soffice:
         return {"status": "capability_unavailable", "capability": "render_convert",
-                "note": "LibreOffice (soffice) not on PATH; cannot convert/render"}
+                "note": "LibreOffice (soffice) not found on PATH or in the standard install "
+                        "location; install LibreOffice (or add its program/ dir to PATH) to "
+                        "convert/render — the spec/document was still produced"}
     outdir = outdir or path.parent
     try:
         subprocess.run([soffice, "--headless", "--convert-to", to, "--outdir", str(outdir), str(path)],
