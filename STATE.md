@@ -218,6 +218,32 @@ Markdown, portable. First consumer: `meeting-classifier`.
 resource integrity validated; `MAINTAINER.md` present in all skills.** (2026-07-11)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
+## 2026-07-15 — governed document benchmark (Phase A shipped; Phase B scaffolded)
+A reproducible, honesty-gated benchmark for "is TOS above and beyond the AI alone for document
+work." Lives under `benchmarks/` + `tools/run_benchmark.py`; report `docs/BENCHMARK_COMPETITIVE.md`
+(generated, `human_review_required`), landscape `docs/COMPETITIVE_LANDSCAPE.md` (dated/cited).
+- **7 axes** (grounding · governance · generation · differentiation · format · cost · ingestion)
+  with a per-axis **win-bar** — "above and beyond" is a number with a stated margin, not an
+  adjective. Five arms: native Claude / ChatGPT / Gemini, consumer ed-tools, OSS parsers (Phase B).
+- **Honesty gate:** `run_benchmark.py --check` fails the build on any scored row lacking an evidence
+  receipt; a result with no evidence stays `unrun`, never a fabricated number (a fabricated result
+  is itself QG §37). Report is generated from scorecards, never hand-edited.
+- **Headless TOS arm** reuses the repo's own tools as objective graders — `offline_index.py`
+  (grounding-or-empty), `score.py` (the gated verdict), `validate_document.py` (binary validity).
+  Live results: impossible standards asks return empty; the fabricated `3.NF.A.9` case → Rejected
+  via critical-failure override; the Office engine reports an honest capability gap (no python-pptx
+  here) rather than a fake binary. Subjective generation quality (axis 3) is blind-judged for ALL
+  arms equally — no scripted edge for TOS.
+- **Honest scoping** (approved decision): TOS leads on grounding/governance/generation and proves
+  it now (Phase A); raw PDF parsing is a fight vs Docling/Marker/Unstructured, so Phase B targets
+  parity + a retrieval_state honesty edge, possibly by wrapping a best-in-class engine as a docintel
+  parser tier. The **loss→new-eval loop** (`validate_outputs.py --promote`) is the engine that keeps
+  TOS ahead.
+- **Follow-ups:** execute the hosted arms (evidence-backed) to fill competitor cells; synthesize the
+  Phase-B adversarial corpus (CJK/nested-container/merged-cell — the docintel fixture gap);
+  offline.db still carries pre-D3 statement text (regenerable build artifact) — rebuild before any
+  benchmark that reads statement text rather than just resolving code existence.
+
 ## 2026-07-11 — onboarding parity, Reference Pack, scenario-test defect fixes
 Shipped on `claude/educator-tools-k12-plan-f49yju` (source: Monarch Learning Academy scenario test):
 - **Onboarding:** `implementation/claude/README.md` (teacher-voice, Claude Code/Cowork + claude.ai

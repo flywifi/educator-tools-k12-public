@@ -2,6 +2,6 @@
   "arm": "tos",
   "task": "T4-grounding-impossible",
   "captured": "2026-07-15",
-  "arm_version": "git:d17d28f",
+  "arm_version": "git:77be3bb",
   "source": "headless run_benchmark.py (deterministic TOS tooling)"
 }
