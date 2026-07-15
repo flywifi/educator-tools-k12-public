@@ -101,8 +101,13 @@ def _sha256(p: Path) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
-def write_manifest(counts: dict, engine: str, built_at: str) -> None:
-    """Commit-tracked source-fingerprint for the gitignored offline.db (see module docstring)."""
+def write_manifest(counts: dict) -> None:
+    """Commit-tracked source-fingerprint for the gitignored offline.db (see module docstring).
+    Deliberately contains ONLY source-derived, environment-independent data — the per-file sha256s
+    and the (deterministic) row counts — and NOT the build timestamp or the fts5/like engine (both
+    live in the db's idx_meta). That keeps the committed manifest stable: it changes if and only if a
+    source's content changes, so a rebuild with no source change produces no diff and its git history
+    means exactly "the index inputs changed here."""
     sources = {str(p.relative_to(ROOT)): {"sha256": _sha256(p), "bytes": p.stat().st_size}
                for p in source_files()}
     MANIFEST.write_text(json.dumps({
@@ -110,10 +115,10 @@ def write_manifest(counts: dict, engine: str, built_at: str) -> None:
                     "tools/offline_index.py --build; enforced by tools/sync_check.py and "
                     "offline_index.py --verify. If a listed source's sha256 no longer matches, the "
                     "index is STALE — run `python3 tools/offline_index.py --build` and commit this "
-                    "file. Nothing fabricated.",
+                    "file. Contains only source hashes + deterministic counts (no timestamp/engine) "
+                    "so it changes iff a source changes. Nothing fabricated.",
         "artifact": str(DB.relative_to(ROOT)),
-        "built_at": built_at, "engine": engine, "counts": counts,
-        "sources": sources, "human_review_required": True,
+        "counts": counts, "sources": sources, "human_review_required": True,
     }, indent=2) + "\n", encoding="utf-8")
 
 
@@ -277,7 +282,7 @@ def build() -> int:
     finally:
         conn.close()
     # commit-tracked fingerprint of exactly what we just indexed (the freshness baseline)
-    write_manifest(counts, engine, built_at)
+    write_manifest(counts)
     total = sum(counts.values())
     print(f"Built {DB.relative_to(ROOT)} [{engine}] — {total} rows: {counts}; "
           f"wrote {MANIFEST.relative_to(ROOT)}")

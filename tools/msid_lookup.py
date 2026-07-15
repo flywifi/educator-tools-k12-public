@@ -36,11 +36,27 @@ import csv
 import io
 import json
 import re
+import subprocess
 import sys
 import time
 import urllib.request
 from pathlib import Path
 from typing import Iterator
+
+
+def rebuild_index(root: Path) -> None:
+    """Rebuild the offline index after writing schools.json so the gitignored offline.db + its
+    committed manifest don't drift. Non-fatal; skip with --no-index."""
+    try:
+        r = subprocess.run([sys.executable, str(root / "tools" / "offline_index.py"), "--build"],
+                           capture_output=True, text=True, timeout=300)
+        print(r.stdout.strip() or r.stderr.strip())
+        if r.returncode != 0:
+            print("  [warn] offline index rebuild non-zero — run `python3 tools/offline_index.py "
+                  "--build` manually", file=sys.stderr)
+    except Exception as e:
+        print(f"  [warn] offline index not rebuilt ({e.__class__.__name__}); run "
+              "`python3 tools/offline_index.py --build` and commit the manifest", file=sys.stderr)
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "canonical-sources" / "registries" / "msid-cache"
@@ -366,6 +382,8 @@ def main(argv: list[str] | None = None) -> int:
                    help="Re-match EVERY school against FLDOE, overwriting existing MSIDs and resetting "
                         "non-matches to a DDXXXX placeholder. Use when existing MSIDs can't be trusted.")
     p.add_argument("--msid-file", help="Path to cached MSID CSV (default: auto)")
+    p.add_argument("--no-index", action="store_true",
+                   help="do not rebuild the offline index after writing schools.json")
     args = p.parse_args(argv)
 
     if args.fetch:
@@ -432,6 +450,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"District {district}: {stats.get('matched')}/{stats.get('total')} matched "
                   f"({stats.get('match_rate')}) {'[WRITTEN]' if stats.get('written') else '[dry-run]'}")
 
+    # a real write to schools.json changes an index source — rebuild so offline.db + manifest stay fresh
+    if any(s.get("written") for s in all_stats) and not args.no_index:
+        rebuild_index(ROOT)
     return 0
 
 

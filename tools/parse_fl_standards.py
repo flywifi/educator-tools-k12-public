@@ -13,15 +13,33 @@ Reproducible; stdlib only. Usage: python3 tools/parse_fl_standards.py
 """
 from __future__ import annotations
 
+import argparse
 import html
 import json
 import re
+import subprocess
 import sys
 import zipfile
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def rebuild_index() -> None:
+    """Rebuild the offline index after regenerating a source corpus, so the gitignored
+    offline.db + its committed manifest never drift from the JSON we just wrote. Non-fatal:
+    a build hiccup warns but never fails the producer (skip entirely with --no-index)."""
+    try:
+        r = subprocess.run([sys.executable, str(ROOT / "tools" / "offline_index.py"), "--build"],
+                           capture_output=True, text=True, timeout=300)
+        print(r.stdout.strip() or r.stderr.strip())
+        if r.returncode != 0:
+            print("  [warn] offline index rebuild returned non-zero — run "
+                  "`python3 tools/offline_index.py --build` manually", file=sys.stderr)
+    except Exception as e:
+        print(f"  [warn] offline index not rebuilt ({e.__class__.__name__}); run "
+              "`python3 tools/offline_index.py --build` and commit the manifest", file=sys.stderr)
 FL = ROOT / "shared" / "standards" / "resources" / "florida"
 OUT = FL / "data"
 
@@ -193,4 +211,11 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    ap = argparse.ArgumentParser(description="Parse FL standards docs into data/*.json.")
+    ap.add_argument("--no-index", action="store_true",
+                    help="do not rebuild the offline index after writing (parse only)")
+    args = ap.parse_args()
+    rc = main()
+    if rc == 0 and not args.no_index:
+        rebuild_index()
+    raise SystemExit(rc)

@@ -352,8 +352,11 @@ def main(argv=None) -> int:
     print(f"\nHandoff report: {handoff_path}")
 
     if a.push and not a.out_root:
+        # include the refreshed index manifest: --build (above) rewrote it, and the committed
+        # fingerprint must travel with the data change or CI's index-freshness guard goes red.
         _run(["git", "add", "canonical-sources/schools/private", "canonical-sources/references",
-              "canonical-sources/registries/ingested-sources.json"])
+              "canonical-sources/registries/ingested-sources.json",
+              "canonical-sources/index/index-manifest.json"])
         rc, out = _run(["git", "commit", "-m", f"data: harvest_all ingest {_now()[:10]}"])
         if "nothing to commit" not in out.lower():
             br = _run(["git", "rev-parse", "--abbrev-ref", "HEAD"])[1].strip()

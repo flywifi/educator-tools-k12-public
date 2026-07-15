@@ -1,8 +1,6 @@
 {
-  "_comment": "Source-fingerprint manifest for the gitignored offline.db. Written by tools/offline_index.py --build; enforced by tools/sync_check.py and offline_index.py --verify. If a listed source's sha256 no longer matches, the index is STALE \u2014 run `python3 tools/offline_index.py --build` and commit this file. Nothing fabricated.",
+  "_comment": "Source-fingerprint manifest for the gitignored offline.db. Written by tools/offline_index.py --build; enforced by tools/sync_check.py and offline_index.py --verify. If a listed source's sha256 no longer matches, the index is STALE \u2014 run `python3 tools/offline_index.py --build` and commit this file. Contains only source hashes + deterministic counts (no timestamp/engine) so it changes iff a source changes. Nothing fabricated.",
   "artifact": "canonical-sources/index/offline.db",
-  "built_at": "2026-07-15T21:40:35Z",
-  "engine": "fts5",
   "counts": {
     "standards": 6583,
     "courses": 4607,
