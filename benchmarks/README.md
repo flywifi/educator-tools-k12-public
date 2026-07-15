@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: benchmarks-maintainer -->
 # TOS Document Benchmark — methodology, axes, and the win-bar
 
 **Question this program answers, with receipts:** is TOS meaningfully *above and beyond* what a

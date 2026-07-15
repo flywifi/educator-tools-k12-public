@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: parent-comm-maintainer -->
 # MAINTAINER — atom-parent-comm
 
 ## Purpose

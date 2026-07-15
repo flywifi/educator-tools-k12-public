@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: corpus-maintainer -->
 # corpus/ — adversarial ingestion documents (ingestion track)
 
 The ingestion track (axis 7, parsing) needs documents that exercise docintel's harder code paths, which the

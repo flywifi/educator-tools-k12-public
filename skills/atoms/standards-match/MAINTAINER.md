@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: standards-match-maintainer -->
 # MAINTAINER — atom-standards-match
 
 ## Purpose

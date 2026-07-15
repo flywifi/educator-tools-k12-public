@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: referral-draft-maintainer -->
 # MAINTAINER — referral-draft
 
 ## Purpose

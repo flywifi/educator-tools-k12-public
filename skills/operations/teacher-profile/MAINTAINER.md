@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: teacher-profile-maintainer -->
 # MAINTAINER — teacher-profile
 
 ## Purpose of this maintainer file

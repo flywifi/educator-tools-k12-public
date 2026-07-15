@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: family-communication-maintainer -->
 # MAINTAINER — family-communication
 
 ## Purpose of this maintainer file

@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-22 | owner: ledger-maintainer -->
 # Quality Ledger
 
 The **Repository Quality Ledger** (Quality Gates §94) is the running, append-only record of quality

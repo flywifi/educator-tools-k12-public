@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-24 | owner: docintel-maintainer -->
 # docintel — Document Intelligence engine (canonical)
 
 **Source of truth** for the TOS-native Document Intelligence Platform: documents in →

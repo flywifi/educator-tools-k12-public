@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: arms-maintainer -->
 # arms/ — how each comparison arm is exercised, and the evidence it must leave
 
 Each `arms/<arm>.md` is the run protocol for one comparison arm: exactly what to do, and **what

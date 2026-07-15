@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: presentation-builder-maintainer -->
 # MAINTAINER — presentation-builder
 
 ## Purpose of this maintainer file

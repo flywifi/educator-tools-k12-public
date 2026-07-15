@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: reading-level-maintainer -->
 # MAINTAINER — atom-reading-level
 
 ## Purpose

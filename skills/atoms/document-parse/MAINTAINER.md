@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: document-parse-maintainer -->
 # MAINTAINER — document-parse
 
 ## Purpose

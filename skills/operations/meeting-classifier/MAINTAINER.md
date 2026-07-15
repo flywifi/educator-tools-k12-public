@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: meeting-classifier-maintainer -->
 # MAINTAINER — meeting-classifier
 
 ## Purpose of this maintainer file

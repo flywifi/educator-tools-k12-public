@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: registries-maintainer -->
 # Source-currency registries (`canonical-sources/registries/`)
 
 Domain registries of **authoritative web sources** to monitor for freshness. The engine

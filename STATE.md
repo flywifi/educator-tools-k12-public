@@ -215,8 +215,32 @@ Markdown, portable. First consumer: `meeting-classifier`.
 
 ## Last drift-guard result
 `python3 tools/sync_check.py` → **PASS — 62 skills, 8 invariants, 2 synced refs; frontmatter +
-resource integrity validated; `MAINTAINER.md` present in all skills.** (2026-07-11)
+resource integrity validated; `MAINTAINER.md` present in all skills; doc-drift guards (checks 15-18)
+enforced.** (2026-07-15)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
+
+## 2026-07-15 — maintainer/README audit (fix drift + fill doc gaps + 4 durable doc-drift guards)
+Systematic audit of every component (skills/atoms/shared engines/canonical buckets) against its
+maintainer/README files. Fixed the proven discrepancies, filled the doc-coverage gaps, and installed
+four hard-gate guards so this drift class becomes a red build, not a silent default.
+- **Fixed:** regenerated `docs/METRICS.md` (was stale at 29 skills → 62); repointed **8** dead
+  un-grouped `skills/<name>/…` paths to their grouped homes (7 found by audit + 1 the new guard
+  caught); corrected the live "Current" success-metrics block (62 skills, 62/62 human_review);
+  fixed a broken overlays model/schema cross-reference.
+- **Filled:** added docs for the zero-doc components — `shared/office/`, `shared/routing/`,
+  `shared/atoms/`, `canonical-sources/references/`, `canonical-sources/overlays/`, plus
+  `tools/README.md` and a top-level `canonical-sources/README.md` (root FL district + school-type
+  JSON). Folded the session's cross-platform gotchas (soffice PATH fallback, etc.) into the office doc.
+- **Guarded (`tools/sync_check.py` checks 15-18, `DOC_GUARDS_ENFORCE=True`):** (15) dead repo-relative
+  doc-path detector; (16) `METRICS.md` regenerate-and-compare freshness (via a new pure
+  `metrics.render()`); (17) component-doc coverage (every `shared/`/`canonical-sources/` dir carries a
+  doc); (18) `last_reviewed` freshness stamps on every README/MAINTAINER (missing/ >365d hard-fail; a
+  sibling changed after the stamp is an advisory re-review reminder). Grounded in SWE-at-Google Ch.10,
+  Diátaxis, and the repo's own committed-fingerprint pattern (offline-index manifest). Each guard was
+  proven to fire on injected drift and pass clean after.
+- **Confirmed (not changed):** the "27-case set" (matches `docs/BENCHMARK.md`, distinct from the 75
+  skill eval cases). **Flagged only:** the roadmap "104 files" line (now 112 on disk; original
+  counting basis ambiguous — left as-is per no-fabrication rule).
 
 ## 2026-07-15 — cross-surface adversarial audit (desktop offline ↔ Claude app on Windows/Mac)
 Audited atoms/skills/canonical files through the lens of multi-step workflows that pass data between
@@ -356,6 +380,6 @@ is open.
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
-Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 19 skills ·
-65 artifact types · 65 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
-protocols · 100% ledger approval (seed) · 19/19 skills emit `human_review_required`.
+Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 62 skills ·
+69 artifact types · 75 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
+protocols · 100% ledger approval (seed) · 62/62 skills emit `human_review_required`.

@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: results-maintainer -->
 # results/ — the receipts
 
 One directory per arm per task: `results/<arm>/<task-id>/`. Each holds the arm's **raw output**

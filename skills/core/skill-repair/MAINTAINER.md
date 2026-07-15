@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: skill-repair-maintainer -->
 # MAINTAINER — skill-repair
 
 ## Purpose of this maintainer file

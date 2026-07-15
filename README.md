@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-11 | owner: tos-maintainer -->
 # Teacher Operating System (TOS)
 
 A set of AI assistants that help K–12 teachers create and double-check the everyday materials of

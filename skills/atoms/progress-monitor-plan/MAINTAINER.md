@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: progress-monitor-plan-maintainer -->
 # MAINTAINER — progress-monitor-plan
 
 ## Purpose

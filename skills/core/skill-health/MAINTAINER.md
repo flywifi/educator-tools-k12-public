@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: skill-health-maintainer -->
 # MAINTAINER — skill-health
 
 ## Purpose of this maintainer file

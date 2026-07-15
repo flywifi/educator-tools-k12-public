@@ -1,7 +1,7 @@
 # Example evaluation — a Grade 3 fractions lesson
 
 Worked `quality-review` output for the gold lesson in
-`skills/lesson-planner/examples/grade3-fractions-lesson.md`. Shows the expected shape of a decision
+`skills/educator/lesson-planner/examples/grade3-fractions-lesson.md`. Shows the expected shape of a decision
 record: per-dimension scores with **evidence**, the script-computed composite, and the verdict.
 
 ---

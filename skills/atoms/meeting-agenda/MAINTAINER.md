@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: meeting-agenda-maintainer -->
 # MAINTAINER — meeting-agenda
 
 ## Purpose

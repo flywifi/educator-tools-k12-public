@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-11 | owner: render-maintainer -->
 # shared/render — resilient render prongs for hard-to-scrape public pages
 
 Fallback prongs are **not limited to JS-required pages**. They activate whenever there is *any

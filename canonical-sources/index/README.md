@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: index-maintainer -->
 # Offline reference index — zero-token lookups
 
 `tools/offline_index.py` builds a local SQLite **FTS5** index (`offline.db`, a gitignored,

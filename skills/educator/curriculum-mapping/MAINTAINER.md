@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: curriculum-mapping-maintainer -->
 # MAINTAINER — curriculum-mapping
 
 ## Purpose of this maintainer file

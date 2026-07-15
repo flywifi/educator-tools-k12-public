@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: districts-maintainer -->
 # districts/ — District Overlays
 
 Per-district configuration overlays that customize TOS behavior without forking the repository. Each overlay overrides only what differs from the shared defaults; the core skills, atoms, and shared engines are unchanged.

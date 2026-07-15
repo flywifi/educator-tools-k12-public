@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: scorecards-maintainer -->
 # scorecards/ — per-task, per-arm scored results (generated, not hand-edited)
 
 One file per task: `scorecards/<task-id>.json`. Written by `tools/run_benchmark.py`, consumed by

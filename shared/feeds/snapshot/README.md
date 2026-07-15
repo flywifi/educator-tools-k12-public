@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-26 | owner: snapshot-maintainer -->
 # shared/feeds/snapshot/ — the git-shareable feed pack (L7/L8 hand-off)
 
 This directory carries the **portable snapshot** of harvested feed items that moves data from an

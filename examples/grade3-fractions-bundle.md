@@ -13,8 +13,8 @@ standard `CCSS.MATH.CONTENT.3.NF.A.1` (CCSS-Math 2010) · placeholders only.
 | # | Artifact | Skill | Source example | Decision |
 |---|---|---|---|---|
 | 1 | Lesson plan (hands-on, 45 min) | `lesson-planner` | `skills/educator/lesson-planner/examples/grade3-fractions-lesson.md` | Approved 4.34 |
-| 2 | Rubric for explaining 1/b | `assessment-designer` | `skills/assessment-designer/examples/grade3-fractions-rubric.md` | Approved |
-| 3 | Slide deck (7 slides) | `presentation-builder` | `skills/presentation-builder/examples/grade3-fractions-slides.md` | Approved |
+| 2 | Rubric for explaining 1/b | `assessment-designer` | `skills/educator/assessment-designer/examples/grade3-fractions-rubric.md` | Approved |
+| 3 | Slide deck (7 slides) | `presentation-builder` | `skills/educator/presentation-builder/examples/grade3-fractions-slides.md` | Approved |
 | 4 | Parent note (below) | `family-communication` | new | Approved |
 
 ## Piece 4 — Parent note (plain language, placeholders)

@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: web-maintainer -->
 # TOS on ChatGPT (web)
 
 **One file. Drag and drop.**

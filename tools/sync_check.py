@@ -15,7 +15,9 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -62,6 +64,31 @@ MAX_NAME, MAX_DESC = 64, 1024
 _REF_ANCHORS = ("references/", "scripts/", "evals/", "examples/",
                 "protocol-layer/", "protocols/", "shared/", "tools/", "ledger/")
 _REF_EXTS = (".md", ".py", ".json", ".yaml", ".yml", ".txt", ".csv")
+
+# --- Doc-drift guards (checks 15-18) ---------------------------------------------------------------
+# New in the maintainer/README audit. They land in REPORT-ONLY first (so the backfill PR stays green
+# while docs are filled in), then flip to CI-blocking. Set True to enforce.
+DOC_GUARDS_ENFORCE = True
+
+# Check 15 (doc-path drift): backticked repo-relative paths in prose must resolve. Anchors mirror the
+# repo layout; runtime stores (*.local.json) and historical records are excluded so the guard only
+# fires on real drift.
+_DOC_ANCHORS = ("skills/", "shared/", "protocol-layer/", "canonical-sources/", "tools/", "docs/",
+                "implementation/", "examples/", "ledger/", "security/", "changes/")
+DOC_PATH_ALLOW_FILES = {          # historical records — the paths in them are frozen at write time
+    "ledger/quality-ledger.md", "changes/CHANGELOG.md",
+}
+DOC_RUNTIME_ARTIFACTS = {         # produced at runtime, legitimately absent from a clean checkout
+    "ledger/rollback-log.json",
+}
+
+# Check 17 (component-doc coverage): every engine/bucket under these roots must carry >=1 .md doc.
+COVERAGE_ROOTS = ("shared", "canonical-sources")
+COVERAGE_SKIP = {"index"}         # index/ ships data + its own README; add non-component dirs here
+
+# Check 18 (doc freshness): a missing stamp or a stamp older than this hard-fails (on enforce); a
+# sibling changed after the stamp is an advisory reminder only.
+DOC_FRESHNESS_MAX_AGE_DAYS = 365
 
 
 def read(p: Path) -> str:
@@ -278,6 +305,119 @@ def main() -> int:
                 f"({detail}) — run: python3 tools/offline_index.py --build && commit the manifest")
     except Exception as e:  # index tool import optional — never let it crash the guard
         print(f"[note] index-freshness guard skipped: {e.__class__.__name__}: {e}")
+
+    # --- Doc-drift guards (checks 15-18) -----------------------------------------------------------
+    # Each emits into `failures` when DOC_GUARDS_ENFORCE, else prints a [note] (report-only). All are
+    # wrapped so an unexpected error degrades to a note and never crashes the gate (as with 12-14).
+    def _emit(msg: str) -> None:
+        failures.append(msg) if DOC_GUARDS_ENFORCE else print(f"[note]{msg[3:]}")
+
+    def _skill_dir_of(md: Path):
+        for anc in md.parents:
+            if (anc / "SKILL.md").exists():
+                return anc
+            if anc == ROOT:
+                break
+        return None
+
+    # 15. Doc-path drift: a backticked repo-relative path in ANY tracked .md must resolve on disk.
+    # Generalizes check_references() (skill-local) to the whole tree — the class that left dead
+    # un-grouped skills/<name>/ paths after the grouping refactor. Resolves a token relative to the
+    # repo root, the file's own dir, and its owning skill dir (so skill-local examples/… still pass);
+    # skips runtime stores (*.local.json), known runtime artifacts, glob/placeholder tokens, and
+    # historical records whose paths are frozen.
+    try:
+        for md in sorted(ROOT.rglob("*.md")):
+            rel = md.relative_to(ROOT).as_posix()
+            if "/skill-template/" in rel or "/node_modules/" in rel or rel in DOC_PATH_ALLOW_FILES:
+                continue
+            sd = _skill_dir_of(md)
+            for tok in re.findall(r"`([^`]+)`", read(md)):
+                tok = tok.strip()
+                if not tok.startswith(_DOC_ANCHORS) or not tok.endswith(_REF_EXTS):
+                    continue
+                if any(c in tok for c in "<>*| {}"):          # globs / brace-expansions / placeholders
+                    continue
+                target = tok.split("#", 1)[0]                  # drop a trailing #anchor
+                if target.endswith(".local.json") or target in DOC_RUNTIME_ARTIFACTS:
+                    continue
+                bases = [ROOT, md.parent] + ([sd] if sd else [])
+                if any((b / target).exists() for b in bases):
+                    continue
+                _emit(f"  x doc-path drift — {rel}: dead path `{tok}`")
+    except Exception as e:
+        print(f"[note] doc-path guard skipped: {e.__class__.__name__}: {e}")
+
+    # 16. METRICS.md freshness: the committed dashboard must equal a fresh render (minus the generated
+    # date line). metrics.py is marked "Do not hand-edit"; this catches "edited skills, forgot to
+    # regenerate" (how it sat at 29 skills). Compares content only — the date line is normalized out
+    # so a same-day re-render never false-fails.
+    sys.path.insert(0, str(ROOT / "tools"))
+    try:
+        import metrics as _metrics
+
+        def _norm_metrics(s: str) -> str:
+            return "\n".join(l for l in s.splitlines() if not l.startswith("_Generated by"))
+
+        live = _norm_metrics(_metrics.render())
+        disk = _norm_metrics((ROOT / "docs" / "METRICS.md").read_text(encoding="utf-8"))
+        if live != disk:
+            _emit("  x docs/METRICS.md is stale vs live evidence — "
+                  "run: python3 tools/metrics.py && commit docs/METRICS.md")
+    except Exception as e:
+        print(f"[note] metrics-freshness guard skipped: {e.__class__.__name__}: {e}")
+
+    # 17. Component-doc coverage: every engine under shared/ and every bucket under canonical-sources/
+    # carries >=1 top-level .md doc (README, MAINTAINER, or a *-model.md / *-policy.md). Extends the
+    # skills-only MAINTAINER-presence check to non-skill components (Diataxis: every component documented).
+    try:
+        for base_name in COVERAGE_ROOTS:
+            base = ROOT / base_name
+            if not base.exists():
+                continue
+            for d in sorted(p for p in base.iterdir() if p.is_dir()):
+                if d.name in COVERAGE_SKIP or d.name.startswith((".", "__")):
+                    continue
+                if not any(d.glob("*.md")):
+                    _emit(f"  x component has no doc (add a README/MAINTAINER or *-model.md): "
+                          f"{d.relative_to(ROOT).as_posix()}/")
+    except Exception as e:
+        print(f"[note] coverage guard skipped: {e.__class__.__name__}: {e}")
+
+    # 18. Doc freshness (SWE-at-Google Ch.10): every README/MAINTAINER carries a `last_reviewed` stamp.
+    # A missing stamp, or a stamp older than DOC_FRESHNESS_MAX_AGE_DAYS, hard-fails (on enforce). A
+    # sibling source changed *after* the stamp is an advisory reminder only (always a [note]) — a
+    # re-review nudge, not a correctness failure.
+    try:
+        today = date.today()
+
+        def _git_date(p: Path):
+            try:
+                out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(p)],
+                                     cwd=ROOT, capture_output=True, text=True, timeout=10).stdout.strip()
+                return date.fromisoformat(out) if out else None
+            except Exception:
+                return None
+
+        docs = sorted(set(ROOT.rglob("README.md")) | set(ROOT.rglob("MAINTAINER.md")))
+        for doc in docs:
+            drel = doc.relative_to(ROOT).as_posix()
+            if "/skill-template/" in drel or "/node_modules/" in drel:
+                continue
+            m = re.search(r"last_reviewed:\s*(\d{4}-\d{2}-\d{2})", read(doc))
+            if not m:
+                _emit(f"  x doc missing `last_reviewed` stamp: {drel}")
+                continue
+            stamp = date.fromisoformat(m.group(1))
+            if (today - stamp).days > DOC_FRESHNESS_MAX_AGE_DAYS:
+                _emit(f"  x doc stale: {drel} last_reviewed {stamp} (> {DOC_FRESHNESS_MAX_AGE_DAYS}d)")
+                continue
+            newest = _git_date(doc.parent)                     # advisory only — never a hard failure
+            if newest and newest > stamp:
+                print(f"[note] doc {drel}: a sibling changed {newest} after last_reviewed {stamp} "
+                      f"— consider re-reviewing + restamping")
+    except Exception as e:
+        print(f"[note] doc-freshness guard skipped: {e.__class__.__name__}: {e}")
 
     print("TOS ecosystem - drift guard\n")
     if failures:

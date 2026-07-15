@@ -1,8 +1,9 @@
+<!-- last_reviewed: 2026-06-27 | owner: context-maintainer -->
 # Overlays registry
 
 Composable, scoped rule-sets that stack onto the resolved context contract (see
-`../overlays.md` for the model and `../overlay.schema.json` for the shape). One JSON per overlay:
-`overlays/<scope>/<id>.json`.
+`shared/context/overlays.md` for the model and `shared/context/overlay.schema.json` for the shape).
+One JSON per overlay: `overlays/<scope>/<id>.json`.
 
 ```
 overlays/

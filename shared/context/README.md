@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-23 | owner: context-maintainer -->
 # context — teaching-context & SOP layer (canonical)
 
 **Source of truth** for adapting the ecosystem to *where and how a teacher works*. Florida is vast and

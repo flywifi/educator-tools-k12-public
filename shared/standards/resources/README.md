@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-22 | owner: resources-maintainer -->
 # Standards resources
 
 External standards/assessment resources the ecosystem draws on, **stored as canonical references**

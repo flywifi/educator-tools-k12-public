@@ -1,7 +1,7 @@
 # Lesson Plan: Understanding Unit Fractions (1/b)
 
 > Gold-standard reference output. Evaluated by quality-review → **Approved (composite 4.34)**; see
-> `skills/quality-review/examples/example-evaluation.md`.
+> `skills/core/quality-review/examples/example-evaluation.md`.
 
 - **Subject / Grade band:** Mathematics / 3-5 (Grade 3)
 - **Duration:** 45 minutes

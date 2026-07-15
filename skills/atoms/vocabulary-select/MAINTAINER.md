@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: vocabulary-select-maintainer -->
 # MAINTAINER — vocabulary-select
 
 ## Purpose

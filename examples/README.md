@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-11 | owner: examples-maintainer -->
 # Example Library
 
 Cross-skill worked examples (Charter Phase C3). Per-skill examples live inside each skill's

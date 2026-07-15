@@ -63,7 +63,7 @@ teacher-facing view and resolved on demand — a pseudonymization option for pri
 ## Security & retention
 Gitignored at rest; redact on export (apply the identification mode); retention per district policy;
 record `provenance` + `last_verified` on each profile. Ties to `SECURITY_AND_SAFETY.md` and the
-privacy norms in `skills/family-communication/`.
+privacy norms in `skills/educator/family-communication/`.
 
 ## Use the helper
 ```bash

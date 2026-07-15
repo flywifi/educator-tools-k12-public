@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-11 | owner: claude-maintainer -->
 # TOS on Claude — pick your door
 
 Two ways in, depending on how you use Claude. Neither needs any technical skill.

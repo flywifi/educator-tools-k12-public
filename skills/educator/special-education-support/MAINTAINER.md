@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: special-education-support-maintainer -->
 # MAINTAINER — special-education-support
 
 ## Purpose of this maintainer file

@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-11 | owner: feeds-maintainer -->
 # feeds — feed self-update engine (L7)
 
 A small, tiered **address book of trusted education feeds** (`feeds.json`) plus a local store of the

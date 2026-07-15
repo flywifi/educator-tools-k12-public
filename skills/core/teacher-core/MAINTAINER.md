@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: teacher-core-maintainer -->
 # MAINTAINER — teacher-core
 
 ## Purpose of this maintainer file

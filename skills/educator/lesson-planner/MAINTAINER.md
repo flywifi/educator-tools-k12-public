@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: lesson-planner-maintainer -->
 # MAINTAINER — lesson-planner
 
 ## Purpose of this maintainer file

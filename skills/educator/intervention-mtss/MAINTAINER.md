@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: intervention-mtss-maintainer -->
 # MAINTAINER — intervention-mtss
 
 ## Purpose of this maintainer file

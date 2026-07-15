@@ -28,7 +28,10 @@ def has_md(d: Path) -> bool:
     return d.exists() and any(d.glob("*.md"))
 
 
-def main(argv: list[str]) -> int:
+def render() -> str:
+    """Compute the dashboard and return it as Markdown text (pure — no file write).
+    Split out of main() so tools/sync_check.py can compare committed vs. freshly-rendered
+    METRICS.md without writing the file (the freshness gate, check 16)."""
     reg = json.loads(REGISTRY.read_text(encoding="utf-8"))
     frameworks = reg.get("frameworks", [])
     artifact_types = sorted({t for ts in reg.get("skills", {}).values() for t in ts})
@@ -95,11 +98,14 @@ def main(argv: list[str]) -> int:
     out.append("")
     out.append("> Note: hub/governance skills (`teacher-core`, `quality-review`) intentionally have no")
     out.append("> output templates — the template/example metric targets artifact-producing skills.")
-    text = "\n".join(out) + "\n"
+    return "\n".join(out) + "\n"
 
+
+def main(argv: list[str]) -> int:
+    text = render()
     (ROOT / "docs" / "METRICS.md").write_text(text, encoding="utf-8")
-    print(f"wrote METRICS.md — {n_skills} skills, {len(artifact_types)} artifact types, "
-          f"approval {appr_rate:.0f}%")
+    n_skills = sum(1 for _ in SKILLS.rglob("SKILL.md"))
+    print(f"wrote docs/METRICS.md — {n_skills} skills, {len(text)} bytes")
     if "--print" in argv:
         print("\n" + text)
     return 0

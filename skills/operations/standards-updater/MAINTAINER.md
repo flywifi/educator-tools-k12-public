@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: standards-updater-maintainer -->
 # MAINTAINER — standards-updater
 
 ## Purpose of this maintainer file
