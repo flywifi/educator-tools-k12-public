@@ -6,8 +6,9 @@ questions with a **deterministic tool call** instead of loading the corpus into 
 or recalling it from memory (which costs tokens and risks hallucination).
 
 ```bash
-python3 tools/offline_index.py --build     # (re)build from the canonical JSON
-python3 tools/offline_index.py --stats     # row counts + token-savings table
+python3 tools/offline_index.py --build     # (re)build from the canonical JSON + write the manifest
+python3 tools/offline_index.py --verify    # is the index stale vs its sources? (exit 1 if so)
+python3 tools/offline_index.py --stats     # row counts + token-savings + freshness
 python3 tools/offline_index.py --course "Precalculus Honors"
 python3 tools/offline_index.py --standards "fractions" --grade 3 --subject math
 python3 tools/offline_index.py --school "Boone" --district 48
@@ -15,15 +16,18 @@ python3 tools/offline_index.py --resource SC.5.P.10.1     # CPALMS toolkit links
 python3 tools/offline_index.py --source assessment        # authoritative data endpoints
 ```
 
-## What's indexed (12,911 rows)
+## What's indexed
 
 | table | rows | source |
 |---|---|---|
 | `standards` | 6,583 | `shared/standards/resources/florida/data/*.json` |
 | `courses` | 4,607 | `canonical-sources/references/fl-course-codes.json` |
 | `schools` | 712 | `canonical-sources/schools/*/schools.json` |
-| `toolkit_resources` | 949 | `canonical-sources/references/toolkit-content/*.json` (standard → CPALMS link) |
+| `private_schools` | 508 | `canonical-sources/schools/private/*.json` |
+| `toolkit_resources` | 1,445 | `canonical-sources/references/toolkit-content/*.json` + `references/fl-instructional-toolkits.json` (standard → CPALMS link) |
 | `data_sources` | 60 | `canonical-sources/registries/fldoe-data-sources.json` |
+
+(Counts are also recorded in `index-manifest.json`; regenerate with `--build` if this table drifts.)
 
 ## Token reduction — how it's achieved, and how much
 
@@ -61,5 +65,21 @@ data, so a lookup can't hallucinate a course code or standard.
 A capability skill (lesson-planner, assessment-designer, curriculum-mapping, …) that needs a
 standard, course code, school, or CPALMS resource calls `offline_index.py` (or imports its `_q`
 helper) and embeds only the returned rows. Results are advisory + carry provenance; standards/courses
-should still be verified on CPALMS. Rebuild after any change to the underlying canonical JSON;
-`--stats` reports freshness and counts.
+should still be verified on CPALMS.
+
+## Freshness — why `offline.db` can't silently go stale
+The db is gitignored (a 4 MB regenerable binary), so it can't itself signal drift in git/CI. Instead
+`--build` writes a **committed** `index-manifest.json` holding the sha256 of every source file it
+indexed. Three things then keep the db honest:
+
+1. **`--verify`** (and `--stats`) compare the live sources to the manifest and report STALE if any
+   changed — reading only committed files, so it works with no db and on a fresh clone.
+2. **The drift guard** (`tools/sync_check.py`, a CI hard gate) fails the build if the index is stale,
+   naming the changed files and the one-line fix.
+3. **Producers self-heal:** the tools that regenerate an index source (`parse_fl_standards.py`,
+   `msid_lookup.py --apply`, and the harvest orchestrators) rebuild the index automatically, so the
+   manifest travels with the data change.
+
+**The rule:** after editing any source in the table above, run `python3 tools/offline_index.py
+--build` and **commit `index-manifest.json`** alongside the data change. (Most producers do this for
+you; the guard catches it if something didn't.)

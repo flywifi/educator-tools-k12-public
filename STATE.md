@@ -218,6 +218,25 @@ Markdown, portable. First consumer: `meeting-classifier`.
 resource integrity validated; `MAINTAINER.md` present in all skills.** (2026-07-11)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
+## 2026-07-15 — offline-index freshness guard (committed manifest + auto-rebuild)
+The gitignored `canonical-sources/index/offline.db` silently went stale when the D3 fix regenerated
+the standards JSON without a rebuild, and nothing detected it. Fixed structurally:
+- `offline_index.py` gains a single `source_files()` enumerator (so the fingerprint can't diverge
+  from what `build()` indexes) and, on `--build`, writes a **committed**
+  `canonical-sources/index/index-manifest.json` = sha256 + bytes of every source (no timestamp/engine,
+  so it's byte-stable — a diff means the inputs changed). New `drift_report()`/`--verify` (exit 1 if
+  stale); `--stats` shows freshness. The db stays gitignored.
+- `sync_check.py` check 14 (**hard gate**, runs in CI via the existing step) fails if the committed
+  sources no longer match the committed manifest — reads only committed files, so it fires on a fresh
+  clone and in CI, naming the changed files + the rebuild remedy.
+- **Producers self-heal:** `parse_fl_standards.py` (the culprit), `msid_lookup.py --apply`, and the
+  harvest orchestrators rebuild the index after writing a source (non-fatal, `--no-index` escape);
+  `local_harvest.py`/`harvest_all.py --push` now also stage the refreshed manifest.
+- Rebuilding also resolved the actual staleness: the index no longer serves pre-D3 statement text.
+- **Closes** the prior follow-up "rebuild offline.db before any statement-text benchmark" — the guard
+  now enforces freshness. Residual: `--no-index` + force-past-red-CI can still commit a stale manifest
+  (deliberate act, not the silent default).
+
 ## 2026-07-15 — governed document benchmark (generation track shipped; ingestion track scaffolded)
 A reproducible, honesty-gated benchmark for "is TOS above and beyond the AI alone for document
 work." Lives under `benchmarks/` + `tools/run_benchmark.py`; report `docs/BENCHMARK_COMPETITIVE.md`
@@ -241,9 +260,9 @@ work." Lives under `benchmarks/` + `tools/run_benchmark.py`; report `docs/BENCHM
   best-in-class engine as a docintel parser tier. The **loss→new-eval loop**
   (`validate_outputs.py --promote`) is the engine that keeps TOS ahead.
 - **Follow-ups:** execute the hosted arms (evidence-backed) to fill competitor cells; synthesize the
-  ingestion-track adversarial corpus (CJK/nested-container/merged-cell — the docintel fixture gap);
-  offline.db still carries pre-fix statement text (regenerable build artifact) — rebuild before any
-  benchmark that reads statement text rather than just resolving code existence.
+  ingestion-track adversarial corpus (CJK/nested-container/merged-cell — the docintel fixture gap).
+  (The prior "rebuild offline.db before a statement-text benchmark" caveat is resolved — see the
+  freshness-guard entry above; the index is rebuilt and the drift guard now enforces it.)
 
 ## 2026-07-11 — onboarding parity, Reference Pack, scenario-test defect fixes
 Shipped on `claude/educator-tools-k12-plan-f49yju` (source: Monarch Learning Academy scenario test):
