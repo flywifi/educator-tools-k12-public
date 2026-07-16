@@ -28,6 +28,12 @@ Consumed by content skills such as `presentation-builder` (deck → `.pptx`) and
   the standard install locations (`C:\Program Files\LibreOffice\…`, `/Applications/LibreOffice.app/…`).
   Without this, PDF/PNG render silently "isn't available" on a teacher's desktop. If LibreOffice is
   genuinely absent the document is still produced — only the PDF/PNG QA render is skipped, with a note.
+  **`_find_soffice()` is the single source of truth** — the docintel legacy-office parser
+  (`shared/docintel/parsers/libreoffice_parser.py`) now imports it rather than doing its own PATH-only
+  `which()`; don't reintroduce a second resolver (it re-creates the macOS "installed but not found" bug).
+- **Installing the Python libs on macOS:** `python-pptx`/`python-docx`/`openpyxl` must go into the
+  managed venv, not a global `pip install` (Homebrew Python refuses that under PEP 668). Use
+  `python3 tools/deps_preflight.py --install office_authoring` (isolated `.harvest-venv`, wheels-only).
 - **Capability gating is layered:** `.pptx`/`.docx`/`.xlsx` need the matching Python lib; PDF/PNG
   additionally needs LibreOffice. Report each missing capability honestly and independently.
 - Cross-surface details live in `docs/DEPLOYMENT_SURFACES.md` ("Cross-platform notes"); keep them in

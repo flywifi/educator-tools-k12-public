@@ -47,8 +47,14 @@ registry-currency watcher flags this (below).
   `standards-updater` / `tools/standards_refresh.py`.) Structural health is `shared/health/health.py`.
 - **Optional capabilities & deps:** `python3 shared/health/capabilities.py` shows which optional powers
   are active (PDF/OCR/Office/render/transcription/fonts) and which **cloud** providers are installed +
-  credentialed. Install per-capability with the matching `tools/requirements-*.txt` (+ system bins:
-  LibreOffice, poppler, ffmpeg, tesseract; fonts: Noto/Liberation/Carlito/Caladea). **Cloud providers**
+  credentialed. Install per-capability into the **managed venv** — `python3 tools/deps_preflight.py
+  --install <capability>` (e.g. `office_authoring`) or `--install-all` — which uses the isolated,
+  gitignored `.harvest-venv/` (wheels-only, never system Python, so **macOS/Homebrew PEP 668 never
+  trips**); `--python-path` prints that venv's interpreter for a Claude Desktop MCP `command`/GUI
+  launch. (Direct `pip install -r tools/requirements-*.txt` works too, but only inside a venv on
+  macOS.) **System bins** are separate — LibreOffice, poppler, ffmpeg, tesseract (macOS:
+  `brew install libreoffice tesseract ffmpeg poppler`); fonts: Noto/Liberation/Carlito/Caladea. macOS
+  cross-platform details: `docs/DEPLOYMENT_SURFACES.md` + `docs/MACOS.md`. **Cloud providers**
   (Azure/fal/Nutrient/Firecrawl) are OFF until a deployment opts in via `cloud_providers` and supplies
   API keys **in the environment** (never the repo). Policy + privacy boundary:
   `shared/health/dependency-policy.md`.

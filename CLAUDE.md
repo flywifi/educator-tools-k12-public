@@ -41,6 +41,22 @@ Then edit `SKILL.md` (specific, slightly "pushy", scoped description with a "Do 
 clause) and `references/artifact-types.md`. Follow the inner loop in `skill-creator` (draft → evals
 → iterate) for capability skills.
 
+## Local setup (macOS / cross-platform)
+Full detail: `docs/DEPLOYMENT_SURFACES.md` (cross-platform notes) + `docs/MACOS.md` (mac-lint + findings
+log). The essentials for working here on a Mac:
+- **Python:** `/usr/bin/python3` is only the Xcode CLT stub — install a real interpreter (Homebrew /
+  python.org). Use `python3 -m pip`, not a bare `pip`. Internal subprocesses must spawn `sys.executable`,
+  never the bare name `python3` (enforced by `tools/mac_audit.py` = `sync_check` check 19).
+- **Optional deps (PEP 668):** never `pip install` globally on Homebrew Python — install into the
+  managed venv: `python3 tools/deps_preflight.py --install <capability>` (or `--install-all`). It uses
+  the isolated `.harvest-venv/`, wheels-only, never system Python. `--python-path` prints the venv
+  interpreter to point a Claude Desktop MCP `command`/GUI launch at.
+- **System bins:** `brew install libreoffice tesseract ffmpeg poppler` (LibreOffice may need
+  System Settings › Privacy & Security to open on Sequoia). Homebrew prefix is `/opt/homebrew` on
+  Apple Silicon, `/usr/local` on Intel — never hardcode it.
+- **Encoding:** always pass `encoding="utf-8"` to text `open()`/`read_text()`/`write_text()` (mac-lint
+  check 19 enforces it — a non-UTF-8 locale breaks otherwise).
+
 ## Non-negotiables (enforced by the drift guard / Quality Gates)
 - Every `SKILL.md` references the pipeline (`method.md`), the metadata schema (`metadata-schema.md`),
   and emits `human_review_required`.

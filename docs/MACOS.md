@@ -61,7 +61,14 @@ Confirmed macOS defects and status. **Fixed** items landed in the branch's macOS
 - Action:      <fix + whether a new mac-lint check applies>
 ```
 
-## Related
-- `docs/DEPLOYMENT_SURFACES.md` — the cross-platform (Windows/macOS) surface notes.
-- `tools/README.md` — tool index (mac_audit listed under Guards & CI).
+## Where these lessons live (component-local docs)
+The macOS knowledge is folded into the docs a maintainer of each area actually reads:
+- `CLAUDE.md` → "Local setup (macOS / cross-platform)" — the developer setup essentials.
+- `docs/DEPLOYMENT_SURFACES.md` → cross-platform notes (python3/CLT, PEP 668 venv, Gatekeeper, MCP PATH).
+- `docs/DEPLOYMENT.md` → "Optional capabilities & deps" — the managed-venv install + `brew` system bins.
+- `shared/office/README.md` → soffice single-resolver rule + the `--install office_authoring` command.
+- `shared/docintel/README.md` → the `libreoffice_parser` reuses `_find_soffice()` (Mac) note.
+- `skills/educator/presentation-builder/MAINTAINER.md` → office-render install command.
+- `tools/README.md` → `deps_preflight --install/--python-path`; `mac_audit` under Guards & CI.
+- `tools/requirements-*.txt` headers → the managed-venv install line.
 - The on-Mac hands-on runbook is kept **outside this repo** (personal tester checklist).

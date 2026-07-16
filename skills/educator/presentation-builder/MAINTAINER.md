@@ -27,10 +27,11 @@ Skill-specific:
 - fabricated standard codes
 - **office render silently unavailable:** the real `.pptx` (and optional PDF/PNG) come from
   `shared/office/office_authoring.py`, which is capability-gated. If `python-pptx` isn't installed it
-  writes a `.spec.json` and reports an honest gap — it must NEVER emit a fake/empty binary. PDF/PNG
-  needs LibreOffice; on Windows/Mac `soffice` isn't on PATH, so discovery also checks the standard
-  install dirs (do not revert to PATH-only). The document `author` must be the directing teacher —
-  never "AI"/a library name.
+  writes a `.spec.json` and reports an honest gap — it must NEVER emit a fake/empty binary. Install the
+  lib into the managed venv with `python3 tools/deps_preflight.py --install office_authoring` (on
+  macOS a global `pip install` is refused by PEP 668). PDF/PNG needs LibreOffice; on Windows/Mac
+  `soffice` isn't on PATH, so discovery also checks the standard install dirs (do not revert to
+  PATH-only). The document `author` must be the directing teacher — never "AI"/a library name.
 
 ## Fragile fallbacks that must not become defaults
 - placeholder images/diagrams must be marked

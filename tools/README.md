@@ -15,7 +15,10 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
   encoding-less text opens). Also enforced as `sync_check.py` check 19.
 - `security_scan.py`, `tos_check.py`, `validate_outputs.py`, `validate_examples.py`,
   `validate_document.py` — governance/quality/output validators.
-- `deps_preflight.py`, `doctor_env.py` — dependency + environment preflight.
+- `deps_preflight.py`, `doctor_env.py` — dependency + environment preflight. `deps_preflight.py
+  --install <capability>` / `--install-all` installs optional capabilities into the isolated
+  `.harvest-venv` (wheels-only; never system Python → no macOS/Homebrew PEP 668); `--python-path`
+  prints that venv's interpreter for a Claude Desktop MCP `command`/GUI launch.
 
 ## Scaffolding & packaging
 - `new_skill.py` — scaffold a skill from `tools/skill-template/` + copy synced refs.
