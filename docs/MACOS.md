@@ -46,7 +46,7 @@ Confirmed macOS defects and status. **Fixed** items landed in the branch's macOS
 | D4 | Cross-platform docs framed the `python3` caveat as Windows-only | **Fixed** | `docs/DEPLOYMENT_SURFACES.md` cross-platform section |
 | D5 | Hardcoded `/tmp` in a workflow example | **Fixed** | `skills/operations/standards-updater/` uses portable relative paths |
 | D6 | Bare `python` in a harvest doc | **Fixed** | `canonical-sources/schools/HARVESTING.md` → `python3` |
-| E1 | PEP 668 `externally-managed-environment` install break | **Doc'd; open on-device** | `docs/DEPLOYMENT_SURFACES.md` (venv-first). Verify exact message on a Mac. |
+| E1 | PEP 668 `externally-managed-environment` install break | **Fixed (mechanism) + doc'd** | `tools/deps_preflight.py --install <capability>` installs into the managed `.harvest-venv` (wheels-only, never system Python); `--python-path` exposes the venv interpreter for F2/F3. Verify the exact error text on a Mac. |
 | E2 | Homebrew tools invisible under a GUI/MCP PATH | **Partly fixed (soffice=D1) + doc'd** | MCP absolute-path guidance in `docs/DEPLOYMENT_SURFACES.md`; a general binary resolver is a follow-up |
 | E3 | Stale right-click Gatekeeper guidance (Sequoia) | **Doc'd; open on-device** | `docs/DEPLOYMENT_SURFACES.md` (System Settings flow) |
 

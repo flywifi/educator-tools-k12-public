@@ -51,10 +51,15 @@ that boundary (found by adversarial audit, mitigations in place):
   interpreter, not literally `python3`.
 - **macOS Python packaging (PEP 668):** Homebrew/system Python are *externally managed* — a bare
   `pip install -r tools/requirements-*.txt` fails with `error: externally-managed-environment`.
-  **Always install into a venv first:** `python3 -m venv .venv && source .venv/bin/activate` then
-  `pip install -r …`. (`--break-system-packages` exists but is risky; pipx suits standalone CLI
-  tools.) Homebrew's prefix differs by chip — **`/opt/homebrew` on Apple Silicon**, `/usr/local` on
-  Intel — so never hardcode `/usr/local/bin/<tool>`; arm64 Python also needs arm64/universal2 wheels.
+  **Preferred: install into the repo's managed venv** — `python3 tools/deps_preflight.py --install
+  <capability>` (e.g. `office_authoring`) or `--install tools/requirements-<name>.txt`. It builds/uses
+  the isolated, gitignored `.harvest-venv/`, installs **wheels-only**, and **never touches system
+  Python** — so PEP 668 never triggers. `python3 tools/deps_preflight.py --python-path` prints that
+  venv's interpreter (the exact Python to point a Claude Desktop MCP `command`/a GUI launch at). A
+  manual venv works too: `python3 -m venv .venv && source .venv/bin/activate` then `pip install -r …`
+  (`--break-system-packages` exists but is risky; pipx suits standalone CLI tools). Homebrew's prefix
+  differs by chip — **`/opt/homebrew` on Apple Silicon**, `/usr/local` on Intel — so never hardcode
+  `/usr/local/bin/<tool>`; arm64 Python also needs arm64/universal2 wheels.
 - **macOS Gatekeeper (installing LibreOffice/tesseract/ffmpeg):** a browser-downloaded, un-notarized
   app is blocked ("developer cannot be verified"). On **macOS Sequoia 15 the old Control-click →
   Open trick is gone** — allow it under **System Settings › Privacy & Security › Open Anyway**. A

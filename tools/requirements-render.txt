@@ -1,3 +1,4 @@
+# macOS/Homebrew — install into the managed venv (no PEP 668): python3 tools/deps_preflight.py --install tools/requirements-render.txt
 # Local headless-browser render prong (capability: local_render, local_optional / on_if_present).
 # Powers shared/render/render_prongs.py and tools/render_fetch.py — the LOCAL render + screenshot
 # fallbacks for JS-required SPA pages (e.g. CPALMS search) that the polite stdlib crawler reports

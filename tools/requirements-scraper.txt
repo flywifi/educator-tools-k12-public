@@ -1,3 +1,4 @@
+# macOS/Homebrew — install into the managed venv (no PEP 668): python3 tools/deps_preflight.py --install tools/requirements-scraper.txt
 # Optional dependencies for tools/standards_refresh.py (the standards-updater).
 # The crawler runs on the Python standard library alone; these only make fetching
 # and parsing nicer, and enable JS-rendered pages (e.g., the CPALMS standards search).

@@ -44,7 +44,8 @@ def _gap(out: Path, spec: dict, capability: str) -> dict:
     return {"status": "capability_unavailable", "capability": capability,
             "wrote_spec": str(sidecar),
             "note": f"{capability} library not installed; wrote the spec instead of a fake file — "
-                    "install tools/requirements-office.txt to emit the real document"}
+                    "install with `python3 tools/deps_preflight.py --install office_authoring` "
+                    "(managed venv; avoids macOS/Homebrew PEP 668) to emit the real document"}
 
 
 def build_pptx(spec: dict, out: Path, author: Optional[str] = None) -> dict:
