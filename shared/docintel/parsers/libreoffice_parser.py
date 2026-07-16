@@ -77,6 +77,15 @@ class LegacyOfficeParser(Parser):
                                capture_output=True, timeout=120, check=True)
                 txt_path = src.with_suffix(".txt")
                 text = txt_path.read_text(encoding="utf-8", errors="ignore") if txt_path.exists() else ""
+                if not text.strip():
+                    # soffice exits 0 even on a failed load/convert (upstream tdf#148275), so
+                    # check=True can't catch it — a missing/empty txt IS the failure signal. Without
+                    # this, the failure surfaced as an empty "native" parse with no diagnostic.
+                    return RecoveryResult(blocks=[], extraction_method="metadata", confidence=0.0,
+                                          diagnostics={"status": "convert_failed",
+                                                       "detail": "soffice exited 0 but produced no text "
+                                                                 "(tdf#148275)",
+                                                       "media_type": media_type})
             except Exception as exc:
                 return RecoveryResult(blocks=[], extraction_method="metadata", confidence=0.0,
                                       diagnostics={"status": "convert_failed", "detail": str(exc)})

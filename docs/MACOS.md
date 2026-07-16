@@ -62,6 +62,24 @@ Confirmed macOS defects and status. **Fixed** items landed in the branch's macOS
 - Action:      <fix + whether a new mac-lint check applies>
 ```
 
+### D-NEW1 — convert() reported "ok" for a conversion that produced nothing  (2026-07-16, Linux container / adversarial audit)
+- What:        `office_authoring.convert()` returned `{"status":"ok","out":…}` naming a PDF that did not exist (LibreOffice install without the Writer component).
+- Where:       `shared/office/office_authoring.py` `convert()`
+- Why/How:     soffice --headless exits 0 even when it prints "Error: source file could not be loaded", so `check=True` never trips and the output was never verified — a fake success on any missing-component/filter/profile failure (plausible on macOS Homebrew installs).
+- Severity:    Major
+- Class:       rendering
+- Source:      https://bugs.documentfoundation.org/show_bug.cgi?id=148275
+- Action:      **Fixed** — convert() now verifies the output file exists and returns `status:error` with soffice's output when it doesn't. No new mac-lint check (behavioral, not a static pattern).
+
+### D-NEW2 — LegacyOfficeParser mislabeled a silent conversion failure as an empty "native" parse  (2026-07-16, Linux container / adversarial audit)
+- What:        On the same exit-0 soffice failure, `parse()` returned `extraction_method:"native"`, 0 blocks, and diagnostics with no failure marker.
+- Where:       `shared/docintel/parsers/libreoffice_parser.py` `parse()`
+- Why/How:     the missing/empty converted txt was treated as empty text rather than as the failure signal it is (tdf#148275 again — the exit code is not the truth).
+- Severity:    Minor
+- Class:       rendering
+- Source:      https://bugs.documentfoundation.org/show_bug.cgi?id=148275
+- Action:      **Fixed** — missing/empty txt now returns the `convert_failed` diagnostics path.
+
 ## Sources & freshness (keeping the research citations verifiable)
 Every authoritative source behind the macOS findings is registered in
 **`canonical-sources/registries/macos-sources.json`** (Apple, Python/PEPs, Homebrew, Git, Claude Code

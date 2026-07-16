@@ -160,10 +160,22 @@ def convert(path: Path, to: str = "pdf", outdir: Optional[Path] = None) -> dict:
                         "location; install LibreOffice (or add its program/ dir to PATH) to "
                         "convert/render — the spec/document was still produced"}
     outdir = outdir or path.parent
+    # `to` may carry an explicit filter ("doc:MS Word 97"); the produced extension is the part
+    # before the colon.
+    out_file = outdir / (path.stem + "." + to.split(":", 1)[0])
     try:
-        subprocess.run([soffice, "--headless", "--convert-to", to, "--outdir", str(outdir), str(path)],
-                       capture_output=True, timeout=120, check=True)
-        return {"status": "ok", "out": str(outdir / (path.stem + "." + to))}
+        r = subprocess.run([soffice, "--headless", "--convert-to", to, "--outdir", str(outdir), str(path)],
+                           capture_output=True, timeout=120, check=True)
+        if not out_file.exists():
+            # soffice exits 0 even when it fails to load/convert (upstream bug tdf#148275, and
+            # errors may not reach stderr, tdf#67009) — the OUTPUT FILE is the only truth. Without
+            # this check a failed render (e.g. a LibreOffice install missing the Writer/Impress
+            # component) would be reported as ok with a nonexistent path — a fake success.
+            detail = ((r.stdout or b"") + (r.stderr or b"")).decode("utf-8", "replace").strip()
+            return {"status": "error",
+                    "detail": f"soffice exited 0 but produced no .{to.split(':', 1)[0]} "
+                              f"(tdf#148275): {detail[:300]}"}
+        return {"status": "ok", "out": str(out_file)}
     except Exception as exc:
         return {"status": "error", "detail": f"{exc.__class__.__name__}: {exc}"}
 

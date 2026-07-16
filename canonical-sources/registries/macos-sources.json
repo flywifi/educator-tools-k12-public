@@ -545,6 +545,34 @@
         "last_modified": null,
         "content_sha256": null
       }
+    },
+    {
+      "id": "libreoffice-tdf-148275",
+      "url": "https://bugs.documentfoundation.org/show_bug.cgi?id=148275",
+      "label": "LibreOffice Bugzilla - tdf#148275: headless conversion exits 0 on failure",
+      "category": "upstream-behavior",
+      "authority": "primary",
+      "backs": "D-NEW1/D-NEW2: soffice --headless --convert-to exits 0 even when conversion fails; convert()/LegacyOfficeParser must verify the OUTPUT, not the exit code",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "libreoffice-ask-zero-status",
+      "url": "https://ask.libreoffice.org/t/headless-libreoffice-fails-with-zero-status-code/49388",
+      "label": "Ask LibreOffice - Headless LibreOffice fails with zero status code",
+      "category": "upstream-behavior",
+      "authority": "secondary",
+      "backs": "D-NEW1 corroboration - community-confirmed exit-0-on-failure; recommended workaround = check the output file - verify on-device",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
     }
   ]
 }
