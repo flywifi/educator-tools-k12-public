@@ -43,8 +43,13 @@ def _iter_py():
 
 
 def _ignored(lines: list[str], node: ast.AST) -> bool:
-    ln = getattr(node, "lineno", 0)
-    return bool(ln) and "# mac-audit: ignore" in lines[ln - 1]
+    # The pragma counts on ANY line of the (possibly multi-line) call — end-of-call placement is the
+    # natural spot and previously silently failed to suppress.
+    start = getattr(node, "lineno", 0)
+    if not start:
+        return False
+    end = getattr(node, "end_lineno", start) or start
+    return any("# mac-audit: ignore" in lines[i - 1] for i in range(start, min(end, len(lines)) + 1))
 
 
 def _func_name(call: ast.Call) -> str:
@@ -57,15 +62,27 @@ def _check_file(p: Path) -> list[dict]:
     try:
         src = p.read_text(encoding="utf-8")
         tree = ast.parse(src)
-    except Exception:
-        return []  # unparseable/binary — not our concern here
+    except Exception as e:
+        # a file that can't be parsed can't run either, but say so instead of silently skipping —
+        # its findings are otherwise invisible.
+        print(f"[note] mac-lint: skipped unparseable {rel} ({e.__class__.__name__})", file=sys.stderr)
+        return []
     lines = src.splitlines()
+    # Names bound anywhere in this file to a literal argv starting with a bare interpreter — a spawn
+    # via such a variable is the same defect one hop away (a plain literal-only check missed it).
+    bare_vars: set[str] = set()
+    for n in ast.walk(tree):
+        if isinstance(n, ast.Assign) and isinstance(n.value, (ast.List, ast.Tuple)) and n.value.elts:
+            head = n.value.elts[0]
+            if (isinstance(head, ast.Constant) and isinstance(head.value, str)
+                    and head.value in _BARE_INTERPRETERS):
+                bare_vars.update(t.id for t in n.targets if isinstance(t, ast.Name))
     out: list[dict] = []
     for node in ast.walk(tree):
         if not isinstance(node, ast.Call):
             continue
         name = _func_name(node)
-        # 1) bare-interpreter subprocess
+        # 1) bare-interpreter subprocess (literal argv, or a file-local variable holding one)
         if name in _SPAWN_FUNCS and node.args:
             first = node.args[0]
             if isinstance(first, (ast.List, ast.Tuple)) and first.elts:
@@ -74,8 +91,17 @@ def _check_file(p: Path) -> list[dict]:
                         and head.value in _BARE_INTERPRETERS and not _ignored(lines, node)):
                     out.append({"file": rel, "line": node.lineno, "check": "bare-interpreter",
                                 "issue": f"subprocess spawned by bare '{head.value}' — use sys.executable"})
-        # 2) encoding-less text open / read_text / write_text
-        if name == "open" and isinstance(node.func, ast.Name):
+            elif (isinstance(first, ast.Name) and first.id in bare_vars
+                    and not _ignored(lines, node)):
+                out.append({"file": rel, "line": node.lineno, "check": "bare-interpreter",
+                            "issue": f"subprocess spawned via variable '{first.id}' holding a bare-"
+                                     f"interpreter argv — use sys.executable"})
+        # 2) encoding-less text open / read_text / write_text. `io.open` is the same function as
+        # builtin open — treat it identically. (Path.open() receivers are not statically typeable —
+        # documented limitation, kept out to preserve zero false positives on a hard gate.)
+        is_io_open = (name == "open" and isinstance(node.func, ast.Attribute)
+                      and isinstance(node.func.value, ast.Name) and node.func.value.id == "io")
+        if (name == "open" and isinstance(node.func, ast.Name)) or is_io_open:
             mode = _literal_mode(node)
             has_enc = _has_kw(node, "encoding")
             if mode not in _BINARY_MODES and mode is not None and not has_enc and not _ignored(lines, node):

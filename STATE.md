@@ -219,6 +219,23 @@ resource integrity validated; `MAINTAINER.md` present in all skills; doc-drift g
 enforced.** (2026-07-15)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
+## 2026-07-16 — adversarial audit of the 24h window (34 probes) + full remediation
+Audit-only pass over everything landed in the prior 24h (doc guards 15–18, supply-chain fix, macOS
+fixes + mac-lint/check 19, deps_preflight Option 1, macos-sources + check 20): 34 probes across 6
+surfaces, findings logged without action, then all 10 approved items remediated in 4 commits:
+- **Office honesty (Major):** soffice exits 0 on failed headless conversion (upstream tdf#148275) —
+  `convert()` now verifies the output file exists (the old fake-"ok" had even fooled the audit's own
+  E2E probe: this container has no Impress/Writer, so no conversion ever succeeded here); the legacy
+  parser returns `convert_failed` diagnostics instead of an empty "native" result.
+- **check 20 (Major):** exact-page URL matching per RFC 3986 (three proven prefix-match bypasses
+  killed) + IGNORECASE + a [note] naming an unreadable registry.
+- **deps_preflight:** failed installs exit 1; `scrape_feed` repointed off a never-existed
+  requirements file; `--install-all` dedupes shared requirements (14→9 pip batches).
+- **mac-lint + source_currency:** variable-held argv + `io.open` detected; ignore-pragma spans
+  multi-line calls; unparseable files noted; naive dates parse as UTC midnight (one bad date no
+  longer crashes the whole freshness engine). Sources registered: tdf#148275, ask.libreoffice 49388,
+  RFC 3986 (macos-sources.json, 41 entries). Findings log delivered + annotated.
+
 ## 2026-07-15 — maintainer/README audit (fix drift + fill doc gaps + 4 durable doc-drift guards)
 Systematic audit of every component (skills/atoms/shared engines/canonical buckets) against its
 maintainer/README files. Fixed the proven discrepancies, filled the doc-coverage gaps, and installed

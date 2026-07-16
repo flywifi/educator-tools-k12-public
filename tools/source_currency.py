@@ -66,12 +66,19 @@ def _iso(dt: datetime | None = None) -> str:
 def _parse_dt(value: str | None) -> datetime | None:
     if not value:
         return None
+
+    def _aware(dt: datetime) -> datetime:
+        # A bare date/naive timestamp (e.g. a hand-edited "2026-07-16") parses tz-naive; subtracting
+        # it from an aware now() raises and would take down the WHOLE freshness run. Interpret naive
+        # values as UTC midnight instead of crashing.
+        return dt.replace(tzinfo=timezone.utc) if dt.tzinfo is None else dt
+
     try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return _aware(datetime.fromisoformat(value.replace("Z", "+00:00")))
     except Exception:
         try:
             from email.utils import parsedate_to_datetime
-            return parsedate_to_datetime(value)
+            return _aware(parsedate_to_datetime(value))
         except Exception:
             return None
 

@@ -36,5 +36,10 @@ Consumed by content skills such as `presentation-builder` (deck → `.pptx`) and
   `python3 tools/deps_preflight.py --install office_authoring` (isolated `.harvest-venv`, wheels-only).
 - **Capability gating is layered:** `.pptx`/`.docx`/`.xlsx` need the matching Python lib; PDF/PNG
   additionally needs LibreOffice. Report each missing capability honestly and independently.
+- **soffice's exit code is NOT the truth** (upstream tdf#148275: headless conversion exits 0 even on
+  a failed load, e.g. an install missing the Writer/Impress component). `convert()` therefore
+  verifies the **output file exists** — never weaken that back to trusting `check=True`.
+- **The builders silently ignore unrecognized spec keys** — a typo'd key (e.g. `"paragraph"` for the
+  expected shape) yields a sparse-but-`status:ok` document. Validate the spec shape before authoring.
 - Cross-surface details live in `docs/DEPLOYMENT_SURFACES.md` ("Cross-platform notes"); keep them in
   sync with this file.

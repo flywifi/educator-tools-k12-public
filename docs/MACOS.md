@@ -11,11 +11,19 @@ Static AST checks over first-party Python (`tools/`, `shared/`, `skills/`) that 
 defects we fixed, so a Linux-only CI can't let a Mac regression slip back in:
 
 1. **bare-interpreter** — a child process spawned by the *name* `"python3"`/`"python"` instead of
-   `sys.executable`. On a macOS venv/pyenv the bare name can resolve to a **different** interpreter
-   (often the Xcode CLT stub `/usr/bin/python3`, which lacks the venv's deps) → split-brain failure
-   mid-workflow; under a no-shell-PATH GUI/MCP launch it's simply "not found".
-2. **encoding** — `open()` in text mode, or `.read_text()`/`.write_text()` with no `encoding=`. The
-   default is locale-dependent, so a non-UTF-8 locale (`LC_ALL=C`) breaks on a non-ASCII byte.
+   `sys.executable` — as a literal argv **or via a file-local variable holding one**. On a macOS
+   venv/pyenv the bare name can resolve to a **different** interpreter (often the Xcode CLT stub
+   `/usr/bin/python3`, which lacks the venv's deps) → split-brain failure mid-workflow; under a
+   no-shell-PATH GUI/MCP launch it's simply "not found".
+2. **encoding** — `open()`/`io.open()` in text mode, or `.read_text()`/`.write_text()` with no
+   `encoding=`. The default is locale-dependent, so a non-UTF-8 locale (`LC_ALL=C`) breaks on a
+   non-ASCII byte.
+
+Known limitations (kept deliberately, to preserve zero false positives on a hard gate):
+`Path.open()` and other attribute-call opens on untyped receivers are not detected (add
+`encoding=` anyway); string-command spawns (`subprocess.run("python3 …", shell=True)`) are
+**bandit's** beat (security_scan gates `shell=True` at HIGH); an unparseable `.py` is skipped with a
+`[note]` (it cannot run either).
 
 Run it:
 ```bash
@@ -24,7 +32,8 @@ python3 tools/mac_audit.py --json
 ```
 It is also enforced as **`tools/sync_check.py` check 19** (hard gate; degrades to a `[note]` if the
 module can't be imported, like checks 12–14). Escape hatch for an intentional case: put
-`# mac-audit: ignore` on the offending line.
+`# mac-audit: ignore` on **any line of the offending call** (multi-line calls included — end-of-call
+placement works).
 
 ### Adding a new check (as testing reveals new patterns)
 1. Add a detector inside `_check_file()` in `tools/mac_audit.py` (walk the AST; append
@@ -79,6 +88,19 @@ Confirmed macOS defects and status. **Fixed** items landed in the branch's macOS
 - Class:       rendering
 - Source:      https://bugs.documentfoundation.org/show_bug.cgi?id=148275
 - Action:      **Fixed** — missing/empty txt now returns the `convert_failed` diagnostics path.
+
+### 2026-07-16 remediation round (adversarial audit of the 24h window — 34 probes)
+All confirmed findings fixed in this round; probes re-run and flipped:
+- **C2** `deps_preflight --install` exited 0 on a failed install → now exits 1 (system-binary no-op
+  stays 0; bare `--install` stays 2).
+- **E3** one naive `last_checked` date crashed the whole `source_currency` run → naive datetimes are
+  now interpreted as UTC midnight (`_parse_dt`), never a crash.
+- **C5** `scrape_feed` pointed at a requirements file that never existed → repointed to
+  `tools/requirements-scraper.txt` (bs4). `--install-all` also dedupes shared requirements files.
+- **B1/B3** check 20 prefix-match bypasses (deep-path/sibling/suffix; uppercase scheme) → exact-page
+  matching per RFC 3986 + IGNORECASE (see "Sources & freshness").
+- **A1/A2/A4/A5** mac-lint: variable-held argv detected; `io.open` covered; ignore-pragma works on
+  any line of the call; unparseable files skipped with a `[note]`.
 
 ## Sources & freshness (keeping the research citations verifiable)
 Every authoritative source behind the macOS findings is registered in
