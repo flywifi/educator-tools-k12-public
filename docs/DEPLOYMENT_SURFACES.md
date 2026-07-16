@@ -42,9 +42,28 @@ Three surfaces are supported; the difference is mostly **where student data live
 ## Cross-platform notes (Windows / macOS desktop ↔ the Claude/ChatGPT app)
 The offline tools run on a teacher's desktop; the app runs on Windows or Mac. Things that bite at
 that boundary (found by adversarial audit, mitigations in place):
-- **Python command:** internal calls use `sys.executable` (safe). But doc/command lines say
-  `python3`, which many **Windows** installs don't provide — use `py -3 …` or `python …` there. The
-  assistant driving the tools should pick the platform interpreter, not literally `python3`.
+- **Python command:** internal calls use `sys.executable` (safe — never spawn a child by the bare
+  name `python3`/`python`, or a macOS venv can silently launch the wrong interpreter). Doc/command
+  lines say `python3`: on **Windows** many installs don't provide it — use `py -3 …` or `python …`.
+  On **macOS**, `/usr/bin/python3` is only an Xcode Command-Line-Tools *stub* (older/incomplete;
+  first use triggers the CLT install prompt); install a real interpreter via Homebrew or python.org,
+  and use `python3 -m pip` (a bare `pip` is often absent). The assistant should pick the platform
+  interpreter, not literally `python3`.
+- **macOS Python packaging (PEP 668):** Homebrew/system Python are *externally managed* — a bare
+  `pip install -r tools/requirements-*.txt` fails with `error: externally-managed-environment`.
+  **Always install into a venv first:** `python3 -m venv .venv && source .venv/bin/activate` then
+  `pip install -r …`. (`--break-system-packages` exists but is risky; pipx suits standalone CLI
+  tools.) Homebrew's prefix differs by chip — **`/opt/homebrew` on Apple Silicon**, `/usr/local` on
+  Intel — so never hardcode `/usr/local/bin/<tool>`; arm64 Python also needs arm64/universal2 wheels.
+- **macOS Gatekeeper (installing LibreOffice/tesseract/ffmpeg):** a browser-downloaded, un-notarized
+  app is blocked ("developer cannot be verified"). On **macOS Sequoia 15 the old Control-click →
+  Open trick is gone** — allow it under **System Settings › Privacy & Security › Open Anyway**. A
+  `curl`/`tar` download sets no quarantine; `xattr -d com.apple.quarantine <app>` clears it.
+- **macOS Claude Desktop MCP (GUI has no shell PATH):** a stdio MCP server receives only its `env`
+  block, not your shell `PATH`, so `command: "python3"` (or any bare `soffice`/`node`) is "not
+  found". Use an **absolute interpreter path** (e.g. `/opt/homebrew/bin/python3`) and set
+  `env.PATH` to include `/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin`. (Config lives at
+  `~/Library/Application Support/Claude/claude_desktop_config.json`.)
 - **Line endings:** the content-hash guards (`offline_index.py`, `registry_currency.py`) normalize
   CRLF→LF before hashing, and `.gitattributes` pins `*.json/*.py/*.md/*.yaml` to `eol=lf`, so a
   Windows `autocrlf` checkout does **not** false-trip the freshness gate. Don't remove either.

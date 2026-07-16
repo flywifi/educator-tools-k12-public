@@ -33,7 +33,29 @@ class LegacyOfficeParser(Parser):
     capabilities = {"text", "reading_order"}
 
     def _soffice(self) -> str | None:
-        return shutil.which("soffice") or shutil.which("libreoffice")
+        # Reuse the office engine's canonical cross-platform resolver so this can't drift from it.
+        # PATH-only discovery (shutil.which) misses a normally-installed LibreOffice on macOS
+        # (/Applications/LibreOffice.app/…) and Windows (Program Files), where soffice is NOT on PATH
+        # by default — the parser would then falsely report `render_convert` unavailable on those
+        # desktops. When the office module isn't importable, fall back to the same PATH + per-OS
+        # install-dir logic locally.
+        try:
+            from office.office_authoring import _find_soffice
+            return _find_soffice()
+        except Exception:
+            found = shutil.which("soffice") or shutil.which("libreoffice")
+            if found:
+                return found
+            import sys
+            if sys.platform == "darwin":
+                cands = ["/Applications/LibreOffice.app/Contents/MacOS/soffice"]
+            elif sys.platform == "win32":
+                cands = [r"C:\Program Files\LibreOffice\program\soffice.exe",
+                         r"C:\Program Files (x86)\LibreOffice\program\soffice.exe"]
+            else:
+                cands = ["/usr/bin/soffice", "/usr/bin/libreoffice",
+                         "/snap/bin/libreoffice", "/opt/libreoffice/program/soffice"]
+            return next((c for c in cands if Path(c).exists()), None)
 
     def available(self) -> bool:
         return self._soffice() is not None

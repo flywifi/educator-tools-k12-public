@@ -472,6 +472,18 @@ def main() -> int:
     except Exception as e:
         print(f"[note] doc-freshness guard skipped: {e.__class__.__name__}: {e}")
 
+    # 19. mac-lint (cross-platform safety): no child process spawned by the bare name "python3"/"python"
+    # (use sys.executable — a macOS venv can otherwise launch the wrong interpreter), and no text
+    # open()/read_text()/write_text() without encoding= (locale-dependent decode). CI runs on Linux
+    # where these pass, so without this guard a Mac-only regression ships unnoticed. Same degrade-to-note
+    # idiom as 12-14 if the tool can't be imported.
+    try:
+        from mac_audit import scan as _mac_scan
+        for f in _mac_scan():
+            _emit(f"  x mac-lint {f['file']}:{f['line']} [{f['check']}] {f['issue']}")
+    except Exception as e:
+        print(f"[note] mac-lint guard skipped: {e.__class__.__name__}: {e}")
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")

@@ -197,7 +197,7 @@ def main() -> int:
         json.dump({"subject": subj, "source_file": Path(rel).name, "format": fmt,
                    "reader": reader, "retrieval_state": rstate,
                    "count": len(entries), "standards": entries},
-                  open(OUT / f"{subj}.json", "w"), indent=2)
+                  open(OUT / f"{subj}.json", "w", encoding="utf-8"), indent=2)
         t = Counter(e["type"] for e in entries)
         index["subjects"][subj] = {"file": f"data/{subj}.json", "format": fmt, "reader": reader,
                                    "count": len(entries), "benchmarks": t["benchmark"],
@@ -205,7 +205,7 @@ def main() -> int:
         print(f"  {subj:16} {len(entries):5} codes  (benchmark {t['benchmark']}, AP {t['access_point']}, "
               f"practice {t['practice']}, {fmt} via {reader})")
     index["total"] = sum(s["count"] for s in index["subjects"].values())
-    json.dump(index, open(OUT / "index.json", "w"), indent=2)
+    json.dump(index, open(OUT / "index.json", "w", encoding="utf-8"), indent=2)
     print(f"\nwrote {len(index['subjects'])} subjects + index.json ({index['total']} codes) to {OUT.relative_to(ROOT)}/")
     return 0
 

@@ -215,9 +215,9 @@ def _log_discrepancy(entry: dict) -> None:
         return
     entry = {"ts": datetime.now(timezone.utc).isoformat(), **entry}
     try:
-        existing = json.loads(LEDGER_DISCREPANCY_LOG.read_text()) if LEDGER_DISCREPANCY_LOG.exists() else []
+        existing = json.loads(LEDGER_DISCREPANCY_LOG.read_text(encoding="utf-8")) if LEDGER_DISCREPANCY_LOG.exists() else []
         existing.append(entry)
-        LEDGER_DISCREPANCY_LOG.write_text(json.dumps(existing, indent=2))
+        LEDGER_DISCREPANCY_LOG.write_text(json.dumps(existing, indent=2), encoding="utf-8")
     except Exception:
         pass  # logging must never crash the main flow
 

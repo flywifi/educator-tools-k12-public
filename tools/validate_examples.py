@@ -36,7 +36,7 @@ def main() -> int:
     # 1) governed JSON examples -> rule catalog
     for f in sorted(glob.glob("**/*.example.json", recursive=True, root_dir=str(ROOT))):
         schema = ["--schema", "connector-flags"] if "feature-flags" in f else []
-        rep = _run_json(["python3", "tools/validate_outputs.py", "--input", f, *schema])
+        rep = _run_json([sys.executable, "tools/validate_outputs.py", "--input", f, *schema])
         checked += 1
         if rep.get("status") == "fail":
             failures.append(f"{f}: " + ", ".join(r.get("rule", r.get("",  "?")) for r in rep.get("rule_failures", [])) +
@@ -46,7 +46,7 @@ def main() -> int:
     docs = [f for ext in ("docx", "pptx", "xlsx", "pdf", "odt", "ods", "odp")
             for f in glob.glob(f"skills/**/examples/*.{ext}", recursive=True, root_dir=str(ROOT))]
     for f in docs:
-        rep = _run_json(["python3", "tools/validate_document.py", f])
+        rep = _run_json([sys.executable, "tools/validate_document.py", f])
         checked += 1
         if not rep.get("valid", True):
             failures.append(f"{f}: " + ", ".join(x["code"] for x in rep.get("findings", [])))

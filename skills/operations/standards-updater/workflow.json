@@ -4,7 +4,7 @@
   "description": "Standards currency: crawl → detect changes → triage → human verify on CPALMS → apply (human-approved) → quality gate",
   "steps": [
     {"step": 1, "action": "crawl",     "input_from": "resources/florida/sources.json crawl_seeds", "output_to": "step2",
-     "uses": "tools/standards_refresh.py --crawl --report /tmp/fl_update_report.json",
+     "uses": "tools/standards_refresh.py --crawl --report standards-update-report.json",
      "note": "Polite crawl — respects robots.txt, no CAPTCHA bypass, honest User-Agent. Reports JS-required pages as gaps, never fakes them."},
     {"step": 2, "action": "triage",    "input_from": "step1.report",                               "output_to": "step3",
      "note": "Apply monitoring_policy from sources.json: confirm primary source only, score confidence, weight recency + forward-looking effective dates"},

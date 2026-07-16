@@ -11,6 +11,8 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
 - `metrics.py` — regenerates `docs/METRICS.md` from live evidence (skills, ledger, ontology).
   **Generated — do not hand-edit the output.**
 - `registry_currency.py` / `source_currency.py` — content-hash freshness for committed registries.
+- `mac_audit.py` — mac-lint: static cross-platform-safety checks (no bare-`python3` child spawns; no
+  encoding-less text opens). Also enforced as `sync_check.py` check 19.
 - `security_scan.py`, `tos_check.py`, `validate_outputs.py`, `validate_examples.py`,
   `validate_document.py` — governance/quality/output validators.
 - `deps_preflight.py`, `doctor_env.py` — dependency + environment preflight.

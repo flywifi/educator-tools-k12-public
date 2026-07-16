@@ -254,10 +254,10 @@ def main(argv=None) -> int:
         report.append("\n## FETCH")
         urls = []
         if a.urls and Path(a.urls).exists():
-            urls += [l.strip() for l in Path(a.urls).read_text().splitlines() if l.strip() and not l.startswith("#")]
+            urls += [l.strip() for l in Path(a.urls).read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")]
         cat = ING.INGESTED
         if cat.exists():  # re-acquire previously captured-but-unparsed URLs
-            for s in json.loads(cat.read_text()).get("sources", []):
+            for s in json.loads(cat.read_text(encoding="utf-8")).get("sources", []):
                 if s.get("status") == "captured_unparsed" and s.get("source_url"):
                     urls.append(s["source_url"])
         urls = sorted(set(urls))
@@ -311,7 +311,7 @@ def main(argv=None) -> int:
     # ---- VALIDATE ----
     report.append("\n## VALIDATE")
     consolidated = ING.PRIV_DIR / "private-schools-consolidated.json"
-    existing = json.loads(consolidated.read_text())["members"] if consolidated.exists() else []
+    existing = json.loads(consolidated.read_text(encoding="utf-8"))["members"] if consolidated.exists() else []
     merged, added, dedup = ING.merge_private(existing, priv_in)
     report.append(f"  [validate] private schools: +{added} new, {dedup} deduped -> {len(merged)} total")
     val = validate_standards(all_codes, report)

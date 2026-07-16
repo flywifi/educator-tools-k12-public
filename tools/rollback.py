@@ -62,7 +62,7 @@ def record_snapshot(label: str, reason: str) -> dict:
     rc, head = _git(["rev-parse", "HEAD"])
     if rc != 0:
         return {"status": "error", "detail": "cannot resolve HEAD"}
-    sc_rc = subprocess.run(["python3", "tools/sync_check.py"], capture_output=True, text=True,
+    sc_rc = subprocess.run([sys.executable, "tools/sync_check.py"], capture_output=True, text=True,
                            cwd=str(ROOT)).returncode
     data = _load_snapshots()
     snaps = data.setdefault("snapshots", [])
@@ -149,7 +149,7 @@ def main(argv) -> int:
               "reason": a.reason, "mode": mode, "result": "checkout_failed", "detail": out})
         print(json.dumps({"status": "error", "detail": out}))
         return 1
-    sc_rc, sc_out = subprocess.run(["python3", "tools/sync_check.py"], capture_output=True, text=True,
+    sc_rc, sc_out = subprocess.run([sys.executable, "tools/sync_check.py"], capture_output=True, text=True,
                                    cwd=str(ROOT)).returncode, "sync_check ran"
     entry = {"timestamp": datetime.now(timezone.utc).isoformat(), "target": a.target, "to": a.to,
              "reason": a.reason, "mode": mode, "result": "restored_working_tree",

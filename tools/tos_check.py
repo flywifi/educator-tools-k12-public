@@ -310,8 +310,8 @@ def main(argv: list[str]) -> int:
         out_dir.mkdir(parents=True, exist_ok=True)
         json_path = out_dir / "tos_report.json"
         md_path = out_dir / "tos_report.md"
-        json_path.write_text(json.dumps(report, indent=2))
-        md_path.write_text(_make_markdown(ts, branch, overall, results, action_items))
+        json_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+        md_path.write_text(_make_markdown(ts, branch, overall, results, action_items), encoding="utf-8")
         if not a.quiet:
             print(f"\nSaved: {json_path}")
             print(f"Saved: {md_path}")

@@ -265,7 +265,7 @@ def build() -> int:
         subj_by_id = {}
         if TOOLKIT_CATALOG.exists():
             subj_by_id = {r["id"]: r.get("subject")
-                          for r in json.loads(TOOLKIT_CATALOG.read_text()).get("resources", [])}
+                          for r in json.loads(TOOLKIT_CATALOG.read_text(encoding="utf-8")).get("resources", [])}
         for tf in _toolkit_content_files():
             doc = json.loads(tf.read_text(encoding="utf-8"))
             tid = doc.get("id", tf.stem)
