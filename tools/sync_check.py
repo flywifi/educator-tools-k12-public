@@ -361,10 +361,15 @@ def main() -> int:
                 continue
             sd = _skill_dir_of(md)
             bases = [ROOT, md.parent] + ([sd] if sd else [])
+            # Strip fenced code blocks before scanning. Triple-backtick fences otherwise (a) desync the
+            # inline-`backtick` regex pairing — missing a real dead path inside a fence — and (b) turn
+            # illustrative example paths in fenced tutorials into false positives. Path references worth
+            # guarding live in prose / inline code; check those, not fenced example bodies.
+            scan_body = re.sub(r"(```|~~~).*?\1", "", body, flags=re.DOTALL)
             # backticked paths are repo-relative by convention (require a repo anchor); [markdown](links)
             # are commonly relative and resolve against the file dir (no anchor requirement).
-            cands = [(t, True) for t in re.findall(r"`([^`]+)`", body)]
-            cands += [(t, False) for t in re.findall(r"\]\(([^)]+)\)", body)]
+            cands = [(t, True) for t in re.findall(r"`([^`]+)`", scan_body)]
+            cands += [(t, False) for t in re.findall(r"\]\(([^)]+)\)", scan_body)]
             for raw, require_anchor in cands:
                 raw = raw.strip()
                 tok = raw.split()[0] if raw else ""            # drop a `](path "title")` suffix
@@ -450,7 +455,13 @@ def main() -> int:
             if not m:
                 _emit(f"  x doc missing `last_reviewed` stamp: {drel}")
                 continue
-            stamp = date.fromisoformat(m.group(1))
+            try:
+                stamp = date.fromisoformat(m.group(1))
+            except ValueError:
+                # regex-matching but not a real calendar date (e.g. 2026-13-45) — flag this doc, don't
+                # let one bad stamp raise and disable the freshness check for every other doc.
+                _emit(f"  x doc has an invalid `last_reviewed` date: {drel} ({m.group(1)})")
+                continue
             if (today - stamp).days > DOC_FRESHNESS_MAX_AGE_DAYS:
                 _emit(f"  x doc stale: {drel} last_reviewed {stamp} (> {DOC_FRESHNESS_MAX_AGE_DAYS}d)")
                 continue
