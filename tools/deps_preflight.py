@@ -471,12 +471,27 @@ def main(argv=None) -> int:
                   file=sys.stderr)
             return 2
         installs = []
+        done: dict = {}  # resolved requirements path -> first capability that installed it (dedupe)
         for t in targets:
-            rep = install_requirements(t, upgrade=upgrade)
+            path, _cap, _note = _resolve_requirements(t)
+            key = str(path) if path else None
+            if key and key in done:
+                rel = path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path)
+                rep = {"target": t, "requirements": rel, "installed": True,
+                       "note": f"covered by '{done[key]}' (same requirements file, already installed this run)"}
+            else:
+                rep = install_requirements(t, upgrade=upgrade)
+                if key and rep.get("installed"):
+                    done[key] = t
             installs.append(rep)
             _print_install(rep)
         print(json.dumps({"venv_python": str(_venv_python(VENV_DIR)), "installs": installs}, indent=2))
-        return 0
+        # Exit contract: a requested install that did NOT land is a failure (scripts must not read a
+        # failed install as success). The one benign no-op is a system-binary capability (nothing to
+        # pip-install) — that stays 0.
+        failed = [r for r in installs
+                  if not r.get("installed") and "system-binary capability" not in r.get("note", "")]
+        return 1 if failed else 0
 
     # default: existing harvest preflight (unchanged)
     report = preflight(quiet=True)
