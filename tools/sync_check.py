@@ -320,31 +320,68 @@ def main() -> int:
                 break
         return None
 
-    # 15. Doc-path drift: a backticked repo-relative path in ANY tracked .md must resolve on disk.
-    # Generalizes check_references() (skill-local) to the whole tree — the class that left dead
-    # un-grouped skills/<name>/ paths after the grouping refactor. Resolves a token relative to the
-    # repo root, the file's own dir, and its owning skill dir (so skill-local examples/… still pass);
-    # skips runtime stores (*.local.json), known runtime artifacts, glob/placeholder tokens, and
-    # historical records whose paths are frozen.
+    def _tracked_files(*globs: str) -> list[Path]:
+        """The docs that actually ship: git-tracked paths only. Excludes gitignored dirs — a local
+        virtualenv (`.harvest-venv/`), build artifacts, `node_modules/` — so the guards can't
+        false-fail on vendored files that exist only in one checkout (rglob descends into hidden dirs;
+        git-tracked doesn't). Falls back to rglob minus dot-dirs / node_modules if git is unavailable."""
+        try:
+            out = subprocess.run(["git", "ls-files", "-z", *globs], cwd=ROOT,
+                                 capture_output=True, timeout=15)
+            if out.returncode == 0:
+                return [ROOT / p for p in out.stdout.decode("utf-8", "replace").split("\0") if p]
+        except Exception:
+            pass
+        res: list[Path] = []
+        for g in globs:
+            for p in ROOT.rglob(g.split("/")[-1]):
+                parts = p.relative_to(ROOT).parts
+                if any(part.startswith(".") for part in parts) or "node_modules" in parts:
+                    continue
+                res.append(p)
+        return res
+
+    # 15. Doc-path drift: a repo-relative path referenced in a tracked .md — in `backticks` OR a
+    # [markdown](link) — must resolve on disk. Generalizes check_references() (skill-local) to the
+    # whole tree (the class that left dead un-grouped skills/<name>/ paths after the grouping refactor).
+    # Only git-tracked files are scanned, so vendored .md in a local venv can't false-trip it. Resolves
+    # relative to repo root, the file's own dir, and its owning skill dir (so skill-local examples/…
+    # and relative links both pass); skips runtime stores (*.local.json), known runtime artifacts,
+    # glob/placeholder tokens, external URLs, and historical records whose paths are frozen. One
+    # unreadable file skips only itself (never disables the whole check).
     try:
-        for md in sorted(ROOT.rglob("*.md")):
+        for md in sorted(_tracked_files("*.md")):
             rel = md.relative_to(ROOT).as_posix()
             if "/skill-template/" in rel or "/node_modules/" in rel or rel in DOC_PATH_ALLOW_FILES:
                 continue
+            try:
+                body = md.read_text(encoding="utf-8", errors="replace")
+            except Exception as e:
+                print(f"[note] doc-path guard: skipped unreadable {rel} ({e.__class__.__name__})")
+                continue
             sd = _skill_dir_of(md)
-            for tok in re.findall(r"`([^`]+)`", read(md)):
-                tok = tok.strip()
-                if not tok.startswith(_DOC_ANCHORS) or not tok.endswith(_REF_EXTS):
+            bases = [ROOT, md.parent] + ([sd] if sd else [])
+            # backticked paths are repo-relative by convention (require a repo anchor); [markdown](links)
+            # are commonly relative and resolve against the file dir (no anchor requirement).
+            cands = [(t, True) for t in re.findall(r"`([^`]+)`", body)]
+            cands += [(t, False) for t in re.findall(r"\]\(([^)]+)\)", body)]
+            for raw, require_anchor in cands:
+                raw = raw.strip()
+                tok = raw.split()[0] if raw else ""            # drop a `](path "title")` suffix
+                if not tok or tok.startswith(("http://", "https://", "mailto:", "#")):
                     continue
-                if any(c in tok for c in "<>*| {}"):          # globs / brace-expansions / placeholders
+                if any(c in tok for c in "<>*| {}"):            # globs / brace-expansions / placeholders
                     continue
-                target = tok.split("#", 1)[0]                  # drop a trailing #anchor
+                target = tok.split("#", 1)[0]                   # drop a trailing #anchor
+                if not target.endswith(_REF_EXTS):
+                    continue
+                if require_anchor and not target.startswith(_DOC_ANCHORS):
+                    continue
                 if target.endswith(".local.json") or target in DOC_RUNTIME_ARTIFACTS:
                     continue
-                bases = [ROOT, md.parent] + ([sd] if sd else [])
                 if any((b / target).exists() for b in bases):
                     continue
-                _emit(f"  x doc-path drift — {rel}: dead path `{tok}`")
+                _emit(f"  x doc-path drift — {rel}: dead {'link' if not require_anchor else 'path'} `{tok}`")
     except Exception as e:
         print(f"[note] doc-path guard skipped: {e.__class__.__name__}: {e}")
 
@@ -399,12 +436,17 @@ def main() -> int:
             except Exception:
                 return None
 
-        docs = sorted(set(ROOT.rglob("README.md")) | set(ROOT.rglob("MAINTAINER.md")))
+        docs = sorted(_tracked_files("*README.md", "*MAINTAINER.md"))
         for doc in docs:
             drel = doc.relative_to(ROOT).as_posix()
             if "/skill-template/" in drel or "/node_modules/" in drel:
                 continue
-            m = re.search(r"last_reviewed:\s*(\d{4}-\d{2}-\d{2})", read(doc))
+            try:
+                dtext = doc.read_text(encoding="utf-8", errors="replace")
+            except Exception as e:
+                print(f"[note] doc-freshness guard: skipped unreadable {drel} ({e.__class__.__name__})")
+                continue
+            m = re.search(r"last_reviewed:\s*(\d{4}-\d{2}-\d{2})", dtext)
             if not m:
                 _emit(f"  x doc missing `last_reviewed` stamp: {drel}")
                 continue

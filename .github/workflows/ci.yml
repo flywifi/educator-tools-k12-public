@@ -67,6 +67,10 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install scanners
-        run: pip install pip-audit bandit semgrep
+        # Pin the scanner engines so an upstream release can't silently change results and redden a
+        # green branch. NOTE: security_scan.py runs `semgrep --config=auto`, which still fetches rules
+        # over the network — pinning the engine is the practical stabilizer; fully vendoring the
+        # ruleset is a heavier future option (would change scan coverage). Bump these deliberately.
+        run: pip install pip-audit==2.10.1 bandit==1.9.4 semgrep==1.170.0
       - name: Dependency + code security scan (gate)
         run: python3 tools/security_scan.py
