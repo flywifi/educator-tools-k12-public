@@ -1,0 +1,550 @@
+{
+  "_comment": "Authoritative macOS-platform sources cited by the cross-platform work (docs/MACOS.md findings D1-D6/E1-E3, docs/DEPLOYMENT_SURFACES.md, the mac-lint guard). Freshness-tracked by tools/source_currency.py (--check/--summary/--offline --domain macos-sources; --update-baselines after human review, run where the network is open). These are reference citations backing platform claims - nothing here is fetched into the product. Citing a new external source in a maintainer-class doc requires registering it here (or in another source registry / tools/url-provenance.json) - enforced by tools/sync_check.py check 20. Supersession keywords are deliberately phrase-level (not bare 'deprecated'/'archived') because reference pages legitimately use those words in prose. authority: 'primary' = the platform's own documentation; 'secondary' = community/forum material - treat its claims as verify-on-device. Nothing fabricated. GOTCHA: state.last_checked must be a full timezone-aware ISO timestamp (e.g. 2026-07-16T00:00:00+00:00) - a bare date parses naive and crashes the age math in source_currency.",
+  "domain": "macos-platform",
+  "version": "1.0.0",
+  "updated": "2026-07-16",
+  "freshness_policy": {
+    "stale_age_days": 180,
+    "supersession_keywords": [
+      "has been superseded",
+      "no longer maintained",
+      "this page has been archived",
+      "document has been retired",
+      "no longer available"
+    ]
+  },
+  "sources": [
+    {
+      "id": "apple-rosetta",
+      "url": "https://support.apple.com/en-us/102527",
+      "label": "Apple - If you need to install Rosetta on your Mac",
+      "category": "os-architecture",
+      "authority": "primary",
+      "backs": "Rosetta 2 install/trigger; retirement after macOS 27/28; Get Info app-kind",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-gatekeeper",
+      "url": "https://support.apple.com/en-us/102445",
+      "label": "Apple - Safely open apps on your Mac (Gatekeeper)",
+      "category": "os-security",
+      "authority": "primary",
+      "backs": "E3: developer-cannot-be-verified flow; com.apple.quarantine; notarization requirement",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-sequoia-gatekeeper-change",
+      "url": "https://developer.apple.com/news/?id=saqachfa",
+      "label": "Apple Developer News - Gatekeeper change in macOS Sequoia",
+      "category": "os-security",
+      "authority": "primary",
+      "backs": "E3: Sequoia 15 removed Control-click->Open; System Settings > Privacy & Security path",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-notarization",
+      "url": "https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution",
+      "label": "Apple - Notarizing macOS software before distribution",
+      "category": "os-security",
+      "authority": "primary",
+      "backs": "E3: notarization ticket/stapling; Developer ID requirement since macOS 10.15",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-tcc-file-access",
+      "url": "https://support.apple.com/guide/security/controlling-app-access-to-files-secddd1d86a6/web",
+      "label": "Apple Platform Security - Controlling app access to files (TCC)",
+      "category": "os-privacy",
+      "authority": "primary",
+      "backs": "TCC model: Full Disk Access (system-wide) vs Files & Folders (per-user)",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-tcc-files-folders",
+      "url": "https://support.apple.com/guide/mac-help/control-access-to-files-and-folders-on-mac-mchld5a35146/mac",
+      "label": "Apple macOS User Guide - Control access to files and folders",
+      "category": "os-privacy",
+      "authority": "primary",
+      "backs": "TCC prompts for Desktop/Documents/Downloads; Terminal inherits its own grants",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-apfs-formats",
+      "url": "https://support.apple.com/guide/disk-utility/file-system-formats-available-in-disk-utility-dsku19ed921c/mac",
+      "label": "Apple Disk Utility - File system formats (APFS variants)",
+      "category": "filesystem",
+      "authority": "primary",
+      "backs": "default APFS is case-INSENSITIVE; case-sensitive is an opt-in variant",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-apfs-faq",
+      "url": "https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/APFS_Guide/FAQ/FAQ.html",
+      "label": "Apple Developer archive - APFS Guide FAQ",
+      "category": "filesystem",
+      "authority": "primary",
+      "backs": "APFS case-sensitivity variants (archived Apple doc - stable but frozen)",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-xcode-clt",
+      "url": "https://developer.apple.com/documentation/xcode/installing-the-command-line-tools",
+      "label": "Apple - Installing the Command Line Tools",
+      "category": "python-interpreter",
+      "authority": "primary",
+      "backs": "D4/E1 context: /usr/bin/python3 CLT stub + install-prompt behavior",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-zsh-default",
+      "url": "https://support.apple.com/guide/terminal/change-the-default-shell-trml113/mac",
+      "label": "Apple Terminal Guide - Change the default shell (zsh)",
+      "category": "shell",
+      "authority": "primary",
+      "backs": "zsh default since Catalina; ~/.zshrc vs ~/.bash_profile PATH trap",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-catalina-notes",
+      "url": "https://developer.apple.com/documentation/macos-release-notes/macos-catalina-10_15-release-notes",
+      "label": "Apple - macOS Catalina 10.15 release notes",
+      "category": "shell",
+      "authority": "primary",
+      "backs": "zsh became the default shell in Catalina; bash 3.2 deprecated as default",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-developer-id",
+      "url": "https://developer.apple.com/developer-id/",
+      "label": "Apple - Developer ID (distribution outside the App Store)",
+      "category": "os-security",
+      "authority": "primary",
+      "backs": "E3 supporting: Developer ID signing for non-App-Store software",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-forums-quarantine-xattr",
+      "url": "https://developer.apple.com/forums/thread/666452",
+      "label": "Apple Developer Forums (DTS) - quarantine xattr guidance",
+      "category": "os-security",
+      "authority": "secondary",
+      "backs": "xattr -d com.apple.quarantine mechanism; curl/scp/tar/unzip set no quarantine - verify exact wording on-device",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "apple-forums-tcc-scope",
+      "url": "https://developer.apple.com/forums/thread/107546",
+      "label": "Apple Developer Forums - TCC privilege scoping (per-user vs system-wide)",
+      "category": "os-privacy",
+      "authority": "secondary",
+      "backs": "Files & Folders per-user vs Full Disk Access system-wide - forum source, verify on-device",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "python-using-mac",
+      "url": "https://docs.python.org/3/using/mac.html",
+      "label": "Python docs - Using Python on macOS",
+      "category": "python-interpreter",
+      "authority": "primary",
+      "backs": "D4/D6: /usr/bin/python3 is the Apple CLT shim; python.org framework install paths; python3 -m pip",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "pep-668",
+      "url": "https://peps.python.org/pep-0668/",
+      "label": "PEP 668 - Marking Python base environments as externally managed",
+      "category": "python-packaging",
+      "authority": "primary",
+      "backs": "E1: the EXTERNALLY-MANAGED marker + why global pip installs are refused",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "packaging-externally-managed",
+      "url": "https://packaging.python.org/en/latest/specifications/externally-managed-environments/",
+      "label": "Python Packaging Guide - Externally managed environments spec",
+      "category": "python-packaging",
+      "authority": "primary",
+      "backs": "E1: error strings, --break-system-packages hint, pipx recommendation",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "packaging-platform-tags",
+      "url": "https://packaging.python.org/en/latest/specifications/platform-compatibility-tags/",
+      "label": "Python Packaging Guide - Platform compatibility tags",
+      "category": "python-packaging",
+      "authority": "primary",
+      "backs": "arm64 vs x86_64 vs universal2 wheel selection on Apple Silicon/Rosetta",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "pep-711",
+      "url": "https://peps.python.org/pep-0711/",
+      "label": "PEP 711 - (wheel/platform context for universal2 interpreters)",
+      "category": "python-packaging",
+      "authority": "primary",
+      "backs": "universal2 interpreter wheel-matching rules incl. Rosetta x86-64 mode",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "packaging-pip-venv",
+      "url": "https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/",
+      "label": "Python Packaging Guide - Install packages using pip and virtual environments",
+      "category": "python-packaging",
+      "authority": "primary",
+      "backs": "Option 1: venv-first install (the deps_preflight --install mechanism)",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "packaging-pipx",
+      "url": "https://packaging.python.org/en/latest/guides/installing-stand-alone-command-line-tools/",
+      "label": "Python Packaging Guide - Installing stand-alone command line tools (pipx)",
+      "category": "python-packaging",
+      "authority": "primary",
+      "backs": "E1 alternative: pipx for standalone CLI apps",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "homebrew-installation",
+      "url": "https://docs.brew.sh/Installation",
+      "label": "Homebrew - Installation (prefixes)",
+      "category": "package-manager",
+      "authority": "primary",
+      "backs": "E2: /opt/homebrew (Apple Silicon) vs /usr/local (Intel) prefix; brew shellenv PATH bootstrap",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "git-gitattributes",
+      "url": "https://git-scm.com/docs/gitattributes",
+      "label": "Git - gitattributes documentation",
+      "category": "line-endings",
+      "authority": "primary",
+      "backs": ".gitattributes eol=lf pinning that protects the content-hash freshness guards",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "git-config-autocrlf",
+      "url": "https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration",
+      "label": "Pro Git - Customizing Git (core.autocrlf)",
+      "category": "line-endings",
+      "authority": "primary",
+      "backs": "core.autocrlf=input recommendation on macOS/Linux",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "claude-code-setup",
+      "url": "https://code.claude.com/docs/en/setup.md",
+      "label": "Claude Code docs - Set up Claude Code",
+      "category": "claude-surface",
+      "authority": "primary",
+      "backs": "install methods (native/brew/npm Node 22+), macOS 13+ floor, code signatures",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "claude-code-authentication",
+      "url": "https://code.claude.com/docs/en/authentication.md",
+      "label": "Claude Code docs - Authentication",
+      "category": "claude-surface",
+      "authority": "primary",
+      "backs": "OAuth flow; credentials in the macOS Keychain + ~/.claude.json",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "claude-code-troubleshoot-install",
+      "url": "https://code.claude.com/docs/en/troubleshoot-install.md",
+      "label": "Claude Code docs - Troubleshoot installation",
+      "category": "claude-surface",
+      "authority": "primary",
+      "backs": "zsh PATH (~/.local/bin not auto-added); locked-Keychain login failure; dyld on macOS <13",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "claude-code-mcp",
+      "url": "https://code.claude.com/docs/en/mcp.md",
+      "label": "Claude Code docs - Model Context Protocol (MCP)",
+      "category": "claude-surface",
+      "authority": "primary",
+      "backs": "E2: stdio servers receive only the env block (not shell PATH); timeout; CLAUDE_PROJECT_DIR",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "claude-code-settings",
+      "url": "https://code.claude.com/docs/en/settings.md",
+      "label": "Claude Code docs - Settings",
+      "category": "claude-surface",
+      "authority": "primary",
+      "backs": "settings scopes: ~/.claude/settings.json, .claude/settings.json, settings.local.json",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "claude-code-vscode",
+      "url": "https://code.claude.com/docs/en/vs-code.md",
+      "label": "Claude Code docs - VS Code extension",
+      "category": "claude-surface",
+      "authority": "primary",
+      "backs": "launch VS Code from terminal for env inheritance; Tahoe Game Overlay Cmd+Esc conflict",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "claude-code-jetbrains",
+      "url": "https://code.claude.com/docs/en/jetbrains.md",
+      "label": "Claude Code docs - JetBrains plugin",
+      "category": "claude-surface",
+      "authority": "primary",
+      "backs": "JetBrains install; macOS Cmd+Esc / ESC-focus terminal settings",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "claude-desktop-quickstart",
+      "url": "https://code.claude.com/docs/en/desktop-quickstart.md",
+      "label": "Claude Code docs - Desktop quickstart",
+      "category": "claude-surface",
+      "authority": "primary",
+      "backs": "Claude Desktop app install overview (min macOS version NOT documented - open gap)",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "freebsd-man-readlink",
+      "url": "https://man.freebsd.org/cgi/man.cgi?query=readlink&sektion=1",
+      "label": "FreeBSD man - readlink(1) (BSD userland)",
+      "category": "bsd-userland",
+      "authority": "primary",
+      "backs": "readlink -f availability is version-sensitive on BSD/macOS",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "freebsd-man-date",
+      "url": "https://man.freebsd.org/cgi/man.cgi?query=date",
+      "label": "FreeBSD man - date(1) (BSD userland)",
+      "category": "bsd-userland",
+      "authority": "primary",
+      "backs": "BSD date has no -d; uses -v / -j -f (breaks GNU-style scripts on macOS)",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "gnu-coreutils-manual",
+      "url": "https://www.gnu.org/software/coreutils/manual/coreutils.html",
+      "label": "GNU coreutils manual",
+      "category": "bsd-userland",
+      "authority": "primary",
+      "backs": "GNU-side of the sed -i / stat -c / date -d / mktemp divergences",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "ss64-mac-sed",
+      "url": "https://ss64.com/mac/sed.html",
+      "label": "SS64 - macOS sed reference",
+      "category": "bsd-userland",
+      "authority": "secondary",
+      "backs": "BSD sed -i requires a suffix argument - community reference, verify against man sed on-device",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "community-mcp-desktop-path",
+      "url": "https://emmanuelbernard.com/blog/2025/04/07/mcp-servers-and-claude-desktop-path/",
+      "label": "Community - MCP servers, Claude Desktop and PATHs (Emmanuel Bernard)",
+      "category": "claude-surface",
+      "authority": "secondary",
+      "backs": "E2: GUI-app-PATH problem + absolute-path MCP workaround - NOT in official docs; verify on-device",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "community-claude-desktop-config-path",
+      "url": "https://mcpplaygroundonline.com/blog/complete-guide-mcp-config-files-claude-desktop-cursor-lovable",
+      "label": "Community - Claude Desktop MCP config file locations",
+      "category": "claude-surface",
+      "authority": "secondary",
+      "backs": "~/Library/Application Support/Claude/claude_desktop_config.json path - community source; verify on-device",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
+    }
+  ]
+}

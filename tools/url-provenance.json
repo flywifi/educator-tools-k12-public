@@ -124,6 +124,11 @@
    "status": "verified",
    "checked": "2026-07-11",
    "note": "This repository's own GitHub home. Rendered into generated teacher-facing files (TOS-skills.md HEADER/FOOTER, reference-pack MANIFEST) so the files are self-locating. Confirmed by pushing to and fetching from this exact remote."
+  },
+  {
+   "url": "https://github.com",
+   "status": "example",
+   "note": "Prefix constant in sync_check.py check 20's DOC_SOURCE_ALLOW (incidental repo/issue links in maintainer docs are not cited authorities). Never fetched."
   }
  ]
 }

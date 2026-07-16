@@ -10,7 +10,10 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
   index freshness, and the doc-drift guards). Exit 0 = clean, 1 = drift report.
 - `metrics.py` — regenerates `docs/METRICS.md` from live evidence (skills, ledger, ontology).
   **Generated — do not hand-edit the output.**
-- `registry_currency.py` / `source_currency.py` — content-hash freshness for committed registries.
+- `registry_currency.py` / `source_currency.py` — freshness for committed registries (internal
+  content-hash) and external web sources (`canonical-sources/registries/<domain>.json`, e.g.
+  `macos-sources`). Citing an external URL in a maintainer-class doc requires registering it in a
+  source registry or `url-provenance.json` — enforced as `sync_check.py` check 20.
 - `mac_audit.py` — mac-lint: static cross-platform-safety checks (no bare-`python3` child spawns; no
   encoding-less text opens). Also enforced as `sync_check.py` check 19.
 - `security_scan.py`, `tos_check.py`, `validate_outputs.py`, `validate_examples.py`,

@@ -484,6 +484,55 @@ def main() -> int:
     except Exception as e:
         print(f"[note] mac-lint guard skipped: {e.__class__.__name__}: {e}")
 
+    # 20. Doc-source provenance (declare-or-fail): an external URL cited in a maintainer-class doc must
+    # be registered in a canonical-sources/registries/*.json source registry (freshness-tracked by
+    # tools/source_currency.py) or tools/url-provenance.json. Doc-side analog of check 13: a maintainer
+    # note that cites a source thereby *triggers* its registration, so no cited authority can rot
+    # untracked. Prefix-match against the registered URL so #anchor/query variants of a declared page
+    # pass. Fenced code blocks are stripped (like check 15); a tiny allowlist covers incidental
+    # non-authority links.
+    try:
+        registered: list[str] = []
+        for reg_p in sorted((ROOT / "canonical-sources" / "registries").glob("*.json")):
+            try:
+                rj = json.loads(read(reg_p))
+            except Exception:
+                continue
+            for s in rj.get("sources", []) or []:
+                if isinstance(s, dict) and s.get("url"):
+                    registered.append(str(s["url"]).rstrip("/"))
+        upp = ROOT / "tools" / "url-provenance.json"
+        if upp.exists():
+            for u in json.loads(read(upp)).get("urls", []):
+                if isinstance(u, dict) and u.get("url"):
+                    registered.append(str(u["url"]).rstrip("/"))
+
+        DOC_SOURCE_ALLOW = ("https://github.com/",)   # incidental repo/issue links, not cited authorities
+        doc_set = {ROOT / "CLAUDE.md", ROOT / "docs" / "MACOS.md"}
+        doc_set |= set((ROOT / "docs").glob("DEPLOYMENT*.md"))
+        doc_set |= set(_tracked_files("*MAINTAINER.md"))
+        for md in sorted(p for p in doc_set if p.exists()):
+            rel = md.relative_to(ROOT).as_posix()
+            if "/skill-template/" in rel:
+                continue
+            try:
+                body = md.read_text(encoding="utf-8", errors="replace")
+            except Exception as e:
+                print(f"[note] doc-source guard: skipped unreadable {rel} ({e.__class__.__name__})")
+                continue
+            body = re.sub(r"(```|~~~).*?\1", "", body, flags=re.DOTALL)
+            for url in re.findall(r"https?://[^\s)>\]\"'`]+", body):
+                url = url.rstrip(".,;:!?")
+                if any(url.startswith(a) for a in DOC_SOURCE_ALLOW):
+                    continue
+                if any(url.rstrip("/").startswith(r) for r in registered):
+                    continue
+                _emit(f"  x doc-source undeclared — {rel}: {url} — register it in a "
+                      f"canonical-sources/registries/*.json source registry (with state.last_checked) "
+                      f"or tools/url-provenance.json")
+    except Exception as e:
+        print(f"[note] doc-source guard skipped: {e.__class__.__name__}: {e}")
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")

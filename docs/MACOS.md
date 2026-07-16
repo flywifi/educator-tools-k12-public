@@ -58,8 +58,33 @@ Confirmed macOS defects and status. **Fixed** items landed in the branch's macOS
 - Why/How:     <root cause + mechanism>
 - Severity:    Blocker | Major | Minor | Doc
 - Class:       interpreter/PATH | packaging | permissions | filesystem/encoding | rendering | shell | code-correctness | claude-surface
+- Source:      <authoritative URL backing the claim — register it (see Sources & freshness below)>
 - Action:      <fix + whether a new mac-lint check applies>
 ```
+
+## Sources & freshness (keeping the research citations verifiable)
+Every authoritative source behind the macOS findings is registered in
+**`canonical-sources/registries/macos-sources.json`** (Apple, Python/PEPs, Homebrew, Git, Claude Code
+docs, BSD/GNU; `authority: secondary` marks community material whose claims must be verified
+on-device). The registry is freshness-tracked by the existing engine:
+
+```bash
+python3 tools/source_currency.py --summary --domain macos-sources    # fetch + classify (needs network)
+python3 tools/source_currency.py --offline --summary --domain macos-sources   # age-only triage
+python3 tools/source_currency.py --update-baselines --domain macos-sources    # after human re-review
+```
+
+Sources older than the policy's `stale_age_days` (180) — or moved/404/superseded — are flagged for
+re-verification, so "is this still the current guidance?" is a command, not an archaeology dig.
+
+**The trigger rule (enforced):** citing an external URL in a maintainer-class doc (this file,
+`CLAUDE.md`, `docs/DEPLOYMENT*.md`, any `MAINTAINER.md`) requires registering it in a
+`canonical-sources/registries/*.json` source registry (or `tools/url-provenance.json`) —
+**`sync_check.py` check 20** hard-fails on an undeclared citation, the doc-side analog of the
+code-side URL-provenance check 13. So adding a finding with a `Source:` line *is* the trigger: the
+gate won't go green until the source is registered and thereby freshness-tracked.
+Gotcha: `state.last_checked` must be a full timezone-aware ISO timestamp (a bare date crashes the
+age math in `source_currency`).
 
 ## Where these lessons live (component-local docs)
 The macOS knowledge is folded into the docs a maintainer of each area actually reads:
@@ -71,4 +96,6 @@ The macOS knowledge is folded into the docs a maintainer of each area actually r
 - `skills/educator/presentation-builder/MAINTAINER.md` → office-render install command.
 - `tools/README.md` → `deps_preflight --install/--python-path`; `mac_audit` under Guards & CI.
 - `tools/requirements-*.txt` headers → the managed-venv install line.
+- `canonical-sources/registries/macos-sources.json` → the cited authoritative sources, freshness-tracked
+  (see "Sources & freshness" below; enforced by check 20).
 - The on-Mac hands-on runbook is kept **outside this repo** (personal tester checklist).
