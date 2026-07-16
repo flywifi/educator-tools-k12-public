@@ -101,6 +101,11 @@ re-verification, so "is this still the current guidance?" is a command, not an a
 **`sync_check.py` check 20** hard-fails on an undeclared citation, the doc-side analog of the
 code-side URL-provenance check 13. So adding a finding with a `Source:` line *is* the trigger: the
 gate won't go green until the source is registered and thereby freshness-tracked.
+Matching is **exact-page** (per RFC 3986, https://www.rfc-editor.org/rfc/rfc3986): a citation is
+declared only if it equals a registered URL after normalization (scheme/host case-insensitive,
+± trailing slash) or adds only a `#fragment`/`?query` to a registered page. A registered *root*
+does **not** bless deeper pages — each distinct page cited must be registered, because each page is
+what goes stale.
 Gotcha: `state.last_checked` must be a full timezone-aware ISO timestamp (a bare date crashes the
 age math in `source_currency`).
 

@@ -492,20 +492,44 @@ def main() -> int:
     # pass. Fenced code blocks are stripped (like check 15); a tiny allowlist covers incidental
     # non-authority links.
     try:
-        registered: list[str] = []
+        def _norm_url(u: str) -> str:
+            # RFC 3986: the scheme and host are case-insensitive (lowercase them for comparison);
+            # the path is case-sensitive and left untouched. Trailing slash is equivalence-stripped.
+            m = re.match(r"(?i)^(https?)://([^/]*)(.*)$", u)
+            if not m:
+                return u.rstrip("/")
+            return f"{m.group(1).lower()}://{m.group(2).lower()}{m.group(3)}".rstrip("/")
+
+        registered: set[str] = set()
         for reg_p in sorted((ROOT / "canonical-sources" / "registries").glob("*.json")):
             try:
                 rj = json.loads(read(reg_p))
             except Exception:
+                # its sources silently dropping out would redden every doc that cites them with a
+                # message that never names the broken file — say which registry failed to load.
+                print(f"[note] doc-source guard: unreadable registry {reg_p.name} — its sources are "
+                      f"not registered this run")
                 continue
             for s in rj.get("sources", []) or []:
                 if isinstance(s, dict) and s.get("url"):
-                    registered.append(str(s["url"]).rstrip("/"))
+                    registered.add(_norm_url(str(s["url"])))
         upp = ROOT / "tools" / "url-provenance.json"
         if upp.exists():
             for u in json.loads(read(upp)).get("urls", []):
                 if isinstance(u, dict) and u.get("url"):
-                    registered.append(str(u["url"]).rstrip("/"))
+                    registered.add(_norm_url(str(u["url"])))
+
+        def _declared(cited: str) -> bool:
+            # EXACT-PAGE match: a citation is declared only if it IS a registered page (after
+            # normalization) or adds only a #fragment/?query to one (same page per RFC 3986
+            # §3.4/§3.5). A plain prefix test let three bypass shapes through (deep paths under a
+            # registered root, sibling-shadowing like `…/developer-id-evil` passing off
+            # `…/developer-id/`, numeric suffixes like 102527999 passing off 102527) — every
+            # distinct cited page must be individually registered, which is the freshness goal.
+            c = _norm_url(cited)
+            if c in registered:
+                return True
+            return any(c.startswith(r + "#") or c.startswith(r + "?") for r in registered)
 
         DOC_SOURCE_ALLOW = ("https://github.com/",)   # incidental repo/issue links, not cited authorities
         doc_set = {ROOT / "CLAUDE.md", ROOT / "docs" / "MACOS.md"}
@@ -521,11 +545,11 @@ def main() -> int:
                 print(f"[note] doc-source guard: skipped unreadable {rel} ({e.__class__.__name__})")
                 continue
             body = re.sub(r"(```|~~~).*?\1", "", body, flags=re.DOTALL)
-            for url in re.findall(r"https?://[^\s)>\]\"'`]+", body):
+            for url in re.findall(r"https?://[^\s)>\]\"'`]+", body, flags=re.IGNORECASE):
                 url = url.rstrip(".,;:!?")
-                if any(url.startswith(a) for a in DOC_SOURCE_ALLOW):
+                if any(url.lower().startswith(a) for a in DOC_SOURCE_ALLOW):
                     continue
-                if any(url.rstrip("/").startswith(r) for r in registered):
+                if _declared(url):
                     continue
                 _emit(f"  x doc-source undeclared — {rel}: {url} — register it in a "
                       f"canonical-sources/registries/*.json source registry (with state.last_checked) "

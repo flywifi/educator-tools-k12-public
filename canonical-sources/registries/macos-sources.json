@@ -573,6 +573,20 @@
         "last_modified": null,
         "content_sha256": null
       }
+    },
+    {
+      "id": "rfc-3986",
+      "url": "https://www.rfc-editor.org/rfc/rfc3986",
+      "label": "RFC 3986 - Uniform Resource Identifier (URI): Generic Syntax",
+      "category": "standards",
+      "authority": "primary",
+      "backs": "check 20 exact-page matching semantics: scheme/host case-insensitivity (s3.1), component delimiters, #fragment (s3.5) / ?query (s3.4) as same-page variants",
+      "state": {
+        "last_checked": "2026-07-16T00:00:00+00:00",
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": null
+      }
     }
   ]
 }
