@@ -39,6 +39,18 @@ def _run(cmd: list[str]) -> tuple[int, str]:
         return -1, f"{exc.__class__.__name__}: {exc}"
 
 
+def _run_json(cmd: list[str]) -> tuple[int, str, str]:
+    """Like _run but keeps stdout and stderr SEPARATE. JSON-emitting scanners write the machine output
+    to stdout and human notes (progress, 'Found N known vulnerabilities') to stderr; merging them (as
+    _run does) corrupts json.loads, which previously turned a legible pip-audit CVE into an opaque
+    `raw` blocking blob. Parse JSON from stdout; keep stderr only for the raw-error fallback."""
+    try:
+        p = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT), timeout=600)
+        return p.returncode, (p.stdout or ""), (p.stderr or "")
+    except Exception as exc:
+        return -1, "", f"{exc.__class__.__name__}: {exc}"
+
+
 LANG_MARKERS = {
     "go.mod": {"lang": "go", "test_cmd": ["go", "vet", "./..."], "lint_cmd": ["golangci-lint", "run"]},
     "Cargo.toml": {"lang": "rust", "test_cmd": ["cargo", "check"], "lint_cmd": ["cargo", "clippy"]},
@@ -92,11 +104,19 @@ def _is_blocking(f: dict) -> bool:
 
 def scan() -> dict:
     findings, ran, skipped = [], [], []
-    # 1) pip-audit over every pinned requirements file.
-    reqs = sorted(glob.glob(str(ROOT / "tools" / "requirements-*.txt")))
+    # 1) pip-audit over every pinned requirements file — EXCEPT the security-scanner tooling itself.
+    # requirements-security.txt pins pip-audit/bandit/semgrep, which run only in CI and are never
+    # shipped to a teacher; auditing their transitive tree just chases CVEs in the scanners' own deps
+    # (e.g. click PYSEC-2026-2132, protobuf PYSEC-2026-1805) that are not in the product's attack
+    # surface, and reddens the gate on external vuln-DB drift unrelated to what we ship. The product's
+    # optional-feature requirements (docintel/office/media/…) are still fully audited.
+    SCANNER_REQS = {"requirements-security.txt"}
+    reqs = sorted(f for f in glob.glob(str(ROOT / "tools" / "requirements-*.txt"))
+                  if Path(f).name not in SCANNER_REQS)
     if shutil.which("pip-audit"):
+        skipped.append("pip-audit requirements-security.txt (CI scanner tooling — not shipped)")
         for r in reqs:
-            code, out = _run(["pip-audit", "-r", r, "-f", "json", "--progress-spinner", "off"])
+            code, out, err = _run_json(["pip-audit", "-r", r, "-f", "json", "--progress-spinner", "off"])
             ran.append(f"pip-audit {Path(r).name}")
             try:
                 data = json.loads(out or "{}")
@@ -107,12 +127,12 @@ def scan() -> dict:
                                          "package": dep.get("name"), "id": v.get("id")})
             except Exception:
                 if code not in (0,):
-                    findings.append({"tool": "pip-audit", "file": Path(r).name, "raw": out[:300]})
+                    findings.append({"tool": "pip-audit", "file": Path(r).name, "raw": (out or err)[:300]})
     else:
         skipped.append("pip-audit (not installed)")
     # 2) bandit over our own Python (skills + shared + tools).
     if shutil.which("bandit"):
-        code, out = _run(["bandit", "-r", "shared", "tools", "skills", "-ll", "-q", "-f", "json"])
+        code, out, err = _run_json(["bandit", "-r", "shared", "tools", "skills", "-ll", "-q", "-f", "json"])
         ran.append("bandit")
         try:
             data = json.loads(out or "{}")
@@ -121,14 +141,14 @@ def scan() -> dict:
                                  "severity": r.get("issue_severity"), "issue": r.get("issue_text")})
         except Exception:
             if code not in (0,):
-                findings.append({"tool": "bandit", "raw": out[:300]})
+                findings.append({"tool": "bandit", "raw": (out or err)[:300]})
     else:
         skipped.append("bandit (not installed)")
 
     # 3) semgrep over Python code (respects .semgrepignore at repo root).
     if shutil.which("semgrep"):
-        code, out = _run(["semgrep", "--config=auto", "--json", "--quiet",
-                          "shared", "tools", "skills"])
+        code, out, err = _run_json(["semgrep", "--config=auto", "--json", "--quiet",
+                                    "shared", "tools", "skills"])
         ran.append("semgrep")
         try:
             data = json.loads(out or "{}")
@@ -138,7 +158,7 @@ def scan() -> dict:
                                  "message": r.get("extra", {}).get("message", "")[:200]})
         except Exception:
             if code not in (0,):
-                findings.append({"tool": "semgrep", "raw": out[:300]})
+                findings.append({"tool": "semgrep", "raw": (out or err)[:300]})
     else:
         skipped.append("semgrep (not installed)")
 

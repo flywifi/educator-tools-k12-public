@@ -64,9 +64,7 @@ def parse_items(raw: bytes):
         if importlib.util.find_spec(modname) is None:
             continue
         try:
-            # non-literal import is safe here: modname iterates a hardcoded 2-tuple allowlist above
-            # ("fastfeedparser", "feedparser"), never user input.
-            mod = importlib.import_module(modname)  # nosemgrep: python.lang.security.audit.non-literal-import.non-literal-import
+            mod = importlib.import_module(modname)
             d = mod.parse(raw)
             entries = getattr(d, "entries", []) or []
             if entries:
