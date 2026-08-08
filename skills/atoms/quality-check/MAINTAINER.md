@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: quality-check-maintainer -->
 # MAINTAINER — atom-quality-check
 
 ## Purpose

@@ -8,7 +8,7 @@ Offline; uses jsonschema when installed (else schema checks are skipped with a n
 
 Usage:
   python3 tools/validate_outputs.py --input artifact.json [--schema records|traversal|udom|connector-flags]
-  python3 tools/validate_outputs.py --input bad.json --schema records --promote skills/skill-health/evals/evals.json
+  python3 tools/validate_outputs.py --input bad.json --schema records --promote skills/core/skill-health/evals/evals.json
 """
 from __future__ import annotations
 

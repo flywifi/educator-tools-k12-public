@@ -66,8 +66,8 @@ out to results, then to pages, concurrently — with the same provenance, dedup,
 ## Use
 ```bash
 python3 shared/traversal/traversal.py --objective "prepare for the IEP meeting" \
-    --file skills/meeting-classifier/examples/sample-invite.ics \
-    --file skills/meeting-classifier/examples/sample-meeting.vtt
+    --file skills/operations/meeting-classifier/examples/sample-invite.ics \
+    --file skills/operations/meeting-classifier/examples/sample-meeting.vtt
 # external, concurrent + rate-limited:
 python3 shared/traversal/traversal.py --objective "FL grade-4 fractions standard" \
     --url https://www.cpalms.org/... --scheduler parallel --rate 5

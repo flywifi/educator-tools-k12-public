@@ -23,7 +23,8 @@ Install the hub plus whatever capability skills are needed (the hub routes to th
 - **Always include `teacher-core`** (the router) + `quality-review` (the gate); add capability skills
   as needed. Skills are self-contained (synced references travel in the bundle).
 
-**Install the whole suite as one Cowork plugin.** The repo root carries a `.claude-plugin/plugin.json`
+**Install the whole suite as one plugin — Claude Code and Cowork (the Claude desktop app), one
+bundle, both surfaces.** The repo root carries a `.claude-plugin/plugin.json`
 (plugin metadata; the `skills/` dir is auto-discovered) and a `.claude-plugin/marketplace.json` so a
 district/school can add TOS from a marketplace in one step instead of per-skill uploads. Bump
 `plugin.json`'s `version` (and refresh `marketplace.json`) when skills are added/removed — the
@@ -46,8 +47,14 @@ registry-currency watcher flags this (below).
   `standards-updater` / `tools/standards_refresh.py`.) Structural health is `shared/health/health.py`.
 - **Optional capabilities & deps:** `python3 shared/health/capabilities.py` shows which optional powers
   are active (PDF/OCR/Office/render/transcription/fonts) and which **cloud** providers are installed +
-  credentialed. Install per-capability with the matching `tools/requirements-*.txt` (+ system bins:
-  LibreOffice, poppler, ffmpeg, tesseract; fonts: Noto/Liberation/Carlito/Caladea). **Cloud providers**
+  credentialed. Install per-capability into the **managed venv** — `python3 tools/deps_preflight.py
+  --install <capability>` (e.g. `office_authoring`) or `--install-all` — which uses the isolated,
+  gitignored `.harvest-venv/` (wheels-only, never system Python, so **macOS/Homebrew PEP 668 never
+  trips**); `--python-path` prints that venv's interpreter for a Claude Desktop MCP `command`/GUI
+  launch. (Direct `pip install -r tools/requirements-*.txt` works too, but only inside a venv on
+  macOS.) **System bins** are separate — LibreOffice, poppler, ffmpeg, tesseract (macOS:
+  `brew install libreoffice tesseract ffmpeg poppler`); fonts: Noto/Liberation/Carlito/Caladea. macOS
+  cross-platform details: `docs/DEPLOYMENT_SURFACES.md` + `docs/MACOS.md`. **Cloud providers**
   (Azure/fal/Nutrient/Firecrawl) are OFF until a deployment opts in via `cloud_providers` and supplies
   API keys **in the environment** (never the repo). Policy + privacy boundary:
   `shared/health/dependency-policy.md`.

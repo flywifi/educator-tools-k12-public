@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: quality-review-maintainer -->
 # MAINTAINER — quality-review
 
 ## Purpose of this maintainer file

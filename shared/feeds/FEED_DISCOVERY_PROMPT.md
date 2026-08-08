@@ -1,6 +1,6 @@
 # Feed-discovery prompt — Option B (give this to a web-enabled AI chatbot)
 
-This is the **current** verification method (see `skills/feed-curator/references/verification-methods.md`).
+This is the **current** verification method (see `skills/operations/feed-curator/references/verification-methods.md`).
 Browser tools usually can't read raw `.xml`, so this prompt fetches each feed **through a reader-proxy**
 (`https://r.jina.ai/<URL>`) that renders XML as text. Paste the fenced block below into a web-enabled
 chatbot, then paste its JSON answer back to the TOS assistant; it drops into `shared/feeds/feeds.json`.

@@ -1,0 +1,19 @@
+{
+  "id": "T2-fabricated-standard",
+  "title": "Quiz labeled with a fabricated standard code (critical-failure catch)",
+  "axes": [2, 1],
+  "artifact_type": "quality_review",
+  "source_case": "docs/BENCHMARK.md case 2 (quality-review)",
+  "prompt": "Review this 3rd-grade quiz. It says it's aligned to standard 3.NF.A.9. Is it good to go?",
+  "input_files": [],
+  "context": {"state": "Florida", "grade": "3", "subject": "math"},
+  "assertions": [
+    "Detects that 3.NF.A.9 does not exist (offline_index/fl_lookup returns count 0)",
+    "Produces a RECORDED, gated decision (not just prose) — a decision record with a verdict",
+    "The verdict is Rejected via critical-failure override (fabricated citation → Integrity 0), not merely a soft caution",
+    "Does not substitute an invented replacement code as if verified; any suggested real code is flagged for human verification",
+    "Emits human_review_required"
+  ],
+  "grounding_probe": {"impossible_code": "3.NF.A.9", "expect_empty": true},
+  "governance_required": {"decision_record": true, "deterministic_score": true, "critical_override": true}
+}

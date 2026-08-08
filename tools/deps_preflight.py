@@ -354,7 +354,146 @@ def preflight(update: bool | None = None, quiet: bool = False) -> dict:
     return report
 
 
+# --------------------------------------------------------------------------- Option 1: install ANY
+# capability's requirements into the SAME managed venv (never system/Homebrew Python -> no PEP 668).
+def _load_capabilities() -> list[dict]:
+    try:
+        return json.loads((ROOT / "tools" / "dependencies.json").read_text(encoding="utf-8")).get("capabilities", [])
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def _resolve_requirements(cap_or_path: str):
+    """(requirements_path|None, capability_dict|None, note). A `*.txt` arg is used directly; anything
+    else is treated as a capability `id` and looked up in tools/dependencies.json."""
+    for cand in (Path(cap_or_path), ROOT / cap_or_path):
+        if str(cand).endswith(".txt") and cand.exists():
+            return cand, None, ""
+    for c in _load_capabilities():
+        if c.get("id") == cap_or_path:
+            req = c.get("requirements")
+            if not req:  # e.g. render_convert -> LibreOffice system binary, nothing to pip-install
+                return None, c, f"'{cap_or_path}' is a system-binary capability (no pip packages)"
+            rp = ROOT / req
+            return (rp if rp.exists() else None), c, ("" if rp.exists() else f"requirements file {req} not found")
+    return None, None, f"unknown capability or requirements path: '{cap_or_path}'"
+
+
+def _specs_from_requirements(path: Path) -> list[str]:
+    """Real package specs only — skip blanks, comments (full-line and inline), and pip option lines
+    (`--only-binary`, `-r …`). Feeding these to the per-package best-effort _pip_install() means a
+    no-wheel package is an honest gap, not an all-or-nothing `-r` failure."""
+    specs = []
+    for raw in path.read_text(encoding="utf-8").splitlines():
+        line = raw.split(" #", 1)[0].split("\t#", 1)[0].strip()
+        if not line or line.startswith("#") or line.startswith("-"):
+            continue
+        specs.append(line)
+    return specs
+
+
+def _pip_present(py: str, dists: list[str]) -> dict:
+    src = ("import json, importlib.metadata as M\n"
+           "out = {}\n"
+           "for d in %r:\n"
+           "    try: M.version(d); out[d] = True\n"
+           "    except Exception: out[d] = False\n"
+           "print(json.dumps(out))\n")
+    try:
+        r = subprocess.run([py, "-c", src % list(dists)], capture_output=True, text=True, timeout=60)
+        return json.loads(r.stdout.strip().splitlines()[-1])
+    except Exception:  # noqa: BLE001
+        return {d: False for d in dists}
+
+
+def install_requirements(cap_or_path: str, upgrade: bool = False) -> dict:
+    """Install one capability's (or a requirements file's) packages into the managed venv, wheels-only
+    + per-package best-effort. Call ONLY after _bootstrap_into_venv() has re-exec'd us inside
+    .harvest-venv, so sys.executable is the venv python and system/Homebrew Python is never touched."""
+    path, cap, note = _resolve_requirements(cap_or_path)
+    if cap and cap.get("tier") == "cloud_optional":
+        return {"target": cap_or_path, "installed": False,
+                "note": f"'{cap_or_path}' is cloud_optional (OFF by default; needs district opt-in + an "
+                        "API key from the environment) — not auto-installed."}
+    if path is None:
+        return {"target": cap_or_path, "installed": False, "note": note or "nothing to install"}
+    specs = _specs_from_requirements(path)
+    rel = path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path)
+    if not specs:
+        return {"target": cap_or_path, "requirements": rel, "installed": True,
+                "note": "no active (uncommented) packages", "packages": {}}
+    _pip_install(sys.executable, specs, upgrade=upgrade)  # sys.executable == venv python here
+    present = _pip_present(sys.executable, [_dist_name(s) for s in specs])
+    return {"target": cap_or_path, "requirements": rel, "venv_python": str(_venv_python(VENV_DIR)),
+            "packages": present, "gaps": sorted(d for d, ok in present.items() if not ok),
+            "installed": True}
+
+
+def _print_install(rep: dict) -> None:
+    w = lambda m="": print(m, file=sys.stderr)  # noqa: E731
+    if not rep.get("installed"):
+        w(f"[deps] {rep['target']}: {rep.get('note', 'not installed')}")
+        return
+    w(f"[deps] {rep['target']} -> {rep.get('requirements', '')} (into {VENV_DIR.name})")
+    for d, ok in (rep.get("packages") or {}).items():
+        w(f"  {'OK ' if ok else '-- '}{d}")
+    if rep.get("gaps"):
+        w(f"  {len(rep['gaps'])} gap(s) — no matching wheel; honest capability gap, run continues.")
+
+
 def main(argv=None) -> int:
+    args = list(sys.argv[1:] if argv is None else argv)
+
+    # --python-path: print the managed-venv interpreter (built or not) — the "exact spot" a GUI launch
+    # or a Claude Desktop MCP `command` can point at. Print-only; wiring those is out of scope.
+    if "--python-path" in args:
+        print(str(_venv_python(VENV_DIR)))
+        return 0
+
+    # --install <cap|path> / --install-all: install into .harvest-venv, never global (Option 1).
+    if "--install" in args or "--install-all" in args:
+        _bootstrap_into_venv()  # builds + re-execs INTO the venv; returns here only inside it (or degraded)
+        if os.environ.get("HARVEST_VENV") != "1":
+            print("[deps] could not enter an isolated venv; refusing to install into the current "
+                  "interpreter (that would hit PEP 668 / risk system Python). Fix the venv "
+                  "(--reset-venv) or create one manually: python3 -m venv .venv && . .venv/bin/activate",
+                  file=sys.stderr)
+            return 1
+        upgrade = "--update-deps" in args
+        if "--install-all" in args:
+            targets = [c["id"] for c in _load_capabilities()
+                       if c.get("tier") == "local_optional" and c.get("requirements")]
+        else:
+            i = args.index("--install")
+            targets = [args[i + 1]] if i + 1 < len(args) else []
+        if not targets:
+            print("usage: deps_preflight.py --install <capability|requirements.txt> | --install-all",
+                  file=sys.stderr)
+            return 2
+        installs = []
+        done: dict = {}  # resolved requirements path -> first capability that installed it (dedupe)
+        for t in targets:
+            path, _cap, _note = _resolve_requirements(t)
+            key = str(path) if path else None
+            if key and key in done:
+                rel = path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path)
+                rep = {"target": t, "requirements": rel, "installed": True,
+                       "note": f"covered by '{done[key]}' (same requirements file, already installed this run)"}
+            else:
+                rep = install_requirements(t, upgrade=upgrade)
+                if key and rep.get("installed"):
+                    done[key] = t
+            installs.append(rep)
+            _print_install(rep)
+        print(json.dumps({"venv_python": str(_venv_python(VENV_DIR)), "installs": installs}, indent=2))
+        # Exit contract: a requested install that did NOT land is a failure (scripts must not read a
+        # failed install as success). The one benign no-op is a system-binary capability (nothing to
+        # pip-install) — that stays 0.
+        failed = [r for r in installs
+                  if not r.get("installed") and "system-binary capability" not in r.get("note", "")]
+        return 1 if failed else 0
+
+    # default: existing harvest preflight (unchanged)
     report = preflight(quiet=True)
     _print_capabilities(report, stream=sys.stdout)
     print()

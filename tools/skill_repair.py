@@ -70,9 +70,9 @@ def main(argv) -> int:
 
     # Apply only safe, reversible, derived-file fixes; never touch judgment items.
     print("\n## Applying safe mechanical fixes")
-    code, last = _run(["python3", "tools/metrics.py"])
+    code, last = _run([sys.executable, "tools/metrics.py"])
     print(f"- metrics regenerated: {last or ('ok' if code == 0 else 'failed')}")
-    code, last = _run(["python3", "tools/sync_check.py"])
+    code, last = _run([sys.executable, "tools/sync_check.py"])
     print(f"- drift guard: {last}")
     print("\nFinalization status: **safe fixes applied**; "
           f"{len(judgment)} judgment item(s) still need you. Review the diff, then approve/commit.")

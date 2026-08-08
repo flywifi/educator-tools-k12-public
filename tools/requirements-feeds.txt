@@ -1,3 +1,4 @@
+# macOS/Homebrew — install into the managed venv (no PEP 668): python3 tools/deps_preflight.py --install tools/requirements-feeds.txt
 # Optional feed-parsing boosters (local_optional, on_if_present) for shared/feeds + tools/verify_feeds.py.
 # The engine is stdlib-first (xml.etree.ElementTree always works); these only make parsing faster and
 # more robust on messy feeds. Absent => stdlib fallback, reported as a capability gap, never faked.

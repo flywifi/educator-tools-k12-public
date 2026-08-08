@@ -16,7 +16,7 @@ commit-anchored snapshot in `ledger/snapshots.json` (`tools/rollback.py --list`)
 - **F2 — Source-currency + staleness engine.** `tools/source_currency.py` + `canonical-sources/registries/<domain>.json`:
   states `current/changed/superseded/removed_404/stale_age/unreachable/uncertain` via conditional GET +
   content sha256 + supersession keywords + recency + 404 sweep; offline-graceful, advisory + human-verified.
-- **F3 — OCPS schools + programs index.** `shared/schools/` (+ `ocps/` seed) keyed on FLDOE MSID;
+- **F3 — OCPS schools + programs index.** `canonical-sources/schools/` (+ `ocps/` seed) keyed on FLDOE MSID;
   open/close + program changes watched by F2 (`canonical-sources/registries/ocps-schools.json`). Public, non-PII only.
 - **F4 — `teacher-profile` skill (18th) + setup wizard.** Roles, duties, role-based handoff map, prefs →
   gitignored `teacher.local.json` + context `sop_refs`/`overrides`; teacher-stated outranks crawled.
@@ -176,7 +176,7 @@ Sheets/Slides API JSON.
 Adapts the ecosystem to *where/how* a teacher works (operating-reference pattern). **All 67 FL county
 districts logged** (`florida-districts.json`, fillable stubs; Orange/OCPS populated incl. OCVS).
 School-type **exception rule-sets** (`school-types.json`):
-traditional/magnet/charter/district-virtual/FLVS/home-ed/private-scholarship. **Context contract**
+traditional/magnet/charter/district-virtual/FLVS/home-ed/private-scholarship/private-independent. **Context contract**
 (`context.schema.json` + `context.py`) — state/district/school_type/program/instructional_model/
 mandates/SOPs/authority_precedence/overrides — resolved first by teacher-core and carried into the
 metadata block + handoffs (`protocols/metadata-schema.md` gains a `context` envelope). Teachers upload
@@ -214,9 +214,160 @@ Markdown, portable. First consumer: `meeting-classifier`.
   (enforced by the drift guard).
 
 ## Last drift-guard result
-`python3 tools/sync_check.py` → **PASS — 18 skills, 8 invariants, 2 synced refs; frontmatter +
-resource integrity validated; `MAINTAINER.md` present in all skills.**
+`python3 tools/sync_check.py` → **PASS — 62 skills, 8 invariants, 2 synced refs; frontmatter +
+resource integrity validated; `MAINTAINER.md` present in all skills; doc-drift guards (checks 15-18)
+enforced.** (2026-07-15)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
+
+## 2026-07-16 — adversarial audit of the 24h window (34 probes) + full remediation
+Audit-only pass over everything landed in the prior 24h (doc guards 15–18, supply-chain fix, macOS
+fixes + mac-lint/check 19, deps_preflight Option 1, macos-sources + check 20): 34 probes across 6
+surfaces, findings logged without action, then all 10 approved items remediated in 4 commits:
+- **Office honesty (Major):** soffice exits 0 on failed headless conversion (upstream tdf#148275) —
+  `convert()` now verifies the output file exists (the old fake-"ok" had even fooled the audit's own
+  E2E probe: this container has no Impress/Writer, so no conversion ever succeeded here); the legacy
+  parser returns `convert_failed` diagnostics instead of an empty "native" result.
+- **check 20 (Major):** exact-page URL matching per RFC 3986 (three proven prefix-match bypasses
+  killed) + IGNORECASE + a [note] naming an unreadable registry.
+- **deps_preflight:** failed installs exit 1; `scrape_feed` repointed off a never-existed
+  requirements file; `--install-all` dedupes shared requirements (14→9 pip batches).
+- **mac-lint + source_currency:** variable-held argv + `io.open` detected; ignore-pragma spans
+  multi-line calls; unparseable files noted; naive dates parse as UTC midnight (one bad date no
+  longer crashes the whole freshness engine). Sources registered: tdf#148275, ask.libreoffice 49388,
+  RFC 3986 (macos-sources.json, 41 entries). Findings log delivered + annotated.
+
+## 2026-07-15 — maintainer/README audit (fix drift + fill doc gaps + 4 durable doc-drift guards)
+Systematic audit of every component (skills/atoms/shared engines/canonical buckets) against its
+maintainer/README files. Fixed the proven discrepancies, filled the doc-coverage gaps, and installed
+four hard-gate guards so this drift class becomes a red build, not a silent default.
+- **Fixed:** regenerated `docs/METRICS.md` (was stale at 29 skills → 62); repointed **8** dead
+  un-grouped `skills/<name>/…` paths to their grouped homes (7 found by audit + 1 the new guard
+  caught); corrected the live "Current" success-metrics block (62 skills, 62/62 human_review);
+  fixed a broken overlays model/schema cross-reference.
+- **Filled:** added docs for the zero-doc components — `shared/office/`, `shared/routing/`,
+  `shared/atoms/`, `canonical-sources/references/`, `canonical-sources/overlays/`, plus
+  `tools/README.md` and a top-level `canonical-sources/README.md` (root FL district + school-type
+  JSON). Folded the session's cross-platform gotchas (soffice PATH fallback, etc.) into the office doc.
+- **Guarded (`tools/sync_check.py` checks 15-18, `DOC_GUARDS_ENFORCE=True`):** (15) dead repo-relative
+  doc-path detector; (16) `METRICS.md` regenerate-and-compare freshness (via a new pure
+  `metrics.render()`); (17) component-doc coverage (every `shared/`/`canonical-sources/` dir carries a
+  doc); (18) `last_reviewed` freshness stamps on every README/MAINTAINER (missing/ >365d hard-fail; a
+  sibling changed after the stamp is an advisory re-review reminder). Grounded in SWE-at-Google Ch.10,
+  Diátaxis, and the repo's own committed-fingerprint pattern (offline-index manifest). Each guard was
+  proven to fire on injected drift and pass clean after.
+- **Confirmed (not changed):** the "27-case set" (matches `docs/BENCHMARK.md`, distinct from the 75
+  skill eval cases). **Flagged only:** the roadmap "104 files" line (now 112 on disk; original
+  counting basis ambiguous — left as-is per no-fabrication rule).
+
+## 2026-07-15 — cross-surface adversarial audit (desktop offline ↔ Claude app on Windows/Mac)
+Audited atoms/skills/canonical files through the lens of multi-step workflows that pass data between
+the offline desktop tools and the Claude/ChatGPT app. Canonical JSON integrity clean (0 malformed).
+Findings + fixes:
+- **CRITICAL — CRLF broke my own freshness guard on Windows.** A `core.autocrlf=true` checkout gives
+  the LF-committed sources CRLF, so their sha256 no longer matched the LF manifest → false "stale"
+  for the whole clone (and rebuilding there breaks Linux/CI). Fixed: `offline_index._sha256` +
+  `registry_currency._sha256` normalize CRLF→LF before hashing (no-op on LF, proven zero churn);
+  `.gitattributes` pins text sources to `eol=lf`. Verified a CRLF copy now hashes identically.
+- **HIGH — profile didn't round-trip.** Desktop kept `teacher.local.json`, apps use
+  `my-teacher-profile.md`, nothing bridged them. Added `profile_wizard.py --export-md/--import-md`
+  (human-readable + embedded exact JSON; lossless through a Notepad BOM + CRLF). Documented in
+  `wizard.md` + `DEPLOYMENT_SURFACES.md`.
+- **MEDIUM — LibreOffice PATH-only discovery** reported a false capability gap on Win/Mac (soffice
+  isn't on PATH there). `office_authoring.convert()` now falls back to the standard per-OS install
+  locations; the document is still produced regardless.
+- **Documented gotchas:** `python3` vs `py`/`python` on Windows; the Notepad `.txt`/"All Files"
+  trap; line-ending safety — all in `DEPLOYMENT_SURFACES.md` "Cross-platform notes" + the gpt/web
+  README save step. Minor open note: `--demo` needs `teacher.example.json` (gitignored) present.
+
+## 2026-07-15 — offline-index freshness guard (committed manifest + auto-rebuild)
+The gitignored `canonical-sources/index/offline.db` silently went stale when the D3 fix regenerated
+the standards JSON without a rebuild, and nothing detected it. Fixed structurally:
+- `offline_index.py` gains a single `source_files()` enumerator (so the fingerprint can't diverge
+  from what `build()` indexes) and, on `--build`, writes a **committed**
+  `canonical-sources/index/index-manifest.json` = sha256 + bytes of every source (no timestamp/engine,
+  so it's byte-stable — a diff means the inputs changed). New `drift_report()`/`--verify` (exit 1 if
+  stale); `--stats` shows freshness. The db stays gitignored.
+- `sync_check.py` check 14 (**hard gate**, runs in CI via the existing step) fails if the committed
+  sources no longer match the committed manifest — reads only committed files, so it fires on a fresh
+  clone and in CI, naming the changed files + the rebuild remedy.
+- **Producers self-heal:** `parse_fl_standards.py` (the culprit), `msid_lookup.py --apply`, and the
+  harvest orchestrators rebuild the index after writing a source (non-fatal, `--no-index` escape);
+  `local_harvest.py`/`harvest_all.py --push` now also stage the refreshed manifest.
+- Rebuilding also resolved the actual staleness: the index no longer serves pre-D3 statement text.
+- **Closes** the prior follow-up "rebuild offline.db before any statement-text benchmark" — the guard
+  now enforces freshness. Residual: `--no-index` + force-past-red-CI can still commit a stale manifest
+  (deliberate act, not the silent default).
+
+## 2026-07-15 — governed document benchmark (generation track shipped; ingestion track scaffolded)
+A reproducible, honesty-gated benchmark for "is TOS above and beyond the AI alone for document
+work." Lives under `benchmarks/` + `tools/run_benchmark.py`; report `docs/BENCHMARK_COMPETITIVE.md`
+(generated, `human_review_required`), landscape `docs/COMPETITIVE_LANDSCAPE.md` (dated/cited).
+- **7 axes** (grounding · governance · generation · differentiation · format · cost · ingestion)
+  with a per-axis **win-bar** — "above and beyond" is a number with a stated margin, not an
+  adjective. Five arms: native Claude / ChatGPT / Gemini, consumer ed-tools, OSS parsers
+  (ingestion track).
+- **Honesty gate:** `run_benchmark.py --check` fails the build on any scored row lacking an evidence
+  receipt; a result with no evidence stays `unrun`, never a fabricated number (a fabricated result
+  is itself QG §37). Report is generated from scorecards, never hand-edited.
+- **Headless TOS arm** reuses the repo's own tools as objective graders — `offline_index.py`
+  (grounding-or-empty), `score.py` (the gated verdict), `validate_document.py` (binary validity).
+  Live results: impossible standards asks return empty; the fabricated `3.NF.A.9` case → Rejected
+  via critical-failure override; the Office engine reports an honest capability gap (no python-pptx
+  here) rather than a fake binary. Subjective generation quality (axis 3) is blind-judged for ALL
+  arms equally — no scripted edge for TOS.
+- **Honest scoping** (approved decision): TOS leads on grounding/governance/generation and proves
+  it now (generation track); raw PDF parsing is a fight vs Docling/Marker/Unstructured, so the
+  ingestion track targets parity + a retrieval_state honesty edge, possibly by wrapping a
+  best-in-class engine as a docintel parser tier. The **loss→new-eval loop**
+  (`validate_outputs.py --promote`) is the engine that keeps TOS ahead.
+- **Follow-ups:** execute the hosted arms (evidence-backed) to fill competitor cells; synthesize the
+  ingestion-track adversarial corpus (CJK/nested-container/merged-cell — the docintel fixture gap).
+  (The prior "rebuild offline.db before a statement-text benchmark" caveat is resolved — see the
+  freshness-guard entry above; the index is rebuilt and the drift guard now enforces it.)
+
+## 2026-07-11 — onboarding parity, Reference Pack, scenario-test defect fixes
+Shipped on `claude/educator-tools-k12-plan-f49yju` (source: Monarch Learning Academy scenario test):
+- **Onboarding:** `implementation/claude/README.md` (teacher-voice, Claude Code/Cowork + claude.ai
+  doors; naming resolved — one plugin bundle, both surfaces); root README "How you use it" now has
+  the two platform doors; `wizard.md` step 8 defines the **requirements map** (per-row source +
+  external-authority citations, DRAFT footer) once for all platforms.
+- **Reference Pack:** `tools/export_reference_pack.py` → `implementation/gpt/web/reference-pack/`
+  (11 curated files ≈3.3MB: 6 FL standards files w/ full statements, course codes, districts,
+  school types, consolidated teaching-frameworks, generated MANIFEST receipts; build fails on any
+  uncited file; `--check` = sha256 drift guard + ≤15-file cap). TOS-skills.md HEADER: standards
+  corpus ✅-with-pack, "Two ways to set up", requirements-map section. Florida-only honesty line.
+- **Defects fixed:** stale paths repo-wide (old un-grouped `skills/<name>/`, `shared/schools/` →
+  `canonical-sources/schools/`); NCES PSS grade codes decoded in the private-schools index
+  (verified 1–17 map; raw kept as `*_code`; e.g. Monarch = PK–8 not "2–13"); FL standard
+  statements no longer truncated at 300/200 chars (full text regenerated, 6,583 codes unchanged);
+  `private_independent` school type added; ChatGPT profile persistence (`web_note` → "On ChatGPT"
+  blocks) + export generator fixes (inline trigger-phrase parsing, sentence-complete do-not-use,
+  no-PyYAML fallback description bug).
+- **Follow-ups:** decode `religious`/`level` PSS fields once the NCES codebook is verifiable
+  (nces.ed.gov blocked from the build env — no guessed labels); index decoded private-school grade
+  fields in `offline_index.py` at the next db-schema change; requirements-map as a first-class skill.
+
+## 2026-07-11 (later) — web→desktop audit fixes: explaining wizard + honest data contract + distribution
+Source: 11-finding audit of the "ChatGPT chat → desktop app" teacher scenario. Shipped:
+- **Web Setup Wizard** (`implementation/gpt/api/web-wizard.md`, embedded into TOS-skills.md by the
+  generator): full 7-step interview with a say-it-out-loud WHY per question, plan-tier triage,
+  explicit school-type step (wired to `fl-school-types.json`), and profile save-out help
+  (downloadable-file offer, else exact Notepad/TextEdit steps). Canonical trigger unified to
+  "set up my profile"; Claude wizard.md gains the explain-why principle + school-type sub-step
+  (files name each other as siblings — keep step lists/whys aligned).
+- **Honest completeness contract** (requirements map, both platforms): exact enumeration only via a
+  true file read (data-analysis tool; report matched-N vs the file's `count`), otherwise labeled
+  best-effort/retrieved; one subject per table (~40 rows, offer "next"); SS rows flag the
+  legacy-doc parse.
+- **Distribution:** `tos-reference-pack-onefile.json` (whole pack, one upload — fits ChatGPT Free's
+  ~5-slot Projects) + byte-reproducible `reference-pack.zip`; both rebuild-and-compare guarded in
+  `export_reference_pack.py --check`. Plan limits stated honestly ("trust the upload screen").
+  Generated docs are self-locating: repo URL in TOS-skills HEADER/FOOTER + MANIFEST (URL declared
+  in `tools/url-provenance.json`, enforced by the drift guard).
+- **Docs:** desktop-app/device-switch section (Projects follow the account; no Custom GPT needed),
+  privacy note (personal-plan training toggle, dated wording; Team/Edu default), profile-save
+  wording aligned with the wizard's real flow.
+- **Follow-up:** consider single-sourcing the two wizard scripts (web-wizard.md / wizard.md).
 
 ## Validation note
 Every skill ships `evals/evals.json` (prompts + assertions) and worked examples. The eval
@@ -246,6 +397,6 @@ is open.
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
-Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 19 skills ·
-65 artifact types · 65 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
-protocols · 100% ledger approval (seed) · 19/19 skills emit `human_review_required`.
+Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 62 skills ·
+69 artifact types · 75 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
+protocols · 100% ledger approval (seed) · 62/62 skills emit `human_review_required`.

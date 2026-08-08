@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: assessment-item-maintainer -->
 # MAINTAINER — atom-assessment-item
 
 ## Purpose

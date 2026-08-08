@@ -122,6 +122,64 @@ def detect(path: Path, head: str) -> str:
     return "unknown"
 
 
+# ---- NCES PSS code decoding ---------------------------------------------------
+# The PSS search-download files carry grades as NUMERIC CODES (LoGrade/HiGrade), not
+# grade labels. Code order follows the PSS questionnaire's documented grade categories
+# (nces.ed.gov/surveys/pss — questionnaire + Private School Locator download docs):
+#   Ungraded; Nursery/prekindergarten; Kindergarten; Transitional kindergarten;
+#   Transitional first grade; then grades 1-12  ->  codes 1..17; -1 = not reported.
+# Cross-checked against this dataset's own distribution (mode of high_grade is 17 =
+# 12th; the K-8 cluster lands on 13 = 8th; `level` classifications stay consistent).
+# VERIFY-FIRST: `religious` (RELIG) and `level` (PSS_LEVEL) numeric assignments could
+# NOT be verified against the PSS codebook from this environment (nces.ed.gov blocked),
+# so those fields are deliberately passed through RAW — do not guess labels for them.
+NCES_PSS_GRADE = {
+    "-1": "not reported",
+    "1": "UG",   # ungraded
+    "2": "PK",   # nursery / prekindergarten
+    "3": "K",
+    "4": "TK",   # transitional kindergarten
+    "5": "T1",   # transitional first grade
+    **{str(n + 5): str(n) for n in range(1, 13)},  # "6".."17" -> "1".."12"
+}
+
+
+def decode_pss(rec: dict) -> dict:
+    """Decode NCES PSS grade codes in place: raw codes are preserved as *_code keys and
+    the existing low_grade/high_grade keys get human-readable grade labels. Idempotent —
+    records already carrying *_code keys are returned untouched. Unknown codes pass
+    through labeled, never guessed. religious/level stay raw (codebook unverified)."""
+    if "low_grade_code" in rec or "high_grade_code" in rec:
+        return rec
+    for key in ("low_grade", "high_grade"):
+        raw = rec.get(key)
+        if raw is None or raw == "":
+            continue
+        rec[f"{key}_code"] = raw
+        rec[key] = NCES_PSS_GRADE.get(raw, f"(code {raw} — unverified)")
+    return rec
+
+
+def redecode_consolidated(path: Path) -> int:
+    """Repair an already-written consolidated JSON in place (no source HTML needed):
+    apply decode_pss to every NCES-PSS member. Idempotent; returns count changed."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    changed = 0
+    for rec in data.get("members", []):
+        if rec.get("association") != "NCES-PSS" or "low_grade_code" in rec:
+            continue
+        decode_pss(rec)
+        changed += 1
+    if changed:
+        note = (" GRADE CODES DECODED: low_grade/high_grade hold grade labels (PK, K, TK, T1, "
+                "1-12, UG); the original NCES numeric codes are preserved in low_grade_code/"
+                "high_grade_code. religious/level remain RAW NCES codes (codebook unverified).")
+        if note not in data.get("_comment", ""):
+            data["_comment"] = data.get("_comment", "") + note
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return changed
+
+
 def parse_nces_pss(text: str, src: str) -> list[dict]:
     rows = re.findall(r"<tr[^>]*>(.*?)</tr>", text, re.S | re.I)
     def cells(r): return [_clean(c) for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", r, re.S | re.I)]
@@ -144,7 +202,7 @@ def parse_nces_pss(text: str, src: str) -> list[dict]:
         rec = {v: (c[i] if i < len(c) else "") for i, v in im.items()}
         if rec.get("school_name"):
             rec["association"] = "NCES-PSS"; rec["source"] = src
-            out.append(rec)
+            out.append(decode_pss(rec))
     return out
 
 
@@ -228,11 +286,24 @@ def merge_private(existing: list[dict], incoming: list[dict]) -> tuple[list[dict
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--inbox", required=True, help="folder of saved source files to ingest")
+    ap.add_argument("--inbox", help="folder of saved source files to ingest")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--out-root", help="write all data under this dir instead of the repo "
                                        "(test isolation; the offline index rebuild is skipped)")
+    ap.add_argument("--redecode", metavar="PATH",
+                    help="decode NCES PSS grade codes in an existing consolidated JSON in place "
+                         "(idempotent; raw codes preserved as *_code; no inbox needed)")
     a = ap.parse_args(argv)
+    if a.redecode:
+        p = Path(a.redecode)
+        if not p.exists():
+            print(f"redecode target not found: {p}", file=sys.stderr); return 1
+        n = redecode_consolidated(p)
+        print(f"[redecode] {n} NCES-PSS record(s) decoded in {p}" if n
+              else f"[redecode] nothing to do — {p} already decoded")
+        return 0
+    if not a.inbox:
+        ap.error("--inbox is required (unless using --redecode)")
     if a.out_root:
         set_out_root(Path(a.out_root).resolve())
         print(f"[out-root] writing data under {a.out_root} (repo registries untouched)")

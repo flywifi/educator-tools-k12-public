@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: rubric-build-maintainer -->
 # MAINTAINER — rubric-build
 
 ## Purpose

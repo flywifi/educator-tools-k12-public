@@ -18,9 +18,16 @@ INDEXED (all from committed canonical-sources / shared data — nothing fabricat
 The DB (canonical-sources/index/offline.db) is a REGENERABLE, gitignored build artifact — never
 committed; rebuild from the canonical JSON with --build. Results are advisory + carry provenance.
 
+FRESHNESS: because the db is gitignored, --build also writes a COMMITTED source-fingerprint,
+canonical-sources/index/index-manifest.json (sha256 of every source file it read). `--verify` (and
+the tools/sync_check.py drift guard) compare the live sources to that manifest and flag the index as
+STALE if any source changed since the last build — so editing a source without rebuilding is caught
+in CI and on a fresh clone, not silently served from an out-of-date index.
+
 CLI:
-  python3 tools/offline_index.py --build
-  python3 tools/offline_index.py --stats                       # row counts + token-savings table
+  python3 tools/offline_index.py --build                       # rebuild db + write the manifest
+  python3 tools/offline_index.py --verify                      # exit 1 if the index is stale
+  python3 tools/offline_index.py --stats                       # row counts + token-savings + freshness
   python3 tools/offline_index.py --course "Precalculus"
   python3 tools/offline_index.py --school "Boone" --district 48
   python3 tools/offline_index.py --standards "fractions" --grade 3
@@ -31,6 +38,7 @@ CLI:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sqlite3
 import sys
@@ -39,10 +47,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "canonical-sources" / "index" / "offline.db"
+MANIFEST = ROOT / "canonical-sources" / "index" / "index-manifest.json"
 STD_DATA = ROOT / "shared" / "standards" / "resources" / "florida" / "data"
 COURSES = ROOT / "canonical-sources" / "references" / "fl-course-codes.json"
 SCHOOLS = ROOT / "canonical-sources" / "schools"
 TOOLKITS = ROOT / "canonical-sources" / "references" / "toolkit-content"
+TOOLKIT_CATALOG = TOOLKITS.parent / "fl-instructional-toolkits.json"
 DSOURCES = ROOT / "canonical-sources" / "registries" / "fldoe-data-sources.json"
 
 CHARS_PER_TOKEN = 4  # standard rough estimate for English/JSON
@@ -55,6 +65,127 @@ def _fts5_ok(conn) -> bool:
         return True
     except sqlite3.OperationalError:
         return False
+
+
+# --------------------------------------------------------------------- source inputs
+# ONE authoritative enumeration of the files build() reads, so the fingerprint manifest
+# can never list a different set than what is actually indexed. build() iterates these
+# same helpers below; the freshness guard hashes exactly what build() consumed.
+def _standards_files() -> list[Path]:
+    return [f for f in sorted(STD_DATA.glob("*.json")) if f.name != "index.json"] if STD_DATA.exists() else []
+
+
+def _school_files() -> list[Path]:
+    return sorted(SCHOOLS.glob("*/schools.json")) if SCHOOLS.exists() else []
+
+
+def _private_files() -> list[Path]:
+    d = SCHOOLS / "private"
+    return sorted(d.glob("*.json")) if d.exists() else []
+
+
+def _toolkit_content_files() -> list[Path]:
+    return sorted(TOOLKITS.glob("*.json")) if TOOLKITS.exists() else []
+
+
+def source_files() -> list[Path]:
+    """Every committed source file the index is built from — the exact fingerprint set."""
+    files = (_standards_files() + _school_files() + _private_files() + _toolkit_content_files())
+    for single in (TOOLKIT_CATALOG, COURSES, DSOURCES):  # single-file inputs (catalog supplies toolkit subjects)
+        if single.exists():
+            files.append(single)
+    return files
+
+
+def _sha256(p: Path) -> str:
+    # Normalize CRLF -> LF before hashing so a Windows checkout (git `autocrlf=true` turns the
+    # LF-committed sources into CRLF in the working tree) fingerprints IDENTICALLY to the
+    # LF-committed manifest. Without this, every text source reads as "changed" on Windows and the
+    # freshness gate false-fails for the whole clone. No-op on LF checkouts (bytes unchanged).
+    return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
+def write_manifest(counts: dict) -> None:
+    """Commit-tracked source-fingerprint for the gitignored offline.db (see module docstring).
+    Deliberately contains ONLY source-derived, environment-independent data — the per-file sha256s
+    and the (deterministic) row counts — and NOT the build timestamp or the fts5/like engine (both
+    live in the db's idx_meta). That keeps the committed manifest stable: it changes if and only if a
+    source's content changes, so a rebuild with no source change produces no diff and its git history
+    means exactly "the index inputs changed here."""
+    # POSIX-style keys (forward slashes) so a manifest built on Windows and verified on Linux/CI
+    # (or vice-versa) compares equal — str(relative_to) would emit backslashes on Windows and make
+    # every path read as changed.
+    sources = {p.relative_to(ROOT).as_posix(): {"sha256": _sha256(p), "bytes": p.stat().st_size}
+               for p in source_files()}
+    MANIFEST.write_text(json.dumps({
+        "_comment": "Source-fingerprint manifest for the gitignored offline.db. Written by "
+                    "tools/offline_index.py --build; enforced by tools/sync_check.py and "
+                    "offline_index.py --verify. If a listed source's sha256 no longer matches, the "
+                    "index is STALE — run `python3 tools/offline_index.py --build` and commit this "
+                    "file. Contains only source hashes + deterministic counts (no timestamp/engine) "
+                    "so it changes iff a source changes. Nothing fabricated.",
+        "artifact": DB.relative_to(ROOT).as_posix(),
+        "counts": counts, "sources": sources, "human_review_required": True,
+    }, indent=2) + "\n", encoding="utf-8")
+
+
+def read_manifest() -> dict | None:
+    if not MANIFEST.exists():
+        return None
+    try:
+        return json.loads(MANIFEST.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
+def drift_report() -> dict:
+    """Compare the live source files against the committed manifest. Needs neither the db nor a
+    prior build — reads only committed files, so it is deterministic in CI and on a fresh clone.
+
+    A missing or unreadable manifest is itself a drift condition (stale=True): the manifest is a
+    COMMITTED artifact, so its absence means someone deleted it or a write was truncated — either
+    way the guard's baseline is gone and must fail loudly, never pass silently."""
+    if not MANIFEST.exists():
+        return {"built": False, "stale": True, "changed": [], "added": [], "removed": [],
+                "current": [], "reason": "manifest missing (committed baseline absent) — "
+                "restore it or run `--build` && commit index-manifest.json"}
+    try:
+        man = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    except Exception as e:
+        return {"built": False, "stale": True, "changed": [], "added": [], "removed": [],
+                "current": [], "reason": f"manifest unreadable ({e.__class__.__name__}) — "
+                "run `--build` && commit index-manifest.json"}
+    recorded = man.get("sources", {})
+    current = {p.relative_to(ROOT).as_posix(): _sha256(p) for p in source_files()}
+    changed, removed, unchanged = [], [], []
+    for rel, base in recorded.items():
+        if rel not in current:
+            removed.append(rel)
+        elif current[rel] != base.get("sha256"):
+            changed.append(rel)
+        else:
+            unchanged.append(rel)
+    added = [rel for rel in current if rel not in recorded]
+    stale = bool(changed or added or removed)
+    return {"built": True, "stale": stale, "changed": sorted(changed),
+            "added": sorted(added), "removed": sorted(removed), "current": sorted(unchanged)}
+
+
+def verify(as_json: bool = False) -> int:
+    rep = drift_report()
+    if as_json:
+        print(json.dumps(rep, indent=2))
+    elif rep.get("reason"):
+        print(f"index freshness: {rep['reason']}")
+    elif rep["stale"]:
+        print("index STALE vs canonical-sources/index/index-manifest.json — run --build && commit:")
+        for k in ("changed", "added", "removed"):
+            if rep[k]:
+                print(f"  {k}: {', '.join(rep[k])}")
+    else:
+        note = "" if DB.exists() else "  (note: sources match, but offline.db is not built here — run --build)"
+        print("index fresh — all sources match the manifest." + note)
+    return 1 if rep.get("stale") else 0
 
 
 # --------------------------------------------------------------------------- build
@@ -72,9 +203,7 @@ def build() -> int:
                      f"grade UNINDEXED, type UNINDEXED, source_file UNINDEXED)" if fts else
                      "CREATE TABLE standards (code TEXT, statement TEXT, subject TEXT, grade TEXT, type TEXT, source_file TEXT)")
         n = 0
-        for f in sorted(STD_DATA.glob("*.json")) if STD_DATA.exists() else []:
-            if f.name == "index.json":
-                continue
+        for f in _standards_files():
             doc = json.loads(f.read_text(encoding="utf-8"))
             subj = doc.get("subject")
             for s in doc.get("standards", []):
@@ -100,7 +229,7 @@ def build() -> int:
                      f"type UNINDEXED, levels UNINDEXED, grades UNINDEXED, locale, programs)" if fts else
                      "CREATE TABLE schools (msid TEXT, school_name TEXT, district TEXT, type TEXT, levels TEXT, grades TEXT, locale TEXT, programs TEXT)")
         n = 0
-        for sf in sorted(SCHOOLS.glob("*/schools.json")) if SCHOOLS.exists() else []:
+        for sf in _school_files():
             doc = json.loads(sf.read_text(encoding="utf-8"))
             dnum = str(doc.get("district_number", ""))
             for s in doc.get("schools", []):
@@ -118,8 +247,7 @@ def build() -> int:
                      f"accreditation UNINDEXED, head UNINDEXED, source UNINDEXED)" if fts else
                      "CREATE TABLE private_schools (school_name TEXT, association TEXT, accreditation TEXT, head TEXT, source TEXT)")
         n = 0
-        priv_dir = SCHOOLS / "private"
-        for pf in sorted(priv_dir.glob("*.json")) if priv_dir.exists() else []:
+        for pf in _private_files():
             doc = json.loads(pf.read_text(encoding="utf-8"))
             assoc = doc.get("association", "")
             for s in doc.get("members", []) + doc.get("schools", []):
@@ -134,11 +262,11 @@ def build() -> int:
                      f"page UNINDEXED, links UNINDEXED)" if fts else
                      "CREATE TABLE toolkit_resources (standard TEXT, toolkit TEXT, subject TEXT, page TEXT, links TEXT)")
         n = 0
-        cat = TOOLKITS.parent / "fl-instructional-toolkits.json"
         subj_by_id = {}
-        if cat.exists():
-            subj_by_id = {r["id"]: r.get("subject") for r in json.loads(cat.read_text()).get("resources", [])}
-        for tf in sorted(TOOLKITS.glob("*.json")) if TOOLKITS.exists() else []:
+        if TOOLKIT_CATALOG.exists():
+            subj_by_id = {r["id"]: r.get("subject")
+                          for r in json.loads(TOOLKIT_CATALOG.read_text(encoding="utf-8")).get("resources", [])}
+        for tf in _toolkit_content_files():
             doc = json.loads(tf.read_text(encoding="utf-8"))
             tid = doc.get("id", tf.stem)
             for pg in doc.get("content", []):
@@ -162,16 +290,20 @@ def build() -> int:
                 n += 1
         counts["data_sources"] = n
 
+        built_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        engine = "fts5" if fts else "like_fallback"
         conn.execute("CREATE TABLE idx_meta (key TEXT PRIMARY KEY, value TEXT)")
-        conn.execute("INSERT INTO idx_meta VALUES ('built_at', ?)",
-                     (datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),))
-        conn.execute("INSERT INTO idx_meta VALUES ('engine', ?)", ("fts5" if fts else "like_fallback",))
+        conn.execute("INSERT INTO idx_meta VALUES ('built_at', ?)", (built_at,))
+        conn.execute("INSERT INTO idx_meta VALUES ('engine', ?)", (engine,))
         conn.execute("INSERT INTO idx_meta VALUES ('counts', ?)", (json.dumps(counts),))
         conn.commit()
     finally:
         conn.close()
+    # commit-tracked fingerprint of exactly what we just indexed (the freshness baseline)
+    write_manifest(counts)
     total = sum(counts.values())
-    print(f"Built {DB.relative_to(ROOT)} [{('fts5' if fts else 'like_fallback')}] — {total} rows: {counts}")
+    print(f"Built {DB.relative_to(ROOT)} [{engine}] — {total} rows: {counts}; "
+          f"wrote {MANIFEST.relative_to(ROOT)}")
     return 0
 
 
@@ -268,6 +400,10 @@ def stats() -> int:
     print(f"  {'-'*18}")
     print(f"  whole corpus tokens ≈ {_bytes_to_tokens(tot_corpus):,}  ·  a lookup returns ≈250 → "
           f"~{(1-250/_bytes_to_tokens(tot_corpus))*100:.2f}% reduction per reference need")
+    rep = drift_report()
+    fresh = ("no manifest (run --build)" if not rep.get("built")
+             else "STALE — run --build" if rep["stale"] else "fresh")
+    print(f"\nfreshness: {fresh} (vs {MANIFEST.relative_to(ROOT)})")
     return 0
 
 
@@ -275,6 +411,8 @@ def main(argv) -> int:
     ap = argparse.ArgumentParser(description="Unified offline index — zero-token reference lookups")
     ap.add_argument("--build", action="store_true")
     ap.add_argument("--stats", action="store_true")
+    ap.add_argument("--verify", action="store_true",
+                    help="check the index sources against index-manifest.json; exit 1 if stale")
     ap.add_argument("--course"); ap.add_argument("--school"); ap.add_argument("--standards")
     ap.add_argument("--private", help="search private/independent schools (AISF, etc.)")
     ap.add_argument("--resource", help="toolkit resource links for a standard code")
@@ -286,6 +424,8 @@ def main(argv) -> int:
 
     if a.build:
         return build()
+    if a.verify:
+        return verify(as_json=a.json)
     if a.stats:
         return stats()
     rows, label = None, ""

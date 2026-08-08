@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: assessment-designer-maintainer -->
 # MAINTAINER — assessment-designer
 
 ## Purpose of this maintainer file

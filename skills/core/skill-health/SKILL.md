@@ -17,7 +17,7 @@ canonical prose: `shared/health/health-model.md`.
   and summarize recurring problems in plain language: validation failures, connector failure classes
   (PERMISSION / NOT_FOUND / DEGRADED_SUCCESS), and minority reports.
 - **Impact analysis** — when a skill is added/renamed, list every ecosystem file that must update
-  (`shared/routing/routing.json`, `ROUTING_MODEL.md`, `skills/teacher-core/references/routing-map.md`,
+  (`shared/routing/routing.json`, `ROUTING_MODEL.md`, `skills/core/teacher-core/references/routing-map.md`,
   `STATE.md`, `METRICS.md`, `shared/ontology/artifact-types.json`) so docs/routing/ontology never drift.
 - **Repair plan** — an ordered, severity-tagged plan (each step marked mechanical or judgment) that you
   **edit or approve**; nothing high-stakes is auto-applied.

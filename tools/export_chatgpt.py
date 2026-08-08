@@ -28,6 +28,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "implementation" / "gpt" / "api" / "skills"
 OUT_PATH = ROOT / "implementation" / "gpt" / "web" / "TOS-skills.md"
+WIZARD_SRC = ROOT / "implementation" / "gpt" / "api" / "web-wizard.md"
+REPO_URL = "https://github.com/flywifi/educator-tools-k12-public"
 
 try:
     import yaml as _yaml
@@ -49,28 +51,45 @@ def _load(path: Path) -> dict | None:
         # manual extraction of the fields we need
         data: dict = {"type": "function", "function": {}}
         fn = data["function"]
-        for line in clean.splitlines():
+        all_lines = clean.splitlines()
+        for line in all_lines:
             s = line.strip()
             if s.startswith("name:") and "name" not in fn:
                 fn["name"] = s.split(":", 1)[1].strip()
-            if s.startswith("description:") and "description" not in fn:
-                val = s.split(":", 1)[1].strip()
-                if val and val != "|":
-                    fn["description"] = val
-        # grab multiline description after "description: |"
-        if "description" not in fn or not fn["description"]:
-            in_desc = False
-            desc_lines = []
+        # description: honor the FIRST `description:` in file order (the function's own),
+        # whether inline or a block scalar — never a nested parameter's description.
+        for i, line in enumerate(all_lines):
+            s = line.strip()
+            if not s.startswith("description:"):
+                continue
+            val = s.split(":", 1)[1].strip()
+            if val and val not in ("|", ">", "|-", ">-"):
+                fn["description"] = val
+            else:
+                desc_lines = []
+                for nxt in all_lines[i + 1:]:
+                    if nxt and not nxt[0].isspace():
+                        break
+                    desc_lines.append(nxt.lstrip())
+                if desc_lines:
+                    fn["description"] = "\n".join(desc_lines).strip()
+            break
+        # top-level web_note (single line or block scalar) — ChatGPT-specific guidance
+        m = re.search(r"^web_note:\s*(.+)$", clean, re.M)
+        if m and m.group(1).strip() not in ("|", ">", "|-", ">-"):
+            data["web_note"] = m.group(1).strip()
+        else:
+            in_note, note_lines = False, []
             for line in clean.splitlines():
-                if re.match(r"^\s*description:\s*\|", line):
-                    in_desc = True
+                if re.match(r"^web_note:\s*[|>]", line):
+                    in_note = True
                     continue
-                if in_desc:
+                if in_note:
                     if line and not line[0].isspace():
                         break
-                    desc_lines.append(line.lstrip())
-            if desc_lines:
-                fn["description"] = "\n".join(desc_lines).strip()
+                    note_lines.append(line.strip())
+            if any(note_lines):
+                data["web_note"] = " ".join(l for l in note_lines if l).strip()
         return data if fn.get("name") else None
 
 
@@ -93,18 +112,37 @@ def _first_sentence(text: str) -> str:
     return text[:200].strip()
 
 
+def _quoted(text: str) -> list[str]:
+    """All sensible double-quoted phrases in a line (skips punctuation fragments)."""
+    return [p.strip() for p in re.findall(r'"([^"]+)"', text)
+            if len(p.strip()) > 2 and not p.strip().startswith(",")]
+
+
 def _trigger_phrases(description: str) -> list[str]:
-    """Extract trigger phrase examples from the description text."""
+    """Extract trigger phrase examples from the description text.
+
+    Handles BOTH layouts found in the skill YAMLs: quote-/dash-prefixed lines under the
+    marker, and an inline comma-separated quoted list on the marker line itself that may
+    wrap across lines (e.g. teacher-profile.yaml) — the latter used to render empty."""
     phrases = []
-    in_triggers = False
+    in_triggers = inline_style = False
     for line in description.splitlines():
         ls = line.strip()
         if "trigger phrases" in ls.lower() or "say something like" in ls.lower():
             in_triggers = True
+            # inline style: quoted phrases follow the marker on the same line
+            remainder = ls.split(":", 1)[1] if ":" in ls else ""
+            found = _quoted(remainder)
+            if found:
+                inline_style = True
+                phrases.extend(found)
             continue
         if in_triggers:
+            if inline_style and '"' in ls:
+                # wrapped continuation of the inline quoted list
+                phrases.extend(_quoted(ls))
             # collect quoted phrases or dash-prefixed examples
-            if ls.startswith('"') or ls.startswith("'") or ls.startswith("- "):
+            elif ls.startswith('"') or ls.startswith("'") or ls.startswith("- "):
                 phrase = ls.lstrip("- \"'").rstrip("\"',.")
                 if phrase:
                     phrases.append(phrase)
@@ -116,13 +154,26 @@ def _trigger_phrases(description: str) -> list[str]:
 
 
 def _do_not_use(description: str) -> list[str]:
-    """Extract 'Do NOT use' lines."""
-    lines = []
-    for line in description.splitlines():
+    """Extract 'Do NOT use' sentences, following wrapped lines to the sentence end
+    (a hard line-only cut used to render fragments like '... (route')."""
+    out = []
+    src = description.splitlines()
+    for i, line in enumerate(src):
         ls = line.strip()
-        if ls.startswith("Do NOT use"):
-            lines.append(ls.removeprefix("Do NOT use").strip())
-    return lines[:3]
+        if not ls.startswith("Do NOT use"):
+            continue
+        buf = ls.removeprefix("Do NOT use").strip()
+        j = i + 1
+        while not buf.endswith(".") and j < len(src):
+            nxt = src[j].strip()
+            if not nxt or nxt.startswith("Do NOT") or nxt.startswith("#"):
+                break
+            buf += " " + nxt
+            j += 1
+        # keep just the first sentence of the (possibly multi-sentence) buffer
+        m = re.search(r"\.(\s|$)", buf)
+        out.append(buf[: m.start() + 1].strip() if m else buf)
+    return out[:3]
 
 
 def _build_entry(path: Path) -> str | None:
@@ -185,6 +236,11 @@ def _build_entry(path: Path) -> str | None:
         lines.append("")
         lines.append("**Do not use for:** " + "; ".join(do_not))
 
+    web_note = " ".join((data.get("web_note") or "").split())
+    if web_note:
+        lines.append("")
+        lines.append(f"**On ChatGPT:** {web_note}")
+
     lines.append("")
 
     return "\n".join(lines)
@@ -204,16 +260,87 @@ HEADER = """\
 | All 29 skill structures — lesson plans, IEP goals, assessments, parent comms, etc. | ✅ Works |
 | Governance rules — DRAFT label, no student PII, IEP legal boundaries | ✅ Works |
 | Output formats — structured artifacts matching TOS specifications | ✅ Works |
-| Florida B.E.S.T. standard codes | ⚠️ ChatGPT recalls from training data, NOT a verified corpus. **Always verify every standard code on [cpalms.org](https://www.cpalms.org) before using in any formal document.** |
-| Standards corpus search (6,583 FL standards) | ❌ Not available — requires the Claude TOS environment |
+| Standards corpus (6,583 FL standards, full text) | ✅ **With the Reference Pack** added to your Project (see "Two ways to set up") — verified Florida snapshot. ❌ Without it. Either way, **verify every code on [cpalms.org](https://www.cpalms.org) before using in any formal document.** |
+| Florida B.E.S.T. standard codes | ⚠️ Without the pack, ChatGPT recalls codes from training data, NOT a verified corpus — treat every code as unconfirmed until checked on cpalms.org. |
 | Document parsing pipeline (PDFs, DOCX, scanned files) | ❌ Not available — requires the Claude TOS environment |
 | Standards crawler (FLDOE/CPALMS live updates) | ❌ Not available — requires the Claude TOS environment |
 | Quality Gates scoring script | ❌ Not available — ChatGPT can approximate in prose only |
 
 **The bottom line:** ChatGPT will follow TOS skill structure and governance rules.
-It cannot run code, query the verified standards corpus, or crawl live sources.
-For the full TOS experience — including verified standards, document ingestion, and
-quality scoring — use the Claude deployment.
+It cannot run code or crawl live sources; with the Reference Pack it CAN quote the
+verified Florida standards snapshot. For the full TOS experience — document
+ingestion, live update checks, and quality scoring — use the Claude deployment.
+
+---
+
+## Two ways to set up
+
+**Get the files (and updates) here:** {REPO_URL}
+
+**Level 1 — this file only.** Add `TOS-skills.md` to a Project and go. Works
+everywhere; standards come from the model's memory, so verify everything on
+cpalms.org before formal use.
+
+**Level 2 — add the Reference Pack (recommended).** Now standards, course-code,
+district, and school-type answers quote the **actual verified Florida data**
+(full standard text, captured on the dates listed in the pack's `MANIFEST.md`).
+Pick the download that fits your plan — Project file limits differ (as of
+2026-07: Free holds only ~5 files per Project, Plus ~20-25, Pro ~40; these
+change, so **trust the upload screen over any number written here**):
+
+- **ChatGPT Free (or simplest possible):** download ONE file —
+  `reference-pack/tos-reference-pack-onefile.json` — and add it. Same data,
+  one upload. (3 Project files total with this guide + your profile.)
+- **Plus/Pro:** download `reference-pack/reference-pack.zip`, unzip it, and add
+  the 11 files (separate files give the assistant finer-grained file search —
+  the better experience when your plan allows it).
+
+Honesty line: verified data ships for **Florida only** today — for other states
+the assistant falls back to general knowledge, so always verify against your
+own state's site.
+
+Working on a computer with the full TOS repository? The Claude deployment adds
+document parsing, live update checks, and quality scoring — see
+`implementation/claude/README.md` in the project above.
+
+---
+
+## After setup: your requirements map
+
+Once your profile and the Reference Pack are both in the Project, say
+**"build my requirements map"** (the assistant should also offer it right after
+profile setup). You get a consolidated table scoped to your grade, subject,
+and school:
+
+| What's in it | Pulled from |
+|---|---|
+| The standards for your grade + subject (code and full statement) | the `fl-standards-*.json` pack files |
+| Your course code(s) and titles | `fl-course-codes.json` |
+| Your district's row | `fl-districts.json` |
+| Your school type's rule-set (standards applicability, assessment) | `fl-school-types.json` |
+
+**Completeness rules the assistant must follow** (and explain in one line:
+*"I can only promise a complete list when I can truly read the file — otherwise
+I tell you exactly how much I could see"*):
+
+1. **Prefer an exact read.** If the data-analysis (python) tool can open the
+   pack file, use it: parse the JSON, filter by grade + subject, and report
+   *"matched N standards — the file records `count` total across all grades."*
+2. **Otherwise, label the fallback honestly.** A table built from file *search*
+   is **best-effort — retrieved, not exhaustively enumerated**. Say so above
+   the table, cite the file's `count` field, and never present a retrieved
+   list as complete.
+3. **One subject at a time.** For self-contained/elementary teachers, deliver
+   Math first, then offer *"say 'next' for ELA"* — no table longer than ~40
+   rows before pausing. Long single tables get cut off mid-render.
+4. **Social studies rows carry an extra flag** — that file is a best-effort
+   parse from a legacy document; mark its rows *"verify on CPALMS"*.
+
+Every row cites **which pack file it came from** and **the external authority
+to verify it on** (cpalms.org / the FLDOE URLs in `MANIFEST.md`), plus the
+capture date. Mandatory footer on every requirements map:
+*DRAFT — assembled from the uploaded pack files; a human must verify anything
+used in a formal document on the cited authority (human_review_required).*
 
 ---
 
@@ -223,16 +350,19 @@ quality scoring — use the Claude deployment.
    that project will reference it automatically.
 2. **Or paste it** into any conversation window for one-time use.
 3. **Tell ChatGPT** which skill you want using the trigger phrases below.
-4. **Always verify** Florida standard codes on cpalms.org before formal use.
+4. **Set up your profile once** — say *"set up my profile"* and the Setup Wizard section
+   below takes over: a short interview that explains why it asks each question, then helps
+   you save the answers into this Project so every future chat already knows you.
+5. **Always verify** Florida standard codes on cpalms.org before formal use.
 
 ---
-
-## The 29 TOS Skills
 
 """
 
 FOOTER = """
 ---
+
+*Project home — the Reference Pack, updates, and the full TOS: {REPO_URL}*
 
 *Generated by `tools/export_chatgpt.py` from `implementation/gpt/api/skills/*.yaml`.*
 *To regenerate after editing a skill: `python3 tools/export_chatgpt.py`*
@@ -313,7 +443,13 @@ def main(argv: list[str]) -> int:
         print("--check passed. No files written.")
         return 0
 
-    content = HEADER + "\n".join(entries) + FOOTER
+    if not WIZARD_SRC.exists():
+        print(f"ERROR: wizard source missing: {WIZARD_SRC}", file=sys.stderr)
+        return 2
+    wizard = re.sub(r"<!--.*?-->\s*", "", WIZARD_SRC.read_text(encoding="utf-8"),
+                    count=1, flags=re.S).strip()
+    content = (HEADER + wizard + "\n\n---\n\n## The 29 TOS Skills\n\n"
+               + "\n".join(entries) + FOOTER).replace("{REPO_URL}", REPO_URL)
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(content, encoding="utf-8")

@@ -1,7 +1,7 @@
 # Teaching Bundle — Grade 3 Fractions (worked orchestration)
 
 > A `teacher-core` **teaching bundle**: one request → several aligned artifacts, one shared standard,
-> each gated by `quality-review`. Demonstrates `skills/teacher-core/references/workflows.md`.
+> each gated by `quality-review`. Demonstrates `skills/core/teacher-core/references/workflows.md`.
 
 **Request (simulated):** "Set me up to teach unit fractions to my 3rd graders tomorrow — a hands-on
 lesson, a quick way to grade their explanations, slides, and a note home."
@@ -12,9 +12,9 @@ standard `CCSS.MATH.CONTENT.3.NF.A.1` (CCSS-Math 2010) · placeholders only.
 ## Bundle contents (each gated separately)
 | # | Artifact | Skill | Source example | Decision |
 |---|---|---|---|---|
-| 1 | Lesson plan (hands-on, 45 min) | `lesson-planner` | `skills/lesson-planner/examples/grade3-fractions-lesson.md` | Approved 4.34 |
-| 2 | Rubric for explaining 1/b | `assessment-designer` | `skills/assessment-designer/examples/grade3-fractions-rubric.md` | Approved |
-| 3 | Slide deck (7 slides) | `presentation-builder` | `skills/presentation-builder/examples/grade3-fractions-slides.md` | Approved |
+| 1 | Lesson plan (hands-on, 45 min) | `lesson-planner` | `skills/educator/lesson-planner/examples/grade3-fractions-lesson.md` | Approved 4.34 |
+| 2 | Rubric for explaining 1/b | `assessment-designer` | `skills/educator/assessment-designer/examples/grade3-fractions-rubric.md` | Approved |
+| 3 | Slide deck (7 slides) | `presentation-builder` | `skills/educator/presentation-builder/examples/grade3-fractions-slides.md` | Approved |
 | 4 | Parent note (below) | `family-communication` | new | Approved |
 
 ## Piece 4 — Parent note (plain language, placeholders)

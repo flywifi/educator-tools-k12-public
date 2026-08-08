@@ -1,7 +1,7 @@
 # Slide Outline: Understanding Unit Fractions (1/b)
 
 > Worked reference output built from the gold lesson
-> `skills/lesson-planner/examples/grade3-fractions-lesson.md` (same standard), then rendered to
+> `skills/educator/lesson-planner/examples/grade3-fractions-lesson.md` (same standard), then rendered to
 > `.pptx` via the `pptx` skill. Evaluated by quality-review → Approved.
 
 - **Grade band / Subject:** 3-5 (Grade 3) / Mathematics

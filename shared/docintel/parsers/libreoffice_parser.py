@@ -33,7 +33,29 @@ class LegacyOfficeParser(Parser):
     capabilities = {"text", "reading_order"}
 
     def _soffice(self) -> str | None:
-        return shutil.which("soffice") or shutil.which("libreoffice")
+        # Reuse the office engine's canonical cross-platform resolver so this can't drift from it.
+        # PATH-only discovery (shutil.which) misses a normally-installed LibreOffice on macOS
+        # (/Applications/LibreOffice.app/…) and Windows (Program Files), where soffice is NOT on PATH
+        # by default — the parser would then falsely report `render_convert` unavailable on those
+        # desktops. When the office module isn't importable, fall back to the same PATH + per-OS
+        # install-dir logic locally.
+        try:
+            from office.office_authoring import _find_soffice
+            return _find_soffice()
+        except Exception:
+            found = shutil.which("soffice") or shutil.which("libreoffice")
+            if found:
+                return found
+            import sys
+            if sys.platform == "darwin":
+                cands = ["/Applications/LibreOffice.app/Contents/MacOS/soffice"]
+            elif sys.platform == "win32":
+                cands = [r"C:\Program Files\LibreOffice\program\soffice.exe",
+                         r"C:\Program Files (x86)\LibreOffice\program\soffice.exe"]
+            else:
+                cands = ["/usr/bin/soffice", "/usr/bin/libreoffice",
+                         "/snap/bin/libreoffice", "/opt/libreoffice/program/soffice"]
+            return next((c for c in cands if Path(c).exists()), None)
 
     def available(self) -> bool:
         return self._soffice() is not None
@@ -55,6 +77,15 @@ class LegacyOfficeParser(Parser):
                                capture_output=True, timeout=120, check=True)
                 txt_path = src.with_suffix(".txt")
                 text = txt_path.read_text(encoding="utf-8", errors="ignore") if txt_path.exists() else ""
+                if not text.strip():
+                    # soffice exits 0 even on a failed load/convert (upstream tdf#148275), so
+                    # check=True can't catch it — a missing/empty txt IS the failure signal. Without
+                    # this, the failure surfaced as an empty "native" parse with no diagnostic.
+                    return RecoveryResult(blocks=[], extraction_method="metadata", confidence=0.0,
+                                          diagnostics={"status": "convert_failed",
+                                                       "detail": "soffice exited 0 but produced no text "
+                                                                 "(tdf#148275)",
+                                                       "media_type": media_type})
             except Exception as exc:
                 return RecoveryResult(blocks=[], extraction_method="metadata", confidence=0.0,
                                       diagnostics={"status": "convert_failed", "detail": str(exc)})

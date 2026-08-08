@@ -14,8 +14,8 @@ Python 3.8+.** It is pure standard library. No `pip install`, ever.
 **If anything dependency-related misbehaves, run the doctor first** (also pure stdlib, always runs):
 
 ```bash
-python tools/doctor_env.py          # full report + verdict
-python tools/doctor_env.py --json   # paste this back to Claude if stuck
+python3 tools/doctor_env.py          # full report + verdict
+python3 tools/doctor_env.py --json   # paste this back to Claude if stuck
 ```
 
 It finds every Python install on your machine (the common Windows trap is having one under your

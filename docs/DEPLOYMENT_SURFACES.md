@@ -1,8 +1,10 @@
 # DEPLOYMENT_SURFACES.md — where the TOS runs (and how data is handled per surface)
 
+> Teacher-friendly version of this: [`implementation/claude/README.md`](../implementation/claude/README.md).
+
 The TOS core is **model- and surface-neutral**: Markdown policies/schemas/taxonomies + **stdlib-only**
 Python helpers (`shared/connectors/connectors.py`, `shared/students/students.py`,
-`skills/meeting-classifier/scripts/classify_meeting.py`, `tools/crosswalk.py`, `shared/context/context.py`)
+`skills/operations/meeting-classifier/scripts/classify_meeting.py`, `tools/crosswalk.py`, `shared/context/context.py`)
 with no network dependency. The Claude **Skill** packaging is a convenience layer, not a requirement.
 Three surfaces are supported; the difference is mostly **where student data lives** (the storage adapter
 — `shared/students/student-data-policy.md`) and **which connectors** are available
@@ -36,3 +38,47 @@ Three surfaces are supported; the difference is mostly **where student data live
 - Connectors that are off/blocked are never presented as active; degraded paths lower confidence.
 - Identification mode (`name` default, `id`-only available) applies to saved/shared records on all
   surfaces.
+
+## Cross-platform notes (Windows / macOS desktop ↔ the Claude/ChatGPT app)
+The offline tools run on a teacher's desktop; the app runs on Windows or Mac. Things that bite at
+that boundary (found by adversarial audit, mitigations in place):
+- **Python command:** internal calls use `sys.executable` (safe — never spawn a child by the bare
+  name `python3`/`python`, or a macOS venv can silently launch the wrong interpreter). Doc/command
+  lines say `python3`: on **Windows** many installs don't provide it — use `py -3 …` or `python …`.
+  On **macOS**, `/usr/bin/python3` is only an Xcode Command-Line-Tools *stub* (older/incomplete;
+  first use triggers the CLT install prompt); install a real interpreter via Homebrew or python.org,
+  and use `python3 -m pip` (a bare `pip` is often absent). The assistant should pick the platform
+  interpreter, not literally `python3`.
+- **macOS Python packaging (PEP 668):** Homebrew/system Python are *externally managed* — a bare
+  `pip install -r tools/requirements-*.txt` fails with `error: externally-managed-environment`.
+  **Preferred: install into the repo's managed venv** — `python3 tools/deps_preflight.py --install
+  <capability>` (e.g. `office_authoring`) or `--install tools/requirements-<name>.txt`. It builds/uses
+  the isolated, gitignored `.harvest-venv/`, installs **wheels-only**, and **never touches system
+  Python** — so PEP 668 never triggers. `python3 tools/deps_preflight.py --python-path` prints that
+  venv's interpreter (the exact Python to point a Claude Desktop MCP `command`/a GUI launch at). A
+  manual venv works too: `python3 -m venv .venv && source .venv/bin/activate` then `pip install -r …`
+  (`--break-system-packages` exists but is risky; pipx suits standalone CLI tools). Homebrew's prefix
+  differs by chip — **`/opt/homebrew` on Apple Silicon**, `/usr/local` on Intel — so never hardcode
+  `/usr/local/bin/<tool>`; arm64 Python also needs arm64/universal2 wheels.
+- **macOS Gatekeeper (installing LibreOffice/tesseract/ffmpeg):** a browser-downloaded, un-notarized
+  app is blocked ("developer cannot be verified"). On **macOS Sequoia 15 the old Control-click →
+  Open trick is gone** — allow it under **System Settings › Privacy & Security › Open Anyway**. A
+  `curl`/`tar` download sets no quarantine; `xattr -d com.apple.quarantine <app>` clears it.
+- **macOS Claude Desktop MCP (GUI has no shell PATH):** a stdio MCP server receives only its `env`
+  block, not your shell `PATH`, so `command: "python3"` (or any bare `soffice`/`node`) is "not
+  found". Use an **absolute interpreter path** (e.g. `/opt/homebrew/bin/python3`) and set
+  `env.PATH` to include `/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin`. (Config lives at
+  `~/Library/Application Support/Claude/claude_desktop_config.json`.)
+- **Line endings:** the content-hash guards (`offline_index.py`, `registry_currency.py`) normalize
+  CRLF→LF before hashing, and `.gitattributes` pins `*.json/*.py/*.md/*.yaml` to `eol=lf`, so a
+  Windows `autocrlf` checkout does **not** false-trip the freshness gate. Don't remove either.
+- **LibreOffice (PDF/PNG render + legacy `.doc` parse):** not on PATH by default on Win/Mac;
+  `shared/office/office_authoring.py` now also checks the standard install locations
+  (`C:\Program Files\LibreOffice\…`, `/Applications/LibreOffice.app/…`). If it's not installed the
+  document is still produced — only the PDF/PNG render is skipped, with an honest note.
+- **Profile portability:** move the teacher profile between the desktop store
+  (`teacher.local.json`) and the app file (`my-teacher-profile.md`) with
+  `profile_wizard.py --export-md` / `--import-md` (lossless; tolerates a Notepad BOM + CRLF) — no
+  re-doing the interview per surface.
+- **Notepad trap:** saving `my-teacher-profile.md` in Windows Notepad appends `.txt` unless
+  "Save as type" is set to **All Files**.

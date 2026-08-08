@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: school-administration-maintainer -->
 # MAINTAINER — school-administration
 
 ## Purpose of this maintainer file

@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: objective-write-maintainer -->
 # MAINTAINER — atom-objective-write
 
 ## Purpose

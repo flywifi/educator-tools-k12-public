@@ -1,0 +1,19 @@
+{
+  "id": "T1-lesson-fractions",
+  "title": "Hands-on 3rd-grade fractions lesson, ~45 min, standards-aligned",
+  "axes": [1, 3, 4],
+  "artifact_type": "lesson_plan",
+  "source_case": "docs/BENCHMARK.md case 1 (lesson-planner)",
+  "prompt": "Make me a hands-on 3rd-grade fractions lesson, about 45 minutes, aligned to my state's standards, with differentiation for English learners, students with IEPs, and gifted students.",
+  "input_files": [],
+  "context": {"state": "Florida", "grade": "3", "subject": "math"},
+  "assertions": [
+    "Cites at least one real, correctly-coded Grade-3 Florida math (B.E.S.T.) or CCSS fractions standard, with framework AND version recorded",
+    "Every standard code cited resolves in tools/offline_index.py (count > 0) — zero fabricated codes",
+    "Includes a hands-on activity appropriate to ~45 minutes",
+    "Provides differentiation for ALL THREE of: English learners, students with IEPs, gifted — each tied to the same objective",
+    "Emits an artifact metadata block with human_review_required"
+  ],
+  "grounding_probe": {"expect_codes_resolve": true},
+  "differentiation_required": ["ell", "iep", "gifted"]
+}

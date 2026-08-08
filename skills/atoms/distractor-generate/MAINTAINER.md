@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: distractor-generate-maintainer -->
 # MAINTAINER — distractor-generate
 
 ## Purpose

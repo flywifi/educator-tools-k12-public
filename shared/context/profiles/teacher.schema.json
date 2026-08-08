@@ -22,7 +22,7 @@
       "required": ["display_name"],
       "properties": {
         "display_name": {"type": "string"},
-        "school_msid": {"type": ["string", "null"], "description": "links to shared/schools/ (FLDOE MSID)"},
+        "school_msid": {"type": ["string", "null"], "description": "links to canonical-sources/schools/ (FLDOE MSID)"},
         "school_name": {"type": ["string", "null"]},
         "district": {"type": ["string", "null"]},
         "contact_local_only": {"type": ["string", "null"], "description": "minimum-necessary; never committed"}

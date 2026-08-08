@@ -27,7 +27,7 @@ User-Agent, respects robots.txt, and (for the browser prongs) simply runs the si
 JavaScript the way a browser is meant to. There is deliberately NO User-Agent rotation, NO
 browser impersonation, and NO CAPTCHA / rate-limit bypass: if a CAPTCHA wall is detected the
 chain STOPS and reports it honestly rather than attempting to defeat it. (See the design table in
-skills/standards-updater/references/updater-method.md.)
+skills/operations/standards-updater/references/updater-method.md.)
 
 Capability-gated + honest gaps: a prong whose deps are absent is skipped and recorded as a
 `capability_gap`, never faked. Output always carries `human_review_required: true`. Stdlib-only at
@@ -215,9 +215,9 @@ def _log_discrepancy(entry: dict) -> None:
         return
     entry = {"ts": datetime.now(timezone.utc).isoformat(), **entry}
     try:
-        existing = json.loads(LEDGER_DISCREPANCY_LOG.read_text()) if LEDGER_DISCREPANCY_LOG.exists() else []
+        existing = json.loads(LEDGER_DISCREPANCY_LOG.read_text(encoding="utf-8")) if LEDGER_DISCREPANCY_LOG.exists() else []
         existing.append(entry)
-        LEDGER_DISCREPANCY_LOG.write_text(json.dumps(existing, indent=2))
+        LEDGER_DISCREPANCY_LOG.write_text(json.dumps(existing, indent=2), encoding="utf-8")
     except Exception:
         pass  # logging must never crash the main flow
 

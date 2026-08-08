@@ -183,8 +183,12 @@ def harvest(districts: list[str], do_resources: bool, do_push: bool) -> None:
         note("\n## Step 5 - commit + push (token-free report-back channel)")
         rc, branch = _run(["git", "rev-parse", "--abbrev-ref", "HEAD"])
         branch = branch.strip() or "HEAD"
+        # stage the refreshed index manifest too — msid_lookup rebuilt the index when it wrote
+        # schools.json, so the committed fingerprint must travel with the data change (else CI's
+        # index-freshness guard goes red on the pushed branch).
         _run(["git", "add",
-              "canonical-sources/schools", "canonical-sources/districts", str(REPORT)],
+              "canonical-sources/schools", "canonical-sources/districts",
+              "canonical-sources/index/index-manifest.json", str(REPORT)],
              capture=True)
         msg = (
             "data(schools): local harvest — real MSIDs + OCPS resources\n\n"

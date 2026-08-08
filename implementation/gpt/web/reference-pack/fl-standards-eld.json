@@ -1,0 +1,45 @@
+{
+  "subject": "eld",
+  "source_file": "EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc.docx",
+  "format": "docx",
+  "reader": "docintel",
+  "retrieval_state": "content_ingested",
+  "count": 5,
+  "standards": [
+    {
+      "code": "ELD.K12.ELL.LA.1",
+      "grade": "K12",
+      "strand": "ELL",
+      "type": "practice",
+      "statement": "English language learners communicate information, ideas and concepts necessary for academic success in the content area of Language Arts."
+    },
+    {
+      "code": "ELD.K12.ELL.MA.1",
+      "grade": "K12",
+      "strand": "ELL",
+      "type": "practice",
+      "statement": "English language learners communicate information, ideas and concepts necessary for academic success in the content area of Mathematics."
+    },
+    {
+      "code": "ELD.K12.ELL.SC.1",
+      "grade": "K12",
+      "strand": "ELL",
+      "type": "practice",
+      "statement": "English language learners communicate information, ideas and concepts necessary for academic success in the content area of Science."
+    },
+    {
+      "code": "ELD.K12.ELL.SI.1",
+      "grade": "K12",
+      "strand": "ELL",
+      "type": "practice",
+      "statement": "English language learners communicate for social and instructional purposes within the school setting."
+    },
+    {
+      "code": "ELD.K12.ELL.SS.1",
+      "grade": "K12",
+      "strand": "ELL",
+      "type": "practice",
+      "statement": "English language learners communicate information, ideas and concepts necessary for academic success in the content area of Social Studies."
+    }
+  ]
+}

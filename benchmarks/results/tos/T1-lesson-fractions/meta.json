@@ -1,0 +1,7 @@
+{
+  "arm": "tos",
+  "task": "T1-lesson-fractions",
+  "captured": "2026-07-15",
+  "arm_version": "git:8207403",
+  "source": "headless run_benchmark.py (deterministic TOS tooling)"
+}

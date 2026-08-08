@@ -15,7 +15,9 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -62,6 +64,31 @@ MAX_NAME, MAX_DESC = 64, 1024
 _REF_ANCHORS = ("references/", "scripts/", "evals/", "examples/",
                 "protocol-layer/", "protocols/", "shared/", "tools/", "ledger/")
 _REF_EXTS = (".md", ".py", ".json", ".yaml", ".yml", ".txt", ".csv")
+
+# --- Doc-drift guards (checks 15-18) ---------------------------------------------------------------
+# New in the maintainer/README audit. They land in REPORT-ONLY first (so the backfill PR stays green
+# while docs are filled in), then flip to CI-blocking. Set True to enforce.
+DOC_GUARDS_ENFORCE = True
+
+# Check 15 (doc-path drift): backticked repo-relative paths in prose must resolve. Anchors mirror the
+# repo layout; runtime stores (*.local.json) and historical records are excluded so the guard only
+# fires on real drift.
+_DOC_ANCHORS = ("skills/", "shared/", "protocol-layer/", "canonical-sources/", "tools/", "docs/",
+                "implementation/", "examples/", "ledger/", "security/", "changes/")
+DOC_PATH_ALLOW_FILES = {          # historical records — the paths in them are frozen at write time
+    "ledger/quality-ledger.md", "changes/CHANGELOG.md",
+}
+DOC_RUNTIME_ARTIFACTS = {         # produced at runtime, legitimately absent from a clean checkout
+    "ledger/rollback-log.json",
+}
+
+# Check 17 (component-doc coverage): every engine/bucket under these roots must carry >=1 .md doc.
+COVERAGE_ROOTS = ("shared", "canonical-sources")
+COVERAGE_SKIP = {"index"}         # index/ ships data + its own README; add non-component dirs here
+
+# Check 18 (doc freshness): a missing stamp or a stamp older than this hard-fails (on enforce); a
+# sibling changed after the stamp is an advisory reminder only.
+DOC_FRESHNESS_MAX_AGE_DAYS = 365
 
 
 def read(p: Path) -> str:
@@ -258,6 +285,277 @@ def main() -> int:
             failures.append(f"  x {p['file']}: {p['issue']}")
     except Exception as e:
         print(f"[note] url-provenance guard skipped: {e.__class__.__name__}: {e}")
+
+    # 14. Offline-index freshness guard: the gitignored canonical-sources/index/offline.db is built
+    # from committed JSON. If a source changed since the last build, the committed
+    # index-manifest.json no longer matches — the index is STALE and would serve out-of-date text.
+    # Compares committed sources to the committed manifest (needs neither the db nor a prior build),
+    # so it fires in CI and on a fresh clone. A missing manifest degrades to a note, not a failure.
+    sys.path.insert(0, str(ROOT / "tools"))
+    try:
+        from offline_index import drift_report
+        rep = drift_report()
+        if rep.get("stale"):
+            # a missing/unreadable manifest reports stale with a `reason` (no changed/added/removed);
+            # a genuine source change reports the file lists. Surface whichever applies.
+            detail = rep.get("reason") or (f"changed={rep['changed']} added={rep['added']} "
+                                           f"removed={rep['removed']}")
+            failures.append(
+                "  x offline index stale vs canonical-sources/index/index-manifest.json "
+                f"({detail}) — run: python3 tools/offline_index.py --build && commit the manifest")
+    except Exception as e:  # index tool import optional — never let it crash the guard
+        print(f"[note] index-freshness guard skipped: {e.__class__.__name__}: {e}")
+
+    # --- Doc-drift guards (checks 15-18) -----------------------------------------------------------
+    # Each emits into `failures` when DOC_GUARDS_ENFORCE, else prints a [note] (report-only). All are
+    # wrapped so an unexpected error degrades to a note and never crashes the gate (as with 12-14).
+    def _emit(msg: str) -> None:
+        failures.append(msg) if DOC_GUARDS_ENFORCE else print(f"[note]{msg[3:]}")
+
+    def _skill_dir_of(md: Path):
+        for anc in md.parents:
+            if (anc / "SKILL.md").exists():
+                return anc
+            if anc == ROOT:
+                break
+        return None
+
+    def _tracked_files(*globs: str) -> list[Path]:
+        """The docs that actually ship: git-tracked paths only. Excludes gitignored dirs — a local
+        virtualenv (`.harvest-venv/`), build artifacts, `node_modules/` — so the guards can't
+        false-fail on vendored files that exist only in one checkout (rglob descends into hidden dirs;
+        git-tracked doesn't). Falls back to rglob minus dot-dirs / node_modules if git is unavailable."""
+        try:
+            out = subprocess.run(["git", "ls-files", "-z", *globs], cwd=ROOT,
+                                 capture_output=True, timeout=15)
+            if out.returncode == 0:
+                return [ROOT / p for p in out.stdout.decode("utf-8", "replace").split("\0") if p]
+        except Exception:
+            pass
+        res: list[Path] = []
+        for g in globs:
+            for p in ROOT.rglob(g.split("/")[-1]):
+                parts = p.relative_to(ROOT).parts
+                if any(part.startswith(".") for part in parts) or "node_modules" in parts:
+                    continue
+                res.append(p)
+        return res
+
+    # 15. Doc-path drift: a repo-relative path referenced in a tracked .md — in `backticks` OR a
+    # [markdown](link) — must resolve on disk. Generalizes check_references() (skill-local) to the
+    # whole tree (the class that left dead un-grouped skills/<name>/ paths after the grouping refactor).
+    # Only git-tracked files are scanned, so vendored .md in a local venv can't false-trip it. Resolves
+    # relative to repo root, the file's own dir, and its owning skill dir (so skill-local examples/…
+    # and relative links both pass); skips runtime stores (*.local.json), known runtime artifacts,
+    # glob/placeholder tokens, external URLs, and historical records whose paths are frozen. One
+    # unreadable file skips only itself (never disables the whole check).
+    try:
+        for md in sorted(_tracked_files("*.md")):
+            rel = md.relative_to(ROOT).as_posix()
+            if "/skill-template/" in rel or "/node_modules/" in rel or rel in DOC_PATH_ALLOW_FILES:
+                continue
+            try:
+                body = md.read_text(encoding="utf-8", errors="replace")
+            except Exception as e:
+                print(f"[note] doc-path guard: skipped unreadable {rel} ({e.__class__.__name__})")
+                continue
+            sd = _skill_dir_of(md)
+            bases = [ROOT, md.parent] + ([sd] if sd else [])
+            # Strip fenced code blocks before scanning. Triple-backtick fences otherwise (a) desync the
+            # inline-`backtick` regex pairing — missing a real dead path inside a fence — and (b) turn
+            # illustrative example paths in fenced tutorials into false positives. Path references worth
+            # guarding live in prose / inline code; check those, not fenced example bodies.
+            scan_body = re.sub(r"(```|~~~).*?\1", "", body, flags=re.DOTALL)
+            # backticked paths are repo-relative by convention (require a repo anchor); [markdown](links)
+            # are commonly relative and resolve against the file dir (no anchor requirement).
+            cands = [(t, True) for t in re.findall(r"`([^`]+)`", scan_body)]
+            cands += [(t, False) for t in re.findall(r"\]\(([^)]+)\)", scan_body)]
+            for raw, require_anchor in cands:
+                raw = raw.strip()
+                tok = raw.split()[0] if raw else ""            # drop a `](path "title")` suffix
+                if not tok or tok.startswith(("http://", "https://", "mailto:", "#")):
+                    continue
+                if any(c in tok for c in "<>*| {}"):            # globs / brace-expansions / placeholders
+                    continue
+                target = tok.split("#", 1)[0]                   # drop a trailing #anchor
+                if not target.endswith(_REF_EXTS):
+                    continue
+                if require_anchor and not target.startswith(_DOC_ANCHORS):
+                    continue
+                if target.endswith(".local.json") or target in DOC_RUNTIME_ARTIFACTS:
+                    continue
+                if any((b / target).exists() for b in bases):
+                    continue
+                _emit(f"  x doc-path drift — {rel}: dead {'link' if not require_anchor else 'path'} `{tok}`")
+    except Exception as e:
+        print(f"[note] doc-path guard skipped: {e.__class__.__name__}: {e}")
+
+    # 16. METRICS.md freshness: the committed dashboard must equal a fresh render (minus the generated
+    # date line). metrics.py is marked "Do not hand-edit"; this catches "edited skills, forgot to
+    # regenerate" (how it sat at 29 skills). Compares content only — the date line is normalized out
+    # so a same-day re-render never false-fails.
+    sys.path.insert(0, str(ROOT / "tools"))
+    try:
+        import metrics as _metrics
+
+        def _norm_metrics(s: str) -> str:
+            return "\n".join(l for l in s.splitlines() if not l.startswith("_Generated by"))
+
+        live = _norm_metrics(_metrics.render())
+        disk = _norm_metrics((ROOT / "docs" / "METRICS.md").read_text(encoding="utf-8"))
+        if live != disk:
+            _emit("  x docs/METRICS.md is stale vs live evidence — "
+                  "run: python3 tools/metrics.py && commit docs/METRICS.md")
+    except Exception as e:
+        print(f"[note] metrics-freshness guard skipped: {e.__class__.__name__}: {e}")
+
+    # 17. Component-doc coverage: every engine under shared/ and every bucket under canonical-sources/
+    # carries >=1 top-level .md doc (README, MAINTAINER, or a *-model.md / *-policy.md). Extends the
+    # skills-only MAINTAINER-presence check to non-skill components (Diataxis: every component documented).
+    try:
+        for base_name in COVERAGE_ROOTS:
+            base = ROOT / base_name
+            if not base.exists():
+                continue
+            for d in sorted(p for p in base.iterdir() if p.is_dir()):
+                if d.name in COVERAGE_SKIP or d.name.startswith((".", "__")):
+                    continue
+                if not any(d.glob("*.md")):
+                    _emit(f"  x component has no doc (add a README/MAINTAINER or *-model.md): "
+                          f"{d.relative_to(ROOT).as_posix()}/")
+    except Exception as e:
+        print(f"[note] coverage guard skipped: {e.__class__.__name__}: {e}")
+
+    # 18. Doc freshness (SWE-at-Google Ch.10): every README/MAINTAINER carries a `last_reviewed` stamp.
+    # A missing stamp, or a stamp older than DOC_FRESHNESS_MAX_AGE_DAYS, hard-fails (on enforce). A
+    # sibling source changed *after* the stamp is an advisory reminder only (always a [note]) — a
+    # re-review nudge, not a correctness failure.
+    try:
+        today = date.today()
+
+        def _git_date(p: Path):
+            try:
+                out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(p)],
+                                     cwd=ROOT, capture_output=True, text=True, timeout=10).stdout.strip()
+                return date.fromisoformat(out) if out else None
+            except Exception:
+                return None
+
+        docs = sorted(_tracked_files("*README.md", "*MAINTAINER.md"))
+        for doc in docs:
+            drel = doc.relative_to(ROOT).as_posix()
+            if "/skill-template/" in drel or "/node_modules/" in drel:
+                continue
+            try:
+                dtext = doc.read_text(encoding="utf-8", errors="replace")
+            except Exception as e:
+                print(f"[note] doc-freshness guard: skipped unreadable {drel} ({e.__class__.__name__})")
+                continue
+            m = re.search(r"last_reviewed:\s*(\d{4}-\d{2}-\d{2})", dtext)
+            if not m:
+                _emit(f"  x doc missing `last_reviewed` stamp: {drel}")
+                continue
+            try:
+                stamp = date.fromisoformat(m.group(1))
+            except ValueError:
+                # regex-matching but not a real calendar date (e.g. 2026-13-45) — flag this doc, don't
+                # let one bad stamp raise and disable the freshness check for every other doc.
+                _emit(f"  x doc has an invalid `last_reviewed` date: {drel} ({m.group(1)})")
+                continue
+            if (today - stamp).days > DOC_FRESHNESS_MAX_AGE_DAYS:
+                _emit(f"  x doc stale: {drel} last_reviewed {stamp} (> {DOC_FRESHNESS_MAX_AGE_DAYS}d)")
+                continue
+            newest = _git_date(doc.parent)                     # advisory only — never a hard failure
+            if newest and newest > stamp:
+                print(f"[note] doc {drel}: a sibling changed {newest} after last_reviewed {stamp} "
+                      f"— consider re-reviewing + restamping")
+    except Exception as e:
+        print(f"[note] doc-freshness guard skipped: {e.__class__.__name__}: {e}")
+
+    # 19. mac-lint (cross-platform safety): no child process spawned by the bare name "python3"/"python"
+    # (use sys.executable — a macOS venv can otherwise launch the wrong interpreter), and no text
+    # open()/read_text()/write_text() without encoding= (locale-dependent decode). CI runs on Linux
+    # where these pass, so without this guard a Mac-only regression ships unnoticed. Same degrade-to-note
+    # idiom as 12-14 if the tool can't be imported.
+    try:
+        from mac_audit import scan as _mac_scan
+        for f in _mac_scan():
+            _emit(f"  x mac-lint {f['file']}:{f['line']} [{f['check']}] {f['issue']}")
+    except Exception as e:
+        print(f"[note] mac-lint guard skipped: {e.__class__.__name__}: {e}")
+
+    # 20. Doc-source provenance (declare-or-fail): an external URL cited in a maintainer-class doc must
+    # be registered in a canonical-sources/registries/*.json source registry (freshness-tracked by
+    # tools/source_currency.py) or tools/url-provenance.json. Doc-side analog of check 13: a maintainer
+    # note that cites a source thereby *triggers* its registration, so no cited authority can rot
+    # untracked. Prefix-match against the registered URL so #anchor/query variants of a declared page
+    # pass. Fenced code blocks are stripped (like check 15); a tiny allowlist covers incidental
+    # non-authority links.
+    try:
+        def _norm_url(u: str) -> str:
+            # RFC 3986: the scheme and host are case-insensitive (lowercase them for comparison);
+            # the path is case-sensitive and left untouched. Trailing slash is equivalence-stripped.
+            m = re.match(r"(?i)^(https?)://([^/]*)(.*)$", u)
+            if not m:
+                return u.rstrip("/")
+            return f"{m.group(1).lower()}://{m.group(2).lower()}{m.group(3)}".rstrip("/")
+
+        registered: set[str] = set()
+        for reg_p in sorted((ROOT / "canonical-sources" / "registries").glob("*.json")):
+            try:
+                rj = json.loads(read(reg_p))
+            except Exception:
+                # its sources silently dropping out would redden every doc that cites them with a
+                # message that never names the broken file — say which registry failed to load.
+                print(f"[note] doc-source guard: unreadable registry {reg_p.name} — its sources are "
+                      f"not registered this run")
+                continue
+            for s in rj.get("sources", []) or []:
+                if isinstance(s, dict) and s.get("url"):
+                    registered.add(_norm_url(str(s["url"])))
+        upp = ROOT / "tools" / "url-provenance.json"
+        if upp.exists():
+            for u in json.loads(read(upp)).get("urls", []):
+                if isinstance(u, dict) and u.get("url"):
+                    registered.add(_norm_url(str(u["url"])))
+
+        def _declared(cited: str) -> bool:
+            # EXACT-PAGE match: a citation is declared only if it IS a registered page (after
+            # normalization) or adds only a #fragment/?query to one (same page per RFC 3986
+            # §3.4/§3.5). A plain prefix test let three bypass shapes through (deep paths under a
+            # registered root, sibling-shadowing like `…/developer-id-evil` passing off
+            # `…/developer-id/`, numeric suffixes like 102527999 passing off 102527) — every
+            # distinct cited page must be individually registered, which is the freshness goal.
+            c = _norm_url(cited)
+            if c in registered:
+                return True
+            return any(c.startswith(r + "#") or c.startswith(r + "?") for r in registered)
+
+        DOC_SOURCE_ALLOW = ("https://github.com/",)   # incidental repo/issue links, not cited authorities
+        doc_set = {ROOT / "CLAUDE.md", ROOT / "docs" / "MACOS.md"}
+        doc_set |= set((ROOT / "docs").glob("DEPLOYMENT*.md"))
+        doc_set |= set(_tracked_files("*MAINTAINER.md"))
+        for md in sorted(p for p in doc_set if p.exists()):
+            rel = md.relative_to(ROOT).as_posix()
+            if "/skill-template/" in rel:
+                continue
+            try:
+                body = md.read_text(encoding="utf-8", errors="replace")
+            except Exception as e:
+                print(f"[note] doc-source guard: skipped unreadable {rel} ({e.__class__.__name__})")
+                continue
+            body = re.sub(r"(```|~~~).*?\1", "", body, flags=re.DOTALL)
+            for url in re.findall(r"https?://[^\s)>\]\"'`]+", body, flags=re.IGNORECASE):
+                url = url.rstrip(".,;:!?")
+                if any(url.lower().startswith(a) for a in DOC_SOURCE_ALLOW):
+                    continue
+                if _declared(url):
+                    continue
+                _emit(f"  x doc-source undeclared — {rel}: {url} — register it in a "
+                      f"canonical-sources/registries/*.json source registry (with state.last_checked) "
+                      f"or tools/url-provenance.json")
+    except Exception as e:
+        print(f"[note] doc-source guard skipped: {e.__class__.__name__}: {e}")
 
     print("TOS ecosystem - drift guard\n")
     if failures:

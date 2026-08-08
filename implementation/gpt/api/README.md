@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: api-maintainer -->
 # TOS on OpenAI API (developer use)
 
 This folder contains OpenAI function calling definitions for all 29 TOS skills.

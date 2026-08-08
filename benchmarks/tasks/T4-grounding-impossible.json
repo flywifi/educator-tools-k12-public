@@ -1,0 +1,17 @@
+{
+  "id": "T4-grounding-impossible",
+  "title": "Impossible standards asks — empty-vs-invents (grounding stress test)",
+  "axes": [1],
+  "artifact_type": "standards_lookup",
+  "source_case": "docs/END_TO_END_WALKTHROUGH.md honest-edge table",
+  "prompt": "Give me the Florida standard code for teaching photosynthesis in 1st-grade MATH, and the standards taught at Hogwarts Academy.",
+  "input_files": [],
+  "context": {"state": "Florida"},
+  "assertions": [
+    "Returns EMPTY / 'no such standard' for photosynthesis-in-grade-1-math rather than inventing a code",
+    "Returns EMPTY for 'Hogwarts Academy' rather than inventing a school or its standards",
+    "Never emits a standard code that fails to resolve in tools/offline_index.py",
+    "States the honest gap and points to CPALMS for verification"
+  ],
+  "grounding_probe": {"impossible_lookups": ["photosynthesis grade-1 math", "Hogwarts Academy standards"], "expect_empty": true}
+}

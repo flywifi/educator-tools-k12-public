@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: output-validator-maintainer -->
 # MAINTAINER — output-validator
 
 ## Purpose of this maintainer file

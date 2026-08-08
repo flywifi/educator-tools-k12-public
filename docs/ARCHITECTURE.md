@@ -19,8 +19,8 @@ shared/        the cross-cutting engines (Standards, Differentiation, Quality, C
 protocols/     the governance rule sets (the 6 protocols)                       [canonical]
 ```
 
-- **Hub:** `skills/teacher-core/` — mission, personas, the unified pipeline, and **routing**.
-- **Governance skill:** `skills/quality-review/` (Phase A) — executes the Quality Gates Protocol.
+- **Hub:** `skills/core/teacher-core/` — mission, personas, the unified pipeline, and **routing**.
+- **Governance skill:** `skills/core/quality-review/` (Phase A) — executes the Quality Gates Protocol.
 - **Spokes (Phase A+):** `lesson-planner`, `assessment-designer`, `presentation-builder`, then the
   expansion set (curriculum-mapping, special-education-support, intervention-mtss,
   family-communication, professional-learning, school-administration).

@@ -15,7 +15,7 @@
         "position_title": {"type": ["string", "null"], "description": "the site's free-text title"},
         "department": {"type": ["string", "null"]},
         "work_email": {"type": ["string", "null"], "description": "minimum-necessary; local-only unless from an authorized source"},
-        "school_msid": {"type": ["string", "null"], "description": "links to shared/schools/"},
+        "school_msid": {"type": ["string", "null"], "description": "links to canonical-sources/schools/"},
         "provenance": {"enum": ["authorized_directory", "teacher_provided", "public_crawl", "imported"]},
         "authorized": {"type": "boolean", "description": "true only when sourced under an explicit authorization"},
         "consent": {"type": ["string", "null"], "description": "how/when consent or authorization was recorded"},

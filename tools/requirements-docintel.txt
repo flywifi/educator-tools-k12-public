@@ -1,3 +1,4 @@
+# macOS/Homebrew — install into the managed venv (no PEP 668): python3 tools/deps_preflight.py --install tools/requirements-docintel.txt
 # Optional OFFLINE document-reader engines for docintel (shared/docintel).
 # The reader runs stdlib-only by default; installing these (once) activates richer, fully
 # OFFLINE recovery — no internet is used at run time. Each engine is auto-detected via its

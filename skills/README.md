@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-30 | owner: skills-maintainer -->
 # Skills catalog
 
 The Teacher Operating System is a set of focused AI assistants ("skills"). One **coordinator**

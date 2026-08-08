@@ -28,8 +28,8 @@ additional resources. Frameworks/grade-scales are stored **offline** and re-veri
 1. **Analysis** — which state/subject to refresh (default Florida). Log assumptions.
 2. **Detect & crawl** — run the updater, which reads the seeds and reports findings:
    ```bash
-   python3 tools/standards_refresh.py --crawl --report /tmp/fl_update_report.json
-   # add --download /tmp/updates/ to fetch the new/changed docs
+   python3 tools/standards_refresh.py --crawl --report standards-update-report.json
+   # add --download ./standards-updates/ to fetch the new/changed docs (any writable path; avoid /tmp for Windows portability)
    ```
    It respects robots.txt, detects **JS-required** pages (e.g., the CPALMS *search* SPA) and reports
    them instead of faking a scrape, and notes rate-limited/skipped URLs. For JS pages, use the static

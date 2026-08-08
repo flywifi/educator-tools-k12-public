@@ -1,5 +1,5 @@
 {
-  "_comment": "Source-currency registry (domain: ocps-schools). Watches the authoritative sources behind the OCPS school + program index (shared/schools/ocps/) so open/close + magnet/choice program changes are caught between refreshes. tools/source_currency.py classifies each source's freshness; standards/program changes stay ADVISORY + human-verified. FLDOE MSID is canonical for the school list/status; OCPS School Choice for programs.",
+  "_comment": "Source-currency registry (domain: ocps-schools). Watches the authoritative sources behind the OCPS school + program index (canonical-sources/schools/ocps/) so open/close + magnet/choice program changes are caught between refreshes. tools/source_currency.py classifies each source's freshness; standards/program changes stay ADVISORY + human-verified. FLDOE MSID is canonical for the school list/status; OCPS School Choice for programs.",
   "domain": "ocps-schools",
   "version": "0.1.0",
   "updated": "2026-06-26",

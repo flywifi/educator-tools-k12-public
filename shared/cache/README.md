@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-26 | owner: cache-maintainer -->
 # cache — Local-First standards cache (L1)
 
 Deterministic, offline, low-token retrieval over the enumerated Florida standards.

@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: feed-curator-maintainer -->
 # MAINTAINER — feed-curator
 
 ## Purpose of this maintainer file

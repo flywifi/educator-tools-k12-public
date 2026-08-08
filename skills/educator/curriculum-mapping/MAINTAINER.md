@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: curriculum-mapping-maintainer -->
 # MAINTAINER — curriculum-mapping
 
 ## Purpose of this maintainer file
@@ -24,6 +25,10 @@ Skill-specific:
 - pacing that ignores the calendar or statewide testing windows
 - coverage gaps or double-coverage
 - treating a grade band as uniform when grade-level testing differs
+- **stale offline index:** standard text + course titles come from `tools/offline_index.py`; if the
+  underlying `shared/standards/.../data/*.json` or `fl-course-codes.json` changed without a rebuild,
+  it serves old text. Now guarded by `offline_index.py --verify` / the `sync_check` freshness gate;
+  rebuild + commit `index-manifest.json` after a data change (see `canonical-sources/index/README.md`).
 
 ## Fragile fallbacks that must not become defaults
 - a generic calendar is a placeholder until the district/school calendar is supplied

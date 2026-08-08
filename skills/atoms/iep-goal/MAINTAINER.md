@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: iep-goal-maintainer -->
 # MAINTAINER — atom-iep-goal
 
 ## Purpose

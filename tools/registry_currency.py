@@ -34,7 +34,9 @@ def _now() -> str:
 def _sha256(path: Path) -> str | None:
     if not path.exists():
         return None
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    # Normalize CRLF -> LF so a Windows checkout doesn't read every text registry as "changed"
+    # against the LF-committed baselines. No-op on LF checkouts. (Watched registries are text JSON.)
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def _load(path: Path, default):

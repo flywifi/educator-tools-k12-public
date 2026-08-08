@@ -13,15 +13,33 @@ Reproducible; stdlib only. Usage: python3 tools/parse_fl_standards.py
 """
 from __future__ import annotations
 
+import argparse
 import html
 import json
 import re
+import subprocess
 import sys
 import zipfile
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def rebuild_index() -> None:
+    """Rebuild the offline index after regenerating a source corpus, so the gitignored
+    offline.db + its committed manifest never drift from the JSON we just wrote. Non-fatal:
+    a build hiccup warns but never fails the producer (skip entirely with --no-index)."""
+    try:
+        r = subprocess.run([sys.executable, str(ROOT / "tools" / "offline_index.py"), "--build"],
+                           capture_output=True, text=True, timeout=300)
+        print(r.stdout.strip() or r.stderr.strip())
+        if r.returncode != 0:
+            print("  [warn] offline index rebuild returned non-zero — run "
+                  "`python3 tools/offline_index.py --build` manually", file=sys.stderr)
+    except Exception as e:
+        print(f"  [warn] offline index not rebuilt ({e.__class__.__name__}); run "
+              "`python3 tools/offline_index.py --build` and commit the manifest", file=sys.stderr)
 FL = ROOT / "shared" / "standards" / "resources" / "florida"
 OUT = FL / "data"
 
@@ -105,8 +123,9 @@ def parse_docx(text: str, code_re: str):
             return
         seen.add(code)
         g, strand = info(code)
+        s = re.split(r"\s*Related Access Point", (stmt or "").strip())[0].strip()
         out.append({"code": code, "grade": g, "strand": strand, "type": classify(code),
-                    "statement": (stmt or "").strip()[:300]})
+                    "statement": s})
 
     for i, ln in enumerate(lines):
         m = line_code.match(ln)
@@ -128,6 +147,14 @@ def parse_docx(text: str, code_re: str):
     return out
 
 
+def _sentence_trim(s: str, soft: int = 600) -> str:
+    """Trim overlong best-effort segments at a sentence boundary, never mid-word."""
+    if len(s) <= soft:
+        return s
+    cut = s.rfind(". ", 0, soft)
+    return s[: cut + 1].strip() if cut > 40 else s[:soft].rsplit(" ", 1)[0].strip()
+
+
 def parse_doc(text: str, code_re: str):
     """Best-effort for legacy binary .doc: codes + cleaned trailing text."""
     hits = list(re.finditer(rf"({code_re})", text))
@@ -136,12 +163,13 @@ def parse_doc(text: str, code_re: str):
         code = mm.group(1)
         if code in seen:
             continue
-        seg = text[mm.end(): hits[k + 1].start() if k + 1 < len(hits) else mm.end() + 240]
+        seg = text[mm.end(): hits[k + 1].start() if k + 1 < len(hits) else mm.end() + 700]
         seg = re.sub(r"\s+", " ", re.sub(r"[^\x20-\x7e]", " ", seg)).strip(" :.-")
         seg = re.split(r"Related Access Point", seg)[0].strip(" :.-")
         seen.add(code)
         g, strand = info(code)
-        out.append({"code": code, "grade": g, "strand": strand, "type": classify(code), "statement": seg[:200]})
+        out.append({"code": code, "grade": g, "strand": strand, "type": classify(code),
+                    "statement": _sentence_trim(seg)})
     return out
 
 
@@ -169,7 +197,7 @@ def main() -> int:
         json.dump({"subject": subj, "source_file": Path(rel).name, "format": fmt,
                    "reader": reader, "retrieval_state": rstate,
                    "count": len(entries), "standards": entries},
-                  open(OUT / f"{subj}.json", "w"), indent=2)
+                  open(OUT / f"{subj}.json", "w", encoding="utf-8"), indent=2)
         t = Counter(e["type"] for e in entries)
         index["subjects"][subj] = {"file": f"data/{subj}.json", "format": fmt, "reader": reader,
                                    "count": len(entries), "benchmarks": t["benchmark"],
@@ -177,10 +205,17 @@ def main() -> int:
         print(f"  {subj:16} {len(entries):5} codes  (benchmark {t['benchmark']}, AP {t['access_point']}, "
               f"practice {t['practice']}, {fmt} via {reader})")
     index["total"] = sum(s["count"] for s in index["subjects"].values())
-    json.dump(index, open(OUT / "index.json", "w"), indent=2)
+    json.dump(index, open(OUT / "index.json", "w", encoding="utf-8"), indent=2)
     print(f"\nwrote {len(index['subjects'])} subjects + index.json ({index['total']} codes) to {OUT.relative_to(ROOT)}/")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    ap = argparse.ArgumentParser(description="Parse FL standards docs into data/*.json.")
+    ap.add_argument("--no-index", action="store_true",
+                    help="do not rebuild the offline index after writing (parse only)")
+    args = ap.parse_args()
+    rc = main()
+    if rc == 0 and not args.no_index:
+        rebuild_index()
+    raise SystemExit(rc)

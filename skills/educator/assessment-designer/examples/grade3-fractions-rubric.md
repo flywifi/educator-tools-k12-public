@@ -1,7 +1,7 @@
 # Rubric: Explaining Unit Fractions (1/b)
 
 > Worked reference output, aligned to the gold lesson
-> `skills/lesson-planner/examples/grade3-fractions-lesson.md` (same standard) so a lesson and its
+> `skills/educator/lesson-planner/examples/grade3-fractions-lesson.md` (same standard) so a lesson and its
 > scoring tool fit together. Evaluated by quality-review → Approved.
 
 - **Grade band / Subject:** 3-5 (Grade 3) / Mathematics

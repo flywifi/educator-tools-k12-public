@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-24 | owner: docintel-maintainer -->
 # docintel — Document Intelligence engine (canonical)
 
 **Source of truth** for the TOS-native Document Intelligence Platform: documents in →
@@ -43,7 +44,9 @@ artifacts are the only consumer-facing outputs.
 `parsers/` (`plaintext_parser.py`, `pymupdf_parser.py`, `pdf_table_parser.py`, `image_parser.py`,
 `tesseract_ocr.py`, `workspace_parsers.py`, `calendar_parser.py` (.ics), `email_parser.py` (.eml),
 `caption_parser.py` (.vtt/.srt), `media_parser.py` (audio/video → transcription, gap-reported if no
-engine), `libreoffice_parser.py` (legacy .doc/.ppt/.xls/.odp/.ods via soffice), `universal_parser.py`
+engine), `libreoffice_parser.py` (legacy .doc/.ppt/.xls/.odp/.ods via soffice — resolves soffice through
+`shared/office/office_authoring.py:_find_soffice()`, so a macOS `/Applications/LibreOffice.app` install
+is found; **do not** revert it to a PATH-only `which()` or it goes "unavailable" on Mac), `universal_parser.py`
 (`.rtf` + a never-fail fallback that reads ANY file — text decode, else binary metadata/strings)). Run
 it via `tools/docintel_run.py`. **Reads any file type:** typed parsers handle known formats; the
 universal fallback guarantees every input yields at least metadata + an honest retrieval state.

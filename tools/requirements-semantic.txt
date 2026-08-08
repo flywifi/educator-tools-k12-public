@@ -1,3 +1,4 @@
+# macOS/Homebrew — install into the managed venv (no PEP 668): python3 tools/deps_preflight.py --install tools/requirements-semantic.txt
 # Optional OFFLINE semantic index (local_optional, default OFF) for the L1 standards cache
 # (shared/cache). Activated ONLY with teacher consent (teacher-profile local_first.consents.
 # local_semantic). Absent or declined => the cache falls back to L1 keyword search and reports the

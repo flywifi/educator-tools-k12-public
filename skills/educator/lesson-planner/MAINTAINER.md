@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-07-15 | owner: lesson-planner-maintainer -->
 # MAINTAINER — lesson-planner
 
 ## Purpose of this maintainer file
@@ -25,6 +26,11 @@ Skill-specific:
 - forcing B.E.S.T./NGSSS onto a home-ed/private context
 - shallow or bolted-on differentiation
 - using the grade band when the individual grade matters
+- **stale offline index:** this skill embeds standard *text* from `tools/offline_index.py`; if
+  `shared/standards/resources/florida/data/*.json` changed without an index rebuild, it serves old
+  text. Now guarded — `offline_index.py --verify` / the `sync_check` freshness gate catch it; after
+  any standards-data change, rebuild and commit `index-manifest.json` (see
+  `canonical-sources/index/README.md`).
 
 ## Fragile fallbacks that must not become defaults
 - assuming a grade/subject when unstated is acceptable only if logged as an assumption

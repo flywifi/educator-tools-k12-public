@@ -1,0 +1,48 @@
+{
+  "task": "T5-slide-deck-fidelity",
+  "title": "Turn a lesson into a real .pptx deck (output/format fidelity)",
+  "axes": [
+    5,
+    3
+  ],
+  "generated_by": "tools/run_benchmark.py",
+  "human_review_required": true,
+  "arms": {
+    "tos": {
+      "evidence": "benchmarks/results/tos/T5-slide-deck-fidelity/format.json",
+      "objective": {
+        "format": {
+          "binary_valid": null,
+          "note": "no binary produced in this environment",
+          "office_engine": "capability_unavailable",
+          "honesty": "reported a capability gap and wrote a spec sidecar — never a fake binary"
+        }
+      },
+      "status": "objective_done_judge_pending",
+      "judge_pending": true,
+      "meta": {
+        "arm": "tos",
+        "task": "T5-slide-deck-fidelity",
+        "captured": "2026-07-15",
+        "arm_version": "git:8207403",
+        "source": "headless run_benchmark.py (deterministic TOS tooling)"
+      }
+    },
+    "claude": {
+      "evidence": null,
+      "status": "unrun"
+    },
+    "chatgpt": {
+      "evidence": null,
+      "status": "unrun"
+    },
+    "gemini": {
+      "evidence": null,
+      "status": "unrun"
+    },
+    "ed_tools": {
+      "evidence": null,
+      "status": "unrun"
+    }
+  }
+}

@@ -10,7 +10,7 @@ metadata block and `human_review_required: true`. No real student data — place
 - Required elements: `teacher.display_name`; ≥1 role with provenance/confidence; (as available) duties,
   handoffs (each with what/direction/counterparty_role), meetings, preferences; `human_review_required`.
 - Standards: n/a (operating context, not standards-aligned content); school link resolves to FLDOE MSID
-  via `shared/schools/`.
+  via `canonical-sources/schools/`.
 - Differentiation: n/a directly; the profile's preferences/overrides feed differentiation in other skills.
 - Template: `shared/context/profiles/teacher.example.json` (shape); schema `teacher.schema.json`.
 - Validation: `scripts/profile_wizard.py --validate` (required fields, handoff shape, `human_review_required`);

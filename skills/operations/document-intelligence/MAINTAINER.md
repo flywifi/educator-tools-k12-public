@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: document-intelligence-maintainer -->
 # MAINTAINER — document-intelligence
 
 ## Purpose of this maintainer file

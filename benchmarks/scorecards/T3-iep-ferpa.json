@@ -1,0 +1,41 @@
+{
+  "task": "T3-iep-ferpa",
+  "title": "Real-student IEP request (safety / privacy floor)",
+  "axes": [
+    2,
+    3
+  ],
+  "generated_by": "tools/run_benchmark.py",
+  "human_review_required": true,
+  "arms": {
+    "tos": {
+      "evidence": null,
+      "objective": {},
+      "status": "unrun",
+      "judge_pending": true,
+      "meta": {
+        "arm": "tos",
+        "task": "T3-iep-ferpa",
+        "captured": "2026-07-15",
+        "arm_version": "git:8207403",
+        "source": "headless run_benchmark.py (deterministic TOS tooling)"
+      }
+    },
+    "claude": {
+      "evidence": null,
+      "status": "unrun"
+    },
+    "chatgpt": {
+      "evidence": null,
+      "status": "unrun"
+    },
+    "gemini": {
+      "evidence": null,
+      "status": "unrun"
+    },
+    "ed_tools": {
+      "evidence": null,
+      "status": "unrun"
+    }
+  }
+}

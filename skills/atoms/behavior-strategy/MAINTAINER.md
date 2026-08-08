@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-06-27 | owner: behavior-strategy-maintainer -->
 # MAINTAINER — behavior-strategy
 
 ## Purpose

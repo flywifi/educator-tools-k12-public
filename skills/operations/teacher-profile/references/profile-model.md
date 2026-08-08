@@ -5,7 +5,7 @@ The profile is one teacher's **self-described operating context**. Schema:
 live (gitignored) store: `teacher.local.json` in the same folder.
 
 ## Sections
-- **teacher** — `display_name`, optional `school_msid` (links to `shared/schools/`), `school_name`,
+- **teacher** — `display_name`, optional `school_msid` (links to `canonical-sources/schools/`), `school_name`,
   `district`, and `contact_local_only` (minimum-necessary; stays local, never committed).
 - **roles[]** — one or more roles (multi-role supported), each with optional `subject`/`grade`/
   `department`, a `primary` flag, and `provenance`/`confidence`.

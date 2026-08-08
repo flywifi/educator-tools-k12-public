@@ -9,7 +9,7 @@ vision, not this shell.
 ## What it composes (no new source of truth)
 The spine **reads** the existing engines and assembles a snapshot; it stores nothing of its own:
 - `shared/context/profiles/teacher.local.json` (or the placeholder example) — roles, handoffs, prefs.
-- `shared/schools/` (`schools.py`) — resolves the teacher's `school_msid` → name/status/programs.
+- `canonical-sources/schools/` (`schools.py`) — resolves the teacher's `school_msid` → name/status/programs.
 - `shared/staff/` (`staff.py`) — resolves each handoff `counterparty_role` → person(s), honoring the gate
   (placeholder data when unauthorized; honest gaps when a role isn't in the directory).
 
