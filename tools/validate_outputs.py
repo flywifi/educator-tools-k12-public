@@ -53,6 +53,29 @@ def rule_checks(art: dict) -> list[dict]:
         if isinstance(vals, list) and any(not str(v).strip() for v in vals):
             fails.append({"rule": "no_empty_standard", "severity": "blocking",
                           "guidance": f"{key} has an empty/blank code — cite a real, verifiable standard"})
+    # Fabricated-standard gate: resolve cited codes offline (verify_standards; stdlib, committed
+    # corpus). BLOCKING only where the corpus is authoritative (not_found/malformed); other
+    # non-clean states surface as warnings. Missing module/corpus -> labeled skip, never a verdict.
+    cited = [v for v in (art.get("standards_cited") or []) if str(v).strip()] \
+        if isinstance(art.get("standards_cited"), list) else []
+    if cited:
+        try:
+            sys.path.insert(0, str(Path(__file__).resolve().parent))
+            import verify_standards
+            rep = verify_standards.verify(cited, standards_set=art.get("standards_set"),
+                                          grade_band=art.get("grade_band"), context=art.get("context"))
+            for r in rep["results"]:
+                if r["state"] in ("not_found", "malformed"):
+                    fails.append({"rule": "unresolvable_standard", "severity": "blocking",
+                                  "guidance": f"{r['code']}: {r['state']} — "
+                                              f"{r['detail'] or 'cite a real, verifiable code (QG §11.4)'}"})
+                elif r["state"] != "resolved" or r.get("grade_band_match") is False:
+                    fails.append({"rule": "standard_advisory", "severity": "warning",
+                                  "guidance": f"{r['code']}: {r['state']} — {r['detail']}"})
+        except Exception as exc:
+            fails.append({"rule": "standard_resolution_skipped", "severity": "warning",
+                          "guidance": f"verify_standards unavailable ({exc.__class__.__name__}) — "
+                                      "codes not resolved this run"})
     # No real PII that slipped past placeholders (SSN / non-555 phone).
     for s in _walk_strings(art):
         if _SSN.search(s):

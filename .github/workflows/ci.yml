@@ -17,6 +17,9 @@ jobs:
       - name: Drift guard (sync_check)
         run: python3 tools/sync_check.py
 
+      - name: Standards resolver self-test (known-good resolves; known-bad blocks)
+        run: python3 tools/verify_standards.py --self-test
+
       - name: Validate eval files
         run: |
           python3 - <<'PY'
