@@ -26,9 +26,12 @@ Protocols followed; metadata complete; decision recorded; standards cited with f
 Facts, calculations, and **standards** correct, current, correctly coded, and verifiable.
 - **5** no known inaccuracies. **3** minor, correctable. **2** significant. **0** incorrect/fabricated
   standard or fabricated statistic → critical.
+- Resolve every cited code first: `python3 tools/verify_standards.py --input <artifact>` —
+  `not_found`/`malformed` is the QG §11.4 fabricated-standard critical failure (→ Rejected);
+  advisory states (best-effort corpus, scheme-only frameworks) are noted, not critical.
 - Quoted/paraphrased standard text must match the registry origin form — check for the six
-  citation mutations (standards-verification.md §6); a mutation that changes what the standard
-  requires scores like a mis-coded standard.
+  citation mutations (standards-verification.md §6) against the `statement` the resolver returns;
+  a mutation that changes what the standard requires scores like a mis-coded standard.
 
 ### 5. Alignment (15%)
 Objectives ↔ instruction ↔ assessment ↔ standards cohere.

@@ -32,7 +32,9 @@ A cited standard is verified when all of the following hold:
 
 ## 3. Verification procedure
 
-1. Resolve each cited code against `shared/standards/`.
+1. Resolve each cited code against `shared/standards/` — mechanically:
+   `python3 tools/verify_standards.py --input <artifact.json>` (or pass codes directly). The
+   resolver also returns the registry `statement` (the origin form for the §6 mutation check).
 2. Confirm coding, version, and grade.
 3. Confirm objective↔standard↔assessment alignment (feeds the Alignment gate).
 4. Record the result in the artifact metadata (`standards_set`, `standards_cited`).
@@ -47,10 +49,30 @@ A cited standard is verified when all of the following hold:
 | Wrong grade / deprecated / mis-coded | Accuracy deficiency → Remediation (QG §25) |
 | Topically adjacent but not aligned | Alignment deficiency → Remediation (QG §26) |
 
-## 5. Validation
+## 5. Validation — the resolver (delivered)
 
-Phase A adds a `scripts/verify_standards.py` helper per capability skill and wires this protocol
-into pipeline step 2 (Protocol Enforcement) and the `quality-review` Accuracy/Alignment gates.
+The promised helper exists as **one shared tool**, `tools/verify_standards.py` (not per-skill
+copies — shared engines are the source of truth; per-skill duplication is what the two-copy rule
+exists to avoid). It is wired into pipeline step 2 via `tools/validate_outputs.py`
+(`unresolvable_standard`, blocking) and into the `quality-review` Accuracy gate. Fully offline,
+stdlib-only; resolves against the committed FL corpus
+(`shared/standards/resources/florida/data/`, 6,500+ codes) and validates CCSS/NGSS coding schemes.
+
+**Honest-degradation states** (severity follows evidence strength — a verification result must
+never itself be fabricated):
+
+| State | Severity | Meaning |
+|---|---|---|
+| `resolved` | clean | exact hit in the enumerated FL corpus (statement returned = §6 origin form) |
+| `not_found` | **blocking** | absent from a complete enumerated corpus — the fabricated-code case (§11.4) |
+| `not_found_low_confidence` | advisory | absent from a best-effort/partial corpus (SS `.doc` parse; ELD) — verify on CPALMS |
+| `malformed` | **blocking** | violates its own framework's coding scheme |
+| `scheme_valid_unenumerated` | advisory | CCSS/NGSS structure valid; existence not checkable offline (adapters are scheme-only) |
+| `unknown_framework` | advisory | matches no known scheme; register school frameworks in `shared/standards/frameworks/` |
+
+Negative control: `examples/known-bad/fabricated-standard.known-bad.json` must FAIL validation
+(enforced by `tools/validate_examples.py` check 1b); the resolver's own `--self-test` (28 probes +
+a shape audit over every committed corpus code) runs in CI.
 
 ## 6. Citation-mutation check (origin-form rule)
 

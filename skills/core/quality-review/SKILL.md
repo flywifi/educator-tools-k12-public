@@ -30,6 +30,12 @@ Any of these forces **Rejected regardless of composite** and may never be overri
 fabricated/incorrect standard or citation, real student PII, unsafe or legal-overreach content,
 or "approval" asserted without evidence. (Full list: `references/quality-gates.md`.)
 
+For the fabricated-standard check, don't judge by eye — resolve mechanically:
+`python3 tools/verify_standards.py --input <artifact.json>` (offline, committed FL corpus +
+CCSS/NGSS scheme checks). `not_found`/`malformed` = this critical failure; advisory states are
+scored on evidence, not treated as fabrication. The returned `statement` is the registry origin
+form for the citation-mutation check (rubric, Accuracy).
+
 ## 4. Compute the composite and decision (deterministic)
 Run the bundled helper so weighting + thresholds are exact and reproducible:
 
