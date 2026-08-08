@@ -58,3 +58,6 @@ The requested deliverable, scope, audience, and constraints were met.
 `Composite = Σ(score × weight)` → Approved ≥4.0 · Conditionally Approved 3.0-3.99 · Remediation
 Required 2.0-2.99 · Rejected <2.0. **Any 0, or a critical failure, forces Rejected.** Use
 `scripts/score.py` to compute — do not eyeball the arithmetic.
+
+State each clean dimension as "no issues found — checked: <list>", never "error-free"; always name
+the weakest dimension as `residual_risk` (review limits, not defects), even when Approved (QG §93.3).

@@ -44,7 +44,11 @@ Rejected. Do not hand-compute — use the script.
 ## 5. Emit the decision record
 Return the verdict as a decision record per `protocol-layer/metadata-schema.md`: per-dimension scores +
 evidence, composite, decision, rationale, and `human_review_required: true`. See
-`examples/example-evaluation.md` for the exact shape.
+`examples/example-evaluation.md` for the exact shape. Two honesty rules (QG §93.3):
+- A dimension with no findings is stated as "no issues found — checked: <what was examined>",
+  never as "error-free" or "perfect".
+- Always emit `residual_risk`: the dimensions/claims this review is least able to guarantee, and
+  why — even on Approved. Frame it as review limits, not defects.
 
 ## 6. On not-Approved
 Give **specific, actionable remediation** per failed dimension (what to change and why). Resolve
