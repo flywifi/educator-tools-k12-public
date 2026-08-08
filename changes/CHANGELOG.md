@@ -5,6 +5,20 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **`tools/verify_standards.py` — offline standards-code resolver** (delivers the
+  standards-verification §5 promise; closes the gap where a fabricated-but-plausible code passed
+  CI). Resolves cited codes against the committed FL corpus (6,583 enumerated codes with
+  statement text) and validates CCSS/NGSS coding schemes offline. Honest-degradation states:
+  `not_found` blocks only where the corpus is authoritative; best-effort corpora (Social Studies
+  `.doc` parse, partial ELD) degrade to advisory — a parser gap can never manufacture a
+  fabricated-standard verdict. Grade-band matching (K12/912/68/612 spans), case-canonical check,
+  near-miss suggestions, `set_mismatch` flag, and the registry `statement` returned as the §6
+  citation-mutation origin form. Wired in as `validate_outputs.py` `unresolvable_standard`
+  (blocking) + `standard_advisory` (warning) with labeled skip on missing corpus; new
+  `examples/known-bad/fabricated-standard.known-bad.json` enforced by check 1b (probe run both
+  ways); CI runs the resolver's `--self-test` (28 probes + a shape audit over every committed
+  corpus code; `--self-test-invert` proves the test can fail). quality-review §3 + rubric now
+  require mechanical resolution before scoring Accuracy.
 - **Governance-honesty wave** (7 bounded concepts adapted from an external research-provenance
   methodology review; nothing installed wholesale — full disposition in the review session):
   - **Citation-mutation check** (`standards-verification.md` §6): six enumerable mutations of a
