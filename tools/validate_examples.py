@@ -42,6 +42,15 @@ def main() -> int:
             failures.append(f"{f}: " + ", ".join(r.get("rule", r.get("",  "?")) for r in rep.get("rule_failures", [])) +
                             (" schema:" + ";".join(rep.get("schema_errors", [])) if rep.get("schema_errors") else ""))
 
+    # 1b) negative controls: known-bad fixtures MUST fail (proves the gate actually gates).
+    # A validator that has never failed on a known-bad is unproven; these fixtures are deliberately
+    # invalid and the check inverts — a PASS here is the failure.
+    for f in sorted(glob.glob("**/*.known-bad.json", recursive=True, root_dir=str(ROOT))):
+        rep = _run_json([sys.executable, "tools/validate_outputs.py", "--input", f])
+        checked += 1
+        if rep.get("status") != "fail":
+            failures.append(f"{f}: known-bad fixture PASSED validation (status={rep.get('status')}) — a gate stopped gating")
+
     # 2) committed example documents -> structural validity
     docs = [f for ext in ("docx", "pptx", "xlsx", "pdf", "odt", "ods", "odp")
             for f in glob.glob(f"skills/**/examples/*.{ext}", recursive=True, root_dir=str(ROOT))]
