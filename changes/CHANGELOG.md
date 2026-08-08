@@ -4,7 +4,38 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+
+## [1.1.0] — 2026-07-16
 ### Added
+- **macOS / cross-platform hardening wave** (adversarially audited, 34 probes, all findings
+  remediated): LibreOffice discovery via the canonical `_find_soffice()` everywhere (a normally
+  installed `/Applications/LibreOffice.app` is found; PATH-only discovery removed from docintel);
+  all internal child processes spawn `sys.executable` (never a bare `python3` — a macOS venv can
+  otherwise split-brain onto the Xcode CLT stub); explicit `encoding="utf-8"` on every text
+  open/read/write (locale-proof); **office render honesty** — soffice exits 0 even on a failed
+  conversion (upstream tdf#148275), so `convert()` verifies the output file exists and the legacy
+  parser reports `convert_failed` instead of a silent empty parse.
+- **Managed-venv capability installer (PEP 668-proof):** `python3 tools/deps_preflight.py
+  --install <capability|requirements.txt> | --install-all` installs optional capabilities into the
+  isolated `.harvest-venv` (wheels-only; never system/Homebrew Python), dedupes shared requirements
+  files, exits nonzero on a failed install, and `--python-path` prints the venv interpreter for a
+  Claude Desktop MCP `command`/GUI launch. Requirements headers + docs point at it.
+- **Doc-integrity + provenance guards (sync_check checks 15–20):** repo-wide dead path/link guard
+  (fence-aware), METRICS freshness, component-doc coverage, `last_reviewed` freshness, **mac-lint**
+  (`tools/mac_audit.py`: bare-interpreter spawns incl. variable-held argvs, encoding-less text opens
+  incl. `io.open`), and **doc-source provenance** — an external URL cited in a maintainer-class doc
+  must be registered in a source registry (exact-page matching per RFC 3986).
+- **macOS source registry** (`canonical-sources/registries/macos-sources.json`, 41 entries): every
+  authoritative source behind the macOS findings (Apple, Python/PEPs, Homebrew, Git, Claude docs,
+  BSD/GNU, LibreOffice tdf#148275, RFC 3986), freshness-tracked by `source_currency.py`; naive
+  `last_checked` dates now parse as UTC midnight instead of crashing the engine. `docs/MACOS.md`
+  carries the findings log + maintainer notes.
+### Fixed
+- Supply-chain gate: pip-audit no longer audits the CI scanners' own toolbox (external CVE drift in
+  dev-only deps reddened the branch); scanner stdout/stderr split so real CVEs are named, not opaque.
+- `scrape_feed` capability pointed at a requirements file that never existed — repointed to
+  `tools/requirements-scraper.txt`.
+### Added (pre-wave)
 - **Teaching-context & SOP layer** (`shared/context/`) — new architecture so the ecosystem adapts to a
   teacher's school/district context and **teacher-uploaded SOP files** (operating-reference pattern,
   harvested from a control-plane/route-plan skill). Adds: a **log of all 67 Florida county districts**
