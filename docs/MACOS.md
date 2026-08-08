@@ -44,20 +44,23 @@ placement works).
 4. Add a throwaway-injection test to your verification (inject a violation → guard fires → revert).
 
 ## Findings log (update as you test)
-Confirmed macOS defects and status. **Fixed** items landed in the branch's macOS-fixes commit;
-**Open** items need real Mac hardware to observe (see the on-Mac runbook you keep outside the repo).
+Confirmed macOS defects and status. Status vocabulary — **RESOLVED** (correction landed AND
+validated where it runs) · **OPEN** (identified, not yet corrected) · **UNTESTED** (correction
+landed but never validated on the target surface — per QG §49, completing an action is not proof
+it worked). UNTESTED is not RESOLVED: say which one it is. OPEN/UNTESTED items need real Mac
+hardware to observe (see the on-Mac runbook you keep outside the repo).
 
 | ID | What | Status | Where / guard |
 |---|---|---|---|
-| D1 | Legacy-office parser couldn't find a normally-installed Mac LibreOffice (PATH-only discovery) | **Fixed** | `shared/docintel/parsers/libreoffice_parser.py` reuses `shared/office/office_authoring.py` `_find_soffice()` |
-| D2 | Child processes spawned by bare `python3` (split-brain on a Mac venv) | **Fixed + guarded** | 6 sites → `sys.executable`; mac-lint *bare-interpreter* |
-| D3 | ~10 text opens without `encoding=` (locale-dependent) | **Fixed + guarded** | 5 files; mac-lint *encoding* |
-| D4 | Cross-platform docs framed the `python3` caveat as Windows-only | **Fixed** | `docs/DEPLOYMENT_SURFACES.md` cross-platform section |
-| D5 | Hardcoded `/tmp` in a workflow example | **Fixed** | `skills/operations/standards-updater/` uses portable relative paths |
-| D6 | Bare `python` in a harvest doc | **Fixed** | `canonical-sources/schools/HARVESTING.md` → `python3` |
-| E1 | PEP 668 `externally-managed-environment` install break | **Fixed (mechanism) + doc'd** | `tools/deps_preflight.py --install <capability>` installs into the managed `.harvest-venv` (wheels-only, never system Python); `--python-path` exposes the venv interpreter for F2/F3. Verify the exact error text on a Mac. |
-| E2 | Homebrew tools invisible under a GUI/MCP PATH | **Partly fixed (soffice=D1) + doc'd** | MCP absolute-path guidance in `docs/DEPLOYMENT_SURFACES.md`; a general binary resolver is a follow-up |
-| E3 | Stale right-click Gatekeeper guidance (Sequoia) | **Doc'd; open on-device** | `docs/DEPLOYMENT_SURFACES.md` (System Settings flow) |
+| D1 | Legacy-office parser couldn't find a normally-installed Mac LibreOffice (PATH-only discovery) | **RESOLVED** | `shared/docintel/parsers/libreoffice_parser.py` reuses `shared/office/office_authoring.py` `_find_soffice()` |
+| D2 | Child processes spawned by bare `python3` (split-brain on a Mac venv) | **RESOLVED + guarded** | 6 sites → `sys.executable`; mac-lint *bare-interpreter* |
+| D3 | ~10 text opens without `encoding=` (locale-dependent) | **RESOLVED + guarded** | 5 files; mac-lint *encoding* |
+| D4 | Cross-platform docs framed the `python3` caveat as Windows-only | **RESOLVED** | `docs/DEPLOYMENT_SURFACES.md` cross-platform section |
+| D5 | Hardcoded `/tmp` in a workflow example | **RESOLVED** | `skills/operations/standards-updater/` uses portable relative paths |
+| D6 | Bare `python` in a harvest doc | **RESOLVED** | `canonical-sources/schools/HARVESTING.md` → `python3` |
+| E1 | PEP 668 `externally-managed-environment` install break | **UNTESTED** — fix landed, awaits on-Mac validation | `tools/deps_preflight.py --install <capability>` installs into the managed `.harvest-venv` (wheels-only, never system Python); `--python-path` exposes the venv interpreter for F2/F3. Verify the exact error text on a Mac. |
+| E2 | Homebrew tools invisible under a GUI/MCP PATH | **OPEN** — partly fixed (soffice=D1) + doc'd | MCP absolute-path guidance in `docs/DEPLOYMENT_SURFACES.md`; a general binary resolver is a follow-up |
+| E3 | Stale right-click Gatekeeper guidance (Sequoia) | **OPEN** — doc'd; verify on-device | `docs/DEPLOYMENT_SURFACES.md` (System Settings flow) |
 
 ### New finding template (append below as you test)
 ```
@@ -69,6 +72,8 @@ Confirmed macOS defects and status. **Fixed** items landed in the branch's macOS
 - Class:       interpreter/PATH | packaging | permissions | filesystem/encoding | rendering | shell | code-correctness | claude-surface
 - Source:      <authoritative URL backing the claim — register it (see Sources & freshness below)>
 - Action:      <fix + whether a new mac-lint check applies>
+- Status:      RESOLVED | OPEN | UNTESTED   (UNTESTED = correction landed, not yet validated on the target surface)
+- Catchable:   <what in the process should have caught this earlier>
 ```
 
 ### D-NEW1 — convert() reported "ok" for a conversion that produced nothing  (2026-07-16, Linux container / adversarial audit)
@@ -79,6 +84,8 @@ Confirmed macOS defects and status. **Fixed** items landed in the branch's macOS
 - Class:       rendering
 - Source:      https://bugs.documentfoundation.org/show_bug.cgi?id=148275
 - Action:      **Fixed** — convert() now verifies the output file exists and returns `status:error` with soffice's output when it doesn't. No new mac-lint check (behavioral, not a static pattern).
+- Status:      RESOLVED (probe re-run and flipped in the 2026-07-16 remediation round)
+- Catchable:   a negative-control probe (component missing → convert must report error) run before shipping convert()
 
 ### D-NEW2 — LegacyOfficeParser mislabeled a silent conversion failure as an empty "native" parse  (2026-07-16, Linux container / adversarial audit)
 - What:        On the same exit-0 soffice failure, `parse()` returned `extraction_method:"native"`, 0 blocks, and diagnostics with no failure marker.
@@ -88,6 +95,8 @@ Confirmed macOS defects and status. **Fixed** items landed in the branch's macOS
 - Class:       rendering
 - Source:      https://bugs.documentfoundation.org/show_bug.cgi?id=148275
 - Action:      **Fixed** — missing/empty txt now returns the `convert_failed` diagnostics path.
+- Status:      RESOLVED (probe re-run and flipped in the 2026-07-16 remediation round)
+- Catchable:   same negative-control probe as D-NEW1 — the parser inherits convert()'s failure surface
 
 ### 2026-07-16 remediation round (adversarial audit of the 24h window — 34 probes)
 All confirmed findings fixed in this round; probes re-run and flipped:
