@@ -19,7 +19,10 @@ skill resolves a conflict — not ad-hoc per-skill logic.
 3. **Known failure modes** — the highest-impact ways the skill goes wrong.
 4. **Fragile fallbacks that must not become defaults** — degraded behavior that is acceptable only when
    clearly labeled, never as the silent normal path.
-5. **Regression cases to preserve** — numbered; each should map to an `evals/evals.json` case.
+5. **Regression cases to preserve** — numbered; each should map to an `evals/evals.json` case. This
+   includes **trigger evals** (`trigger_evals`: ≥10 positive / ≥5 negative routing prompts, pass bar
+   ≥80% / ≤20%, activation = actual invocation only) — a description edit is a behavior change and
+   must re-meet the bar.
 6. **Approval-gated changes** — changes that are behavior-changing and require explicit review (never a
    "trivial fix"): synced references, frontmatter, output schemas, and the skill's own policy surfaces.
 7. **Minority-report policy** — when/how to emit a decision record with a minority report, preserving the

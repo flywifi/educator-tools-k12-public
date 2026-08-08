@@ -27,6 +27,11 @@ Skill-specific:
 <numbered list; each should map to an `evals/evals.json` case>
 1. <case>
 
+Trigger evals (`evals/evals.json` → `trigger_evals`): keep ≥10 positive / ≥5 negative routing
+prompts current with the description. Pass bar: ≥80% positive activate, ≤20% negative activate;
+activation = an actual invocation, not a name-mention; 2+ negative activations = DETECTOR SUSPECT
+(fix the description/scope before trusting any pass).
+
 ## Approval-gated changes (do not treat as a trivial fix)
 Shared: editing a synced reference (`references/method.md`, `references/quality-gates.md` — edit the
 canonical source and re-sync), frontmatter keys, or any output schema downstream skills depend on.
@@ -46,7 +51,8 @@ Do **not** bury disagreement in prose; do not promote recurring practice to doct
 individual-student/legal determinations to a human.
 
 ## Update checklist (run in order on any change)
-1. `SKILL.md` description still specific + scoped, with the "Do NOT use for…" clause intact;
+1. `SKILL.md` description still specific + scoped, with the "Do NOT use for…" clause intact; trigger
+   evals still meet the pass bar after any description change;
 2. `python3 tools/sync_check.py` passes (synced refs byte-identical; frontmatter + resource integrity);
 3. every reference named in `SKILL.md` still exists; evals still pass and a case was added for new behavior;
 4. context adaptation still correct across school types (`shared/context/`);
