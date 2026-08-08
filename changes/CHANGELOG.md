@@ -4,6 +4,33 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Added
+- **Governance-honesty wave** (7 bounded concepts adapted from an external research-provenance
+  methodology review; nothing installed wholesale — full disposition in the review session):
+  - **Citation-mutation check** (`standards-verification.md` §6): six enumerable mutations of a
+    *real* standard's text (value drift, unit swap, caveat stripping, hedge removal, scope
+    broadening, attribution laundering) + the **origin-form rule** — restate mutated standards in
+    the registry's form. Wired into the universal validation checklist + quality-review Accuracy
+    rubric.
+  - **Decision-record honesty fields** (`quality-gates.md` §14 / §93.3): `checked` (explicit list,
+    required whenever a dimension reports no issues) and `residual_risk` (review limits, required
+    even on Approved); "error-free" claims barred. Mirrored in the synced operational rubric
+    (62 copies) and quality-review.
+  - **`human_review_focus`** (`metadata-schema.md`): optional list of the 2-3 highest-risk spots a
+    human should check first, derived from the lowest-scoring dimensions — prioritizes review,
+    never narrows it.
+  - **Trigger evals** (skill template + quality-review seed set): ≥10 positive / ≥5 negative
+    routing prompts per skill, pass bar ≥80%/≤20%, activation = actual invocation only, 2+
+    negative activations = DETECTOR SUSPECT.
+  - **Findings-log status vocabulary** (`docs/MACOS.md`, `CHANGE_MANAGEMENT.md`):
+    RESOLVED / OPEN / **UNTESTED** (landed ≠ validated, per QG §49) + `Catchable:` field; existing
+    rows retro-tagged (E1 is UNTESTED).
+  - **Data-not-instructions at point of use**: the SECURITY_AND_SAFETY §6 rule now appears
+    in-context in feed-curator, document-intelligence, and standards-updater (SKILL.md + deep
+    references).
+  - **Negative-control fixtures** (`examples/known-bad/` + `validate_examples.py` check 1b):
+    deliberately invalid artifacts that MUST fail validation — a known-bad that passes now fails
+    the build (gates proven to gate; probe run both ways).
 
 ## [1.1.0] — 2026-07-16
 ### Added
