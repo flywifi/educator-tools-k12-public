@@ -12,6 +12,8 @@ Quality Gates (QG §7.3) — "did we build the thing, completely and consistentl
 - [ ] **Grade band + subject** are set and consistent throughout.
 - [ ] At least one **standard** is selected, cited with framework+version, and verifiable
       (`protocols/standards-verification.md`).
+- [ ] Standard text restatements match the **registry origin form** — no caveat-stripping, hedge
+      removal, or scope-broadening of what the benchmark says (standards-verification.md §6).
 - [ ] **Differentiation** is present (UDL by default; tiering/EL/IEP as applicable).
 - [ ] **Metadata block** is initialized and `human_review_required: true`.
 - [ ] **No real student data** anywhere (placeholders only).

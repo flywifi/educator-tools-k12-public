@@ -26,6 +26,9 @@ Protocols followed; metadata complete; decision recorded; standards cited with f
 Facts, calculations, and **standards** correct, current, correctly coded, and verifiable.
 - **5** no known inaccuracies. **3** minor, correctable. **2** significant. **0** incorrect/fabricated
   standard or fabricated statistic → critical.
+- Quoted/paraphrased standard text must match the registry origin form — check for the six
+  citation mutations (standards-verification.md §6); a mutation that changes what the standard
+  requires scores like a mis-coded standard.
 
 ### 5. Alignment (15%)
 Objectives ↔ instruction ↔ assessment ↔ standards cohere.
