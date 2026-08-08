@@ -49,6 +49,9 @@ context:                # teaching-context contract (shared/context/context.sche
                         #   district, school_type, program(s), instructional_model, mandates, SOPs,
                         #   authority_precedence, overrides — what this artifact was built FOR
 human_review_required:  # true (always — artifacts are decision support, not final determinations)
+human_review_focus:     # optional list — the 2-3 highest-risk items a human should check FIRST
+                        #   (e.g., the standard code to confirm against the registry, the answer-key
+                        #   item most likely wrong, anything needing SpEd/EL specialist sign-off)
 assumptions:            # list of assumptions made (see assumptions-protocol.md)
 ```
 
@@ -56,6 +59,11 @@ assumptions:            # list of assumptions made (see assumptions-protocol.md)
 
 - **`human_review_required` is always `true`.** Every artifact is decision support; a professional
   must validate it (Charter V3 §12; SECURITY_AND_SAFETY.md). The drift guard checks this flag.
+- **Targeted review (`human_review_focus`).** When emitted, it names the specific highest-risk
+  spots to check first, derived from the decision record's lowest-scoring dimensions /
+  `residual_risk` (quality-gates.md §93.3). It **prioritizes** human review; it never narrows it —
+  the boolean still covers the whole artifact, and an absent list means "review everything", not
+  "reviewed".
 - **No real student data.** Any student reference uses placeholders ("Student A"). PII in metadata
   is an Integrity/Safety automatic failure (QG §37; SECURITY_AND_SAFETY.md).
 - **Standards must be cited with framework + version** so they are verifiable

@@ -50,6 +50,11 @@ evidence, composite, decision, rationale, and `human_review_required: true`. See
 - Always emit `residual_risk`: the dimensions/claims this review is least able to guarantee, and
   why — even on Approved. Frame it as review limits, not defects.
 
+Also populate `human_review_focus` (metadata-schema.md): the 2-3 specific spots the teacher should
+check first — drawn from the two lowest-scoring dimensions and any near-critical finding (e.g.,
+"confirm MA.3.NSO.2.2 against CPALMS", "re-work answer-key item 7", "SpEd sign-off on the
+accommodation section"). It prioritizes human review; it never replaces it.
+
 ## 6. On not-Approved
 Give **specific, actionable remediation** per failed dimension (what to change and why). Resolve
 contradictions with `protocol-layer/conflict-protocol.md` (integrity > safety > governance >
