@@ -429,6 +429,25 @@ def run_apply(a) -> int:
     for code, entry in overlay["entries"].items():
         if code not in merged or entry.get("checked_at", "") >= merged[code].get("checked_at", ""):
             merged[code] = entry
+    # Opt-in (--include-additions, human-approved at a gate): codes the census found on CPALMS that
+    # the parse corpus lacks. Recorded as provenance-stamped overlay ADDITIONS so the resolver can
+    # resolve them; the parse corpus still never changes and each entry names its origin.
+    additions = 0
+    if getattr(a, "include_additions", False):
+        for code in (report.get("census_diff", {}) or {}).get("corpus_missing", []):
+            c = (report.get("census", {}) or {}).get(code)
+            if not c:
+                continue
+            merged[code] = {"state": "cpalms_addition",
+                            "statement_verified": c.get("statement"),
+                            "cpalms_id": c.get("cpalms_id"),
+                            "cpalms_url": _preview_url(c.get("cpalms_id"),
+                                                       bool(_AP_SEG.search(code))),
+                            "date_revised": c.get("date_revised"),
+                            "checked_at": (report.get("census_meta", {}) or {}).get("generated_at")
+                                          or _now(),
+                            "note": "present on CPALMS, absent from the parsed corpus (census find)"}
+            additions += 1
     overlay["entries"] = merged
     overlay["scopes"] = (existing.get("scopes") or []) + [
         {"grades": report.get("grades", "all"), "rows_in_scope": len(applied),
@@ -436,8 +455,9 @@ def run_apply(a) -> int:
     overlay["coverage"] = round(len(merged) / max(1, len(corpus_codes)), 4)  # whole-corpus, honest
     overlay_path.write_text(json.dumps(overlay, indent=1, ensure_ascii=False) + "\n",
                             encoding="utf-8")
-    print(f"\nwrote {overlay_path} ({len(merged)} merged entries, whole-corpus coverage "
-          f"{overlay['coverage']:.1%})")
+    print(f"\nwrote {overlay_path} ({len(merged)} merged entries"
+          + (f", incl. {additions} cpalms_addition(s)" if additions else "")
+          + f", whole-corpus coverage {overlay['coverage']:.1%})")
     print("Parse corpus untouched; commit the overlay to make it durable.")
     return 0
 
@@ -565,6 +585,9 @@ def main(argv) -> int:
                     help="reverse census: what CPALMS lists for --subject/--grades; diff vs corpus")
     ap.add_argument("--apply", metavar="REPORT", help="Phase A: validate + diff a report")
     ap.add_argument("--write", action="store_true", help="with --apply: write the overlay (human-approved)")
+    ap.add_argument("--include-additions", action="store_true",
+                    help="with --apply --write: also record census-found codes the corpus lacks "
+                         "(cpalms_addition entries) — opt-in, human-approved at a gate")
     ap.add_argument("--self-test", action="store_true", help="offline fixture probes")
     a = ap.parse_args(argv)
     if a.self_test:

@@ -174,15 +174,25 @@ def _resolve_one(code: str, standards_set, grade_band, applicability) -> dict:
                 if r["grade_band_match"] is False:
                     r["detail"] = (r["detail"] + f" grade '{e.get('grade')}' is outside band '{grade_band}'").strip()
                 return r
-        # Not in the parse corpus: an overlay may record it as renumbered (old -> new code).
+        # Not in the parse corpus: an overlay may still resolve it — as a renumbering (old -> new
+        # code) or as a CPALMS addition (census found it on CPALMS; the parse corpus lacks it).
         for name in subjects:
             ov = (_load_overlay(name).get("entries") or {}).get(c)
-            if ov and ov.get("new_code"):
+            if not ov:
+                continue
+            if ov.get("new_code"):
                 r.update(state="resolved", statement=ov.get("statement_verified"),
                          verified={"source": "cpalms", "checked_at": ov.get("checked_at"),
                                    "url": ov.get("cpalms_url")},
                          detail=f"superseded_by {ov['new_code']} (CPALMS renumbering) — cite the "
                                 f"current code")
+                return r
+            if ov.get("state") == "cpalms_addition":
+                r.update(state="resolved", statement=ov.get("statement_verified"),
+                         verified={"source": "cpalms", "checked_at": ov.get("checked_at"),
+                                   "url": ov.get("cpalms_url")},
+                         detail="verified on CPALMS but absent from the parsed corpus "
+                                "(overlay addition) — a corpus refresh would fold it in")
                 return r
         if not scheme.match(c):
             r.update(state="malformed",
@@ -332,6 +342,14 @@ def self_test(invert: bool = False) -> int:
     rep = verify(["SS.7.C.9.99"])
     ok = rep["results"][0]["state"] == "not_found" and "SS.7.C.9.99" in rep["blocking"]
     print(("PASS" if ok else "FAIL") + " overlay: trusted coverage flips SS miss to BLOCKING not_found")
+    failures += 0 if ok else 1
+    _overlay_cache["social_studies"]["entries"]["SS.9.NEW.1.1"] = {
+        "state": "cpalms_addition", "statement_verified": "ADDED-TEXT",
+        "cpalms_url": _fix_url + "3", "checked_at": "2026-08-09T00:00:00Z"}
+    r4 = verify(["SS.9.NEW.1.1"])["results"][0]
+    ok = r4["state"] == "resolved" and "overlay addition" in r4["detail"] \
+        and r4["statement"] == "ADDED-TEXT"
+    print(("PASS" if ok else "FAIL") + " overlay: cpalms_addition resolves (census find, not in corpus)")
     failures += 0 if ok else 1
     r3 = verify(["SS.7.OLD.1.1"])["results"][0]
     ok = r3["state"] == "resolved" and "superseded_by SS.7.CG.1.1" in r3["detail"]
