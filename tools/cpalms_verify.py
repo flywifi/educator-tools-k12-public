@@ -55,6 +55,12 @@ BASE = "https://www.cpalms.org"
 SEARCH = BASE + "/Search/GetSearchStandard"
 SEARCH_AP = BASE + "/Search/GetSearchAccessPoint"   # mirror endpoint; same params + card markup
 _AP_SEG = re.compile(r"\.(AP|In|Su|Pa)\.")           # access-point code shapes (MA/ELA/SS + science levels)
+
+
+def _preview_url(cpalms_id: str, is_ap: bool) -> str:
+    """Human-facing preview URL. Access points resolve under PreviewAccessPoint, benchmarks under
+    PreviewStandard — a provenance URL must resolve to the thing it claims (audit A2 finding)."""
+    return f"{BASE}/{'PreviewAccessPoint' if is_ap else 'PreviewStandard'}/Preview/{cpalms_id}"
 UA = "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)"
 DELAY = (1.5, 3.0)
 
@@ -164,7 +170,7 @@ def classify(code: str, corpus_stmt: str) -> dict:
         c = exact[0]
         row.update(cpalms_id=c["cpalms_id"], cpalms_statement=c["statement"],
                    date_revised=c["date_revised"],
-                   cpalms_url=f"{BASE}/PreviewStandard/Preview/{c['cpalms_id']}")
+                   cpalms_url=_preview_url(c["cpalms_id"], is_ap))
         ok, truncated = _lead_matches(corpus_stmt, c["statement"])
         row["cpalms_state"] = "confirmed" if ok else "statement_differs"
         if truncated:
@@ -184,7 +190,7 @@ def classify(code: str, corpus_stmt: str) -> dict:
                 row.update(cpalms_state="renumbered", new_code=c["code"],
                            cpalms_id=c["cpalms_id"], cpalms_statement=c["statement"],
                            date_revised=c["date_revised"],
-                           cpalms_url=f"{BASE}/PreviewStandard/Preview/{c['cpalms_id']}",
+                           cpalms_url=_preview_url(c["cpalms_id"], bool(_AP_SEG.search(c["code"]))),
                            detail=f"benchmark text now lives at {c['code']}")
                 return row
             if len(best) > 1:
