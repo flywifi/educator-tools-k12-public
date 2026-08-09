@@ -290,7 +290,10 @@ def _census_sweep(search_url: str, sub_url: str, grd_url: str, subject: str,
     """One paged sweep of a search endpoint (benchmarks OR access points) into `census`."""
     subjects, grades = _discover_filters(sub_url, grd_url)
     hint = SUBJECT_LABEL_HINTS[subject]
-    subj_id = next((v for k, v in subjects.items() if hint in k), None)
+    # Most-specific match: 'science' must pick "Science", never "Computer Science" (seen live:
+    # the naive contains-match polluted a science census with SC.4.CC.* codes).
+    candidates = [(k, v) for k, v in subjects.items() if hint in k]
+    subj_id = min(candidates, key=lambda kv: len(kv[0]))[1] if candidates else None
     missing = [g for g in grades_csv.split(",") if g and g.strip() not in grades]
     if not subj_id or missing:
         meta[f"{kind}_error"] = (f"filter discovery failed: subject_id={subj_id} "

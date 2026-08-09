@@ -1,0 +1,1225 @@
+{
+ "subject": "science",
+ "source": "cpalms",
+ "generated_at": "2026-08-09T14:35:00Z",
+ "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
+ "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
+ "coverage": 0.1041,
+ "scopes": [
+  {
+   "grades": "4",
+   "rows_in_scope": 151,
+   "generated_at": "2026-08-09T14:35:00Z"
+  }
+ ],
+ "entries": {
+  "SC.4.L.16.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify processes of sexual reproduction in flowering plants, including pollination, fertilization (seed production), seed dispersal, and germination.",
+   "cpalms_id": "1696",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1696",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:03Z"
+  },
+  "SC.4.L.16.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify that insects spread pollen to help flowering plants make seeds.",
+   "cpalms_id": "7799",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7799",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:07Z"
+  },
+  "SC.4.L.16.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that many flowering plants grow from their own seeds.",
+   "cpalms_id": "7800",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7800",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:10Z"
+  },
+  "SC.4.L.16.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that many plants have flowers and leaves.",
+   "cpalms_id": "7801",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7801",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:14Z"
+  },
+  "SC.4.L.16.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain that although characteristics of plants and animals are inherited, some characteristics can be affected by the environment.",
+   "cpalms_id": "1697",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1697",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:16Z"
+  },
+  "SC.4.L.16.In.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify behaviors that animals have naturally (inherit) and behaviors that animals learn.",
+   "cpalms_id": "7802",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7802",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:20Z"
+  },
+  "SC.4.L.16.Su.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize behaviors of common animals.",
+   "cpalms_id": "7803",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7803",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:24Z"
+  },
+  "SC.4.L.16.Pa.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize similarities between self and parents.",
+   "cpalms_id": "7804",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7804",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:27Z"
+  },
+  "SC.4.L.16.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that animal behaviors may be shaped by heredity and learning.",
+   "cpalms_id": "1664",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1664",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:29Z"
+  },
+  "SC.4.L.16.4": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast the major stages in the life cycles of Florida plants and animals, such as those that undergo incomplete and complete metamorphosis, and flowering and nonflowering seed-bearing plants.",
+   "cpalms_id": "1698",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1698",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:33Z"
+  },
+  "SC.4.L.16.In.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify similarities in the major stages in the life cycles of common Florida plants and animals.",
+   "cpalms_id": "7806",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7806",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:36Z"
+  },
+  "SC.4.L.16.Su.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the major stages in life cycles of common plants and animals.",
+   "cpalms_id": "7807",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7807",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:40Z"
+  },
+  "SC.4.L.16.Pa.3": {
+   "state": "confirmed",
+   "statement_verified": "Match offspring of animals with parents.",
+   "cpalms_id": "7808",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7808",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:42Z"
+  },
+  "SC.4.L.17.1": {
+   "state": "confirmed",
+   "statement_verified": "Compare the seasonal changes in Florida plants and animals to those in other regions of the country.",
+   "cpalms_id": "1701",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1701",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:45Z"
+  },
+  "SC.4.L.17.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify seasonal changes in Florida plants and animals.",
+   "cpalms_id": "7809",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7809",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:49Z"
+  },
+  "SC.4.L.17.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize seasonal changes in some Florida plants, such as the presence of flowers and change in leaf color.",
+   "cpalms_id": "7810",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7810",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:51Z"
+  },
+  "SC.4.L.17.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a seasonal change in the appearance of a common plant.",
+   "cpalms_id": "7811",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7811",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:54Z"
+  },
+  "SC.4.L.17.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain that animals, including humans, cannot make their own food and that when animals eat plants or other animals, the energy stored in the food source is passed to them.",
+   "cpalms_id": "1702",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1702",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:25:57Z"
+  },
+  "SC.4.L.17.In.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that animals cannot make their own food and they must eat plants or other animals to survive.",
+   "cpalms_id": "7812",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7812",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:00Z"
+  },
+  "SC.4.L.17.Su.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that animals (consumers) eat plants or other animals for their food.",
+   "cpalms_id": "7813",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7813",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:04Z"
+  },
+  "SC.4.L.17.Pa.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that animals eat food.",
+   "cpalms_id": "7814",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7814",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:08Z"
+  },
+  "SC.4.L.17.3": {
+   "state": "confirmed",
+   "statement_verified": "Trace the flow of energy from the Sun as it is transferred along the food chain through the producers to the consumers.",
+   "cpalms_id": "1703",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1703",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:10Z"
+  },
+  "SC.4.L.17.In.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that plants (producers) use energy from the Sun to make their food and animals (consumers) eat plants or other animals for their food.",
+   "cpalms_id": "7815",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7815",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:14Z"
+  },
+  "SC.4.L.17.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize ways plants and animals, including humans, can impact the environment.",
+   "cpalms_id": "1704",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1704",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:17Z"
+  },
+  "SC.4.L.17.Su.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize ways that people can help improve the environment, such as cleaning up trash.",
+   "cpalms_id": "7817",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7817",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:20Z"
+  },
+  "SC.4.L.17.Pa.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize ways that people can help improve the immediate environment, such as cleaning up trash.",
+   "cpalms_id": "7818",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7818",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:23Z"
+  },
+  "SC.4.L.17.In.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize things that people do to help or hurt the environment, such as recycling and pollution.",
+   "cpalms_id": "7816",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7816",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:26Z"
+  },
+  "SC.4.P.10.1": {
+   "state": "confirmed",
+   "statement_verified": "Observe and describe some basic forms of energy, including light, heat, sound, electrical, and the energy of motion.",
+   "cpalms_id": "1691",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1691",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:29Z"
+  },
+  "SC.4.P.10.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify forms of energy, such as light, heat, electrical, and energy of motion.",
+   "cpalms_id": "7776",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7776",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:32Z"
+  },
+  "SC.4.P.10.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize uses of different forms of energy, including electricity (computer, freezer); heat (camp fire, stove); and energy of motion (rollercoaster, pinball machine).",
+   "cpalms_id": "7777",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7777",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:35Z"
+  },
+  "SC.4.P.10.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a source of heat energy (fire, heater).",
+   "cpalms_id": "7778",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7778",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:38Z"
+  },
+  "SC.4.P.10.2": {
+   "state": "confirmed",
+   "statement_verified": "Investigate and describe that energy has the ability to cause motion or create change.",
+   "cpalms_id": "1683",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1683",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:41Z"
+  },
+  "SC.4.P.10.In.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe the results of applying electrical energy (turn on lights, make motors run); heat energy (burn wood, change temperature); and energy of motion (go faster, change direction).",
+   "cpalms_id": "7779",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7779",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:44Z"
+  },
+  "SC.4.P.10.Su.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the results of using electrical energy (turning on television); heat energy (burning wood); and energy of motion (rolling ball).",
+   "cpalms_id": "7780",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7780",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:48Z"
+  },
+  "SC.4.P.10.3": {
+   "state": "confirmed",
+   "statement_verified": "Investigate and explain that sound is produced by vibrating objects and that pitch depends on how fast or slow the object vibrates.",
+   "cpalms_id": "1692",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1692",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:50Z"
+  },
+  "SC.4.P.10.Pa.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize objects that create sounds.",
+   "cpalms_id": "7783",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7783",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:54Z"
+  },
+  "SC.4.P.10.In.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that vibrations cause sound and identify sounds as high or low (pitch).",
+   "cpalms_id": "7781",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7781",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:56Z"
+  },
+  "SC.4.P.10.Su.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize sounds as high or low (pitch).",
+   "cpalms_id": "7782",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7782",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:26:59Z"
+  },
+  "SC.4.P.10.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe how moving water and air are sources of energy and can be used to move things.",
+   "cpalms_id": "1684",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1684",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:02Z"
+  },
+  "SC.4.P.10.Pa.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that moving air can move objects.",
+   "cpalms_id": "7786",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7786",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:05Z"
+  },
+  "SC.4.P.10.In.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify machines that use energy from moving water or air, including a windmill and a waterwheel.",
+   "cpalms_id": "7784",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7784",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:09Z"
+  },
+  "SC.4.P.10.Su.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify objects that use energy from moving air, such as a pinwheel or sailboat.",
+   "cpalms_id": "7785",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7785",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:11Z"
+  },
+  "SC.4.P.11.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that heat flows from a hot object to a cold object and that heat flow may cause materials to change temperature.",
+   "cpalms_id": "1693",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1693",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:14Z"
+  },
+  "SC.4.P.11.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify that a hot object will make a cold object warm when they touch.",
+   "cpalms_id": "7787",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7787",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:17Z"
+  },
+  "SC.4.P.11.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that a hot object can make a cold object warm when they touch.",
+   "cpalms_id": "7788",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7788",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:20Z"
+  },
+  "SC.4.P.11.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a temperature change from cold to warm.",
+   "cpalms_id": "7789",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7789",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:23Z"
+  },
+  "SC.4.P.11.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify common materials that conduct heat well or poorly.",
+   "cpalms_id": "1632",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1632",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:27Z"
+  },
+  "SC.4.P.11.In.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify materials that are strong conductors of heat, such as metal.",
+   "cpalms_id": "7790",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7790",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:30Z"
+  },
+  "SC.4.P.11.Su.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a common material that is a strong conductor of heat, such as metal.",
+   "cpalms_id": "7791",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7791",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:32Z"
+  },
+  "SC.4.P.11.Pa.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize common objects that conduct heat.",
+   "cpalms_id": "7792",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7792",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:35Z"
+  },
+  "SC.4.P.12.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that an object in motion always changes its position and may change its direction.",
+   "cpalms_id": "1694",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1694",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:38Z"
+  },
+  "SC.4.P.12.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify that the position of an object changes when the object is in motion.",
+   "cpalms_id": "7793",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7793",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:42Z"
+  },
+  "SC.4.P.12.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that movement causes an object to change position.",
+   "cpalms_id": "7794",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7794",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:45Z"
+  },
+  "SC.4.P.12.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that an object can move in different directions, such as left to right, straight line, and zigzag.",
+   "cpalms_id": "7795",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7795",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:48Z"
+  },
+  "SC.4.P.12.2": {
+   "state": "confirmed",
+   "statement_verified": "Investigate and describe that the speed of an object is determined by the distance it travels in a unit of time and that objects can move at different speeds.",
+   "cpalms_id": "1695",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1695",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:51Z"
+  },
+  "SC.4.P.12.In.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify speed as how long it takes to travel a certain distance.",
+   "cpalms_id": "7796",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7796",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:55Z"
+  },
+  "SC.4.P.12.Su.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify objects that move at different speeds.",
+   "cpalms_id": "7797",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7797",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:27:58Z"
+  },
+  "SC.4.P.12.Pa.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize an object as moving fast or slow.",
+   "cpalms_id": "7798",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7798",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:02Z"
+  },
+  "SC.4.P.8.1": {
+   "state": "confirmed",
+   "statement_verified": "Measure and compare objects and materials based on their physical properties including: mass, shape, volume, color, hardness, texture, odor, taste, attraction to magnets.",
+   "cpalms_id": "1687",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1687",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:05Z"
+  },
+  "SC.4.P.8.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Compare objects and materials based on physical properties, such as size, shape, color, texture, weight, hardness, odor, taste, and temperature.",
+   "cpalms_id": "7761",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7761",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:08Z"
+  },
+  "SC.4.P.8.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Sort objects by physical properties, such as size, shape, color, texture, weight (heavy or light), and temperature (hot or cold).",
+   "cpalms_id": "7762",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7762",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:11Z"
+  },
+  "SC.4.P.8.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Match objects with similar observable properties, such as size, shape, color, or texture.",
+   "cpalms_id": "7763",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7763",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:14Z"
+  },
+  "SC.4.P.8.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify properties and common uses of water in each of its states.",
+   "cpalms_id": "1682",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1682",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:18Z"
+  },
+  "SC.4.P.8.In.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify properties and uses of water in solid and liquid states.",
+   "cpalms_id": "7764",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7764",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:21Z"
+  },
+  "SC.4.P.8.Su.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify uses of water in solid or liquid states.",
+   "cpalms_id": "7765",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7765",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:25Z"
+  },
+  "SC.4.P.8.Pa.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify ice as a solid.",
+   "cpalms_id": "7766",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7766",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:28Z"
+  },
+  "SC.4.P.8.3": {
+   "state": "confirmed",
+   "statement_verified": "Explore the Law of Conservation of Mass by demonstrating that the mass of a whole object is always the same as the sum of the masses of its parts.",
+   "cpalms_id": "1688",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1688",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:31Z"
+  },
+  "SC.4.P.8.In.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify that a whole object weighs the same as all of its parts together.",
+   "cpalms_id": "7767",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7767",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:34Z"
+  },
+  "SC.4.P.8.Su.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the parts of an object can be put together to make a whole.",
+   "cpalms_id": "7768",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7768",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:37Z"
+  },
+  "SC.4.P.8.Pa.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that some objects have parts.",
+   "cpalms_id": "7769",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7769",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:39Z"
+  },
+  "SC.4.P.8.4": {
+   "state": "confirmed",
+   "statement_verified": "Investigate and describe that magnets can attract magnetic materials and attract and repel other magnets.",
+   "cpalms_id": "1689",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1689",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:42Z"
+  },
+  "SC.4.P.8.In.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify objects a magnet will attract.",
+   "cpalms_id": "7770",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7770",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:45Z"
+  },
+  "SC.4.P.8.Su.4": {
+   "state": "confirmed",
+   "statement_verified": "Demonstrate that magnets can attract other magnets.",
+   "cpalms_id": "7771",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7771",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:48Z"
+  },
+  "SC.4.P.8.Pa.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that objects can stick together.",
+   "cpalms_id": "7772",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7772",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:51Z"
+  },
+  "SC.4.P.9.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify some familiar changes in materials that result in other materials with different characteristics, such as decaying animal or plant matter, burning, rusting, and cooking.",
+   "cpalms_id": "1690",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1690",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:54Z"
+  },
+  "SC.4.P.9.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Observe and describe properties of materials that have been changed into other materials, such as decayed leaves of a plant.",
+   "cpalms_id": "7773",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7773",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:28:58Z"
+  },
+  "SC.4.P.9.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Indicate differences in materials that have been changed into other materials, such as rust on a can.",
+   "cpalms_id": "7774",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7774",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:01Z"
+  },
+  "SC.4.P.9.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize changes in observable properties of materials.",
+   "cpalms_id": "7775",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7775",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:04Z"
+  },
+  "SC.4.E.5.1": {
+   "state": "confirmed",
+   "statement_verified": "Observe that the patterns of stars in the sky stay the same although they appear to shift across the sky nightly, and different stars can be seen in different seasons.",
+   "cpalms_id": "1673",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1673",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:06Z"
+  },
+  "SC.4.E.5.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify that there are many stars in the sky with some that create patterns.",
+   "cpalms_id": "7729",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7729",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:11Z"
+  },
+  "SC.4.E.5.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a pattern of stars in the sky, such as the Big Dipper.",
+   "cpalms_id": "7730",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7730",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:13Z"
+  },
+  "SC.4.E.5.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that there are many stars in the sky.",
+   "cpalms_id": "7731",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7731",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:17Z"
+  },
+  "SC.4.E.5.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe the changes in the observable shape of the moon over the course of about a month.",
+   "cpalms_id": "1674",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1674",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:20Z"
+  },
+  "SC.4.E.5.In.2": {
+   "state": "confirmed",
+   "statement_verified": "Label three phases of the moon, including full, half (quarter), and crescent.",
+   "cpalms_id": "7732",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7732",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:24Z"
+  },
+  "SC.4.E.5.Su.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify a full moon and a half (quarter) moon.",
+   "cpalms_id": "7733",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7733",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:28Z"
+  },
+  "SC.4.E.5.Pa.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a full moon as a circle.",
+   "cpalms_id": "7734",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7734",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:31Z"
+  },
+  "SC.4.E.5.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that Earth revolves around the Sun in a year and rotates on its axis in a 24-hour day.",
+   "cpalms_id": "1675",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1675",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:35Z"
+  },
+  "SC.4.E.5.In.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that Earth revolves around the Sun.",
+   "cpalms_id": "7735",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7735",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:38Z"
+  },
+  "SC.4.E.5.Su.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that Earth is always turning (rotating).",
+   "cpalms_id": "7736",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7736",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:41Z"
+  },
+  "SC.4.E.5.Pa.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify morning, noon, and night.",
+   "cpalms_id": "7737",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7737",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:44Z"
+  },
+  "SC.4.E.5.4": {
+   "state": "confirmed",
+   "statement_verified": "Relate that the rotation of Earth (day and night) and apparent movements of the Sun, Moon, and stars are connected.",
+   "cpalms_id": "1676",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1676",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:46Z"
+  },
+  "SC.4.E.5.In.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the Sun appears to rise and set because of Earth’s rotation in a 24-hour day.",
+   "cpalms_id": "7738",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7738",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:50Z"
+  },
+  "SC.4.E.5.Su.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the side of Earth facing the Sun has daylight.",
+   "cpalms_id": "7739",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7739",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:53Z"
+  },
+  "SC.4.E.5.5": {
+   "state": "confirmed",
+   "statement_verified": "Investigate and report the effects of space research and exploration on the economy and culture of Florida.",
+   "cpalms_id": "1677",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1677",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:56Z"
+  },
+  "SC.4.E.5.Pa.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a space-related object.",
+   "cpalms_id": "7742",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7742",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:29:59Z"
+  },
+  "SC.4.E.5.In.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify objects and people related to the space program in Florida.",
+   "cpalms_id": "7740",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7740",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:03Z"
+  },
+  "SC.4.E.5.Su.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize an object or person related to the space program in Florida.",
+   "cpalms_id": "7741",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7741",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:06Z"
+  },
+  "SC.4.E.6.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the three categories of rocks: igneous, (formed from molten rock); sedimentary (pieces of other rocks and fossilized organisms); and metamorphic (formed from heat and pressure).",
+   "cpalms_id": "1678",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1678",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:09Z"
+  },
+  "SC.4.E.6.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that rocks are classified by the way they are formed, such as sedimentary.",
+   "cpalms_id": "7743",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7743",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:12Z"
+  },
+  "SC.4.E.6.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Sort rocks according to observable characteristics, including color, shape, and size.",
+   "cpalms_id": "7744",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7744",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:16Z"
+  },
+  "SC.4.E.6.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Distinguish rocks from other substances found on the Earth’s surface.",
+   "cpalms_id": "7745",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7745",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:20Z"
+  },
+  "SC.4.E.6.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify the physical properties of common earth-forming minerals, including hardness, color, luster, cleavage, and streak color, and recognize the role of minerals in the formation of rocks.",
+   "cpalms_id": "1679",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1679",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:23Z"
+  },
+  "SC.4.E.6.In.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify physical properties (hardness, streak color, and luster) of common minerals, such as rock salt, talc, gold, and silver.",
+   "cpalms_id": "7746",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7746",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:27Z"
+  },
+  "SC.4.E.6.Su.2": {
+   "state": "confirmed",
+   "statement_verified": "Sort common minerals, such as rock salt, talc, gold, and silver, by their physical properties (luster and color).",
+   "cpalms_id": "7747",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7747",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:30Z"
+  },
+  "SC.4.E.6.Pa.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize common minerals, such as rock salt, talc, gold, and silver.",
+   "cpalms_id": "7748",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7748",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:32Z"
+  },
+  "SC.4.E.6.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that humans need resources found on Earth and that these are either renewable or nonrenewable.",
+   "cpalms_id": "1680",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1680",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:35Z"
+  },
+  "SC.4.E.6.In.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that some natural resources used by humans are non-renewable, such as oil.",
+   "cpalms_id": "7749",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7749",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:38Z"
+  },
+  "SC.4.E.6.Su.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that some natural resources can run out (non-renewable).",
+   "cpalms_id": "7750",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7750",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:41Z"
+  },
+  "SC.4.E.6.Pa.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the universal symbol for recycling.",
+   "cpalms_id": "7751",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7751",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:44Z"
+  },
+  "SC.4.E.6.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe the basic differences between physical weathering (breaking down of rock by wind, water, ice, temperature change, and plants) and erosion (movement of rock by gravity, wind, water, and ice).",
+   "cpalms_id": "1681",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1681",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:48Z"
+  },
+  "SC.4.E.6.In.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify that wind and water cause physical weathering and erosion of rocks.",
+   "cpalms_id": "7752",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7752",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:51Z"
+  },
+  "SC.4.E.6.Su.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize examples of weathering or erosion in the environment.",
+   "cpalms_id": "7753",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7753",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:54Z"
+  },
+  "SC.4.E.6.Pa.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the effect of weathering on an object.",
+   "cpalms_id": "7754",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7754",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:30:57Z"
+  },
+  "SC.4.E.6.5": {
+   "state": "confirmed",
+   "statement_verified": "Investigate how technology and tools help to extend the ability of humans to observe very small things and very large things.",
+   "cpalms_id": "1685",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1685",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:01Z"
+  },
+  "SC.4.E.6.In.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify tools used to observe things that are far away and things that are very small.",
+   "cpalms_id": "7755",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7755",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:05Z"
+  },
+  "SC.4.E.6.Su.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize tools that will make things look larger, such as a telescope and a magnifier.",
+   "cpalms_id": "7756",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7756",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:08Z"
+  },
+  "SC.4.E.6.Pa.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that something has been magnified.",
+   "cpalms_id": "7757",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7757",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:11Z"
+  },
+  "SC.4.E.6.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify resources available in Florida (water, phosphate, oil, limestone, silicon, wind, and solar energy).",
+   "cpalms_id": "1686",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1686",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:14Z"
+  },
+  "SC.4.E.6.In.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify natural resources found in Florida, including solar energy, water, and limestone.",
+   "cpalms_id": "7758",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7758",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:16Z"
+  },
+  "SC.4.E.6.Su.6": {
+   "state": "confirmed",
+   "statement_verified": "Recognize natural resources found in Florida, such as solar energy and water.",
+   "cpalms_id": "7759",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7759",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:19Z"
+  },
+  "SC.4.E.6.Pa.6": {
+   "state": "confirmed",
+   "statement_verified": "Recognize water as a resource in Florida.",
+   "cpalms_id": "7760",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7760",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:23Z"
+  },
+  "SC.4.N.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Raise questions about the natural world, use appropriate reference materials that support understanding to obtain information (identifying the source), conduct both individual and team investigations through free exploration and systematic investigations, and generate appropriate explanations based on those explorations.",
+   "cpalms_id": "1661",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1661",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:27Z"
+  },
+  "SC.4.N.1.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Ask a question about the natural world and use selected reference material to find information, observe, explore, and identify findings.",
+   "cpalms_id": "7709",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7709",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:30Z"
+  },
+  "SC.4.N.1.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Ask a question about the natural world, explore materials, observe, and share information.",
+   "cpalms_id": "7710",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7710",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:33Z"
+  },
+  "SC.4.N.1.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore, observe, and select an object or picture to solve a simple problem.",
+   "cpalms_id": "7711",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7711",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:36Z"
+  },
+  "SC.4.N.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare the observations made by different groups using multiple tools and seek reasons to explain the differences across groups.",
+   "cpalms_id": "1662",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1662",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:39Z"
+  },
+  "SC.4.N.1.In.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare own observations with observations of others.",
+   "cpalms_id": "7712",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7712",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:44Z"
+  },
+  "SC.4.N.1.Su.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify information based on observations of self and others.",
+   "cpalms_id": "7713",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7713",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:47Z"
+  },
+  "SC.4.N.1.Pa.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize differences in objects or pictures.",
+   "cpalms_id": "7714",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7714",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:50Z"
+  },
+  "SC.4.N.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain that science does not always follow a rigidly defined method (\"the scientific method\") but that science does involve the use of observations and empirical evidence.",
+   "cpalms_id": "1663",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1663",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:52Z"
+  },
+  "SC.4.N.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Attempt reasonable answers to scientific questions and cite evidence in support.",
+   "cpalms_id": "1630",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1630",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:55Z"
+  },
+  "SC.4.N.1.In.3": {
+   "state": "confirmed",
+   "statement_verified": "Relate findings to predefined science questions.",
+   "cpalms_id": "7715",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7715",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:31:59Z"
+  },
+  "SC.4.N.1.Su.3": {
+   "state": "confirmed",
+   "statement_verified": "Answer questions about objects and actions related to science.",
+   "cpalms_id": "7716",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7716",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:01Z"
+  },
+  "SC.4.N.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Compare the methods and results of investigations done by other classmates.",
+   "cpalms_id": "1631",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1631",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:04Z"
+  },
+  "SC.4.N.1.Pa.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that people share information about science.",
+   "cpalms_id": "7717",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7717",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:07Z"
+  },
+  "SC.4.N.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Keep records that describe observations made, carefully distinguishing actual observations from ideas and inferences about the observations.",
+   "cpalms_id": "1668",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1668",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:10Z"
+  },
+  "SC.4.N.1.Pa.3": {
+   "state": "confirmed",
+   "statement_verified": "Select an object or picture to represent observed events.",
+   "cpalms_id": "7720",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7720",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:13Z"
+  },
+  "SC.4.N.1.In.4": {
+   "state": "confirmed",
+   "statement_verified": "Communicate observations and findings through the use of pictures, writing, or charts.",
+   "cpalms_id": "7718",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7718",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:15Z"
+  },
+  "SC.4.N.1.Su.4": {
+   "state": "confirmed",
+   "statement_verified": "Record observations using drawings, dictation, or pictures.",
+   "cpalms_id": "7719",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7719",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:18Z"
+  },
+  "SC.4.N.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Recognize and explain that scientists base their explanations on evidence.",
+   "cpalms_id": "1669",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1669",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:21Z"
+  },
+  "SC.4.N.1.In.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that scientists perform experiments, make observations, and gather evidence.",
+   "cpalms_id": "7721",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7721",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:24Z"
+  },
+  "SC.4.N.1.Su.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize ways that scientists collect evidence, such as by observations or measuring.",
+   "cpalms_id": "7722",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7722",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:27Z"
+  },
+  "SC.4.N.1.8": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that science involves creativity in designing experiments.",
+   "cpalms_id": "1670",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1670",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:30Z"
+  },
+  "SC.4.N.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain that science focuses solely on the natural world.",
+   "cpalms_id": "1671",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1671",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:34Z"
+  },
+  "SC.4.N.2.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify that science focuses on the natural world.",
+   "cpalms_id": "7723",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7723",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:37Z"
+  },
+  "SC.4.N.2.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that science focuses on the natural world.",
+   "cpalms_id": "7724",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7724",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:41Z"
+  },
+  "SC.4.N.2.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Associate science with the natural world in the local environment.",
+   "cpalms_id": "7725",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7725",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:43Z"
+  },
+  "SC.4.N.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain that models can be three dimensional, two dimensional, an explanation in your mind, or a computer model.",
+   "cpalms_id": "1672",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1672",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:45Z"
+  },
+  "SC.4.N.3.In.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify different types of models, such as a replica, a picture, or an animation.",
+   "cpalms_id": "7726",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7726",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:49Z"
+  },
+  "SC.4.N.3.Su.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize different types of models, such as a replica or a picture.",
+   "cpalms_id": "7727",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7727",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:52Z"
+  },
+  "SC.4.N.3.Pa.1": {
+   "state": "confirmed",
+   "statement_verified": "Match a model that is a replica to a real object.",
+   "cpalms_id": "7728",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/7728",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-09T14:32:55Z"
+  }
+ }
+}
