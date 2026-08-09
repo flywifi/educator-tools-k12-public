@@ -33,11 +33,15 @@ DATA = ROOT / "shared" / "standards" / "resources" / "florida" / "data"
 # FL prefix -> subject corpus file(s). SC. is shared by NGSSS science and Computer Science.
 PREFIX_SUBJECTS = {"MA": ["math"], "ELA": ["ela"], "SC": ["science", "computer_science"],
                    "SS": ["social_studies"], "ELD": ["eld"]}
-# Corpora where absence is NOT proof of fabrication (data/index.json's own caveats).
+# Corpora where absence is NOT proof of fabrication (data/index.json's own caveats). A subject
+# EXITS this set once a CPALMS verification overlay (tools/cpalms_verify.py --apply --write)
+# covers >= OVERLAY_TRUST_COVERAGE of its codes — see _is_low_confidence().
 LOW_CONFIDENCE = {
     "social_studies": "social_studies corpus is a best-effort .doc parse (data/index.json) — verify on CPALMS",
     "eld": "only the 5 umbrella ELD.K12.ELL.* practices are enumerated — verify deeper ELD codes on CPALMS",
 }
+OVERLAYS = DATA / "overlays"
+OVERLAY_TRUST_COVERAGE = 0.98
 
 # Coding schemes. FL per florida-best.md §Coding schemes; validated against all corpus codes
 # (--self-test). AP suffixes: AP.<n>[a-z] (MA/ELA/SS), In/Su/Pa.<n> (science access-point levels).
@@ -56,7 +60,35 @@ SPAN_GRADES = {"K12": {"K"} | {str(n) for n in range(1, 13)},
                "612": {str(n) for n in range(6, 13)}}
 
 _cache: dict[str, dict[str, dict]] = {}
+_overlay_cache: dict[str, dict] = {}
 _caveats: list[str] = []
+
+
+def _load_overlay(name: str) -> dict:
+    """CPALMS verification overlay for a subject (tools/cpalms_verify.py --apply --write).
+    entries: code -> {state, statement_verified, cpalms_url, checked_at, new_code?}."""
+    if name in _overlay_cache:
+        return _overlay_cache[name]
+    overlay: dict = {}
+    try:
+        p = OVERLAYS / f"{name}.cpalms.json"
+        if p.exists():
+            overlay = json.loads(p.read_text(encoding="utf-8"))
+    except Exception as exc:
+        _caveats.append(f"overlay_unreadable:{name}:{exc.__class__.__name__}")
+    _overlay_cache[name] = overlay
+    return overlay
+
+
+def _is_low_confidence(name: str) -> str | None:
+    """A low-confidence subject earns full trust once its CPALMS overlay coverage crosses the
+    threshold — then absence in the corpus becomes evidence again (blocking not_found)."""
+    if name not in LOW_CONFIDENCE:
+        return None
+    ov = _load_overlay(name)
+    if ov.get("entries") and float(ov.get("coverage", 0)) >= OVERLAY_TRUST_COVERAGE:
+        return None
+    return LOW_CONFIDENCE[name]
 
 
 def _load_subject(name: str) -> dict[str, dict] | None:
@@ -132,8 +164,25 @@ def _resolve_one(code: str, standards_set, grade_band, applicability) -> dict:
                          statement=e.get("statement"),
                          grade_band_match=_band_match(str(e.get("grade")), grade_band),
                          detail=_set_mismatch("fl-" + name, standards_set).strip())
+                ov = (_load_overlay(name).get("entries") or {}).get(c)
+                if ov:
+                    r["verified"] = {"source": "cpalms", "checked_at": ov.get("checked_at"),
+                                     "url": ov.get("cpalms_url")}
+                    if ov.get("statement_verified"):
+                        # CPALMS's text is the registry origin form for the §6 mutation check.
+                        r["statement"] = ov["statement_verified"]
                 if r["grade_band_match"] is False:
                     r["detail"] = (r["detail"] + f" grade '{e.get('grade')}' is outside band '{grade_band}'").strip()
+                return r
+        # Not in the parse corpus: an overlay may record it as renumbered (old -> new code).
+        for name in subjects:
+            ov = (_load_overlay(name).get("entries") or {}).get(c)
+            if ov and ov.get("new_code"):
+                r.update(state="resolved", statement=ov.get("statement_verified"),
+                         verified={"source": "cpalms", "checked_at": ov.get("checked_at"),
+                                   "url": ov.get("cpalms_url")},
+                         detail=f"superseded_by {ov['new_code']} (CPALMS renumbering) — cite the "
+                                f"current code")
                 return r
         if not scheme.match(c):
             r.update(state="malformed",
@@ -143,7 +192,7 @@ def _resolve_one(code: str, standards_set, grade_band, applicability) -> dict:
             r.update(state="scheme_valid_unenumerated",
                      detail="corpus unavailable this run — structure valid, existence unchecked")
             return r
-        low = [LOW_CONFIDENCE[s] for s in subjects if s in LOW_CONFIDENCE]
+        low = [note for s in subjects if (note := _is_low_confidence(s))]
         if low:
             r.update(state="not_found_low_confidence", detail=low[0] + _suggest(c, tables))
         else:
@@ -204,7 +253,7 @@ def verify(codes, standards_set=None, grade_band=None, context=None) -> dict:
                          and (r["state"] != "resolved" or r["grade_band_match"] is False or r["detail"])],
             "corpus": {"fl_subjects_loaded": sorted(loaded),
                        "fl_total_codes": sum(len(_cache[s]) for s in loaded),
-                       "caveats": sorted({LOW_CONFIDENCE[s] for s in loaded if s in LOW_CONFIDENCE}
+                       "caveats": sorted({note for s in loaded if (note := _is_low_confidence(s))}
                                          | set(_caveats))}}
 
 
@@ -262,6 +311,35 @@ def self_test(invert: bool = False) -> int:
     rep = verify(["MA.3.NSO.1.1"], standards_set="CCSS-Math 2010")
     if "set_mismatch" not in rep["results"][0]["detail"]:
         print("FAIL set_mismatch detail missing"); failures += 1
+    # Overlay behavior, both ways: inject a synthetic trusted CPALMS overlay for social_studies.
+    _overlay_cache["social_studies"] = {
+        "coverage": 0.99,
+        "entries": {"SS.K.A.1.1": {"state": "confirmed", "statement_verified": "VERIFIED-TEXT",
+                                   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1",
+                                   "checked_at": "2026-08-09T00:00:00Z"},
+                    "SS.7.OLD.1.1": {"state": "renumbered", "new_code": "SS.7.CG.1.1",
+                                     "statement_verified": "MOVED-TEXT",
+                                     "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2",
+                                     "checked_at": "2026-08-09T00:00:00Z"}}}
+    r1 = verify(["SS.K.A.1.1"])["results"][0]
+    ok = r1["state"] == "resolved" and r1.get("verified", {}).get("source") == "cpalms" \
+        and r1["statement"] == "VERIFIED-TEXT"
+    print(("PASS" if ok else "FAIL") + " overlay: resolved code carries verified stamp + origin form")
+    failures += 0 if ok else 1
+    rep = verify(["SS.7.C.9.99"])
+    ok = rep["results"][0]["state"] == "not_found" and "SS.7.C.9.99" in rep["blocking"]
+    print(("PASS" if ok else "FAIL") + " overlay: trusted coverage flips SS miss to BLOCKING not_found")
+    failures += 0 if ok else 1
+    r3 = verify(["SS.7.OLD.1.1"])["results"][0]
+    ok = r3["state"] == "resolved" and "superseded_by SS.7.CG.1.1" in r3["detail"]
+    print(("PASS" if ok else "FAIL") + " overlay: renumbered old code resolves with superseded_by")
+    failures += 0 if ok else 1
+    _overlay_cache["social_studies"] = {"coverage": 0.5, "entries": {"SS.K.A.1.1": {}}}
+    rep = verify(["SS.7.C.9.99"])
+    ok = rep["results"][0]["state"] == "not_found_low_confidence" and not rep["blocking"]
+    print(("PASS" if ok else "FAIL") + " overlay: sub-threshold coverage stays advisory (both ways)")
+    failures += 0 if ok else 1
+    _overlay_cache.clear()
     # Shape audit: every corpus code matches its family scheme (proves the malformed check
     # can never brand a real committed code as malformed).
     bad = 0
