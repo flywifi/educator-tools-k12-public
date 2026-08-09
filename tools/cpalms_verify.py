@@ -72,6 +72,9 @@ def _now() -> str:
 def _norm(s: str) -> str:
     s = htmllib.unescape(s or "")
     s = s.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
+    # Punctuation-spacing artifact (seen live: CPALMS rendered "collectively.Mathematicians"):
+    # a period abutting a letter gets a space so spacing loss alone never reads as drift.
+    s = re.sub(r"\.(?=[A-Za-z])", ". ", s)
     return re.sub(r"\s+", " ", s).strip().lower().rstrip(".")
 
 
@@ -465,6 +468,9 @@ def self_test() -> int:
           not _lead_matches("Add and subtract multi-digit whole numbers.",
                             "Describe the United States' participation.")[0])
     check("smart-quote normalization", _norm("the’s test") == _norm("the's test"))
+    check("period-spacing normalization (G1 artifact: 'collectively.Mathematicians')",
+          _norm("learning collectively.Mathematicians who participate")
+          == _norm("learning collectively. Mathematicians who participate"))
     # apply-side schema rejection: an invalid state must be rejected (both-ways discipline)
     bad_row = {"code": "MA.3.NSO.1.1", "cpalms_state": "totally_fine"}
     check("invalid state rejected", bad_row["cpalms_state"] not in VALID_STATES)

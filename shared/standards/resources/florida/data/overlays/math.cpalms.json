@@ -1,0 +1,3161 @@
+{
+ "subject": "math",
+ "source": "cpalms",
+ "generated_at": "2026-08-09T14:03:54Z",
+ "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
+ "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
+ "coverage": 0.3487,
+ "scopes": [
+  {
+   "grades": "K,1,2,3,4,5",
+   "rows_in_scope": 393,
+   "generated_at": "2026-08-09T14:03:54Z"
+  }
+ ],
+ "entries": {
+  "MA.K12.MTR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Demonstrate understanding by representing problems in multiple ways.Mathematicians who demonstrate understanding by representing problems in multiple ways: Build understanding through modeling and using manipulatives.Represent solutions to problems in multiple ways using objects, drawings, tables, graphs and equations.Progress from modeling problems with objects and drawings to using algorithms and equations.Express connections between concepts and representations.Choose a representation based on the given context or purpose.",
+   "cpalms_id": "15876",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15876",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:33:13Z"
+  },
+  "MA.K12.MTR.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Complete tasks with mathematical fluency.Mathematicians who complete tasks with mathematical fluency:Select efficient and appropriate methods for solving problems within the given context.Maintain flexibility and accuracy while performing procedures and mental calculations.Complete tasks accurately and with confidence.Adapt procedures to apply them to a new context.Use feedback to improve efficiency when performing calculations.",
+   "cpalms_id": "15877",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15877",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:33:17Z"
+  },
+  "MA.K12.MTR.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Engage in discussions that reflect on the mathematical thinking of self and others.Mathematicians who engage in discussions that reflect on the mathematical thinking of self and others:Communicate mathematical ideas, vocabulary and methods effectively.Analyze the mathematical thinking of others.Compare the efficiency of a method to those expressed by others.Recognize errors and suggest how to correctly solve the task.Justify results by explaining methods and processes.Construct possible arguments based on evidence.",
+   "cpalms_id": "15878",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15878",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:33:21Z"
+  },
+  "MA.K12.MTR.5.1": {
+   "state": "confirmed",
+   "statement_verified": "Use patterns and structure to help understand and connect mathematical concepts.Mathematicians who use patterns and structure to help understand and connect mathematical concepts:Focus on relevant details within a problem.Create plans and procedures to logically order events, steps or ideas to solve problems.Decompose a complex problem into manageable parts.Relate previously learned concepts to new concepts.Look for similarities among problems.Connect solutions of problems to more complicated large-scale situations.",
+   "cpalms_id": "15879",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15879",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:33:24Z"
+  },
+  "MA.K12.MTR.6.1": {
+   "state": "confirmed",
+   "statement_verified": "Assess the reasonableness of solutions.Mathematicians who assess the reasonableness of solutions:Estimate to discover possible solutions.Use benchmark quantities to determine if a solution makes sense.Check calculations when solving problems.Verify possible solutions by explaining the methods used.Evaluate results based on the given context.",
+   "cpalms_id": "15880",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15880",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:33:28Z"
+  },
+  "MA.K12.MTR.7.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply mathematics to real-world contexts.Mathematicians who apply mathematics to real-world contexts:Connect mathematical concepts to everyday experiences.Use models and methods to understand, represent and solve problems.Perform investigations to gather data or determine if a method is appropriate.Redesign models and methods to improve accuracy or efficiency.",
+   "cpalms_id": "15881",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15881",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:33:32Z"
+  },
+  "MA.K.NSO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a group of up to 20 objects, count the number of objects in that group and represent the number of objects with a written numeral. State the number of objects in a rearrangement of that group without recounting.",
+   "cpalms_id": "15232",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15232",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:33:35Z"
+  },
+  "MA.K.NSO.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a group of up to 10 objects, count the number of objects in that group and represent the number by identifying the written numeral. Express the number of objects in a rearrangement of that group without recounting.",
+   "cpalms_id": "18401",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18401",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:33:39Z"
+  },
+  "MA.K.NSO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a number from 0 to 20, count out that many objects.",
+   "cpalms_id": "15233",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15233",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:33:42Z"
+  },
+  "MA.K.NSO.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a number from 0 to 10, count out that many objects.",
+   "cpalms_id": "18402",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18402",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:33:45Z"
+  },
+  "MA.K.NSO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify positions of objects within a sequence using the words “first,” “second,” “third,” “fourth” or “fifth.”",
+   "cpalms_id": "15234",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15234",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:33:48Z"
+  },
+  "MA.K.NSO.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the \"first,\" \"second\" or \"third\" object within a sequence.",
+   "cpalms_id": "18403",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18403",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:33:52Z"
+  },
+  "MA.K.NSO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Compare the number of objects from 0 to 20 in two groups using the terms less than, equal to or greater than.",
+   "cpalms_id": "15235",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15235",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:33:58Z"
+  },
+  "MA.K.NSO.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Compare the number of objects from 0 to 10 in two groups to determine which group is greater or less, or if the number of objects in the two groups are equal.",
+   "cpalms_id": "18404",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18404",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:34:07Z"
+  },
+  "MA.K.NSO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Recite the number names to 100 by ones and by tens. Starting at a given number, count forward within 100 and backward within 20.",
+   "cpalms_id": "15236",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15236",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:34:11Z"
+  },
+  "MA.K.NSO.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Express number names from 1 to 100 by ones and from 10 to 100 by tens. Starting at a given number, count forward to 20 and backwards within 10.",
+   "cpalms_id": "18407",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18407",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:34:14Z"
+  },
+  "MA.K.NSO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Represent whole numbers from 10 to 20, using a unit of ten and a group of ones, with objects, drawings and expressions or equations.",
+   "cpalms_id": "15237",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15237",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:34:18Z"
+  },
+  "MA.K.NSO.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Represent whole numbers from 10 to 19, using one group of 10 ones and some further ones, with objects, drawings or verbalization.",
+   "cpalms_id": "18408",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18408",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:34:22Z"
+  },
+  "MA.K.NSO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Locate, order and compare numbers from 0 to 20 using the number line and terms less than, equal to or greater than.",
+   "cpalms_id": "15238",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15238",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:34:26Z"
+  },
+  "MA.K.NSO.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Locate and compare two numbers from 0 to 10 to determine which number is less than, equal to or greater than the other number.",
+   "cpalms_id": "18409",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18409",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-09T01:34:29Z"
+  },
+  "MA.K.NSO.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore addition of two whole numbers from 0 to 10, and related subtraction facts.",
+   "cpalms_id": "15239",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15239",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:34:32Z"
+  },
+  "MA.K.NSO.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore addition and subtraction of two whole numbers within 5 using objects.",
+   "cpalms_id": "18410",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18410",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:34:36Z"
+  },
+  "MA.K.NSO.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Add two one-digit whole numbers with sums from 0 to 10 and subtract using related facts with procedural reliability.",
+   "cpalms_id": "15240",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15240",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:34:39Z"
+  },
+  "MA.K.NSO.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply a strategy for adding and subtracting two one-digit whole numbers to solve within 5.",
+   "cpalms_id": "18411",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18411",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:34:43Z"
+  },
+  "MA.K.AR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "For any number from 1 to 9, find the number that makes 10 when added to the given number.",
+   "cpalms_id": "15241",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15241",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:34:46Z"
+  },
+  "MA.K.AR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "For any number from 1 to 9, use objects to find the number that makes 10 when added to the given number.",
+   "cpalms_id": "18412",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18412",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:34:50Z"
+  },
+  "MA.K.AR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a number from 0 to 10, find the different ways it can be represented as the sum of two numbers.",
+   "cpalms_id": "15242",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15242",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:34:56Z"
+  },
+  "MA.K.AR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a number from 0 to 5, find the different ways it can be represented as the sum of two numbers.",
+   "cpalms_id": "18413",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18413",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:01Z"
+  },
+  "MA.K.AR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve addition and subtraction real-world problems using objects, drawings or equations to represent the problem.",
+   "cpalms_id": "15243",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15243",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:35:04Z"
+  },
+  "MA.K.AR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve addition and subtraction real-world problems within 5 using objects, drawings or equations to represent the problem.",
+   "cpalms_id": "18414",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18414",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:07Z"
+  },
+  "MA.K.AR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain why addition or subtraction equations are true using objects or drawings.",
+   "cpalms_id": "15244",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15244",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:35:10Z"
+  },
+  "MA.K.AR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Show that an addition or subtraction equation within 5 is true using objects or drawings.",
+   "cpalms_id": "18415",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18415",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:13Z"
+  },
+  "MA.K.M.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the attributes of a single object that can be measured such as length, volume or weight.",
+   "cpalms_id": "15245",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15245",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:35:16Z"
+  },
+  "MA.K.M.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore the attributes of a single object that can be measured such as length or weight.",
+   "cpalms_id": "18416",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18416",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:19Z"
+  },
+  "MA.K.M.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Directly compare two objects that have an attribute which can be measured in common. Express the comparison using language to describe the difference.",
+   "cpalms_id": "15246",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15246",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:35:22Z"
+  },
+  "MA.K.M.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Directly compare two objects to determine which is longer/shorter or heavier/lighter.",
+   "cpalms_id": "18417",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18417",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:25Z"
+  },
+  "MA.K.M.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Express the length of an object, up to 20 units long, as a whole number of lengths by laying non-standard objects end to end with no gaps or overlaps.",
+   "cpalms_id": "15247",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15247",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:35:28Z"
+  },
+  "MA.K.M.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Express the length of an object, up to 10 units long, as a whole number of lengths using non-standard objects laid end to end with no gaps or overlaps.",
+   "cpalms_id": "18418",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18418",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:31Z"
+  },
+  "MA.K.GR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify two- and three-dimensional figures regardless of their size or orientation. Figures are limited to circles, triangles, rectangles, squares, spheres, cubes, cones and cylinders.",
+   "cpalms_id": "15248",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15248",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:35:34Z"
+  },
+  "MA.K.GR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify two- and three-dimensional figures regardless of their size. Figures are limited to circles, triangles, rectangles, squares, spheres, cubes, cones and cylinders.",
+   "cpalms_id": "18419",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18419",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:38Z"
+  },
+  "MA.K.GR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare two-dimensional figures based on their similarities, differences and positions. Sort two-dimensional figures based on their similarities and differences. Figures are limited to circles, triangles, rectangles and squares.",
+   "cpalms_id": "15249",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15249",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:35:41Z"
+  },
+  "MA.K.GR.1.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Sort two-dimensional figures based on their similarities. Figures are limited to circles, triangles, rectangles and squares.",
+   "cpalms_id": "18420",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18420",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:44Z"
+  },
+  "MA.K.GR.1.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Use informal spatial language to describe the relative positions of two-dimensional figures (e.g., above, below, beside, next to, under).",
+   "cpalms_id": "18421",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18421",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:47Z"
+  },
+  "MA.K.GR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare three-dimensional figures based on their similarities, differences and positions. Sort three-dimensional figures based on their similarities and differences. Figures are limited to spheres, cubes, cones and cylinders.",
+   "cpalms_id": "15250",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15250",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:35:50Z"
+  },
+  "MA.K.GR.1.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Sort three-dimensional figures based on their similarities. Figures are limited to spheres, cubes, cones and cylinders.",
+   "cpalms_id": "18422",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18422",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:53Z"
+  },
+  "MA.K.GR.1.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Use informal spatial language to describe the relative positions of three-dimensional figures (e.g., above, below, beside, next to, under).",
+   "cpalms_id": "18423",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18423",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:35:56Z"
+  },
+  "MA.K.GR.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Find real-world objects that can be modeled by a given two- or three-dimensional figure. Figures are limited to circles, triangles, rectangles, squares, spheres, cubes, cones and cylinders.",
+   "cpalms_id": "15251",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15251",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:35:59Z"
+  },
+  "MA.K.GR.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore real-world objects that can be modeled by a given two- or three-dimensional figure. Figures are limited to circles, triangles, rectangles, squares, spheres, cubes, cones and cylinders.",
+   "cpalms_id": "18424",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18424",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:36:03Z"
+  },
+  "MA.K.GR.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Combine two-dimensional figures to form a given composite figure. Figures used to form a composite shape are limited to triangles, rectangles and squares.",
+   "cpalms_id": "15252",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15252",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:36:07Z"
+  },
+  "MA.K.GR.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that a different figure can be formed by combining two smaller two-dimensional figures. Figures used to form a composite shape are limited to triangles, rectangles and squares.",
+   "cpalms_id": "18425",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18425",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:36:10Z"
+  },
+  "MA.K.DP.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Collect and sort objects into categories and compare the categories by counting the objects in each category. Report the results verbally, with a written numeral or with drawings.",
+   "cpalms_id": "15253",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15253",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:36:13Z"
+  },
+  "MA.K.DP.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "1 Sort objects by characteristic (e.g., size, shape or color). Count the objects in each category and report the results.",
+   "cpalms_id": "18426",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18426",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:36:17Z"
+  },
+  "MA.1.NSO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Starting at a given number, count forward and backwards within 120 by ones. Skip count by 2s to 20 and by 5s to 100.",
+   "cpalms_id": "15254",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15254",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:36:19Z"
+  },
+  "MA.1.NSO.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Starting at a given number, count forward within 100 and backwards within 20 by ones. Skip count by 5s from 5 to 100.",
+   "cpalms_id": "18427",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18427",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:36:22Z"
+  },
+  "MA.1.NSO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Read numbers from 0 to 100 written in standard form, expanded form and word form. Write numbers from 0 to 100 using standard form and expanded form.",
+   "cpalms_id": "15255",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15255",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:36:25Z"
+  },
+  "MA.1.NSO.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Read numbers from 0 to 20 written in standard form and expanded form. Generate numbers from 0 to 20 using standard form.",
+   "cpalms_id": "18428",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18428",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:36:28Z"
+  },
+  "MA.1.NSO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Compose and decompose two-digit numbers in multiple ways using tens and ones. Demonstrate each composition or decomposition with objects, drawings and expressions or equations.",
+   "cpalms_id": "15256",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15256",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:36:30Z"
+  },
+  "MA.1.NSO.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Compose and decompose numbers up to 20 using tens and ones. Demonstrate each composition or decomposition with objects, drawings, and expressions or equations.",
+   "cpalms_id": "18429",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18429",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:36:33Z"
+  },
+  "MA.1.NSO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare whole numbers up to 100.",
+   "cpalms_id": "15257",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15257",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:36:35Z"
+  },
+  "MA.1.NSO.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Order (e.g., 5, 9, 13) and compare (e.g., 11 < 19) whole numbers up to 20.",
+   "cpalms_id": "18430",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18430",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:36:38Z"
+  },
+  "MA.1.NSO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Recall addition facts with sums to 10 and related subtraction facts with automaticity.",
+   "cpalms_id": "15258",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15258",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:36:42Z"
+  },
+  "MA.1.NSO.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recall addition facts with sums to 5 and related subtraction facts.",
+   "cpalms_id": "18431",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18431",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:36:45Z"
+  },
+  "MA.1.NSO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Add two whole numbers with sums from 0 to 20, and subtract using related facts with procedural reliability.",
+   "cpalms_id": "15259",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15259",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:36:49Z"
+  },
+  "MA.1.NSO.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply a strategy for adding and subtracting two one-digit whole numbers to solve within 10.",
+   "cpalms_id": "18432",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18432",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:36:52Z"
+  },
+  "MA.1.NSO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the number that is one more, one less, ten more and ten less than a given two-digit number.",
+   "cpalms_id": "15260",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15260",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:36:55Z"
+  },
+  "MA.1.NSO.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the number that is one more and one less than a given number within 20.",
+   "cpalms_id": "18433",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18433",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:36:58Z"
+  },
+  "MA.1.NSO.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the addition of a two-digit number and a one-digit number with sums to 100.",
+   "cpalms_id": "15261",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15261",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:37:00Z"
+  },
+  "MA.1.NSO.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the addition of a two-digit number from 11 to 19 and a one-digit number.",
+   "cpalms_id": "18434",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18434",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:37:03Z"
+  },
+  "MA.1.NSO.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Explore subtraction of a one-digit number from a two-digit number.",
+   "cpalms_id": "15262",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15262",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:37:06Z"
+  },
+  "MA.1.NSO.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Explore subtraction of a one-digit number from a two-digit number from 11 to 19.",
+   "cpalms_id": "18435",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18435",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:37:09Z"
+  },
+  "MA.1.AR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply properties of addition to find a sum of three or more whole numbers.",
+   "cpalms_id": "15264",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15264",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:37:12Z"
+  },
+  "MA.1.AR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply the commutative property of addition to find a sum of two whole numbers within 20.",
+   "cpalms_id": "18437",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18437",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:37:15Z"
+  },
+  "MA.1.AR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve addition and subtraction real-world problems using objects, drawings or equations to represent the problem.",
+   "cpalms_id": "15265",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15265",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:37:18Z"
+  },
+  "MA.1.AR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve addition and subtraction real-world problems within 10 using objects, drawings or equations to represent the problem.",
+   "cpalms_id": "18438",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18438",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:37:21Z"
+  },
+  "MA.1.AR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Restate a subtraction problem as a missing addend problem using the relationship between addition and subtraction.",
+   "cpalms_id": "15266",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15266",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:37:25Z"
+  },
+  "MA.1.AR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use the relationship between addition and subtraction to explore subtraction as addition with a missing addend.",
+   "cpalms_id": "18439",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18439",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:37:28Z"
+  },
+  "MA.1.AR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine and explain if equations involving addition or subtraction are true or false.",
+   "cpalms_id": "15267",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15267",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:37:31Z"
+  },
+  "MA.1.AR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine if addition or subtraction equations (with no more than three terms) are true or false. Sums may not exceed 10 and their related subtraction facts.",
+   "cpalms_id": "18440",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18440",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:37:34Z"
+  },
+  "MA.1.AR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Determine the unknown whole number in an addition or subtraction equation, relating three whole numbers, with the unknown in any position.",
+   "cpalms_id": "15268",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15268",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:37:37Z"
+  },
+  "MA.1.AR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Determine the unknown whole number in an addition or subtraction equation, relating three whole numbers, with the result unknown (e.g., 8 − 2 = __, __ = 7 + 3). Sums may not exceed 10 and their related subtraction facts.",
+   "cpalms_id": "18441",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18441",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:37:40Z"
+  },
+  "MA.1.M.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Estimate the length of an object to the nearest inch. Measure the length of an object to the nearest inch or centimeter.",
+   "cpalms_id": "15269",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15269",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:37:44Z"
+  },
+  "MA.1.M.1.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Use a ruler to measure the length of an object with exact whole units to the nearest inch.",
+   "cpalms_id": "18442",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18442",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:37:47Z"
+  },
+  "MA.1.M.1.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Explore familiar objects that can be used to develop a mental measurement benchmark to understand the relative size of an inch.",
+   "cpalms_id": "18443",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18443",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:37:51Z"
+  },
+  "MA.1.M.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare and order the length of up to three objects using direct and indirect comparison.",
+   "cpalms_id": "15270",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15270",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:37:53Z"
+  },
+  "MA.1.M.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare and order the length of up to three objects using direct comparison.",
+   "cpalms_id": "18444",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18444",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:37:57Z"
+  },
+  "MA.1.M.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Using analog and digital clocks, tell and write time in hours and half-hours.",
+   "cpalms_id": "15271",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15271",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:38:00Z"
+  },
+  "MA.1.M.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Using analog and digital clocks, express the time in hours.",
+   "cpalms_id": "18445",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18445",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:38:04Z"
+  },
+  "MA.1.M.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify pennies, nickels, dimes and quarters, and express their values using the ¢ symbol. State how many of each coin equal a dollar.",
+   "cpalms_id": "15272",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15272",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:38:07Z"
+  },
+  "MA.1.M.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify the names and values of pennies, nickels, dimes and quarters.",
+   "cpalms_id": "18446",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18446",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:38:10Z"
+  },
+  "MA.1.M.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Find the value of combinations of pennies, nickels and dimes up to one dollar, and the value of combinations of one, five and ten dollar bills up to $100. Use the ¢ and $ symbols appropriately.",
+   "cpalms_id": "15273",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15273",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:38:14Z"
+  },
+  "MA.1.M.2.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Find the value of a group of only pennies, only nickels or only dimes up to $1.",
+   "cpalms_id": "18447",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18447",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:38:17Z"
+  },
+  "MA.1.M.2.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Find the value of a group of only one-, only five- or only ten-dollar bills up to $100.",
+   "cpalms_id": "18448",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18448",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:38:21Z"
+  },
+  "MA.1.FR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Partition circles and rectangles into two and four equal-sized parts. Name the parts of the whole using appropriate language including halves or fourths.",
+   "cpalms_id": "15263",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15263",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:38:23Z"
+  },
+  "MA.1.FR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Partition circles and rectangles into two and four equal-sized parts. Recognize the parts of the whole as halves or fourths.",
+   "cpalms_id": "18436",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18436",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:38:27Z"
+  },
+  "MA.1.GR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify, compare and sort two- and three-dimensional figures based on their defining attributes. Figures are limited to circles, semi-circles, triangles, rectangles, squares, trapezoids, hexagons, spheres, cubes, rectangular prisms, cones and cylinders.",
+   "cpalms_id": "15274",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15274",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:38:30Z"
+  },
+  "MA.1.GR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Sort and identify two- or three-dimensional figures based on their defining attributes. (e.g., number of sides, vertices, edges, faces, etc., rather than color, orientation or size). Figures are limited to circles, semi-circles, triangles, rectangles, squares, trapezoids, hexagons, spheres, cubes, rectangular prisms, cones and cylinders.",
+   "cpalms_id": "18449",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18449",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:38:33Z"
+  },
+  "MA.1.GR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Sketch two-dimensional figures when given defining attributes. Figures are limited to triangles, rectangles, squares and hexagons.",
+   "cpalms_id": "15275",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15275",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:38:36Z"
+  },
+  "MA.1.GR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Produce two-dimensional figures when given defining attributes. Figures are limited to triangles, rectangles and squares.",
+   "cpalms_id": "18450",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18450",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:38:39Z"
+  },
+  "MA.1.GR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Compose and decompose two- and three-dimensional figures. Figures are limited to semi-circles, triangles, rectangles, squares, trapezoids, hexagons, cubes, rectangular prisms, cones and cylinders.",
+   "cpalms_id": "15276",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15276",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:38:42Z"
+  },
+  "MA.1.GR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that different figures can be formed by putting together smaller two- or three-dimensional figures and that smaller figures can be formed by taking apart larger two- or three-dimensional figures. Figures are limited to semi-circles, triangles, rectangles, squares, trapezoids, hexagons, cubes, rectangular prisms, cones and cylinders.",
+   "cpalms_id": "18451",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18451",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:38:45Z"
+  },
+  "MA.1.GR.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world object, identify parts that are modeled by two- and three-dimensional figures. Figures are limited to semi-circles, triangles, rectangles, squares and hexagons, spheres, cubes, rectangular prisms, cones and cylinders.",
+   "cpalms_id": "15277",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15277",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:38:49Z"
+  },
+  "MA.1.GR.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore real-world objects with parts that can be modeled by a given two- or three-dimensional figure. Figures are limited to semi-circles, triangles, rectangles, squares and hexagons, spheres, cubes, rectangular prisms, cones and cylinders.",
+   "cpalms_id": "18452",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18452",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:38:52Z"
+  },
+  "MA.1.DP.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Collect data into categories and represent the results using tally marks or pictographs.",
+   "cpalms_id": "15278",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15278",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:38:56Z"
+  },
+  "MA.1.DP.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Sort data into two categories and represent the results using tally marks or pictographs.",
+   "cpalms_id": "18453",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18453",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:38:59Z"
+  },
+  "MA.1.DP.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Interpret data represented with tally marks or pictographs by calculating the total number of data points and comparing the totals of different categories.",
+   "cpalms_id": "15279",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15279",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:39:03Z"
+  },
+  "MA.1.DP.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Interpret data represented with tally marks or pictographs to determine how many in each category and compare the values of two categories of data in terms of more or less.",
+   "cpalms_id": "18454",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18454",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:39:06Z"
+  },
+  "MA.2.NSO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Read and write numbers from 0 to 1,000 using standard form, expanded form and word form.",
+   "cpalms_id": "15280",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15280",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:39:10Z"
+  },
+  "MA.2.NSO.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Read and generate numbers from 0 to 100 using standard form and expanded form.",
+   "cpalms_id": "18455",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18455",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:39:15Z"
+  },
+  "MA.2.NSO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Compose and decompose three-digit numbers in multiple ways using hundreds, tens and ones. Demonstrate each composition or decomposition with objects, drawings and expressions or equations.",
+   "cpalms_id": "15281",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15281",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:39:18Z"
+  },
+  "MA.2.NSO.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Compose and decompose two-digit numbers using tens and ones. Demonstrate each composition or decomposition with objects, drawings, expressions or equations.",
+   "cpalms_id": "18456",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18456",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:39:22Z"
+  },
+  "MA.2.NSO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare whole numbers up to 1,000.",
+   "cpalms_id": "15282",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15282",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:39:24Z"
+  },
+  "MA.2.NSO.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare whole numbers up to 100.",
+   "cpalms_id": "18457",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18457",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:39:28Z"
+  },
+  "MA.2.NSO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Round whole numbers from 0 to 100 to the nearest 10.",
+   "cpalms_id": "15283",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15283",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:39:30Z"
+  },
+  "MA.2.NSO.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Round whole numbers from 0 to 100 to the nearest 10 with visual support.",
+   "cpalms_id": "18458",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18458",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:39:34Z"
+  },
+  "MA.2.NSO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Recall addition facts with sums to 20 and related subtraction facts with automaticity.",
+   "cpalms_id": "15284",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15284",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:39:37Z"
+  },
+  "MA.2.NSO.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recall addition facts with sums to 10 and related subtraction facts.",
+   "cpalms_id": "18459",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18459",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:39:40Z"
+  },
+  "MA.2.NSO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify the number that is ten more, ten less, one hundred more and one hundred less than a given three-digit number.",
+   "cpalms_id": "15285",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15285",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:39:44Z"
+  },
+  "MA.2.NSO.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify the number that is ten more or ten less than a given two-digit number.",
+   "cpalms_id": "18460",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18460",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:39:48Z"
+  },
+  "MA.2.NSO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Add two whole numbers with sums up to 100 with procedural reliability. Subtract a whole number from a whole number, each no larger than 100, with procedural reliability.",
+   "cpalms_id": "15286",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15286",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:39:51Z"
+  },
+  "MA.2.NSO.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply a strategy for adding and subtracting a two-digit number (from 11 to 19) and a single digit whole number.",
+   "cpalms_id": "18461",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18461",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:39:54Z"
+  },
+  "MA.2.NSO.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the addition of two whole numbers with sums up to 1,000. Explore the subtraction of a whole number from a whole number, each no larger than 1,000.",
+   "cpalms_id": "15287",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15287",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:39:58Z"
+  },
+  "MA.2.NSO.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the addition of a two-digit and a single-digit whole number with sums up to 100. Explore the subtraction of a one-digit from a two-digit whole number.",
+   "cpalms_id": "18462",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18462",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:40:01Z"
+  },
+  "MA.2.AR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step addition and subtraction real-world problems.",
+   "cpalms_id": "15290",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15290",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:40:04Z"
+  },
+  "MA.2.AR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine if addition or subtraction equations with no more than three terms are true or false. Sums may not exceed 20 and their related subtraction facts.",
+   "cpalms_id": "18464",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18464",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:40:09Z"
+  },
+  "MA.2.AR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine and explain whether equations involving addition and subtraction are true or false.",
+   "cpalms_id": "15291",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15291",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:40:11Z"
+  },
+  "MA.2.AR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine if addition or subtraction equations with no more than three terms are true or false. Sums may not exceed 20 and their related subtraction facts.",
+   "cpalms_id": "18465",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18465",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:40:14Z"
+  },
+  "MA.2.AR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine the unknown whole number in an addition or subtraction equation, relating three or four whole numbers, with the unknown in any position.",
+   "cpalms_id": "15292",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15292",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:40:17Z"
+  },
+  "MA.2.AR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine the unknown whole number in an addition or subtraction equation, relating three whole numbers, with the change or result unknown (e.g., 7 + __ = 10, 10 − 3= __). Sums may not exceed 20 and their related subtraction facts.",
+   "cpalms_id": "18466",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18466",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:40:20Z"
+  },
+  "MA.2.AR.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Represent an even number using two equal groups or two equal addends. Represent an odd number using two equal groups with one left over or two equal addends plus 1.",
+   "cpalms_id": "15293",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15293",
+   "date_revised": "03/20",
+   "checked_at": "2026-08-09T01:40:23Z"
+  },
+  "MA.2.AR.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore the concept of odd and even by pairing objects to represent an even number using two equal groups or represent an odd number by using two equal groups with one left over. Group of objects may not exceed 20.",
+   "cpalms_id": "18467",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18467",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-09T01:40:26Z"
+  },
+  "MA.2.AR.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Use repeated addition to find the total number of objects in a collection of equal groups. Represent the total number of objects using rectangular arrays and equations.",
+   "cpalms_id": "15294",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15294",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:40:30Z"
+  },
+  "MA.2.M.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Estimate and measure the length of an object to the nearest inch, foot, yard, centimeter or meter by selecting and using an appropriate tool.",
+   "cpalms_id": "15295",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15295",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:40:36Z"
+  },
+  "MA.2.M.1.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Measure the length of an object to the nearest inch, foot and or yard when given the appropriate tool.",
+   "cpalms_id": "18469",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18469",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:40:39Z"
+  },
+  "MA.2.M.1.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Explore estimation strategies by developing measurement benchmarks of familiar objects that could be used to make reasonable estimates of length to the nearest inch, foot, or yard.",
+   "cpalms_id": "18470",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18470",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:40:42Z"
+  },
+  "MA.2.M.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Measure the lengths of two objects using the same unit (i.e., inch, foot, yard) and determine the difference between their measurements.",
+   "cpalms_id": "18472",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18472",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:40:47Z"
+  },
+  "MA.2.M.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step real-world measurement problems involving addition and subtraction of lengths given in the same units.",
+   "cpalms_id": "15297",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15297",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:40:50Z"
+  },
+  "MA.2.M.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world measurement problems involving addition and subtraction of lengths within 20 given in the same unit (i.e., inch, foot, yard).",
+   "cpalms_id": "18635",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18635",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:40:54Z"
+  },
+  "MA.2.M.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Using analog and digital clocks, express the time in hours and half hours. Explore the concept of a.m. and p.m.",
+   "cpalms_id": "18473",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18473",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:41:04Z"
+  },
+  "MA.2.M.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step addition and subtraction real-world problems involving either dollar bills within $20 or coins within 20¢. Explore using $ for dollar bills and ¢ symbol for coins.",
+   "cpalms_id": "18474",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18474",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:41:09Z"
+  },
+  "MA.2.FR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Partition circles and rectangles into two, three or four equal-sized parts. Name the parts using appropriate language, and describe the whole as two halves, three thirds or four fourths.",
+   "cpalms_id": "15872",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15872",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:41:12Z"
+  },
+  "MA.2.FR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Partition rectangles into two or four equal-sized parts in two different ways showing that equal-sized parts of the same whole may have different shapes.",
+   "cpalms_id": "18463",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18463",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:41:16Z"
+  },
+  "MA.2.FR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Partition rectangles into two, three or four equal-sized parts in two different ways showing that equal-sized parts of the same whole may have different shapes.",
+   "cpalms_id": "15873",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15873",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:41:19Z"
+  },
+  "MA.2.GR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify and draw two-dimensional figures based on their defining attributes. Figures are limited to triangles, rectangles, squares, pentagons, hexagons and octagons.",
+   "cpalms_id": "15300",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15300",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:41:23Z"
+  },
+  "MA.2.GR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify and produce two-dimensional figures when given defining attributes. Figures are limited to triangles, rectangles, hexagons and squares.",
+   "cpalms_id": "18475",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18475",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:41:27Z"
+  },
+  "MA.2.GR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Categorize two-dimensional figures based on the number and length of sides, number of vertices, whether they are closed or not and whether the edges are curved or straight.",
+   "cpalms_id": "15301",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15301",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:41:31Z"
+  },
+  "MA.2.GR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Sort two-dimensional figures based on the number of sides, number of vertices, whether they are closed or open and whether the sides are curved or straight.",
+   "cpalms_id": "18476",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18476",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:41:35Z"
+  },
+  "MA.2.GR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore perimeter as an attribute of a figure by placing unit segments along the boundary without gaps or overlaps. Find perimeters of rectangles by counting unit segments.",
+   "cpalms_id": "15303",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15303",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:41:42Z"
+  },
+  "MA.2.GR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore perimeter as an attribute of a figure that can be measured by placing unit segments along the boundary without gaps or overlaps. Find perimeters of rectangles by counting unit segments.",
+   "cpalms_id": "18478",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18478",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:41:46Z"
+  },
+  "MA.2.GR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Find the perimeter of a polygon with whole-number side lengths. Polygons are limited to triangles, rectangles, squares and pentagons.",
+   "cpalms_id": "15304",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15304",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:41:48Z"
+  },
+  "MA.2.GR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Find the perimeter of a polygon with whole-number side lengths given. Polygons are limited to triangles, rectangles and squares.",
+   "cpalms_id": "18479",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18479",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:41:52Z"
+  },
+  "MA.2.DP.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Collect, categorize and represent data using tally marks, tables, pictographs or bar graphs. Use appropriate titles, labels and units.",
+   "cpalms_id": "15305",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15305",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:41:55Z"
+  },
+  "MA.2.DP.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Sort data into up to three categories and represent the results using tally marks, tables, pictographs or bar graphs. Align data with given title, labels and units.",
+   "cpalms_id": "18480",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18480",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:41:58Z"
+  },
+  "MA.2.DP.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Interpret data represented with tally marks, tables, pictographs or bar graphs including solving addition and subtraction problems.",
+   "cpalms_id": "15306",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15306",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:42:02Z"
+  },
+  "MA.2.DP.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Interpret data represented with tally marks, tables, pictographs or bar graphs to solve one-step put-together and take-apart problems. Pictograph symbols and bar graph intervals may only represent a quantity of 1.",
+   "cpalms_id": "18481",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18481",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:42:06Z"
+  },
+  "MA.3.NSO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Read and write numbers from 0 to 10,000 using standard form, expanded form and word form.",
+   "cpalms_id": "15307",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15307",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:42:09Z"
+  },
+  "MA.3.NSO.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Read and generate numbers from 0 to 1,000 using standard form and expanded form.",
+   "cpalms_id": "18024",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18024",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:42:13Z"
+  },
+  "MA.3.NSO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Compose and decompose four-digit numbers in multiple ways using thousands, hundreds, tens and ones. Demonstrate each composition or decomposition using objects, drawings and expressions or equations.",
+   "cpalms_id": "15308",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15308",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:42:15Z"
+  },
+  "MA.3.NSO.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Compose and decompose three-digit numbers using hundreds, tens and ones. Demonstrate each composition or decomposition with objects, drawings, expressions or equations.",
+   "cpalms_id": "18025",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18025",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:42:19Z"
+  },
+  "MA.3.NSO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare whole numbers up to 10,000.",
+   "cpalms_id": "15309",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15309",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:42:22Z"
+  },
+  "MA.3.NSO.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare whole numbers up to 1,000.",
+   "cpalms_id": "18026",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18026",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:42:26Z"
+  },
+  "MA.3.NSO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Round whole numbers from 0 to 1,000 to the nearest 10 or 100.",
+   "cpalms_id": "15310",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15310",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:42:29Z"
+  },
+  "MA.3.NSO.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Round whole numbers from 0 to 1,000 to the nearest 100 with visual support.",
+   "cpalms_id": "18027",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18027",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:42:32Z"
+  },
+  "MA.3.NSO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Add and subtract multi-digit whole numbers including using a standard algorithm with procedural fluency.",
+   "cpalms_id": "15311",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15311",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:42:35Z"
+  },
+  "MA.3.NSO.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply a strategy to add and subtract two two-digit whole numbers.",
+   "cpalms_id": "18028",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18028",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:42:38Z"
+  },
+  "MA.3.NSO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore multiplication of two whole numbers with products from 0 to 144, and related division facts.",
+   "cpalms_id": "15312",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15312",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:42:41Z"
+  },
+  "MA.3.NSO.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore the concept of multiplication of two single-digit whole numbers using objects.",
+   "cpalms_id": "18029",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18029",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:42:45Z"
+  },
+  "MA.3.NSO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Multiply a one-digit whole number by a multiple of 10, up to 90, or a multiple of 100, up to 900, with procedural reliability.",
+   "cpalms_id": "15313",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15313",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:42:48Z"
+  },
+  "MA.3.NSO.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Explore multiplying a one-digit whole number by 10.",
+   "cpalms_id": "18030",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18030",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:42:51Z"
+  },
+  "MA.3.NSO.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Multiply two whole numbers from 0 to 12 and divide using related facts with procedural reliability.",
+   "cpalms_id": "15314",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15314",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:42:55Z"
+  },
+  "MA.3.NSO.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the relationship between multiplication and division in order to multiply and divide. Multiplication may not exceed two single-digit whole numbers and their related division facts.",
+   "cpalms_id": "18031",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18031",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:42:58Z"
+  },
+  "MA.3.AR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply the distributive property to multiply a one-digit number and two-digit number. Apply properties of multiplication to find a product of one-digit whole numbers.",
+   "cpalms_id": "15320",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15320",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:43:01Z"
+  },
+  "MA.3.AR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply the commutative property of multiplication to find a product of one-digit whole numbers.",
+   "cpalms_id": "18037",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18037",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:05Z"
+  },
+  "MA.3.AR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step real-world problems involving any of four operations with whole numbers.",
+   "cpalms_id": "15321",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15321",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:43:08Z"
+  },
+  "MA.3.AR.1.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step addition and subtraction real-world problems within 100.",
+   "cpalms_id": "18038",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18038",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:12Z"
+  },
+  "MA.3.AR.1.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step multiplication and division real-world problems. Multiplication may not exceed two single-digit whole numbers and their related division facts.",
+   "cpalms_id": "18039",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18039",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:15Z"
+  },
+  "MA.3.AR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Restate a division problem as a missing factor problem using the relationship between multiplication and division.",
+   "cpalms_id": "15322",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15322",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:43:18Z"
+  },
+  "MA.3.AR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore division as multiplication with a missing factor using the relationship between multiplication and division.",
+   "cpalms_id": "18040",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18040",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:21Z"
+  },
+  "MA.3.AR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine and explain whether an equation involving multiplication or division is true or false.",
+   "cpalms_id": "15323",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15323",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:43:24Z"
+  },
+  "MA.3.AR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine if multiplication or division equations with no more than three terms are true or false. Multiplication may not exceed two single-digit whole numbers and their related division facts.",
+   "cpalms_id": "18041",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18041",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:26Z"
+  },
+  "MA.3.AR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Determine the unknown whole number in a multiplication or division equation, relating three whole numbers, with the unknown in any position.",
+   "cpalms_id": "15324",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15324",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:43:29Z"
+  },
+  "MA.3.AR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Determine the unknown whole number in a multiplication or division equation, relating three whole numbers, with the product or quotient unknown (e.g., 2 × 5 = __, 10 ÷ 5 = __). Multiplication may not exceed two single-digit whole numbers and their related division facts.",
+   "cpalms_id": "18042",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18042",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:33Z"
+  },
+  "MA.3.AR.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine and explain whether a whole number from 1 to 1,000 is even or odd.",
+   "cpalms_id": "15325",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15325",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:43:36Z"
+  },
+  "MA.3.AR.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine whether a whole number from 1 to 100 is even or odd.",
+   "cpalms_id": "18043",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18043",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:39Z"
+  },
+  "MA.3.AR.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine whether a whole number from 1 to 144 is a multiple of a given one-digit number.",
+   "cpalms_id": "15326",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15326",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:43:42Z"
+  },
+  "MA.3.AR.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore that a whole number is a multiple of each of its factors. Factors not to exceed single-digit whole numbers.",
+   "cpalms_id": "18044",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18044",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:44Z"
+  },
+  "MA.3.AR.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify, create and extend numerical patterns.",
+   "cpalms_id": "15327",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15327",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:43:47Z"
+  },
+  "MA.3.AR.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Extend a numerical pattern when given a one-step addition rule (e.g., when given the pattern 5, 10, 15, use the rule add 5 to extend the pattern).",
+   "cpalms_id": "18045",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18045",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:49Z"
+  },
+  "MA.3.M.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Select and use appropriate tools to measure the length of an object, the volume of liquid within a beaker and temperature.",
+   "cpalms_id": "15328",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15328",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:43:52Z"
+  },
+  "MA.3.M.1.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Select and use appropriate tools to measure the length (i.e., inches, feet, yards) of an object.",
+   "cpalms_id": "18046",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18046",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:56Z"
+  },
+  "MA.3.M.1.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Explore selecting and using appropriate tools to measure liquid volume (i.e., gallons, quarts, pints, cups) and temperature in degrees Fahrenheit.",
+   "cpalms_id": "18047",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18047",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:43:59Z"
+  },
+  "MA.3.M.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving any of the four operations with whole-number lengths, masses, weights, temperatures or liquid volumes.",
+   "cpalms_id": "15329",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15329",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:44:02Z"
+  },
+  "MA.3.M.1.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step addition and subtraction real-world problems within 100 with whole number lengths (i.e., inches, feet, yards), temperatures (i.e., degrees Fahrenheit) or liquid volumes (i.e., gallons, quarts, pints, cups).",
+   "cpalms_id": "18048",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18048",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:44:06Z"
+  },
+  "MA.3.M.1.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step multiplication and division real-world problems with whole number lengths (i.e., inches, feet, yards), temperatures (i.e., degrees Fahrenheit) or liquid volumes (i.e., gallons, quarts, pints and cups). Multiplication may not exceed two single-digit whole numbers and their related division facts.",
+   "cpalms_id": "18049",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18049",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:44:09Z"
+  },
+  "MA.3.M.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Using analog and digital clocks tell and write time to the nearest minute using a.m. and p.m. appropriately.",
+   "cpalms_id": "15330",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15330",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:44:12Z"
+  },
+  "MA.3.M.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Using analog and digital clocks, express the time to the nearest five minutes using a.m. and p.m. appropriately.",
+   "cpalms_id": "18050",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18050",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:44:16Z"
+  },
+  "MA.3.M.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step real-world problems involving elapsed time.",
+   "cpalms_id": "15331",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15331",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:44:19Z"
+  },
+  "MA.3.M.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve for end time in one-step real-world problems when given start time and elapsed time in whole hours or minutes within the hour.",
+   "cpalms_id": "18051",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18051",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:44:22Z"
+  },
+  "MA.3.FR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Represent and interpret unit fractions in the form 1/n as the quantity formed by one part when a whole is partitioned into n equal parts.",
+   "cpalms_id": "15315",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15315",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:44:24Z"
+  },
+  "MA.3.FR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore unit fractions in the form as the quantity formed by one part when a whole is partitioned into n equal parts. Denominators are limited to 2, 3 and 4.",
+   "cpalms_id": "18032",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18032",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:44:27Z"
+  },
+  "MA.3.FR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Represent and interpret fractions, including fractions greater than one, in the form of mn as the result of adding the unit fraction 1n to itself mtimes.",
+   "cpalms_id": "15316",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15316",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:44:31Z"
+  },
+  "MA.3.FR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore fractions, less than or equal to a whole, in the form of as the result of adding the unit fraction to itselfm times. Denominators are limited to 2, 3 and 4.",
+   "cpalms_id": "18033",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18033",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:44:35Z"
+  },
+  "MA.3.FR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Read and write fractions, including fractions greater than one, using standard form, numeral-word form and word form.",
+   "cpalms_id": "15317",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15317",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:44:37Z"
+  },
+  "MA.3.FR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Read and generate fractions, less than or equal to a whole, using standard form.",
+   "cpalms_id": "18034",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18034",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:44:40Z"
+  },
+  "MA.3.FR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare fractional numbers with the same numerator or the same denominator.",
+   "cpalms_id": "15318",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15318",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:44:42Z"
+  },
+  "MA.3.FR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Compare fractional numbers with the same denominator. Denominators are limited to 2, 3 and 4.",
+   "cpalms_id": "18035",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18035",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:44:45Z"
+  },
+  "MA.3.FR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify equivalent fractions and explain why they are equivalent.",
+   "cpalms_id": "15319",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15319",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:44:48Z"
+  },
+  "MA.3.FR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Using a visual model, recognize fractions less than a whole that are equivalent to fractions with denominators of 2, 3 or 4 (e.g., is equivalent to ).",
+   "cpalms_id": "18036",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18036",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:44:51Z"
+  },
+  "MA.3.GR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe and draw points, lines, line segments, rays, intersecting lines, perpendicular lines and parallel lines. Identify these in two-dimensional figures.",
+   "cpalms_id": "15332",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15332",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:44:53Z"
+  },
+  "MA.3.GR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify points, lines, line segments, perpendicular lines and parallel lines. Identify these in two-dimensional figures.",
+   "cpalms_id": "18052",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18052",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:44:57Z"
+  },
+  "MA.3.GR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify and draw quadrilaterals based on their defining attributes. Quadrilaterals include parallelograms, rhombi, rectangles, squares and trapezoids.",
+   "cpalms_id": "15333",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15333",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:44:59Z"
+  },
+  "MA.3.GR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify quadrilaterals based on their defining attributes. Quadrilaterals include parallelograms, rhombi, rectangles, squares and trapezoids.",
+   "cpalms_id": "18053",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18053",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:01Z"
+  },
+  "MA.3.GR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Draw line(s) of symmetry in a two-dimensional figure and identify line-symmetric two-dimensional figures.",
+   "cpalms_id": "15334",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15334",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:45:04Z"
+  },
+  "MA.3.GR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify line-symmetric two-dimensional figures.",
+   "cpalms_id": "18054",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18054",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:08Z"
+  },
+  "MA.3.GR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore area as an attribute of a two-dimensional figure by covering the figure with unit squares without gaps or overlaps. Find areas of rectangles by counting unit squares.",
+   "cpalms_id": "15335",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15335",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:45:11Z"
+  },
+  "MA.3.GR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore area as an attribute of a two-dimensional figure that can be measured by covering the figure with unit squares without gaps or overlaps.",
+   "cpalms_id": "18055",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18055",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:14Z"
+  },
+  "MA.3.GR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Find the area of a rectangle with whole-number side lengths using a visual model and a multiplication formula.",
+   "cpalms_id": "15336",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15336",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:45:16Z"
+  },
+  "MA.3.GR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Find the area of a rectangle with whole-number side lengths by counting unit squares. Explore that the area is the same as what would be found by multiplying the side lengths.",
+   "cpalms_id": "18056",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18056",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:19Z"
+  },
+  "MA.3.GR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving the perimeter and area of rectangles with whole-number side lengths using a visual model and a formula.",
+   "cpalms_id": "15337",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15337",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:45:23Z"
+  },
+  "MA.3.GR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving the perimeter and area of rectangles with whole-number side lengths using a visual model.",
+   "cpalms_id": "18057",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18057",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:26Z"
+  },
+  "MA.3.GR.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving the perimeter and area of composite figures composed of non-overlapping rectangles with whole-number side lengths.",
+   "cpalms_id": "15338",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15338",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:45:30Z"
+  },
+  "MA.3.GR.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the perimeter and area of composite figures composed of two non-overlapping rectangles with whole-number side lengths.",
+   "cpalms_id": "18058",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18058",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:33Z"
+  },
+  "MA.3.DP.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Collect and represent numerical and categorical data with whole-number values using tables, scaled pictographs, scaled bar graphs or line plots. Use appropriate titles, labels and units.",
+   "cpalms_id": "15339",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15339",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:45:36Z"
+  },
+  "MA.3.DP.1.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Sort and represent categorical data (up to four categories) with whole-number values using tables, pictographs or bar graphs. Select appropriate title, labels and units.",
+   "cpalms_id": "18059",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18059",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:39Z"
+  },
+  "MA.3.DP.1.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Explore representing numerical data with whole-number values using line plots.",
+   "cpalms_id": "18060",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18060",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:41Z"
+  },
+  "MA.3.DP.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Interpret data with whole-number values represented with tables, scaled pictographs, circle graphs, scaled bar graphs or line plots by solving one- and two-step problems.",
+   "cpalms_id": "15340",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15340",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:45:45Z"
+  },
+  "MA.3.DP.1.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Interpret data with whole-number values represented with tables, pictographs or bar graphs to solve one-step \"how many more\" and \"how many less\" problems.",
+   "cpalms_id": "18061",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18061",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:49Z"
+  },
+  "MA.3.DP.1.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Interpret data with whole-number values represented with scaled pictographs or scaled bar graphs. For scaled pictographs, symbols used may only represent quantities of 2, 5 or 10 and only whole symbols may be used. For scaled bar graphs, intervals may only represent quantities of 2, 5 or 10.",
+   "cpalms_id": "18062",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18062",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:51Z"
+  },
+  "MA.3.DP.1.AP.2c": {
+   "state": "confirmed",
+   "statement_verified": "Explore interpreting data with whole-number values represented with line plots.",
+   "cpalms_id": "18063",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18063",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:45:54Z"
+  },
+  "MA.4.NSO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Express how the value of a digit in a multi-digit whole number changes if the digit moves one place to the left or right.",
+   "cpalms_id": "15341",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15341",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:45:57Z"
+  },
+  "MA.4.NSO.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore how the value of a digit in a multi-digit whole number changes if the digit moves one place to the left.",
+   "cpalms_id": "18064",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18064",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:46:02Z"
+  },
+  "MA.4.NSO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Read and write multi-digit whole numbers from 0 to 1,000,000 using standard form, expanded form and word form.",
+   "cpalms_id": "15342",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15342",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:46:05Z"
+  },
+  "MA.4.NSO.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Read and generate numbers from 0 to 10,000 using standard form and expanded form.",
+   "cpalms_id": "18065",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18065",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:46:08Z"
+  },
+  "MA.4.NSO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare multi-digit whole numbers up to 1,000,000.",
+   "cpalms_id": "15343",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15343",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:46:10Z"
+  },
+  "MA.4.NSO.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare multi-digit whole numbers up to 10,000.",
+   "cpalms_id": "18066",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18066",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:46:13Z"
+  },
+  "MA.4.NSO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Round whole numbers from 0 to 10,000 to the nearest 10, 100 or 1,000.",
+   "cpalms_id": "15344",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15344",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:46:17Z"
+  },
+  "MA.4.NSO.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Round whole numbers from 100 to 10,000 to the nearest 1,000 with visual support.",
+   "cpalms_id": "18067",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18067",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:46:20Z"
+  },
+  "MA.4.NSO.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare decimals up to the hundredths.",
+   "cpalms_id": "15345",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15345",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:46:22Z"
+  },
+  "MA.4.NSO.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Using visual models, compare decimals less than one up to the hundredths.",
+   "cpalms_id": "18068",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18068",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:46:25Z"
+  },
+  "MA.4.NSO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Recall multiplication facts with factors up to 12 and related division facts with automaticity.",
+   "cpalms_id": "15346",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15346",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:46:29Z"
+  },
+  "MA.4.NSO.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recall multiplication facts of one-digit whole numbers multiplied by 1, 2, 5 and 10.",
+   "cpalms_id": "18069",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18069",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:46:32Z"
+  },
+  "MA.4.NSO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Multiply two whole numbers, up to three digits by up to two digits, with procedural reliability.",
+   "cpalms_id": "15347",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15347",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:46:34Z"
+  },
+  "MA.4.NSO.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore multiplication of two whole numbers, up to two digits by one digit.",
+   "cpalms_id": "18070",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18070",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:46:38Z"
+  },
+  "MA.4.NSO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Multiply two whole numbers, each up to two digits, including using a standard algorithm with procedural fluency.",
+   "cpalms_id": "15348",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15348",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:46:41Z"
+  },
+  "MA.4.NSO.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply a strategy to multiply two whole numbers up to two digits by one digit.",
+   "cpalms_id": "18071",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18071",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:46:44Z"
+  },
+  "MA.4.NSO.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Divide a whole number up to four digits by a one-digit whole number with procedural reliability. Represent remainders as fractional parts of the divisor.",
+   "cpalms_id": "15349",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15349",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:46:47Z"
+  },
+  "MA.4.NSO.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore division of two whole numbers up to two digits by one digit with and without remainders. Represent remainders as whole numbers.",
+   "cpalms_id": "18072",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18072",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:46:50Z"
+  },
+  "MA.4.NSO.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Explore the multiplication and division of multi-digit whole numbers using estimation, rounding and place value.",
+   "cpalms_id": "15350",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15350",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:46:52Z"
+  },
+  "MA.4.NSO.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Explore the estimation of products and quotients of two whole numbers up to two digits by one digit.",
+   "cpalms_id": "18073",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18073",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:46:55Z"
+  },
+  "MA.4.NSO.2.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify the number that is one-tenth more, one-tenth less, one-hundredth more and one-hundredth less than a given number.",
+   "cpalms_id": "15351",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15351",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:46:58Z"
+  },
+  "MA.4.NSO.2.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify the number that is one-tenth more and one-tenth less than a given number (i.e., 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9).",
+   "cpalms_id": "18074",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18074",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:47:02Z"
+  },
+  "MA.4.NSO.2.7": {
+   "state": "confirmed",
+   "statement_verified": "Explore the addition and subtraction of multi-digit numbers with decimals to the hundredths.",
+   "cpalms_id": "15352",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15352",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:47:05Z"
+  },
+  "MA.4.NSO.2.AP.7": {
+   "state": "confirmed",
+   "statement_verified": "Explore the addition and subtraction of decimals less than one to the tenths (e.g., 0.3 + 0.5) and hundredths (e.g., 0.25 − 0.12).",
+   "cpalms_id": "18075",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18075",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:47:09Z"
+  },
+  "MA.4.AR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving multiplication and division of whole numbers including problems in which remainders must be interpreted within the context.",
+   "cpalms_id": "15361",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15361",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:47:12Z"
+  },
+  "MA.4.AR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world problems involving multiplication and division of whole numbers. Multiplication may not exceed two-digit by one-digit and division must be related to one-digit by one-digit multiplication facts.",
+   "cpalms_id": "18085",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18085",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:47:15Z"
+  },
+  "MA.4.AR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving addition and subtraction of fractions with like denominators, including mixed numbers and fractions greater than one.",
+   "cpalms_id": "15362",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15362",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:47:18Z"
+  },
+  "MA.4.AR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world problems involving addition and subtraction of fractions less than one with like denominators. Denominators limited to 2, 3, 4, 6, 8 or 10.",
+   "cpalms_id": "18086",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18086",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:47:22Z"
+  },
+  "MA.4.AR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving multiplication of a fraction by a whole number or a whole number by a fraction.",
+   "cpalms_id": "15363",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15363",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:47:25Z"
+  },
+  "MA.4.AR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world problems involving multiplication of a unit fraction by a whole number (e.g., 3 × , 2 × , 5 × ). Denominators limited to 2, 3, 4, 6, 8 or 10.",
+   "cpalms_id": "18087",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18087",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:47:28Z"
+  },
+  "MA.4.AR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine and explain whether an equation involving any of the four operations with whole numbers is true or false.",
+   "cpalms_id": "15364",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15364",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:47:31Z"
+  },
+  "MA.4.AR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine whether an equation (with no more than three terms) involving any of the four operations with whole numbers is true or false. Sums may not exceed 100 and their related subtraction facts. Multiplication may not exceed two-digit by one-digit and division must be related to one-digit by one-digit multiplication facts.",
+   "cpalms_id": "18088",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18088",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:47:35Z"
+  },
+  "MA.4.AR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, write an equation involving multiplication or division to determine the unknown whole number with the unknown in any position.",
+   "cpalms_id": "15365",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15365",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:47:38Z"
+  },
+  "MA.4.AR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world context, identify or generate an equation involving multiplication or division to determine the unknown product or quotient. Multiplication may not exceed two-digit by one-digit and division must be related to one-digit by one-digit multiplication facts.",
+   "cpalms_id": "18089",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18089",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:47:40Z"
+  },
+  "MA.4.AR.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine factor pairs for a whole number from 0 to 144. Determine whether a whole number from 0 to 144 is prime, composite or neither.",
+   "cpalms_id": "15366",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15366",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:47:43Z"
+  },
+  "MA.4.AR.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore factor pairs for a whole number. Factors may not exceed single-digit whole numbers.",
+   "cpalms_id": "18090",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18090",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:47:45Z"
+  },
+  "MA.4.AR.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Generate, describe and extend a numerical pattern that follows a given rule.",
+   "cpalms_id": "15367",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15367",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:47:49Z"
+  },
+  "MA.4.AR.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Generate a numerical pattern when given a starting term and a one-step addition rule (e.g., starting at the number 5 use the rule add 5 and generate the pattern).",
+   "cpalms_id": "18091",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18091",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:47:52Z"
+  },
+  "MA.4.M.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Select and use appropriate tools to measure attributes of objects.",
+   "cpalms_id": "15368",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15368",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:47:55Z"
+  },
+  "MA.4.M.1.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Select and use appropriate tools to measure length (i.e., inches, feet, yards), liquid volume (i.e., gallons, quarts, pints, cups) and temperature (i.e., degrees Fahrenheit).",
+   "cpalms_id": "18092",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18092",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:47:57Z"
+  },
+  "MA.4.M.1.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Explore selecting and using appropriate tools to measure weight (i.e., ounces, pounds).",
+   "cpalms_id": "18093",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18093",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:00Z"
+  },
+  "MA.4.M.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Convert within a single system of measurement using the units: yards, feet, inches; kilometers, meters, centimeters, millimeters; pounds, ounces; kilograms, grams; gallons, quarts, pints, cups; liter, milliliter; and hours, minutes, seconds.",
+   "cpalms_id": "15369",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15369",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:48:03Z"
+  },
+  "MA.4.M.1.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Explore relative sizes of measurement units within one system of units including yards, feet, inches; pounds, ounces; gallons, quarts, pints, cups; and hours, minutes.",
+   "cpalms_id": "18094",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18094",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:06Z"
+  },
+  "MA.4.M.1.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Using a conversion sheet, convert from a larger to a smaller unit within a single system of measurement using the units: yards, feet, inches; pounds, ounces; gallons, quarts, pints, cups; and hours, minutes. Only whole number measurements may be used.",
+   "cpalms_id": "18095",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18095",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:09Z"
+  },
+  "MA.4.M.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve two-step real-world problems involving distances and intervals of time using any combination of the four operations.",
+   "cpalms_id": "15370",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15370",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:48:12Z"
+  },
+  "MA.4.M.2.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step real-world problems involving distances (i.e., inches, feet, yards, miles) in whole numbers using any combination of the four operations.",
+   "cpalms_id": "18096",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18096",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:15Z"
+  },
+  "MA.4.M.2.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world problems involving intervals of time in whole numbers using any of the four operations.",
+   "cpalms_id": "18097",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18097",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:18Z"
+  },
+  "MA.4.M.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step addition and subtraction real-world problems involving money using decimal notation.",
+   "cpalms_id": "15371",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15371",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:48:21Z"
+  },
+  "MA.4.M.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step addition and subtraction real-world problems involving money using decimal notation. Sums not to exceed $0.99 and their related subtraction facts.",
+   "cpalms_id": "18098",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18098",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:26Z"
+  },
+  "MA.4.FR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Model and express a fraction, including mixed numbers and fractions greater than one, with the denominator 10 as an equivalent fraction with the denominator 100.",
+   "cpalms_id": "15353",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15353",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:48:29Z"
+  },
+  "MA.4.FR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Using a visual model, recognize fractions less than one, with the denominator 10 as an equivalent fraction with the denominator 100 (e.g., is equivalent to ).",
+   "cpalms_id": "18076",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18076",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:32Z"
+  },
+  "MA.4.FR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Use decimal notation to represent fractions with denominators of 10 or 100, including mixed numbers and fractions greater than 1, and use fractional notation with denominators of 10 or 100 to represent decimals.",
+   "cpalms_id": "15354",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15354",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:48:35Z"
+  },
+  "MA.4.FR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use decimal notation to represent fractions less than one with denominators of 10 or 100 and use fractional notation with denominators of 10 or 100 to represent decimals less than one.",
+   "cpalms_id": "18077",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18077",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:39Z"
+  },
+  "MA.4.FR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify and generate equivalent fractions, including fractions greater than one. Describe how the numerator and denominator are affected when the equivalent fraction is created.",
+   "cpalms_id": "15355",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15355",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:48:43Z"
+  },
+  "MA.4.FR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Using a visual model, generate fractions less than a whole that are equivalent to fractions with denominators 2, 3, 4, 6, 8 or 10. Explore how the numerator and denominator are affected when the equivalent fraction is created.",
+   "cpalms_id": "18078",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18078",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:46Z"
+  },
+  "MA.4.FR.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare fractions, including mixed numbers and fractions greater than one, with different numerators and different denominators.",
+   "cpalms_id": "15356",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15356",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:48:48Z"
+  },
+  "MA.4.FR.1.AP.4a": {
+   "state": "confirmed",
+   "statement_verified": "Explore mixed numbers and fractions greater than one.",
+   "cpalms_id": "18079",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18079",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:51Z"
+  },
+  "MA.4.FR.1.AP.4b": {
+   "state": "confirmed",
+   "statement_verified": "Using visual models, compare fractions less than one with different numerators and different denominators. Denominators limited to 2, 3, 4, 6, 8 or 10.",
+   "cpalms_id": "18080",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18080",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:48:54Z"
+  },
+  "MA.4.FR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Decompose a fraction, including mixed numbers and fractions greater than one, into a sum of fractions with the same denominator in multiple ways. Demonstrate each decomposition with objects, drawings and equations.",
+   "cpalms_id": "15357",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15357",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:48:57Z"
+  },
+  "MA.4.FR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Decompose a fraction less than one into a sum of unit fractions with the same denominator (e.g., = + + ). Denominators limited to 2, 3, 4, 6, 8 or 10. Demonstrate each decomposition with objects, drawings or equations.",
+   "cpalms_id": "18081",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18081",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:49:00Z"
+  },
+  "MA.4.FR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Add and subtract fractions with like denominators, including mixed numbers and fractions greater than one, with procedural reliability.",
+   "cpalms_id": "15358",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15358",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:49:03Z"
+  },
+  "MA.4.FR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore adding and subtracting fractions less than one with like denominators. Denominators limited to 2, 3, 4, 6, 8 or 10.",
+   "cpalms_id": "18082",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18082",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:49:07Z"
+  },
+  "MA.4.FR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Explore the addition of a fraction with denominator of 10 to a fraction with denominator of 100 using equivalent fractions.",
+   "cpalms_id": "15359",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15359",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:49:09Z"
+  },
+  "MA.4.FR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Explore the addition of a fraction with denominator of 10 to a fraction with denominator of 100 using visual models to find equivalent fractions.",
+   "cpalms_id": "18083",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18083",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:49:13Z"
+  },
+  "MA.4.FR.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Extend previous understanding of multiplication to explore the multiplication of a fraction by a whole number or a whole number by a fraction.",
+   "cpalms_id": "15360",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15360",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:49:16Z"
+  },
+  "MA.4.FR.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the multiplication of a unit fraction by a whole number (e.g., 3 × , 2 × , 5 × ). Denominators limited to 2, 3, 4, 6, 8 or 10.",
+   "cpalms_id": "18084",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18084",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:49:19Z"
+  },
+  "MA.4.GR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Informally explore angles as an attribute of two-dimensional figures. Identify and classify angles as acute, right, obtuse, straight or reflex.",
+   "cpalms_id": "15372",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15372",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:49:23Z"
+  },
+  "MA.4.GR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Informally explore angles as an attribute of two-dimensional figures. Limit angles to acute, obtuse and right.",
+   "cpalms_id": "18099",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18099",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:49:26Z"
+  },
+  "MA.4.GR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Estimate angle measures. Using a protractor, measure angles in whole-number degrees and draw angles of specified measure in whole-number degrees. Demonstrate that angle measure is additive.",
+   "cpalms_id": "15373",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15373",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:49:29Z"
+  },
+  "MA.4.GR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Using a tool with a square angle, identify angles as acute, right or obtuse and construct angles that are acute, right or obtuse.",
+   "cpalms_id": "18100",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18100",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:49:32Z"
+  },
+  "MA.4.GR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world and mathematical problems involving unknown whole-number angle measures. Write an equation to represent the unknown.",
+   "cpalms_id": "15374",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15374",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:49:36Z"
+  },
+  "MA.4.GR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that angle measure is additive by exploring when an angle is decomposed into two non-overlapping parts the angle measure of the whole is the sum of the angle measures of the parts.",
+   "cpalms_id": "18101",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18101",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:49:40Z"
+  },
+  "MA.4.GR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve perimeter and area mathematical and real-world problems, including problems with unknown sides, for rectangles with whole-number side lengths.",
+   "cpalms_id": "15375",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15375",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:49:43Z"
+  },
+  "MA.4.GR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve perimeter and area mathematical and real-world problems for rectangles with given whole-number side lengths.",
+   "cpalms_id": "18102",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18102",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:49:46Z"
+  },
+  "MA.4.GR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve problems involving rectangles with the same perimeter and different areas or with the same area and different perimeters.",
+   "cpalms_id": "15376",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15376",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:49:49Z"
+  },
+  "MA.4.GR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore the relationship between perimeter and area using rectangles with the same perimeter and different areas or with the same area and different perimeters.",
+   "cpalms_id": "18103",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18103",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:49:52Z"
+  },
+  "MA.4.DP.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Collect and represent numerical data, including fractional values, using tables, stem-and-leaf plots or line plots.",
+   "cpalms_id": "15377",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15377",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:49:55Z"
+  },
+  "MA.4.DP.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Sort and represent numerical data, including fractional values using tables or line plots (when given a scaled number line). Data set to include only whole numbers and halves.",
+   "cpalms_id": "18104",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18104",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:49:58Z"
+  },
+  "MA.4.DP.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine the mode, median or range to interpret numerical data including fractional values, represented with tables, stem-and-leaf plots or line plots.",
+   "cpalms_id": "15378",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15378",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:50:01Z"
+  },
+  "MA.4.DP.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine the mode or range to interpret numerical data including fractional values, represented with tables or line plots. Data set to include only whole numbers and halves. Limit the greatest and least number in a data set to a whole number.",
+   "cpalms_id": "18105",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18105",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:50:04Z"
+  },
+  "MA.4.DP.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving numerical data.",
+   "cpalms_id": "15379",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15379",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:50:07Z"
+  },
+  "MA.4.DP.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world problems involving numerical data represented with tables or line plots. Data set to include only whole numbers and halves. Required operations to involve only the whole number data points in the data set.",
+   "cpalms_id": "18106",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18106",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:50:10Z"
+  },
+  "MA.5.NSO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Express how the value of a digit in a multi-digit number with decimals to the thousandths changes if the digit moves one or more places to the left or right.",
+   "cpalms_id": "15380",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15380",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:50:14Z"
+  },
+  "MA.5.NSO.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore how the value of a digit in a multi-digit number with decimals to the hundredths changes if the digit moves one place to the left. Multi-digit numbers not to exceed 9.99.",
+   "cpalms_id": "18107",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18107",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:50:17Z"
+  },
+  "MA.5.NSO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Read and write multi-digit numbers with decimals to the thousandths using standard form, word form and expanded form.",
+   "cpalms_id": "15381",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15381",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:50:20Z"
+  },
+  "MA.5.NSO.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Read and generate multi-digit numbers with decimals to the hundredths using standard form and expanded form. Multi-digit numbers not to exceed 9.99.",
+   "cpalms_id": "18108",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18108",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:50:23Z"
+  },
+  "MA.5.NSO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Compose and decompose multi-digit numbers with decimals to the thousandths in multiple ways using the values of the digits in each place. Demonstrate the compositions or decompositions using objects, drawings and expressions or equations.",
+   "cpalms_id": "15382",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15382",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:50:26Z"
+  },
+  "MA.5.NSO.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Compose and decompose multi-digit numbers with decimals to the hundredths. Demonstrate each composition or decomposition with objects, drawings, expressions or equations. Multi-digit numbers not to exceed 9.99.",
+   "cpalms_id": "18109",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18109",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:50:30Z"
+  },
+  "MA.5.NSO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare multi-digit numbers with decimals up to the thousandths.",
+   "cpalms_id": "15383",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15383",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:50:32Z"
+  },
+  "MA.5.NSO.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare multi-digit numbers with decimals up to the hundredths. Multi-digit numbers not to exceed 9.99.",
+   "cpalms_id": "18110",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18110",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:50:35Z"
+  },
+  "MA.5.NSO.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Round multi-digit numbers with decimals to the thousandths to the nearest hundredth, tenth or whole number.",
+   "cpalms_id": "15384",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15384",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:50:38Z"
+  },
+  "MA.5.NSO.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "5 Round multi-digit numbers with decimals to the tenths to the nearest whole number (e.g., 1.7 rounds to 2); and numbers with decimals to the hundredths to the nearest tenth (e.g., 2.36 rounds to 2.4). Multi-digit numbers not to exceed 9.99.",
+   "cpalms_id": "18111",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18111",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:50:43Z"
+  },
+  "MA.5.NSO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Multiply multi-digit whole numbers including using a standard algorithm with procedural fluency.",
+   "cpalms_id": "15385",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15385",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:50:46Z"
+  },
+  "MA.5.NSO.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore multiplication of two whole numbers, up to two digits by two digits.",
+   "cpalms_id": "18112",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18112",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:50:49Z"
+  },
+  "MA.5.NSO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Divide multi-digit whole numbers, up to five digits by two digits, including using a standard algorithm with procedural fluency. Represent remainders as fractions.",
+   "cpalms_id": "15386",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15386",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:50:52Z"
+  },
+  "MA.5.NSO.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply a strategy to divide two whole numbers up to two digits by one digit, including the possibility of whole number remainders.",
+   "cpalms_id": "18113",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18113",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:50:56Z"
+  },
+  "MA.5.NSO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Add and subtract multi-digit numbers with decimals to the thousandths, including using a standard algorithm with procedural fluency.",
+   "cpalms_id": "15387",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15387",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:50:58Z"
+  },
+  "MA.5.NSO.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply a strategy to add and subtract multi-digit numbers with decimals to the tenths (e.g., 3.3 + 0.5) and hundredths (e.g., 1.25 − 0.12). Multi-digit numbers not to exceed 9.99.",
+   "cpalms_id": "18114",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18114",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:51:01Z"
+  },
+  "MA.5.NSO.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the multiplication and division of multi-digit numbers with decimals to the hundredths using estimation, rounding and place value.",
+   "cpalms_id": "15388",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15388",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:51:04Z"
+  },
+  "MA.5.NSO.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the estimation of products and quotients of two multi-digit numbers with decimals to the tenths (e.g., 8.9 × 2.3 becomes 9 × 2 by rounding both factors to the nearest whole number). Multi-digit numbers not to exceed 9.9.",
+   "cpalms_id": "18115",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18115",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:51:08Z"
+  },
+  "MA.5.NSO.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Multiply and divide a multi-digit number with decimals to the tenths by one-tenth and one-hundredth with procedural reliability.",
+   "cpalms_id": "15389",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15389",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:51:11Z"
+  },
+  "MA.5.NSO.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "5 Explore multiplying and dividing single-digit whole numbers by one-tenth and one-hundredth.",
+   "cpalms_id": "18116",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18116",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:51:15Z"
+  },
+  "MA.5.AR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve multi-step real-world problems involving any combination of the four operations with whole numbers, including problems in which remainders must be interpreted within the context.",
+   "cpalms_id": "15395",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15395",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:51:17Z"
+  },
+  "MA.5.AR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step real-world problems involving any combination of the four operations with whole numbers. Explore problems in which remainders must be interpreted within the context.",
+   "cpalms_id": "18123",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18123",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:51:21Z"
+  },
+  "MA.5.AR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving the addition, subtraction or multiplication of fractions, including mixed numbers and fractions greater than 1.",
+   "cpalms_id": "15396",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15396",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:51:24Z"
+  },
+  "MA.5.AR.1.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world problems involving addition and subtraction of mixed numbers and fractions greater than one with like denominators.",
+   "cpalms_id": "18124",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18124",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:51:28Z"
+  },
+  "MA.5.AR.1.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world problems involving multiplication of unit fractions.",
+   "cpalms_id": "18125",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18125",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:51:31Z"
+  },
+  "MA.5.AR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving division of a unit fraction by a whole number and a whole number by a unit fraction.",
+   "cpalms_id": "15397",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15397",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:51:35Z"
+  },
+  "MA.5.AR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world problems involving division of a whole number by a unit fraction.",
+   "cpalms_id": "18126",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18126",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:51:38Z"
+  },
+  "MA.5.AR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Translate written real-world and mathematical descriptions into numerical expressions and numerical expressions into written mathematical descriptions.",
+   "cpalms_id": "15398",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15398",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:51:41Z"
+  },
+  "MA.5.AR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Translate mathematical descriptions (e.g., five plus two; the product of three and four) into numerical expressions with two terms.",
+   "cpalms_id": "18127",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18127",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:51:43Z"
+  },
+  "MA.5.AR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate multi-step numerical expressions using order of operations.",
+   "cpalms_id": "15399",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15399",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:51:46Z"
+  },
+  "MA.5.AR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate an expression containing three terms and one set of parentheses.",
+   "cpalms_id": "18128",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18128",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:51:48Z"
+  },
+  "MA.5.AR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Determine and explain whether an equation involving any of the four operations is true or false.",
+   "cpalms_id": "15400",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15400",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:51:52Z"
+  },
+  "MA.5.AR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Determine whether an equation (with no more than four terms and up to one set of parentheses) involving any of the four operations with whole numbers is true or false. Limit addition and subtraction to within 100 and limit multiplication and division to the products of two single-digit whole numbers and their related division facts.",
+   "cpalms_id": "18129",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18129",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:51:55Z"
+  },
+  "MA.5.AR.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, write an equation involving any of the four operations to determine the unknown whole number with the unknown in any position.",
+   "cpalms_id": "15401",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15401",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:51:57Z"
+  },
+  "MA.5.AR.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, generate an equation involving any of the four operations to determine the unknown sum, difference, product or quotient. Sums may not exceed 100 and their related subtraction facts. Multiplication and division may not exceed two digit by one digit.",
+   "cpalms_id": "18130",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18130",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:00Z"
+  },
+  "MA.5.AR.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a numerical pattern, identify and write a rule that can describe the pattern as an expression.",
+   "cpalms_id": "15402",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15402",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:52:04Z"
+  },
+  "MA.5.AR.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a numerical pattern, identify a one-step rule that can describe the pattern.",
+   "cpalms_id": "18131",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18131",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:08Z"
+  },
+  "MA.5.AR.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a rule for a numerical pattern, use a two-column table to record the inputs and outputs.",
+   "cpalms_id": "15403",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15403",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:52:11Z"
+  },
+  "MA.5.AR.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given the inputs and a one-step addition or subtraction rule for a numerical pattern, use a two-column table to record the outputs.",
+   "cpalms_id": "18132",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18132",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:14Z"
+  },
+  "MA.5.M.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve multi-step real-world problems that involve converting measurement units to equivalent measurements within a single system of measurement.",
+   "cpalms_id": "15404",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15404",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:52:17Z"
+  },
+  "MA.5.M.1.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Using a conversion sheet, convert within a single system of measurement using the units: miles, yards, feet, inches; pounds, ounces; gallons, quarts, pints, cups; and hours, minutes. Only whole number measurements may be used.",
+   "cpalms_id": "18133",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18133",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:21Z"
+  },
+  "MA.5.M.1.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Using a conversion sheet, solve one-and two-step real-world problems that involve converting measurement units (i.e., miles, yards, feet, inches; pounds, ounces; gallons, quarts, pints, cups; and hours, minutes) to equivalent measurements within a single system of measurement. Only whole number measurements may be used.",
+   "cpalms_id": "18134",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18134",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:23Z"
+  },
+  "MA.5.M.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve multi-step real-world problems involving money using decimal notation.",
+   "cpalms_id": "15405",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15405",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:52:27Z"
+  },
+  "MA.5.M.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step addition and subtraction real-world problems involving money using decimal notation with all terms less than $20.00 (e.g., $11.74 + $5.31, $10.99 − $3.26).",
+   "cpalms_id": "18135",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18135",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:29Z"
+  },
+  "MA.5.FR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world problem, represent the division of two whole numbers as a fraction.",
+   "cpalms_id": "15390",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15390",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:52:33Z"
+  },
+  "MA.5.FR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore the connection between fractions and division in a real-world problem.",
+   "cpalms_id": "18117",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18117",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:37Z"
+  },
+  "MA.5.FR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Add and subtract fractions with unlike denominators, including mixed numbers and fractions greater than 1, with procedural reliability.",
+   "cpalms_id": "15391",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15391",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:52:39Z"
+  },
+  "MA.5.FR.2.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Explore adding and subtracting mixed numbers and fractions greater than 1 with like denominators.",
+   "cpalms_id": "18118",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18118",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:43Z"
+  },
+  "MA.5.FR.2.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Explore adding and subtracting fractions less than one with unlike denominators. where one denominator is a multiple of the other (e.g., + , − ).",
+   "cpalms_id": "18119",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18119",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:46Z"
+  },
+  "MA.5.FR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Extend previous understanding of multiplication to multiply a fraction by a fraction, including mixed numbers and fractions greater than 1, with procedural reliability.",
+   "cpalms_id": "15392",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15392",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:52:49Z"
+  },
+  "MA.5.FR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore multiplying a unit fraction by a unit fraction.",
+   "cpalms_id": "18120",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18120",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:52Z"
+  },
+  "MA.5.FR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "When multiplying a given number by a fraction less than 1 or a fraction greater than 1, predict and explain the relative size of the product to the given number without calculating.",
+   "cpalms_id": "15393",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15393",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:52:54Z"
+  },
+  "MA.5.FR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Explore the impact on the size of the product when multiplying a given number by a fraction less than 1 or by a whole number.",
+   "cpalms_id": "18121",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18121",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:52:58Z"
+  },
+  "MA.5.FR.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Extend previous understanding of division to explore the division of a unit fraction by a whole number and a whole number by a unit fraction.",
+   "cpalms_id": "15394",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15394",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:53:00Z"
+  },
+  "MA.5.FR.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the division of a one-digit whole number by a unit fraction. Denominators are limited to 2, 3 or 4.",
+   "cpalms_id": "18122",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18122",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:53:04Z"
+  },
+  "MA.5.GR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Classify triangles or quadrilaterals into different categories based on shared defining attributes. Explain why a triangle or quadrilateral would or would not belong to a category.",
+   "cpalms_id": "15406",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15406",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:53:07Z"
+  },
+  "MA.5.GR.1.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Sort triangles into different categories based on the size of their angles. Triangles include acute, obtuse and right.",
+   "cpalms_id": "18136",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18136",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:53:11Z"
+  },
+  "MA.5.GR.1.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Sort quadrilaterals into different categories based on shared defining attributes. Explore why a quadrilateral would or would not belong to a category. Quadrilaterals include parallelograms, rhombi, rectangles, squares and trapezoids.",
+   "cpalms_id": "18137",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18137",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:53:14Z"
+  },
+  "MA.5.GR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify and classify three-dimensional figures into categories based on their defining attributes. Figures are limited to right pyramids, right prisms, right circular cylinders, right circular cones and spheres.",
+   "cpalms_id": "15407",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15407",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:53:18Z"
+  },
+  "MA.5.GR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify and sort three-dimensional figures into categories based on their defining attributes. Figures are limited to right rectangular pyramids, right rectangular prisms, right circular cylinders, right circular cones and spheres.",
+   "cpalms_id": "18138",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18138",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:53:21Z"
+  },
+  "MA.5.GR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Find the perimeter and area of a rectangle with fractional or decimal side lengths using visual models and formulas.",
+   "cpalms_id": "15408",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15408",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:53:23Z"
+  },
+  "MA.5.GR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Find the perimeter and area of a rectangle with decimal side lengths using a visual model and calculator.",
+   "cpalms_id": "18139",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18139",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:53:26Z"
+  },
+  "MA.5.GR.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore volume as an attribute of three-dimensional figures by packing them with unit cubes without gaps. Find the volume of a right rectangular prism with whole-number side lengths by counting unit cubes.",
+   "cpalms_id": "15409",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15409",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:53:29Z"
+  },
+  "MA.5.GR.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore volume as an attribute of three-dimensional figures that can be measured by packing them with unit cubes without gaps.",
+   "cpalms_id": "18140",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18140",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:53:32Z"
+  },
+  "MA.5.GR.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Find the volume of a right rectangular prism with whole-number side lengths using a visual model and a formula.",
+   "cpalms_id": "15410",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15410",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:53:35Z"
+  },
+  "MA.5.GR.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Find the volume of a right rectangular prism with whole-number side lengths by counting unit cubes. Explore that the volume is the same as what would be found by multiplying the edge lengths.",
+   "cpalms_id": "18141",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18141",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:53:38Z"
+  },
+  "MA.5.GR.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving the volume of right rectangular prisms, including problems with an unknown edge length, with whole-number edge lengths using a visual model or a formula. Write an equation with a variable for the unknown to represent the problem.",
+   "cpalms_id": "15411",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15411",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:53:41Z"
+  },
+  "MA.5.GR.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving the volume of right rectangular prisms with given whole-number edge lengths using a visual model or formula.",
+   "cpalms_id": "18142",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18142",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:53:44Z"
+  },
+  "MA.5.GR.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the origin and axes in the coordinate system. Plot and label ordered pairs in the first quadrant of the coordinate plane.",
+   "cpalms_id": "15412",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15412",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:53:46Z"
+  },
+  "MA.5.GR.4.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore the first quadrant of the coordinate plane including the origin, axes and points located by using ordered pairs.",
+   "cpalms_id": "18143",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18143",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:53:50Z"
+  },
+  "MA.5.GR.4.2": {
+   "state": "confirmed",
+   "statement_verified": "Represent mathematical and real-world problems by plotting points in the first quadrant of the coordinate plane and interpret coordinate values of points in the context of the situation.",
+   "cpalms_id": "15413",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15413",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:53:53Z"
+  },
+  "MA.5.GR.4.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Plot and label ordered pairs in the first quadrant of the coordinate plane.",
+   "cpalms_id": "18144",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18144",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:53:55Z"
+  },
+  "MA.5.DP.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Collect and represent numerical data, including fractional and decimal values, using tables, line graphs or line plots.",
+   "cpalms_id": "15414",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15414",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:53:58Z"
+  },
+  "MA.5.DP.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Sort and represent numerical data, including fractional values using tables or line plots (when given a scaled number line). Data set to include only whole numbers, halves and quarters.",
+   "cpalms_id": "18145",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18145",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:54:02Z"
+  },
+  "MA.5.DP.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Interpret numerical data, with whole-number values, represented with tables or line plots by determining the mean, mode, median or range.",
+   "cpalms_id": "15415",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15415",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:54:05Z"
+  },
+  "MA.5.DP.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Interpret numerical data, with whole-number values, represented with tables or line plots by determining the mean, mode or range. Line plot scales to include only whole numbers, halves and quarters.",
+   "cpalms_id": "18146",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18146",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:54:09Z"
+  },
+  "MA.2.AR.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore using repeated addition to find the total number of objects represented in a collection of equal groups (e.g., 3 groups of 2 objects) or in a rectangular array (e.g., 3 rows of 2 objects). Total objects may not exceed 20.",
+   "cpalms_id": "18468",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18468",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-09T01:54:40Z"
+  },
+  "MA.2.M.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Measure the lengths of two objects using the same unit and determine the difference between their measurements.",
+   "cpalms_id": "15296",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15296",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:54:43Z"
+  },
+  "MA.2.M.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Using analog and digital clocks, tell and write time to the nearest five minutes using a.m. and p.m. appropriately. Express portions of an hour using the fractional terms half an hour, half past, quarter of an hour, quarter after and quarter til.",
+   "cpalms_id": "15298",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15298",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:54:47Z"
+  },
+  "MA.2.M.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve one- and two-step addition and subtraction real-world problems involving either dollar bills within $100 or coins within 100¢ using $ and ¢ symbols appropriately.",
+   "cpalms_id": "15299",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15299",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:54:50Z"
+  },
+  "MA.2.GR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify line(s) of symmetry for a two-dimensional figure.",
+   "cpalms_id": "15302",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15302",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T01:54:53Z"
+  },
+  "MA.2.GR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify a line of symmetry for a two-dimensional figure.",
+   "cpalms_id": "18477",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18477",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-09T01:54:57Z"
+  },
+  "MA.K12.MTR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Actively participate in effortful learning both individually and collectively.Mathematicians who participate in effortful learning both individually and with others: Analyze the problem in a way that makes sense given the task.Ask questions that will help with solving the task.Build perseverance by modifying methods as needed while solving a challenging task.Stay engaged and maintain a positive mindset when working to solve tasks.Help and support each other when attempting a new method or approach.",
+   "cpalms_id": "15875",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15875",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-09T14:03:43Z"
+  }
+ }
+}
