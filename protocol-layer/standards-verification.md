@@ -74,6 +74,16 @@ Negative control: `examples/known-bad/fabricated-standard.known-bad.json` must F
 (enforced by `tools/validate_examples.py` check 1b); the resolver's own `--self-test` (28 probes +
 a shape audit over every committed corpus code) runs in CI.
 
+**CPALMS verification loop** (`tools/cpalms_verify.py`) — upgrades a best-effort corpus to
+authoritative. Phase V queries CPALMS's free, keyless search-fragment endpoint (registered:
+`cpalms-search-fragment-endpoint` in `canonical-sources/registries/fldoe-data-sources.json`) one
+polite request per code and classifies honestly (`confirmed / statement_differs / renumbered /
+not_on_cpalms / ambiguous / fetch_failed`); Phase A applies a **human-reviewed** report as an
+overlay (`data/overlays/<subject>.cpalms.json`) — the parse corpus is never mutated, and nothing
+is auto-applied. Once a subject's overlay coverage reaches 98%, the resolver drops its
+low-confidence treatment: absence becomes blocking evidence again, and the CPALMS-verified
+statement becomes the §6 origin form.
+
 ## 6. Citation-mutation check (origin-form rule)
 
 A standard can be cited wrongly even when its **code is real and correctly resolved**: the

@@ -5,6 +5,19 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **CPALMS verification loop** (`tools/cpalms_verify.py` + overlay-aware resolver): verifies the
+  FL corpus against CPALMS's free, keyless search-fragment endpoint (discovered + probed
+  2026-08-09; registered as `cpalms-search-fragment-endpoint`, superseding the recorded
+  "NO API access" limitation for verification purposes). Stdlib-only, robots-checked at runtime,
+  honest UA, polite delays, checkpoint/resume; states `confirmed / statement_differs / renumbered
+  / not_on_cpalms / ambiguous / fetch_failed`; `--apply` is dry-run and validates every row —
+  `--write` (human-approved) records an overlay without ever mutating the parse corpus.
+  `verify_standards.py` consumes overlays: verified stamps + CPALMS statement as the §6 origin
+  form, `superseded_by` resolution for renumbered codes, and **computed** low-confidence — a
+  subject exits advisory treatment at ≥98% overlay coverage, making its absences blocking again.
+  Live smoke: real code confirmed (id 15307), fabricated code cleanly absent; the corpus already
+  carries post-2021 `SS.7.CG.*` civics codes (renumbering-drift hypothesis disproven and
+  documented rather than assumed).
 - **`tools/verify_standards.py` — offline standards-code resolver** (delivers the
   standards-verification §5 promise; closes the gap where a fabricated-but-plausible code passed
   CI). Resolves cited codes against the committed FL corpus (6,583 enumerated codes with
