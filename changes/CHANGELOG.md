@@ -5,6 +5,21 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 ### Added
+- **Elementary standards CPALMS verification wave + adversarial audit.** Verified 1,038 elementary
+  codes against CPALMS in both directions (forward per-code + reverse census over the benchmark AND
+  access-point endpoints): **math K–5 393/393**, **reading/ELA K–5 355/355**, **science grade 4
+  151/151** — each reconciling exactly against CPALMS's own listing (0 missing, 0 absent) — and
+  **social studies grade 4 138/139 + 2 real corpus defects** (`SS.4.E.1.1` stale wording;
+  `SS.4.A.7.AP.3` missing access point, recorded as a `cpalms_addition`). Overlays are
+  provenance-stamped and the parse corpus is untouched. Tooling gained grade scoping,
+  truncation-safe comparison, overlay merge, dual-endpoint census with runtime filter discovery,
+  AP-endpoint routing (`GetSearchAccessPoint`, registered), and opt-in `--include-additions`;
+  `verify_standards` resolves overlay additions and renumberings with CPALMS provenance.
+  **Adversarial audit** (`docs/audits/2026-08-09-elementary-standards-audit.md`): A1 controls
+  28/28 rejected, A2 cross-endpoint 12/12 after fixing a real defect it found (503 access-point
+  provenance URLs pointed at the benchmark path), A4 census reconciled with one explained delta,
+  A5 resume determinism proven, A6 parser/injection hostility clean, A7 politeness verified —
+  closing with two OPEN findings and an explicit residual-risk statement.
 - **CPALMS verification loop** (`tools/cpalms_verify.py` + overlay-aware resolver): verifies the
   FL corpus against CPALMS's free, keyless search-fragment endpoint (discovered + probed
   2026-08-09; registered as `cpalms-search-fragment-endpoint`, superseding the recorded
