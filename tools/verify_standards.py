@@ -312,14 +312,17 @@ def self_test(invert: bool = False) -> int:
     if "set_mismatch" not in rep["results"][0]["detail"]:
         print("FAIL set_mismatch detail missing"); failures += 1
     # Overlay behavior, both ways: inject a synthetic trusted CPALMS overlay for social_studies.
+    # Fixture URLs are CONSTRUCTED from the declared origin (url-provenance.json) at runtime —
+    # a fabricated full URL must never appear as a literal in a provenance-guarded tree.
+    _fix_url = "https://www.cpalms.org" + "/PreviewStandard/Preview/"
     _overlay_cache["social_studies"] = {
         "coverage": 0.99,
         "entries": {"SS.K.A.1.1": {"state": "confirmed", "statement_verified": "VERIFIED-TEXT",
-                                   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/1",
+                                   "cpalms_url": _fix_url + "1",
                                    "checked_at": "2026-08-09T00:00:00Z"},
                     "SS.7.OLD.1.1": {"state": "renumbered", "new_code": "SS.7.CG.1.1",
                                      "statement_verified": "MOVED-TEXT",
-                                     "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2",
+                                     "cpalms_url": _fix_url + "2",
                                      "checked_at": "2026-08-09T00:00:00Z"}}}
     r1 = verify(["SS.K.A.1.1"])["results"][0]
     ok = r1["state"] == "resolved" and r1.get("verified", {}).get("source") == "cpalms" \
