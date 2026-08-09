@@ -75,6 +75,21 @@
    }
   },
   {
+   "id": "cpalms-search-ap-fragment-endpoint",
+   "url": "https://www.cpalms.org/Search/GetSearchAccessPoint",
+   "label": "CPALMS access-point search fragment endpoint (server-rendered; free, keyless)",
+   "category": "standards_access",
+   "data_format": "HTML fragment (result cards: AP code, statement, numeric CPALMS id, revision date) — same card markup as GetSearchStandard",
+   "authority": "primary",
+   "status": "verified",
+   "access_note": "Mirror of cpalms-search-fragment-endpoint for access points (AP/In/Su/Pa code shapes are NOT served by the standards endpoint — probed 2026-08-09: MA.K.NSO.1.AP.1 empty there, full card here, id 18401). Same params (KeyWord/SubjectAreaIds/GradelevelIds/CurrentPage); filter ids from GetAccessPointSubjectFilters / GetAccessPointGradeFilters at runtime. Used by tools/cpalms_verify.py for AP verification + census.",
+   "used_by": "tools/cpalms_verify.py",
+   "provenance": {
+    "from_saved_page": "https://www.cpalms.org/Content/themes/CPALMSNewDesign2024/js/AccessPointSearch.js",
+    "captured": "2026-08-09"
+   }
+  },
+  {
    "id": "cpalms-search-accesspoint",
    "url": "https://www.cpalms.org/public/search/AccessPoint",
    "label": "CPALMS public Access Point search (ESE/access standards)",
