@@ -26,6 +26,14 @@ Protocols followed; metadata complete; decision recorded; standards cited with f
 Facts, calculations, and **standards** correct, current, correctly coded, and verifiable.
 - **5** no known inaccuracies. **3** minor, correctable. **2** significant. **0** incorrect/fabricated
   standard or fabricated statistic → critical.
+- Resolve every cited code first: `python3 tools/verify_standards.py --input <artifact>` —
+  `not_found`/`malformed` is the QG §11.4 fabricated-standard critical failure (→ Rejected);
+  advisory states (best-effort corpus, scheme-only frameworks) are noted, not critical.
+- Quoted/paraphrased standard text must match the registry origin form — run the mechanical check
+  `python3 tools/verify_standards.py --compare <CODE> --text "<restatement>"` (six §6 categories
+  with evidence; exit 1 on any flag). A mutation that changes what the standard *requires*
+  (value drift, scope broadening) scores like a mis-coded standard; cosmetic differences do not
+  flag. The comparator is a detector — you still weigh the evidence.
 
 ### 5. Alignment (15%)
 Objectives ↔ instruction ↔ assessment ↔ standards cohere.
@@ -55,3 +63,6 @@ The requested deliverable, scope, audience, and constraints were met.
 `Composite = Σ(score × weight)` → Approved ≥4.0 · Conditionally Approved 3.0-3.99 · Remediation
 Required 2.0-2.99 · Rejected <2.0. **Any 0, or a critical failure, forces Rejected.** Use
 `scripts/score.py` to compute — do not eyeball the arithmetic.
+
+State each clean dimension as "no issues found — checked: <list>", never "error-free"; always name
+the weakest dimension as `residual_risk` (review limits, not defects), even when Approved (QG §93.3).

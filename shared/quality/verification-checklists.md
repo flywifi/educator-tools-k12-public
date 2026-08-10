@@ -11,7 +11,9 @@ Quality Gates (QG §7.3) — "did we build the thing, completely and consistentl
 - [ ] The requested **deliverable type** is what was produced (no swap — QG §14.4).
 - [ ] **Grade band + subject** are set and consistent throughout.
 - [ ] At least one **standard** is selected, cited with framework+version, and verifiable
-      (`protocols/standards-verification.md`).
+      (`protocols/standards-verification.md`; resolver: `python3 tools/verify_standards.py --input <artifact>`).
+- [ ] Standard text restatements match the **registry origin form** — no caveat-stripping, hedge
+      removal, or scope-broadening of what the benchmark says (standards-verification.md §6).
 - [ ] **Differentiation** is present (UDL by default; tiering/EL/IEP as applicable).
 - [ ] **Metadata block** is initialized and `human_review_required: true`.
 - [ ] **No real student data** anywhere (placeholders only).

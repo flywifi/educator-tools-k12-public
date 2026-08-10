@@ -30,6 +30,12 @@ Any of these forces **Rejected regardless of composite** and may never be overri
 fabricated/incorrect standard or citation, real student PII, unsafe or legal-overreach content,
 or "approval" asserted without evidence. (Full list: `references/quality-gates.md`.)
 
+For the fabricated-standard check, don't judge by eye — resolve mechanically:
+`python3 tools/verify_standards.py --input <artifact.json>` (offline, committed FL corpus +
+CCSS/NGSS scheme checks). `not_found`/`malformed` = this critical failure; advisory states are
+scored on evidence, not treated as fabrication. The returned `statement` is the registry origin
+form for the citation-mutation check (rubric, Accuracy).
+
 ## 4. Compute the composite and decision (deterministic)
 Run the bundled helper so weighting + thresholds are exact and reproducible:
 
@@ -44,7 +50,16 @@ Rejected. Do not hand-compute — use the script.
 ## 5. Emit the decision record
 Return the verdict as a decision record per `protocol-layer/metadata-schema.md`: per-dimension scores +
 evidence, composite, decision, rationale, and `human_review_required: true`. See
-`examples/example-evaluation.md` for the exact shape.
+`examples/example-evaluation.md` for the exact shape. Two honesty rules (QG §93.3):
+- A dimension with no findings is stated as "no issues found — checked: <what was examined>",
+  never as "error-free" or "perfect".
+- Always emit `residual_risk`: the dimensions/claims this review is least able to guarantee, and
+  why — even on Approved. Frame it as review limits, not defects.
+
+Also populate `human_review_focus` (metadata-schema.md): the 2-3 specific spots the teacher should
+check first — drawn from the two lowest-scoring dimensions and any near-critical finding (e.g.,
+"confirm MA.3.NSO.2.2 against CPALMS", "re-work answer-key item 7", "SpEd sign-off on the
+accommodation section"). It prioritizes human review; it never replaces it.
 
 ## 6. On not-Approved
 Give **specific, actionable remediation** per failed dimension (what to change and why). Resolve

@@ -35,5 +35,32 @@
       ],
       "files": []
     }
-  ]
+  ],
+  "trigger_evals": {
+    "positive": [
+      {"prompt": "Here's my 5th grade science lesson plan — is this good?"},
+      {"prompt": "Will this quiz pass the quality gates?"},
+      {"prompt": "Review my lesson plan before I submit it to my AP tomorrow. [plan pasted]"},
+      {"prompt": "Check the standards alignment on this unit — it cites MA.4.NSO.2.1."},
+      {"prompt": "Can you score this rubric I made for the persuasive essay?"},
+      {"prompt": "QA this slide deck before I present it at the family curriculum night."},
+      {"prompt": "Critique this draft IEP support plan for me."},
+      {"prompt": "Vet this parent letter before it goes home with students."},
+      {"prompt": "I just generated an assessment with assessment-designer — run the final quality check on it."},
+      {"prompt": "Is this intervention plan solid enough to use with my Tier 2 small group?"}
+    ],
+    "negative": [
+      {"prompt": "Create a lesson plan on equivalent fractions for 3rd grade.", "instead": "lesson-planner"},
+      {"prompt": "Make me a rubric for a persuasive essay unit.", "instead": "assessment-designer"},
+      {"prompt": "Review my pull request for code quality.", "instead": "out of ecosystem"},
+      {"prompt": "Review my resume before I apply for the instructional coach role.", "instead": "out of ecosystem"},
+      {"prompt": "Check this email to my landlord for tone.", "instead": "out of ecosystem"}
+    ],
+    "pass_bar": {
+      "positive_min": 0.8,
+      "negative_max": 0.2
+    },
+    "counting_rule": "An activation counts ONLY on an actual invocation of quality-review. Mentioning the skill's name, listing its directory, or describing it is NOT activation.",
+    "detector_control": "If 2+ negative prompts activate, the run is DETECTOR SUSPECT: the description/routing is broken (or the harness is miscounting) and the run cannot be scored as a pass. Fix the description's scope or 'Do NOT use for...' clause first."
+  }
 }

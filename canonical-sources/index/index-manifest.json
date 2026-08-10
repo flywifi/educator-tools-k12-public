@@ -7,7 +7,7 @@
     "schools": 712,
     "private_schools": 508,
     "toolkit_resources": 1445,
-    "data_sources": 60
+    "data_sources": 62
   },
   "sources": {
     "shared/standards/resources/florida/data/computer_science.json": {
@@ -131,8 +131,8 @@
       "bytes": 1090315
     },
     "canonical-sources/registries/fldoe-data-sources.json": {
-      "sha256": "f5c32743d832ff9a6773ffd99b2e3e4019c6feb35a82540d9bd38f7b6f14f42e",
-      "bytes": 29253
+      "sha256": "1cd964d9e7288880e5e3156fba6cb06ad960a933012f3da1982cfddd3984fe39",
+      "bytes": 28621
     }
   },
   "human_review_required": true

@@ -217,7 +217,14 @@ date:
 decision:        # Approved | Conditionally Approved | Remediation Required | Rejected
 evidence:
 rationale:
+checked:         # explicit list of what was examined — REQUIRED whenever a gate/dimension reports no issues
+residual_risk:   # the claims/dimensions most likely still wrong, and why — REQUIRED even on Approved
 ```
+
+A clean result is reported as "no issues found — checked: <list>", never as "error-free" — this
+operationalizes the §90 guard against Approval Without Evidence. `residual_risk` records **review
+limits** (what this evaluation is least able to guarantee), not defects; it is distinct from
+`residual_uncertainty` in `source_decisions` (metadata-schema.md), which records source conflicts.
 
 Recommended (§93.4): `score_summary, risk_summary, audit_reference, remediation_reference`.
 The **Repository Quality Ledger (§94)** records approvals, rejections, remediations, audits,

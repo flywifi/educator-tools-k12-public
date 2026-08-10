@@ -32,7 +32,9 @@ A cited standard is verified when all of the following hold:
 
 ## 3. Verification procedure
 
-1. Resolve each cited code against `shared/standards/`.
+1. Resolve each cited code against `shared/standards/` — mechanically:
+   `python3 tools/verify_standards.py --input <artifact.json>` (or pass codes directly). The
+   resolver also returns the registry `statement` (the origin form for the §6 mutation check).
 2. Confirm coding, version, and grade.
 3. Confirm objective↔standard↔assessment alignment (feeds the Alignment gate).
 4. Record the result in the artifact metadata (`standards_set`, `standards_cited`).
@@ -47,7 +49,72 @@ A cited standard is verified when all of the following hold:
 | Wrong grade / deprecated / mis-coded | Accuracy deficiency → Remediation (QG §25) |
 | Topically adjacent but not aligned | Alignment deficiency → Remediation (QG §26) |
 
-## 5. Validation
+## 5. Validation — the resolver (delivered)
 
-Phase A adds a `scripts/verify_standards.py` helper per capability skill and wires this protocol
-into pipeline step 2 (Protocol Enforcement) and the `quality-review` Accuracy/Alignment gates.
+The promised helper exists as **one shared tool**, `tools/verify_standards.py` (not per-skill
+copies — shared engines are the source of truth; per-skill duplication is what the two-copy rule
+exists to avoid). It is wired into pipeline step 2 via `tools/validate_outputs.py`
+(`unresolvable_standard`, blocking) and into the `quality-review` Accuracy gate. Fully offline,
+stdlib-only; resolves against the committed FL corpus
+(`shared/standards/resources/florida/data/`, 6,500+ codes) and validates CCSS/NGSS coding schemes.
+
+**Honest-degradation states** (severity follows evidence strength — a verification result must
+never itself be fabricated):
+
+| State | Severity | Meaning |
+|---|---|---|
+| `resolved` | clean | exact hit in the enumerated FL corpus (statement returned = §6 origin form) |
+| `not_found` | **blocking** | absent from a complete enumerated corpus — the fabricated-code case (§11.4) |
+| `not_found_low_confidence` | advisory | absent from a best-effort/partial corpus (SS `.doc` parse; ELD) — verify on CPALMS |
+| `malformed` | **blocking** | violates its own framework's coding scheme |
+| `scheme_valid_unenumerated` | advisory | CCSS/NGSS structure valid; existence not checkable offline (adapters are scheme-only) |
+| `unknown_framework` | advisory | matches no known scheme; register school frameworks in `shared/standards/frameworks/` |
+
+Negative control: `examples/known-bad/fabricated-standard.known-bad.json` must FAIL validation
+(enforced by `tools/validate_examples.py` check 1b); the resolver's own `--self-test` (28 probes +
+a shape audit over every committed corpus code) runs in CI.
+
+**CPALMS verification loop** (`tools/cpalms_verify.py`) — upgrades a best-effort corpus to
+authoritative. Phase V queries CPALMS's free, keyless search-fragment endpoint (registered:
+`cpalms-search-fragment-endpoint` in `canonical-sources/registries/fldoe-data-sources.json`) one
+polite request per code and classifies honestly (`confirmed / statement_differs / renumbered /
+not_on_cpalms / ambiguous / fetch_failed`); Phase A applies a **human-reviewed** report as an
+overlay (`data/overlays/<subject>.cpalms.json`) — the parse corpus is never mutated, and nothing
+is auto-applied. Once a subject's overlay coverage reaches 98%, the resolver drops its
+low-confidence treatment: absence becomes blocking evidence again, and the CPALMS-verified
+statement becomes the §6 origin form.
+
+## 6. Citation-mutation check (origin-form rule)
+
+A standard can be cited wrongly even when its **code is real and correctly resolved**: the
+artifact's *restatement* of the standard drifted somewhere between the registry and the page.
+This is the common real-world failure — a benchmark paraphrased from a pacing guide, worksheet
+bank, or prior artifact rather than from the framework text itself. When an artifact quotes or
+paraphrases a standard's text/benchmark, compare it against the registry text
+(`shared/standards/`, `canonical-sources/registries/`) and flag any of these mutations:
+
+| Mutation | Standards example |
+|---|---|
+| **Value drift** | a benchmark quantity altered ("numbers to 100" restated as "numbers to 1,000") |
+| **Unit/denominator swap** | per-problem vs. per-set expectations, digits vs. place values, percent vs. points |
+| **Caveat stripping** | a clarification/limitation dropped ("with support", "using visual models", "in familiar contexts") |
+| **Hedge removal** | "students explore/begin to" restated as "students master/demonstrate" |
+| **Scope broadening** | one grade band/strand/context generalized ("Grade 3 fraction benchmarks" cited as "elementary math standards") |
+| **Attribution laundering** | a paraphrase credited to the framework itself (e.g., a district pacing-guide summary presented as the B.E.S.T. benchmark text) |
+
+**Mechanical check (do not judge this by eye):**
+```bash
+python3 tools/verify_standards.py --compare <CODE> --text "<the artifact's restatement>"
+```
+It resolves the code, uses the CPALMS-verified statement (or the registry statement) as the origin
+form, and reports flags per category with evidence; exit 1 when any mutation is detected. The
+comparator is deliberately **separate** from the corpus-vs-CPALMS verification comparator, which
+must tolerate appended clarifications — reusing that one here misses value drift and caveat
+stripping (audit finding F5, 2026-08-09). It is a **detector, not a judge**: flags are evidence for
+the Accuracy gate; the human review requirement is unchanged.
+
+**Origin-form rule:** an artifact states a mutated standard in the **registry's origin form**, not
+the form encountered in a secondary source. Treatment on review: a mutation found by
+`quality-review` is an Accuracy deficiency → Remediation (QG §25); a mutation that changes **what
+the standard requires** (value drift, scope broadening) is treated like a mis-coded standard (§4).
+The comparison target is always on disk — no fetch is needed to run this check.

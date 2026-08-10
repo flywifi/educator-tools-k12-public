@@ -1,4 +1,15 @@
 {
   "skill_name": "__SKILL_NAME__",
-  "evals": []
+  "evals": [],
+  "trigger_evals": {
+    "_purpose": "Routing tests: does THIS skill activate on prompts it should own, and stay quiet on prompts it should not? Behavior evals above test the skill after invocation; these test the description's triggering. Fill before shipping: >=10 positive, >=5 negative.",
+    "positive": [],
+    "negative": [],
+    "pass_bar": {
+      "positive_min": 0.8,
+      "negative_max": 0.2
+    },
+    "counting_rule": "An activation counts ONLY on an actual invocation of this skill. Mentioning the skill's name, listing its directory, or describing it is NOT activation.",
+    "detector_control": "If 2+ negative prompts activate, the run is DETECTOR SUSPECT: the description/routing is broken (or the harness is miscounting) and the run cannot be scored as a pass. Fix the description's scope or 'Do NOT use for...' clause first."
+  }
 }

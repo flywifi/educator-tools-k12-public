@@ -5,6 +5,81 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.2.0] — 2026-08-10
+### Added
+- **Elementary Florida standards verified against CPALMS — 1,913 codes, 100% of K-5.** Every
+  elementary code in math (393), reading/ELA (355), science (636), and social studies (529) —
+  benchmarks *and* access points — was checked code-by-code against CPALMS in both directions
+  (forward per-code classification + a reverse census that finds codes CPALMS has and the corpus
+  lacks). Result: **1,912 confirmed**, 1 stale-wording finding, 3 missing access points recovered,
+  **0 unexplained census deltas**. Findings are recorded in provenance-stamped overlays
+  (`data/overlays/*.cpalms.json`, each entry carrying the CPALMS statement, id, URL, revision date,
+  and check timestamp); **the parsed corpus is never mutated**.
+  Real defects fixed along the way: two science access points (`SC.1.E.5.In.1`, `SC.5.L.14.In.2`)
+  that resolved as **blocking `not_found`** — TOS was calling real SpEd standards fabricated;
+  `SS.4.E.1.1`'s superseded wording; `SS.4.A.7.AP.3`'s absence; 503 access-point provenance URLs
+  pointing at the benchmark preview path; a **silently truncating multi-grade census** that had
+  reported 182 phantom "retirements" (censuses now sweep one grade at a time and union).
+  **Launch-readiness audit** (`docs/audits/2026-08-10-launch-readiness-audit.md`): A1 28/28
+  controls rejected · A2 22/22 cross-endpoint · A3 6/6 mutations + 0/16 false positives ·
+  A4 zero unexplained deltas · A5 resume determinism · A6 parser/injection hostility ·
+  A7 politeness · **A9 (new)** re-examined all 1,913 verified pairs with the strict §6 comparator.
+  Closes with one OPEN finding and seven named residual risks — grades 6-12 remain unverified and
+  social studies stays low-confidence by design.
+- **CPALMS verification loop** (`tools/cpalms_verify.py` + overlay-aware resolver): verifies the
+  FL corpus against CPALMS's free, keyless search-fragment endpoint (discovered + probed
+  2026-08-09; registered as `cpalms-search-fragment-endpoint`, superseding the recorded
+  "NO API access" limitation for verification purposes). Stdlib-only, robots-checked at runtime,
+  honest UA, polite delays, checkpoint/resume; states `confirmed / statement_differs / renumbered
+  / not_on_cpalms / ambiguous / fetch_failed`; `--apply` is dry-run and validates every row —
+  `--write` (human-approved) records an overlay without ever mutating the parse corpus.
+  `verify_standards.py` consumes overlays: verified stamps + CPALMS statement as the §6 origin
+  form, `superseded_by` resolution for renumbered codes, and **computed** low-confidence — a
+  subject exits advisory treatment at ≥98% overlay coverage, making its absences blocking again.
+  Live smoke: real code confirmed (id 15307), fabricated code cleanly absent; the corpus already
+  carries post-2021 `SS.7.CG.*` civics codes (renumbering-drift hypothesis disproven and
+  documented rather than assumed).
+- **`tools/verify_standards.py` — offline standards-code resolver** (delivers the
+  standards-verification §5 promise; closes the gap where a fabricated-but-plausible code passed
+  CI). Resolves cited codes against the committed FL corpus (6,583 enumerated codes with
+  statement text) and validates CCSS/NGSS coding schemes offline. Honest-degradation states:
+  `not_found` blocks only where the corpus is authoritative; best-effort corpora (Social Studies
+  `.doc` parse, partial ELD) degrade to advisory — a parser gap can never manufacture a
+  fabricated-standard verdict. Grade-band matching (K12/912/68/612 spans), case-canonical check,
+  near-miss suggestions, `set_mismatch` flag, and the registry `statement` returned as the §6
+  citation-mutation origin form. Wired in as `validate_outputs.py` `unresolvable_standard`
+  (blocking) + `standard_advisory` (warning) with labeled skip on missing corpus; new
+  `examples/known-bad/fabricated-standard.known-bad.json` enforced by check 1b (probe run both
+  ways); CI runs the resolver's `--self-test` (28 probes + a shape audit over every committed
+  corpus code; `--self-test-invert` proves the test can fail). quality-review §3 + rubric now
+  require mechanical resolution before scoring Accuracy.
+- **Governance-honesty wave** (7 bounded concepts adapted from an external research-provenance
+  methodology review; nothing installed wholesale — full disposition in the review session):
+  - **Citation-mutation check** (`standards-verification.md` §6): six enumerable mutations of a
+    *real* standard's text (value drift, unit swap, caveat stripping, hedge removal, scope
+    broadening, attribution laundering) + the **origin-form rule** — restate mutated standards in
+    the registry's form. Wired into the universal validation checklist + quality-review Accuracy
+    rubric.
+  - **Decision-record honesty fields** (`quality-gates.md` §14 / §93.3): `checked` (explicit list,
+    required whenever a dimension reports no issues) and `residual_risk` (review limits, required
+    even on Approved); "error-free" claims barred. Mirrored in the synced operational rubric
+    (62 copies) and quality-review.
+  - **`human_review_focus`** (`metadata-schema.md`): optional list of the 2-3 highest-risk spots a
+    human should check first, derived from the lowest-scoring dimensions — prioritizes review,
+    never narrows it.
+  - **Trigger evals** (skill template + quality-review seed set): ≥10 positive / ≥5 negative
+    routing prompts per skill, pass bar ≥80%/≤20%, activation = actual invocation only, 2+
+    negative activations = DETECTOR SUSPECT.
+  - **Findings-log status vocabulary** (`docs/MACOS.md`, `CHANGE_MANAGEMENT.md`):
+    RESOLVED / OPEN / **UNTESTED** (landed ≠ validated, per QG §49) + `Catchable:` field; existing
+    rows retro-tagged (E1 is UNTESTED).
+  - **Data-not-instructions at point of use**: the SECURITY_AND_SAFETY §6 rule now appears
+    in-context in feed-curator, document-intelligence, and standards-updater (SKILL.md + deep
+    references).
+  - **Negative-control fixtures** (`examples/known-bad/` + `validate_examples.py` check 1b):
+    deliberately invalid artifacts that MUST fail validation — a known-bad that passes now fails
+    the build (gates proven to gate; probe run both ways).
+
 ## [1.1.0] — 2026-07-16
 ### Added
 - **macOS / cross-platform hardening wave** (adversarially audited, 34 probes, all findings

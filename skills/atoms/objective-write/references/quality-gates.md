@@ -60,5 +60,7 @@ Fabricated citation/standard/source/result · real student PII · unsafe or lega
 ## Emit a decision record
 Record the outcome in the artifact's metadata block (`protocols/metadata-schema.md`): per-dimension
 scores, composite, decision, evidence, rationale, and `human_review_required: true`.
+State each clean dimension as "no issues found — checked: <what was examined>", never "error-free";
+name the weakest dimension as `residual_risk` (review limits, not defects) even when Approved.
 
 > Reminder: an artifact is decision support, not a final professional/legal determination.

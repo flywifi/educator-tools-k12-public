@@ -17,6 +17,10 @@ branch → make the change → run the drift guard → (Phase A+) run evals → 
   exits 0 (the synced per-skill copies must match canon).
 - New skills are scaffolded with `python3 tools/new_skill.py <name>` so they start from the standard
   anatomy and pass the drift guard.
+- A correction is **UNTESTED** — not resolved — until it has been validated on the surface where it
+  runs (QG §49: completing an action is not proof it worked). Say which one it is in the findings
+  log / commit message; the status vocabulary is RESOLVED / OPEN / UNTESTED (`docs/MACOS.md`
+  findings log).
 
 ## 3. Editing canonical vs. synced files
 - Edit the **canonical** file in `shared/` or `protocols/`. **Do not** hand-edit a skill's synced

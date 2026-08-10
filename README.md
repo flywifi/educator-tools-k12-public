@@ -50,6 +50,37 @@ You don't need any of this to use TOS — but here's how it's built:
 - **A quality check** runs before anything is called "done," and an **automated consistency checker**
   (`tools/sync_check.py`) keeps the shared rules each skill carries identical to the originals.
 
+## Verified standards (Florida)
+
+A wrong standard code — or a real code quoted wrongly — is the most damaging mistake this system
+could make, so it is checked by code, not by eye.
+
+```bash
+# Does every standard this artifact cites actually exist, and does it fit the grade band?
+python3 tools/verify_standards.py --input my-artifact.json
+
+# Is this restatement of a standard faithful to the official text?
+python3 tools/verify_standards.py --compare MA.3.NSO.1.1 --text "Read and write numbers to 10,000."
+```
+
+- **Fully offline.** It reads a committed corpus of 6,583 Florida standards (B.E.S.T. / NGSSS,
+  including access points) — no network, no account, no API key.
+- **Honest about what it knows.** A code that is absent from an authoritative corpus is reported as
+  `not_found` and blocks; a code absent from a *best-effort* corpus (social studies, ELD) is
+  advisory, because a parser gap must never be reported as a fabricated standard. CCSS and NGSS are
+  **scheme-only**: structure is checked, existence is not.
+- **Independently verified.** Elementary math and reading (K–5) plus grade-4 science and social
+  studies have been checked code-by-code against **CPALMS**, Florida's official standards site, in
+  both directions — including a reverse census that catches standards CPALMS has and the corpus
+  lacks. Results live in `shared/standards/resources/florida/data/overlays/` with the CPALMS URL and
+  date recorded for every entry; the parsed corpus is never overwritten.
+- **Limits, stated plainly.** Grades 6–12 are not yet verified. Social studies remains a
+  best-effort parse overall. See the audit in `docs/audits/` for the full residual-risk statement.
+
+Maintainers refreshing the verification (needs network):
+`python3 tools/cpalms_verify.py --subject math --grades K,1,2,3,4,5 --out report.json` then
+`--apply report.json` to review, `--write` to record. Nothing is ever applied without that review.
+
 ## Learn more
 - **[docs/END_TO_END_WALKTHROUGH.md](docs/END_TO_END_WALKTHROUGH.md)** — a real teacher, start to
   finish (best place to begin).

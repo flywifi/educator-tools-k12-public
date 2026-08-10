@@ -1,0 +1,9 @@
+{
+  "_comment": "NEGATIVE CONTROL — deliberately invalid; must FAIL tools/validate_outputs.py; not a template. Proves the no_empty_standard gate actually gates (validate_examples.py check 1b).",
+  "artifact_type": "assessment",
+  "grade_band": "3-5",
+  "subject": "Math",
+  "standards_set": "B.E.S.T. Math 2020",
+  "standards_cited": ["MA.3.NSO.1.1", ""],
+  "human_review_required": true
+}
