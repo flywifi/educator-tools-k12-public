@@ -364,11 +364,31 @@ def run_enumerate(a) -> int:
          "rows": {}, "summary": {}}
     census: dict[str, dict] = {}
     meta: dict = {"generated_at": _now()}
-    _census_sweep(SEARCH, FILTER_SUBJECTS, FILTER_GRADES,
-                  a.subject, a.grades or "", "benchmark", census, meta)
-    time.sleep(random.uniform(*DELAY))
-    _census_sweep(SEARCH_AP, FILTER_AP_SUBJECTS, FILTER_AP_GRADES,
-                  a.subject, a.grades or "", "access_point", census, meta)
+    # Sweep ONE GRADE AT A TIME and union the results. A multi-grade query truncates: science
+    # K,1,2,3,5 returned only 168 of 348 access points in 3 pages, while grade K alone reconciled
+    # exactly (68/68). Proven 2026-08-10; per-grade keeps every result set inside CPALMS's paging
+    # limit, and the union is the census.
+    grade_list = [g.strip() for g in (a.grades or "").split(",") if g.strip()] or [""]
+    per_grade: dict[str, dict] = {}
+    for g in grade_list:
+        gmeta: dict = {}
+        _census_sweep(SEARCH, FILTER_SUBJECTS, FILTER_GRADES,
+                      a.subject, g, "benchmark", census, gmeta)
+        time.sleep(random.uniform(*DELAY))
+        _census_sweep(SEARCH_AP, FILTER_AP_SUBJECTS, FILTER_AP_GRADES,
+                      a.subject, g, "access_point", census, gmeta)
+        per_grade[g or "all"] = gmeta
+        time.sleep(random.uniform(*DELAY))
+    meta["per_grade"] = per_grade
+    meta["sweep_mode"] = "per_grade"
+    for kind in ("benchmark", "access_point"):
+        meta[f"{kind}_pages"] = sum(gm.get(f"{kind}_pages", 0) for gm in per_grade.values())
+        meta[f"{kind}_page_param_worked"] = all(
+            gm.get(f"{kind}_page_param_worked", True) for gm in per_grade.values())
+    for g, gm in per_grade.items():
+        for k in gm:
+            if k.endswith("_error"):
+                meta[f"grade{g}_{k}"] = gm[k]
     meta["unique_codes"] = len(census)
     # Diff against the corpus scope (same grade filter as the forward run).
     doc = json.loads((DATA / f"{a.subject}.json").read_text(encoding="utf-8"))
