@@ -61,7 +61,17 @@ BLOCKING_STATES = {"not_found", "malformed"}
 # detection must CATCH a benchmark restated wrongly. Reusing one for the other misses value drift
 # and caveat stripping (audit finding F5, 2026-08-09).
 _MUT_NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
-_MUT_TAIL = re.compile(r"\b(clarifications?|examples?|remarks?|note)\b\s*:.*$", re.I | re.S)
+# Tails that are DOCUMENT METADATA, not restatement content: the .docx/.doc parse appends
+# clarifications, complexity ratings, adoption dates, and (in the legacy .doc) bleed from the
+# next section heading. Calibrated against 113 A9 false positives sampled 2026-08-10 — the
+# benchmark sentences were identical; only these tails differed.
+# NOTE: alternatives ending in punctuation (e.g. "standard 8:") cannot carry a trailing \b —
+# a colon followed by a space is not a word boundary — so they live in their own branch.
+_MUT_TAIL = re.compile(
+    r"(?:\b(?:clarifications?|examples?|remarks?|notes?|content complexity|cognitive complexity|"
+    r"date adopted(?: or (?:last )?revised)?|benchmark\s*code)\b"
+    r"|\bstandard\s*\d+\s*:)"
+    r"\s*:?.*$", re.I | re.S)
 _MUT_HEDGE = ("with support", "with guidance", "with prompting", "explore", "begin to",
               "approximately", "as appropriate", "when appropriate", "using models",
               "using manipulatives", "in familiar contexts", "may ")
@@ -79,8 +89,7 @@ def _mut_norm(s: str) -> str:
     whitespace collapsed, lowercased, trailing period dropped. Cosmetic differences must never
     read as mutations."""
     s = html.unescape(s or "")
-    s = (s.replace("’", "'").replace("‘", "'")
-          .replace("“", '"').replace("”", '"').replace("…", ""))
+    s = re.sub(r"[\u2018\u2019\u201c\u201d'\"\u2026]", "", s)   # quotes/ellipsis: punctuation, not content
     s = re.sub(r"\.(?=[A-Za-z])", ". ", s)
     return re.sub(r"\s+", " ", s).strip().lower().rstrip(".")
 
@@ -487,11 +496,17 @@ FAITHFUL = [
                      "expanded form and word form."),
     ("html entities", _ORIGIN.replace("and", "&amp;").replace("&amp;", "and")),
     ("trailing whitespace", _ORIGIN + "   "),
+    # Real parse-metadata tails sampled from the corpus during the A9 sweep (2026-08-10). The
+    # benchmark sentence was identical in every one; only these document artifacts differed.
+    ("content-complexity tail", _ORIGIN + " Content Complexity: Level 3: Strategic Thinking & Complex Reasoning"),
+    ("adoption-date tail", _ORIGIN + " Date Adopted or Revised : 05/23"),
+    ("next-section bleed", _ORIGIN + " Date Adopted or Revised : 05/23 Standard 2: Pre-Columbian Florida BENCHMARK CODE"),
+    ("cognitive-complexity tail", _ORIGIN + " Cognitive Complexity: Level 2: Basic Application"),
 ]
 
 
 def _mutation_batteries() -> int:
-    """6/6 mutations must flag; 0/12 faithful restatements may flag (F5 acceptance)."""
+    """Every mutation must flag; no faithful restatement may flag (F5 acceptance gate)."""
     fails = 0
     caught = 0
     for want, text in MUTATIONS:
@@ -507,7 +522,8 @@ def _mutation_batteries() -> int:
         if cats:
             fp += 1
             print(f"FAIL false-positive[{name}] -> {cats}")
-    print(f"mutation batteries: {caught}/6 mutations flagged, {fp}/12 false positives")
+    print(f"mutation batteries: {caught}/{len(MUTATIONS)} mutations flagged, "
+          f"{fp}/{len(FAITHFUL)} false positives")
     return fails + fp
 
 
