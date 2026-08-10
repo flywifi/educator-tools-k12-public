@@ -39,6 +39,7 @@ import html as htmllib
 import json
 import random
 import re
+import signal
 import sys
 import time
 import urllib.error
@@ -235,16 +236,43 @@ def run_verify(a) -> int:
         _finish(report, out)
         return 1
     todo = [c for c in codes if c not in report["rows"]]
-    print(f"verifying {len(todo)} code(s) (of {len(codes)}) against CPALMS — polite, resumable")
+    # W2 (audit finding F6): flush the checkpoint on SIGTERM/SIGINT so an interrupt costs at most
+    # --checkpoint-every rows of rework instead of everything since the last multiple of 20.
+    def _flush(signum, _frame):
+        _finish(report, out)
+        print(f"\n[checkpoint] flushed {len(report['rows'])} row(s) on signal {signum}; "
+              f"re-run with --resume")
+        raise SystemExit(130)
+    for _sig in (signal.SIGTERM, signal.SIGINT):
+        try:
+            signal.signal(_sig, _flush)
+        except (ValueError, OSError):
+            pass  # non-main thread / unsupported platform: checkpointing still runs on interval
+    every = max(1, int(getattr(a, "checkpoint_every", 10) or 10))
+    print(f"verifying {len(todo)} code(s) (of {len(codes)}) against CPALMS — polite, resumable "
+          f"(checkpoint every {every})")
     for i, code in enumerate(todo, 1):
         report["rows"][code] = classify(code, corpus.get(code, ""))
         st = report["rows"][code]["cpalms_state"]
         print(f"  [{i}/{len(todo)}] {code}: {st}"
               + (f" -> {report['rows'][code]['new_code']}" if st == "renumbered" else ""))
-        if i % 20 == 0 or i == len(todo):
+        if i % every == 0 or i == len(todo):
             _finish(report, out)
         if i < len(todo):
             time.sleep(random.uniform(*DELAY))
+    # W3 (defect D-F): transient failures cost a manual --resume today. Sweep them once before
+    # finishing — a permanent failure still ends fetch_failed with its reason, never guessed.
+    stragglers = [c for c, r in report["rows"].items() if r["cpalms_state"] == "fetch_failed"]
+    if stragglers:
+        print(f"retry sweep: {len(stragglers)} fetch_failed row(s) — waiting 15s, one retry each")
+        time.sleep(15)
+        recovered = 0
+        for code in stragglers:
+            report["rows"][code] = classify(code, corpus.get(code, ""))
+            recovered += report["rows"][code]["cpalms_state"] != "fetch_failed"
+            time.sleep(random.uniform(*DELAY))
+        _finish(report, out)
+        print(f"retry sweep: {recovered} recovered, {len(stragglers) - recovered} still failing")
     _finish(report, out)
     print(f"report: {out} — {report['summary']}")
     return 0
@@ -581,6 +609,8 @@ def main(argv) -> int:
     ap.add_argument("--limit", type=int, help="verify at most N codes (pilot)")
     ap.add_argument("--out", help="report path (Phase V)")
     ap.add_argument("--resume", action="store_true", help="continue an existing report")
+    ap.add_argument("--checkpoint-every", type=int, default=10, metavar="N",
+                    help="flush the checkpoint every N rows (default 10; also flushed on SIGTERM/SIGINT)")
     ap.add_argument("--enumerate", action="store_true",
                     help="reverse census: what CPALMS lists for --subject/--grades; diff vs corpus")
     ap.add_argument("--apply", metavar="REPORT", help="Phase A: validate + diff a report")
