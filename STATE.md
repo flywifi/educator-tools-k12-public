@@ -390,6 +390,25 @@ scope: OCPS (public, district 48) + Monarch Learning Academy (private, Orlando).
 by network policy — feed endpoints stay `verified:false` pending discovery where network
 is open.
 
+## Standards-verification phase — v1.2.0 (2026-08-10) — SHIPPED
+Elementary Florida standards are now **verified against CPALMS**, not merely parsed.
+**1,913 K-5 codes** (math 393 · reading/ELA 355 · science 636 · social studies 529), benchmarks and
+access points, checked code-by-code in both directions: **1,912 confirmed**, 3 missing access
+points recovered, 0 unexplained census deltas. Results live in provenance-stamped overlays
+(`shared/standards/resources/florida/data/overlays/`); the parsed corpus is never mutated.
+
+New machinery: `tools/verify_standards.py` (offline resolver over 6,583 FL codes + CCSS/NGSS
+scheme checks + the mechanical §6 citation-mutation comparator) and `tools/cpalms_verify.py`
+(polite, robots-respecting, resumable verification loop with reverse census). The resolver gates CI
+through `validate_outputs.py` (`unresolvable_standard`, blocking) with negative-control fixtures
+proving the gate gates.
+
+Audit: `docs/audits/2026-08-10-launch-readiness-audit.md` (A1-A7 + A9; one OPEN finding, seven
+residual risks). Follow-ups, explicitly deferred: **grades 6-12** (3,096 codes unverified);
+social studies remains low-confidence (19.5% whole-corpus) so its absences stay advisory;
+CCSS/NGSS remain scheme-only; a FLDOE source-document refresh would fix the legacy `.doc` parse
+artifacts recorded as finding D-J.
+
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
 2. Florida wired + **corpus stored** (`resources/florida/` + `sources.json`, 104 files) with

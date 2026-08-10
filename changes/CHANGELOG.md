@@ -4,22 +4,28 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+
+## [1.2.0] — 2026-08-10
 ### Added
-- **Elementary standards CPALMS verification wave + adversarial audit.** Verified 1,038 elementary
-  codes against CPALMS in both directions (forward per-code + reverse census over the benchmark AND
-  access-point endpoints): **math K–5 393/393**, **reading/ELA K–5 355/355**, **science grade 4
-  151/151** — each reconciling exactly against CPALMS's own listing (0 missing, 0 absent) — and
-  **social studies grade 4 138/139 + 2 real corpus defects** (`SS.4.E.1.1` stale wording;
-  `SS.4.A.7.AP.3` missing access point, recorded as a `cpalms_addition`). Overlays are
-  provenance-stamped and the parse corpus is untouched. Tooling gained grade scoping,
-  truncation-safe comparison, overlay merge, dual-endpoint census with runtime filter discovery,
-  AP-endpoint routing (`GetSearchAccessPoint`, registered), and opt-in `--include-additions`;
-  `verify_standards` resolves overlay additions and renumberings with CPALMS provenance.
-  **Adversarial audit** (`docs/audits/2026-08-09-elementary-standards-audit.md`): A1 controls
-  28/28 rejected, A2 cross-endpoint 12/12 after fixing a real defect it found (503 access-point
-  provenance URLs pointed at the benchmark path), A4 census reconciled with one explained delta,
-  A5 resume determinism proven, A6 parser/injection hostility clean, A7 politeness verified —
-  closing with two OPEN findings and an explicit residual-risk statement.
+- **Elementary Florida standards verified against CPALMS — 1,913 codes, 100% of K-5.** Every
+  elementary code in math (393), reading/ELA (355), science (636), and social studies (529) —
+  benchmarks *and* access points — was checked code-by-code against CPALMS in both directions
+  (forward per-code classification + a reverse census that finds codes CPALMS has and the corpus
+  lacks). Result: **1,912 confirmed**, 1 stale-wording finding, 3 missing access points recovered,
+  **0 unexplained census deltas**. Findings are recorded in provenance-stamped overlays
+  (`data/overlays/*.cpalms.json`, each entry carrying the CPALMS statement, id, URL, revision date,
+  and check timestamp); **the parsed corpus is never mutated**.
+  Real defects fixed along the way: two science access points (`SC.1.E.5.In.1`, `SC.5.L.14.In.2`)
+  that resolved as **blocking `not_found`** — TOS was calling real SpEd standards fabricated;
+  `SS.4.E.1.1`'s superseded wording; `SS.4.A.7.AP.3`'s absence; 503 access-point provenance URLs
+  pointing at the benchmark preview path; a **silently truncating multi-grade census** that had
+  reported 182 phantom "retirements" (censuses now sweep one grade at a time and union).
+  **Launch-readiness audit** (`docs/audits/2026-08-10-launch-readiness-audit.md`): A1 28/28
+  controls rejected · A2 22/22 cross-endpoint · A3 6/6 mutations + 0/16 false positives ·
+  A4 zero unexplained deltas · A5 resume determinism · A6 parser/injection hostility ·
+  A7 politeness · **A9 (new)** re-examined all 1,913 verified pairs with the strict §6 comparator.
+  Closes with one OPEN finding and seven named residual risks — grades 6-12 remain unverified and
+  social studies stays low-confidence by design.
 - **CPALMS verification loop** (`tools/cpalms_verify.py` + overlay-aware resolver): verifies the
   FL corpus against CPALMS's free, keyless search-fragment endpoint (discovered + probed
   2026-08-09; registered as `cpalms-search-fragment-endpoint`, superseding the recorded
