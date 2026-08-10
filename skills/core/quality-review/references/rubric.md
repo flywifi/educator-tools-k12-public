@@ -29,9 +29,11 @@ Facts, calculations, and **standards** correct, current, correctly coded, and ve
 - Resolve every cited code first: `python3 tools/verify_standards.py --input <artifact>` —
   `not_found`/`malformed` is the QG §11.4 fabricated-standard critical failure (→ Rejected);
   advisory states (best-effort corpus, scheme-only frameworks) are noted, not critical.
-- Quoted/paraphrased standard text must match the registry origin form — check for the six
-  citation mutations (standards-verification.md §6) against the `statement` the resolver returns;
-  a mutation that changes what the standard requires scores like a mis-coded standard.
+- Quoted/paraphrased standard text must match the registry origin form — run the mechanical check
+  `python3 tools/verify_standards.py --compare <CODE> --text "<restatement>"` (six §6 categories
+  with evidence; exit 1 on any flag). A mutation that changes what the standard *requires*
+  (value drift, scope broadening) scores like a mis-coded standard; cosmetic differences do not
+  flag. The comparator is a detector — you still weigh the evidence.
 
 ### 5. Alignment (15%)
 Objectives ↔ instruction ↔ assessment ↔ standards cohere.

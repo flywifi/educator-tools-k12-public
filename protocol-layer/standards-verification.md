@@ -102,6 +102,17 @@ paraphrases a standard's text/benchmark, compare it against the registry text
 | **Scope broadening** | one grade band/strand/context generalized ("Grade 3 fraction benchmarks" cited as "elementary math standards") |
 | **Attribution laundering** | a paraphrase credited to the framework itself (e.g., a district pacing-guide summary presented as the B.E.S.T. benchmark text) |
 
+**Mechanical check (do not judge this by eye):**
+```bash
+python3 tools/verify_standards.py --compare <CODE> --text "<the artifact's restatement>"
+```
+It resolves the code, uses the CPALMS-verified statement (or the registry statement) as the origin
+form, and reports flags per category with evidence; exit 1 when any mutation is detected. The
+comparator is deliberately **separate** from the corpus-vs-CPALMS verification comparator, which
+must tolerate appended clarifications — reusing that one here misses value drift and caveat
+stripping (audit finding F5, 2026-08-09). It is a **detector, not a judge**: flags are evidence for
+the Accuracy gate; the human review requirement is unchanged.
+
 **Origin-form rule:** an artifact states a mutated standard in the **registry's origin form**, not
 the form encountered in a secondary source. Treatment on review: a mutation found by
 `quality-review` is an Accuracy deficiency → Remediation (QG §25); a mutation that changes **what

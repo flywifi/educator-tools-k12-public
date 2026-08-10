@@ -22,6 +22,7 @@ The per-code `statement` field carries the registry origin form for the citation
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import sys
@@ -53,6 +54,82 @@ CCSS_ELA = re.compile(r"^CCSS\.ELA-LITERACY\.[A-Z]{1,4}\.(K|[1-9]|1[0-2]|9-10|11
 NGSS_PE = re.compile(r"^(K|[1-5]|MS|HS)-(PS|LS|ESS|ETS)\d{1,2}-\d{1,2}$")
 
 BLOCKING_STATES = {"not_found", "malformed"}
+
+# --- §6 citation-mutation comparator (standards-verification.md §6) --------------------------
+# STRICT, and deliberately separate from any verification comparator: verification must TOLERATE a
+# corpus statement that appends "Clarifications:"/"Examples:" to the registry text, while mutation
+# detection must CATCH a benchmark restated wrongly. Reusing one for the other misses value drift
+# and caveat stripping (audit finding F5, 2026-08-09).
+_MUT_NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
+_MUT_TAIL = re.compile(r"\b(clarifications?|examples?|remarks?|note)\b\s*:.*$", re.I | re.S)
+_MUT_HEDGE = ("with support", "with guidance", "with prompting", "explore", "begin to",
+              "approximately", "as appropriate", "when appropriate", "using models",
+              "using manipulatives", "in familiar contexts", "may ")
+_MUT_ABSOLUTE = ("master", "mastery", "always", "must ", "independently demonstrate")
+_MUT_BROADEN = ("all ", "any ", "elementary", "any size", "every ", "general ")
+_MUT_UNITS = ("percent", "percentage point", "hundredth", "thousandth", "tenth", "digit",
+              "place value", "fraction", "decimal", "degree", "gram", "meter", "liter",
+              "number", "percentage")
+_MUT_ATTRIB = ("b.e.s.t", "best standards", "ngsss", "florida standards", "per the",
+               "according to")
+
+
+def _mut_norm(s: str) -> str:
+    """Normalize for comparison: entities/smart quotes folded, period-spacing artifact repaired,
+    whitespace collapsed, lowercased, trailing period dropped. Cosmetic differences must never
+    read as mutations."""
+    s = html.unescape(s or "")
+    s = (s.replace("’", "'").replace("‘", "'")
+          .replace("“", '"').replace("”", '"').replace("…", ""))
+    s = re.sub(r"\.(?=[A-Za-z])", ". ", s)
+    return re.sub(r"\s+", " ", s).strip().lower().rstrip(".")
+
+
+def _mut_core(s: str) -> str:
+    """Origin form for comparison: normalized, with any appended clarification/example tail cut."""
+    return _MUT_TAIL.sub("", _mut_norm(s)).strip()
+
+
+def mutation_flags(cited: str, origin: str) -> list[dict]:
+    """Detect §6 citation mutations of a REAL standard. Returns [] when the restatement is
+    faithful. Evidence-producing (each flag names what moved) — a detector for the quality-review
+    gate, never an automatic verdict."""
+    c, o = _mut_core(cited), _mut_core(origin)
+    flags: list[dict] = []
+    if not c or not o:
+        return flags
+    # A trailing ellipsis DECLARES elision (display truncation), which is not a dropped caveat —
+    # the reader is told text was omitted. Numeric/unit/attribution checks still run on what IS
+    # present; only the caveat-stripping test is suppressed.
+    declared_truncation = bool(re.search(r"(…|\.\.\.|&hellip;)\s*$", (cited or "").strip()))
+    c_nums, o_nums = sorted(_MUT_NUM.findall(c)), sorted(_MUT_NUM.findall(o))
+    if c_nums != o_nums:
+        flags.append({"category": "value_drift", "origin": o_nums, "cited": c_nums})
+    missing_hedges = [h for h in _MUT_HEDGE if h in o and h not in c]
+    added_absolute = [a for a in _MUT_ABSOLUTE if a in c and a not in o]
+    if missing_hedges or added_absolute:
+        flags.append({"category": "hedge_removal", "missing_hedges": missing_hedges,
+                      "added_absolutes": added_absolute})
+    # Caveat stripping: a qualifying clause of the origin is absent downstream AND the restatement
+    # is shorter (a longer restatement that merely adds context is not stripping).
+    if len(c) < len(o) and not declared_truncation:
+        clauses = [x.strip() for x in re.split(r"[;,]|\busing\b|\bwhen\b|\bgiven\b|\bwithin\b", o)
+                   if len(x.strip()) > 17]
+        dropped = [cl for cl in clauses if cl not in c]
+        if dropped:
+            flags.append({"category": "caveat_stripping", "dropped": dropped[:3]})
+    broadened = [b for b in _MUT_BROADEN if b in c and b not in o]
+    if broadened:
+        flags.append({"category": "scope_broadening", "added": broadened})
+    o_units = {u for u in _MUT_UNITS if u in o}
+    c_units = {u for u in _MUT_UNITS if u in c}
+    if o_units and o_units - c_units and c_units - o_units:
+        flags.append({"category": "unit_swap", "origin_only": sorted(o_units - c_units),
+                      "cited_only": sorted(c_units - o_units)})
+    laundered = [a for a in _MUT_ATTRIB if a in c and a not in o]
+    if laundered:
+        flags.append({"category": "attribution_laundering", "added": laundered})
+    return flags
 BANDS = {"K-2": {"K", "1", "2"}, "3-5": {"3", "4", "5"}, "6-8": {"6", "7", "8"},
          "9-12": {"9", "10", "11", "12"}}
 SPAN_GRADES = {"K12": {"K"} | {str(n) for n in range(1, 13)},
@@ -375,8 +452,63 @@ def self_test(invert: bool = False) -> int:
     print(f"shape-audit: {bad} corpus code(s) outside scheme across "
           f"{sum(len(_cache[s]) for s in _cache if _cache[s])} codes")
     failures += bad
-    print(f"self-test: {failures} failure(s) across {len(PROBES)} probes + shape audit")
+    failures += _mutation_batteries()
+    print(f"self-test: {failures} failure(s) across {len(PROBES)} probes + shape audit "
+          f"+ mutation batteries")
     return 1 if failures else 0
+
+
+# §6 comparator acceptance batteries (audit finding F5). Origin text is a REAL verified statement.
+_ORIGIN = ("Read and write numbers from 0 to 10,000 using standard form, expanded form and "
+           "word form.")
+MUTATIONS = [
+    ("value_drift", _ORIGIN.replace("10,000", "100,000")),
+    ("caveat_stripping", "Read and write numbers from 0 to 10,000."),
+    ("hedge_removal", "Master reading and writing numbers from 0 to 10,000 using standard form, "
+                      "expanded form and word form."),
+    ("scope_broadening", "Read and write numbers of any size using standard form, expanded form "
+                         "and word form."),
+    ("unit_swap", "Read and write percentages from 0 to 10,000 using standard form, expanded "
+                  "form and word form."),
+    ("attribution_laundering", "According to the B.E.S.T. standards: " + _ORIGIN),
+]
+FAITHFUL = [
+    ("identical", _ORIGIN),
+    ("appended clarifications", _ORIGIN + " Clarifications: Clarification 1: Instruction includes "
+                                          "the use of manipulatives."),
+    ("appended examples", _ORIGIN + " Examples: The number two thousand five is written 2,005."),
+    ("smart quotes", _ORIGIN.replace("word form", "word’s form").replace("word’s", "word")),
+    ("period-spacing artifact", _ORIGIN.replace("form.", "form.Students")[:-8] + "form."),
+    ("case change", _ORIGIN.upper()),
+    ("no trailing period", _ORIGIN.rstrip(".")),
+    ("collapsed whitespace", "  ".join(_ORIGIN.split(" "))),
+    ("ellipsized card", _ORIGIN[:60] + "…"),
+    ("leading stem", "Students will read and write numbers from 0 to 10,000 using standard form, "
+                     "expanded form and word form."),
+    ("html entities", _ORIGIN.replace("and", "&amp;").replace("&amp;", "and")),
+    ("trailing whitespace", _ORIGIN + "   "),
+]
+
+
+def _mutation_batteries() -> int:
+    """6/6 mutations must flag; 0/12 faithful restatements may flag (F5 acceptance)."""
+    fails = 0
+    caught = 0
+    for want, text in MUTATIONS:
+        cats = {f["category"] for f in mutation_flags(text, _ORIGIN)}
+        hit = want in cats
+        caught += hit
+        print(("PASS " if hit else "FAIL ") + f"mutation[{want}] detected"
+              + ("" if hit else f" (got {sorted(cats) or 'nothing'})"))
+        fails += 0 if hit else 1
+    fp = 0
+    for name, text in FAITHFUL:
+        cats = sorted({f["category"] for f in mutation_flags(text, _ORIGIN)})
+        if cats:
+            fp += 1
+            print(f"FAIL false-positive[{name}] -> {cats}")
+    print(f"mutation batteries: {caught}/6 mutations flagged, {fp}/12 false positives")
+    return fails + fp
 
 
 def main(argv) -> int:
@@ -385,12 +517,39 @@ def main(argv) -> int:
     ap.add_argument("--input", metavar="ARTIFACT_JSON",
                     help="read standards_cited/standards_set/grade_band/context from an artifact")
     ap.add_argument("--strict", action="store_true", help="exit 1 if any code is in a blocking state")
+    ap.add_argument("--compare", metavar="CODE",
+                    help="§6 citation-mutation check: compare --text against CODE's origin form")
+    ap.add_argument("--text", help="the artifact's restatement of the standard (with --compare)")
     ap.add_argument("--self-test", action="store_true", help="run the embedded probe table + shape audit")
     ap.add_argument("--self-test-invert", action="store_true", help=argparse.SUPPRESS)  # dev-only
     a = ap.parse_args(argv)
 
     if a.self_test or a.self_test_invert:
         return self_test(invert=a.self_test_invert)
+    if a.compare:
+        if not a.text:
+            ap.error("--compare needs --text (the artifact's restatement)")
+        res = verify([a.compare])["results"][0]
+        origin = res.get("statement")
+        if not origin:
+            print(json.dumps({"tool": "verify-standards", "mode": "mutation-check",
+                              "code": a.compare, "state": res["state"],
+                              "checked": "code resolution",
+                              "detail": "no origin-form statement available — cannot compare "
+                                        "(resolve the code first)"}, indent=2))
+            return 1
+        flags = mutation_flags(a.text, origin)
+        print(json.dumps({"tool": "verify-standards", "mode": "mutation-check",
+                          "code": a.compare, "state": res["state"], "origin_form": origin,
+                          "cited_text": a.text, "mutation_flags": flags,
+                          "verdict": "mutations_detected" if flags
+                                     else "no mutations found — checked: value drift, unit swap, "
+                                          "caveat stripping, hedge removal, scope broadening, "
+                                          "attribution laundering",
+                          "guidance": ("restate in the registry's origin form "
+                                       "(standards-verification.md §6)") if flags else ""},
+                         indent=2, ensure_ascii=False))
+        return 1 if flags else 0
     kwargs: dict = {}
     codes = list(a.codes)
     if a.input:
