@@ -1,15 +1,20 @@
 {
  "subject": "social_studies",
  "source": "cpalms",
- "generated_at": "2026-08-09T22:52:57Z",
+ "generated_at": "2026-08-10T03:26:44Z",
  "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
  "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
- "coverage": 0.0516,
+ "coverage": 0.1954,
  "scopes": [
   {
    "grades": "4",
    "rows_in_scope": 139,
    "generated_at": "2026-08-09T22:52:57Z"
+  },
+  {
+   "grades": "K,1,2,3,5",
+   "rows_in_scope": 390,
+   "generated_at": "2026-08-10T03:26:44Z"
   }
  ],
  "entries": {
@@ -1133,6 +1138,3126 @@
    "date_revised": "05/23",
    "checked_at": "2026-08-09T22:36:18Z",
    "note": "present on CPALMS, absent from the parsed corpus (census find)"
+  },
+  "SS.K.A.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Develop an understanding of how to use and create a timeline.",
+   "cpalms_id": "2877",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2877",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:33:35Z"
+  },
+  "SS.K.A.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Sequence three events using a simple timeline such as events in the school day and at home.",
+   "cpalms_id": "18637",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18637",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:33:38Z"
+  },
+  "SS.K.A.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Develop an awareness of a primary source.",
+   "cpalms_id": "2878",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2878",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:33:41Z"
+  },
+  "SS.K.A.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Examine primary sources, such as letters, photographs or paintings.",
+   "cpalms_id": "18638",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18638",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:33:46Z"
+  },
+  "SS.K.A.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Compare children and families of today with those in the past.",
+   "cpalms_id": "2879",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2879",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:33:48Z"
+  },
+  "SS.K.A.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize items from the present and the past.",
+   "cpalms_id": "18639",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18639",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:33:53Z"
+  },
+  "SS.K.A.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the importance of celebrations and national holidays as a way of remembering and honoring people, events, and our nation's ethnic heritage.",
+   "cpalms_id": "2880",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2880",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:33:56Z"
+  },
+  "SS.K.A.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify national holidays and celebrations that honor people or events.",
+   "cpalms_id": "18640",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18640",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:33:59Z"
+  },
+  "SS.K.A.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare our nation's holidays with holidays of other countries' cultures.",
+   "cpalms_id": "119457",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119457",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:34:02Z"
+  },
+  "SS.K.A.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the similarities and differences between holidays in our nation and other cultures.",
+   "cpalms_id": "18641",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18641",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:34:06Z"
+  },
+  "SS.K.A.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Listen to and retell stories about people in the past who have shown character ideals and principles including honesty, courage, and responsibility.",
+   "cpalms_id": "2882",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2882",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:34:09Z"
+  },
+  "SS.K.A.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify an act of bravery or honesty in stories.",
+   "cpalms_id": "18642",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18642",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:34:12Z"
+  },
+  "SS.K.A.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the importance of U.S. symbols.",
+   "cpalms_id": "2883",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2883",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:34:16Z"
+  },
+  "SS.K.A.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify the pledge of allegiance.",
+   "cpalms_id": "18643",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18643",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:34:19Z"
+  },
+  "SS.K.A.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Use words and phrases related to chronology and time to explain how things change and to sequentially order events that have occurred in school.",
+   "cpalms_id": "2884",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2884",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:34:22Z"
+  },
+  "SS.K.A.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize events that occur in the day and the night.",
+   "cpalms_id": "18644",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18644",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:34:26Z"
+  },
+  "SS.K.A.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain that calendars represent days of the week and months of the year.",
+   "cpalms_id": "2885",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2885",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:34:29Z"
+  },
+  "SS.K.A.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a calendar.",
+   "cpalms_id": "18645",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18645",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:34:33Z"
+  },
+  "SS.K.AA.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize African American inventors and explorers (i.e., Lonnie Johnson [inventor], Mae C. Jemison, George Washington Carver).",
+   "cpalms_id": "116275",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116275",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:34:36Z"
+  },
+  "SS.K.AA.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize African American inventors or explorers (i.e., Lonnie Johnson [inventor], Mae C. Jemison, George Washington Carver).",
+   "cpalms_id": "19900",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19900",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:34:40Z"
+  },
+  "SS.K.CG.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the purpose of rules and laws in the home and school.",
+   "cpalms_id": "16029",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16029",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:34:42Z"
+  },
+  "SS.K.CG.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize an example of a rule (home and school) or law (government).",
+   "cpalms_id": "18659",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18659",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:34:45Z"
+  },
+  "SS.K.CG.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify people who have the authority and power to make and enforce rules and laws.",
+   "cpalms_id": "16030",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16030",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:34:47Z"
+  },
+  "SS.K.CG.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize people who have authority and make rules.",
+   "cpalms_id": "18660",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18660",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:34:49Z"
+  },
+  "SS.K.CG.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe and demonstrate the characteristics of being a responsible citizen.",
+   "cpalms_id": "16031",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16031",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:34:52Z"
+  },
+  "SS.K.CG.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Demonstrate a characteristic of being a responsible citizen in the classroom.",
+   "cpalms_id": "18661",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18661",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:34:55Z"
+  },
+  "SS.K.CG.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe ways for groups to make decisions.",
+   "cpalms_id": "16032",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16032",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:34:58Z"
+  },
+  "SS.K.CG.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a way to make a decision, such as raising hands or taking turns.",
+   "cpalms_id": "18662",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18662",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:35:01Z"
+  },
+  "SS.K.CG.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Define patriotism as the allegiance to one’s country.",
+   "cpalms_id": "16033",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16033",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:35:03Z"
+  },
+  "SS.K.CG.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Students will recognize \"I pledge allegiance to the flag of the United States of America and to the republic for which it stands, one nation under God, indivisible, with liberty and justice for all\" as the Pledge of Allegiance.",
+   "cpalms_id": "18663",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18663",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:35:07Z"
+  },
+  "SS.K.CG.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize symbols that represent the United States.",
+   "cpalms_id": "16034",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16034",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:35:09Z"
+  },
+  "SS.K.CG.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify the United States flag.",
+   "cpalms_id": "18664",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18664",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:35:12Z"
+  },
+  "SS.K.CG.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize symbols that represent Florida.",
+   "cpalms_id": "16035",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16035",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:35:15Z"
+  },
+  "SS.K.CG.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify a Florida symbol.",
+   "cpalms_id": "18665",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18665",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:35:18Z"
+  },
+  "SS.K.E.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe different kinds of jobs that people do and the tools or equipment used.",
+   "cpalms_id": "2895",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2895",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:35:21Z"
+  },
+  "SS.K.E.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify school and community workers.",
+   "cpalms_id": "18655",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18655",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:35:25Z"
+  },
+  "SS.K.E.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that United States currency comes in different forms.",
+   "cpalms_id": "2896",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2896",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:35:28Z"
+  },
+  "SS.K.E.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize an example of money.",
+   "cpalms_id": "18656",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18656",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:35:31Z"
+  },
+  "SS.K.E.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that people work to earn money to buy things they need or want.",
+   "cpalms_id": "2897",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2897",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:35:34Z"
+  },
+  "SS.K.E.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that people use money to buy things.",
+   "cpalms_id": "18657",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18657",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:35:38Z"
+  },
+  "SS.K.E.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify the difference between basic needs and wants.",
+   "cpalms_id": "2898",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2898",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:35:41Z"
+  },
+  "SS.K.E.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize basic needs.",
+   "cpalms_id": "18658",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18658",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:35:45Z"
+  },
+  "SS.K.G.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the relative location of people, places, and things by using positional words.",
+   "cpalms_id": "2886",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2886",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:35:47Z"
+  },
+  "SS.K.G.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the relative location of an object by using positional words.",
+   "cpalms_id": "18646",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18646",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:35:51Z"
+  },
+  "SS.K.G.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain that maps and globes help to locate different places and that globes are a model of the Earth.",
+   "cpalms_id": "2887",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2887",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:35:54Z"
+  },
+  "SS.K.G.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a map as a drawing of a place.",
+   "cpalms_id": "18647",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18647",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:35:57Z"
+  },
+  "SS.K.G.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify cardinal directions (north, south, east, west).",
+   "cpalms_id": "2888",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2888",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:35:59Z"
+  },
+  "SS.K.G.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Track movement in different directions on a map.",
+   "cpalms_id": "18648",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18648",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:36:02Z"
+  },
+  "SS.K.G.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Differentiate land and water features on simple maps and globes.",
+   "cpalms_id": "2889",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2889",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:36:05Z"
+  },
+  "SS.K.G.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify land and water on a simple map or globe.",
+   "cpalms_id": "18649",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18649",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:36:07Z"
+  },
+  "SS.K.G.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Locate and describe places in the school and community.",
+   "cpalms_id": "2890",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2890",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:36:10Z"
+  },
+  "SS.K.G.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify a place in the classroom or school.",
+   "cpalms_id": "18650",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18650",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:36:15Z"
+  },
+  "SS.K.G.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Know one’s own phone number, street address, city, or town and that Florida is the state in which the student lives.",
+   "cpalms_id": "2891",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2891",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:36:18Z"
+  },
+  "SS.K.G.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify the city or town one lives in, and that Florida is the state in which the student lives.",
+   "cpalms_id": "18651",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18651",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:36:22Z"
+  },
+  "SS.K.G.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify basic landforms.",
+   "cpalms_id": "2892",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2892",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:36:25Z"
+  },
+  "SS.K.G.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize basic landforms.",
+   "cpalms_id": "18652",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18652",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:36:28Z"
+  },
+  "SS.K.G.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify basic bodies of water.",
+   "cpalms_id": "2893",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2893",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:36:31Z"
+  },
+  "SS.K.G.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize basic bodies of water.",
+   "cpalms_id": "18653",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18653",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:36:34Z"
+  },
+  "SS.K.G.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Describe and give examples of seasonal weather changes and illustrate how weather affects people and the environment.",
+   "cpalms_id": "2894",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2894",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:36:36Z"
+  },
+  "SS.K.G.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize types of weather and a way weather affects people.",
+   "cpalms_id": "18654",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18654",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:36:40Z"
+  },
+  "SS.1.A.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Develop an understanding of a primary source.",
+   "cpalms_id": "2904",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2904",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:36:43Z"
+  },
+  "SS.1.A.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify a primary source.",
+   "cpalms_id": "18666",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18666",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:36:47Z"
+  },
+  "SS.1.A.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Understand how to use the media center and other sources to find answers to questions about a historical topic.",
+   "cpalms_id": "2905",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2905",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:36:49Z"
+  },
+  "SS.1.A.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use pictures or text to answer a question about a historical topic.",
+   "cpalms_id": "18667",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18667",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:36:52Z"
+  },
+  "SS.1.A.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Understand that history tells the story of people and events of other times and places.",
+   "cpalms_id": "2906",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2906",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:36:54Z"
+  },
+  "SS.1.A.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize examples of people and events from other times in stories.",
+   "cpalms_id": "18668",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18668",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:36:58Z"
+  },
+  "SS.1.A.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare life now with life in the past.",
+   "cpalms_id": "2907",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2907",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:37:00Z"
+  },
+  "SS.1.A.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize examples of daily life that are different from long ago.",
+   "cpalms_id": "18669",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18669",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:37:03Z"
+  },
+  "SS.1.A.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify celebrations and national holidays as a way of remembering and honoring past events, our nation's ethnic heritage, and the heroism and achievements of the people.",
+   "cpalms_id": "2908",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2908",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:37:06Z"
+  },
+  "SS.1.A.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify national holidays as a way of remembering and honoring people and events.",
+   "cpalms_id": "18670",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18670",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:37:10Z"
+  },
+  "SS.1.A.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify people from the past who have shown character ideals and principles including honesty, courage, and responsibility.",
+   "cpalms_id": "2909",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2909",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:37:13Z"
+  },
+  "SS.1.A.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify a person from the past who showed bravery, honesty, or responsibility.",
+   "cpalms_id": "18671",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18671",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:37:16Z"
+  },
+  "SS.1.A.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Distinguish between historical fact and fiction using various materials.",
+   "cpalms_id": "2910",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2910",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:37:20Z"
+  },
+  "SS.1.A.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify events or characters in a historical story that are real or not real.",
+   "cpalms_id": "18672",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18672",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:37:24Z"
+  },
+  "SS.1.A.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Use terms related to time to sequentially order events that have occurred in school, home, or community.",
+   "cpalms_id": "2911",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2911",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:37:26Z"
+  },
+  "SS.1.A.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize concepts of time related to a sequence of school events.",
+   "cpalms_id": "18673",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18673",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:37:30Z"
+  },
+  "SS.1.A.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Create a timeline based on the student's life or school events, using primary sources.",
+   "cpalms_id": "2912",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2912",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:37:33Z"
+  },
+  "SS.1.A.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Sequence three events in a student's life using photographs or pictures on a timeline.",
+   "cpalms_id": "18674",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18674",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:37:37Z"
+  },
+  "SS.1.AA.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify African American artists (i.e., Aretha Franklin, Charles White [Abraham Lincoln portrait artist], James Earl Jones, Maya Angelou).",
+   "cpalms_id": "116276",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116276",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:37:39Z"
+  },
+  "SS.1.AA.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify African American artists (i.e., Aretha Franklin, Charles White [Abraham Lincoln portrait], James Earl Jones, Maya Angelou).",
+   "cpalms_id": "19901",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19901",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:37:42Z"
+  },
+  "SS.1.CG.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain the purpose of rules and laws in the home, school, and community.",
+   "cpalms_id": "16036",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16036",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:37:46Z"
+  },
+  "SS.1.CG.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify a rule and a law.",
+   "cpalms_id": "18687",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18687",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:37:48Z"
+  },
+  "SS.1.CG.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe how the absence of rules and laws impacts individuals and the community.",
+   "cpalms_id": "16037",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16037",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:37:52Z"
+  },
+  "SS.1.CG.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the effects of when rules or laws are not followed.",
+   "cpalms_id": "18688",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18688",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:37:55Z"
+  },
+  "SS.1.CG.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain the rights and responsibilities students have in the school community.",
+   "cpalms_id": "16038",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16038",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:37:58Z"
+  },
+  "SS.1.CG.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify responsibilities of students in a school community.",
+   "cpalms_id": "18689",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18689",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:38:01Z"
+  },
+  "SS.1.CG.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe the characteristics of citizenship in the school community.",
+   "cpalms_id": "16039",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16039",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:38:04Z"
+  },
+  "SS.1.CG.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify characteristics of responsible citizenship in the school community.",
+   "cpalms_id": "18690",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18690",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:38:07Z"
+  },
+  "SS.1.CG.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize ways citizens can demonstrate patriotism.",
+   "cpalms_id": "16040",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16040",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:38:11Z"
+  },
+  "SS.1.CG.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify ways citizens demonstrate patriotism during patriotic holidays.",
+   "cpalms_id": "18691",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18691",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:38:14Z"
+  },
+  "SS.1.CG.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize symbols and individuals that represent the United States.",
+   "cpalms_id": "16041",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16041",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:38:16Z"
+  },
+  "SS.1.CG.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify the national motto \"In God We Trust\" as a symbol of the United States.",
+   "cpalms_id": "18692",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18692",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:38:20Z"
+  },
+  "SS.1.CG.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize symbols and individuals that represent Florida.",
+   "cpalms_id": "16042",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16042",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:38:24Z"
+  },
+  "SS.1.CG.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify the governor as an individual who represents the state of Florida.",
+   "cpalms_id": "18693",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18693",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:38:26Z"
+  },
+  "SS.1.CG.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the United States and Florida have Constitutions.",
+   "cpalms_id": "16043",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16043",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:38:29Z"
+  },
+  "SS.1.CG.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify a constitution as an agreed-upon set of rules.",
+   "cpalms_id": "18694",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18694",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:38:32Z"
+  },
+  "SS.1.CG.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain responsible ways for individuals and groups to make decisions.",
+   "cpalms_id": "16044",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16044",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:38:35Z"
+  },
+  "SS.1.CG.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Demonstrate ways of responsible decision-making such as voting on a class snack.",
+   "cpalms_id": "18695",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18695",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:38:38Z"
+  },
+  "SS.1.E.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that money is used in the exchange of goods and services.",
+   "cpalms_id": "2919",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2919",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:38:41Z"
+  },
+  "SS.1.E.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify coins and bills as forms of money that can be used to buy things.",
+   "cpalms_id": "18681",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18681",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:38:44Z"
+  },
+  "SS.1.E.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Define opportunity costs as giving up one thing for another.",
+   "cpalms_id": "2920",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2920",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:38:46Z"
+  },
+  "SS.1.E.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a situation that involves making a choice such as schoolwork or play.",
+   "cpalms_id": "18682",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18682",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:38:49Z"
+  },
+  "SS.1.E.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Distinguish between examples of goods and services.",
+   "cpalms_id": "2921",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2921",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:38:51Z"
+  },
+  "SS.1.E.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize examples of goods and services.",
+   "cpalms_id": "18683",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18683",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:38:55Z"
+  },
+  "SS.1.E.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Distinguish people as buyers, sellers, and producers of goods and services.",
+   "cpalms_id": "2922",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2922",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:38:58Z"
+  },
+  "SS.1.E.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize people who buy or sell goods.",
+   "cpalms_id": "18684",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18684",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:39:02Z"
+  },
+  "SS.1.E.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the importance of saving money for future purchases.",
+   "cpalms_id": "2923",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2923",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:39:05Z"
+  },
+  "SS.1.E.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize ways to save money, such as putting it in a bank.",
+   "cpalms_id": "18685",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18685",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:39:09Z"
+  },
+  "SS.1.E.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify that people need to make choices because of scarce resources.",
+   "cpalms_id": "2924",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2924",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:39:11Z"
+  },
+  "SS.1.E.1.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Recognize when there is not enough of something (scarce resource).",
+   "cpalms_id": "18686",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18686",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:39:15Z"
+  },
+  "SS.1.G.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Use physical, political, and cultural maps to locate places in Florida.",
+   "cpalms_id": "2913",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2913",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:39:18Z"
+  },
+  "SS.1.G.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify Florida and student's hometown on a map.",
+   "cpalms_id": "18675",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18675",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:39:20Z"
+  },
+  "SS.1.G.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify key elements (i.e., compass rose, cardinal directions, title, key, or legend with symbols) of maps and globes.",
+   "cpalms_id": "2914",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2914",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:39:25Z"
+  },
+  "SS.1.G.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize key elements of maps and globes.",
+   "cpalms_id": "18676",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18676",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:39:28Z"
+  },
+  "SS.1.G.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Construct a basic map using key elements including cardinal directions and map symbols.",
+   "cpalms_id": "2915",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2915",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:39:31Z"
+  },
+  "SS.1.G.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Complete a pictorial map using symbols for designated areas.",
+   "cpalms_id": "18677",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18677",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:39:35Z"
+  },
+  "SS.1.G.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify a variety of physical features using a map and globe.",
+   "cpalms_id": "2916",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2916",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:39:38Z"
+  },
+  "SS.1.G.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify land and water on a map and globe.",
+   "cpalms_id": "18678",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18678",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:39:42Z"
+  },
+  "SS.1.G.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Locate on maps and globes the student’s local community, the state of Florida, the Atlantic Ocean, and the Gulf of America (formerly Gulf of Mexico).",
+   "cpalms_id": "2917",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2917",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:39:45Z"
+  },
+  "SS.1.G.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Locate Florida and a major body of water that borders Florida.",
+   "cpalms_id": "18679",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18679",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:39:48Z"
+  },
+  "SS.1.G.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Describe how location, weather, and physical environment affect the way people live in our community.",
+   "cpalms_id": "2918",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2918",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:39:50Z"
+  },
+  "SS.1.G.1.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify a selected characteristic of the student's environment with its personal effect on the student.",
+   "cpalms_id": "18680",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18680",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:39:53Z"
+  },
+  "SS.2.A.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Examine primary and secondary sources.",
+   "cpalms_id": "2933",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2933",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:39:56Z"
+  },
+  "SS.2.A.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use primary and secondary sources to obtain information.",
+   "cpalms_id": "18696",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18696",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:40:00Z"
+  },
+  "SS.2.A.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Utilize the media center, technology, or other informational sources to locate information that provides answers to questions about a historical topic.",
+   "cpalms_id": "2934",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2934",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:40:03Z"
+  },
+  "SS.2.A.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use technology and other informational sources to find answers to questions about a historical topic.",
+   "cpalms_id": "18697",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18697",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:40:06Z"
+  },
+  "SS.2.A.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that Native Americans were the first inhabitants in North America.",
+   "cpalms_id": "2935",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2935",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:40:09Z"
+  },
+  "SS.2.A.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify early Native Americans.",
+   "cpalms_id": "18698",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18698",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:40:11Z"
+  },
+  "SS.2.A.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare the cultures of Native American tribes from various geographic regions of the United States.",
+   "cpalms_id": "2936",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2936",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:40:14Z"
+  },
+  "SS.2.A.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify practices of Native American tribes, such as clothing, housing, and food.",
+   "cpalms_id": "18699",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18699",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:40:18Z"
+  },
+  "SS.2.A.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Describe the impact of immigrants on the Native Americans.",
+   "cpalms_id": "2937",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2937",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:40:21Z"
+  },
+  "SS.2.A.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the positive and negative impacts of immigrants on the Native Americans.",
+   "cpalms_id": "18700",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18700",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:40:24Z"
+  },
+  "SS.2.A.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore ways the daily life of people living in Colonial America changed over time.",
+   "cpalms_id": "2938",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2938",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:40:26Z"
+  },
+  "SS.2.A.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify ways people living in colonial America changed their daily lives over time.",
+   "cpalms_id": "18701",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18701",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:40:29Z"
+  },
+  "SS.2.A.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify reasons people came to the United States throughout history.",
+   "cpalms_id": "2939",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2939",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:40:32Z"
+  },
+  "SS.2.A.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize reasons why people came to the United States.",
+   "cpalms_id": "18702",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18702",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:40:35Z"
+  },
+  "SS.2.A.2.6": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the importance of Ellis Island and the Statue of Liberty to immigration from 1892 - 1954.",
+   "cpalms_id": "2940",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2940",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:40:38Z"
+  },
+  "SS.2.A.2.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Recognize Ellis Island as an immigration entry point to the United States from 1892-1954.",
+   "cpalms_id": "18703",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18703",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:40:41Z"
+  },
+  "SS.2.A.2.7": {
+   "state": "confirmed",
+   "statement_verified": "Discuss why immigration continues today.",
+   "cpalms_id": "2941",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2941",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:40:43Z"
+  },
+  "SS.2.A.2.AP.7": {
+   "state": "confirmed",
+   "statement_verified": "Recognize reasons why people move to the United States today.",
+   "cpalms_id": "18704",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18704",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:40:46Z"
+  },
+  "SS.2.A.2.8": {
+   "state": "confirmed",
+   "statement_verified": "Explain the cultural influences and contributions of immigrants today.",
+   "cpalms_id": "2942",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2942",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:40:50Z"
+  },
+  "SS.2.A.2.AP.8": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the cultural influences and contributions of immigrants today.",
+   "cpalms_id": "18705",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18705",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:40:54Z"
+  },
+  "SS.2.A.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify terms and designations of time sequence.",
+   "cpalms_id": "2943",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2943",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:40:57Z"
+  },
+  "SS.2.A.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify concepts of time, including days, weeks, and months.",
+   "cpalms_id": "18706",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18706",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:41:00Z"
+  },
+  "SS.2.AA.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify African Americans who demonstrated civic service (i.e., Secretary of State Colin Powell, Civil Air Patrol [CAP] Lt. Willa Beatrice Brown, Carter G. Woodson, Senator Hiram Revels).",
+   "cpalms_id": "116277",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116277",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:41:03Z"
+  },
+  "SS.2.AA.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify an African American who demonstrated civic service (i.e., Secretary of State Colin Powell, Civil Air Patrol [CAP] Lt. Willa Beatrice Brown, Carter G. Woodson, Senator Hiram Revels).",
+   "cpalms_id": "19902",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19902",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:41:06Z"
+  },
+  "SS.2.AA.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify oral traditions and folktales of African Americans (e.g., Anansi the Spider, Tale of the Midnight Goat Thief).",
+   "cpalms_id": "116278",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116278",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:41:08Z"
+  },
+  "SS.2.AA.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize an oral tradition or folktale of an African American (e.g., Anansi the Spider, Tale of the Midnight Goat Thief).",
+   "cpalms_id": "19903",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19903",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:41:12Z"
+  },
+  "SS.2.CG.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain why people form governments.",
+   "cpalms_id": "16045",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16045",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:41:14Z"
+  },
+  "SS.2.CG.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the impact of local government on daily lives.",
+   "cpalms_id": "18715",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18715",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:41:17Z"
+  },
+  "SS.2.CG.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the U.S. government protects the liberty and rights of American citizens.",
+   "cpalms_id": "16046",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16046",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:41:20Z"
+  },
+  "SS.2.CG.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify a right protected by the U.S. Constitution.",
+   "cpalms_id": "18952",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18952",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:41:23Z"
+  },
+  "SS.2.CG.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain what it means to be a U.S. citizen.",
+   "cpalms_id": "16047",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16047",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:41:26Z"
+  },
+  "SS.2.CG.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that individuals are born a U.S. citizen or can become one.",
+   "cpalms_id": "18716",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18716",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:41:31Z"
+  },
+  "SS.2.CG.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe the characteristics of responsible citizenship at the local and state levels.",
+   "cpalms_id": "16048",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16048",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:41:33Z"
+  },
+  "SS.2.CG.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize characteristics of responsible citizenship at the local level.",
+   "cpalms_id": "18717",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18717",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:41:37Z"
+  },
+  "SS.2.CG.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain how citizens demonstrate patriotism.",
+   "cpalms_id": "16049",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16049",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:41:40Z"
+  },
+  "SS.2.CG.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that reciting the Pledge of Allegiance daily is an act of patriotism.",
+   "cpalms_id": "18718",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18718",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:41:43Z"
+  },
+  "SS.2.CG.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize symbols, individuals, and documents that represent the United States.",
+   "cpalms_id": "16050",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16050",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:41:47Z"
+  },
+  "SS.2.CG.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify documents that represent the United States.",
+   "cpalms_id": "18719",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18719",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:41:50Z"
+  },
+  "SS.2.CG.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize symbols, individuals, and documents that represent Florida.",
+   "cpalms_id": "16051",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16051",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:41:53Z"
+  },
+  "SS.2.CG.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify symbols and individuals that represent Florida.",
+   "cpalms_id": "18720",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18720",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:41:56Z"
+  },
+  "SS.2.CG.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the Constitution of the United States as the supreme law of the land.",
+   "cpalms_id": "16052",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16052",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:41:58Z"
+  },
+  "SS.2.CG.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the Constitution is the supreme law that all people must follow.",
+   "cpalms_id": "18721",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18721",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:42:01Z"
+  },
+  "SS.2.E.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that people make choices because of limited resources.",
+   "cpalms_id": "2948",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2948",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:42:04Z"
+  },
+  "SS.2.E.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify choices that people make with the availability of fewer resources.",
+   "cpalms_id": "18711",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18711",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:42:07Z"
+  },
+  "SS.2.E.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that people supply goods and services based on consumer demands.",
+   "cpalms_id": "2949",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2949",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:42:10Z"
+  },
+  "SS.2.E.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that goods and services fill a need (demand).",
+   "cpalms_id": "18712",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18712",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:42:14Z"
+  },
+  "SS.2.E.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the United States trades with other nations to exchange goods and services.",
+   "cpalms_id": "2950",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2950",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:42:17Z"
+  },
+  "SS.2.E.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that some goods come from other countries.",
+   "cpalms_id": "18713",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18713",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:42:19Z"
+  },
+  "SS.2.E.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain the personal benefits and costs involved in saving and spending.",
+   "cpalms_id": "2951",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2951",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:42:22Z"
+  },
+  "SS.2.E.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify a benefit of saving and spending.",
+   "cpalms_id": "18714",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18714",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:42:25Z"
+  },
+  "SS.2.G.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Use different types of maps (political, physical, and thematic) to identify map elements.",
+   "cpalms_id": "2944",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2944",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:42:29Z"
+  },
+  "SS.2.G.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify title, cardinal directions, and key/legend on a map.",
+   "cpalms_id": "18707",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18707",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:42:32Z"
+  },
+  "SS.2.G.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Using maps and globes, locate the student’s hometown, Florida, North America, and both the state and national capitals.",
+   "cpalms_id": "2945",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2945",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:42:34Z"
+  },
+  "SS.2.G.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify the student's hometown, Florida, and state capital on a map.",
+   "cpalms_id": "18708",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18708",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:42:37Z"
+  },
+  "SS.2.G.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Label on a map or globe the continents, oceans, Equator, Prime Meridian, North and South Poles.",
+   "cpalms_id": "2946",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2946",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:42:40Z"
+  },
+  "SS.2.G.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize continents and oceans on a map or globe.",
+   "cpalms_id": "18709",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18709",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:42:44Z"
+  },
+  "SS.2.G.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Use a map to locate the countries in North America (Canada, United States, Mexico, and the Caribbean Islands).",
+   "cpalms_id": "2947",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2947",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:42:46Z"
+  },
+  "SS.2.G.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the United States on a map of North America.",
+   "cpalms_id": "18710",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18710",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:42:50Z"
+  },
+  "SS.3.A.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze primary and secondary sources.",
+   "cpalms_id": "2961",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2961",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:42:53Z"
+  },
+  "SS.3.A.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify and use primary and secondary sources to obtain information.",
+   "cpalms_id": "18722",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18722",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:42:57Z"
+  },
+  "SS.3.A.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Utilize technology resources to gather information from primary and secondary sources.",
+   "cpalms_id": "2962",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2962",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:42:59Z"
+  },
+  "SS.3.A.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use technology resources to gather information about a primary or secondary source.",
+   "cpalms_id": "18723",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18723",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:43:02Z"
+  },
+  "SS.3.A.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Define terms related to the social sciences.",
+   "cpalms_id": "2963",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2963",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:43:04Z"
+  },
+  "SS.3.A.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the terms history, geography, economics, civics, and government are related to social sciences.",
+   "cpalms_id": "18951",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18951",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:43:07Z"
+  },
+  "SS.3.AA.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify African Americans who demonstrated heroism and patriotism (e.g., Booker T. Washington, Jesse Owens, Tuskegee Airmen, Martin Luther King Jr., Rosa Parks, President Barack Obama, 1st Lt. Vernon Baker, Sgt. 1st Class Melvin Morris).",
+   "cpalms_id": "116279",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116279",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:43:10Z"
+  },
+  "SS.3.AA.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify an African American who demonstrated heroism or patriotism (e.g., Booker T. Washington, Jesse Owens, Tuskegee Airmen, Martin Luther King Jr., Rosa Parks, President Barack Obama, 1st Lt. Vernon Baker, Sgt. 1st Class Melvin Morris).",
+   "cpalms_id": "19904",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19904",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:43:13Z"
+  },
+  "SS.3.CG.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the U.S. Constitution establishes the purpose and fulfills the need for government.",
+   "cpalms_id": "16053",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16053",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:43:17Z"
+  },
+  "SS.3.CG.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the purpose of government in the community.",
+   "cpalms_id": "18746",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18746",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:43:20Z"
+  },
+  "SS.3.CG.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe how the U.S. government gains its power from the people.",
+   "cpalms_id": "16054",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16054",
+   "date_revised": "07/26",
+   "checked_at": "2026-08-10T01:43:23Z"
+  },
+  "SS.3.CG.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify that government gains its power from the people.",
+   "cpalms_id": "18747",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18747",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:43:26Z"
+  },
+  "SS.3.CG.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe how citizens demonstrate civility, cooperation, volunteerism, and other civic virtues.",
+   "cpalms_id": "16055",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16055",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:43:28Z"
+  },
+  "SS.3.CG.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify actions of citizens that contribute to the community.",
+   "cpalms_id": "18748",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18748",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:43:31Z"
+  },
+  "SS.3.CG.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe the importance of voting in elections.",
+   "cpalms_id": "16056",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16056",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:43:34Z"
+  },
+  "SS.3.CG.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that it is the responsibility of citizens to vote.",
+   "cpalms_id": "18749",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18749",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:43:38Z"
+  },
+  "SS.3.CG.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain the history and meaning behind patriotic holidays and observances.",
+   "cpalms_id": "16057",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16057",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:43:41Z"
+  },
+  "SS.3.CG.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the meaning behind patriotic holidays.",
+   "cpalms_id": "18750",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18750",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:43:44Z"
+  },
+  "SS.3.CG.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize symbols, individuals, documents, and events that represent the United States.",
+   "cpalms_id": "16058",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16058",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:43:47Z"
+  },
+  "SS.3.CG.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify events that represent the United States.",
+   "cpalms_id": "18751",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18751",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:43:50Z"
+  },
+  "SS.3.CG.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize symbols, individuals, documents, and events that represent the State of Florida.",
+   "cpalms_id": "16059",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16059",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:43:52Z"
+  },
+  "SS.3.CG.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify events that represent Florida.",
+   "cpalms_id": "18752",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18752",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:43:56Z"
+  },
+  "SS.3.CG.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the U.S. and Florida Constitutions establish the structure, function, powers, and limits of government.",
+   "cpalms_id": "16060",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16060",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:43:58Z"
+  },
+  "SS.3.CG.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify that the U.S. and Florida Constitutions have three branches of government.",
+   "cpalms_id": "18753",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18753",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:44:02Z"
+  },
+  "SS.3.CG.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that government has local, state, and national levels.",
+   "cpalms_id": "16061",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16061",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:44:04Z"
+  },
+  "SS.3.CG.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify levels of local, state, and federal government to their functions.",
+   "cpalms_id": "18754",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18754",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:44:07Z"
+  },
+  "SS.3.E.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Give examples of how scarcity results in trade.",
+   "cpalms_id": "2982",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2982",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:44:10Z"
+  },
+  "SS.3.E.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that people can trade for products that are not available locally.",
+   "cpalms_id": "18742",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18742",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:44:13Z"
+  },
+  "SS.3.E.1.2": {
+   "state": "confirmed",
+   "statement_verified": "List the characteristics of money.",
+   "cpalms_id": "2983",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2983",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:44:15Z"
+  },
+  "SS.3.E.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify some characteristics of money.",
+   "cpalms_id": "18743",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18743",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:44:18Z"
+  },
+  "SS.3.E.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that buyers and sellers interact to exchange goods and services through the use of trade or money.",
+   "cpalms_id": "2984",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2984",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:44:21Z"
+  },
+  "SS.3.E.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the roles of buyers and sellers in exchanging goods and services.",
+   "cpalms_id": "18744",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18744",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:44:25Z"
+  },
+  "SS.3.E.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Distinguish between currencies used in the United States, Canada, Mexico, and the Caribbean.",
+   "cpalms_id": "2985",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2985",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:44:27Z"
+  },
+  "SS.3.E.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize forms of money used in the United States and one other North American country",
+   "cpalms_id": "18745",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18745",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:44:31Z"
+  },
+  "SS.3.G.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Use thematic maps, tables, charts, graphs, and photos to analyze geographic information.",
+   "cpalms_id": "2964",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2964",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:44:33Z"
+  },
+  "SS.3.G.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use a thematic map or chart to identify selected geographic information, such as land and body of water on a map or population on a chart.",
+   "cpalms_id": "18724",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18724",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:44:36Z"
+  },
+  "SS.3.G.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Review basic map elements (coordinate grid, cardinal and intermediate directions, title, compass rose, scale, key or legend with symbols).",
+   "cpalms_id": "2965",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2965",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:44:40Z"
+  },
+  "SS.3.G.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify elements on a map, such as title, key/legend, cardinal directions, compass rose, and coordinate grid.",
+   "cpalms_id": "18725",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18725",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:44:44Z"
+  },
+  "SS.3.G.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Label the continents and oceans on a world map.",
+   "cpalms_id": "2966",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2966",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:44:47Z"
+  },
+  "SS.3.G.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify selected continents and oceans on a world map.",
+   "cpalms_id": "18726",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18726",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:44:51Z"
+  },
+  "SS.3.G.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Name and identify the purpose of maps (physical, political, elevation, population).",
+   "cpalms_id": "2967",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2967",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:44:54Z"
+  },
+  "SS.3.G.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a physical and a political map.",
+   "cpalms_id": "18727",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18727",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:44:57Z"
+  },
+  "SS.3.G.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Compare maps and globes to develop an understanding of the concept of distortion.",
+   "cpalms_id": "2968",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2968",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:45:00Z"
+  },
+  "SS.3.G.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify differences between maps and globes.",
+   "cpalms_id": "18728",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18728",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:45:03Z"
+  },
+  "SS.3.G.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Use maps to identify different types of scale to measure distances between two places.",
+   "cpalms_id": "2969",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2969",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:45:06Z"
+  },
+  "SS.3.G.1.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Use maps to identify distances between two places.",
+   "cpalms_id": "18729",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18729",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:45:10Z"
+  },
+  "SS.3.G.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Label the countries and commonwealths in North America (Canada, United States, Mexico) and in the Caribbean (Puerto Rico, Cuba, Bahamas, Dominican Republic, Haiti, Jamaica).",
+   "cpalms_id": "2970",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2970",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:45:13Z"
+  },
+  "SS.3.G.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize North America as Canada, the United States, and Mexico on a map.",
+   "cpalms_id": "18730",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18730",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:45:17Z"
+  },
+  "SS.3.G.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify the five regions of the United States.",
+   "cpalms_id": "2971",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2971",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:45:19Z"
+  },
+  "SS.3.G.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize north, south, east, and west as they relate to the regions of the United States.",
+   "cpalms_id": "18731",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18731",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:45:22Z"
+  },
+  "SS.3.G.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Label the states in each of the five regions of the United States.",
+   "cpalms_id": "2972",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2972",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:45:25Z"
+  },
+  "SS.3.G.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize selected states in each of the five regions of the United States.",
+   "cpalms_id": "18732",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18732",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:45:29Z"
+  },
+  "SS.3.G.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe the physical features of the United States, Canada, Mexico, and the Caribbean.",
+   "cpalms_id": "2973",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2973",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:45:31Z"
+  },
+  "SS.3.G.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize major physical features of the United States, Canada, and Mexico.",
+   "cpalms_id": "18733",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18733",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:45:35Z"
+  },
+  "SS.3.G.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify natural and man-made landmarks in the United States, Canada, Mexico, and the Caribbean.",
+   "cpalms_id": "2974",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2974",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:45:38Z"
+  },
+  "SS.3.G.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize major natural and man-made landmarks of the United States.",
+   "cpalms_id": "18734",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18734",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:45:42Z"
+  },
+  "SS.3.G.2.6": {
+   "state": "confirmed",
+   "statement_verified": "Investigate how people perceive places and regions differently by conducting interviews, mental mapping and studying news, poems, legends, and songs about a region or area.",
+   "cpalms_id": "2975",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2975",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:45:45Z"
+  },
+  "SS.3.G.2.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify how people view places and regions differently by asking questions about a region.",
+   "cpalms_id": "18735",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18735",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:45:49Z"
+  },
+  "SS.3.G.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the climate and vegetation in the United States, Canada, Mexico, and the Caribbean.",
+   "cpalms_id": "2976",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2976",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:45:51Z"
+  },
+  "SS.3.G.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize differences in the climates of the United States, Canada, and Mexico.",
+   "cpalms_id": "18736",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18736",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:45:54Z"
+  },
+  "SS.3.G.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe the natural resources in the United States, Canada, Mexico, and the Caribbean.",
+   "cpalms_id": "2977",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2977",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:45:57Z"
+  },
+  "SS.3.G.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize major natural resources in the United States, Canada, and Mexico.",
+   "cpalms_id": "18737",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18737",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:46:00Z"
+  },
+  "SS.3.G.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the environment influences settlement patterns in the United States, Canada, Mexico, and the Caribbean.",
+   "cpalms_id": "2978",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2978",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:46:03Z"
+  },
+  "SS.3.G.4.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify major ways environmental influences contribute to settlement patterns in the United States.",
+   "cpalms_id": "18738",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18738",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:46:06Z"
+  },
+  "SS.3.G.4.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify the cultures that have settled the United States, Canada, Mexico, and the Caribbean.",
+   "cpalms_id": "2979",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2979",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:46:09Z"
+  },
+  "SS.3.G.4.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize different cultures that have settled in the United States.",
+   "cpalms_id": "18739",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18739",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:46:13Z"
+  },
+  "SS.3.G.4.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare the cultural characteristics of diverse populations in one of the five regions of the United States with Canada, Mexico, or the Caribbean.",
+   "cpalms_id": "2980",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2980",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:46:16Z"
+  },
+  "SS.3.G.4.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify a cultural characteristic of a population in the United States and a population in Mexico or Canada.",
+   "cpalms_id": "18740",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18740",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:46:18Z"
+  },
+  "SS.3.G.4.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify contributions from various ethnic groups to the United States.",
+   "cpalms_id": "2981",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2981",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:46:21Z"
+  },
+  "SS.3.G.4.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize contributions of an ethnic group to the United States.",
+   "cpalms_id": "18741",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18741",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:46:25Z"
+  },
+  "SS.5.A.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Use primary and secondary sources to understand history.",
+   "cpalms_id": "3034",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3034",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:46:28Z"
+  },
+  "SS.5.A.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use primary and secondary resources to understand history.",
+   "cpalms_id": "18824",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18824",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:46:32Z"
+  },
+  "SS.5.A.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Utilize timelines to identify and discuss American History time periods.",
+   "cpalms_id": "3035",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3035",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:46:35Z"
+  },
+  "SS.5.A.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Sequence events to match dates on a timeline about American history.",
+   "cpalms_id": "18825",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18825",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:46:38Z"
+  },
+  "SS.5.A.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Compare cultural aspects of ancient American civilizations (e.g., Aztecs, Mayas, Mound Builders, Anasazi, Inuit).",
+   "cpalms_id": "3036",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3036",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:46:41Z"
+  },
+  "SS.5.A.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a cultural aspect of an ancient North American civilization.",
+   "cpalms_id": "18826",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18826",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:46:44Z"
+  },
+  "SS.5.A.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify Native American tribes from different geographic regions of North America (cliff dwellers and Pueblo people of the desert Southwest, coastal tribes of the Pacific Northwest, nomadic nations of the Great Plains, woodland tribes east of the Mississippi River).",
+   "cpalms_id": "3037",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3037",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:46:48Z"
+  },
+  "SS.5.A.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that Native American tribes lived in various parts of North America and had different customs.",
+   "cpalms_id": "18827",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18827",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:46:51Z"
+  },
+  "SS.5.A.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare cultural aspects of Native American tribes from different geographic regions of North America including but not limited to clothing, shelter, food, major beliefs and practices, music, art, and interactions with the environment.",
+   "cpalms_id": "3038",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3038",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:46:54Z"
+  },
+  "SS.5.A.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize differences in cultural aspects of Native American tribes.",
+   "cpalms_id": "18828",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18828",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:46:57Z"
+  },
+  "SS.5.A.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe technological developments that shaped European exploration.",
+   "cpalms_id": "3039",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3039",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:47:00Z"
+  },
+  "SS.5.A.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize inventions that made exploration safer.",
+   "cpalms_id": "18829",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18829",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:47:03Z"
+  },
+  "SS.5.A.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Investigate (nationality, sponsoring country, motives, dates and routes of travel, accomplishments) the European explorers.",
+   "cpalms_id": "3040",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3040",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:47:06Z"
+  },
+  "SS.5.A.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify a European explorer with their sponsoring country.",
+   "cpalms_id": "18830",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18830",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:47:09Z"
+  },
+  "SS.5.A.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Describe interactions among Native Americans, Africans, English, French, Dutch, and Spanish for control of North America.",
+   "cpalms_id": "3041",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3041",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:47:12Z"
+  },
+  "SS.5.A.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize ways different groups interacted with each other for control of North America.",
+   "cpalms_id": "18831",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18831",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:47:16Z"
+  },
+  "SS.5.A.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the economic, political and socio-cultural motivation for colonial settlement.",
+   "cpalms_id": "3042",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3042",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:47:19Z"
+  },
+  "SS.5.A.4.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize reasons why colonists settled in America.",
+   "cpalms_id": "18832",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18832",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:47:22Z"
+  },
+  "SS.5.A.4.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare characteristics of New England, Middle, and Southern colonies.",
+   "cpalms_id": "3043",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3043",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:47:25Z"
+  },
+  "SS.5.A.4.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify resources found in a colonial region.",
+   "cpalms_id": "18833",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18833",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:47:28Z"
+  },
+  "SS.5.A.4.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify significant individuals responsible for the development of the New England, Middle, and Southern colonies.",
+   "cpalms_id": "3044",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3044",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:47:32Z"
+  },
+  "SS.5.A.4.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify an individual responsible for the development of new colonies.",
+   "cpalms_id": "18834",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18834",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:47:35Z"
+  },
+  "SS.5.A.4.4": {
+   "state": "confirmed",
+   "statement_verified": "Demonstrate an understanding of political, economic, and social aspects of daily colonial life in the thirteen colonies.",
+   "cpalms_id": "3045",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3045",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:47:37Z"
+  },
+  "SS.5.A.4.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize aspects of daily colonial life.",
+   "cpalms_id": "18835",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18835",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:47:40Z"
+  },
+  "SS.5.A.4.5": {
+   "state": "confirmed",
+   "statement_verified": "Explain the importance of Triangular Trade linking Africa, the West Indies, the British Colonies, and Europe.",
+   "cpalms_id": "3046",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3046",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:47:43Z"
+  },
+  "SS.5.A.4.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify the Triangular Trade with slavery.",
+   "cpalms_id": "18836",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18836",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:47:46Z"
+  },
+  "SS.5.A.4.6": {
+   "state": "confirmed",
+   "statement_verified": "Describe the introduction, impact, and role of slavery in the colonies.",
+   "cpalms_id": "3047",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3047",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:47:49Z"
+  },
+  "SS.5.A.4.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that Southern Colonies had large farms with slaves.",
+   "cpalms_id": "18837",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18837",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:47:53Z"
+  },
+  "SS.5.A.5.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify and explain significant events leading up to the American Revolution.",
+   "cpalms_id": "3048",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3048",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:47:55Z"
+  },
+  "SS.5.A.5.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify events that led up to the American Revolution.",
+   "cpalms_id": "18838",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18838",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:47:58Z"
+  },
+  "SS.5.A.5.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify significant individuals and groups who played a role in the American Revolution.",
+   "cpalms_id": "3049",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3049",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:48:01Z"
+  },
+  "SS.5.A.5.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify a significant individual who contributed to the American Revolution.",
+   "cpalms_id": "18839",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18839",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:48:05Z"
+  },
+  "SS.5.A.5.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain the significance of historical documents including key political concepts, origins of these concepts, and their role in American independence.",
+   "cpalms_id": "3050",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3050",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:48:08Z"
+  },
+  "SS.5.A.5.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify that the Declaration of Independence stated that colonists wanted freedom from England.",
+   "cpalms_id": "18840",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18840",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:48:11Z"
+  },
+  "SS.5.A.5.4": {
+   "state": "confirmed",
+   "statement_verified": "Examine and explain the changing roles and impact of significant women during the American Revolution.",
+   "cpalms_id": "3051",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3051",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:48:14Z"
+  },
+  "SS.5.A.5.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify a significant woman from the American Revolution.",
+   "cpalms_id": "18841",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18841",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:48:18Z"
+  },
+  "SS.5.A.5.5": {
+   "state": "confirmed",
+   "statement_verified": "Examine and compare major battles and military campaigns of the American Revolution.",
+   "cpalms_id": "3052",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3052",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:48:21Z"
+  },
+  "SS.5.A.5.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a major battle in the American Revolution.",
+   "cpalms_id": "18842",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18842",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:48:24Z"
+  },
+  "SS.5.A.5.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify the contributions of foreign alliances and individuals to the outcome of the Revolution.",
+   "cpalms_id": "3053",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3053",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:48:26Z"
+  },
+  "SS.5.A.5.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the colonies needed help from other countries to win the American Revolution.",
+   "cpalms_id": "18843",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18843",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:48:30Z"
+  },
+  "SS.5.A.5.7": {
+   "state": "confirmed",
+   "statement_verified": "Explain economic, military, and political factors which led to the end of the Revolutionary War.",
+   "cpalms_id": "3054",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3054",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:48:32Z"
+  },
+  "SS.5.A.5.AP.7": {
+   "state": "confirmed",
+   "statement_verified": "Identify factors that helped colonists win the Revolution.",
+   "cpalms_id": "18844",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18844",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:48:36Z"
+  },
+  "SS.5.A.5.8": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the personal and political hardships resulting from the American Revolution.",
+   "cpalms_id": "3055",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3055",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:48:38Z"
+  },
+  "SS.5.A.5.AP.8": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the colonists needed more money and supplies after the American Revolution.",
+   "cpalms_id": "18845",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18845",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:48:40Z"
+  },
+  "SS.5.A.5.9": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the impact and significance of land policies developed under the Confederation Congress (Northwest Ordinance of 1787).",
+   "cpalms_id": "3056",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3056",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:48:43Z"
+  },
+  "SS.5.A.5.AP.9": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the United States wanted to add new land after the Revolution.",
+   "cpalms_id": "18846",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18846",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:48:46Z"
+  },
+  "SS.5.A.5.10": {
+   "state": "confirmed",
+   "statement_verified": "Examine the significance of the Constitution including its key political concepts, origins of those concepts, and their role in American democracy.",
+   "cpalms_id": "3057",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3057",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:48:49Z"
+  },
+  "SS.5.A.5.AP.10": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the Constitution outlines the principles of the American government.",
+   "cpalms_id": "18847",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18847",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:48:52Z"
+  },
+  "SS.5.A.6.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the causes and effects of the Louisiana Purchase.",
+   "cpalms_id": "3058",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3058",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:48:55Z"
+  },
+  "SS.5.A.6.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the Louisiana Purchase made the United States twice its original size.",
+   "cpalms_id": "18848",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18848",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:48:59Z"
+  },
+  "SS.5.A.6.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify roles and contributions of significant people during the period of westward expansion.",
+   "cpalms_id": "3059",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3059",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:49:02Z"
+  },
+  "SS.5.A.6.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize significant people in the westward expansion of the United States.",
+   "cpalms_id": "18849",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18849",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:49:06Z"
+  },
+  "SS.5.A.6.3": {
+   "state": "confirmed",
+   "statement_verified": "Examine 19th century advancements (canals, roads, steamboats, flat boats, overland wagons, Pony Express, railroads) in transportation and communication.",
+   "cpalms_id": "3060",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3060",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:49:09Z"
+  },
+  "SS.5.A.6.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify an advancement with transportation and communication in America during the 1800s.",
+   "cpalms_id": "18850",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18850",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:49:13Z"
+  },
+  "SS.5.A.6.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain the importance of the explorations west of the Mississippi River.",
+   "cpalms_id": "3061",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3061",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:49:15Z"
+  },
+  "SS.5.A.6.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize significant exploration achievements west of the Mississippi River.",
+   "cpalms_id": "18851",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18851",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:49:18Z"
+  },
+  "SS.5.A.6.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify the causes and effects of the War of 1812.",
+   "cpalms_id": "3062",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3062",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:49:21Z"
+  },
+  "SS.5.A.6.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that America fought England in the War of 1812.",
+   "cpalms_id": "18852",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18852",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:49:25Z"
+  },
+  "SS.5.A.6.6": {
+   "state": "confirmed",
+   "statement_verified": "Explain how westward expansion affected Native Americans.",
+   "cpalms_id": "3063",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3063",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:49:27Z"
+  },
+  "SS.5.A.6.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the westward expansion impacted Native Americans.",
+   "cpalms_id": "18853",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18853",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:49:31Z"
+  },
+  "SS.5.A.6.7": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the concept of Manifest Destiny.",
+   "cpalms_id": "3064",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3064",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:49:33Z"
+  },
+  "SS.5.A.6.AP.7": {
+   "state": "confirmed",
+   "statement_verified": "Identify Manifest Destiny with westward expansion.",
+   "cpalms_id": "18854",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18854",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:49:36Z"
+  },
+  "SS.5.A.6.8": {
+   "state": "confirmed",
+   "statement_verified": "Describe the causes and effects of the Missouri Compromise.",
+   "cpalms_id": "3065",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3065",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:49:39Z"
+  },
+  "SS.5.A.6.AP.8": {
+   "state": "confirmed",
+   "statement_verified": "Identify one cause and one effect of the Missouri Compromise.",
+   "cpalms_id": "18855",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18855",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:49:43Z"
+  },
+  "SS.5.A.6.9": {
+   "state": "confirmed",
+   "statement_verified": "Describe the hardships of settlers along the overland trails to the west.",
+   "cpalms_id": "3066",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3066",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:49:46Z"
+  },
+  "SS.5.A.6.AP.9": {
+   "state": "confirmed",
+   "statement_verified": "Identify hardships settlers faced as they moved west.",
+   "cpalms_id": "18856",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18856",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:49:49Z"
+  },
+  "SS.5.AA.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Examine the life of African Americans in the colonial era.",
+   "cpalms_id": "116281",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116281",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:49:52Z"
+  },
+  "SS.5.AA.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize how African Americans lived in the colonial era.",
+   "cpalms_id": "19906",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19906",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:49:55Z"
+  },
+  "SS.5.AA.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Examine the Underground Railroad and how former slaves partnered with other free people and groups in assisting those escaping from slavery.",
+   "cpalms_id": "116282",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116282",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:49:58Z"
+  },
+  "SS.5.AA.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the purpose of the Underground Railroad in assisting those escaping from slavery.",
+   "cpalms_id": "19907",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19907",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:50:01Z"
+  },
+  "SS.5.AA.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Examine key figures and events in abolitionist movements.",
+   "cpalms_id": "116283",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116283",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:50:04Z"
+  },
+  "SS.5.AA.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the purpose of the Underground Railroad in assisting those escaping from slavery.",
+   "cpalms_id": "19908",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19908",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:50:07Z"
+  },
+  "SS.5.AA.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify freedoms and rights secured for and by former slaves.",
+   "cpalms_id": "116284",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116284",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:50:10Z"
+  },
+  "SS.5.AA.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a freedom or right secured for and by former slaves.",
+   "cpalms_id": "19909",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19909",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:50:14Z"
+  },
+  "SS.5.AA.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Examine the roles and contributions of significant African Americans during westward expansion (e.g., Benjamin “Pap” Singleton, James Beckwourth, Buffalo Soldiers, York [American explorer]).",
+   "cpalms_id": "116285",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116285",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:50:16Z"
+  },
+  "SS.5.AA.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the importance of an African American during the westward expansion (e.g., Benjamin \"Pap\" Singleton, James Beckwourth, Buffalo Soldiers, York [American explorer]).",
+   "cpalms_id": "19910",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19910",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:50:19Z"
+  },
+  "SS.5.AA.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Examine the experiences and contributions of African Americans in early Florida.",
+   "cpalms_id": "116286",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116286",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:50:22Z"
+  },
+  "SS.5.AA.1.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Recognize an experience or contribution of African Americans in early Florida.",
+   "cpalms_id": "19911",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19911",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:50:25Z"
+  },
+  "SS.5.CG.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the Declaration of Independence affirms that every U.S. citizen has certain unalienable rights.",
+   "cpalms_id": "16068",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16068",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:50:28Z"
+  },
+  "SS.5.CG.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the idea of \"unalienable rights\" in the Declaration of Independence as it relates to each citizen.",
+   "cpalms_id": "18871",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18871",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:50:32Z"
+  },
+  "SS.5.CG.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain how and why the U.S. government was created by the U.S. Constitution.",
+   "cpalms_id": "16069",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16069",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:50:35Z"
+  },
+  "SS.5.CG.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a compromise that was made during the writing of the Constitution.",
+   "cpalms_id": "18872",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18872",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:50:38Z"
+  },
+  "SS.5.CG.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Discuss arguments for adopting a representative form of government.",
+   "cpalms_id": "16070",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16070",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:50:42Z"
+  },
+  "SS.5.CG.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the United States is a representative government.",
+   "cpalms_id": "18873",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18873",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:50:46Z"
+  },
+  "SS.5.CG.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe the history, meaning, and significance of the Bill of Rights.",
+   "cpalms_id": "16071",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16071",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:50:48Z"
+  },
+  "SS.5.CG.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the significance of the Bill of Rights in the U.S. Constitution.",
+   "cpalms_id": "18874",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18874",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:50:51Z"
+  },
+  "SS.5.CG.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the political ideas of Patriots, Loyalists, and other colonists about the American Revolution.",
+   "cpalms_id": "16072",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16072",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:50:53Z"
+  },
+  "SS.5.CG.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify political ideas of Patriots and Loyalists.",
+   "cpalms_id": "18875",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18875",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:50:58Z"
+  },
+  "SS.5.CG.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare forms of political participation in the colonial period to today.",
+   "cpalms_id": "16073",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16073",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:51:01Z"
+  },
+  "SS.5.CG.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize ways citizens participate in the political process historically and in modern times.",
+   "cpalms_id": "18876",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18876",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:51:04Z"
+  },
+  "SS.5.CG.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how the U.S. Constitution expanded civic participation over time.",
+   "cpalms_id": "16074",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16074",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:51:07Z"
+  },
+  "SS.5.CG.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize voting rights within the U.S. Constitution.",
+   "cpalms_id": "18877",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18877",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:51:10Z"
+  },
+  "SS.5.CG.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the importance of civic duties and responsibilities to the preservation of the United States’ constitutional republic.",
+   "cpalms_id": "16075",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16075",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:51:12Z"
+  },
+  "SS.5.CG.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize duties and responsibilities that citizens are expected to fulfill.",
+   "cpalms_id": "18878",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18878",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:51:15Z"
+  },
+  "SS.5.CG.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify individuals who represent the citizens of Florida at the national level.",
+   "cpalms_id": "16076",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16076",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:51:17Z"
+  },
+  "SS.5.CG.2.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize Florida's U.S. senators and representatives from their district.",
+   "cpalms_id": "18879",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18879",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:51:21Z"
+  },
+  "SS.5.CG.2.6": {
+   "state": "confirmed",
+   "statement_verified": "Explain symbols and documents that represent the United States.",
+   "cpalms_id": "16077",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16077",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:51:25Z"
+  },
+  "SS.5.CG.2.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify a symbol and a document that represents the United States.",
+   "cpalms_id": "18880",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18880",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:51:27Z"
+  },
+  "SS.5.CG.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the organizational structure and powers of the national government as defined in Articles I, II, and III of the U.S. Constitution.",
+   "cpalms_id": "16078",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16078",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:51:29Z"
+  },
+  "SS.5.CG.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the structure of the national government as defined in the U.S. Constitution.",
+   "cpalms_id": "18881",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18881",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:51:33Z"
+  },
+  "SS.5.CG.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how the U.S. Constitution and Bill of Rights limit the power of the national government and protect citizens from an oppressive government.",
+   "cpalms_id": "16079",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16079",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:51:35Z"
+  },
+  "SS.5.CG.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the power of the national government is limited by the U.S. Constitution and the Bill of Rights.",
+   "cpalms_id": "18882",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18882",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:51:39Z"
+  },
+  "SS.5.CG.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain the role of the court system in interpreting law and settling conflicts.",
+   "cpalms_id": "16080",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16080",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:51:41Z"
+  },
+  "SS.5.CG.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the role of the United States and Florida Supreme Court.",
+   "cpalms_id": "18883",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18883",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:51:44Z"
+  },
+  "SS.5.CG.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe the process for amending the U.S. Constitution.",
+   "cpalms_id": "16081",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16081",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:51:47Z"
+  },
+  "SS.5.CG.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Recognize that the U.S. Constitution has amendments.",
+   "cpalms_id": "18884",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18884",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:51:50Z"
+  },
+  "SS.5.CG.3.5": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the U.S. Constitution influenced the Florida Constitution.",
+   "cpalms_id": "16082",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16082",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:51:52Z"
+  },
+  "SS.5.CG.3.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the basic outline of the U.S. and Florida Constitutions.",
+   "cpalms_id": "18885",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18885",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:51:56Z"
+  },
+  "SS.5.CG.3.6": {
+   "state": "confirmed",
+   "statement_verified": "Explain the relationship between the state and national governments.",
+   "cpalms_id": "16083",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16083",
+   "date_revised": "05/24",
+   "checked_at": "2026-08-10T01:51:59Z"
+  },
+  "SS.5.CG.3.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify examples of powers granted to the national government and those reserved to the states.",
+   "cpalms_id": "18886",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18886",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:52:01Z"
+  },
+  "SS.5.E.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify how trade promoted economic growth in North America from pre-Columbian times to 1850.",
+   "cpalms_id": "3077",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3077",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:52:05Z"
+  },
+  "SS.5.E.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize how trade promoted growth in pre-Columbian times to 1850.",
+   "cpalms_id": "18867",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18867",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:52:08Z"
+  },
+  "SS.5.E.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe a market economy, and give examples of how the colonial and early American economy exhibited these characteristics.",
+   "cpalms_id": "3078",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3078",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:52:11Z"
+  },
+  "SS.5.E.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify a characteristic of a market economy in colonial America.",
+   "cpalms_id": "18868",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18868",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:52:15Z"
+  },
+  "SS.5.E.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Trace the development of technology and the impact of major inventions on business productivity during the early development of the United States.",
+   "cpalms_id": "3079",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3079",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:52:17Z"
+  },
+  "SS.5.E.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize major inventions during the early development of the United States.",
+   "cpalms_id": "18869",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18869",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:52:20Z"
+  },
+  "SS.5.E.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the positive and negative effects of voluntary trade among Native Americans, European explorers, and colonists.",
+   "cpalms_id": "3080",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3080",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:52:23Z"
+  },
+  "SS.5.E.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize a positive and a negative effect of voluntary trade in early America.",
+   "cpalms_id": "18870",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18870",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:52:26Z"
+  },
+  "SS.5.G.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Interpret current and historical information using a variety of geographic tools.",
+   "cpalms_id": "3067",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3067",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:52:29Z"
+  },
+  "SS.5.G.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize current and historical information using selected geographic tools.",
+   "cpalms_id": "18857",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18857",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:52:32Z"
+  },
+  "SS.5.G.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Use latitude and longitude to locate places.",
+   "cpalms_id": "3068",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3068",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:52:35Z"
+  },
+  "SS.5.G.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use a coordinate grid on a map to locate places.",
+   "cpalms_id": "18858",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18858",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:52:38Z"
+  },
+  "SS.5.G.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify major United States physical features on a map of North America.",
+   "cpalms_id": "3069",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3069",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:52:41Z"
+  },
+  "SS.5.G.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize major physical features on a map of the United States.",
+   "cpalms_id": "18859",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18859",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:52:45Z"
+  },
+  "SS.5.G.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Construct maps, charts, and graphs to display geographic information.",
+   "cpalms_id": "3070",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3070",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:52:48Z"
+  },
+  "SS.5.G.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Complete a map, chart, or graph to display geographic information.",
+   "cpalms_id": "18860",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18860",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:52:52Z"
+  },
+  "SS.5.G.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify and locate the original thirteen colonies on a map of North America.",
+   "cpalms_id": "3071",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3071",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:52:55Z"
+  },
+  "SS.5.G.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify an original colony on a map of the United States.",
+   "cpalms_id": "18861",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18861",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:52:59Z"
+  },
+  "SS.5.G.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Locate and identify states, capitals, and United States Territories on a map.",
+   "cpalms_id": "3072",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3072",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:53:01Z"
+  },
+  "SS.5.G.1.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify selected states and their capitals on a map.",
+   "cpalms_id": "18862",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18862",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:53:04Z"
+  },
+  "SS.5.G.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the push-pull factors (e.g., economy, natural hazards, tourism, climate, physical features) that influenced boundary changes within the United States.",
+   "cpalms_id": "3073",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3073",
+   "date_revised": "07/26",
+   "checked_at": "2026-08-10T01:53:07Z"
+  },
+  "SS.5.G.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify a factor that causes a boundary to change.",
+   "cpalms_id": "18863",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18863",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:53:11Z"
+  },
+  "SS.5.G.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the impact that past natural events have had on human and physical environments in the United States through 1850.",
+   "cpalms_id": "3074",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3074",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:53:14Z"
+  },
+  "SS.5.G.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify natural events that caused change through the 1850s.",
+   "cpalms_id": "18864",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18864",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:53:17Z"
+  },
+  "SS.5.G.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Use geographic knowledge and skills when discussing current events.",
+   "cpalms_id": "3075",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3075",
+   "date_revised": "02/14",
+   "checked_at": "2026-08-10T01:53:20Z"
+  },
+  "SS.5.G.4.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use a geographic skill to recognize information about current events.",
+   "cpalms_id": "18865",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18865",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:53:24Z"
+  },
+  "SS.5.G.4.2": {
+   "state": "confirmed",
+   "statement_verified": "Use geography concepts and skills such as recognizing patterns, mapping, and graphing to find solutions for local, state, or national problems.",
+   "cpalms_id": "3076",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3076",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-10T01:53:27Z"
+  },
+  "SS.5.G.4.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use a geographic skill to recognize information about selected local, state, or national events.",
+   "cpalms_id": "18866",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18866",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:53:30Z"
+  },
+  "SS.5.HE.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Define the Holocaust as the planned and systematic state-sponsored persecution and murder of European Jews by Nazi Germany and its collaborators between 1933 and 1945.",
+   "cpalms_id": "16174",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16174",
+   "date_revised": "04/26",
+   "checked_at": "2026-08-10T01:53:33Z"
+  },
+  "SS.5.HE.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the Holocaust as history's most extreme example of antisemitism.",
+   "cpalms_id": "18887",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18887",
+   "date_revised": "05/23",
+   "checked_at": "2026-08-10T01:53:36Z"
   }
  }
 }
