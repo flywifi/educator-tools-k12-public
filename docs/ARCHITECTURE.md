@@ -44,6 +44,35 @@ split into focused skills that pull detail from `references/` and the shared cor
 `tools/sync_check.py` guarantees the copies never diverge from canon. (Pattern: an invariants-based
 drift guard — assert invariants, not textual diffs.)
 
+## 5a. The standards trust chain (corpus → overlay → resolver → gates)
+
+```
+FLDOE rule documents  ──parse──▶  data/<subject>.json        (parsed corpus — NEVER mutated)
+                                        │
+CPALMS (official site) ──verify──▶ data/overlays/<subject>.cpalms.json
+                                        │        (per code: verified statement, CPALMS id + URL,
+                                        │         revision date, checked_at; additions/renumberings)
+                                        ▼
+                          tools/verify_standards.py  (offline resolver + §6 mutation comparator)
+                                        │
+                    ┌───────────────────┴────────────────────┐
+                    ▼                                        ▼
+   tools/validate_outputs.py                    skills/core/quality-review
+   (`unresolvable_standard`, blocking → CI)     (Accuracy gate, evidence-based)
+```
+
+Three rules make this trustworthy:
+1. **The parsed corpus is never overwritten.** Verification lands in a separate overlay, so parse
+   provenance and verification provenance stay independently auditable.
+2. **Severity follows evidence.** Absence blocks only where the corpus is authoritative and
+   complete; best-effort corpora degrade to advisory (`protocol-layer/standards-verification.md` §5).
+3. **Verification and mutation detection are different comparators.** Verification must tolerate a
+   corpus statement that appends clarifications; the §6 mutation check must not. Sharing one
+   comparator misses value drift and caveat stripping (audit finding F5).
+
+`tools/cpalms_verify.py` produces overlays (network, polite, robots-respecting, resumable) in two
+phases — verify, then a human-reviewed apply. Nothing is auto-applied.
+
 ## 6. Dependency order
 
 `skill architecture → shared engines + protocols → capability skills → integration → hardening →
