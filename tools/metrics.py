@@ -28,6 +28,27 @@ def has_md(d: Path) -> bool:
     return d.exists() and any(d.glob("*.md"))
 
 
+
+def _verified_coverage() -> str:
+    """Live standards-verification coverage, computed from the CPALMS overlays themselves so the
+    dashboard can never drift from the data (tools/cpalms_verify.py writes them; the parsed corpus
+    is never mutated). Reported as verified/total per subject — never as a quality claim."""
+    fl = ROOT / "shared" / "standards" / "resources" / "florida" / "data"
+    parts, total_v = [], 0
+    for subj in ("math", "ela", "science", "social_studies"):
+        ov = fl / "overlays" / f"{subj}.cpalms.json"
+        corpus = fl / f"{subj}.json"
+        if not ov.exists() or not corpus.exists():
+            continue
+        n_v = len(json.loads(ov.read_text(encoding="utf-8")).get("entries", {}))
+        n_c = len(json.loads(corpus.read_text(encoding="utf-8")).get("standards", []))
+        total_v += n_v
+        parts.append(f"{subj.replace('_', ' ')} {n_v}/{n_c} ({100 * n_v / max(1, n_c):.1f}%)")
+    if not parts:
+        return "none yet"
+    return (f"{total_v} FL codes verified code-by-code against CPALMS — "
+            + "; ".join(parts) + " — elementary (K-5) complete; grades 6-12 not yet verified")
+
 def render() -> str:
     """Compute the dashboard and return it as Markdown text (pure — no file write).
     Split out of main() so tools/sync_check.py can compare committed vs. freshly-rendered
@@ -77,6 +98,7 @@ def render() -> str:
     out.append(f"| Skills with template + example + eval | {n_capable}/{n_skills} |")
     out.append(f"| Eval cases (total) | {n_eval_total} |")
     out.append(f"| Standards frameworks wired | {len(frameworks)} ({', '.join(frameworks)}) |")
+    out.append(f"| Standards verified against CPALMS | {_verified_coverage()} |")
     out.append(f"| Differentiation engines | {len(diff_engines)} ({', '.join(diff_engines)}) |")
     out.append(f"| Governance protocols | {len(protocols)}/6 |")
     out.append(f"| Quality coverage (ledger approval rate) | {appr_rate:.0f}% ({n_appr}/{n_dec}) |")
