@@ -436,25 +436,34 @@ def _discover_filters(sub_url: str = FILTER_SUBJECTS,
     return subjects, grades
 
 
-# Corpus grade values are not all CPALMS filter labels. The corpus stores BANDS ("912", "68",
-# "612", "K12") that CPALMS only exposes as individual grades, so a census scoped to a band used to
-# fail filter discovery, record an error, and STILL write a census_diff declaring every code in
-# scope absent from CPALMS. 2,716 of the 4,670 remaining codes (58%) live in these bands.
-GRADE_BANDS = {"912": ["9", "10", "11", "12"],
+# Corpus grade values are not all CPALMS filter labels. The corpus stores SPANS ("912", "68", "612")
+# that CPALMS only exposes as individual grades, so a census scoped to a span used to fail filter
+# discovery, record an error, and STILL write a census_diff declaring every code in scope absent
+# from CPALMS. 2,765 of the 4,670 remaining codes live in these spans.
+#
+# "K12" is NOT a span and must never be expanded. It labels cross-cutting PRACTICE standards —
+# MA.K12.MTR.*, ELA.K12.EE.*, SC.K12.CTR.*, ELD.K12.ELL.* — 5-7 per subject, not "every grade".
+# Expanding it would sweep the entire subject and then diff hundreds of real corpus codes against
+# those few practice codes, so `corpus_missing` would fill with codes that ARE in the corpus and
+# --include-additions would write them all as bogus additions. Left unmapped, it fails CPALMS
+# filter discovery and the census aborts cleanly without writing a conclusion, which is correct:
+# the census cannot scope to a cross-grade practice label.
+GRADE_SPANS = {"912": ["9", "10", "11", "12"],
                "68": ["6", "7", "8"],
-               "612": ["6", "7", "8", "9", "10", "11", "12"],
-               "K12": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]}
+               "612": ["6", "7", "8", "9", "10", "11", "12"]}
+GRADE_BANDS = GRADE_SPANS      # back-compat alias
 
 
 def _expand_grades(grades_csv: str) -> list[str]:
-    """Corpus grade tokens -> CPALMS filter labels. A band expands to its member grades; a plain
-    grade passes through. The corpus SCOPE is still computed from the original token."""
+    """Corpus grade tokens -> CPALMS filter labels. A SPAN expands to its member grades; a plain
+    grade passes through; "K12" is deliberately not expanded (see GRADE_SPANS). The corpus SCOPE is
+    still computed from the original token."""
     out: list[str] = []
     for g in (grades_csv or "").split(","):
         g = g.strip()
         if not g:
             continue
-        out.extend(GRADE_BANDS.get(g, [g]))
+        out.extend(GRADE_SPANS.get(g, [g]))
     return list(dict.fromkeys(out))
 
 
@@ -558,11 +567,24 @@ def run_enumerate(a) -> int:
         print(f"[abort] no corpus codes match --grades {a.grades} for {a.subject}. Applying this "
               f"census would treat the ENTIRE sweep as codes the corpus lacks.")
         return 1
+    # A code the census found that is in the corpus under a DIFFERENT grade is a scope mismatch,
+    # never an addition. Diffing against `scope` alone made every such code look like something
+    # CPALMS has and we lack, and --include-additions would then write it as a cpalms_addition —
+    # for a code already in the corpus, with no statement comparison ever performed. Additions are
+    # therefore computed against the WHOLE corpus; the scope-only surplus is reported separately as
+    # a diagnostic, because a large surplus means the grade scoping is wrong.
+    all_corpus = {e["code"] for e in doc["standards"]}
     report["census_meta"] = meta
     report["census"] = census
     report["census_diff"] = {
-        "corpus_missing": sorted(set(census) - scope),   # CPALMS has, corpus (scope) lacks
-        "cpalms_absent": sorted(scope - set(census))}    # corpus has, census didn't show
+        "corpus_missing": sorted(set(census) - all_corpus),      # CPALMS has, corpus lacks ENTIRELY
+        "out_of_scope_in_corpus": sorted((set(census) & all_corpus) - scope),
+        "cpalms_absent": sorted(scope - set(census))}            # corpus has, census didn't show
+    oos = len(report["census_diff"]["out_of_scope_in_corpus"])
+    if oos > max(25, len(scope)):
+        print(f"[warn] census returned {oos} code(s) that are in the corpus but OUTSIDE this "
+              f"scope (scope={len(scope)}). That usually means --grades does not correspond to "
+              f"the sweep — check the grade label before trusting this census.")
     _finish(report, out)
     d = report["census_diff"]
     errs = [k for k in meta if k.endswith("_error")]
@@ -925,8 +947,12 @@ def self_test() -> int:
     check("verified is a strict subset of dealt-with", VERIFIED_STATES < DISPOSITION_STATES)
 
     # --- G3: the census must refuse what it cannot do ---
-    check("grade bands expand to CPALMS labels", _expand_grades("912") == ["9", "10", "11", "12"]
+    check("grade SPANS expand to CPALMS labels", _expand_grades("912") == ["9", "10", "11", "12"]
           and _expand_grades("68") == ["6", "7", "8"] and _expand_grades("4") == ["4"])
+    # K12 is a cross-grade PRACTICE label (MA.K12.MTR.*, ELA.K12.EE.*), not a span. Expanding it
+    # would sweep a whole subject and turn hundreds of real corpus codes into "additions".
+    check("K12 is NOT expanded — it is a practice label, not a grade span",
+          _expand_grades("K12") == ["K12"] and "K12" not in GRADE_SPANS)
     check("census usability is not mere presence of the key",
           _census_is_usable({"census_diff": {}, "census_meta": {"unique_codes": 5}})
           and not _census_is_usable({"census_diff": {}, "census_meta": {"unique_codes": 0}})
