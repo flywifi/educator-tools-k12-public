@@ -14,6 +14,11 @@ K-12 educational artifacts. Read `docs/ARCHITECTURE.md` for the design. Live sta
 - `tools/` — `sync_check.py` (drift guard), `new_skill.py` (scaffolder), `skill-template/`, `sync_manifest.json`.
 - `implementation/` — platform packaging: `gpt/api/` (OpenAI function YAMLs), `gpt/web/` (ChatGPT web doc), `claude/`, `gemini/`.
 - `docs/` — architecture, deployment, model, and benchmark docs.
+- `docs/RUNBOOK-cpalms.md` — **resuming the CPALMS standards verification** (long-running, spans
+  sessions): what is decided, the non-obvious constraints, and the exact commands. Read this before
+  touching `tools/cpalms_verify.py` or any `*.cpalms.json` overlay. `python3
+  tools/cpalms_verify.py --manifest` regenerates `ledger/cpalms-run-manifest.json`, which is
+  authoritative over any standards count written in prose.
 - `security/` — security and safety policies.
 - `changes/` — changelog and change management.
 - `examples/` — cross-skill example library.
