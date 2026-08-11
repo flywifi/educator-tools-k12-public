@@ -4,6 +4,39 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Added
+- **The standards sweep now resumes across sessions.** The verification job spans sessions, but its
+  only resume state was a report file whose path embeds a session UUID — so a fresh session found no
+  report, took the "first run" branch, and silently re-fetched every already-verified code
+  (~1.8 h of redundant load on a public education site). Phase V now derives its work list from the
+  **committed overlay**, which is the durable record: already-verified codes are skipped
+  (`--ignore-overlay` opts out for a currency refresh), an unreadable overlay aborts rather than
+  degrading to "verify everything", and a fully-verified scope exits before the robots fetch.
+  `--require-resume` turns a missing report into a loud abort naming the cause instead of a restart
+  that looks healthy in the log.
+- **`--manifest` → `ledger/cpalms-run-manifest.json`** (generated, offline, ~1 s): verified vs
+  remaining per subject *and per grade*, by set difference over committed state, anchored to a
+  commit and to per-corpus hashes so staleness is detectable. It is authoritative over any standards
+  count written in prose.
+- **`docs/RUNBOOK-cpalms.md`** — what a session with no prior context needs to continue the sweep:
+  the decided list, six non-obvious constraints each cited to the commit that discovered it
+  (per-grade census sweeps, access-point endpoint routing, unapplyable `--codes` reports, `--resume`
+  not re-deriving scope, `skipped_robots` poisoning a resume file, `Z`-form timestamps), the
+  copy-paste chunk block, and the done-chain through the human gate to CI. Referenced from
+  `CLAUDE.md` so it surfaces at session start. This knowingly breaks the repo convention that
+  handoff files are gitignored; the rationale is stated in the file.
+
+### Fixed
+- **Three shipped coverage counts were wrong** (v1.2.0), all from typing counts instead of computing
+  them: `STATE.md` said 3,096 codes remained across grades 6-12 (true: **4,096** for those four
+  subjects, **4,670** overall); computer science (569, of which **189 are K-5**) and ELD (5) were
+  omitted from the deferred follow-ups entirely; and `docs/METRICS.md` claimed "elementary (K-5)
+  complete" while computer science K-5 was — and remains — unverified with no overlay. `metrics.py`
+  now computes K-5 completeness per subject and names the gap, and counts verified codes by
+  intersection with the corpus so census additions are not folded into coverage. `STATE.md` and
+  `README.md` cite the generated manifest instead of restating figures. The launch audit carries a
+  **dated correction note** (§6) rather than a silent rewrite — it records what was believed on its
+  date — stating the wrong figure, the true figures, the cause, and the fix.
 
 ## [1.2.0] — 2026-08-10
 ### Added
