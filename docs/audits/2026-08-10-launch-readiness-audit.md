@@ -202,3 +202,34 @@ an error, and still wrote a diff declaring every code in scope absent from CPALM
 `coverage` divided *every* merged entry, census additions included, by the corpus size. And
 `tools/cpalms_verify.py --self-test` — cited in earlier audits as evidence — **was not running in
 CI at all**; it is now, and is offline by construction rather than by luck.
+
+## 8. Live census validation — 2026-08-11
+
+The grade-span census fix shipped the same day was, at the time of §7, **unproven against the live
+site** — a gap covering 2,765 of the 4,670 remaining codes (59 %). It has now been exercised.
+
+| probe | corpus scope | census returned | `cpalms_absent` | pages | errors |
+|---|---|---|---|---|---|
+| `social_studies --grades 68` (sweeps 6,7,8) | 32 | 586 | **0** | 6 + 6 | none |
+| `social_studies --grades 912` (sweeps 9,10,11,12) | 1,599 | **1,599** | **0** | 16 + 13 | none |
+
+The 912 probe is the largest result set in the corpus and reconciles **exactly**, with paging run to
+exhaustion (final page partial, not capped). **CPALMS truncation does not bite on per-grade span
+sweeps.** This closes the residual risk recorded in §4.5 for span-scoped subjects.
+
+**Two defects were found in the process, both of which would have written false data at the gate:**
+
+1. **`K12` was being expanded as if it were a span.** It is not: it labels cross-cutting practice
+   standards (`MA.K12.MTR.*`, `ELA.K12.EE.*`, `SC.K12.CTR.*`, `ELD.K12.ELL.*`), 5–7 per subject.
+   Expanding it would sweep an entire subject and diff hundreds of real corpus codes against those
+   few. It is now left unmapped so the census aborts cleanly instead.
+2. **`corpus_missing` was `census − scope`.** On the `68` probe that yields **554**; the true count
+   of codes CPALMS has and the corpus lacks is **1**. The other 553 are real corpus standards
+   labelled `6`/`7`/`8` individually, which `--include-additions` would have overwritten with census
+   stubs. Additions are now diffed against the whole corpus, with the scope surplus reported
+   separately and warned on.
+
+**One genuine finding for the human gate:** `SS.8.E.2.AP.3` (CPALMS id 19110) — "Identify the role of
+Africans and other minority groups in the economic development of the…" — is on CPALMS and absent
+from the parsed corpus entirely. Same class as the two special-education access points recovered in
+D-K. Not applied; it requires the `--include-additions` gate.

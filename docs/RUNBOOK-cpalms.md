@@ -69,12 +69,23 @@ costs nothing instead of thousands of redundant requests.
    it is handed. A census written to a separate file leaves `corpus_missing` empty, so
    `--include-additions` silently finds nothing and every census finding is dropped. `--apply` now
    refuses rather than no-ops, but write them to one file in the first place.
-8. **Grade BANDS are expanded for the sweep, not for the scope.** The corpus stores `912`, `68`,
-   `612`, `K12`; CPALMS only exposes individual grades. `--grades 912` now sweeps 9,10,11,12 while
-   scoping the corpus on `912`. Never "fix" a band by passing `9,10,11,12` yourself — that matches
-   zero corpus codes, so the entire census becomes `corpus_missing` and `--include-additions` would
-   write thousands of false additions. The tool aborts on a zero-size scope for exactly this reason.
-9. **A census that errored writes no `census_diff`.** It records `census_meta` for diagnosis and
+8. **Grade SPANS are expanded for the sweep, not for the scope. PROVEN LIVE 2026-08-11.**
+   `social_studies --grades 912` (sweeping 9,10,11,12): corpus scope 1,599, census returned
+   **exactly 1,599**, `cpalms_absent = 0`, 16 benchmark + 13 AP pages run to exhaustion, no errors.
+   `--grades 68` likewise returned `cpalms_absent = 0`. Truncation does **not** bite at the largest
+   scope in the corpus. **"K12" is NOT a span** — it labels cross-cutting practice standards
+   (`MA.K12.MTR.*`, `ELA.K12.EE.*`), 5-7 per subject, and is deliberately left unmapped so the
+   census aborts rather than sweeping a whole subject.
+   Never "fix" a span by passing `9,10,11,12` yourself: the corpus labels those codes `912`, so
+   scoping on the individual grades matches **zero** corpus codes and the tool aborts (by design —
+   otherwise the whole census would read as additions).
+9. **Census additions are diffed against the WHOLE corpus, not the scope.** A code the census
+   returns that sits in the corpus under a different grade label is a scope mismatch, not an
+   addition. Diffing against scope alone made `corpus_missing` 554 on the `68` probe when the true
+   answer was 1 — and `--include-additions` would have rewritten 553 real standards as census
+   stubs. `out_of_scope_in_corpus` reports that surplus separately, and a surplus that dwarfs the
+   scope warns loudly, because it means the grade scoping is wrong.
+10. **A census that errored writes no `census_diff`.** It records `census_meta` for diagnosis and
    exits non-zero. An empty census is a lie (it claims every code in scope is absent from CPALMS);
    an absent one is detectable.
 
