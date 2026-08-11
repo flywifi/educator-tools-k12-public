@@ -74,7 +74,7 @@ this repo, including in this runbook.** Regenerate it after every overlay write.
 
 ```bash
 SUBJ=math; GRADE=6                                   # one subject, ONE grade
-REPORT="$PWD/.local-reports/$SUBJ-$GRADE.json"       # or a scratchpad path; see §0
+REPORT="$PWD/ledger/in-flight/$SUBJ-$GRADE.json"     # see §4a before choosing a path
 mkdir -p "$(dirname "$REPORT")"
 
 # forward verify (network, polite, resumable; overlay-verified codes are skipped automatically)
@@ -95,12 +95,31 @@ runs), `--limit N` (pilot), `--checkpoint-every N` (default 10; also flushed on 
 Expect ~3.1–5.8 s per code (a randomized 1.5–3.0 s delay precedes every fetch). Budget accordingly
 and prefer more, smaller chunks over one long run.
 
+## 4a. In-flight reports — the one exception to "reports are not committed"
+
+Finished reports are **not** committed: they are redundant with the overlay, ~1.26 MB in total, and
+produce unreviewable whole-file diffs. But a report for a chunk that has been verified and is
+**waiting at the human gate** is different — until `--write` runs, that report is the *only* copy of
+the work, and if it lives in a scratchpad it dies with the session.
+
+So: **a verified-but-unapplied chunk is committed to `ledger/in-flight/<subject>-<grade>.json`**, and
+**deleted in the same commit that writes the overlay**. At most one or two chunks are ever in flight.
+
+```bash
+git add ledger/in-flight/$SUBJ-$GRADE.json && git commit -m "wip: $SUBJ grade $GRADE verified, awaiting review gate"
+git push -u origin <branch>
+```
+
+This is what lets an unattended session do real work without taking the human gate: it verifies,
+commits the in-flight report, and stops. Any later session — with no shared context — picks the
+report up from the repo and walks it through §5.
+
 ## 5. The done-chain for a chunk
 
 1. `--apply <report>` — dry-run. Read the review queue.
 2. **Present the queue to a human and get approval.** This is a gate, not a formality.
 3. `--apply <report> --write` (add `--include-additions` only if the census found real additions and
-   the human approved them).
+   the human approved them), then `git rm` the in-flight report (§4a) in the same commit.
 4. `python3 tools/cpalms_verify.py --manifest` — regenerate the work manifest.
 5. `python3 tools/sync_check.py` — must exit 0. **Run this before `git add`, not after.**
 6. `python3 tools/metrics.py` — regenerate `docs/METRICS.md` (never hand-edit it; check 16 enforces
@@ -124,12 +143,18 @@ When the manifest shows 0 remaining: delete the standing Routine (§7).
 
 ## 7. The standing Routine
 
-A Routine may exist that wakes a fresh session to work the next chunk. Its id is recorded here:
+A Routine wakes a fresh session daily to work the next chunk:
 
-> **Routine id:** `_(recorded when created — see §7 note below)_`
+> **Routine id:** `trig_01BdmNu2xWDxc3CAxDBvV1Gy` — "CPALMS standards sweep — next chunk",
+> daily at 09:00 UTC, fresh session per firing.
 
-It is scoped to **one chunk per firing**, is forbidden from `--write`, from pushing to `main`, and
-from opening or merging a pull request. **Delete it when the manifest reaches 0 remaining.**
+It is scoped to **one subject+grade chunk per firing**. It is forbidden from `--apply --write`, from
+pushing to `main`, from opening or merging a pull request, and from mutating the parsed corpus; it
+verifies, commits the in-flight report (§4a), and stops. **Delete it when the manifest reaches 0
+remaining** — a fresh session that finds 0 remaining is instructed to say so rather than invent work.
+
+Note: the sessions it fires run without MCP connector tools, so they use `git` directly rather than
+the GitHub MCP tools. That is sufficient for everything in §4/§4a.
 
 ## 8. Why this file is committed
 
