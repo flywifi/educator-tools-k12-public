@@ -404,7 +404,12 @@ through `validate_outputs.py` (`unresolvable_standard`, blocking) with negative-
 proving the gate gates.
 
 Audit: `docs/audits/2026-08-10-launch-readiness-audit.md` (A1-A7 + A9; one OPEN finding, seven
-residual risks). Follow-ups, explicitly deferred: **grades 6-12** (3,096 codes unverified);
+residual risks). Follow-ups, explicitly deferred — **4,670 codes remain unverified in total**; the
+live, generated breakdown is `ledger/cpalms-run-manifest.json` (`python3 tools/cpalms_verify.py
+--manifest` to refresh), which is authoritative over any count restated in prose:
+**grades 6-12 of math/ELA/science/social studies** (4,096); **computer science** (569, of which
+**189 are K-5** and have no overlay yet — elementary is *not* complete for this subject);
+**ELD** (5). Also:
 social studies remains low-confidence (19.5% whole-corpus) so its absences stay advisory;
 CCSS/NGSS remain scheme-only; a FLDOE source-document refresh would fix the legacy `.doc` parse
 artifacts recorded as finding D-J.

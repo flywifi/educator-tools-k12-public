@@ -91,6 +91,9 @@ that took the first run from 113 flags to 0, and D-J for the surviving flag.
    agreement is two-source corroboration — but a CPALMS-side error would be invisible here. The
    FLDOE rule documents remain the legal source of record.
 2. **Grades 6–12 are unverified** — 3,096 codes retain their prior trust level.
+   *(Corrected 2026-08-11 — see §6. The figure is wrong: 4,096 codes across grades 6–12 for these
+   four subjects, and 4,670 unverified in total. The original text is left in place because this
+   audit is a record of what was believed on 2026-08-10.)*
 3. **Social studies remains low-confidence** (19.5 % whole-corpus coverage, below the 98 %
    threshold): its absences stay advisory by design, so a fabricated SS code is still not blocked.
 4. **Parse-quality drift (D-J) is bounded, not eliminated.** Verified codes compare against the
@@ -111,3 +114,36 @@ that took the first run from 113 flags to 0, and D-J for the surviving flag.
    "(e.g., economy, natural hazards, …)"; our parse dropped the `e.g.,` (D-J).
 3. **`SS.4.E.1.1`** — <https://www.cpalms.org/PreviewStandard/Preview/3026> — the one benchmark
    whose wording we changed (corpus "social and ethnic" → CPALMS "demographic").
+
+## 6. Correction note — 2026-08-11
+
+**What was wrong.** §4.2 above stated that **3,096** codes remained unverified across grades 6–12.
+That number is wrong. Recomputed by set difference over the committed corpora and overlays:
+
+| | |
+|---|---|
+| Corpus total | **6,583** |
+| Verified in-corpus | **1,913** (+3 `cpalms_addition` entries not in the corpus) |
+| **Remaining** | **4,670** |
+| — grades 6–12, math/ELA/science/social studies | **4,096** |
+| — computer science (all grades) | **569**, of which **189 are K–5** |
+| — ELD | **5** |
+
+**What else was wrong.** This audit and `docs/METRICS.md` both described elementary (K–5) as
+complete. It is not: **computer science K–5 (189 codes) has never been verified and has no overlay
+file.** Computer science and ELD were omitted from the residual-risk statement entirely. The scope
+paragraph at the top of this audit also says "the three overlays' 2 additions" — it is **four**
+overlays and **three** additions, as §1's own table shows (science 2, social studies 1).
+
+**Cause.** The figures were typed rather than computed, and the 6–12 figure was derived by
+subtracting one hand-counted total from another instead of taking a set difference over code sets.
+The omission of computer science and ELD followed from the same manual method: subjects that were
+never swept were never enumerated.
+
+**Fix.** `tools/cpalms_verify.py --manifest` now generates `ledger/cpalms-run-manifest.json` —
+verified vs remaining per subject *and per grade*, by set difference, anchored to a commit and to
+per-corpus hashes. `STATE.md` and the METRICS row now cite or compute from that file instead of
+restating numbers, and `tools/metrics.py` states K–5 completeness per subject, naming the gap.
+
+**Why this note rather than an edit.** An audit records what was believed on its date. The original
+§4.2 sentence is left in place with an inline pointer here, so both states remain visible.

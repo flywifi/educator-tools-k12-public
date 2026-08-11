@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-07-11 | owner: tos-maintainer -->
+<!-- last_reviewed: 2026-08-11 | owner: tos-maintainer -->
 # Teacher Operating System (TOS)
 
 A set of AI assistants that help K–12 teachers create and double-check the everyday materials of
@@ -69,13 +69,16 @@ python3 tools/verify_standards.py --compare MA.3.NSO.1.1 --text "Read and write 
   `not_found` and blocks; a code absent from a *best-effort* corpus (social studies, ELD) is
   advisory, because a parser gap must never be reported as a fabricated standard. CCSS and NGSS are
   **scheme-only**: structure is checked, existence is not.
-- **Independently verified.** Elementary math and reading (K–5) plus grade-4 science and social
-  studies have been checked code-by-code against **CPALMS**, Florida's official standards site, in
-  both directions — including a reverse census that catches standards CPALMS has and the corpus
-  lacks. Results live in `shared/standards/resources/florida/data/overlays/` with the CPALMS URL and
-  date recorded for every entry; the parsed corpus is never overwritten.
-- **Limits, stated plainly.** Grades 6–12 are not yet verified. Social studies remains a
-  best-effort parse overall. See the audit in `docs/audits/` for the full residual-risk statement.
+- **Independently verified.** Elementary (K–5) math, reading/ELA, science, and social studies —
+  1,913 codes — have been checked code-by-code against **CPALMS**, Florida's official standards
+  site, in both directions, including a reverse census that catches standards CPALMS has and the
+  corpus lacks. Results live in `shared/standards/resources/florida/data/overlays/` with the CPALMS
+  URL and date recorded for every entry; the parsed corpus is never overwritten.
+- **Limits, stated plainly.** 4,670 codes are still unverified: grades 6–12 of those four subjects,
+  **all of computer science — including K–5** — and ELD. The live, generated breakdown is
+  `ledger/cpalms-run-manifest.json` (`python3 tools/cpalms_verify.py --manifest`); trust it over any
+  number written in prose. Social studies remains a best-effort parse overall. See the audit in
+  `docs/audits/` for the full residual-risk statement.
 
 Maintainers refreshing the verification (needs network):
 `python3 tools/cpalms_verify.py --subject math --grades K,1,2,3,4,5 --out report.json` then

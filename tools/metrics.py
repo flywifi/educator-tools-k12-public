@@ -34,20 +34,32 @@ def _verified_coverage() -> str:
     dashboard can never drift from the data (tools/cpalms_verify.py writes them; the parsed corpus
     is never mutated). Reported as verified/total per subject — never as a quality claim."""
     fl = ROOT / "shared" / "standards" / "resources" / "florida" / "data"
-    parts, total_v = [], 0
-    for subj in ("math", "ela", "science", "social_studies"):
-        ov = fl / "overlays" / f"{subj}.cpalms.json"
+    elem = {"K", "1", "2", "3", "4", "5"}
+    parts, gaps, total_v = [], [], 0
+    for subj in ("math", "ela", "science", "social_studies", "computer_science", "eld"):
         corpus = fl / f"{subj}.json"
-        if not ov.exists() or not corpus.exists():
+        if not corpus.exists():
             continue
-        n_v = len(json.loads(ov.read_text(encoding="utf-8")).get("entries", {}))
-        n_c = len(json.loads(corpus.read_text(encoding="utf-8")).get("standards", []))
+        std = json.loads(corpus.read_text(encoding="utf-8")).get("standards", [])
+        ov = fl / "overlays" / f"{subj}.cpalms.json"
+        done = (set(json.loads(ov.read_text(encoding="utf-8")).get("entries", {}))
+                if ov.exists() else set())
+        codes = {e["code"] for e in std}
+        n_v, n_c = len(codes & done), len(codes)
         total_v += n_v
         parts.append(f"{subj.replace('_', ' ')} {n_v}/{n_c} ({100 * n_v / max(1, n_c):.1f}%)")
+        # Per-subject K-5 gap, computed. A whole-corpus "elementary complete" claim was shipped
+        # once while 189 K-5 computer-science codes were unverified; state it per subject instead.
+        n_gap = len({e["code"] for e in std if str(e.get("grade")) in elem} - done)
+        if n_gap:
+            gaps.append(f"{subj.replace('_', ' ')} {n_gap}")
     if not parts:
         return "none yet"
+    k5 = ("K-5 complete" if not gaps
+          else "K-5 still unverified: " + ", ".join(gaps) + " code(s)")
     return (f"{total_v} FL codes verified code-by-code against CPALMS — "
-            + "; ".join(parts) + " — elementary (K-5) complete; grades 6-12 not yet verified")
+            + "; ".join(parts) + f" — {k5}; grades 6-12 not yet verified "
+            "(live breakdown: `ledger/cpalms-run-manifest.json`)")
 
 def render() -> str:
     """Compute the dashboard and return it as Markdown text (pure — no file write).
