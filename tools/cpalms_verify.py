@@ -29,7 +29,13 @@ Usage:
   python3 tools/cpalms_verify.py --codes MA.3.NSO.1.1 MA.3.NSO.9.99 --out adhoc.json
   python3 tools/cpalms_verify.py --apply ss.json            # dry-run diff
   python3 tools/cpalms_verify.py --apply ss.json --write    # human-approved overlay write
+  python3 tools/cpalms_verify.py --manifest                 # what's left (generated, offline)
   python3 tools/cpalms_verify.py --self-test                # offline fixture probes (CI-safe)
+
+Cross-session resumption: the report above is session-scoped (its path embeds a session UUID and
+does not survive), but the committed overlay does. Phase V therefore skips any code already present
+in the overlay (--ignore-overlay to re-verify), and --require-resume turns a missing report into a
+loud abort instead of a silent restart. See docs/RUNBOOK-cpalms.md.
 """
 from __future__ import annotations
 
@@ -218,6 +224,27 @@ def run_verify(a) -> int:
         codes = [c for c in codes
                  if grades_of.get(c) in want
                  or (a.include_practices and grades_of.get(c) == "K12")]
+    # P1: resume from DURABLE state. The committed overlay is the record of what is already
+    # verified; the report below is session-scoped (its path embeds a session UUID), so a fresh
+    # session cannot rely on it. Overlay-verified codes are skipped unless --ignore-overlay.
+    skipped_overlay = 0
+    if a.subject and not a.ignore_overlay:
+        ov_path = OVERLAYS / f"{a.subject}.cpalms.json"
+        if ov_path.exists():
+            try:
+                done = set(json.loads(ov_path.read_text(encoding="utf-8")).get("entries", {}))
+            except Exception as exc:
+                # An unreadable overlay must never degrade to "verify everything" — that would
+                # silently re-fetch thousands of codes against a public education site.
+                print(f"[abort] overlay {ov_path.name} unreadable ({exc.__class__.__name__}); "
+                      f"refusing to run rather than re-verify already-committed work")
+                return 1
+            before = len(codes)
+            codes = [c for c in codes if c not in done]
+            skipped_overlay = before - len(codes)
+            if skipped_overlay:
+                print(f"[overlay] {skipped_overlay} code(s) already verified in {ov_path.name} "
+                      f"— skipping")
     if a.limit:
         codes = codes[:a.limit]
     out = Path(a.out)
@@ -227,6 +254,26 @@ def run_verify(a) -> int:
     if a.resume and out.exists():
         report = json.loads(out.read_text(encoding="utf-8"))
         print(f"[resume] {len(report['rows'])} row(s) already done")
+    elif a.resume:
+        # P2: a fresh session has a different scratchpad path, so a missing report is
+        # indistinguishable from a first run. --require-resume makes that difference loud.
+        if a.require_resume:
+            print(f"[abort] --require-resume: no report at {out}\n"
+                  f"        A fresh session's scratchpad path differs from the one that created "
+                  f"it.\n"
+                  f"        Either point --out at the correct file, or drop --require-resume to "
+                  f"start this scope from the committed-overlay baseline.")
+            return 1
+        print(f"[note] --resume: no report at {out} — starting a new report "
+              f"(overlay-verified codes are still skipped)")
+    report["skipped_overlay"] = skipped_overlay
+    if not codes:
+        # Nothing in scope is unverified. Exit before the robots fetch: the politest request is
+        # the one never made, and it makes "this scope is done" provable offline.
+        print(f"nothing to verify — all {skipped_overlay} code(s) in scope are already verified "
+              f"in the committed overlay (--ignore-overlay to re-verify)")
+        _finish(report, out)
+        return 0
     report["robots_ok"] = _robots_allows("/Search/GetSearchStandard?KeyWord=x")
     if not report["robots_ok"]:
         print("robots.txt disallows the search path — refusing to fetch (skipped_robots).")
@@ -614,8 +661,79 @@ def self_test() -> int:
           and bool(_AP_SEG.search("SC.K.L.14.In.1")) and not _AP_SEG.search("MA.3.NSO.1.1")
           and not _AP_SEG.search("MA.K12.MTR.1.1"))
 
+    # Cross-session resume semantics (offline — both paths return before any fetch is attempted).
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        probe = str(Path(td) / "probe.json")
+        missing = str(Path(td) / "does-not-exist.json")
+        t0 = time.monotonic()
+        rc = main(["--subject", "math", "--grades", "K,1,2,3,4,5", "--out", probe])
+        check("resume: fully-verified scope exits without fetching (overlay is the resume state)",
+              rc == 0 and time.monotonic() - t0 < 5)
+        rc = main(["--subject", "math", "--grades", "6", "--out", missing,
+                   "--resume", "--require-resume"])
+        check("resume: --require-resume aborts loudly when the report is missing", rc == 1)
+
+    # Manifest arithmetic: set difference over committed state, never a subtraction (defect X1).
+    _corpus = {e["code"] for e in
+               json.loads((DATA / "math.json").read_text(encoding="utf-8"))["standards"]}
+    _done = set(json.loads((OVERLAYS / "math.cpalms.json").read_text(encoding="utf-8"))["entries"])
+    check("manifest: remaining is a set difference, not a subtraction",
+          len(_corpus - _done) == len(_corpus) - len(_corpus & _done))
+
     print(f"self-test: {fails} failure(s)")
     return 1 if fails else 0
+
+
+SUBJECT_FILES = ("math", "ela", "science", "social_studies", "computer_science", "eld")
+
+
+def write_manifest() -> int:
+    """Durable, regenerable answer to 'what is left'. Set difference over COMMITTED state only —
+    never a hand-typed count (the error class that made STATE.md understate the job by 1,574)."""
+    import hashlib
+    import subprocess
+    subjects: dict[str, dict] = {}
+    totals = {"corpus": 0, "verified": 0, "remaining": 0}
+    for subj in SUBJECT_FILES:
+        cf = DATA / f"{subj}.json"
+        corpus = json.loads(cf.read_text(encoding="utf-8"))["standards"]
+        codes = {e["code"] for e in corpus}
+        by_grade: dict[str, set] = {}
+        for e in corpus:
+            by_grade.setdefault(str(e.get("grade")), set()).add(e["code"])
+        ovp = OVERLAYS / f"{subj}.cpalms.json"
+        done = (set(json.loads(ovp.read_text(encoding="utf-8")).get("entries", {}))
+                if ovp.exists() else set())
+        remaining = codes - done
+        subjects[subj] = {
+            "corpus_count": len(codes),
+            "verified_in_corpus": len(codes & done),
+            "overlay_extras": sorted(done - codes),        # cpalms_addition entries
+            "remaining_count": len(remaining),
+            "remaining_by_grade": {g: len(gc - done) for g, gc in sorted(by_grade.items())
+                                   if gc - done},
+            "corpus_sha256": hashlib.sha256(cf.read_bytes()).hexdigest()[:16],
+        }
+        totals["corpus"] += len(codes)
+        totals["verified"] += len(codes & done)
+        totals["remaining"] += len(remaining)
+    try:
+        head = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True,
+                              cwd=str(ROOT), check=False).stdout.strip()
+    except OSError:
+        head = ""
+    out = {"_comment": "GENERATED by tools/cpalms_verify.py --manifest. Never hand-edit — a typed "
+                       "count is how STATE.md came to understate the job by 1,574 codes. "
+                       "Regenerate after every overlay write. Staleness is detectable via "
+                       "anchor_commit + corpus_sha256.",
+           "generated_at": _now(), "anchor_commit": head,
+           "totals": totals, "subjects": subjects}
+    p = ROOT / "ledger" / "cpalms-run-manifest.json"
+    p.write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"wrote {p} — verified {totals['verified']} / remaining {totals['remaining']} "
+          f"of {totals['corpus']}")
+    return 0
 
 
 def main(argv) -> int:
@@ -629,6 +747,12 @@ def main(argv) -> int:
     ap.add_argument("--limit", type=int, help="verify at most N codes (pilot)")
     ap.add_argument("--out", help="report path (Phase V)")
     ap.add_argument("--resume", action="store_true", help="continue an existing report")
+    ap.add_argument("--require-resume", action="store_true",
+                    help="with --resume: abort if the report is missing. A fresh session has a "
+                         "different scratchpad path; a missing file must never look like a fresh run")
+    ap.add_argument("--ignore-overlay", action="store_true",
+                    help="do NOT skip codes already verified in the committed overlay "
+                         "(use for a deliberate re-verification / currency refresh)")
     ap.add_argument("--checkpoint-every", type=int, default=10, metavar="N",
                     help="flush the checkpoint every N rows (default 10; also flushed on SIGTERM/SIGINT)")
     ap.add_argument("--enumerate", action="store_true",
@@ -638,10 +762,15 @@ def main(argv) -> int:
     ap.add_argument("--include-additions", action="store_true",
                     help="with --apply --write: also record census-found codes the corpus lacks "
                          "(cpalms_addition entries) — opt-in, human-approved at a gate")
+    ap.add_argument("--manifest", action="store_true",
+                    help="write ledger/cpalms-run-manifest.json (verified vs remaining, per subject "
+                         "and grade) and exit; offline, deterministic, regenerable")
     ap.add_argument("--self-test", action="store_true", help="offline fixture probes")
     a = ap.parse_args(argv)
     if a.self_test:
         return self_test()
+    if a.manifest:
+        return write_manifest()
     if a.apply:
         return run_apply(a)
     if a.enumerate:
