@@ -4,7 +4,7 @@
  "generated_at": "2026-08-10T03:26:44Z",
  "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
  "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
- "coverage": 0.1954,
+ "coverage": 0.1887,
  "scopes": [
   {
    "grades": "4",
@@ -387,12 +387,15 @@
    "checked_at": "2026-08-09T22:31:14Z"
   },
   "SS.4.A.7.3": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Identify Florida’s role in World War II.",
    "cpalms_id": "120147",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120147",
    "date_revised": "11/25",
-   "checked_at": "2026-08-09T22:31:17Z"
+   "checked_at": "2026-08-09T22:31:17Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.4.A.8.1": {
    "state": "confirmed",
@@ -475,12 +478,15 @@
    "checked_at": "2026-08-09T22:31:49Z"
   },
   "SS.4.AA.1.1": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Identify African American community leaders who made positive contributions in the state of Florida (e.g., Zora Neale Hurston, Florida Highwaymen, Mary McLeod Bethune, Evan B. Forde, Bessie Coleman, Gen. Daniel “Chappie” James, Bob Hayes, Sylvia Fowles).",
    "cpalms_id": "116280",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116280",
    "date_revised": "05/24",
-   "checked_at": "2026-08-09T22:31:51Z"
+   "checked_at": "2026-08-09T22:31:51Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.4.AA.1.AP.1": {
    "state": "confirmed",
@@ -763,12 +769,15 @@
    "checked_at": "2026-08-09T22:33:43Z"
   },
   "SS.4.FL.2.2": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Explain that people make choices about what goods and services they buy because they can’t have everything they want. This requires individuals to prioritize their wants.",
    "cpalms_id": "8501",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/8501",
    "date_revised": "06/14",
-   "checked_at": "2026-08-09T22:33:46Z"
+   "checked_at": "2026-08-09T22:33:46Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.4.FL.2.AP.2": {
    "state": "confirmed",
@@ -827,12 +836,15 @@
    "checked_at": "2026-08-09T22:34:09Z"
   },
   "SS.4.FL.2.6": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Predict how people’s spending choices are influenced by prices as well as many other factors, including advertising, the spending choices of others, and peer pressure.",
    "cpalms_id": "8505",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/8505",
    "date_revised": "06/14",
-   "checked_at": "2026-08-09T22:34:12Z"
+   "checked_at": "2026-08-09T22:34:12Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.4.FL.2.AP.6": {
    "state": "confirmed",
@@ -883,20 +895,26 @@
    "checked_at": "2026-08-09T22:34:31Z"
   },
   "SS.4.FL.3.AP.2": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Recognize that saving money involves choices",
    "cpalms_id": "18812",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18812",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:34:35Z"
+   "checked_at": "2026-08-09T22:34:35Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.4.FL.3.3": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Identify ways that people can choose to save money in many places—for example, at home in a piggy bank or at a commercial bank, credit union, or savings and loan.",
    "cpalms_id": "8509",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/8509",
    "date_revised": "06/14",
-   "checked_at": "2026-08-09T22:34:38Z"
+   "checked_at": "2026-08-09T22:34:38Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.4.FL.3.AP.3": {
    "state": "confirmed",
@@ -939,12 +957,15 @@
    "checked_at": "2026-08-09T22:34:55Z"
   },
   "SS.4.FL.4.1": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Discuss that interest is the price the borrower pays for using someone else’s money.",
    "cpalms_id": "8512",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/8512",
    "date_revised": "06/14",
-   "checked_at": "2026-08-09T22:34:58Z"
+   "checked_at": "2026-08-09T22:34:58Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.4.FL.4.AP.1": {
    "state": "confirmed",
@@ -1364,12 +1385,15 @@
    "checked_at": "2026-08-10T01:35:01Z"
   },
   "SS.K.CG.2.3": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Define patriotism as the allegiance to one’s country.",
    "cpalms_id": "16033",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16033",
    "date_revised": "04/26",
-   "checked_at": "2026-08-10T01:35:03Z"
+   "checked_at": "2026-08-10T01:35:03Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.K.CG.2.AP.3": {
    "state": "confirmed",
@@ -1556,12 +1580,15 @@
    "checked_at": "2026-08-10T01:36:15Z"
   },
   "SS.K.G.2.2": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Know one’s own phone number, street address, city, or town and that Florida is the state in which the student lives.",
    "cpalms_id": "2891",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2891",
    "date_revised": "04/26",
-   "checked_at": "2026-08-10T01:36:18Z"
+   "checked_at": "2026-08-10T01:36:18Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.K.G.2.AP.2": {
    "state": "confirmed",
@@ -2084,12 +2111,15 @@
    "checked_at": "2026-08-10T01:39:42Z"
   },
   "SS.1.G.1.5": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Locate on maps and globes the student’s local community, the state of Florida, the Atlantic Ocean, and the Gulf of America (formerly Gulf of Mexico).",
    "cpalms_id": "2917",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2917",
    "date_revised": "11/25",
-   "checked_at": "2026-08-10T01:39:45Z"
+   "checked_at": "2026-08-10T01:39:45Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.1.G.1.AP.5": {
    "state": "confirmed",
@@ -2532,12 +2562,15 @@
    "checked_at": "2026-08-10T01:42:32Z"
   },
   "SS.2.G.1.2": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Using maps and globes, locate the student’s hometown, Florida, North America, and both the state and national capitals.",
    "cpalms_id": "2945",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/2945",
    "date_revised": "04/26",
-   "checked_at": "2026-08-10T01:42:34Z"
+   "checked_at": "2026-08-10T01:42:34Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.2.G.1.AP.2": {
    "state": "confirmed",
@@ -2844,12 +2877,15 @@
    "checked_at": "2026-08-10T01:44:27Z"
   },
   "SS.3.E.1.AP.4": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Recognize forms of money used in the United States and one other North American country",
    "cpalms_id": "18745",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18745",
    "date_revised": "05/23",
-   "checked_at": "2026-08-10T01:44:31Z"
+   "checked_at": "2026-08-10T01:44:31Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.3.G.1.1": {
    "state": "confirmed",
@@ -3620,12 +3656,15 @@
    "checked_at": "2026-08-10T01:49:31Z"
   },
   "SS.5.A.6.7": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Discuss the concept of Manifest Destiny.",
    "cpalms_id": "3064",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3064",
    "date_revised": "02/14",
-   "checked_at": "2026-08-10T01:49:33Z"
+   "checked_at": "2026-08-10T01:49:33Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.5.A.6.AP.7": {
    "state": "confirmed",
@@ -3732,12 +3771,15 @@
    "checked_at": "2026-08-10T01:50:14Z"
   },
   "SS.5.AA.1.5": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Examine the roles and contributions of significant African Americans during westward expansion (e.g., Benjamin “Pap” Singleton, James Beckwourth, Buffalo Soldiers, York [American explorer]).",
    "cpalms_id": "116285",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/116285",
    "date_revised": "05/24",
-   "checked_at": "2026-08-10T01:50:16Z"
+   "checked_at": "2026-08-10T01:50:16Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.5.AA.1.AP.5": {
    "state": "confirmed",
@@ -3876,12 +3918,15 @@
    "checked_at": "2026-08-10T01:51:10Z"
   },
   "SS.5.CG.2.4": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Evaluate the importance of civic duties and responsibilities to the preservation of the United States’ constitutional republic.",
    "cpalms_id": "16075",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/16075",
    "date_revised": "05/24",
-   "checked_at": "2026-08-10T01:51:12Z"
+   "checked_at": "2026-08-10T01:51:12Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.5.CG.2.AP.4": {
    "state": "confirmed",
@@ -4180,12 +4225,15 @@
    "checked_at": "2026-08-10T01:53:04Z"
   },
   "SS.5.G.2.1": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Describe the push-pull factors (e.g., economy, natural hazards, tourism, climate, physical features) that influenced boundary changes within the United States.",
    "cpalms_id": "3073",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3073",
    "date_revised": "07/26",
-   "checked_at": "2026-08-10T01:53:07Z"
+   "checked_at": "2026-08-10T01:53:07Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "SS.5.G.2.AP.1": {
    "state": "confirmed",

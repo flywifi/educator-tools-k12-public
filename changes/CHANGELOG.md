@@ -4,6 +4,47 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Fixed — verification correctness (2026-08-11)
+- **`confirmed` now means the text matches, not "within 3%".** An adversarial audit refuted the
+  predicate and the refutation reproduced exactly: `confirmed` was decided by a 0.97 similarity
+  ratio — about three characters of slack on a median 91-character statement. Measured against real
+  FL statements, a single-token mutation still classified as `confirmed` in **100%** of changed
+  numeric bounds (`within 20` → `within 10`), **93.9%** of *deleted* negations, 86.8% of `and`→`or`
+  and 80% of `greater`→`less`. Three further holes: an **empty** corpus statement prefix-matched any
+  text at all including hostile text; a short statement matched a longer different benchmark; and
+  server-side truncation **without** an ellipsis matched and was not flagged, putting a severed
+  fragment into the overlay as the §6 origin form. `confirmed` now requires normalized equality or a
+  true prefix, an untruncated card, and ≥40 normalized characters; the fuzzy band became a new
+  **`near_match`** state — a review signal, never a verification.
+- **All 1,913 shipped entries re-judged** offline against their recorded CPALMS text
+  (`--reclassify`, demote-only, idempotent): **117 demoted to `near_match`, 0 found wrong.** Verified
+  coverage is now stated as **1,795 verified + 118 needing review**, not 1,913 verified. README,
+  STATE.md, METRICS and the launch audit all corrected; the audit carries a second dated note.
+- **The overlay records every disposition**, not only successes. A code that came back
+  `not_on_cpalms`, `ambiguous` or `near_match` had no overlay representation, and since both the work
+  list and the manifest are set differences over the overlay, those codes were re-fetched from CPALMS
+  **on every run, forever**. They are now recorded with `needs_review: true`; transients
+  (`fetch_failed`, `skipped_robots`) are deliberately excluded so they are still retried. The manifest
+  reports `verified / needs_review / remaining` under an asserted sum identity.
+- **The census can now express corpus grade bands.** `912`/`68`/`612`/`K12` are not CPALMS filter
+  labels, so a band census failed discovery, recorded an error, and **still wrote a diff declaring
+  every code in scope absent from CPALMS** — 2,716 of the 4,670 remaining codes, 58% of the job.
+  Bands now expand for the sweep while scope is computed from the band value; a census that errors
+  writes `census_meta` for diagnosis but no `census_diff`; a zero-size scope aborts.
+- **A `cpalms_addition` can no longer overwrite a real verification** (the merge above it guarded on
+  `checked_at`; this block assigned unconditionally). Overlay and manifest writes are now atomic
+  (tmp+rename), so a crash mid-write can no longer leave a truncated file that every reader refuses.
+  `--include-additions` previews its additions in the dry-run, where the block was unreachable — the
+  human gate could not see what it was approving. Transient rows are reported rather than silently
+  omitted from the review queue. Overlay `coverage` counts verified in-corpus codes only.
+- **`tools/cpalms_verify.py --self-test` now runs in CI.** It never did, despite being cited as
+  evidence in two audits. It is also offline by construction rather than by luck — the suite blocks
+  `_fetch`, so an accidental network call fails loudly instead of crawling CPALMS. 42 probes.
+- **Withdrew the in-flight report convention** introduced hours earlier. It existed only because the
+  overlay could not record non-successes; making the overlay total removes the pending-file
+  bookkeeping, the retention problem, and a livelock in which unresolved rows were re-sliced and
+  re-fetched on every firing. Reports are scratch again. The scheduled Routine is **paused**.
+
 ### Added
 - **The standards sweep now resumes across sessions.** The verification job spans sessions, but its
   only resume state was a report file whose path embeds a session UUID — so a fresh session found no

@@ -51,3 +51,6 @@ HARVEST_HANDOFF.md
 
 # per-host rate-limit memory (governor)
 .harvest-cache/
+
+# CPALMS verification scratch reports (session-scoped; the overlay is the durable record)
+.reports/

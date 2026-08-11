@@ -29,7 +29,9 @@ costs nothing instead of thousands of redundant requests.
 
 | Decision | Detail |
 |---|---|
-| **Human approval per write** | `--apply <report>` is a dry-run; `--apply --write` needs explicit human approval **in that session**. Never write an overlay unattended. |
+| **What `confirmed` means** | Normalized equality or a TRUE prefix, an untruncated card, and ≥40 normalized chars. It used to mean "within a 0.97 similarity ratio" — ~3 characters on a median statement, which let 100% of changed numeric bounds and 93.9% of *deleted* negations pass as verified (2026-08-11 audit). The fuzzy band is now `near_match`: a review signal, never a verification. |
+| **Only `confirmed` is verified** | The overlay records EVERY disposition with `needs_review: true` — that is what stops a `not_on_cpalms` or `near_match` code being re-fetched from CPALMS on every run forever. `verified`, `needs_review` and `remaining` are three different numbers and the manifest asserts they sum to the corpus. |
+| **Human approval per write** | `--apply <report>` is a dry-run; `--apply --write` needs explicit human approval **in that session**. |
 | **Census additions** | Codes CPALMS has and the corpus lacks are recorded as `cpalms_addition` via `--include-additions`, opt-in at the human gate. Approved as the standing policy (`547d87a`, `608fa99`). |
 | **The parsed corpus is never mutated** | `data/<subject>.json` is parse output. Verification lands in the overlay so parse provenance and verification provenance stay independently auditable. |
 | **Branch** | Develop and push on the feature branch. **Never push to `main`.** No PR unless explicitly asked. |
@@ -47,9 +49,13 @@ costs nothing instead of thousands of redundant requests.
    `GetSearchAccessPoint`, not `GetSearchStandard`, and their provenance URLs resolve under
    `PreviewAccessPoint`, not `PreviewStandard` (`3e801fb`, `6a15803`). Routing is automatic by code
    shape — but if you add a code form, check both.
-3. **`--codes` reports cannot be applied.** An ad-hoc report has no `subject`, and `run_apply`
-   rejects it ("ad-hoc reports cannot be applied"). Use `--codes` for probing only; never build a
-   chunk of real work with it.
+3. **`--codes` reports are only unapplyable WITHOUT `--subject`.** `run_apply` rejects a report
+   with no `subject`, but `run_verify` stamps the subject from `--subject` regardless of `--codes`,
+   so `--codes X --subject math` produces a fully applyable report whose `grades` field reads
+   `"all"` and which appends a scope entry claiming grades=all. Use `--codes` for probing only —
+   and never with `--subject` if you are not applying it. *(This entry previously stated the
+   safety property as absolute. It is not; the runbook was written from memory rather than from
+   the code, which is the same mistake that produced the census defect below.)*
 4. **One report file per subject+grade chunk. Never reuse one.** `--resume` restores the report's
    rows but does **not** re-derive scope from the CLI flags you pass this time. Reusing a report
    across scopes silently mixes them.
@@ -58,12 +64,30 @@ costs nothing instead of thousands of redundant requests.
    Delete the file and restart the chunk once robots access is available again.
 6. **`checked_at` is compared as a string.** `_now()` emits `Z`-form UTC only. Do not introduce an
    offset-form timestamp anywhere in the overlay path.
+7. **The census runs into the SAME file as the forward report.** `run_enumerate` loads an existing
+   `--out` and adds `census`/`census_diff` to it; `run_apply` reads additions from the one report
+   it is handed. A census written to a separate file leaves `corpus_missing` empty, so
+   `--include-additions` silently finds nothing and every census finding is dropped. `--apply` now
+   refuses rather than no-ops, but write them to one file in the first place.
+8. **Grade BANDS are expanded for the sweep, not for the scope.** The corpus stores `912`, `68`,
+   `612`, `K12`; CPALMS only exposes individual grades. `--grades 912` now sweeps 9,10,11,12 while
+   scoping the corpus on `912`. Never "fix" a band by passing `9,10,11,12` yourself — that matches
+   zero corpus codes, so the entire census becomes `corpus_missing` and `--include-additions` would
+   write thousands of false additions. The tool aborts on a zero-size scope for exactly this reason.
+9. **A census that errored writes no `census_diff`.** It records `census_meta` for diagnosis and
+   exits non-zero. An empty census is a lie (it claims every code in scope is absent from CPALMS);
+   an absent one is detectable.
 
 ## 3. Find out what is left — never guess, never read a number from prose
 
 ```bash
 python3 tools/cpalms_verify.py --manifest     # offline, deterministic, ~1s
 ```
+
+Reports three totals bound by `verified + needs_review + remaining == corpus` (asserted, not
+hoped). **`needs_review` is not coverage** — those codes were reached and judged but not verified,
+and they still need a human. A sweep is finished when `remaining` AND `needs_review` are both 0,
+not when `remaining` alone hits 0.
 
 Writes `ledger/cpalms-run-manifest.json`: verified vs remaining **per subject and per grade**, by
 set difference over committed state, stamped with `anchor_commit` and per-corpus `corpus_sha256` so
@@ -74,7 +98,7 @@ this repo, including in this runbook.** Regenerate it after every overlay write.
 
 ```bash
 SUBJ=math; GRADE=6                                   # one subject, ONE grade
-REPORT="$PWD/ledger/in-flight/$SUBJ-$GRADE.json"     # see §4a before choosing a path
+REPORT="$PWD/.reports/$SUBJ-$GRADE.json"             # scratch; NOT committed — see §4a
 mkdir -p "$(dirname "$REPORT")"
 
 # forward verify (network, polite, resumable; overlay-verified codes are skipped automatically)
@@ -84,9 +108,9 @@ python3 tools/cpalms_verify.py --subject $SUBJ --grades $GRADE --out "$REPORT"
 python3 tools/cpalms_verify.py --subject $SUBJ --grades $GRADE --out "$REPORT" \
         --resume --require-resume
 
-# reverse census for that ONE grade (see §2.1)
-python3 tools/cpalms_verify.py --subject $SUBJ --grades $GRADE --enumerate \
-        --out "${REPORT%.json}-census.json"
+# reverse census for that ONE grade — INTO THE SAME FILE (see §2.7). run_enumerate merges into an
+# existing --out; a separate file silently orphans every finding.
+python3 tools/cpalms_verify.py --subject $SUBJ --grades $GRADE --enumerate --out "$REPORT"
 ```
 
 Useful flags: `--ignore-overlay` (deliberate re-verification / currency refresh — not for normal
@@ -95,31 +119,24 @@ runs), `--limit N` (pilot), `--checkpoint-every N` (default 10; also flushed on 
 Expect ~3.1–5.8 s per code (a randomized 1.5–3.0 s delay precedes every fetch). Budget accordingly
 and prefer more, smaller chunks over one long run.
 
-## 4a. In-flight reports — the one exception to "reports are not committed"
+## 4a. Reports are not committed — the overlay is the record
 
-Finished reports are **not** committed: they are redundant with the overlay, ~1.26 MB in total, and
-produce unreviewable whole-file diffs. But a report for a chunk that has been verified and is
-**waiting at the human gate** is different — until `--write` runs, that report is the *only* copy of
-the work, and if it lives in a scratchpad it dies with the session.
+Earlier revisions of this runbook committed a "verified but unapplied" report to
+`ledger/in-flight/`. That convention is **withdrawn**. It existed because the overlay could only
+record successes, so an unattended session had nowhere durable to put anything else. The overlay now
+records **every disposition** with `needs_review`, which makes the report redundant the moment
+`--write` runs — and removes the pending-file bookkeeping, the retention problem, and a livelock in
+which unresolved rows were re-sliced and re-fetched on every firing.
 
-So: **a verified-but-unapplied chunk is committed to `ledger/in-flight/<subject>-<grade>.json`**, and
-**deleted in the same commit that writes the overlay**. At most one or two chunks are ever in flight.
-
-```bash
-git add ledger/in-flight/$SUBJ-$GRADE.json && git commit -m "wip: $SUBJ grade $GRADE verified, awaiting review gate"
-git push -u origin <branch>
-```
-
-This is what lets an unattended session do real work without taking the human gate: it verifies,
-commits the in-flight report, and stops. Any later session — with no shared context — picks the
-report up from the repo and walks it through §5.
+Reports stay out of git. They are session-scoped scratch; the overlay is the durable record; the
+manifest is the answer to "what is left".
 
 ## 5. The done-chain for a chunk
 
 1. `--apply <report>` — dry-run. Read the review queue.
 2. **Present the queue to a human and get approval.** This is a gate, not a formality.
-3. `--apply <report> --write` (add `--include-additions` only if the census found real additions and
-   the human approved them), then `git rm` the in-flight report (§4a) in the same commit.
+3. `--apply <report> --write` (add `--include-additions` only if the census found real additions
+   and the human approved them — the dry-run now previews them, which it previously could not).
 4. `python3 tools/cpalms_verify.py --manifest` — regenerate the work manifest.
 5. `python3 tools/sync_check.py` — must exit 0. **Run this before `git add`, not after.**
 6. `python3 tools/metrics.py` — regenerate `docs/METRICS.md` (never hand-edit it; check 16 enforces
@@ -128,15 +145,20 @@ report up from the repo and walks it through §5.
 8. Commit, push with `git push -u origin <branch>`, confirm CI green.
 9. **No session links** in any commit message, file, or PR body — ever.
 
-When the manifest shows 0 remaining: delete the standing Routine (§7).
+When the manifest shows 0 remaining **and 0 needs_review**: delete the standing Routine (§7).
+`remaining` alone reaching 0 does not mean the work is done — it means nothing is left *unseen*.
 
 ## 6. Open findings — known, do not re-litigate
 
 - **D-J (OPEN, cosmetic, mitigated)** — the legacy `.doc` parse loses apostrophes and drops `e.g.,`
   markers. Verified codes carry CPALMS's text in the overlay, so artifacts compare against correct
   wording; the fix is a FLDOE source-document refresh, not a code change.
-- The seven residual risks in `docs/audits/2026-08-10-launch-readiness-audit.md` §4, and the
-  correction note in §6 of that file.
+- The seven residual risks in `docs/audits/2026-08-10-launch-readiness-audit.md` §4, and the two
+  correction notes (§6 on the wrong counts, §7 on what `confirmed` used to mean).
+- **A4/A5/A6 (OPEN, untriggered)** — the card regex can bleed across cards if CPALMS changes one
+  card's markup, `date_revised` is zipped positionally rather than per card, and duplicate
+  exact-code cards resolve to the first silently. None has been observed live; all three need a
+  markup change on CPALMS's side to fire. They deserve their own pass and have not had one.
 - Social studies is a best-effort parse (low whole-corpus coverage), so its absences stay
   **advisory** by design — a fabricated SS code is not blocked. This is deliberate: a parser gap
   must never be reported as a fabricated standard.
@@ -146,17 +168,33 @@ When the manifest shows 0 remaining: delete the standing Routine (§7).
 A Routine wakes a fresh session daily to work the next chunk:
 
 > **Routine id:** `trig_01BdmNu2xWDxc3CAxDBvV1Gy` — "CPALMS standards sweep — next chunk",
-> daily at 09:00 UTC, fresh session per firing.
+> daily at 09:00 UTC, fresh session per firing. **Currently PAUSED (`enabled: false`).**
 
-It is scoped to **one subject+grade chunk per firing**. It is forbidden from `--apply --write`, from
-pushing to `main`, from opening or merging a pull request, and from mutating the parsed corpus; it
-verifies, commits the in-flight report (§4a), and stops. **Delete it when the manifest reaches 0
-remaining** — a fresh session that finds 0 remaining is instructed to say so rather than invent work.
+It is paused deliberately and re-enabling it is a human decision, not a step in this runbook. It was
+armed on the withdrawn in-flight convention (§4a) and must not be re-enabled until its prompt has
+been rewritten against the current code and a live chunk has been walked end to end.
+
+When it does run, it is scoped to **one subject+grade chunk per firing** and is forbidden from
+pushing to `main`, from opening or merging a pull request, and from mutating the parsed corpus.
+**Delete it when `remaining` AND `needs_review` both reach 0** — a fresh session that finds nothing
+left is instructed to say so rather than invent work.
 
 Note: the sessions it fires run without MCP connector tools, so they use `git` directly rather than
-the GitHub MCP tools. That is sufficient for everything in §4/§4a.
+the GitHub MCP tools. That is sufficient for everything in §4.
 
-## 8. Why this file is committed
+## 8. Two rules that produced everything above
+
+1. **No design change ships without an adversarial pass.** The in-flight convention (§4a) was
+   invented *during* execution, after the audit had already run, written into this runbook, and
+   armed on a scheduled Routine — all in one turn. Six defects followed, including a census path
+   that silently dropped every finding. If a convention is invented mid-execution, **execution
+   stops** and it goes through falsification first.
+2. **This runbook is written from the code, not from memory.** Every procedural claim must cite the
+   function or commit that makes it true. Two entries in §2 were wrong precisely because they were
+   written from recollection while the code said something else — §2.3's safety property does not
+   exist, and §2.7's census path silently dropped findings.
+
+## 9. Why this file is committed
 
 `.gitignore` excludes `HARVEST_HANDOFF.md` — this repo has a convention that handoff files are not
 committed. This runbook knowingly breaks that convention. The exclusion is exactly what left a fresh

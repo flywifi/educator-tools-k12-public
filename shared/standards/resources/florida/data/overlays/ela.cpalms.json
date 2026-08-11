@@ -4,7 +4,7 @@
  "generated_at": "2026-08-09T14:24:26Z",
  "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
  "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
- "coverage": 0.4937,
+ "coverage": 0.4618,
  "scopes": [
   {
    "grades": "K,1,2,3,4,5",
@@ -70,20 +70,26 @@
    "checked_at": "2026-08-09T14:04:49Z"
   },
   "ELA.K.F.1.AP.1a": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Identify a printed word.",
    "cpalms_id": "18405",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18405",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:04:53Z"
+   "checked_at": "2026-08-09T14:04:53Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.K.F.1.AP.1b": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Distinguish letters from words.",
    "cpalms_id": "18406",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18406",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:04:57Z"
+   "checked_at": "2026-08-09T14:04:57Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.K.F.1.AP.1c": {
    "state": "confirmed",
@@ -102,12 +108,15 @@
    "checked_at": "2026-08-09T14:05:02Z"
   },
   "ELA.K.F.1.AP.1e": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Move left to right on the printed page.",
    "cpalms_id": "18484",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18484",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:05:06Z"
+   "checked_at": "2026-08-09T14:05:06Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.K.F.1.AP.1f": {
    "state": "confirmed",
@@ -230,12 +239,15 @@
    "checked_at": "2026-08-09T14:05:52Z"
   },
   "ELA.K.F.1.AP.4": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Recognize and read high frequency words.",
    "cpalms_id": "18534",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18534",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:05:55Z"
+   "checked_at": "2026-08-09T14:05:55Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.K.R.1.1": {
    "state": "confirmed",
@@ -278,12 +290,15 @@
    "checked_at": "2026-08-09T14:06:10Z"
   },
   "ELA.K.R.1.AP.4": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Identify a rhyme.",
    "cpalms_id": "18552",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18552",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:06:14Z"
+   "checked_at": "2026-08-09T14:06:14Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.K.R.2.1": {
    "state": "confirmed",
@@ -342,20 +357,26 @@
    "checked_at": "2026-08-09T14:06:37Z"
   },
   "ELA.K.R.3.AP.1": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Identify descriptive words in text(s).",
    "cpalms_id": "18597",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18597",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:06:40Z"
+   "checked_at": "2026-08-09T14:06:40Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.K.R.3.2": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Retell a text orally to enhance comprehension:Use main character(s), setting, and important events for a story.Use topic and details for an informational text.",
    "cpalms_id": "14907",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/14907",
    "date_revised": "08/20",
-   "checked_at": "2026-08-09T14:06:44Z"
+   "checked_at": "2026-08-09T14:06:44Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.K.R.3.AP.2a": {
    "state": "confirmed",
@@ -494,12 +515,15 @@
    "checked_at": "2026-08-09T14:07:39Z"
   },
   "ELA.K.C.3.AP.1": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "1 Follow the rules of standard English grammar, punctuation, capitalization and spelling.•Capitalize the first word in a sentence, the pronoun I and use ending punctuation.•Form and use complete simple sentences.Use interrogatives to ask questions.",
    "cpalms_id": "18573",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18573",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:07:42Z"
+   "checked_at": "2026-08-09T14:07:42Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.K.C.4.1": {
    "state": "confirmed",
@@ -678,12 +702,15 @@
    "checked_at": "2026-08-09T14:08:57Z"
   },
   "ELA.1.F.1.AP.3d": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Decode words with inflectional endings.",
    "cpalms_id": "18512",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18512",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:08:59Z"
+   "checked_at": "2026-08-09T14:08:59Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.1.F.1.AP.3e": {
    "state": "confirmed",
@@ -710,12 +737,15 @@
    "checked_at": "2026-08-09T14:09:09Z"
   },
   "ELA.1.F.1.AP.4a": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Recognize and read sight words.",
    "cpalms_id": "18535",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18535",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:09:12Z"
+   "checked_at": "2026-08-09T14:09:12Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.1.R.1.1": {
    "state": "confirmed",
@@ -742,12 +772,15 @@
    "checked_at": "2026-08-09T14:09:21Z"
   },
   "ELA.1.R.1.AP.2": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Identify the moral of a story.",
    "cpalms_id": "18546",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18546",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:09:24Z"
+   "checked_at": "2026-08-09T14:09:24Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.1.R.1.3": {
    "state": "confirmed",
@@ -774,12 +807,15 @@
    "checked_at": "2026-08-09T14:09:34Z"
   },
   "ELA.1.R.1.AP.4": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Identify a line break in a poem.",
    "cpalms_id": "18551",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18551",
    "date_revised": "03/20",
-   "checked_at": "2026-08-09T14:09:38Z"
+   "checked_at": "2026-08-09T14:09:38Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.1.R.2.1": {
    "state": "confirmed",
@@ -942,12 +978,15 @@
    "checked_at": "2026-08-09T14:10:41Z"
   },
   "ELA.1.C.1.AP.3": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Write an opinion about a topic.",
    "cpalms_id": "18526",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18526",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:10:44Z"
+   "checked_at": "2026-08-09T14:10:44Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.1.C.1.4": {
    "state": "confirmed",
@@ -1006,12 +1045,15 @@
    "checked_at": "2026-08-09T14:11:10Z"
   },
   "ELA.1.C.3.AP.1": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization and spelling.•Capitalize proper nouns.•Form and use simple verb tenses for regular verbs by adding the affix -ed.Form regular plural nouns orally by adding -s or -es.",
    "cpalms_id": "18567",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18567",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:11:13Z"
+   "checked_at": "2026-08-09T14:11:13Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.1.C.4.1": {
    "state": "confirmed",
@@ -1198,12 +1240,15 @@
    "checked_at": "2026-08-09T14:12:28Z"
   },
   "ELA.2.R.1.AP.2": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Identify the theme of a literary text.",
    "cpalms_id": "18545",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18545",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:12:30Z"
+   "checked_at": "2026-08-09T14:12:30Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.2.R.1.3": {
    "state": "confirmed",
@@ -1230,12 +1275,15 @@
    "checked_at": "2026-08-09T14:12:42Z"
   },
   "ELA.2.R.1.AP.4": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Identify a rhyme scheme in a poem.",
    "cpalms_id": "18550",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18550",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:12:46Z"
+   "checked_at": "2026-08-09T14:12:46Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.2.R.2.1": {
    "state": "confirmed",
@@ -1358,12 +1406,15 @@
    "checked_at": "2026-08-09T14:13:32Z"
   },
   "ELA.2.C.1.1": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Demonstrate legible printing skills.",
    "cpalms_id": "14989",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/14989",
    "date_revised": "08/20",
-   "checked_at": "2026-08-09T14:13:35Z"
+   "checked_at": "2026-08-09T14:13:35Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.2.C.1.AP.1": {
    "state": "confirmed",
@@ -1566,12 +1617,15 @@
    "checked_at": "2026-08-09T14:14:53Z"
   },
   "ELA.3.F.1.3": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Use knowledge of grade-level phonics and word-analysis skills to decode words.Decode words with common Greek and Latin roots and affixes. (See 3.V.1.2)Decode words with common derivational suffixes and describe how they turn words into different parts of speech. (e.g., -ful, -less, -est).Decode multisyllabic words.",
    "cpalms_id": "15002",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15002",
    "date_revised": "08/20",
-   "checked_at": "2026-08-09T14:14:56Z"
+   "checked_at": "2026-08-09T14:14:56Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.3.F.1.AP.3a": {
    "state": "confirmed",
@@ -1590,12 +1644,15 @@
    "checked_at": "2026-08-09T14:15:02Z"
   },
   "ELA.3.F.1.AP.3c": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Decode multisyllabic words.",
    "cpalms_id": "17763",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17763",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:15:06Z"
+   "checked_at": "2026-08-09T14:15:06Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.3.F.1.4": {
    "state": "confirmed",
@@ -1806,12 +1863,15 @@
    "checked_at": "2026-08-09T14:16:31Z"
   },
   "ELA.3.C.1.AP.1": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Write cursive letters with a model.",
    "cpalms_id": "17913",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17913",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:16:35Z"
+   "checked_at": "2026-08-09T14:16:35Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.3.C.1.2": {
    "state": "confirmed",
@@ -2230,12 +2290,15 @@
    "checked_at": "2026-08-09T14:19:24Z"
   },
   "ELA.4.C.1.AP.1": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Write cursive letters.",
    "cpalms_id": "17912",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17912",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:19:28Z"
+   "checked_at": "2026-08-09T14:19:28Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.4.C.1.2": {
    "state": "confirmed",
@@ -2582,12 +2645,15 @@
    "checked_at": "2026-08-09T14:21:45Z"
   },
   "ELA.5.R.2.AP.4": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Sequence the development of an argument.",
    "cpalms_id": "17861",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17861",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:21:48Z"
+   "checked_at": "2026-08-09T14:21:48Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.5.R.3.1": {
    "state": "confirmed",
@@ -2750,12 +2816,15 @@
    "checked_at": "2026-08-09T14:22:48Z"
   },
   "ELA.5.C.3.AP.1": {
-   "state": "confirmed",
+   "state": "near_match",
    "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization and spelling.•Produce complete sentences, recognizing and correcting inappropriate fragments and run-ons.•Identify main and subordinate clauses.",
    "cpalms_id": "18558",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18558",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:22:51Z"
+   "checked_at": "2026-08-09T14:22:51Z",
+   "needs_review": true,
+   "reclassified_at": "2026-08-11T00:50:00Z",
+   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
   },
   "ELA.5.C.4.1": {
    "state": "confirmed",

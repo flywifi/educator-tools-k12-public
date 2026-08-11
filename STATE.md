@@ -393,9 +393,19 @@ is open.
 ## Standards-verification phase — v1.2.0 (2026-08-10) — SHIPPED
 Elementary Florida standards are now **verified against CPALMS**, not merely parsed.
 **1,913 K-5 codes** (math 393 · reading/ELA 355 · science 636 · social studies 529), benchmarks and
-access points, checked code-by-code in both directions: **1,912 confirmed**, 3 missing access
-points recovered, 0 unexplained census deltas. Results live in provenance-stamped overlays
+access points, checked code-by-code in both directions: **1,795 verified**, **118 reached and
+recorded as needing review** (see the 2026-08-11 correction below), 3 missing access points
+recovered, 0 unexplained census deltas. Results live in provenance-stamped overlays
 (`shared/standards/resources/florida/data/overlays/`); the parsed corpus is never mutated.
+
+**Correction (2026-08-11).** An adversarial audit of the unattended-sweep design found that the
+`confirmed` state was decided by a 0.97 similarity ratio — ~3 characters of slack on a median
+statement. Reproduced: 100% of changed numeric bounds and 93.9% of *deleted* negations still
+classified as confirmed. `confirmed` now requires normalized equality or a true prefix, an
+untruncated card, and ≥40 normalized characters; the fuzzy band became a new `near_match` state.
+All 1,913 shipped entries were re-judged offline (`--reclassify`, demote-only, idempotent): **117
+demoted to `near_match`, 0 found actually wrong**. The overlay now records every disposition with
+`needs_review`, so codes that were reached but not verified are no longer re-fetched forever.
 
 New machinery: `tools/verify_standards.py` (offline resolver over 6,583 FL codes + CCSS/NGSS
 scheme checks + the mechanical §6 citation-mutation comparator) and `tools/cpalms_verify.py`

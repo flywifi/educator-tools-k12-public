@@ -147,3 +147,58 @@ restating numbers, and `tools/metrics.py` states K–5 completeness per subject,
 
 **Why this note rather than an edit.** An audit records what was believed on its date. The original
 §4.2 sentence is left in place with an inline pointer here, so both states remain visible.
+
+## 7. Correction note — 2026-08-11 (second): what `confirmed` actually meant
+
+**What was wrong.** §1 certifies "1,912 confirmed" and A9 reports "1,913 pairs checked; 1 flag".
+Both figures are arithmetically right and both rest on a predicate that was too weak to carry them.
+`confirmed` was decided by `_lead_matches`, which accepted a `difflib.SequenceMatcher` ratio of
+**≥ 0.97** — on a median 91-character Florida statement, roughly **three characters of slack**.
+
+Reproduced against real corpus statements:
+
+| single-token mutation | still classified `confirmed` |
+|---|---|
+| a numeric bound changed (`within 20` → `within 10`) | **100.0 %** (44/44) |
+| a numeric bound changed (`10,000` → `20,000`) | **100.0 %** (8/8) |
+| the word **`not` deleted** | **93.9 %** (93/99) |
+| `and` → `or` | 86.8 % (685/789) |
+| `greater` → `less` | 80.0 % (24/30) |
+
+Those are exactly the edits that change what a standard requires, and `statement_differs` is the
+state that exists to catch them. Three further holes: an **empty** corpus statement prefix-matched
+any text at all (including hostile text); a short statement matched a longer, different benchmark;
+and server-side truncation **without** an ellipsis matched *and was not flagged*, which would place
+a severed fragment in the overlay as the §6 origin form.
+
+**Why A9's clean result did not surface it.** A9 ran the strict §6 comparator over the confirmed
+pairs and found 1 flag. That was sound as far as it went, but it tested the pairs the loose
+comparator had already accepted — it could not reveal that the *acceptance* threshold was the
+problem. A 0.05 % drift rate against a corpus this audit itself records as lossy (D-J) should have
+read as an under-sensitive classifier rather than a clean corpus.
+
+**What was done.** `confirmed` now requires normalized equality or a true prefix (no fuzzy band), an
+untruncated card, and ≥ 40 normalized characters; a prefix that stops mid-sentence is treated as
+truncation even without an ellipsis; an empty side never matches. The fuzzy band became a new
+`near_match` state — a review signal, never a verification.
+
+**Effect on this audit's certification.** All 1,913 shipped entries were re-judged offline against
+the recorded CPALMS text (`--reclassify`, demote-only and idempotent):
+
+| outcome | count |
+|---|---|
+| still `confirmed` | **1,795** |
+| demoted to `near_match` | **117** (short statements and access points, mostly) |
+| found actually **wrong** | **0** |
+
+So the certified data was not incorrect — but **118 of the 1,913 were being claimed as verified on
+evidence that did not support the claim**, and the coverage figures in §1 should be read as
+1,795 verified plus 118 reached-but-unverified.
+
+**Also corrected in the same pass.** The census could not express corpus grade *bands*
+(`912`/`68`/`612`/`K12` — 2,716 of the 4,670 remaining codes): it failed filter discovery, recorded
+an error, and still wrote a diff declaring every code in scope absent from CPALMS. A
+`cpalms_addition` could overwrite a real verification. The overlay write was non-atomic. Overlay
+`coverage` divided *every* merged entry, census additions included, by the corpus size. And
+`tools/cpalms_verify.py --self-test` — cited in earlier audits as evidence — **was not running in
+CI at all**; it is now, and is offline by construction rather than by luck.

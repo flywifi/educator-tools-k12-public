@@ -948,6 +948,69 @@ def self_test() -> int:
 SUBJECT_FILES = ("math", "ela", "science", "social_studies", "computer_science", "eld")
 
 
+def run_reclassify(write: bool) -> int:
+    """Re-judge every committed overlay entry under the CURRENT predicate, offline.
+
+    Entries written before `confirmed` was tightened were judged by a comparator that accepted a
+    0.97 similarity ratio. Both texts are already committed — the corpus statement and the CPALMS
+    statement the overlay recorded — so the re-judgement needs no network and is fully
+    deterministic. Dry-run by default; --write applies it.
+
+    This never invents a verification: it can only DEMOTE (confirmed -> near_match /
+    statement_differs), because the recorded CPALMS text is unchanged and a stricter predicate can
+    only reject more."""
+    from collections import Counter
+    total, changed = 0, Counter()
+    detail: dict[str, list] = {}
+    for subj in SUBJECT_FILES:
+        ovp = OVERLAYS / f"{subj}.cpalms.json"
+        if not ovp.exists():
+            continue
+        overlay = json.loads(ovp.read_text(encoding="utf-8"))
+        corpus = {e["code"]: e.get("statement", "") for e in
+                  json.loads((DATA / f"{subj}.json").read_text(encoding="utf-8"))["standards"]}
+        dirty = False
+        for code, entry in overlay.get("entries", {}).items():
+            if entry.get("state") not in ("confirmed", "near_match", "statement_differs"):
+                continue          # additions and renumberings are not text judgements
+            cs, ps = corpus.get(code, ""), entry.get("statement_verified") or ""
+            if code not in corpus:
+                continue
+            total += 1
+            new = _confirm_state(cs, ps, *_lead_matches(cs, ps))
+            if new == entry["state"]:
+                continue
+            changed[f"{entry['state']} -> {new}"] += 1
+            detail.setdefault(f"{entry['state']} -> {new}", []).append(f"{subj}:{code}")
+            if write:
+                entry["state"] = new
+                if new in VERIFIED_STATES:
+                    entry.pop("needs_review", None)
+                else:
+                    entry["needs_review"] = True
+                entry["reclassified_at"] = _now()
+                entry["reclassified_reason"] = ("re-judged under the tightened `confirmed` "
+                                                "predicate (strict prefix, untruncated, >=40 "
+                                                "normalized chars); the recorded CPALMS text is "
+                                                "unchanged")
+                dirty = True
+        if dirty:
+            in_corpus_verified = {c for c, e in overlay["entries"].items()
+                                  if c in corpus and e.get("state") in VERIFIED_STATES}
+            overlay["coverage"] = round(len(in_corpus_verified) / max(1, len(corpus)), 4)
+            _atomic_write_json(ovp, overlay)
+    print(f"reclassify ({'WRITTEN' if write else 'dry-run'}): {total} text-judged entr(ies) "
+          f"re-examined, {sum(changed.values())} changed")
+    for k, v in changed.most_common():
+        print(f"  {k}: {v}")
+        print(f"      {', '.join(detail[k][:10])}" + (" …" if len(detail[k]) > 10 else ""))
+    if not changed:
+        print("  no change — every committed entry already satisfies the current predicate")
+    elif not write:
+        print("\nDry-run only. Re-run with --write to apply, then regenerate the manifest.")
+    return 0
+
+
 def write_manifest() -> int:
     """Durable, regenerable answer to 'what is left'. Set difference over COMMITTED state only —
     never a hand-typed count (the error class that made STATE.md understate the job by 1,574)."""
@@ -1037,10 +1100,15 @@ def main(argv) -> int:
     ap.add_argument("--manifest", action="store_true",
                     help="write ledger/cpalms-run-manifest.json (verified vs remaining, per subject "
                          "and grade) and exit; offline, deterministic, regenerable")
+    ap.add_argument("--reclassify", action="store_true",
+                    help="re-judge every committed overlay entry under the current predicate "
+                         "(offline, deterministic, demote-only); add --write to apply")
     ap.add_argument("--self-test", action="store_true", help="offline fixture probes")
     a = ap.parse_args(argv)
     if a.self_test:
         return self_test()
+    if a.reclassify:
+        return run_reclassify(a.write)
     if a.manifest:
         return write_manifest()
     if a.apply:

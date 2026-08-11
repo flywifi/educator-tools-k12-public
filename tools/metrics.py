@@ -35,29 +35,39 @@ def _verified_coverage() -> str:
     is never mutated). Reported as verified/total per subject — never as a quality claim."""
     fl = ROOT / "shared" / "standards" / "resources" / "florida" / "data"
     elem = {"K", "1", "2", "3", "4", "5"}
-    parts, gaps, total_v = [], [], 0
+    parts, gaps, total_v, total_r = [], [], 0, 0
     for subj in ("math", "ela", "science", "social_studies", "computer_science", "eld"):
         corpus = fl / f"{subj}.json"
         if not corpus.exists():
             continue
         std = json.loads(corpus.read_text(encoding="utf-8")).get("standards", [])
         ov = fl / "overlays" / f"{subj}.cpalms.json"
-        done = (set(json.loads(ov.read_text(encoding="utf-8")).get("entries", {}))
-                if ov.exists() else set())
+        entries = (json.loads(ov.read_text(encoding="utf-8")).get("entries", {})
+                   if ov.exists() else {})
+        done = set(entries)
         codes = {e["code"] for e in std}
-        n_v, n_c = len(codes & done), len(codes)
+        # VERIFIED is strictly narrower than DEALT WITH: an entry recorded as near_match,
+        # statement_differs, ambiguous or not_on_cpalms was reached and judged, but it is NOT a
+        # verification and must never be counted as coverage.
+        verified = {c for c, e in entries.items()
+                    if c in codes and e.get("state") == "confirmed"}
+        n_v, n_c = len(verified), len(codes)
         total_v += n_v
-        parts.append(f"{subj.replace('_', ' ')} {n_v}/{n_c} ({100 * n_v / max(1, n_c):.1f}%)")
+        n_rev = len((codes & done) - verified)
+        total_r += n_rev
+        parts.append(f"{subj.replace('_', ' ')} {n_v}/{n_c} ({100 * n_v / max(1, n_c):.1f}%)"
+                     + (f" +{n_rev} needing review" if n_rev else ""))
         # Per-subject K-5 gap, computed. A whole-corpus "elementary complete" claim was shipped
         # once while 189 K-5 computer-science codes were unverified; state it per subject instead.
-        n_gap = len({e["code"] for e in std if str(e.get("grade")) in elem} - done)
+        n_gap = len({e["code"] for e in std if str(e.get("grade")) in elem} - verified)
         if n_gap:
             gaps.append(f"{subj.replace('_', ' ')} {n_gap}")
     if not parts:
         return "none yet"
     k5 = ("K-5 complete" if not gaps
           else "K-5 still unverified: " + ", ".join(gaps) + " code(s)")
-    return (f"{total_v} FL codes verified code-by-code against CPALMS — "
+    return (f"{total_v} FL codes verified code-by-code against CPALMS "
+            f"(+{total_r} reached but needing human review, not counted as verified) — "
             + "; ".join(parts) + f" — {k5}; grades 6-12 not yet verified "
             "(live breakdown: `ledger/cpalms-run-manifest.json`)")
 
