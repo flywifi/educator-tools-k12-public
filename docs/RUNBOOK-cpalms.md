@@ -183,12 +183,12 @@ A Routine wakes a fresh session daily to work the next chunk:
 
 It is paused deliberately and re-enabling it is a human decision, not a step in this runbook.
 
-> ⚠️ **The live trigger still carries a STALE prompt.** It was armed on the withdrawn in-flight
-> convention (§4a) and instructs a fresh session to commit `ledger/in-flight/<subject>-<grade>.json`
-> — an instruction that is now wrong. It is harmless while paused. **Before re-enabling it, replace
-> its prompt with the text below**, then walk one live chunk end to end under the current code.
+**Its prompt was replaced on 2026-08-11** and now matches the current code — the stale in-flight
+instruction is gone. It remains **paused**. The one thing still standing between it and running is a
+human deciding to enable it, and that decision should wait until a chunk has been walked end to end
+in the subject you intend to sweep (only social studies has had its span census validated live).
 
-**Replacement prompt (paste verbatim):**
+**The prompt it now carries (kept here so drift between the two is detectable):**
 
 ```text
 Continue the CPALMS standards verification for flywifi/educator-tools-k12-public, branch
