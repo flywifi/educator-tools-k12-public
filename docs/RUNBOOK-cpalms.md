@@ -166,10 +166,18 @@ When the manifest shows 0 remaining **and 0 needs_review**: delete the standing 
   wording; the fix is a FLDOE source-document refresh, not a code change.
 - The seven residual risks in `docs/audits/2026-08-10-launch-readiness-audit.md` §4, and the two
   correction notes (§6 on the wrong counts, §7 on what `confirmed` used to mean).
-- **A4/A5/A6 (OPEN, untriggered)** — the card regex can bleed across cards if CPALMS changes one
-  card's markup, `date_revised` is zipped positionally rather than per card, and duplicate
-  exact-code cards resolve to the first silently. None has been observed live; all three need a
-  markup change on CPALMS's side to fire. They deserve their own pass and have not had one.
+- **A4/A5/A6/NEW-8 — RESOLVED 2026-08-11.** The card parser now slices the fragment per card, so a
+  regex cannot read across a card boundary: cross-card bleed and positionally-zipped dates are
+  structurally impossible, markup is stripped before it reaches `statement_verified`, and
+  conflicting duplicate cards are `ambiguous` rather than first-wins. All four were latent — 0
+  occurrences in 788 live cards — and the new parser is byte-identical to the old one on every
+  committed fixture and on all 788. Two rules came out of it and are worth knowing:
+  **(a)** if the exact code is absent AND any card failed to parse, the row is `fetch_failed`, never
+  `not_on_cpalms` — "we could not read the response" is not "this standard does not exist", and
+  `not_on_cpalms` is the blocking state that reads as fabricated (D-K);
+  **(b)** paging stops on a page with **no card markers**, never on "no cards we could parse" —
+  otherwise unparseable markup silently truncates a census and every unreached code reads as absent
+  from CPALMS, which is D-H arriving through the fix meant to prevent silent loss.
 - Social studies is a best-effort parse (low whole-corpus coverage), so its absences stay
   **advisory** by design — a fabricated SS code is not blocked. This is deliberate: a parser gap
   must never be reported as a fabricated standard.

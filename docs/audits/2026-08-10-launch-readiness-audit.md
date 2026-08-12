@@ -233,3 +233,46 @@ sweeps.** This closes the residual risk recorded in §4.5 for span-scoped subjec
 Africans and other minority groups in the economic development of the…" — is on CPALMS and absent
 from the parsed corpus entirely. Same class as the two special-education access points recovered in
 D-K. Not applied; it requires the `--include-additions` gate.
+
+## 9. Parser findings closed — 2026-08-11
+
+A4, A5, A6 and NEW-8 were carried as OPEN on the grounds that each needs a CPALMS-side markup change
+to fire. All four are now **RESOLVED**, and the research that preceded the fix is recorded here
+because it changed the design twice.
+
+**All four were latent.** Measured across **788 live cards** (both search endpoints, four subjects,
+five grade levels) and the 1,913 shipped overlay entries: 0 malformed cards, 0 cards without a date,
+0 statements containing markup, 0 duplicate exact codes. The shipped `date_revised` values were
+correct **by luck** — every real card carried a date, so the positional zip happened to align.
+
+| finding | mechanism | reproduction |
+|---|---|---|
+| A4 | `CARD` matched across the whole fragment with `.*?`/`re.S` | cards (22222, `SS.7.CG.2.2`) + (11111, `SS.7.CG.1.1`) → **one** row `id 22222 \| code SS.7.CG.1.1`; the first card deleted, the second given the wrong id |
+| A5 | dates collected globally, zipped by index | card 111 (no date) → `09/24`; card 222 (owns it) → `None` — an **inversion**, not a shift |
+| A6 | `exact[0]` on duplicate codes | winner chosen by document order |
+| NEW-8 | entities unescaped, tags never stripped | `<strong>` reached `statement_verified`, the §6 origin form |
+
+**Fix:** the parser slices the fragment at card markers and matches within one slice, so a date found
+in card N's slice belongs to card N by construction. Tags are stripped before unescaping. Conflicting
+duplicates become `ambiguous`; identical ones are deduped.
+
+**Two consequences outweighed the defects themselves:**
+
+1. **A skipped card must never read as "fabricated."** If the exact code is absent *and* any card
+   failed to parse, the row is now `fetch_failed` — a transient that is retried — rather than
+   `not_on_cpalms`, the blocking state meaning fabricated. Without it, a markup change would make TOS
+   accuse real standards of being fake: exactly D-K.
+2. **The fix would otherwise have re-created D-H.** Skipping malformed cards makes a page return an
+   empty list, and the census loop stopped on "no parsed cards" — so unparseable markup would have
+   ended a sweep early and reported every unreached code as absent from CPALMS. That is the
+   182-phantom-access-point bug, arriving through the hardening meant to prevent silent loss. Paging
+   now stops only on a page with **no card markers**, and a census with any unparseable card writes
+   no `census_diff`.
+
+**Evidence of no regression:** the new parser is byte-identical to the previous one on all five
+committed fixtures and on all 788 live cards; `--reclassify` reports **0 changed** across the 1,913
+shipped entries. 54 offline probes run in CI.
+
+**Still open:** D-J (lossy `.doc` parse — needs an FLDOE source refresh, not code) and the
+`renumbered` path's 0.92 similarity threshold, which is bounded by `needs_review` because
+`renumbered` is not in `VERIFIED_STATES`.

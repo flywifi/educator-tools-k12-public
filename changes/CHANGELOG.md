@@ -4,6 +4,29 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Fixed — parser hardening (2026-08-11)
+- **The card parser now slices per card, so markup cannot cross a card boundary.** The old pattern
+  matched over the whole fragment with `.*?`/`re.S`: one card with unexpected markup made it walk
+  into the next, **deleting the first card and stapling its CPALMS id onto the second card's code
+  and statement** — a provenance URL resolving to a different standard than it claimed. Dates had
+  the same shape of bug from the other side: collected globally and zipped by index, so a card
+  without a date **inverted** dates rather than shifting them. Both are now structurally impossible.
+  Markup is stripped before entity-unescaping, so tags can no longer reach `statement_verified`
+  (the §6 origin form). Conflicting duplicate cards under one code become `ambiguous` instead of
+  resolving by document order. `--no-include-practices` now exists.
+- **Two consequences mattered more than the defects.** (1) If the exact code is absent **and** any
+  card failed to parse, the row is `fetch_failed`, never `not_on_cpalms` — "we could not read the
+  response" is not "this standard does not exist", and `not_on_cpalms` is the blocking state that
+  reads as fabricated (D-K). (2) Skipping malformed cards would have **re-created D-H**: the census
+  loop stopped on "no parsed cards", so unparseable markup would have ended a sweep early and
+  reported every unreached code as absent from CPALMS. Paging now stops only on a page with no card
+  markers, and a census with any unparseable card writes no `census_diff`.
+- **All four defects were latent** — 0 occurrences across 788 live cards (both endpoints, four
+  subjects, five grade levels) and 0 across the 1,913 shipped entries. Shipped `date_revised` values
+  were correct *by luck*: every real card carried a date, so the positional zip happened to align.
+  The new parser is **byte-identical** to the old one on all five committed fixtures and all 788
+  live cards; `--reclassify` reports **0 changed**. 54 offline probes, now running in CI.
+
 ### Fixed — verification correctness (2026-08-11)
 - **`confirmed` now means the text matches, not "within 3%".** An adversarial audit refuted the
   predicate and the refutation reproduced exactly: `confirmed` was decided by a 0.97 similarity
