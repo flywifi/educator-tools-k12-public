@@ -85,9 +85,13 @@ UA = "TOS-standards-updater/1.1 (+polite educational-standards verification; res
 DELAY = (1.5, 3.0)
 
 # Server-rendered result card: PreviewSliderDetail('StandardDetail','<id>' … <h5>CODE</h5> … <p>STATEMENT</p>
-CARD = re.compile(
-    r"PreviewSliderDetail\('StandardDetail',\s*'(\d+)'.*?card-title mb-0[^>]*>\s*(\S+)\s*</h5>"
-    r".*?card-text trim-text[^>]*>\s*(.*?)\s*</p>", re.S)
+# Matched PER CARD, never across the whole fragment — see parse_cards for why that distinction is
+# the difference between a correct citation and a wrong one. Both search endpoints (benchmarks and
+# access points) serve this identical markup; verified live against both before this was written.
+_CARD_START = re.compile(r"PreviewSliderDetail\('StandardDetail',\s*'(\d+)'")
+_CARD_CODE = re.compile(r"card-title mb-0[^>]*>\s*(\S+)\s*</h5>", re.S)
+_CARD_STMT = re.compile(r"card-text trim-text[^>]*>\s*(.*?)\s*</p>", re.S)
+_TAG = re.compile(r"<[^>]+>")
 REVISED = re.compile(r"Date Adopted or Last Revised:\s*([0-9/]+)")
 
 
@@ -196,25 +200,57 @@ def _robots_allows(path: str) -> bool:
     return rp.can_fetch(UA, BASE + path)
 
 
-def parse_cards(fragment: str) -> list[dict]:
-    """Extract result cards from a search fragment. Fragment is DATA — parsed, never executed."""
-    out = []
-    revised = REVISED.findall(fragment)
-    for i, (cid, code, stmt) in enumerate(CARD.findall(fragment)):
-        out.append({"cpalms_id": cid, "code": code.strip(),
-                    "statement": re.sub(r"\s+", " ", htmllib.unescape(stmt)).strip(),
-                    "date_revised": revised[i] if i < len(revised) else None})
+def parse_cards(fragment: str, stats: dict | None = None) -> list[dict]:
+    """Extract result cards from a search fragment. Fragment is DATA — parsed, never executed.
+
+    Sliced PER CARD first, so no regex can read across a card boundary. The previous pattern matched
+    over the whole fragment with `.*?` and re.S, which meant one card with unexpected markup made it
+    walk into the next card: the first card was DELETED and its CPALMS id was stapled onto the
+    second card's code and statement. A provenance URL then resolved to a different standard than
+    the one it claimed — the exact guarantee _preview_url exists to provide. Dates had the same
+    shape of bug from the other direction: they were collected globally and zipped by card index, so
+    a single card without a date attached the wrong date to every card after it.
+
+    Both are structurally impossible here: a date found inside card N's slice belongs to card N.
+
+    `stats` (optional) receives BOTH counts. `markers` matters as much as `malformed_cards`: a
+    caller paging through results must stop on "this page had no cards at all", never on "we could
+    not parse this page's cards" — otherwise unexpected markup silently truncates a sweep and every
+    unreached code reads as absent from CPALMS. That is defect D-H, the 182 phantom access points.
+    """
+    out, malformed = [], 0
+    marks = list(_CARD_START.finditer(fragment))
+    for i, m in enumerate(marks):
+        chunk = fragment[m.start(): marks[i + 1].start() if i + 1 < len(marks) else len(fragment)]
+        code_m, stmt_m = _CARD_CODE.search(chunk), _CARD_STMT.search(chunk)
+        if not (code_m and stmt_m):
+            malformed += 1                  # counted, never silently dropped
+            continue
+        rev = REVISED.search(chunk)
+        # Strip tags BEFORE unescaping: real markup goes, while an escaped literal (&lt;b&gt;)
+        # survives as the text it is. The result becomes statement_verified, which is the §6
+        # mutation-check origin form, so markup must never reach it.
+        stmt = htmllib.unescape(_TAG.sub("", stmt_m.group(1)))
+        out.append({"cpalms_id": m.group(1), "code": code_m.group(1).strip(),
+                    "statement": re.sub(r"\s+", " ", stmt).strip(),
+                    "date_revised": rev.group(1) if rev else None})
+    if stats is not None:
+        stats["markers"] = stats.get("markers", 0) + len(marks)
+        stats["malformed_cards"] = stats.get("malformed_cards", 0) + malformed
     return out
 
 
-def _search(keyword: str, ap: bool = False) -> tuple[str, list[dict]]:
+def _search(keyword: str, ap: bool = False,
+            stats: dict | None = None) -> tuple[str, list[dict]]:
+    """(error, cards). `stats` accumulates parse_cards' marker/malformed counts across calls so the
+    caller can tell "CPALMS has no such card" from "we could not read the cards it sent"."""
     q = urllib.parse.urlencode({"KeyWord": keyword, "SubjectAreaIds": "", "GradelevelIds": "",
                                 "BokIds": "", "IdeaIds": ""})
     url = f"{SEARCH_AP if ap else SEARCH}?{q}"
     for attempt in (1, 2):
         code, body = _fetch(url)
         if code == 200:
-            return "", parse_cards(body)
+            return "", parse_cards(body, stats)
         if code in (429, 503) and attempt == 1:
             time.sleep(30)
             continue
@@ -228,11 +264,24 @@ def classify(code: str, corpus_stmt: str) -> dict:
            "cpalms_url": None, "date_revised": None, "new_code": None, "detail": "",
            "checked_at": _now()}
     is_ap = bool(_AP_SEG.search(code))   # access points live on the mirror endpoint (Stage-0 probe)
-    err, cards = _search(code, ap=is_ap)
+    pstats: dict = {}                    # marker/malformed counts across BOTH searches below
+    err, cards = _search(code, ap=is_ap, stats=pstats)
     if err:
         row.update(cpalms_state="fetch_failed", detail=err)
         return row
     exact = [c for c in cards if c["code"].upper() == code.upper()]
+    if len(exact) > 1:
+        # Duplicate cards under the same exact code. Taking exact[0] would pick a winner by DOCUMENT
+        # ORDER — a property of CPALMS's rendering, not a fact about the standard, so a retired card
+        # could beat the live one. Identical duplicates are noise and are deduped; a genuine
+        # conflict is a human decision.
+        distinct = {(c["cpalms_id"], _norm(c["statement"])) for c in exact}
+        if len(distinct) > 1:
+            row.update(cpalms_state="ambiguous",
+                       detail=f"{len(exact)} cards share this exact code with differing "
+                              f"id/statement: " + ", ".join(sorted(c["cpalms_id"] for c in exact)))
+            return row
+        exact = exact[:1]
     if exact:
         c = exact[0]
         row.update(cpalms_id=c["cpalms_id"], cpalms_statement=c["statement"],
@@ -247,7 +296,7 @@ def classify(code: str, corpus_stmt: str) -> dict:
     lead_words = " ".join(re.sub(r"[^\w\s]", " ", corpus_stmt or "").split()[:8])
     if lead_words:
         time.sleep(random.uniform(*DELAY))
-        err2, cards2 = _search(lead_words, ap=is_ap)
+        err2, cards2 = _search(lead_words, ap=is_ap, stats=pstats)
         if not err2:
             best = [c for c in cards2
                     if difflib.SequenceMatcher(None, _norm(corpus_stmt)[:len(_norm(c["statement"]))],
@@ -265,6 +314,16 @@ def classify(code: str, corpus_stmt: str) -> dict:
                            detail="text search matched multiple codes: "
                                   + ", ".join(c["code"] for c in best[:4]))
                 return row
+    if pstats.get("malformed_cards"):
+        # We did not find the code, but we also could not read every card CPALMS sent. Those are
+        # different facts and only one of them is a finding. `not_on_cpalms` is the BLOCKING state
+        # that reads as "fabricated" — reporting it here would let a CPALMS markup change make TOS
+        # accuse real standards of being fake, which is precisely the harm recorded in D-K.
+        # fetch_failed is a transient: it stays in the work list and the retry sweep re-runs it.
+        row.update(cpalms_state="fetch_failed",
+                   detail=f"{pstats['malformed_cards']} card(s) in the response could not be "
+                          f"parsed, so absence cannot be concluded — treat as transient and retry")
+        return row
     row.update(cpalms_state="not_on_cpalms",
                detail="no exact-code result and no strong text match — if this code was expected, "
                       "verify manually on CPALMS before treating it as fabricated")
@@ -489,9 +548,16 @@ def _census_sweep(search_url: str, sub_url: str, grd_url: str, subject: str,
                                     "GradelevelIds": grade_ids, "BokIds": "", "IdeaIds": "",
                                     "CurrentPage": page})
         code, body = _fetch(f"{search_url}?{q}")
-        cards = parse_cards(body)
+        pstats: dict = {}
+        cards = parse_cards(body, pstats)
         sig = tuple(c["cpalms_id"] for c in cards)
-        if code != 200 or not cards or sig == prev_sig:
+        meta[f"{kind}_malformed_cards"] = (meta.get(f"{kind}_malformed_cards", 0)
+                                           + pstats["malformed_cards"])
+        # Stop only when the PAGE IS EMPTY. Stopping on `not cards` would let a page whose cards all
+        # failed to parse end the sweep early — and every code never reached would then be reported
+        # absent from CPALMS. That is defect D-H (182 phantom access points) re-entering through the
+        # parser hardening meant to prevent silent loss.
+        if code != 200 or not pstats["markers"] or sig == prev_sig:
             break
         for c in cards:
             census[c["code"]] = {"cpalms_id": c["cpalms_id"], "statement": c["statement"],
@@ -543,14 +609,15 @@ def run_enumerate(a) -> int:
     # produced a diff declaring every code in scope absent from CPALMS — and a downstream
     # --include-additions guard that only checks for the KEY's presence sails straight past it.
     errs = [k for k in meta if k.endswith("_error")]
-    if errs or not census:
+    mal = sum(v for k, v in meta.items() if k.endswith("_malformed_cards") and isinstance(v, int))
+    if errs or mal or not census:
         report["census_meta"] = meta            # keep the evidence; refuse the conclusion
         report.pop("census", None)
         report.pop("census_diff", None)
         _finish(report, out)
-        print(f"[abort] census did not run cleanly — {len(errs)} error(s), {len(census)} code(s) "
-              f"found. Wrote census_meta for diagnosis but NO census_diff: an empty census would "
-              f"claim every code in scope is absent from CPALMS.")
+        print(f"[abort] census did not run cleanly — {len(errs)} error(s), {mal} unparseable "
+              f"card(s), {len(census)} code(s) found. Wrote census_meta for diagnosis but NO "
+              f"census_diff: an incomplete census claims real standards are absent from CPALMS.")
         for k in sorted(errs)[:4]:
             print(f"        {k}: {meta[k]}")
         return 1
@@ -616,6 +683,11 @@ def _census_problem(report: dict) -> str:
         return f"census recorded {len(errs)} error(s): {', '.join(sorted(errs)[:3])}"
     if not meta.get("unique_codes"):
         return "census found 0 codes — the sweep did not run"
+    mal = sum(v for k, v in meta.items() if k.endswith("_malformed_cards") and isinstance(v, int))
+    if mal:
+        # A card we could not parse is a code we may not have seen. An incomplete census reports
+        # real standards as absent from CPALMS, so it is not usable evidence for additions.
+        return f"{mal} card(s) could not be parsed — the census may be incomplete"
     return ""
 
 
@@ -960,6 +1032,90 @@ def self_test() -> int:
                                      "census_meta": {"unique_codes": 5, "benchmark_error": "x"}})
           and not _census_is_usable({"rows": {}}))
 
+    # --- parser hardening: A4 bleed, A5 date locality, A6 duplicates, NEW-8 markup -------------
+    # Each probe is the fixture that reproduced its defect. All four were LATENT (0 occurrences in
+    # 577 live cards across both endpoints), so these guard a CPALMS markup change, not a live bug.
+    _bleed = ("""<div onclick="PreviewSliderDetail('StandardDetail', '22222', false, 'standard')">
+ <h5 class="card-title-OTHER">SS.7.CG.2.2</h5><p class="card-text trim-text">Card A.</p></div>
+<div onclick="PreviewSliderDetail('StandardDetail', '11111', false, 'standard')">
+ <h5 class="card-title mb-0">SS.7.CG.1.1</h5><p class="card-text trim-text">Card B.</p></div>""")
+    _st: dict = {}
+    _c = parse_cards(_bleed, _st)
+    check("A4: a malformed card cannot steal its neighbour's code/text",
+          len(_c) == 1 and _c[0]["cpalms_id"] == "11111" and _c[0]["code"] == "SS.7.CG.1.1"
+          and _c[0]["statement"] == "Card B.")
+    check("A4: the malformed card is COUNTED, never silently dropped",
+          _st["malformed_cards"] == 1 and _st["markers"] == 2)
+
+    _dates = ("""<div onclick="PreviewSliderDetail('StandardDetail', '111', false, 'standard')">
+ <h5 class="card-title mb-0">AAA.1</h5><p class="card-text trim-text">Alpha.</p></div>
+<div onclick="PreviewSliderDetail('StandardDetail', '222', false, 'standard')">
+ <h5 class="card-title mb-0">BBB.2</h5><p class="card-text trim-text">Beta.</p>
+ <p class="card-text">Date Adopted or Last Revised: 09/24</p></div>""")
+    _d = {c["cpalms_id"]: c["date_revised"] for c in parse_cards(_dates)}
+    check("A5: a date belongs to ITS OWN card (used to invert across cards)",
+          _d == {"111": None, "222": "09/24"})
+
+    _tagged = ("""<div onclick="PreviewSliderDetail('StandardDetail', '1', false, 'standard')">
+ <h5 class="card-title mb-0">MA.3.NSO.1.1</h5>
+ <p class="card-text trim-text">Read and <strong>write</strong> numbers to &lt;b&gt;10,000.</p>
+ </div>""")
+    _t = parse_cards(_tagged)[0]["statement"]
+    check("NEW-8: markup is stripped but an ESCAPED literal survives as text",
+          _t == "Read and write numbers to <b>10,000." )
+
+    # C1 — the failure this hardening would otherwise have CREATED: a page whose cards all fail to
+    # parse must not look like the end of the results, or a census truncates and reports every code
+    # it never reached as absent from CPALMS (defect D-H, the 182 phantom access points).
+    _allbad = ("""<div onclick="PreviewSliderDetail('StandardDetail', '9', false, 'standard')">
+ <h5 class="card-title-OTHER">X.1</h5><p class="card-text trim-text">x</p></div>""")
+    _st2: dict = {}
+    check("C1: an all-malformed page reports markers>0 so paging does NOT stop",
+          parse_cards(_allbad, _st2) == [] and _st2["markers"] == 1
+          and _st2["malformed_cards"] == 1)
+    check("C1: a genuinely empty page reports markers==0 so paging DOES stop",
+          parse_cards("<div>no cards here</div>", (_st3 := {})) == [] and _st3["markers"] == 0)
+
+    check("census usability rejects a sweep with unparseable cards",
+          not _census_is_usable({"census_diff": {}, "census_meta": {"unique_codes": 5,
+                                                                   "benchmark_malformed_cards": 2}}))
+
+    # A6 — duplicate exact-code cards. exact[0] picked a winner by DOCUMENT ORDER; a genuine
+    # conflict is a human decision, while identical duplicates are noise and are deduped.
+    def _dupe_verdict(cards, code="MA.3.NSO.1.1"):
+        ex = [c for c in cards if c["code"].upper() == code.upper()]
+        return "ambiguous" if len({(c["cpalms_id"], _norm(c["statement"])) for c in ex}) > 1 \
+            else "single"
+    check("A6: duplicate codes with DIFFERING ids are ambiguous, not first-wins",
+          _dupe_verdict([{"code": "MA.3.NSO.1.1", "cpalms_id": "1", "statement": "Alpha."},
+                         {"code": "MA.3.NSO.1.1", "cpalms_id": "2", "statement": "Beta."}])
+          == "ambiguous")
+    check("A6: identical duplicate cards are deduped, not escalated",
+          _dupe_verdict([{"code": "MA.3.NSO.1.1", "cpalms_id": "1", "statement": "Alpha."},
+                         {"code": "MA.3.NSO.1.1", "cpalms_id": "1", "statement": "Alpha."}])
+          == "single")
+
+    # The single highest-consequence rule in this file: "we could not read the response" must never
+    # be recorded as "this standard does not exist". not_on_cpalms is the BLOCKING state that reads
+    # as fabricated (D-K: two real special-education access points were called fabricated).
+    # Exercised through classify itself with a stubbed search — no network, real code path.
+    _real_search, _real_sleep = globals()["_search"], time.sleep
+    try:
+        globals()["_search"] = lambda kw, ap=False, stats=None: (
+            "", parse_cards("""<div onclick="PreviewSliderDetail('StandardDetail','7',0,'s')">
+ <h5 class="card-title-OTHER">Z.9</h5><p class="card-text trim-text">z</p></div>""", stats))
+        time.sleep = lambda *_a, **_k: None
+        _row = classify("MA.3.NSO.1.1", "Read and write numbers to 10,000 in standard form.")
+        check("absence is NOT concluded when cards were unparseable "
+              "(fetch_failed, never not_on_cpalms)", _row["cpalms_state"] == "fetch_failed")
+        globals()["_search"] = lambda kw, ap=False, stats=None: (
+            "", parse_cards("<div>genuinely nothing</div>", stats))
+        _row2 = classify("MA.3.NSO.9.99", "A fabricated statement that matches nothing at all.")
+        check("a genuinely empty response DOES still conclude not_on_cpalms",
+              _row2["cpalms_state"] == "not_on_cpalms")
+    finally:
+        globals()["_search"], time.sleep = _real_search, _real_sleep
+
     # --- G4: a census stub must never overwrite a real verification ---
     _merged = {"MA.3.NSO.1.1": {"state": "confirmed", "checked_at": "2026-08-10T00:00:00Z"}}
     _stub = {"state": "cpalms_addition", "checked_at": "2026-08-11T00:00:00Z"}
@@ -1103,8 +1259,11 @@ def main(argv) -> int:
                                           "computer_science", "eld"])
     ap.add_argument("--codes", nargs="*", help="explicit codes (ad-hoc; report not applyable)")
     ap.add_argument("--grades", help="comma list (e.g. K,1,2,3,4,5) — scope corpus codes by grade")
-    ap.add_argument("--include-practices", action="store_true", default=True,
-                    help="include K12 practice/expectation codes in a graded scope (default on)")
+    ap.add_argument("--include-practices", action=argparse.BooleanOptionalAction, default=True,
+                    help="include K12 practice/expectation codes in a graded scope (default on). "
+                         "--no-include-practices excludes them: a single-grade census can never "
+                         "return K12 practice codes, so leaving them in the scope makes them show "
+                         "as false cpalms_absent in every census")
     ap.add_argument("--limit", type=int, help="verify at most N codes (pilot)")
     ap.add_argument("--out", help="report path (Phase V)")
     ap.add_argument("--resume", action="store_true", help="continue an existing report")
