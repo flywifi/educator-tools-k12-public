@@ -1,15 +1,21 @@
 {
  "subject": "math",
  "source": "cpalms",
- "generated_at": "2026-08-09T14:03:54Z",
+ "generated_at": "2026-08-13T11:14:23Z",
  "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
  "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
- "coverage": 0.3487,
+ "coverage": 0.559,
  "scopes": [
   {
    "grades": "K,1,2,3,4,5",
    "rows_in_scope": 393,
    "generated_at": "2026-08-09T14:03:54Z"
+  },
+  {
+   "grades": "6,7,8",
+   "rows_applied": 237,
+   "rows_verified": 237,
+   "generated_at": "2026-08-13T11:14:23Z"
   }
  ],
  "entries": {
@@ -3172,6 +3178,1902 @@
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15875",
    "date_revised": "08/20",
    "checked_at": "2026-08-09T14:03:43Z"
+  },
+  "MA.6.NSO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Extend previous understanding of numbers to define rational numbers. Plot, order and compare rational numbers.",
+   "cpalms_id": "15416",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15416",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:58:38Z"
+  },
+  "MA.6.NSO.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare rational numbers (positive and negative integers within 10 from 0, fractions with common denominators, decimals up to the hundredths and percentages) in the same form.",
+   "cpalms_id": "18147",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18147",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:58:42Z"
+  },
+  "MA.6.NSO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, represent quantities that have opposite direction using rational numbers. Compare them on a number line and explain the meaning of zero within its context.",
+   "cpalms_id": "15417",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15417",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:58:45Z"
+  },
+  "MA.6.NSO.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Represent positive and negative numbers in the same form on a number line given a real-world situation and explain the meaning of zero within its context.",
+   "cpalms_id": "18148",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18148",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:58:48Z"
+  },
+  "MA.6.NSO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, interpret the absolute value of a number as the distance from zero on a number line. Find the absolute value of rational numbers.",
+   "cpalms_id": "15418",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15418",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:58:51Z"
+  },
+  "MA.6.NSO.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Find absolute value of a rational number ranging from –30 to 30 using a number line.",
+   "cpalms_id": "18149",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18149",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:58:55Z"
+  },
+  "MA.6.NSO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving absolute value, including the comparison of absolute value.",
+   "cpalms_id": "15419",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15419",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:58:59Z"
+  },
+  "MA.6.NSO.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Use manipulatives, models or tools to compare absolute value in mathematical and real-world problems.",
+   "cpalms_id": "18150",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18150",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:59:02Z"
+  },
+  "MA.6.NSO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Multiply and divide positive multi-digit numbers with decimals to the thousandths, including using a standard algorithm with procedural fluency.",
+   "cpalms_id": "15420",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15420",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:59:05Z"
+  },
+  "MA.6.NSO.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step multiplication and division problems involving positive decimals whose place value ranges from the tens to the hundredths places.",
+   "cpalms_id": "18151",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18151",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:59:09Z"
+  },
+  "MA.6.NSO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Extend previous understanding of multiplication and division to compute products and quotients of positive fractions by positive fractions, including mixed numbers, with procedural fluency.",
+   "cpalms_id": "15421",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15421",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:59:14Z"
+  },
+  "MA.6.NSO.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use tools to calculate the product and quotient of positive fractions by positive fractions, including mixed numbers, using the standard algorithms.",
+   "cpalms_id": "18152",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18152",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:59:18Z"
+  },
+  "MA.6.NSO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve multi-step real-world problems involving any of the four operations with positive multi-digit decimals or positive fractions, including mixed numbers.",
+   "cpalms_id": "15422",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15422",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:59:21Z"
+  },
+  "MA.6.NSO.2.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world problems involving any of the four operations with positive decimals ranging from the hundreds to hundredth place value.",
+   "cpalms_id": "18153",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18153",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:59:23Z"
+  },
+  "MA.6.NSO.2.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Solve one-step real-world problems involving any of the four operations with positive fractions and mixed numbers with like denominators.",
+   "cpalms_id": "18154",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18154",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:59:26Z"
+  },
+  "MA.6.NSO.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, find the greatest common factor and least common multiple of two whole numbers.",
+   "cpalms_id": "15423",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15423",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:59:29Z"
+  },
+  "MA.6.NSO.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use tools to find the greatest common factor and least common multiple of two whole numbers 50 or less.",
+   "cpalms_id": "18155",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18155",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:59:33Z"
+  },
+  "MA.6.NSO.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Rewrite the sum of two composite whole numbers having a common factor, as a common factor multiplied by the sum of two whole numbers.",
+   "cpalms_id": "15424",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15424",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:59:36Z"
+  },
+  "MA.6.NSO.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use the distributive property to express a number as the sum of two whole numbers multiplied by a common factor.",
+   "cpalms_id": "18156",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18156",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:59:39Z"
+  },
+  "MA.6.NSO.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate positive rational numbers and integers with natural number exponents.",
+   "cpalms_id": "15425",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15425",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:59:46Z"
+  },
+  "MA.6.NSO.3.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Identify what an exponent represents (e.g., 8³= 8 × 8 × 8).",
+   "cpalms_id": "18157",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18157",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:59:49Z"
+  },
+  "MA.6.NSO.3.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Solve numerical expressions involving whole-number bases and exponents (e.g.,5+×6=101).",
+   "cpalms_id": "18158",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18158",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T10:59:53Z"
+  },
+  "MA.6.NSO.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Express composite whole numbers as a product of prime factors with natural number exponents.",
+   "cpalms_id": "15426",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15426",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T10:59:56Z"
+  },
+  "MA.6.NSO.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "4 Use a tool to show the prime factors of a composite whole number (e.g., 20 = 2 × 2 × 5).",
+   "cpalms_id": "18159",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18159",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:00:00Z"
+  },
+  "MA.6.NSO.3.5": {
+   "state": "confirmed",
+   "statement_verified": "Rewrite positive rational numbers in different but equivalent forms including fractions, terminating decimals and percentages.",
+   "cpalms_id": "15427",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15427",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:00:03Z"
+  },
+  "MA.6.NSO.3.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Rewrite a positive rational number 3 or less, as a fraction, decimal or a percent.",
+   "cpalms_id": "18160",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18160",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:00:07Z"
+  },
+  "MA.6.NSO.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply and extend previous understandings of operations with whole numbers to add and subtract integers with procedural fluency.",
+   "cpalms_id": "15428",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15428",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:00:11Z"
+  },
+  "MA.6.NSO.4.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use tools to add and subtract integers between 50 and −50.",
+   "cpalms_id": "18161",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18161",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:00:14Z"
+  },
+  "MA.6.NSO.4.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply and extend previous understandings of operations with whole numbers to multiply and divide integers with procedural fluency.",
+   "cpalms_id": "15429",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15429",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:00:17Z"
+  },
+  "MA.6.NSO.4.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use tools to multiply and divide integers between 20 and −20.",
+   "cpalms_id": "18162",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18162",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:00:20Z"
+  },
+  "MA.6.AR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, translate written descriptions into algebraic expressions and translate algebraic expressions into written descriptions.",
+   "cpalms_id": "15430",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15430",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:00:25Z"
+  },
+  "MA.6.AR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Write or select an algebraic expression that represents a real-world situation.",
+   "cpalms_id": "18163",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18163",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:00:27Z"
+  },
+  "MA.6.AR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Translate a real-world written description into an algebraic inequality in the form of x>a, x<a, x≥aor x≤a. Represent the inequality on a number line.",
+   "cpalms_id": "15431",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15431",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:00:30Z"
+  },
+  "MA.6.AR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Write or select an inequality that represents a real-world situation.",
+   "cpalms_id": "18164",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18164",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:00:33Z"
+  },
+  "MA.6.AR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate algebraic expressions using substitution and order of operations.",
+   "cpalms_id": "15432",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15432",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:12:49Z"
+  },
+  "MA.6.AR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve an expression using substitution with no more than two operations.",
+   "cpalms_id": "18165",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18165",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:01:23Z"
+  },
+  "MA.6.AR.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Apply the properties of operations to generate equivalent algebraic expressions with integer coefficients.",
+   "cpalms_id": "15433",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15433",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:01:27Z"
+  },
+  "MA.6.AR.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Use tools or models to combine like terms in an expression with no more than four operations.",
+   "cpalms_id": "18166",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18166",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:01:42Z"
+  },
+  "MA.6.AR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Given an equation or inequality and a specified set of integer values, determine which values make the equation or inequality true or false.",
+   "cpalms_id": "15434",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15434",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:01:46Z"
+  },
+  "MA.6.AR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Choose which values, from a set of five or fewer integers, make an equation or inequality true.",
+   "cpalms_id": "18167",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18167",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:01:50Z"
+  },
+  "MA.6.AR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Write and solve one-step equations in one variable within a mathematical or real-world context using addition and subtraction, where all terms and solutions are integers.",
+   "cpalms_id": "15435",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15435",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:01:52Z"
+  },
+  "MA.6.AR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world, one-step linear equations using addition and subtraction involving integers.",
+   "cpalms_id": "18168",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18168",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:01:56Z"
+  },
+  "MA.6.AR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Write and solve one-step equations in one variable within a mathematical or real-world context using multiplication and division, where all terms and solutions are integers.",
+   "cpalms_id": "15436",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15436",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:02:00Z"
+  },
+  "MA.6.AR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world, one-step linear equations using multiplication and division involving integers.",
+   "cpalms_id": "18169",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18169",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:02:03Z"
+  },
+  "MA.6.AR.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Determine the unknown decimal or fraction in an equation involving any of the four operations, relating three numbers, with the unknown in any position.",
+   "cpalms_id": "15437",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15437",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:02:05Z"
+  },
+  "MA.6.AR.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Solve a one-step equation using fractions with like denominators or decimals with place value ranging from the thousand to the thousandths.",
+   "cpalms_id": "18170",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18170",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:02:08Z"
+  },
+  "MA.6.AR.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world context, write and interpret ratios to show the relative sizes of two quantities using appropriate notation: , a to b, or a:b where b ≠ 0.",
+   "cpalms_id": "15438",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15438",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:02:11Z"
+  },
+  "MA.6.AR.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world context, write and interpret ratios to show the relative sizes of two quantities using notation: a/b, a to b, or a:b where b ≠ 0 with guidance and support.",
+   "cpalms_id": "18171",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18171",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:02:16Z"
+  },
+  "MA.6.AR.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world context, determine a rate for a ratio of quantities with different units. Calculate and interpret the corresponding unit rate.",
+   "cpalms_id": "15439",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15439",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:02:19Z"
+  },
+  "MA.6.AR.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a rate, calculate the unit rate for a ratio with different units.",
+   "cpalms_id": "18172",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18172",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:02:22Z"
+  },
+  "MA.6.AR.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Extend previous understanding of fractions and numerical patterns to generate or complete a two- or three-column table to display equivalent part-to-part ratios and part-to-part-to-whole ratios.",
+   "cpalms_id": "15440",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15440",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:02:25Z"
+  },
+  "MA.6.AR.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a visual representation, write or select a ratio that describes the ratio relationship between part-to-part and part-to-whole ratios.",
+   "cpalms_id": "18173",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18173",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:02:29Z"
+  },
+  "MA.6.AR.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Apply ratio relationships to solve mathematical and real-world problems involving percentages using the relationship between two quantities.",
+   "cpalms_id": "15441",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15441",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:02:32Z"
+  },
+  "MA.6.AR.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Calculate a percentage of quantity as rate per 100 using models (e.g., percent bars or 10 × 10 grids).",
+   "cpalms_id": "18174",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18174",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:02:35Z"
+  },
+  "MA.6.AR.3.5": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving ratios, rates and unit rates, including comparisons, mixtures, ratios of lengths and conversions within the same measurement system.",
+   "cpalms_id": "15874",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15874",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:02:39Z"
+  },
+  "MA.6.AR.3.AP.5a": {
+   "state": "confirmed",
+   "statement_verified": "Use tools, models or manipulatives to solve problems involving ratio relationships including mixtures and ratios of length.",
+   "cpalms_id": "18175",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18175",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:02:43Z"
+  },
+  "MA.6.AR.3.AP.5b": {
+   "state": "confirmed",
+   "statement_verified": "Use tools, models or manipulatives to solve ratio, rate or unit rate problems involving conversions within the same measurement system.",
+   "cpalms_id": "18176",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18176",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:02:46Z"
+  },
+  "MA.6.GR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Extend previous understanding of the coordinate plane to plot rational number ordered pairs in all four quadrants and on both axes. Identify the x- or y-axis as the line of reflection when two ordered pairs have an opposite x- or y-coordinate.",
+   "cpalms_id": "15442",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15442",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:02:50Z"
+  },
+  "MA.6.GR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Plot integer ordered pairs in all four quadrants and on both axes.",
+   "cpalms_id": "18177",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18177",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:02:53Z"
+  },
+  "MA.6.GR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Find distances between ordered pairs, limited to the same x-coordinate or the same y-coordinate, represented on the coordinate plane.",
+   "cpalms_id": "15443",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15443",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:02:57Z"
+  },
+  "MA.6.GR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Count the distance between two ordered pairs with the same x-coordinate or the same y-coordinate.",
+   "cpalms_id": "18178",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18178",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:03:00Z"
+  },
+  "MA.6.GR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems by plotting points on a coordinate plane, including finding the perimeter or area of a rectangle.",
+   "cpalms_id": "15444",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15444",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:03:03Z"
+  },
+  "MA.6.GR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a rectangle plotted on the coordinate plane, find the perimeter or area of the rectangle.",
+   "cpalms_id": "18179",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18179",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:03:07Z"
+  },
+  "MA.6.GR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Derive a formula for the area of a right triangle using a rectangle. Apply a formula to find the area of a triangle.",
+   "cpalms_id": "15445",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15445",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:03:09Z"
+  },
+  "MA.6.GR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Given the formula, find the area of a triangle.",
+   "cpalms_id": "18180",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18180",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:03:13Z"
+  },
+  "MA.6.GR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving the area of quadrilaterals and composite figures by decomposing them into triangles or rectangles.",
+   "cpalms_id": "15446",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15446",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:03:17Z"
+  },
+  "MA.6.GR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Decompose quadrilaterals and composite figures into simple shapes (rectangles or triangles) to measure area.",
+   "cpalms_id": "18181",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18181",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:03:21Z"
+  },
+  "MA.6.GR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving the volume of right rectangular prisms with positive rational number edge lengths using a visual model and a formula.",
+   "cpalms_id": "15447",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15447",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:03:24Z"
+  },
+  "MA.6.GR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world problem, find the volume of a rectangular prism using a visual model and the formula.",
+   "cpalms_id": "18182",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18182",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:03:28Z"
+  },
+  "MA.6.GR.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, find the surface area of right rectangular prisms and right rectangular pyramids using the figure’s net.",
+   "cpalms_id": "15448",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15448",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:03:30Z"
+  },
+  "MA.6.GR.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Find the surface area of right rectangular prisms by adding the areas of the shapes forming the two-dimensional net.",
+   "cpalms_id": "18183",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18183",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:03:34Z"
+  },
+  "MA.6.DP.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize and formulate a statistical question that would generate numerical data.",
+   "cpalms_id": "15449",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15449",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:03:37Z"
+  },
+  "MA.6.DP.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify statistical questions from a list that would generate numerical data.",
+   "cpalms_id": "18184",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18184",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:03:41Z"
+  },
+  "MA.6.DP.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a numerical data set within a real-world context, find and interpret mean, median, mode and range.",
+   "cpalms_id": "15450",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15450",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:03:44Z"
+  },
+  "MA.6.DP.1.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Use tools to identify and calculate the mean, median, mode and range represented in a set of data with no more than five elements.",
+   "cpalms_id": "18185",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18185",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:03:48Z"
+  },
+  "MA.6.DP.1.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Identify and explain what the mean and mode represent in a set of data with no more than five elements.",
+   "cpalms_id": "18186",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18186",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:03:52Z"
+  },
+  "MA.6.DP.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a box plot within a real-world context, determine the minimum, the lower quartile, the median, the upper quartile and the maximum. Use this summary of the data to describe the spread and distribution of the data.",
+   "cpalms_id": "15451",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15451",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:03:55Z"
+  },
+  "MA.6.DP.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a box plot, identify the value of the minimum, the lower quartile, the median, the upper quartile and the maximum.",
+   "cpalms_id": "18187",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18187",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:03:58Z"
+  },
+  "MA.6.DP.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Given a histogram or line plot within a real-world context, qualitatively describe and interpret the spread and distribution of the data, including any symmetry, skewness, gaps, clusters, outliers and the range.",
+   "cpalms_id": "15452",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15452",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:04:01Z"
+  },
+  "MA.6.DP.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Given a histogram or a line plot, describe the physical features of the graph.",
+   "cpalms_id": "18188",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18188",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:04:05Z"
+  },
+  "MA.6.DP.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Create box plots and histograms to represent sets of numerical data within real-world contexts.",
+   "cpalms_id": "15453",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15453",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:04:08Z"
+  },
+  "MA.6.DP.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Create histograms to represent sets of numerical data with 10 or fewer elements.",
+   "cpalms_id": "18189",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18189",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:04:12Z"
+  },
+  "MA.6.DP.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world scenario, determine and describe how changes in data values impact measures of center and variation.",
+   "cpalms_id": "15454",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15454",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:04:15Z"
+  },
+  "MA.6.DP.1.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Calculate and identify changes (increase or decrease) in the median, mode or range when a data value is added or subtracted from a data set.",
+   "cpalms_id": "18190",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18190",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:04:19Z"
+  },
+  "MA.7.NSO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Know and apply the Laws of Exponents to evaluate numerical expressions and generate equivalent numerical expressions, limited to whole-number exponents and rational number bases.",
+   "cpalms_id": "15455",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15455",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:04:22Z"
+  },
+  "MA.7.NSO.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use properties of whole number exponents to produce equivalent expressions.",
+   "cpalms_id": "18191",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18191",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:04:25Z"
+  },
+  "MA.7.NSO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Rewrite rational numbers in different but equivalent forms including fractions, mixed numbers, repeating decimals and percentages to solve mathematical and real-world problems.",
+   "cpalms_id": "15456",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15456",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:04:28Z"
+  },
+  "MA.7.NSO.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Rewrite positive rational numbers in different but equivalent forms such as fractions, mixed numbers, repeating decimals and/or percentages to solve problems.",
+   "cpalms_id": "18192",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18192",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:04:32Z"
+  },
+  "MA.7.NSO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical problems using multi-step order of operations with rational numbers including grouping symbols, whole-number exponents and absolute value.",
+   "cpalms_id": "15457",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15457",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:04:34Z"
+  },
+  "MA.7.NSO.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical problems, using no more than four operations, with rational numbers including grouping symbols, whole-number exponents and absolute value.",
+   "cpalms_id": "18193",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18193",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:04:38Z"
+  },
+  "MA.7.NSO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Add, subtract, multiply and divide rational numbers with procedural fluency.",
+   "cpalms_id": "15458",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15458",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:04:43Z"
+  },
+  "MA.7.NSO.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Using tools or models, add, subtract, multiply and divide rational numbers.",
+   "cpalms_id": "18194",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18194",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:04:46Z"
+  },
+  "MA.7.NSO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving any of the four operations with rational numbers.",
+   "cpalms_id": "15459",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15459",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:04:48Z"
+  },
+  "MA.7.NSO.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Using tools or models, solve real-world problems involving any of the four operations with rational numbers.",
+   "cpalms_id": "18195",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18195",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:04:51Z"
+  },
+  "MA.7.AR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply properties of operations to add and subtract linear expressions with rational coefficients.",
+   "cpalms_id": "15460",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15460",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:04:54Z"
+  },
+  "MA.7.AR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Add and subtract linear expressions that include like terms.",
+   "cpalms_id": "18196",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18196",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:04:57Z"
+  },
+  "MA.7.AR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine whether two linear expressions are equivalent.",
+   "cpalms_id": "15461",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15461",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:05:00Z"
+  },
+  "MA.7.AR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use tools or manipulatives to compare two linear expressions, with no more than two operations, to determine whether they are equivalent.",
+   "cpalms_id": "18197",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18197",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:05:04Z"
+  },
+  "MA.7.AR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Write and solve one-step inequalities in one variable within a mathematical context and represent solutions algebraically or graphically.",
+   "cpalms_id": "15462",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15462",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:05:07Z"
+  },
+  "MA.7.AR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Select a one-step inequality from a list that represents a real-world situation and given a set of three or fewer values, use substitution to solve.",
+   "cpalms_id": "18198",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18198",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:05:10Z"
+  },
+  "MA.7.AR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Write and solve two-step equations in one variable within a mathematical or real-world context, where all terms are rational numbers.",
+   "cpalms_id": "15463",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15463",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:05:13Z"
+  },
+  "MA.7.AR.2.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Set up two-step equations in one variable based on real-world problems.",
+   "cpalms_id": "18199",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18199",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:05:16Z"
+  },
+  "MA.7.AR.2.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Solve two-step equations in one variable based on real-world problems, where all terms have positive integer coefficients.",
+   "cpalms_id": "18200",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18200",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:05:19Z"
+  },
+  "MA.7.AR.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply previous understanding of percentages and ratios to solve multi-step real-world percent problems.",
+   "cpalms_id": "15464",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15464",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:05:22Z"
+  },
+  "MA.7.AR.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve simple percentage problems in real-world contexts.",
+   "cpalms_id": "18201",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18201",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:05:25Z"
+  },
+  "MA.7.AR.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply previous understanding of ratios to solve real-world problems involving proportions.",
+   "cpalms_id": "15465",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15465",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:05:29Z"
+  },
+  "MA.7.AR.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve simple ratio problems in real-world contexts.",
+   "cpalms_id": "18202",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18202",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:05:33Z"
+  },
+  "MA.7.AR.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving the conversion of units across different measurement systems.",
+   "cpalms_id": "15466",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15466",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:05:35Z"
+  },
+  "MA.7.AR.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Use tools to solve real-world problems involving conversion of units in the same measurement system.",
+   "cpalms_id": "18203",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18203",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:05:40Z"
+  },
+  "MA.7.AR.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine whether two quantities have a proportional relationship by examining a table, graph or written description.",
+   "cpalms_id": "15467",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15467",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:05:42Z"
+  },
+  "MA.7.AR.4.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a table or a graph, determine whether two quantities have a proportional relationship.",
+   "cpalms_id": "18204",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18204",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:05:46Z"
+  },
+  "MA.7.AR.4.2": {
+   "state": "confirmed",
+   "statement_verified": "Determine the constant of proportionality within a mathematical or real-world context given a table, graph or written description of a proportional relationship.",
+   "cpalms_id": "15468",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15468",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:05:49Z"
+  },
+  "MA.7.AR.4.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify the constant of proportionality when given a table or graph of a proportional relationship.",
+   "cpalms_id": "18205",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18205",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:05:52Z"
+  },
+  "MA.7.AR.4.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, graph proportional relationships from a table, equation or a written description.",
+   "cpalms_id": "15469",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15469",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:05:56Z"
+  },
+  "MA.7.AR.4.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a table or equation, graph a proportional relationship.",
+   "cpalms_id": "18206",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18206",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:05:59Z"
+  },
+  "MA.7.AR.4.4": {
+   "state": "confirmed",
+   "statement_verified": "Given any representation of a proportional relationship, translate the representation to a written description, table or equation.",
+   "cpalms_id": "15470",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15470",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:06:02Z"
+  },
+  "MA.7.AR.4.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Given a table representation of a proportional relationship, translate the relationship into an equation or a graph.",
+   "cpalms_id": "18207",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18207",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:06:06Z"
+  },
+  "MA.7.AR.4.5": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving proportional relationships.",
+   "cpalms_id": "15471",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15471",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:06:10Z"
+  },
+  "MA.7.AR.4.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Solve simple real-world problems involving proportional relationships.",
+   "cpalms_id": "18208",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18208",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:06:13Z"
+  },
+  "MA.7.GR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply formulas to find the areas of trapezoids, parallelograms and rhombi.",
+   "cpalms_id": "15472",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15472",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:06:15Z"
+  },
+  "MA.7.GR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Given the formulas, find the area of parallelograms and rhombi.",
+   "cpalms_id": "18209",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18209",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:06:19Z"
+  },
+  "MA.7.GR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical or real-world problems involving the area of polygons or composite figures by decomposing them into triangles or quadrilaterals.",
+   "cpalms_id": "15473",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15473",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:06:22Z"
+  },
+  "MA.7.GR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Decompose complex shapes (polygon, trapezoid, and pentagon) into simple shapes (rectangles, squares, triangles) to measure area.",
+   "cpalms_id": "18210",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18210",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:06:26Z"
+  },
+  "MA.7.GR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Explore the proportional relationship between circumferences and diameters of circles. Apply a formula for the circumference of a circle to solve mathematical and real-world problems.",
+   "cpalms_id": "15474",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15474",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:06:29Z"
+  },
+  "MA.7.GR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply a given formula for the circumference of a circle to solve mathematical problems.",
+   "cpalms_id": "18211",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18211",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:06:33Z"
+  },
+  "MA.7.GR.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore and apply a formula to find the area of a circle to solve mathematical and real-world problems.",
+   "cpalms_id": "15475",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15475",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:06:36Z"
+  },
+  "MA.7.GR.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Apply a given formula to find the area of a circle to solve mathematical problems.",
+   "cpalms_id": "18212",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18212",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:06:40Z"
+  },
+  "MA.7.GR.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving dimensions and areas of geometric figures, including scale drawings and scale factors.",
+   "cpalms_id": "15476",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15476",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:06:42Z"
+  },
+  "MA.7.GR.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Use a scale factor to draw a scale drawing of a real-world two-dimensional polygon on graph paper.",
+   "cpalms_id": "18213",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18213",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:06:46Z"
+  },
+  "MA.7.GR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, find the surface area of a right circular cylinder using the figure’s net.",
+   "cpalms_id": "15477",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15477",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:06:49Z"
+  },
+  "MA.7.GR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Match the parts of a given formula to the right circular cylinder using the figure's net.",
+   "cpalms_id": "18214",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18214",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:06:53Z"
+  },
+  "MA.7.GR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving surface area of right circular cylinders.",
+   "cpalms_id": "15478",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15478",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:06:56Z"
+  },
+  "MA.7.GR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given the formula, use tools to find the surface area of a right circular cylinder using the figure's net.",
+   "cpalms_id": "18215",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18215",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:06:59Z"
+  },
+  "MA.7.GR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving volume of right circular cylinders.",
+   "cpalms_id": "15479",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15479",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:07:01Z"
+  },
+  "MA.7.GR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a formula, use tools to calculate the volume of right circular cylinders.",
+   "cpalms_id": "18216",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18216",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:07:05Z"
+  },
+  "MA.7.DP.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine an appropriate measure of center or measure of variation to summarize numerical data, represented numerically or graphically, taking into consideration the context and any outliers.",
+   "cpalms_id": "15480",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15480",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:07:08Z"
+  },
+  "MA.7.DP.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use context to determine the appropriate measure of center (mean or median) or range to summarize a numerical data set with 10 or fewer elements, represented numerically or graphically.",
+   "cpalms_id": "18217",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18217",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:07:10Z"
+  },
+  "MA.7.DP.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Given two numerical or graphical representations of data, use the measure(s) of center and measure(s) of variability to make comparisons, interpret results and draw conclusions about the two populations.",
+   "cpalms_id": "15481",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15481",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:07:13Z"
+  },
+  "MA.7.DP.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given two numerical or graphical representations of data in the same form, compare the mean, median or range of each representation.",
+   "cpalms_id": "18218",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18218",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:07:16Z"
+  },
+  "MA.7.DP.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Given categorical data from a random sample, use proportional relationships to make predictions about a population.",
+   "cpalms_id": "15482",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15482",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:07:20Z"
+  },
+  "MA.7.DP.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given data from a random sample of the population, select from a list an appropriate prediction about the population based on the data.",
+   "cpalms_id": "18219",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18219",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:07:23Z"
+  },
+  "MA.7.DP.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Use proportional reasoning to construct, display and interpret data in circle graphs.",
+   "cpalms_id": "15483",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15483",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:07:27Z"
+  },
+  "MA.7.DP.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Use proportional reasoning to interpret data in a pie chart.",
+   "cpalms_id": "18220",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18220",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:07:30Z"
+  },
+  "MA.7.DP.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world numerical or categorical data set, choose and create an appropriate graphical representation.",
+   "cpalms_id": "15484",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15484",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:07:33Z"
+  },
+  "MA.7.DP.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Given a data set, select an appropriate graphical representation (histogram, bar chart, or line plot).",
+   "cpalms_id": "18221",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18221",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:07:37Z"
+  },
+  "MA.7.DP.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine the sample space for a simple experiment.",
+   "cpalms_id": "15485",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15485",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:07:40Z"
+  },
+  "MA.7.DP.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use tree diagrams, frequency tables, organized lists, and/or simulations to collect data from a simple experiment.",
+   "cpalms_id": "18222",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18222",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:07:43Z"
+  },
+  "MA.7.DP.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Given the probability of a chance event, interpret the likelihood of it occurring. Compare the probabilities of chance events.",
+   "cpalms_id": "15486",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15486",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:07:47Z"
+  },
+  "MA.7.DP.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given the probability of a simple chance event written as a fraction, percentage or decimal between 0 and 1, determine how likely is it that an event will occur.",
+   "cpalms_id": "18223",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18223",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:07:50Z"
+  },
+  "MA.7.DP.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Find the theoretical probability of an event related to a simple experiment.",
+   "cpalms_id": "15487",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15487",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:07:53Z"
+  },
+  "MA.7.DP.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Determine the theoretical probability of a simple chance event.",
+   "cpalms_id": "18224",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18224",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:07:56Z"
+  },
+  "MA.7.DP.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Use a simulation of a simple experiment to find experimental probabilities and compare them to theoretical probabilities.",
+   "cpalms_id": "15488",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15488",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:07:59Z"
+  },
+  "MA.7.DP.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Conduct a simple experiment to find experimental probabilities.",
+   "cpalms_id": "18225",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18225",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:08:03Z"
+  },
+  "MA.8.NSO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line.",
+   "cpalms_id": "15489",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15489",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:08:07Z"
+  },
+  "MA.8.NSO.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Locate approximations of irrational numbers on a number line.",
+   "cpalms_id": "18226",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18226",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:08:10Z"
+  },
+  "MA.8.NSO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Plot, order and compare rational and irrational numbers, represented in various forms.",
+   "cpalms_id": "15490",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15490",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:08:13Z"
+  },
+  "MA.8.NSO.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use appropriate tools to plot, order, and compare simple square roots and cube roots for quantities less than 100.",
+   "cpalms_id": "18227",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18227",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:08:17Z"
+  },
+  "MA.8.NSO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Extend previous understanding of the Laws of Exponents to include integer exponents. Apply the Laws of Exponents to evaluate numerical expressions and generate equivalent numerical expressions, limited to integer exponents and rational number bases, with procedural fluency.",
+   "cpalms_id": "15491",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15491",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:08:21Z"
+  },
+  "MA.8.NSO.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Use the properties of integer exponents and product/quotient of powers with like bases to produce equivalent expressions.",
+   "cpalms_id": "18228",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18228",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:08:24Z"
+  },
+  "MA.8.NSO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Express numbers in scientific notation to represent and approximate very large or very small quantities. Determine how many times larger or smaller one number is compared to a second number.",
+   "cpalms_id": "15492",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15492",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:08:27Z"
+  },
+  "MA.8.NSO.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Multiply a single-digit number by the power of 10 using a calculator. Identify whether the number in scientific notation represents a very large or very small quantity.",
+   "cpalms_id": "18229",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18229",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:08:30Z"
+  },
+  "MA.8.NSO.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Add, subtract, multiply and divide numbers expressed in scientific notation with procedural fluency.",
+   "cpalms_id": "15493",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15493",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:08:34Z"
+  },
+  "MA.8.NSO.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Perform operations with numbers expressed in scientific notation using a calculator.",
+   "cpalms_id": "18230",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18230",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:08:37Z"
+  },
+  "MA.8.NSO.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving operations with numbers expressed in scientific notation.",
+   "cpalms_id": "15494",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15494",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:08:41Z"
+  },
+  "MA.8.NSO.1.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world problem, perform operations with numbers expressed in scientific notation using a calculator and interpret the answer in context.",
+   "cpalms_id": "18231",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18231",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:08:44Z"
+  },
+  "MA.8.NSO.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals.",
+   "cpalms_id": "15495",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15495",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:08:47Z"
+  },
+  "MA.8.NSO.1.AP.7": {
+   "state": "confirmed",
+   "statement_verified": "Use tools to solve multi-step mathematical problems, with four or fewer steps, involving the order of operations with rational numbers including exponents and perfect squares and/or square roots.",
+   "cpalms_id": "18232",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18232",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:08:51Z"
+  },
+  "MA.8.AR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply the Laws of Exponents to generate equivalent algebraic expressions, limited to integer exponents and monomial bases.",
+   "cpalms_id": "15496",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15496",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:08:54Z"
+  },
+  "MA.8.AR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use the properties of integer exponents and product/quotient of powers with like bases to produce equivalent algebraic expressions limited to positive exponents and monomial bases.",
+   "cpalms_id": "18233",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18233",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:08:58Z"
+  },
+  "MA.8.AR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply properties of operations to multiply two linear expressions with rational coefficients.",
+   "cpalms_id": "15497",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15497",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:09:01Z"
+  },
+  "MA.8.AR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use the distributive property to multiply a monomial by a linear expression.",
+   "cpalms_id": "18234",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18234",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:09:04Z"
+  },
+  "MA.8.AR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Rewrite the sum of two algebraic expressions having a common monomial factor as a common factor multiplied by the sum of two algebraic expressions.",
+   "cpalms_id": "15498",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15498",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:09:06Z"
+  },
+  "MA.8.AR.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Rewrite the sum of two linear algebraic expressions having a common whole number monomial factor as the common factor multiplied by the sum of two linear algebraic expressions.",
+   "cpalms_id": "18235",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18235",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:09:10Z"
+  },
+  "MA.8.AR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Solve multi-step linear equations in one variable, with rational number coefficients. Include equations with variables on both sides.",
+   "cpalms_id": "15499",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15499",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:09:13Z"
+  },
+  "MA.8.AR.2.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Identify the steps to solve a given multi-step equation in one variable, with integers coefficients. Include equations with variables on both sides.",
+   "cpalms_id": "18236",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18236",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:09:16Z"
+  },
+  "MA.8.AR.2.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Solve multi-step equations in one variable, with integers coefficients. Include equations with variables on both sides.",
+   "cpalms_id": "18237",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18237",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:09:18Z"
+  },
+  "MA.8.AR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Solve two-step linear inequalities in one variable and represent solutions algebraically and graphically.",
+   "cpalms_id": "15500",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15500",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:09:22Z"
+  },
+  "MA.8.AR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Select a two-step inequality from a list that represents a real-world situation and use substitution to solve.",
+   "cpalms_id": "18238",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18238",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:09:25Z"
+  },
+  "MA.8.AR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Given an equation in the form of x²=p and x³=q, where p is a whole number and q is an integer, determine the real solutions.",
+   "cpalms_id": "15501",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15501",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:09:28Z"
+  },
+  "MA.8.AR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given an equation in the form of x²= p and x³= q, use tools to determine real solutions where p is a perfect square up to 144 and q is a perfect cube from –125 to 125.",
+   "cpalms_id": "18239",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18239",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:09:32Z"
+  },
+  "MA.8.AR.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine if a linear relationship is also a proportional relationship.",
+   "cpalms_id": "15502",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15502",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:09:34Z"
+  },
+  "MA.8.AR.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a table, a graph, or equation, determine whether a linear relationship is proportional.",
+   "cpalms_id": "18240",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18240",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:09:38Z"
+  },
+  "MA.8.AR.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a table, graph or written description of a linear relationship, determine the slope.",
+   "cpalms_id": "15503",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15503",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:09:40Z"
+  },
+  "MA.8.AR.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a table or graph of a linear relationship, identify the slope.",
+   "cpalms_id": "18241",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18241",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:09:43Z"
+  },
+  "MA.8.AR.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a table, graph or written description of a linear relationship, write an equation in slope-intercept form.",
+   "cpalms_id": "15504",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15504",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:09:47Z"
+  },
+  "MA.8.AR.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a table or graph of a linear relationship, identify from a list, the equation in slope-intercept form.",
+   "cpalms_id": "18242",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18242",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:09:49Z"
+  },
+  "MA.8.AR.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, graph a two-variable linear equation from a written description, a table or an equation in slope-intercept form.",
+   "cpalms_id": "15505",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15505",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:09:53Z"
+  },
+  "MA.8.AR.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Graph a two-variable linear equation from a table or an equation in slope-intercept form.",
+   "cpalms_id": "18243",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18243",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:09:56Z"
+  },
+  "MA.8.AR.3.5": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world context, determine and interpret the slope and y-intercept of a two-variable linear equation from a written description, a table, a graph or an equation in slope-intercept form.",
+   "cpalms_id": "15506",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15506",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:10:00Z"
+  },
+  "MA.8.AR.3.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Given a real-world context, identify the slope and y-intercept of a two-variable linear equation from a table, a graph or an equation in slope-intercept form.",
+   "cpalms_id": "18244",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18244",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:03Z"
+  },
+  "MA.8.AR.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a system of two linear equations and a specified set of possible solutions, determine which ordered pairs satisfy the system of linear equations.",
+   "cpalms_id": "15507",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15507",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:10:07Z"
+  },
+  "MA.8.AR.4.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Given a system of two linear equations displayed on a graph, identify the solution of a system as the point where the two lines intersect.",
+   "cpalms_id": "18245",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18245",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:10Z"
+  },
+  "MA.8.AR.4.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Identify the coordinates of the point of intersection for two linear equations plotted on a coordinate plane.",
+   "cpalms_id": "18246",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18246",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:13Z"
+  },
+  "MA.8.AR.4.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a system of two linear equations represented graphically on the same coordinate plane, determine whether there is one solution, no solution or infinitely many solutions.",
+   "cpalms_id": "15508",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15508",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:10:15Z"
+  },
+  "MA.8.AR.4.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a system of two linear equations represented graphically on the same coordinate plane, identify whether there is one solution or no solution.",
+   "cpalms_id": "18247",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18247",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:19Z"
+  },
+  "MA.8.AR.4.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a mathematical or real-world context, solve systems of two linear equations by graphing.",
+   "cpalms_id": "15509",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15509",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:10:22Z"
+  },
+  "MA.8.AR.4.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given two sets of coordinates for two lines, plot the lines on a coordinate plane and describe or select the solution to a system of linear equations.",
+   "cpalms_id": "18248",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18248",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:26Z"
+  },
+  "MA.8.F.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a set of ordered pairs, a table, a graph or mapping diagram, determine whether the relationship is a function. Identify the domain and range of the relation.",
+   "cpalms_id": "15510",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15510",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:10:29Z"
+  },
+  "MA.8.F.1.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Given a set of ordered pairs, a table or mapping diagram identify whether the relationship is a function.",
+   "cpalms_id": "18249",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18249",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:31Z"
+  },
+  "MA.8.F.1.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Given a set of ordered pairs, a table or mapping diagram identify the domain and range of the relation.",
+   "cpalms_id": "18250",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18250",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:34Z"
+  },
+  "MA.8.F.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a function defined by a graph or an equation, determine whether the function is a linear function. Given an input-output table, determine whether it could represent a linear function.",
+   "cpalms_id": "15511",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15511",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:10:37Z"
+  },
+  "MA.8.F.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a function displayed on a graph or an equation, identify whether the function is a linear function.",
+   "cpalms_id": "18251",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18251",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:40Z"
+  },
+  "MA.8.F.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze a real-world written description or graphical representation of a functional relationship between two quantities and identify where the function is increasing, decreasing or constant.",
+   "cpalms_id": "15512",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15512",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:10:43Z"
+  },
+  "MA.8.F.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a functional relationship displayed as a graph, identify where the function is increasing, decreasing or constant.",
+   "cpalms_id": "18252",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18252",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:46Z"
+  },
+  "MA.8.GR.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply the Pythagorean Theorem to solve mathematical and real-world problems involving unknown side lengths in right triangles.",
+   "cpalms_id": "15513",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15513",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:10:49Z"
+  },
+  "MA.8.GR.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Find the hypotenuse of a two-dimensional right triangle using the Pythagorean Theorem.",
+   "cpalms_id": "18253",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18253",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:52Z"
+  },
+  "MA.8.GR.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply the Pythagorean Theorem to solve mathematical and real-world problems involving the distance between two points in a coordinate plane.",
+   "cpalms_id": "15514",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15514",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:10:55Z"
+  },
+  "MA.8.GR.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given the Pythagorean Theorem, determine lengths/distances between two points in a coordinate system by forming right triangles, with natural number side lengths.",
+   "cpalms_id": "18254",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18254",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:10:59Z"
+  },
+  "MA.8.GR.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Use the Triangle Inequality Theorem to determine if a triangle can be formed from a given set of sides. Use the converse of the Pythagorean Theorem to determine if a right triangle can be formed from a given set of sides.",
+   "cpalms_id": "15515",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15515",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:11:03Z"
+  },
+  "MA.8.GR.1.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Measure the sides of triangles to establish facts about the Triangle Inequality Theorem (i.e., the sum of two side lengths is greater than the third side).",
+   "cpalms_id": "18255",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18255",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:11:06Z"
+  },
+  "MA.8.GR.1.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Substitute the side lengths of a given figure into the Pythagorean Theorem to determine if a right triangle can be formed.",
+   "cpalms_id": "18256",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18256",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:11:09Z"
+  },
+  "MA.8.GR.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical problems involving the relationships between supplementary, complementary, vertical or adjacent angles.",
+   "cpalms_id": "15516",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15516",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:11:13Z"
+  },
+  "MA.8.GR.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify supplementary, complementary, vertical or adjacent angle relationships.",
+   "cpalms_id": "18257",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18257",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T11:11:17Z"
+  },
+  "MA.8.GR.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Solve problems involving the relationships of interior and exterior angles of a triangle.",
+   "cpalms_id": "15517",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15517",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:11:20Z"
+  },
+  "MA.8.GR.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Given an image, solve simple problems involving the relationships of interior and exterior angles of a triangle.",
+   "cpalms_id": "18258",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18258",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T11:11:23Z"
+  },
+  "MA.8.GR.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Develop and use formulas for the sums of the interior angles of regular polygons by decomposing them into triangles.",
+   "cpalms_id": "15518",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15518",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:11:26Z"
+  },
+  "MA.8.GR.1.AP.6": {
+   "state": "confirmed",
+   "statement_verified": "Use tools to calculate the sum of the interior angles of regular polygons when given the formula.",
+   "cpalms_id": "18259",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18259",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:11:31Z"
+  },
+  "MA.8.GR.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a preimage and image generated by a single transformation, identify the transformation that describes the relationship.",
+   "cpalms_id": "15519",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15519",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:11:34Z"
+  },
+  "MA.8.GR.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Given two figures on a coordinate plane, identify if the image is translated, rotated or reflected.",
+   "cpalms_id": "18260",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18260",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:11:37Z"
+  },
+  "MA.8.GR.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a preimage and image generated by a single dilation, identify the scale factor that describes the relationship.",
+   "cpalms_id": "15520",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15520",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:11:40Z"
+  },
+  "MA.8.GR.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a preimage and image describe the effect the dilation has on the two figures.",
+   "cpalms_id": "18261",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18261",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:11:42Z"
+  },
+  "MA.8.GR.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Describe and apply the effect of a single transformation on two-dimensional figures using coordinates and the coordinate plane.",
+   "cpalms_id": "15521",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15521",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:11:46Z"
+  },
+  "MA.8.GR.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the coordinates of the vertices of a common polygon after a single translation, rotation or dilation on the coordinate plane.",
+   "cpalms_id": "18262",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18262",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T11:11:49Z"
+  },
+  "MA.8.GR.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Solve mathematical and real-world problems involving proportional relationships between similar triangles.",
+   "cpalms_id": "15522",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15522",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:11:52Z"
+  },
+  "MA.8.GR.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Use tools to solve mathematical problems using proportions between similar triangles.",
+   "cpalms_id": "18263",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18263",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T11:11:56Z"
+  },
+  "MA.8.DP.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Given a set of real-world bivariate numerical data, construct a scatter plot or a line graph as appropriate for the context.",
+   "cpalms_id": "15523",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15523",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:12:00Z"
+  },
+  "MA.8.DP.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Graph bivariate data using a scatter plot.",
+   "cpalms_id": "18264",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18264",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T11:12:03Z"
+  },
+  "MA.8.DP.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a scatter plot within a real-world context, describe patterns of association.",
+   "cpalms_id": "15524",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15524",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:12:05Z"
+  },
+  "MA.8.DP.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Given a scatter plot, identify whether the patterns of association are no association, positive association, negative association, linear or nonlinear.",
+   "cpalms_id": "18265",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18265",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:12:08Z"
+  },
+  "MA.8.DP.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a scatter plot with a linear association, informally fit a straight line.",
+   "cpalms_id": "15525",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15525",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:12:10Z"
+  },
+  "MA.8.DP.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Given a scatter plot with a linear association, use tools to draw or place a line of fit.",
+   "cpalms_id": "18266",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18266",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:12:14Z"
+  },
+  "MA.8.DP.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine the sample space for a repeated experiment.",
+   "cpalms_id": "15526",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15526",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:12:17Z"
+  },
+  "MA.8.DP.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use a tool (table, list or tree diagram) to record results of a repeated experiment.",
+   "cpalms_id": "18267",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18267",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:12:20Z"
+  },
+  "MA.8.DP.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Find the theoretical probability of an event related to a repeated experiment.",
+   "cpalms_id": "15527",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15527",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:12:24Z"
+  },
+  "MA.8.DP.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Select the theoretical probability of an event related to a repeated experiment from a list.",
+   "cpalms_id": "18268",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18268",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:12:27Z"
+  },
+  "MA.8.DP.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Solve real-world problems involving probabilities related to single or repeated experiments, including making predictions based on theoretical probability.",
+   "cpalms_id": "15528",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15528",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T11:12:30Z"
+  },
+  "MA.8.DP.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare actual results of an experiment with its theoretical probability (e.g., make a statement that describes the relationship between the actual results of an experiment with its theoretical probability [e.g., more, less, same, different, equal]).",
+   "cpalms_id": "18269",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18269",
+   "date_revised": "03/23",
+   "checked_at": "2026-08-13T11:12:33Z"
   }
  }
 }
