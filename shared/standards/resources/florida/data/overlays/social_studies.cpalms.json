@@ -4,7 +4,7 @@
  "generated_at": "2026-08-10T03:26:44Z",
  "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
  "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
- "coverage": 0.1942,
+ "coverage": 0.195,
  "scopes": [
   {
    "grades": "4",
@@ -591,12 +591,14 @@
    "checked_at": "2026-08-09T22:32:33Z"
   },
   "SS.4.E.1.1": {
-   "state": "statement_differs",
+   "state": "confirmed",
    "statement_verified": "Identify entrepreneurs from various demographic backgrounds who have influenced Florida and local economy.",
    "cpalms_id": "3026",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3026",
    "date_revised": "07/26",
-   "checked_at": "2026-08-09T22:32:36Z"
+   "checked_at": "2026-08-09T22:32:36Z",
+   "reclassified_at": "2026-08-13T03:16:35Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SS.4.E.1.AP.1": {
    "state": "confirmed",
@@ -4210,14 +4212,13 @@
    "checked_at": "2026-08-10T01:53:04Z"
   },
   "SS.5.G.2.1": {
-   "state": "statement_differs",
+   "state": "confirmed",
    "statement_verified": "Describe the push-pull factors (e.g., economy, natural hazards, tourism, climate, physical features) that influenced boundary changes within the United States.",
    "cpalms_id": "3073",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/3073",
    "date_revised": "07/26",
    "checked_at": "2026-08-10T01:53:07Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_at": "2026-08-13T03:16:35Z",
    "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SS.5.G.2.AP.1": {

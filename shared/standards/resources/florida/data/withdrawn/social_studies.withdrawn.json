@@ -1,0 +1,586 @@
+{
+ "_what": "Fields that a NEWER official source document removed. These were real, published guidance and are kept because they have teaching value — illustrative examples, mostly. They are NOT current, and must never be served as current official guidance.",
+ "_why_not_in_the_corpus": "The corpus is the parse of exactly one source document, and tools/parse_diff.py proves a changed statement by finding it VERBATIM in that document. Folding withdrawn text back into corpus rows would break that proof and leave every future refresh without a clean baseline. Keyed by code here instead, so a consumer can join on demand and always sees the provenance.",
+ "_how_to_use": "Join on the code. Label anything surfaced from here as withdrawn guidance from the stated snapshot, never as the current standard.",
+ "subject": "social_studies",
+ "withdrawn_from": {
+  "file": "standards/SocialStudies_StandardsandAccessPoints_WR.doc",
+  "sha256": "ae412c2dfd0f7dd4326cc9cd12e0da29bfc54f3f40b4750fc38a04b7fd6a5889",
+  "bytes": 1856864,
+  "source": "https://www.cpalms.org/downloads"
+ },
+ "superseded_by": {
+  "file": "standards/SocialStudies_StandardsandAccessPoints_WR.doc",
+  "sha256": "d6921500a0b8660e7f038d9b6395ea02a25cb3af730a9b0808a3b3a9a743c236",
+  "bytes": 1841443,
+  "source": "https://www.cpalms.org/downloads"
+ },
+ "recorded_at": "2026-08-13T03:15:58Z",
+ "count": 94,
+ "entries": {
+  "SS.1.A.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to, pictures, letters, audio/video recordings, and other artifacts."
+   },
+   "statement_at_withdrawal": "Develop an understanding of a primary source."
+  },
+  "SS.1.A.1.2": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,databases, audio orvideo recordings, and books."
+   },
+   "statement_at_withdrawal": "Understand how to use the media center and other sources to find answers to questions about a historical topic."
+  },
+  "SS.1.A.2.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, but are not limited to, comparingschool, families, work, and community life."
+   },
+   "statement_at_withdrawal": "Compare life now with life in the past."
+  },
+  "SS.1.A.2.3": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, but are not limited to, federal holidays and ethnic celebrations."
+   },
+   "statement_at_withdrawal": "Identify celebrations and national holidays as a way of remembering and honoring past events, our nation's ethnic heritage, and the heroism and achievements of the people."
+  },
+  "SS.1.A.2.4": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,Presidents, war veterans, community members, and leaders."
+   },
+   "statement_at_withdrawal": "Identify people from the past who have shown character ideals and principles including honesty, courage, and responsibility."
+  },
+  "SS.1.A.2.5": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to, tall tales, fables and non-fiction (expository) text."
+   },
+   "statement_at_withdrawal": "Distinguish between historical fact and fiction using various materials."
+  },
+  "SS.1.A.3.1": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,days, weeks, months, and years."
+   },
+   "statement_at_withdrawal": "Use terms related to time to sequentially order events that have occurred in school, home, or community."
+  },
+  "SS.1.A.3.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples of sourcesmay include, but are not limited to,photographs, birth certificates, report cards, and diaries."
+   },
+   "statement_at_withdrawal": "Create a timeline based on the student's life or school events, using primary sources."
+  },
+  "SS.1.E.1.1": {
+   "withdrawn_fields": {
+    "remarks": "An example is coins/bills versus bartering or trading."
+   },
+   "statement_at_withdrawal": "Recognize that money is used in the exchange of goods and services."
+  },
+  "SS.1.E.1.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples are giving up television to do homework and buying candy versus saving for later purchase."
+   },
+   "statement_at_withdrawal": "Define opportunity costs as giving up one thing for another."
+  },
+  "SS.1.E.1.3": {
+   "withdrawn_fields": {
+    "remarks": "Examples are goods: hamburger; services: sweeping the floor."
+   },
+   "statement_at_withdrawal": "Distinguish between examples of goods and services."
+  },
+  "SS.1.E.1.6": {
+   "withdrawn_fields": {
+    "remarks": "Examples are not enough time to do all activities or not enough red crayons."
+   },
+   "statement_at_withdrawal": "Identify that people need to make choices because of scarce resources."
+  },
+  "SS.1.G.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Examples are Tallahassee, student's hometown, Lake Okeechobee, Florida Keys, and the Everglades."
+   },
+   "statement_at_withdrawal": "Use physical, political, and cultural maps to locate places in Florida."
+  },
+  "SS.1.G.1.3": {
+   "withdrawn_fields": {
+    "remarks": "Examples are map of bedroom, classroom, or route to school"
+   },
+   "statement_at_withdrawal": "Construct a basic map using key elements including cardinal directions and map symbols."
+  },
+  "SS.1.G.1.4": {
+   "withdrawn_fields": {
+    "remarks": "Examples are oceans, peninsulas, lakes, rivers, swamps, and gulfs."
+   },
+   "statement_at_withdrawal": "Identify a variety of physical features using a map and globe."
+  },
+  "SS.1.G.1.6": {
+   "withdrawn_fields": {
+    "remarks": "Examples are effects on their food, clothing, shelter, transportation, and recreation"
+   },
+   "statement_at_withdrawal": "Describe how location, weather, and physical environment affect the way people live in our community."
+  },
+  "SS.2.A.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,artifacts, photographs, newspapers, audio/video recordings, documents, maps, coins, and stamps, textbooks and reference books."
+   },
+   "statement_at_withdrawal": "Examine primary and secondary sources."
+  },
+  "SS.2.A.2.2": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,location, clothing, housing, food, major beliefs and practices, language, art, and music."
+   },
+   "statement_at_withdrawal": "Compare the cultures of Native American tribes from various geographic regions of the United States."
+  },
+  "SS.2.A.2.3": {
+   "withdrawn_fields": {
+    "remarks": "Examples are location, clothing, housing, food, major beliefs and practices, art, and music."
+   },
+   "statement_at_withdrawal": "Describe the impact of immigrants on the Native Americans."
+  },
+  "SS.2.A.2.4": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,food, shelter, clothing, education, and settlements."
+   },
+   "statement_at_withdrawal": "Explore ways the daily life of people living in Colonial America changed over time."
+  },
+  "SS.2.A.2.5": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,war, hunger, natural disasters, voluntary and involuntary servitude, political or religious freedom, land, and jobs."
+   },
+   "statement_at_withdrawal": "Identify reasons people came to the United States throughout history."
+  },
+  "SS.2.A.2.7": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to, jobs, war, hunger, natural disasters, politicalor religious freedom, and jobs."
+   },
+   "statement_at_withdrawal": "Discuss why immigration continues today."
+  },
+  "SS.2.A.2.8": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to, food, language, music, art, beliefs and practices, literature, education, and clothing."
+   },
+   "statement_at_withdrawal": "Explain the cultural influences and contributions of immigrants today."
+  },
+  "SS.2.A.3.1": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,years, decades, centuries."
+   },
+   "statement_at_withdrawal": "Identify terms and designations of time sequence."
+  },
+  "SS.2.E.1.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples are housing and jobs."
+   },
+   "statement_at_withdrawal": "Recognize that people supply goods and services based on consumer demands."
+  },
+  "SS.2.E.1.3": {
+   "withdrawn_fields": {
+    "remarks": "Examples are clothing, food, toys, cars."
+   },
+   "statement_at_withdrawal": "Recognize that the United States trades with other nations to exchange goods and services."
+  },
+  "SS.2.G.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Examples are coordinate grids, title, compass rose, cardinal and intermediate directions, key/legend with symbols and scale."
+   },
+   "statement_at_withdrawal": "Use different types of maps (political, physical, and thematic) to identify map elements."
+  },
+  "SS.3.A.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,artifacts, photographs, paintings, maps, images, documents, audio and video recordings."
+   },
+   "statement_at_withdrawal": "Analyze primary and secondary sources."
+  },
+  "SS.3.A.1.3": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,history, geography, civics, government, economics."
+   },
+   "statement_at_withdrawal": "Define terms related to the social sciences."
+  },
+  "SS.3.E.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Examples are oil, video games, food."
+   },
+   "statement_at_withdrawal": "Give examples of how scarcity results in trade."
+  },
+  "SS.3.E.1.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples are portable, divisible, recognizable, durable."
+   },
+   "statement_at_withdrawal": "List the characteristics of money."
+  },
+  "SS.3.G.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Types of photographs may include satellite or aerial."
+   },
+   "statement_at_withdrawal": "Use thematic maps, tables, charts, graphs, and photos to analyze geographic information."
+  },
+  "SS.3.G.1.6": {
+   "withdrawn_fields": {
+    "remarks": "Examples are linear, fractional, word."
+   },
+   "statement_at_withdrawal": "Use maps to identify different types of scale to measure distances between two places."
+  },
+  "SS.3.G.2.2": {
+   "withdrawn_fields": {
+    "remarks": "(i.e., Northeast, Southeast, Midwest, Southwest, West)"
+   },
+   "statement_at_withdrawal": "Identify the five regions of the United States."
+  },
+  "SS.3.G.2.4": {
+   "withdrawn_fields": {
+    "remarks": "Examples are lakes, rivers, oceans, mountains, deserts, plains, and grasslands."
+   },
+   "statement_at_withdrawal": "Describe the physical features of the United States, Canada, Mexico, and the Caribbean."
+  },
+  "SS.3.G.2.5": {
+   "withdrawn_fields": {
+    "remarks": "(e.g. Grand Canyon, Gateway Arch, Mount Rushmore, Devil's Tower, Mt. Denali, Everglades, Niagara Falls)"
+   },
+   "statement_at_withdrawal": "Identify natural and man-made landmarks in the United States, Canada, Mexico, and the Caribbean."
+  },
+  "SS.3.G.3.1": {
+   "withdrawn_fields": {
+    "remarks": "(e.g., tundra, sandy soil, humidity, maritime climate)"
+   },
+   "statement_at_withdrawal": "Describe the climate and vegetation in the United States, Canada, Mexico, and the Caribbean."
+  },
+  "SS.3.G.3.2": {
+   "withdrawn_fields": {
+    "remarks": "(e.g., water, arable land, oil, phosphate, fish)"
+   },
+   "statement_at_withdrawal": "Describe the natural resources in the United States, Canada, Mexico, and the Caribbean."
+  },
+  "SS.3.G.4.1": {
+   "withdrawn_fields": {
+    "remarks": "Examples are settlements near water for drinking, bathing, cooking, agriculture and land for farming."
+   },
+   "statement_at_withdrawal": "Explain how the environment influences settlement patterns in the United States, Canada, Mexico, and the Caribbean."
+  },
+  "SS.3.G.4.3": {
+   "withdrawn_fields": {
+    "remarks": "Examples are housing, music, transportation, food, recreation, language, holidays, beliefs and customs."
+   },
+   "statement_at_withdrawal": "Compare the cultural characteristics of diverse populations in one of the five regions of the United States with Canada, Mexico, or the Caribbean."
+  },
+  "SS.3.G.4.4": {
+   "withdrawn_fields": {
+    "remarks": "Examples are Native Americans, Hispanics/Latinos, Africans, Asians, Europeans."
+   },
+   "statement_at_withdrawal": "Identify contributions from various ethnic groups to the United States."
+  },
+  "SS.4.A.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to, photographs, paintings, maps, artifacts, timelines, audio and video, letters and diaries, periodicals, newspaper articles, etc."
+   },
+   "statement_at_withdrawal": "Analyze primary and secondary resources to identify significant individuals and events throughout Florida history."
+  },
+  "SS.4.A.1.2": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to, encyclopedias, atlases, newspapers, websites, databases, audio, video, etc."
+   },
+   "statement_at_withdrawal": "Synthesize information related to Florida history through print and electronic media."
+  },
+  "SS.4.A.2.1": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,Apalachee, Calusa, Tequesta, Timucua, Tocobaga."
+   },
+   "statement_at_withdrawal": "Compare Native American tribes in Florida."
+  },
+  "SS.4.A.3.1": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,Ponce de Leon, Juan Garrido, Esteban Dorantes, Tristan deLuna, and an understanding that 2013 is the quincentennial of the founding of Florida."
+   },
+   "statement_at_withdrawal": "Identify explorers who came to Florida and the motivations for their expeditions."
+  },
+  "SS.4.A.3.10": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, but are not limited to, Jackson's invasion of Florida (First Seminole War), without federal permission."
+   },
+   "statement_at_withdrawal": "Identify the causes and effects of the Seminole Wars."
+  },
+  "SS.4.A.3.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, but are not limited to, protection of ships, search for gold, glory of the mother country, disease, death, and spread of religion."
+   },
+   "statement_at_withdrawal": "Describe causes and effects of European colonization on the Native American tribes of Florida."
+  },
+  "SS.4.A.3.3": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, but are not limited to, the 450th anniversary of the founding of St. Augustine in 2015 as the first continuous town in the United States, predating other colonial settlements."
+   },
+   "statement_at_withdrawal": "Identify the significance of St. Augustine as the oldest permanent European settlement in the United States."
+  },
+  "SS.4.A.3.5": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, but are not limited to, the differences between Spanish and English treatment of enslavement."
+   },
+   "statement_at_withdrawal": "Identify the significance of Fort Mose as the first free African community in the United States."
+  },
+  "SS.4.A.3.6": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to, names of cities such as Pensacola, etc., agriculture, weapons, architecture, art, music, and food."
+   },
+   "statement_at_withdrawal": "Identify the effects of Spanish rule in Florida."
+  },
+  "SS.4.A.4.1": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, but are not limited to, steam engine, steamboats, delivery of water to some areas of the state."
+   },
+   "statement_at_withdrawal": "Explain the effects of technological advances on Florida."
+  },
+  "SS.4.A.4.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, butare not limited to, therole of men, women, children, Florida Crackers, Black Seminoles."
+   },
+   "statement_at_withdrawal": "Describe pioneer life in Florida."
+  },
+  "SS.4.A.5.1": {
+   "withdrawn_fields": {
+    "remarks": "Additional examples may also include, but are not limited to, Ft. Zachary Taylor, the plantation culture, the First Florida Cavalry."
+   },
+   "statement_at_withdrawal": "Describe Florida's involvement (secession, blockades of ports, the battles of Ft. Pickens, Olustee, Ft. Brooke, Natural Bridge, food supply) in the Civil War."
+  },
+  "SS.4.A.5.2": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,sharecropping, segregation, and black participation in state and federal governments."
+   },
+   "statement_at_withdrawal": "Summarize challenges Floridians faced during Reconstruction."
+  },
+  "SS.4.A.6.1": {
+   "withdrawn_fields": {
+    "remarks": "Examplesof industries may include, but are not limited to, timber, citrus, cattle, tourism, phosphate, cigar, railroads, bridges, air conditioning, sponge, shrimping, and wrecking (pirating)."
+   },
+   "statement_at_withdrawal": "Describe the economic development of Florida's major industries."
+  },
+  "SS.4.A.6.2": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,language, food, art, beliefs and practices, literature, education, and clothing."
+   },
+   "statement_at_withdrawal": "Summarize contributions immigrant groups made to Florida."
+  },
+  "SS.4.A.6.3": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,John Gorrie, Henry Flagler, Henry Plant, Lue Gim Gong, Vincente Martinez Ybor, Julia Tuttle, Mary McLeod Bethune, Thomas Alva Edison, James Weldon Johnson, Marjorie Kinnan Rawlings."
+   },
+   "statement_at_withdrawal": "Describe the contributions of significant individuals to Florida."
+  },
+  "SS.4.A.6.4": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to, cigar industry, temporary economic boom at Ft. Brooke due to Rough Riders, Cuban immigration."
+   },
+   "statement_at_withdrawal": "Describe effects of the Spanish American War on Florida."
+  },
+  "SS.4.A.7.1": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, but are not limited to, land speculation."
+   },
+   "statement_at_withdrawal": "Describe the causes and effects of the 1920's Florida land boom and bust."
+  },
+  "SS.4.A.7.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, but are not limited to, the Labor Day hurricane of 1935 and the Mediterranean fruit fly."
+   },
+   "statement_at_withdrawal": "Summarize challenges Floridians faced during the Great Depression."
+  },
+  "SS.4.A.8.1": {
+   "withdrawn_fields": {
+    "remarks": "Examplesmay include, but are not limited to,Tallahassee Bus Boycotts, civil disobedience, and the legacy of early civil rights pioneers, Harry T. and Harriette V. Moore."
+   },
+   "statement_at_withdrawal": "Identify Florida's role in the Civil Rights Movement."
+  },
+  "SS.4.E.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Examples are Henry Flagler, Walt Disney, Ed Ball, Alfred Dupont, Julia Tuttle, Vincente Martinez Ybor."
+   },
+   "statement_at_withdrawal": "Identify entrepreneurs from various social and ethnic backgrounds who have influenced Florida and local economy."
+  },
+  "SS.4.E.1.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples are tourism, agriculture, phosphate, space industry."
+   },
+   "statement_at_withdrawal": "Explain Florida's role in the national and international economy and conditions that attract businesses to the state."
+  },
+  "SS.4.FL.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Make a list of different types of jobs and describe the different skills associated with each job."
+   },
+   "statement_at_withdrawal": "People have many different types of jobs from which to choose. Identify different jobs requiring people to have different skills."
+  },
+  "SS.4.FL.1.7": {
+   "withdrawn_fields": {
+    "remarks": "Read a children’s book about an entrepreneur and identify the type of business started, the possible risks of running the business, and what the entrepreneur expected to earn."
+   },
+   "statement_at_withdrawal": "Entrepreneurs are people who start new businesses. Entrepreneurs do not know if their new businesses will be successful and earn a profit. Identify ways in which starting a business is risky for entrepreneurs."
+  },
+  "SS.4.FL.1.8": {
+   "withdrawn_fields": {
+    "remarks": "Describe examples of government-provided goods and services that are paid for with taxes."
+   },
+   "statement_at_withdrawal": "Income earned from working and most other sources of income are taxed. Describe ways that the revenue from these taxes is used to pay for government provided goods and services."
+  },
+  "SS.4.FL.2.1": {
+   "withdrawn_fields": {
+    "remarks": "Brainstorm a list of wants and then identify examples of goods, services, or leisure activities they can buy to satisfy each want."
+   },
+   "statement_at_withdrawal": "Explain that economic wants are desires that can be satisfied by consuming a good, a service, or a leisure activity."
+  },
+  "SS.4.FL.2.2": {
+   "withdrawn_fields": {
+    "remarks": "Create a list of goods or services they want given a set budget constraint, rank the goods and services from the most to the least desired, and justify their ranking."
+   },
+   "statement_at_withdrawal": "Explain that people make choices about what goods and services they buy because they can’t have everything they want. This requires individuals to prioritize their wants."
+  },
+  "SS.4.FL.2.3": {
+   "withdrawn_fields": {
+    "remarks": "Explain why consumers with identical vacation budgets choose different options when planning a weeklong vacation."
+   },
+   "statement_at_withdrawal": "Identify some of the ways that people spend a portion of their income on goods and services in order to increase their personal satisfaction or happiness."
+  },
+  "SS.4.FL.2.4": {
+   "withdrawn_fields": {
+    "remarks": "Present an example of a buying choice a person made and identify the opportunity cost of that choice."
+   },
+   "statement_at_withdrawal": "Discuss that whenever people buy something, they incur an opportunity cost. Opportunity cost is the value of the next best alternative that is given up when a person makes a choice."
+  },
+  "SS.4.FL.2.5": {
+   "withdrawn_fields": {
+    "remarks": "Compare the costs and benefits of buying a bicycle in two settings, rural and urban, and for different people including a younger child, a teenager, and a grandparent."
+   },
+   "statement_at_withdrawal": "Explain that costs are things that a decision maker gives up; benefits are things that a decision maker gains. Make an informed decision by comparing the costs and benefits of spending alternatives."
+  },
+  "SS.4.FL.2.6": {
+   "withdrawn_fields": {
+    "remarks": "Write stories about how individual spending choices were informed or influenced by advertising, the spending choices of others, peer pressure, or the prices of alternative choices. Explain why shopping with a list can help consumers with their spending choices."
+   },
+   "statement_at_withdrawal": "Predict how people’s spending choices are influenced by prices as well as many other factors, including advertising, the spending choices of others, and peer pressure."
+  },
+  "SS.4.FL.2.7": {
+   "withdrawn_fields": {
+    "remarks": "Create a budget for a set amount of allowance income that includes expenses (buying of goods and services) and savings."
+   },
+   "statement_at_withdrawal": "Planning for spending can help people make informed choices. Develop a budget plan for spending, saving, and managing income."
+  },
+  "SS.4.FL.3.1": {
+   "withdrawn_fields": {
+    "remarks": "Explain the difference between saving and spending and give examples of each."
+   },
+   "statement_at_withdrawal": "Identify ways that income is saved, spent on goods and services, or used to pay taxes."
+  },
+  "SS.4.FL.3.2": {
+   "withdrawn_fields": {
+    "remarks": "Describe what a person gives up when he or she deposits $20 into a savings account."
+   },
+   "statement_at_withdrawal": "Explain that when people save money, they give up the opportunity to buy things now in order to buy things later."
+  },
+  "SS.4.FL.3.3": {
+   "withdrawn_fields": {
+    "remarks": "Draw a picture identifying the different places where people can save their money."
+   },
+   "statement_at_withdrawal": "Identify ways that people can choose to save money in many places—for example, at home in a piggy bank or at a commercial bank, credit union, or savings and loan."
+  },
+  "SS.4.FL.3.4": {
+   "withdrawn_fields": {
+    "remarks": "Read a children’s book and identify a character’s savings goal and whether the character meets the savings goal."
+   },
+   "statement_at_withdrawal": "Identify savings goals people set as incentives to save. One savings goal might be to buy goods and services in the future."
+  },
+  "SS.4.FL.3.5": {
+   "withdrawn_fields": {
+    "remarks": "Describe the advantages of saving money in a savings account rather than putting the money into a piggy bank."
+   },
+   "statement_at_withdrawal": "Explain that when people deposit money into a bank (or other financial institution), the bank may pay them interest. Banks attract savings by paying interest. People also deposit money into banks because banks are safe places to keep their savings."
+  },
+  "SS.4.FL.4.1": {
+   "withdrawn_fields": {
+    "remarks": "Explain the reason why, when a person borrows $100 to buy a new cell phone, he or she will have to pay back more than the $100 at a future date."
+   },
+   "statement_at_withdrawal": "Discuss that interest is the price the borrower pays for using someone else’s money."
+  },
+  "SS.4.FL.4.2": {
+   "withdrawn_fields": {
+    "remarks": "Identify goods and services people often purchase with the use of a loan."
+   },
+   "statement_at_withdrawal": "Identify instances when people use credit, that they receive something of value now and agree to repay the lender over time, or at some date in the future, with interest."
+  },
+  "SS.4.FL.5.1": {
+   "withdrawn_fields": {
+    "remarks": "Describe the difference between saving and financial investing."
+   },
+   "statement_at_withdrawal": "Explain that after people have saved some of their income, they must decide how to invest their savings so that it can grow over time."
+  },
+  "SS.4.FL.5.2": {
+   "withdrawn_fields": {
+    "remarks": "Explain why a stockholder may benefit if the company produces an increasingly popular product."
+   },
+   "statement_at_withdrawal": "Explain that a financial investment is the purchase of a financial asset, such as a stock, with the expectation of an increase in the value of the asset and/or increase in future income."
+  },
+  "SS.4.FL.6.1": {
+   "withdrawn_fields": {
+    "remarks": "Give examples of the risk associated with activities such as riding a bicycle, using a skateboard, or having a pet."
+   },
+   "statement_at_withdrawal": "Explain that risk is the chance of loss or harm."
+  },
+  "SS.4.FL.6.2": {
+   "withdrawn_fields": {
+    "remarks": "Write a newspaper article on an unexpected “bad” event such as a tornado, car accident, or illness, and describe the effect the event would have on individuals and their families."
+   },
+   "statement_at_withdrawal": "Explain that risk from accidents and unexpected events is an unavoidable part of daily life."
+  },
+  "SS.4.FL.6.3": {
+   "withdrawn_fields": {
+    "remarks": "Draw a poster depicting an age-appropriate activity (e.g., owning and riding a bicycle) that illustrates how to avoid risk of harm or loss (not riding the bike) or how to reduce the chance of a bad event (riding in a safe manner) and potential harm of the bad event (wearing a bike helmet)."
+   },
+   "statement_at_withdrawal": "Describe ways that individuals can either choose to accept risk or take steps to protect themselves by avoiding or reducing risk."
+  },
+  "SS.4.FL.6.4": {
+   "withdrawn_fields": {
+    "remarks": "Give examples of events for which emergency savings could offset financial losses."
+   },
+   "statement_at_withdrawal": "Discuss that one method to cope with unexpected losses is to save for emergencies."
+  },
+  "SS.4.G.1.1": {
+   "withdrawn_fields": {
+    "remarks": "Examples are bodies of water, location, landforms."
+   },
+   "statement_at_withdrawal": "Identify physical features of Florida."
+  },
+  "SS.4.G.1.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples are state capitals, major cities, tourist attractions."
+   },
+   "statement_at_withdrawal": "Locate and label cultural features on a Florida map."
+  },
+  "SS.4.G.1.3": {
+   "withdrawn_fields": {
+    "remarks": "Examples are hurricanes, thunderstorms, drought, mild climate."
+   },
+   "statement_at_withdrawal": "Explain how weather impacts Florida."
+  },
+  "SS.5.A.2.1": {
+   "withdrawn_fields": {
+    "remarks": "Examples may include, but are not limited to, those listed in the benchmark."
+   },
+   "statement_at_withdrawal": "Compare cultural aspects of ancient American civilizations (e.g., Aztecs, Mayas, Mound Builders, Anasazi, Inuit)."
+  },
+  "SS.6.W.2.10": {
+   "withdrawn_fields": {
+    "remarks": "Examples are Olmec, Zapotec, Chavin."
+   },
+   "statement_at_withdrawal": "Compare the emergence of advanced civilizations in Meso and South America with the four early river valley civilizations."
+  },
+  "SS.6.W.2.9": {
+   "withdrawn_fields": {
+    "remarks": "Examples are Abraham, Moses, monotheism, law, emphasis on individual worth and responsibility."
+   },
+   "statement_at_withdrawal": "Identify key figures and basic beliefs of the Israelites and determine how these beliefs compared with those of others in the geographic area."
+  },
+  "SS.K.G.2.1": {
+   "withdrawn_fields": {
+    "remarks": "Examples are the cafeteria, library, office, restrooms, and classroom."
+   },
+   "statement_at_withdrawal": "Locate and describe places in the school and community."
+  },
+  "SS.K.G.3.2": {
+   "withdrawn_fields": {
+    "remarks": "Examples are rivers, lakes, oceans, and gulfs."
+   },
+   "statement_at_withdrawal": "Identify basic bodies of water."
+  }
+ }
+}

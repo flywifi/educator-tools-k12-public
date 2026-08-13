@@ -686,7 +686,7 @@
   {
    "filename": "ComputerScience_StandardsReportWithoutAccessPoints.doc",
    "category": "standards",
-   "path": "standards/ComputerScience_StandardsReportWithoutAccessPoints.doc",
+   "path": "shared/standards/resources/florida/standards/ComputerScience_StandardsReportWithoutAccessPoints.doc",
    "bytes": 516955,
    "sha256": "386f64e0fdbbafb41033010b65bf60216bbc4b34d3cbc27764bf4b75f7527327",
    "source": "https://www.cpalms.org/downloads",
@@ -768,9 +768,10 @@
    "filename": "SocialStudies_StandardsandAccessPoints_WR.doc",
    "category": "standards",
    "path": "shared/standards/resources/florida/standards/SocialStudies_StandardsandAccessPoints_WR.doc",
-   "bytes": 1856864,
-   "sha256": "ae412c2dfd0f7dd4326cc9cd12e0da29bfc54f3f40b4750fc38a04b7fd6a5889",
-   "source": "https://www.cpalms.org/downloads"
+   "bytes": 1841443,
+   "sha256": "d6921500a0b8660e7f038d9b6395ea02a25cb3af730a9b0808a3b3a9a743c236",
+   "source": "https://www.cpalms.org/downloads",
+   "snapshot_note": "refreshed 2026-08-13 from cpalms.org/downloads: 15 benchmark statements revised (all 15 confirmed against CPALMS). Florida also withdrew the illustrative Remarks from 94 benchmarks; those are preserved with provenance in data/withdrawn/social_studies.withdrawn.json and are NOT current guidance."
   },
   {
    "filename": "bestela202511.pdf",

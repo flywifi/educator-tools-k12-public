@@ -210,6 +210,35 @@ When the manifest shows 0 remaining **and 0 needs_review**: delete the standing 
   **advisory** by design — a fabricated SS code is not blocked. This is deliberate: a parser gap
   must never be reported as a fabricated standard.
 
+## 6a. Source refreshes — when the DOCUMENT changes, not the parse
+
+The corpora are the parse of exactly one document per subject. When Florida publishes a newer one,
+that is a **source refresh**, not a repair, and it is the one operation allowed to move the code set.
+
+```bash
+# 1. drop the new document in, then stage a regeneration
+python3 tools/parse_fl_standards.py --out /tmp/new --no-index
+# 2. gate it, DECLARING every code that may move — the sets must match exactly
+python3 tools/parse_diff.py --old shared/standards/resources/florida/data --new /tmp/new \
+        --expect-removed CODE1 CODE2 ...
+```
+`--expect-removed` / `--expect-added` turn a blind override into a checked assertion: an undeclared
+code moving still aborts, and so does a declared code that did **not** move (a stale expectation).
+
+Three rules learned the hard way (2026-08-13, computer science + social studies):
+
+1. **Confirm every moved code against CPALMS first**, individually. Both refreshes were justified
+   only because CPALMS agreed: 9/9 withdrawn codes returned `not_on_cpalms`, and 6/6 + 15/15 revised
+   statements matched CPALMS exactly.
+2. **A withdrawn standard is `retired`, never `not_on_cpalms`.** Left as `not_found` it resolves as
+   BLOCKING with guidance calling the code fabricated — accusing a teacher of inventing a benchmark
+   Florida published. Record retirements in the subject overlay with their evidence.
+3. **Withdrawn side content goes to `data/withdrawn/<subject>.withdrawn.json`, not back into the
+   corpus.** Florida removed the illustrative `Remarks` from 94 SS benchmarks; they are kept there
+   with the sha256 of the document they came from, reachable via `fl_lookup.py --withdrawn`, and
+   never served as current. Folding them into corpus rows would break `parse_diff`'s "verbatim in
+   the source" proof and leave the next refresh without a clean baseline.
+
 ## 7. The standing Routine
 
 A Routine wakes a fresh session daily to work the next chunk:
