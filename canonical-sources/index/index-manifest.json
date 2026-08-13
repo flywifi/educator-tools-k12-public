@@ -11,8 +11,8 @@
   },
   "sources": {
     "shared/standards/resources/florida/data/computer_science.json": {
-      "sha256": "7db06e9c182b2ad21f442e3a9ff96ceaf2df0ac95684d35f24577ea0a9a35de5",
-      "bytes": 181461
+      "sha256": "88620d2b0d4bda2010e6273ce06a1488eba84fb21a44d440cbcbf50c38e91987",
+      "bytes": 181579
     },
     "shared/standards/resources/florida/data/ela.json": {
       "sha256": "228556ae3f8f12c242103c7e763949fa9afedc905c2b01996a49faa99e65bdb6",

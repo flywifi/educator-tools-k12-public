@@ -298,7 +298,15 @@ def parse_doc(text: str, code_re: str):
         g, strand = info(code)
         row = {"code": code, "grade": g, "strand": strand, "type": classify(code)}
         fields = split_fields(seg)
-        fields["statement"] = _sentence_trim(fields["statement"])
+        # NO _sentence_trim here any more. It existed when `seg` was a raw 700-char window that
+        # could bleed into the next record, and it cut at the last sentence boundary before 600
+        # characters. split_fields now bounds the segment at the first field label or section
+        # header, so the guard no longer protects against anything — it only truncates genuinely
+        # long standards. Two K-12 computer-science practices lost their closing sentences to it
+        # (SC.K12.CTR.6.1 617->428, SC.K12.CTR.7.1 661->543), which the CPALMS sweep caught as a
+        # statement mismatch. tools/parse_diff.py could NOT catch it: a truncated statement is
+        # still a valid prefix of the original, which is exactly the blind spot that makes the
+        # live sweep worth running.
         row.update(fields)
         out.append(row)
     return out
@@ -336,6 +344,21 @@ SPLIT_PROBES = [
 def self_test() -> int:
     """python3 tools/parse_fl_standards.py --self-test — offline, no documents needed."""
     bad = 0
+    # A long statement must survive intact. _sentence_trim used to cut at the last sentence
+    # boundary before 600 chars, silently dropping the tail of real standards — and a truncated
+    # statement is still a valid PREFIX, so tools/parse_diff.py cannot see it. Only the live CPALMS
+    # sweep caught it (SC.K12.CTR.7.1). This probe is the offline guard.
+    _long = ("Solve real-life problems using computational thinking. " + "Adapt procedures. " * 40
+             + "Evaluate results based on the given context.")
+    _rows = parse_doc(f"SC.K12.CTR.9.9 {_long} SC.K12.CTR.9.10 Something else.",
+                      r"SC\.[A-Z0-9]{1,4}\.[A-Z][\w.\-]+")
+    _got = next((r["statement"] for r in _rows if r["code"] == "SC.K12.CTR.9.9"), "")
+    if not _got.endswith("Evaluate results based on the given context."):
+        bad += 1
+        print(f"  FAIL long statement truncated at {len(_got)} chars (tail lost): ...{_got[-60:]!r}")
+    if len(_got) < 600:
+        bad += 1
+        print(f"  FAIL long statement is {len(_got)} chars — expected the full text")
     for seg, want_stmt, want_field in SPLIT_PROBES:
         got = split_fields(seg)
         if got["statement"] != want_stmt:
