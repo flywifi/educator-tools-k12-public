@@ -33,6 +33,12 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
 - `offline_index.py` — build/query the gitignored offline reference index; `--build` also writes the
   committed `canonical-sources/index/index-manifest.json` (see that dir's README).
 - `parse_fl_standards.py` — parse FL standards into the indexed JSON (rebuilds the index after).
+  Emits the benchmark sentence as `statement` plus the labelled fields beside it (`clarifications`,
+  `examples`, `remarks`, `complexity`, `date_adopted`, `related_access_points`).
+  `--out <dir>` stages a regeneration outside the repo; `--self-test` runs the splitter's probes.
+- `parse_diff.py` — the gate a staged regeneration must pass before it lands. Aborts if the code set
+  moved, or if a new statement is neither a prefix of the old one nor present verbatim in the source
+  document. Run it between `parse_fl_standards.py --out` and any commit of `florida/data/`.
 - `standards_refresh.py`, `crosswalk.py`, `fl_lookup.py`, `msid_lookup.py` — standards refresh,
   crosswalks, school MSID lookups (`--apply` rebuilds the index).
 

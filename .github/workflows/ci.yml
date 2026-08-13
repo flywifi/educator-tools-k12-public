@@ -23,6 +23,9 @@ jobs:
       - name: CPALMS verification-loop self-test (offline; mutation + disposition + census guards)
         run: python3 tools/cpalms_verify.py --self-test
 
+      - name: Corpus parser self-test (label-vs-prose splitter probes)
+        run: python3 tools/parse_fl_standards.py --self-test
+
       - name: Validate eval files
         run: |
           python3 - <<'PY'

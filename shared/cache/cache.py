@@ -41,10 +41,23 @@ DB = HERE / "index.local.db"
 SUBJECTS = ["math", "ela", "science", "computer_science", "eld", "social_studies"]
 CPALMS = "https://www.cpalms.org/search/Standard"
 
-# FTS5 columns: statement + code are tokenized (searched); the rest are stored
+# FTS5 columns: statement + code + detail are tokenized (searched); the rest are stored
 # UNINDEXED so they can still be filtered/returned without bloating the index.
-_SEARCH_COLS = "code, statement"
+#
+# `detail` carries the labelled text that the parser now keeps BESIDE the statement —
+# clarifications, examples and remarks. Before the corpus was split into fields, that text sat
+# inside `statement` and was searchable by accident; indexing it deliberately keeps recall (39,560
+# searchable word-instances, ~39% of the corpus, would otherwise have silently left the index)
+# while `statement` itself returns only the benchmark sentence.
+_SEARCH_COLS = "code, statement, detail"
 _STORE_COLS = "subject UNINDEXED, grade UNINDEXED, strand UNINDEXED, type UNINDEXED, source_file UNINDEXED"
+# Fields folded into `detail`. Deliberately excludes date_adopted / complexity / related_access_points:
+# those are metadata whose tokens ("05/23", "Moderate") are noise in a keyword search.
+DETAIL_FIELDS = ("clarifications", "examples", "remarks")
+
+
+def detail_of(s: dict) -> str:
+    return " ".join(v for v in (s.get(k) or "" for k in DETAIL_FIELDS) if v)
 
 
 def _now() -> str:
@@ -97,7 +110,7 @@ def build() -> int:
             )
         else:
             conn.execute(
-                "CREATE TABLE standards (code TEXT, statement TEXT, subject TEXT, "
+                "CREATE TABLE standards (code TEXT, statement TEXT, detail TEXT, subject TEXT, "
                 "grade TEXT, strand TEXT, type TEXT, source_file TEXT)"
             )
         conn.execute("CREATE TABLE cache_meta (key TEXT PRIMARY KEY, value TEXT)")
@@ -105,9 +118,9 @@ def build() -> int:
         rows, baselines = 0, {}
         for s, subject, fname in _iter_standards():
             conn.execute(
-                "INSERT INTO standards (code, statement, subject, grade, strand, type, source_file) "
-                "VALUES (?,?,?,?,?,?,?)",
-                (s.get("code", ""), s.get("statement", ""), subject or "",
+                "INSERT INTO standards (code, statement, detail, subject, grade, strand, type, "
+                "source_file) VALUES (?,?,?,?,?,?,?,?)",
+                (s.get("code", ""), s.get("statement", ""), detail_of(s), subject or "",
                  s.get("grade", ""), s.get("strand", ""), s.get("type", ""), fname),
             )
             rows += 1
@@ -182,7 +195,10 @@ def query(text: str | None, subject: str | None, grade: str | None,
             base += " ORDER BY bm25(standards) LIMIT ?"
         else:
             if text:  # LIKE fallback (no FTS5) or text alongside no MATCH
-                where.append("statement LIKE ?"); params.append(f"%{text}%")
+                # `detail` too, so the fallback path keeps the same recall as the FTS path now that
+                # clarifications/examples live outside `statement`.
+                where.append("(statement LIKE ? OR detail LIKE ?)")
+                params.extend([f"%{text}%", f"%{text}%"])
             base = ("SELECT code, statement, subject, grade, strand, type, source_file "
                     "FROM standards")
             if where:
