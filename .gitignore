@@ -54,3 +54,6 @@ HARVEST_HANDOFF.md
 
 # CPALMS verification scratch reports (session-scoped; the overlay is the durable record)
 .reports/
+
+# cpalms_verify overlay write locks — runtime only, never committed
+shared/standards/resources/florida/data/overlays/.*.cpalms.lock

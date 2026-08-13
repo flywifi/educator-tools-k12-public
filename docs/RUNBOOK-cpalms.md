@@ -88,6 +88,23 @@ costs nothing instead of thousands of redundant requests.
 10. **A census that errored writes no `census_diff`.** It records `census_meta` for diagnosis and
    exits non-zero. An empty census is a lie (it claims every code in scope is absent from CPALMS);
    an absent one is detectable.
+11. **`confirmed` is EQUALITY now — there is no tolerance left to lean on.** The corpus statement
+   and the CPALMS card must be the same text, ignoring only whitespace (CPALMS's HTML drops spaces
+   after punctuation and around bullets). No similarity band, no prefix rule, no minimum length.
+   A truncated card can only support a prefix claim, so it routes to `near_match`, never
+   `confirmed`. If a sweep suddenly produces many `statement_differs` rows, suspect the CORPUS
+   first — run `--scan-parse-defects` — before assuming CPALMS changed.
+12. **The overlay is write-LOCKED per subject.** `--apply --write` and `--reclassify --write` take
+   `overlays/.<subject>.cpalms.lock` across the whole read-modify-write. Atomic writes prevent a
+   torn file; they do nothing about two runs each reading the same overlay and the second erasing
+   the first's entries. A second writer is refused and told which pid holds the lock. A lock older
+   than an hour is reported as stale **with the command to remove it** — it is never auto-broken,
+   because auto-breaking is the lost update with extra steps. Different subjects lock
+   independently, so parallel per-subject sweeps are fine.
+13. **`renumbered` requires exact text AND uniqueness.** It is a disposition — the row stops being
+   retried and a citation gets pointed at a different code — so it demands the same evidence as
+   `confirmed`. A close-but-inexact single candidate is recorded as `ambiguous` with the candidate
+   named, which carries `needs_review` and is never a verification.
 
 ## 3. Find out what is left — never guess, never read a number from prose
 
@@ -161,9 +178,20 @@ When the manifest shows 0 remaining **and 0 needs_review**: delete the standing 
 
 ## 6. Open findings — known, do not re-litigate
 
-- **D-J (OPEN, cosmetic, mitigated)** — the legacy `.doc` parse loses apostrophes and drops `e.g.,`
-  markers. Verified codes carry CPALMS's text in the overlay, so artifacts compare against correct
-  wording; the fix is a FLDOE source-document refresh, not a code change.
+- **D-J — RESOLVED 2026-08-13.** It was never a source-document problem: the Social Studies `.doc`
+  is UTF-8 and the parser decoded it as latin-1, then stripped non-ASCII, destroying 324 apostrophes
+  and 147 smart quotes. The same parser also emitted the whole table row as `statement`, so **52 %
+  of the corpus carried document furniture** — and that superset is why the verification comparator
+  could not test equality, which is where every tolerance in this tool came from. The parse is
+  fixed, the corpus regenerated under `tools/parse_diff.py`, and the tolerances DELETED: no
+  similarity band, no prefix rule, no `MIN_CONFIRM_CHARS`, and `renumbered` now requires exact text
+  plus uniqueness. Full write-up: launch-readiness audit §10. The `e.g.,` half of D-J was
+  misdiagnosed — see §10.3; that one is a CPALMS revision, not a parse loss.
+- **Two genuine corpus↔CPALMS divergences remain**, both recorded `statement_differs` /
+  `needs_review`: `SS.4.E.1.1` ("social and ethnic" → "demographic") and `SS.5.G.2.1` (CPALMS added
+  "(e.g., "). The corpus matches the committed source document in both cases; CPALMS has revised
+  them. Do not "fix" the corpus to match — the corpus reflects its source, and the overlay serves
+  CPALMS's text to citations.
 - The seven residual risks in `docs/audits/2026-08-10-launch-readiness-audit.md` §4, and the two
   correction notes (§6 on the wrong counts, §7 on what `confirmed` used to mean).
 - **A4/A5/A6/NEW-8 — RESOLVED 2026-08-11.** The card parser now slices the fragment per card, so a

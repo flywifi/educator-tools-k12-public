@@ -74,17 +74,25 @@ def _overlay_needs_review(ov: dict) -> bool:
 # detection must CATCH a benchmark restated wrongly. Reusing one for the other misses value drift
 # and caveat stripping (audit finding F5, 2026-08-09).
 _MUT_NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
-# Tails that are DOCUMENT METADATA, not restatement content: the .docx/.doc parse appends
-# clarifications, complexity ratings, adoption dates, and (in the legacy .doc) bleed from the
-# next section heading. Calibrated against 113 A9 false positives sampled 2026-08-10 — the
+# Tails that are DOCUMENT METADATA, not restatement content: labelled columns the source documents
+# carry beside a benchmark. Calibrated against 113 A9 false positives sampled 2026-08-10 — the
 # benchmark sentences were identical; only these tails differed.
-# NOTE: alternatives ending in punctuation (e.g. "standard 8:") cannot carry a trailing \b —
+#
+# Matched CASE-SENSITIVELY on the raw text, and only in LABEL form, for the same reason the parser
+# is (see tools/parse_fl_standards.py): these are ordinary English words as well as labels. The
+# previous case-insensitive bare-word version cut every statement at the first "example", so
+# "Identify examples of when figurative language is used to contribute to meaning" was compared as
+# the single word "Identify" — 137 statements whose remainder no mutation could ever be detected in.
+# `Examples` additionally never counts after "for", the one prose form the FL documents use.
+#
+# NOTE: alternatives ending in punctuation (e.g. "Standard 8:") cannot carry a trailing \b —
 # a colon followed by a space is not a word boundary — so they live in their own branch.
 _MUT_TAIL = re.compile(
-    r"(?:\b(?:clarifications?|examples?|remarks?|notes?|content complexity|cognitive complexity|"
-    r"date adopted(?: or (?:last )?revised)?|benchmark\s*code)\b"
-    r"|\bstandard\s*\d+\s*:)"
-    r"\s*:?.*$", re.I | re.S)
+    r"(?:\b(?:Clarifications?|Remarks?|Notes?|Content Complexity|Cognitive Complexity|"
+    r"Date Adopted(?: or (?:Last )?Revised)?|BENCHMARK\s*CODE)\b"
+    r"|(?<![Ff]or )\bExamples?\s*:"
+    r"|\bStandard\s*\d+\s*:)"
+    r"\s*:?.*$", re.S)
 _MUT_HEDGE = ("with support", "with guidance", "with prompting", "explore", "begin to",
               "approximately", "as appropriate", "when appropriate", "using models",
               "using manipulatives", "in familiar contexts", "may ")
@@ -108,8 +116,12 @@ def _mut_norm(s: str) -> str:
 
 
 def _mut_core(s: str) -> str:
-    """Origin form for comparison: normalized, with any appended clarification/example tail cut."""
-    return _MUT_TAIL.sub("", _mut_norm(s)).strip()
+    """Origin form for comparison: any appended labelled tail cut, then normalized.
+
+    Order matters. _mut_norm lowercases, and the label patterns are case-sensitive precisely
+    because the same words occur as ordinary prose — so the cut must happen on the raw text, while
+    the capitalization that distinguishes a column header from a sentence still exists."""
+    return _mut_norm(_MUT_TAIL.sub("", s or "")).strip()
 
 
 def mutation_flags(cited: str, origin: str) -> list[dict]:

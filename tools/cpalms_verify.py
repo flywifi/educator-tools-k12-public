@@ -53,9 +53,11 @@ loud abort instead of a silent restart. See docs/RUNBOOK-cpalms.md.
 from __future__ import annotations
 
 import argparse
+import contextlib
 import difflib
 import html as htmllib
 import json
+import os
 import random
 import re
 import signal
@@ -326,21 +328,38 @@ def classify(code: str, corpus_stmt: str) -> dict:
         time.sleep(random.uniform(*DELAY))
         err2, cards2 = _search(lead_words, ap=is_ap, stats=pstats)
         if not err2:
-            best = [c for c in cards2
-                    if difflib.SequenceMatcher(None, _norm(corpus_stmt)[:len(_norm(c["statement"]))],
-                                               _norm(c["statement"])).ratio() >= 0.92]
-            if len(best) == 1:
-                c = best[0]
+            # `renumbered` asserts "this exact benchmark now lives at that code", and it is a
+            # DISPOSITION — the row stops being retried. An assertion that strong needs the same
+            # evidence as `confirmed`: the two texts must be the SAME text, and exactly one card may
+            # claim it. The previous rule accepted a 0.92 similarity on a PREFIX, which on a typical
+            # benchmark is several words of slack — enough to point a citation at a different
+            # standard that merely opens the same way.
+            exact = [c for c in cards2 if _lead_matches(corpus_stmt, c["statement"])[0] == "strict"]
+            if len(exact) == 1:
+                c = exact[0]
                 row.update(cpalms_state="renumbered", new_code=c["code"],
                            cpalms_id=c["cpalms_id"], cpalms_statement=c["statement"],
                            date_revised=c["date_revised"],
                            cpalms_url=_preview_url(c["cpalms_id"], bool(_AP_SEG.search(c["code"]))),
                            detail=f"benchmark text now lives at {c['code']}")
                 return row
-            if len(best) > 1:
+            if len(exact) > 1:
                 row.update(cpalms_state="ambiguous",
-                           detail="text search matched multiple codes: "
-                                  + ", ".join(c["code"] for c in best[:4]))
+                           detail="text search matched multiple codes exactly: "
+                                  + ", ".join(c["code"] for c in exact[:4]))
+                return row
+            # No exact match. A close one is still worth surfacing — a renumbering accompanied by a
+            # small revision looks exactly like this — but it is recorded as `ambiguous`, which
+            # carries needs_review and is never a verification, with the candidate named so a human
+            # can settle it. Reporting a bare `not_on_cpalms` here would throw away the lead.
+            near = [c for c in cards2
+                    if difflib.SequenceMatcher(None, _norm(corpus_stmt)[:len(_norm(c["statement"]))],
+                                               _norm(c["statement"])).ratio() >= 0.92]
+            if near:
+                row.update(cpalms_state="ambiguous",
+                           detail="no exact text match; possible renumbering with a revised "
+                                  "statement — candidate(s): "
+                                  + ", ".join(c["code"] for c in near[:4]))
                 return row
     if pstats.get("malformed_cards"):
         # We did not find the code, but we also could not read every card CPALMS sent. Those are
@@ -699,6 +718,55 @@ def _atomic_write_json(path: Path, obj: dict) -> None:
     tmp.replace(path)
 
 
+LOCK_STALE_SECONDS = 3600
+
+
+class OverlayLocked(RuntimeError):
+    pass
+
+
+@contextlib.contextmanager
+def overlay_lock(subject: str):
+    """Exclusive write lock on one subject's overlay, held for the read-modify-write.
+
+    Atomic writes stop a TORN file; they do nothing about a LOST UPDATE. Two runs that both read
+    the overlay, each add their own entries, and each write it back leave only the second run's
+    work — with no error, no torn file, and no way to tell from the result that anything was
+    dropped. The overlay is the durable record of thousands of network round-trips, so silently
+    losing half of it is the expensive failure.
+
+    O_CREAT|O_EXCL is the primitive: creating the lock file succeeds for exactly one process. The
+    loser is TOLD who holds it and for how long, and a lock older than an hour is reported as stale
+    with the command to clear it — never auto-broken, because auto-breaking is just the lost update
+    with extra steps."""
+    OVERLAYS.mkdir(parents=True, exist_ok=True)
+    lock = OVERLAYS / f".{subject}.cpalms.lock"
+    try:
+        fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    except FileExistsError:
+        try:
+            held = json.loads(lock.read_text(encoding="utf-8"))
+            age = int(time.time() - held.get("at", 0))
+            who = f"pid {held.get('pid')} since {held.get('started')} ({age}s ago)"
+        except Exception:                                    # noqa: BLE001 — unreadable lock
+            age, who = -1, "an unreadable lock file"
+        stale = ("\n  The lock is older than an hour and is probably stale. If no run is active, "
+                 f"clear it with:\n    rm {lock}" if age > LOCK_STALE_SECONDS else "")
+        raise OverlayLocked(
+            f"{subject}: overlay is locked by {who}. Refusing to write — a concurrent "
+            f"read-modify-write would silently drop one run's entries.{stale}") from None
+    try:
+        os.write(fd, json.dumps({"pid": os.getpid(), "at": time.time(),
+                                 "started": _now()}).encode("utf-8"))
+        os.close(fd)
+        yield
+    finally:
+        try:
+            lock.unlink()
+        except FileNotFoundError:
+            pass
+
+
 def _census_problem(report: dict) -> str:
     """Why this report's census cannot be trusted, or '' if it can. Presence of `census_diff` is
     NOT sufficient: run_enumerate writes it even when every filter lookup failed, which yields a
@@ -814,11 +882,22 @@ def run_apply(a) -> int:
             **({"truncated_card": True} if r.get("truncated_card") else {})}
     # MERGE with any existing overlay: newest verification wins per code; scopes accumulate.
     # Elementary now, other grade bands later — a scoped run must never clobber earlier scopes.
+    #
+    # The lock is taken HERE, before the read, and held through the write: the hazard is not a torn
+    # file (the write is atomic) but a lost update, where a concurrent run reads the same `existing`
+    # and overwrites this run's merged result with its own.
+    try:
+        lock_ctx = overlay_lock(subject)
+        lock_ctx.__enter__()
+    except OverlayLocked as exc:
+        print(f"REFUSING to write: {exc}")
+        return 1
     existing: dict = {}
     if overlay_path.exists():
         try:
             existing = json.loads(overlay_path.read_text(encoding="utf-8"))
         except Exception as exc:
+            lock_ctx.__exit__(None, None, None)
             print(f"REFUSING to overwrite unreadable existing overlay ({exc.__class__.__name__}) "
                   f"— fix or remove {overlay_path} first")
             return 1
@@ -866,6 +945,7 @@ def run_apply(a) -> int:
                           if c in corpus_codes and e.get("state") in VERIFIED_STATES}
     overlay["coverage"] = round(len(in_corpus_verified) / max(1, len(corpus_codes)), 4)
     _atomic_write_json(overlay_path, overlay)
+    lock_ctx.__exit__(None, None, None)
     print(f"\nwrote {overlay_path} ({len(merged)} merged entries, "
           f"{len(in_corpus_verified)} verified in-corpus"
           + (f", incl. {additions} cpalms_addition(s)" if additions else "")
@@ -1071,6 +1151,40 @@ def self_test() -> int:
           _st(_base + " Clarifications: Clarification 1 applies.", _base) != "confirmed")
 
     # --- G2: dispositions vs transients ---
+    # --- P5: overlay write lock (lost-update prevention) ---------------------------------
+    import os as _os
+    with overlay_lock("__probe__"):
+        try:
+            with overlay_lock("__probe__"):
+                _second = True
+        except OverlayLocked as _e:
+            _second, _msg = False, str(_e)
+    check("lock: a second writer is REFUSED (no silent lost update)", _second is False)
+    check("lock: the refusal names the holding pid", f"pid {_os.getpid()}" in _msg)
+    with overlay_lock("__probe__"):
+        pass
+    try:
+        with overlay_lock("__probe__"):
+            raise ValueError
+    except ValueError:
+        pass
+    _reacquired = False
+    with overlay_lock("__probe__"):
+        _reacquired = True
+    check("lock: released on both normal exit and exception", _reacquired)
+    _lk = OVERLAYS / ".__stale__.cpalms.lock"
+    OVERLAYS.mkdir(parents=True, exist_ok=True)
+    _lk.write_text(json.dumps({"pid": 999999, "at": time.time() - 2 * LOCK_STALE_SECONDS,
+                               "started": "old"}), encoding="utf-8")
+    try:
+        with overlay_lock("__stale__"):
+            _broke = True
+    except OverlayLocked as _e2:
+        _broke, _stale_msg = False, str(_e2)
+    check("lock: a STALE lock is reported, never auto-broken", _broke is False)
+    check("lock: the stale message prints the clearing command", "rm " in _stale_msg)
+    _lk.unlink(missing_ok=True)
+
     check("every disposition state is a valid state", DISPOSITION_STATES <= VALID_STATES)
     check("transients are NOT dispositions — they must stay in the work list",
           not ({"fetch_failed", "skipped_robots"} & DISPOSITION_STATES))
@@ -1188,6 +1302,90 @@ def self_test() -> int:
 SUBJECT_FILES = ("math", "ela", "science", "social_studies", "computer_science", "eld")
 
 
+# Signatures of a corpus statement that is not a clean benchmark sentence. These are DEFECTS of the
+# parse, not of the source: the documents are tables, and each pattern here is a column header or a
+# section heading that belongs to the document rather than to any one standard.
+#
+# Case-sensitivity is deliberate and load-bearing throughout — every one of these words also occurs
+# as ordinary English inside real benchmarks ("Use benchmark quantities", "Identify examples of
+# figurative language", "a specific body of knowledge"). Matching them case-insensitively is what
+# truncated SC.912.N.1.1 to 59 characters and reduced ELA.4.R.3.AP.1 to the word "Identify".
+PARSE_DEFECTS = [
+    ("furniture_clarifications", re.compile(r"\bClarifications?\s*:")),
+    ("furniture_remarks", re.compile(r"\bRemarks\s*(?:/\s*Examples)?\s*:")),
+    ("furniture_examples", re.compile(r"(?<![Ff]or )\bExamples?\s*:")),
+    ("furniture_complexity", re.compile(r"\b(?:Content|Cognitive)\s+Complexity\s*:")),
+    ("furniture_date_adopted", re.compile(r"\bDate Adopted")),
+    ("furniture_related_ap", re.compile(r"\bRelated Access Point")),
+    ("header_table", re.compile(r"\bBENCHMARK CODE\b|\bACCESS POINT CODE\b")),
+    ("header_section", re.compile(r"\bStandard\s+\d+\s*:|\bStrand\s*:|\bGrade\s*:"
+                                  r"|\bBody\s+[Oo]f\s+Knowledge\s*:|\bBig\s+Idea\s+\d+\s*:"
+                                  r"|\bExpectation\s+\d+\s*:")),
+    ("header_report", re.compile(r"This report was generated|cpalms\.org")),
+    # D-J: the SS document is UTF-8; decoding it as latin-1 and stripping non-ASCII replaced every
+    # apostrophe with a space, so a possessive or contraction reads as a stray single letter
+    # ("Florida's state flag" -> "Florida s state flag").
+    #
+    # The word BEFORE the orphan letter is restricted to ones that actually take an apostrophe.
+    # Without that restriction the check fires on mathematical variable prose — "after t seconds",
+    # "its distance s cm", "given to s students" — which is not damage at all. Calibrated against
+    # the pre-fix corpus as a known-bad baseline: 101 hits, every one a real destroyed apostrophe
+    # and all in Social Studies; 0 on the repaired corpus. A detector that cannot fire on the defect
+    # it names is not evidence, so it was tested against the damage before being trusted here.
+    ("lost_apostrophe", re.compile(
+        r"\b(?:[A-Z][a-z]{2,}|[Oo]ne|[Cc]an|don|doesn|isn|won|didn|couldn|wouldn|shouldn"
+        r"|[Ii]t|[Tt]hat|[Tt]here|students?|teacher|world|nation|country|state|author"
+        r"|character|people) (?:s|t|re|ll|ve|d) (?=[a-z])")),
+]
+
+
+def run_scan_parse_defects(subject: str | None = None) -> int:
+    """Scan the committed corpus for statements that still carry document furniture — offline.
+
+    This is the standing version of the one-off measurement that found the root cause: 3,425 of
+    6,583 statements (52.0%) contained a table header, a labelled column, or the NEXT section's
+    heading. It exists so that a future parser change cannot quietly reintroduce the defect, and so
+    the claim "the corpus is clean" is a command anyone can run rather than a sentence in a doc.
+
+    Exit 1 if any defect is found. Deliberately NOT a mere inverse of the parser's own patterns —
+    the vocabulary was enumerated from the documents themselves, so a parser that stops removing
+    something is still caught here."""
+    from collections import Counter
+    subjects = [subject] if subject else list(SUBJECT_FILES)
+    total = flagged = 0
+    per_kind: Counter = Counter()
+    examples: dict[str, list] = {}
+    for subj in subjects:
+        path = DATA / f"{subj}.json"
+        if not path.exists():
+            print(f"  [skip] {subj}: no corpus file")
+            continue
+        rows = json.loads(path.read_text(encoding="utf-8"))["standards"]
+        hits = 0
+        for e in rows:
+            stmt = e.get("statement") or ""
+            total += 1
+            found = [k for k, rx in PARSE_DEFECTS if rx.search(stmt)]
+            if found:
+                hits += 1
+                flagged += 1
+                for k in found:
+                    per_kind[k] += 1
+                    examples.setdefault(k, []).append(f"{e['code']}: {stmt[:90]}")
+        print(f"  {subj:18} {len(rows):5} statements, {hits:5} with parse defects")
+    print(f"\n{flagged} of {total} statement(s) carry document furniture")
+    for k, n in per_kind.most_common():
+        print(f"  {n:6}  {k}")
+        for s in examples[k][:3]:
+            print(f"          {s}")
+    if flagged:
+        print("\nFAIL — regenerate with `python3 tools/parse_fl_standards.py --out /tmp/new`, gate it "
+              "with `python3 tools/parse_diff.py --old <corpus> --new /tmp/new`, then land it.")
+        return 1
+    print("OK — every statement is a clean benchmark sentence.")
+    return 0
+
+
 def run_reclassify(write: bool) -> int:
     """Re-judge every committed overlay entry against the CURRENT corpus and predicate, offline.
 
@@ -1217,6 +1415,17 @@ def run_reclassify(write: bool) -> int:
         ovp = OVERLAYS / f"{subj}.cpalms.json"
         if not ovp.exists():
             continue
+        # Same lost-update hazard as run_apply: this re-judges every entry and rewrites the file,
+        # so a concurrent verification run would have its new entries erased. Held only when
+        # writing — a dry-run neither reads-for-write nor blocks an active sweep.
+        lock_ctx = None
+        if write:
+            try:
+                lock_ctx = overlay_lock(subj)
+                lock_ctx.__enter__()
+            except OverlayLocked as exc:
+                print(f"REFUSING to reclassify {subj}: {exc}")
+                return 1
         overlay = json.loads(ovp.read_text(encoding="utf-8"))
         corpus = {e["code"]: e.get("statement", "") for e in
                   json.loads((DATA / f"{subj}.json").read_text(encoding="utf-8"))["standards"]}
@@ -1251,6 +1460,8 @@ def run_reclassify(write: bool) -> int:
                                   if c in corpus and e.get("state") in VERIFIED_STATES}
             overlay["coverage"] = round(len(in_corpus_verified) / max(1, len(corpus)), 4)
             _atomic_write_json(ovp, overlay)
+        if lock_ctx is not None:
+            lock_ctx.__exit__(None, None, None)
     print(f"reclassify ({'WRITTEN' if write else 'dry-run'}): {total} text-judged entr(ies) "
           f"re-examined, {sum(changed.values())} changed")
     for k, v in changed.most_common():
@@ -1358,10 +1569,15 @@ def main(argv) -> int:
     ap.add_argument("--reclassify", action="store_true",
                     help="re-judge every committed overlay entry under the current predicate "
                          "(offline, deterministic, demote-only); add --write to apply")
+    ap.add_argument("--scan-parse-defects", action="store_true",
+                    help="scan the committed corpus for statements still carrying document "
+                         "furniture (offline; exit 1 if any). Use --subject to narrow.")
     ap.add_argument("--self-test", action="store_true", help="offline fixture probes")
     a = ap.parse_args(argv)
     if a.self_test:
         return self_test()
+    if a.scan_parse_defects:
+        return run_scan_parse_defects(a.subject)
     if a.reclassify:
         return run_reclassify(a.write)
     if a.manifest:

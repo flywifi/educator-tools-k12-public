@@ -26,6 +26,9 @@ jobs:
       - name: Corpus parser self-test (label-vs-prose splitter probes)
         run: python3 tools/parse_fl_standards.py --self-test
 
+      - name: Corpus is free of document furniture (parse-defect scan)
+        run: python3 tools/cpalms_verify.py --scan-parse-defects
+
       - name: Validate eval files
         run: |
           python3 - <<'PY'
