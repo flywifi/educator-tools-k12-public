@@ -374,3 +374,73 @@ hand-edited; verification still never writes into it.
 paging behaviour (§4.5); the FLDOE rule documents are still unexamined (§10.1); and §4.7 stands
 unchanged — the comparator is a detector, not a judge, and `human_review_required` remains
 unconditional.
+
+## 11. Live census validation of the grade SPANS — 2026-08-13
+
+The span-expansion path (`912`, `612`) had never been exercised against CPALMS. Four censuses were
+run, **report-only, no writes**. Every count below reconciles exactly.
+
+| scope | census | reconciliation | corpus_missing | cpalms_absent |
+|---|---|---|---|---|
+| math `912` | 504 | 497 grade-912 + 7 `MA.K12.MTR.*` | 0 | 0 |
+| science `912` | 456 | — | **1** (`SC.912.L.15.In.6`) | 0 |
+| computer science `912` | 168 | 161 found + 7 `SC.K12.CTR.*` | 0 | **4** |
+| ELA `612` | 370 | 354 (grades 6–12) + 10 (`612`) + 6 practices | 0 | 0 |
+
+The `MA.K12.MTR.*` row is worth noting: CPALMS returns the K-12 practice standards under the `912`
+filter. Because `corpus_missing` is diffed against the **whole corpus** rather than the swept scope,
+they are recognised instead of being written as 7 false "additions" — the defect that would
+otherwise have added 553 phantom codes on an earlier probe.
+
+### 11.1 Two defects found by running it
+
+1. **Computer science could not be enumerated at all.** The census aborted on
+   `access_point_error: filter discovery failed`. Read live, CPALMS's filter lists differ by
+   endpoint: **standards offers 16 subjects, access points offers 10**, and computer science, ELD,
+   gifted, special skills, birth to kindergarten and world languages are absent from the latter.
+   Our corpus agrees — those subjects carry 0 access points. "This subject has no access points" is
+   a determinate fact, not a failed lookup, and conflating the two left two subjects permanently
+   un-enumerable. Now separated (`_filter_verdict`), with the fact recorded in `census_meta`.
+2. **`--codes` accepted a comma list and mis-parsed it silently.** `--grades` beside it *is*
+   comma-separated, so the mistake is natural, and it failed in the worst direction: `"A,B,C,D"` was
+   searched as one literal code, found nowhere, and reported **`not_on_cpalms` — the state meaning
+   fabricated**. Four real standards were accused of being invented, with no hint of mis-parsing.
+   This was hit during this very validation. Now rejected with a message naming the correct form.
+
+### 11.2 `SC.912.L.15.In.6` — a real CPALMS addition
+
+Present on CPALMS; absent from our corpus **and** from the committed science source document (and
+from the newer copy supplied 2026-08-13). It is the same class as `SC.1.E.5.In.1` /
+`SC.5.L.14.In.2` (finding D-K) and awaits the human `--include-additions` gate. It is also further
+evidence for §0.7's point: the source documents are **not** a superset of CPALMS.
+
+### 11.3 Nine retired Computer Science standards — corroborated by two sources
+
+The census reported 4 grade-912 CS codes absent from CPALMS. Independently, a newer copy of
+`ComputerScience_StandardsReportWithoutAccessPoints.doc` (same origin, `cpalms.org/downloads`)
+**drops 9 codes** that the committed copy contains — and all four census findings are among them.
+The remaining five are K–8 and so were outside the swept scope. All nine were then checked
+individually against CPALMS: **9/9 `not_on_cpalms`.**
+
+`SC.K.PE.1.2` · `SC.4.CO.1.7` · `SC.4.TI.1.4` · `SC.6.HS.2.3` · `SC.7.PE.1.11` ·
+`SC.912.CO.3.4` · `SC.912.ET.1.7` · `SC.912.ET.2.6` · `SC.912.ET.2.7`
+
+Two independent sources — a newer official document and CPALMS's live database — agree these are
+**retired**. Our corpus is faithful to the document it was built from; that document is simply
+older. **This is the mirror image of §11.2**: the documents can be ahead of CPALMS (four AI/testing
+benchmarks CPALMS's search does not carry) *and* behind it (`SC.912.L.15.In.6`). Neither source is a
+superset of the other, which is precisely why both the forward verify and the reverse census exist.
+
+**Not acted on here.** Replacing a committed source document is a snapshot change, not a parse
+repair: it removes 9 codes, so `tools/parse_diff.py` would abort by design ("the code set moved —
+this is a corpus rewrite"). It needs its own decision and its own gate.
+
+### 11.4 Cross-check of the other supplied documents
+
+Eight further documents were supplied from the same origin. Seven are **code-set identical** to our
+corpus — science(+AP) 1,450, math(+AP) 1,127, ELA(+AP) 719, social studies 2,713, ELD 5 — and the
+"WithoutAccessPoints" variants are exact benchmark-only subsets. That is an independent confirmation
+that the regenerated corpus reproduces `cpalms.org/downloads` exactly, from files this repository
+did not fetch. The single apparent extra, `SC.2.CO.1`, is a **standard-level header** ("Standard 1:
+SC.2.CO.1 Evaluate computer components"), not a benchmark; its nine benchmarks `SC.2.CO.1.1`–`.9`
+are all present, so excluding it is correct.
