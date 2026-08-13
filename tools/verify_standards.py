@@ -39,7 +39,15 @@ PREFIX_SUBJECTS = {"MA": ["math"], "ELA": ["ela"], "SC": ["science", "computer_s
 # covers >= OVERLAY_TRUST_COVERAGE of its codes — see _is_low_confidence().
 LOW_CONFIDENCE = {
     "social_studies": "social_studies corpus is a best-effort .doc parse (data/index.json) — verify on CPALMS",
-    "eld": "only the 5 umbrella ELD.K12.ELL.* practices are enumerated — verify deeper ELD codes on CPALMS",
+    # ELD's entry is retained for the coverage machinery, but its premise was WRONG. It assumed
+    # deeper ELD codes existed that we had not enumerated. A census swept CPALMS's ELD subject
+    # across all 13 grade labels (2026-08-13) and found exactly 5 unique codes — the same 5 — and
+    # ELD.K12.ELL.{LA,SI,MA}.2 each return not_on_cpalms. Florida's ELL standards ARE these five.
+    # With the overlay at 5/5 the coverage threshold now lifts ELD out of this set, so an absent
+    # ELD.K12.ELL.* code blocks. WIDA's own descriptors use a different coding scheme entirely
+    # (e.g. "ELD-SI.4-12.Narrate"), so they resolve as unknown_framework — advisory, never blocking.
+    "eld": "ELD enumerates the 5 umbrella ELD.K12.ELL.* standards; CPALMS's ELD catalogue contains "
+           "exactly those 5 (censused 2026-08-13). WIDA descriptors use another scheme — verify on WIDA",
 }
 OVERLAYS = DATA / "overlays"
 OVERLAY_TRUST_COVERAGE = 0.98
@@ -429,7 +437,12 @@ PROBES = [
     ("MA.912.AR.1.1", {"grade_band": "3-5"}, "resolved", False, False),      # band mismatch advisory
     ("MA.3.NSO.9.99", {}, "not_found", True, None),                          # the fabricated-code case
     ("SS.7.C.1.99", {}, "not_found_low_confidence", False, None),            # best-effort corpus
-    ("ELD.K12.ELL.LA.2", {}, "not_found_low_confidence", False, None),       # partial corpus
+    # Was `not_found_low_confidence` (advisory) while ELD was treated as a partial corpus. The
+    # 2026-08-13 census settled that: CPALMS's ELD subject holds exactly the 5 umbrella standards
+    # across all 13 grade labels, and this code returns not_on_cpalms when asked directly. With the
+    # overlay at 5/5 the coverage threshold lifts ELD out of LOW_CONFIDENCE, so absence is now
+    # evidence and this blocks. Deliberate change, not a drifted expectation.
+    ("ELD.K12.ELL.LA.2", {}, "not_found", True, None),                       # absent; corpus complete
     ("MA.3.NSO", {}, "malformed", True, None),                               # truncated
     ("CCSS.MATH.CONTENT.3.NF.A.1", {}, "scheme_valid_unenumerated", False, None),
     ("CCSS.MATH.CONTENT.HSA.REI.B.3", {}, "scheme_valid_unenumerated", False, None),
@@ -482,6 +495,20 @@ def self_test(invert: bool = False) -> int:
     ok = r1["state"] == "resolved" and r1.get("verified", {}).get("source") == "cpalms" \
         and r1["statement"] == "VERIFIED-TEXT"
     print(("PASS" if ok else "FAIL") + " overlay: resolved code carries verified stamp + origin form")
+    failures += 0 if ok else 1
+
+    # --- ELD crossed the coverage threshold 2026-08-13: absences now BLOCK -------------------
+    # Guarded because the flip is user-visible and easy to undo by accident. The justification is
+    # a complete census (13 grade labels -> exactly 5 codes) plus control probes; if the overlay
+    # ever regresses below threshold these expectations change, and that should be deliberate.
+    _eld = verify(["ELD.K12.ELL.LA.1"])
+    ok = _eld["results"][0]["state"] == "resolved" and not _eld["blocking"]
+    print(("PASS" if ok else "FAIL") + " ELD: a verified umbrella standard resolves cleanly")
+    failures += 0 if ok else 1
+    _wida = verify(["ELD-SI.4-12.Narrate"])
+    ok = _wida["results"][0]["state"] == "unknown_framework" and not _wida["blocking"]
+    print(("PASS" if ok else "FAIL") + " ELD: a WIDA-scheme descriptor stays ADVISORY, never blocking "
+                                      "(different framework, not a fabricated FL code)")
     failures += 0 if ok else 1
 
     # --- retired != fabricated (D-K in a new costume) ------------------------------------------
