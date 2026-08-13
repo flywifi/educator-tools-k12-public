@@ -385,6 +385,16 @@ def run_verify(a) -> int:
         corpus = {e["code"]: e.get("statement", "") for e in doc["standards"]}
         grades_of = {e["code"]: str(e.get("grade")) for e in doc["standards"]}
     codes = list(a.codes) if a.codes else list(corpus)
+    # --codes is SPACE-separated (nargs="*"), but --grades beside it is comma-separated, so a comma
+    # list is the natural mistake. It fails in the worst possible way: "A,B,C,D" is searched as one
+    # literal code, found nowhere, and reported `not_on_cpalms` — the state that means FABRICATED.
+    # A run that should have said "4 codes verified" instead accuses four real standards of being
+    # invented, with no hint that anything was mis-parsed.
+    if any("," in c for c in codes):
+        print("ERROR: --codes is space-separated, not comma-separated. A comma list is searched as "
+              "a single literal code and comes back `not_on_cpalms`, which reads as FABRICATED.\n"
+              "  wrong:  --codes A,B,C\n  right:  --codes A B C", file=sys.stderr)
+        return 2
     if a.grades:
         want = {g.strip() for g in a.grades.split(",")}
         codes = [c for c in codes
@@ -573,6 +583,33 @@ def _expand_grades(grades_csv: str) -> list[str]:
     return list(dict.fromkeys(out))
 
 
+def _filter_verdict(subjects: dict, hint: str, kind: str, missing: list) -> tuple[str, str | None]:
+    """(verdict, subject_id) where verdict is 'ok' | 'not_offered' | 'error'.
+
+    Separates two things a naive check conflates:
+      * 'not_offered' — the ACCESS POINT endpoint does not list this subject at all. CPALMS offers
+        access points for 10 subjects; computer science, ELD, gifted, special skills, birth to
+        kindergarten and world languages are not among them (the standards endpoint offers 16).
+        This is a determinate fact about CPALMS, and the corpus agrees — those subjects carry 0
+        access points. Reported, then the sweep continues with the benchmark half.
+      * 'error' — the subject IS offered but could not be resolved, or a grade label did not
+        resolve. That is a real discovery failure and must abort the census, because an incomplete
+        census claims real standards are absent from CPALMS.
+
+    Keeping them apart matters in both directions: conflating them into 'error' left computer
+    science and ELD permanently un-enumerable, and conflating them into 'skip' would let a genuine
+    discovery failure pass silently."""
+    candidates = [(k, v) for k, v in subjects.items() if hint in k]
+    # Most-specific match: 'science' must pick "Science", never "Computer Science" (seen live:
+    # the naive contains-match polluted a science census with SC.4.CC.* codes).
+    subj_id = min(candidates, key=lambda kv: len(kv[0]))[1] if candidates else None
+    if not candidates and kind == "access_point":
+        return "not_offered", None
+    if not subj_id or missing:
+        return "error", subj_id
+    return "ok", subj_id
+
+
 def _census_sweep(search_url: str, sub_url: str, grd_url: str, subject: str,
                   grades_csv: str, kind: str, census: dict, meta: dict) -> None:
     """One paged sweep of a search endpoint (benchmarks OR access points) into `census`."""
@@ -580,11 +617,16 @@ def _census_sweep(search_url: str, sub_url: str, grd_url: str, subject: str,
     hint = SUBJECT_LABEL_HINTS[subject]
     # Most-specific match: 'science' must pick "Science", never "Computer Science" (seen live:
     # the naive contains-match polluted a science census with SC.4.CC.* codes).
-    candidates = [(k, v) for k, v in subjects.items() if hint in k]
-    subj_id = min(candidates, key=lambda kv: len(kv[0]))[1] if candidates else None
     grades_csv = ",".join(_expand_grades(grades_csv))
     missing = [g for g in grades_csv.split(",") if g and g.strip() not in grades]
-    if not subj_id or missing:
+    verdict, subj_id = _filter_verdict(subjects, hint, kind, missing)
+    if verdict == "not_offered":
+        meta[f"{kind}_not_offered"] = (
+            f"CPALMS's access-point search does not offer '{subject}' as a subject "
+            f"({len(subjects)} offered: {', '.join(sorted(subjects))}). Recorded as "
+            f"'this subject has no access points', not as a failed lookup.")
+        return
+    if verdict == "error":
         meta[f"{kind}_error"] = (f"filter discovery failed: subject_id={subj_id} "
                                  f"missing_grades={missing} (labels: {sorted(subjects)[:8]}…)")
         return
@@ -1151,6 +1193,22 @@ def self_test() -> int:
           _st(_base + " Clarifications: Clarification 1 applies.", _base) != "confirmed")
 
     # --- G2: dispositions vs transients ---
+    # --- P6: "not offered" is a FACT, "could not resolve" is an ERROR --------------------
+    _ap_subjects = {"dance": "33", "english language arts (b.e.s.t.)": "87", "science": "29",
+                    "mathematics (b.e.s.t.)": "86", "social studies": "32"}          # live: 10 total
+    _std_subjects = dict(_ap_subjects, **{"computer science": "91",
+                                          "english language development": "50"})     # live: 16 total
+    check("census: a subject the AP endpoint does not offer is 'not_offered', not an error",
+          _filter_verdict(_ap_subjects, "computer science", "access_point", [])[0] == "not_offered")
+    check("census: the same subject on the BENCHMARK endpoint is an error, not 'not_offered'",
+          _filter_verdict({"dance": "33"}, "computer science", "benchmark", [])[0] == "error")
+    check("census: an offered subject with an unresolvable GRADE is still an error",
+          _filter_verdict(_std_subjects, "computer science", "access_point", ["77"])[0] == "error")
+    check("census: an offered subject with resolvable grades is ok",
+          _filter_verdict(_std_subjects, "computer science", "benchmark", []) == ("ok", "91"))
+    check("census: 'science' still resolves to Science, never Computer Science",
+          _filter_verdict(_std_subjects, "science", "benchmark", [])[1] == "29")
+
     # --- P5: overlay write lock (lost-update prevention) ---------------------------------
     import os as _os
     with overlay_lock("__probe__"):
