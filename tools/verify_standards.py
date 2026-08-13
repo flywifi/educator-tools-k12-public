@@ -316,6 +316,19 @@ def _resolve_one(code: str, standards_set, grade_band, applicability) -> dict:
                          detail=f"superseded_by {ov['new_code']} (CPALMS renumbering) — cite the "
                                 f"current code")
                 return r
+            if ov.get("state") == "retired":
+                # The code was REAL and has been withdrawn. Reporting it as `not_found` would make
+                # the gate call a published Florida benchmark fabricated — finding D-K again. The
+                # author still needs to act (do not cite it in new work), so it carries
+                # needs_review and the withdrawn text, but it is never an integrity failure.
+                r.update(state="retired", statement=ov.get("statement_withdrawn"),
+                         verified={"source": "cpalms", "checked_at": ov.get("checked_at"),
+                                   "url": ov.get("cpalms_url"), "state": "retired"},
+                         needs_review=True,
+                         detail=(ov.get("detail") or "withdrawn from CPALMS") +
+                                " — do not cite in new work; if this artifact is historical, say so"
+                                " explicitly.")
+                return r
             if ov.get("state") == "cpalms_addition":
                 r.update(state="resolved", statement=ov.get("statement_verified"),
                          verified={"source": "cpalms", "checked_at": ov.get("checked_at"),
@@ -469,6 +482,21 @@ def self_test(invert: bool = False) -> int:
     ok = r1["state"] == "resolved" and r1.get("verified", {}).get("source") == "cpalms" \
         and r1["statement"] == "VERIFIED-TEXT"
     print(("PASS" if ok else "FAIL") + " overlay: resolved code carries verified stamp + origin form")
+    failures += 0 if ok else 1
+
+    # --- retired != fabricated (D-K in a new costume) ------------------------------------------
+    _overlay_cache["social_studies"]["entries"]["SS.9.GONE.1.1"] = {
+        "state": "retired", "needs_review": True, "statement_withdrawn": "WITHDRAWN-TEXT",
+        "checked_at": "2026-08-13T00:00:00Z", "detail": "withdrawn: absent from CPALMS and dropped"}
+    _r = verify(["SS.9.GONE.1.1"])
+    _rr = _r["results"][0]
+    ok = (_rr["state"] == "retired" and _rr.get("needs_review") is True
+          and "SS.9.GONE.1.1" not in _r["blocking"] and _rr["statement"] == "WITHDRAWN-TEXT")
+    print(("PASS" if ok else "FAIL") + " retired: a WITHDRAWN standard is not blocking and keeps "
+                                      "its text (a real code must never read as fabricated)")
+    failures += 0 if ok else 1
+    ok = "do not cite in new work" in _rr["detail"]
+    print(("PASS" if ok else "FAIL") + " retired: the author is told what to do about it")
     failures += 0 if ok else 1
 
     # --- N1: an overlay entry proves the CODE exists, not that the TEXT agrees ----------------

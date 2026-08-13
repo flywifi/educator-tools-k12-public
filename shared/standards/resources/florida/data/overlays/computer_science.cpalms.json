@@ -1,0 +1,109 @@
+{
+ "subject": "computer_science",
+ "source": "cpalms",
+ "generated_at": "2026-08-13T03:11:28Z",
+ "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
+ "coverage": 0.0,
+ "scopes": [],
+ "entries": {
+  "SC.K.PE.1.2": {
+   "state": "retired",
+   "needs_review": true,
+   "checked_at": "2026-08-13T03:11:28Z",
+   "statement_withdrawn": "Develop a series of steps to complete a task.",
+   "detail": "withdrawn: absent from CPALMS (checked individually 2026-08-13) AND dropped from the refreshed ComputerScience_StandardsReportWithoutAccessPoints.doc (cpalms.org/downloads). Two independent sources agree. Real when published — NOT a fabricated code.",
+   "evidence": [
+    "cpalms_forward_search:not_on_cpalms",
+    "source_document_refresh:dropped"
+   ]
+  },
+  "SC.4.CO.1.7": {
+   "state": "retired",
+   "needs_review": true,
+   "checked_at": "2026-08-13T03:11:28Z",
+   "statement_withdrawn": "Compare hardware and software.",
+   "detail": "withdrawn: absent from CPALMS (checked individually 2026-08-13) AND dropped from the refreshed ComputerScience_StandardsReportWithoutAccessPoints.doc (cpalms.org/downloads). Two independent sources agree. Real when published — NOT a fabricated code.",
+   "evidence": [
+    "cpalms_forward_search:not_on_cpalms",
+    "source_document_refresh:dropped"
+   ]
+  },
+  "SC.4.TI.1.4": {
+   "state": "retired",
+   "needs_review": true,
+   "checked_at": "2026-08-13T03:11:28Z",
+   "statement_withdrawn": "Compare human and computer performance on similar tasks.",
+   "detail": "withdrawn: absent from CPALMS (checked individually 2026-08-13) AND dropped from the refreshed ComputerScience_StandardsReportWithoutAccessPoints.doc (cpalms.org/downloads). Two independent sources agree. Real when published — NOT a fabricated code.",
+   "evidence": [
+    "cpalms_forward_search:not_on_cpalms",
+    "source_document_refresh:dropped"
+   ]
+  },
+  "SC.6.HS.2.3": {
+   "state": "retired",
+   "needs_review": true,
+   "checked_at": "2026-08-13T03:11:28Z",
+   "statement_withdrawn": "Implement the 20-20-20 rule for technology.",
+   "detail": "withdrawn: absent from CPALMS (checked individually 2026-08-13) AND dropped from the refreshed ComputerScience_StandardsReportWithoutAccessPoints.doc (cpalms.org/downloads). Two independent sources agree. Real when published — NOT a fabricated code.",
+   "evidence": [
+    "cpalms_forward_search:not_on_cpalms",
+    "source_document_refresh:dropped"
+   ]
+  },
+  "SC.7.PE.1.11": {
+   "state": "retired",
+   "needs_review": true,
+   "checked_at": "2026-08-13T03:11:28Z",
+   "statement_withdrawn": "Create iterative and non-iterative structures in a code segment.",
+   "detail": "withdrawn: absent from CPALMS (checked individually 2026-08-13) AND dropped from the refreshed ComputerScience_StandardsReportWithoutAccessPoints.doc (cpalms.org/downloads). Two independent sources agree. Real when published — NOT a fabricated code.",
+   "evidence": [
+    "cpalms_forward_search:not_on_cpalms",
+    "source_document_refresh:dropped"
+   ]
+  },
+  "SC.912.CO.3.4": {
+   "state": "retired",
+   "needs_review": true,
+   "checked_at": "2026-08-13T03:11:28Z",
+   "statement_withdrawn": "Explain how automated software testing can reduce the cost of the testing effort.",
+   "detail": "withdrawn: absent from CPALMS (checked individually 2026-08-13) AND dropped from the refreshed ComputerScience_StandardsReportWithoutAccessPoints.doc (cpalms.org/downloads). Two independent sources agree. Real when published — NOT a fabricated code.",
+   "evidence": [
+    "cpalms_forward_search:not_on_cpalms",
+    "source_document_refresh:dropped"
+   ]
+  },
+  "SC.912.ET.1.7": {
+   "state": "retired",
+   "needs_review": true,
+   "checked_at": "2026-08-13T03:11:28Z",
+   "statement_withdrawn": "Describe how technology has changed the way people build and manage organizations and how technology impacts personal life.",
+   "detail": "withdrawn: absent from CPALMS (checked individually 2026-08-13) AND dropped from the refreshed ComputerScience_StandardsReportWithoutAccessPoints.doc (cpalms.org/downloads). Two independent sources agree. Real when published — NOT a fabricated code.",
+   "evidence": [
+    "cpalms_forward_search:not_on_cpalms",
+    "source_document_refresh:dropped"
+   ]
+  },
+  "SC.912.ET.2.6": {
+   "state": "retired",
+   "needs_review": true,
+   "checked_at": "2026-08-13T03:11:28Z",
+   "statement_withdrawn": "Describe how predictive Artificial Intelligence (AI) can be used to solve problems.",
+   "detail": "withdrawn: absent from CPALMS (checked individually 2026-08-13) AND dropped from the refreshed ComputerScience_StandardsReportWithoutAccessPoints.doc (cpalms.org/downloads). Two independent sources agree. Real when published — NOT a fabricated code.",
+   "evidence": [
+    "cpalms_forward_search:not_on_cpalms",
+    "source_document_refresh:dropped"
+   ]
+  },
+  "SC.912.ET.2.7": {
+   "state": "retired",
+   "needs_review": true,
+   "checked_at": "2026-08-13T03:11:28Z",
+   "statement_withdrawn": "Describe common measurements of machine intelligence.",
+   "detail": "withdrawn: absent from CPALMS (checked individually 2026-08-13) AND dropped from the refreshed ComputerScience_StandardsReportWithoutAccessPoints.doc (cpalms.org/downloads). Two independent sources agree. Real when published — NOT a fabricated code.",
+   "evidence": [
+    "cpalms_forward_search:not_on_cpalms",
+    "source_document_refresh:dropped"
+   ]
+  }
+ }
+}

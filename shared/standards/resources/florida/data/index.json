@@ -31,10 +31,10 @@
     },
     "computer_science": {
       "file": "data/computer_science.json",
-      "format": "docx",
-      "reader": "docintel",
-      "count": 569,
-      "benchmarks": 562,
+      "format": "doc",
+      "reader": "legacy-doc",
+      "count": 560,
+      "benchmarks": 553,
       "access_points": 0,
       "practices": 7
     },
@@ -57,5 +57,5 @@
       "practices": 0
     }
   },
-  "total": 6583
+  "total": 6574
 }

@@ -57,7 +57,10 @@ SUBJECTS = {
     "math":             ("standards/Mathematics(B.E.S.T.)_StandardsandAccessPoints.doc.docx", r"MA\.[A-Z0-9]{1,4}\.[A-Z]{1,4}\.[\w.]+", "docx"),
     "ela":              ("standards/EnglishLanguageArts(B.E.S.T.)_StandardsandAccessPoints.doc.docx", r"ELA\.[A-Z0-9]{1,4}\.[A-Z]{1,3}\.[\w.]+", "docx"),
     "science":          ("standards/Science_StandardsandAccessPoints.doc.docx", r"SC\.[A-Z0-9]{1,4}\.[A-Z]{1,3}\.[\w.]+", "docx"),
-    "computer_science": ("standards/ComputerScience_StandardsReportWithoutAccessPoints.doc.docx", r"SC\.[A-Z0-9]{1,4}\.[A-Z][\w.\-]+", "docx"),
+    # Refreshed 2026-08-13 to the HTML export CPALMS serves today. The previous .doc.docx snapshot
+    # carried 9 standards CPALMS has since retired and the pre-renumbering text for SC.7.PE.1.6-.1.10
+    # — both confirmed against CPALMS directly. Same reader path as social studies.
+    "computer_science": ("standards/ComputerScience_StandardsReportWithoutAccessPoints.doc", r"SC\.[A-Z0-9]{1,4}\.[A-Z][\w.\-]+", "doc"),
     "eld":              ("english-learners/EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc.docx", r"ELD\.[A-Z0-9]{1,4}\.[\w.]+", "docx"),
     "social_studies":   ("standards/SocialStudies_StandardsandAccessPoints_WR.doc", r"SS\.[A-Z0-9]{1,4}\.[A-Z]{1,3}\.[\w.]+", "doc"),
 }
@@ -266,6 +269,10 @@ def _sentence_trim(s: str, soft: int = 600) -> str:
     return s[: cut + 1].strip() if cut > 40 else s[:soft].rsplit(" ", 1)[0].strip()
 
 
+# "Standard 7 :" / "Standard 1:" immediately before a code — the container-heading signature.
+_STD_HEADER = re.compile(r"\bStandard\s+\d+\s*:\s*$")
+
+
 def parse_doc(text: str, code_re: str):
     """Best-effort for legacy binary .doc: codes + cleaned trailing text."""
     hits = list(re.finditer(rf"({code_re})", text))
@@ -273,6 +280,15 @@ def parse_doc(text: str, code_re: str):
     for k, mm in enumerate(hits):
         code = mm.group(1)
         if code in seen:
+            continue
+        # A code introduced by a SECTION HEADER names the container, not a citable benchmark:
+        # "Strand: COMPUTING COMPONENTS Standard 1: SC.2.CO.1 Evaluate computer components."
+        # is the heading for SC.2.CO.1.1 … .9, all of which follow it as real benchmarks.
+        # The documents are inconsistent about this — exactly one header repeats its code across
+        # both doc-path sources — so it is skipped by the header context that precedes it rather
+        # than by a shape heuristic. (Corroboration for "not a benchmark": every one of the 6,583
+        # committed codes has 5 or 6 dot-separated segments; a container like this has 4.)
+        if _STD_HEADER.search(text[max(0, mm.start() - 40):mm.start()]):
             continue
         seg = text[mm.end(): hits[k + 1].start() if k + 1 < len(hits) else mm.end() + 700]
         # The [^\x20-\x7e] -> " " purge that used to run here is GONE: combined with the latin-1

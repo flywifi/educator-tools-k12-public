@@ -1,10 +1,10 @@
 {
   "subject": "computer_science",
-  "source_file": "ComputerScience_StandardsReportWithoutAccessPoints.doc.docx",
-  "format": "docx",
-  "reader": "docintel",
-  "retrieval_state": "content_ingested",
-  "count": 569,
+  "source_file": "ComputerScience_StandardsReportWithoutAccessPoints.doc",
+  "format": "doc",
+  "reader": "legacy-doc",
+  "retrieval_state": null,
+  "count": 560,
   "standards": [
     {
       "code": "SC.K12.CTR.1.1",
@@ -27,8 +27,8 @@
       "grade": "K12",
       "strand": "CTR",
       "type": "practice",
-      "statement": "Complete tasks with digital fluency. Students who complete tasks with digital fluency:Select and use appropriate digital tools by their functions. Demonstrate proper typing techniques and keyboarding skills. Understand responsible technology use. Use feedback to improve efficiency using digital tools. Relate previously learned concepts to new concepts. Solve problems by developing, testing and refining technological processes.",
-      "clarifications": "Teachers who encourage students to complete tasks with digital fluency: Provide students with opportunities to increase critical thinking skills. Provide students with opportunities to use various technology hardware and software, so that technology is an integral part of the learning experience. Develop students\u2019 ability to construct relationships between their current understanding and more sophisticated ways of thinking."
+      "statement": "Complete tasks with digital fluency. Students who complete tasks with digital fluency: Select and use appropriate digital tools by their functions. Demonstrate proper typing techniques and keyboarding skills. Understand responsible technology use. Use feedback to improve efficiency using digital tools. Relate previously learned concepts to new concepts.",
+      "clarifications": "Teachers who encourage students to complete tasks with digital fluency: Provide students with opportunities to increase critical thinking skills. Provide students with opportunities to use various technology hardware and software, so that technology is an integral part of the learning experience. Develop students&rsquo ability to construct relationships between their current understanding and more sophisticated ways of thinking."
     },
     {
       "code": "SC.K12.CTR.4.1",
@@ -51,7 +51,7 @@
       "grade": "K12",
       "strand": "CTR",
       "type": "practice",
-      "statement": "Differentiate between usable data and miscellaneous information. Students who differentiate between usable data and miscellaneous information: Express connections between concepts and representations. Construct possible arguments based on evidence. Perform decision-making between two actions. Practice evaluating information and sources. Perform investigations to gather data or determine if a program or method is appropriate. Discern relevant, meaningful data from irrelevant or extraneous information. Understand the characteristics and criteria determining whether data is relevant to a specific problem or task.",
+      "statement": "Differentiate between usable data and miscellaneous information. Students who differentiate between usable data and miscellaneous information: Express connections between concepts and representations. Construct possible arguments based on evidence. Perform decision-making between two actions. Practice evaluating information and sources. Perform investigations to gather data or determine if a program or method is appropriate.",
       "clarifications": "Teachers who encourage students to differentiate between useable data and miscellaneous information: Support students as they validate conclusions by comparing them to the given situation. Create opportunities for students to discuss their thinking with peers."
     },
     {
@@ -59,7 +59,7 @@
       "grade": "K12",
       "strand": "CTR",
       "type": "practice",
-      "statement": "Solve real-life problems in science and engineering using computational thinking. Students who solve real-life problems in science and engineering using computational thinking: Adapt procedures to find solutions and apply them to a new context. Look for similarities among problems. Connect solutions of problems to more complicated large-scale situations. Connect concepts to everyday experiences. Use programs, models and methods to understand, represent and solve problems. Indicate how various concepts can be applied to other disciplines. Redesign programs, models and methods to improve accuracy or efficiency. Evaluate results based on the given context.",
+      "statement": "Solve real-life problems in science and engineering using computational thinking. Students who solve real-life problems in science and engineering using computational thinking: Adapt procedures to find solutions and apply them to a new context. Look for similarities among problems. Connect solutions of problems to more complicated large-scale situations. Connect concepts to everyday experiences. Use programs, models and methods to understand, represent and solve problems. Indicate how various concepts can be applied to other disciplines.",
       "clarifications": "Teachers who encourage students to solve real-life problems in science and engineering using computational thinking: Create learning opportunities that require logical reasoning and problem-solving skills. Provide opportunities for students to create plans and procedures to solve problems. Provide opportunities for students to create programs or models, both concrete and abstract, and perform investigations. Challenge students to question the accuracy of their programs, models and methods."
     },
     {
@@ -177,14 +177,6 @@
       "strand": "PE",
       "type": "benchmark",
       "statement": "Discuss how a computer program is a set of instructions made by people to show a computer how to complete a task."
-    },
-    {
-      "code": "SC.K.PE.1.2",
-      "grade": "K",
-      "strand": "PE",
-      "type": "benchmark",
-      "statement": "Develop a series of steps to complete a task.",
-      "examples": "Example: Students brainstorm how to make a sandwich."
     },
     {
       "code": "SC.K.PE.2.1",
@@ -816,7 +808,7 @@
       "strand": "CO",
       "type": "benchmark",
       "statement": "Identify digital tools used for writing activities.",
-      "clarifications": "Clarification 1: Instruction includes using digital tools such as word processing, emails and text messages."
+      "clarifications": "Clarification 1: Instruction includes using digital tools such as, word processing, emails and text messages."
     },
     {
       "code": "SC.3.CO.1.4",
@@ -824,7 +816,7 @@
       "strand": "CO",
       "type": "benchmark",
       "statement": "Identify digital tools for data collection.",
-      "clarifications": "Clarification 1: Instruction includes using digital tools such as tables, cameras and online forms or surveys."
+      "clarifications": "Clarification 1: Instruction includes using digital tools such as, tables, cameras and online forms or surveys."
     },
     {
       "code": "SC.3.CO.1.5",
@@ -840,7 +832,7 @@
       "strand": "CO",
       "type": "benchmark",
       "statement": "Apply self-editing practices to improve accuracy.",
-      "clarifications": "Clarification 1: Instruction includes accuracy within any activity, such as writing a prompt or creating a digital project. Clarification 2: Instruction includes the use of built-in tools for grammar and spelling within software."
+      "clarifications": "Clarification 1: Instruction includes accuracy within any activity, such as, writing a prompt or creating a digital project. Clarification 2: Instruction includes the use of built-in tools for grammar and spelling within software."
     },
     {
       "code": "SC.3.CO.1.7",
@@ -1126,20 +1118,12 @@
       "clarifications": "Clarification 1: Ways that computers can connect include through USB, a wired network, wireless network and through Bluetooth."
     },
     {
-      "code": "SC.4.CO.1.7",
-      "grade": "4",
-      "strand": "CO",
-      "type": "benchmark",
-      "statement": "Compare hardware and software.",
-      "clarifications": "Clarification 1: Instruction includes defining examples of hardware such as keyboard, laptop, tablet, mouse and monitors. Clarification 2: Instruction includes defining examples of software such as applications, word processing programs, spreadsheets, presentation tools and electronic games. Clarification 3: Instruction includes comparing similarities and differences of hardware and software."
-    },
-    {
       "code": "SC.4.PE.1.1",
       "grade": "4",
       "strand": "PE",
       "type": "benchmark",
       "statement": "Explain that when writing programs, a specific initial program environment is necessary.",
-      "clarifications": "Clarification 1: Initial program environment can include initial score, character position or program variables set to zero. Clarification 2: Instruction includes activities that are digital or unplugged.",
+      "clarifications": "Clarification 1: Initial program environment can include initial score, character position or program variables set to zero. Instruction includes activities that are digital or unplugged.",
       "examples": "Example: If the game has a character, like a dog, who advances on the screen when it eats a bone, then the dog may need to go in another direction when it gets to the end of the screen."
     },
     {
@@ -1202,13 +1186,6 @@
       "strand": "TI",
       "type": "benchmark",
       "statement": "Explain how Artificial Intelligence (AI) affects our ability to access, create and modify content."
-    },
-    {
-      "code": "SC.4.TI.1.4",
-      "grade": "4",
-      "strand": "TI",
-      "type": "benchmark",
-      "statement": "Compare human and computer performance on similar tasks."
     },
     {
       "code": "SC.4.TI.2.1",
@@ -1580,14 +1557,6 @@
       "type": "benchmark",
       "statement": "List negative impacts of excessive device usage.",
       "clarifications": "Clarification 1: Instruction includes device addiction, online versus in-person personality traits, digital overload and others."
-    },
-    {
-      "code": "SC.6.HS.2.3",
-      "grade": "6",
-      "strand": "HS",
-      "type": "benchmark",
-      "statement": "Implement the 20-20-20 rule for technology.",
-      "clarifications": "Clarification 1: For instruction of this benchmark, the 20-20-20 rule is defined as for every 20 minutes of screen time, look at an object 20 feet away for 20 seconds."
     },
     {
       "code": "SC.6.HS.3.1",
@@ -2152,7 +2121,7 @@
       "grade": "7",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Describe the relationship between hardware and software.",
+      "statement": "Describe the relationships between hardware and software.",
       "clarifications": "Clarification 1: Hardware and software including basic input/output systems (BIOS), operating systems and firmware."
     },
     {
@@ -2259,19 +2228,11 @@
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Develop problem solutions using a block programming language.",
-      "clarifications": "Clarification 1: Block programming language includes looping behavior, conditional statements, expressions, variables and functions."
-    },
-    {
-      "code": "SC.7.PE.1.7",
-      "grade": "7",
-      "strand": "PE",
-      "type": "benchmark",
       "statement": "Create online content using advanced design tools.",
       "clarifications": "Clarification 1: Within this benchmark, online content includes webpages, digital portfolios and multimedia artifacts."
     },
     {
-      "code": "SC.7.PE.1.8",
+      "code": "SC.7.PE.1.7",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
@@ -2279,7 +2240,7 @@
       "clarifications": "Clarification 1: Types of programming errors include syntax, logical and runtime."
     },
     {
-      "code": "SC.7.PE.1.9",
+      "code": "SC.7.PE.1.8",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
@@ -2287,14 +2248,14 @@
       "examples": "Example: How is the iterative development of a computer program and an essay alike and different? Example: Create a series of steps that you can repeat over and over to help find errors in a computer program."
     },
     {
-      "code": "SC.7.PE.1.10",
+      "code": "SC.7.PE.1.9",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
       "statement": "Write a code segment that will explore a list using iteration."
     },
     {
-      "code": "SC.7.PE.1.11",
+      "code": "SC.7.PE.1.10",
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
@@ -2321,8 +2282,7 @@
       "grade": "7",
       "strand": "PE",
       "type": "benchmark",
-      "statement": "Define parameters for individual and collaborative projects using Boolean logic.",
-      "clarifications": "Clarification 1: Boolean logic includes \u201cand,\u201d \u201cor\u201d and \u201cnot.\u201d"
+      "statement": "Define parameters for individual and collaborative projects using Boolean logic."
     },
     {
       "code": "SC.7.PE.3.2",
@@ -3369,7 +3329,7 @@
       "grade": "912",
       "strand": "CO",
       "type": "benchmark",
-      "statement": "Analyze the purpose of various random-access memory (RAM) speeds and storage sizes.",
+      "statement": "Analyze the purpose of various random access memory (RAM) speeds and storage sizes.",
       "clarifications": "Clarification 1: Instruction includes temporary storage space and speed in relation to communication with the processor. Clarification 2: Instruction includes how computers store different data types in random access memory (RAM)."
     },
     {
@@ -3495,13 +3455,6 @@
       "type": "benchmark",
       "statement": "Examine the difference between operating system (OS) software and application software.",
       "clarifications": "Clarification 1: Instruction includes the role that operating systems play in relation to application programs."
-    },
-    {
-      "code": "SC.912.CO.3.4",
-      "grade": "912",
-      "strand": "CO",
-      "type": "benchmark",
-      "statement": "Explain how automated software testing can reduce the cost of the testing effort."
     },
     {
       "code": "SC.912.PE.1.1",
@@ -3907,7 +3860,8 @@
       "grade": "912",
       "strand": "TI",
       "type": "benchmark",
-      "statement": "Analyze historical trends in hardware and software."
+      "statement": "Analyze historical trends in hardware and software.",
+      "clarifications": "Clarification 1: Instruction includes discussing technology upgrades for power requirements, computation capacity, speed, size, Artificial Intelligence (AI) and ease of use. Clarification 2: Instruction includes assessing the implications of technology trends on future computing devices."
     },
     {
       "code": "SC.912.TI.1.2",
@@ -4141,13 +4095,6 @@
       "clarifications": "Clarification 1: Instruction includes discussing the shortage of semiconductors due to increased demand and lack of available resources."
     },
     {
-      "code": "SC.912.ET.1.7",
-      "grade": "912",
-      "strand": "ET",
-      "type": "benchmark",
-      "statement": "Describe how technology has changed the way people build and manage organizations and how technology impacts personal life."
-    },
-    {
       "code": "SC.912.ET.2.1",
       "grade": "912",
       "strand": "ET",
@@ -4185,22 +4132,6 @@
       "type": "benchmark",
       "statement": "Describe major applications of artificial intelligence (AI) and machine learning.",
       "clarifications": "Clarification 1: Instruction includes discussing the applications to the medical, space and automotive fields."
-    },
-    {
-      "code": "SC.912.ET.2.6",
-      "grade": "912",
-      "strand": "ET",
-      "type": "benchmark",
-      "statement": "Describe how predictive Artificial Intelligence (AI) can be used to solve problems.",
-      "clarifications": "Clarification 1: Instruction includes using predictive Artificial Intelligence (AI) to forecast trends, such as sports, the stock market and weather."
-    },
-    {
-      "code": "SC.912.ET.2.7",
-      "grade": "912",
-      "strand": "ET",
-      "type": "benchmark",
-      "statement": "Describe common measurements of machine intelligence.",
-      "clarifications": "Clarification 1: Common measurements include the Turing test and the Lovelace test."
     },
     {
       "code": "SC.912.ET.3.1",

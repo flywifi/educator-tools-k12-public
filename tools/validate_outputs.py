@@ -69,6 +69,14 @@ def rule_checks(art: dict) -> list[dict]:
                     fails.append({"rule": "unresolvable_standard", "severity": "blocking",
                                   "guidance": f"{r['code']}: {r['state']} — "
                                               f"{r['detail'] or 'cite a real, verifiable code (QG §11.4)'}"})
+                elif r["state"] == "retired":
+                    # A withdrawn standard is not a fabricated one. Warning, with guidance the
+                    # author can act on — blocking here would repeat D-K, where TOS accused real
+                    # SpEd standards of being invented.
+                    fails.append({"rule": "standard_retired", "severity": "warning",
+                                  "guidance": f"{r['code']}: this standard has been WITHDRAWN by "
+                                              f"Florida — it was real, and is no longer current. "
+                                              f"{r['detail']}"})
                 elif r.get("needs_review"):
                     # WARNING, not blocking. The code exists — that is what created the overlay
                     # entry — and verify_standards already serves CPALMS's own text for the

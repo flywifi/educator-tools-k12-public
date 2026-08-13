@@ -112,7 +112,7 @@ def in_source(subject: str, statement: str) -> bool:
     return bool(src and stmt and stmt in src)
 
 
-def compare(old_dir: Path, new_dir: Path) -> tuple[int, dict]:
+def compare(old_dir: Path, new_dir: Path, expect_added=None, expect_removed=None) -> tuple[int, dict]:
     report: dict = {"subjects": {}, "aborts": [], "totals": {}}
     t_old_furn = t_new_furn = t_changed = t_codes = t_restored = 0
     max_old = max_new = 0
@@ -130,9 +130,31 @@ def compare(old_dir: Path, new_dir: Path) -> tuple[int, dict]:
         s["added"], s["removed"] = added[:20], removed[:20]
         s["added_count"], s["removed_count"] = len(added), len(removed)
         if added or removed:
-            report["aborts"].append(
-                f"{subj}: CODE SET CHANGED — {len(added)} added, {len(removed)} removed. "
-                f"Segmentation moved; this is a corpus rewrite, not a repair.")
+            # A SOURCE REFRESH legitimately moves the code set: the state retires or adds standards
+            # and publishes a new document. That is not the defect this abort guards against (a
+            # segmentation change silently dropping standards), but the two are indistinguishable
+            # from the diff alone — so the operator must say IN ADVANCE exactly which codes may
+            # move, and the sets must match exactly. An unexpected code moving still aborts, and so
+            # does an expected one that did NOT move, which catches a stale expectation.
+            exp_add = set(expect_added or []) if expect_added is not None else None
+            exp_rem = set(expect_removed or []) if expect_removed is not None else None
+            declared = exp_add is not None or exp_rem is not None
+            if declared and set(added) == (exp_add or set()) and set(removed) == (exp_rem or set()):
+                s["code_change_declared"] = True
+                report.setdefault("declared_changes", []).append(
+                    f"{subj}: {len(added)} added / {len(removed)} removed — matches the declared "
+                    f"set exactly (source refresh).")
+            else:
+                extra = f" Declared but did not move: {sorted((exp_rem or set()) - set(removed))[:5]}" \
+                    if declared else ""
+                report["aborts"].append(
+                    f"{subj}: CODE SET CHANGED — {len(added)} added, {len(removed)} removed"
+                    + (". Segmentation moved; this is a corpus rewrite, not a repair."
+                       if not declared else
+                       f", which does NOT match the declared set "
+                       f"(declared +{len(exp_add or [])}/-{len(exp_rem or [])}).{extra}")
+                    + f" undeclared added={sorted(set(added) - (exp_add or set()))[:5]} "
+                      f"undeclared removed={sorted(set(removed) - (exp_rem or set()))[:5]}")
 
         # ---- ABORT 2: new statement must be a prefix of old -------------------------------
         not_prefix, changed, of, nf = [], 0, 0, 0
@@ -186,9 +208,15 @@ def main(argv) -> int:
     ap.add_argument("--old", required=True)
     ap.add_argument("--new", required=True)
     ap.add_argument("--json", help="also write the full report here")
+    ap.add_argument("--expect-removed", nargs="*", metavar="CODE",
+                    help="codes that a SOURCE REFRESH is expected to remove. The removed set must "
+                         "match this EXACTLY — an undeclared removal still aborts, and a declared "
+                         "code that did not move also aborts (a stale expectation).")
+    ap.add_argument("--expect-added", nargs="*", metavar="CODE",
+                    help="codes a source refresh is expected to add (same exact-match rule)")
     a = ap.parse_args(argv)
 
-    rc, rep = compare(Path(a.old), Path(a.new))
+    rc, rep = compare(Path(a.old), Path(a.new), a.expect_added, a.expect_removed)
     t = rep["totals"]
     print(f"{'subject':18} {'codes':>7} {'+/-':>7} {'changed':>8} {'furn old→new':>14} "
           f"{'!prefix':>8} {'restored':>9} {'invented':>9}")
@@ -203,8 +231,11 @@ def main(argv) -> int:
           f"longest statement {t['max_statement_old']} → {t['max_statement_new']}")
     for subj, s in rep["subjects"].items():
         for code in s["restored_not_prefix"]:
-            print(f"  {subj}: {code} — not a prefix, but present VERBATIM in the source document "
-                  f"(a destroyed letter was restored)")
+            # Deliberately does NOT say WHY the text changed. The escalation proves only that the
+            # new statement is in the source document; whether that is a restored character or a
+            # revision in a refreshed document is not something this tool can know, and asserting
+            # one of them would be the tool inventing an explanation for a human to trust.
+            print(f"  {subj}: {code} — not a prefix, but present VERBATIM in the source document")
     for subj, s in rep["subjects"].items():
         cap = {k: v for k, v in s["fields_captured"].items() if v}
         if cap:
@@ -212,14 +243,21 @@ def main(argv) -> int:
     if a.json:
         Path(a.json).write_text(json.dumps(rep, indent=1, ensure_ascii=False) + "\n",
                                 encoding="utf-8")
+    for m in rep.get("declared_changes", []):
+        print(f"\n  [declared] {m}")
     if rep["aborts"]:
         print("\nABORT — regeneration must not be applied:")
         for m in rep["aborts"]:
             print("  •", m)
         return 1
-    print(f"\nOK — structure preserved: no code added or removed; every statement is a prefix of the "
-          f"original, or ({t['restored_not_prefix']}) proven verbatim in the source document. "
-          f"Changes are furniture removal and character restoration only.")
+    moved = sum(s["added_count"] + s["removed_count"] for s in rep["subjects"].values())
+    print(f"\nOK — every statement is either a prefix of the original or ({t['restored_not_prefix']}) "
+          f"proven verbatim in the source document"
+          + (f"; {moved} code(s) moved, each one declared in advance." if moved else
+             "; no code was added or removed.")
+          + "\nWhat this does NOT establish: WHY a statement changed. A trimmed tail, a restored "
+            "character and a revision in a refreshed source document all look alike here — read the "
+            "per-code list above before treating any of them as equivalent.")
     return 0
 
 

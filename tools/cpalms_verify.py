@@ -513,14 +513,18 @@ def _finish(report: dict, out: Path) -> None:
 
 
 VALID_STATES = {"confirmed", "near_match", "statement_differs", "renumbered", "not_on_cpalms",
-                "ambiguous", "fetch_failed", "skipped_robots"}
+                "ambiguous", "fetch_failed", "skipped_robots", "retired"}
 
 # States that are a DISPOSITION — the code was reached and judged — as opposed to a transient.
 # All of them are recorded in the overlay so the work list can tell "dealt with" from "unseen";
 # only `confirmed` counts as VERIFIED. fetch_failed/skipped_robots are transients and are never
 # recorded: they must stay in the work list so a later run retries them.
+# `retired` — the code was REAL and has been withdrawn: absent from CPALMS *and* dropped by a newer
+# official source document. It is deliberately distinct from `not_on_cpalms`, which the resolver
+# treats as the fabricated-code case. Calling a withdrawn standard "fabricated" is finding D-K in a
+# new costume: it accuses a teacher of inventing a benchmark that Florida itself published.
 DISPOSITION_STATES = {"confirmed", "near_match", "statement_differs", "renumbered",
-                      "not_on_cpalms", "ambiguous"}
+                      "not_on_cpalms", "ambiguous", "retired"}
 VERIFIED_STATES = {"confirmed"}
 # Carry provenance and therefore may claim a CPALMS identity.
 PROVENANCED_STATES = {"confirmed", "near_match", "statement_differs", "renumbered"}
