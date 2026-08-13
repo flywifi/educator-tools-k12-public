@@ -424,6 +424,37 @@ social studies remains low-confidence (19.5% whole-corpus) so its absences stay 
 CCSS/NGSS remain scheme-only; a FLDOE source-document refresh would fix the legacy `.doc` parse
 artifacts recorded as finding D-J.
 
+**Correction (2026-08-13) — the root cause, and the tolerances it forced.** Every defect above
+traced to one thing: `tools/parse_fl_standards.py` emitted an entire document table row as a single
+`statement`, so **52.0 % of the corpus (3,425 of 6,583 statements) carried document furniture** —
+labelled columns, table headers, and in Social Studies the *next section's heading*. That superset
+is why the comparator could not test equality, why it accepted a prefix, and why the prefix widened
+into the 0.97 band. The Social Studies document was additionally UTF-8 decoded as latin-1 and then
+stripped of non-ASCII, destroying 324 apostrophes and 147 smart quotes (finding D-J).
+
+The parse now extracts labelled fields and preserves characters; the corpus was regenerated under a
+new gate, `tools/parse_diff.py`, which aborts unless the code set is unchanged **and** every new
+statement is either a prefix of the old one or present verbatim in the source document. Result:
+**6,583 codes, +0/−0 per subject, furniture 3,425 → 0**.
+
+With the corpus clean, the tolerances were **deleted rather than retuned** — no prefix rule, no
+similarity band, no `MIN_CONFIRM_CHARS`, and `renumbered` now requires exact text plus uniqueness.
+Measured across all 1,913 entries: **1,899 (99.3 %) match CPALMS exactly and 0 rely on prefix
+containment.** Re-judgement moved **116 `near_match` → `confirmed`** and 1 → `statement_differs`,
+with **0 demotions from `confirmed`**. **`needs_review` is now 2, not 117** — and both are genuine
+CPALMS revisions (`SS.4.E.1.1`, `SS.5.G.2.1`) rather than artifacts of our own parse. Verified total:
+**1,911 of 6,583**; 4,670 remain.
+
+`needs_review` also reaches consumers now (N1): it is derived from overlay state rather than read
+from a flag, and `validate_outputs.py` emits `standard_needs_review` as a warning. New standing
+guards in CI: `--scan-parse-defects`, the splitter's `--self-test`, and a per-subject overlay write
+lock that refuses a concurrent writer instead of silently losing its entries.
+
+Two claims were corrected rather than left standing: the audit's **"two-source corroboration" is
+false** (all five FL standards documents come from cpalms.org per `sources.json`, so agreement
+proves *parse fidelity*), and **`SS.5.G.2.1` was misdiagnosed** as a parse loss when CPALMS had
+revised the benchmark. Full write-up: launch-readiness audit **§10**. D-J is **RESOLVED**.
+
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
 2. Florida wired + **corpus stored** (`resources/florida/` + `sources.json`, 104 files) with

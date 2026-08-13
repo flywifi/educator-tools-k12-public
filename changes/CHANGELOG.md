@@ -4,6 +4,70 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Fixed — corpus parse root cause, and the tolerances it forced (2026-08-13)
+- **One defect explains the chain.** `tools/parse_fl_standards.py` emitted an entire document table
+  row as a single `statement`, so **3,425 of 6,583 statements (52.0 %) carried document furniture** —
+  `Clarifications`, `Date Adopted or Revised`, `Content Complexity`, `BENCHMARK CODE` headers, and
+  in Social Studies the **next section's heading**. `SS.K.A.3.AP.2` ("Recognize a calendar.")
+  carried "AFRICAN AMERICAN HISTORY Standard 1: Positive influences and contributions by African
+  Americans", so searching that phrase returned a calendar benchmark. Separately the SS document —
+  UTF-8, decoded as latin-1 then stripped of non-ASCII — lost 324 apostrophes, 147 smart quotes and
+  6 dashes, with zero survivors. That superset is why the verification comparator could not test
+  equality, why it accepted a prefix, and why the prefix widened into a 0.97 similarity band that
+  passed **100 % of changed numeric bounds**.
+- **The parse now extracts fields**: `statement` plus `clarifications`, `examples`, `remarks`,
+  `complexity`, `date_adopted`, `related_access_points`. Characters are preserved, not folded.
+- **Case-sensitivity is load-bearing** and cost two self-inflicted bugs before it was measured:
+  `Examples:` is a table label (552 occurrences) but `for example:` is prose (6), and `BENCHMARK` is
+  a header while `benchmark` is an ordinary word used 204 times inside real statements. Matched
+  case-insensitively they truncated `SC.912.N.1.1` by 1,729 characters and `MA.1.M.1.AP.1b` at
+  "mental measurement benchmark". Both are pinned with `(?-i:…)` and covered by CI probes — a
+  truncation is invisible to the regeneration gate, because a truncated statement is still a prefix.
+- **`tools/parse_diff.py` (new)** gates every regeneration: abort if the code set moves, or if a new
+  statement is neither a prefix of the old one nor **present verbatim in the source document**.
+  The escalation is stronger than the prefix rule, not a loosening of it, and fails closed.
+- **Regeneration result:** 6,583 codes, **+0/−0 per subject**, furniture **3,425 → 0**, characters
+  restored, 3,426 statements changed, one non-prefix (`SS.912.AA.2.16`, `Adams-On s` → `Adams-Onís`)
+  proven verbatim in the source.
+### Changed — the matcher collapsed to equality (2026-08-13)
+- Deleted the bidirectional prefix rule, the 0.97 similarity band, and `MIN_CONFIRM_CHARS`.
+  Measured over all 1,913 committed entries: **1,899 (99.3 %) already equal, 0 relying on prefix
+  containment**, 6 differing only by whitespace CPALMS drops when rendering, and **2 genuinely
+  divergent**. A character floor guards a *prefix* claim; against equality it was demoting 36 rows
+  whose text is character-for-character identical, "Identify rhyme in a poem." among them.
+- `renumbered` likewise requires exact text plus uniqueness, replacing a 0.92 similarity on a
+  prefix. A close-but-inexact candidate becomes `ambiguous` with the candidate named.
+- Overlay re-judgement (offline, deterministic): **116 `near_match` → `confirmed`**, 1 →
+  `statement_differs`, 0 demotions from `confirmed`. `needs_review` **117 → 2**, and both survivors
+  are real CPALMS revisions (`SS.4.E.1.1`, `SS.5.G.2.1`) rather than artifacts of our own parse.
+### Fixed — `needs_review` now reaches the gate (N1) (2026-08-13)
+- An overlay entry proves the **code exists**, not that our text matches. Every entry nonetheless
+  got a bare `verified={}`, so a row CPALMS disagrees with was indistinguishable from a confirmed
+  one — to a reader and to CI. `verified.state` is now carried, `needs_review` is **derived from
+  state** rather than read from a flag (four committed entries had an unverified state and no flag),
+  renumbered/addition rows are covered too, and `validate_outputs.py` emits `standard_needs_review`
+  as a **warning** — the code is real and CPALMS's text is served, so blocking would fail a build
+  over something the author cannot fix. Fabricated codes still block.
+### Fixed — §6 mutation blind spot (R6) (2026-08-13)
+- The tail-strip matched the bare word `example(s)` case-insensitively, cutting genuine prose:
+  `ELA.4.R.3.AP.1` was compared as the single word "Identify". Label form only, applied before
+  lowercasing. Text hidden from the comparator: **52.0 % of statements → 0.03 %**.
+### Added — standing guards (2026-08-13)
+- `cpalms_verify --scan-parse-defects` (in CI): fails if any statement carries document furniture.
+  Validated both ways — 0 on the current corpus, 3,430/6,583 on the pre-fix baseline.
+- `parse_fl_standards --self-test` (in CI): label-vs-prose splitter probes.
+- **Overlay write lock** (`O_CREAT|O_EXCL`) held across the read-modify-write. Atomic writes prevent
+  a torn file but not a **lost update**; a second writer is refused and told the holding pid, and a
+  stale lock is reported with the command to clear it, never auto-broken.
+- Both FTS indexes gained a searched-but-not-returned `detail` column, so moving clarifications out
+  of `statement` did not silently cost ~39 % of the corpus's searchable word-instances.
+### Fixed — two false claims corrected (2026-08-13)
+- The launch audit's **"two-source corroboration" (§4.1) was false**: `sources.json` records all
+  five FL standards documents as downloaded from cpalms.org. Agreement proves **parse fidelity**,
+  not independent corroboration. Corrected in audit §10.1 and in the README.
+- **`SS.5.G.2.1` was misdiagnosed** as a parse loss (§5.2). The source document has no `e.g.,`;
+  CPALMS revised the benchmark. Corrected in §10.3.
+
 ### Fixed — parser hardening (2026-08-11)
 - **The card parser now slices per card, so markup cannot cross a card boundary.** The old pattern
   matched over the whole fragment with `.*?`/`re.S`: one card with unexpected markup made it walk
