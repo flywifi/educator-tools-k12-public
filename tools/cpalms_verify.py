@@ -646,7 +646,27 @@ def _census_sweep(search_url: str, sub_url: str, grd_url: str, subject: str,
         meta[f"{kind}_error"] = (f"filter discovery failed: subject_id={subj_id} "
                                  f"missing_grades={missing} (labels: {sorted(subjects)[:8]}…)")
         return
-    grade_ids = ",".join(grades[g.strip()] for g in grades_csv.split(","))
+    # Sweep each EXPANDED grade on its own. run_enumerate already sweeps one CLI token at a time,
+    # but a SPAN token ("912", "68", "612") expands to several CPALMS grades, and joining their
+    # filter ids into one query rebuilt exactly the multi-grade request that D-H proved gets
+    # truncated. It stayed invisible while every span happened to be small: math 912 (504 codes),
+    # science 912 (456) and ELA 612 (370) all reconciled, so P6 validated the path without ever
+    # reaching the cap. Social studies 912 is the first large one — 1,599 codes — and the combined
+    # query returned 1,584, reporting 15 REAL access points as absent from CPALMS, every one of
+    # which the forward pass had already confirmed with a live id.
+    expanded = [g.strip() for g in grades_csv.split(",") if g.strip()] or [""]
+    all_pages = 0
+    for _g in expanded:
+        all_pages += _sweep_one(search_url, subj_id, grades.get(_g, ""), kind, census, meta)
+    meta[f"{kind}_pages"] = all_pages
+    meta[f"{kind}_page_param_worked"] = all_pages > 1 or len(census) <= 25
+    meta[f"{kind}_filter_ids"] = {"subject": subj_id,
+                                  "grades": {g: grades.get(g, "") for g in expanded}}
+
+
+def _sweep_one(search_url: str, subj_id: str, grade_ids: str, kind: str,
+               census: dict, meta: dict) -> int:
+    """Page one (subject, single grade) result set into `census`; returns pages read."""
     page, prev_sig, pages = 0, None, 0
     while page < MAX_CENSUS_PAGES:
         q = urllib.parse.urlencode({"KeyWord": "", "SubjectAreaIds": subj_id,
@@ -670,9 +690,7 @@ def _census_sweep(search_url: str, sub_url: str, grd_url: str, subject: str,
         prev_sig, page, pages = sig, page + 1, pages + 1
         print(f"  {kind} census page {page}: +{len(cards)} cards ({len(census)} unique total)")
         time.sleep(random.uniform(*DELAY))
-    meta[f"{kind}_pages"] = pages
-    meta[f"{kind}_page_param_worked"] = pages > 1 or len(census) <= 25
-    meta[f"{kind}_filter_ids"] = {"subject": subj_id, "grades": grade_ids}
+    return pages
 
 
 def run_enumerate(a) -> int:
@@ -1214,6 +1232,29 @@ def self_test() -> int:
           _st(_base + " Clarifications: Clarification 1 applies.", _base) != "confirmed")
 
     # --- G2: dispositions vs transients ---
+    # --- D-H redux: a SPAN must sweep one grade at a time, never one combined query -------
+    # run_enumerate sweeps one CLI token at a time, but a span token expands to several CPALMS
+    # grades. Joining their filter ids rebuilt the multi-grade request D-H proved gets truncated.
+    # It hid while spans were small (math 912 = 504 codes reconciled exactly); social studies 912
+    # at 1,599 returned 1,584 and called 15 real, already-confirmed access points absent.
+    _swept = []
+    _real_sweep = globals()["_sweep_one"]
+    try:
+        globals()["_sweep_one"] = lambda url, sid, gids, kind, cen, mt: (_swept.append(gids) or 1)
+        _subs = {"social studies": "32"}
+        _grades = {"9": "id9", "10": "id10", "11": "id11", "12": "id12"}
+        _meta: dict = {}
+        _orig_disc = globals()["_discover_filters"]
+        globals()["_discover_filters"] = lambda *a, **k: (_subs, _grades)
+        _census_sweep("u", "s", "g", "social_studies", "912", "benchmark", {}, _meta)
+    finally:
+        globals()["_sweep_one"] = _real_sweep
+        globals()["_discover_filters"] = _orig_disc
+    check("D-H: a grade SPAN sweeps each grade separately (912 -> 4 sweeps, not 1)",
+          _swept == ["id9", "id10", "id11", "id12"])
+    check("D-H: no sweep receives a COMBINED multi-grade id list",
+          all("," not in g for g in _swept))
+
     # --- P6: "not offered" is a FACT, "could not resolve" is an ERROR --------------------
     _ap_subjects = {"dance": "33", "english language arts (b.e.s.t.)": "87", "science": "29",
                     "mathematics (b.e.s.t.)": "86", "social studies": "32"}          # live: 10 total
