@@ -11,28 +11,28 @@
   },
   "sources": {
     "shared/standards/resources/florida/data/computer_science.json": {
-      "sha256": "85e382bbc2e3839567267e6058eca97809b0c376d35fbfadd91c2386844e4aa8",
-      "bytes": 180987
+      "sha256": "3f92f95f5c77c625fea0e8f9d0ca2461bc78ae8d83cf0c7f217ec0a67ad550d7",
+      "bytes": 184607
     },
     "shared/standards/resources/florida/data/ela.json": {
-      "sha256": "eaea76e7276f05f491a0da2fcf6d319969f0008450feb1da601bfc50d9b683c6",
-      "bytes": 263306
+      "sha256": "228556ae3f8f12c242103c7e763949fa9afedc905c2b01996a49faa99e65bdb6",
+      "bytes": 266008
     },
     "shared/standards/resources/florida/data/eld.json": {
       "sha256": "59673cee3fc9adfe31de11d25b7bba637afc1b297f2191eb3641b17c134ca48b",
       "bytes": 1580
     },
     "shared/standards/resources/florida/data/math.json": {
-      "sha256": "e00d47aa62e0abd1487eec9fda7cd79af32d9840f6303713ecf9679f0ed0e53f",
-      "bytes": 461600
+      "sha256": "a437bf5554210dc34ad3b92349fa9d29a91e9abca38dbe5463494f852b1185bc",
+      "bytes": 467999
     },
     "shared/standards/resources/florida/data/science.json": {
-      "sha256": "b3616e54a29e46b16bd5422cd9d87205483069199d2198f66e556ad34e5e203d",
-      "bytes": 367841
+      "sha256": "f98f5344b47ba3577ab3ffbec015c82dba9d663063b14de025afc36e20899498",
+      "bytes": 369335
     },
     "shared/standards/resources/florida/data/social_studies.json": {
-      "sha256": "06f9fe08a74dbf0cdf73f153e279197e0c9f877bf1ab960a04fd6d86b782a7ef",
-      "bytes": 856751
+      "sha256": "be7bdc2f0b1f2efb0aff06c363a843dd956e595e598bbacffef63ad1ef0294e1",
+      "bytes": 894199
     },
     "canonical-sources/schools/brevard/schools.json": {
       "sha256": "3b79aecc3a722e76c2600adbf446e480176bf5b374d77ef1cf158f547d37163e",
