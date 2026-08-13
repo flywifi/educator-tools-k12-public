@@ -41,11 +41,35 @@ A cited standard is verified when all of the following hold:
 5. On failure: do **not** ship an unverifiable standard. Either correct it, or log it as an
    assumption + escalate (assumptions-protocol.md). Never invent a code to fill a gap.
 
+### 3a. What a CPALMS overlay entry does and does not prove
+
+The resolver stamps `verified: {source, checked_at, url, state}` on a code covered by a CPALMS
+overlay entry. **That stamp proves the code EXISTS on CPALMS. It does not prove our stored statement
+matches CPALMS's.** Which of the two it is lives in `state`:
+
+| `verified.state` | meaning | resolver output |
+|---|---|---|
+| `confirmed` | our statement and CPALMS's are the same text | verified; no flag |
+| `statement_differs` / `near_match` / `ambiguous` | the code is real, the texts disagree or could not be matched | `needs_review: true` |
+| `cpalms_addition` | found on CPALMS, absent from the parsed corpus; pending the human `--include-additions` gate | `needs_review: true` |
+| `renumbered` | superseded — cite the `new_code` | `needs_review: true` |
+
+When `needs_review` is set the resolver still returns **CPALMS's own text** as the statement, so the
+citation is usable; what is missing is corroboration, not correctness. The output gate therefore
+emits `standard_needs_review` as a **warning**, never a block — blocking would fail a build over a
+divergence the author cannot fix from inside the artifact. A code that does not resolve at all
+remains a blocking `unresolvable_standard` (QG §11.4).
+
+`needs_review` is **derived from `state`**, not read from a stored flag: any state other than
+`confirmed` requires review whether or not the entry carries the flag. An entry whose flag is merely
+missing must never read as verified.
+
 ## 4. Failure handling
 
 | Failure | Treatment |
 |---|---|
 | Code does not exist / cannot be resolved | Integrity automatic failure (QG §11.4) → Rejected |
+| Code exists on CPALMS but the stored statement disagrees (`needs_review`) | `standard_needs_review` **warning**; CPALMS's text is served; human review before publication |
 | Wrong grade / deprecated / mis-coded | Accuracy deficiency → Remediation (QG §25) |
 | Topically adjacent but not aligned | Alignment deficiency → Remediation (QG §26) |
 
@@ -69,6 +93,10 @@ never itself be fabricated):
 | `malformed` | **blocking** | violates its own framework's coding scheme |
 | `scheme_valid_unenumerated` | advisory | CCSS/NGSS structure valid; existence not checkable offline (adapters are scheme-only) |
 | `unknown_framework` | advisory | matches no known scheme; register school frameworks in `shared/standards/frameworks/` |
+
+`resolved` is orthogonal to `needs_review` (§3a): a code can resolve cleanly and still carry
+`needs_review: true` because the CPALMS overlay records that our stored statement disagrees with
+CPALMS's. That combination emits `standard_needs_review` (warning), not `standard_advisory`.
 
 Negative control: `examples/known-bad/fabricated-standard.known-bad.json` must FAIL validation
 (enforced by `tools/validate_examples.py` check 1b); the resolver's own `--self-test` (28 probes +

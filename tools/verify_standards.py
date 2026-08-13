@@ -55,6 +55,19 @@ NGSS_PE = re.compile(r"^(K|[1-5]|MS|HS)-(PS|LS|ESS|ETS)\d{1,2}-\d{1,2}$")
 
 BLOCKING_STATES = {"not_found", "malformed"}
 
+# The only overlay state that is a verification of the corpus statement. Everything else — a text
+# disagreement, an ambiguous card, an absence — is a review signal.
+#
+# `needs_review` is DERIVED from this rather than read from the entry's flag. The flag is written by
+# the verification loop and is normally present, but a record whose flag is merely missing must not
+# read as verified: four committed entries (SS.4.E.1.1 and three cpalms_additions) carried an
+# unverified state with no flag, and keying on the flag alone reported them as clean.
+OVERLAY_VERIFIED_STATES = {"confirmed"}
+
+
+def _overlay_needs_review(ov: dict) -> bool:
+    return bool(ov.get("needs_review")) or ov.get("state") not in OVERLAY_VERIFIED_STATES
+
 # --- §6 citation-mutation comparator (standards-verification.md §6) --------------------------
 # STRICT, and deliberately separate from any verification comparator: verification must TOLERATE a
 # corpus statement that appends "Clarifications:"/"Examples:" to the registry text, while mutation
@@ -252,8 +265,21 @@ def _resolve_one(code: str, standards_set, grade_band, applicability) -> dict:
                          detail=_set_mismatch("fl-" + name, standards_set).strip())
                 ov = (_load_overlay(name).get("entries") or {}).get(c)
                 if ov:
+                    # An overlay entry proves the CODE EXISTS on CPALMS. It does not prove the
+                    # corpus statement is faithful — that is what `state` records. Attaching a bare
+                    # verified={} for every entry made near_match / statement_differs / ambiguous
+                    # indistinguishable from confirmed to every consumer, including the CI gate: a
+                    # row whose text CPALMS disagrees with reported "resolved / verified / no
+                    # warning". `state` and `needs_review` are carried through so the distinction
+                    # survives the trip.
                     r["verified"] = {"source": "cpalms", "checked_at": ov.get("checked_at"),
-                                     "url": ov.get("cpalms_url")}
+                                     "url": ov.get("cpalms_url"), "state": ov.get("state")}
+                    if _overlay_needs_review(ov):
+                        r["needs_review"] = True
+                        r["detail"] = (r["detail"] + f" overlay state '{ov.get('state')}': the code "
+                                       f"is real and CPALMS's text is used here, but agreement "
+                                       f"with the corpus statement is UNVERIFIED — human review "
+                                       f"required").strip()
                     if ov.get("statement_verified"):
                         # CPALMS's text is the registry origin form for the §6 mutation check.
                         r["statement"] = ov["statement_verified"]
@@ -266,19 +292,26 @@ def _resolve_one(code: str, standards_set, grade_band, applicability) -> dict:
             ov = (_load_overlay(name).get("entries") or {}).get(c)
             if not ov:
                 continue
+            # Both branches below resolve a code the corpus does NOT contain, so neither is a
+            # corroborated match — they carry needs_review for the same reason the in-corpus
+            # branch does, and for the same reason it is a warning rather than a block: CPALMS's
+            # own text is what gets served, so the citation is usable, just not cross-checked.
             if ov.get("new_code"):
                 r.update(state="resolved", statement=ov.get("statement_verified"),
                          verified={"source": "cpalms", "checked_at": ov.get("checked_at"),
-                                   "url": ov.get("cpalms_url")},
+                                   "url": ov.get("cpalms_url"), "state": ov.get("state")},
+                         needs_review=True,
                          detail=f"superseded_by {ov['new_code']} (CPALMS renumbering) — cite the "
                                 f"current code")
                 return r
             if ov.get("state") == "cpalms_addition":
                 r.update(state="resolved", statement=ov.get("statement_verified"),
                          verified={"source": "cpalms", "checked_at": ov.get("checked_at"),
-                                   "url": ov.get("cpalms_url")},
+                                   "url": ov.get("cpalms_url"), "state": ov.get("state")},
+                         needs_review=True,
                          detail="verified on CPALMS but absent from the parsed corpus "
-                                "(overlay addition) — a corpus refresh would fold it in")
+                                "(overlay addition, pending the human --include-additions gate) — "
+                                "a corpus refresh would fold it in")
                 return r
         if not scheme.match(c):
             r.update(state="malformed",
@@ -424,6 +457,33 @@ def self_test(invert: bool = False) -> int:
     ok = r1["state"] == "resolved" and r1.get("verified", {}).get("source") == "cpalms" \
         and r1["statement"] == "VERIFIED-TEXT"
     print(("PASS" if ok else "FAIL") + " overlay: resolved code carries verified stamp + origin form")
+    failures += 0 if ok else 1
+
+    # --- N1: an overlay entry proves the CODE exists, not that the TEXT agrees ----------------
+    # Every entry used to receive a bare verified={} stamp, so a row CPALMS disagrees with was
+    # indistinguishable from a confirmed one — to a reader and to the CI gate alike.
+    ok = r1.get("verified", {}).get("state") == "confirmed" and not r1.get("needs_review")
+    print(("PASS" if ok else "FAIL") + " N1: a CONFIRMED row carries state=confirmed and no "
+                                       "needs_review (negative control)")
+    failures += 0 if ok else 1
+    _overlay_cache["social_studies"]["entries"]["SS.K.A.1.2"] = {
+        "state": "statement_differs", "needs_review": True, "statement_verified": "CPALMS-TEXT",
+        "cpalms_url": _fix_url + "4", "checked_at": "2026-08-09T00:00:00Z"}
+    r2 = verify(["SS.K.A.1.2"])["results"][0]
+    ok = (r2.get("needs_review") is True and r2["verified"]["state"] == "statement_differs"
+          and r2["statement"] == "CPALMS-TEXT" and "human review" in r2["detail"])
+    print(("PASS" if ok else "FAIL") + " N1: a DISAGREEING row sets needs_review and still serves "
+                                       "CPALMS's text")
+    failures += 0 if ok else 1
+    # The flag is DERIVED, not trusted: four committed entries carried an unverified state with no
+    # needs_review flag, and reading the flag alone reported them clean.
+    _overlay_cache["social_studies"]["entries"]["SS.K.A.1.AP.1"] = {
+        "state": "statement_differs", "statement_verified": "CPALMS-TEXT-2",
+        "cpalms_url": _fix_url + "5", "checked_at": "2026-08-09T00:00:00Z"}
+    r3 = verify(["SS.K.A.1.AP.1"])["results"][0]
+    ok = r3.get("needs_review") is True
+    print(("PASS" if ok else "FAIL") + " N1: an unverified state with a MISSING flag still needs "
+                                       "review (flag is derived, not trusted)")
     failures += 0 if ok else 1
     rep = verify(["SS.7.C.9.99"])
     ok = rep["results"][0]["state"] == "not_found" and "SS.7.C.9.99" in rep["blocking"]
