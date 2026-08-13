@@ -111,26 +111,48 @@ def _norm(s: str) -> str:
 _ELLIPSIS = ("…", "...", "&hellip;")
 
 
-MIN_CONFIRM_CHARS = 40   # normalized corpus chars below which a prefix match proves too little
 _SENTENCE_END = (".", "!", "?", ":", ")", '"', "'")
 
 
+def _norm_ws(s: str) -> str:
+    """_norm with every space removed — for EQUALITY only.
+
+    The corpus and the CPALMS card are two renderings of the same text, and their whitespace
+    disagrees for purely presentational reasons: CPALMS's HTML drops the space after punctuation
+    and around bullets ("fluency:Select", "spelling.•Capitalize", "to itselfm times"). Measured over
+    the 1,913 committed entries, 6 differed by nothing but such spaces.
+
+    This is not the old similarity band in another form. That band accepted ANY edit under a
+    distance threshold, which is why it passed 100% of changed numeric bounds; this ignores exactly
+    one thing — whitespace — and every meaning-bearing edit (a changed number, a deleted negation)
+    still fails. The mutation battery in --self-test is the standing proof."""
+    return re.sub(r"\s+", "", _norm(s))
+
+
 def _lead_matches(corpus_stmt: str, cpalms_stmt: str) -> tuple[str, bool]:
-    """(verdict, truncated_card) where verdict is 'strict' | 'near' | 'none'.
+    """(verdict, truncated_card) where verdict is 'strict' | 'none'.
 
-    'strict' — normalized exact equality, or a TRUE prefix in either direction (CPALMS carries the
-               bare benchmark; the corpus may append Examples/Clarifications). ONLY 'strict' may
+    'strict' — the two texts are the same string (whitespace-insensitively). ONLY 'strict' may
                become `confirmed`.
-    'near'   — inside the 0.97 SequenceMatcher band. This is a REVIEW SIGNAL, never a verification:
-               measured against real FL statements, a 0.97 ratio still accepted 100% of changed
-               numeric bounds (20 -> 10), 93.9% of DELETED negations, and 80% of greater -> less.
-               A K-12 standard's meaning lives in exactly those low-edit-distance tokens.
-    'none'   — no match. An empty side on EITHER end is 'none': an empty corpus statement used to
-               prefix-match anything at all, including hostile text.
+    'none'   — anything else. An empty side on EITHER end is 'none': an empty corpus statement used
+               to prefix-match anything at all, including hostile text.
 
-    A proper prefix that does not end on a sentence boundary is treated as TRUNCATION even without
-    an ellipsis — server-side truncation is indistinguishable from a legitimate prefix otherwise,
-    and it would put a severed fragment into the overlay as the §6 origin form.
+    There is no longer a prefix rule or a similarity band. Both existed only because the parser
+    emitted the whole table row as `statement`, so the corpus text was a SUPERSET of the card and
+    equality was impossible for half the corpus. With the parse fixed, the two texts are simply
+    equal: measured across all 1,913 committed entries, 1,899 (99.3%) match exactly, ZERO rely on
+    prefix containment in either direction, and the remaining residue is 6 whitespace-only artifacts
+    (handled by _norm_ws) plus 2 genuine CPALMS revisions that SHOULD be flagged — SS.4.E.1.1
+    ("social and ethnic" -> "demographic") and SS.5.G.2.1 (a "(e.g., " CPALMS has added). Both were
+    checked against the committed source document, which the corpus reproduces faithfully.
+
+    Deleting the tolerance is the point. The 0.97 band accepted 100% of changed numeric bounds
+    (20 -> 10), 93.9% of DELETED negations and 80% of greater -> less; a K-12 standard's meaning
+    lives in exactly those low-edit-distance tokens. Equality has no such blind spot.
+
+    A truncated card (declared by an ellipsis, or ending mid-sentence inside the corpus statement)
+    can only ever support a PREFIX claim, so it is matched as a prefix and routed to `near_match` by
+    _confirm_state — never to `confirmed`.
     """
     truncated = any(cpalms_stmt.rstrip().endswith(e) for e in _ELLIPSIS) if cpalms_stmt else False
     p_src = cpalms_stmt
@@ -143,20 +165,28 @@ def _lead_matches(corpus_stmt: str, cpalms_stmt: str) -> tuple[str, bool]:
     c, p = _norm(corpus_stmt), _norm(p_src)
     if not p or not c:
         return "none", truncated
-    if c[: len(p)] == p or p[: len(c)] == c:
-        if len(p) < len(c) and not p_src.rstrip().endswith(_SENTENCE_END):
-            truncated = True          # CPALMS text stops mid-sentence inside the corpus statement
+    if c == p or _norm_ws(corpus_stmt) == _norm_ws(p_src):
         return "strict", truncated
-    lead = c[: len(p)]
-    if difflib.SequenceMatcher(None, lead, p).ratio() >= 0.97:
-        return "near", truncated
+    cw, pw = _norm_ws(corpus_stmt), _norm_ws(p_src)
+    if cw.startswith(pw):
+        # The card is a proper prefix of the corpus statement. Post-fix this is not a legitimate
+        # shape — it means the card was cut short — so it is reported as truncation, which
+        # _confirm_state turns into near_match rather than a verification.
+        return "strict", True
     return "none", truncated
 
 
 def _confirm_state(corpus_stmt: str, cpalms_stmt: str, verdict: str, truncated: bool) -> str:
     """Map a match verdict to a row state. `confirmed` is an AUTO-APPLYABLE claim, so it demands
-    three things: a strict match, an untruncated card, and enough text for a prefix to prove
-    anything. Everything else is a review signal, not a verification.
+    two things: a strict match and an untruncated card. Everything else is a review signal, not a
+    verification.
+
+    The old third condition — a MIN_CONFIRM_CHARS floor of 40 normalized characters — is gone with
+    the prefix rule that created it. A floor makes sense when a match is a PREFIX claim ("the first
+    N characters agree" proves little when N is small); it makes no sense against equality, where
+    the whole string agrees. Left in place after the parse fix it demoted 36 entries whose corpus
+    and CPALMS text are now character-for-character identical, "Identify rhyme in a poem." among
+    them — 24 normalized characters, and completely verified.
 
     Deliberately NOT also running the §6 mutation comparator here: a strict verdict means one
     normalized text IS a prefix of the other, so the compared region is byte-identical and there is
@@ -165,9 +195,7 @@ def _confirm_state(corpus_stmt: str, cpalms_stmt: str, verdict: str, truncated: 
     citations vs the overlay, which is a different comparison (audit finding F5)."""
     if verdict == "none":
         return "statement_differs"
-    if verdict == "near" or truncated:
-        return "near_match"
-    if len(_norm(corpus_stmt)) < MIN_CONFIRM_CHARS:
+    if truncated:
         return "near_match"
     return "confirmed"
 
@@ -866,6 +894,10 @@ def self_test() -> int:
         print(("PASS " if cond else "FAIL ") + name)
         fails += 0 if cond else 1
 
+    def _st(c, p):
+        """corpus statement + CPALMS statement -> the state the loop would record."""
+        return _confirm_state(c, p, *_lead_matches(c, p))
+
     cards = parse_cards(FIXTURE_CARD)
     check("fixture card parsed", len(cards) == 1)
     check("card id", cards and cards[0]["cpalms_id"] == "16125")
@@ -874,11 +906,27 @@ def self_test() -> int:
           cards and cards[0]["statement"].startswith("Describe the United States’"))
     check("card revised date", cards and cards[0]["date_revised"] == "05/24")
     check("empty fragment -> no cards", parse_cards(FIXTURE_EMPTY) == [])
-    check("lead match: corpus with Examples tail",
-          _lead_matches("Read and write numbers from 0 to 10,000 using standard form, expanded "
-                        "form and word form. Examples: The number two thousand...",
-                        "Read and write numbers from 0 to 10,000 using standard form, expanded "
-                        "form and word form.")[0] == "strict")
+    # A corpus statement carrying an Examples/Clarifications tail is now itself a DEFECT SIGNAL:
+    # the parser extracts those into their own fields, so a tail means the parse regressed. It must
+    # never confirm — before the parse fix this exact shape was the normal case, and tolerating it
+    # is what forced prefix matching and, from there, the similarity band.
+    check("corpus with an Examples tail is NOT confirmed (parse-regression detector)",
+          _st("Read and write numbers from 0 to 10,000 using standard form, expanded "
+              "form and word form. Examples: The number two thousand...",
+              "Read and write numbers from 0 to 10,000 using standard form, expanded "
+              "form and word form.") != "confirmed")
+    check("clean corpus statement == card confirms",
+          _st("Read and write numbers from 0 to 10,000 using standard form, expanded form and "
+              "word form.",
+              "Read and write numbers from 0 to 10,000 using standard form, expanded form and "
+              "word form.") == "confirmed")
+    check("whitespace-only rendering differences still confirm (CPALMS drops spaces after "
+          "punctuation and bullets)",
+          _st("Follow the rules of grammar. • Capitalize proper nouns. • Use verb tense.",
+              "Follow the rules of grammar.•Capitalize proper nouns.•Use verb tense.")
+          == "confirmed")
+    check("but a whitespace-insensitive compare does NOT hide a changed number",
+          _st("Add and subtract within 20.", "Add and subtract within 10.") != "confirmed")
     check("lead match rejects a different benchmark",
           _lead_matches("Add and subtract multi-digit whole numbers.",
                         "Describe the United States' participation.")[0] == "none")
@@ -904,10 +952,15 @@ def self_test() -> int:
                                  "values…", ok, tr) == "near_match")
     ok, tr = _lead_matches("Add and subtract within 20.", "Given a mathematical…")
     check("truncated card does NOT match a different benchmark", ok == "none" and tr)
-    ok, tr = _lead_matches(long_c, "Given a mathematical or real-world context, students will "
-                                   "represent and interpret numerical data with whole-number "
-                                   "values using tables and line plots to answer questions.")
+    clean_c = ("Given a mathematical or real-world context, students will represent and interpret "
+               "numerical data with whole-number values using tables and line plots to answer "
+               "questions.")
+    ok, tr = _lead_matches(clean_c, clean_c)
     check("untruncated full card still matches (+no flag)", ok == "strict" and not tr)
+    # The same card against a corpus statement that still carries a tail: the tail is the corpus's
+    # defect, so this must be flagged rather than confirmed.
+    check("a corpus tail is flagged, not confirmed, even against a complete card",
+          _confirm_state(long_c, clean_c, *_lead_matches(long_c, clean_c)) != "confirmed")
 
     # E4 filter-option parsing against saved live markup shapes
     filt = ('<option data-val="5" value="5" data-gradelevelids="61,91,101" >Grade: K</option>'
@@ -985,7 +1038,6 @@ def self_test() -> int:
     # highest-consequence real edits to a standard are exactly the low-edit-distance ones. Measured
     # against real FL statements before this change: 100% of changed numeric bounds and 93.9% of
     # DELETED negations still classified as `confirmed`.
-    _st = lambda c, p: _confirm_state(c, p, *_lead_matches(c, p))   # noqa: E731
     _base = ("Read and write numbers from 0 to 10,000 using standard form, expanded form and "
              "word form to represent quantities.")
     check("mutation: identical text confirms", _st(_base, _base) == "confirmed")
@@ -1005,12 +1057,18 @@ def self_test() -> int:
     check("A3: truncation WITHOUT an ellipsis is caught as truncation, not confirmed",
           _st("Analyze the causes and effects of the Great Depression on Florida.",
               "Analyze the causes and effects of the Great") == "near_match")
-    check("short statements are near_match, not confirmed (a short prefix proves too little)",
+    # A corpus statement that is only the OPENING of the card is a truncated corpus row. It is not
+    # a verification under any reading, and no character floor is needed to say so — the strings
+    # simply are not equal. (This replaces a MIN_CONFIRM_CHARS probe: the floor was a guard for
+    # PREFIX matching, and with equality it only demoted short statements that match perfectly.)
+    check("a corpus statement that is only the card's opening is NOT confirmed",
           _st("Discuss self-concept",
               "Discuss self-concept theories of personality and compare Freud and Jung.")
-          == "near_match")
-    check("corpus Clarifications tail still confirms (no false positive from the tail)",
-          _st(_base + " Clarifications: Clarification 1 applies.", _base) == "confirmed")
+          != "confirmed")
+    check("a SHORT statement that matches exactly IS confirmed (no character floor)",
+          _st("Identify rhyme in a poem.", "Identify rhyme in a poem.") == "confirmed")
+    check("corpus Clarifications tail is NOT confirmed (it means the parse regressed)",
+          _st(_base + " Clarifications: Clarification 1 applies.", _base) != "confirmed")
 
     # --- G2: dispositions vs transients ---
     check("every disposition state is a valid state", DISPOSITION_STATES <= VALID_STATES)
@@ -1131,16 +1189,27 @@ SUBJECT_FILES = ("math", "ela", "science", "social_studies", "computer_science",
 
 
 def run_reclassify(write: bool) -> int:
-    """Re-judge every committed overlay entry under the CURRENT predicate, offline.
+    """Re-judge every committed overlay entry against the CURRENT corpus and predicate, offline.
 
-    Entries written before `confirmed` was tightened were judged by a comparator that accepted a
-    0.97 similarity ratio. Both texts are already committed — the corpus statement and the CPALMS
-    statement the overlay recorded — so the re-judgement needs no network and is fully
-    deterministic. Dry-run by default; --write applies it.
+    Both texts are already committed — the corpus statement and the CPALMS statement the overlay
+    recorded — so the re-judgement needs no network and is fully deterministic. Dry-run by default;
+    --write applies it.
 
-    This never invents a verification: it can only DEMOTE (confirmed -> near_match /
-    statement_differs), because the recorded CPALMS text is unchanged and a stricter predicate can
-    only reject more."""
+    It can move a row in EITHER direction, and it is worth being precise about why, because the
+    honest hazard here is manufacturing a verification:
+
+      * DEMOTION happens when the predicate tightens. A stricter rule can only reject more.
+      * PROMOTION happens only when the CORPUS STATEMENT ITSELF CHANGED — which happens exactly
+        once, when the corpus is regenerated from its source documents. A row recorded as
+        `near_match` because the corpus text read "Florida s role" is confirmable once the corpus
+        says "Florida's role", because CPALMS said "Florida's role" all along and that recorded
+        text has not moved.
+
+    That is a real verification, not a relaxed one: the comparison is still equality, and the new
+    corpus text is not a guess — tools/parse_diff.py proves each statement is either a prefix of
+    what it replaced or present verbatim in the source document before the regeneration may land.
+    A promotion is therefore only sound downstream of that gate; never run --write against a corpus
+    that has not passed it."""
     from collections import Counter
     total, changed = 0, Counter()
     detail: dict[str, list] = {}
@@ -1171,10 +1240,11 @@ def run_reclassify(write: bool) -> int:
                 else:
                     entry["needs_review"] = True
                 entry["reclassified_at"] = _now()
-                entry["reclassified_reason"] = ("re-judged under the tightened `confirmed` "
-                                                "predicate (strict prefix, untruncated, >=40 "
-                                                "normalized chars); the recorded CPALMS text is "
-                                                "unchanged")
+                entry["reclassified_reason"] = (
+                    "re-judged against the regenerated corpus under the collapsed `confirmed` "
+                    "predicate (whitespace-insensitive equality, untruncated card). The recorded "
+                    "CPALMS text is unchanged; the corpus statement is the parser's output after "
+                    "the field-extraction fix, gate-verified by tools/parse_diff.py")
                 dirty = True
         if dirty:
             in_corpus_verified = {c for c, e in overlay["entries"].items()
