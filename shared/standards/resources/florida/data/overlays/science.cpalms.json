@@ -4,7 +4,7 @@
  "generated_at": "2026-08-10T03:26:44Z",
  "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
  "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
- "coverage": 0.3903,
+ "coverage": 0.4386,
  "scopes": [
   {
    "grades": "4",
@@ -67,15 +67,14 @@
    "checked_at": "2026-08-09T14:25:20Z"
   },
   "SC.4.L.16.Su.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize behaviors of common animals.",
    "cpalms_id": "7803",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7803",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:25:24Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.L.16.Pa.2": {
    "state": "confirmed",
@@ -118,15 +117,14 @@
    "checked_at": "2026-08-09T14:25:40Z"
   },
   "SC.4.L.16.Pa.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Match offspring of animals with parents.",
    "cpalms_id": "7808",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7808",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:25:42Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.L.17.1": {
    "state": "confirmed",
@@ -185,15 +183,14 @@
    "checked_at": "2026-08-09T14:26:04Z"
   },
   "SC.4.L.17.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that animals eat food.",
    "cpalms_id": "7814",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7814",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:26:08Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.L.17.3": {
    "state": "confirmed",
@@ -308,15 +305,14 @@
    "checked_at": "2026-08-09T14:26:50Z"
   },
   "SC.4.P.10.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize objects that create sounds.",
    "cpalms_id": "7783",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7783",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:26:54Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.P.10.In.3": {
    "state": "confirmed",
@@ -327,15 +323,14 @@
    "checked_at": "2026-08-09T14:26:56Z"
   },
   "SC.4.P.10.Su.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize sounds as high or low (pitch).",
    "cpalms_id": "7782",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7782",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:26:59Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.P.10.4": {
    "state": "confirmed",
@@ -554,15 +549,14 @@
    "checked_at": "2026-08-09T14:28:25Z"
   },
   "SC.4.P.8.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Identify ice as a solid.",
    "cpalms_id": "7766",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7766",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:28:28Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.P.8.3": {
    "state": "confirmed",
@@ -589,15 +583,14 @@
    "checked_at": "2026-08-09T14:28:37Z"
   },
   "SC.4.P.8.Pa.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that some objects have parts.",
    "cpalms_id": "7769",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7769",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:28:39Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.P.8.4": {
    "state": "confirmed",
@@ -608,15 +601,14 @@
    "checked_at": "2026-08-09T14:28:42Z"
   },
   "SC.4.P.8.In.4": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Identify objects a magnet will attract.",
    "cpalms_id": "7770",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7770",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:28:45Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.P.8.Su.4": {
    "state": "confirmed",
@@ -723,15 +715,14 @@
    "checked_at": "2026-08-09T14:29:28Z"
   },
   "SC.4.E.5.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize a full moon as a circle.",
    "cpalms_id": "7734",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7734",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:29:31Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.E.5.3": {
    "state": "confirmed",
@@ -758,15 +749,14 @@
    "checked_at": "2026-08-09T14:29:41Z"
   },
   "SC.4.E.5.Pa.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Identify morning, noon, and night.",
    "cpalms_id": "7737",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7737",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:29:44Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.E.5.4": {
    "state": "confirmed",
@@ -801,15 +791,14 @@
    "checked_at": "2026-08-09T14:29:56Z"
   },
   "SC.4.E.5.Pa.4": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize a space-related object.",
    "cpalms_id": "7742",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7742",
    "date_revised": "02/08",
    "checked_at": "2026-08-09T14:29:59Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.4.E.5.In.5": {
    "state": "confirmed",
@@ -1316,15 +1305,14 @@
    "checked_at": "2026-08-10T00:46:10Z"
   },
   "SC.K.L.14.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Distinguish between a plant and animal.",
    "cpalms_id": "7499",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7499",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:46:13Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.L.14.3": {
    "state": "confirmed",
@@ -1343,15 +1331,14 @@
    "checked_at": "2026-08-10T00:46:19Z"
   },
   "SC.K.L.14.Su.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Match identical animals and plants.",
    "cpalms_id": "7501",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7501",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:46:23Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.P.10.1": {
    "state": "confirmed",
@@ -1370,26 +1357,24 @@
    "checked_at": "2026-08-10T00:46:30Z"
   },
   "SC.K.P.10.Su.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Match sounds to specific objects.",
    "cpalms_id": "7486",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7486",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:46:33Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.P.10.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize and respond to common sounds.",
    "cpalms_id": "7487",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7487",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:46:36Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.P.12.1": {
    "state": "confirmed",
@@ -1408,26 +1393,24 @@
    "checked_at": "2026-08-10T00:46:43Z"
   },
   "SC.K.P.12.Su.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that things move.",
    "cpalms_id": "7489",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7489",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:46:46Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.P.12.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Track objects in motion.",
    "cpalms_id": "7490",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7490",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:46:49Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.P.13.1": {
    "state": "confirmed",
@@ -1518,15 +1501,14 @@
    "checked_at": "2026-08-10T00:47:23Z"
   },
   "SC.K.P.9.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize a change in an object.",
    "cpalms_id": "7484",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7484",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:47:25Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.E.5.1": {
    "state": "confirmed",
@@ -1553,15 +1535,14 @@
    "checked_at": "2026-08-10T00:47:34Z"
   },
   "SC.K.E.5.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Track a falling object.",
    "cpalms_id": "7463",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7463",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:47:37Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.E.5.2": {
    "state": "confirmed",
@@ -1604,37 +1585,34 @@
    "checked_at": "2026-08-10T00:47:51Z"
   },
   "SC.K.E.5.In.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Identify the Sun in the daytime.",
    "cpalms_id": "7467",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7467",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:47:55Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.E.5.Su.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize the Sun in the daytime.",
    "cpalms_id": "7468",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7468",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:47:58Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.E.5.Pa.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Associate the Sun with daytime.",
    "cpalms_id": "7469",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7469",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:48:02Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.E.5.4": {
    "state": "confirmed",
@@ -1645,37 +1623,34 @@
    "checked_at": "2026-08-10T00:48:04Z"
   },
   "SC.K.E.5.In.4": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Identify the Moon in the sky at night.",
    "cpalms_id": "7470",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7470",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:48:08Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.E.5.Su.4": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize the Moon in the sky at night.",
    "cpalms_id": "7471",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7471",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:48:11Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.E.5.Pa.4": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Associate the Moon with night.",
    "cpalms_id": "7472",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7472",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:48:14Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.E.5.5": {
    "state": "confirmed",
@@ -1686,15 +1661,14 @@
    "checked_at": "2026-08-10T00:48:18Z"
   },
   "SC.K.E.5.In.5": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Observe big and small things in the sky.",
    "cpalms_id": "7473",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7473",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:48:21Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.E.5.Su.5": {
    "state": "confirmed",
@@ -1705,15 +1679,14 @@
    "checked_at": "2026-08-10T00:48:25Z"
   },
   "SC.K.E.5.Pa.5": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize items that are big.",
    "cpalms_id": "7475",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7475",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:48:28Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.E.5.6": {
    "state": "confirmed",
@@ -1740,15 +1713,14 @@
    "checked_at": "2026-08-10T00:48:38Z"
   },
   "SC.K.E.5.Pa.6": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize items as nearby.",
    "cpalms_id": "7478",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7478",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:48:42Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.N.1.1": {
    "state": "confirmed",
@@ -1775,15 +1747,14 @@
    "checked_at": "2026-08-10T00:48:51Z"
   },
   "SC.K.N.1.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Share objects with a partner.",
    "cpalms_id": "7455",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7455",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:48:55Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.K.N.1.2": {
    "state": "confirmed",
@@ -1914,15 +1885,14 @@
    "checked_at": "2026-08-10T00:49:47Z"
   },
   "SC.1.L.14.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that plants have leaves.",
    "cpalms_id": "7546",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7546",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:49:50Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.1.L.14.3": {
    "state": "confirmed",
@@ -1981,15 +1951,14 @@
    "checked_at": "2026-08-10T00:50:11Z"
   },
   "SC.1.L.16.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize one’s own parents.",
    "cpalms_id": "7552",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7552",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:50:13Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.1.L.17.1": {
    "state": "confirmed",
@@ -2048,15 +2017,14 @@
    "checked_at": "2026-08-10T00:50:35Z"
   },
   "SC.1.P.12.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Track objects moving up and down.",
    "cpalms_id": "7537",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7537",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:50:38Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.1.P.13.1": {
    "state": "confirmed",
@@ -2083,15 +2051,14 @@
    "checked_at": "2026-08-10T00:50:47Z"
   },
   "SC.1.P.13.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Apply a push to move an object.",
    "cpalms_id": "7540",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7540",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:50:50Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.1.P.8.1": {
    "state": "confirmed",
@@ -2142,15 +2109,14 @@
    "checked_at": "2026-08-10T00:51:13Z"
   },
   "SC.1.E.5.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Associate stars with the night sky.",
    "cpalms_id": "7513",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7513",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:51:15Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.1.E.5.2": {
    "state": "confirmed",
@@ -2177,15 +2143,14 @@
    "checked_at": "2026-08-10T00:51:25Z"
   },
   "SC.1.E.5.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Track objects that fall to the ground.",
    "cpalms_id": "7516",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7516",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:51:27Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.1.E.5.3": {
    "state": "confirmed",
@@ -2300,26 +2265,24 @@
    "checked_at": "2026-08-10T00:52:11Z"
   },
   "SC.1.E.6.Su.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Identify reasons people need water.",
    "cpalms_id": "7527",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7527",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:52:14Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.1.E.6.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize one way people use water.",
    "cpalms_id": "7528",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7528",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:52:17Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.1.E.6.3": {
    "state": "confirmed",
@@ -2346,15 +2309,14 @@
    "checked_at": "2026-08-10T00:52:26Z"
   },
   "SC.1.E.6.Pa.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize an action as fast or slow.",
    "cpalms_id": "7531",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7531",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:52:29Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.1.N.1.1": {
    "state": "confirmed",
@@ -2413,15 +2375,14 @@
    "checked_at": "2026-08-10T00:52:52Z"
   },
   "SC.1.N.1.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize common objects as the same.",
    "cpalms_id": "7507",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7507",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:52:55Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.1.N.1.3": {
    "state": "confirmed",
@@ -2552,15 +2513,14 @@
    "checked_at": "2026-08-10T00:53:44Z"
   },
   "SC.2.L.17.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that animals need water.",
    "cpalms_id": "7627",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7627",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:53:47Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.L.17.2": {
    "state": "confirmed",
@@ -2619,15 +2579,14 @@
    "checked_at": "2026-08-10T00:54:08Z"
   },
   "SC.2.P.10.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Activate a device that uses electricity.",
    "cpalms_id": "7608",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7608",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:54:10Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.P.13.1": {
    "state": "confirmed",
@@ -2678,15 +2637,14 @@
    "checked_at": "2026-08-10T00:54:28Z"
   },
   "SC.2.P.13.Su.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Use magnets to cause objects to move.",
    "cpalms_id": "7613",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7613",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:54:30Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.P.13.3": {
    "state": "confirmed",
@@ -2697,15 +2655,14 @@
    "checked_at": "2026-08-10T00:54:33Z"
   },
   "SC.2.P.13.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Indicate that an object has fallen.",
    "cpalms_id": "7616",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7616",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:54:36Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.P.13.In.3": {
    "state": "confirmed",
@@ -2804,15 +2761,14 @@
    "checked_at": "2026-08-10T00:55:14Z"
   },
   "SC.2.P.8.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize water as a liquid.",
    "cpalms_id": "7594",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7594",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:55:17Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.P.8.3": {
    "state": "confirmed",
@@ -2951,37 +2907,34 @@
    "checked_at": "2026-08-10T00:56:06Z"
   },
   "SC.2.E.6.In.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Sort rocks according to size and shape.",
    "cpalms_id": "7567",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7567",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:56:09Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.E.6.Su.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Sort rocks according to size.",
    "cpalms_id": "7568",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7568",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:56:11Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.E.6.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize the ground in the environment.",
    "cpalms_id": "7569",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7569",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:56:14Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.E.6.2": {
    "state": "confirmed",
@@ -3136,37 +3089,34 @@
    "checked_at": "2026-08-10T00:57:10Z"
   },
   "SC.2.E.7.Pa.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Indicate awareness of air moving.",
    "cpalms_id": "7585",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7585",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:57:14Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.E.7.In.4": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Identify effects of wind.",
    "cpalms_id": "7583",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7583",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:57:17Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.E.7.Su.4": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize effects of wind.",
    "cpalms_id": "7584",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7584",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:57:20Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.E.7.5": {
    "state": "confirmed",
@@ -3257,15 +3207,14 @@
    "checked_at": "2026-08-10T00:57:54Z"
   },
   "SC.2.N.1.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Use senses to recognize objects.",
    "cpalms_id": "7561",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7561",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:57:57Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.2.N.1.3": {
    "state": "confirmed",
@@ -3332,15 +3281,14 @@
    "checked_at": "2026-08-10T00:58:24Z"
   },
   "SC.2.N.1.Su.4": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that people work in science.",
    "cpalms_id": "7566",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7566",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:58:27Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.L.14.1": {
    "state": "confirmed",
@@ -3399,15 +3347,14 @@
    "checked_at": "2026-08-10T00:58:49Z"
   },
   "SC.3.L.14.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that plants grow.",
    "cpalms_id": "7696",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7696",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:58:52Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.L.15.1": {
    "state": "confirmed",
@@ -3434,15 +3381,14 @@
    "checked_at": "2026-08-10T00:59:01Z"
   },
   "SC.3.L.15.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Match animals that are the same.",
    "cpalms_id": "7699",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7699",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:59:05Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.L.15.2": {
    "state": "confirmed",
@@ -3469,15 +3415,14 @@
    "checked_at": "2026-08-10T00:59:15Z"
   },
   "SC.3.L.15.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Match plants that are the same.",
    "cpalms_id": "7702",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7702",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:59:18Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.L.17.1": {
    "state": "confirmed",
@@ -3536,15 +3481,14 @@
    "checked_at": "2026-08-10T00:59:41Z"
   },
   "SC.3.L.17.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that plants need water.",
    "cpalms_id": "7708",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7708",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T00:59:44Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.P.10.1": {
    "state": "confirmed",
@@ -3611,15 +3555,14 @@
    "checked_at": "2026-08-10T01:00:09Z"
   },
   "SC.3.P.10.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Distinguish light and dark.",
    "cpalms_id": "7684",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7684",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:00:12Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.P.10.In.3": {
    "state": "confirmed",
@@ -3662,15 +3605,14 @@
    "checked_at": "2026-08-10T01:00:27Z"
   },
   "SC.3.P.11.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize sources of light.",
    "cpalms_id": "7687",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7687",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:00:30Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.P.11.2": {
    "state": "confirmed",
@@ -3697,15 +3639,14 @@
    "checked_at": "2026-08-10T01:00:39Z"
   },
   "SC.3.P.11.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize sources of heat.",
    "cpalms_id": "7690",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7690",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:00:42Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.P.8.1": {
    "state": "confirmed",
@@ -3748,15 +3689,14 @@
    "checked_at": "2026-08-10T01:00:58Z"
   },
   "SC.3.P.8.In.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Measure the weight of solids or liquids.",
    "cpalms_id": "7669",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7669",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:01:01Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.P.8.Su.2": {
    "state": "confirmed",
@@ -3767,15 +3707,14 @@
    "checked_at": "2026-08-10T01:01:04Z"
   },
   "SC.3.P.8.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize the larger of two objects.",
    "cpalms_id": "7671",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7671",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:01:07Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.P.8.3": {
    "state": "confirmed",
@@ -3834,15 +3773,14 @@
    "checked_at": "2026-08-10T01:01:27Z"
   },
   "SC.3.P.9.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that ice can change to water.",
    "cpalms_id": "7677",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7677",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:01:31Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.E.5.1": {
    "state": "confirmed",
@@ -3869,15 +3807,14 @@
    "checked_at": "2026-08-10T01:01:40Z"
   },
   "SC.3.E.5.Pa.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize stars in the sky.",
    "cpalms_id": "7651",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7651",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:01:44Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.E.5.2": {
    "state": "confirmed",
@@ -3896,26 +3833,24 @@
    "checked_at": "2026-08-10T01:01:50Z"
   },
   "SC.3.E.5.Su.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that the Sun gives off light.",
    "cpalms_id": "7653",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7653",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:01:52Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.E.5.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that the Sun is bright.",
    "cpalms_id": "7654",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7654",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:01:55Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.E.5.3": {
    "state": "confirmed",
@@ -3934,15 +3869,14 @@
    "checked_at": "2026-08-10T01:02:02Z"
   },
   "SC.3.E.5.Su.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that the Sun is a star.",
    "cpalms_id": "7656",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7656",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:02:04Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.E.5.4": {
    "state": "confirmed",
@@ -4137,15 +4071,14 @@
    "checked_at": "2026-08-10T01:03:18Z"
   },
   "SC.3.N.1.Pa.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize that people share information.",
    "cpalms_id": "7641",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7641",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:03:21Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.N.1.In.4": {
    "state": "confirmed",
@@ -4228,15 +4161,14 @@
    "checked_at": "2026-08-10T01:03:52Z"
   },
   "SC.3.N.3.In.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Use models to identify how things work.",
    "cpalms_id": "7645",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7645",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:03:55Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.N.3.Su.2": {
    "state": "confirmed",
@@ -4247,15 +4179,14 @@
    "checked_at": "2026-08-10T01:03:58Z"
   },
   "SC.3.N.3.Pa.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Recognize a model of a real object.",
    "cpalms_id": "7647",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7647",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:04:02Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.3.N.3.3": {
    "state": "confirmed",
@@ -5090,15 +5021,14 @@
    "checked_at": "2026-08-10T01:31:08Z"
   },
   "SC.5.E.7.Su.6": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Identify what to do in severe weather.",
    "cpalms_id": "7860",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/7860",
    "date_revised": "02/08",
    "checked_at": "2026-08-10T01:31:10Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "SC.5.E.7.In.7": {
    "state": "confirmed",

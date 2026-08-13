@@ -4,7 +4,7 @@
  "generated_at": "2026-08-09T14:03:54Z",
  "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
  "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
- "coverage": 0.3416,
+ "coverage": 0.3487,
  "scopes": [
   {
    "grades": "K,1,2,3,4,5",
@@ -22,59 +22,54 @@
    "checked_at": "2026-08-09T01:33:13Z"
   },
   "MA.K12.MTR.3.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Complete tasks with mathematical fluency.Mathematicians who complete tasks with mathematical fluency:Select efficient and appropriate methods for solving problems within the given context.Maintain flexibility and accuracy while performing procedures and mental calculations.Complete tasks accurately and with confidence.Adapt procedures to apply them to a new context.Use feedback to improve efficiency when performing calculations.",
    "cpalms_id": "15877",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15877",
    "date_revised": "08/20",
    "checked_at": "2026-08-09T01:33:17Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "MA.K12.MTR.4.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Engage in discussions that reflect on the mathematical thinking of self and others.Mathematicians who engage in discussions that reflect on the mathematical thinking of self and others:Communicate mathematical ideas, vocabulary and methods effectively.Analyze the mathematical thinking of others.Compare the efficiency of a method to those expressed by others.Recognize errors and suggest how to correctly solve the task.Justify results by explaining methods and processes.Construct possible arguments based on evidence.",
    "cpalms_id": "15878",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15878",
    "date_revised": "08/20",
    "checked_at": "2026-08-09T01:33:21Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "MA.K12.MTR.5.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Use patterns and structure to help understand and connect mathematical concepts.Mathematicians who use patterns and structure to help understand and connect mathematical concepts:Focus on relevant details within a problem.Create plans and procedures to logically order events, steps or ideas to solve problems.Decompose a complex problem into manageable parts.Relate previously learned concepts to new concepts.Look for similarities among problems.Connect solutions of problems to more complicated large-scale situations.",
    "cpalms_id": "15879",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15879",
    "date_revised": "08/20",
    "checked_at": "2026-08-09T01:33:24Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "MA.K12.MTR.6.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Assess the reasonableness of solutions.Mathematicians who assess the reasonableness of solutions:Estimate to discover possible solutions.Use benchmark quantities to determine if a solution makes sense.Check calculations when solving problems.Verify possible solutions by explaining the methods used.Evaluate results based on the given context.",
    "cpalms_id": "15880",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15880",
    "date_revised": "08/20",
    "checked_at": "2026-08-09T01:33:28Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "MA.K12.MTR.7.1": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Apply mathematics to real-world contexts.Mathematicians who apply mathematics to real-world contexts:Connect mathematical concepts to everyday experiences.Use models and methods to understand, represent and solve problems.Perform investigations to gather data or determine if a method is appropriate.Redesign models and methods to improve accuracy or efficiency.",
    "cpalms_id": "15881",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15881",
    "date_revised": "08/20",
    "checked_at": "2026-08-09T01:33:32Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "MA.K.NSO.1.1": {
    "state": "confirmed",
@@ -109,15 +104,14 @@
    "checked_at": "2026-08-09T01:33:45Z"
   },
   "MA.K.NSO.1.3": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Identify positions of objects within a sequence using the words “first,” “second,” “third,” “fourth” or “fifth.”",
    "cpalms_id": "15234",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15234",
    "date_revised": "08/20",
    "checked_at": "2026-08-09T01:33:48Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "MA.K.NSO.1.AP.3": {
    "state": "confirmed",
@@ -1624,26 +1618,24 @@
    "checked_at": "2026-08-09T01:44:27Z"
   },
   "MA.3.FR.1.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Represent and interpret fractions, including fractions greater than one, in the form of mn as the result of adding the unit fraction 1n to itself mtimes.",
    "cpalms_id": "15316",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15316",
    "date_revised": "08/20",
    "checked_at": "2026-08-09T01:44:31Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "MA.3.FR.1.AP.2": {
-   "state": "near_match",
+   "state": "confirmed",
    "statement_verified": "Explore fractions, less than or equal to a whole, in the form of as the result of adding the unit fraction to itselfm times. Denominators are limited to 2, 3 and 4.",
    "cpalms_id": "18033",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18033",
    "date_revised": "03/23",
    "checked_at": "2026-08-09T01:44:35Z",
-   "needs_review": true,
-   "reclassified_at": "2026-08-11T00:50:00Z",
-   "reclassified_reason": "re-judged under the tightened `confirmed` predicate (strict prefix, untruncated, >=40 normalized chars); the recorded CPALMS text is unchanged"
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "MA.3.FR.1.3": {
    "state": "confirmed",
