@@ -1,16 +1,22 @@
 {
  "subject": "computer_science",
  "source": "cpalms",
- "generated_at": "2026-08-13T04:04:20Z",
+ "generated_at": "2026-08-13T10:50:27Z",
  "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
  "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
- "coverage": 0.3446,
+ "coverage": 1.0,
  "scopes": [
   {
    "grades": "K,1,2,3,4,5",
    "rows_applied": 193,
    "rows_verified": 193,
    "generated_at": "2026-08-13T04:04:20Z"
+  },
+  {
+   "grades": "6,7,8,912",
+   "rows_applied": 367,
+   "rows_verified": 367,
+   "generated_at": "2026-08-13T10:50:27Z"
   }
  ],
  "entries": {
@@ -1656,6 +1662,2942 @@
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119661",
    "date_revised": "07/24",
    "checked_at": "2026-08-13T03:48:37Z"
+  },
+  "SC.6.CC.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Demonstrate an ability to communicate through various online tools.",
+   "cpalms_id": "119662",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119662",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:10Z"
+  },
+  "SC.6.CC.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Create a digital product individually and collaboratively.",
+   "cpalms_id": "119663",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119663",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:12Z"
+  },
+  "SC.6.HS.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the connection between strong passwords and Internet safety.",
+   "cpalms_id": "119664",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119664",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:15Z"
+  },
+  "SC.6.HS.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the need for downloads to come from trusted sources.",
+   "cpalms_id": "119665",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119665",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:20Z"
+  },
+  "SC.6.HS.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Describe safe practices when participating in digital communication.",
+   "cpalms_id": "119666",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119666",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:24Z"
+  },
+  "SC.6.HS.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate a given website to determine if it is safe for users.",
+   "cpalms_id": "119667",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119667",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:26Z"
+  },
+  "SC.6.HS.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Define the online disinhibition effect.",
+   "cpalms_id": "119668",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119668",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:30Z"
+  },
+  "SC.6.HS.2.2": {
+   "state": "confirmed",
+   "statement_verified": "List negative impacts of excessive device usage.",
+   "cpalms_id": "119669",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119669",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:33Z"
+  },
+  "SC.6.HS.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore the impact that digital media and communication has on our behavior.",
+   "cpalms_id": "119671",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119671",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:36Z"
+  },
+  "SC.6.CO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify multiple file format types.",
+   "cpalms_id": "119672",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119672",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:39Z"
+  },
+  "SC.6.CO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify applications that have different desktop and online versions.",
+   "cpalms_id": "119673",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119673",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:42Z"
+  },
+  "SC.6.CO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the differences between wired and wireless computer networks.",
+   "cpalms_id": "119674",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119674",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:45Z"
+  },
+  "SC.6.CO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe how information is translated and communicated between computers and devices over a network.",
+   "cpalms_id": "119675",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119675",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:49Z"
+  },
+  "SC.6.CO.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Explain that a database is a collection of digital data that can be organized, stored and retrieved in a designated order.",
+   "cpalms_id": "119676",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119676",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:51Z"
+  },
+  "SC.6.CO.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Research questions using digital information resources.",
+   "cpalms_id": "119677",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119677",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:54Z"
+  },
+  "SC.6.CO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify and describe the major hardware components and functions of computer systems.",
+   "cpalms_id": "119678",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119678",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:05:58Z"
+  },
+  "SC.6.CO.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the essential characteristics of a software artifact.",
+   "cpalms_id": "119679",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119679",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:01Z"
+  },
+  "SC.6.CO.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe the main functions of an operating system.",
+   "cpalms_id": "119680",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119680",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:04Z"
+  },
+  "SC.6.CO.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain how an operating system provides user and system services.",
+   "cpalms_id": "119681",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119681",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:07Z"
+  },
+  "SC.6.CO.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe the major software components and functions of computer systems.",
+   "cpalms_id": "119682",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119682",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:10Z"
+  },
+  "SC.6.CO.3.5": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate various forms of input and output (IO) and peripheral devices.",
+   "cpalms_id": "119683",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119683",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:14Z"
+  },
+  "SC.6.PE.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the types of operations that can be performed on different data types.",
+   "cpalms_id": "119684",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119684",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:17Z"
+  },
+  "SC.6.PE.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Develop a program using a string data type.",
+   "cpalms_id": "119685",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119685",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:20Z"
+  },
+  "SC.6.PE.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Develop a program using a numeric data type.",
+   "cpalms_id": "119686",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119686",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:24Z"
+  },
+  "SC.6.PE.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Index selected items within a list.",
+   "cpalms_id": "119687",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119687",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:28Z"
+  },
+  "SC.6.PE.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Compare data types and their uses.",
+   "cpalms_id": "119688",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119688",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:32Z"
+  },
+  "SC.6.PE.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Develop a program using a Boolean data type.",
+   "cpalms_id": "119689",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119689",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:35Z"
+  },
+  "SC.6.PE.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Write code segments that use standard mathematical operators.",
+   "cpalms_id": "119690",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119690",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:38Z"
+  },
+  "SC.6.PE.1.8": {
+   "state": "confirmed",
+   "statement_verified": "Use a function for a specified purpose.",
+   "cpalms_id": "119691",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119691",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:42Z"
+  },
+  "SC.6.PE.1.9": {
+   "state": "confirmed",
+   "statement_verified": "Use looping techniques for a specified purpose.",
+   "cpalms_id": "119692",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119692",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:45Z"
+  },
+  "SC.6.PE.1.10": {
+   "state": "confirmed",
+   "statement_verified": "Use conditional statements for a specified purpose.",
+   "cpalms_id": "119693",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119693",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:49Z"
+  },
+  "SC.6.PE.1.11": {
+   "state": "confirmed",
+   "statement_verified": "Design solutions that use repetition and two-way selection.",
+   "cpalms_id": "119694",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119694",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:52Z"
+  },
+  "SC.6.PE.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Create designated graph types using data.",
+   "cpalms_id": "119695",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119695",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:55Z"
+  },
+  "SC.6.PE.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze a database and propose solutions based on a task or problem.",
+   "cpalms_id": "119696",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119696",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:06:58Z"
+  },
+  "SC.6.PE.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Create a simple database.",
+   "cpalms_id": "119697",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119697",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:02Z"
+  },
+  "SC.6.PE.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify what kinds of real-world problems can be solved using modeling and simulation.",
+   "cpalms_id": "119698",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119698",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:06Z"
+  },
+  "SC.6.PE.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Interact with content-specific models and simulations to support learning, research and problem-solving.",
+   "cpalms_id": "119699",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119699",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:10Z"
+  },
+  "SC.6.PE.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Design a digital model.",
+   "cpalms_id": "119700",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119700",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:13Z"
+  },
+  "SC.6.PE.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify the benefits and the limitations of the use of models.",
+   "cpalms_id": "119701",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119701",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:17Z"
+  },
+  "SC.6.PE.3.5": {
+   "state": "confirmed",
+   "statement_verified": "Create a visual representation of a solution to a problem.",
+   "cpalms_id": "119702",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119702",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:20Z"
+  },
+  "SC.6.PE.3.6": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the logical flow of a step-by-step program by acting it out through computer-free activities.",
+   "cpalms_id": "119703",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119703",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:24Z"
+  },
+  "SC.6.PE.3.7": {
+   "state": "confirmed",
+   "statement_verified": "Select tools and technology resources to accomplish a variety of tasks and solve problems.",
+   "cpalms_id": "119704",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119704",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:27Z"
+  },
+  "SC.6.PE.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the phases of the software development life cycle.",
+   "cpalms_id": "119705",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119705",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:31Z"
+  },
+  "SC.6.TI.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the data content sources that make your digital footprint.",
+   "cpalms_id": "119706",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119706",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:34Z"
+  },
+  "SC.6.TI.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore the history of computer and other devices.",
+   "cpalms_id": "119707",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119707",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:37Z"
+  },
+  "SC.6.TI.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Create a timeline for the innovation of an electronic device.",
+   "cpalms_id": "119708",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119708",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:41Z"
+  },
+  "SC.6.TI.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe various technology-related career paths.",
+   "cpalms_id": "119709",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119709",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:45Z"
+  },
+  "SC.6.TI.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the consequences of plagiarism on the development of creative works.",
+   "cpalms_id": "119710",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119710",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:49Z"
+  },
+  "SC.6.TI.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Demonstrate compliance with the school’s Acceptable Use Policy.",
+   "cpalms_id": "119711",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119711",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:52Z"
+  },
+  "SC.6.TI.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain fair use for using copyrighted materials.",
+   "cpalms_id": "119712",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119712",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:56Z"
+  },
+  "SC.6.TI.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Generate citations for text and non-text sources using a digital tool.",
+   "cpalms_id": "119713",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119713",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:07:59Z"
+  },
+  "SC.6.ET.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify technology used to support specialized forms of human- computer interaction (HCI).",
+   "cpalms_id": "119714",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119714",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:02Z"
+  },
+  "SC.6.ET.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify technology skills needed in the workplace.",
+   "cpalms_id": "119715",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119715",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:06Z"
+  },
+  "SC.6.ET.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the characteristics of Artificial Intelligence (AI).",
+   "cpalms_id": "119716",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119716",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:10Z"
+  },
+  "SC.6.ET.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the benefits associated with Artificial Intelligence (AI).",
+   "cpalms_id": "119717",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119717",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:12Z"
+  },
+  "SC.6.ET.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain why some tasks can be accomplished faster by computers.",
+   "cpalms_id": "119718",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119718",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:16Z"
+  },
+  "SC.6.ET.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe how humans and machines interact to accomplish tasks that neither can accomplish alone.",
+   "cpalms_id": "119719",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119719",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:19Z"
+  },
+  "SC.6.CS.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Define the states of data.",
+   "cpalms_id": "119720",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119720",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:23Z"
+  },
+  "SC.6.CS.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Illustrate the concept of access control and how to limit access to authorized users.",
+   "cpalms_id": "119721",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119721",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:25Z"
+  },
+  "SC.6.CS.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the importance of cybersecurity.",
+   "cpalms_id": "119722",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119722",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:28Z"
+  },
+  "SC.6.CS.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Determine information that should remain confidential.",
+   "cpalms_id": "119723",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119723",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:32Z"
+  },
+  "SC.6.CS.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify the need for encryption.",
+   "cpalms_id": "119724",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119724",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:35Z"
+  },
+  "SC.6.CS.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the importance of digital identity.",
+   "cpalms_id": "119725",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119725",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:38Z"
+  },
+  "SC.6.CS.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the need for security safeguards on personal devices.",
+   "cpalms_id": "119726",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119726",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:42Z"
+  },
+  "SC.7.CC.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Apply multimedia tools for local and global group collaboration.",
+   "cpalms_id": "119727",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119727",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:45Z"
+  },
+  "SC.7.CC.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify productivity tools for collaboration.",
+   "cpalms_id": "119728",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119728",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:48Z"
+  },
+  "SC.7.CC.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify individual roles within a collaborative team.",
+   "cpalms_id": "119729",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119729",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:51Z"
+  },
+  "SC.7.CC.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Organize compiled information using a digital tool.",
+   "cpalms_id": "119730",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119730",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:54Z"
+  },
+  "SC.7.CC.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze one’s own ideas with research-based information to create a unique digital artifact.",
+   "cpalms_id": "119731",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119731",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:08:58Z"
+  },
+  "SC.7.HS.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain the possible consequences of cyberbullying.",
+   "cpalms_id": "119732",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119732",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:02Z"
+  },
+  "SC.7.HS.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the impact of online disinhibition on individuals and society.",
+   "cpalms_id": "119733",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119733",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:06Z"
+  },
+  "SC.7.HS.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Interpret writings and communications using terminology.",
+   "cpalms_id": "119734",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119734",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:09Z"
+  },
+  "SC.7.HS.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Categorize potential dangers to an individual’s safety and security.",
+   "cpalms_id": "119735",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119735",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:13Z"
+  },
+  "SC.7.HS.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the importance of reporting suspicious behavior encountered on the Internet.",
+   "cpalms_id": "119736",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119736",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:16Z"
+  },
+  "SC.7.HS.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Compare the risks and benefits of accessing the Internet.",
+   "cpalms_id": "119737",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119737",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:19Z"
+  },
+  "SC.7.HS.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Examine safe practices for technology use.",
+   "cpalms_id": "119738",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119738",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:22Z"
+  },
+  "SC.7.HS.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the digital practices that may affect your physical and mental well- being.",
+   "cpalms_id": "119739",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119739",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:26Z"
+  },
+  "SC.7.HS.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Discuss how device usage can affect sleeping patterns.",
+   "cpalms_id": "119740",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119740",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:29Z"
+  },
+  "SC.7.HS.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the potential risks of device addiction and how to prevent it.",
+   "cpalms_id": "119741",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119741",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:33Z"
+  },
+  "SC.7.HS.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain the possible consequences of cyberbullying and inappropriate use of digital media and communication on personal life and society.",
+   "cpalms_id": "119742",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119742",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:36Z"
+  },
+  "SC.7.CO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the kinds of content associated with different file types.",
+   "cpalms_id": "119743",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119743",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:39Z"
+  },
+  "SC.7.CO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Differentiate between different file types.",
+   "cpalms_id": "119744",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119744",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:43Z"
+  },
+  "SC.7.CO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Describe the relationships between hardware and software.",
+   "cpalms_id": "119745",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119745",
+   "date_revised": "07/26",
+   "checked_at": "2026-08-13T04:09:46Z"
+  },
+  "SC.7.CO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Utilize a set of websites to find information for a given topic.",
+   "cpalms_id": "119746",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119746",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:49Z"
+  },
+  "SC.7.CO.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Utilize government websites to facilitate civic engagement.",
+   "cpalms_id": "119747",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119747",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:52Z"
+  },
+  "SC.7.CO.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Describe strategies for determining the reliability of resources or information on the Internet.",
+   "cpalms_id": "119748",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119748",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:09:57Z"
+  },
+  "SC.7.CO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain the difference between wired, local area, wireless and mobile networks.",
+   "cpalms_id": "119749",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119749",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:01Z"
+  },
+  "SC.7.CO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify and describe the function of the main internal parts of a basic computing device.",
+   "cpalms_id": "119750",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119750",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:05Z"
+  },
+  "SC.7.CO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Explore devices that contain firmware.",
+   "cpalms_id": "119751",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119751",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:08Z"
+  },
+  "SC.7.CO.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain the connection of natural resources on the manufacturing of computer hardware components.",
+   "cpalms_id": "119752",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119752",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:12Z"
+  },
+  "SC.7.CO.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Differentiate between desktop applications and software as a service (SaaS).",
+   "cpalms_id": "119753",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119753",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:16Z"
+  },
+  "SC.7.PE.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Create a function for a specific purpose.",
+   "cpalms_id": "119754",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119754",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:19Z"
+  },
+  "SC.7.PE.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Write a code segment that will explore a list using iteration.",
+   "cpalms_id": "119755",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119755",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:23Z"
+  },
+  "SC.7.PE.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Develop a logical expression using operator precedence.",
+   "cpalms_id": "119756",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119756",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:25Z"
+  },
+  "SC.7.PE.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Develop an arithmetic expression using operator precedence.",
+   "cpalms_id": "119757",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119757",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:29Z"
+  },
+  "SC.7.PE.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify the types and uses of variables in a program.",
+   "cpalms_id": "119758",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119758",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:33Z"
+  },
+  "SC.7.PE.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Create online content using advanced design tools.",
+   "cpalms_id": "119760",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119760",
+   "date_revised": "07/26",
+   "checked_at": "2026-08-13T04:10:37Z"
+  },
+  "SC.7.PE.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Identify different types of programming errors.",
+   "cpalms_id": "119761",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119761",
+   "date_revised": "07/26",
+   "checked_at": "2026-08-13T04:10:40Z"
+  },
+  "SC.7.PE.1.8": {
+   "state": "confirmed",
+   "statement_verified": "Debug a program using iterative development.",
+   "cpalms_id": "119762",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119762",
+   "date_revised": "07/26",
+   "checked_at": "2026-08-13T04:10:44Z"
+  },
+  "SC.7.PE.1.9": {
+   "state": "confirmed",
+   "statement_verified": "Write a code segment that will explore a list using iteration.",
+   "cpalms_id": "119763",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119763",
+   "date_revised": "07/26",
+   "checked_at": "2026-08-13T04:10:48Z"
+  },
+  "SC.7.PE.1.10": {
+   "state": "confirmed",
+   "statement_verified": "Create iterative and non-iterative structures in a code segment.",
+   "cpalms_id": "119764",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119764",
+   "date_revised": "07/26",
+   "checked_at": "2026-08-13T04:10:51Z"
+  },
+  "SC.7.PE.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Predict outputs while showing an understanding of inputs.",
+   "cpalms_id": "119765",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119765",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:55Z"
+  },
+  "SC.7.PE.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze digital data within a database.",
+   "cpalms_id": "119766",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119766",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:10:58Z"
+  },
+  "SC.7.PE.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Define parameters for individual and collaborative projects using Boolean logic.",
+   "cpalms_id": "119767",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119767",
+   "date_revised": "07/26",
+   "checked_at": "2026-08-13T04:11:02Z"
+  },
+  "SC.7.PE.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Modify and create a simulation to analyze and illustrate a concept in depth.",
+   "cpalms_id": "119768",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119768",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:05Z"
+  },
+  "SC.7.PE.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Use modeling and simulations to test scientific hypotheses.",
+   "cpalms_id": "119769",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119769",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:08Z"
+  },
+  "SC.7.PE.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Define the concept of a class related to object-oriented programming.",
+   "cpalms_id": "119770",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119770",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:12Z"
+  },
+  "SC.7.PE.3.5": {
+   "state": "confirmed",
+   "statement_verified": "Identify the purpose of indexing the order of elements in a list.",
+   "cpalms_id": "119771",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119771",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:16Z"
+  },
+  "SC.7.PE.3.6": {
+   "state": "confirmed",
+   "statement_verified": "Perform program tracing to predict the behavior of programs.",
+   "cpalms_id": "119772",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119772",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:19Z"
+  },
+  "SC.7.PE.3.7": {
+   "state": "confirmed",
+   "statement_verified": "Identify the types and uses of variables in a program.",
+   "cpalms_id": "119773",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119773",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:21Z"
+  },
+  "SC.7.PE.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Define the phases of the software development life cycle.",
+   "cpalms_id": "119774",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119774",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:25Z"
+  },
+  "SC.7.TI.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the ways that technology has increased the capacity for communication within a community.",
+   "cpalms_id": "119775",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119775",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:28Z"
+  },
+  "SC.7.TI.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the responsible and irresponsible use of information on collaborative projects.",
+   "cpalms_id": "119776",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119776",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:32Z"
+  },
+  "SC.7.TI.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify how media is used to influence information.",
+   "cpalms_id": "119777",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119777",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:35Z"
+  },
+  "SC.7.TI.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze technology-related career paths.",
+   "cpalms_id": "119778",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119778",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:38Z"
+  },
+  "SC.7.TI.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Summarize the historical impact of digital media and communication.",
+   "cpalms_id": "119779",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119779",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:41Z"
+  },
+  "SC.7.TI.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Explore the innovation of computer components.",
+   "cpalms_id": "119780",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119780",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:45Z"
+  },
+  "SC.7.TI.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe legal and ethical behaviors when using information and technology and describe the consequences of misuse.",
+   "cpalms_id": "119781",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119781",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:48Z"
+  },
+  "SC.7.TI.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe and model responsible use of modern communication media and devices.",
+   "cpalms_id": "119782",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119782",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:51Z"
+  },
+  "SC.7.TI.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the legal use of modern communication media and devices.",
+   "cpalms_id": "119783",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119783",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:54Z"
+  },
+  "SC.7.TI.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the ethical use of collected data.",
+   "cpalms_id": "119784",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119784",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:11:58Z"
+  },
+  "SC.7.TI.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Explain how copyright law and licensing protect the owner of intellectual property.",
+   "cpalms_id": "119785",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119785",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:02Z"
+  },
+  "SC.7.ET.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Investigate the latest technologies and the potential they have to improve our lives at home, work and in society.",
+   "cpalms_id": "119786",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119786",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:04Z"
+  },
+  "SC.7.ET.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore emerging technologies that have the potential to impact education.",
+   "cpalms_id": "119787",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119787",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:07Z"
+  },
+  "SC.7.ET.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore future technologies and the role artificial intelligence (AI) may play.",
+   "cpalms_id": "119788",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119788",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:11Z"
+  },
+  "SC.7.ET.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe ways in which adaptive technologies can assist users in their daily lives.",
+   "cpalms_id": "119789",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119789",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:15Z"
+  },
+  "SC.7.ET.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify ways humans interact with computers.",
+   "cpalms_id": "119790",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119790",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:19Z"
+  },
+  "SC.7.ET.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify ways humans interact with hardware components.",
+   "cpalms_id": "119791",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119791",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:22Z"
+  },
+  "SC.7.CS.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe data in its three states and potential threats to each state.",
+   "cpalms_id": "119792",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119792",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:26Z"
+  },
+  "SC.7.CS.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain the concept of access control and how to limit access to authorized users.",
+   "cpalms_id": "119793",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119793",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:28Z"
+  },
+  "SC.7.CS.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Examine the basics of cybersecurity needs for business, government and organizations.",
+   "cpalms_id": "119794",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119794",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:32Z"
+  },
+  "SC.7.CS.1.4": {
+   "state": "confirmed",
+   "statement_verified": "List and define the elements of the confidentiality, integrity and availability (CIA) triad.",
+   "cpalms_id": "119795",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119795",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:36Z"
+  },
+  "SC.7.CS.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Explain components of access control.",
+   "cpalms_id": "119796",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119796",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:39Z"
+  },
+  "SC.7.CS.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Identify the characteristics of strong versus weak passwords in data and identity security.",
+   "cpalms_id": "119797",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119797",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:43Z"
+  },
+  "SC.7.CS.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Explain the proper use and operation of security technologies.",
+   "cpalms_id": "119798",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119798",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:45Z"
+  },
+  "SC.7.CS.1.8": {
+   "state": "confirmed",
+   "statement_verified": "Identify actions that protect electronic devices.",
+   "cpalms_id": "119799",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119799",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:49Z"
+  },
+  "SC.7.CS.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Define the Internet of Things (IoT).",
+   "cpalms_id": "119800",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119800",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:52Z"
+  },
+  "SC.7.CS.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the types of cyberattacks.",
+   "cpalms_id": "119801",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119801",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:12:56Z"
+  },
+  "SC.7.CS.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore social engineering attacks.",
+   "cpalms_id": "119802",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119802",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:00Z"
+  },
+  "SC.7.CS.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify data vulnerabilities.",
+   "cpalms_id": "119803",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119803",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:03Z"
+  },
+  "SC.8.CC.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Design a digital product.",
+   "cpalms_id": "119804",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119804",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:06Z"
+  },
+  "SC.8.CC.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the benefits of collaboration compared to individual product creation.",
+   "cpalms_id": "119805",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119805",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:09Z"
+  },
+  "SC.8.CC.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Publish a digital product individually and collaboratively.",
+   "cpalms_id": "119806",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119806",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:12Z"
+  },
+  "SC.8.HS.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the impacts of the presence of technology and the lack of technology on everyday life.",
+   "cpalms_id": "119807",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119807",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:15Z"
+  },
+  "SC.8.HS.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Develop procedures to protect personal information while accessing the Internet.",
+   "cpalms_id": "119808",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119808",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:18Z"
+  },
+  "SC.8.HS.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Model a procedure to mitigate risks to personal safety while accessing the Internet.",
+   "cpalms_id": "119809",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119809",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:22Z"
+  },
+  "SC.8.HS.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Determine the association between hand-eye coordination and the use of digital devices.",
+   "cpalms_id": "119810",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119810",
+   "date_revised": "07/23",
+   "checked_at": "2026-08-13T04:13:25Z"
+  },
+  "SC.8.HS.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Investigate the causes of headaches associated with digital device usage.",
+   "cpalms_id": "119811",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119811",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:30Z"
+  },
+  "SC.8.HS.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Investigate the causes of physical body changes due to device usage.",
+   "cpalms_id": "119812",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119812",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:33Z"
+  },
+  "SC.8.HS.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify the effects on cognitive function as a result of technology use.",
+   "cpalms_id": "119813",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119813",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:37Z"
+  },
+  "SC.8.HS.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Discuss how regulating the use of digital media and communication is important for mental and physical well-being.",
+   "cpalms_id": "119814",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119814",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:39Z"
+  },
+  "SC.8.HS.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how digital media and communication influence behavior.",
+   "cpalms_id": "119815",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119815",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:43Z"
+  },
+  "SC.8.CO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate information from multiple file formats into a single artifact.",
+   "cpalms_id": "119816",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119816",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:46Z"
+  },
+  "SC.8.CO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Create a collaborative project utilizing an online digital application.",
+   "cpalms_id": "119817",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119817",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:50Z"
+  },
+  "SC.8.CO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how to disassemble or reassemble a desktop computer.",
+   "cpalms_id": "119818",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119818",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:52Z"
+  },
+  "SC.8.CO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore different hardware specifications and their impact on the performance of the computer.",
+   "cpalms_id": "119819",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119819",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:56Z"
+  },
+  "SC.8.CO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the major components of a network.",
+   "cpalms_id": "119820",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119820",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:13:59Z"
+  },
+  "SC.8.CO.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Compare the benefits and limitations of desktop applications and their complimentary online subscription version.",
+   "cpalms_id": "119821",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119821",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:03Z"
+  },
+  "SC.8.PE.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Use an expression for a specified purpose.",
+   "cpalms_id": "119822",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119822",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:08Z"
+  },
+  "SC.8.PE.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Create a programming process for decomposing a problem.",
+   "cpalms_id": "119823",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119823",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:13Z"
+  },
+  "SC.8.PE.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Create a function with parameters.",
+   "cpalms_id": "119824",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119824",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:16Z"
+  },
+  "SC.8.PE.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain the use of iterative and non-iterative structures and their uses as a code segment.",
+   "cpalms_id": "119825",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119825",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:19Z"
+  },
+  "SC.8.PE.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Create an algorithm to solve one or more parts of a decomposed problem.",
+   "cpalms_id": "119826",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119826",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:23Z"
+  },
+  "SC.8.PE.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Create an algorithm that can collect data.",
+   "cpalms_id": "119827",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119827",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:25Z"
+  },
+  "SC.8.PE.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Design an application for a specified purpose.",
+   "cpalms_id": "119828",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119828",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:29Z"
+  },
+  "SC.8.PE.1.8": {
+   "state": "confirmed",
+   "statement_verified": "Recognize different numerical data types.",
+   "cpalms_id": "119829",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119829",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:32Z"
+  },
+  "SC.8.PE.1.9": {
+   "state": "confirmed",
+   "statement_verified": "Design a program that will assist a user with equations using standard mathematical operators.",
+   "cpalms_id": "119830",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119830",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:36Z"
+  },
+  "SC.8.PE.1.10": {
+   "state": "confirmed",
+   "statement_verified": "Create a code segment using iteration.",
+   "cpalms_id": "119831",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119831",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:39Z"
+  },
+  "SC.8.PE.1.11": {
+   "state": "confirmed",
+   "statement_verified": "Identify the limitations that need to be recognized when creating an algorithm.",
+   "cpalms_id": "119832",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119832",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:41Z"
+  },
+  "SC.8.PE.1.12": {
+   "state": "confirmed",
+   "statement_verified": "Select an efficient algorithm for a given task based on certain criteria.",
+   "cpalms_id": "119833",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119833",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:44Z"
+  },
+  "SC.8.PE.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Select and use applicable data-collection technology.",
+   "cpalms_id": "119834",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119834",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:46Z"
+  },
+  "SC.8.PE.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Utilize data-collection technology to report results for content-related problems.",
+   "cpalms_id": "119835",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119835",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:50Z"
+  },
+  "SC.8.PE.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Utilize data from simulations to test hypotheses.",
+   "cpalms_id": "119836",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119836",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:53Z"
+  },
+  "SC.8.PE.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Perform a variety of operations such as sorting, filtering and searching in a database.",
+   "cpalms_id": "119837",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119837",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:14:57Z"
+  },
+  "SC.8.PE.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Utilize organized data within a database to solve a problem.",
+   "cpalms_id": "119838",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119838",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:01Z"
+  },
+  "SC.8.PE.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Represent natural phenomena using a model.",
+   "cpalms_id": "119839",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119839",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:04Z"
+  },
+  "SC.8.PE.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore the purpose of a class.",
+   "cpalms_id": "119840",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119840",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:07Z"
+  },
+  "SC.8.PE.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the benefits and limitations of the use of models.",
+   "cpalms_id": "119841",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119841",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:11Z"
+  },
+  "SC.8.PE.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore the purpose of the software development life cycle.",
+   "cpalms_id": "119842",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119842",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:15Z"
+  },
+  "SC.8.PE.4.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain the phases of a simple software development life cycle.",
+   "cpalms_id": "119843",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119843",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:18Z"
+  },
+  "SC.8.PE.4.3": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the role of maintenance in the software development cycle.",
+   "cpalms_id": "119844",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119844",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:21Z"
+  },
+  "SC.8.TI.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Examine the historical progression and impact of digital media and communication.",
+   "cpalms_id": "119845",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119845",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:24Z"
+  },
+  "SC.8.TI.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe the influence of access-to-information technologies over time.",
+   "cpalms_id": "119846",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119846",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:26Z"
+  },
+  "SC.8.TI.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe legal and ethical behaviors when using technology.",
+   "cpalms_id": "119847",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119847",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:29Z"
+  },
+  "SC.8.TI.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Use a local or federal government website to engage with a public official.",
+   "cpalms_id": "119848",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119848",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:32Z"
+  },
+  "SC.8.TI.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare various technology-related career paths.",
+   "cpalms_id": "119849",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119849",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:35Z"
+  },
+  "SC.8.ET.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify the emerging features of mobile devices, smart devices and vehicles.",
+   "cpalms_id": "119850",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119850",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:39Z"
+  },
+  "SC.8.ET.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify challenges faced by users when learning to use computer interfaces.",
+   "cpalms_id": "119851",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119851",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:43Z"
+  },
+  "SC.8.ET.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the impact of natural resources on the manufacturing of computer hardware components.",
+   "cpalms_id": "119852",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119852",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:46Z"
+  },
+  "SC.8.ET.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the increasing impact of access to the Internet on daily life.",
+   "cpalms_id": "119853",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119853",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:50Z"
+  },
+  "SC.8.ET.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore the use of an artificial intelligence (AI) device to accomplish a task.",
+   "cpalms_id": "119854",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119854",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:54Z"
+  },
+  "SC.8.ET.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the utilization of intelligent behavior in technology.",
+   "cpalms_id": "119855",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119855",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:15:56Z"
+  },
+  "SC.8.ET.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Investigate the advancement of robotics.",
+   "cpalms_id": "119856",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119856",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:00Z"
+  },
+  "SC.8.CS.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze threats and vulnerabilities to information security for individuals and organizations.",
+   "cpalms_id": "119857",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119857",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:03Z"
+  },
+  "SC.8.CS.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain how authentication and authorization methods can protect users.",
+   "cpalms_id": "119858",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119858",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:07Z"
+  },
+  "SC.8.CS.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Describe defense in-depth strategies to protect simple networks.",
+   "cpalms_id": "119859",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119859",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:11Z"
+  },
+  "SC.8.CS.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain how malicious actions threaten network security.",
+   "cpalms_id": "119860",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119860",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:15Z"
+  },
+  "SC.8.CS.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Explain how malicious actions threaten physical security.",
+   "cpalms_id": "119861",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119861",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:18Z"
+  },
+  "SC.8.CS.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Describe defense in depth and how physical access controls work together.",
+   "cpalms_id": "119862",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119862",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:22Z"
+  },
+  "SC.8.CS.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Explore the process of protecting computer hardware from exploitation.",
+   "cpalms_id": "119863",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119863",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:25Z"
+  },
+  "SC.8.CS.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate security and privacy issues that relate to computer networks and Internet of Things (IoT) devices.",
+   "cpalms_id": "119864",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119864",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:29Z"
+  },
+  "SC.8.CS.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe security and privacy issues that relate to computer networks.",
+   "cpalms_id": "119865",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119865",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:33Z"
+  },
+  "SC.8.CS.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Describe the permanency of data on the Internet, online identity and personal privacy.",
+   "cpalms_id": "119866",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119866",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:36Z"
+  },
+  "SC.8.CS.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Discuss ransomware attacks.",
+   "cpalms_id": "119867",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119867",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:39Z"
+  },
+  "SC.8.CS.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the necessity of immediate security updates of a program.",
+   "cpalms_id": "119868",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119868",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:43Z"
+  },
+  "SC.8.CS.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the steps of the social engineering attack cycle.",
+   "cpalms_id": "119869",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119869",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:47Z"
+  },
+  "SC.912.CC.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate digital modes of communication and collaboration.",
+   "cpalms_id": "119870",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119870",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:50Z"
+  },
+  "SC.912.CC.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Utilize tools within a project environment to communicate.",
+   "cpalms_id": "119871",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119871",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:53Z"
+  },
+  "SC.912.CC.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Present information and data using presentation software.",
+   "cpalms_id": "119872",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119872",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:56Z"
+  },
+  "SC.912.CC.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Create a digital artifact utilizing collaboration, reflection, analysis and iteration.",
+   "cpalms_id": "119873",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119873",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:16:58Z"
+  },
+  "SC.912.CC.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Collaborate to publish information and data for a variety of audiences using digital tools and media-rich resources.",
+   "cpalms_id": "119874",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119874",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:02Z"
+  },
+  "SC.912.CC.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Assess how collaboration influences the design and development of software artifacts.",
+   "cpalms_id": "119875",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119875",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:05Z"
+  },
+  "SC.912.CC.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate program designs and implementations for readability and usability.",
+   "cpalms_id": "119876",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119876",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:08Z"
+  },
+  "SC.912.CC.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Critique the strengths and weaknesses of the collaborative process when creating digital products.",
+   "cpalms_id": "119877",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119877",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:11Z"
+  },
+  "SC.912.HS.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify potential dangers to an individual’s safety and security online.",
+   "cpalms_id": "119878",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119878",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:15Z"
+  },
+  "SC.912.HS.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the consequences of cyberbullying.",
+   "cpalms_id": "119879",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119879",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:18Z"
+  },
+  "SC.912.HS.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Determine the consequences of inaction when witnessing unsafe Internet practices.",
+   "cpalms_id": "119880",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119880",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:21Z"
+  },
+  "SC.912.HS.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Examine the positive outcomes when someone reports suspicious behavior on the Internet.",
+   "cpalms_id": "119881",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119881",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:24Z"
+  },
+  "SC.912.HS.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the risks to personal information while accessing the Internet.",
+   "cpalms_id": "119882",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119882",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:28Z"
+  },
+  "SC.912.HS.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Describe the impact of permissible privacy and security.",
+   "cpalms_id": "119883",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119883",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:31Z"
+  },
+  "SC.912.HS.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Construct strategies to combat cyberbullying or online harassment.",
+   "cpalms_id": "119884",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119884",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:34Z"
+  },
+  "SC.912.HS.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Prioritize regulating screen time and the use of electronic devices for mental and physical well-being.",
+   "cpalms_id": "119885",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119885",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:38Z"
+  },
+  "SC.912.HS.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Investigate the correlation between sedentary behavior and digital device use.",
+   "cpalms_id": "119886",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119886",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:41Z"
+  },
+  "SC.912.HS.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Assess the role of digital health trackers in promoting healthy behaviors.",
+   "cpalms_id": "119887",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119887",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:45Z"
+  },
+  "SC.912.HS.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the relationship between eye strain related to use of technology and exposure to increased blue light.",
+   "cpalms_id": "119888",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119888",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:48Z"
+  },
+  "SC.912.HS.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Research the consequences associated with Nature Deficit Disorder (NDD).",
+   "cpalms_id": "119889",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119889",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:53Z"
+  },
+  "SC.912.HS.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the permanency of data on the Internet.",
+   "cpalms_id": "119890",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119890",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:56Z"
+  },
+  "SC.912.HS.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how social media influences the digital footprint of individuals, communities and cultures.",
+   "cpalms_id": "119891",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119891",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:17:58Z"
+  },
+  "SC.912.CO.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the efficiency and effectiveness of digital tools or resources used for real-world tasks.",
+   "cpalms_id": "119892",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119892",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:03Z"
+  },
+  "SC.912.CO.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify and select the file format based on trade-offs.",
+   "cpalms_id": "119893",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119893",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:06Z"
+  },
+  "SC.912.CO.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Select and use the correct file type for specific tasks.",
+   "cpalms_id": "119894",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119894",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:09Z"
+  },
+  "SC.912.CO.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe the relationship between drivers, hardware and operating systems.",
+   "cpalms_id": "119895",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119895",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:12Z"
+  },
+  "SC.912.CO.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Describe the organization of a computer and its principal components.",
+   "cpalms_id": "119896",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119896",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:16Z"
+  },
+  "SC.912.CO.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Develop and evaluate criteria for purchasing or upgrading computer system hardware.",
+   "cpalms_id": "119897",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119897",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:20Z"
+  },
+  "SC.912.CO.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Describe the process of protecting computer hardware from exploitation.",
+   "cpalms_id": "119898",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119898",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:23Z"
+  },
+  "SC.912.CO.1.8": {
+   "state": "confirmed",
+   "statement_verified": "Describe how the Internet facilitates global communication.",
+   "cpalms_id": "119899",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119899",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:26Z"
+  },
+  "SC.912.CO.1.9": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the accuracy, relevance, comprehensiveness and bias of electronic information resources.",
+   "cpalms_id": "119900",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119900",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:30Z"
+  },
+  "SC.912.CO.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore the function of Basic Input/Output System (BIOS) and Unified Extensible Firmware Interface (UEFI) in a computer.",
+   "cpalms_id": "119901",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119901",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:34Z"
+  },
+  "SC.912.CO.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore motherboard variations.",
+   "cpalms_id": "119902",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119902",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:38Z"
+  },
+  "SC.912.CO.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the central processing unit (CPU).",
+   "cpalms_id": "119903",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119903",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:41Z"
+  },
+  "SC.912.CO.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the role of a power supply unit (PSU) in relation to a computer system.",
+   "cpalms_id": "119904",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119904",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:45Z"
+  },
+  "SC.912.CO.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the purpose of various random access memory (RAM) speeds and storage sizes.",
+   "cpalms_id": "119905",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119905",
+   "date_revised": "07/26",
+   "checked_at": "2026-08-13T04:18:48Z"
+  },
+  "SC.912.CO.2.6": {
+   "state": "confirmed",
+   "statement_verified": "Analyze hardware compatibility issues between industry specific devices.",
+   "cpalms_id": "119906",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119906",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:52Z"
+  },
+  "SC.912.CO.2.7": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate various forms of input and output (IO).",
+   "cpalms_id": "119907",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119907",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:18:56Z"
+  },
+  "SC.912.CO.2.8": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the basic components of wired computer networks.",
+   "cpalms_id": "119908",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119908",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:00Z"
+  },
+  "SC.912.CO.2.9": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the basic components of wireless computer networks.",
+   "cpalms_id": "119909",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119909",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:03Z"
+  },
+  "SC.912.CO.2.10": {
+   "state": "confirmed",
+   "statement_verified": "Explore the components of a data packet.",
+   "cpalms_id": "119910",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119910",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:07Z"
+  },
+  "SC.912.CO.2.11": {
+   "state": "confirmed",
+   "statement_verified": "Investigate the issues that impact network functionality.",
+   "cpalms_id": "119911",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119911",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:11Z"
+  },
+  "SC.912.CO.2.12": {
+   "state": "confirmed",
+   "statement_verified": "Describe common network protocols.",
+   "cpalms_id": "119912",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119912",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:13Z"
+  },
+  "SC.912.CO.2.13": {
+   "state": "confirmed",
+   "statement_verified": "Discern how common network protocols are applied by client-server and peer-to-peer networks.",
+   "cpalms_id": "119913",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119913",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:17Z"
+  },
+  "SC.912.CO.2.14": {
+   "state": "confirmed",
+   "statement_verified": "Explore the role of dynamic host control protocol (DHCP) in a networking system.",
+   "cpalms_id": "119914",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119914",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:20Z"
+  },
+  "SC.912.CO.2.15": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the importance of subnetting.",
+   "cpalms_id": "119915",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119915",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:22Z"
+  },
+  "SC.912.CO.2.16": {
+   "state": "confirmed",
+   "statement_verified": "Describe how devices are identified on a network.",
+   "cpalms_id": "119916",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119916",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:25Z"
+  },
+  "SC.912.CO.2.17": {
+   "state": "confirmed",
+   "statement_verified": "Identify similarities and differences between Internet protocol versions.",
+   "cpalms_id": "119917",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119917",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:28Z"
+  },
+  "SC.912.CO.2.18": {
+   "state": "confirmed",
+   "statement_verified": "Examine 2.4 gigahertz (GHz) and 5 gigahertz (GHz) wireless networks.",
+   "cpalms_id": "119918",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119918",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:31Z"
+  },
+  "SC.912.CO.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze various operating systems.",
+   "cpalms_id": "119919",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119919",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:35Z"
+  },
+  "SC.912.CO.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Develop criteria for selecting software when solving a specific real-world problem.",
+   "cpalms_id": "119920",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119920",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:38Z"
+  },
+  "SC.912.CO.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Examine the difference between operating system (OS) software and application software.",
+   "cpalms_id": "119921",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119921",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:42Z"
+  },
+  "SC.912.PE.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Write code segments.",
+   "cpalms_id": "119923",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119923",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:46Z"
+  },
+  "SC.912.PE.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Create iterative and non-iterative structures within a program.",
+   "cpalms_id": "119924",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119924",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:48Z"
+  },
+  "SC.912.PE.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Create selection structures within a program.",
+   "cpalms_id": "119925",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119925",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:52Z"
+  },
+  "SC.912.PE.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Write a void function that does not return a value.",
+   "cpalms_id": "119926",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119926",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:55Z"
+  },
+  "SC.912.PE.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Write a non-void function that will return a value.",
+   "cpalms_id": "119927",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119927",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:19:58Z"
+  },
+  "SC.912.PE.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Create a nested array to aggregate data.",
+   "cpalms_id": "119928",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119928",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:00Z"
+  },
+  "SC.912.PE.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Define multiple variables to the same value while utilizing aliasing.",
+   "cpalms_id": "119929",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119929",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:03Z"
+  },
+  "SC.912.PE.1.8": {
+   "state": "confirmed",
+   "statement_verified": "Define a class to store data attributes.",
+   "cpalms_id": "119930",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119930",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:07Z"
+  },
+  "SC.912.PE.1.9": {
+   "state": "confirmed",
+   "statement_verified": "Create methods that a class can inherit.",
+   "cpalms_id": "119931",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119931",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:10Z"
+  },
+  "SC.912.PE.1.10": {
+   "state": "confirmed",
+   "statement_verified": "Write programs that validate user input.",
+   "cpalms_id": "119932",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119932",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:13Z"
+  },
+  "SC.912.PE.1.11": {
+   "state": "confirmed",
+   "statement_verified": "Compare the differences in execution of interpreted and compiled languages.",
+   "cpalms_id": "119933",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119933",
+   "date_revised": "07/23",
+   "checked_at": "2026-08-13T04:20:17Z"
+  },
+  "SC.912.PE.1.12": {
+   "state": "confirmed",
+   "statement_verified": "Classify programming languages.",
+   "cpalms_id": "119934",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119934",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:21Z"
+  },
+  "SC.912.PE.1.13": {
+   "state": "confirmed",
+   "statement_verified": "Describe and identify types of programming errors.",
+   "cpalms_id": "119935",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119935",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:24Z"
+  },
+  "SC.912.PE.1.14": {
+   "state": "confirmed",
+   "statement_verified": "Design and implement variables in a program using global and local scope",
+   "cpalms_id": "119936",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119936",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:27Z"
+  },
+  "SC.912.PE.1.15": {
+   "state": "confirmed",
+   "statement_verified": "Implement a program using an integrated development environment (IDE) commonly used.",
+   "cpalms_id": "119937",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119937",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:30Z"
+  },
+  "SC.912.PE.1.16": {
+   "state": "confirmed",
+   "statement_verified": "Explain the distinction between a programming language’s standard library and the Application Programming Interface (API).",
+   "cpalms_id": "119938",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119938",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:33Z"
+  },
+  "SC.912.PE.1.17": {
+   "state": "confirmed",
+   "statement_verified": "Examine the building blocks of algorithms.",
+   "cpalms_id": "119939",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119939",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:37Z"
+  },
+  "SC.912.PE.1.18": {
+   "state": "confirmed",
+   "statement_verified": "Develop a computer program.",
+   "cpalms_id": "119940",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119940",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:40Z"
+  },
+  "SC.912.PE.1.19": {
+   "state": "confirmed",
+   "statement_verified": "Review a computer program to verify program functionality, programming styles, program usability and adherence to common programming standards.",
+   "cpalms_id": "119941",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119941",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:44Z"
+  },
+  "SC.912.PE.1.20": {
+   "state": "confirmed",
+   "statement_verified": "Write programs that use standard logic operators.",
+   "cpalms_id": "119942",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119942",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:20:47Z"
+  },
+  "SC.912.PE.1.21": {
+   "state": "confirmed",
+   "statement_verified": "Use Boolean logic to perform logical operations.",
+   "cpalms_id": "119943",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119943",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:21:34Z"
+  },
+  "SC.912.PE.1.22": {
+   "state": "confirmed",
+   "statement_verified": "Explain structures and their uses within a program.",
+   "cpalms_id": "119944",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119944",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:21:37Z"
+  },
+  "SC.912.PE.1.23": {
+   "state": "confirmed",
+   "statement_verified": "Compile, run, test and debug a digital artifact.",
+   "cpalms_id": "119945",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119945",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:21:41Z"
+  },
+  "SC.912.PE.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Create a matrix from connected lists.",
+   "cpalms_id": "119946",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119946",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:21:45Z"
+  },
+  "SC.912.PE.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the purpose of sublist indexing.",
+   "cpalms_id": "119947",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119947",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:21:48Z"
+  },
+  "SC.912.PE.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare techniques for analyzing massive data collections.",
+   "cpalms_id": "119948",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119948",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:21:52Z"
+  },
+  "SC.912.PE.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate arithmetic expressions using operator precedence.",
+   "cpalms_id": "119949",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119949",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:21:55Z"
+  },
+  "SC.912.PE.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Decompose a problem by defining new code segments.",
+   "cpalms_id": "119950",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119950",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:21:58Z"
+  },
+  "SC.912.PE.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Design and implement a simple simulation that is representative of a natural phenomenon.",
+   "cpalms_id": "119951",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119951",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:01Z"
+  },
+  "SC.912.PE.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate algorithms by their efficiency, correctness and clarity.",
+   "cpalms_id": "119952",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119952",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:05Z"
+  },
+  "SC.912.PE.3.5": {
+   "state": "confirmed",
+   "statement_verified": "Differentiate automated testing platforms and their uses.",
+   "cpalms_id": "119953",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119953",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:09Z"
+  },
+  "SC.912.PE.3.6": {
+   "state": "confirmed",
+   "statement_verified": "Explain the different types of testing that can be performed in a complex software system.",
+   "cpalms_id": "119954",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119954",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:12Z"
+  },
+  "SC.912.PE.3.7": {
+   "state": "confirmed",
+   "statement_verified": "Introduce complex problems and understand that these problems may be computationally unsolvable.",
+   "cpalms_id": "119955",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119955",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:16Z"
+  },
+  "SC.912.PE.3.8": {
+   "state": "confirmed",
+   "statement_verified": "Describe the concept of parallel processing as a strategy to solve large problems.",
+   "cpalms_id": "119956",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119956",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:19Z"
+  },
+  "SC.912.PE.3.9": {
+   "state": "confirmed",
+   "statement_verified": "Demonstrate concurrency by separating processes into threads of execution and dividing data into parallel streams.",
+   "cpalms_id": "119957",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119957",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:23Z"
+  },
+  "SC.912.PE.3.10": {
+   "state": "confirmed",
+   "statement_verified": "Simplify a complex problem by using abstraction to manage complexity using functions and parameters, classes and methods.",
+   "cpalms_id": "119958",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119958",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:26Z"
+  },
+  "SC.912.PE.3.11": {
+   "state": "confirmed",
+   "statement_verified": "Perform advanced searches to locate information and design a data-collection approach to gather original data.",
+   "cpalms_id": "119959",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119959",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:29Z"
+  },
+  "SC.912.PE.3.12": {
+   "state": "confirmed",
+   "statement_verified": "Explain how data analysis is used to enhance the understanding of complex natural and human systems.",
+   "cpalms_id": "119960",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119960",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:33Z"
+  },
+  "SC.912.PE.3.13": {
+   "state": "confirmed",
+   "statement_verified": "Create a computational model that utilizes data to analyze and enhance the understanding of complex natural and human systems.",
+   "cpalms_id": "119961",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119961",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:37Z"
+  },
+  "SC.912.PE.3.14": {
+   "state": "confirmed",
+   "statement_verified": "Analyze data by identifying patterns through modeling and simulation of real-world data.",
+   "cpalms_id": "119962",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119962",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:40Z"
+  },
+  "SC.912.PE.3.15": {
+   "state": "confirmed",
+   "statement_verified": "Test the accuracy of scientific hypotheses using computer models and simulations.",
+   "cpalms_id": "119963",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119963",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:44Z"
+  },
+  "SC.912.PE.3.16": {
+   "state": "confirmed",
+   "statement_verified": "Design a representation of a computer program.",
+   "cpalms_id": "119964",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119964",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:48Z"
+  },
+  "SC.912.PE.3.17": {
+   "state": "confirmed",
+   "statement_verified": "Summarize the differences between an array and an array list.",
+   "cpalms_id": "119965",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119965",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:52Z"
+  },
+  "SC.912.PE.3.18": {
+   "state": "confirmed",
+   "statement_verified": "Explain the principles of cryptography.",
+   "cpalms_id": "119966",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119966",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:56Z"
+  },
+  "SC.912.PE.3.19": {
+   "state": "confirmed",
+   "statement_verified": "Determine which encryption method is suitable for an intended task.",
+   "cpalms_id": "119967",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119967",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:22:59Z"
+  },
+  "SC.912.PE.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore software development cycles that can be used to solve problems at different software development stages.",
+   "cpalms_id": "119968",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119968",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:02Z"
+  },
+  "SC.912.PE.4.2": {
+   "state": "confirmed",
+   "statement_verified": "Develop a software artifact according to a common software development methodology.",
+   "cpalms_id": "119969",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119969",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:05Z"
+  },
+  "SC.912.PE.4.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the tools required to develop a program.",
+   "cpalms_id": "119970",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119970",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:09Z"
+  },
+  "SC.912.PE.4.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify the software environment required to create a program within a specific language.",
+   "cpalms_id": "119971",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119971",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:14Z"
+  },
+  "SC.912.PE.4.5": {
+   "state": "confirmed",
+   "statement_verified": "Define user prompts for clarity and usability within a program.",
+   "cpalms_id": "119972",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119972",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:17Z"
+  },
+  "SC.912.PE.4.6": {
+   "state": "confirmed",
+   "statement_verified": "Write a program that utilizes both input and output.",
+   "cpalms_id": "119973",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119973",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:21Z"
+  },
+  "SC.912.PE.4.7": {
+   "state": "confirmed",
+   "statement_verified": "Use internal documentation to collaboratively design a program according to accepted standards.",
+   "cpalms_id": "119974",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119974",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:25Z"
+  },
+  "SC.912.PE.4.8": {
+   "state": "confirmed",
+   "statement_verified": "Create mobile computing applications and/or dynamic web pages using a variety of design and development tools, programming languages and mobile devices/emulators.",
+   "cpalms_id": "119975",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119975",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:29Z"
+  },
+  "SC.912.TI.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze historical trends in hardware and software.",
+   "cpalms_id": "119976",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119976",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:32Z"
+  },
+  "SC.912.TI.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify ways to use technology to support lifelong learning.",
+   "cpalms_id": "119977",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119977",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:35Z"
+  },
+  "SC.912.TI.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the impact of digital media.",
+   "cpalms_id": "119978",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119978",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:39Z"
+  },
+  "SC.912.TI.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the impact of digital media on culture and persona.",
+   "cpalms_id": "119979",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119979",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:42Z"
+  },
+  "SC.912.TI.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Describe the impact of computing on business and commerce.",
+   "cpalms_id": "119980",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119980",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:45Z"
+  },
+  "SC.912.TI.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Describe how technology impacts personal life.",
+   "cpalms_id": "120034",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120034",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:49Z"
+  },
+  "SC.912.TI.1.7": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate ways in which technology may improve accessibility for the varying needs of learners, including students with disabilities (SWD).",
+   "cpalms_id": "119981",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119981",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:52Z"
+  },
+  "SC.912.TI.1.8": {
+   "state": "confirmed",
+   "statement_verified": "Explain how economic and societal factors are affected by access to critical information.",
+   "cpalms_id": "119982",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119982",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:23:55Z"
+  },
+  "SC.912.TI.1.9": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate access and distribution of technology in a global society.",
+   "cpalms_id": "119983",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119983",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:19Z"
+  },
+  "SC.912.TI.1.10": {
+   "state": "confirmed",
+   "statement_verified": "Analyze technology-related career paths.",
+   "cpalms_id": "119984",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119984",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:23Z"
+  },
+  "SC.912.TI.1.11": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the benefits of technology regarding environmental concerns.",
+   "cpalms_id": "119985",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119985",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:27Z"
+  },
+  "SC.912.TI.1.12": {
+   "state": "confirmed",
+   "statement_verified": "Examine the history of networking devices.",
+   "cpalms_id": "119986",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119986",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:31Z"
+  },
+  "SC.912.TI.1.13": {
+   "state": "confirmed",
+   "statement_verified": "Examine the historical impact of social media.",
+   "cpalms_id": "119987",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119987",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:35Z"
+  },
+  "SC.912.TI.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Research how social media and technology can be used to distort, exaggerate or misrepresent information.",
+   "cpalms_id": "119988",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119988",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:38Z"
+  },
+  "SC.912.TI.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Demonstrate knowledge of the Internet safety policy as it applies to state and district guidelines.",
+   "cpalms_id": "119989",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119989",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:42Z"
+  },
+  "SC.912.TI.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Recognize the terms and policies associated with the use of public access points.",
+   "cpalms_id": "119990",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119990",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:44Z"
+  },
+  "SC.912.TI.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Explore the legal ramifications of technology use.",
+   "cpalms_id": "119991",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119991",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:48Z"
+  },
+  "SC.912.TI.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Describe and model the legal use of modern communication media and devices.",
+   "cpalms_id": "119992",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119992",
+   "date_revised": "07/23",
+   "checked_at": "2026-08-13T04:28:51Z"
+  },
+  "SC.912.TI.2.6": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the impacts of the irresponsible use of information on collaborative projects.",
+   "cpalms_id": "119993",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119993",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:55Z"
+  },
+  "SC.912.TI.2.7": {
+   "state": "confirmed",
+   "statement_verified": "Describe differences between open source, freeware and proprietary software licenses and how they apply to different types of software.",
+   "cpalms_id": "119994",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119994",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:28:59Z"
+  },
+  "SC.912.TI.2.8": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the consequences of misrepresenting digital work as your own.",
+   "cpalms_id": "119995",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119995",
+   "date_revised": "07/34",
+   "checked_at": "2026-08-13T04:29:03Z"
+  },
+  "SC.912.TI.2.9": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how different categories of software licenses can be used to share and protect intellectual property.",
+   "cpalms_id": "119996",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119996",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:06Z"
+  },
+  "SC.912.TI.2.10": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how access to information may not include the right to distribute the information.",
+   "cpalms_id": "119997",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119997",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:09Z"
+  },
+  "SC.912.TI.2.11": {
+   "state": "confirmed",
+   "statement_verified": "Utilize citation tools when using digital information.",
+   "cpalms_id": "119998",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119998",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:13Z"
+  },
+  "SC.912.TI.2.12": {
+   "state": "confirmed",
+   "statement_verified": "Describe legal regulations that govern Internet usage and interaction.",
+   "cpalms_id": "119999",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/119999",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:17Z"
+  },
+  "SC.912.ET.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the emerging features of mobile devices, smart devices and vehicles.",
+   "cpalms_id": "120000",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120000",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:20Z"
+  },
+  "SC.912.ET.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe the physical and cognitive challenges faced by users when learning to use computer interfaces.",
+   "cpalms_id": "120001",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120001",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:23Z"
+  },
+  "SC.912.ET.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the process and design innovative software to support specialized forms of human-computer interaction.",
+   "cpalms_id": "120002",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120002",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:27Z"
+  },
+  "SC.912.ET.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Examine device-to-device interactions that exclude human input.",
+   "cpalms_id": "120003",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120003",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:30Z"
+  },
+  "SC.912.ET.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Explore the concepts of virtual and augmented reality.",
+   "cpalms_id": "120004",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120004",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:33Z"
+  },
+  "SC.912.ET.1.6": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the impact on natural resources due to manufacturing of computer hardware components.",
+   "cpalms_id": "120005",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120005",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:36Z"
+  },
+  "SC.912.ET.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explore the history of Artificial Intelligence (AI).",
+   "cpalms_id": "120007",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120007",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:39Z"
+  },
+  "SC.912.ET.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe the major branches of Artificial Intelligence (AI).",
+   "cpalms_id": "120008",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120008",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:42Z"
+  },
+  "SC.912.ET.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the application of algorithms to Artificial Intelligence (AI).",
+   "cpalms_id": "120009",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120009",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:45Z"
+  },
+  "SC.912.ET.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the Artificial Intelligence (AI) of computers to model human behaviors.",
+   "cpalms_id": "120010",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120010",
+   "date_revised": "07/23",
+   "checked_at": "2026-08-13T04:29:48Z"
+  },
+  "SC.912.ET.2.5": {
+   "state": "confirmed",
+   "statement_verified": "Describe major applications of artificial intelligence (AI) and machine learning.",
+   "cpalms_id": "120011",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120011",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:52Z"
+  },
+  "SC.912.ET.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the advancement of robotics.",
+   "cpalms_id": "120014",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120014",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T04:29:54Z"
+  },
+  "SC.912.ET.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Examine how robotics are used to address human challenges.",
+   "cpalms_id": "120015",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120015",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:47:26Z"
+  },
+  "SC.912.ET.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate how the natural world has influenced robotic designs.",
+   "cpalms_id": "120016",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120016",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:47:29Z"
+  },
+  "SC.912.CS.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify possible risks to maintaining data confidentiality.",
+   "cpalms_id": "120017",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120017",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:47:33Z"
+  },
+  "SC.912.CS.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe computer security vulnerabilities.",
+   "cpalms_id": "120018",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120018",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:47:37Z"
+  },
+  "SC.912.CS.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate computer security vulnerabilities.",
+   "cpalms_id": "120019",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120019",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:47:40Z"
+  },
+  "SC.912.CS.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze security and privacy issues that relate to computer networks and network connected devices.",
+   "cpalms_id": "120020",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120020",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:47:45Z"
+  },
+  "SC.912.CS.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Describe security and privacy issues that relate to computer networks including the permanency of data on the Internet, online identity and privacy.",
+   "cpalms_id": "120021",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120021",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:47:49Z"
+  },
+  "SC.912.CS.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply network security concepts and strategies to real-world simulations.",
+   "cpalms_id": "120022",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120022",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:47:53Z"
+  },
+  "SC.912.CS.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Investigate ransomware attacks.",
+   "cpalms_id": "120023",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120023",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:47:57Z"
+  },
+  "SC.912.CS.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Explore access control rules.",
+   "cpalms_id": "120024",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120024",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:48:00Z"
+  },
+  "SC.912.CS.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the limitations of a program’s temporary storage and the security vulnerabilities.",
+   "cpalms_id": "120025",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120025",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:48:04Z"
+  },
+  "SC.912.CS.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Trace the social engineering attack cycle.",
+   "cpalms_id": "120026",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120026",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:48:07Z"
+  },
+  "SC.912.DC.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Examine the history of digital currency and blockchain technologies.",
+   "cpalms_id": "120027",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120027",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:48:10Z"
+  },
+  "SC.912.DC.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the effects of digital currencies on the current financial market.",
+   "cpalms_id": "120028",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120028",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:48:14Z"
+  },
+  "SC.912.DC.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Differentiate between a digital currency and a security.",
+   "cpalms_id": "120029",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120029",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:48:17Z"
+  },
+  "SC.912.DC.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Discuss the risks associated with digital currencies.",
+   "cpalms_id": "120030",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120030",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:48:21Z"
+  },
+  "SC.912.DC.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare decentralized currencies to centralized currencies.",
+   "cpalms_id": "120031",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120031",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:48:25Z"
+  },
+  "SC.912.DC.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate digital tools that aid in personal financial literacy and money management.",
+   "cpalms_id": "120032",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120032",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:48:29Z"
+  },
+  "SC.912.DC.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the opportunities created with digital stock portfolios.",
+   "cpalms_id": "120033",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/120033",
+   "date_revised": "07/24",
+   "checked_at": "2026-08-13T10:48:32Z"
   }
  }
 }
