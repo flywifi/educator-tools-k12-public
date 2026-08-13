@@ -150,8 +150,15 @@ def _trim_edges(s: str) -> str:
     punctuation. A blanket .strip(" :.-") also ate the full stop that ends nearly every benchmark,
     which the source document does have — the docx path preserved it and only the Social Studies
     path did not, so the corpus disagreed with itself. Comparison is unaffected either way
-    (cpalms_verify._norm ends in .rstrip(".")), so fidelity to the document decides it."""
-    return s.strip().lstrip(":.-").rstrip(" :-").strip()
+    (cpalms_verify._norm ends in .rstrip(".")), so fidelity to the document decides it.
+
+    A trailing COLON is kept for the same reason as the full stop: it is the document's punctuation.
+    MA.912.C.4.6 ends "Properties are limited to the following:" — the colon introduces the list that
+    follows, and stripping it made the statement disagree with CPALMS by exactly one character. It is
+    the only such statement in the corpus. Leading ":.-" debris is still removed, which is what a
+    field value like ": 05/23" actually needs.
+    """
+    return s.strip().lstrip(":.-").rstrip(" -").strip()
 
 
 def split_fields(seg: str) -> dict:
