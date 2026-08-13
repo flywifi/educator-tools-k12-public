@@ -305,13 +305,25 @@ def classify(code: str, corpus_stmt: str) -> dict:
         # ORDER — a property of CPALMS's rendering, not a fact about the standard, so a retired card
         # could beat the live one. Identical duplicates are noise and are deduped; a genuine
         # conflict is a human decision.
-        distinct = {(c["cpalms_id"], _norm(c["statement"])) for c in exact}
-        if len(distinct) > 1:
+        # The hazard is a differing STATEMENT: that is where picking a winner could staple the wrong
+        # text (and the wrong provenance) onto a code. Differing IDS alone are not that hazard —
+        # CPALMS genuinely carries duplicate records for some access points, textually identical,
+        # and the text is then not in doubt at all. Keying the dedupe on (id, statement) treated
+        # those as conflicts and left real, verifiable standards unverified: SC.6.L.14.Pa.1,
+        # SC.7.N.1.Pa.3 and SC.8.P.9.Pa.2 each have two ids carrying character-identical text.
+        texts = {_norm(c["statement"]) for c in exact}
+        if len(texts) > 1:
             row.update(cpalms_state="ambiguous",
-                       detail=f"{len(exact)} cards share this exact code with differing "
-                              f"id/statement: " + ", ".join(sorted(c["cpalms_id"] for c in exact)))
+                       detail=f"{len(exact)} cards share this exact code with DIFFERING statements: "
+                              + ", ".join(f"{c['cpalms_id']}" for c in sorted(
+                                  exact, key=lambda x: x["cpalms_id"])))
             return row
-        exact = exact[:1]
+        # Same text under several ids: verify the text, and record the duplication rather than
+        # hiding it. The kept id is the lowest, which is deterministic and reproducible — unlike
+        # document order, which is a property of CPALMS's rendering on the day we happened to ask.
+        exact = sorted(exact, key=lambda c: c["cpalms_id"])[:1]
+        row["duplicate_cpalms_ids"] = sorted(c["cpalms_id"] for c in cards
+                                             if c["code"].upper() == code.upper())
     if exact:
         c = exact[0]
         row.update(cpalms_id=c["cpalms_id"], cpalms_statement=c["statement"],
@@ -925,7 +937,12 @@ def run_apply(a) -> int:
             **({"needs_review": True} if r["cpalms_state"] not in VERIFIED_STATES else {}),
             **({"detail": r["detail"][:300]} if r.get("detail") else {}),
             **({"new_code": r["new_code"]} if r.get("new_code") else {}),
-            **({"truncated_card": True} if r.get("truncated_card") else {})}
+            **({"truncated_card": True} if r.get("truncated_card") else {}),
+            # CPALMS serves some access points as several textually identical records. The verified
+            # id is the lowest, deterministically; the others are kept so the record shows WHICH
+            # duplicates existed rather than implying a single card was found.
+            **({"duplicate_cpalms_ids": r["duplicate_cpalms_ids"]}
+               if r.get("duplicate_cpalms_ids") else {})}
     # MERGE with any existing overlay: newest verification wins per code; scopes accumulate.
     # Elementary now, other grade bands later — a scoped run must never clobber earlier scopes.
     #
@@ -1314,13 +1331,14 @@ def self_test() -> int:
           not _census_is_usable({"census_diff": {}, "census_meta": {"unique_codes": 5,
                                                                    "benchmark_malformed_cards": 2}}))
 
-    # A6 — duplicate exact-code cards. exact[0] picked a winner by DOCUMENT ORDER; a genuine
-    # conflict is a human decision, while identical duplicates are noise and are deduped.
+    # A6 — duplicate exact-code cards. exact[0] picked a winner by DOCUMENT ORDER, which is a
+    # property of CPALMS's rendering rather than a fact about the standard. The hazard is a
+    # differing STATEMENT; differing ids alone are not, because CPALMS carries textually identical
+    # duplicate records for some access points.
     def _dupe_verdict(cards, code="MA.3.NSO.1.1"):
         ex = [c for c in cards if c["code"].upper() == code.upper()]
-        return "ambiguous" if len({(c["cpalms_id"], _norm(c["statement"])) for c in ex}) > 1 \
-            else "single"
-    check("A6: duplicate codes with DIFFERING ids are ambiguous, not first-wins",
+        return "ambiguous" if len({_norm(c["statement"]) for c in ex}) > 1 else "single"
+    check("A6: duplicate codes with DIFFERING STATEMENTS are ambiguous, not first-wins",
           _dupe_verdict([{"code": "MA.3.NSO.1.1", "cpalms_id": "1", "statement": "Alpha."},
                          {"code": "MA.3.NSO.1.1", "cpalms_id": "2", "statement": "Beta."}])
           == "ambiguous")
@@ -1328,6 +1346,17 @@ def self_test() -> int:
           _dupe_verdict([{"code": "MA.3.NSO.1.1", "cpalms_id": "1", "statement": "Alpha."},
                          {"code": "MA.3.NSO.1.1", "cpalms_id": "1", "statement": "Alpha."}])
           == "single")
+    # Live shape, seen 2026-08-13 on SC.6.L.14.Pa.1 / SC.7.N.1.Pa.3 / SC.8.P.9.Pa.2: two DIFFERENT
+    # ids, character-identical text. Keying on (id, statement) called these conflicts and left three
+    # real access points unverified. The text is not in doubt, so they verify — and the duplication
+    # is recorded rather than hidden.
+    check("A6: same text under DIFFERENT ids verifies (text is not in doubt)",
+          _dupe_verdict([{"code": "MA.3.NSO.1.1", "cpalms_id": "7983", "statement": "Alpha."},
+                         {"code": "MA.3.NSO.1.1", "cpalms_id": "7986", "statement": "Alpha."}])
+          == "single")
+    check("A6: the kept id is the LOWEST, not document order (reproducible)",
+          sorted([{"cpalms_id": "7986"}, {"cpalms_id": "7983"}],
+                 key=lambda c: c["cpalms_id"])[0]["cpalms_id"] == "7983")
 
     # The single highest-consequence rule in this file: "we could not read the response" must never
     # be recorded as "this standard does not exist". not_on_cpalms is the BLOCKING state that reads
