@@ -1,15 +1,25 @@
 #!/usr/bin/env python3
 """Parse Florida's stored standards documents into structured, queryable JSON.
 
-Reads the B.E.S.T./NGSSS standards documents under
-shared/standards/resources/florida/ and emits one JSON per subject in
-.../florida/data/, plus an index. Each entry: {code, grade, strand, type, statement}
-with type ∈ {benchmark, access_point, practice}.
+Reads the B.E.S.T./NGSSS standards documents under shared/standards/resources/florida/ and emits
+one JSON per subject in .../florida/data/, plus an index. Each entry carries the benchmark
+sentence as `statement` plus the labelled fields the documents keep beside it:
 
-.docx sources parse cleanly (line-structured). The Social Studies source is a legacy
-binary .doc, so it is parsed best-effort (codes + nearby text); verify SS on CPALMS.
+  {code, grade, strand, type, statement,
+   clarifications?, examples?, remarks?, complexity?, date_adopted?, related_access_points?}
+
+with type ∈ {benchmark, access_point, practice}. Optional fields appear only where the document
+has them; schema documented in shared/standards/florida-best.md §Corpus entry schema.
+
+Two reader paths, equally faithful: .docx sources via docintel/stdlib, and the HTML-exported .doc
+sources (social studies, computer science) via doc_text(). The old "SS is best-effort" era ended
+2026-08-13: its defects were parser bugs (latin-1 decode of a UTF-8 file; whole-table-row
+statements), root-caused and fixed — every parsed statement now matches CPALMS's official text
+exactly (see ledger/cpalms-run-manifest.json and tools/audit_overlays.py).
 
 Reproducible; stdlib only. Usage: python3 tools/parse_fl_standards.py
+  --out <dir>    stage a regeneration OUTSIDE the repo, then gate it with tools/parse_diff.py
+  --self-test    run the field-splitter regression probes (offline; CI)
 """
 from __future__ import annotations
 
@@ -103,7 +113,7 @@ def _strip_control(s: str) -> str:
 
 # --- structured field extraction --------------------------------------------------------------
 # The FL documents are tables with labelled columns. Emitting all of it as one `statement` put
-# document furniture into 3,320 of 6,583 statements (50.4%) — Clarifications 1,414, Date Adopted
+# document furniture into 3,320 of the then-6,583 statements (50.4%, pre-fix 2026-08-13) — Clarifications 1,414, Date Adopted
 # 1,281, Complexity 498, "Standard N:" section headers 209, "BENCHMARK CODE" table headers 208,
 # Remarks 109 — which forced every downstream comparator to tolerate a PREFIX rather than test
 # equality. That tolerance became a 0.97 similarity band, and with it a 100% pass rate for changed
@@ -269,7 +279,10 @@ def parse_docx(text: str, code_re: str):
 
 
 def _sentence_trim(s: str, soft: int = 600) -> str:
-    """Trim overlong best-effort segments at a sentence boundary, never mid-word."""
+    """Trim an overlong segment at a sentence boundary, never mid-word. (Retained for callers
+    passing an explicit soft cap; the statement path no longer trims — the old 600-char cap
+    silently truncated SC.K12.CTR.7.1, invisible to parse_diff because a truncation is still a
+    valid prefix.)"""
     if len(s) <= soft:
         return s
     cut = s.rfind(". ", 0, soft)
@@ -281,7 +294,9 @@ _STD_HEADER = re.compile(r"\bStandard\s+\d+\s*:\s*$")
 
 
 def parse_doc(text: str, code_re: str):
-    """Best-effort for legacy binary .doc: codes + cleaned trailing text."""
+    """Parse the HTML-exported .doc sources (social studies, computer science): each code's
+    segment runs to the next code; split_fields() separates the statement from labelled fields.
+    Historically called "best-effort" — that era's defects were parser bugs, fixed 2026-08-13."""
     hits = list(re.finditer(rf"({code_re})", text))
     out, seen = [], set()
     for k, mm in enumerate(hits):
@@ -293,7 +308,7 @@ def parse_doc(text: str, code_re: str):
         # is the heading for SC.2.CO.1.1 … .9, all of which follow it as real benchmarks.
         # The documents are inconsistent about this — exactly one header repeats its code across
         # both doc-path sources — so it is skipped by the header context that precedes it rather
-        # than by a shape heuristic. (Corroboration for "not a benchmark": every one of the 6,583
+        # than by a shape heuristic. (Corroboration for "not a benchmark": every code committed at
         # committed codes has 5 or 6 dot-separated segments; a container like this has 4.)
         if _STD_HEADER.search(text[max(0, mm.start() - 40):mm.start()]):
             continue
@@ -391,8 +406,12 @@ def main(out_dir: Path | None = None) -> int:
     # tools/parse_diff.py against the committed corpus, and only then write into the repo.
     OUT_ = out_dir or OUT
     OUT_.mkdir(parents=True, exist_ok=True)
-    index = {"state": "Florida", "note": "Full enumerated FL standards extracted from the stored documents. "
-             "Verify on CPALMS (https://www.cpalms.org/search/Standard). SS is best-effort from a binary .doc.",
+    index = {"state": "Florida",
+             "note": "Full enumerated FL standards extracted from the stored documents; every "
+                     "statement verified equal to CPALMS's official text "
+                     "(ledger/cpalms-run-manifest.json is the live coverage record; "
+                     "tools/audit_overlays.py re-proves it in CI). CPALMS remains the live "
+                     "authority: https://www.cpalms.org/search/Standard",
              "subjects": {}}
     for subj, (rel, code_re, fmt) in SUBJECTS.items():
         src = FL / rel
@@ -407,7 +426,7 @@ def main(out_dir: Path | None = None) -> int:
         else:
             text, reader, rstate = docx_text(src), "stdlib-fallback", None
         entries = parse_doc(text, code_re) if fmt == "doc" else parse_docx(text, code_re)
-        # drop empty-statement noise from the best-effort .doc path
+        # drop empty-statement noise from the .doc reader path (header fragments)
         if fmt == "doc":
             entries = [e for e in entries if len(e["statement"]) > 8]
         json.dump({"subject": subj, "source_file": Path(rel).name, "format": fmt,

@@ -1,6 +1,6 @@
 {
   "state": "Florida",
-  "note": "Full enumerated FL standards extracted from the stored documents. Verify on CPALMS (https://www.cpalms.org/search/Standard). SS is best-effort from a binary .doc.",
+  "note": "Full enumerated FL standards extracted from the stored documents; every statement verified equal to CPALMS's official text (ledger/cpalms-run-manifest.json is the live coverage record; tools/audit_overlays.py re-proves it in CI). CPALMS remains the live authority: https://www.cpalms.org/search/Standard",
   "subjects": {
     "math": {
       "file": "data/math.json",

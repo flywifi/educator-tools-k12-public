@@ -34,7 +34,6 @@ def _verified_coverage() -> str:
     dashboard can never drift from the data (tools/cpalms_verify.py writes them; the parsed corpus
     is never mutated). Reported as verified/total per subject — never as a quality claim."""
     fl = ROOT / "shared" / "standards" / "resources" / "florida" / "data"
-    elem = {"K", "1", "2", "3", "4", "5"}
     parts, gaps, total_v, total_r = [], [], 0, 0
     for subj in ("math", "ela", "science", "social_studies", "computer_science", "eld"):
         corpus = fl / f"{subj}.json"
@@ -57,19 +56,23 @@ def _verified_coverage() -> str:
         total_r += n_rev
         parts.append(f"{subj.replace('_', ' ')} {n_v}/{n_c} ({100 * n_v / max(1, n_c):.1f}%)"
                      + (f" +{n_rev} needing review" if n_rev else ""))
-        # Per-subject K-5 gap, computed. A whole-corpus "elementary complete" claim was shipped
-        # once while 189 K-5 computer-science codes were unverified; state it per subject instead.
-        n_gap = len({e["code"] for e in std if str(e.get("grade")) in elem} - verified)
+        # Per-subject remaining gap, COMPUTED — never asserted. Two shipped mistakes shaped this
+        # line: a whole-corpus "elementary complete" claim went out while 189 K-5 computer-science
+        # codes were unverified, and later a hardcoded "grades 6-12 not yet verified" tail kept
+        # re-asserting incomplete coverage on every regeneration after the sweep had finished.
+        # Nothing here may state a scope's status that the overlays do not prove.
+        n_gap = len(codes - verified)
         if n_gap:
             gaps.append(f"{subj.replace('_', ' ')} {n_gap}")
     if not parts:
         return "none yet"
-    k5 = ("K-5 complete" if not gaps
-          else "K-5 still unverified: " + ", ".join(gaps) + " code(s)")
+    status = ("all subjects fully verified" if not gaps and total_r == 0
+              else "still unverified: " + ", ".join(gaps) + " code(s)" if gaps
+              else "all reached; review pending")
     return (f"{total_v} FL codes verified code-by-code against CPALMS "
             f"(+{total_r} reached but needing human review, not counted as verified) — "
-            + "; ".join(parts) + f" — {k5}; grades 6-12 not yet verified "
-            "(live breakdown: `ledger/cpalms-run-manifest.json`)")
+            + "; ".join(parts) + f" — {status} "
+            "(live breakdown: `ledger/cpalms-run-manifest.json`, authoritative over this line)")
 
 def render() -> str:
     """Compute the dashboard and return it as Markdown text (pure — no file write).

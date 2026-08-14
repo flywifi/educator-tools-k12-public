@@ -2,12 +2,16 @@
 """Offline standards-code resolver (standards-verification.md §2/§5). Stdlib-only; no network.
 
 Resolves cited standard codes against the committed Florida corpus
-(shared/standards/resources/florida/data/ — 6,500+ enumerated codes with statement text),
+(shared/standards/resources/florida/data/ — 6,574 enumerated codes with statement text, all
+verified against CPALMS; ledger/cpalms-run-manifest.json is authoritative over any count here),
 validates CCSS/NGSS coding schemes (adapters are scheme-only: structure is checkable offline,
 existence is not), and classifies everything else honestly. States distinguish "looked it up and
-it is absent" (not_found — BLOCKING only where the corpus is authoritative) from "cannot look
-this up offline" (advisory). A best-effort corpus (social studies .doc parse; partial ELD) never
-produces a blocking verdict — a parser gap must not manufacture a "fabricated standard" finding.
+it is absent" (not_found — BLOCKING where the corpus is corroborated) from "cannot look this up
+offline" (advisory). Since 2026-08-13 every Florida subject is corroborated above
+OVERLAY_TRUST_COVERAGE, so an absent FL code BLOCKS — including social studies and ELD, whose old
+best-effort caveats are retained in LOW_CONFIDENCE only as the safety net that reactivates if an
+overlay is ever reverted below threshold. A code CPALMS has withdrawn resolves as `retired`
+(warning, never blocking): a real standard must never read as fabricated (finding D-K).
 
 Usage:
   python3 tools/verify_standards.py MA.3.NSO.1.1 ELA.K.F.1.1     # ad-hoc codes
@@ -445,13 +449,17 @@ PROBES = [
     # root-caused and fixed, the source refreshed, and all 2,713 SS codes verified against CPALMS
     # 2026-08-13 (overlay 100%), so the coverage threshold lifts SS out of LOW_CONFIDENCE: absence
     # is evidence and this blocks. Deliberate change, not a drifted expectation.
+    # NOTE this probe (and ELD's below) depends on the COMMITTED overlay: it blocks only while
+    # data/overlays/social_studies.cpalms.json exists with coverage >= OVERLAY_TRUST_COVERAGE.
+    # Delete or truncate that overlay and this flips to not_found_low_confidence — a confusing CI
+    # failure unless you know the coupling, which is why it is named here.
     ("SS.7.C.1.99", {}, "not_found", True, None),                            # absent; corpus corroborated
     # Was `not_found_low_confidence` (advisory) while ELD was treated as a partial corpus. The
     # 2026-08-13 census settled that: CPALMS's ELD subject holds exactly the 5 umbrella standards
     # across all 13 grade labels, and this code returns not_on_cpalms when asked directly. With the
     # overlay at 5/5 the coverage threshold lifts ELD out of LOW_CONFIDENCE, so absence is now
     # evidence and this blocks. Deliberate change, not a drifted expectation.
-    ("ELD.K12.ELL.LA.2", {}, "not_found", True, None),                       # absent; corpus complete
+    ("ELD.K12.ELL.LA.2", {}, "not_found", True, None),                       # absent; corpus complete (same overlay coupling as SS above)
     ("MA.3.NSO", {}, "malformed", True, None),                               # truncated
     ("CCSS.MATH.CONTENT.3.NF.A.1", {}, "scheme_valid_unenumerated", False, None),
     ("CCSS.MATH.CONTENT.HSA.REI.B.3", {}, "scheme_valid_unenumerated", False, None),
@@ -465,6 +473,14 @@ PROBES = [
      "unknown_framework", False, None),
     ("XYZ.1.2.3", {"context": {"standards_applicability": "school_defined"}},
      "unknown_framework", False, None),
+    # Live overlay-backed states with real committed entries (9 retired, 5 additions existed when
+    # these were added). A retired code must resolve as `retired` and NEVER block — a withdrawn
+    # standard read as fabricated is finding D-K. An addition resolves with CPALMS provenance; its
+    # "overlay addition" detail is asserted explicitly after this table.
+    ("SC.K.PE.1.2", {}, "retired", False, None),                             # withdrawn CS standard
+    ("SC.1.E.5.In.1", {}, "resolved", False, None),                          # cpalms_addition (D-K)
+    # The set_mismatch DETAIL for the row below is asserted explicitly after this table (the tuple
+    # shape can only assert state/blocking/band) — see the check right after the PROBES loop.
     ("MA.3.NSO.1.1", {"standards_set": "CCSS-Math 2010"}, "resolved", False, None),  # set_mismatch detail
 ]
 
@@ -484,6 +500,10 @@ def self_test(invert: bool = False) -> int:
               + (f" band_match={r['grade_band_match']}" if want_band is not None else ""))
         failures += 0 if ok else 1
     # set_mismatch detail must actually appear on the cross-family probe
+    # An addition's detail must say what it is — the tuple above can only assert the state.
+    rep = verify(["SC.1.E.5.In.1"])
+    if "overlay addition" not in (rep["results"][0]["detail"] or ""):
+        print("FAIL cpalms_addition detail missing 'overlay addition'"); failures += 1
     rep = verify(["MA.3.NSO.1.1"], standards_set="CCSS-Math 2010")
     if "set_mismatch" not in rep["results"][0]["detail"]:
         print("FAIL set_mismatch detail missing"); failures += 1

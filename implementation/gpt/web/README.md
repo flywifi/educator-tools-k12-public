@@ -13,7 +13,7 @@ ChatGPT and what requires the full Claude TOS deployment.
 
 ## Level up: the Reference Pack (recommended)
 
-The pack is the actual Florida data — all 6,583 state standards with their full
+The pack is the actual Florida data — all 6,574 state standards with their full
 text, the course-code directory, the 67 districts, and the school-type rules — so
 answers quote the real, verified data instead of the model's memory.
 
