@@ -4,6 +4,43 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Added — the full-corpus CPALMS sweep is COMPLETE (2026-08-13)
+- **All 6,574 Florida codes verified against CPALMS's official text** — math 1,127 · ELA 719 ·
+  science 1,450 · computer science 560 · social studies 2,713 · ELD 5. Manifest:
+  `verified 6,574 / needs_review 0 / remaining 0`. Under strict equality: no similarity band, no
+  prefix rule, no length floor.
+- Two census additions admitted at the human gate with full provenance (`SC.912.L.15.In.6`,
+  `SS.8.E.2.AP.3` — real on CPALMS, absent from the source documents; each confirmed by two
+  independent sweeps). The first had been resolving as a **blocking "fabricated standard"** — a
+  live D-K false positive, now ended.
+### Changed — SS and ELD absences now BLOCK (threshold crossings)
+- Both subjects crossed `OVERLAY_TRUST_COVERAGE` (0.98) and left `LOW_CONFIDENCE`: an absent
+  `SS.*` or `ELD.K12.ELL.*` code is a blocking `not_found`. Verified with
+  fabricated/verified/addition probes before and after each write; WIDA-scheme descriptors stay
+  advisory (`unknown_framework`). Shipped probes that encoded the old advisory behaviour now
+  assert the new one, with the reason inline.
+### Fixed — four defects the live sweep caught that offline gates could not (2026-08-13)
+- **600-char statement truncation** (`_sentence_trim` on the doc path) — a truncated statement is
+  still a valid prefix, so `parse_diff` passes it by construction; caught as `statement_differs`
+  on `SC.K12.CTR.7.1`. Guard removed + probe.
+- **Trailing colon stripped** from `MA.912.C.4.6` by `_trim_edges` — the only such statement in
+  the corpus, measured before fixing.
+- **Duplicate CPALMS ids over-blocked**: identical text under two ids read as a conflict; now only
+  differing *statements* are `ambiguous`, the lowest id is kept deterministically, and
+  `duplicate_cpalms_ids` is preserved through `run_apply`.
+- **D-H recurrence through grade-span expansion**: a span token ("912") joined four grades into
+  one query — the exact multi-grade request D-H proved truncates. Invisible while spans were small
+  (math 912 reconciled at 504); SS 912 at 1,599 returned 1,584 and called 15 real access points
+  absent. Census now sweeps each expanded grade separately; two probes fail against the old code.
+### Audited — before the coverage claim was written (2026-08-13)
+- `docs/audits/2026-08-13-sweep-completion-audit.md`: every `confirmed` label re-proven **offline
+  from stored texts** (6,574/6,574 equal); 84/84 mutations of real shipped pairs rejected; 9/9
+  end-to-end gate cases correct; manifest identity + per-subject sha256s verified. One finding
+  (S1): **69 SS access-point URLs still carried the pre-fix `PreviewStandard` path** — written
+  before the A2-prior routing fix, never revisited because overlay-as-resume skips verified codes.
+  Repaired from stored ids under the overlay lock, one spot-checked live. Lesson recorded: a fix
+  to a writer does not repair what it already wrote.
+
 ### Fixed — corpus parse root cause, and the tolerances it forced (2026-08-13)
 - **One defect explains the chain.** `tools/parse_fl_standards.py` emitted an entire document table
   row as a single `statement`, so **3,425 of 6,583 statements (52.0 %) carried document furniture** —

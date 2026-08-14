@@ -48,9 +48,10 @@
    "state": "confirmed",
    "statement_verified": "Identify and use primary and secondary resources to obtain information related to Florida history.",
    "cpalms_id": "18755",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18755",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18755",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:28:47Z"
+   "checked_at": "2026-08-09T22:28:47Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.1.2": {
    "state": "confirmed",
@@ -64,9 +65,10 @@
    "state": "confirmed",
    "statement_verified": "Use print and electronic media to collect information about Florida history.",
    "cpalms_id": "18756",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18756",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18756",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:28:54Z"
+   "checked_at": "2026-08-09T22:28:54Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.2.1": {
    "state": "confirmed",
@@ -80,9 +82,10 @@
    "state": "confirmed",
    "statement_verified": "Identify important cultural aspects of Native American tribes of Florida.",
    "cpalms_id": "18757",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18757",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18757",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:29:00Z"
+   "checked_at": "2026-08-09T22:29:00Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.3.1": {
    "state": "confirmed",
@@ -96,9 +99,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize a European explorer who came to Florida.",
    "cpalms_id": "18758",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18758",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18758",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:29:06Z"
+   "checked_at": "2026-08-09T22:29:06Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.3.2": {
    "state": "confirmed",
@@ -112,9 +116,10 @@
    "state": "confirmed",
    "statement_verified": "Identify effects of European colonization on Native American tribes in Florida.",
    "cpalms_id": "18759",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18759",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18759",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:29:14Z"
+   "checked_at": "2026-08-09T22:29:14Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.3.3": {
    "state": "confirmed",
@@ -128,9 +133,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize St. Augustine as the beginning of Spanish colonial settlement in the United States.",
    "cpalms_id": "18760",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18760",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18760",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:29:21Z"
+   "checked_at": "2026-08-09T22:29:21Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.3.4": {
    "state": "confirmed",
@@ -144,9 +150,10 @@
    "state": "confirmed",
    "statement_verified": "Identify a purpose of missions in Florida.",
    "cpalms_id": "18761",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18761",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18761",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:29:27Z"
+   "checked_at": "2026-08-09T22:29:27Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.3.5": {
    "state": "confirmed",
@@ -160,9 +167,10 @@
    "state": "confirmed",
    "statement_verified": "Identify Fort Mose as the first free African community in the United States.",
    "cpalms_id": "18762",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18762",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18762",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:29:33Z"
+   "checked_at": "2026-08-09T22:29:33Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.3.6": {
    "state": "confirmed",
@@ -176,9 +184,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize effects of Spanish rule in early Florida.",
    "cpalms_id": "18763",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18763",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18763",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:29:39Z"
+   "checked_at": "2026-08-09T22:29:39Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.3.7": {
    "state": "confirmed",
@@ -192,9 +201,10 @@
    "state": "confirmed",
    "statement_verified": "Identify a different nation that controlled Florida.",
    "cpalms_id": "18764",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18764",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18764",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:29:47Z"
+   "checked_at": "2026-08-09T22:29:47Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.3.8": {
    "state": "confirmed",
@@ -208,9 +218,10 @@
    "state": "confirmed",
    "statement_verified": "Identify one reason why the Seminole tribe was formed and where they lived.",
    "cpalms_id": "18765",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18765",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18765",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:29:54Z"
+   "checked_at": "2026-08-09T22:29:54Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.3.9": {
    "state": "confirmed",
@@ -224,9 +235,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that Spain gave Florida back to the United States.",
    "cpalms_id": "18766",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18766",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18766",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:30:01Z"
+   "checked_at": "2026-08-09T22:30:01Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.3.10": {
    "state": "confirmed",
@@ -240,9 +252,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that the United States fought wars against the Seminole tribe.",
    "cpalms_id": "18767",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18767",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18767",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:30:09Z"
+   "checked_at": "2026-08-09T22:30:09Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.4.1": {
    "state": "confirmed",
@@ -256,9 +269,10 @@
    "state": "confirmed",
    "statement_verified": "Identify technological advances that helped Florida to grow.",
    "cpalms_id": "18768",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18768",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18768",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:30:15Z"
+   "checked_at": "2026-08-09T22:30:15Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.4.2": {
    "state": "confirmed",
@@ -272,9 +286,10 @@
    "state": "confirmed",
    "statement_verified": "Identify characteristics of pioneer life in Florida.",
    "cpalms_id": "18769",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18769",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18769",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:30:22Z"
+   "checked_at": "2026-08-09T22:30:22Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.5.1": {
    "state": "confirmed",
@@ -288,9 +303,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that Florida was considered a slave state (South) and battles were fought in Florida during the Civil War.",
    "cpalms_id": "18770",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18770",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18770",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:30:29Z"
+   "checked_at": "2026-08-09T22:30:29Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.5.2": {
    "state": "confirmed",
@@ -304,9 +320,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize the effects of Reconstruction in Florida.",
    "cpalms_id": "18771",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18771",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18771",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:30:35Z"
+   "checked_at": "2026-08-09T22:30:35Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.6.1": {
    "state": "confirmed",
@@ -320,9 +337,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize Florida's major industries.",
    "cpalms_id": "18772",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18772",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18772",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:30:43Z"
+   "checked_at": "2026-08-09T22:30:43Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.6.2": {
    "state": "confirmed",
@@ -336,9 +354,10 @@
    "state": "confirmed",
    "statement_verified": "Identify contributions of immigrants to Florida.",
    "cpalms_id": "18773",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18773",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18773",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:30:48Z"
+   "checked_at": "2026-08-09T22:30:48Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.6.3": {
    "state": "confirmed",
@@ -352,9 +371,10 @@
    "state": "confirmed",
    "statement_verified": "Identify the contributions of significant individuals to Florida.",
    "cpalms_id": "18774",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18774",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18774",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:30:55Z"
+   "checked_at": "2026-08-09T22:30:55Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.6.4": {
    "state": "confirmed",
@@ -368,9 +388,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize ways that Florida changed during the Spanish American War.",
    "cpalms_id": "18775",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18775",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18775",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:31:02Z"
+   "checked_at": "2026-08-09T22:31:02Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.7.1": {
    "state": "confirmed",
@@ -384,9 +405,10 @@
    "state": "confirmed",
    "statement_verified": "Identify a basic cause and effect of the 1920s Florida land boom and bust.",
    "cpalms_id": "18776",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18776",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18776",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:31:08Z"
+   "checked_at": "2026-08-09T22:31:08Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.7.2": {
    "state": "confirmed",
@@ -400,9 +422,10 @@
    "state": "confirmed",
    "statement_verified": "Identify a challenge Floridians faced during the Great Depression.",
    "cpalms_id": "18777",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18777",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18777",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:31:14Z"
+   "checked_at": "2026-08-09T22:31:14Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.7.3": {
    "state": "confirmed",
@@ -426,9 +449,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that Florida played a role in the Civil Rights Movement.",
    "cpalms_id": "18779",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18779",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18779",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:31:24Z"
+   "checked_at": "2026-08-09T22:31:24Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.8.2": {
    "state": "confirmed",
@@ -442,9 +466,10 @@
    "state": "confirmed",
    "statement_verified": "Identify how immigration impacts Florida today.",
    "cpalms_id": "18780",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18780",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18780",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:31:30Z"
+   "checked_at": "2026-08-09T22:31:30Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.8.3": {
    "state": "confirmed",
@@ -458,9 +483,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize an impact the space program has on Florida's growth.",
    "cpalms_id": "18781",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18781",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18781",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:31:36Z"
+   "checked_at": "2026-08-09T22:31:36Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.8.4": {
    "state": "confirmed",
@@ -474,9 +500,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that tourism brings people and money to Florida.",
    "cpalms_id": "18782",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18782",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18782",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:31:43Z"
+   "checked_at": "2026-08-09T22:31:43Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.9.1": {
    "state": "confirmed",
@@ -490,9 +517,10 @@
    "state": "confirmed",
    "statement_verified": "Complete a timeline to sequence major events in Florida history.",
    "cpalms_id": "18783",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18783",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18783",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:31:49Z"
+   "checked_at": "2026-08-09T22:31:49Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.AA.1.1": {
    "state": "confirmed",
@@ -508,9 +536,10 @@
    "state": "confirmed",
    "statement_verified": "Identify an African American community leader who made positive contributions in the state of Florida (e.g., Zora Neale Hurston, Florida Highwaymen, Mary McLeod Bethune, Evan B. Forde, Bessie Coleman, Gen. Daniel \"Chappie\" James, Bob Hayes, Sylvia Fowles).",
    "cpalms_id": "19905",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/19905",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/19905",
    "date_revised": "11/25",
-   "checked_at": "2026-08-09T22:31:54Z"
+   "checked_at": "2026-08-09T22:31:54Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.CG.1.1": {
    "state": "confirmed",
@@ -524,9 +553,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that Florida's constitution protects the rights of Florida's citizens and identifies the parts and functions of state government.",
    "cpalms_id": "18790",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18790",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18790",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:32:01Z"
+   "checked_at": "2026-08-09T22:32:01Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.CG.2.1": {
    "state": "confirmed",
@@ -540,9 +570,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize how citizens work with government to solve community problems.",
    "cpalms_id": "18791",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18791",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18791",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:32:07Z"
+   "checked_at": "2026-08-09T22:32:07Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.CG.2.2": {
    "state": "confirmed",
@@ -556,9 +587,10 @@
    "state": "confirmed",
    "statement_verified": "Identify different types of public service and volunteerism.",
    "cpalms_id": "18792",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18792",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18792",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:32:13Z"
+   "checked_at": "2026-08-09T22:32:13Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.CG.2.3": {
    "state": "confirmed",
@@ -572,9 +604,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that Florida has a representative government.",
    "cpalms_id": "18793",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18793",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18793",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:32:20Z"
+   "checked_at": "2026-08-09T22:32:20Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.CG.3.1": {
    "state": "confirmed",
@@ -588,9 +621,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize Florida's three branches of government, including legislative (makes laws), judicial (interprets laws), and executive (enforces laws).",
    "cpalms_id": "18794",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18794",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18794",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:32:26Z"
+   "checked_at": "2026-08-09T22:32:26Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.CG.3.2": {
    "state": "confirmed",
@@ -604,9 +638,10 @@
    "state": "confirmed",
    "statement_verified": "Identify the structures of local and state governments.",
    "cpalms_id": "18795",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18795",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18795",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:32:33Z"
+   "checked_at": "2026-08-09T22:32:33Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.E.1.1": {
    "state": "confirmed",
@@ -622,9 +657,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize a contribution of an entrepreneur who influenced Florida.",
    "cpalms_id": "18788",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18788",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18788",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:32:39Z"
+   "checked_at": "2026-08-09T22:32:39Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.E.1.2": {
    "state": "confirmed",
@@ -638,9 +674,10 @@
    "state": "confirmed",
    "statement_verified": "Identify important economic contributions of Florida.",
    "cpalms_id": "18789",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18789",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18789",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:32:45Z"
+   "checked_at": "2026-08-09T22:32:45Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.1.1": {
    "state": "confirmed",
@@ -654,9 +691,10 @@
    "state": "confirmed",
    "statement_verified": "Identify different skills with different types of jobs.",
    "cpalms_id": "18796",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18796",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18796",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:32:51Z"
+   "checked_at": "2026-08-09T22:32:51Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.1.2": {
    "state": "confirmed",
@@ -670,9 +708,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that people get paid for their work.",
    "cpalms_id": "18797",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18797",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18797",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:32:58Z"
+   "checked_at": "2026-08-09T22:32:58Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.1.3": {
    "state": "confirmed",
@@ -686,9 +725,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that workers are paid in different ways for different jobs.",
    "cpalms_id": "18798",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18798",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18798",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:33:03Z"
+   "checked_at": "2026-08-09T22:33:03Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.1.4": {
    "state": "confirmed",
@@ -702,9 +742,10 @@
    "state": "confirmed",
    "statement_verified": "Identify interest income from people borrowing money.",
    "cpalms_id": "18799",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18799",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18799",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:33:11Z"
+   "checked_at": "2026-08-09T22:33:11Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.1.5": {
    "state": "confirmed",
@@ -718,9 +759,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize income can be earned by renting to others.",
    "cpalms_id": "18800",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18800",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18800",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:33:16Z"
+   "checked_at": "2026-08-09T22:33:16Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.1.6": {
    "state": "confirmed",
@@ -734,9 +776,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that people who own a business can make money.",
    "cpalms_id": "18801",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18801",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18801",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:33:23Z"
+   "checked_at": "2026-08-09T22:33:23Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.1.7": {
    "state": "confirmed",
@@ -750,9 +793,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that entrepreneurs are people who start new businesses.",
    "cpalms_id": "18802",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18802",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18802",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:33:30Z"
+   "checked_at": "2026-08-09T22:33:30Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.1.8": {
    "state": "confirmed",
@@ -766,9 +810,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize taxes are used to pay for government goods and services.",
    "cpalms_id": "18803",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18803",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18803",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:33:36Z"
+   "checked_at": "2026-08-09T22:33:36Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.2.1": {
    "state": "confirmed",
@@ -782,9 +827,10 @@
    "state": "confirmed",
    "statement_verified": "Identify economic wants with goods, services, and leisure activities.",
    "cpalms_id": "18804",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18804",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18804",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:33:43Z"
+   "checked_at": "2026-08-09T22:33:43Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.2.2": {
    "state": "confirmed",
@@ -800,9 +846,10 @@
    "state": "confirmed",
    "statement_verified": "Place goods and services in a list that prioritizes an individual's wants.",
    "cpalms_id": "18805",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18805",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18805",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:33:49Z"
+   "checked_at": "2026-08-09T22:33:49Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.2.3": {
    "state": "confirmed",
@@ -816,9 +863,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize a portion of income can be used for personal happiness.",
    "cpalms_id": "18806",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18806",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18806",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:33:55Z"
+   "checked_at": "2026-08-09T22:33:55Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.2.4": {
    "state": "confirmed",
@@ -832,9 +880,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize a scenario that involves making an economic choice.",
    "cpalms_id": "18807",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18807",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18807",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:34:02Z"
+   "checked_at": "2026-08-09T22:34:02Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.2.5": {
    "state": "confirmed",
@@ -848,9 +897,10 @@
    "state": "confirmed",
    "statement_verified": "Identify the costs and benefits of spending based on an informed decision.",
    "cpalms_id": "18808",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18808",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18808",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:34:09Z"
+   "checked_at": "2026-08-09T22:34:09Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.2.6": {
    "state": "confirmed",
@@ -866,9 +916,10 @@
    "state": "confirmed",
    "statement_verified": "Identify ways people's spending choices are influenced.",
    "cpalms_id": "18809",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18809",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18809",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:34:15Z"
+   "checked_at": "2026-08-09T22:34:15Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.2.7": {
    "state": "confirmed",
@@ -882,9 +933,10 @@
    "state": "confirmed",
    "statement_verified": "Identify the parts of a budget plan (spending, saving, and managing income).",
    "cpalms_id": "18810",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18810",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18810",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:34:22Z"
+   "checked_at": "2026-08-09T22:34:22Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.3.1": {
    "state": "confirmed",
@@ -898,9 +950,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize ways that income is used.",
    "cpalms_id": "18811",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18811",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18811",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:34:28Z"
+   "checked_at": "2026-08-09T22:34:28Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.3.2": {
    "state": "confirmed",
@@ -914,11 +967,12 @@
    "state": "confirmed",
    "statement_verified": "Recognize that saving money involves choices",
    "cpalms_id": "18812",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18812",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18812",
    "date_revised": "05/23",
    "checked_at": "2026-08-09T22:34:35Z",
    "reclassified_at": "2026-08-13T00:22:28Z",
-   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.3.3": {
    "state": "confirmed",
@@ -934,9 +988,10 @@
    "state": "confirmed",
    "statement_verified": "Identify places where people can save money.",
    "cpalms_id": "18813",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18813",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18813",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:34:42Z"
+   "checked_at": "2026-08-09T22:34:42Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.3.4": {
    "state": "confirmed",
@@ -950,9 +1005,10 @@
    "state": "confirmed",
    "statement_verified": "Identify the relationship between saving money and future purchases.",
    "cpalms_id": "18814",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18814",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18814",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:34:48Z"
+   "checked_at": "2026-08-09T22:34:48Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.3.5": {
    "state": "confirmed",
@@ -966,9 +1022,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize the advantages of saving money in a bank.",
    "cpalms_id": "18815",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18815",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18815",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:34:55Z"
+   "checked_at": "2026-08-09T22:34:55Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.4.1": {
    "state": "confirmed",
@@ -984,9 +1041,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that interest is added when you borrow money.",
    "cpalms_id": "18816",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18816",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18816",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:35:02Z"
+   "checked_at": "2026-08-09T22:35:02Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.4.2": {
    "state": "confirmed",
@@ -1000,9 +1058,10 @@
    "state": "confirmed",
    "statement_verified": "Identify an instance when people use a loan.",
    "cpalms_id": "18817",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18817",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18817",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:35:10Z"
+   "checked_at": "2026-08-09T22:35:10Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.5.1": {
    "state": "confirmed",
@@ -1016,9 +1075,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize the difference between saving and financial investing.",
    "cpalms_id": "18818",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18818",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18818",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:35:17Z"
+   "checked_at": "2026-08-09T22:35:17Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.5.2": {
    "state": "confirmed",
@@ -1032,9 +1092,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that an investment may or may not produce a future income.",
    "cpalms_id": "18819",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18819",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18819",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:35:24Z"
+   "checked_at": "2026-08-09T22:35:24Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.6.1": {
    "state": "confirmed",
@@ -1048,9 +1109,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize common examples of a risk.",
    "cpalms_id": "18820",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18820",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18820",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:35:31Z"
+   "checked_at": "2026-08-09T22:35:31Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.6.2": {
    "state": "confirmed",
@@ -1064,9 +1126,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize that unexpected events are part of daily life.",
    "cpalms_id": "18821",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18821",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18821",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:35:38Z"
+   "checked_at": "2026-08-09T22:35:38Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.6.3": {
    "state": "confirmed",
@@ -1080,9 +1143,10 @@
    "state": "confirmed",
    "statement_verified": "Identify ways to avoid or reduce risks.",
    "cpalms_id": "18822",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18822",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18822",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:35:45Z"
+   "checked_at": "2026-08-09T22:35:45Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.FL.6.4": {
    "state": "confirmed",
@@ -1096,9 +1160,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize a benefit of emergency savings.",
    "cpalms_id": "18823",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18823",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18823",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:35:51Z"
+   "checked_at": "2026-08-09T22:35:51Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.G.1.1": {
    "state": "confirmed",
@@ -1112,9 +1177,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize selected physical features of Florida.",
    "cpalms_id": "18784",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18784",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18784",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:35:58Z"
+   "checked_at": "2026-08-09T22:35:58Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.G.1.2": {
    "state": "confirmed",
@@ -1128,9 +1194,10 @@
    "state": "confirmed",
    "statement_verified": "Identify cultural features on a Florida map.",
    "cpalms_id": "18785",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18785",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18785",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:36:03Z"
+   "checked_at": "2026-08-09T22:36:03Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.G.1.3": {
    "state": "confirmed",
@@ -1144,9 +1211,10 @@
    "state": "confirmed",
    "statement_verified": "Recognize an effect of weather in Florida.",
    "cpalms_id": "18786",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18786",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18786",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:36:10Z"
+   "checked_at": "2026-08-09T22:36:10Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.G.1.4": {
    "state": "confirmed",
@@ -1160,9 +1228,10 @@
    "state": "confirmed",
    "statement_verified": "Identify information provided on maps using the title, compass rose, cardinal and intermediate directions, symbols, and key/legend.",
    "cpalms_id": "18787",
-   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/18787",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18787",
    "date_revised": "05/23",
-   "checked_at": "2026-08-09T22:36:17Z"
+   "checked_at": "2026-08-09T22:36:17Z",
+   "url_repaired": "2026-08-13: PreviewStandard->PreviewAccessPoint; entry predates the A2-prior routing fix and overlay-as-resume never re-fetches verified codes"
   },
   "SS.4.A.7.AP.3": {
    "state": "cpalms_addition",

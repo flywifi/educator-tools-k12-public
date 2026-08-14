@@ -206,9 +206,12 @@ When the manifest shows 0 remaining **and 0 needs_review**: delete the standing 
   **(b)** paging stops on a page with **no card markers**, never on "no cards we could parse" —
   otherwise unparseable markup silently truncates a census and every unreached code reads as absent
   from CPALMS, which is D-H arriving through the fix meant to prevent silent loss.
-- Social studies is a best-effort parse (low whole-corpus coverage), so its absences stay
-  **advisory** by design — a fabricated SS code is not blocked. This is deliberate: a parser gap
-  must never be reported as a fabricated standard.
+- **The sweep COMPLETED 2026-08-13: all 6,574 codes verified, and SS + ELD absences now BLOCK.**
+  Both subjects crossed the coverage threshold, so the old "SS absences stay advisory" rule no
+  longer holds — absence is evidence because the corpus is fully corroborated. What this runbook
+  is now for: **re-verification** (currency decays; CPALMS revised 2 benchmarks and retired 9
+  standards within days), using the same chunk procedure with `--ignore-overlay` for the scope
+  being refreshed. The completion audit is `docs/audits/2026-08-13-sweep-completion-audit.md`.
 
 ## 6a. Source refreshes — when the DOCUMENT changes, not the parse
 
