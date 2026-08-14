@@ -4,6 +4,40 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Fixed — residual remediation: the debris field of the sweep, closed (2026-08-14)
+- **`tools/cpalms_verify.py`** (C1): the D-H malformed-cards guard revived — per-grade
+  `{kind}_malformed_cards` are now aggregated flat where the census abort and `_census_problem`
+  actually read them (they had been stranded per-grade, so the guard was silently always-zero);
+  `_merge_entry` preserves overlay archaeology on re-verification (`reclassified_*`,
+  `url_repaired` carried by whitelist; retirement evidence nested as `prior_retirement` on
+  un-retire — never blanket-carried); `OVERLAY_STATES` layered so `cpalms_addition` is legal in a
+  committed overlay but still forbidden in a report row; dead `_SENTENCE_END` removed; module
+  docstring rewritten to the real predicate and state list. 13 new self-test probes, each
+  demonstrated to fail against the pre-fix code.
+- **`tools/audit_overlays.py`** (C2, new): the 6,588-entry overlay record gets a standing CI
+  integrity gate — ten checks (state legality, offline re-proof of every `confirmed` label, URL
+  routing, id-bleed, extras/retired completeness, manifest identity + sha256, coverage floats,
+  scope shapes, timestamp shape, unknown keys), with a `--self-test` that mutates a fixture once
+  per check and requires each mutation caught. P8's transcript-only probes, mechanized.
+  `standards_refresh.py --check` now verifies every manifest path exists and rejects duplicate
+  records (one stale duplicate CS record removed from `sources.json`). `mac_audit` added to CI.
+- **Resolver probes** (C3): `retired` (SC.K.PE.1.2 — withdrawn is a warning, never a fabrication)
+  and `cpalms_addition` (SC.1.E.5.In.1) covered in `verify_standards.py --self-test` (30 probes);
+  docstring rewritten to the post-flip truth.
+- **Generators before outputs** (C4): `metrics.py` no longer hardcodes coverage status (computed
+  from the overlays); `parse_fl_standards.py` index note + docstrings post-best-effort;
+  `export_chatgpt.py` computes the FL count at export time; `export_reference_pack.py` drops the
+  stale SS caveat; `data/index.json` regenerated under the 0-changed `parse_diff` gate;
+  `implementation/gpt/` re-exported (stale reference pack incl. 9 retired CS codes cleared).
+- **Prose sweep** (C5): every remaining stale count (6,583→6,574, CS 569→560) and "best-effort"
+  claim corrected or dated across README, ARCHITECTURE, florida-best.md (+ new **Corpus entry
+  schema** section, cross-referenced from `protocol-layer/metadata-schema.md`), states.json,
+  RUNBOOK (`confirmed` definition aligned with §2.11; `anchor_commit` one-commit-lag note),
+  STATE.md (incl. the false "4,670 remain"), cache/index docs, walkthrough transcript, and
+  the quality-review rubric. `protocol-layer/standards-verification.md` gains the `retired`
+  state (§3a/§4/§5), the `standard_retired` warning rule, and `near_match`/`cpalms_addition`
+  in the state list; `not_found_low_confidence` reframed as the currently-inert safety net.
+
 ### Added — the full-corpus CPALMS sweep is COMPLETE (2026-08-13)
 - **All 6,574 Florida codes verified against CPALMS's official text** — math 1,127 · ELA 719 ·
   science 1,450 · computer science 560 · social studies 2,713 · ELD 5. Manifest:

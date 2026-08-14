@@ -38,7 +38,7 @@ by type. Pairs with the adapter `../florida-best.md`.
 **Access points** (Special Education) are embedded in the Math/ELA/Science StandardsandAccessPoints
 documents — see `../florida-best.md` for the coding (`.AP.` / `.In./.Su./.Pa.`).
 
-**Enumerated + queryable:** all standards above are extracted to JSON in `florida/data/` (**6,583
+**Enumerated + queryable:** all standards above are extracted to JSON in `florida/data/` (**6,574
 codes** across Math/ELA/Science/CS/SS/ELD) — query with `tools/fl_lookup.py`, re-extract with
 `tools/parse_fl_standards.py`.
 

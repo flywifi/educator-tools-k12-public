@@ -63,12 +63,15 @@ python3 tools/verify_standards.py --input my-artifact.json
 python3 tools/verify_standards.py --compare MA.3.NSO.1.1 --text "Read and write numbers to 10,000."
 ```
 
-- **Fully offline.** It reads a committed corpus of 6,583 Florida standards (B.E.S.T. / NGSSS,
+- **Fully offline.** It reads a committed corpus of 6,574 Florida standards (B.E.S.T. / NGSSS,
   including access points) — no network, no account, no API key.
-- **Honest about what it knows.** A code that is absent from an authoritative corpus is reported as
-  `not_found` and blocks; a code absent from a *best-effort* corpus (social studies, ELD) is
-  advisory, because a parser gap must never be reported as a fabricated standard. CCSS and NGSS are
-  **scheme-only**: structure is checked, existence is not.
+- **Honest about what it knows.** A code absent from the corpus is reported as `not_found` and
+  **blocks** — every Florida subject is corroborated against CPALMS above the trust threshold, so
+  absence is evidence. (The old best-effort escape hatch survives in code as a safety net: if an
+  overlay is ever reverted below threshold, that subject's absences degrade to advisory rather
+  than accusing real standards of fabrication.) A standard Florida has *withdrawn* resolves as
+  `retired` — a warning, never a "fabricated" verdict. CCSS and NGSS are **scheme-only**:
+  structure is checked, existence is not.
 - **Checked against CPALMS, code by code — the whole corpus.** Every subject and grade has been
   checked against **CPALMS**, Florida's official standards site, in both directions, including a
   reverse census that catches standards CPALMS has and the corpus lacks. **All 6,574 codes match

@@ -603,7 +603,7 @@
           "example": "SC.K12.CTR.*",
           "notes": "FL moving CS to a standalone framework (2025+); verify on CPALMS",
           "data": "data/computer_science.json",
-          "count": 569
+          "count": 560
         },
         "eld": {
           "framework": "FL-ELD",
@@ -614,8 +614,8 @@
           "count": 5
         }
       },
-      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced); fully enumerated (6,583 codes in resources/florida/data/)",
-      "enumerated_codes": 6583
+      "note": "adopted then repealed/replaced CCSS (state set is CCSS-influenced); fully enumerated (6,574 codes in resources/florida/data/, each verified against CPALMS)",
+      "enumerated_codes": 6574
     },
     {
       "code": "GA",

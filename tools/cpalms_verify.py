@@ -126,7 +126,7 @@ def _norm_ws(s: str) -> str:
     The corpus and the CPALMS card are two renderings of the same text, and their whitespace
     disagrees for purely presentational reasons: CPALMS's HTML drops the space after punctuation
     and around bullets ("fluency:Select", "spelling.•Capitalize", "to itselfm times"). Measured over
-    the 1,913 committed entries, 6 differed by nothing but such spaces.
+    the then-committed 1,913 entries, 6 differed by nothing but such spaces; the completed sweep then confirmed all 6,574 corpus codes under this predicate.
 
     This is not the old similarity band in another form. That band accepted ANY edit under a
     distance threshold, which is why it passed 100% of changed numeric bounds; this ignores exactly
@@ -585,7 +585,7 @@ def _discover_filters(sub_url: str = FILTER_SUBJECTS,
 # Corpus grade values are not all CPALMS filter labels. The corpus stores SPANS ("912", "68", "612")
 # that CPALMS only exposes as individual grades, so a census scoped to a span used to fail filter
 # discovery, record an error, and STILL write a census_diff declaring every code in scope absent
-# from CPALMS. 2,765 of the 4,670 remaining codes live in these spans.
+# from CPALMS. (When this was written, 2,765 of the then-remaining 4,670 codes lived in these spans; the sweep has since completed.)
 #
 # "K12" is NOT a span and must never be expanded. It labels cross-cutting PRACTICE standards —
 # MA.K12.MTR.*, ELA.K12.EE.*, SC.K12.CTR.*, ELD.K12.ELL.* — 5-7 per subject, not "every grade".
@@ -1599,7 +1599,7 @@ def run_scan_parse_defects(subject: str | None = None) -> int:
     """Scan the committed corpus for statements that still carry document furniture — offline.
 
     This is the standing version of the one-off measurement that found the root cause: 3,425 of
-    6,583 statements (52.0%) contained a table header, a labelled column, or the NEXT section's
+    then-6,583 statements (52.0%, pre-fix 2026-08-13) contained a table header, a labelled column, or the NEXT section's
     heading. It exists so that a future parser change cannot quietly reintroduce the defect, and so
     the claim "the corpus is clean" is a command anyone can run rather than a sentence in a doc.
 

@@ -21,7 +21,7 @@ python3 tools/offline_index.py --source assessment        # authoritative data e
 
 | table | rows | source |
 |---|---|---|
-| `standards` | 6,583 | `shared/standards/resources/florida/data/*.json` |
+| `standards` | 6,574 | `shared/standards/resources/florida/data/*.json` |
 | `courses` | 4,607 | `canonical-sources/references/fl-course-codes.json` |
 | `schools` | 712 | `canonical-sources/schools/*/schools.json` |
 | `private_schools` | 508 | `canonical-sources/schools/private/*.json` |

@@ -29,7 +29,7 @@ costs nothing instead of thousands of redundant requests.
 
 | Decision | Detail |
 |---|---|
-| **What `confirmed` means** | Normalized equality or a TRUE prefix, an untruncated card, and ≥40 normalized chars. It used to mean "within a 0.97 similarity ratio" — ~3 characters on a median statement, which let 100% of changed numeric bounds and 93.9% of *deleted* negations pass as verified (2026-08-11 audit). The fuzzy band is now `near_match`: a review signal, never a verification. |
+| **What `confirmed` means** | Normalized EQUALITY (whitespace-insensitive) and an untruncated card — no prefix rule, no similarity band, no length floor (deleted 2026-08-13; see §2.11). It used to mean "within a 0.97 similarity ratio" — ~3 characters on a median statement, which let 100% of changed numeric bounds and 93.9% of *deleted* negations pass as verified (2026-08-11 audit). The fuzzy band is now `near_match`: a review signal, never a verification. |
 | **Only `confirmed` is verified** | The overlay records EVERY disposition with `needs_review: true` — that is what stops a `not_on_cpalms` or `near_match` code being re-fetched from CPALMS on every run forever. `verified`, `needs_review` and `remaining` are three different numbers and the manifest asserts they sum to the corpus. |
 | **Human approval per write** | `--apply <report>` is a dry-run; `--apply --write` needs explicit human approval **in that session**. |
 | **Census additions** | Codes CPALMS has and the corpus lacks are recorded as `cpalms_addition` via `--include-additions`, opt-in at the human gate. Approved as the standing policy (`547d87a`, `608fa99`). |
@@ -118,8 +118,7 @@ and they still need a human. A sweep is finished when `remaining` AND `needs_rev
 not when `remaining` alone hits 0.
 
 Writes `ledger/cpalms-run-manifest.json`: verified vs remaining **per subject and per grade**, by
-set difference over committed state, stamped with `anchor_commit` and per-corpus `corpus_sha256` so
-staleness is detectable. **This file is authoritative over any count written in prose anywhere in
+set difference over committed state, stamped with `anchor_commit` and per-corpus `corpus_sha256`. Staleness is detected via the **sha256 values only** — `anchor_commit` is the HEAD at generation time and lags the commit containing the manifest by exactly one, on every clean run, by construction; comparing it to HEAD false-positives always. **This file is authoritative over any count written in prose anywhere in
 this repo, including in this runbook.** Regenerate it after every overlay write.
 
 ## 4. Run one chunk

@@ -42,7 +42,7 @@ from pathlib import Path
 SUBJECTS = ("math", "ela", "science", "social_studies", "computer_science", "eld")
 
 # Document furniture that must never appear inside a benchmark statement. Measured before the fix:
-# 3,320 of 6,583 statements (50.4%) contained at least one of these.
+# 3,320 of the then-6,583 statements (50.4%, pre-fix 2026-08-13) contained at least one.
 #
 # The vocabulary is the documents' own — every label-shaped token in all six sources was enumerated
 # and each one checked for prose use — rather than a list of what the parser happens to remove. That

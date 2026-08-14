@@ -64,8 +64,11 @@ CPALMS (official site) ──verify──▶ data/overlays/<subject>.cpalms.json
 Three rules make this trustworthy:
 1. **The parsed corpus is never overwritten.** Verification lands in a separate overlay, so parse
    provenance and verification provenance stay independently auditable.
-2. **Severity follows evidence.** Absence blocks only where the corpus is authoritative and
-   complete; best-effort corpora degrade to advisory (`protocol-layer/standards-verification.md` §5).
+2. **Severity follows evidence.** Absence blocks where the corpus is corroborated against
+   CPALMS above the trust threshold — since 2026-08-13 that is every Florida subject. The
+   degradation path survives in code as a safety net: a corpus reverted below the threshold
+   degrades to advisory rather than accusing real standards of fabrication
+   (`protocol-layer/standards-verification.md` §5).
 3. **Verification and mutation detection are different comparators.** Verification must tolerate a
    corpus statement that appends clarifications; the §6 mutation check must not. Sharing one
    comparator misses value drift and caveat stripping (audit finding F5).

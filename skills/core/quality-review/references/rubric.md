@@ -28,7 +28,7 @@ Facts, calculations, and **standards** correct, current, correctly coded, and ve
   standard or fabricated statistic → critical.
 - Resolve every cited code first: `python3 tools/verify_standards.py --input <artifact>` —
   `not_found`/`malformed` is the QG §11.4 fabricated-standard critical failure (→ Rejected);
-  advisory states (best-effort corpus, scheme-only frameworks) are noted, not critical.
+  advisory states (scheme-only frameworks; a corpus reverted below the CPALMS trust threshold) are noted, not critical — and a `retired` code is an Accuracy note, never a fabrication.
 - Quoted/paraphrased standard text must match the registry origin form — run the mechanical check
   `python3 tools/verify_standards.py --compare <CODE> --text "<restatement>"` (six §6 categories
   with evidence; exit 1 on any flag). A mutation that changes what the standard *requires*

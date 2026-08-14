@@ -2,7 +2,7 @@
 """Local-First standards cache (L1) — deterministic, offline, low-token retrieval.
 
 Builds a local SQLite full-text index over the enumerated Florida standards
-(``shared/standards/resources/florida/data/*.json`` — 6,583 codes) so a lookup
+(``shared/standards/resources/florida/data/*.json`` — 6,574 codes) so a lookup
 returns a handful of ranked snippets + provenance instead of making the model read
 ~1.9 MB of JSON. This is the default offline tier: pure stdlib (``sqlite3`` + FTS5),
 fully offline, zero token cost at query time.

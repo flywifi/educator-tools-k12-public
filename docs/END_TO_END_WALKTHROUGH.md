@@ -15,8 +15,8 @@ python3 shared/cache/cache.py --build         # L1 standards cache
 Output:
 ```
 Built canonical-sources/index/offline.db [fts5] — 12911 rows:
-  {standards: 6583, courses: 4607, schools: 712, toolkit_resources: 949, data_sources: 60}
-Built shared/cache/index.local.db — 6583 standards indexed [fts5]
+  {standards: 6574, courses: 4607, schools: 712, toolkit_resources: 949, data_sources: 60}
+Built shared/cache/index.local.db — 6574 standards indexed [fts5]
 ```
 Both DBs are gitignored build artifacts — local to her machine, rebuilt from canonical JSON.
 
