@@ -1,7 +1,7 @@
 {
  "subject": "science",
  "source": "cpalms",
- "generated_at": "2026-08-13T12:36:40Z",
+ "generated_at": "2026-08-14T05:38:04Z",
  "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
  "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
  "coverage": 1.0,
@@ -39,6 +39,12 @@
    "rows_applied": 455,
    "rows_verified": 455,
    "generated_at": "2026-08-13T12:36:40Z"
+  },
+  {
+   "grades": "912",
+   "rows_applied": 455,
+   "rows_verified": 455,
+   "generated_at": "2026-08-14T05:38:04Z"
   }
  ],
  "entries": {
@@ -11823,6 +11829,15 @@
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/8200",
    "date_revised": "02/08",
    "checked_at": "2026-08-13T12:35:24Z"
+  },
+  "SC.912.L.15.In.6": {
+   "state": "cpalms_addition",
+   "statement_verified": "Recognize that changes in the genes of a species can affect the characteristics of their offspring.",
+   "cpalms_id": "8353",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/8353",
+   "date_revised": "02/08",
+   "checked_at": "2026-08-13T12:35:46Z",
+   "note": "present on CPALMS, absent from the parsed corpus (census find)"
   }
  }
 }

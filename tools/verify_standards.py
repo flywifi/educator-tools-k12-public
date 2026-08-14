@@ -38,7 +38,12 @@ PREFIX_SUBJECTS = {"MA": ["math"], "ELA": ["ela"], "SC": ["science", "computer_s
 # EXITS this set once a CPALMS verification overlay (tools/cpalms_verify.py --apply --write)
 # covers >= OVERLAY_TRUST_COVERAGE of its codes — see _is_low_confidence().
 LOW_CONFIDENCE = {
-    "social_studies": "social_studies corpus is a best-effort .doc parse (data/index.json) — verify on CPALMS",
+    # Retained for the coverage machinery; the caveat is HISTORICAL. The "best-effort .doc parse"
+    # was root-caused and fixed 2026-08-13 (launch audit §10), the source was refreshed, and every
+    # one of the 2,713 SS codes now matches CPALMS's official text exactly (overlay at 100%). The
+    # coverage threshold therefore lifts SS out of this set: absence is evidence, and blocks.
+    "social_studies": "SS corpus fully corroborated against CPALMS 2026-08-13 (2,713/2,713); "
+                      "this low-confidence note is vestigial and inert above the coverage threshold",
     # ELD's entry is retained for the coverage machinery, but its premise was WRONG. It assumed
     # deeper ELD codes existed that we had not enumerated. A census swept CPALMS's ELD subject
     # across all 13 grade labels (2026-08-13) and found exactly 5 unique codes — the same 5 — and
@@ -436,7 +441,11 @@ PROBES = [
     ("MA.912.AR.1.1", {"grade_band": "9-12"}, "resolved", False, True),
     ("MA.912.AR.1.1", {"grade_band": "3-5"}, "resolved", False, False),      # band mismatch advisory
     ("MA.3.NSO.9.99", {}, "not_found", True, None),                          # the fabricated-code case
-    ("SS.7.C.1.99", {}, "not_found_low_confidence", False, None),            # best-effort corpus
+    # Was `not_found_low_confidence` (advisory) while SS was a best-effort parse. The parse was
+    # root-caused and fixed, the source refreshed, and all 2,713 SS codes verified against CPALMS
+    # 2026-08-13 (overlay 100%), so the coverage threshold lifts SS out of LOW_CONFIDENCE: absence
+    # is evidence and this blocks. Deliberate change, not a drifted expectation.
+    ("SS.7.C.1.99", {}, "not_found", True, None),                            # absent; corpus corroborated
     # Was `not_found_low_confidence` (advisory) while ELD was treated as a partial corpus. The
     # 2026-08-13 census settled that: CPALMS's ELD subject holds exactly the 5 umbrella standards
     # across all 13 grade labels, and this code returns not_on_cpalms when asked directly. With the

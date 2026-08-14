@@ -455,6 +455,22 @@ false** (all five FL standards documents come from cpalms.org per `sources.json`
 proves *parse fidelity*), and **`SS.5.G.2.1` was misdiagnosed** as a parse loss when CPALMS had
 revised the benchmark. Full write-up: launch-readiness audit **§10**. D-J is **RESOLVED**.
 
+**Sweep complete (2026-08-13) — every Florida code verified.** The manifest reads
+**verified 6,574 / needs_review 0 / remaining 0**. All six subjects are at 100 % against CPALMS:
+math 1,127 · ELA 719 · science 1,450 · computer science 560 · social studies 2,713 · ELD 5. Two
+census additions were admitted at the human gate with full provenance (`SC.912.L.15.In.6`,
+`SS.8.E.2.AP.3` — real on CPALMS, absent from the source documents); nine retired CS standards are
+recorded as `retired`, never as fabricated.
+
+**Behaviour change: SS and ELD absences now BLOCK.** Both crossed `OVERLAY_TRUST_COVERAGE` (0.98),
+so an absent `SS.*` or `ELD.K12.ELL.*` code is a blocking `not_found` rather than an advisory. This
+is the designed endpoint — absence became evidence exactly when the corpus became fully
+corroborated — and was verified with fabricated/verified/addition probes before and after each
+write. The sweep also found and fixed four defects live: a 600-char statement truncation, a
+stripped trailing colon, duplicate-id over-strictness, and a D-H recurrence through grade-span
+expansion (15 real access points briefly reported absent; the census now sweeps each expanded grade
+separately). P8 (adversarial audit) precedes any coverage claim in prose.
+
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
 2. Florida wired + **corpus stored** (`resources/florida/` + `sources.json`, 104 files) with
