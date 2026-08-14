@@ -341,7 +341,27 @@ def main(argv) -> int:
             print("  - seed:", s)
         for w in watch:
             print(f"  - watch[{w.get('category')}]: {w['url']}")
-        print("\n[check] OK — manifest parses. Run --crawl (needs network) to check for updates.")
+        # The manifest is only useful if it points at real files. --check used to validate parse
+        # + seed inventory only, so a referenced file could vanish (or a record could be duplicated
+        # — one CS entry was, making "stored: 103" disagree with the record count) without this
+        # check noticing. Existence and uniqueness are offline facts; verify them here.
+        from collections import Counter
+        recs = man.get("files", [])
+        paths = [f.get("path") or "" for f in recs]
+        missing = [p for p in paths if p and not (ROOT / p).exists()]
+        dupes = {p: n for p, n in Counter(paths).items() if p and n > 1}
+        print(f"\n[check] file records: {len(recs)} ({len(set(paths))} unique paths); "
+              f"missing on disk: {len(missing)}; duplicate records: {len(dupes)}")
+        for p in missing[:10]:
+            print(f"  - MISSING: {p}")
+        for p, n in list(dupes.items())[:10]:
+            print(f"  - DUPLICATE x{n}: {p}")
+        if missing or dupes:
+            print("\n[check] FAIL — fix the manifest (a missing file breaks reproducibility; a "
+                  "duplicate record makes the stored-count disagree with the record count).")
+            return 1
+        print("\n[check] OK — manifest parses, every referenced file exists, no duplicate "
+              "records. Run --crawl (needs network) to check for updates.")
         return 0
 
     fetcher = Fetcher(a.user_agent, a.timeout, respect_robots=not a.no_robots)
