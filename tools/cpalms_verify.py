@@ -5,22 +5,27 @@ Phase V (network): for each corpus code, query CPALMS's public standards search
 (`/Search/GetSearchStandard?KeyWord=<code>` — server-rendered fragment carrying the code, the
 benchmark statement, the numeric id, and the adoption date) and classify honestly:
 
-  confirmed           exact code found AND the CPALMS text is normalized-equal to, or a true
-                      prefix of, the corpus statement (corpus statements append
-                      "Examples:"/clarification text — not a difference), the card is not
-                      truncated, and the statement is long enough for a prefix to prove anything.
+  confirmed           exact code found AND the CPALMS text EQUALS the corpus statement
+                      (whitespace-insensitively — CPALMS's HTML drops spaces after punctuation).
+                      No similarity band, no prefix rule, no length floor: those tolerances
+                      existed only while the corpus statement was a superset of the card, and
+                      were deleted when the parse was fixed (2026-08-13). The one deliberate
+                      exception: the renumbering fallback uses a 0.92 band to NOMINATE candidates,
+                      and can only ever produce `ambiguous`, never a verification.
                       This is the ONLY state that may be applied without a human reading it.
-  near_match          exact code found; texts agree only within a fuzzy band, or the card is
-                      truncated, or the statement is too short to prove agreement. A REVIEW
-                      SIGNAL, never a verification: a 0.97 ratio on a median 91-char statement is
-                      ~3 characters of slack, which is exactly the size of the edits that matter
-                      most (a changed numeric bound, a deleted "not", greater -> less).
+  near_match          exact code found but the card is TRUNCATED (declared ellipsis, or the card
+                      is a proper prefix of the corpus statement) — a truncated card can only
+                      support a prefix claim, which is a review signal, never a verification.
   statement_differs   exact code found; benchmark text moved (review queue, §6 mutation categories)
-  renumbered          code absent, but a distinctive-text search finds the same benchmark under a
-                      NEW code (e.g. the 2021+ SS.7.C -> SS.7.CG civics renumbering)
+  renumbered          code absent, but a distinctive-text search finds the SAME text (exact,
+                      unique) under a NEW code (e.g. the 2021+ SS.7.C -> SS.7.CG renumbering)
+  retired             the code was REAL and has been withdrawn: absent from CPALMS AND dropped by
+                      a newer official source document. Deliberately distinct from not_on_cpalms —
+                      a withdrawn standard must never read as fabricated (finding D-K).
   not_on_cpalms       absent, and the text search found nothing — includes fabricated codes
-  ambiguous           multiple non-exact candidates; human review
-  fetch_failed        network/HTTP failure after retry — never guessed
+  ambiguous           multiple candidates with DIFFERING statements; human review
+  fetch_failed        network/HTTP failure after retry — never guessed; retried next run
+  skipped_robots      robots.txt disallowed the path — never fetched; retried next run
 
 Politeness (standards_refresh ethics): robots.txt checked at run time, honest UA, randomized
 1.5-3.0s delay, 429/503 backoff, checkpointed + resumable. CAPTCHA/JS walls => fetch_failed.
@@ -113,7 +118,6 @@ def _norm(s: str) -> str:
 _ELLIPSIS = ("…", "...", "&hellip;")
 
 
-_SENTENCE_END = (".", "!", "?", ":", ")", '"', "'")
 
 
 def _norm_ws(s: str) -> str:
@@ -134,19 +138,22 @@ def _norm_ws(s: str) -> str:
 def _lead_matches(corpus_stmt: str, cpalms_stmt: str) -> tuple[str, bool]:
     """(verdict, truncated_card) where verdict is 'strict' | 'none'.
 
-    'strict' — the two texts are the same string (whitespace-insensitively). ONLY 'strict' may
-               become `confirmed`.
+    'strict' — the two texts are the same string (whitespace-insensitively), OR the card is a
+               proper prefix of the corpus statement, in which case truncated_card is forced True:
+               "strict" then means "the text we DID receive matches exactly", and _confirm_state
+               routes truncated strict matches to `near_match`, never `confirmed`. Only
+               (strict, untruncated) can verify.
     'none'   — anything else. An empty side on EITHER end is 'none': an empty corpus statement used
                to prefix-match anything at all, including hostile text.
 
-    There is no longer a prefix rule or a similarity band. Both existed only because the parser
-    emitted the whole table row as `statement`, so the corpus text was a SUPERSET of the card and
-    equality was impossible for half the corpus. With the parse fixed, the two texts are simply
-    equal: measured across all 1,913 committed entries, 1,899 (99.3%) match exactly, ZERO rely on
-    prefix containment in either direction, and the remaining residue is 6 whitespace-only artifacts
-    (handled by _norm_ws) plus 2 genuine CPALMS revisions that SHOULD be flagged — SS.4.E.1.1
-    ("social and ethnic" -> "demographic") and SS.5.G.2.1 (a "(e.g., " CPALMS has added). Both were
-    checked against the committed source document, which the corpus reproduces faithfully.
+    There is no longer a prefix-tolerance rule or a verification similarity band. Both existed
+    only because the parser emitted the whole table row as `statement`, so the corpus text was a
+    SUPERSET of the card and equality was impossible for half the corpus. With the parse fixed and
+    the sources refreshed, equality is total: the completed sweep confirmed ALL 6,574 corpus codes
+    under this predicate (manifest: verified 6,574 / needs_review 0), and audit_overlays re-proves
+    the equality offline from the stored texts in CI. (One similarity band survives BY DESIGN
+    elsewhere: the renumbering fallback nominates candidates at 0.92, and can only ever produce
+    `ambiguous` — a review signal, never a verification.)
 
     Deleting the tolerance is the point. The 0.97 band accepted 100% of changed numeric bounds
     (20 -> 10), 93.9% of DELETED negations and 80% of greater -> less; a K-12 standard's meaning
@@ -538,6 +545,13 @@ VALID_STATES = {"confirmed", "near_match", "statement_differs", "renumbered", "n
 DISPOSITION_STATES = {"confirmed", "near_match", "statement_differs", "renumbered",
                       "not_on_cpalms", "ambiguous", "retired"}
 VERIFIED_STATES = {"confirmed"}
+# States legal in a COMMITTED overlay entry: every disposition plus census additions.
+# `cpalms_addition` is deliberately NOT in VALID_STATES — that set validates report ROWS on the
+# apply path, and a row claiming cpalms_addition would be forging census provenance (the state is
+# written only by the --include-additions block). Transients (fetch_failed, skipped_robots) are
+# never recorded, so they are in neither set. Anything validating OVERLAYS must key on this set;
+# keying on VALID_STATES rejects the five legitimate addition entries.
+OVERLAY_STATES = DISPOSITION_STATES | {"cpalms_addition"}
 # Carry provenance and therefore may claim a CPALMS identity.
 PROVENANCED_STATES = {"confirmed", "near_match", "statement_differs", "renumbered"}
 
@@ -693,6 +707,37 @@ def _sweep_one(search_url: str, subj_id: str, grade_ids: str, kind: str,
     return pages
 
 
+def _aggregate_census_meta(per_grade: dict, meta: dict) -> None:
+    """Flatten per-grade sweep results into the TOP-LEVEL keys the safety scanners read.
+
+    The abort check in run_enumerate and _census_problem both scan
+    `k.endswith("_malformed_cards") and isinstance(v, int)` over TOP-LEVEL meta keys. After the
+    per-grade refactor, malformed counts lived only inside meta["per_grade"] — a dict, invisible
+    to the isinstance(int) sum — so `mal` was ALWAYS 0 and the D-H/D-K guard ("a census with
+    unparseable cards must refuse to conclude") was silently dead. This helper restores the flat
+    shape the scanners and the self-test fixtures always assumed.
+
+    Shape rules, each load-bearing:
+      * malformed counts are AGGREGATED, never lifted per-grade: a lifted
+        `grade7_benchmark_malformed_cards` also ends with "_malformed_cards", so any endswith-sum
+        over top-level keys would DOUBLE-COUNT it. Per-grade granularity stays available under
+        meta["per_grade"], which no scanner iterates.
+      * `*_error` and `*_not_offered` are lifted with a `grade{g}_` prefix: errors must reach the
+        suffix-matched usability checks, and not_offered is a string (invisible to the int sums)
+        that the runbook promises is "recorded in census_meta".
+    """
+    for kind in ("benchmark", "access_point"):
+        meta[f"{kind}_pages"] = sum(gm.get(f"{kind}_pages", 0) for gm in per_grade.values())
+        meta[f"{kind}_page_param_worked"] = all(
+            gm.get(f"{kind}_page_param_worked", True) for gm in per_grade.values())
+        meta[f"{kind}_malformed_cards"] = sum(gm.get(f"{kind}_malformed_cards", 0)
+                                              for gm in per_grade.values())
+    for g, gm in per_grade.items():
+        for k in gm:
+            if k.endswith(("_error", "_not_offered")):
+                meta[f"grade{g}_{k}"] = gm[k]
+
+
 def run_enumerate(a) -> int:
     """Census: page through BOTH search endpoints (benchmarks + access points) filtered by
     subject+grades; diff against the corpus scope. FINDINGS ONLY — never touches corpus/overlay."""
@@ -719,14 +764,7 @@ def run_enumerate(a) -> int:
         time.sleep(random.uniform(*DELAY))
     meta["per_grade"] = per_grade
     meta["sweep_mode"] = "per_grade"
-    for kind in ("benchmark", "access_point"):
-        meta[f"{kind}_pages"] = sum(gm.get(f"{kind}_pages", 0) for gm in per_grade.values())
-        meta[f"{kind}_page_param_worked"] = all(
-            gm.get(f"{kind}_page_param_worked", True) for gm in per_grade.values())
-    for g, gm in per_grade.items():
-        for k in gm:
-            if k.endswith("_error"):
-                meta[f"grade{g}_{k}"] = gm[k]
+    _aggregate_census_meta(per_grade, meta)
     meta["unique_codes"] = len(census)
     # A census that FAILED must be absent, not empty. Writing census_diff after a failed sweep
     # produced a diff declaring every code in scope absent from CPALMS — and a downstream
@@ -867,6 +905,41 @@ def _census_is_usable(report: dict) -> bool:
     return not _census_problem(report)
 
 
+# Keys a fresh verification CANNOT write, carried forward when an entry is replaced. 223 live
+# field-occurrences exist only because ad-hoc repairs wrote them (reclassify runs, the P8 URL
+# repair, the retirement records); before _merge_entry, one --apply --write over any of those codes
+# silently destroyed the evidence trail, because the newest-wins merge replaced the whole dict.
+ARCHIVAL_KEYS = ("reclassified_at", "reclassified_reason", "url_repaired")   # carry flat
+RETIREMENT_KEYS = ("statement_withdrawn", "evidence")                        # carry with provenance
+
+
+def _merge_entry(old: dict, new: dict) -> dict:
+    """A fresh verification replaces the old entry, carrying forward archaeology it cannot know.
+
+    WHITELIST, never blanket-carry: copying every key the new entry lacks would resurrect
+    needs_review/detail/new_code from a superseded judgement onto a confirmed entry — the same
+    corruption in the other direction. Judgement fields stay strictly newest-wins.
+
+    Retirement evidence moves with its state: retired -> retired keeps it flat; retired ->
+    anything-else (CPALMS un-retired the code) nests it under `prior_retirement` with the old
+    checked_at, because withdrawn-statement fields must not sit flat on a confirmed entry where
+    the resolver's retired branch would never read them."""
+    out = dict(new)
+    for k in ARCHIVAL_KEYS:
+        if k in old and k not in out:
+            out[k] = old[k]
+    if old.get("state") == "retired" and out.get("state") != "retired":
+        prior = {k: old[k] for k in RETIREMENT_KEYS if k in old}
+        if prior:
+            out["prior_retirement"] = {**prior, "retired_checked_at": old.get("checked_at"),
+                                       "note": "carried on re-verification"}
+    elif out.get("state") == "retired":
+        for k in RETIREMENT_KEYS:
+            if k in old and k not in out:
+                out[k] = old[k]
+    return out
+
+
 def run_apply(a) -> int:
     report = json.loads(Path(a.apply).read_text(encoding="utf-8"))
     subject = report.get("subject")
@@ -985,7 +1058,7 @@ def run_apply(a) -> int:
     merged = dict(existing.get("entries", {}))
     for code, entry in overlay["entries"].items():
         if code not in merged or entry.get("checked_at", "") >= merged[code].get("checked_at", ""):
-            merged[code] = entry
+            merged[code] = _merge_entry(merged[code], entry) if code in merged else entry
     # Opt-in (--include-additions, human-approved at a gate): codes the census found on CPALMS that
     # the parse corpus lacks. Recorded as provenance-stamped overlay ADDITIONS so the resolver can
     # resolve them; the parse corpus still never changes and each entry names its origin.
@@ -1254,6 +1327,57 @@ def self_test() -> int:
           _swept == ["id9", "id10", "id11", "id12"])
     check("D-H: no sweep receives a COMBINED multi-grade id list",
           all("," not in g for g in _swept))
+
+    # --- D1: per-grade malformed counts must reach the top-level scanners ------------------
+    # After the per-grade census refactor, malformed counts lived only inside meta["per_grade"]
+    # (a dict — invisible to the isinstance(int) sums), so the D-H/D-K guard was silently dead:
+    # a census with unparseable cards passed _census_problem. Demonstrated pre-fix: the same
+    # fixture returned "" (usable). These probes pin the restored shape.
+    _pg = {"K": {"benchmark_pages": 3, "benchmark_malformed_cards": 2,
+                 "benchmark_page_param_worked": True},
+           "1": {"benchmark_pages": 2, "access_point_not_offered": "no APs for this subject"}}
+    _am: dict = {"per_grade": _pg, "unique_codes": 5}
+    _aggregate_census_meta(_pg, _am)
+    check("D1: per-grade malformed counts aggregate to the flat key the scanners read",
+          _am.get("benchmark_malformed_cards") == 2)
+    check("D1: a census with unparseable cards is UNUSABLE again (the D-H guard lives)",
+          "could not be parsed" in _census_problem({"census_diff": {}, "census_meta": _am}))
+    _clean: dict = {"per_grade": {"K": {"benchmark_pages": 1}}, "unique_codes": 5}
+    _aggregate_census_meta(_clean["per_grade"], _clean)
+    check("D1: a clean census stays usable (no false alarms)",
+          _census_problem({"census_diff": {}, "census_meta": _clean}) == "")
+    check("D1: not_offered is lifted for the record (string — invisible to the int sums)",
+          _am.get("grade1_access_point_not_offered") == "no APs for this subject")
+    check("D1: no grade-prefixed malformed key at top level (double-count guard)",
+          not any(k.startswith("grade") and k.endswith("_malformed_cards") for k in _am))
+
+    # --- D2: replacing an entry must not destroy archaeology it cannot rewrite --------------
+    _old = {"state": "confirmed", "checked_at": "2026-08-09T00:00:00Z",
+            "url_repaired": "fixed", "reclassified_at": "t", "reclassified_reason": "r"}
+    _new = {"state": "confirmed", "checked_at": "2026-08-15T00:00:00Z", "cpalms_url": "u2"}
+    _m = _merge_entry(_old, _new)
+    check("D2: archival keys carried forward on replacement (pre-fix: silently destroyed)",
+          _m.get("url_repaired") == "fixed" and _m.get("reclassified_at") == "t")
+    check("D2: judgement fields stay strictly newest-wins",
+          _m["checked_at"] == "2026-08-15T00:00:00Z" and _m["cpalms_url"] == "u2")
+    _ret = {"state": "retired", "checked_at": "2026-08-13T00:00:00Z",
+            "statement_withdrawn": "OLD", "evidence": ["e"], "needs_review": True}
+    _un = _merge_entry(_ret, {"state": "confirmed", "checked_at": "2026-09-01T00:00:00Z"})
+    check("D2: un-retiring nests the retirement record with its date, never flat on confirmed",
+          _un.get("prior_retirement", {}).get("retired_checked_at") == "2026-08-13T00:00:00Z"
+          and "statement_withdrawn" not in _un and "needs_review" not in _un)
+    check("D2: retired -> retired keeps evidence flat",
+          _merge_entry(_ret, {"state": "retired", "checked_at": "2026-09-01T00:00:00Z"}
+                       ).get("evidence") == ["e"])
+    check("D2: NO fabricated archaeology — a plain old entry adds nothing",
+          set(_merge_entry({"state": "confirmed", "checked_at": "t0"}, _new)) == set(_new))
+
+    # --- D3: state-set layering -------------------------------------------------------------
+    check("D3: cpalms_addition is a legal OVERLAY state but never a legal report-row state",
+          "cpalms_addition" in OVERLAY_STATES and "cpalms_addition" not in VALID_STATES)
+    check("D3: transients are in NEITHER set (never recorded)",
+          not ({"fetch_failed", "skipped_robots"} & OVERLAY_STATES))
+    check("D3: every disposition is a legal overlay state", DISPOSITION_STATES < OVERLAY_STATES)
 
     # --- P6: "not offered" is a FACT, "could not resolve" is an ERROR --------------------
     _ap_subjects = {"dance": "33", "english language arts (b.e.s.t.)": "87", "science": "29",
@@ -1654,8 +1778,11 @@ def write_manifest() -> int:
         head = ""
     out = {"_comment": "GENERATED by tools/cpalms_verify.py --manifest. Never hand-edit — a typed "
                        "count is how STATE.md came to understate the job by 1,574 codes. "
-                       "Regenerate after every overlay write. Staleness is detectable via "
-                       "anchor_commit + corpus_sha256. verified+needs_review+remaining == corpus; "
+                       "Regenerate after every overlay write. Staleness is detectable via the "
+                       "per-subject corpus_sha256 values — NOT via anchor_commit, which is the "
+                       "HEAD at generation time and therefore lags the commit containing this "
+                       "file by exactly one, on every clean run, by construction. "
+                       "verified+needs_review+remaining == corpus; "
                        "needs_review means DEALT WITH BUT NOT VERIFIED and is never coverage.",
            "generated_at": _now(), "anchor_commit": head,
            "totals": totals, "subjects": subjects}
