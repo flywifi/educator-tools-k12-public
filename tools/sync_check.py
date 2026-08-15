@@ -65,7 +65,7 @@ _REF_ANCHORS = ("references/", "scripts/", "evals/", "examples/",
                 "protocol-layer/", "protocols/", "shared/", "tools/", "ledger/")
 _REF_EXTS = (".md", ".py", ".json", ".yaml", ".yml", ".txt", ".csv")
 
-# --- Doc-drift guards (checks 15-21) ---------------------------------------------------------------
+# --- Doc-drift guards (checks 15-22) ---------------------------------------------------------------
 # New in the maintainer/README audit. They land in REPORT-ONLY first (so the backfill PR stays green
 # while docs are filled in), then flip to CI-blocking. Set True to enforce.
 DOC_GUARDS_ENFORCE = True
@@ -571,6 +571,19 @@ def main() -> int:
         _emit(f"  x plugin-metadata freshness gate could not run "
               f"({e.__class__.__name__}: {e}) — the generator itself is broken; fix "
               f"tools/export_plugin_manifest.py (its --self-test should reproduce this)")
+
+    # 22. MCP tool-surface freshness: the committed Actions OpenAPI schema + tool-surface
+    # snapshot must equal a fresh render from tools/mcp_tooldefs.py — any tool-surface change is
+    # a conscious, reviewed diff on both platforms (Claude MCP + ChatGPT Actions) at once.
+    # FAIL-CLOSED like check 21: a broken generator is a failure, not a skipped note.
+    try:
+        import export_actions_schema as _eas
+        for _issue in _eas.check():
+            _emit(_issue)
+    except Exception as e:
+        _emit(f"  x MCP tool-surface freshness gate could not run "
+              f"({e.__class__.__name__}: {e}) — fix tools/export_actions_schema.py "
+              f"(its --self-test should reproduce this)")
 
     print("TOS ecosystem - drift guard\n")
     if failures:
