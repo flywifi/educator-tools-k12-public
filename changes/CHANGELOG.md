@@ -4,6 +4,36 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+
+## [1.3.0] — 2026-08-15
+### Added — plugin metadata is generated-and-gated; releases are one command (2026-08-14)
+- **`tools/export_plugin_manifest.py`** (new): plugin.json (version+description),
+  marketplace.json (both version fields + listing description), and the skills/README.md catalog
+  block are rendered from live facts — skills counted on disk (62), engines counted from
+  versions.json's curated roster (16; shared/ dirs are not all engines and are never enumerated),
+  verified standards from the CPALMS manifest (6,574). Identity fields pass through untouched.
+  The marketplace's "15 governed K-12 teacher skills" (stale since 2026-06-27, survived two
+  releases) is dead; the 11-of-62 catalog is a generated 62-row table. 12 self-test probes.
+- **sync_check check 21** (fail-closed): committed manifests + catalog must equal a fresh render
+  on every CI run; an ImportError in the generator is a failure, not a skipped note. The
+  plugin-manifest hash left the registry-currency watchlist (generator + gate is strictly
+  stronger).
+- **`tools/version.py`**: `--release <patch|minor|major|X.Y.Z>` — one command bumps the whole
+  chain (incl. the never-before-written `versions.json.updated` and both marketplace fields),
+  regenerates all generated metadata, and rolls `[Unreleased]` into a dated section (refusing an
+  empty one). check() now flags missing files instead of silently passing, gates both
+  marketplace versions, rejects malformed semver, and errors on unknown bump targets (was a
+  silent exit-0). 18 self-test probes; CI-wired.
+- **`.github/workflows/plugin-autobump.yml`** (new, DORMANT): when the owner uncomments its push
+  trigger (a reviewable commit), every merge to main auto-cuts a patch release so installed
+  plugins — which update on version bumps, not pushes — track main with zero human steps. Two
+  loop-prevention layers; full gate set in-job before the cut.
+- Docs: DEPLOYMENT.md rewritten (wrong-repo reference fixed with a never-confuse note; plugin
+  channel first; the bumps-not-pushes update truth + the 2026-06-29 reversal recorded; stamped
+  and gated at last); CHANGE_MANAGEMENT §7 rewritten to whole-ecosystem rollback (the
+  per-component advice contradicted the implementation and is retracted); STATE.md live counts
+  removed in favor of generated sources; export_chatgpt's skill count computed at emit.
+
 ### Changed — weekly cadence enabled for the currency re-check (2026-08-14, owner decision)
 - The `schedule:` block in `.github/workflows/currency-recheck.yml` is uncommented at
   `23 9 * * 1` (Mondays 09:23 UTC) after the first live dispatch from `main` returned zero

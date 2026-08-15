@@ -484,6 +484,13 @@ manual dispatch; the `schedule:` block is the enable switch) after the trigger-m
 out-of-repo state a session cannot rely on. The Routine was deleted from the panel on 2026-08-14,
 after the workflow's first live dispatch returned zero drift (200 oldest math codes + census clean).
 
+**v1.3.0 cut (2026-08-15):** plugin/marketplace metadata is now generated
+(`tools/export_plugin_manifest.py`) and freshness-gated in CI (sync_check check 21, fail-closed);
+releases are one command (`python3 tools/version.py --release <patch|minor|major>`); the dormant
+`plugin-autobump` workflow gives full autopilot when the owner uncomments its push trigger.
+Installed plugins update on version bumps, so this release ships everything since 1.2.0 — the
+completed CPALMS sweep, the remediation, the currency re-check, and truthful listing metadata.
+
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
 2. Florida wired + **corpus stored** (`resources/florida/` + `sources.json`, 104 files) with
