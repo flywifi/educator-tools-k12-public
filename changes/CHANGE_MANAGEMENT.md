@@ -13,7 +13,7 @@ governance; QG §98 maintenance).
 ```
 branch → make the change → run the drift guard → (Phase A+) run evals → commit → push → review
 ```
-- After **any** edit to `shared/` or `protocols/`, run `python3 tools/sync_check.py` and ensure it
+- After **any** edit to `shared/` or `protocol-layer/`, run `python3 tools/sync_check.py` and ensure it
   exits 0 (the synced per-skill copies must match canon).
 - New skills are scaffolded with `python3 tools/new_skill.py <name>` so they start from the standard
   anatomy and pass the drift guard.
@@ -23,7 +23,7 @@ branch → make the change → run the drift guard → (Phase A+) run evals → 
   findings log).
 
 ## 3. Editing canonical vs. synced files
-- Edit the **canonical** file in `shared/` or `protocols/`. **Do not** hand-edit a skill's synced
+- Edit the **canonical** file in `shared/` or `protocol-layer/`. **Do not** hand-edit a skill's synced
   `references/` copy — re-sync instead (the drift guard will flag drift otherwise).
 - `tools/sync_manifest.json` defines the canonical→synced mapping.
 
@@ -48,17 +48,27 @@ no critical-failure conditions (fabrication, real PII, unsafe output) are presen
 reflects reality.
 
 ## 7. Component versioning & rollback
-**One source of truth:** `versions.json` carries the `ecosystem` semver (mirrors `VERSION` +
-`.claude-plugin/plugin.json`) plus a semver for **every skill and shared engine**, so each component is
-traceable and can move independently. `python3 tools/version.py --check` enforces agreement (ecosystem ==
-VERSION == plugin; skill list == installed) and runs in CI; `--bump <target> <semver>` updates it.
+**One source of truth:** `versions.json` carries the `ecosystem` semver (mirrored into `VERSION`,
+`.claude-plugin/plugin.json`, and **both `.claude-plugin/marketplace.json` version fields**) plus a
+semver for **every skill and shared engine** for traceability. `python3 tools/version.py --check`
+enforces agreement (ecosystem == VERSION == plugin == marketplace; skill list == installed) and runs
+in CI; `--bump <target> <semver>` updates one target. **A release is one command:**
+`python3 tools/version.py --release <patch|minor|major>` — it bumps the whole version chain, stamps
+`versions.json.updated`, regenerates the plugin/marketplace descriptions + skills catalog
+(`tools/export_plugin_manifest.py`), and rolls `[Unreleased]` into the changelog release section.
+Installed plugins update on version bumps (not on pushes), so a release is what ships.
 
-**Rollback on a major failure.** When a change breaks something, restore just the affected component to a
-known-good version instead of unwinding everything:
+**Rollback on a major failure is WHOLE-ECOSYSTEM, not per-component** (matching `tools/rollback.py`
+and `versions.json`'s `_comment`; per-component restore invites cross-version mismatch — an earlier
+revision of this section said otherwise and was wrong). Restore the entire working tree to a
+known-good snapshot:
 ```
-python3 tools/rollback.py --target skills/<skill> --to <git-ref> --reason "<failure>"    # dry-run
-python3 tools/rollback.py --target skills/<skill> --to <git-ref> --reason "..." --apply   # human-approved
+python3 tools/rollback.py --to <git-ref> --reason "<failure>"            # dry-run (target = whole tree)
+python3 tools/rollback.py --to <git-ref> --reason "..." --apply          # human-approved
 ```
+A deliberately narrowed `--target` leaves the GENERATED plugin metadata stale, and sync_check
+check 21 will fail the post-restore drift guard **by design** — that red is the gate telling you to
+either restore the whole tree or run `python3 tools/export_plugin_manifest.py` and commit.
 - **Human approval is required by default** — `--apply` is the human approving. An automated caller
   (e.g. `skill-health` / `skill-repair`) must pass `--auto`, which is **refused unless** the deployment
   set `auto_rollback: true` in its flags. That flag is the "automatic permission" grant.
