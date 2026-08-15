@@ -47,6 +47,9 @@ jobs:
       - name: Currency-recheck selection dry run (live-tree determinism probe; fetches nothing)
         run: python3 tools/currency_recheck.py --dry-run-selection
 
+      - name: Plugin-metadata generator self-test (pass-through, idempotency, broken twins)
+        run: python3 tools/export_plugin_manifest.py --self-test
+
       - name: Cross-platform lint (bare-interpreter spawns; encoding-less text opens)
         run: python3 tools/mac_audit.py
 
