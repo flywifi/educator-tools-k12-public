@@ -258,9 +258,9 @@ versioned, CI-tested, and cannot be orphaned by a disconnected session:
   via `scopes[].generated_at`); writes a `summary.md` verdict. It can only detect: no `--apply`,
   no `--write`, no overlay/corpus/repo mutation, reports land outside the repo tree (§4a —
   reports are scratch). "Zero drift found" is printed as the deliverable.
-- **`.github/workflows/currency-recheck.yml`** — runs it. **Manual dispatch only**; the daily
-  `schedule:` block ships commented out, and uncommenting it is the human "enable" act, made as
-  a reviewable commit. `permissions: contents: read`, single-flight concurrency, reports
+- **`.github/workflows/currency-recheck.yml`** — runs it — **weekly (Mondays 09:23 UTC;
+  owner-enabled 2026-08-14)** plus manual dispatch. The `schedule:` block is the enable switch:
+  commenting it back out disables the cadence, as a reviewable commit. `permissions: contents: read`, single-flight concurrency, reports
   uploaded as a 90-day artifact, summary rendered on the run page.
 
 **Exit codes are tri-state on purpose** — a throttled runner must never masquerade as a verdict:
