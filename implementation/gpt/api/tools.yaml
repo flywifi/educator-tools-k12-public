@@ -3,6 +3,164 @@
 tools:
 - type: function
   function:
+    name: activity_generate
+    description: 'Generate ONE complete learning activity for a given objective, grade,
+      and subject. Output
+
+      includes: activity title, procedure (step-by-step teacher and student actions),
+      materials,
+
+      estimated timing, DOK level, grouping structure, and a formative check at the
+      end.
+
+
+      Each activity maps to exactly ONE learning objective (call this skill once per
+      activity you
+
+      need; use lesson-planner to sequence multiple activities into a full lesson).
+
+
+      Activity types supported: direct instruction sequence, think-pair-share, stations/centers,
+
+      gallery walk, Socratic seminar, jigsaw, problem-based learning task, project
+      component,
+
+      reader''s theater, math workshop model, and teacher-directed guided practice.
+
+
+      Called by: lesson-planner (populates the lesson body), curriculum-mapping (generates
+      sample
+
+      activities per unit), and any workflow building modular instructional sequences.
+
+
+      Trigger phrases: "generate an activity for", "what''s a good activity for this
+      objective",
+
+      "create a classroom activity about", "design one activity for", "build an activity
+      for",
+
+      "I need an activity that teaches".
+
+
+      Do NOT use atom-activity-generate to write a complete multi-activity lesson
+      (use
+
+      lesson-planner). Do NOT use it to write assessments (use atom-assessment-item
+      or
+
+      assessment-designer). human_review_required: true.
+
+      '
+    parameters:
+      type: object
+      required:
+      - objective
+      - grade
+      - subject
+      properties:
+        objective:
+          type: string
+          description: 'The learning objective this activity should achieve. Should
+            be a SWBAT statement or measurable goal. Examples: "SWBAT explain photosynthesis
+            stages by completing a labeled diagram", "SWBAT solve two-step word problems
+            involving multiplication".
+
+            '
+        grade:
+          type: string
+          description: 'Grade level. Examples: "3rd grade", "7th grade", "High School
+            Biology".
+
+            '
+        subject:
+          type: string
+          description: 'Subject area. Examples: "Science", "Mathematics", "ELA", "Social
+            Studies".
+
+            '
+        activity_type:
+          type: string
+          enum:
+          - direct_instruction
+          - think_pair_share
+          - stations_centers
+          - gallery_walk
+          - socratic_seminar
+          - jigsaw
+          - problem_based_learning
+          - project_component
+          - readers_theater
+          - math_workshop
+          - guided_practice
+          - independent_practice
+          - cooperative_learning
+          - auto_select
+          description: 'Instructional format. Defaults to auto_select (skill picks
+            the format that best fits the objective and DOK level).
+
+            '
+        dok_level:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          description: 'Target Depth of Knowledge level. Defaults to 2 (skill and
+            concept). Use 3-4 for higher-order reasoning and extended thinking tasks.
+
+            '
+        duration_minutes:
+          type: integer
+          description: 'Time budget for this activity in minutes. Examples: 10-15
+            for a quick warm-up activity, 20-30 for a main lesson activity, 45-60
+            for a full project work period.
+
+            '
+        grouping:
+          type: string
+          enum:
+          - individual
+          - partner
+          - small_group_3_4
+          - whole_class
+          - flexible
+          description: 'Student grouping structure. Defaults to flexible (skill chooses
+            based on activity type).
+
+            '
+        materials_available:
+          type: array
+          items:
+            type: string
+          description: 'Materials already available in the classroom (e.g. ["Chromebooks",
+            "base-ten blocks", "chart paper", "whiteboard markers"]). Activity will
+            use only these materials, or note when a better material is worth acquiring.
+
+            '
+        standard:
+          type: string
+          description: 'Standard code the activity addresses (e.g. "MAFS.4.NBT.2.5").
+            Optional — extracted from objective if not provided.
+
+            '
+        differentiation_embedded:
+          type: boolean
+          description: 'If true, embed one differentiation move within the activity
+            procedure (e.g. a sentence frame for ELL students, a tiered problem set,
+            a challenge extension). Defaults to true.
+
+            '
+        include_formative_check:
+          type: boolean
+          description: 'If true, include a quick formative check at the end of the
+            activity (exit ticket, show me, whiteboard). Defaults to true.
+
+            '
+      additionalProperties: false
+- type: function
+  function:
     name: assessment_designer
     description: 'Design standards-aligned formative and summative assessments, rubrics,
       and performance tasks
@@ -205,165 +363,7 @@ tools:
       additionalProperties: false
 - type: function
   function:
-    name: atom_activity_generate
-    description: 'Generate ONE complete learning activity for a given objective, grade,
-      and subject. Output
-
-      includes: activity title, procedure (step-by-step teacher and student actions),
-      materials,
-
-      estimated timing, DOK level, grouping structure, and a formative check at the
-      end.
-
-
-      Each activity maps to exactly ONE learning objective (call this skill once per
-      activity you
-
-      need; use lesson-planner to sequence multiple activities into a full lesson).
-
-
-      Activity types supported: direct instruction sequence, think-pair-share, stations/centers,
-
-      gallery walk, Socratic seminar, jigsaw, problem-based learning task, project
-      component,
-
-      reader''s theater, math workshop model, and teacher-directed guided practice.
-
-
-      Called by: lesson-planner (populates the lesson body), curriculum-mapping (generates
-      sample
-
-      activities per unit), and any workflow building modular instructional sequences.
-
-
-      Trigger phrases: "generate an activity for", "what''s a good activity for this
-      objective",
-
-      "create a classroom activity about", "design one activity for", "build an activity
-      for",
-
-      "I need an activity that teaches".
-
-
-      Do NOT use atom-activity-generate to write a complete multi-activity lesson
-      (use
-
-      lesson-planner). Do NOT use it to write assessments (use atom-assessment-item
-      or
-
-      assessment-designer). human_review_required: true.
-
-      '
-    parameters:
-      type: object
-      required:
-      - objective
-      - grade
-      - subject
-      properties:
-        objective:
-          type: string
-          description: 'The learning objective this activity should achieve. Should
-            be a SWBAT statement or measurable goal. Examples: "SWBAT explain photosynthesis
-            stages by completing a labeled diagram", "SWBAT solve two-step word problems
-            involving multiplication".
-
-            '
-        grade:
-          type: string
-          description: 'Grade level. Examples: "3rd grade", "7th grade", "High School
-            Biology".
-
-            '
-        subject:
-          type: string
-          description: 'Subject area. Examples: "Science", "Mathematics", "ELA", "Social
-            Studies".
-
-            '
-        activity_type:
-          type: string
-          enum:
-          - direct_instruction
-          - think_pair_share
-          - stations_centers
-          - gallery_walk
-          - socratic_seminar
-          - jigsaw
-          - problem_based_learning
-          - project_component
-          - readers_theater
-          - math_workshop
-          - guided_practice
-          - independent_practice
-          - cooperative_learning
-          - auto_select
-          description: 'Instructional format. Defaults to auto_select (skill picks
-            the format that best fits the objective and DOK level).
-
-            '
-        dok_level:
-          type: integer
-          enum:
-          - 1
-          - 2
-          - 3
-          - 4
-          description: 'Target Depth of Knowledge level. Defaults to 2 (skill and
-            concept). Use 3-4 for higher-order reasoning and extended thinking tasks.
-
-            '
-        duration_minutes:
-          type: integer
-          description: 'Time budget for this activity in minutes. Examples: 10-15
-            for a quick warm-up activity, 20-30 for a main lesson activity, 45-60
-            for a full project work period.
-
-            '
-        grouping:
-          type: string
-          enum:
-          - individual
-          - partner
-          - small_group_3_4
-          - whole_class
-          - flexible
-          description: 'Student grouping structure. Defaults to flexible (skill chooses
-            based on activity type).
-
-            '
-        materials_available:
-          type: array
-          items:
-            type: string
-          description: 'Materials already available in the classroom (e.g. ["Chromebooks",
-            "base-ten blocks", "chart paper", "whiteboard markers"]). Activity will
-            use only these materials, or note when a better material is worth acquiring.
-
-            '
-        standard:
-          type: string
-          description: 'Standard code the activity addresses (e.g. "MAFS.4.NBT.2.5").
-            Optional — extracted from objective if not provided.
-
-            '
-        differentiation_embedded:
-          type: boolean
-          description: 'If true, embed one differentiation move within the activity
-            procedure (e.g. a sentence frame for ELL students, a tiered problem set,
-            a challenge extension). Defaults to true.
-
-            '
-        include_formative_check:
-          type: boolean
-          description: 'If true, include a quick formative check at the end of the
-            activity (exit ticket, show me, whiteboard). Defaults to true.
-
-            '
-      additionalProperties: false
-- type: function
-  function:
-    name: atom_assessment_item
+    name: assessment_item
     description: 'Generate ONE assessment item with its answer key. Supports multiple
       choice (with distractor
 
@@ -544,1057 +544,6 @@ tools:
       additionalProperties: false
 - type: function
   function:
-    name: atom_differentiate
-    description: "Apply ONE differentiation profile to a piece of educational content.\
-      \ Returns a modified\nversion of the content alongside explicit notes on what\
-      \ was changed and why. The learning\ntarget is ALWAYS preserved — differentiation\
-      \ adjusts ACCESS to the content, never the\nstandard itself.\n\nSupported profiles:\n\
-      - ell: English Language Learners — vocabulary scaffolds, sentence frames, visual\
-      \ support cues,\n  cognate highlighting, simplified syntax without dumbing down\
-      \ content\n- iep: Students with IEPs — modifications based on common IEP accommodation\
-      \ categories\n  (extended time notation, reduced item count, chunked directions,\
-      \ visual schedules, graphic\n  organizers). NOTE: this generates generic IEP-tier\
-      \ differentiation, not student-specific\n  accommodations (use special-education-support\
-      \ for student-specific IEP work)\n- gifted: Gifted/advanced learners — enrichment\
-      \ extensions, higher-order questioning,\n  independent research options, cross-curricular\
-      \ connections, complexity increases\n- 504: Section 504 accommodations — presentation/response/setting\
-      \ modifications\n- below_grade: Below grade-level students — scaffolded version\
-      \ with prerequisite skill\n  supports, visual aids, partner work modifications\n\
-      - above_grade: Above grade-level students — accelerated version with extension\
-      \ tasks and\n  connections to advanced content\n\nCalled by: lesson-planner,\
-      \ assessment-designer, curriculum-mapping, atom-activity-generate.\nCan be called\
-      \ directly when a teacher has a piece of content and wants one differentiated\
-      \ version.\n\nTrigger phrases: \"differentiate this for ELL students\", \"modify\
-      \ this for my IEP students\",\n\"make a gifted version of\", \"adapt this for\
-      \ below-grade readers\", \"ELL scaffold for\",\n\"504 accommodations for this\
-      \ activity\", \"differentiated version for\".\n\nDo NOT use atom-differentiate\
-      \ to write student-specific IEP goals (use atom-iep-goal or\nspecial-education-support).\
-      \ Do NOT use it to produce legally binding accommodation plans.\nhuman_review_required:\
-      \ true — teacher confirms modifications fit each student's actual needs.\n"
-    parameters:
-      type: object
-      required:
-      - content
-      - differentiation_profile
-      - grade
-      - subject
-      properties:
-        content:
-          type: string
-          description: 'The educational content to differentiate. Accepts: lesson
-            segment text, activity instructions, assessment item text, reading passage
-            excerpt, discussion prompt, homework assignment, or any instructional
-            text. For best results: provide the full piece of content, not a summary.
-
-            '
-        differentiation_profile:
-          type: string
-          enum:
-          - ell
-          - iep
-          - gifted
-          - '504'
-          - below_grade
-          - above_grade
-          description: 'The differentiation profile to apply. Each call applies exactly
-            one profile. To generate multiple versions, call atom-differentiate once
-            per profile.
-
-            '
-        grade:
-          type: string
-          description: 'Grade level of the original content. Examples: "3rd grade",
-            "8th grade".
-
-            '
-        subject:
-          type: string
-          description: 'Subject area. Examples: "ELA", "Mathematics", "Science".
-
-            '
-        learning_target:
-          type: string
-          description: 'The core learning target / standard the content addresses.
-            atom-differentiate uses this to verify the modified version still achieves
-            the target. If omitted, the target is inferred from the content (less
-            reliable — provide it when you have it).
-
-            '
-        ell_proficiency_level:
-          type: string
-          enum:
-          - entering
-          - emerging
-          - developing
-          - expanding
-          - bridging
-          description: 'For ell profile: WIDA English proficiency level. Scaffolds
-            are calibrated to this level. Defaults to developing (most common middle
-            level).
-
-            '
-        output_format:
-          type: string
-          enum:
-          - modified_content_only
-          - side_by_side_comparison
-          - annotated_with_change_notes
-          description: 'How to present the output. modified_content_only (default):
-            just the differentiated version. side_by_side_comparison: original + modified
-            in parallel columns. annotated_with_change_notes: modified version with
-            inline notes on each change made and why — useful for teacher professional
-            learning.
-
-            '
-        preserve_item_count:
-          type: boolean
-          description: 'For assessment item differentiation: if true, maintain the
-            same number of items/questions in the modified version (adjusting scaffolding
-            but not reducing quantity). Defaults to false (IEP/504 versions may appropriately
-            reduce item count).
-
-            '
-      additionalProperties: false
-- type: function
-  function:
-    name: atom_iep_goal
-    description: 'Write ONE SMART IEP annual goal following the IDEA-compliant three-part
-      formula:
-
-      Condition + Behavior + Criterion. Each goal ties to a domain (academic, behavioral,
-
-      communication, adaptive, social-emotional, motor, or transition), maps to a
-      grade-level
-
-      or near-grade-level standard when applicable, and includes suggested progress-monitoring
-
-      frequency and measurement method.
-
-
-      SMART goal formula:
-
-      - S: Specific (observable behavior named)
-
-      - M: Measurable (criterion stated with accuracy/frequency/rate)
-
-      - A: Achievable (realistic for the annual period given PLOP)
-
-      - R: Relevant (connected to standard or functional need)
-
-      - T: Time-bound (by the annual IEP date)
-
-
-      Three-part structure:
-
-      [Condition]: Given [materials/support/setting/cue]...
-
-      [Behavior]: ...[student] will [observable verb + skill]...
-
-      [Criterion]: ...with [accuracy/frequency/rate] as measured by [tool] across
-      [trials/sessions].
-
-
-      Example output:
-
-      "Given a grade-level informational text and a graphic organizer, [STUDENT] will
-      identify the
-
-      main idea and two supporting details with 80% accuracy across 4 of 5 consecutive
-      trials as
-
-      measured by teacher-administered running records, by the annual IEP date."
-
-
-      Called by: special-education-support (builds full IEP goal sections), and can
-      be called
-
-      directly for a fast single-goal draft.
-
-
-      LEGAL NOTICE (included in every output):
-
-      - This is a DRAFT for review and approval by the IEP team, not a final IEP document
-
-      - This skill does not determine eligibility, placement, or services
-
-      - The IEP team must review, modify, and approve all goals per IDEA procedures
-
-      - Present Level of Performance (PLOP) data must come from the teacher/team,
-      not generated here
-
-
-      Trigger phrases: "write an IEP goal for", "draft an annual goal", "IEP reading
-      goal",
-
-      "behavior goal for IEP", "communication goal draft", "transition goal for",
-      "SMART IEP goal".
-
-
-      Do NOT use atom-iep-goal to write lesson plan objectives (use atom-objective-write).
-
-      Do NOT use it to determine eligibility or make placement decisions.
-
-      human_review_required: true on every output.
-
-      '
-    parameters:
-      type: object
-      required:
-      - domain
-      - grade
-      - present_level_of_performance
-      - legal_notice_acknowledged
-      properties:
-        domain:
-          type: string
-          enum:
-          - academic_reading
-          - academic_math
-          - academic_writing
-          - behavioral
-          - communication_expressive
-          - communication_receptive
-          - adaptive_daily_living
-          - social_emotional
-          - fine_motor
-          - gross_motor
-          - transition_employment
-          - transition_postsecondary_education
-          - transition_independent_living
-          - assistive_technology
-          description: 'IEP goal domain. Determines the observable behavior vocabulary
-            and criterion norms used in the draft.
-
-            '
-        grade:
-          type: string
-          description: 'Student''s current grade level. Examples: "3rd grade", "9th
-            grade", "K".
-
-            '
-        present_level_of_performance:
-          type: string
-          description: 'Teacher-supplied baseline data describing what the student
-            can currently do, at what level, and with what accuracy. THIS MUST COME
-            FROM REAL ASSESSMENT DATA — never fabricate. Use "[INSERT BASELINE DATA]"
-            as a placeholder if data is not yet available. Example: "Student currently
-            reads at a 1st grade level (38 wcpm on a Grade 1 oral reading fluency
-            probe); decodes CVC and CVCe words with 70% accuracy."
-
-            '
-        annual_goal_focus:
-          type: string
-          description: 'The specific skill or behavior the goal should target over
-            the coming year. Be precise. Examples: "decode multisyllabic words with
-            prefixes and suffixes", "initiate peer interactions during unstructured
-            time", "complete multi-step math problems using a graphic organizer",
-            "use ''I need a break'' card to request sensory regulation break".
-
-            '
-        measurement_criterion:
-          type: string
-          description: 'The performance criterion (accuracy, frequency, rate, duration).
-            Examples: "80% accuracy across 4 of 5 trials", "3 times per week", "within
-            3 minutes", "9 of 10 consecutive opportunities". If omitted, a research-normed
-            criterion is drafted with a placeholder for team review.
-
-            '
-        measurement_tool:
-          type: string
-          description: 'Progress-monitoring tool. Examples: "teacher-administered
-            CBM", "DIBELS 8th Ed ORF probes", "behavior frequency count", "work sample
-            analysis", "observation checklist". If omitted, an appropriate tool is
-            recommended.
-
-            '
-        condition:
-          type: string
-          description: 'The condition/context for the goal: given what materials,
-            supports, or cues will the student demonstrate the skill? Examples: "given
-            a grade-level informational text and a graphic organizer", "given a visual
-            behavior support chart", "given a calculator and a step-by-step problem-solving
-            guide". If omitted, a standard condition is drafted.
-
-            '
-        standard:
-          type: string
-          description: 'Florida B.E.S.T. or NGSSS standard the goal connects to (for
-            academic goals). Optional for behavioral/functional goals. If omitted
-            and domain is academic, the skill attempts to connect to the nearest appropriate
-            standard.
-
-            '
-        progress_monitoring_frequency:
-          type: string
-          enum:
-          - weekly
-          - biweekly
-          - monthly
-          - quarterly
-          - at_each_iep_review
-          description: 'How often progress on this goal will be measured. Defaults
-            to biweekly for academic goals, weekly for behavioral goals.
-
-            '
-        short_term_objectives:
-          type: boolean
-          description: 'If true, include 2-3 short-term objectives / benchmarks as
-            interim steps toward the annual goal. Required for students with significant
-            cognitive disabilities in Florida. Defaults to false.
-
-            '
-        legal_notice_acknowledged:
-          type: boolean
-          description: 'REQUIRED — must be true to proceed. Confirms that the requestor
-            understands this is a DRAFT requiring IEP team review and approval, and
-            that this skill never determines eligibility, placement, or services.
-
-            '
-      additionalProperties: false
-- type: function
-  function:
-    name: atom_misconception
-    description: 'Identify 2-5 common student misconceptions for a given topic, grade,
-      and subject. For each
-
-      misconception, explains WHY it occurs (cognitive origin or prior knowledge conflict)
-      and
-
-      provides a specific instructional remedy — an activity, question, or approach
-      that directly
-
-      addresses the misconception.
-
-
-      Research-grounded: misconceptions draw from known literature in math/science
-      education
-
-      research, cognitive load theory, and documented common errors in FL assessment
-      data. Not
-
-      fabricated — when a misconception is inferred rather than documented, it is
-      flagged as
-
-      "commonly observed" rather than "research-documented."
-
-
-      Called by: lesson-planner (embeds misconception awareness in the lesson), assessment-designer
-
-      (informs distractor design for MC questions), atom-assessment-item (when generating
-
-      distractors), and atom-activity-generate (builds activities that proactively
-      address errors).
-
-
-      Trigger phrases: "what misconceptions do students have about", "common mistakes
-      on",
-
-      "why do students struggle with", "what errors do students make on", "misconceptions
-      for",
-
-      "common student errors in", "what do kids get wrong about".
-
-
-      Do NOT use atom-misconception to diagnose an individual student''s specific
-      misconception
-
-      (that requires looking at the student''s actual work). This skill returns COMMON
-      misconceptions
-
-      for a topic at a grade level, not individual student assessment. human_review_required:
-      true.
-
-      '
-    parameters:
-      type: object
-      required:
-      - topic
-      - grade
-      - subject
-      properties:
-        topic:
-          type: string
-          description: 'The concept or skill to surface misconceptions for. Be specific
-            for best results. Examples: "multiplying fractions by whole numbers" (better
-            than just "fractions"), "inferring author''s purpose" (better than just
-            "reading"), "photosynthesis vs. respiration" (better than just "cell processes").
-
-            '
-        grade:
-          type: string
-          description: 'Grade level. Examples: "4th grade", "7th grade", "10th grade".
-            More specific = better-calibrated misconceptions for the developmental
-            level.
-
-            '
-        subject:
-          type: string
-          description: 'Subject area. Examples: "Mathematics", "ELA", "Science", "Social
-            Studies".
-
-            '
-        count:
-          type: integer
-          description: 'Number of misconceptions to return. Range: 2-5. Defaults to
-            3. Use 2 for a quick check; 5 when doing thorough lesson prep or assessment
-            design.
-
-            '
-        standard:
-          type: string
-          description: 'Florida B.E.S.T. or NGSSS standard code if you want misconceptions
-            scoped to a specific standard''s demands. Optional — inferred from topic/grade/subject
-            if omitted.
-
-            '
-        include_instructional_remedy:
-          type: boolean
-          description: 'If true (default), include a specific instructional remedy
-            for each misconception — an activity, question sequence, or instructional
-            approach that directly addresses it.
-
-            '
-        include_assessment_probes:
-          type: boolean
-          description: 'If true, include a diagnostic question or prompt (an "assessment
-            probe") that can elicit each misconception for formative monitoring. These
-            are different from remedies — they help the teacher DETECT the misconception,
-            not fix it. Defaults to false.
-
-            '
-        source_type:
-          type: string
-          enum:
-          - research_documented
-          - commonly_observed
-          - both
-          description: 'Filter misconceptions by evidence base. research_documented
-            returns only misconceptions with documented research citations. commonly_observed
-            includes teacher-reported and assessment-data-inferred patterns. Defaults
-            to both.
-
-            '
-      additionalProperties: false
-- type: function
-  function:
-    name: atom_objective_write
-    description: 'Write 1-3 measurable SWBAT (Students Will Be Able To) learning objectives
-      for a given
-
-      grade, subject, and standard. Each objective includes: the SWBAT statement,
-      Bloom''s taxonomy
-
-      level tag, DOK level, a suggested assessment method, and the standard code it
-      maps to.
-
-
-      Objectives follow the SWBAT formula: observable verb + content + condition +
-      criterion.
-
-      Example: "SWBAT explain (Bloom''s: Understand / DOK 2) the water cycle stages
-      by labeling a
-
-      diagram with 85% accuracy."
-
-
-      Called by: lesson-planner (auto-generates objectives from standards), curriculum-mapping
-
-      (unit learning targets), and any workflow needing measurable objectives before
-      building
-
-      activities or assessments.
-
-
-      Trigger phrases: "write learning objectives for", "SWBAT for", "what''s the
-      learning target",
-
-      "write objectives for this standard", "measurable objectives for", "learning
-      goals for".
-
-
-      Do NOT use atom-objective-write to write the full lesson plan (use lesson-planner).
-      Do NOT use
-
-      it to write IEP goals (use atom-iep-goal or special-education-support — IEP
-      goals have
-
-      different legal requirements than lesson objectives). human_review_required:
-      true.
-
-      '
-    parameters:
-      type: object
-      required:
-      - topic
-      - grade
-      - subject
-      properties:
-        topic:
-          type: string
-          description: 'Concept or skill the objective targets. Examples: "inferring
-            author''s purpose", "multiplying fractions", "identifying cause and effect
-            in science texts".
-
-            '
-        grade:
-          type: string
-          description: 'Grade level. Examples: "3rd grade", "7th grade", "10th grade".
-
-            '
-        subject:
-          type: string
-          description: 'Subject area. Examples: "ELA", "Mathematics", "Science".
-
-            '
-        standards:
-          type: array
-          items:
-            type: string
-          description: 'Standard codes the objectives should address. If omitted,
-            atom-standards-match is called internally to find the most relevant standard.
-            Provide codes when you already have them (faster, no secondary lookup).
-
-            '
-        bloom_level:
-          type: string
-          enum:
-          - remember
-          - understand
-          - apply
-          - analyze
-          - evaluate
-          - create
-          - mixed
-          description: 'Bloom''s level to target. Use mixed (default) to get a spread
-            across the unit. Specify a single level for focused practice or skills
-            work.
-
-            '
-        count:
-          type: integer
-          enum:
-          - 1
-          - 2
-          - 3
-          description: 'Number of objectives to write. Defaults to 2. For a single-lesson
-            focus, 1-2 is recommended. For a unit or multi-day lesson, use 3.
-
-            '
-        lesson_context:
-          type: string
-          description: 'Optional context: where in the unit this lesson falls, prior
-            knowledge students have, the lesson''s role in a larger sequence. Helps
-            calibrate Bloom''s level and specificity.
-
-            '
-        include_assessment_suggestion:
-          type: boolean
-          description: 'If true, add a suggested formative assessment method for each
-            objective (exit ticket, thumbs up/down, whiteboard check, quick write).
-            Defaults to true.
-
-            '
-      additionalProperties: false
-- type: function
-  function:
-    name: atom_parent_comm
-    description: "Draft ONE parent/guardian communication: email, text-home note,\
-      \ or brief letter. Purpose-\ndriven templates for common educator scenarios.\
-      \ All output uses placeholder names (never real\nstudent/family names), targets\
-      \ grade 6-8 reading level by default, and carries\nhuman_review_required: true\
-      \ for teacher review before sending.\n\nThis is the FOCUSED single-message version.\
-      \ Use family-communication for complex multi-section\ndocuments (newsletters,\
-      \ full conference notes, multi-language packets).\n\nCommunication purposes:\n\
-      - positive_update: celebrate an achievement, share growth, highlight a classroom\
-      \ success\n- academic_concern: communicate academic struggle or falling grades\
-      \ — strength-based framing\n- behavior_note: observable behavior description\
-      \ (non-labeling, objective language only)\n- conference_request: invite family\
-      \ to an in-person or virtual meeting\n- academic_progress: structured academic\
-      \ progress update (mid-grading period, end of unit)\n- attendance: attendance\
-      \ concern or commendation\n- general_information: supplies, schedule change,\
-      \ event reminder, logistical information\n- crisis_or_urgent: urgent situation\
-      \ requiring immediate parent contact (brief, factual, no\n  speculation about\
-      \ cause — route serious safety situations to administration first)\n\nPrivacy\
-      \ rules enforced on every output:\n- Student names → \"your child\" or [STUDENT\
-      \ NAME]\n- Family names → \"Dear Family\" or [FAMILY NAME]\n- No SSN, address,\
-      \ phone, student ID, or disability label to unauthorized recipients\n\nTrigger\
-      \ phrases: \"write a parent note about\", \"draft an email to parents\", \"\
-      text home about\",\n\"quick parent communication\", \"write a note home\", \"\
-      parent email for\", \"family message about\".\n\nDo NOT use atom-parent-comm\
-      \ for legally required IDEA notices (Prior Written Notice,\nProcedural Safeguards)\
-      \ — use district official forms. human_review_required: true.\n"
-    parameters:
-      type: object
-      required:
-      - communication_purpose
-      - grade
-      properties:
-        communication_purpose:
-          type: string
-          enum:
-          - positive_update
-          - academic_concern
-          - behavior_note
-          - conference_request
-          - academic_progress
-          - attendance
-          - general_information
-          - crisis_or_urgent
-          description: 'The reason for contacting the family. Determines template
-            structure and tone guidance.
-
-            '
-        grade:
-          type: string
-          description: 'Student''s grade level. Examples: "3rd grade", "10th grade",
-            "Kindergarten".
-
-            '
-        subject:
-          type: string
-          description: 'Subject area if relevant (e.g., "Math", "ELA"). Omit for whole-class
-            or behavior communications.
-
-            '
-        key_points:
-          type: array
-          items:
-            type: string
-          description: 'The main facts or messages to convey. The skill wraps these
-            in fluent, professional prose. Examples for a behavior note: ["Student
-            called out 4 times during reading block", "Verbal reminder given twice",
-            "Would like family to reinforce hand-raising at home"]. Always use observable
-            descriptions — never labels or diagnoses.
-
-            '
-        tone:
-          type: string
-          enum:
-          - warm
-          - professional
-          - urgent
-          - celebratory
-          - neutral
-          description: 'Communication tone. Defaults: warm for positive_update/celebration;
-            professional for academic concerns; urgent for crisis_or_urgent. Override
-            if needed.
-
-            '
-        medium:
-          type: string
-          enum:
-          - email
-          - printed_note
-          - text_message
-          - app_message
-          description: 'Delivery medium. Affects length and formatting. text_message
-            produces a brief 2-3 sentence version. Defaults to email.
-
-            '
-        reading_level_target:
-          type: string
-          enum:
-          - grade_4_6
-          - grade_6_8
-          - grade_8_10
-          description: 'Target Flesch-Kincaid reading level. Defaults to grade_6_8.
-
-            '
-        language:
-          type: string
-          description: 'Output language. Defaults to "en" (English). Use "es" for
-            Spanish, "ht" for Haitian Creole. Dual-language (e.g. "en+es") writes
-            both versions together.
-
-            '
-        next_steps_for_family:
-          type: array
-          items:
-            type: string
-          description: 'Specific, actionable next steps you want the family to take.
-            Examples: ["Please sign and return the behavior chart", "Let us know a
-            good time for a phone conference", "Review the study guide together before
-            Friday"]. Included as a bulleted list near the close of the message.
-
-            '
-        teacher_name_placeholder:
-          type: string
-          description: 'Name or role to sign the message with. Defaults to "[Your
-            Name]". Examples: "Ms. Rivera", "The 5th Grade Team", "[TEACHER NAME]".
-
-            '
-      additionalProperties: false
-- type: function
-  function:
-    name: atom_quality_check
-    description: 'Run ONE quality gate check on an artifact excerpt and return pass/fail/warn
-      with a score,
-
-      explanation, and corrective action. Operates on a single dimension of the 9-dimension
-      TOS
-
-      Quality Gates rubric.
-
-
-      This is the FASTEST quality check in TOS — scores one dimension only, low token
-      cost.
-
-      Use quality-review for a full 9-dimension review. Use atom-quality-check for:
-
-      - Pre-flight spot checks during generation ("is the safety dimension clean before
-      I proceed?")
-
-      - Single-dimension re-checks after a correction ("did my fix resolve the governance
-      gap?")
-
-      - Pipeline validation at each step of a multi-step workflow
-
-
-      The 9 dimensions (check one per call):
-
-      1. integrity — no fabrication, citations verifiable, standard codes real
-
-      2. safety — no harmful content, age-appropriate, no real PII
-
-      3. governance — metadata block present, human_review_required: true, no auto-approval
-
-      4. accuracy — factually correct, standards-aligned, legally sound for SpEd/504
-
-      5. alignment — objectives match assessment match activities; tied to stated
-      standards
-
-      6. educational_quality — pedagogically sound, Bloom''s/DOK appropriate, differentiation
-      present
-
-      7. accessibility — reading level appropriate, UDL considerations, language clarity
-
-      8. professional_quality — formatting, completeness, usable as-is after teacher
-      review
-
-      9. user_intent — addresses what the teacher actually asked for
-
-
-      Scoring: 0 (critical failure — blocks Approval) / 1-2 (fail) / 3 (warn) / 4
-      (pass) / 5 (exemplary).
-
-
-      Called by: all orchestrator skills during their generation pipeline, quality-review
-      for
-
-      parallel dimension scoring, and output-validator for governance pre-flight.
-
-
-      Trigger phrases: "quick check on the safety of this", "does this pass the governance
-      gate",
-
-      "check the integrity of this", "is this educationally sound", "accessibility
-      check on this".
-
-
-      Do NOT use atom-quality-check as a substitute for the full quality-review (use
-      quality-review
-
-      to get the composite score and Approved/Rejected verdict). human_review_required:
-      true.
-
-      '
-    parameters:
-      type: object
-      required:
-      - artifact_excerpt
-      - dimension
-      properties:
-        artifact_excerpt:
-          type: string
-          description: 'The artifact text to check. For targeted checks, provide only
-            the relevant section (e.g. for governance: the metadata block; for safety:
-            the full text of the artifact). For comprehensive single-dimension scoring,
-            provide the full artifact.
-
-            '
-        dimension:
-          type: string
-          enum:
-          - integrity
-          - safety
-          - governance
-          - accuracy
-          - alignment
-          - educational_quality
-          - accessibility
-          - professional_quality
-          - user_intent
-          description: 'The Quality Gates dimension to evaluate. One dimension per
-            call.
-
-            '
-        artifact_type:
-          type: string
-          enum:
-          - lesson_plan
-          - assessment
-          - iep_goal
-          - accommodation_plan
-          - parent_communication
-          - professional_learning
-          - walkthrough_instrument
-          - generic
-          description: 'Type of the artifact being checked. Determines which rubric
-            criteria apply for the selected dimension. Defaults to generic.
-
-            '
-        original_request:
-          type: string
-          description: 'Required for user_intent dimension: the teacher''s original
-            request that produced this artifact, so the check can verify the output
-            actually addresses what was asked.
-
-            '
-        standards_claimed:
-          type: array
-          items:
-            type: string
-          description: 'For integrity and alignment dimensions: the standard codes
-            the artifact claims to address. atom-quality-check verifies these codes
-            exist in the FL standards corpus. If omitted, codes are extracted from
-            artifact_excerpt text.
-
-            '
-        include_corrective_action:
-          type: boolean
-          description: 'If true (default), include a specific corrective action when
-            score < 4. The corrective action describes the minimum change needed to
-            pass the dimension.
-
-            '
-      additionalProperties: false
-- type: function
-  function:
-    name: atom_reading_level
-    description: 'Estimate the reading level of a text passage (up to ~500 words).
-      Returns a grade-band
-
-      estimate, Lexile estimate, and brief readability analysis. Used to verify that
-
-      teacher-generated or AI-generated content is accessible to the intended audience,
-      or to
-
-      check parent communications for appropriate reading level.
-
-
-      When the textstat library is available (local_optional capability), computes
-      exact
-
-      Flesch-Kincaid Grade Level, Flesch Reading Ease, and Gunning Fog Index. When
-      absent,
-
-      returns a rubric-based estimate with honest capability gap noted.
-
-
-      Called by: family-communication (verifies parent letter readability), atom-differentiate
-
-      (verifies the modified version hit the target reading level), lesson-planner
-      (checks
-
-      that instructional text is at the right level for the grade), and quality-review
-
-      (accessibility dimension scoring).
-
-
-      Trigger phrases: "what reading level is this", "check the readability of", "is
-      this at a
-
-      6th grade reading level", "Lexile estimate for", "is this too hard for 4th graders",
-
-      "reading level check", "Flesch-Kincaid for this passage", "readability of this
-      text".
-
-
-      Do NOT use atom-reading-level to assess student reading ability or generate
-      Lexile
-
-      scores for student placement (those require standardized assessments). This
-      skill rates
-
-      TEXT complexity, not reader ability. human_review_required: true.
-
-      '
-    parameters:
-      type: object
-      required:
-      - passage
-      properties:
-        passage:
-          type: string
-          description: 'The text to analyze. Maximum ~500 words for best results.
-            For longer documents, provide a representative excerpt (e.g., the first
-            paragraph, a middle section, and a final paragraph) to get a representative
-            estimate.
-
-            '
-        grade_context:
-          type: string
-          description: 'The intended grade level or audience. Examples: "3rd grade
-            students", "4th grade ELL students", "parents of K-5 students", "middle
-            school teachers". Used to contextualize the estimate — a text at 9th grade
-            Lexile is appropriate for a 9th grade audience but flagged as too hard
-            for 3rd grade.
-
-            '
-        purpose:
-          type: string
-          enum:
-          - student_instructional_text
-          - student_independent_reading
-          - parent_communication
-          - teacher_professional_document
-          - assessment_item
-          description: 'What the text is for. Affects what reading level is "appropriate."
-            Parent communications target grade 6-8; student instructional text targets
-            grade band; assessment items typically match or are 1-2 grades below instructional
-            level.
-
-            '
-        output_format:
-          type: string
-          enum:
-          - grade_band_estimate
-          - lexile_estimate
-          - full_analysis
-          - pass_fail_for_purpose
-          description: 'What to return. grade_band_estimate (default): K-2, 3-5, 6-8,
-            9-10, 11-12 band + brief rationale. lexile_estimate: numeric Lexile range
-            (e.g. "760L-820L") + confidence note. full_analysis: all readability metrics
-            available + recommendations for adjustment. pass_fail_for_purpose: simple
-            PASS/WARN/FAIL against the grade_context and purpose.
-
-            '
-        flag_accessibility_issues:
-          type: boolean
-          description: 'If true, flag specific phrases, sentences, or vocabulary that
-            push the level up — with suggestions to simplify each flagged item. Useful
-            when you want targeted edits rather than a general estimate. Defaults
-            to false.
-
-            '
-      additionalProperties: false
-- type: function
-  function:
-    name: atom_standards_match
-    description: 'Look up Florida B.E.S.T. or NGSSS standards matching a topic, grade,
-      and subject. Returns a
-
-      ranked list of matching standard codes with full text, strand, and cluster.
-      Uses the local
-
-      SQLite/FTS5 standards cache (shared/cache/) when available for zero-token offline
-      lookup;
-
-      falls back to keyword search over the standards JSON.
-
-
-      This is the FASTEST standards lookup in TOS — no large files are read, no fabrication
-      is
-
-      possible (codes come from the verified 6,583-FL-standard corpus). Every code
-      returned is real
-
-      and verifiable on CPALMS.
-
-
-      Trigger phrases: "what standards cover", "find the standard for", "which FL
-      standard applies
-
-      to", "look up the B.E.S.T. standard", "what code is this", "standards for this
-      topic".
-
-
-      Used by: lesson-planner, assessment-designer, curriculum-mapping, intervention-mtss,
-
-      atom-objective-write, atom-assessment-item, and any skill that needs a verified
-      standard code
-
-      before generating content.
-
-
-      Do NOT use atom-standards-match to write lesson plans or assessments — it returns
-      codes only.
-
-      Output always includes human_review_required: true (teacher confirms the code
-      fits the lesson
-
-      before using it in a formal artifact).
-
-      '
-    parameters:
-      type: object
-      required:
-      - topic
-      - grade
-      - subject
-      properties:
-        topic:
-          type: string
-          description: 'Concept or skill to match standards for. Examples: "fractions
-            greater than 1", "photosynthesis", "argumentative writing", "civil rights
-            movement", "linear equations".
-
-            '
-        grade:
-          type: string
-          description: 'Grade level. Examples: "3rd grade", "5th grade", "9th grade",
-            "K", "Grade 8".
-
-            '
-        subject:
-          type: string
-          description: 'Subject area. Examples: "Mathematics", "ELA", "Science", "Social
-            Studies", "Biology", "US History".
-
-            '
-        standards_corpus:
-          type: string
-          enum:
-          - florida_best
-          - florida_ngsss
-          - florida_all
-          - ccss
-          description: 'Which standards corpus to search. Defaults to florida_all
-            (B.E.S.T. + NGSSS combined). Use florida_best for the current adopted
-            standard; florida_ngsss for legacy alignment.
-
-            '
-        max_results:
-          type: integer
-          description: 'Maximum number of matching standards to return. Defaults to
-            5. Range: 1-20.
-
-            '
-        keyword_override:
-          type: string
-          description: 'Alternate search keywords if the topic phrase doesn''t surface
-            good matches. The standards search will use these words instead of (not
-            in addition to) the topic.
-
-            '
-        include_related_standards:
-          type: boolean
-          description: 'If true, also return standards in adjacent strands that relate
-            to the topic (supporting standards, prerequisite standards). Defaults
-            to false.
-
-            '
-        strand_filter:
-          type: string
-          description: 'Limit results to a specific strand code prefix. Examples:
-            "LAFS.4.RI" (grade 4 informational text), "MAFS.5.NF" (grade 5 fractions),
-            "SC.8.L" (grade 8 life science). Useful when you know which strand the
-            standard lives in.
-
-            '
-      additionalProperties: false
-- type: function
-  function:
     name: curriculum_mapping
     description: 'Build standards-based curriculum maps, pacing guides, scope and
       sequence documents, and
@@ -1769,6 +718,119 @@ tools:
           description: 'Output format. markdown_table (default) is ready for copy-paste
             into district planning templates. json is machine-readable for further
             processing.
+
+            '
+      additionalProperties: false
+- type: function
+  function:
+    name: differentiate
+    description: "Apply ONE differentiation profile to a piece of educational content.\
+      \ Returns a modified\nversion of the content alongside explicit notes on what\
+      \ was changed and why. The learning\ntarget is ALWAYS preserved — differentiation\
+      \ adjusts ACCESS to the content, never the\nstandard itself.\n\nSupported profiles:\n\
+      - ell: English Language Learners — vocabulary scaffolds, sentence frames, visual\
+      \ support cues,\n  cognate highlighting, simplified syntax without dumbing down\
+      \ content\n- iep: Students with IEPs — modifications based on common IEP accommodation\
+      \ categories\n  (extended time notation, reduced item count, chunked directions,\
+      \ visual schedules, graphic\n  organizers). NOTE: this generates generic IEP-tier\
+      \ differentiation, not student-specific\n  accommodations (use special-education-support\
+      \ for student-specific IEP work)\n- gifted: Gifted/advanced learners — enrichment\
+      \ extensions, higher-order questioning,\n  independent research options, cross-curricular\
+      \ connections, complexity increases\n- 504: Section 504 accommodations — presentation/response/setting\
+      \ modifications\n- below_grade: Below grade-level students — scaffolded version\
+      \ with prerequisite skill\n  supports, visual aids, partner work modifications\n\
+      - above_grade: Above grade-level students — accelerated version with extension\
+      \ tasks and\n  connections to advanced content\n\nCalled by: lesson-planner,\
+      \ assessment-designer, curriculum-mapping, atom-activity-generate.\nCan be called\
+      \ directly when a teacher has a piece of content and wants one differentiated\
+      \ version.\n\nTrigger phrases: \"differentiate this for ELL students\", \"modify\
+      \ this for my IEP students\",\n\"make a gifted version of\", \"adapt this for\
+      \ below-grade readers\", \"ELL scaffold for\",\n\"504 accommodations for this\
+      \ activity\", \"differentiated version for\".\n\nDo NOT use atom-differentiate\
+      \ to write student-specific IEP goals (use atom-iep-goal or\nspecial-education-support).\
+      \ Do NOT use it to produce legally binding accommodation plans.\nhuman_review_required:\
+      \ true — teacher confirms modifications fit each student's actual needs.\n"
+    parameters:
+      type: object
+      required:
+      - content
+      - differentiation_profile
+      - grade
+      - subject
+      properties:
+        content:
+          type: string
+          description: 'The educational content to differentiate. Accepts: lesson
+            segment text, activity instructions, assessment item text, reading passage
+            excerpt, discussion prompt, homework assignment, or any instructional
+            text. For best results: provide the full piece of content, not a summary.
+
+            '
+        differentiation_profile:
+          type: string
+          enum:
+          - ell
+          - iep
+          - gifted
+          - '504'
+          - below_grade
+          - above_grade
+          description: 'The differentiation profile to apply. Each call applies exactly
+            one profile. To generate multiple versions, call atom-differentiate once
+            per profile.
+
+            '
+        grade:
+          type: string
+          description: 'Grade level of the original content. Examples: "3rd grade",
+            "8th grade".
+
+            '
+        subject:
+          type: string
+          description: 'Subject area. Examples: "ELA", "Mathematics", "Science".
+
+            '
+        learning_target:
+          type: string
+          description: 'The core learning target / standard the content addresses.
+            atom-differentiate uses this to verify the modified version still achieves
+            the target. If omitted, the target is inferred from the content (less
+            reliable — provide it when you have it).
+
+            '
+        ell_proficiency_level:
+          type: string
+          enum:
+          - entering
+          - emerging
+          - developing
+          - expanding
+          - bridging
+          description: 'For ell profile: WIDA English proficiency level. Scaffolds
+            are calibrated to this level. Defaults to developing (most common middle
+            level).
+
+            '
+        output_format:
+          type: string
+          enum:
+          - modified_content_only
+          - side_by_side_comparison
+          - annotated_with_change_notes
+          description: 'How to present the output. modified_content_only (default):
+            just the differentiated version. side_by_side_comparison: original + modified
+            in parallel columns. annotated_with_change_notes: modified version with
+            inline notes on each change made and why — useful for teacher professional
+            learning.
+
+            '
+        preserve_item_count:
+          type: boolean
+          description: 'For assessment item differentiation: if true, maintain the
+            same number of items/questions in the modified version (adjusting scaffolding
+            but not reducing quantity). Defaults to false (IEP/504 versions may appropriately
+            reduce item count).
 
             '
       additionalProperties: false
@@ -2205,6 +1267,202 @@ tools:
 
             '
           default: false
+      additionalProperties: false
+- type: function
+  function:
+    name: iep_goal
+    description: 'Write ONE SMART IEP annual goal following the IDEA-compliant three-part
+      formula:
+
+      Condition + Behavior + Criterion. Each goal ties to a domain (academic, behavioral,
+
+      communication, adaptive, social-emotional, motor, or transition), maps to a
+      grade-level
+
+      or near-grade-level standard when applicable, and includes suggested progress-monitoring
+
+      frequency and measurement method.
+
+
+      SMART goal formula:
+
+      - S: Specific (observable behavior named)
+
+      - M: Measurable (criterion stated with accuracy/frequency/rate)
+
+      - A: Achievable (realistic for the annual period given PLOP)
+
+      - R: Relevant (connected to standard or functional need)
+
+      - T: Time-bound (by the annual IEP date)
+
+
+      Three-part structure:
+
+      [Condition]: Given [materials/support/setting/cue]...
+
+      [Behavior]: ...[student] will [observable verb + skill]...
+
+      [Criterion]: ...with [accuracy/frequency/rate] as measured by [tool] across
+      [trials/sessions].
+
+
+      Example output:
+
+      "Given a grade-level informational text and a graphic organizer, [STUDENT] will
+      identify the
+
+      main idea and two supporting details with 80% accuracy across 4 of 5 consecutive
+      trials as
+
+      measured by teacher-administered running records, by the annual IEP date."
+
+
+      Called by: special-education-support (builds full IEP goal sections), and can
+      be called
+
+      directly for a fast single-goal draft.
+
+
+      LEGAL NOTICE (included in every output):
+
+      - This is a DRAFT for review and approval by the IEP team, not a final IEP document
+
+      - This skill does not determine eligibility, placement, or services
+
+      - The IEP team must review, modify, and approve all goals per IDEA procedures
+
+      - Present Level of Performance (PLOP) data must come from the teacher/team,
+      not generated here
+
+
+      Trigger phrases: "write an IEP goal for", "draft an annual goal", "IEP reading
+      goal",
+
+      "behavior goal for IEP", "communication goal draft", "transition goal for",
+      "SMART IEP goal".
+
+
+      Do NOT use atom-iep-goal to write lesson plan objectives (use atom-objective-write).
+
+      Do NOT use it to determine eligibility or make placement decisions.
+
+      human_review_required: true on every output.
+
+      '
+    parameters:
+      type: object
+      required:
+      - domain
+      - grade
+      - present_level_of_performance
+      - legal_notice_acknowledged
+      properties:
+        domain:
+          type: string
+          enum:
+          - academic_reading
+          - academic_math
+          - academic_writing
+          - behavioral
+          - communication_expressive
+          - communication_receptive
+          - adaptive_daily_living
+          - social_emotional
+          - fine_motor
+          - gross_motor
+          - transition_employment
+          - transition_postsecondary_education
+          - transition_independent_living
+          - assistive_technology
+          description: 'IEP goal domain. Determines the observable behavior vocabulary
+            and criterion norms used in the draft.
+
+            '
+        grade:
+          type: string
+          description: 'Student''s current grade level. Examples: "3rd grade", "9th
+            grade", "K".
+
+            '
+        present_level_of_performance:
+          type: string
+          description: 'Teacher-supplied baseline data describing what the student
+            can currently do, at what level, and with what accuracy. THIS MUST COME
+            FROM REAL ASSESSMENT DATA — never fabricate. Use "[INSERT BASELINE DATA]"
+            as a placeholder if data is not yet available. Example: "Student currently
+            reads at a 1st grade level (38 wcpm on a Grade 1 oral reading fluency
+            probe); decodes CVC and CVCe words with 70% accuracy."
+
+            '
+        annual_goal_focus:
+          type: string
+          description: 'The specific skill or behavior the goal should target over
+            the coming year. Be precise. Examples: "decode multisyllabic words with
+            prefixes and suffixes", "initiate peer interactions during unstructured
+            time", "complete multi-step math problems using a graphic organizer",
+            "use ''I need a break'' card to request sensory regulation break".
+
+            '
+        measurement_criterion:
+          type: string
+          description: 'The performance criterion (accuracy, frequency, rate, duration).
+            Examples: "80% accuracy across 4 of 5 trials", "3 times per week", "within
+            3 minutes", "9 of 10 consecutive opportunities". If omitted, a research-normed
+            criterion is drafted with a placeholder for team review.
+
+            '
+        measurement_tool:
+          type: string
+          description: 'Progress-monitoring tool. Examples: "teacher-administered
+            CBM", "DIBELS 8th Ed ORF probes", "behavior frequency count", "work sample
+            analysis", "observation checklist". If omitted, an appropriate tool is
+            recommended.
+
+            '
+        condition:
+          type: string
+          description: 'The condition/context for the goal: given what materials,
+            supports, or cues will the student demonstrate the skill? Examples: "given
+            a grade-level informational text and a graphic organizer", "given a visual
+            behavior support chart", "given a calculator and a step-by-step problem-solving
+            guide". If omitted, a standard condition is drafted.
+
+            '
+        standard:
+          type: string
+          description: 'Florida B.E.S.T. or NGSSS standard the goal connects to (for
+            academic goals). Optional for behavioral/functional goals. If omitted
+            and domain is academic, the skill attempts to connect to the nearest appropriate
+            standard.
+
+            '
+        progress_monitoring_frequency:
+          type: string
+          enum:
+          - weekly
+          - biweekly
+          - monthly
+          - quarterly
+          - at_each_iep_review
+          description: 'How often progress on this goal will be measured. Defaults
+            to biweekly for academic goals, weekly for behavioral goals.
+
+            '
+        short_term_objectives:
+          type: boolean
+          description: 'If true, include 2-3 short-term objectives / benchmarks as
+            interim steps toward the annual goal. Required for students with significant
+            cognitive disabilities in Florida. Defaults to false.
+
+            '
+        legal_notice_acknowledged:
+          type: boolean
+          description: 'REQUIRED — must be true to proceed. Confirms that the requestor
+            understands this is a DRAFT requiring IEP team review and approval, and
+            that this skill never determines eligibility, placement, or services.
+
+            '
       additionalProperties: false
 - type: function
   function:
@@ -2650,6 +1908,250 @@ tools:
       additionalProperties: false
 - type: function
   function:
+    name: misconception
+    description: 'Identify 2-5 common student misconceptions for a given topic, grade,
+      and subject. For each
+
+      misconception, explains WHY it occurs (cognitive origin or prior knowledge conflict)
+      and
+
+      provides a specific instructional remedy — an activity, question, or approach
+      that directly
+
+      addresses the misconception.
+
+
+      Research-grounded: misconceptions draw from known literature in math/science
+      education
+
+      research, cognitive load theory, and documented common errors in FL assessment
+      data. Not
+
+      fabricated — when a misconception is inferred rather than documented, it is
+      flagged as
+
+      "commonly observed" rather than "research-documented."
+
+
+      Called by: lesson-planner (embeds misconception awareness in the lesson), assessment-designer
+
+      (informs distractor design for MC questions), atom-assessment-item (when generating
+
+      distractors), and atom-activity-generate (builds activities that proactively
+      address errors).
+
+
+      Trigger phrases: "what misconceptions do students have about", "common mistakes
+      on",
+
+      "why do students struggle with", "what errors do students make on", "misconceptions
+      for",
+
+      "common student errors in", "what do kids get wrong about".
+
+
+      Do NOT use atom-misconception to diagnose an individual student''s specific
+      misconception
+
+      (that requires looking at the student''s actual work). This skill returns COMMON
+      misconceptions
+
+      for a topic at a grade level, not individual student assessment. human_review_required:
+      true.
+
+      '
+    parameters:
+      type: object
+      required:
+      - topic
+      - grade
+      - subject
+      properties:
+        topic:
+          type: string
+          description: 'The concept or skill to surface misconceptions for. Be specific
+            for best results. Examples: "multiplying fractions by whole numbers" (better
+            than just "fractions"), "inferring author''s purpose" (better than just
+            "reading"), "photosynthesis vs. respiration" (better than just "cell processes").
+
+            '
+        grade:
+          type: string
+          description: 'Grade level. Examples: "4th grade", "7th grade", "10th grade".
+            More specific = better-calibrated misconceptions for the developmental
+            level.
+
+            '
+        subject:
+          type: string
+          description: 'Subject area. Examples: "Mathematics", "ELA", "Science", "Social
+            Studies".
+
+            '
+        count:
+          type: integer
+          description: 'Number of misconceptions to return. Range: 2-5. Defaults to
+            3. Use 2 for a quick check; 5 when doing thorough lesson prep or assessment
+            design.
+
+            '
+        standard:
+          type: string
+          description: 'Florida B.E.S.T. or NGSSS standard code if you want misconceptions
+            scoped to a specific standard''s demands. Optional — inferred from topic/grade/subject
+            if omitted.
+
+            '
+        include_instructional_remedy:
+          type: boolean
+          description: 'If true (default), include a specific instructional remedy
+            for each misconception — an activity, question sequence, or instructional
+            approach that directly addresses it.
+
+            '
+        include_assessment_probes:
+          type: boolean
+          description: 'If true, include a diagnostic question or prompt (an "assessment
+            probe") that can elicit each misconception for formative monitoring. These
+            are different from remedies — they help the teacher DETECT the misconception,
+            not fix it. Defaults to false.
+
+            '
+        source_type:
+          type: string
+          enum:
+          - research_documented
+          - commonly_observed
+          - both
+          description: 'Filter misconceptions by evidence base. research_documented
+            returns only misconceptions with documented research citations. commonly_observed
+            includes teacher-reported and assessment-data-inferred patterns. Defaults
+            to both.
+
+            '
+      additionalProperties: false
+- type: function
+  function:
+    name: objective_write
+    description: 'Write 1-3 measurable SWBAT (Students Will Be Able To) learning objectives
+      for a given
+
+      grade, subject, and standard. Each objective includes: the SWBAT statement,
+      Bloom''s taxonomy
+
+      level tag, DOK level, a suggested assessment method, and the standard code it
+      maps to.
+
+
+      Objectives follow the SWBAT formula: observable verb + content + condition +
+      criterion.
+
+      Example: "SWBAT explain (Bloom''s: Understand / DOK 2) the water cycle stages
+      by labeling a
+
+      diagram with 85% accuracy."
+
+
+      Called by: lesson-planner (auto-generates objectives from standards), curriculum-mapping
+
+      (unit learning targets), and any workflow needing measurable objectives before
+      building
+
+      activities or assessments.
+
+
+      Trigger phrases: "write learning objectives for", "SWBAT for", "what''s the
+      learning target",
+
+      "write objectives for this standard", "measurable objectives for", "learning
+      goals for".
+
+
+      Do NOT use atom-objective-write to write the full lesson plan (use lesson-planner).
+      Do NOT use
+
+      it to write IEP goals (use atom-iep-goal or special-education-support — IEP
+      goals have
+
+      different legal requirements than lesson objectives). human_review_required:
+      true.
+
+      '
+    parameters:
+      type: object
+      required:
+      - topic
+      - grade
+      - subject
+      properties:
+        topic:
+          type: string
+          description: 'Concept or skill the objective targets. Examples: "inferring
+            author''s purpose", "multiplying fractions", "identifying cause and effect
+            in science texts".
+
+            '
+        grade:
+          type: string
+          description: 'Grade level. Examples: "3rd grade", "7th grade", "10th grade".
+
+            '
+        subject:
+          type: string
+          description: 'Subject area. Examples: "ELA", "Mathematics", "Science".
+
+            '
+        standards:
+          type: array
+          items:
+            type: string
+          description: 'Standard codes the objectives should address. If omitted,
+            atom-standards-match is called internally to find the most relevant standard.
+            Provide codes when you already have them (faster, no secondary lookup).
+
+            '
+        bloom_level:
+          type: string
+          enum:
+          - remember
+          - understand
+          - apply
+          - analyze
+          - evaluate
+          - create
+          - mixed
+          description: 'Bloom''s level to target. Use mixed (default) to get a spread
+            across the unit. Specify a single level for focused practice or skills
+            work.
+
+            '
+        count:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          description: 'Number of objectives to write. Defaults to 2. For a single-lesson
+            focus, 1-2 is recommended. For a unit or multi-day lesson, use 3.
+
+            '
+        lesson_context:
+          type: string
+          description: 'Optional context: where in the unit this lesson falls, prior
+            knowledge students have, the lesson''s role in a larger sequence. Helps
+            calibrate Bloom''s level and specificity.
+
+            '
+        include_assessment_suggestion:
+          type: boolean
+          description: 'If true, add a suggested formative assessment method for each
+            objective (exit ticket, thumbs up/down, whiteboard check, quick write).
+            Defaults to true.
+
+            '
+      additionalProperties: false
+- type: function
+  function:
     name: output_validator
     description: 'Validate TOS-generated JSON artifacts against their JSON Schema
       and a governance rule catalog
@@ -2795,6 +2297,135 @@ tools:
             patterns and contextual PII (e.g., "Student at [specific school] with
             [specific identifier]"). name_pattern_only: fastest — checks for proper
             name patterns only.
+
+            '
+      additionalProperties: false
+- type: function
+  function:
+    name: parent_comm
+    description: "Draft ONE parent/guardian communication: email, text-home note,\
+      \ or brief letter. Purpose-\ndriven templates for common educator scenarios.\
+      \ All output uses placeholder names (never real\nstudent/family names), targets\
+      \ grade 6-8 reading level by default, and carries\nhuman_review_required: true\
+      \ for teacher review before sending.\n\nThis is the FOCUSED single-message version.\
+      \ Use family-communication for complex multi-section\ndocuments (newsletters,\
+      \ full conference notes, multi-language packets).\n\nCommunication purposes:\n\
+      - positive_update: celebrate an achievement, share growth, highlight a classroom\
+      \ success\n- academic_concern: communicate academic struggle or falling grades\
+      \ — strength-based framing\n- behavior_note: observable behavior description\
+      \ (non-labeling, objective language only)\n- conference_request: invite family\
+      \ to an in-person or virtual meeting\n- academic_progress: structured academic\
+      \ progress update (mid-grading period, end of unit)\n- attendance: attendance\
+      \ concern or commendation\n- general_information: supplies, schedule change,\
+      \ event reminder, logistical information\n- crisis_or_urgent: urgent situation\
+      \ requiring immediate parent contact (brief, factual, no\n  speculation about\
+      \ cause — route serious safety situations to administration first)\n\nPrivacy\
+      \ rules enforced on every output:\n- Student names → \"your child\" or [STUDENT\
+      \ NAME]\n- Family names → \"Dear Family\" or [FAMILY NAME]\n- No SSN, address,\
+      \ phone, student ID, or disability label to unauthorized recipients\n\nTrigger\
+      \ phrases: \"write a parent note about\", \"draft an email to parents\", \"\
+      text home about\",\n\"quick parent communication\", \"write a note home\", \"\
+      parent email for\", \"family message about\".\n\nDo NOT use atom-parent-comm\
+      \ for legally required IDEA notices (Prior Written Notice,\nProcedural Safeguards)\
+      \ — use district official forms. human_review_required: true.\n"
+    parameters:
+      type: object
+      required:
+      - communication_purpose
+      - grade
+      properties:
+        communication_purpose:
+          type: string
+          enum:
+          - positive_update
+          - academic_concern
+          - behavior_note
+          - conference_request
+          - academic_progress
+          - attendance
+          - general_information
+          - crisis_or_urgent
+          description: 'The reason for contacting the family. Determines template
+            structure and tone guidance.
+
+            '
+        grade:
+          type: string
+          description: 'Student''s grade level. Examples: "3rd grade", "10th grade",
+            "Kindergarten".
+
+            '
+        subject:
+          type: string
+          description: 'Subject area if relevant (e.g., "Math", "ELA"). Omit for whole-class
+            or behavior communications.
+
+            '
+        key_points:
+          type: array
+          items:
+            type: string
+          description: 'The main facts or messages to convey. The skill wraps these
+            in fluent, professional prose. Examples for a behavior note: ["Student
+            called out 4 times during reading block", "Verbal reminder given twice",
+            "Would like family to reinforce hand-raising at home"]. Always use observable
+            descriptions — never labels or diagnoses.
+
+            '
+        tone:
+          type: string
+          enum:
+          - warm
+          - professional
+          - urgent
+          - celebratory
+          - neutral
+          description: 'Communication tone. Defaults: warm for positive_update/celebration;
+            professional for academic concerns; urgent for crisis_or_urgent. Override
+            if needed.
+
+            '
+        medium:
+          type: string
+          enum:
+          - email
+          - printed_note
+          - text_message
+          - app_message
+          description: 'Delivery medium. Affects length and formatting. text_message
+            produces a brief 2-3 sentence version. Defaults to email.
+
+            '
+        reading_level_target:
+          type: string
+          enum:
+          - grade_4_6
+          - grade_6_8
+          - grade_8_10
+          description: 'Target Flesch-Kincaid reading level. Defaults to grade_6_8.
+
+            '
+        language:
+          type: string
+          description: 'Output language. Defaults to "en" (English). Use "es" for
+            Spanish, "ht" for Haitian Creole. Dual-language (e.g. "en+es") writes
+            both versions together.
+
+            '
+        next_steps_for_family:
+          type: array
+          items:
+            type: string
+          description: 'Specific, actionable next steps you want the family to take.
+            Examples: ["Please sign and return the behavior chart", "Let us know a
+            good time for a phone conference", "Review the study guide together before
+            Friday"]. Included as a bulleted list near the close of the message.
+
+            '
+        teacher_name_placeholder:
+          type: string
+          description: 'Name or role to sign the message with. Defaults to "[Your
+            Name]". Examples: "Ms. Rivera", "The 5th Grade Team", "[TEACHER NAME]".
 
             '
       additionalProperties: false
@@ -3158,6 +2789,150 @@ tools:
       additionalProperties: false
 - type: function
   function:
+    name: quality_check
+    description: 'Run ONE quality gate check on an artifact excerpt and return pass/fail/warn
+      with a score,
+
+      explanation, and corrective action. Operates on a single dimension of the 9-dimension
+      TOS
+
+      Quality Gates rubric.
+
+
+      This is the FASTEST quality check in TOS — scores one dimension only, low token
+      cost.
+
+      Use quality-review for a full 9-dimension review. Use atom-quality-check for:
+
+      - Pre-flight spot checks during generation ("is the safety dimension clean before
+      I proceed?")
+
+      - Single-dimension re-checks after a correction ("did my fix resolve the governance
+      gap?")
+
+      - Pipeline validation at each step of a multi-step workflow
+
+
+      The 9 dimensions (check one per call):
+
+      1. integrity — no fabrication, citations verifiable, standard codes real
+
+      2. safety — no harmful content, age-appropriate, no real PII
+
+      3. governance — metadata block present, human_review_required: true, no auto-approval
+
+      4. accuracy — factually correct, standards-aligned, legally sound for SpEd/504
+
+      5. alignment — objectives match assessment match activities; tied to stated
+      standards
+
+      6. educational_quality — pedagogically sound, Bloom''s/DOK appropriate, differentiation
+      present
+
+      7. accessibility — reading level appropriate, UDL considerations, language clarity
+
+      8. professional_quality — formatting, completeness, usable as-is after teacher
+      review
+
+      9. user_intent — addresses what the teacher actually asked for
+
+
+      Scoring: 0 (critical failure — blocks Approval) / 1-2 (fail) / 3 (warn) / 4
+      (pass) / 5 (exemplary).
+
+
+      Called by: all orchestrator skills during their generation pipeline, quality-review
+      for
+
+      parallel dimension scoring, and output-validator for governance pre-flight.
+
+
+      Trigger phrases: "quick check on the safety of this", "does this pass the governance
+      gate",
+
+      "check the integrity of this", "is this educationally sound", "accessibility
+      check on this".
+
+
+      Do NOT use atom-quality-check as a substitute for the full quality-review (use
+      quality-review
+
+      to get the composite score and Approved/Rejected verdict). human_review_required:
+      true.
+
+      '
+    parameters:
+      type: object
+      required:
+      - artifact_excerpt
+      - dimension
+      properties:
+        artifact_excerpt:
+          type: string
+          description: 'The artifact text to check. For targeted checks, provide only
+            the relevant section (e.g. for governance: the metadata block; for safety:
+            the full text of the artifact). For comprehensive single-dimension scoring,
+            provide the full artifact.
+
+            '
+        dimension:
+          type: string
+          enum:
+          - integrity
+          - safety
+          - governance
+          - accuracy
+          - alignment
+          - educational_quality
+          - accessibility
+          - professional_quality
+          - user_intent
+          description: 'The Quality Gates dimension to evaluate. One dimension per
+            call.
+
+            '
+        artifact_type:
+          type: string
+          enum:
+          - lesson_plan
+          - assessment
+          - iep_goal
+          - accommodation_plan
+          - parent_communication
+          - professional_learning
+          - walkthrough_instrument
+          - generic
+          description: 'Type of the artifact being checked. Determines which rubric
+            criteria apply for the selected dimension. Defaults to generic.
+
+            '
+        original_request:
+          type: string
+          description: 'Required for user_intent dimension: the teacher''s original
+            request that produced this artifact, so the check can verify the output
+            actually addresses what was asked.
+
+            '
+        standards_claimed:
+          type: array
+          items:
+            type: string
+          description: 'For integrity and alignment dimensions: the standard codes
+            the artifact claims to address. atom-quality-check verifies these codes
+            exist in the FL standards corpus. If omitted, codes are extracted from
+            artifact_excerpt text.
+
+            '
+        include_corrective_action:
+          type: boolean
+          description: 'If true (default), include a specific corrective action when
+            score < 4. The corrective action describes the minimum change needed to
+            pass the dimension.
+
+            '
+      additionalProperties: false
+- type: function
+  function:
     name: quality_review
     description: 'Score any TOS-generated K-12 artifact against the full 9-dimension
       Quality Gates rubric.
@@ -3321,6 +3096,116 @@ tools:
           type: boolean
           description: 'If true and the artifact is Rejected, register the failing
             case as a regression eval so it can be retested after correction. Defaults
+            to false.
+
+            '
+      additionalProperties: false
+- type: function
+  function:
+    name: reading_level
+    description: 'Estimate the reading level of a text passage (up to ~500 words).
+      Returns a grade-band
+
+      estimate, Lexile estimate, and brief readability analysis. Used to verify that
+
+      teacher-generated or AI-generated content is accessible to the intended audience,
+      or to
+
+      check parent communications for appropriate reading level.
+
+
+      When the textstat library is available (local_optional capability), computes
+      exact
+
+      Flesch-Kincaid Grade Level, Flesch Reading Ease, and Gunning Fog Index. When
+      absent,
+
+      returns a rubric-based estimate with honest capability gap noted.
+
+
+      Called by: family-communication (verifies parent letter readability), atom-differentiate
+
+      (verifies the modified version hit the target reading level), lesson-planner
+      (checks
+
+      that instructional text is at the right level for the grade), and quality-review
+
+      (accessibility dimension scoring).
+
+
+      Trigger phrases: "what reading level is this", "check the readability of", "is
+      this at a
+
+      6th grade reading level", "Lexile estimate for", "is this too hard for 4th graders",
+
+      "reading level check", "Flesch-Kincaid for this passage", "readability of this
+      text".
+
+
+      Do NOT use atom-reading-level to assess student reading ability or generate
+      Lexile
+
+      scores for student placement (those require standardized assessments). This
+      skill rates
+
+      TEXT complexity, not reader ability. human_review_required: true.
+
+      '
+    parameters:
+      type: object
+      required:
+      - passage
+      properties:
+        passage:
+          type: string
+          description: 'The text to analyze. Maximum ~500 words for best results.
+            For longer documents, provide a representative excerpt (e.g., the first
+            paragraph, a middle section, and a final paragraph) to get a representative
+            estimate.
+
+            '
+        grade_context:
+          type: string
+          description: 'The intended grade level or audience. Examples: "3rd grade
+            students", "4th grade ELL students", "parents of K-5 students", "middle
+            school teachers". Used to contextualize the estimate — a text at 9th grade
+            Lexile is appropriate for a 9th grade audience but flagged as too hard
+            for 3rd grade.
+
+            '
+        purpose:
+          type: string
+          enum:
+          - student_instructional_text
+          - student_independent_reading
+          - parent_communication
+          - teacher_professional_document
+          - assessment_item
+          description: 'What the text is for. Affects what reading level is "appropriate."
+            Parent communications target grade 6-8; student instructional text targets
+            grade band; assessment items typically match or are 1-2 grades below instructional
+            level.
+
+            '
+        output_format:
+          type: string
+          enum:
+          - grade_band_estimate
+          - lexile_estimate
+          - full_analysis
+          - pass_fail_for_purpose
+          description: 'What to return. grade_band_estimate (default): K-2, 3-5, 6-8,
+            9-10, 11-12 band + brief rationale. lexile_estimate: numeric Lexile range
+            (e.g. "760L-820L") + confidence note. full_analysis: all readability metrics
+            available + recommendations for adjustment. pass_fail_for_purpose: simple
+            PASS/WARN/FAIL against the grade_context and purpose.
+
+            '
+        flag_accessibility_issues:
+          type: boolean
+          description: 'If true, flag specific phrases, sentences, or vocabulary that
+            push the level up — with suggestions to simplify each flagged item. Useful
+            when you want targeted edits rather than a general estimate. Defaults
             to false.
 
             '
@@ -3962,6 +3847,124 @@ tools:
       additionalProperties: false
 - type: function
   function:
+    name: standards_match
+    description: 'Look up Florida B.E.S.T. or NGSSS standards matching a topic, grade,
+      and subject. Returns a
+
+      ranked list of matching standard codes with full text, strand, and cluster.
+      Uses the local
+
+      SQLite/FTS5 standards cache (shared/cache/) when available for zero-token offline
+      lookup;
+
+      falls back to keyword search over the standards JSON.
+
+
+      This is the FASTEST standards lookup in TOS — no large files are read, no fabrication
+      is
+
+      possible (codes come from the verified FL-standard corpus — 6,574 codes, each
+      checked against
+
+      CPALMS; ledger/cpalms-run-manifest.json is the live count). Every code returned
+      is real
+
+      and verifiable on CPALMS.
+
+
+      Trigger phrases: "what standards cover", "find the standard for", "which FL
+      standard applies
+
+      to", "look up the B.E.S.T. standard", "what code is this", "standards for this
+      topic".
+
+
+      Used by: lesson-planner, assessment-designer, curriculum-mapping, intervention-mtss,
+
+      atom-objective-write, atom-assessment-item, and any skill that needs a verified
+      standard code
+
+      before generating content.
+
+
+      Do NOT use atom-standards-match to write lesson plans or assessments — it returns
+      codes only.
+
+      Output always includes human_review_required: true (teacher confirms the code
+      fits the lesson
+
+      before using it in a formal artifact).
+
+      '
+    parameters:
+      type: object
+      required:
+      - topic
+      - grade
+      - subject
+      properties:
+        topic:
+          type: string
+          description: 'Concept or skill to match standards for. Examples: "fractions
+            greater than 1", "photosynthesis", "argumentative writing", "civil rights
+            movement", "linear equations".
+
+            '
+        grade:
+          type: string
+          description: 'Grade level. Examples: "3rd grade", "5th grade", "9th grade",
+            "K", "Grade 8".
+
+            '
+        subject:
+          type: string
+          description: 'Subject area. Examples: "Mathematics", "ELA", "Science", "Social
+            Studies", "Biology", "US History".
+
+            '
+        standards_corpus:
+          type: string
+          enum:
+          - florida_best
+          - florida_ngsss
+          - florida_all
+          - ccss
+          description: 'Which standards corpus to search. Defaults to florida_all
+            (B.E.S.T. + NGSSS combined). Use florida_best for the current adopted
+            standard; florida_ngsss for legacy alignment.
+
+            '
+        max_results:
+          type: integer
+          description: 'Maximum number of matching standards to return. Defaults to
+            5. Range: 1-20.
+
+            '
+        keyword_override:
+          type: string
+          description: 'Alternate search keywords if the topic phrase doesn''t surface
+            good matches. The standards search will use these words instead of (not
+            in addition to) the topic.
+
+            '
+        include_related_standards:
+          type: boolean
+          description: 'If true, also return standards in adjacent strands that relate
+            to the topic (supporting standards, prerequisite standards). Defaults
+            to false.
+
+            '
+        strand_filter:
+          type: string
+          description: 'Limit results to a specific strand code prefix. Examples:
+            "LAFS.4.RI" (grade 4 informational text), "MAFS.5.NF" (grade 5 fractions),
+            "SC.8.L" (grade 8 life science). Useful when you know which strand the
+            standard lives in.
+
+            '
+      additionalProperties: false
+- type: function
+  function:
     name: standards_updater
     description: "Crawl, detect, verify, and report on changes to Florida K-12 standards\
       \ corpora: B.E.S.T.,\nNGSSS, CTE frameworks, Florida Statutes Title XLVIII (ch.1000-1013),\
@@ -4198,8 +4201,7 @@ tools:
       crawled inference in all downstream routing and artifact generation.
 
 
-      Trigger phrases: "set up my TOS profile", "update my profile", "what''s in my
-      profile",
+      Trigger phrases: "set up my profile", "update my profile", "what''s in my profile",
 
       "change my school", "reset my preferences", "I moved to a new school", "set
       my grade level",
@@ -4390,3 +4392,18 @@ tools:
               type: string
               description: Current instructional unit or topic
       additionalProperties: false
+  web_note: 'ChatGPT cannot run the TOS profile script — follow "The Setup Wizard
+    — start here" at the top
+
+    of this document instead: a one-question-at-a-time interview that explains why
+    it asks each
+
+    thing, then saves the answers as my-teacher-profile.md in this Project. Any chat
+    that can see
+
+    that file treats it as the registered profile (teacher-stated facts still outrank
+    everything
+
+    else). Placeholders only — never real student names.
+
+    '

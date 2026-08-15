@@ -20,6 +20,36 @@ jobs:
       - name: Standards resolver self-test (known-good resolves; known-bad blocks)
         run: python3 tools/verify_standards.py --self-test
 
+      - name: CPALMS verification-loop self-test (offline; mutation + disposition + census guards)
+        run: python3 tools/cpalms_verify.py --self-test
+
+      - name: Corpus parser self-test (label-vs-prose splitter probes)
+        run: python3 tools/parse_fl_standards.py --self-test
+
+      - name: Corpus is free of document furniture (parse-defect scan)
+        run: python3 tools/cpalms_verify.py --scan-parse-defects
+
+      # The overlays are the durable record the whole verification exists to produce, and until
+      # this step nothing in CI ever read them. The self-test proves every check can FAIL first;
+      # the audit then re-proves all confirmed labels from the stored texts, offline.
+      - name: Overlay integrity self-test (mutation battery — every check must be able to fail)
+        run: python3 tools/audit_overlays.py --self-test
+
+      - name: Overlay integrity audit (re-proof, routing, id-bleed, coverage, manifest identity)
+        run: python3 tools/audit_overlays.py
+
+      - name: Sources manifest check (every referenced file exists; no duplicate records)
+        run: python3 tools/standards_refresh.py --check
+
+      - name: Currency-recheck self-test (slice/rotation/verdict probes; broken twins proven)
+        run: python3 tools/currency_recheck.py --self-test
+
+      - name: Currency-recheck selection dry run (live-tree determinism probe; fetches nothing)
+        run: python3 tools/currency_recheck.py --dry-run-selection
+
+      - name: Cross-platform lint (bare-interpreter spawns; encoding-less text opens)
+        run: python3 tools/mac_audit.py
+
       - name: Validate eval files
         run: |
           python3 - <<'PY'

@@ -1,0 +1,58 @@
+{
+ "subject": "eld",
+ "source": "cpalms",
+ "generated_at": "2026-08-13T10:57:12Z",
+ "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
+ "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
+ "coverage": 1.0,
+ "scopes": [
+  {
+   "grades": "all",
+   "rows_applied": 5,
+   "rows_verified": 5,
+   "generated_at": "2026-08-13T10:57:12Z"
+  }
+ ],
+ "entries": {
+  "ELD.K12.ELL.LA.1": {
+   "state": "confirmed",
+   "statement_verified": "English language learners communicate information, ideas and concepts necessary for academic success in the content area of Language Arts.",
+   "cpalms_id": "8644",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/8644",
+   "date_revised": "06/14",
+   "checked_at": "2026-08-13T10:51:27Z"
+  },
+  "ELD.K12.ELL.MA.1": {
+   "state": "confirmed",
+   "statement_verified": "English language learners communicate information, ideas and concepts necessary for academic success in the content area of Mathematics.",
+   "cpalms_id": "8642",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/8642",
+   "date_revised": "06/14",
+   "checked_at": "2026-08-13T10:51:30Z"
+  },
+  "ELD.K12.ELL.SC.1": {
+   "state": "confirmed",
+   "statement_verified": "English language learners communicate information, ideas and concepts necessary for academic success in the content area of Science.",
+   "cpalms_id": "8643",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/8643",
+   "date_revised": "06/14",
+   "checked_at": "2026-08-13T10:51:33Z"
+  },
+  "ELD.K12.ELL.SI.1": {
+   "state": "confirmed",
+   "statement_verified": "English language learners communicate for social and instructional purposes within the school setting.",
+   "cpalms_id": "8640",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/8640",
+   "date_revised": "06/14",
+   "checked_at": "2026-08-13T10:51:36Z"
+  },
+  "ELD.K12.ELL.SS.1": {
+   "state": "confirmed",
+   "statement_verified": "English language learners communicate information, ideas and concepts necessary for academic success in the content area of Social Studies.",
+   "cpalms_id": "8641",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/8641",
+   "date_revised": "06/14",
+   "checked_at": "2026-08-13T10:51:39Z"
+  }
+ }
+}

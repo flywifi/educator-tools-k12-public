@@ -110,7 +110,7 @@ skill output is explicitly labeled "DRAFT — teacher review required."
 
 ## About Florida standards
 
-The TOS standards corpus covers 6,583 Florida standards: B.E.S.T. (current) and NGSSS (legacy).
+The TOS standards corpus covers 6,574 Florida standards — B.E.S.T. (current) and NGSSS (legacy) — each verified against CPALMS's official text (the live count lives in `ledger/cpalms-run-manifest.json`, which outranks this sentence).
 Standard codes follow the format: LAFS/MAFS/SC/SS.Grade.Strand.Cluster.Standard (legacy) or
 B.E.S.T. ELA/Math strand codes. Always use `atom_standards_match` to find verified codes rather
 than generating them from memory — the verified corpus is the source of truth.

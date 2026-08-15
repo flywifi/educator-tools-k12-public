@@ -115,7 +115,11 @@ def _pack_spec() -> list[dict]:
         src = STANDARDS_DATA / f"{subj}.json"
         d = _load(src)
         label = subj.replace("_", " ")
-        note = " (best-effort parse from a legacy .doc — always verify)" if subj == "social_studies" else ""
+        # Every subject's parse is faithful and CPALMS-verified since 2026-08-13; the old
+        # social-studies "best-effort — always verify" note described parser bugs that were fixed.
+        # The generic verify-on-CPALMS advisory in the manifest header covers currency for ALL
+        # subjects; no subject gets a special distrust flag its data no longer earns.
+        note = ""
         spec.append({
             "dest": f"fl-standards-{subj.replace('_', '-')}.json",
             "src": src, "rows": d.get("count"),

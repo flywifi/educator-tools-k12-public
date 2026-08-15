@@ -37,6 +37,9 @@ def main(argv) -> int:
     ap.add_argument("--code", help="exact or prefix match on the code")
     ap.add_argument("--search", help="case-insensitive keyword in the statement")
     ap.add_argument("--limit", type=int, default=50)
+    ap.add_argument("--withdrawn", action="store_true",
+                    help="also show guidance a NEWER source document removed (data/withdrawn/). "
+                         "Clearly labelled: it was official once and is not current.")
     a = ap.parse_args(argv)
 
     if not DATA.exists():
@@ -59,6 +62,31 @@ def main(argv) -> int:
     print(f"{len(rows)} match(es)" + (f" (showing {a.limit})" if len(rows) > a.limit else ""))
     for s in rows[: a.limit]:
         print(f"  {s['code']:24} [{s['subject']}/{s['type']}] {s.get('statement','')[:90]}")
+    if a.withdrawn:
+        # Kept out of the corpus on purpose (see data/withdrawn/*.json "_why_not_in_the_corpus"):
+        # the corpus must stay the parse of exactly one document. Joined on demand, and never
+        # presented as current — the label is not decoration, it is the whole point.
+        shown = 0
+        for wf in sorted((DATA / "withdrawn").glob("*.withdrawn.json")):
+            doc = json.loads(wf.read_text(encoding="utf-8"))
+            for code, e in doc.get("entries", {}).items():
+                if a.code and not code.startswith(a.code):
+                    continue
+                if a.subject and doc.get("subject") != a.subject:
+                    continue
+                if q and not any(q in str(v).lower() for v in e["withdrawn_fields"].values()):
+                    continue
+                if shown == 0:
+                    print(f"\n--- WITHDRAWN guidance (NOT current; removed by a newer official "
+                          f"document) ---")
+                for field, val in e["withdrawn_fields"].items():
+                    print(f"  {code:24} [withdrawn {field}] {str(val)[:90]}")
+                shown += 1
+                if shown >= a.limit:
+                    break
+        if shown:
+            print(f"  ({shown} withdrawn entr(ies). Source: {doc['withdrawn_from']['file']} "
+                  f"sha256 {doc['withdrawn_from']['sha256'][:12]}. Do not cite as current.)")
     if rows:
         print("\nVerify on CPALMS: https://www.cpalms.org/search/Standard")
     return 0

@@ -1,15 +1,25 @@
 #!/usr/bin/env python3
 """Parse Florida's stored standards documents into structured, queryable JSON.
 
-Reads the B.E.S.T./NGSSS standards documents under
-shared/standards/resources/florida/ and emits one JSON per subject in
-.../florida/data/, plus an index. Each entry: {code, grade, strand, type, statement}
-with type ∈ {benchmark, access_point, practice}.
+Reads the B.E.S.T./NGSSS standards documents under shared/standards/resources/florida/ and emits
+one JSON per subject in .../florida/data/, plus an index. Each entry carries the benchmark
+sentence as `statement` plus the labelled fields the documents keep beside it:
 
-.docx sources parse cleanly (line-structured). The Social Studies source is a legacy
-binary .doc, so it is parsed best-effort (codes + nearby text); verify SS on CPALMS.
+  {code, grade, strand, type, statement,
+   clarifications?, examples?, remarks?, complexity?, date_adopted?, related_access_points?}
+
+with type ∈ {benchmark, access_point, practice}. Optional fields appear only where the document
+has them; schema documented in shared/standards/florida-best.md §Corpus entry schema.
+
+Two reader paths, equally faithful: .docx sources via docintel/stdlib, and the HTML-exported .doc
+sources (social studies, computer science) via doc_text(). The old "SS is best-effort" era ended
+2026-08-13: its defects were parser bugs (latin-1 decode of a UTF-8 file; whole-table-row
+statements), root-caused and fixed — every parsed statement now matches CPALMS's official text
+exactly (see ledger/cpalms-run-manifest.json and tools/audit_overlays.py).
 
 Reproducible; stdlib only. Usage: python3 tools/parse_fl_standards.py
+  --out <dir>    stage a regeneration OUTSIDE the repo, then gate it with tools/parse_diff.py
+  --self-test    run the field-splitter regression probes (offline; CI)
 """
 from __future__ import annotations
 
@@ -57,7 +67,10 @@ SUBJECTS = {
     "math":             ("standards/Mathematics(B.E.S.T.)_StandardsandAccessPoints.doc.docx", r"MA\.[A-Z0-9]{1,4}\.[A-Z]{1,4}\.[\w.]+", "docx"),
     "ela":              ("standards/EnglishLanguageArts(B.E.S.T.)_StandardsandAccessPoints.doc.docx", r"ELA\.[A-Z0-9]{1,4}\.[A-Z]{1,3}\.[\w.]+", "docx"),
     "science":          ("standards/Science_StandardsandAccessPoints.doc.docx", r"SC\.[A-Z0-9]{1,4}\.[A-Z]{1,3}\.[\w.]+", "docx"),
-    "computer_science": ("standards/ComputerScience_StandardsReportWithoutAccessPoints.doc.docx", r"SC\.[A-Z0-9]{1,4}\.[A-Z][\w.\-]+", "docx"),
+    # Refreshed 2026-08-13 to the HTML export CPALMS serves today. The previous .doc.docx snapshot
+    # carried 9 standards CPALMS has since retired and the pre-renumbering text for SC.7.PE.1.6-.1.10
+    # — both confirmed against CPALMS directly. Same reader path as social studies.
+    "computer_science": ("standards/ComputerScience_StandardsReportWithoutAccessPoints.doc", r"SC\.[A-Z0-9]{1,4}\.[A-Z][\w.\-]+", "doc"),
     "eld":              ("english-learners/EnglishLanguageDevelopment_StandardsReportWithoutAccessPoints.doc.docx", r"ELD\.[A-Z0-9]{1,4}\.[\w.]+", "docx"),
     "social_studies":   ("standards/SocialStudies_StandardsandAccessPoints_WR.doc", r"SS\.[A-Z0-9]{1,4}\.[A-Z]{1,3}\.[\w.]+", "doc"),
 }
@@ -71,10 +84,126 @@ def docx_text(p: Path) -> str:
 
 
 def doc_text(p: Path) -> str:
-    # FL's Social Studies .doc is an HTML-exported Word file — decode then strip tags.
-    raw = p.read_bytes().decode("latin-1", "ignore")
-    raw = html.unescape(re.sub(r"<[^>]+>", " ", raw))
-    return re.sub(r"[ \t]+", " ", raw)
+    """FL's Social Studies .doc is an HTML-exported Word file — decode, strip tags, keep characters.
+
+    It is UTF-8 (`file` reports "HTML document, UTF-8 text"). Decoding it as latin-1 — the previous
+    behaviour — mojibaked every multi-byte character, and the [^\\x20-\\x7e] -> " " rule that used to
+    follow in parse_doc() then erased them. In this one document that destroyed 324 apostrophes,
+    73 + 74 smart quotes and 6 dashes, with zero survivors: `Identify Florida's role` became
+    `Identify Florida s role`. That is defect D-J, and it was a parser bug, not a source defect —
+    the correct characters have been in the committed document all along.
+
+    Characters are PRESERVED here rather than folded to ASCII. The corpus should be faithful to its
+    source; folding for comparison is cpalms_verify._norm's job, and the CPALMS overlay likewise
+    stores the curly form.
+    """
+    raw = p.read_bytes()
+    try:
+        text = raw.decode("utf-8")          # sniff, never assume
+    except UnicodeDecodeError:
+        text = raw.decode("latin-1", "replace")
+    text = html.unescape(re.sub(r"<[^>]+>", " ", text))
+    return re.sub(r"[ \t]+", " ", _strip_control(text))
+
+
+def _strip_control(s: str) -> str:
+    """Drop control characters; keep every printable character including non-ASCII typography."""
+    return "".join(ch for ch in s if ch in "\n\t" or ch.isprintable())
+
+
+# --- structured field extraction --------------------------------------------------------------
+# The FL documents are tables with labelled columns. Emitting all of it as one `statement` put
+# document furniture into 3,320 of the then-6,583 statements (50.4%, pre-fix 2026-08-13) — Clarifications 1,414, Date Adopted
+# 1,281, Complexity 498, "Standard N:" section headers 209, "BENCHMARK CODE" table headers 208,
+# Remarks 109 — which forced every downstream comparator to tolerate a PREFIX rather than test
+# equality. That tolerance became a 0.97 similarity band, and with it a 100% pass rate for changed
+# numeric bounds and 93.9% for deleted negations. Extracting the fields removes the reason the
+# tolerance existed.
+FIELD_PATTERNS = [
+    ("clarifications", r"\bClarifications?\s*:"),
+    ("remarks", r"\bRemarks(?:\s*/\s*Examples)?\s*:"),
+    ("complexity", r"\b(?:Content|Cognitive)\s+Complexity\s*:"),
+    ("date_adopted", r"\bDate Adopted(?:\s+or\s+(?:Last\s+)?Revised)?\s*:"),
+    ("related_access_points", r"\bRelated Access Point\(?s?\)?\s*:?"),
+    # "Examples :" is a table column in the docx documents. CASE-SENSITIVE, and never after "for":
+    # capitalised "Example(s):" is the label (552 occurrences) while the lowercase form is ordinary
+    # prose (6 occurrences, every one of them "for example:"). Matching case-insensitively truncated
+    # SC.912.N.1.1 at "Define a problem based on a specific body of knowledge, for" — 1,729
+    # characters of a real benchmark discarded. The separation is exact and was measured across all
+    # six documents; `(?-i:…)` is required because _FIELD_RE as a whole is compiled with re.I.
+    ("examples", r"(?-i:\b(?<![Ff]or )Examples?\s*:)"),
+]
+_FIELD_RE = re.compile("|".join(f"(?P<{n}>{p})" for n, p in FIELD_PATTERNS), re.I)
+# Section and table furniture ENDS a record: it belongs to the document, never to a standard.
+# The vocabulary here is the documents' own, enumerated by scanning every label-shaped token in all
+# six sources rather than guessed: Strand 222, Grade 58, Body of Knowledge 39, Big Idea 92 (science),
+# Expectation 6 (ELA). Each was checked for prose use and has none — the only "mid-sentence" hits are
+# the "This report was generated by CPALMS" title line, itself furniture. Deliberately NOT listed:
+# "The Practice of Science A:", "Law of Conservation of Energy:" and similar, which are real NGSSS
+# body text that happens to be label-shaped.
+#
+# Case matters here. The table headers "BENCHMARK CODE BENCHMARK" are upper-case, but "benchmark" is
+# also an ordinary English word used 204 times inside real statements and clarifications ("Use
+# benchmark quantities to determine if a solution is reasonable", "Within this benchmark, the
+# expectation is not to…"). Matched case-insensitively, those become truncation points. So the
+# header alternatives are wrapped in `(?-i:…)`. "Body of Knowledge" is the opposite case — science
+# writes it with a lower-case "of" (40 of 41) — so it stays case-insensitive, and its trailing colon
+# keeps it off the prose phrase "a specific body of knowledge, for example".
+_SECTION = re.compile(r"\b(?:Standard\s+\d+\s*:|(?-i:BENCHMARK CODE\b)|(?-i:ACCESS POINT CODE\b)"
+                      r"|(?-i:\bBENCHMARK\b(?=\s|$))|Grade\s*:|Grade\s+\d+\s*:|Cluster\s+\d+\s*:"
+                      r"|Strand\s*:|Body\s+Of\s+Knowledge\s*:|Big\s+Idea\s+\d+\s*:"
+                      r"|Expectation\s+\d+\s*:|This report was generated)", re.I)
+
+
+def _trim_edges(s: str) -> str:
+    """Trim label and separator debris from a field's edges while KEEPING terminal sentence
+    punctuation. A blanket .strip(" :.-") also ate the full stop that ends nearly every benchmark,
+    which the source document does have — the docx path preserved it and only the Social Studies
+    path did not, so the corpus disagreed with itself. Comparison is unaffected either way
+    (cpalms_verify._norm ends in .rstrip(".")), so fidelity to the document decides it.
+
+    A trailing COLON is kept for the same reason as the full stop: it is the document's punctuation.
+    MA.912.C.4.6 ends "Properties are limited to the following:" — the colon introduces the list that
+    follows, and stripping it made the statement disagree with CPALMS by exactly one character. It is
+    the only such statement in the corpus. Leading ":.-" debris is still removed, which is what a
+    field value like ": 05/23" actually needs.
+    """
+    return s.strip().lstrip(":.-").rstrip(" -").strip()
+
+
+def split_fields(seg: str) -> dict:
+    """One raw segment -> the benchmark sentence plus each labelled field beside it.
+
+    Verified against the committed Social Studies document before being wired in: 2,713 rows
+    (exactly the corpus count), furniture inside statements 1,813 -> 0, and the captured field
+    counts (409 clarifications, 1,281 date_adopted) match the label counts in the document itself —
+    an independent check that the split follows the document's real structure rather than a guess.
+    """
+    seg = re.sub(r"\s+", " ", seg or "").strip()
+    cut = _SECTION.search(seg)
+    if cut:
+        seg = seg[:cut.start()].strip()
+    marks = list(_FIELD_RE.finditer(seg))
+    out = {"statement": _trim_edges(seg[:marks[0].start()] if marks else seg)}
+    # A label repeated inside its own value belongs to that value, not to a new field. "Examples :
+    # Example: One less than 40 is 39. Example: Ten more than 23 is 33." is one field with three
+    # sentences; splitting on each inner "Example:" would keep only the last and silently drop the
+    # rest. Consecutive marks of the same name are therefore absorbed. (A repeat that follows a
+    # DIFFERENT label still starts a new field — and no document nests one label inside another:
+    # "Example:" inside a Clarifications value occurs 0 times across all six sources.)
+    for i, m in enumerate(marks):
+        if i and m.lastgroup == marks[i - 1].lastgroup:
+            continue
+        j = i + 1
+        while j < len(marks) and marks[j].lastgroup == m.lastgroup:
+            j += 1
+        end = marks[j].start() if j < len(marks) else len(seg)
+        val = _trim_edges(seg[m.end():end])
+        if val:
+            # A label that reappears AFTER a different one is joined rather than overwritten, so no
+            # document text is ever silently dropped by the splitter.
+            out[m.lastgroup] = f"{out[m.lastgroup]} {val}" if out.get(m.lastgroup) else val
+    return out
 
 
 def docintel_text(p: Path):
@@ -123,9 +252,11 @@ def parse_docx(text: str, code_re: str):
             return
         seen.add(code)
         g, strand = info(code)
-        s = re.split(r"\s*Related Access Point", (stmt or "").strip())[0].strip()
-        out.append({"code": code, "grade": g, "strand": strand, "type": classify(code),
-                    "statement": s})
+        # Was: split on "Related Access Point" only — one field of six, so Clarifications,
+        # Complexity and Date Adopted stayed inside the statement.
+        row = {"code": code, "grade": g, "strand": strand, "type": classify(code)}
+        row.update(split_fields(stmt))
+        out.append(row)
 
     for i, ln in enumerate(lines):
         m = line_code.match(ln)
@@ -148,35 +279,139 @@ def parse_docx(text: str, code_re: str):
 
 
 def _sentence_trim(s: str, soft: int = 600) -> str:
-    """Trim overlong best-effort segments at a sentence boundary, never mid-word."""
+    """Trim an overlong segment at a sentence boundary, never mid-word. (Retained for callers
+    passing an explicit soft cap; the statement path no longer trims — the old 600-char cap
+    silently truncated SC.K12.CTR.7.1, invisible to parse_diff because a truncation is still a
+    valid prefix.)"""
     if len(s) <= soft:
         return s
     cut = s.rfind(". ", 0, soft)
     return s[: cut + 1].strip() if cut > 40 else s[:soft].rsplit(" ", 1)[0].strip()
 
 
+# "Standard 7 :" / "Standard 1:" immediately before a code — the container-heading signature.
+_STD_HEADER = re.compile(r"\bStandard\s+\d+\s*:\s*$")
+
+
 def parse_doc(text: str, code_re: str):
-    """Best-effort for legacy binary .doc: codes + cleaned trailing text."""
+    """Parse the HTML-exported .doc sources (social studies, computer science): each code's
+    segment runs to the next code; split_fields() separates the statement from labelled fields.
+    Historically called "best-effort" — that era's defects were parser bugs, fixed 2026-08-13."""
     hits = list(re.finditer(rf"({code_re})", text))
     out, seen = [], set()
     for k, mm in enumerate(hits):
         code = mm.group(1)
         if code in seen:
             continue
+        # A code introduced by a SECTION HEADER names the container, not a citable benchmark:
+        # "Strand: COMPUTING COMPONENTS Standard 1: SC.2.CO.1 Evaluate computer components."
+        # is the heading for SC.2.CO.1.1 … .9, all of which follow it as real benchmarks.
+        # The documents are inconsistent about this — exactly one header repeats its code across
+        # both doc-path sources — so it is skipped by the header context that precedes it rather
+        # than by a shape heuristic. (Corroboration for "not a benchmark": every code committed at
+        # committed codes has 5 or 6 dot-separated segments; a container like this has 4.)
+        if _STD_HEADER.search(text[max(0, mm.start() - 40):mm.start()]):
+            continue
         seg = text[mm.end(): hits[k + 1].start() if k + 1 < len(hits) else mm.end() + 700]
-        seg = re.sub(r"\s+", " ", re.sub(r"[^\x20-\x7e]", " ", seg)).strip(" :.-")
-        seg = re.split(r"Related Access Point", seg)[0].strip(" :.-")
+        # The [^\x20-\x7e] -> " " purge that used to run here is GONE: combined with the latin-1
+        # decode it destroyed every apostrophe, smart quote and dash in the document (D-J).
+        # Field splitting replaces the single "Related Access Point" split that used to follow.
         seen.add(code)
         g, strand = info(code)
-        out.append({"code": code, "grade": g, "strand": strand, "type": classify(code),
-                    "statement": _sentence_trim(seg)})
+        row = {"code": code, "grade": g, "strand": strand, "type": classify(code)}
+        fields = split_fields(seg)
+        # NO _sentence_trim here any more. It existed when `seg` was a raw 700-char window that
+        # could bleed into the next record, and it cut at the last sentence boundary before 600
+        # characters. split_fields now bounds the segment at the first field label or section
+        # header, so the guard no longer protects against anything — it only truncates genuinely
+        # long standards. Two K-12 computer-science practices lost their closing sentences to it
+        # (SC.K12.CTR.6.1 617->428, SC.K12.CTR.7.1 661->543), which the CPALMS sweep caught as a
+        # statement mismatch. tools/parse_diff.py could NOT catch it: a truncated statement is
+        # still a valid prefix of the original, which is exactly the blind spot that makes the
+        # live sweep worth running.
+        row.update(fields)
+        out.append(row)
     return out
 
 
-def main() -> int:
-    OUT.mkdir(parents=True, exist_ok=True)
-    index = {"state": "Florida", "note": "Full enumerated FL standards extracted from the stored documents. "
-             "Verify on CPALMS (https://www.cpalms.org/search/Standard). SS is best-effort from a binary .doc.",
+# Regression probes for split_fields. Every case here is a real string from the FL documents that
+# an earlier draft of these patterns got wrong — the label/prose collisions are the whole risk of
+# this splitter, and a truncation is invisible downstream because a truncated statement is still a
+# valid PREFIX of the original, so tools/parse_diff.py cannot catch it.
+SPLIT_PROBES = [
+    # (segment, expected statement, expected field name or None)
+    ("Define a problem based on a specific body of knowledge, for example: biology, chemistry",
+     "Define a problem based on a specific body of knowledge, for example: biology, chemistry", None),
+    ("Compare structures of plants and animals, for example: some animals have skeletons",
+     "Compare structures of plants and animals, for example: some animals have skeletons", None),
+    ("Justify thinking. For example: I think ___ because ___.",
+     "Justify thinking. For example: I think ___ because ___.", None),
+    ("Use benchmark quantities to determine if a solution is reasonable",
+     "Use benchmark quantities to determine if a solution is reasonable", None),
+    ("Within this benchmark, the expectation is not to write the numeral",
+     "Within this benchmark, the expectation is not to write the numeral", None),
+    ("Represent whole numbers from 10 to 20. Examples : The number 13 can be represented",
+     "Represent whole numbers from 10 to 20.", "examples"),
+    ("Identify Florida's role in World War II. BENCHMARK CODE BENCHMARK SS.4.A.8.1",
+     "Identify Florida's role in World War II.", None),
+    ("Discuss factors influencing attraction. Strand: SOCIOLOGY",
+     "Discuss factors influencing attraction.", None),
+    ("Recognize a calendar. Date Adopted or Revised : 05/23",
+     "Recognize a calendar.", "date_adopted"),
+    ("One less than 40. Examples : Example: One less is 39. Example: Ten more is 33",
+     "One less than 40.", "examples"),          # inner repeats absorbed, not split
+]
+
+
+def self_test() -> int:
+    """python3 tools/parse_fl_standards.py --self-test — offline, no documents needed."""
+    bad = 0
+    # A long statement must survive intact. _sentence_trim used to cut at the last sentence
+    # boundary before 600 chars, silently dropping the tail of real standards — and a truncated
+    # statement is still a valid PREFIX, so tools/parse_diff.py cannot see it. Only the live CPALMS
+    # sweep caught it (SC.K12.CTR.7.1). This probe is the offline guard.
+    _long = ("Solve real-life problems using computational thinking. " + "Adapt procedures. " * 40
+             + "Evaluate results based on the given context.")
+    _rows = parse_doc(f"SC.K12.CTR.9.9 {_long} SC.K12.CTR.9.10 Something else.",
+                      r"SC\.[A-Z0-9]{1,4}\.[A-Z][\w.\-]+")
+    _got = next((r["statement"] for r in _rows if r["code"] == "SC.K12.CTR.9.9"), "")
+    if not _got.endswith("Evaluate results based on the given context."):
+        bad += 1
+        print(f"  FAIL long statement truncated at {len(_got)} chars (tail lost): ...{_got[-60:]!r}")
+    if len(_got) < 600:
+        bad += 1
+        print(f"  FAIL long statement is {len(_got)} chars — expected the full text")
+    for seg, want_stmt, want_field in SPLIT_PROBES:
+        got = split_fields(seg)
+        if got["statement"] != want_stmt:
+            bad += 1
+            print(f"  FAIL statement\n    in   {seg!r}\n    want {want_stmt!r}\n    got  {got['statement']!r}")
+        if want_field and want_field not in got:
+            bad += 1
+            print(f"  FAIL field {want_field!r} not captured from {seg!r} -> {got}")
+        if not want_field and len(got) > 1:
+            bad += 1
+            print(f"  FAIL prose split into fields: {seg!r} -> {got}")
+    # the inner-repeat probe must keep BOTH example sentences, not only the last
+    ex = split_fields(SPLIT_PROBES[-1][0]).get("examples", "")
+    if "One less is 39" not in ex or "Ten more is 33" not in ex:
+        bad += 1
+        print(f"  FAIL repeated label dropped text: {ex!r}")
+    print(f"split_fields self-test: {len(SPLIT_PROBES)} probes, {bad} failure(s)")
+    return 1 if bad else 0
+
+
+def main(out_dir: Path | None = None) -> int:
+    # A regeneration must be provable BEFORE it lands: write to a scratch dir, run
+    # tools/parse_diff.py against the committed corpus, and only then write into the repo.
+    OUT_ = out_dir or OUT
+    OUT_.mkdir(parents=True, exist_ok=True)
+    index = {"state": "Florida",
+             "note": "Full enumerated FL standards extracted from the stored documents; every "
+                     "statement verified equal to CPALMS's official text "
+                     "(ledger/cpalms-run-manifest.json is the live coverage record; "
+                     "tools/audit_overlays.py re-proves it in CI). CPALMS remains the live "
+                     "authority: https://www.cpalms.org/search/Standard",
              "subjects": {}}
     for subj, (rel, code_re, fmt) in SUBJECTS.items():
         src = FL / rel
@@ -191,13 +426,13 @@ def main() -> int:
         else:
             text, reader, rstate = docx_text(src), "stdlib-fallback", None
         entries = parse_doc(text, code_re) if fmt == "doc" else parse_docx(text, code_re)
-        # drop empty-statement noise from the best-effort .doc path
+        # drop empty-statement noise from the .doc reader path (header fragments)
         if fmt == "doc":
             entries = [e for e in entries if len(e["statement"]) > 8]
         json.dump({"subject": subj, "source_file": Path(rel).name, "format": fmt,
                    "reader": reader, "retrieval_state": rstate,
                    "count": len(entries), "standards": entries},
-                  open(OUT / f"{subj}.json", "w", encoding="utf-8"), indent=2)
+                  open(OUT_ / f"{subj}.json", "w", encoding="utf-8"), indent=2)
         t = Counter(e["type"] for e in entries)
         index["subjects"][subj] = {"file": f"data/{subj}.json", "format": fmt, "reader": reader,
                                    "count": len(entries), "benchmarks": t["benchmark"],
@@ -205,8 +440,8 @@ def main() -> int:
         print(f"  {subj:16} {len(entries):5} codes  (benchmark {t['benchmark']}, AP {t['access_point']}, "
               f"practice {t['practice']}, {fmt} via {reader})")
     index["total"] = sum(s["count"] for s in index["subjects"].values())
-    json.dump(index, open(OUT / "index.json", "w", encoding="utf-8"), indent=2)
-    print(f"\nwrote {len(index['subjects'])} subjects + index.json ({index['total']} codes) to {OUT.relative_to(ROOT)}/")
+    json.dump(index, open(OUT_ / "index.json", "w", encoding="utf-8"), indent=2)
+    print(f"\nwrote {len(index['subjects'])} subjects + index.json ({index['total']} codes) to {OUT_}")
     return 0
 
 
@@ -214,8 +449,14 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="Parse FL standards docs into data/*.json.")
     ap.add_argument("--no-index", action="store_true",
                     help="do not rebuild the offline index after writing (parse only)")
+    ap.add_argument("--out", help="write corpora HERE instead of the repo — use this to stage a "
+                                  "regeneration for tools/parse_diff.py before it lands")
+    ap.add_argument("--self-test", action="store_true",
+                    help="run the split_fields regression probes and exit (offline, no documents)")
     args = ap.parse_args()
-    rc = main()
-    if rc == 0 and not args.no_index:
+    if args.self_test:
+        raise SystemExit(self_test())
+    rc = main(Path(args.out) if args.out else None)
+    if rc == 0 and not args.no_index and not args.out:
         rebuild_index()
     raise SystemExit(rc)

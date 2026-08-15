@@ -199,16 +199,22 @@ def build() -> int:
     counts = {}
     try:
         # ---- standards ----
-        conn.execute(f"CREATE {V} standards {using}(code, statement, subject UNINDEXED, "
+        # `detail` holds the labelled text the parser keeps beside the statement (clarifications,
+        # examples, remarks). It is tokenized, not UNINDEXED: that text used to sit inside
+        # `statement` and was searchable by accident, and dropping it from the index would have cost
+        # ~39% of the corpus's searchable word-instances without any visible failure.
+        conn.execute(f"CREATE {V} standards {using}(code, statement, detail, subject UNINDEXED, "
                      f"grade UNINDEXED, type UNINDEXED, source_file UNINDEXED)" if fts else
-                     "CREATE TABLE standards (code TEXT, statement TEXT, subject TEXT, grade TEXT, type TEXT, source_file TEXT)")
+                     "CREATE TABLE standards (code TEXT, statement TEXT, detail TEXT, subject TEXT, grade TEXT, type TEXT, source_file TEXT)")
         n = 0
         for f in _standards_files():
             doc = json.loads(f.read_text(encoding="utf-8"))
             subj = doc.get("subject")
             for s in doc.get("standards", []):
-                conn.execute("INSERT INTO standards VALUES (?,?,?,?,?,?)",
-                             (s.get("code", ""), s.get("statement", ""), subj or "",
+                detail = " ".join(v for v in (s.get(k) or "" for k in
+                                              ("clarifications", "examples", "remarks")) if v)
+                conn.execute("INSERT INTO standards VALUES (?,?,?,?,?,?,?)",
+                             (s.get("code", ""), s.get("statement", ""), detail, subj or "",
                               s.get("grade", ""), s.get("type", ""), f.name))
                 n += 1
         counts["standards"] = n
@@ -439,7 +445,14 @@ def main(argv) -> int:
             rows = _q("private_schools", ["school_name", "head"], a.private, [], a.limit); label = "private_schools"
         elif a.standards is not None:
             filt = [(c, v) for c, v in [("subject", a.subject), ("grade", a.grade)] if v]
-            rows = _q("standards", ["code", "statement"], a.standards, filt, a.limit); label = "standards"
+            # `detail` is searched but not returned: a hit inside a clarification should surface the
+            # standard, while the row still shows the benchmark sentence.
+            rows = _q("standards", ["code", "statement", "detail"], a.standards, filt, a.limit)
+            # `detail` is SEARCHED but not RETURNED. A hit inside a clarification must still surface
+            # its standard, but echoing the clarification back would blow the low-token budget that
+            # is this index's entire reason to exist (~100-350 tokens per query).
+            rows = [{k: v for k, v in r.items() if k != "detail"} for r in rows]
+            label = "standards"
         elif a.resource is not None:
             rows = _q("toolkit_resources", ["standard"], a.resource, [], a.limit); label = "toolkit_resources"
         elif a.source is not None:

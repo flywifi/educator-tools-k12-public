@@ -2,12 +2,16 @@
 """Offline standards-code resolver (standards-verification.md §2/§5). Stdlib-only; no network.
 
 Resolves cited standard codes against the committed Florida corpus
-(shared/standards/resources/florida/data/ — 6,500+ enumerated codes with statement text),
+(shared/standards/resources/florida/data/ — 6,574 enumerated codes with statement text, all
+verified against CPALMS; ledger/cpalms-run-manifest.json is authoritative over any count here),
 validates CCSS/NGSS coding schemes (adapters are scheme-only: structure is checkable offline,
 existence is not), and classifies everything else honestly. States distinguish "looked it up and
-it is absent" (not_found — BLOCKING only where the corpus is authoritative) from "cannot look
-this up offline" (advisory). A best-effort corpus (social studies .doc parse; partial ELD) never
-produces a blocking verdict — a parser gap must not manufacture a "fabricated standard" finding.
+it is absent" (not_found — BLOCKING where the corpus is corroborated) from "cannot look this up
+offline" (advisory). Since 2026-08-13 every Florida subject is corroborated above
+OVERLAY_TRUST_COVERAGE, so an absent FL code BLOCKS — including social studies and ELD, whose old
+best-effort caveats are retained in LOW_CONFIDENCE only as the safety net that reactivates if an
+overlay is ever reverted below threshold. A code CPALMS has withdrawn resolves as `retired`
+(warning, never blocking): a real standard must never read as fabricated (finding D-K).
 
 Usage:
   python3 tools/verify_standards.py MA.3.NSO.1.1 ELA.K.F.1.1     # ad-hoc codes
@@ -38,8 +42,21 @@ PREFIX_SUBJECTS = {"MA": ["math"], "ELA": ["ela"], "SC": ["science", "computer_s
 # EXITS this set once a CPALMS verification overlay (tools/cpalms_verify.py --apply --write)
 # covers >= OVERLAY_TRUST_COVERAGE of its codes — see _is_low_confidence().
 LOW_CONFIDENCE = {
-    "social_studies": "social_studies corpus is a best-effort .doc parse (data/index.json) — verify on CPALMS",
-    "eld": "only the 5 umbrella ELD.K12.ELL.* practices are enumerated — verify deeper ELD codes on CPALMS",
+    # Retained for the coverage machinery; the caveat is HISTORICAL. The "best-effort .doc parse"
+    # was root-caused and fixed 2026-08-13 (launch audit §10), the source was refreshed, and every
+    # one of the 2,713 SS codes now matches CPALMS's official text exactly (overlay at 100%). The
+    # coverage threshold therefore lifts SS out of this set: absence is evidence, and blocks.
+    "social_studies": "SS corpus fully corroborated against CPALMS 2026-08-13 (2,713/2,713); "
+                      "this low-confidence note is vestigial and inert above the coverage threshold",
+    # ELD's entry is retained for the coverage machinery, but its premise was WRONG. It assumed
+    # deeper ELD codes existed that we had not enumerated. A census swept CPALMS's ELD subject
+    # across all 13 grade labels (2026-08-13) and found exactly 5 unique codes — the same 5 — and
+    # ELD.K12.ELL.{LA,SI,MA}.2 each return not_on_cpalms. Florida's ELL standards ARE these five.
+    # With the overlay at 5/5 the coverage threshold now lifts ELD out of this set, so an absent
+    # ELD.K12.ELL.* code blocks. WIDA's own descriptors use a different coding scheme entirely
+    # (e.g. "ELD-SI.4-12.Narrate"), so they resolve as unknown_framework — advisory, never blocking.
+    "eld": "ELD enumerates the 5 umbrella ELD.K12.ELL.* standards; CPALMS's ELD catalogue contains "
+           "exactly those 5 (censused 2026-08-13). WIDA descriptors use another scheme — verify on WIDA",
 }
 OVERLAYS = DATA / "overlays"
 OVERLAY_TRUST_COVERAGE = 0.98
@@ -55,23 +72,44 @@ NGSS_PE = re.compile(r"^(K|[1-5]|MS|HS)-(PS|LS|ESS|ETS)\d{1,2}-\d{1,2}$")
 
 BLOCKING_STATES = {"not_found", "malformed"}
 
+# The only overlay state that is a verification of the corpus statement. Everything else — a text
+# disagreement, an ambiguous card, an absence — is a review signal.
+#
+# `needs_review` is DERIVED from this rather than read from the entry's flag. The flag is written by
+# the verification loop and is normally present, but a record whose flag is merely missing must not
+# read as verified: four committed entries (SS.4.E.1.1 and three cpalms_additions) carried an
+# unverified state with no flag, and keying on the flag alone reported them as clean.
+OVERLAY_VERIFIED_STATES = {"confirmed"}
+
+
+def _overlay_needs_review(ov: dict) -> bool:
+    return bool(ov.get("needs_review")) or ov.get("state") not in OVERLAY_VERIFIED_STATES
+
 # --- §6 citation-mutation comparator (standards-verification.md §6) --------------------------
 # STRICT, and deliberately separate from any verification comparator: verification must TOLERATE a
 # corpus statement that appends "Clarifications:"/"Examples:" to the registry text, while mutation
 # detection must CATCH a benchmark restated wrongly. Reusing one for the other misses value drift
 # and caveat stripping (audit finding F5, 2026-08-09).
 _MUT_NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
-# Tails that are DOCUMENT METADATA, not restatement content: the .docx/.doc parse appends
-# clarifications, complexity ratings, adoption dates, and (in the legacy .doc) bleed from the
-# next section heading. Calibrated against 113 A9 false positives sampled 2026-08-10 — the
+# Tails that are DOCUMENT METADATA, not restatement content: labelled columns the source documents
+# carry beside a benchmark. Calibrated against 113 A9 false positives sampled 2026-08-10 — the
 # benchmark sentences were identical; only these tails differed.
-# NOTE: alternatives ending in punctuation (e.g. "standard 8:") cannot carry a trailing \b —
+#
+# Matched CASE-SENSITIVELY on the raw text, and only in LABEL form, for the same reason the parser
+# is (see tools/parse_fl_standards.py): these are ordinary English words as well as labels. The
+# previous case-insensitive bare-word version cut every statement at the first "example", so
+# "Identify examples of when figurative language is used to contribute to meaning" was compared as
+# the single word "Identify" — 137 statements whose remainder no mutation could ever be detected in.
+# `Examples` additionally never counts after "for", the one prose form the FL documents use.
+#
+# NOTE: alternatives ending in punctuation (e.g. "Standard 8:") cannot carry a trailing \b —
 # a colon followed by a space is not a word boundary — so they live in their own branch.
 _MUT_TAIL = re.compile(
-    r"(?:\b(?:clarifications?|examples?|remarks?|notes?|content complexity|cognitive complexity|"
-    r"date adopted(?: or (?:last )?revised)?|benchmark\s*code)\b"
-    r"|\bstandard\s*\d+\s*:)"
-    r"\s*:?.*$", re.I | re.S)
+    r"(?:\b(?:Clarifications?|Remarks?|Notes?|Content Complexity|Cognitive Complexity|"
+    r"Date Adopted(?: or (?:Last )?Revised)?|BENCHMARK\s*CODE)\b"
+    r"|(?<![Ff]or )\bExamples?\s*:"
+    r"|\bStandard\s*\d+\s*:)"
+    r"\s*:?.*$", re.S)
 _MUT_HEDGE = ("with support", "with guidance", "with prompting", "explore", "begin to",
               "approximately", "as appropriate", "when appropriate", "using models",
               "using manipulatives", "in familiar contexts", "may ")
@@ -95,8 +133,12 @@ def _mut_norm(s: str) -> str:
 
 
 def _mut_core(s: str) -> str:
-    """Origin form for comparison: normalized, with any appended clarification/example tail cut."""
-    return _MUT_TAIL.sub("", _mut_norm(s)).strip()
+    """Origin form for comparison: any appended labelled tail cut, then normalized.
+
+    Order matters. _mut_norm lowercases, and the label patterns are case-sensitive precisely
+    because the same words occur as ordinary prose — so the cut must happen on the raw text, while
+    the capitalization that distinguishes a column header from a sentence still exists."""
+    return _mut_norm(_MUT_TAIL.sub("", s or "")).strip()
 
 
 def mutation_flags(cited: str, origin: str) -> list[dict]:
@@ -252,8 +294,21 @@ def _resolve_one(code: str, standards_set, grade_band, applicability) -> dict:
                          detail=_set_mismatch("fl-" + name, standards_set).strip())
                 ov = (_load_overlay(name).get("entries") or {}).get(c)
                 if ov:
+                    # An overlay entry proves the CODE EXISTS on CPALMS. It does not prove the
+                    # corpus statement is faithful — that is what `state` records. Attaching a bare
+                    # verified={} for every entry made near_match / statement_differs / ambiguous
+                    # indistinguishable from confirmed to every consumer, including the CI gate: a
+                    # row whose text CPALMS disagrees with reported "resolved / verified / no
+                    # warning". `state` and `needs_review` are carried through so the distinction
+                    # survives the trip.
                     r["verified"] = {"source": "cpalms", "checked_at": ov.get("checked_at"),
-                                     "url": ov.get("cpalms_url")}
+                                     "url": ov.get("cpalms_url"), "state": ov.get("state")}
+                    if _overlay_needs_review(ov):
+                        r["needs_review"] = True
+                        r["detail"] = (r["detail"] + f" overlay state '{ov.get('state')}': the code "
+                                       f"is real and CPALMS's text is used here, but agreement "
+                                       f"with the corpus statement is UNVERIFIED — human review "
+                                       f"required").strip()
                     if ov.get("statement_verified"):
                         # CPALMS's text is the registry origin form for the §6 mutation check.
                         r["statement"] = ov["statement_verified"]
@@ -266,19 +321,39 @@ def _resolve_one(code: str, standards_set, grade_band, applicability) -> dict:
             ov = (_load_overlay(name).get("entries") or {}).get(c)
             if not ov:
                 continue
+            # Both branches below resolve a code the corpus does NOT contain, so neither is a
+            # corroborated match — they carry needs_review for the same reason the in-corpus
+            # branch does, and for the same reason it is a warning rather than a block: CPALMS's
+            # own text is what gets served, so the citation is usable, just not cross-checked.
             if ov.get("new_code"):
                 r.update(state="resolved", statement=ov.get("statement_verified"),
                          verified={"source": "cpalms", "checked_at": ov.get("checked_at"),
-                                   "url": ov.get("cpalms_url")},
+                                   "url": ov.get("cpalms_url"), "state": ov.get("state")},
+                         needs_review=True,
                          detail=f"superseded_by {ov['new_code']} (CPALMS renumbering) — cite the "
                                 f"current code")
+                return r
+            if ov.get("state") == "retired":
+                # The code was REAL and has been withdrawn. Reporting it as `not_found` would make
+                # the gate call a published Florida benchmark fabricated — finding D-K again. The
+                # author still needs to act (do not cite it in new work), so it carries
+                # needs_review and the withdrawn text, but it is never an integrity failure.
+                r.update(state="retired", statement=ov.get("statement_withdrawn"),
+                         verified={"source": "cpalms", "checked_at": ov.get("checked_at"),
+                                   "url": ov.get("cpalms_url"), "state": "retired"},
+                         needs_review=True,
+                         detail=(ov.get("detail") or "withdrawn from CPALMS") +
+                                " — do not cite in new work; if this artifact is historical, say so"
+                                " explicitly.")
                 return r
             if ov.get("state") == "cpalms_addition":
                 r.update(state="resolved", statement=ov.get("statement_verified"),
                          verified={"source": "cpalms", "checked_at": ov.get("checked_at"),
-                                   "url": ov.get("cpalms_url")},
+                                   "url": ov.get("cpalms_url"), "state": ov.get("state")},
+                         needs_review=True,
                          detail="verified on CPALMS but absent from the parsed corpus "
-                                "(overlay addition) — a corpus refresh would fold it in")
+                                "(overlay addition, pending the human --include-additions gate) — "
+                                "a corpus refresh would fold it in")
                 return r
         if not scheme.match(c):
             r.update(state="malformed",
@@ -370,8 +445,21 @@ PROBES = [
     ("MA.912.AR.1.1", {"grade_band": "9-12"}, "resolved", False, True),
     ("MA.912.AR.1.1", {"grade_band": "3-5"}, "resolved", False, False),      # band mismatch advisory
     ("MA.3.NSO.9.99", {}, "not_found", True, None),                          # the fabricated-code case
-    ("SS.7.C.1.99", {}, "not_found_low_confidence", False, None),            # best-effort corpus
-    ("ELD.K12.ELL.LA.2", {}, "not_found_low_confidence", False, None),       # partial corpus
+    # Was `not_found_low_confidence` (advisory) while SS was a best-effort parse. The parse was
+    # root-caused and fixed, the source refreshed, and all 2,713 SS codes verified against CPALMS
+    # 2026-08-13 (overlay 100%), so the coverage threshold lifts SS out of LOW_CONFIDENCE: absence
+    # is evidence and this blocks. Deliberate change, not a drifted expectation.
+    # NOTE this probe (and ELD's below) depends on the COMMITTED overlay: it blocks only while
+    # data/overlays/social_studies.cpalms.json exists with coverage >= OVERLAY_TRUST_COVERAGE.
+    # Delete or truncate that overlay and this flips to not_found_low_confidence — a confusing CI
+    # failure unless you know the coupling, which is why it is named here.
+    ("SS.7.C.1.99", {}, "not_found", True, None),                            # absent; corpus corroborated
+    # Was `not_found_low_confidence` (advisory) while ELD was treated as a partial corpus. The
+    # 2026-08-13 census settled that: CPALMS's ELD subject holds exactly the 5 umbrella standards
+    # across all 13 grade labels, and this code returns not_on_cpalms when asked directly. With the
+    # overlay at 5/5 the coverage threshold lifts ELD out of LOW_CONFIDENCE, so absence is now
+    # evidence and this blocks. Deliberate change, not a drifted expectation.
+    ("ELD.K12.ELL.LA.2", {}, "not_found", True, None),                       # absent; corpus complete (same overlay coupling as SS above)
     ("MA.3.NSO", {}, "malformed", True, None),                               # truncated
     ("CCSS.MATH.CONTENT.3.NF.A.1", {}, "scheme_valid_unenumerated", False, None),
     ("CCSS.MATH.CONTENT.HSA.REI.B.3", {}, "scheme_valid_unenumerated", False, None),
@@ -385,6 +473,14 @@ PROBES = [
      "unknown_framework", False, None),
     ("XYZ.1.2.3", {"context": {"standards_applicability": "school_defined"}},
      "unknown_framework", False, None),
+    # Live overlay-backed states with real committed entries (9 retired, 5 additions existed when
+    # these were added). A retired code must resolve as `retired` and NEVER block — a withdrawn
+    # standard read as fabricated is finding D-K. An addition resolves with CPALMS provenance; its
+    # "overlay addition" detail is asserted explicitly after this table.
+    ("SC.K.PE.1.2", {}, "retired", False, None),                             # withdrawn CS standard
+    ("SC.1.E.5.In.1", {}, "resolved", False, None),                          # cpalms_addition (D-K)
+    # The set_mismatch DETAIL for the row below is asserted explicitly after this table (the tuple
+    # shape can only assert state/blocking/band) — see the check right after the PROBES loop.
     ("MA.3.NSO.1.1", {"standards_set": "CCSS-Math 2010"}, "resolved", False, None),  # set_mismatch detail
 ]
 
@@ -404,6 +500,10 @@ def self_test(invert: bool = False) -> int:
               + (f" band_match={r['grade_band_match']}" if want_band is not None else ""))
         failures += 0 if ok else 1
     # set_mismatch detail must actually appear on the cross-family probe
+    # An addition's detail must say what it is — the tuple above can only assert the state.
+    rep = verify(["SC.1.E.5.In.1"])
+    if "overlay addition" not in (rep["results"][0]["detail"] or ""):
+        print("FAIL cpalms_addition detail missing 'overlay addition'"); failures += 1
     rep = verify(["MA.3.NSO.1.1"], standards_set="CCSS-Math 2010")
     if "set_mismatch" not in rep["results"][0]["detail"]:
         print("FAIL set_mismatch detail missing"); failures += 1
@@ -424,6 +524,62 @@ def self_test(invert: bool = False) -> int:
     ok = r1["state"] == "resolved" and r1.get("verified", {}).get("source") == "cpalms" \
         and r1["statement"] == "VERIFIED-TEXT"
     print(("PASS" if ok else "FAIL") + " overlay: resolved code carries verified stamp + origin form")
+    failures += 0 if ok else 1
+
+    # --- ELD crossed the coverage threshold 2026-08-13: absences now BLOCK -------------------
+    # Guarded because the flip is user-visible and easy to undo by accident. The justification is
+    # a complete census (13 grade labels -> exactly 5 codes) plus control probes; if the overlay
+    # ever regresses below threshold these expectations change, and that should be deliberate.
+    _eld = verify(["ELD.K12.ELL.LA.1"])
+    ok = _eld["results"][0]["state"] == "resolved" and not _eld["blocking"]
+    print(("PASS" if ok else "FAIL") + " ELD: a verified umbrella standard resolves cleanly")
+    failures += 0 if ok else 1
+    _wida = verify(["ELD-SI.4-12.Narrate"])
+    ok = _wida["results"][0]["state"] == "unknown_framework" and not _wida["blocking"]
+    print(("PASS" if ok else "FAIL") + " ELD: a WIDA-scheme descriptor stays ADVISORY, never blocking "
+                                      "(different framework, not a fabricated FL code)")
+    failures += 0 if ok else 1
+
+    # --- retired != fabricated (D-K in a new costume) ------------------------------------------
+    _overlay_cache["social_studies"]["entries"]["SS.9.GONE.1.1"] = {
+        "state": "retired", "needs_review": True, "statement_withdrawn": "WITHDRAWN-TEXT",
+        "checked_at": "2026-08-13T00:00:00Z", "detail": "withdrawn: absent from CPALMS and dropped"}
+    _r = verify(["SS.9.GONE.1.1"])
+    _rr = _r["results"][0]
+    ok = (_rr["state"] == "retired" and _rr.get("needs_review") is True
+          and "SS.9.GONE.1.1" not in _r["blocking"] and _rr["statement"] == "WITHDRAWN-TEXT")
+    print(("PASS" if ok else "FAIL") + " retired: a WITHDRAWN standard is not blocking and keeps "
+                                      "its text (a real code must never read as fabricated)")
+    failures += 0 if ok else 1
+    ok = "do not cite in new work" in _rr["detail"]
+    print(("PASS" if ok else "FAIL") + " retired: the author is told what to do about it")
+    failures += 0 if ok else 1
+
+    # --- N1: an overlay entry proves the CODE exists, not that the TEXT agrees ----------------
+    # Every entry used to receive a bare verified={} stamp, so a row CPALMS disagrees with was
+    # indistinguishable from a confirmed one — to a reader and to the CI gate alike.
+    ok = r1.get("verified", {}).get("state") == "confirmed" and not r1.get("needs_review")
+    print(("PASS" if ok else "FAIL") + " N1: a CONFIRMED row carries state=confirmed and no "
+                                       "needs_review (negative control)")
+    failures += 0 if ok else 1
+    _overlay_cache["social_studies"]["entries"]["SS.K.A.1.2"] = {
+        "state": "statement_differs", "needs_review": True, "statement_verified": "CPALMS-TEXT",
+        "cpalms_url": _fix_url + "4", "checked_at": "2026-08-09T00:00:00Z"}
+    r2 = verify(["SS.K.A.1.2"])["results"][0]
+    ok = (r2.get("needs_review") is True and r2["verified"]["state"] == "statement_differs"
+          and r2["statement"] == "CPALMS-TEXT" and "human review" in r2["detail"])
+    print(("PASS" if ok else "FAIL") + " N1: a DISAGREEING row sets needs_review and still serves "
+                                       "CPALMS's text")
+    failures += 0 if ok else 1
+    # The flag is DERIVED, not trusted: four committed entries carried an unverified state with no
+    # needs_review flag, and reading the flag alone reported them clean.
+    _overlay_cache["social_studies"]["entries"]["SS.K.A.1.AP.1"] = {
+        "state": "statement_differs", "statement_verified": "CPALMS-TEXT-2",
+        "cpalms_url": _fix_url + "5", "checked_at": "2026-08-09T00:00:00Z"}
+    r3 = verify(["SS.K.A.1.AP.1"])["results"][0]
+    ok = r3.get("needs_review") is True
+    print(("PASS" if ok else "FAIL") + " N1: an unverified state with a MISSING flag still needs "
+                                       "review (flag is derived, not trusted)")
     failures += 0 if ok else 1
     rep = verify(["SS.7.C.9.99"])
     ok = rep["results"][0]["state"] == "not_found" and "SS.7.C.9.99" in rep["blocking"]

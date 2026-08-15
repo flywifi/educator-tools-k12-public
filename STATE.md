@@ -114,7 +114,7 @@ native Google integration or a deployment Node/clasp runner, no OAuth client bui
 universal fallback (text decode, else binary metadata/strings) so every input yields at least metadata.
 **Active branch:** `claude/fervent-hawking-nyrzy5`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
-(`florida-best.md`), stored corpus + refresher, and **all 6,583 standards enumerated to queryable
+(`florida-best.md`), stored corpus + refresher, and **all standards enumerated to queryable (6,583 at the time; 6,574 today after 9 CS retirements)
 JSON** (`resources/florida/data/` via `tools/parse_fl_standards.py` + `tools/fl_lookup.py`). A
 **national overlay** (`state-standards-map.md` / `states.json`) stubs the other states. Optional
 follow-ups: widen the eval benchmark; populate a 2nd state via the Florida template; tag `v1.0.0`.
@@ -167,7 +167,7 @@ a **targeted OCR** stage (honest `ocr` capability-gap when no engine), and **Goo
 ≠ extraction. **Fully offline** — optional local engines (PyMuPDF, pdfplumber, Tesseract) via
 `tools/requirements-docintel.txt`, **no network at run time**: PDF native text + **scanned-PDF OCR**
 (PyMuPDF rasterize → Tesseract), PDF tables (pdfplumber), image OCR (pytesseract). **The Florida
-standards pipeline now reads via docintel** (`tools/parse_fl_standards.py`; 6,583 codes, identical to
+standards pipeline now reads via docintel** (`tools/parse_fl_standards.py`; 6,583 codes at the time — 6,574 today, identical to
 the prior reader). Built from the uploaded V01–V09 architecture. Staged next: more OCR engines
 (Surya/OCRmyPDF), DL layout, parallel recovery, reference-set accuracy metrics, `.ods`/`.odp` +
 Sheets/Slides API JSON.
@@ -339,7 +339,7 @@ Shipped on `claude/educator-tools-k12-plan-f49yju` (source: Monarch Learning Aca
 - **Defects fixed:** stale paths repo-wide (old un-grouped `skills/<name>/`, `shared/schools/` →
   `canonical-sources/schools/`); NCES PSS grade codes decoded in the private-schools index
   (verified 1–17 map; raw kept as `*_code`; e.g. Monarch = PK–8 not "2–13"); FL standard
-  statements no longer truncated at 300/200 chars (full text regenerated, 6,583 codes unchanged);
+  statements no longer truncated at 300/200 chars (full text regenerated, all codes unchanged — 6,583 at the time);
   `private_independent` school type added; ChatGPT profile persistence (`web_note` → "On ChatGPT"
   blocks) + export generator fixes (inline trigger-phrase parsing, sentence-complete do-not-use,
   no-PyYAML fallback description bug).
@@ -357,8 +357,8 @@ Source: 11-finding audit of the "ChatGPT chat → desktop app" teacher scenario.
   (files name each other as siblings — keep step lists/whys aligned).
 - **Honest completeness contract** (requirements map, both platforms): exact enumeration only via a
   true file read (data-analysis tool; report matched-N vs the file's `count`), otherwise labeled
-  best-effort/retrieved; one subject per table (~40 rows, offer "next"); SS rows flag the
-  legacy-doc parse.
+  best-effort/retrieved; one subject per table (~40 rows, offer "next"); SS rows flagged the
+  legacy-doc parse (flag removed 2026-08-13 — the SS parse is now faithful and CPALMS-verified).
 - **Distribution:** `tos-reference-pack-onefile.json` (whole pack, one upload — fits ChatGPT Free's
   ~5-slot Projects) + byte-reproducible `reference-pack.zip`; both rebuild-and-compare guarded in
   `export_reference_pack.py --check`. Plan limits stated honestly ("trust the upload screen").
@@ -393,21 +393,95 @@ is open.
 ## Standards-verification phase — v1.2.0 (2026-08-10) — SHIPPED
 Elementary Florida standards are now **verified against CPALMS**, not merely parsed.
 **1,913 K-5 codes** (math 393 · reading/ELA 355 · science 636 · social studies 529), benchmarks and
-access points, checked code-by-code in both directions: **1,912 confirmed**, 3 missing access
-points recovered, 0 unexplained census deltas. Results live in provenance-stamped overlays
+access points, checked code-by-code in both directions: **1,795 verified**, **118 reached and
+recorded as needing review** (see the 2026-08-11 correction below), 3 missing access points
+recovered, 0 unexplained census deltas. Results live in provenance-stamped overlays
 (`shared/standards/resources/florida/data/overlays/`); the parsed corpus is never mutated.
 
-New machinery: `tools/verify_standards.py` (offline resolver over 6,583 FL codes + CCSS/NGSS
+**Correction (2026-08-11).** An adversarial audit of the unattended-sweep design found that the
+`confirmed` state was decided by a 0.97 similarity ratio — ~3 characters of slack on a median
+statement. Reproduced: 100% of changed numeric bounds and 93.9% of *deleted* negations still
+classified as confirmed. `confirmed` now requires normalized equality or a true prefix, an
+untruncated card, and ≥40 normalized characters; the fuzzy band became a new `near_match` state.
+All 1,913 shipped entries were re-judged offline (`--reclassify`, demote-only, idempotent): **117
+demoted to `near_match`, 0 found actually wrong**. The overlay now records every disposition with
+`needs_review`, so codes that were reached but not verified are no longer re-fetched forever.
+
+New machinery: `tools/verify_standards.py` (offline resolver over the FL corpus — 6,583 codes then, 6,574 today + CCSS/NGSS
 scheme checks + the mechanical §6 citation-mutation comparator) and `tools/cpalms_verify.py`
 (polite, robots-respecting, resumable verification loop with reverse census). The resolver gates CI
 through `validate_outputs.py` (`unresolvable_standard`, blocking) with negative-control fixtures
 proving the gate gates.
 
 Audit: `docs/audits/2026-08-10-launch-readiness-audit.md` (A1-A7 + A9; one OPEN finding, seven
-residual risks). Follow-ups, explicitly deferred: **grades 6-12** (3,096 codes unverified);
+residual risks). Follow-ups, explicitly deferred — **[superseded 2026-08-13: 0 codes remain — the sweep completed; see the manifest]** originally: 4,670 codes remained unverified in total; the
+live, generated breakdown is `ledger/cpalms-run-manifest.json` (`python3 tools/cpalms_verify.py
+--manifest` to refresh), which is authoritative over any count restated in prose:
+**grades 6-12 of math/ELA/science/social studies** (4,096); **computer science** (569 at the time — 560 today after 9 retirements, of which
+**189 are K-5** and have no overlay yet — elementary is *not* complete for this subject);
+**ELD** (5). Also:
 social studies remains low-confidence (19.5% whole-corpus) so its absences stay advisory;
 CCSS/NGSS remain scheme-only; a FLDOE source-document refresh would fix the legacy `.doc` parse
 artifacts recorded as finding D-J.
+
+**Correction (2026-08-13) — the root cause, and the tolerances it forced.** Every defect above
+traced to one thing: `tools/parse_fl_standards.py` emitted an entire document table row as a single
+`statement`, so **52.0 % of the then-corpus (3,425 of 6,583 statements) carried document furniture** —
+labelled columns, table headers, and in Social Studies the *next section's heading*. That superset
+is why the comparator could not test equality, why it accepted a prefix, and why the prefix widened
+into the 0.97 band. The Social Studies document was additionally UTF-8 decoded as latin-1 and then
+stripped of non-ASCII, destroying 324 apostrophes and 147 smart quotes (finding D-J).
+
+The parse now extracts labelled fields and preserves characters; the corpus was regenerated under a
+new gate, `tools/parse_diff.py`, which aborts unless the code set is unchanged **and** every new
+statement is either a prefix of the old one or present verbatim in the source document. Result:
+**6,583 codes at the time, +0/−0 per subject, furniture 3,425 → 0**.
+
+With the corpus clean, the tolerances were **deleted rather than retuned** — no prefix rule, no
+similarity band, no `MIN_CONFIRM_CHARS`, and `renumbered` now requires exact text plus uniqueness.
+Measured across all 1,913 entries: **1,899 (99.3 %) match CPALMS exactly and 0 rely on prefix
+containment.** Re-judgement moved **116 `near_match` → `confirmed`** and 1 → `statement_differs`,
+with **0 demotions from `confirmed`**. **`needs_review` is now 2, not 117** — and both are genuine
+CPALMS revisions (`SS.4.E.1.1`, `SS.5.G.2.1`) rather than artifacts of our own parse. Verified total:
+**1,911 of the then-6,583**; 4,670 remained at that point (0 today — the sweep completed).
+
+`needs_review` also reaches consumers now (N1): it is derived from overlay state rather than read
+from a flag, and `validate_outputs.py` emits `standard_needs_review` as a warning. New standing
+guards in CI: `--scan-parse-defects`, the splitter's `--self-test`, and a per-subject overlay write
+lock that refuses a concurrent writer instead of silently losing its entries.
+
+Two claims were corrected rather than left standing: the audit's **"two-source corroboration" is
+false** (all five FL standards documents come from cpalms.org per `sources.json`, so agreement
+proves *parse fidelity*), and **`SS.5.G.2.1` was misdiagnosed** as a parse loss when CPALMS had
+revised the benchmark. Full write-up: launch-readiness audit **§10**. D-J is **RESOLVED**.
+
+**Sweep complete (2026-08-13) — every Florida code verified.** The manifest reads
+**verified 6,574 / needs_review 0 / remaining 0**. All six subjects are at 100 % against CPALMS:
+math 1,127 · ELA 719 · science 1,450 · computer science 560 · social studies 2,713 · ELD 5. Two
+census additions were admitted at the human gate with full provenance (`SC.912.L.15.In.6`,
+`SS.8.E.2.AP.3` — real on CPALMS, absent from the source documents); nine retired CS standards are
+recorded as `retired`, never as fabricated.
+
+**Behaviour change: SS and ELD absences now BLOCK.** Both crossed `OVERLAY_TRUST_COVERAGE` (0.98),
+so an absent `SS.*` or `ELD.K12.ELL.*` code is a blocking `not_found` rather than an advisory. This
+is the designed endpoint — absence became evidence exactly when the corpus became fully
+corroborated — and was verified with fabricated/verified/addition probes before and after each
+write. The sweep also found and fixed four defects live: a 600-char statement truncation, a
+stripped trailing colon, duplicate-id over-strictness, and a D-H recurrence through grade-span
+expansion (15 real access points briefly reported absent; the census now sweeps each expanded grade
+separately). P8 (adversarial audit) precedes any coverage claim in prose.
+
+**Residual remediation (2026-08-14):** the sweep's debris field closed — D-H malformed-cards guard
+revived and probe-proven; `_merge_entry` preserves overlay archaeology across re-verification;
+`tools/audit_overlays.py` (10 checks + self-test) now re-proves every `confirmed` label in CI;
+`standards_refresh --check` verifies manifest paths + duplicates; generators fixed before outputs
+(metrics/index-note/exports regenerated); every stale count and "best-effort" claim in prose
+corrected or dated; `retired`/`standard_retired` added to the standards-verification protocol; the
+standing Routine repurposed to currency re-verification (stays disabled until a human enables it).
+Later that day the Routine was **retired outright**: the currency re-check became repo code
+(`tools/currency_recheck.py` + `.github/workflows/currency-recheck.yml`, manual dispatch; the
+commented `schedule:` is the human enable switch) after the trigger-management tools proved to be
+out-of-repo state a session cannot rely on. The dormant Routine awaits panel deletion.
 
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).

@@ -37,6 +37,14 @@ Read `standards_applicability` from the context (`shared/context/`) before scori
 Fabricating a code/standard/citation is **always** a critical failure, in every context. The point is:
 *absence* of a mandated framework where none applies is correct; *invented* codes never are.
 
+**A real code whose text is unverified is not a fabrication.** When the resolver returns
+`needs_review: true` (`protocols/standards-verification.md` §3a), the code exists on CPALMS and
+CPALMS's own statement is what gets cited — what is missing is corroboration between that text and
+our stored corpus. Score it as an **Accuracy** item requiring human confirmation before publication,
+not as an Integrity critical failure. `tools/validate_outputs.py` reflects this: a warning
+(`standard_needs_review`), while a code that does not resolve at all stays blocking
+(`unresolvable_standard`).
+
 ## Composite & decision
 
 `Composite = Σ(score × weight)`.

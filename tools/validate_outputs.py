@@ -69,6 +69,23 @@ def rule_checks(art: dict) -> list[dict]:
                     fails.append({"rule": "unresolvable_standard", "severity": "blocking",
                                   "guidance": f"{r['code']}: {r['state']} — "
                                               f"{r['detail'] or 'cite a real, verifiable code (QG §11.4)'}"})
+                elif r["state"] == "retired":
+                    # A withdrawn standard is not a fabricated one. Warning, with guidance the
+                    # author can act on — blocking here would repeat D-K, where TOS accused real
+                    # SpEd standards of being invented.
+                    fails.append({"rule": "standard_retired", "severity": "warning",
+                                  "guidance": f"{r['code']}: this standard has been WITHDRAWN by "
+                                              f"Florida — it was real, and is no longer current. "
+                                              f"{r['detail']}"})
+                elif r.get("needs_review"):
+                    # WARNING, not blocking. The code exists — that is what created the overlay
+                    # entry — and verify_standards already serves CPALMS's own text for the
+                    # citation, so the artifact is not wrong, it is unverified. Blocking here would
+                    # fail builds over a divergence the author cannot fix from inside the artifact.
+                    fails.append({"rule": "standard_needs_review", "severity": "warning",
+                                  "guidance": f"{r['code']}: exists on CPALMS, but the corpus "
+                                              f"statement does not match its official text — "
+                                              f"{r['detail']}"})
                 elif r["state"] != "resolved" or r.get("grade_band_match") is False:
                     fails.append({"rule": "standard_advisory", "severity": "warning",
                                   "guidance": f"{r['code']}: {r['state']} — {r['detail']}"})

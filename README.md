@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-07-11 | owner: tos-maintainer -->
+<!-- last_reviewed: 2026-08-11 | owner: tos-maintainer -->
 # Teacher Operating System (TOS)
 
 A set of AI assistants that help K–12 teachers create and double-check the everyday materials of
@@ -63,19 +63,43 @@ python3 tools/verify_standards.py --input my-artifact.json
 python3 tools/verify_standards.py --compare MA.3.NSO.1.1 --text "Read and write numbers to 10,000."
 ```
 
-- **Fully offline.** It reads a committed corpus of 6,583 Florida standards (B.E.S.T. / NGSSS,
+- **Fully offline.** It reads a committed corpus of 6,574 Florida standards (B.E.S.T. / NGSSS,
   including access points) — no network, no account, no API key.
-- **Honest about what it knows.** A code that is absent from an authoritative corpus is reported as
-  `not_found` and blocks; a code absent from a *best-effort* corpus (social studies, ELD) is
-  advisory, because a parser gap must never be reported as a fabricated standard. CCSS and NGSS are
-  **scheme-only**: structure is checked, existence is not.
-- **Independently verified.** Elementary math and reading (K–5) plus grade-4 science and social
-  studies have been checked code-by-code against **CPALMS**, Florida's official standards site, in
-  both directions — including a reverse census that catches standards CPALMS has and the corpus
-  lacks. Results live in `shared/standards/resources/florida/data/overlays/` with the CPALMS URL and
-  date recorded for every entry; the parsed corpus is never overwritten.
-- **Limits, stated plainly.** Grades 6–12 are not yet verified. Social studies remains a
-  best-effort parse overall. See the audit in `docs/audits/` for the full residual-risk statement.
+- **Honest about what it knows.** A code absent from the corpus is reported as `not_found` and
+  **blocks** — every Florida subject is corroborated against CPALMS above the trust threshold, so
+  absence is evidence. (The old best-effort escape hatch survives in code as a safety net: if an
+  overlay is ever reverted below threshold, that subject's absences degrade to advisory rather
+  than accusing real standards of fabrication.) A standard Florida has *withdrawn* resolves as
+  `retired` — a warning, never a "fabricated" verdict. CCSS and NGSS are **scheme-only**:
+  structure is checked, existence is not.
+- **Checked against CPALMS, code by code — the whole corpus.** Every subject and grade has been
+  checked against **CPALMS**, Florida's official standards site, in both directions, including a
+  reverse census that catches standards CPALMS has and the corpus lacks. **All 6,574 codes match
+  CPALMS's official text exactly** (math 1,127 · ELA 719 · science 1,450 · computer science 560 ·
+  social studies 2,713 · ELD 5). Two real CPALMS standards absent from the source documents are
+  recorded as provenance-stamped additions, and nine withdrawn computer-science standards as
+  `retired` — flagged for review, never counted as verified. Results live in
+  `shared/standards/resources/florida/data/overlays/` with the CPALMS URL and check date for every
+  entry; the parsed corpus is never overwritten. An adversarial audit re-proved every `confirmed`
+  label offline from the stored texts before this paragraph was written
+  (`docs/audits/2026-08-13-sweep-completion-audit.md`).
+- **What this proves, and what it does not.** Our standards documents were themselves downloaded
+  from CPALMS (`sources.json`), so a match proves **parse fidelity** — that our extraction of a
+  CPALMS document says what CPALMS's own database says. It is *not* independent corroboration from a
+  second authority, and a CPALMS-side error would be invisible to it. Florida's administrative rule
+  documents remain the legal source of record.
+- **"Verified" means the text actually matches.** The comparison used to accept a 97 % similarity
+  score — about three characters of slack on a typical standard, enough to let a changed number or a
+  deleted "not" pass as verified. It now requires the two texts to be **the same text**, ignoring
+  only whitespace. There is no similarity band, no prefix allowance, and no minimum-length rule;
+  anything short of equality is recorded as needing review, never as verified.
+- **Limits, stated plainly.** Verification is against CPALMS, which is also where the source
+  documents came from — so a match proves parse fidelity, not independent corroboration, and a
+  CPALMS-side error would be invisible. Currency decays from the check date (`checked_at` per
+  entry): CPALMS revised two benchmarks and retired nine standards in the window this work covers.
+  The live, generated breakdown is `ledger/cpalms-run-manifest.json`
+  (`python3 tools/cpalms_verify.py --manifest`); trust it over any number written in prose,
+  including this paragraph. Full residual-risk statements: `docs/audits/`.
 
 Maintainers refreshing the verification (needs network):
 `python3 tools/cpalms_verify.py --subject math --grades K,1,2,3,4,5 --out report.json` then

@@ -43,7 +43,9 @@ persona:                # requesting persona (see shared/personas/personas.md)
 grade_band:             # e.g., K-2, 3-5, 6-8, 9-12
 subject:                # e.g., Math, ELA, Science
 standards_set:          # framework + version, e.g., "CCSS-Math 2010"
-standards_cited:        # list of standard codes referenced
+standards_cited:        # list of standard codes referenced (FL codes resolve against the
+                        #   enumerated corpus — entry shape documented in
+                        #   shared/standards/florida-best.md §"Corpus entry schema")
 differentiation:        # UDL / tiering / EL / IEP supports applied
 context:                # teaching-context contract (shared/context/context.schema.json): state,
                         #   district, school_type, program(s), instructional_model, mandates, SOPs,

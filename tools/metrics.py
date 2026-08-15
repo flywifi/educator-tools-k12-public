@@ -34,20 +34,45 @@ def _verified_coverage() -> str:
     dashboard can never drift from the data (tools/cpalms_verify.py writes them; the parsed corpus
     is never mutated). Reported as verified/total per subject — never as a quality claim."""
     fl = ROOT / "shared" / "standards" / "resources" / "florida" / "data"
-    parts, total_v = [], 0
-    for subj in ("math", "ela", "science", "social_studies"):
-        ov = fl / "overlays" / f"{subj}.cpalms.json"
+    parts, gaps, total_v, total_r = [], [], 0, 0
+    for subj in ("math", "ela", "science", "social_studies", "computer_science", "eld"):
         corpus = fl / f"{subj}.json"
-        if not ov.exists() or not corpus.exists():
+        if not corpus.exists():
             continue
-        n_v = len(json.loads(ov.read_text(encoding="utf-8")).get("entries", {}))
-        n_c = len(json.loads(corpus.read_text(encoding="utf-8")).get("standards", []))
+        std = json.loads(corpus.read_text(encoding="utf-8")).get("standards", [])
+        ov = fl / "overlays" / f"{subj}.cpalms.json"
+        entries = (json.loads(ov.read_text(encoding="utf-8")).get("entries", {})
+                   if ov.exists() else {})
+        done = set(entries)
+        codes = {e["code"] for e in std}
+        # VERIFIED is strictly narrower than DEALT WITH: an entry recorded as near_match,
+        # statement_differs, ambiguous or not_on_cpalms was reached and judged, but it is NOT a
+        # verification and must never be counted as coverage.
+        verified = {c for c, e in entries.items()
+                    if c in codes and e.get("state") == "confirmed"}
+        n_v, n_c = len(verified), len(codes)
         total_v += n_v
-        parts.append(f"{subj.replace('_', ' ')} {n_v}/{n_c} ({100 * n_v / max(1, n_c):.1f}%)")
+        n_rev = len((codes & done) - verified)
+        total_r += n_rev
+        parts.append(f"{subj.replace('_', ' ')} {n_v}/{n_c} ({100 * n_v / max(1, n_c):.1f}%)"
+                     + (f" +{n_rev} needing review" if n_rev else ""))
+        # Per-subject remaining gap, COMPUTED — never asserted. Two shipped mistakes shaped this
+        # line: a whole-corpus "elementary complete" claim went out while 189 K-5 computer-science
+        # codes were unverified, and later a hardcoded "grades 6-12 not yet verified" tail kept
+        # re-asserting incomplete coverage on every regeneration after the sweep had finished.
+        # Nothing here may state a scope's status that the overlays do not prove.
+        n_gap = len(codes - verified)
+        if n_gap:
+            gaps.append(f"{subj.replace('_', ' ')} {n_gap}")
     if not parts:
         return "none yet"
-    return (f"{total_v} FL codes verified code-by-code against CPALMS — "
-            + "; ".join(parts) + " — elementary (K-5) complete; grades 6-12 not yet verified")
+    status = ("all subjects fully verified" if not gaps and total_r == 0
+              else "still unverified: " + ", ".join(gaps) + " code(s)" if gaps
+              else "all reached; review pending")
+    return (f"{total_v} FL codes verified code-by-code against CPALMS "
+            f"(+{total_r} reached but needing human review, not counted as verified) — "
+            + "; ".join(parts) + f" — {status} "
+            "(live breakdown: `ledger/cpalms-run-manifest.json`, authoritative over this line)")
 
 def render() -> str:
     """Compute the dashboard and return it as Markdown text (pure — no file write).

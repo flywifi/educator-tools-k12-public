@@ -260,7 +260,7 @@ HEADER = """\
 | All 29 skill structures — lesson plans, IEP goals, assessments, parent comms, etc. | ✅ Works |
 | Governance rules — DRAFT label, no student PII, IEP legal boundaries | ✅ Works |
 | Output formats — structured artifacts matching TOS specifications | ✅ Works |
-| Standards corpus (6,583 FL standards, full text) | ✅ **With the Reference Pack** added to your Project (see "Two ways to set up") — verified Florida snapshot. ❌ Without it. Either way, **verify every code on [cpalms.org](https://www.cpalms.org) before using in any formal document.** |
+| Standards corpus ({fl_total} FL standards, full text, each verified against CPALMS) | ✅ **With the Reference Pack** added to your Project (see "Two ways to set up") — verified Florida snapshot. ❌ Without it. Either way, **verify every code on [cpalms.org](https://www.cpalms.org) before using in any formal document.** |
 | Florida B.E.S.T. standard codes | ⚠️ Without the pack, ChatGPT recalls codes from training data, NOT a verified corpus — treat every code as unconfirmed until checked on cpalms.org. |
 | Document parsing pipeline (PDFs, DOCX, scanned files) | ❌ Not available — requires the Claude TOS environment |
 | Standards crawler (FLDOE/CPALMS live updates) | ❌ Not available — requires the Claude TOS environment |
@@ -333,8 +333,6 @@ I tell you exactly how much I could see"*):
 3. **One subject at a time.** For self-contained/elementary teachers, deliver
    Math first, then offer *"say 'next' for ELA"* — no table longer than ~40
    rows before pausing. Long single tables get cut off mid-render.
-4. **Social studies rows carry an extra flag** — that file is a best-effort
-   parse from a legacy document; mark its rows *"verify on CPALMS"*.
 
 Every row cites **which pack file it came from** and **the external authority
 to verify it on** (cpalms.org / the FLDOE URLs in `MANIFEST.md`), plus the
@@ -448,8 +446,13 @@ def main(argv: list[str]) -> int:
         return 2
     wizard = re.sub(r"<!--.*?-->\s*", "", WIZARD_SRC.read_text(encoding="utf-8"),
                     count=1, flags=re.S).strip()
+    # The FL corpus count is COMPUTED at export time, never typed: a hardcoded "6,583" survived a
+    # corpus change (9 retirements -> 6,574) and shipped a false claim into the generated guide.
+    fl_index = ROOT / "shared" / "standards" / "resources" / "florida" / "data" / "index.json"
+    fl_total = json.loads(fl_index.read_text(encoding="utf-8")).get("total", "?")
     content = (HEADER + wizard + "\n\n---\n\n## The 29 TOS Skills\n\n"
-               + "\n".join(entries) + FOOTER).replace("{REPO_URL}", REPO_URL)
+               + "\n".join(entries) + FOOTER).replace("{REPO_URL}", REPO_URL) \
+              .replace("{fl_total}", f"{fl_total:,}" if isinstance(fl_total, int) else str(fl_total))
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(content, encoding="utf-8")

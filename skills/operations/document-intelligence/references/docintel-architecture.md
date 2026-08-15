@@ -56,7 +56,7 @@ Tesseract) run locally with **no network at run time** (install via `tools/requi
   **Google Workspace inputs** (Google Docs API JSON natively; Docs/Sheets/Slides exports
   `.odt`/`.csv`/`.xlsx`/`.pptx`), the **retrieval-state ladder**, and artifact **change-control**
   records (V03_S07). **The Florida standards pipeline now reads via docintel**
-  (`tools/parse_fl_standards.py`; 6,583 codes, byte-for-byte identical to the prior reader).
+  (`tools/parse_fl_standards.py`; 6,583 codes at the time — 6,574 today after 9 CS retirements — byte-for-byte identical to the prior reader).
 - **Staged (interfaces defined; fill in next):** additional OCR engines (Surya/OCRmyPDF), DL layout
   (Docling/LayoutParser/Marker), parallel multi-parser reconciliation, reference-set accuracy metrics
   (A-001/A-005), consumer-interface projections, and the remaining Workspace types (`.ods`/`.odp`;

@@ -10,7 +10,7 @@ instead of making the model read ~1.9 MB of standards JSON.
   token cost at query time.
 - **Regenerable artifact** — the index (`index.local.db`) is **gitignored** and never
   committed; rebuild it from the canonical JSON at
-  `shared/standards/resources/florida/data/*.json` (6,583 codes).
+  `shared/standards/resources/florida/data/*.json` (6,574 codes, each verified against CPALMS).
 - **Honest gaps** — if the host SQLite lacks FTS5, the engine builds a LIKE fallback
   and says so; it never pretends ranked full-text search ran.
 - **No fabrication** — every result carries its source file and is **advisory**;

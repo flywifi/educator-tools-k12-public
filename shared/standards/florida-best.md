@@ -49,7 +49,10 @@ is in Florida, prefer these over CCSS/NGSS.
 
 **Computer Science** — `SC.<grade>.CS-*` content + 6 Computational Thinking & Reasoning practices
 `SC.K12.CTR.1.1` … `SC.K12.CTR.6.1`. *Update:* Florida is establishing a **standalone Computer
-Science** framework (separating CS from Science, 2025+) — verify current CS codes on CPALMS before citing.
+Science** framework (separating CS from Science, 2025+). The stored CS corpus was refreshed and
+swept code-by-code against CPALMS on 2026-08-13 (560 verified; 9 withdrawn standards recorded as
+`retired`), so its codes are current as of that check — CPALMS remains the live authority for
+anything newer.
 
 **English Language Development (ELD)** — `ELD.K12.ELL.<area>.<n>`, areas: LA, MA, SC, SS, SI
 (language of Language Arts, Math, Science, Social Studies, and Social/Instructional). WIDA-aligned.
@@ -66,10 +69,10 @@ Every Florida standard + access point is extracted from the official documents i
 | Math (B.E.S.T.) | 1,127 | 635 | 485 (+7 MTR) |
 | ELA (B.E.S.T.) | 719 | 329 | 384 (+6 EE) |
 | Science (NGSSS) | 1,450 | 498 | 952 |
-| Computer Science | 569 | 562 | — (+7 CTR) |
+| Computer Science | 560 | 553 | — (+7 CTR) |
 | Social Studies | 2,713 | 1,432 | 1,281 |
 | ELD | 5 | — | — |
-| **Total** | **6,583** | | |
+| **Total** | **6,574** | | |
 
 **Verification (2026-06-29):** cross-checked the enumerated **Math** benchmarks against the official
 *B.E.S.T. Mathematics Standards (final)* PDF — **298/298 (100%)** of the document's benchmark codes are
@@ -83,8 +86,28 @@ fabricate a code. It also indexes **courses** (`--course`), **schools** (`--scho
 toolkit resources per standard** (`--resource <code>`), and **data sources** (`--source`). Build once
 with `--build`; see `canonical-sources/index/README.md`. Fallbacks: `tools/fl_lookup.py` (standards
 only) and `shared/cache/cache.py` (L1 standards cache). **Always verify on CPALMS** before citing.
-Social Studies is best-effort from a legacy `.doc` — verify there. Re-extract after a refresh with
+Every subject — Social Studies included — is parsed faithfully and verified code-by-code against CPALMS (2026-08-13; `ledger/cpalms-run-manifest.json` is the live record). Re-extract after a refresh with
 `tools/parse_fl_standards.py`, then rebuild the index.
+
+## Corpus entry schema — `resources/florida/data/<subject>.json`
+Each entry in a subject file's `standards[]` carries the benchmark sentence plus the labelled
+fields the source documents keep beside it (optional fields appear only where the document has
+them; `tools/parse_fl_standards.py` is the writer):
+
+```
+{code, grade, strand, type,            # type ∈ {benchmark, access_point, practice}
+ statement,                            # the benchmark sentence ONLY — labelled fields split out
+ clarifications?, examples?, remarks?, # labelled prose fields, verbatim
+ complexity?, date_adopted?,           # cognitive-complexity level; adoption date
+ related_access_points?}               # codes listed beside the benchmark
+```
+
+The CPALMS verification record lives in a **separate overlay**
+(`data/overlays/<subject>.cpalms.json` — the parsed corpus is never mutated by verification;
+`tools/audit_overlays.py` re-proves overlay integrity in CI). Standards Florida has **withdrawn**
+are recorded as `retired` overlay entries; for Social Studies, the withdrawn statements' legacy
+Remarks live in the provenance-stamped sidecar `data/withdrawn/social_studies.withdrawn.json`
+(from an older document version — context only, never corpus rows).
 
 ## Access points (Special Education) — important
 Florida publishes **Access Points** for students with significant cognitive disabilities, embedded in

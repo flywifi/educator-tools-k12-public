@@ -11,7 +11,7 @@
 | All 29 skill structures — lesson plans, IEP goals, assessments, parent comms, etc. | ✅ Works |
 | Governance rules — DRAFT label, no student PII, IEP legal boundaries | ✅ Works |
 | Output formats — structured artifacts matching TOS specifications | ✅ Works |
-| Standards corpus (6,583 FL standards, full text) | ✅ **With the Reference Pack** added to your Project (see "Two ways to set up") — verified Florida snapshot. ❌ Without it. Either way, **verify every code on [cpalms.org](https://www.cpalms.org) before using in any formal document.** |
+| Standards corpus (6,574 FL standards, full text, each verified against CPALMS) | ✅ **With the Reference Pack** added to your Project (see "Two ways to set up") — verified Florida snapshot. ❌ Without it. Either way, **verify every code on [cpalms.org](https://www.cpalms.org) before using in any formal document.** |
 | Florida B.E.S.T. standard codes | ⚠️ Without the pack, ChatGPT recalls codes from training data, NOT a verified corpus — treat every code as unconfirmed until checked on cpalms.org. |
 | Document parsing pipeline (PDFs, DOCX, scanned files) | ❌ Not available — requires the Claude TOS environment |
 | Standards crawler (FLDOE/CPALMS live updates) | ❌ Not available — requires the Claude TOS environment |
@@ -84,8 +84,6 @@ I tell you exactly how much I could see"*):
 3. **One subject at a time.** For self-contained/elementary teachers, deliver
    Math first, then offer *"say 'next' for ELA"* — no table longer than ~40
    rows before pausing. Long single tables get cut off mid-render.
-4. **Social studies rows carry an extra flag** — that file is a best-effort
-   parse from a legacy document; mark its rows *"verify on CPALMS"*.
 
 Every row cites **which pack file it came from** and **the external authority
 to verify it on** (cpalms.org / the FLDOE URLs in `MANIFEST.md`), plus the

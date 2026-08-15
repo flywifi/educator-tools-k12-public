@@ -1,15 +1,21 @@
 {
  "subject": "ela",
  "source": "cpalms",
- "generated_at": "2026-08-09T14:24:26Z",
+ "generated_at": "2026-08-13T13:00:56Z",
  "endpoint": "https://www.cpalms.org/Search/GetSearchStandard",
  "ua": "TOS-standards-updater/1.1 (+polite educational-standards verification; respects robots.txt)",
- "coverage": 0.4937,
+ "coverage": 1.0,
  "scopes": [
   {
    "grades": "K,1,2,3,4,5",
    "rows_in_scope": 355,
    "generated_at": "2026-08-09T14:24:26Z"
+  },
+  {
+   "grades": "6,7,8,9,10,11,12,612",
+   "rows_applied": 364,
+   "rows_verified": 364,
+   "generated_at": "2026-08-13T13:00:56Z"
   }
  ],
  "entries": {
@@ -75,7 +81,9 @@
    "cpalms_id": "18405",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18405",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:04:53Z"
+   "checked_at": "2026-08-09T14:04:53Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.K.F.1.AP.1b": {
    "state": "confirmed",
@@ -83,7 +91,9 @@
    "cpalms_id": "18406",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18406",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:04:57Z"
+   "checked_at": "2026-08-09T14:04:57Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.K.F.1.AP.1c": {
    "state": "confirmed",
@@ -107,7 +117,9 @@
    "cpalms_id": "18484",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18484",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:05:06Z"
+   "checked_at": "2026-08-09T14:05:06Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.K.F.1.AP.1f": {
    "state": "confirmed",
@@ -235,7 +247,9 @@
    "cpalms_id": "18534",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18534",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:05:55Z"
+   "checked_at": "2026-08-09T14:05:55Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.K.R.1.1": {
    "state": "confirmed",
@@ -283,7 +297,9 @@
    "cpalms_id": "18552",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18552",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:06:14Z"
+   "checked_at": "2026-08-09T14:06:14Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.K.R.2.1": {
    "state": "confirmed",
@@ -347,7 +363,9 @@
    "cpalms_id": "18597",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18597",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:06:40Z"
+   "checked_at": "2026-08-09T14:06:40Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.K.R.3.2": {
    "state": "confirmed",
@@ -355,7 +373,9 @@
    "cpalms_id": "14907",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/14907",
    "date_revised": "08/20",
-   "checked_at": "2026-08-09T14:06:44Z"
+   "checked_at": "2026-08-09T14:06:44Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.K.R.3.AP.2a": {
    "state": "confirmed",
@@ -499,7 +519,9 @@
    "cpalms_id": "18573",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18573",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:07:42Z"
+   "checked_at": "2026-08-09T14:07:42Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.K.C.4.1": {
    "state": "confirmed",
@@ -683,7 +705,9 @@
    "cpalms_id": "18512",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18512",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:08:59Z"
+   "checked_at": "2026-08-09T14:08:59Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.1.F.1.AP.3e": {
    "state": "confirmed",
@@ -715,7 +739,9 @@
    "cpalms_id": "18535",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18535",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:09:12Z"
+   "checked_at": "2026-08-09T14:09:12Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.1.R.1.1": {
    "state": "confirmed",
@@ -747,7 +773,9 @@
    "cpalms_id": "18546",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18546",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:09:24Z"
+   "checked_at": "2026-08-09T14:09:24Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.1.R.1.3": {
    "state": "confirmed",
@@ -779,7 +807,9 @@
    "cpalms_id": "18551",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18551",
    "date_revised": "03/20",
-   "checked_at": "2026-08-09T14:09:38Z"
+   "checked_at": "2026-08-09T14:09:38Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.1.R.2.1": {
    "state": "confirmed",
@@ -947,7 +977,9 @@
    "cpalms_id": "18526",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18526",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:10:44Z"
+   "checked_at": "2026-08-09T14:10:44Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.1.C.1.4": {
    "state": "confirmed",
@@ -1011,7 +1043,9 @@
    "cpalms_id": "18567",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18567",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:11:13Z"
+   "checked_at": "2026-08-09T14:11:13Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.1.C.4.1": {
    "state": "confirmed",
@@ -1203,7 +1237,9 @@
    "cpalms_id": "18545",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18545",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:12:30Z"
+   "checked_at": "2026-08-09T14:12:30Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.2.R.1.3": {
    "state": "confirmed",
@@ -1235,7 +1271,9 @@
    "cpalms_id": "18550",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18550",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:12:46Z"
+   "checked_at": "2026-08-09T14:12:46Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.2.R.2.1": {
    "state": "confirmed",
@@ -1363,7 +1401,9 @@
    "cpalms_id": "14989",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/14989",
    "date_revised": "08/20",
-   "checked_at": "2026-08-09T14:13:35Z"
+   "checked_at": "2026-08-09T14:13:35Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.2.C.1.AP.1": {
    "state": "confirmed",
@@ -1571,7 +1611,9 @@
    "cpalms_id": "15002",
    "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15002",
    "date_revised": "08/20",
-   "checked_at": "2026-08-09T14:14:56Z"
+   "checked_at": "2026-08-09T14:14:56Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.3.F.1.AP.3a": {
    "state": "confirmed",
@@ -1595,7 +1637,9 @@
    "cpalms_id": "17763",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17763",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:15:06Z"
+   "checked_at": "2026-08-09T14:15:06Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.3.F.1.4": {
    "state": "confirmed",
@@ -1811,7 +1855,9 @@
    "cpalms_id": "17913",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17913",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:16:35Z"
+   "checked_at": "2026-08-09T14:16:35Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.3.C.1.2": {
    "state": "confirmed",
@@ -2235,7 +2281,9 @@
    "cpalms_id": "17912",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17912",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:19:28Z"
+   "checked_at": "2026-08-09T14:19:28Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.4.C.1.2": {
    "state": "confirmed",
@@ -2587,7 +2635,9 @@
    "cpalms_id": "17861",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17861",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:21:48Z"
+   "checked_at": "2026-08-09T14:21:48Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.5.R.3.1": {
    "state": "confirmed",
@@ -2755,7 +2805,9 @@
    "cpalms_id": "18558",
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18558",
    "date_revised": "03/22",
-   "checked_at": "2026-08-09T14:22:51Z"
+   "checked_at": "2026-08-09T14:22:51Z",
+   "reclassified_at": "2026-08-13T00:22:28Z",
+   "reclassified_reason": "re-judged against the regenerated corpus under the collapsed `confirmed` predicate (whitespace-insensitive equality, untruncated card). The recorded CPALMS text is unchanged; the corpus statement is the parser's output after the field-extraction fix, gate-verified by tools/parse_diff.py"
   },
   "ELA.5.C.4.1": {
    "state": "confirmed",
@@ -2852,6 +2904,2918 @@
    "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17979",
    "date_revised": "03/22",
    "checked_at": "2026-08-09T14:23:28Z"
+  },
+  "ELA.612.F.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Demonstrate an understanding of spoken words, syllables, and sounds.Orally produce single-syllable and multisyllabic words by accurately blending sounds.Accurately segment single-syllable and multisyllabic words.",
+   "cpalms_id": "15197",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15197",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:37:02Z"
+  },
+  "ELA.612.F.2.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Combine word parts (blend syllables, attach affixes to root words, fingerspell, etc.) to produce words in the student's mode of communication.",
+   "cpalms_id": "18503",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18503",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:37:06Z"
+  },
+  "ELA.612.F.2.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Segment single-syllable and multisyllabic words using the student's mode of communication.",
+   "cpalms_id": "18504",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18504",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:37:09Z"
+  },
+  "ELA.612.F.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Know and apply phonics and word analysis skills in decoding words.Use an array of strategies to decode single-syllable and multisyllabic words.Accurately read multisyllabic words using a combined knowledge of all letter-sound correspondences and syllabication patterns.",
+   "cpalms_id": "15198",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15198",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:37:12Z"
+  },
+  "ELA.612.F.2.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Decode single-syllable and multisyllabic words as appropriate to the student's mode of communication.",
+   "cpalms_id": "17766",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17766",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:37:15Z"
+  },
+  "ELA.612.F.2.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Read multisyllabic words using a combined knowledge of all letter-sound correspondences, and syllabication patterns using to the student's mode of communication.",
+   "cpalms_id": "17767",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17767",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:37:19Z"
+  },
+  "ELA.612.F.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Know and apply phonics and word analysis skills in encoding words.Use an array of strategies to accurately encode single-syllable and multisyllabic words.",
+   "cpalms_id": "15199",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15199",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:37:23Z"
+  },
+  "ELA.612.F.2.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Encode single-syllable and multisyllabic words using the student's mode of communication.",
+   "cpalms_id": "17768",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17768",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:37:26Z"
+  },
+  "ELA.612.F.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Read grade-level texts, at the student’s ability level, with accuracy, automaticity, and prosody or expression using the student’s mode of communication.",
+   "cpalms_id": "15200",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15200",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:37:29Z"
+  },
+  "ELA.612.F.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Read grade-level text at the student's ability level with accuracy, automaticity, and prosody or expression as appropriate for the student's mode of communication.",
+   "cpalms_id": "17772",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17772",
+   "date_revised": "07/21",
+   "checked_at": "2026-08-13T12:37:33Z"
+  },
+  "ELA.6.R.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how the interaction between characters contributes to the development of a plot in a literary text.",
+   "cpalms_id": "15030",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15030",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:37:36Z"
+  },
+  "ELA.6.R.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the interactions of characters contribute to the plot in a literary text.",
+   "cpalms_id": "17779",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17779",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:37:40Z"
+  },
+  "ELA.6.R.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the development of stated or implied theme(s) throughout a literary text.",
+   "cpalms_id": "15031",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15031",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:37:42Z"
+  },
+  "ELA.6.R.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain how events contribute to the theme(s) throughout a literary text.",
+   "cpalms_id": "17790",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17790",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:37:45Z"
+  },
+  "ELA.6.R.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain the influence of multiple narrators and/or shifts in point of view in a literary text.",
+   "cpalms_id": "15032",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15032",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:37:48Z"
+  },
+  "ELA.6.R.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the different points of view of the narrators in a literary text.",
+   "cpalms_id": "17804",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17804",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:37:52Z"
+  },
+  "ELA.6.R.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe the impact of various poetic forms on meaning and style.",
+   "cpalms_id": "15033",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15033",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:37:55Z"
+  },
+  "ELA.6.R.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe the poetic forms and styles of a sonnet and a villanelle.",
+   "cpalms_id": "17814",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17814",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:37:58Z"
+  },
+  "ELA.6.R.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how individual text sections and/or features convey meaning in texts.",
+   "cpalms_id": "15034",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15034",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:38:02Z"
+  },
+  "ELA.6.R.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Show how a specific text section contributes to the meaning of the text.",
+   "cpalms_id": "17824",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17824",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:38:06Z"
+  },
+  "ELA.6.R.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the central idea(s), implied or explicit, and its development throughout a text.",
+   "cpalms_id": "15035",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15035",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:38:10Z"
+  },
+  "ELA.6.R.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify the central idea(s), implied or explicit, and its development throughout a text.",
+   "cpalms_id": "17835",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17835",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:38:14Z"
+  },
+  "ELA.6.R.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze authors’ purpose(s) in multiple accounts of the same event or topic.",
+   "cpalms_id": "15036",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15036",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:38:17Z"
+  },
+  "ELA.6.R.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain the purpose of two authors' accounts of the same event or topic.",
+   "cpalms_id": "17846",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17846",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:38:20Z"
+  },
+  "ELA.6.R.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Track the development of an argument, identifying the types of reasoning used.",
+   "cpalms_id": "15037",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15037",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:38:23Z"
+  },
+  "ELA.6.R.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify the types of reasoning used in an argumentative text.",
+   "cpalms_id": "17860",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17860",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:38:26Z"
+  },
+  "ELA.6.R.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how figurative language contributes to tone and meaning in text(s).",
+   "cpalms_id": "15038",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15038",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:38:29Z"
+  },
+  "ELA.6.R.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify examples of figurative language that contribute to tone and meaning in text.",
+   "cpalms_id": "17872",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17872",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:38:33Z"
+  },
+  "ELA.6.R.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Paraphrase content from grade-level texts.",
+   "cpalms_id": "15039",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15039",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:38:36Z"
+  },
+  "ELA.6.R.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Retell content from grade-level texts, at the student's ability level using the student's mode of communication.",
+   "cpalms_id": "17882",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17882",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:38:40Z"
+  },
+  "ELA.6.R.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast how authors from different time periods address the same or related topics.",
+   "cpalms_id": "15040",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15040",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:38:45Z"
+  },
+  "ELA.6.R.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast how authors from two time periods address the same or related topics in a text with grade-level appropriate content at the student's skill level.",
+   "cpalms_id": "17900",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17900",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:38:49Z"
+  },
+  "ELA.6.R.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify rhetorical appeals in a text.",
+   "cpalms_id": "15041",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15041",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:38:52Z"
+  },
+  "ELA.6.R.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify rhetorical appeals (ethos, logos, pathos) in a text with grade level content at the student's ability level.",
+   "cpalms_id": "17910",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17910",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:38:57Z"
+  },
+  "ELA.6.C.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Write personal or fictional narratives using narrative techniques, precise words and phrases, and figurative language.",
+   "cpalms_id": "15042",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15042",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:39:00Z"
+  },
+  "ELA.6.C.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Write a personal narrative using precise words and figurative language with guidance and support.",
+   "cpalms_id": "17920",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17920",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:39:04Z"
+  },
+  "ELA.6.C.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Write and support a claim using logical reasoning, relevant evidence from sources, elaboration, and a logical organizational structure with varied transitions.",
+   "cpalms_id": "15043",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15043",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:39:07Z"
+  },
+  "ELA.6.C.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Make and support a claim using logical reasoning, relevant evidence from a source(s), elaboration and a logical organizational structure with transitions.",
+   "cpalms_id": "17930",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17930",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:39:10Z"
+  },
+  "ELA.6.C.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Write expository texts to explain and/or analyze information from multiple sources, using a logical organizational structure, relevant elaboration, and varied transitions.",
+   "cpalms_id": "15044",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15044",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:39:13Z"
+  },
+  "ELA.6.C.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Write an expository text to explain information from a source(s), using a logical organizational structure, relevant elaboration and transitions.",
+   "cpalms_id": "17940",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17940",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:39:17Z"
+  },
+  "ELA.6.C.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing by planning, revising, and editing, considering feedback from adults and peers.",
+   "cpalms_id": "15045",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15045",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:39:21Z"
+  },
+  "ELA.6.C.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing by planning, revising and editing, considering feedback from adults and peers.",
+   "cpalms_id": "17950",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17950",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:39:25Z"
+  },
+  "ELA.6.C.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information orally, in a logical sequence, using nonverbal cues, appropriate volume, clear pronunciation, and appropriate pacing.",
+   "cpalms_id": "15046",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15046",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:39:27Z"
+  },
+  "ELA.6.C.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information in a logical sequence, using the student's mode of communication with guidance and support.",
+   "cpalms_id": "17960",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17960",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:39:32Z"
+  },
+  "ELA.6.C.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization, and spelling appropriate to grade level.",
+   "cpalms_id": "15047",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15047",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:39:36Z"
+  },
+  "ELA.6.C.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization and spelling appropriate to grade-level with guidance and support.•Use conjunctions correctly to join words and phrases in a sentence.",
+   "cpalms_id": "18557",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18557",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:39:39Z"
+  },
+  "ELA.6.C.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research to answer a question, drawing on multiple reliable and valid sources and refocusing the inquiry when appropriate.",
+   "cpalms_id": "15048",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15048",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:39:42Z"
+  },
+  "ELA.6.C.4.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research to answer a question, identifying valid and reliable sources, with guidance and support.",
+   "cpalms_id": "17970",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17970",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:39:45Z"
+  },
+  "ELA.6.C.5.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate diverse digital media to enhance audience engagement in oral or written tasks.",
+   "cpalms_id": "15049",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15049",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:39:49Z"
+  },
+  "ELA.6.C.5.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "UUse one or more multimedia elements to create emphasis and/or clarity in oral or written tasks.",
+   "cpalms_id": "17983",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17983",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:39:52Z"
+  },
+  "ELA.6.C.5.2": {
+   "state": "confirmed",
+   "statement_verified": "Use digital tools to produce writing.",
+   "cpalms_id": "15050",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15050",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:39:55Z"
+  },
+  "ELA.6.C.5.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify digital tools to produce writing.",
+   "cpalms_id": "17997",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17997",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:39:59Z"
+  },
+  "ELA.6.V.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate academic vocabulary appropriate to grade level in speaking and writing.",
+   "cpalms_id": "15051",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15051",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:40:02Z"
+  },
+  "ELA.6.V.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "1 Use grade-level academic vocabulary in communication, using the student's mode of communication.",
+   "cpalms_id": "18009",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18009",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:40:06Z"
+  },
+  "ELA.6.V.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of Greek and Latin roots and affixes to determine meanings of words and phrases in grade-level content.",
+   "cpalms_id": "15052",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15052",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:40:10Z"
+  },
+  "ELA.6.V.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of Greek and Latin roots and affixes to determine meanings of words and phrases in grade-level content at the student's ability level with guidance and support.",
+   "cpalms_id": "18021",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18021",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:40:12Z"
+  },
+  "ELA.6.V.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of context clues, figurative language, word relationships, reference materials, and/or background knowledge to determine the connotative and denotative meaning of words and phrases, appropriate to grade level.",
+   "cpalms_id": "15053",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15053",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:40:15Z"
+  },
+  "ELA.6.V.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of context clues, figurative language, word relationships, reference materials and/or background knowledge to determine the denotative meaning of words and phrases, appropriate to grade-level content at the student's ability level with guidance and support.",
+   "cpalms_id": "17985",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17985",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:40:19Z"
+  },
+  "ELA.7.R.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the impact of setting on character development and plot in a literary text.",
+   "cpalms_id": "15054",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15054",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:40:22Z"
+  },
+  "ELA.7.R.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the setting impacts the characters and the plot in a literary text.",
+   "cpalms_id": "17778",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17778",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:40:26Z"
+  },
+  "ELA.7.R.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare two or more themes and their development throughout a literary text.",
+   "cpalms_id": "15055",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15055",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:40:30Z"
+  },
+  "ELA.7.R.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Find the similarities between two themes and their development throughout a literary text.",
+   "cpalms_id": "17789",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17789",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:40:35Z"
+  },
+  "ELA.7.R.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain the influence of narrator(s), including unreliable narrator(s), and/or shifts in point of view in a literary text.",
+   "cpalms_id": "15056",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15056",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:40:39Z"
+  },
+  "ELA.7.R.1.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Identify an unreliable narrator.",
+   "cpalms_id": "17802",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17802",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:40:42Z"
+  },
+  "ELA.7.R.1.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the narrator's shifts in points of view change in the text.",
+   "cpalms_id": "17803",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17803",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:40:45Z"
+  },
+  "ELA.7.R.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the impact of various poetic forms on meaning and style.",
+   "cpalms_id": "15057",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15057",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:40:49Z"
+  },
+  "ELA.7.R.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the style of a poem affects its meaning.",
+   "cpalms_id": "17813",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17813",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:40:53Z"
+  },
+  "ELA.7.R.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how individual text sections and/or features convey a purpose in texts.",
+   "cpalms_id": "15058",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15058",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:40:56Z"
+  },
+  "ELA.7.R.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the purpose of a specific text section in a text.",
+   "cpalms_id": "17823",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17823",
+   "date_revised": "03/20",
+   "checked_at": "2026-08-13T12:41:04Z"
+  },
+  "ELA.7.R.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare two or more central ideas and their development throughout a text.",
+   "cpalms_id": "15059",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15059",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:41:07Z"
+  },
+  "ELA.7.R.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify two central ideas and their development throughout a text.",
+   "cpalms_id": "17834",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17834",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:41:10Z"
+  },
+  "ELA.7.R.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain how an author establishes and achieves purpose(s) through diction and syntax.",
+   "cpalms_id": "15060",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15060",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:41:15Z"
+  },
+  "ELA.7.R.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the author's word choice influences the purpose of the text.",
+   "cpalms_id": "17845",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17845",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:41:19Z"
+  },
+  "ELA.7.R.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Track the development of an argument, analyzing the types of reasoning used and their effectiveness.",
+   "cpalms_id": "15061",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15061",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:41:23Z"
+  },
+  "ELA.7.R.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Track the development, the type of reasoning (deductive, inductive, abductive) and its effectiveness in the argument.",
+   "cpalms_id": "17859",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17859",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:41:26Z"
+  },
+  "ELA.7.R.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how figurative language contributes to tone and meaning and explain examples of allusions in text(s).",
+   "cpalms_id": "15062",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15062",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:41:29Z"
+  },
+  "ELA.7.R.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how figurative language contributes to tone and meaning of text(s).",
+   "cpalms_id": "17871",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17871",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:41:32Z"
+  },
+  "ELA.7.R.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Paraphrase content from grade-level texts.",
+   "cpalms_id": "15063",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15063",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:41:35Z"
+  },
+  "ELA.7.R.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Retell content from grade-level texts, at the student's ability level using the student's mode of communication.",
+   "cpalms_id": "17881",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17881",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:41:39Z"
+  },
+  "ELA.7.R.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast how authors with differing perspectives address the same or related topics or themes.",
+   "cpalms_id": "15064",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15064",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:41:42Z"
+  },
+  "ELA.7.R.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast how two authors with different perspectives view the same theme in a text with grade-level appropriate content at the student's skill level.",
+   "cpalms_id": "17899",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17899",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:41:46Z"
+  },
+  "ELA.7.R.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain the meaning and/or significance of rhetorical devices in a text.",
+   "cpalms_id": "15065",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15065",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:41:49Z"
+  },
+  "ELA.7.R.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify the meaning of irony in a text with grade level content at the student's ability level.",
+   "cpalms_id": "17909",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17909",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:41:53Z"
+  },
+  "ELA.7.C.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Write personal or fictional narratives using narrative techniques, a recognizable point of view, precise words and phrases, and figurative language.",
+   "cpalms_id": "15066",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15066",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:41:55Z"
+  },
+  "ELA.7.C.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Write a personal narrative using a recognizable point of view, precise words and figurative language.",
+   "cpalms_id": "17919",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17919",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:41:58Z"
+  },
+  "ELA.7.C.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Write and support a claim using logical reasoning, relevant evidence from sources, elaboration, a logical organizational structure with varied transitions, and acknowledging at least one counterclaim.",
+   "cpalms_id": "15067",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15067",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:42:02Z"
+  },
+  "ELA.7.C.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Make and support a claim using logical reasoning, relevant evidence from a source(s), elaboration and a logical organizational structure with transitions, acknowledging one counterclaim.",
+   "cpalms_id": "17929",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17929",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:42:05Z"
+  },
+  "ELA.7.C.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Write expository texts to explain and analyze information from multiple sources, using relevant supporting details and a logical organizational pattern.",
+   "cpalms_id": "15068",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15068",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:42:08Z"
+  },
+  "ELA.7.C.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Write an expository text to explain information from a source(s), using relevant supporting details and a logical organizational pattern.",
+   "cpalms_id": "17939",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17939",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:42:11Z"
+  },
+  "ELA.7.C.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing by planning, revising, and editing, considering feedback from adults and peers.",
+   "cpalms_id": "15069",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15069",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:42:14Z"
+  },
+  "ELA.7.C.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing by planning, revising and editing, with guidance and support as needed, considering feedback from adults and peers.",
+   "cpalms_id": "17949",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17949",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:42:17Z"
+  },
+  "ELA.7.C.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information orally, in a logical sequence, emphasizing key points that support the central idea.",
+   "cpalms_id": "15070",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15070",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:42:21Z"
+  },
+  "ELA.7.C.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information in a logical sequence, emphasizing key points that support the central idea, using the student's mode of communication with guidance and support.",
+   "cpalms_id": "17959",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17959",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:42:24Z"
+  },
+  "ELA.7.C.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization, and spelling appropriate to grade level.",
+   "cpalms_id": "15071",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15071",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:42:26Z"
+  },
+  "ELA.7.C.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization and spelling appropriate to grade-level with guidance and support.•Use pronouns correctly with regard to case, number and a person, correcting for vague pronoun reference.",
+   "cpalms_id": "18556",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18556",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:42:29Z"
+  },
+  "ELA.7.C.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research to answer a question, drawing on multiple reliable and valid sources and generating additional questions for further research.",
+   "cpalms_id": "15072",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15072",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:42:32Z"
+  },
+  "ELA.7.C.4.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research to answer a question, drawing on reliable and valid sources and generating an additional question, with guidance and support.",
+   "cpalms_id": "17969",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17969",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:42:35Z"
+  },
+  "ELA.7.C.5.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate diverse digital media to build cohesion in oral or written tasks.",
+   "cpalms_id": "15073",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15073",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:42:38Z"
+  },
+  "ELA.7.C.5.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Arrange one or more elements of digital media to enhance understanding in oral or written tasks with guidance and support.",
+   "cpalms_id": "17982",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17982",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:42:41Z"
+  },
+  "ELA.7.C.5.2": {
+   "state": "confirmed",
+   "statement_verified": "Use digital tools to produce and share writing.",
+   "cpalms_id": "15074",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15074",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:42:44Z"
+  },
+  "ELA.7.C.5.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify digital tools to produce writing.",
+   "cpalms_id": "17995",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17995",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:42:47Z"
+  },
+  "ELA.7.V.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate academic vocabulary appropriate to grade level in speaking and writing.",
+   "cpalms_id": "15075",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15075",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:42:50Z"
+  },
+  "ELA.7.V.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use grade-level academic vocabulary in communication, using the student's mode of communication.",
+   "cpalms_id": "18008",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18008",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:42:53Z"
+  },
+  "ELA.7.V.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of Greek and Latin roots and affixes to determine meanings of words and phrases in grade-level content.",
+   "cpalms_id": "15076",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15076",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:42:55Z"
+  },
+  "ELA.7.V.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of Greek and Latin roots and affixes to determine meanings of words and phrases in grade-level content at the student's ability level with guidance and support.",
+   "cpalms_id": "18019",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18019",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:42:58Z"
+  },
+  "ELA.7.V.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of context clues, figurative language, word relationships, reference materials, and/or background knowledge to determine the connotative and denotative meaning of words and phrases, appropriate to grade level.",
+   "cpalms_id": "15077",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15077",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:43:02Z"
+  },
+  "ELA.7.V.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of context clues, figurative language, word relationships, reference materials and/or background knowledge to determine the connotative meaning of words and phrases, appropriate to grade-level content at the student's ability level with guidance and support.",
+   "cpalms_id": "17989",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17989",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:43:05Z"
+  },
+  "ELA.8.R.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the interaction between character development, setting, and plot in a literary text.",
+   "cpalms_id": "15078",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15078",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:43:09Z"
+  },
+  "ELA.8.R.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain the relationship between the character development, setting and plot in a literary text.",
+   "cpalms_id": "17777",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17777",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:43:14Z"
+  },
+  "ELA.8.R.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze two or more themes and their development throughout a literary text.",
+   "cpalms_id": "15079",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15079",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:43:16Z"
+  },
+  "ELA.8.R.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast two themes and their development throughout a literary text.",
+   "cpalms_id": "17788",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17788",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:43:19Z"
+  },
+  "ELA.8.R.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how an author develops and individualizes the perspectives of different characters.",
+   "cpalms_id": "15080",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15080",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:43:23Z"
+  },
+  "ELA.8.R.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Describe how the author uses words and actions to show the characters' perspective.",
+   "cpalms_id": "17801",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17801",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:43:27Z"
+  },
+  "ELA.8.R.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze structure, sound, imagery, and figurative language in poetry.",
+   "cpalms_id": "15081",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15081",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:43:31Z"
+  },
+  "ELA.8.R.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain the structure, sound and imagery in poetry.",
+   "cpalms_id": "17812",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17812",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:43:34Z"
+  },
+  "ELA.8.R.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how individual text sections and/or features convey a purpose and/or meaning in texts.",
+   "cpalms_id": "15082",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15082",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:43:37Z"
+  },
+  "ELA.8.R.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how individual text sections contribute to the meaning of the text.",
+   "cpalms_id": "17822",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17822",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:43:40Z"
+  },
+  "ELA.8.R.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze two or more central ideas and their development throughout a text.",
+   "cpalms_id": "15083",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15083",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:43:43Z"
+  },
+  "ELA.8.R.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare two central ideas and their development throughout a text.",
+   "cpalms_id": "17833",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17833",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:43:47Z"
+  },
+  "ELA.8.R.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain how an author establishes and achieves purpose(s) through rhetorical appeals and/or figurative language.",
+   "cpalms_id": "15084",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15084",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:43:51Z"
+  },
+  "ELA.8.R.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain how an author's use of figurative language establishes and/or achieves purpose.",
+   "cpalms_id": "17844",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17844",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:43:54Z"
+  },
+  "ELA.8.R.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Track the development of an argument, analyzing the types of reasoning used and their effectiveness and identifying ways in which the argument could be improved.",
+   "cpalms_id": "15085",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15085",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:43:58Z"
+  },
+  "ELA.8.R.2.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify a way in which the argument could be improved.",
+   "cpalms_id": "17858",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17858",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:44:02Z"
+  },
+  "ELA.8.R.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how figurative language contributes to meaning and explain examples of symbolism in text(s).",
+   "cpalms_id": "15086",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15086",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:44:05Z"
+  },
+  "ELA.8.R.3.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Explain how figurative language contributes to tone and meaning of text(s).",
+   "cpalms_id": "17869",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17869",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:44:08Z"
+  },
+  "ELA.8.R.3.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Identify examples of symbolism in a text.",
+   "cpalms_id": "17870",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17870",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:44:11Z"
+  },
+  "ELA.8.R.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Paraphrase content from grade-level texts.",
+   "cpalms_id": "15087",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15087",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:44:14Z"
+  },
+  "ELA.8.R.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Retell content from grade-level texts, at the student's ability level using the student's mode of communication.",
+   "cpalms_id": "17880",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17880",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:44:17Z"
+  },
+  "ELA.8.R.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast the use or discussion of archetypes in texts.",
+   "cpalms_id": "15088",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15088",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:44:20Z"
+  },
+  "ELA.8.R.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast how the author uses archetypes in a text with developmentally appropriate content at the student's skill level.",
+   "cpalms_id": "17898",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17898",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:44:24Z"
+  },
+  "ELA.8.R.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain how an author uses rhetorical devices to support or advance an appeal.",
+   "cpalms_id": "15089",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15089",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:44:27Z"
+  },
+  "ELA.8.R.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe how an author's use of rhetorical devices (to include rhetorical questioning and irony) supports an appeal.",
+   "cpalms_id": "17908",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17908",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:44:30Z"
+  },
+  "ELA.8.C.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Write personal or fictional narratives using narrative techniques, varied transitions, and a clearly established point of view.",
+   "cpalms_id": "15090",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15090",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:44:33Z"
+  },
+  "ELA.8.C.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Write a personal narrative using a clearly established point of view, precise words and figurative language.",
+   "cpalms_id": "17918",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17918",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:44:36Z"
+  },
+  "ELA.8.C.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Write to argue a position, supporting at least one claim and rebutting at least one counterclaim with logical reasoning, credible evidence from sources, elaboration, and using a logical organizational structure.",
+   "cpalms_id": "15091",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15091",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:44:40Z"
+  },
+  "ELA.8.C.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Make and support a claim using logical reasoning, relevant evidence from a source(s), elaboration and a logical organizational structure with transitions, acknowledging and rebutting one counterclaim.",
+   "cpalms_id": "17928",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17928",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:44:44Z"
+  },
+  "ELA.8.C.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Write expository texts to explain and analyze information from multiple sources, using relevant supporting details, logical organization, and varied purposeful transitions.",
+   "cpalms_id": "15092",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15092",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:44:48Z"
+  },
+  "ELA.8.C.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Write an expository text to explain information from a source(s), using relevant supporting details, logical organization and purposeful transitions.",
+   "cpalms_id": "17938",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17938",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:44:51Z"
+  },
+  "ELA.8.C.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing by planning, editing, considering feedback from adults and peers, and revising for clarity and cohesiveness.",
+   "cpalms_id": "15093",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15093",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:44:54Z"
+  },
+  "ELA.8.C.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing by planning, editing, considering feedback from adults and peers, revising for clarity.",
+   "cpalms_id": "17948",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17948",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:44:57Z"
+  },
+  "ELA.8.C.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information orally, in a logical sequence, supporting the central idea with credible evidence.",
+   "cpalms_id": "15094",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15094",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:45:01Z"
+  },
+  "ELA.8.C.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information in a logical sequence, supporting the central idea with evidence, using the student's mode of communication with guidance and support .",
+   "cpalms_id": "17958",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17958",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:45:04Z"
+  },
+  "ELA.8.C.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization, and spelling appropriate to grade level.",
+   "cpalms_id": "15095",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15095",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:45:07Z"
+  },
+  "ELA.8.C.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization and spelling appropriate to grade-level with guidance and support.•Vary sentence structure.",
+   "cpalms_id": "17968",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17968",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:45:11Z"
+  },
+  "ELA.8.C.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research to answer a question, drawing on multiple reliable and valid sources and generating additional questions for further research.",
+   "cpalms_id": "15096",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15096",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:45:14Z"
+  },
+  "ELA.8.C.4.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research to answer a question, drawing on reliable and valid sources and generating additional questions, with guidance and support.",
+   "cpalms_id": "18555",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18555",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:45:17Z"
+  },
+  "ELA.8.C.5.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate diverse digital media to emphasize the relevance of a topic or idea in oral or written tasks.",
+   "cpalms_id": "15097",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15097",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:45:20Z"
+  },
+  "ELA.8.C.5.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Arrange a variety of digital media to emphasize the relevance of a topic or idea in oral or written tasks with guidance and support.",
+   "cpalms_id": "17981",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17981",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:45:23Z"
+  },
+  "ELA.8.C.5.2": {
+   "state": "confirmed",
+   "statement_verified": "Use a variety of digital tools to collaborate with others to produce writing.",
+   "cpalms_id": "15098",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15098",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:45:26Z"
+  },
+  "ELA.8.C.5.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Identify two or more digital tools to collaborate with others to produce writing.",
+   "cpalms_id": "17994",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17994",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:45:30Z"
+  },
+  "ELA.8.V.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate academic vocabulary appropriate to grade level in speaking and writing.",
+   "cpalms_id": "15099",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15099",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:45:34Z"
+  },
+  "ELA.8.V.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use grade-level academic vocabulary in communication, using the student's mode of communication.",
+   "cpalms_id": "18006",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18006",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:45:38Z"
+  },
+  "ELA.8.V.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of Greek and Latin roots and affixes to determine meanings of words and phrases in grade-level content.",
+   "cpalms_id": "15100",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15100",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:45:41Z"
+  },
+  "ELA.8.V.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of Greek and Latin roots and affixes to determine meanings of words and phrases in grade-level content at the student's ability level with guidance and support.",
+   "cpalms_id": "18018",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18018",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:45:45Z"
+  },
+  "ELA.8.V.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of context clues, figurative language, word relationships, reference materials, and/or background knowledge to determine the connotative and denotative meaning of words and phrases, appropriate to grade level.",
+   "cpalms_id": "15101",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15101",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:45:48Z"
+  },
+  "ELA.8.V.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of context clues, figurative language, word relationships, reference materials and/or background knowledge to determine the connotative and denotative meaning of words and phrases, appropriate to grade-level",
+   "cpalms_id": "17993",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17993",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:45:53Z"
+  },
+  "ELA.9.R.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how key elements enhance or add layers of meaning and/or style in a literary text.",
+   "cpalms_id": "15102",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15102",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:45:56Z"
+  },
+  "ELA.9.R.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify how key elements increase understanding of literary text and/or style.",
+   "cpalms_id": "17776",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17776",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:45:59Z"
+  },
+  "ELA.9.R.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze universal themes and their development throughout a literary text.",
+   "cpalms_id": "15103",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15103",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:46:02Z"
+  },
+  "ELA.9.R.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain how universal themes and their development are used throughout a literary text.",
+   "cpalms_id": "17787",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17787",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:46:05Z"
+  },
+  "ELA.9.R.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the influence of narrator perspective on a text, explaining how the author creates irony or satire.",
+   "cpalms_id": "15104",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15104",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:46:08Z"
+  },
+  "ELA.9.R.1.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Describe the narrator perspective in a text.",
+   "cpalms_id": "17799",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17799",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:46:12Z"
+  },
+  "ELA.9.R.1.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Describe how the author creates irony or satire in a text.",
+   "cpalms_id": "17800",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17800",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:46:16Z"
+  },
+  "ELA.9.R.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the characters, structures, and themes of epic poetry.",
+   "cpalms_id": "15105",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15105",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:46:20Z"
+  },
+  "ELA.9.R.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain characters, structures and themes of epic poetry.",
+   "cpalms_id": "17811",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17811",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:46:24Z"
+  },
+  "ELA.9.R.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how multiple text structures and/or features convey a purpose and/or meaning in texts.",
+   "cpalms_id": "15106",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15106",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:46:27Z"
+  },
+  "ELA.9.R.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain the purpose and/or meaning across multiple text structures.",
+   "cpalms_id": "17821",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17821",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:46:30Z"
+  },
+  "ELA.9.R.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the support an author uses to develop the central idea(s) throughout a text.",
+   "cpalms_id": "15107",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15107",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:46:33Z"
+  },
+  "ELA.9.R.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain the support an author uses to develop the central idea(s) throughout a text.",
+   "cpalms_id": "17832",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17832",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:46:36Z"
+  },
+  "ELA.9.R.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how an author establishes and achieves purpose(s) through rhetorical appeals and/or figurative language.",
+   "cpalms_id": "15108",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15108",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:46:39Z"
+  },
+  "ELA.9.R.2.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Identify rhetorical appeals and/or figurative language.",
+   "cpalms_id": "17842",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17842",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:46:42Z"
+  },
+  "ELA.9.R.2.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Identify how an author establishes and achieves purpose(s) through rhetorical appeals and/or figurative language.",
+   "cpalms_id": "17843",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17843",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:46:46Z"
+  },
+  "ELA.9.R.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Compare the development of two opposing arguments on the same topic, evaluating the effectiveness and validity of the claims.",
+   "cpalms_id": "15109",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15109",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:46:50Z"
+  },
+  "ELA.9.R.2.AP.4a": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the development of two opposing arguments on the same topic are related.",
+   "cpalms_id": "17856",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17856",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:46:54Z"
+  },
+  "ELA.9.R.2.AP.4b": {
+   "state": "confirmed",
+   "statement_verified": "Explain the effectiveness and validity of the claims within two opposing arguments on the same topic.",
+   "cpalms_id": "17857",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17857",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:46:58Z"
+  },
+  "ELA.9.R.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how figurative language creates mood in text(s).",
+   "cpalms_id": "15110",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15110",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:47:01Z"
+  },
+  "ELA.9.R.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Identify examples of figurative language that create mood in text(s).",
+   "cpalms_id": "17868",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17868",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:47:05Z"
+  },
+  "ELA.9.R.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Paraphrase content from grade-level texts.",
+   "cpalms_id": "15111",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15111",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:47:07Z"
+  },
+  "ELA.9.R.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Summarize information from grade-level texts, at the student's ability level using the student's mode of communication.",
+   "cpalms_id": "17879",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17879",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:47:10Z"
+  },
+  "ELA.9.R.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast the ways in which authors have adapted mythical, classical, or religious literary texts.",
+   "cpalms_id": "15112",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15112",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:47:13Z"
+  },
+  "ELA.9.R.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Identify the ways in which authors have adapted mythical, classical or religious texts.",
+   "cpalms_id": "17897",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17897",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:47:16Z"
+  },
+  "ELA.9.R.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain an author’s use of rhetoric in a text.",
+   "cpalms_id": "15113",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15113",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:47:18Z"
+  },
+  "ELA.9.R.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Identify an author's use of rhetoric in a text.",
+   "cpalms_id": "17907",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17907",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:47:21Z"
+  },
+  "ELA.9.C.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Write narratives using narrative techniques, varied transitions, and a clearly established point of view.",
+   "cpalms_id": "15114",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15114",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:47:24Z"
+  },
+  "ELA.9.C.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Write a narrative using narrative techniques, varied transitions and a clearly established point of view.",
+   "cpalms_id": "17917",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17917",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:47:28Z"
+  },
+  "ELA.9.C.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Write to argue a position, supporting claims using logical reasoning and credible evidence from multiple sources, rebutting counterclaims with relevant evidence, using a logical organizational structure, elaboration, purposeful transitions, and a tone appropriate to the task.",
+   "cpalms_id": "15115",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15115",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:47:31Z"
+  },
+  "ELA.9.C.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Argue a position, supporting claims using logical reasoning and credible evidence from multiple sources, rebutting counterclaims with relevant evidence, using a logical organizational structure, elaboration, purposeful transitions and a tone appropriate to the task.",
+   "cpalms_id": "17927",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17927",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:47:35Z"
+  },
+  "ELA.9.C.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Write expository texts to explain and analyze information from multiple sources, using a logical organization, varied purposeful transitions, and a tone appropriate to the task.",
+   "cpalms_id": "15116",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15116",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:47:38Z"
+  },
+  "ELA.9.C.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Write an expository text to explain and analyze information from multiple sources, using a logical organization, varied purposeful transitions and a tone appropriate to the task.",
+   "cpalms_id": "17937",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17937",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:47:41Z"
+  },
+  "ELA.9.C.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing by considering feedback from adults, peers, and/or online editing tools, revising for clarity and cohesiveness.",
+   "cpalms_id": "15117",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15117",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:47:45Z"
+  },
+  "ELA.9.C.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing when given feedback from an adult, a peer and/or an online editing tool, revising for clarity and cohesiveness.",
+   "cpalms_id": "17947",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17947",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:47:49Z"
+  },
+  "ELA.9.C.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information orally, with a logical organization and coherent focus, with credible evidence, creating a clear perspective.",
+   "cpalms_id": "15118",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15118",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:47:52Z"
+  },
+  "ELA.9.C.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information, with a logical organization and coherent focus, with credible evidence, creating a clear perspective, using the student's mode of communication with guidance and support.",
+   "cpalms_id": "17957",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17957",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:47:56Z"
+  },
+  "ELA.9.C.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization, and spelling appropriate to grade level.",
+   "cpalms_id": "15119",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15119",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:47:59Z"
+  },
+  "ELA.9.C.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "1 Follow the rules of standard English grammar, punctuation, capitalization and spelling appropriate to grade-level content.•Identify parallel structures and various types of phrases and clauses in a variety of writings or presentations.•Practice usage of rules to create flow in writing and/or presenting",
+   "cpalms_id": "17967",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17967",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:48:03Z"
+  },
+  "ELA.9.C.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research to answer a question, drawing on multiple reliable and valid sources and refining the scope of the question to align with findings.",
+   "cpalms_id": "15120",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15120",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:48:06Z"
+  },
+  "ELA.9.C.4.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research to answer a question, drawing on a reliable and valid source.",
+   "cpalms_id": "18553",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18553",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:48:10Z"
+  },
+  "ELA.9.C.4.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Clarify the scope of a question to align with research findings.",
+   "cpalms_id": "18554",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18554",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:48:14Z"
+  },
+  "ELA.9.C.5.1": {
+   "state": "confirmed",
+   "statement_verified": "Create digital presentations with coherent ideas and a clear perspective.",
+   "cpalms_id": "15121",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15121",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:48:17Z"
+  },
+  "ELA.9.C.5.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate a detail into a digital presentation with a coherent idea and a clear perspective.",
+   "cpalms_id": "17980",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17980",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:48:21Z"
+  },
+  "ELA.9.C.5.2": {
+   "state": "confirmed",
+   "statement_verified": "Use online collaborative platforms to create and export publication-ready quality writing tailored to a specific audience.",
+   "cpalms_id": "15122",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15122",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:48:24Z"
+  },
+  "ELA.9.C.5.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use an online platform to create and share publication-ready quality writing tailored to a specific audience.",
+   "cpalms_id": "17992",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17992",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:48:28Z"
+  },
+  "ELA.9.V.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate academic vocabulary appropriate to grade level in speaking and writing.",
+   "cpalms_id": "15123",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15123",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:48:31Z"
+  },
+  "ELA.9.V.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use grade-level content vocabulary in communication, using the student's mode of communication.",
+   "cpalms_id": "18005",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18005",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:48:34Z"
+  },
+  "ELA.9.V.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of etymology and derivations to determine meanings of words and phrases in grade-level content.",
+   "cpalms_id": "15124",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15124",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:48:37Z"
+  },
+  "ELA.9.V.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Using etymology and derivations, identify the meaning of a word from a phrase in grade-level content at the student's ability level.",
+   "cpalms_id": "18017",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18017",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:48:41Z"
+  },
+  "ELA.9.V.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of context clues, figurative language, word relationships, reference materials, and/or background knowledge to determine the connotative and denotative meaning of words and phrases, appropriate to grade level.",
+   "cpalms_id": "15125",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15125",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:48:44Z"
+  },
+  "ELA.9.V.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Use context clues, figurative language, word relationships, reference materials and/or background knowledge to determine the connotative and denotative meaning of a word and/or phrase, appropriate to grade-level content at the student's ability level.",
+   "cpalms_id": "17996",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17996",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:48:48Z"
+  },
+  "ELA.10.R.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how key elements enhance or add layers of meaning and/or style in a literary text.",
+   "cpalms_id": "15126",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15126",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:48:51Z"
+  },
+  "ELA.10.R.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how key elements increase understanding of literary text and/or style",
+   "cpalms_id": "17892",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17892",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:48:55Z"
+  },
+  "ELA.10.R.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze and compare universal themes and their development throughout a literary text.",
+   "cpalms_id": "15127",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15127",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:48:59Z"
+  },
+  "ELA.10.R.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare how universal themes and their development are used throughout a literary text.",
+   "cpalms_id": "17786",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17786",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:03Z"
+  },
+  "ELA.10.R.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze coming of age experiences reflected in a text and how the author represents conflicting perspectives.",
+   "cpalms_id": "15128",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15128",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:49:06Z"
+  },
+  "ELA.10.R.1.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Identify how the author represents conflicting perspectives.",
+   "cpalms_id": "17797",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17797",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:09Z"
+  },
+  "ELA.10.R.1.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Explain the coming-of-age experiences reflected in a text.",
+   "cpalms_id": "17798",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17798",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:11Z"
+  },
+  "ELA.10.R.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how authors create multiple layers of meaning and/or ambiguity in a poem.",
+   "cpalms_id": "15231",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15231",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:49:14Z"
+  },
+  "ELA.10.R.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain how authors create multiple layers of meaning and/or ambiguity in a poem.",
+   "cpalms_id": "17810",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17810",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:17Z"
+  },
+  "ELA.10.R.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the impact of multiple text structures and the use of features in text(s).",
+   "cpalms_id": "15129",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15129",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:49:20Z"
+  },
+  "ELA.10.R.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Describe the impact of multiple text structures.",
+   "cpalms_id": "17820",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17820",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:23Z"
+  },
+  "ELA.10.R.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the central idea(s) of historical American speeches and essays.",
+   "cpalms_id": "15130",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15130",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:49:26Z"
+  },
+  "ELA.10.R.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain the central idea(s) of historical American speeches and essays.",
+   "cpalms_id": "17831",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17831",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:29Z"
+  },
+  "ELA.10.R.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze an author’s choices in establishing and achieving purpose(s) in historical American speeches and essays.",
+   "cpalms_id": "15131",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15131",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:49:32Z"
+  },
+  "ELA.10.R.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain the author's choices in establishing and achieving purpose(s) in historical American speeches and essays.",
+   "cpalms_id": "17841",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17841",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:35Z"
+  },
+  "ELA.10.R.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Compare the development of two opposing arguments on the same topic, evaluating the effectiveness and validity of the claims and analyzing the ways in which the authors use the same information to achieve different ends.",
+   "cpalms_id": "15132",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15132",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:49:38Z"
+  },
+  "ELA.10.R.2.AP.4a": {
+   "state": "confirmed",
+   "statement_verified": "Compare the development of two opposing arguments on the same topic evaluating the effectiveness and validity of the claims.",
+   "cpalms_id": "17854",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17854",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:41Z"
+  },
+  "ELA.10.R.2.AP.4b": {
+   "state": "confirmed",
+   "statement_verified": "Compare how the authors use the same information to achieve different arguments.",
+   "cpalms_id": "17855",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17855",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:44Z"
+  },
+  "ELA.10.R.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how figurative language creates mood in text(s).",
+   "cpalms_id": "15133",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15133",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:49:47Z"
+  },
+  "ELA.10.R.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how figurative language creates mood in text(s).",
+   "cpalms_id": "17867",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17867",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:51Z"
+  },
+  "ELA.10.R.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Paraphrase content from grade-level texts.",
+   "cpalms_id": "15134",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15134",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:49:53Z"
+  },
+  "ELA.10.R.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Summarize information from grade-level texts, at the student's ability level using the student's mode of communication.",
+   "cpalms_id": "17878",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17878",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:49:57Z"
+  },
+  "ELA.10.R.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how mythical, classical, or religious texts have been adapted.",
+   "cpalms_id": "15135",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15135",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:50:00Z"
+  },
+  "ELA.10.R.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Describe how mythical, classical or religious texts have been adapted.",
+   "cpalms_id": "17896",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17896",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:50:03Z"
+  },
+  "ELA.10.R.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze an author’s use of rhetoric in a text.",
+   "cpalms_id": "15136",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15136",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:50:06Z"
+  },
+  "ELA.10.R.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Summarize an author's use of rhetoric in a text.",
+   "cpalms_id": "17906",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17906",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:50:10Z"
+  },
+  "ELA.10.C.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Write narratives using an appropriate pace to create tension, mood, and/or tone.",
+   "cpalms_id": "15137",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15137",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:50:13Z"
+  },
+  "ELA.10.C.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Write a narrative using an appropriate pace to create tension, mood and/or tone.",
+   "cpalms_id": "17916",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17916",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:50:16Z"
+  },
+  "ELA.10.C.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Write to argue a position, supporting claims using logical reasoning and credible evidence from multiple sources, rebutting counterclaims with relevant evidence, using a logical organizational structure, elaboration, purposeful transitions, and maintaining a formal and objective tone.",
+   "cpalms_id": "15138",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15138",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:50:18Z"
+  },
+  "ELA.10.C.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Argue a position, supporting claims using logical reasoning and credible evidence from multiple sources, rebutting counterclaims with relevant evidence, using a logical organizational structure, elaboration, purposeful transitions, and maintaining a formal and objective tone.",
+   "cpalms_id": "17926",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17926",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:50:21Z"
+  },
+  "ELA.10.C.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Write expository texts to explain and analyze information from multiple sources, using a logical organization, purposeful transitions, and a tone and voice appropriate to the task.",
+   "cpalms_id": "15139",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15139",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:50:25Z"
+  },
+  "ELA.10.C.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain and analyze information from multiple sources, using a logical organization, purposeful transitions, and a tone and voice appropriate to the task.",
+   "cpalms_id": "17936",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17936",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:50:28Z"
+  },
+  "ELA.10.C.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing by considering feedback from adults, peers, and/or online editing tools, revising to address the needs of a specific audience.",
+   "cpalms_id": "15140",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15140",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:50:31Z"
+  },
+  "ELA.10.C.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing when given feedback from an adult, a peer and/or an online editing tool, revising to address the needs of a specific audience.",
+   "cpalms_id": "17946",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17946",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:50:35Z"
+  },
+  "ELA.10.C.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information orally, with a logical organization and coherent focus, with credible evidence, creating a clear perspective.",
+   "cpalms_id": "15141",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15141",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:50:39Z"
+  },
+  "ELA.10.C.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information, with a logical organization and coherent focus, with credible evidence, creating a clear perspective, using the student's mode of communication with guidance and support.",
+   "cpalms_id": "17956",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17956",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:50:42Z"
+  },
+  "ELA.10.C.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization, and spelling appropriate to grade level.",
+   "cpalms_id": "15142",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15142",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:50:46Z"
+  },
+  "ELA.10.C.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization and spelling appropriate to grade-level content.•Practice usage of rules to create flow in writing and/or presenting.",
+   "cpalms_id": "17966",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17966",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:50:50Z"
+  },
+  "ELA.10.C.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research to answer a question, refining the scope of the question to align with findings and synthesizing information from multiple reliable and valid sources.",
+   "cpalms_id": "15143",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15143",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:50:53Z"
+  },
+  "ELA.10.C.4.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research to answer a question, drawing on multiple reliable and valid sources.",
+   "cpalms_id": "18540",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18540",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:50:57Z"
+  },
+  "ELA.10.C.4.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Summarize information from multiple reliable and valid sources.",
+   "cpalms_id": "18541",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18541",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:51:00Z"
+  },
+  "ELA.10.C.5.1": {
+   "state": "confirmed",
+   "statement_verified": "Create digital presentations to improve understanding of findings, reasoning, and evidence.",
+   "cpalms_id": "15144",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15144",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:51:03Z"
+  },
+  "ELA.10.C.5.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate a detail into digital presentation to improve understanding of findings, reasoning and evidence.",
+   "cpalms_id": "17978",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17978",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:51:06Z"
+  },
+  "ELA.10.C.5.2": {
+   "state": "confirmed",
+   "statement_verified": "Use online collaborative platforms to create and export publication-ready quality writing tailored to a specific audience, integrating multimedia elements.",
+   "cpalms_id": "15145",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15145",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:51:09Z"
+  },
+  "ELA.10.C.5.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Use an online platform to create and share publication-ready quality writing tailored to a specific audience, integrating multimedia elements.",
+   "cpalms_id": "17991",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17991",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:51:13Z"
+  },
+  "ELA.10.V.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate academic vocabulary appropriate to grade level in speaking and writing.",
+   "cpalms_id": "15146",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15146",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:51:16Z"
+  },
+  "ELA.10.V.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use grade-level content vocabulary in communication, using the student's mode of communication.",
+   "cpalms_id": "18004",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18004",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:51:22Z"
+  },
+  "ELA.10.V.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of etymology and derivations to determine meanings of words and phrases in grade-level content.",
+   "cpalms_id": "15147",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15147",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:51:25Z"
+  },
+  "ELA.10.V.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Using etymology and derivations, identify the meaning of a word from a phrase in grade-level content at the student's ability level.",
+   "cpalms_id": "18015",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18015",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:51:28Z"
+  },
+  "ELA.10.V.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of context clues, figurative language, word relationships, reference materials, and/or background knowledge to determine the connotative and denotative meaning of words and phrases, appropriate to grade level.",
+   "cpalms_id": "15148",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15148",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:51:30Z"
+  },
+  "ELA.10.V.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Use context clues, figurative language, word relationships, reference materials and/or background knowledge to identify the connotative and denotative meaning of a word and/or phrase, appropriate to grade-level content at the student's ability level.",
+   "cpalms_id": "18003",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18003",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:51:34Z"
+  },
+  "ELA.11.R.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate how key elements enhance or add layers of meaning and/or style in a literary text.",
+   "cpalms_id": "15149",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15149",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:51:37Z"
+  },
+  "ELA.11.R.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how key elements increase understanding of literary text and/or style.",
+   "cpalms_id": "17775",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17775",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:51:41Z"
+  },
+  "ELA.11.R.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Track and analyze universal themes in literary texts from different times and places.",
+   "cpalms_id": "15150",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15150",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:51:44Z"
+  },
+  "ELA.11.R.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Compare how universal themes and their development are used throughout multiple literary texts from different times and places.",
+   "cpalms_id": "17785",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17785",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:51:48Z"
+  },
+  "ELA.11.R.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the author’s choices in using juxtaposition to define character perspective.",
+   "cpalms_id": "15151",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15151",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:51:52Z"
+  },
+  "ELA.11.R.1.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Define a character perspective in a text.",
+   "cpalms_id": "17795",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17795",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:51:55Z"
+  },
+  "ELA.11.R.1.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Explain the author's choices in using juxtaposition in a text.",
+   "cpalms_id": "17796",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17796",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:51:58Z"
+  },
+  "ELA.11.R.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze ways in which poetry reflects themes and issues of its time period.",
+   "cpalms_id": "15152",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15152",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:52:02Z"
+  },
+  "ELA.11.R.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Explain the connection between works of major poets and their historical context.",
+   "cpalms_id": "17809",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17809",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:52:06Z"
+  },
+  "ELA.11.R.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the structure(s) and features in texts.",
+   "cpalms_id": "15153",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15153",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:52:09Z"
+  },
+  "ELA.11.R.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain the use of structure(s) and features in texts.",
+   "cpalms_id": "17819",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17819",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:52:12Z"
+  },
+  "ELA.11.R.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the central idea(s) of speeches and essays from the Classical Period.",
+   "cpalms_id": "15154",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15154",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:52:15Z"
+  },
+  "ELA.11.R.2.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Explain the central idea(s) of speeches and essays from the Classical Period.",
+   "cpalms_id": "17830",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17830",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:52:18Z"
+  },
+  "ELA.11.R.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze an author’s choices in establishing and achieving purpose(s) in speeches and essays from the Classical Period.",
+   "cpalms_id": "15155",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15155",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:52:22Z"
+  },
+  "ELA.11.R.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Explain the author's choices in establishing and achieving purpose(s) in speeches and essays from the Classical Period.",
+   "cpalms_id": "17840",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17840",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:52:25Z"
+  },
+  "ELA.11.R.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Compare the development of multiple arguments on the same topic, evaluating the effectiveness and validity of the claims, the authors’ reasoning, and the ways in which the authors use the same information to achieve different ends.",
+   "cpalms_id": "15156",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15156",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:52:30Z"
+  },
+  "ELA.11.R.2.AP.4a": {
+   "state": "confirmed",
+   "statement_verified": "Compare the development of multiple arguments on the same topic, evaluating the effectiveness and validity of the claims, and the author's reasoning.",
+   "cpalms_id": "17852",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17852",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:52:33Z"
+  },
+  "ELA.11.R.2.AP.4b": {
+   "state": "confirmed",
+   "statement_verified": "Compare the authors' reasoning and the ways in which the authors use the same information to achieve different arguments.",
+   "cpalms_id": "17853",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17853",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:52:37Z"
+  },
+  "ELA.11.R.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the author’s use of figurative language and explain examples of allegory.",
+   "cpalms_id": "15157",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15157",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:52:41Z"
+  },
+  "ELA.11.R.3.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Identify the author's use of allegory.",
+   "cpalms_id": "17865",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17865",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:52:44Z"
+  },
+  "ELA.11.R.3.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Summarize the author's use of figurative language.",
+   "cpalms_id": "17866",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17866",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:52:47Z"
+  },
+  "ELA.11.R.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Paraphrase content from grade-level texts.",
+   "cpalms_id": "15158",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15158",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:52:49Z"
+  },
+  "ELA.11.R.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Summarize information from grade-level texts, at the student's ability level using the student's mode of communication.",
+   "cpalms_id": "17877",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17877",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:52:53Z"
+  },
+  "ELA.11.R.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast how contemporaneous authors address related topics, comparing the authors’ use of reasoning and analyzing the texts within the context of the time period.",
+   "cpalms_id": "15159",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15159",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:52:55Z"
+  },
+  "ELA.11.R.3.AP.3a": {
+   "state": "confirmed",
+   "statement_verified": "Identify how contemporaneous authors address related topics within the context of the time period.",
+   "cpalms_id": "17894",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17894",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:52:58Z"
+  },
+  "ELA.11.R.3.AP.3b": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the author's reasoning within the context of the time period.",
+   "cpalms_id": "17895",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17895",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:53:02Z"
+  },
+  "ELA.11.R.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate an author’s use of rhetoric in text.",
+   "cpalms_id": "15160",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15160",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:53:05Z"
+  },
+  "ELA.11.R.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Describe an author's use of rhetoric in a text.",
+   "cpalms_id": "17905",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17905",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:53:08Z"
+  },
+  "ELA.11.C.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Write complex narratives using appropriate techniques to establish multiple perspectives.",
+   "cpalms_id": "15161",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15161",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:53:10Z"
+  },
+  "ELA.11.C.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Write a complex narrative using appropriate techniques to establish multiple perspectives.",
+   "cpalms_id": "17915",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17915",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:53:13Z"
+  },
+  "ELA.11.C.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Write literary analyses to support claims, using logical reasoning, credible evidence from sources, and elaboration, demonstrating an understanding of literary elements.",
+   "cpalms_id": "15162",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15162",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:53:16Z"
+  },
+  "ELA.11.C.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze literature to support claims, using logical reasoning, credible evidence from sources, elaboration and demonstrating an understanding of literary elements.",
+   "cpalms_id": "17925",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17925",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:53:19Z"
+  },
+  "ELA.11.C.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Write an analysis of complex texts using logical organization and a tone and voice appropriate to the task and audience, demonstrating an understanding of the subject.",
+   "cpalms_id": "15163",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15163",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:53:22Z"
+  },
+  "ELA.11.C.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze a complex text using logical organization and a tone and voice appropriate to the task and audience, demonstrating an understanding of the subject.",
+   "cpalms_id": "17935",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17935",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:53:25Z"
+  },
+  "ELA.11.C.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing by considering feedback from adults, peers, and/or online editing tools, revising to improve clarity, structure, and style.",
+   "cpalms_id": "15164",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15164",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:53:29Z"
+  },
+  "ELA.11.C.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing when given feedback from an adult, a peer and/or an online editing tool, revising to improve clarity, structure and style.",
+   "cpalms_id": "17945",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17945",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:53:33Z"
+  },
+  "ELA.11.C.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information orally, with a logical organization, coherent focus, and credible evidence, while employing effective rhetorical devices where appropriate.",
+   "cpalms_id": "15165",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15165",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:53:35Z"
+  },
+  "ELA.11.C.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information, with a logical organization, coherent focus and credible evidence, while employing effective rhetorical devices where appropriate, using the student's mode of communication with guidance and support.",
+   "cpalms_id": "17955",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17955",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:53:38Z"
+  },
+  "ELA.11.C.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization, and spelling appropriate to grade level.",
+   "cpalms_id": "15166",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15166",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:53:42Z"
+  },
+  "ELA.11.C.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization and spelling appropriate to grade-level content.•Practice usage of rules to create flow in writing and/or presenting.",
+   "cpalms_id": "17965",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17965",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:53:45Z"
+  },
+  "ELA.11.C.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Conduct literary research to answer a question, refining the scope of the question to align with interpretations of texts and synthesizing information from primary and secondary sources.",
+   "cpalms_id": "15167",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15167",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:53:48Z"
+  },
+  "ELA.11.C.4.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Organize literary research to answer a question, refining the scope of the question to align with interpretations of texts.",
+   "cpalms_id": "18538",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18538",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:53:52Z"
+  },
+  "ELA.11.C.4.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Summarize information from primary and secondary sources.",
+   "cpalms_id": "18539",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18539",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:53:55Z"
+  },
+  "ELA.11.C.5.1": {
+   "state": "confirmed",
+   "statement_verified": "Create digital presentations to improve the experience of the audience.",
+   "cpalms_id": "15168",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15168",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:53:58Z"
+  },
+  "ELA.11.C.5.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate details into a digital presentation to improve the experience of the audience.",
+   "cpalms_id": "17977",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17977",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:01Z"
+  },
+  "ELA.11.C.5.2": {
+   "state": "confirmed",
+   "statement_verified": "Create and export quality writing tailored to a specific audience, integrating multimedia elements, publishing to an online or LAN site.",
+   "cpalms_id": "15169",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15169",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:54:03Z"
+  },
+  "ELA.11.C.5.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "2 Create and share quality writing tailored to a specific audience, integrating multimedia elements, publishing to an online or LAN site.",
+   "cpalms_id": "17990",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17990",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:06Z"
+  },
+  "ELA.11.V.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate academic vocabulary appropriate to grade level in speaking and writing.",
+   "cpalms_id": "15170",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15170",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:54:09Z"
+  },
+  "ELA.11.V.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use grade-level content vocabulary in communication, using the student's mode of communication.",
+   "cpalms_id": "18002",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18002",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:13Z"
+  },
+  "ELA.11.V.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of etymology and derivations to determine meanings of words and phrases in grade-level content.",
+   "cpalms_id": "15171",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15171",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:54:16Z"
+  },
+  "ELA.11.V.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Using etymology and derivations, identify the meaning of a word from a phrase in grade-level content at the student's ability level.",
+   "cpalms_id": "18014",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18014",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:19Z"
+  },
+  "ELA.11.V.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of context clues, figurative language, word relationships, reference materials, and/or background knowledge to determine the connotative and denotative meaning of words and phrases, appropriate to grade level.",
+   "cpalms_id": "15172",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15172",
+   "date_revised": "11/25",
+   "checked_at": "2026-08-13T12:54:23Z"
+  },
+  "ELA.11.V.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Use context clues, figurative language, word relationships, reference materials and/or background knowledge to identify the connotative and denotative meaning of a word and/or phrase, appropriate to grade-level content at the student's ability level.",
+   "cpalms_id": "18007",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18007",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:26Z"
+  },
+  "ELA.12.R.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate how key elements enhance or add layers of meaning and/or style in a literary text and explain the functional significance of those elements in interpreting the text.",
+   "cpalms_id": "15173",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15173",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:54:30Z"
+  },
+  "ELA.12.R.1.AP.1a": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how key elements increase understanding of literary text and/or style.",
+   "cpalms_id": "17773",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17773",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:34Z"
+  },
+  "ELA.12.R.1.AP.1b": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast how the key elements impact the functional significance in interpreting the literary text.",
+   "cpalms_id": "17774",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17774",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:37Z"
+  },
+  "ELA.12.R.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Analyze two or more themes and evaluate their development throughout a literary text.",
+   "cpalms_id": "15174",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15174",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:54:41Z"
+  },
+  "ELA.12.R.1.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Distinguish two or more themes throughout a literary text.",
+   "cpalms_id": "17783",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17783",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:44Z"
+  },
+  "ELA.12.R.1.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Show the development of two or more themes throughout a literary text.",
+   "cpalms_id": "17784",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17784",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:47Z"
+  },
+  "ELA.12.R.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the development of character perspective, including conflicting perspectives.",
+   "cpalms_id": "15175",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15175",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:54:50Z"
+  },
+  "ELA.12.R.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Show the development of character perspective, including conflicting perspectives.",
+   "cpalms_id": "17794",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17794",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:53Z"
+  },
+  "ELA.12.R.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate works of major poets in their historical context.",
+   "cpalms_id": "15176",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15176",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:54:56Z"
+  },
+  "ELA.12.R.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the connection between works of major poets and their historical context.",
+   "cpalms_id": "17808",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17808",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:54:59Z"
+  },
+  "ELA.12.R.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate the structure(s) and features in texts, identifying how the author could make the text(s) more effective.",
+   "cpalms_id": "15177",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15177",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:55:02Z"
+  },
+  "ELA.12.R.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the structure(s) and features make the text(s) more effective.",
+   "cpalms_id": "17818",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17818",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:55:05Z"
+  },
+  "ELA.12.R.2.2": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate how an author develops the central idea(s), identifying how the author could make the support more effective.",
+   "cpalms_id": "15178",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15178",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:55:09Z"
+  },
+  "ELA.12.R.2.AP.2a": {
+   "state": "confirmed",
+   "statement_verified": "Analyze how an author develops the central idea(s).",
+   "cpalms_id": "17828",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17828",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:55:12Z"
+  },
+  "ELA.12.R.2.AP.2b": {
+   "state": "confirmed",
+   "statement_verified": "Explain how the author makes the support more effective.",
+   "cpalms_id": "17829",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17829",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:55:15Z"
+  },
+  "ELA.12.R.2.3": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate an author’s choices in establishing and achieving purpose(s).",
+   "cpalms_id": "15179",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15179",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:55:19Z"
+  },
+  "ELA.12.R.2.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze an author's choices in establishing and achieving purpose(s).",
+   "cpalms_id": "17839",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17839",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:55:22Z"
+  },
+  "ELA.12.R.2.4": {
+   "state": "confirmed",
+   "statement_verified": "Compare the development of multiple arguments in related texts, evaluating the validity of the claims, the authors’ reasoning, use of the same information, and/or the authors’ rhetoric.",
+   "cpalms_id": "15180",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15180",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:55:24Z"
+  },
+  "ELA.12.R.2.AP.4a": {
+   "state": "confirmed",
+   "statement_verified": "Compare the development of multiple arguments in related texts, evaluating the validity of the claims.",
+   "cpalms_id": "17850",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17850",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:55:27Z"
+  },
+  "ELA.12.R.2.AP.4b": {
+   "state": "confirmed",
+   "statement_verified": "Compare the authors' reasoning, use of the same information, and/or the authors' rhetoric of multiple arguments in related texts.",
+   "cpalms_id": "17851",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17851",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:55:31Z"
+  },
+  "ELA.12.R.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate an author’s use of figurative language.",
+   "cpalms_id": "15181",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15181",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:55:35Z"
+  },
+  "ELA.12.R.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Analyze an author's use of figurative language.",
+   "cpalms_id": "17864",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17864",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:55:38Z"
+  },
+  "ELA.12.R.3.2": {
+   "state": "confirmed",
+   "statement_verified": "Paraphrase content from grade-level texts.",
+   "cpalms_id": "15182",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15182",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:55:41Z"
+  },
+  "ELA.12.R.3.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Summarize information from grade-level texts, at the student's ability level using the student's mode of communication.",
+   "cpalms_id": "17876",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17876",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:55:45Z"
+  },
+  "ELA.12.R.3.3": {
+   "state": "confirmed",
+   "statement_verified": "Analyze the influence of classic literature on contemporary world texts.",
+   "cpalms_id": "15183",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15183",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:55:49Z"
+  },
+  "ELA.12.R.3.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Compare and contrast the influence of classical literature on contemporary world texts.",
+   "cpalms_id": "17893",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17893",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:55:51Z"
+  },
+  "ELA.12.R.3.4": {
+   "state": "confirmed",
+   "statement_verified": "Evaluate rhetorical choices across multiple texts.",
+   "cpalms_id": "15184",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15184",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:55:54Z"
+  },
+  "ELA.12.R.3.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Analyze rhetorical choices across multiple texts.",
+   "cpalms_id": "17904",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17904",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:55:58Z"
+  },
+  "ELA.12.C.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Write complex narratives using appropriate techniques to establish multiple perspectives and convey universal themes.",
+   "cpalms_id": "15185",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15185",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:56:01Z"
+  },
+  "ELA.12.C.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Write a complex narrative using appropriate techniques to establish multiple perspectives and convey universal themes.",
+   "cpalms_id": "17914",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17914",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:56:03Z"
+  },
+  "ELA.12.C.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Write arguments to support claims based on an in-depth analysis of topics or texts using valid reasoning and credible evidence from sources, elaboration, and demonstrating a thorough understanding of the subject.",
+   "cpalms_id": "15186",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15186",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:56:06Z"
+  },
+  "ELA.12.C.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Argue to support claims based on an in-depth analysis of topics or texts using valid reasoning and credible evidence from sources, elaboration, and demonstrating a thorough understanding of the subject.",
+   "cpalms_id": "17924",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17924",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:56:09Z"
+  },
+  "ELA.12.C.1.4": {
+   "state": "confirmed",
+   "statement_verified": "Write an in-depth analysis of complex texts using logical organization and appropriate tone and voice, demonstrating a thorough understanding of the subject.",
+   "cpalms_id": "15187",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15187",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:56:12Z"
+  },
+  "ELA.12.C.1.AP.4": {
+   "state": "confirmed",
+   "statement_verified": "Write an in-depth analysis of a complex text using logical organization and appropriate tone and voice, demonstrating a thorough understanding of the subject.",
+   "cpalms_id": "17934",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17934",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:56:15Z"
+  },
+  "ELA.12.C.1.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing by considering feedback from adults, peers, and/or online editing tools, revising to enhance purpose, clarity, structure, and style.",
+   "cpalms_id": "15188",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15188",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:56:18Z"
+  },
+  "ELA.12.C.1.AP.5": {
+   "state": "confirmed",
+   "statement_verified": "Improve writing when given feedback from an adult, a peer and/or an online editing tool, revising to enhance purpose, clarity, structure and style.",
+   "cpalms_id": "17944",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17944",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:56:22Z"
+  },
+  "ELA.12.C.2.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information orally, with a logical organization, coherent focus, and credible evidence while employing effective rhetorical devices where appropriate.",
+   "cpalms_id": "15189",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15189",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:56:26Z"
+  },
+  "ELA.12.C.2.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Present information, with a logical organization, coherent focus and credible evidence, while employing effective rhetorical devices where appropriate, using the student's mode of communication with guidance and support.",
+   "cpalms_id": "17954",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17954",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:56:30Z"
+  },
+  "ELA.12.C.3.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization, and spelling appropriate to grade level.",
+   "cpalms_id": "15190",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15190",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:56:33Z"
+  },
+  "ELA.12.C.3.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Follow the rules of standard English grammar, punctuation, capitalization and spelling appropriate to grade-level content.•Practice usage of rules to create flow in writing and/or presenting.",
+   "cpalms_id": "17964",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17964",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:56:36Z"
+  },
+  "ELA.12.C.4.1": {
+   "state": "confirmed",
+   "statement_verified": "Conduct research on a topical issue to answer a question and synthesize information from a variety of sources.",
+   "cpalms_id": "15191",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15191",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:56:39Z"
+  },
+  "ELA.12.C.4.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Summarize research on a topic to answer a question from a variety of sources.",
+   "cpalms_id": "18536",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18536",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:56:43Z"
+  },
+  "ELA.12.C.5.1": {
+   "state": "confirmed",
+   "statement_verified": "Design and evaluate digital presentations for effectiveness.",
+   "cpalms_id": "15192",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15192",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:56:47Z"
+  },
+  "ELA.12.C.5.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Plan and create a digital presentation for effectiveness.",
+   "cpalms_id": "17976",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17976",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:56:50Z"
+  },
+  "ELA.12.C.5.2": {
+   "state": "confirmed",
+   "statement_verified": "Create, publish, and share multimedia texts through a variety of digital formats.",
+   "cpalms_id": "15193",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15193",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:56:53Z"
+  },
+  "ELA.12.C.5.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Create, publish and share a multimedia text through a variety of digital formats.",
+   "cpalms_id": "17988",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/17988",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:56:57Z"
+  },
+  "ELA.12.V.1.1": {
+   "state": "confirmed",
+   "statement_verified": "Integrate academic vocabulary appropriate to grade level in speaking and writing.",
+   "cpalms_id": "15194",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15194",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:57:00Z"
+  },
+  "ELA.12.V.1.AP.1": {
+   "state": "confirmed",
+   "statement_verified": "Use grade-level content vocabulary in communication, using the student's mode of communication.",
+   "cpalms_id": "18001",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18001",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:57:04Z"
+  },
+  "ELA.12.V.1.2": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of etymology, derivations, and commonly used foreign phrases to determine meanings of words and phrases in grade-level content.",
+   "cpalms_id": "15195",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15195",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:57:07Z"
+  },
+  "ELA.12.V.1.AP.2": {
+   "state": "confirmed",
+   "statement_verified": "Using etymology, derivations and commonly foreign phrases, identify the meaning of a word from a phrase in grade-level content at the student's ability level.",
+   "cpalms_id": "18013",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18013",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:57:10Z"
+  },
+  "ELA.12.V.1.3": {
+   "state": "confirmed",
+   "statement_verified": "Apply knowledge of context clues, figurative language, word relationships, reference materials, and/or background knowledge to determine the connotative and denotative meaning of words and phrases, appropriate to grade level.",
+   "cpalms_id": "15196",
+   "cpalms_url": "https://www.cpalms.org/PreviewStandard/Preview/15196",
+   "date_revised": "08/20",
+   "checked_at": "2026-08-13T12:57:14Z"
+  },
+  "ELA.12.V.1.AP.3": {
+   "state": "confirmed",
+   "statement_verified": "Use context clues, figurative language, word relationships, reference materials and/or background knowledge to identify the connotative and denotative meaning of a word and/or phrase, appropriate to grade-level content at the student's ability level.",
+   "cpalms_id": "18016",
+   "cpalms_url": "https://www.cpalms.org/PreviewAccessPoint/Preview/18016",
+   "date_revised": "03/22",
+   "checked_at": "2026-08-13T12:57:18Z"
   }
  }
 }

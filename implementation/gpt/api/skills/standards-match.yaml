@@ -16,7 +16,8 @@ function:
     falls back to keyword search over the standards JSON.
 
     This is the FASTEST standards lookup in TOS — no large files are read, no fabrication is
-    possible (codes come from the verified 6,583-FL-standard corpus). Every code returned is real
+    possible (codes come from the verified FL-standard corpus — 6,574 codes, each checked against
+    CPALMS; ledger/cpalms-run-manifest.json is the live count). Every code returned is real
     and verifiable on CPALMS.
 
     Trigger phrases: "what standards cover", "find the standard for", "which FL standard applies
