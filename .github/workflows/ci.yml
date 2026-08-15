@@ -79,7 +79,10 @@ jobs:
               print("\n".join(rep["blocking_issues"])); sys.exit(1)
           PY
 
-      - name: Version consistency (versions.json == VERSION == plugin; skills match)
+      - name: Version-registry self-test (drift/missing/malformed probes, each proven failable)
+        run: python3 tools/version.py --self-test
+
+      - name: Version consistency (versions.json == VERSION == plugin == marketplace; skills match)
         run: python3 tools/version.py --check
 
       - name: Validate committed example artifacts (output-validator)
