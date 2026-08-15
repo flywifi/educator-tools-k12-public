@@ -59,6 +59,15 @@ repository) that serves both — the same two `/plugin` commands above work in
 either. If you can open a folder of files with it, you're in Door 1; if you're in
 a browser tab, you're in Door 2.
 
+## Connect the verified tools (optional, powerful)
+
+Say **"connect my tools"** and your assistant walks you through it — or see
+[`implementation/mcp/README.md`](../mcp/README.md). Door 1 plugin users already have them
+(the `tos-tools` server ships with the plugin); the Claude desktop app gets a one-click
+extension; claude.ai and ChatGPT connect to your school's TOS tools address. The tools let
+the assistant *look up* verified Florida standards and *verify* cited codes instead of
+recalling them from memory.
+
 ## What only works in Door 1
 
 - Reading your documents (PDFs, Word files, scanned handouts) into structured data

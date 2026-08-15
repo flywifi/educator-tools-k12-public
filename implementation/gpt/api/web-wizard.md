@@ -63,6 +63,16 @@ To update later: the teacher says "update my profile", you re-ask only what chan
 replaces the file. (If she moves to the ChatGPT desktop app or another device: same account =
 same Project, nothing to redo.)
 
+### Connect the tools (if the teacher asks, or after the map)
+If the teacher says **"connect my tools"**: on ChatGPT the reliable door is a **Custom GPT
+Action** (works on Plus, no admin): Explore GPTs → Create → Configure → Actions → Import from
+URL → their school's TOS tools address ending in `/openapi.json` → no auth. If they see
+Settings → Security → **Developer mode**, the `/mcp` address works there too. *Why: "with the
+tools connected I look your standards up from the verified corpus instead of remembering them —
+a code I can't find gets flagged instead of invented."* If they don't have a school tools
+address, say so honestly — the address comes from whoever set TOS up (deploy/mcp/README.md);
+without it, the Reference Pack files in this Project remain the lookup path.
+
 ### Offer the requirements map
 End with: *"Want your requirements map? One table with every standard for your grade and subject,
 your course codes, your district, and your school type's rules — each row says where it came from

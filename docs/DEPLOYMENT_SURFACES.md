@@ -82,3 +82,16 @@ that boundary (found by adversarial audit, mitigations in place):
   re-doing the interview per surface.
 - **Notepad trap:** saving `my-teacher-profile.md` in Windows Notepad appends `.txt` unless
   "Save as type" is set to **All Files**.
+
+## MCP tool surface (2026-08-15)
+
+The registry `tools/mcp_tooldefs.py` serves 8 read-only tools on four legs: plugin-shipped
+stdio (zero-step; `plugin.json` `mcpServers`), the `.mcpb` Claude Desktop extension
+(one-click; `tools/build_mcpb.py`), the hosted streamable-HTTP leg (`tools/mcp_http_server.py`
+— claude.ai connectors + ChatGPT; dormant until a human deploys `deploy/mcp/`), and the
+generated Custom GPT Actions schema (`tools/export_actions_schema.py`, sync_check check 22).
+Data handling: nothing student-related ever transits any leg — queries are standards
+codes/topics over a public, CPALMS-verified corpus; the hosted leg is stateless with no
+request-body logging. The local stdio leg is deliberately stdlib (runs on the CLT stub with
+zero installs); the platform truth that shaped all of this: ChatGPT and claude.ai remote
+connectors are brokered from vendor clouds, so localhost serves only Claude Desktop/Code stdio.

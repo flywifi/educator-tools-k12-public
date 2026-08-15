@@ -4,6 +4,28 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Added — the MCP tool surface: verified lookups as callable tools on Claude AND ChatGPT (2026-08-15)
+- **`tools/mcp_tooldefs.py`** — 8 read-only tools defined once (verified-standards search with
+  the token-budget detail-strip, course/school lookup, CPALMS resources, fabrication-blocking
+  code verification, citation-mutation check, by-value artifact validation, index honesty);
+  governance rules served as instructions and per-description; excluded surface documented by
+  name. 15 probes incl. leak/clamp twins.
+- **`tools/mcp_server.py`** — stdlib-only stdio server (any Python ≥3.10, zero installs; stdout
+  purity twin-proven) with `--print-config`; ships in the plugin (`plugin.json` `mcpServers`,
+  mechanism verified against live docs) and via root `.mcp.json`; `tools/build_mcpb.py` stages
+  the one-click Claude Desktop `.mcpb` (~9 MB, prebuilt index, staged-tree stdio probe).
+- **`tools/mcp_http_server.py`** — hosted leg on the official `mcp` 2.x SDK, dormant until a
+  human deploys `deploy/mcp/` (stateless, standards-data-only, no-auth by design, rate-limited);
+  one app serves /mcp + REST + the generated Actions OpenAPI
+  (`tools/export_actions_schema.py`, freshness = sync_check check 22) so ChatGPT teachers have
+  a door whether or not Developer mode is enabled for them.
+- Docs: `implementation/mcp/README.md` (four doors, "connect my tools" trigger asserted across
+  the Claude README, the teacher-profile reference, and the web-wizard sibling), MAINTAINER
+  with empirical checkpoints (Claude-for-Teachers connectors; ChatGPT Plus dev-mode) gating doc
+  claims only; DEPLOYMENT_SURFACES MCP section; MACOS entries born UNTESTED; SECURITY_REVIEW
+  hosted-endpoint threat model; dependency-policy records the stdlib-vs-SDK call both ways.
+  Bugfix: system-prompt.md's phantom `atom_*` tool names aligned to tools.json.
+
 
 ## [1.3.0] — 2026-08-15
 ### Added — plugin metadata is generated-and-gated; releases are one command (2026-08-14)

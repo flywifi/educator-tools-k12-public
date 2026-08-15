@@ -587,6 +587,26 @@
         "last_modified": null,
         "content_sha256": null
       }
+    },
+    {
+      "id": "mcp-spec-versioning",
+      "url": "https://modelcontextprotocol.io/specification/versioning",
+      "authority": "primary",
+      "backs": "MCP protocol revision the stdio server implements (tools/mcp_server.py PROTOCOL_VERSION); MAINTAINER pre-release re-verify step",
+      "state": {
+        "status": "current",
+        "last_checked": "2026-08-15T00:00:00+00:00"
+      }
+    },
+    {
+      "id": "claude-code-plugins-reference",
+      "url": "https://code.claude.com/docs/en/plugins-reference",
+      "authority": "primary",
+      "backs": "plugin.json mcpServers key + ${CLAUDE_PLUGIN_ROOT} substitution (verified 2026-08-15 before wiring the plugin-shipped MCP server)",
+      "state": {
+        "status": "current",
+        "last_checked": "2026-08-15T00:00:00+00:00"
+      }
     }
   ]
 }
