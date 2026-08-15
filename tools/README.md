@@ -22,6 +22,19 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
   --install <capability>` / `--install-all` installs optional capabilities into the isolated
   `.harvest-venv` (wheels-only; never system Python → no macOS/Homebrew PEP 668); `--python-path`
   prints that venv's interpreter for a Claude Desktop MCP `command`/GUI launch.
+- `mcp_tooldefs.py` — the MCP tool registry: 8 read-only tools (verified-standards search,
+  course/school lookup, CPALMS resources, fabrication-blocking code verification,
+  citation-mutation check, artifact rule-validation, index honesty) defined once for every
+  transport. Stdlib; `--self-test` is a mutation battery; `--list` prints the surface.
+- `mcp_server.py` — the LOCAL stdio MCP server over that registry (Claude Code / Claude
+  Desktop). Pure stdlib — teachers install nothing. `--print-config desktop|code` emits exact
+  absolute-path config fragments; stdout purity is self-tested (stdout is the wire).
+- `mcp_http_server.py` — the HOSTED leg (claude.ai connectors / ChatGPT): streamable-HTTP /mcp
+  + REST /v1/* + /openapi.json on one app. Needs `--install mcp_server`; see `deploy/mcp/`.
+- `export_actions_schema.py` — generates the Custom GPT Actions OpenAPI + the tool-surface
+  snapshot from the registry (`--check` = sync_check check 22).
+- `build_mcpb.py` — stages the one-click Claude Desktop extension bundle (`dist/mcpb-staging/`;
+  maintainer runs `mcpb pack` on top).
 
 ## Scaffolding & packaging
 - `new_skill.py` — scaffold a skill from `tools/skill-template/` + copy synced refs.

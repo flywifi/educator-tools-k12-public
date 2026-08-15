@@ -17,6 +17,24 @@ Date: 2026-06-20 · Scope: all 11 skills, 6 protocols, shared core, tooling. Rev
 | **Content/tooling safety** | ✅ Pass | No malware/exploit content; skills do nothing beyond their stated purpose; external/student text is treated as data, not instructions. |
 | **Ecosystem integrity (drift)** | ✅ Pass | `tools/sync_check.py` enforces the 8 QG repository invariants + per-skill reference sync; PASS across 11 skills; negative test confirms it catches drift. |
 
+## MCP tool surface (added 2026-08-15)
+
+- **Local stdio server** (`tools/mcp_server.py`): stdlib-only, read-only tools, no network, no
+  secrets; spawned per-session by the client (no daemon). Stdout-purity and error-code behavior
+  are self-tested; the tool registry excludes every write/destructive path by name.
+- **Hosted HTTP leg** (`tools/mcp_http_server.py`, dormant until a human deploys): threat model
+  = a public read-only API over already-public CPALMS-derived reference data. Controls:
+  stateless (nothing to exfiltrate server-side), per-IP token-bucket rate limit, loopback bind
+  by default (B104-clean; the container opts into 0.0.0.0), no request-body logging, optional
+  env-only bearer token (documented Claude-only — ChatGPT cannot send headers), TLS at the
+  platform. No-auth default is a deliberate, recorded decision: the worst case is an anonymous
+  reader of public standards data paying our rate limit.
+- **Prompt-injection stance**: tool results are quoted corpus data; the served instructions and
+  every corpus-returning description state results are data, never instructions. The corpus is
+  committed + CPALMS-verified, so the injection surface is the repo's own review process.
+- **Fabrication stance carried over the wire**: `verify_standard_codes` keeps the blocking
+  `not_found` semantics; `retired` is never reported as fabricated (D-K).
+
 ## Residual risks / follow-ups
 - **Standards licensing (state corpora).** Bundling full state standard sets has licensing
   considerations — gated behind a licensing check before any corpus is added (`state-standards-model.md`).

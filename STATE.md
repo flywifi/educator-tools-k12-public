@@ -491,6 +491,14 @@ releases are one command (`python3 tools/version.py --release <patch|minor|major
 Installed plugins update on version bumps, so this release ships everything since 1.2.0 — the
 completed CPALMS sweep, the remediation, the currency re-check, and truthful listing metadata.
 
+**MCP tool surface shipped (2026-08-15):** 8 read-only verified tools (standards search,
+code verification, citation-mutation check, validators) defined once in `tools/mcp_tooldefs.py`
+and served four ways — plugin-shipped stdio (zero-step), one-click `.mcpb` for Claude Desktop,
+a dormant hosted leg for claude.ai/ChatGPT (`deploy/mcp/`), and a generated Custom GPT Actions
+schema (check 22). The "no provider client" rule stands — this is a server. Two platform
+questions stay empirically open (Claude-for-Teachers connector self-serve; ChatGPT Plus
+Developer mode) and gate doc claims only.
+
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
 2. Florida wired + **corpus stored** (`resources/florida/` + `sources.json`, 104 files) with

@@ -111,6 +111,15 @@ All confirmed findings fixed in this round; probes re-run and flipped:
 - **A1/A2/A4/A5** mac-lint: variable-held argv detected; `io.open` covered; ignore-pragma works on
   any line of the call; unparseable files skipped with a `[note]`.
 
+### MCP server entries (added 2026-08-15 — all UNTESTED until run on a real Mac)
+- **M1 — UNTESTED**: `.mcpb` one-click install of `tos-tools` via Settings → Extensions
+  (bundle staged by `tools/build_mcpb.py`; staged-tree stdio probe passes on Linux CI).
+- **M2 — UNTESTED**: stdio spawn under Claude Desktop's near-empty GUI PATH using
+  `mcp_server.py --print-config desktop` output (absolute command + explicit env.PATH — the E2
+  workaround, applied).
+- **M3 — UNTESTED**: the stdlib server on the Xcode CLT stub `/usr/bin/python3` (design target:
+  stdlib-only, Python ≥3.10; the stub qualifies on paper).
+
 ## Sources & freshness (keeping the research citations verifiable)
 Every authoritative source behind the macOS findings is registered in
 **`canonical-sources/registries/macos-sources.json`** (Apple, Python/PEPs, Homebrew, Git, Claude Code
