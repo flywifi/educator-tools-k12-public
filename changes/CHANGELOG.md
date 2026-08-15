@@ -4,6 +4,13 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Changed — weekly cadence enabled for the currency re-check (2026-08-14, owner decision)
+- The `schedule:` block in `.github/workflows/currency-recheck.yml` is uncommented at
+  `23 9 * * 1` (Mondays 09:23 UTC) after the first live dispatch from `main` returned zero
+  drift in 11 minutes (200 oldest math codes re-confirmed; census spot-check clean;
+  GitHub-runner egress to CPALMS proven viable). The owner also deleted the retired platform
+  Routine from the claude.ai panel the same day — no out-of-repo state remains.
+
 ### Changed — the currency re-check is repo code; the platform Routine is retired (2026-08-14)
 - **`tools/currency_recheck.py`** (new): drift detection over the ~200 oldest-`checked_at`
   in-corpus codes of the single oldest subject (`--ignore-overlay`; robots/politeness/checkpoint

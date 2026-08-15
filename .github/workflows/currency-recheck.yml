@@ -1,8 +1,9 @@
 name: currency-recheck
 # CPALMS currency re-verification — drift detection over the oldest-checked_at slice.
-# MANUAL ONLY by design: the commented `schedule:` below is the enable switch, and uncommenting
-# it is a deliberate human act made as a reviewable commit (the in-repo analogue of the retired
-# platform Routine's `enabled: false`). See docs/RUNBOOK-cpalms.md §7 for how to run and read it.
+# Runs weekly (owner-enabled 2026-08-14) and on manual dispatch. The schedule block IS the
+# enable switch: commenting it out disables the cadence again, as a reviewable commit — the
+# in-repo analogue of the retired platform Routine's `enabled` flag. See docs/RUNBOOK-cpalms.md
+# §7 for how to run and read it.
 #
 # Known risk, stated up front: CPALMS's hosting may throttle or block cloud-datacenter IPs. If it
 # does, the run exits 3 ("environment blocked") — deliberately distinct from green (zero drift)
@@ -15,9 +16,9 @@ on:
         description: "Slice size (oldest-checked_at codes to re-verify)"
         default: "200"
         required: false
-  # To enable the daily run, uncomment (a reviewable commit — that is the point):
-  # schedule:
-  #   - cron: "23 9 * * *"   # 09:23 UTC daily — off the top-of-hour stampede
+  # Enabled 2026-08-14 (owner decision): weekly cadence.
+  schedule:
+    - cron: "23 9 * * 1"     # Mondays 09:23 UTC — off the top-of-hour stampede
 
 permissions:
   contents: read              # detect-only: this job cannot write to the repo

@@ -258,9 +258,9 @@ versioned, CI-tested, and cannot be orphaned by a disconnected session:
   via `scopes[].generated_at`); writes a `summary.md` verdict. It can only detect: no `--apply`,
   no `--write`, no overlay/corpus/repo mutation, reports land outside the repo tree (§4a —
   reports are scratch). "Zero drift found" is printed as the deliverable.
-- **`.github/workflows/currency-recheck.yml`** — runs it. **Manual dispatch only**; the daily
-  `schedule:` block ships commented out, and uncommenting it is the human "enable" act, made as
-  a reviewable commit. `permissions: contents: read`, single-flight concurrency, reports
+- **`.github/workflows/currency-recheck.yml`** — runs it — **weekly (Mondays 09:23 UTC;
+  owner-enabled 2026-08-14)** plus manual dispatch. The `schedule:` block is the enable switch:
+  commenting it back out disables the cadence, as a reviewable commit. `permissions: contents: read`, single-flight concurrency, reports
   uploaded as a 90-day artifact, summary rendered on the run page.
 
 **Exit codes are tri-state on purpose** — a throttled runner must never masquerade as a verdict:
@@ -279,9 +279,9 @@ to keep reports somewhere findable). Local scheduling, if wanted, is one crontab
 `23 9 * * * cd <clone> && python3 tools/currency_recheck.py`.
 
 **The retired Routine.** `trig_01BdmNu2xWDxc3CAxDBvV1Gy` ("CPALMS standards sweep — next chunk")
-is obsolete: delete it from the claude.ai Routines panel when convenient. No urgency — it is held
-by two independent locks: it is paused (`enabled: false`), and its own prompt's terminal rule
-instructs it to do no work when the manifest shows 0 remaining, which it permanently does.
+was **deleted from the claude.ai Routines panel on 2026-08-14** (by the owner, after the workflow's
+first live run came back zero-drift). Nothing platform-side remains; this workflow is the whole
+mechanism.
 
 During the sweep, every subject's span census was validated live per grade (an earlier claim
 that only social studies had been was wrong and is retracted).
