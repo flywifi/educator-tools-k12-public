@@ -100,6 +100,12 @@ jobs:
       - name: Registry currency (informational drift report)
         run: python3 tools/registry_currency.py --summary || true
 
+      # LAST in the job on purpose: an SDK install failure must never mask a stdlib failure.
+      - name: MCP hosted-leg self-test (installs the SDK; in-memory Client round-trip)
+        run: |
+          pip install -r tools/requirements-mcp.txt
+          python3 tools/mcp_http_server.py --self-test
+
       - name: Repair loop (advisory — detect, propose, verify)
         run: python3 tools/repair_loop.py || true
       # Phase A+: add eval smoke tests here (skill triggering + Quality Gates pass).

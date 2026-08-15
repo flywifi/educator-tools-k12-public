@@ -19,6 +19,20 @@ A dependency is added only if it does something the chat model cannot do well un
 scanned PDF with tables, produce a real editable `.pptx`, transcribe an audio file, render a slide to an
 image for QA, or read every script/font. If baseline Claude already does it, we don't add a dep.
 
+## The MCP server surface (2026-08-15)
+
+- The **local stdio MCP server** (`tools/mcp_server.py`) is deliberately **stdlib** — the
+  official SDK's compiled-wheel footprint (pydantic-core et al.) would force an install on every
+  teacher, which fails the better-than-baseline test for a transport the stdlib can speak.
+  Hand-rolled IS the chosen baseline there.
+- The **hosted HTTP leg** (`tools/mcp_http_server.py`, capability `mcp_server`, OFF by default)
+  earns the `mcp` SDK: streamable-HTTP session management and protocol churn are exactly what
+  the official implementation maintains. It installs only into the managed venv
+  (`deps_preflight --install mcp_server`) or the deploy container — never system Python.
+- The hosted leg is **stateless and standards-data-only**: no identity, no student data, no
+  request-body logging; deployment is an explicit human act (`deploy/mcp/README.md`) and the
+  repo never points at a live endpoint.
+
 ## Secrets (cloud tier)
 - API keys come from the **environment only** (e.g. `AZURE_SPEECH_KEY`, `FAL_KEY`, `NUTRIENT_API_KEY`,
   `FIRECRAWL_API_KEY`). **Never** commit a key; `*.env`/secrets files are git-ignored. The preflight
