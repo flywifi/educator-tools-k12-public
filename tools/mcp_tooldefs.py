@@ -175,11 +175,14 @@ def _index_status(args: dict) -> dict:
         try:
             eng = conn.execute("SELECT value FROM idx_meta WHERE key='engine'").fetchone()
             out["engine"] = eng[0] if eng else "unknown"
-            out["counts"] = {t: conn.execute(
-                f"SELECT count(*) FROM {t}").fetchone()[0]  # tables from the same allow-list
-                for t in sorted(offline_index._TABLES)
-                if conn.execute("SELECT name FROM sqlite_master WHERE name=?",
-                                (t,)).fetchone()}
+            out["counts"] = {}
+            for t in sorted(offline_index._TABLES):
+                if not conn.execute("SELECT name FROM sqlite_master WHERE name=?",
+                                    (t,)).fetchone():
+                    continue
+                # t is from offline_index._TABLES — the same allow-list _q enforces; a table
+                # identifier cannot be a bound parameter.
+                out["counts"][t] = conn.execute("SELECT count(*) FROM " + t).fetchone()[0]  # nosemgrep
         finally:
             conn.close()
         try:
