@@ -51,7 +51,9 @@ PLUGIN_DESC = (
     "teacher skills ({core} core hub+governance, {educator} educator, {operations} operations, "
     "{atoms} atom sub-skills) over {engines_count} shared engines (roster: versions.json), with "
     "{verified_standards} Florida standards verified code-by-code against CPALMS. Skills under "
-    "skills/ are auto-discovered. Offline/stdlib; decision-support with human_review_required; "
+    "skills/ are auto-discovered, and the tos-tools MCP server (8 read-only verified-lookup/"
+    "validator tools) starts with the plugin. Offline/stdlib; decision-support with "
+    "human_review_required; "
     "placeholders only in the repo."
 )
 
@@ -62,7 +64,9 @@ MARKETPLACE_DESC = (
     "code-by-code against CPALMS. Install to add lesson/assessment/presentation generation, "
     "curriculum mapping, special-ed/MTSS support, family communication, professional learning, "
     "school administration, standards currency, document intelligence, meeting classification, "
-    "and skill-health/repair."
+    "and skill-health/repair — plus the tos-tools MCP server: verified standards search, "
+    "fabrication-blocking code verification, citation-mutation checks, and artifact validation "
+    "as callable tools."
 )
 
 CATALOG_BEGIN = "<!-- BEGIN GENERATED: skills-catalog -->"
