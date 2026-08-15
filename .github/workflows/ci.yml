@@ -41,6 +41,12 @@ jobs:
       - name: Sources manifest check (every referenced file exists; no duplicate records)
         run: python3 tools/standards_refresh.py --check
 
+      - name: Currency-recheck self-test (slice/rotation/verdict probes; broken twins proven)
+        run: python3 tools/currency_recheck.py --self-test
+
+      - name: Currency-recheck selection dry run (live-tree determinism probe; fetches nothing)
+        run: python3 tools/currency_recheck.py --dry-run-selection
+
       - name: Cross-platform lint (bare-interpreter spawns; encoding-less text opens)
         run: python3 tools/mac_audit.py
 

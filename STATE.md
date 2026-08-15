@@ -478,6 +478,10 @@ revived and probe-proven; `_merge_entry` preserves overlay archaeology across re
 (metrics/index-note/exports regenerated); every stale count and "best-effort" claim in prose
 corrected or dated; `retired`/`standard_retired` added to the standards-verification protocol; the
 standing Routine repurposed to currency re-verification (stays disabled until a human enables it).
+Later that day the Routine was **retired outright**: the currency re-check became repo code
+(`tools/currency_recheck.py` + `.github/workflows/currency-recheck.yml`, manual dispatch; the
+commented `schedule:` is the human enable switch) after the trigger-management tools proved to be
+out-of-repo state a session cannot rely on. The dormant Routine awaits panel deletion.
 
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).

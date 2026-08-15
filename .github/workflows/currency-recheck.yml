@@ -1,0 +1,55 @@
+name: currency-recheck
+# CPALMS currency re-verification — drift detection over the oldest-checked_at slice.
+# MANUAL ONLY by design: the commented `schedule:` below is the enable switch, and uncommenting
+# it is a deliberate human act made as a reviewable commit (the in-repo analogue of the retired
+# platform Routine's `enabled: false`). See docs/RUNBOOK-cpalms.md §7 for how to run and read it.
+#
+# Known risk, stated up front: CPALMS's hosting may throttle or block cloud-datacenter IPs. If it
+# does, the run exits 3 ("environment blocked") — deliberately distinct from green (zero drift)
+# and red (drift found), so a throttled runner can never masquerade as either. The fallback is
+# first-class: `python3 tools/currency_recheck.py` from any desktop clone runs identically.
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Slice size (oldest-checked_at codes to re-verify)"
+        default: "200"
+        required: false
+  # To enable the daily run, uncomment (a reviewable commit — that is the point):
+  # schedule:
+  #   - cron: "23 9 * * *"   # 09:23 UTC daily — off the top-of-hour stampede
+
+permissions:
+  contents: read              # detect-only: this job cannot write to the repo
+
+concurrency:
+  group: currency-recheck     # never two polite crawls of CPALMS at once
+  cancel-in-progress: false
+
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Currency re-check (exit 0 zero-drift / 1 drift / 2 preflight / 3 blocked)
+        run: >
+          python3 tools/currency_recheck.py
+          --limit "${{ github.event.inputs.limit || '200' }}"
+          --workdir "$RUNNER_TEMP/currency"
+
+      - name: Publish summary
+        if: always()
+        run: cat "$RUNNER_TEMP/currency/summary.md" >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: currency-recheck-${{ github.run_number }}
+          path: ${{ runner.temp }}/currency/
+          retention-days: 90

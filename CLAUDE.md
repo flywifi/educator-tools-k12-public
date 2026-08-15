@@ -18,7 +18,8 @@ K-12 educational artifacts. Read `docs/ARCHITECTURE.md` for the design. Live sta
   sessions): what is decided, the non-obvious constraints, and the exact commands. Read this before
   touching `tools/cpalms_verify.py` or any `*.cpalms.json` overlay. `python3
   tools/cpalms_verify.py --manifest` regenerates `ledger/cpalms-run-manifest.json`, which is
-  authoritative over any standards count written in prose.
+  authoritative over any standards count written in prose. Currency re-checks run via
+  `.github/workflows/currency-recheck.yml` (manual dispatch; driver `tools/currency_recheck.py`).
 - `security/` — security and safety policies.
 - `changes/` — changelog and change management.
 - `examples/` — cross-skill example library.

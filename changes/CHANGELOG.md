@@ -4,6 +4,26 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Changed — the currency re-check is repo code; the platform Routine is retired (2026-08-14)
+- **`tools/currency_recheck.py`** (new): drift detection over the ~200 oldest-`checked_at`
+  in-corpus codes of the single oldest subject (`--ignore-overlay`; robots/politeness/checkpoint
+  inherited from `cpalms_verify`), plus one per-grade census spot-check of the least-recently-
+  censused scope (stateless rotation via `scopes[].generated_at`). Detect-only: no `--apply`, no
+  `--write`, reports land outside the repo. Tri-state exits — 0 zero-drift (the deliverable),
+  1 drift, 2 preflight red (`audit_overlays` gates every run), 3 environment blocked (robots,
+  >10% transients, or a census that could not conclude) — so a throttled runner can never
+  masquerade as a verdict. 14 self-test probes, each demonstrated to fail against a broken twin.
+- **`.github/workflows/currency-recheck.yml`** (new): manual dispatch only; the daily
+  `schedule:` ships commented out — uncommenting it is the human enable act, made as a
+  reviewable commit. `contents: read`, single-flight concurrency, 90-day report artifacts.
+- **Why retired, not repaired:** the Routine's prompt was mutable state on a third-party control
+  plane, reachable only through a tool that may not be connected (proven twice in one session)
+  and invisible to every repo gate. Everything the re-check needs now lives in the repo. The
+  dormant Routine `trig_01Bd…` awaits a one-click deletion from the Routines panel, held
+  meanwhile by two locks: paused, and its own prompt's do-no-work-at-0-remaining rule.
+- CI: driver self-test + live-tree selection dry run added as hard gates; RUNBOOK §7 rewritten
+  to the repo-code mechanism (the embedded-prompt drift-detector hack deleted with the Routine).
+
 ### Fixed — residual remediation: the debris field of the sweep, closed (2026-08-14)
 - **`tools/cpalms_verify.py`** (C1): the D-H malformed-cards guard revived — per-grade
   `{kind}_malformed_cards` are now aggregated flat where the census abort and `_census_problem`
