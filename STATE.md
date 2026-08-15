@@ -6,7 +6,7 @@ Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 ## Context-First expansion (RFC-F001 V2) — F1–F6 shipped
 A six-phase build (plan: approved RFC-F001 V2) adding currency, a school/program index, a per-teacher SOP
 skill, a gated staff directory, always-on web crawl, and a light context spine — stdlib-first, gated,
-governed. **18 skills · 14 engines.** All phases verified (drift guard + `version --check` +
+governed. (Skill/engine counts are GENERATED — see `docs/METRICS.md` and `versions.json`; the counts current when this phase shipped are in the changelog.) All phases verified (drift guard + `version --check` +
 `registry_currency` clean) and committed on `claude/fervent-hawking-nyrzy5`; each is a durable
 commit-anchored snapshot in `ledger/snapshots.json` (`tools/rollback.py --list`).
 - **F1 — Firecrawl always-on + RSS + whole-ecosystem rollback.** `shared/traversal/parallel_search.py`
@@ -27,7 +27,7 @@ commit-anchored snapshot in `ledger/snapshots.json` (`tools/rollback.py --list`)
 
 **Last updated:** Phases 0–E delivered + Florida complete; **`document-intelligence` skill +
 `shared/docintel/` engine added** (full-framework skeleton: UDOM, parser-orchestration, governance,
-artifact, validation — runs end to end). 17 skills, 6 protocols, ledger, benchmark, packaging,
+artifact, validation — runs end to end). Then 17 skills; 6 protocols, ledger, benchmark, packaging,
 versioning, and the metrics dashboard. **Multi-constituency support added** (public/charter/private/
 home-ed): composable context **overlays** (`shared/context/overlays/`, `overlay.schema.json`),
 independent **framework registries + crosswalks** (`shared/standards/frameworks/`, `crosswalks/`,
