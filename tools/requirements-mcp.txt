@@ -1,7 +1,7 @@
 # macOS/Homebrew — install into the managed venv (no PEP 668): python3 tools/deps_preflight.py --install mcp_server
 # MCP hosted-HTTP capability (local_optional, OFF by default) — serve TOS's verified lookups to
 # claude.ai connectors / ChatGPT via tools/mcp_http_server.py. The LOCAL stdio server needs NONE of this.
-# Pinned for supply-chain safety; auto-updated by .github/dependabot.yml; scanned by tools/security_scan.py.
-mcp>=2.0,<3
-uvicorn>=0.30,<1
-jsonschema>=4.21,<5
+# Pinned (== — pip-audit requires exact pins); auto-updated by .github/dependabot.yml; scanned by tools/security_scan.py.
+mcp==2.0.0
+uvicorn==0.52.3
+jsonschema==4.26.0
