@@ -481,7 +481,8 @@ standing Routine repurposed to currency re-verification (stays disabled until a 
 Later that day the Routine was **retired outright**: the currency re-check became repo code
 (`tools/currency_recheck.py` + `.github/workflows/currency-recheck.yml`, manual dispatch; the
 commented `schedule:` is the human enable switch) after the trigger-management tools proved to be
-out-of-repo state a session cannot rely on. The dormant Routine awaits panel deletion.
+out-of-repo state a session cannot rely on. The Routine was deleted from the panel on 2026-08-14,
+after the workflow's first live dispatch returned zero drift (200 oldest math codes + census clean).
 
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
