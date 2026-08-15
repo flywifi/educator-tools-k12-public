@@ -110,6 +110,57 @@ def bump(name: str, semver: str, root: Path | None = None) -> dict:
     return {"status": "ok", "bumped": name, "to": semver}
 
 
+def release(spec: str, root: Path | None = None) -> dict:
+    """One-command release: the whole chain moves together, or nothing does.
+
+    Replaces the manual dance that shipped real drift twice (5 version fields across 4 files,
+    marketplace 'by hand', versions.json `updated` forgotten at 1.2.0): computes the next semver
+    (`patch`/`minor`/`major`, or an explicit X.Y.Z), bumps ecosystem (versions.json + updated +
+    VERSION + plugin.json), regenerates every generated manifest/description/catalog via
+    export_plugin_manifest, and rolls changelog `[Unreleased]` into a dated release section.
+    Refuses an EMPTY [Unreleased]: a release with no recorded changes is a numbering mistake.
+    Never commits — a human (or the autobump workflow) reviews and commits the printed file list.
+    Installed plugins update on version bumps, so this command is what actually ships."""
+    r = root or ROOT
+    p = _paths(r)
+    cur = _load(r).get("ecosystem", "")
+    if spec in ("patch", "minor", "major"):
+        if not _SEMVER.fullmatch(cur):
+            return {"status": "error", "detail": f"current ecosystem '{cur}' is not X.Y.Z"}
+        ma, mi, pa = (int(x) for x in cur.split("."))
+        new = {"patch": f"{ma}.{mi}.{pa + 1}", "minor": f"{ma}.{mi + 1}.0",
+               "major": f"{ma + 1}.0.0"}[spec]
+    elif _SEMVER.fullmatch(spec):
+        new = spec
+    else:
+        return {"status": "error",
+                "detail": f"'{spec}' is neither patch/minor/major nor X.Y.Z"}
+    log = r / "changes" / "CHANGELOG.md"
+    text = log.read_text(encoding="utf-8")
+    m = re.search(r"^## \[Unreleased\]\n(.*?)(?=^## \[|\Z)", text, re.M | re.S)
+    if not m:
+        return {"status": "error", "detail": "changes/CHANGELOG.md has no [Unreleased] section"}
+    if not m.group(1).strip():
+        return {"status": "error",
+                "detail": "[Unreleased] is empty — a release with no recorded changes is a "
+                          "numbering mistake; write the changelog entry first"}
+    rep = bump("ecosystem", new, r)
+    if rep["status"] != "ok":
+        return rep
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import export_plugin_manifest
+    export_plugin_manifest.write(r)
+    stamp = f"## [{new}] — {date.today().isoformat()}"
+    text = log.read_text(encoding="utf-8")
+    text = text.replace("## [Unreleased]", f"## [Unreleased]\n\n{stamp}", 1)
+    log.write_text(text, encoding="utf-8")
+    residue = check(r)["issues"] + export_plugin_manifest.check(r)
+    files = ["VERSION", "versions.json", ".claude-plugin/plugin.json",
+             ".claude-plugin/marketplace.json", "skills/README.md", "changes/CHANGELOG.md"]
+    return {"status": "ok" if not residue else "error", "released": new,
+            "commit_these": files, "residue": residue}
+
+
 # --------------------------------------------------------------------------------------- self-test
 def self_test() -> int:
     """Fixture probes. Every check is demonstrated able to FAIL (the broken-twin rule)."""
@@ -205,6 +256,46 @@ def self_test() -> int:
        all(bump("ecosystem", s, tmp)["status"] == "error"
            for s in ("v1.2.3", "1.2", "1.2.3.4")))
 
+    # --- release() probes (need a fuller fixture: changelog + generator inputs) ---------------
+    reset()
+    (tmp / "changes").mkdir(exist_ok=True)
+    (tmp / "ledger").mkdir(exist_ok=True)
+    (tmp / "ledger" / "cpalms-run-manifest.json").write_text(
+        json.dumps({"totals": {"verified": 7}}), encoding="utf-8")
+    (tmp / "skills" / "README.md").write_text(
+        "# cat\n<!-- BEGIN GENERATED: skills-catalog -->\n"
+        "<!-- END GENERATED: skills-catalog -->\n", encoding="utf-8")
+    (tmp / ".claude-plugin" / "plugin.json").write_text(json.dumps(
+        {"name": "x", "version": "1.0.0", "description": "old"}), encoding="utf-8")
+    (tmp / ".claude-plugin" / "marketplace.json").write_text(json.dumps(
+        {"name": "m", "metadata": {"version": "1.0.0"},
+         "plugins": [{"name": "x", "version": "1.0.0", "description": "old"}]}),
+        encoding="utf-8")
+    (tmp / "changes" / "CHANGELOG.md").write_text(
+        "# Changelog\n\n## [Unreleased]\n\n## [1.0.0] — 2026-01-01\n- old\n", encoding="utf-8")
+    ck("release: refuses an EMPTY [Unreleased] (a bumped nothing is a numbering mistake)",
+       release("patch", tmp)["status"] == "error")
+
+    (tmp / "changes" / "CHANGELOG.md").write_text(
+        "# Changelog\n\n## [Unreleased]\n### Added\n- a thing\n\n## [1.0.0] — 2026-01-01\n- old\n",
+        encoding="utf-8")
+    rep = release("patch", tmp)
+    log = (tmp / "changes" / "CHANGELOG.md").read_text(encoding="utf-8")
+    mk = json.loads((tmp / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8"))
+    ck("release: patch computes 1.0.1, regenerates manifests, rolls the changelog, no residue",
+       rep["status"] == "ok" and rep["released"] == "1.0.1"
+       and f"## [1.0.1] — {date.today().isoformat()}" in log
+       and "## [Unreleased]" in log and log.index("[Unreleased]") < log.index("[1.0.1]")
+       and "- a thing" in log.split("[1.0.1]")[1]
+       and mk["metadata"]["version"] == "1.0.1" and mk["plugins"][0]["version"] == "1.0.1"
+       and "7 FL standards" in mk["plugins"][0]["description"])
+    ck("release: second release without new changelog content is refused (fresh [Unreleased] "
+       "is empty)", release("patch", tmp)["status"] == "error")
+    ck("release: bad spec rejected", release("banana", tmp)["status"] == "error")
+    (tmp / "changes" / "CHANGELOG.md").write_text(
+        "# C\n\n## [Unreleased]\n- more\n\n## [1.0.1] — x\n", encoding="utf-8")
+    ck("release: explicit X.Y.Z accepted", release("2.0.0", tmp).get("released") == "2.0.0")
+
     reset()
     rep = bump("ecosystem", "1.0.1", tmp)
     v = json.loads((tmp / "versions.json").read_text(encoding="utf-8"))
@@ -225,10 +316,17 @@ def main(argv) -> int:
     ap.add_argument("--list", action="store_true")
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--bump", nargs=2, metavar=("TARGET", "SEMVER"))
+    ap.add_argument("--release", metavar="PATCH|MINOR|MAJOR|X.Y.Z",
+                    help="one-command release: bump chain + regenerate manifests + roll changelog")
     ap.add_argument("--self-test", action="store_true")
     a = ap.parse_args(argv)
     if a.self_test:
         return self_test()
+    if a.release:
+        rep = release(a.release.lower() if a.release.lower() in ("patch", "minor", "major")
+                      else a.release)
+        print(json.dumps(rep, indent=2))
+        return 0 if rep["status"] == "ok" else 1
     if a.bump:
         rep = bump(*a.bump)
         print(json.dumps(rep, indent=2))
