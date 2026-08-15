@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """export_chatgpt.py — generate TOS-skills.md for ChatGPT web users.
 
-Reads all 29 skill YAML files from implementation/gpt/api/skills/ and writes a single
+Reads every skill YAML file from implementation/gpt/api/skills/ and writes a single
 plain-English reference document (implementation/gpt/web/TOS-skills.md) that a teacher
 can drag into any ChatGPT Project or conversation window.
 
@@ -15,7 +15,7 @@ Usage:
   python3 tools/export_chatgpt.py --out PATH   # write to a custom path
 
 Zero new dependencies — stdlib only. PyYAML used if installed (better parsing);
-stdlib fallback works for all 29 skills.
+stdlib fallback works for every skill YAML.
 """
 from __future__ import annotations
 
@@ -257,7 +257,7 @@ HEADER = """\
 
 | Feature | Status |
 |---|---|
-| All 29 skill structures — lesson plans, IEP goals, assessments, parent comms, etc. | ✅ Works |
+| All {n_skills} skill structures — lesson plans, IEP goals, assessments, parent comms, etc. | ✅ Works |
 | Governance rules — DRAFT label, no student PII, IEP legal boundaries | ✅ Works |
 | Output formats — structured artifacts matching TOS specifications | ✅ Works |
 | Standards corpus ({fl_total} FL standards, full text, each verified against CPALMS) | ✅ **With the Reference Pack** added to your Project (see "Two ways to set up") — verified Florida snapshot. ❌ Without it. Either way, **verify every code on [cpalms.org](https://www.cpalms.org) before using in any formal document.** |
@@ -450,9 +450,10 @@ def main(argv: list[str]) -> int:
     # corpus change (9 retirements -> 6,574) and shipped a false claim into the generated guide.
     fl_index = ROOT / "shared" / "standards" / "resources" / "florida" / "data" / "index.json"
     fl_total = json.loads(fl_index.read_text(encoding="utf-8")).get("total", "?")
-    content = (HEADER + wizard + "\n\n---\n\n## The 29 TOS Skills\n\n"
+    content = (HEADER + wizard + f"\n\n---\n\n## The {len(entries)} TOS Skills\n\n"
                + "\n".join(entries) + FOOTER).replace("{REPO_URL}", REPO_URL) \
-              .replace("{fl_total}", f"{fl_total:,}" if isinstance(fl_total, int) else str(fl_total))
+              .replace("{fl_total}", f"{fl_total:,}" if isinstance(fl_total, int) else str(fl_total)) \
+              .replace("{n_skills}", str(len(entries)))
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(content, encoding="utf-8")

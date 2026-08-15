@@ -65,7 +65,7 @@ _REF_ANCHORS = ("references/", "scripts/", "evals/", "examples/",
                 "protocol-layer/", "protocols/", "shared/", "tools/", "ledger/")
 _REF_EXTS = (".md", ".py", ".json", ".yaml", ".yml", ".txt", ".csv")
 
-# --- Doc-drift guards (checks 15-18) ---------------------------------------------------------------
+# --- Doc-drift guards (checks 15-21) ---------------------------------------------------------------
 # New in the maintainer/README audit. They land in REPORT-ONLY first (so the backfill PR stays green
 # while docs are filled in), then flip to CI-blocking. Set True to enforce.
 DOC_GUARDS_ENFORCE = True
@@ -556,6 +556,21 @@ def main() -> int:
                       f"or tools/url-provenance.json")
     except Exception as e:
         print(f"[note] doc-source guard skipped: {e.__class__.__name__}: {e}")
+
+    # 21. Plugin-metadata freshness: the committed .claude-plugin/ manifests + the skills/README
+    # generated catalog must equal a fresh render from live facts (export_plugin_manifest.py —
+    # counts computed, never typed; the marketplace listing said "15 skills" for seven weeks while
+    # 62 existed because nothing generated or compared it). UNLIKE check 16 this is FAIL-CLOSED:
+    # the generator is stdlib/offline/in-repo, so an ImportError here means the repo is broken,
+    # which is exactly what this gate exists to say — a degrade-to-note would silently disarm it.
+    try:
+        import export_plugin_manifest as _epm
+        for _issue in _epm.check():
+            _emit(_issue)
+    except Exception as e:
+        _emit(f"  x plugin-metadata freshness gate could not run "
+              f"({e.__class__.__name__}: {e}) — the generator itself is broken; fix "
+              f"tools/export_plugin_manifest.py (its --self-test should reproduce this)")
 
     print("TOS ecosystem - drift guard\n")
     if failures:

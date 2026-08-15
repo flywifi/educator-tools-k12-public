@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "Marketplace listing for the Teacher Operating System so districts/schools can install the suite as a Cowork plugin.",
-    "version": "1.2.0"
+    "version": "1.3.0"
   },
   "plugins": [
     {
       "name": "teacher-operating-system",
       "source": "./",
-      "description": "The full TOS suite: 15 governed K-12 teacher skills (hub + capability spokes + governance) over shared engines. Install to add lesson/assessment/presentation generation, curriculum mapping, special-ed/MTSS support, family communication, professional learning, school administration, standards currency, document intelligence, meeting classification, and skill-health/repair.",
-      "version": "1.2.0",
+      "description": "The full TOS suite: 62 governed K-12 teacher skills (5 core hub+governance, 9 educator, 5 operations, 43 atom sub-skills) over 16 shared engines; 6,574 FL standards verified code-by-code against CPALMS. Install to add lesson/assessment/presentation generation, curriculum mapping, special-ed/MTSS support, family communication, professional learning, school administration, standards currency, document intelligence, meeting classification, and skill-health/repair.",
+      "version": "1.3.0",
       "category": "education"
     }
   ]

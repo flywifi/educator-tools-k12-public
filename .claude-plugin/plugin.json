@@ -1,8 +1,8 @@
 {
   "name": "teacher-operating-system",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "autoUpdate": true,
-  "description": "Teacher Operating System (TOS): a hub-and-spoke ecosystem of governed K-12 teacher skills that generate, validate, differentiate, route, and maintain educational artifacts. Skills under skills/ are auto-discovered; shared engines (standards, context, connectors, students, records, docintel, routing, traversal, health) provide the governed core. Offline/stdlib; decision-support with human_review_required; placeholders only in the repo.",
+  "description": "Teacher Operating System (TOS): a hub-and-spoke ecosystem of 62 governed K-12 teacher skills (5 core hub+governance, 9 educator, 5 operations, 43 atom sub-skills) over 16 shared engines (roster: versions.json), with 6,574 Florida standards verified code-by-code against CPALMS. Skills under skills/ are auto-discovered. Offline/stdlib; decision-support with human_review_required; placeholders only in the repo.",
   "author": {
     "name": "Teacher Operating System"
   },

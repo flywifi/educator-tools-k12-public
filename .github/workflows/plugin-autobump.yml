@@ -1,0 +1,89 @@
+name: plugin-autobump
+# Auto-cut a PATCH release on every merge to main, so installed plugins (which update on VERSION
+# BUMPS, not on pushes — see docs/DEPLOYMENT.md §3) pick up every merged change without a human
+# remembering to release. DORMANT BY DESIGN: the `push:` trigger below ships commented out, and
+# uncommenting it is the owner's enable act, made as a reviewable commit — the same pattern as
+# currency-recheck's schedule switch. workflow_dispatch is live from day one so the job is
+# testable before it is trusted.
+#
+# Integrity model, stated plainly: when enabled, this job commits to main without review. That is
+# acceptable ONLY because the commit is deterministic generator output (version.py --release ->
+# export_plugin_manifest), produced after the full gate set passes in-job, and the enable switch
+# is itself a reviewed commit. Minor/major releases stay human-cut via `version.py --release
+# minor|major` on a branch + PR.
+#
+# If main ever gains required-PR branch protection, the bot needs a bypass allowance — that
+# setting lives outside the repo and cannot be gated or detected from inside it; the failure
+# mode is a red run here.
+on:
+  workflow_dispatch:
+  # To enable autopilot, uncomment (a reviewable commit — that is the point):
+  # push:
+  #   branches: [main]
+
+permissions:
+  contents: write             # this job's whole purpose is the bump commit
+
+concurrency:
+  group: plugin-autobump      # never two bumps racing
+  cancel-in-progress: false
+
+jobs:
+  autobump:
+    # Loop-prevention layer 1: never run on our own bump commit.
+    if: ${{ !contains(github.event.head_commit.message, '[autobump]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2      # need the parent to diff the head commit
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Loop-prevention layer 2 (also handles human release merges cleanly): if the head commit
+      # already changed VERSION, a release just landed — bumping again would double-release.
+      - name: Skip if the head commit is already a release
+        id: fresh
+        run: |
+          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qx "VERSION"; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Head commit already changed VERSION — nothing to do."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Full gate set (a broken tree must never be released)
+        if: steps.fresh.outputs.skip == 'false'
+        run: |
+          python3 tools/sync_check.py
+          python3 tools/version.py --check
+          python3 tools/version.py --self-test
+          python3 tools/export_plugin_manifest.py --self-test
+          python3 tools/verify_standards.py --self-test
+          python3 tools/cpalms_verify.py --self-test
+          python3 tools/audit_overlays.py
+
+      - name: Cut the patch release
+        if: steps.fresh.outputs.skip == 'false'
+        id: cut
+        run: |
+          python3 tools/version.py --release patch
+          echo "version=$(cat VERSION)" >> "$GITHUB_OUTPUT"
+
+      - name: Re-verify the release output
+        if: steps.fresh.outputs.skip == 'false'
+        run: |
+          python3 tools/sync_check.py
+          python3 tools/version.py --check
+          python3 tools/export_plugin_manifest.py --check
+
+      - name: Commit and push the bump
+        if: steps.fresh.outputs.skip == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add VERSION versions.json .claude-plugin/ skills/README.md changes/CHANGELOG.md
+          git commit -m "release ${{ steps.cut.outputs.version }} (auto patch bump) [autobump]"
+          git push origin HEAD:main
