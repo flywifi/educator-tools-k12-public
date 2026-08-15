@@ -152,6 +152,49 @@ def smoke_test() -> dict:
     return out
 
 
+def check_mcp() -> dict:
+    """MCP-server readiness (tools/mcp_server.py): what the local stdio leg needs — and the
+    honest answer is 'almost nothing' (stdlib only). The SDK matters only for the hosted leg."""
+    out: dict = {}
+    out["python_310_plus"] = ("ok" if sys.version_info >= (3, 10)
+                              else f"NO — {sys.version_info[0]}.{sys.version_info[1]} "
+                                   f"(the MCP stdio server needs 3.10+)")
+    try:
+        import sqlite3
+        conn = sqlite3.connect(":memory:")
+        try:
+            conn.execute("CREATE VIRTUAL TABLE t USING fts5(x)")
+            out["sqlite_fts5"] = "ok"
+        except sqlite3.OperationalError:
+            out["sqlite_fts5"] = "absent — lookups fall back to LIKE (slower, still correct)"
+        finally:
+            conn.close()
+    except Exception as exc:
+        out["sqlite_fts5"] = f"sqlite unavailable: {exc.__class__.__name__}"
+    db = ROOT / "canonical-sources" / "index" / "offline.db"
+    out["offline_index"] = ("present" if db.exists()
+                            else "absent — mcp_server builds it once at startup from a repo "
+                                 "clone, or run: python tools/offline_index.py --build")
+    if os.name == "nt":
+        cfg = Path(os.environ.get("APPDATA", "")) / "Claude" / "claude_desktop_config.json"
+        out["python_launcher_note"] = ("Windows: if `python3` is not found, use `py -3` or "
+                                       "`python` — docs command lines assume python3")
+    else:
+        cfg = Path.home() / "Library" / "Application Support" / "Claude" / \
+            "claude_desktop_config.json"
+    out["claude_desktop_config"] = (str(cfg) + (" (exists)" if cfg.exists()
+                                                else " (not created yet — "
+                                                "mcp_server.py --print-config desktop)"))
+    try:
+        import mcp  # noqa: F401
+        out["mcp_sdk"] = "installed (needed only for the hosted HTTP leg)"
+    except ImportError:
+        out["mcp_sdk"] = ("not installed — FINE for local stdio (stdlib-only); the hosted "
+                          "leg installs it via: python tools/deps_preflight.py "
+                          "--install mcp_server")
+    return out
+
+
 def build_report() -> dict:
     running = {
         "executable": sys.executable,
@@ -167,6 +210,7 @@ def build_report() -> dict:
         "pip_target": pip_target(),
         "imports": check_imports(),
         "smoke": smoke_test(),
+        "mcp": check_mcp(),
     }
 
 
@@ -248,6 +292,9 @@ def main(argv: list[str] | None = None) -> int:
     print("\n--- tool import + smoke test ---")
     for k, val in rep["smoke"].items():
         print(f"  {k:24} {val}")
+    print("\n--- MCP server readiness (local stdio needs stdlib only) ---")
+    for k, val in rep["mcp"].items():
+        print(f"  {k:22} {val}")
     print("\n" + "=" * 70)
     print("VERDICT")
     print("=" * 70)

@@ -53,6 +53,9 @@ jobs:
       - name: MCP tool-registry self-test (detail-strip, clamps, fabricated-code block, twins)
         run: python3 tools/mcp_tooldefs.py --self-test
 
+      - name: MCP stdio-server self-test (frame shapes, error codes, stdout-purity twin)
+        run: python3 tools/mcp_server.py --self-test
+
       - name: Cross-platform lint (bare-interpreter spawns; encoding-less text opens)
         run: python3 tools/mac_audit.py
 
