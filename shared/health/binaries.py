@@ -231,10 +231,17 @@ def _self_test() -> int:
     ck("env_var name mangling: fc-list -> TOS_BIN_FC_LIST", env_var("fc-list") == "TOS_BIN_FC_LIST")
 
     # --- the cache must not be poisoned by an injected probe ---
+    # Asserted on the CACHE ITSELF, not on whether soffice happens to exist here. The previous
+    # form checked `resolve("soffice")["path"] is not None`, which is the same environment
+    # assumption that broke the probes above — it passed in a container with LibreOffice and
+    # failed on the runner without it.
     clear_cache()
     resolve("soffice", platform="darwin", which=no_path, env={}, exists=lambda _p: False)
-    ck("an injected probe does NOT enter the cache (real lookup still works)",
-       resolve("soffice")["path"] is not None)
+    ck("an injected probe does NOT enter the cache", "soffice" not in _CACHE)
+    resolve("soffice")
+    ck("a real (uninjected) lookup DOES populate the cache", "soffice" in _CACHE)
+    clear_cache()
+    ck("clear_cache empties it", not _CACHE)
 
     print(f"self-test: {fails} failure(s)")
     return 1 if fails else 0
