@@ -4,6 +4,8 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+
+## [1.4.0] — 2026-08-16
 ### Fixed — the hosted `/mcp` endpoint had never worked, and nine gates could not fail (2026-08-16)
 - **`/mcp` returned HTTP 500 to every request** from the hosted leg's first commit until now. It is
   the address a claude.ai custom connector and a ChatGPT Developer-mode server both point at, so
