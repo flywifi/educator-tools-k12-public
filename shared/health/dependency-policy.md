@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-08-16 | owner: health-maintainer -->
 # Dependency & capability policy (canonical)
 
 TOS is **stdlib-by-default**; optional dependencies are **capability-gated extras** that only earn their

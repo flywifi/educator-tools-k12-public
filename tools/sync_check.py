@@ -91,6 +91,49 @@ COVERAGE_SKIP = {"index"}         # index/ ships data + its own README; add non-
 # sibling changed after the stamp is an advisory reminder only.
 DOC_FRESHNESS_MAX_AGE_DAYS = 365
 
+# WHAT COUNTS AS A MAINTAINER-CLASS DOC — one definition, because there were two. Check 18 used
+# ("*README.md", "*MAINTAINER.md") while check 20 used {CLAUDE.md, docs/MACOS.md,
+# docs/DEPLOYMENT*.md, *MAINTAINER.md}. Neither was wrong; having both meant a doc could be held to
+# the source-provenance rule while being exempt from the freshness rule, and vice versa.
+#
+# Adding a path here REQUIRES adding its `last_reviewed` stamp in the same commit — a missing stamp
+# is a hard failure by design. Deliberately NOT widened into shared/** or protocol-layer/**: those
+# are the canonical halves of the two-copy sync rule, so a stamp there propagates into the per-skill
+# copies and turns a review date into a sync artifact. Their freshness is governed by the sync rule.
+# docs/audits/* are also excluded: a dated audit is an immutable record, not a living document, and
+# forcing it to be "re-reviewed" every 365 days would make its stamp mean the opposite of what it says.
+MAINTAINER_CLASS_GLOBS = ("*README.md", "*MAINTAINER.md")
+MAINTAINER_CLASS_FILES = (
+    "CLAUDE.md", "STATE.md",
+    "docs/ARCHITECTURE.md", "docs/DEPLOYMENT.md", "docs/DEPLOYMENT_SURFACES.md",
+    "docs/MACOS.md", "docs/QUALITY_MODEL.md", "docs/RUNBOOK-cpalms.md",
+    "security/SECURITY_REVIEW.md", "security/SECURITY_AND_SAFETY.md",
+    "shared/health/dependency-policy.md", "changes/CHANGE_MANAGEMENT.md",
+)
+
+
+def maintainer_class_docs(tracked) -> list:
+    """Every doc held to the stamp. `tracked` is the _tracked_files helper (git-backed)."""
+    docs = set(tracked(*MAINTAINER_CLASS_GLOBS))
+    docs |= {ROOT / rel for rel in MAINTAINER_CLASS_FILES if (ROOT / rel).exists()}
+    return sorted(docs)
+
+
+def synced_basenames() -> set:
+    """The file names that exist in every skill as byte-identical copies of a canonical source.
+
+    Read from tools/sync_manifest.json rather than hardcoded, so adding a synced reference updates
+    every consumer automatically. Check 18 uses this to stop treating a re-sync as a review signal:
+    a copy that check 2 already holds byte-identical to canon cannot drift, so its commit date says
+    nothing about whether the MAINTAINER doc beside it still describes its skill. That single
+    exclusion is worth 43 of the 83 advisories the check used to print — every atom MAINTAINER was
+    flagged by references/quality-gates.md being re-synced, and nothing else."""
+    try:
+        man = json.loads((ROOT / "tools" / "sync_manifest.json").read_text(encoding="utf-8"))
+        return set(man.get("synced_references", {}))
+    except Exception:
+        return set()
+
 
 def _guard_crashed(guard: str, exc: Exception):
     """The message for a drift check that raised — or None when a developer explicitly allowed it.
@@ -480,16 +523,31 @@ def main() -> int:
         # the SKIPPED/CRASHED lines the fail-closed conversion now prints. Collect and summarise;
         # TOS_SYNC_VERBOSE=1 restores the per-file list for whoever is actually doing a doc pass.
         _sibling_stale: list[tuple] = []
+        # ...and two signals were conflated into one. "Someone edited a file NEXT to this doc" and
+        # "someone edited THIS DOC after the date it claims to have been reviewed" are different
+        # findings, and only the first is a nudge. The second is the stamp contradicting its own
+        # file. Reported separately so the loud one is legible: all 43 atom MAINTAINERs are in the
+        # second class (edited 2026-07-15, stamped 2026-06-27), not the first.
+        _self_stale: list[tuple] = []
 
-        def _git_date(p: Path):
+        # Synced references are byte-identical to canon by construction and are guarded harder by
+        # check 2 — a re-sync is not evidence that the doc beside them needs re-reading. Excluding
+        # them is what turns this advisory back into a signal.
+        _synced = sorted(synced_basenames())
+
+        def _git_date(p: Path, exclude_synced: bool = False):
             try:
-                out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(p)],
+                rel = p.relative_to(ROOT).as_posix() if p != ROOT else "."
+                spec = [rel]
+                if exclude_synced:
+                    spec += [f":(exclude){rel}/**/{name}" for name in _synced]
+                out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", *spec],
                                      cwd=ROOT, capture_output=True, text=True, timeout=10).stdout.strip()
                 return date.fromisoformat(out) if out else None
             except Exception:
                 return None
 
-        docs = sorted(_tracked_files("*README.md", "*MAINTAINER.md"))
+        docs = maintainer_class_docs(_tracked_files)
         for doc in docs:
             drel = doc.relative_to(ROOT).as_posix()
             if "/skill-template/" in drel or "/node_modules/" in drel:
@@ -513,9 +571,26 @@ def main() -> int:
             if (today - stamp).days > DOC_FRESHNESS_MAX_AGE_DAYS:
                 _emit(f"  x doc stale: {drel} last_reviewed {stamp} (> {DOC_FRESHNESS_MAX_AGE_DAYS}d)")
                 continue
-            newest = _git_date(doc.parent)                     # advisory only — never a hard failure
+            own = _git_date(doc)                               # advisory only — never a failure
+            if own and own > stamp:
+                # The doc's own content moved after the date it claims. The sibling nudge below
+                # would be noise on top of this, so it is skipped: report the stronger finding once.
+                _self_stale.append((stamp, drel, own))
+                continue
+            newest = _git_date(doc.parent, exclude_synced=True)  # advisory only — never a failure
             if newest and newest > stamp:
                 _sibling_stale.append((stamp, drel, newest))
+        if _self_stale:
+            _self_stale.sort()
+            oldest = "; ".join(f"{d} (stamped {s}, edited {n})" for s, d, n in _self_stale[:5])
+            print(f"[note] doc-freshness: {len(_self_stale)} doc(s) were EDITED after the "
+                  f"last_reviewed date they declare — the stamp contradicts its own file, not a "
+                  f"sibling. Oldest 5: {oldest}"
+                  + ("" if os.environ.get("TOS_SYNC_VERBOSE") else
+                     " — set TOS_SYNC_VERBOSE=1 for the full list"))
+            if os.environ.get("TOS_SYNC_VERBOSE"):
+                for s, d, n in _self_stale:
+                    print(f"[note]   SELF {d}: edited {n}, last_reviewed {s}")
         if _sibling_stale:
             _sibling_stale.sort()
             oldest = "; ".join(f"{d} (stamped {s})" for s, d, _ in _sibling_stale[:5])
@@ -593,9 +668,7 @@ def main() -> int:
             return any(c.startswith(r + "#") or c.startswith(r + "?") for r in registered)
 
         DOC_SOURCE_ALLOW = ("https://github.com/",)   # incidental repo/issue links, not cited authorities
-        doc_set = {ROOT / "CLAUDE.md", ROOT / "docs" / "MACOS.md"}
-        doc_set |= set((ROOT / "docs").glob("DEPLOYMENT*.md"))
-        doc_set |= set(_tracked_files("*MAINTAINER.md"))
+        doc_set = set(maintainer_class_docs(_tracked_files))   # same definition as check 18
         for md in sorted(p for p in doc_set if p.exists()):
             rel = md.relative_to(ROOT).as_posix()
             if "/skill-template/" in rel:
@@ -607,6 +680,12 @@ def main() -> int:
                 continue
             body = re.sub(r"(```|~~~).*?\1", "", body, flags=re.DOTALL)
             for url in re.findall(r"https?://[^\s)>\]\"'`]+", body, flags=re.IGNORECASE):
+                # A template placeholder is not a cited authority. `https://<your-host>/mcp` in a
+                # deploy recipe names no source to register — the same reason check 8's reference
+                # scan skips tokens containing "<>*| ". Surfaced when this check was widened to
+                # READMEs: deploy/mcp/README.md tripped it five times on its own instructions.
+                if "<" in url or ">" in url:
+                    continue
                 url = url.rstrip(".,;:!?")
                 if any(url.lower().startswith(a) for a in DOC_SOURCE_ALLOW):
                     continue

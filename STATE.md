@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-08-16 | owner: repo-maintainer -->
 # STATE.md
 ## Teacher Operating System — Live Status & Recovery
 Update at every phase boundary and after each skill ships. Recovery package = the charters + Quality

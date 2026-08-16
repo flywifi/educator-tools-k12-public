@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-08-16 | owner: change-manager -->
 # CHANGE_MANAGEMENT.md
 ## Teacher Operating System (TOS) — Change Management
 Governance document (Quality Gates §2.1). How changes are made safely and traceably (QG §2.4 scope

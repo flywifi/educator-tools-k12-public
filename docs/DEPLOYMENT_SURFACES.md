@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-08-16 | owner: deployment-maintainer -->
 # DEPLOYMENT_SURFACES.md — where the TOS runs (and how data is handled per surface)
 
 > Teacher-friendly version of this: [`implementation/claude/README.md`](../implementation/claude/README.md).

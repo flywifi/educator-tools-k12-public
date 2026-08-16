@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-08-16 | owner: architecture-maintainer -->
 # ARCHITECTURE.md
 ## Teacher Operating System (TOS) — Architecture
 Governance document (Quality Gates §2.1). Authoritative description of how the ecosystem is built.
