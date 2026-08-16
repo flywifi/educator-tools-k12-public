@@ -54,6 +54,12 @@ jobs:
       - name: Plugin-metadata generator self-test (pass-through, idempotency, broken twins)
         run: python3 tools/export_plugin_manifest.py --self-test
 
+      # macOS finding E2. The darwin/win32 branches CANNOT run on this runner, so they are exercised
+      # by injected lookup/exists (the build_mcpb.launch_command precedent). Without this step the
+      # only coverage of Homebrew/Program Files discovery would be a Mac nobody has run yet.
+      - name: Binary-resolver self-test (darwin + win32 branches via injected lookup)
+        run: python3 shared/health/binaries.py --self-test
+
       - name: MCP tool-registry self-test (detail-strip, clamps, fabricated-code block, twins)
         run: python3 tools/mcp_tooldefs.py --self-test
 

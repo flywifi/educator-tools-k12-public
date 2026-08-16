@@ -21,6 +21,12 @@ import subprocess
 import sys
 from pathlib import Path
 
+try:                                    # package import (health.capabilities)
+    from . import binaries
+except ImportError:                     # direct script run, which this module's usage line offers
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import binaries                     # type: ignore[no-redef]
+
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "tools" / "dependencies.json"
 
@@ -33,10 +39,11 @@ def _has_module(name: str) -> bool:
 
 
 def _font_families() -> list[str]:
-    if not shutil.which("fc-list"):
+    fc = binaries.find_binary("fc-list")
+    if not fc:
         return []
     try:
-        out = subprocess.run(["fc-list"], capture_output=True, text=True, timeout=15).stdout
+        out = subprocess.run([fc], capture_output=True, text=True, timeout=15).stdout
     except Exception:
         return []
     return out.splitlines()
@@ -56,10 +63,21 @@ def report() -> dict:
     caps = []
     for c in manifest.get("capabilities", []):
         pys = {m: _has_module(m) for m in c.get("python", [])}
-        bins = {b: bool(shutil.which(b)) for b in c.get("bins", [])}
+        # Was `bool(shutil.which(b))` — PATH-only, so on a Mac this reported soffice MISSING while
+        # office_authoring found and used it: the health report contradicted the feature it
+        # described. binaries.resolve() applies the same per-OS discovery the feature does, and
+        # `bins_detail` records HOW each was found so a user can see that their Homebrew install
+        # was seen rather than inferring it from a bare False.
+        bins, bins_detail = {}, {}
+        for b in c.get("bins", []):
+            r = binaries.resolve(b)
+            bins[b] = bool(r["path"]) and r["exists"]
+            bins_detail[b] = {"path": r["path"], "how": r["how"]}
         secrets = {s: (os.environ.get(s) not in (None, "")) for s in c.get("secrets", [])}
         entry = {"id": c["id"], "tier": c["tier"], "beats_baseline": c.get("beats_baseline"),
                  "python": pys, "bins": bins}
+        if bins_detail:
+            entry["bins_detail"] = bins_detail
         if c.get("secrets"):
             entry["secrets_configured"] = secrets   # booleans only — never the values
         if c.get("fonts"):

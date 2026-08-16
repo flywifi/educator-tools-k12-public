@@ -61,7 +61,7 @@ hardware to observe (see the on-Mac runbook you keep outside the repo).
 | D5 | Hardcoded `/tmp` in a workflow example | **RESOLVED** | `skills/operations/standards-updater/` uses portable relative paths |
 | D6 | Bare `python` in a harvest doc | **RESOLVED** | `canonical-sources/schools/HARVESTING.md` → `python3` |
 | E1 | PEP 668 `externally-managed-environment` install break | **UNTESTED** — fix landed, awaits on-Mac validation | `tools/deps_preflight.py --install <capability>` installs into the managed `.harvest-venv` (wheels-only, never system Python); `--python-path` exposes the venv interpreter for F2/F3. Verify the exact error text on a Mac. |
-| E2 | Homebrew tools invisible under a GUI/MCP PATH | **OPEN** — partly fixed (soffice=D1) + doc'd | MCP absolute-path guidance in `docs/DEPLOYMENT_SURFACES.md`; a general binary resolver is a follow-up |
+| E2 | Homebrew tools invisible under a GUI/MCP PATH | **UNTESTED** — general resolver shipped 2026-08-16 (`shared/health/binaries.py`); needs one Mac run to close | `find_binary()` replaces four separate PATH-only probes and adds BOTH Homebrew prefixes (`/opt/homebrew`, `/usr/local`), which the old `_find_soffice` listed for neither. Darwin branch is exercised by injected-lookup probes on Linux, so it is simulated, not run: `python3 shared/health/binaries.py` on a Mac prints what resolved and how. |
 | E3 | Stale right-click Gatekeeper guidance (Sequoia) | **OPEN** — doc'd; verify on-device | `docs/DEPLOYMENT_SURFACES.md` (System Settings flow) |
 
 ### New finding template (append below as you test)

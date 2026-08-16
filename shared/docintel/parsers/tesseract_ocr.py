@@ -15,18 +15,36 @@ from ..udom import Block, Source
 
 PDF_TYPE = "application/pdf"
 
+def _find(name: str):
+    """health.binaries.find_binary, importable however this module was loaded."""
+    import sys
+    from pathlib import Path
+    try:
+        from health.binaries import find_binary
+    except ImportError:                                  # shared/ not yet on sys.path
+        sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+        from health.binaries import find_binary
+    return find_binary(name)
+
+
 
 class TesseractEngine(OcrEngine):
     name = "tesseract"
     version = "0.1.0"
 
     def available(self) -> bool:
+        """True only when the Python wrapper AND the tesseract ENGINE are both present.
+
+        This used to return True on the wrapper alone, so a machine with pytesseract but no
+        tesseract binary advertised OCR and then failed at call time — the opposite of the honest
+        capability gap this registry exists to report. The engine is off PATH by default on macOS
+        (Homebrew) and Windows, so the lookup is health.binaries, not shutil.which."""
         try:
             import pytesseract  # noqa: F401
             from PIL import Image  # noqa: F401
-            return True
         except BaseException:
             return False
+        return _find("tesseract") is not None
 
     def supports(self, media_type: str) -> bool:
         # Images directly; PDFs are rasterized locally (PyMuPDF) then OCR'd - fully offline.

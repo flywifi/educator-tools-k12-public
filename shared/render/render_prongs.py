@@ -81,8 +81,15 @@ def _have_module(name: str) -> bool:
 
 
 def _have_bin(name: str) -> bool:
-    from shutil import which
-    return which(name) is not None
+    # health.binaries, not shutil.which: PATH-only discovery reports a false capability gap for
+    # tesseract/soffice on the macOS and Windows desktops where they are installed off PATH.
+    import sys
+    try:
+        from health.binaries import present
+    except ImportError:                                  # shared/ not yet on sys.path
+        sys.path.insert(0, str(SHARED))
+        from health.binaries import present
+    return present(name)
 
 
 def capability_report() -> dict:
