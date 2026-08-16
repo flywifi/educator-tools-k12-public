@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-06-27 | owner: udl-options-maintainer -->
+<!-- last_reviewed: 2026-08-16 | owner: udl-options-maintainer -->
 # MAINTAINER — udl-options
 
 ## Purpose
@@ -15,9 +15,6 @@
 - Scope creep: being asked to do multiple things (generate + differentiate + check). Refuse and redirect to the appropriate atom.
 - Fabricating a standard code when lookup fails. Always return empty `standards: []` with an honest `note` instead.
 
-## Fragile fallbacks that must not become defaults
-- Model-inferred match_method when L1 cache is absent — must be labeled `uncertain`, never presented as confirmed.
-
 ## Regression cases to preserve
 1. Returns `human_review_required: true` in every response.
 2. Does not generate content outside its declared scope.
@@ -27,7 +24,9 @@
 Editing synced references (method.md, quality-gates.md), frontmatter keys, or the output JSON schema.
 
 ## Minority-report policy
-Atoms are narrow-scope — when sources or interpretations disagree on this atom's single operation, flag the disagreement in a `minority_report` field and let the orchestrator or human decide.
+Atoms are narrow-scope — when sources or interpretations disagree on this atom's single operation,
+emit a decision record via `shared/context/sot_resolver.py` (policy `shared/context/minority-report.md`)
+and escalate to the calling workflow skill. Do not bury disagreement in prose.
 
 ## Update checklist (every version bump)
 - [ ] Run `python3 tools/sync_check.py` (must exit 0).
