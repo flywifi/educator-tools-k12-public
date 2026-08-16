@@ -1,98 +1,193 @@
 <!-- last_reviewed: 2026-08-16 | owner: security-maintainer -->
 # SECURITY_REVIEW.md
 ## Security & safety review — v1 ecosystem
-Date: 2026-06-20 · **amended 2026-08-15 and 2026-08-16** (MCP tool surface; two retractions
-below) · Scope at the original review: 11 skills; the ecosystem now ships **62** — the skill-
-level findings below were re-checked mechanically by the drift guard, not re-reviewed by hand,
-and a full re-review is the honest next step. Reviewed against
-`SECURITY_AND_SAFETY.md`, the Quality Gates Safety/Integrity gates, and the drift-guard invariants.
+
+**Original review:** 2026-06-20, against **11 skills**.
+**Amended:** 2026-08-15, 2026-08-16 (MCP tool surface; two retractions).
+**Rebuilt at real scope:** 2026-08-16 — **62 skills**, 6 protocols, shared core, tooling.
+
+Reviewed against `SECURITY_AND_SAFETY.md`, the Quality Gates Safety/Integrity gates, and the
+drift-guard invariants.
+
+### Why this document was rebuilt
+
+The ecosystem reached 62 skills on 2026-06-29, nine days after this review was written for 11.
+Nothing was falsified deliberately: the original table had no **scope** column, so evidence that
+was single-skill by construction — "benchmark Case 3 confirms…" tested `special-education-support`
+and nothing else — silently read as ecosystem-wide once the ecosystem grew six-fold. Three rows
+turned out to be false at current scope when re-run (§ *Corrections*, below).
+
+Every row below now carries the **command that was run**, the **result observed**, the **scope**
+(how many of the 62 it covers), and whether it is **machine-checked** or **review-based**. Quality
+Gates §93.3 requires reporting "checked: …", never "error-free"; a table of green ticks could not
+express that distinction, and this one can. Anyone can re-run any row.
+
+**All commands below were executed on 2026-08-16 against this commit.** Where a result is worse
+than the previous edition claimed, that is the correction, not a regression.
+
+---
 
 ## Findings by control
 
-| Control | Status | Evidence |
-|---|---|---|
-| **No real student data (FERPA)** | ✅ Pass | Every skill states placeholders-only; the drift guard scans for forbidden tokens; repo-wide PII grep is clean; benchmark Case 3 confirms both skill *and* baseline refuse a real-IEP request and offer placeholder drafting. |
-| **No fabrication (Integrity)** | ✅ Pass | `standards-verification.md` forbids invented standards; `quality-review` makes a fabricated standard an auto-Reject (benchmark Case 2: `3.NF.A.9` → Rejected via `score.py` override). |
-| **Human-in-the-loop** | ✅ Pass | `human_review_required: true` required in every `SKILL.md` and emitted in every artifact's metadata; enforced by the drift guard. SpEd/MTSS outputs add an explicit "validate against the actual plan/policy" note. |
-| **Legal boundary (IEP/504/eligibility)** | ✅ Pass | `special-education-support` and `intervention-mtss` refuse eligibility/legal determinations and route to the proper team process; MTSS is kept distinct from special-ed eligibility. |
-| **Accessibility / UDL** | ✅ Pass | UDL default in `shared/differentiation/udl.md`; `readability-age.md` drives the Accessibility gate. |
-| **Bias & representation** | ✅ Pass (process) | Inclusive-examples requirement in `SECURITY_AND_SAFETY.md` + the Educational Quality/Accessibility gates; relies on review (no automated check). |
-| **Privacy in family-facing text** | ✅ Pass | `family-communication` uses placeholders and marks where the teacher personalizes; benchmark-style prompt with a real name → replaced with placeholder. |
-| **Content/tooling safety** | ✅ Pass | No malware/exploit content; skills do nothing beyond their stated purpose; external/student text is treated as data, not instructions. |
-| **Ecosystem integrity (drift)** | ✅ Pass | `tools/sync_check.py` enforces the 8 QG repository invariants across 24 numbered checks (0–23) + per-skill reference sync; PASS across 11 skills; negative test confirms it catches drift. |
+| Control | Evidence — command → observed | Scope | Class | Residual risk |
+|---|---|---|---|---|
+| **Human-in-the-loop** | `grep -l human_review_required $(find skills -name SKILL.md) \| wc -l` → **62**; `sync_check.py` asserts it per skill (checks 0–24 green) | **62 / 62** | machine-checked | The flag is emitted; that a human *acted* on it is unobservable from here. |
+| **Ecosystem integrity (drift)** | `python3 tools/sync_check.py` → `OK — 62 skill(s) checked; 8 repository invariants present; 2 synced reference(s) in sync` | **62 / 62** | machine-checked | Guards bind what they check. Check 15 cannot see paths under a *renamed* directory — 889 stale `protocols/` references are invisible to it today (open). |
+| **No fabrication (Integrity)** | `python3 tools/verify_standards.py --self-test` → `0 failure(s) across 30 probes + shape audit + mutation batteries`, `6/6 mutations flagged, 0/16 false positives`. Failability proven: `--self-test-invert` → **exit 1** | corpus-wide (6,574 FL codes); **all** skills that cite standards | machine-checked | Covers *citation* of standards. It cannot detect a fabricated pedagogical claim carrying no standard code. |
+| **Standards corpus integrity** | `python3 tools/audit_overlays.py` → `0 findings across 6588 entries` (re-proof, routing, id-bleed, accounting, coverage, manifest identity, scopes, timestamps, vocabulary) | 6 subjects / 6,588 entries | machine-checked | Re-proves the *labels*; currency against live CPALMS is a separate, scheduled check. |
+| **No real student data (FERPA)** | The repo's own PII regexes (`tools/validate_outputs.py:28-29`) run over all **1,116 tracked files** → **0 SSN-pattern hits**; **52 phone-pattern hits, all in one file** (`canonical-sources/schools/private/private-schools-consolidated.json` — institutional school numbers, not student data) | all tracked files | machine-checked, **narrow** | Pattern-based, two patterns. Not a PII scanner. See correction **C-3**. |
+| **Placeholders-only** | `grep -lEi "placeholder\|\[Student Name\]" $(find skills -name SKILL.md)` → **28** | **28 / 62** | review-based | 34 skills state no placeholder rule in their own `SKILL.md`. See correction **C-1**. |
+| **Legal boundary (IEP/504/eligibility)** | `special-education-support` and `intervention-mtss` refuse eligibility/legal determinations and route to the team process; MTSS kept distinct from special-ed eligibility (read, not executed) | 2 skills, by inspection | review-based | Not behaviourally tested — neither skill has a refusal eval. |
+| **"Validate against the actual plan/policy"** | `grep -lEi "actual (plan\|IEP\|policy)" $(find skills -name SKILL.md)` → **2**; `grep -lEi disciplinar …` → **1** | **2 / 62**, **1 / 62** | review-based | Policy (`SECURITY_AND_SAFETY.md` §2) requires this for IEP/504, eligibility, MTSS **and disciplinary** outputs. See correction **C-2**. |
+| **Content/tooling safety** | `python3 tools/security_scan.py` with all three pinned scanners present (pip-audit 2.10.1, bandit 1.9.4, semgrep 1.173.0) → `status: advisory`, **36 findings, 0 blocking**, exit 0. Advisories are B104 (loopback-default bind) and B310 (`urlopen` scheme audit) in the fetch/verify tools | first-party code + pinned deps | machine-checked | Advisory findings are accepted, not absent. A scan can only see the patterns it encodes. |
+| **Supply chain** | Same run; missing-scanner state is a distinct exit (**2**), verified by running with no scanners on PATH → `security scan INCOMPLETE` | pinned requirements files | machine-checked | Pins are `==` (pip-audit rejects ranges), so a floor cannot be expressed in the pin; asserted in code instead. |
+| **Accessibility / UDL** | UDL default in `shared/differentiation/udl.md`; `readability-age.md` drives the Accessibility gate (read, not executed) | ecosystem policy | review-based | **No readability score is computed anywhere.** The gate is a human judgement. |
+| **Bias & representation** | Inclusive-examples requirement in `SECURITY_AND_SAFETY.md` §4 + the Educational Quality/Accessibility gates | ecosystem policy | review-based | **No automated check exists.** Entirely reliant on review. |
+| **Privacy in family-facing text** | `family-communication` uses placeholders and marks personalization points (read, not executed) | 1 skill | review-based | Not behaviourally tested. |
+| **Artifact validation** | `python3 tools/validate_examples.py` → `validated 12 example artifact(s); 0 failure(s)` | 12 committed examples | machine-checked | 12 examples for a 62-skill ecosystem. |
+| **Benchmark evidence discipline** | `python3 tools/run_benchmark.py --check` → `OK — 5 scorecards; every scored row has evidence` | 5 scorecards | machine-checked | `--check` deliberately permits `unrun`; 22 of 25 cells are `unrun` and that is honest, not covered. |
 
-## MCP tool surface (added 2026-08-15)
+---
+
+## Corrections (2026-08-16) — three claims that were false at 62-skill scope
+
+**C-1 — "Every skill states placeholders-only" was false.** As published it read as an
+ecosystem-wide statement. Re-run today: **28 of 62** `SKILL.md` files mention placeholders; **34 do
+not**, including `behavior-strategy`, `meeting-classify`, `intervention-select` and
+`translate-comm`. The *policy* is ecosystem-wide (`SECURITY_AND_SAFETY.md` §1) and the metadata
+invariant is enforced in all 62; the per-skill **prose** is not. Corrected to 28/62 above, and the
+gap is being closed in the commit following this one.
+
+**C-2 — "SpEd/MTSS outputs add an explicit 'validate against the actual plan/policy' note" was
+false at scope.** **2 of 62** carry that phrase. Worse, `SECURITY_AND_SAFETY.md` §2 requires it for
+**disciplinary** outputs too, and **1 of 62** mentions disciplinary at all. The requirement was
+written into policy and never propagated to the 51 skills added after the original review, because
+`sync_check` enforces the pipeline pointer, the metadata schema and `human_review_required` — and
+has no notion of boundary prose.
+
+**C-3 — "repo-wide PII grep is clean" described a scan that does not exist.** There is no repo-wide
+PII grep in the codebase. The only PII patterns are two regexes in `tools/validate_outputs.py`
+(SSN and phone), applied to a single artifact passed via `--input`. Running them repo-wide for this
+review (the first time that has been done) gives 0 SSN and 52 phone matches, all institutional. The
+claim is now stated as what was actually executed, and the control is labelled **narrow**.
+
+### Earlier retractions, retained
+
+**RETRACTION (2026-08-16) — the hosted gate.** The 2026-08-15 text in `bbc4006` described controls
+the code did not have. As merged, the rate limiter and the `TOS_MCP_TOKEN` check ran **only** inside
+the `/v1/{tool}` REST handler. `/mcp` — the path every claude.ai and ChatGPT-Developer-mode
+connector actually uses — was **neither rate-limited nor token-gated**: it is a mounted sub-app,
+which a per-route check cannot reach. For the life of that release the token provided **no**
+protection on the primary surface. Fixed by moving the gate to ASGI middleware that runs before
+routing, with probes driving raw ASGI against `/mcp` itself. `/healthz` and `/openapi.json` are
+token-exempt (still rate-limited) by deliberate decision — gating them breaks platform health probes
+and ChatGPT's Import-from-URL respectively; neither returns corpus data.
+
+**CORRECTION (2026-08-16) — the no-auth rationale.** Earlier text said no-auth exists because
+"ChatGPT cannot send headers". True of MCP **connectors** (both platforms), **false for Custom GPT
+Actions**, which support API-key/header auth. The accurate rationale: no-auth is chosen for the
+connector door and for zero-config teacher import, not because header auth is impossible everywhere.
+
+---
+
+## MCP tool surface
 
 - **Local stdio server** (`tools/mcp_server.py`): stdlib-only, read-only tools, no network, no
-  secrets; spawned per-session by the client (no daemon). Stdout-purity and error-code behavior
-  are self-tested; the tool registry excludes every write/destructive path by name.
-- **Hosted HTTP leg** (`tools/mcp_http_server.py`, dormant until a human deploys): threat model
-  = a public read-only API over already-public CPALMS-derived reference data. Controls:
-  stateless (nothing to exfiltrate server-side), per-IP token-bucket rate limit, loopback bind
-  by default (B104-clean; the container opts into 0.0.0.0), no request-body logging, optional
-  env-only bearer token, TLS at the platform. No-auth default is a deliberate, recorded
-  decision: the worst case is an anonymous reader of public standards data paying our rate
-  limit.
-  - **RETRACTION (2026-08-16).** The paragraph above, as published on 2026-08-15 in `bbc4006`,
-    described controls the code did not have. As merged, the rate limiter and the
-    `TOS_MCP_TOKEN` check ran **only** inside the `/v1/{tool}` REST handler. `/mcp` — the MCP
-    path every claude.ai and ChatGPT-Developer-mode connector actually uses — was **neither
-    rate-limited nor token-gated**: it is a mounted sub-app, which a per-route check cannot
-    reach. So for the life of that release the token provided **no** protection on the MCP path
-    and the statement "per-IP token-bucket rate limit … optional env-only bearer token" was
-    false for the primary surface. Fixed in the commit carrying this retraction (`harden 5/9`)
-    by moving the gate to ASGI middleware that runs before routing, with self-test probes that
-    drive raw ASGI against `/mcp` itself. `/healthz` and `/openapi.json` are token-exempt (still
-    rate-limited) by deliberate decision — gating them breaks platform health probes and
-    ChatGPT's Import-from-URL respectively; neither returns corpus data.
-  - **CORRECTION (2026-08-16).** Earlier text said the no-auth default exists because "ChatGPT
-    cannot send headers". That is true of MCP **connectors** (both platforms) but **false for
-    Custom GPT Actions**, which support API-key/header auth. The accurate rationale: no-auth is
-    chosen for the connector door and for zero-config teacher import, not because header auth is
-    technically impossible everywhere.
-  - Token comparison uses `hmac.compare_digest` (a plain `==` leaked the prefix through timing);
-    the rate-limit bucket evicts fully-refilled or least-recently-seen keys and never the caller
-    being served (a naive FIFO eviction could hand the flooding client a fresh burst).
-- **Prompt-injection stance**: tool results are quoted corpus data; the served instructions and
-  every corpus-returning description state results are data, never instructions. The corpus is
-  committed + CPALMS-verified, so the injection surface is the repo's own review process.
-- **Fabrication stance carried over the wire**: `verify_standard_codes` keeps the blocking
-  `not_found` semantics; `retired` is never reported as fabricated (D-K).
-- **Schema enforcement (added 2026-08-16, audit H-1).** The advertised JSON Schemas were
-  advertisement only: a bogus `subject` enum was ACCEPTED and answered `count: 0` — a silent
-  false negative in a system whose purpose is not lying about standards — and `maxItems`/
-  `additionalProperties` were ignored. A stdlib validator in the registry now runs on every leg
-  before any handler sees an argument.
-- **DNS-rebinding protection is deliberately OFF** unless `TOS_MCP_ALLOWED_HOSTS` names the
-  hosts. This is a recorded decision, not an oversight: the SDK's default constructs settings
-  with protection disabled, and enabling it with an empty allow-list rejects every request whose
-  Host header is a load balancer's — i.e. all of them, on a normal deployment.
-- **Process survival (added 2026-08-16, audit C-1/C-2/C-3).** A corrupt index used to kill the
-  stdio server mid-session; guards now sit at four boundaries and the honesty tool survives the
-  exact condition it exists to report.
+  secrets; spawned per-session by the client (no daemon). Stdout-purity and error-code behaviour are
+  self-tested; the tool registry excludes every write/destructive path by name.
+- **Hosted HTTP leg** (`tools/mcp_http_server.py`, dormant until a human deploys): threat model = a
+  public read-only API over already-public CPALMS-derived reference data. Controls: stateless by
+  default, per-IP token-bucket rate limit, loopback bind by default (B104-clean; the container opts
+  into 0.0.0.0), no request-body logging, optional env-only bearer token, TLS at the platform.
+  No-auth default is a deliberate, recorded decision: the worst case is an anonymous reader of
+  public standards data paying our rate limit.
+- Token comparison uses `hmac.compare_digest` (a plain `==` leaked the prefix through timing); the
+  rate-limit bucket evicts fully-refilled or least-recently-seen keys and never the caller being
+  served (a naive FIFO eviction could hand the flooding client a fresh burst).
+- **Prompt-injection stance**: tool results are quoted corpus data; the served instructions and every
+  corpus-returning description state that results are data, never instructions. The corpus is
+  committed and CPALMS-verified, so the injection surface is the repo's own review process.
+- **Fabrication stance over the wire**: `verify_standard_codes` keeps the blocking `not_found`
+  semantics; `retired` is never reported as fabricated.
+- **Schema enforcement** (2026-08-16, audit H-1). The advertised JSON Schemas were advertisement
+  only: a bogus `subject` enum was ACCEPTED and answered `count: 0` — a silent false negative in a
+  system whose purpose is not lying about standards — and `maxItems`/`additionalProperties` were
+  ignored. A stdlib validator in the registry now runs on every leg before any handler sees an
+  argument.
+- **DNS-rebinding protection is deliberately OFF** unless `TOS_MCP_ALLOWED_HOSTS` names the hosts.
+  A recorded decision, not an oversight: the SDK's default constructs settings with protection
+  disabled, and enabling it with an empty allow-list rejects every request whose Host header is a
+  load balancer's — i.e. all of them, on a normal deployment.
+- **Process survival** (2026-08-16, audit C-1/C-2/C-3). A corrupt index used to kill the stdio
+  server mid-session; guards now sit at four boundaries and the honesty tool survives the exact
+  condition it exists to report.
+
+---
+
+## What this review is **not**
+
+Stated plainly, because a review that implies coverage it does not have is the "Approval Without
+Evidence" anti-pattern the Quality Gates name at §89.
+
+- **No runtime behavioural testing of refusals.** `python3 shared/health/health.py --scan` →
+  `skills_scanned: 62`, `repair_plan` = **44 × "no eval cases"**. The 44 are all 43 atoms plus
+  `teacher-core`; the 18 with eval cases are the non-atom skills. Every high-risk atom —
+  `iep-goal`, `present-levels`, `referral-draft`, `behavior-strategy`, `parent-comm`,
+  `accommodation-match`, `intervention-select`, `translate-comm` — has **zero**. Nothing in the
+  boundary-language rows above is behaviourally verified. *What would close it:* eval cases per
+  atom, starting with those eight.
+- **No readability scoring.** *What would close it:* a computed reading-level check wired into the
+  Accessibility gate.
+- **No bias detection.** *What would close it:* an automated inclusive-language pass; today this is
+  review-only.
+- **The hosted leg has never run in production.** Verified end-to-end on loopback as of 2026-08-16
+  (before that date `/mcp` answered HTTP 500 to every request — see the changelog). A first real
+  deployment is still a first.
+
+---
 
 ## Residual risks / follow-ups
+
+- **The readiness score is saturated and carries no information.** `readiness_score: 0`,
+  `readiness_band: not_ready` — computed as `100 − 10·blocking − 4·warning`, clamped at 0, so 44
+  eval warnings floor it while `blocking_issues: []`. CI gates on `blocking_issues` only, which is
+  why a permanent `0/100 (not_ready)` has never turned CI red. It should either become informative
+  or stop being reported as a score.
+- **Safety is weighted 2%** of the Quality Gates composite (`docs/QUALITY_MODEL.md` §2). Its real
+  assurance comes from the critical-failure override — fabrication, real PII, unsafe output, and
+  approval-without-evidence force Rejected regardless of composite and may never be overridden — not
+  from the weighting. Worth knowing before reading the composite as a safety signal.
+- **The Quality Ledger holds 6 records** for a 62-skill ecosystem.
 - **Standards licensing (state corpora).** Bundling full state standard sets has licensing
-  considerations — gated behind a licensing check before any corpus is added (`state-standards-model.md`).
-- **Bias/readability are review-based, not automated.** A future check could score reading level and
-  flag non-inclusive patterns programmatically.
-- **PII check is token/pattern-based.** The drift guard catches obvious cases; it is not a full PII
-  scanner. The primary control remains the placeholders-only design + human review.
-- **Eval coverage.** The benchmark covered a 3-case subset; widening it strengthens assurance.
-- **Rate limiting is per-process.** N replicas of the hosted leg means N independent buckets;
-  it is an abuse brake, not a quota. Front it with the platform limiter for anything serious.
+  considerations — gated behind a licensing check before any corpus is added
+  (`state-standards-model.md`).
+- **PII check is two regexes.** The primary control remains the placeholders-only design plus human
+  review; see C-3.
+- **Rate limiting is per-process.** N replicas of the hosted leg means N independent buckets; it is
+  an abuse brake, not a quota. Front it with the platform limiter for anything serious.
 - **Two paths are token-exempt** (`/healthz`, `/openapi.json`) — still rate-limited, and neither
-  returns corpus data. The exemptions exist because gating them breaks platform health probes
-  and ChatGPT's Import-from-URL respectively; the token guards the data paths.
-- **The hosted leg has never run in production.** Its threat model is written for a system
-  nobody has deployed. As of 2026-08-16 it is verified end-to-end on loopback (before that date
-  `/mcp` answered 500 to every request — see the changelog); a first real deployment is still a
-  first.
-- **Original-scope drift.** This document was written for 11 skills and now describes an
-  ecosystem of 62. Nothing in the findings table is known to be false, but "unchanged" is an
-  assumption, not evidence, until the review is redone.
+  returns corpus data.
+- **Guards bind only what they check.** Check 15 (doc-path drift) validates a backticked path only
+  when it starts with a known anchor prefix; the anchor list contains `protocol-layer/` and not the
+  pre-rename `protocols/`, so 889 stale references across 174 files are structurally invisible to
+  it. Open.
+
+---
 
 ## Conclusion
-No critical issues. The v1 ecosystem upholds the safety constraints by design (placeholders-only,
-no fabrication, human-in-the-loop, legal boundaries) and by enforcement (drift guard + Quality
-Gates). Residual items are improvements, not blockers.
+
+**No critical issues, and less coverage than the previous edition of this document implied.**
+
+The controls that generalize to all 62 skills are the machine-checked ones: `human_review_required`
+(62/62), the repository invariants and synced-reference integrity (`sync_check` 0–24), the
+fabrication blocker with a proven failability control, corpus integrity across 6,588 overlay
+entries, and a supply-chain scan with all three pinned scanners run and 0 blocking findings.
+
+The controls that do **not** yet generalize are the review-based ones: placeholder prose (28/62),
+the validate-against-the-actual-plan requirement (2/62, and 1/62 for disciplinary), readability, and
+bias. Those are prose and human judgement, and 44 of 62 skills have no eval case that would test any
+of them at runtime.
+
+Residual items are improvements, not blockers — with one honest qualifier the previous edition did
+not carry: the eval gap means the safety claims resting on prose are *unverified*, not *verified and
+minor*.
