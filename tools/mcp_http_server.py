@@ -314,6 +314,48 @@ def _gate_middleware(app, bucket: "_Bucket", token: str):
     return middleware
 
 
+def _env_bool(name: str, default: bool) -> bool:
+    raw = os.environ.get(name)
+    return default if raw is None else raw.strip().lower() in ("1", "true", "yes", "on")
+
+
+def _transport_security():
+    """DNS-rebinding protection: OFF unless TOS_MCP_ALLOWED_HOSTS names the hosts (M-1).
+
+    Stated explicitly rather than left to the default, because the default is the surprising
+    one and the naive "hardening" breaks production. Passing transport_security=None makes the
+    SDK build TransportSecuritySettings(enable_dns_rebinding_protection=False) — validation
+    skipped, which is why a deployment behind a load balancer works at all. Constructing the
+    settings object with protection ON and an empty allow-list would reject EVERY request whose
+    Host header is the LB's. So: opt-in, and only a deployer who knows their public hostnames
+    can turn it on."""
+    from mcp.server.transport_security import TransportSecuritySettings
+
+    hosts = [h.strip() for h in os.environ.get("TOS_MCP_ALLOWED_HOSTS", "").split(",") if h.strip()]
+    if not hosts:
+        return TransportSecuritySettings(enable_dns_rebinding_protection=False)
+    return TransportSecuritySettings(
+        enable_dns_rebinding_protection=True, allowed_hosts=hosts,
+        allowed_origins=[f"https://{h}" for h in hosts])
+
+
+def public_url(request) -> str:
+    """The base URL to advertise in the OpenAPI document (M-2).
+
+    ChatGPT Actions requires TLS on 443 and rejects the import outright if servers[0].url is
+    http:// or an internal name — and that is exactly what request.base_url renders behind a
+    terminating load balancer. Resolution order: TOS_MCP_PUBLIC_URL (a required deploy step,
+    documented) -> base_url with the scheme corrected from x-forwarded-proto -> base_url."""
+    explicit = os.environ.get("TOS_MCP_PUBLIC_URL", "").strip().rstrip("/")
+    if explicit:
+        return explicit
+    url = str(request.base_url).rstrip("/")
+    proto = request.headers.get("x-forwarded-proto", "").split(",")[0].strip()
+    if proto == "https" and url.startswith("http://"):
+        url = "https://" + url[len("http://"):]
+    return url
+
+
 def build_app(mcp):
     """One ASGI app: /mcp (SDK) + /v1/{tool} + /openapi.json + /healthz, all behind the gate."""
     from starlette.applications import Starlette
@@ -336,17 +378,30 @@ def build_app(mcp):
 
     async def openapi(request: Request):
         doc = export_actions_schema.render_actions()
-        doc["servers"] = [{"url": str(request.base_url).rstrip("/")}]
+        doc["servers"] = [{"url": public_url(request)}]
         return JSONResponse(doc)
 
     async def healthz(request: Request):
-        return JSONResponse({"ok": True, "tools": len(mcp_tooldefs.TOOLS)})
+        # public_url is echoed so a deployer sees what ChatGPT will be handed BEFORE attempting
+        # the import — the failure it prevents shows up at a teacher's step, not the deployer's.
+        return JSONResponse({"ok": True, "tools": len(mcp_tooldefs.TOOLS),
+                             "public_url": public_url(request),
+                             "public_url_pinned": bool(os.environ.get("TOS_MCP_PUBLIC_URL")),
+                             "stateless": _env_bool("TOS_MCP_STATELESS", True)})
 
     app = Starlette(routes=[
         Route("/v1/{tool}", rest_tool, methods=["POST"]),
         Route("/openapi.json", openapi),
         Route("/healthz", healthz),
-        Mount("/", app=mcp.streamable_http_app()),
+        # stateless_http defaults to False in the SDK, i.e. in-process sessions — on the
+        # scale-to-zero / multi-replica hosts deploy/mcp/README.md recommends, a teacher's second
+        # request can land on a replica that never saw the first, producing intermittent "session
+        # not found" on BOTH platforms (M-1). These 8 tools are request/response, so the cost of
+        # stateless (no resumable streaming) is nil. Env escape hatch for a single pinned instance.
+        Mount("/", app=mcp.streamable_http_app(
+            stateless_http=_env_bool("TOS_MCP_STATELESS", True),
+            json_response=_env_bool("TOS_MCP_JSON_RESPONSE", False),
+            transport_security=_transport_security())),
     ])
     return _gate_middleware(app, bucket, token)
 
@@ -358,14 +413,43 @@ def serve() -> int:
         return 2
     import uvicorn
     host = os.environ.get("TOS_MCP_HOST", "127.0.0.1")
-    port = int(os.environ.get("TOS_MCP_PORT", "8033"))
+    port = _port()
+    if port is None:
+        return 2
     mcp = build_mcp()
+    stateless = _env_bool("TOS_MCP_STATELESS", True)
+    if not os.environ.get("TOS_MCP_PUBLIC_URL"):
+        print("[tos-tools http] TOS_MCP_PUBLIC_URL is unset — /openapi.json will advertise "
+              "whatever host the request arrives with. Behind a load balancer that can render "
+              "http:// or an internal name, which ChatGPT Actions rejects at import. Set it to "
+              "your public https:// base URL.", file=sys.stderr)
     print(f"[tos-tools http] {len(mcp_tooldefs.TOOLS)} read-only tools · /mcp + /v1/* + "
-          f"/openapi.json on {host}:{port} · stateless, standards-data-only",
+          f"/openapi.json on {host}:{port} · "
+          f"{'stateless' if stateless else 'STATEFUL (pinned instance)'}, standards-data-only",
           file=sys.stderr)
+    # forwarded_allow_ips: without it uvicorn ignores X-Forwarded-*, so behind a load balancer
+    # request.client.host is the LB for every caller and the per-IP rate limiter degrades to ONE
+    # GLOBAL BUCKET (M-2 — it is a limiter fix as much as a URL fix). "*" trusts the header, which
+    # is only safe because the LB terminates in front; a container exposed directly would let a
+    # caller spoof its own rate-limit key.
     uvicorn.run(build_app(mcp), host=host, port=port, log_level="warning",
+                forwarded_allow_ips=os.environ.get("TOS_MCP_FORWARDED_ALLOW_IPS", "127.0.0.1"),
                 access_log=False)  # request bodies/paths never logged — the privacy posture
     return 0
+
+
+def _port():
+    """TOS_MCP_PORT as an int, or None after explaining the refusal (L-10).
+
+    int(os.environ[...]) raised a bare ValueError traceback on a typo'd env var — on a container
+    host that is a crash loop whose logs say "invalid literal for int()" and nothing about which
+    knob is wrong."""
+    raw = os.environ.get("TOS_MCP_PORT", "8033").strip()
+    if raw.isdigit() and 1 <= int(raw) <= 65535:
+        return int(raw)
+    print(f"TOS_MCP_PORT={raw!r} is not a port number (1-65535) — refusing to start rather than "
+          f"crash-looping on a typo.", file=sys.stderr)
+    return None
 
 
 # ------------------------------------------------------------------------------------ self-test
@@ -492,6 +576,44 @@ def self_test() -> int:
     ck("token-exempt paths are still rate-limited (L-1)", spent[-1] == 429)
     ck("/mcp is rate-limited even with no token set — the limiter runs before the mount",
        _call(open_app, "/mcp") == 429)
+    # --- M-2 / L-10: the URL ChatGPT is handed, and the env knobs around it ---
+    class _Req:
+        def __init__(self, base, headers=None):
+            self.base_url, self.headers = base, headers or {}
+
+    os.environ["TOS_MCP_PUBLIC_URL"] = "https://tools.example.org/"
+    ck("public_url: an explicit TOS_MCP_PUBLIC_URL wins and loses its trailing slash",
+       public_url(_Req("http://10.0.0.7:8033/")) == "https://tools.example.org")
+    os.environ.pop("TOS_MCP_PUBLIC_URL")
+    ck("public_url: x-forwarded-proto https upgrades the scheme behind a terminating LB",
+       public_url(_Req("http://tools.example.org/",
+                       {"x-forwarded-proto": "https, http"})) == "https://tools.example.org")
+    ck("public_url: with neither signal it reports what it actually sees, no invention",
+       public_url(_Req("http://127.0.0.1:8033/")) == "http://127.0.0.1:8033")
+
+    os.environ["TOS_MCP_PORT"] = "not-a-port"
+    ck("TOS_MCP_PORT: a typo is refused with an explanation, not a ValueError crash loop",
+       _port() is None)
+    os.environ["TOS_MCP_PORT"] = "70000"
+    ck("TOS_MCP_PORT: out-of-range is refused too", _port() is None)
+    os.environ["TOS_MCP_PORT"] = "9001"
+    ck("TOS_MCP_PORT: a real port is accepted", _port() == 9001)
+    os.environ.pop("TOS_MCP_PORT")
+
+    # --- M-1: stateless by default, and DNS-rebinding protection stated rather than defaulted ---
+    ck("stateless_http defaults ON (scale-to-zero hosts) and the env can pin it off",
+       _env_bool("TOS_MCP_STATELESS", True) and not _env_bool("TOS_MCP_STATELESS", False))
+    ts = _transport_security()
+    ck("transport security: protection explicitly OFF unless hosts are named — enabling it with "
+       "an empty allow-list would reject every request behind an LB",
+       ts.enable_dns_rebinding_protection is False)
+    os.environ["TOS_MCP_ALLOWED_HOSTS"] = "tools.example.org, tos.example.net"
+    ts2 = _transport_security()
+    os.environ.pop("TOS_MCP_ALLOWED_HOSTS")
+    ck("transport security: naming hosts turns protection on for exactly those hosts",
+       ts2.enable_dns_rebinding_protection and
+       ts2.allowed_hosts == ["tools.example.org", "tos.example.net"])
+
     import export_actions_schema
     ck("openapi served == generated schema paths",
        set(export_actions_schema.render_actions()["paths"]) ==

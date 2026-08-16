@@ -47,7 +47,23 @@ streaming support. Any of these fit; pick what your district already uses:
   Python). Prefect Horizon (ex-FastMCP Cloud) is Python-native but its current free-tier terms
   were unverifiable at writing — check before budgeting a school on it.
 
+**Required env on any real host: `TOS_MCP_PUBLIC_URL=https://<your-host>`.** Without it the
+server advertises whatever host each request arrives with, and behind a terminating load balancer
+that renders `http://` or an internal name — which ChatGPT Actions rejects at import, at the
+*teacher's* step, not yours.
+
 After deploy, verify: `https://<your-host>/healthz` and `https://<your-host>/mcp` respond.
+`/healthz` echoes back the exact `public_url` the OpenAPI document will advertise (plus whether
+it is pinned, and whether the server is stateless) — check it before telling anyone the address.
+
+| Env | Default | Why you'd change it |
+|---|---|---|
+| `TOS_MCP_PUBLIC_URL` | *(unset)* | **Set it.** The https base URL ChatGPT/Claude are given. |
+| `TOS_MCP_TOKEN` | *(unset)* | Bearer gating on `/mcp` + `/v1/*`; connectors can't send it. |
+| `TOS_MCP_HOST` / `TOS_MCP_PORT` | `127.0.0.1` / `8033` | The container sets host `0.0.0.0`. A non-numeric port is refused with a message instead of a crash loop. |
+| `TOS_MCP_STATELESS` | `true` | Set `false` only on a single pinned instance where you want resumable streaming. |
+| `TOS_MCP_FORWARDED_ALLOW_IPS` | `127.0.0.1` | Set to your LB's address (or `*` in the container) so `X-Forwarded-For` is honored — otherwise every caller shares one rate-limit bucket. Never `*` on a directly-exposed container: the key becomes spoofable. |
+| `TOS_MCP_ALLOWED_HOSTS` | *(unset)* | Comma-separated public hostnames; enables DNS-rebinding protection. Leave unset unless you know all of them — an empty allow-list with protection on rejects everything. |
 
 ## What teachers do with the URL (their side, ~1 minute)
 

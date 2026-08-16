@@ -1,7 +1,7 @@
 {
   "_comment": "URL provenance registry. EVERY external http(s) URL hardcoded in tools/*.py and shared/**/*.py MUST be declared here with an honest status. This is the code-side analog of the source/verified provenance on data records \u2014 it exists because an AI operating this repo can confabulate plausible-looking URLs, so the system must force every URL to be consciously declared and catch any that aren't. Enforced by health.scan_url_provenance() + sync_check invariant #13. Status vocabulary: 'verified' = a human/tool confirmed this exact URL returns the expected content (record the date); 'well_known' = a documented public API/service endpoint (real service, standard path, not individually fetch-tested here); 'unverified' = used in code but NOT confirmed \u2014 may be wrong, treat as a guess until verified; 'example' = appears only in docstring/usage text, never fetched.",
   "version": "1.0.0",
-  "updated": "2026-06-28",
+  "updated": "2026-08-16",
   "policy": "An UNREGISTERED url in code is a hard drift failure (it may be fabricated). An 'unverified' url is allowed but surfaced \u2014 it must be confirmed (and re-statused) before anything relies on it. Never state an unverified url to a user as if it were confirmed.",
   "urls": [
     {
@@ -137,6 +137,21 @@
         "tools/export_actions_schema.py"
       ],
       "note": "NOT A REAL HOST \u2014 the deliberate placeholder baked into the generated Actions schema so the repo never promises a live endpoint; the deployer of tools/mcp_http_server.py replaces it (deploy/mcp/README.md)."
+    },
+    {
+      "url": "https://tools.example.org",
+      "status": "example",
+      "note": "RFC 2606 reserved documentation domain, used only as a fixture in mcp_http_server's public_url self-test (TOS_MCP_PUBLIC_URL / x-forwarded-proto resolution). Never fetched; no such host is expected to exist."
+    },
+    {
+      "url": "http://tools.example.org",
+      "status": "example",
+      "note": "Same fixture as the https form - the http input the x-forwarded-proto probe upgrades. Never fetched."
+    },
+    {
+      "url": "http://10.0.0.7",
+      "status": "example",
+      "note": "RFC 1918 private address used as the 'what the load balancer hands us' fixture in mcp_http_server's public_url self-test, proving an explicit TOS_MCP_PUBLIC_URL wins over the observed base URL. Never fetched."
     }
   ]
 }
