@@ -1,8 +1,8 @@
 {
-  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. PROVENANCE: no feed URL in this catalog has been confirmed by a live fetch in the build environment (egress-restricted); every entry is verified:false + url_status:'unverified_candidate' and must be confirmed with tools/verify_feeds.py on an open network before it is trusted. Base domains are real; deep RSS/news paths are best-guess patterns. Nothing is presented as confirmed that was not actually fetched.",
+  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. PROVENANCE (updated 2026-08-16): the build environment DOES have egress, and every entry was fetched once with tools/verify_feeds.py on that date. 2 of 14 yielded a parseable feed and are verified:true with a proof_latest_item receipt; the other 12 carry a dated probe_history entry naming what was tried and what came back. The previous note here said none had been confirmed 'in the build environment (egress-restricted)' and described a url_status vocabulary ('unverified_candidate') that no entry actually used — the reason had expired and the description never matched. Promotion still requires a PARSED feed with a proof item; a page that merely answers 200 is never verified.py on an open network before it is trusted. Base domains are real; deep RSS/news paths are best-guess patterns. Nothing is presented as confirmed that was not actually fetched.",
   "domain": "education-feeds",
   "version": "0.4.0",
-  "updated": "2026-06-28",
+  "updated": "2026-08-16",
   "freshness_policy": {
     "stale_age_days": 365,
     "supersession_keywords": [
@@ -49,7 +49,28 @@
       },
       "url_status": "redirected",
       "probe_note": "[2026-06-28] redirected to https://www.ed.gov/about/homeroom-blog (HTML, not a feed)",
-      "url_moved_to": "https://www.ed.gov/about/homeroom-blog"
+      "url_moved_to": "https://www.ed.gov/about/homeroom-blog",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "no valid feed via direct fetch, autodiscovery, or common-path probe (tried 10 candidates); may be JS-only or iCal — verify by hand",
+          "tried": [
+            "https://blog.ed.gov/feed",
+            "https://blog.ed.gov/feed/",
+            "https://blog.ed.gov/rss",
+            "https://blog.ed.gov/rss.xml",
+            "https://blog.ed.gov/atom.xml",
+            "https://blog.ed.gov/feed.xml",
+            "https://blog.ed.gov/index.xml",
+            "https://blog.ed.gov/news/feed",
+            "https://blog.ed.gov/blog/feed",
+            "https://blog.ed.gov/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "fl-senate-calendars",
@@ -77,7 +98,28 @@
         "fetch_prong": null
       },
       "url_status": "dead_confirmed",
-      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "candidate fetch failed (fetch failed: HTTPError: HTTP Error 404: NotFound)",
+          "tried": [
+            "https://www.flsenate.gov/feed",
+            "https://www.flsenate.gov/feed/",
+            "https://www.flsenate.gov/rss",
+            "https://www.flsenate.gov/rss.xml",
+            "https://www.flsenate.gov/atom.xml",
+            "https://www.flsenate.gov/feed.xml",
+            "https://www.flsenate.gov/index.xml",
+            "https://www.flsenate.gov/news/feed",
+            "https://www.flsenate.gov/blog/feed",
+            "https://www.flsenate.gov/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "fldoe-news",
@@ -114,7 +156,28 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "no valid feed via direct fetch, autodiscovery, or common-path probe (tried 10 candidates); may be JS-only or iCal — verify by hand",
+          "tried": [
+            "https://www.fldoe.org/feed",
+            "https://www.fldoe.org/feed/",
+            "https://www.fldoe.org/rss",
+            "https://www.fldoe.org/rss.xml",
+            "https://www.fldoe.org/atom.xml",
+            "https://www.fldoe.org/feed.xml",
+            "https://www.fldoe.org/index.xml",
+            "https://www.fldoe.org/news/feed",
+            "https://www.fldoe.org/blog/feed",
+            "https://www.fldoe.org/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "cpalms-updates",
@@ -151,7 +214,28 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "no valid feed via direct fetch, autodiscovery, or common-path probe (tried 10 candidates); may be JS-only or iCal — verify by hand",
+          "tried": [
+            "https://www.cpalms.org/feed",
+            "https://www.cpalms.org/feed/",
+            "https://www.cpalms.org/rss",
+            "https://www.cpalms.org/rss.xml",
+            "https://www.cpalms.org/atom.xml",
+            "https://www.cpalms.org/feed.xml",
+            "https://www.cpalms.org/index.xml",
+            "https://www.cpalms.org/news/feed",
+            "https://www.cpalms.org/blog/feed",
+            "https://www.cpalms.org/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "wida-news",
@@ -188,7 +272,28 @@
         "fetch_prong": null
       },
       "url_status": "dead_confirmed",
-      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "candidate fetch failed (fetch failed: HTTPError: HTTP Error 404: Not Found)",
+          "tried": [
+            "https://wida.wisc.edu/feed",
+            "https://wida.wisc.edu/feed/",
+            "https://wida.wisc.edu/rss",
+            "https://wida.wisc.edu/rss.xml",
+            "https://wida.wisc.edu/atom.xml",
+            "https://wida.wisc.edu/feed.xml",
+            "https://wida.wisc.edu/index.xml",
+            "https://wida.wisc.edu/news/feed",
+            "https://wida.wisc.edu/blog/feed",
+            "https://wida.wisc.edu/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "ocps-news",
@@ -225,7 +330,28 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "no valid feed via direct fetch, autodiscovery, or common-path probe (tried 10 candidates); may be JS-only or iCal — verify by hand",
+          "tried": [
+            "https://www.ocps.net/feed",
+            "https://www.ocps.net/feed/",
+            "https://www.ocps.net/rss",
+            "https://www.ocps.net/rss.xml",
+            "https://www.ocps.net/atom.xml",
+            "https://www.ocps.net/feed.xml",
+            "https://www.ocps.net/index.xml",
+            "https://www.ocps.net/news/feed",
+            "https://www.ocps.net/blog/feed",
+            "https://www.ocps.net/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "monarch-news",
@@ -262,7 +388,28 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "no valid feed via direct fetch, autodiscovery, or common-path probe (tried 10 candidates); may be JS-only or iCal — verify by hand",
+          "tried": [
+            "https://www.monarchlearningacademy.com/feed",
+            "https://www.monarchlearningacademy.com/feed/",
+            "https://www.monarchlearningacademy.com/rss",
+            "https://www.monarchlearningacademy.com/rss.xml",
+            "https://www.monarchlearningacademy.com/atom.xml",
+            "https://www.monarchlearningacademy.com/feed.xml",
+            "https://www.monarchlearningacademy.com/index.xml",
+            "https://www.monarchlearningacademy.com/news/feed",
+            "https://www.monarchlearningacademy.com/blog/feed",
+            "https://www.monarchlearningacademy.com/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "edutopia-teaching-strategies",
@@ -290,7 +437,28 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "no valid feed via direct fetch, autodiscovery, or common-path probe (tried 10 candidates); may be JS-only or iCal — verify by hand",
+          "tried": [
+            "https://www.edutopia.org/feed",
+            "https://www.edutopia.org/feed/",
+            "https://www.edutopia.org/rss",
+            "https://www.edutopia.org/rss.xml",
+            "https://www.edutopia.org/atom.xml",
+            "https://www.edutopia.org/feed.xml",
+            "https://www.edutopia.org/index.xml",
+            "https://www.edutopia.org/news/feed",
+            "https://www.edutopia.org/blog/feed",
+            "https://www.edutopia.org/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "ascd-blog",
@@ -327,7 +495,28 @@
         "fetch_prong": null
       },
       "url_status": "dead_confirmed",
-      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "candidate fetch failed (fetch failed: HTTPError: HTTP Error 404: Not Found)",
+          "tried": [
+            "https://www.ascd.org/feed",
+            "https://www.ascd.org/feed/",
+            "https://www.ascd.org/rss",
+            "https://www.ascd.org/rss.xml",
+            "https://www.ascd.org/atom.xml",
+            "https://www.ascd.org/feed.xml",
+            "https://www.ascd.org/index.xml",
+            "https://www.ascd.org/news/feed",
+            "https://www.ascd.org/blog/feed",
+            "https://www.ascd.org/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "cast-udl-news",
@@ -343,7 +532,7 @@
       "type": "page",
       "parser": "scraped",
       "cadence_days": 30,
-      "verified": false,
+      "verified": true,
       "discover_from": "https://www.cast.org",
       "note": "CAST hosts udlguidelines.cast.org (UDL 3.0). Check for RSS at cast.org/feed or cast.org/rss.xml. Also monitor udlguidelines.cast.org for guideline revisions.",
       "scrape_config": {
@@ -363,8 +552,22 @@
         "last_status": null,
         "fetch_prong": null
       },
-      "url_status": "dead_confirmed",
-      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace"
+      "url_status": "feed_confirmed",
+      "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "feed parsed",
+          "resolved_url": "https://www.cast.org/feed/",
+          "proof_latest_item": {
+            "title": "Assistive Technology for Dyslexia: A Student’s Journey to Confidence and Access",
+            "link": "https://www.cast.org/resources/assistive-technology-for-dyslexia-a-students-journey-to-confidence-and-access/",
+            "date": "Tue, 28 Jul 2026 21:02:15 +0000"
+          }
+        }
+      ]
     },
     {
       "id": "fldoe-fast-updates",
@@ -401,7 +604,28 @@
         "fetch_prong": "browser_headers"
       },
       "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "no valid feed via direct fetch, autodiscovery, or common-path probe (tried 10 candidates); may be JS-only or iCal — verify by hand",
+          "tried": [
+            "https://flfast.org/feed",
+            "https://flfast.org/feed/",
+            "https://flfast.org/rss",
+            "https://flfast.org/rss.xml",
+            "https://flfast.org/atom.xml",
+            "https://flfast.org/feed.xml",
+            "https://flfast.org/index.xml",
+            "https://flfast.org/news/feed",
+            "https://flfast.org/blog/feed",
+            "https://flfast.org/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "fl-house-education",
@@ -439,7 +663,28 @@
       },
       "url_status": "redirected",
       "probe_note": "[2026-06-28] redirected to https://www.flhouse.gov/ (HTML, not a feed)",
-      "url_moved_to": "https://www.flhouse.gov/"
+      "url_moved_to": "https://www.flhouse.gov/",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "no valid feed via direct fetch, autodiscovery, or common-path probe (tried 10 candidates); may be JS-only or iCal — verify by hand",
+          "tried": [
+            "https://www.myfloridahouse.gov/feed",
+            "https://www.myfloridahouse.gov/feed/",
+            "https://www.myfloridahouse.gov/rss",
+            "https://www.myfloridahouse.gov/rss.xml",
+            "https://www.myfloridahouse.gov/atom.xml",
+            "https://www.myfloridahouse.gov/feed.xml",
+            "https://www.myfloridahouse.gov/index.xml",
+            "https://www.myfloridahouse.gov/news/feed",
+            "https://www.myfloridahouse.gov/blog/feed",
+            "https://www.myfloridahouse.gov/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "nctm-news",
@@ -477,7 +722,28 @@
       },
       "url_status": "archived_only_stale",
       "probe_note": "[2026-06-28] recovered ONLY from an OLD Wayback snapshot (1361d old) — STALE, likely defunct",
-      "url_moved_to": "http://web.archive.org/web/20221006052809/http://www.nctm.org/News-and-Calendar/"
+      "url_moved_to": "http://web.archive.org/web/20221006052809/http://www.nctm.org/News-and-Calendar/",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "no parseable feed",
+          "finding": "candidate fetch failed (fetch failed: HTTPError: HTTP Error 404: Not Found)",
+          "tried": [
+            "https://www.nctm.org/feed",
+            "https://www.nctm.org/feed/",
+            "https://www.nctm.org/rss",
+            "https://www.nctm.org/rss.xml",
+            "https://www.nctm.org/atom.xml",
+            "https://www.nctm.org/feed.xml",
+            "https://www.nctm.org/index.xml",
+            "https://www.nctm.org/news/feed",
+            "https://www.nctm.org/blog/feed",
+            "https://www.nctm.org/?feed=rss2"
+          ]
+        }
+      ]
     },
     {
       "id": "ncte-blog",
@@ -493,7 +759,7 @@
       "type": "page",
       "parser": "scraped",
       "cadence_days": 14,
-      "verified": false,
+      "verified": true,
       "discover_from": "https://ncte.org",
       "note": "NCTE publishes position statements on literacy and ELA standards. WordPress site — try /feed or /rss for RSS.",
       "scrape_config": {
@@ -513,8 +779,22 @@
         "last_status": 200,
         "fetch_prong": "browser_headers"
       },
-      "url_status": "live_page_no_feed",
-      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed"
+      "url_status": "feed_confirmed",
+      "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
+      "last_checked": "2026-08-16",
+      "probe_history": [
+        {
+          "checked": "2026-08-16",
+          "by": "tools/verify_feeds.py",
+          "result": "feed parsed",
+          "resolved_url": "https://ncte.org/feed/",
+          "proof_latest_item": {
+            "title": "NCTE Members Invited to Participate in Study of Teacher Experience",
+            "link": "https://ncte.org/blog/2026/06/100-teachers-study/",
+            "date": "Thu, 18 Jun 2026 10:00:17 +0000"
+          }
+        }
+      ]
     }
   ]
 }

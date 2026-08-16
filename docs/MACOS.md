@@ -164,8 +164,12 @@ declared only if it equals a registered URL after normalization (scheme/host cas
 ± trailing slash) or adds only a `#fragment`/`?query` to a registered page. A registered *root*
 does **not** bless deeper pages — each distinct page cited must be registered, because each page is
 what goes stale.
-Gotcha: `state.last_checked` must be a full timezone-aware ISO timestamp (a bare date crashes the
-age math in `source_currency`).
+Gotcha: write `state.last_checked` as a full timezone-aware ISO timestamp. (Corrected
+2026-08-16: this previously said a bare date *crashes* the age math. It does not —
+`source_currency._parse_dt` normalises `2026-06-28` to midnight UTC and the age math runs
+fine, measured. The real cost is up to 24h of imprecision plus a second storage form to
+reason about, which is why the convention stands; 12 registry entries carried bare dates
+and were normalised.)
 
 ## Where these lessons live (component-local docs)
 The macOS knowledge is folded into the docs a maintainer of each area actually reads:

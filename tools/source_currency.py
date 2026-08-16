@@ -132,6 +132,11 @@ ACTION = {
     "stale_age": "re-verify the source is still current; refresh the baseline (advisory; do not assume change)",
     "unreachable": "could not verify this run (transport/robots/5xx) — retry later; do not assume gone",
     "uncertain": "no fetch capability or ambiguous — record as a gap; verify with the host AI's web access",
+    # A source with NO last_checked cannot age, so it could never become stale_age and landed in
+    # `uncertain` forever — indistinguishable from a source checked yesterday that simply could not
+    # be fetched this run. 69 of 124 registry sources are in this state. It is its own finding.
+    "never_checked": "this source has NEVER been verified (no last_checked) — it cannot age out, so "
+                     "it will never surface as stale on its own; verify it once to start the clock",
 }
 
 
@@ -161,6 +166,9 @@ def _classify(src: dict, policy: dict, offline: bool, timeout: int) -> dict:
                           reason=f"last verified {(now - last).days}d ago (> {stale_days}d){extra}")
         elif eff is not None and eff <= now and st.get("content_sha256") is None:
             result.update(state="stale_age", reason=f"effective date {st['effective_date']} passed; never verified{extra}")
+        elif last is None:
+            result.update(state="never_checked",
+                          reason=f"no last_checked recorded — never verified, and cannot age out{extra}")
         else:
             result.update(state="uncertain", reason=f"not verifiable this run{extra}")
         result["recommended_action"] = ACTION[result["state"]]
