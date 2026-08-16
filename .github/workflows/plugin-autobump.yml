@@ -29,7 +29,15 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # AUDIT G-5: this workflow used to run seven hand-picked checks and no security scan before
+  # pushing a release to main — it could auto-ship a tree that ci.yml would have rejected. It now
+  # calls ci.yml itself, so "what must pass before a release" has exactly one definition.
+  gates:
+    if: ${{ !contains(github.event.head_commit.message, '[autobump]') }}
+    uses: ./.github/workflows/ci.yml
+
   autobump:
+    needs: gates
     # Loop-prevention layer 1: never run on our own bump commit.
     if: ${{ !contains(github.event.head_commit.message, '[autobump]') }}
     runs-on: ubuntu-latest
@@ -54,16 +62,13 @@ jobs:
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Full gate set (a broken tree must never be released)
+      # The full gate set already ran in the `gates` job above (ci.yml, both jobs). What remains
+      # here is only what must be true of THIS checkout immediately before the bump.
+      - name: Pre-bump consistency
         if: steps.fresh.outputs.skip == 'false'
         run: |
           python3 tools/sync_check.py
           python3 tools/version.py --check
-          python3 tools/version.py --self-test
-          python3 tools/export_plugin_manifest.py --self-test
-          python3 tools/verify_standards.py --self-test
-          python3 tools/cpalms_verify.py --self-test
-          python3 tools/audit_overlays.py
 
       - name: Cut the patch release
         if: steps.fresh.outputs.skip == 'false'

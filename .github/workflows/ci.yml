@@ -4,6 +4,10 @@ on:
   push:
     branches: ["**"]
   pull_request:
+  # Callable so plugin-autobump runs THIS gate set rather than a hand-copied subset of it
+  # (audit G-5: it ran 7 of ~25 checks and no security scan, then pushed to main). One
+  # definition, so the release path and the review path can never drift apart.
+  workflow_call:
 
 jobs:
   checks:
