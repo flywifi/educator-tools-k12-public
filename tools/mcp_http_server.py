@@ -15,9 +15,10 @@ One ASGI app serves:
   /healthz        liveness
 
 Tools come from tools/mcp_tooldefs.py — the single registry. The SDK derives input schemas from
-the typed wrapper signatures below; the canonical schemas live in the registry and are gated by
-sync_check check 22 (enum/bound nuances the derivation drops are still enforced at call time by
-the registry's own clamps/validation).
+the typed wrapper signatures below, so those annotations carry every enum and bound the registry
+declares; schema_parity() asserts the two sides stay equivalent and sync_check check 23 runs it
+(the registry's own _validate_args is still the authoritative enforcement at call time, on every
+leg). The committed Actions artifacts are separately gated by check 22.
 
 Deployment posture (see deploy/mcp/README.md, security/SECURITY_REVIEW.md):
   STATELESS · standards-data-only · no identity · request bodies never logged · treat as
@@ -31,8 +32,11 @@ Usage:
   python3 tools/mcp_http_server.py --self-test     # in-memory Client round-trip (CI)
 Requires: python3 tools/deps_preflight.py --install mcp_server   (tools/requirements-mcp.txt)
 """
-from __future__ import annotations
-
+# NO `from __future__ import annotations` here, deliberately: the SDK derives each tool's
+# advertised inputSchema by calling inspect.signature(fn, eval_str=True), which resolves string
+# annotations against MODULE globals only. With PEP 563 on, the constrained aliases defined
+# inside build_mcp() are invisible to that eval and every tool raises InvalidSignature. Runtime
+# annotations cost nothing here (this leg already requires Python >= 3.10 for the SDK).
 import argparse
 import json
 import os
@@ -56,32 +60,45 @@ def _need_sdk():
 
 
 def build_mcp():
-    """The MCPServer with all 8 registry tools as typed wrappers (readOnlyHint on every one)."""
+    """The MCPServer with all 8 registry tools as typed wrappers (readOnlyHint on every one).
+
+    The type annotations are LOAD-BEARING, not decoration: the SDK derives each tool's
+    advertised inputSchema from them. Shipped in 69182cd with bare `str`/`int`, which silently
+    dropped every enum, bound and maxItems the registry promises — so a claude.ai teacher got a
+    free-text `subject` while a ChatGPT teacher got a constrained one (finding H-2). Literal[...]
+    -> enum, Annotated[int, Field(ge/le)] -> minimum/maximum, Field(max_length) -> maxItems.
+    schema_parity() below asserts the two sides stay equivalent; sync_check check 23 runs it."""
+    from typing import Annotated, Literal
+
     from mcp.server import MCPServer
     from mcp.types import ToolAnnotations
+    from pydantic import Field
 
     mcp = MCPServer("tos-tools", instructions=mcp_tooldefs.server_instructions())
     ro = ToolAnnotations(readOnlyHint=True)
     call = mcp_tooldefs.call_tool
     by = {t["name"]: t["description"] for t in mcp_tooldefs.TOOLS}
+    Subject = Literal["math", "ela", "science", "social_studies", "computer_science", "eld"]
+    Limit = Annotated[int, Field(ge=1, le=10)]
 
-    def search_standards(query: str, grade: str | None = None, subject: str | None = None,
-                         limit: int = 5) -> dict:
+    def search_standards(query: str, grade: str | None = None, subject: Subject | None = None,
+                         limit: Limit = 5) -> dict:
         return call("search_standards", {"query": query, "grade": grade, "subject": subject,
                                          "limit": limit})
 
-    def lookup_course_code(query: str, limit: int = 5) -> dict:
+    def lookup_course_code(query: str, limit: Limit = 5) -> dict:
         return call("lookup_course_code", {"query": query, "limit": limit})
 
     def lookup_school(query: str, district: str | None = None, private: bool = False,
-                      limit: int = 5) -> dict:
+                      limit: Limit = 5) -> dict:
         return call("lookup_school", {"query": query, "district": district,
                                       "private": private, "limit": limit})
 
-    def standard_resources(standard_code: str, limit: int = 5) -> dict:
+    def standard_resources(standard_code: str, limit: Limit = 5) -> dict:
         return call("standard_resources", {"standard_code": standard_code, "limit": limit})
 
-    def verify_standard_codes(codes: list[str], standards_set: str | None = None,
+    def verify_standard_codes(codes: Annotated[list[str], Field(min_length=1, max_length=25)],
+                              standards_set: str | None = None,
                               grade_band: str | None = None,
                               standards_applicability: str | None = None) -> dict:
         return call("verify_standard_codes",
@@ -103,6 +120,108 @@ def build_mcp():
                index_status):
         mcp.add_tool(fn, name=fn.__name__, description=by[fn.__name__], annotations=ro)
     return mcp
+
+
+# ------------------------------------------------------------------------------- schema parity
+# The gate that would have caught H-2. sync_check check 22 diffs the committed Actions artifacts
+# against a fresh REGISTRY render — registry vs registry, so a divergence between the registry and
+# what the SDK derives for Claude is structurally invisible to it. That is how all 8 tools came to
+# advertise different schemas on the two platforms for a full release.
+_CONSTRAINTS = ("type", "enum", "minimum", "maximum", "minItems", "maxItems", "items_type")
+
+
+def _norm_prop(spec: dict) -> dict:
+    """One property reduced to the constraints that change what a caller may send.
+
+    Dropped on purpose: `title` (SDK-only), `description` (registry-only prose — the two sides
+    describe the same field for different audiences), and `default` unless the REGISTRY declares
+    one (pydantic materializes `default: null` for every optional parameter; comparing that to a
+    registry that stays silent would report noise on every optional field forever).
+
+    `anyOf: [X, {"type": "null"}]` is how the SDK spells an optional parameter — unwrapped to X,
+    because the registry spells the same thing by omitting the field from `required`. This is why
+    parity is compared SEMANTICALLY: byte-equality between the two schemas cannot hold."""
+    branches = [b for b in spec.get("anyOf", []) if b.get("type") != "null"]
+    if len(branches) == 1:
+        spec = {**{k: v for k, v in spec.items() if k != "anyOf"}, **branches[0]}
+    elif branches:
+        spec = {**{k: v for k, v in spec.items() if k != "anyOf"},
+                "type": sorted(str(b.get("type")) for b in branches)}
+    out = {}
+    for key in _CONSTRAINTS:
+        if key == "items_type":
+            if isinstance(spec.get("items"), dict):
+                out["items_type"] = spec["items"].get("type")
+        elif key in spec:
+            out[key] = sorted(spec[key]) if key == "enum" else spec[key]
+    return out
+
+
+def _norm_schema(schema: dict, *, sdk: bool) -> dict:
+    props = {n: _norm_prop(s) for n, s in (schema.get("properties") or {}).items()}
+    # additionalProperties: the registry says false everywhere; the SDK's derivation has no way to
+    # say it at all (it is not an add_tool option, and rewriting mcp._tool_manager schemas is the
+    # private-API surgery this design rejected). Absent on the SDK side is therefore normalized to
+    # false — accurate in behaviour, not a coercion of a real difference: an unexpected keyword is
+    # rejected twice over, by _validate_args in the registry (which every leg funnels through) and
+    # by the SDK's own pydantic model. An explicit `true` still fails parity, which is the case
+    # that would actually mean unknown keys are accepted.
+    extra = schema.get("additionalProperties", False if sdk else None)
+    return {"properties": props, "required": sorted(schema.get("required") or []),
+            "additionalProperties": bool(extra)}
+
+
+def schema_parity() -> list[str]:
+    """Issues where the Claude-side (SDK-derived) schema and the GPT-side (registry) schema differ.
+
+    Returns sync_check-shaped strings; empty means a teacher on claude.ai and a teacher on ChatGPT
+    are held to the same contract. Raises ImportError when the `mcp` SDK is absent — check 23
+    treats that as a SKIP (the hosted leg is an optional capability), unlike checks 21/22."""
+    import anyio
+
+    registry = {t["name"]: t["inputSchema"] for t in mcp_tooldefs.TOOLS}
+    return _parity(registry, anyio.run(build_mcp().list_tools))
+
+
+def _parity(registry: dict, tools) -> list[str]:
+    """The comparison itself, split out so the self-test can feed it a constraint-stripped
+    server and prove the gate fails on exactly the shape that shipped (finding H-2)."""
+    issues = []
+    for name in sorted(set(registry) | {t.name for t in tools}):
+        sdk_tool = next((t for t in tools if t.name == name), None)
+        if sdk_tool is None or name not in registry:
+            issues.append(f"  x {name}: advertised on "
+                          f"{'ChatGPT/registry' if sdk_tool is None else 'Claude/SDK'} only — "
+                          f"every tool must exist on both doors")
+            continue
+        reg, sdk = registry[name], sdk_tool.input_schema
+        n_reg, n_sdk = _norm_schema(reg, sdk=False), _norm_schema(sdk, sdk=True)
+        for key in ("required", "additionalProperties"):
+            if n_reg[key] != n_sdk[key]:
+                issues.append(f"  x {name}.{key}: registry {n_reg[key]!r} != SDK {n_sdk[key]!r}")
+        for prop in sorted(set(n_reg["properties"]) | set(n_sdk["properties"])):
+            r, s = n_reg["properties"].get(prop), n_sdk["properties"].get(prop)
+            if r is None or s is None:
+                issues.append(f"  x {name}.{prop}: property present only in "
+                              f"{'the registry (ChatGPT)' if s is None else 'the SDK (Claude)'}")
+                continue
+            for key in sorted(set(r) | set(s)):
+                if r.get(key) != s.get(key):
+                    issues.append(f"  x {name}.{prop}: {key} present in registry as "
+                                  f"{r.get(key)!r}, in SDK schema as {s.get(key)!r} — the two "
+                                  f"doors would enforce different rules (fix the annotation in "
+                                  f"build_mcp(), never the registry, unless the registry is wrong)")
+            if reg.get("properties", {}).get(prop, {}).get("default") is not None:
+                rd = reg["properties"][prop]["default"]
+                sd = _sdk_default(sdk, prop)
+                if rd != sd:
+                    issues.append(f"  x {name}.{prop}: default {rd!r} in the registry, {sd!r} in "
+                                  f"the SDK schema")
+    return issues
+
+
+def _sdk_default(schema: dict, prop: str):
+    return (schema.get("properties") or {}).get(prop, {}).get("default")
 
 
 # --------------------------------------------------------------------------- REST + app assembly
@@ -223,6 +342,35 @@ def self_test() -> int:
             ck("fabricated code blocking survives the SDK",
                "MA.999.ZZ.9.9" in body.get("blocking", []))
     anyio.run(run)
+
+    # --- H-2: the two doors advertise the same contract, and the gate can prove a violation ---
+    ck("schema parity: registry (ChatGPT) == SDK-derived (Claude) on all 8 tools",
+       schema_parity() == [])
+
+    import anyio
+    from mcp.server import MCPServer
+    from mcp.types import ToolAnnotations
+
+    def _stripped_tools():
+        """THE BROKEN TWIN — the wrapper exactly as it shipped in 69182cd: bare `str`/`int`
+        annotations. This is what the SDK advertised to every claude.ai teacher while ChatGPT
+        got the constrained registry schema."""
+        twin = MCPServer("twin")
+
+        def search_standards(query: str, grade: str = None, subject: str = None,
+                             limit: int = 5) -> dict:
+            return {}
+        twin.add_tool(search_standards, name="search_standards", description="twin",
+                      annotations=ToolAnnotations(readOnlyHint=True))
+        return anyio.run(twin.list_tools)
+
+    twin_issues = _parity({t["name"]: t["inputSchema"] for t in mcp_tooldefs.TOOLS
+                           if t["name"] == "search_standards"}, _stripped_tools())
+    ck("broken twin: a constraint-stripped wrapper is caught, naming the enum",
+       any("search_standards.subject" in i and "enum" in i for i in twin_issues))
+    ck("broken twin: the dropped limit bounds are caught too",
+       any("search_standards.limit" in i and ("minimum" in i or "maximum" in i)
+           for i in twin_issues))
 
     b = _Bucket(rate_per_min=60, burst=2)
     ck("rate limit: burst honored then refused",

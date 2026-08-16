@@ -65,7 +65,7 @@ _REF_ANCHORS = ("references/", "scripts/", "evals/", "examples/",
                 "protocol-layer/", "protocols/", "shared/", "tools/", "ledger/")
 _REF_EXTS = (".md", ".py", ".json", ".yaml", ".yml", ".txt", ".csv")
 
-# --- Doc-drift guards (checks 15-22) ---------------------------------------------------------------
+# --- Doc-drift guards (checks 15-23) ---------------------------------------------------------------
 # New in the maintainer/README audit. They land in REPORT-ONLY first (so the backfill PR stays green
 # while docs are filled in), then flip to CI-blocking. Set True to enforce.
 DOC_GUARDS_ENFORCE = True
@@ -583,6 +583,31 @@ def main() -> int:
     except Exception as e:
         _emit(f"  x MCP tool-surface freshness gate could not run "
               f"({e.__class__.__name__}: {e}) — fix tools/export_actions_schema.py "
+              f"(its --self-test should reproduce this)")
+
+    # 23. Cross-domain schema parity: the schema the `mcp` SDK derives for Claude must match the
+    # registry schema ChatGPT gets. Check 22 above cannot see this — it compares a registry render
+    # to committed registry artifacts, so registry-vs-SDK divergence is structurally invisible to
+    # it, which is how all 8 tools shipped a free-text `subject` on claude.ai and a constrained one
+    # on ChatGPT. Comparison is SEMANTIC (the SDK spells optionals `anyOf:[X,null]`); see
+    # mcp_http_server.schema_parity().
+    # DEGRADATION IS DELIBERATELY UNLIKE 21/22: ImportError -> SKIP, anything else -> FAIL. Those
+    # gates are fail-closed because their generators are stdlib/offline/in-repo, so an ImportError
+    # means the repo is broken; here it means the OPTIONAL `mcp_server` capability (off by default)
+    # simply is not installed — a documented, expected state on a plain clone. The skip cannot
+    # become permanent: parity is also asserted inside `mcp_http_server.py --self-test`, which CI
+    # runs after installing tools/requirements-mcp.txt.
+    try:
+        import mcp_http_server as _mhs
+        for _issue in _mhs.schema_parity():
+            _emit(_issue)
+    except ImportError as e:
+        print(f"[note] MCP schema-parity gate skipped — the `mcp` SDK is not installed here "
+              f"({e.__class__.__name__}: {e}). CI asserts it in mcp_http_server --self-test; to "
+              f"run it locally: python3 tools/deps_preflight.py --install mcp_server")
+    except Exception as e:
+        _emit(f"  x MCP schema-parity gate could not run ({e.__class__.__name__}: {e}) — this is "
+              f"NOT the missing-SDK case; fix tools/mcp_http_server.py "
               f"(its --self-test should reproduce this)")
 
     print("TOS ecosystem - drift guard\n")
