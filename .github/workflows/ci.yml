@@ -60,6 +60,13 @@ jobs:
       - name: Binary-resolver self-test (darwin + win32 branches via injected lookup)
         run: python3 shared/health/binaries.py --self-test
 
+      # --self-test is offline (promotion-table probes only). --check lists what WOULD be fetched
+      # and makes zero requests, so CI never touches a third-party host.
+      - name: URL-verifier self-test (promotion table; 403 must not promote)
+        run: python3 tools/verify_urls.py --self-test
+      - name: URL-verifier offline mode makes no network requests
+        run: python3 tools/verify_urls.py --check
+
       - name: MCP tool-registry self-test (detail-strip, clamps, fabricated-code block, twins)
         run: python3 tools/mcp_tooldefs.py --self-test
 
