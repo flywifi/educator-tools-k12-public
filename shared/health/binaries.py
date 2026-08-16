@@ -175,12 +175,22 @@ def _self_test() -> int:
         if not cond:
             fails += 1
 
-    # --- real branches on THIS machine (both outcomes exist here, which is the point) ---
-    so = resolve("soffice")
-    ck(f"soffice resolves on this container (how={so['how']}, path={so['path']})", bool(so["path"]))
-    for absent in ("tesseract", "ffmpeg", "pdftoppm"):
-        r = resolve(absent)
-        ck(f"{absent} absent here -> honest gap, not a crash", r["path"] is None and r["how"] is None)
+    # --- properties true on ANY machine ---
+    # NOT "soffice resolves here". That asserted an ENVIRONMENT fact: it passed in a container with
+    # LibreOffice and failed the moment CI ran it on a clean runner. A self-test that needs a
+    # particular binary installed is testing the machine, not the code. What is asserted instead is
+    # the shape of every answer; the machine-specific outcome is PRINTED, not asserted.
+    for name in sorted(CANDIDATES):
+        r = resolve(name)
+        ok = (set(r) >= {"name", "path", "how", "platform", "exists"}
+              and (r["path"] is None) == (r["how"] is None)
+              and (r["how"] in (None, "env", "path", "candidate")))
+        ck(f"resolve({name}) is well-formed whether or not it is installed "
+           f"(path={r['path']}, how={r['how']})", ok)
+    ck("a binary that cannot exist -> honest gap, not a crash",
+       resolve("tos-definitely-not-a-real-binary") == {
+           "name": "tos-definitely-not-a-real-binary", "path": None, "how": None,
+           "platform": sys.platform, "exists": False})
 
     # --- the branches this OS cannot run: injected lookup, the build_mcpb.launch_command precedent
     no_path = lambda _n: None                                    # noqa: E731 — nothing on PATH
