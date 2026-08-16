@@ -14,6 +14,7 @@ Exit:  0 if every invariant holds, 1 (with a report) otherwise.
 from __future__ import annotations
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -89,6 +90,29 @@ COVERAGE_SKIP = {"index"}         # index/ ships data + its own README; add non-
 # Check 18 (doc freshness): a missing stamp or a stamp older than this hard-fails (on enforce); a
 # sibling changed after the stamp is an advisory reminder only.
 DOC_FRESHNESS_MAX_AGE_DAYS = 365
+
+
+def _guard_crashed(guard: str, exc: Exception):
+    """The message for a drift check that raised — or None when a developer explicitly allowed it.
+
+    AUDIT G-1: nine of these handlers used to print a lowercase `[note] … skipped` and let CI pass
+    green, so a guard that crashed was indistinguishable from a guard that found nothing. Every
+    guard here is stdlib, offline and in-repo (verified: health.health, metrics, offline_index and
+    mac_audit all import on a bare interpreter; the two that shell out to git already fall back
+    internally), so an unexpected exception means the repo or the guard is broken — which is
+    exactly what the gate exists to say.
+
+    TOS_SYNC_SKIP is the single escape hatch: a comma-separated list of guard names a developer
+    has to type on purpose. It is refused whenever CI is set, so it can never soften the build.
+    The only OTHER skip in this file is check 23's ImportError path, where the `mcp` SDK is a
+    genuinely optional, off-by-default capability."""
+    allowed = {g.strip() for g in os.environ.get("TOS_SYNC_SKIP", "").split(",") if g.strip()}
+    if guard in allowed and not os.environ.get("CI"):
+        print(f"SKIPPED {guard} — named in TOS_SYNC_SKIP ({exc.__class__.__name__}: {exc}); "
+              f"this escape hatch is refused when CI is set")
+        return None
+    return (f"  x {guard} CRASHED and did not run ({exc.__class__.__name__}: {exc}) — a guard that "
+            f"cannot run is a failure, not a pass; fix the guard or what it imports")
 
 
 def read(p: Path) -> str:
@@ -232,9 +256,16 @@ def main() -> int:
 
     # 10. Routing integrity: every shared/routing/routing.json target is a real skill (or the fallback).
     routing_path = ROOT / "shared" / "routing" / "routing.json"
-    if routing_path.exists():
+    # skill_names is bound OUTSIDE the exists() branch on purpose (audit G-7): check 11 below uses
+    # it too, so a missing routing.json used to raise NameError mid-run — a traceback instead of a
+    # finding. routing.json is a TRACKED file, so its absence is itself a failure, not a skip.
+    skill_names = {d.name for d in skill_dirs}  # leaf names are stable after sub-grouping
+    if not routing_path.exists():
+        failures.append("  x shared/routing/routing.json is missing — it is a tracked file, and "
+                        "without it neither route targets nor workflow atoms can be resolved; "
+                        "restore it from git")
+    else:
         rj = json.loads(read(routing_path))
-        skill_names = {d.name for d in skill_dirs}  # leaf names are stable after sub-grouping
         fallback = rj.get("fallback", "manual_review")
         targets = set(rj.get("skills", {})) | set(rj.get("meeting_routes", {}).values())
         for t in sorted(targets):
@@ -273,7 +304,9 @@ def main() -> int:
             if "without --only-binary guard" in p["issue"]:
                 failures.append(f"  x {p['file']}: {p['issue']}")
     except Exception as e:  # health engine optional — never let it crash the guard
-        print(f"[note] dependency guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("dependency guard", e)
+        if _crash:
+            failures.append(_crash)
 
     # 13. URL-provenance guard (anti-fabrication): every external URL hardcoded in tools/*.py and
     # shared/**/*.py must be DECLARED in tools/url-provenance.json. An undeclared URL is the
@@ -284,7 +317,9 @@ def main() -> int:
         for p in scan_url_provenance():
             failures.append(f"  x {p['file']}: {p['issue']}")
     except Exception as e:
-        print(f"[note] url-provenance guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("url-provenance guard", e)
+        if _crash:
+            failures.append(_crash)
 
     # 14. Offline-index freshness guard: the gitignored canonical-sources/index/offline.db is built
     # from committed JSON. If a source changed since the last build, the committed
@@ -304,7 +339,9 @@ def main() -> int:
                 "  x offline index stale vs canonical-sources/index/index-manifest.json "
                 f"({detail}) — run: python3 tools/offline_index.py --build && commit the manifest")
     except Exception as e:  # index tool import optional — never let it crash the guard
-        print(f"[note] index-freshness guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("index-freshness guard", e)
+        if _crash:
+            failures.append(_crash)
 
     # --- Doc-drift guards (checks 15-18) -----------------------------------------------------------
     # Each emits into `failures` when DOC_GUARDS_ENFORCE, else prints a [note] (report-only). All are
@@ -388,7 +425,9 @@ def main() -> int:
                     continue
                 _emit(f"  x doc-path drift — {rel}: dead {'link' if not require_anchor else 'path'} `{tok}`")
     except Exception as e:
-        print(f"[note] doc-path guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("doc-path guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 16. METRICS.md freshness: the committed dashboard must equal a fresh render (minus the generated
     # date line). metrics.py is marked "Do not hand-edit"; this catches "edited skills, forgot to
@@ -407,7 +446,9 @@ def main() -> int:
             _emit("  x docs/METRICS.md is stale vs live evidence — "
                   "run: python3 tools/metrics.py && commit docs/METRICS.md")
     except Exception as e:
-        print(f"[note] metrics-freshness guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("metrics-freshness guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 17. Component-doc coverage: every engine under shared/ and every bucket under canonical-sources/
     # carries >=1 top-level .md doc (README, MAINTAINER, or a *-model.md / *-policy.md). Extends the
@@ -424,7 +465,9 @@ def main() -> int:
                     _emit(f"  x component has no doc (add a README/MAINTAINER or *-model.md): "
                           f"{d.relative_to(ROOT).as_posix()}/")
     except Exception as e:
-        print(f"[note] coverage guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("component-doc-coverage guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 18. Doc freshness (SWE-at-Google Ch.10): every README/MAINTAINER carries a `last_reviewed` stamp.
     # A missing stamp, or a stamp older than DOC_FRESHNESS_MAX_AGE_DAYS, hard-fails (on enforce). A
@@ -432,6 +475,11 @@ def main() -> int:
     # re-review nudge, not a correctness failure.
     try:
         today = date.today()
+        # AUDIT G-2: this advisory fired on 84 of 95 maintainer-class docs on EVERY run — 85 notes
+        # per CI log, 84 of them this one. A signal that never stops is not a signal, and it buried
+        # the SKIPPED/CRASHED lines the fail-closed conversion now prints. Collect and summarise;
+        # TOS_SYNC_VERBOSE=1 restores the per-file list for whoever is actually doing a doc pass.
+        _sibling_stale: list[tuple] = []
 
         def _git_date(p: Path):
             try:
@@ -467,10 +515,21 @@ def main() -> int:
                 continue
             newest = _git_date(doc.parent)                     # advisory only — never a hard failure
             if newest and newest > stamp:
-                print(f"[note] doc {drel}: a sibling changed {newest} after last_reviewed {stamp} "
-                      f"— consider re-reviewing + restamping")
+                _sibling_stale.append((stamp, drel, newest))
+        if _sibling_stale:
+            _sibling_stale.sort()
+            oldest = "; ".join(f"{d} (stamped {s})" for s, d, _ in _sibling_stale[:5])
+            print(f"[note] doc-freshness: {len(_sibling_stale)} doc(s) have a sibling change newer "
+                  f"than their last_reviewed stamp. Oldest 5: {oldest}"
+                  + ("" if os.environ.get("TOS_SYNC_VERBOSE") else
+                     " — set TOS_SYNC_VERBOSE=1 for the full list"))
+            if os.environ.get("TOS_SYNC_VERBOSE"):
+                for s, d, n in _sibling_stale:
+                    print(f"[note]   {d}: sibling changed {n}, last_reviewed {s}")
     except Exception as e:
-        print(f"[note] doc-freshness guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("doc-freshness guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 19. mac-lint (cross-platform safety): no child process spawned by the bare name "python3"/"python"
     # (use sys.executable — a macOS venv can otherwise launch the wrong interpreter), and no text
@@ -482,7 +541,9 @@ def main() -> int:
         for f in _mac_scan():
             _emit(f"  x mac-lint {f['file']}:{f['line']} [{f['check']}] {f['issue']}")
     except Exception as e:
-        print(f"[note] mac-lint guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("mac-lint guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 20. Doc-source provenance (declare-or-fail): an external URL cited in a maintainer-class doc must
     # be registered in a canonical-sources/registries/*.json source registry (freshness-tracked by
@@ -555,7 +616,9 @@ def main() -> int:
                       f"canonical-sources/registries/*.json source registry (with state.last_checked) "
                       f"or tools/url-provenance.json")
     except Exception as e:
-        print(f"[note] doc-source guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("doc-source guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 21. Plugin-metadata freshness: the committed .claude-plugin/ manifests + the skills/README
     # generated catalog must equal a fresh render from live facts (export_plugin_manifest.py —
