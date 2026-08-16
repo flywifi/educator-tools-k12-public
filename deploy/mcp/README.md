@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-08-15 | owner: mcp-maintainer -->
+<!-- last_reviewed: 2026-08-16 | owner: mcp-maintainer -->
 # Deploying the TOS hosted MCP server (maintainer/district-facing)
 
 This is the **remote leg**: one small container that lets teachers on **claude.ai / Cowork /
@@ -8,9 +8,20 @@ once. Until someone does, nothing in the repo points at any live endpoint, by de
 
 **Posture (read before deploying):** stateless · standards-data-only (public CPALMS-derived
 reference data) · no identity, no accounts, no student data ever server-side · request bodies
-are not logged · treat the endpoint as public. No-auth by default — ChatGPT cannot send custom
-headers, and the data is already public; set `TOS_MCP_TOKEN` (env only) if you want Claude-side
-bearer gating and accept that ChatGPT connectors then can't use it.
+are not logged · treat the endpoint as public. No-auth by default — MCP *connectors* on either
+platform cannot send custom headers, and the data is already public; set `TOS_MCP_TOKEN` (env
+only) if you want bearer gating on `/mcp` and `/v1/*`, and accept that connectors then can't
+use it. (Custom GPT **Actions** do support key/header auth — the no-auth default is about the
+connector door and zero-config import, not a platform impossibility.)
+
+> **RETRACTION — 2026-08-16.** The version of this page published on 2026-08-15 said the
+> endpoint was rate-limited and optionally token-gated. In the code as merged, both ran only on
+> `/v1/{tool}`; **`/mcp` was ungated and unthrottled**, because it is a mounted sub-app that a
+> per-route check cannot reach. Anyone who deployed that image and set `TOS_MCP_TOKEN` was not
+> protected on the path their teachers actually used. The gate is now ASGI middleware ahead of
+> routing and covers every path; `/healthz` and `/openapi.json` stay token-exempt (still
+> rate-limited) so platform health probes and ChatGPT's Import-from-URL keep working. If you
+> deployed the earlier image, redeploy.
 
 ## Build + run locally (smoke test)
 
@@ -51,8 +62,9 @@ After deploy, verify: `https://<your-host>/healthz` and `https://<your-host>/mcp
 
 ## Operations notes
 
-- Rate limiting is in-process per-IP (token bucket) — front with your platform's limiter for
-  anything serious.
+- Rate limiting is in-process per-IP (token bucket), applied as middleware to **every** path
+  including `/mcp` — front with your platform's limiter for anything serious, since N replicas
+  means N independent buckets.
 - Updating: rebuild the image from a fresh clone; the index rebuilds from the committed,
   CPALMS-verified sources at build time. Version = the repo `VERSION` baked into the image.
 - Rollback = redeploy the previous image. The server holds no state to migrate.

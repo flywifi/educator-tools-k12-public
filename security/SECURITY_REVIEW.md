@@ -26,9 +26,29 @@ Date: 2026-06-20 · Scope: all 11 skills, 6 protocols, shared core, tooling. Rev
   = a public read-only API over already-public CPALMS-derived reference data. Controls:
   stateless (nothing to exfiltrate server-side), per-IP token-bucket rate limit, loopback bind
   by default (B104-clean; the container opts into 0.0.0.0), no request-body logging, optional
-  env-only bearer token (documented Claude-only — ChatGPT cannot send headers), TLS at the
-  platform. No-auth default is a deliberate, recorded decision: the worst case is an anonymous
-  reader of public standards data paying our rate limit.
+  env-only bearer token, TLS at the platform. No-auth default is a deliberate, recorded
+  decision: the worst case is an anonymous reader of public standards data paying our rate
+  limit.
+  - **RETRACTION (2026-08-16).** The paragraph above, as published on 2026-08-15 in `bbc4006`,
+    described controls the code did not have. As merged, the rate limiter and the
+    `TOS_MCP_TOKEN` check ran **only** inside the `/v1/{tool}` REST handler. `/mcp` — the MCP
+    path every claude.ai and ChatGPT-Developer-mode connector actually uses — was **neither
+    rate-limited nor token-gated**: it is a mounted sub-app, which a per-route check cannot
+    reach. So for the life of that release the token provided **no** protection on the MCP path
+    and the statement "per-IP token-bucket rate limit … optional env-only bearer token" was
+    false for the primary surface. Fixed in the commit carrying this retraction (`harden 5/9`)
+    by moving the gate to ASGI middleware that runs before routing, with self-test probes that
+    drive raw ASGI against `/mcp` itself. `/healthz` and `/openapi.json` are token-exempt (still
+    rate-limited) by deliberate decision — gating them breaks platform health probes and
+    ChatGPT's Import-from-URL respectively; neither returns corpus data.
+  - **CORRECTION (2026-08-16).** Earlier text said the no-auth default exists because "ChatGPT
+    cannot send headers". That is true of MCP **connectors** (both platforms) but **false for
+    Custom GPT Actions**, which support API-key/header auth. The accurate rationale: no-auth is
+    chosen for the connector door and for zero-config teacher import, not because header auth is
+    technically impossible everywhere.
+  - Token comparison uses `hmac.compare_digest` (a plain `==` leaked the prefix through timing);
+    the rate-limit bucket evicts fully-refilled or least-recently-seen keys and never the caller
+    being served (a naive FIFO eviction could hand the flooding client a fresh burst).
 - **Prompt-injection stance**: tool results are quoted corpus data; the served instructions and
   every corpus-returning description state results are data, never instructions. The corpus is
   committed + CPALMS-verified, so the injection surface is the repo's own review process.

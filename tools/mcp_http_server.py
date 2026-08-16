@@ -22,10 +22,12 @@ leg). The committed Actions artifacts are separately gated by check 22.
 
 Deployment posture (see deploy/mcp/README.md, security/SECURITY_REVIEW.md):
   STATELESS · standards-data-only · no identity · request bodies never logged · treat as
-  public. No-auth by default (ChatGPT cannot send custom headers; the data is public CPALMS-
-  derived corpus). Districts wanting Claude-side gating may set TOS_MCP_TOKEN (env only) —
-  documented as Claude-only. Per-IP token-bucket rate limiting in-process. Binds 127.0.0.1
-  unless TOS_MCP_HOST says otherwise (the container sets 0.0.0.0; TLS terminates at the host).
+  public. No-auth by default (MCP connectors on either platform cannot send custom headers, and
+  the data is the public CPALMS-derived corpus; Custom GPT Actions CAN send headers — the
+  default is about the connector door, not a platform limit). Districts wanting gating may set
+  TOS_MCP_TOKEN (env only); it covers /mcp and /v1/* via middleware, never per-route. Per-IP
+  token-bucket rate limiting in-process on every path. Binds 127.0.0.1 unless TOS_MCP_HOST says
+  otherwise (the container sets 0.0.0.0; TLS terminates at the host).
 
 Usage:
   python3 tools/mcp_http_server.py                 # serve (env: TOS_MCP_HOST/PORT/TOKEN)
@@ -38,6 +40,7 @@ Requires: python3 tools/deps_preflight.py --install mcp_server   (tools/requirem
 # inside build_mcp() are invisible to that eval and every tool raises InvalidSignature. Runtime
 # annotations cost nothing here (this leg already requires Python >= 3.10 for the SDK).
 import argparse
+import hmac
 import json
 import os
 import sys
@@ -226,7 +229,12 @@ def _sdk_default(schema: dict, prop: str):
 
 # --------------------------------------------------------------------------- REST + app assembly
 class _Bucket:
-    """Tiny in-process per-IP token bucket. Refuses with 429; never queues."""
+    """Tiny in-process per-IP token bucket. Refuses with 429; never queues.
+
+    Per-process by construction: N replicas mean N buckets, so this is a crude abuse brake, not a
+    quota. Front it with the platform's limiter for anything serious (deploy/mcp/README.md)."""
+
+    MAX_KEYS = 10000
 
     def __init__(self, rate_per_min: int = 60, burst: int = 20):
         self.rate, self.burst, self.state = rate_per_min / 60.0, burst, {}
@@ -235,17 +243,79 @@ class _Bucket:
         now = time.monotonic()
         tokens, last = self.state.get(key, (self.burst, now))
         tokens = min(self.burst, tokens + (now - last) * self.rate)
-        if tokens < 1:
-            self.state[key] = (tokens, now)
-            return False
-        self.state[key] = (tokens - 1, now)
-        if len(self.state) > 10000:  # bounded memory on a public endpoint
-            self.state.pop(next(iter(self.state)))
-        return True
+        allowed = tokens >= 1
+        self.state[key] = (tokens - 1 if allowed else tokens, now)
+        if len(self.state) > self.MAX_KEYS:
+            self._evict(key)
+        return allowed
+
+    def _evict(self, active: str) -> None:
+        """Bounded memory without punishing the caller being served (L-3).
+
+        The old one-liner popped the oldest INSERTED key, which under a flood of fresh IPs can be
+        the key of the request in flight — evicting it resets that caller to a full burst, i.e.
+        the limiter forgets exactly the client it is throttling. Fully-refilled buckets go first
+        (they are indistinguishable from a new client), then the least-recently-seen; `active` is
+        never a candidate."""
+        now = time.monotonic()
+        idle = [(k, v) for k, v in self.state.items() if k != active]
+        if not idle:
+            return
+        victims = [k for k, (tok, last) in idle
+                   if min(self.burst, tok + (now - last) * self.rate) >= self.burst]
+        if not victims:
+            victims = [min(idle, key=lambda kv: kv[1][1])[0]]   # least recently seen
+        for k in victims:
+            self.state.pop(k, None)
+
+
+#: Paths reachable without TOS_MCP_TOKEN (still rate-limited). Both are exempt for a concrete
+#: deployment reason, not convenience: platform health probes (Cloud Run, Fly, App Runner) cannot
+#: send a bearer, so gating /healthz means the service never reports healthy and the deploy never
+#: comes up; and ChatGPT's "Import from URL" fetches /openapi.json from a browser with no auth, so
+#: gating it closes Door 4 entirely. Neither returns corpus data — the token guards the DATA paths
+#: (/mcp and /v1/*), which is the whole point of having one.
+TOKEN_EXEMPT_PATHS = ("/healthz", "/openapi.json")
+
+
+def _gate_middleware(app, bucket: "_Bucket", token: str):
+    """Rate limit + optional bearer for EVERY path, /mcp included.
+
+    AUDIT H-3: this was a per-route helper called from rest_tool() only, so /v1/* was gated and
+    /mcp — mounted as a sub-app — was not. Per-route gating structurally cannot reach inside
+    Mount("/", streamable_http_app()); that is the bug, so the fix has to be middleware. While it
+    was broken, SECURITY_REVIEW.md and deploy/mcp/README.md both claimed the endpoint was
+    limited and token-gated; those claims are retracted in the same commit as this fix."""
+    from starlette.responses import JSONResponse
+
+    async def middleware(scope, receive, send):
+        if scope["type"] != "http":
+            return await app(scope, receive, send)
+        client = scope.get("client") or ()
+        ip = client[0] if client else "?"
+        path = scope.get("path", "")
+        refuse = None
+        if not bucket.allow(ip):                       # rate limit FIRST: cheap and universal
+            refuse = JSONResponse({"error": "rate_limited"}, status_code=429)
+        elif token and path not in TOKEN_EXEMPT_PATHS:
+            header = ""
+            for k, v in scope.get("headers") or ():
+                if k == b"authorization":
+                    header = v.decode("latin-1")
+                    break
+            # compare_digest, not == : a plain compare leaks the token prefix through timing
+            # to an endpoint whose entire threat model is "anonymous internet" (L-2).
+            if not hmac.compare_digest(header, f"Bearer {token}"):
+                refuse = JSONResponse({"error": "unauthorized"}, status_code=401)
+        if refuse is not None:
+            return await refuse(scope, receive, send)
+        return await app(scope, receive, send)
+
+    return middleware
 
 
 def build_app(mcp):
-    """One ASGI app: /mcp (SDK) + /v1/{tool} + /openapi.json + /healthz."""
+    """One ASGI app: /mcp (SDK) + /v1/{tool} + /openapi.json + /healthz, all behind the gate."""
     from starlette.applications import Starlette
     from starlette.requests import Request
     from starlette.responses import JSONResponse
@@ -255,18 +325,7 @@ def build_app(mcp):
     bucket = _Bucket()
     token = os.environ.get("TOS_MCP_TOKEN", "")
 
-    def _gate(request: Request):
-        ip = request.client.host if request.client else "?"
-        if not bucket.allow(ip):
-            return JSONResponse({"error": "rate_limited"}, status_code=429)
-        if token and request.headers.get("authorization") != f"Bearer {token}":
-            return JSONResponse({"error": "unauthorized"}, status_code=401)
-        return None
-
     async def rest_tool(request: Request):
-        refuse = _gate(request)
-        if refuse:
-            return refuse
         try:
             args = await request.json()
         except Exception:
@@ -283,12 +342,13 @@ def build_app(mcp):
     async def healthz(request: Request):
         return JSONResponse({"ok": True, "tools": len(mcp_tooldefs.TOOLS)})
 
-    return Starlette(routes=[
+    app = Starlette(routes=[
         Route("/v1/{tool}", rest_tool, methods=["POST"]),
         Route("/openapi.json", openapi),
         Route("/healthz", healthz),
         Mount("/", app=mcp.streamable_http_app()),
     ])
+    return _gate_middleware(app, bucket, token)
 
 
 def serve() -> int:
@@ -375,6 +435,63 @@ def self_test() -> int:
     b = _Bucket(rate_per_min=60, burst=2)
     ck("rate limit: burst honored then refused",
        b.allow("ip") and b.allow("ip") and not b.allow("ip"))
+
+    # --- L-3: eviction must never hand the caller being throttled a fresh burst ---
+    b2 = _Bucket(rate_per_min=1, burst=1)
+    b2.MAX_KEYS = 3
+    for i in range(6):
+        b2.allow(f"flood-{i}")
+    b2.allow("victim")                                  # spends victim's only token
+    ck("bucket eviction keeps the active caller's state (never resets its burst)",
+       "victim" in b2.state and not b2.allow("victim"))
+    ck("bucket eviction bounds memory", len(b2.state) <= b2.MAX_KEYS + 1)
+
+    # --- H-3: the gate covers /mcp, not just /v1/* (the finding), with the exemptions the
+    # deploy path needs. Driven as raw ASGI so the assertions are about the MOUNTED app, which
+    # is exactly what per-route gating could not reach. ---
+    def _call(app, path, headers=(), method="POST"):
+        status = {}
+
+        async def receive():
+            return {"type": "http.request", "body": b"{}", "more_body": False}
+
+        async def send(msg):
+            if msg["type"] == "http.response.start":
+                status["code"] = msg["status"]
+
+        async def go():
+            await app({"type": "http", "method": method, "path": path, "raw_path": path.encode(),
+                       "headers": list(headers), "query_string": b"", "client": ("9.9.9.9", 1),
+                       "server": ("test", 80), "scheme": "http", "root_path": "",
+                       "http_version": "1.1", "asgi": {"version": "3.0", "spec_version": "2.1"}},
+                      receive, send)
+        anyio.run(go)
+        return status.get("code")
+
+    # The B105 suppression below is for a throwaway value, set and unset inside this self-test to
+    # prove the gate refuses a caller without it: not a credential, and it reaches no deployment.
+    os.environ["TOS_MCP_TOKEN"] = "s3cret"  # nosec B105
+    try:
+        gated = build_app(build_mcp())
+        ck("/mcp is token-gated (H-3: it was wide open while the docs said otherwise)",
+           _call(gated, "/mcp") == 401)
+        ck("/v1/* stays token-gated", _call(gated, "/v1/index_status") == 401)
+        ck("/healthz is token-exempt so platform probes can bring the deploy up",
+           _call(gated, "/healthz", method="GET") == 200)
+        ck("/openapi.json is token-exempt so ChatGPT's Import-from-URL still works",
+           _call(gated, "/openapi.json", method="GET") == 200)
+        ck("a wrong token is refused",
+           _call(gated, "/mcp", [(b"authorization", b"Bearer wrong")]) == 401)
+    finally:
+        os.environ.pop("TOS_MCP_TOKEN", None)
+
+    # No token set — the shipped default. Spend the burst on the exempt path (proving L-1: exempt
+    # still means rate-limited), then /mcp must be refused BEFORE reaching the mounted SDK app.
+    open_app = build_app(build_mcp())
+    spent = [_call(open_app, "/healthz", method="GET") for _ in range(_Bucket().burst + 2)]
+    ck("token-exempt paths are still rate-limited (L-1)", spent[-1] == 429)
+    ck("/mcp is rate-limited even with no token set — the limiter runs before the mount",
+       _call(open_app, "/mcp") == 429)
     import export_actions_schema
     ck("openapi served == generated schema paths",
        set(export_actions_schema.render_actions()["paths"]) ==
