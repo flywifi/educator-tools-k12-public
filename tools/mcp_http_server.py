@@ -52,14 +52,60 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import mcp_tooldefs  # noqa: E402  (stdlib registry — importable before the SDK check)
 
 
+SDK_MIN_MAJOR = 2   # MCPServer lives here; 1.x has FastMCP instead and cannot serve this file
+
+
 def _need_sdk():
+    """None when the SDK is usable, else a diagnostic that names the ACTUAL problem.
+
+    Three states, not two (audit H-5). The old version had two, and the missing third bit a
+    developer for real: installing the security_scan capability pulled semgrep, which pins
+    `mcp<2`, so pip downgraded mcp 2.0.0 to 1.29.0 in the shared venv. `from mcp.server import
+    MCPServer` then raised ImportError, and this function reported "not installed" — false, mcp
+    was installed — with a fix (`--install mcp_server`) that reinstalls the same requirements into
+    the same venv and does nothing. Never claim absence when the package is present."""
+    try:
+        import mcp  # noqa: F401
+    except ImportError:
+        return _sdk_diagnosis(None, False)
+    try:
+        from importlib.metadata import version
+        installed = version("mcp")
+    except Exception:  # noqa: BLE001
+        installed = "unknown"
     try:
         from mcp.server import MCPServer  # noqa: F401
         return None
-    except ImportError:
+    except ImportError as exc:
+        return _sdk_diagnosis(installed, True, str(exc))
+
+
+def _sdk_diagnosis(installed, present: bool, exc: str = ""):
+    """The message for each state — separated from the probing so the self-test can exercise the
+    downgrade case, which is otherwise only reproducible by breaking a real environment."""
+    if not present:
         return ("the `mcp` SDK is not installed — this HOSTED leg needs it "
                 "(the local stdio server tools/mcp_server.py does not).\n"
                 "  fix: python3 tools/deps_preflight.py --install mcp_server")
+    try:
+        major = int(str(installed).split(".")[0])
+    except ValueError:
+        major = SDK_MIN_MAJOR
+    if major < SDK_MIN_MAJOR:
+        return (f"the `mcp` SDK is INSTALLED but too old: version {installed} "
+                f"(need >= {SDK_MIN_MAJOR}.0.0 — `MCPServer` does not exist in 1.x, which ships "
+                f"`FastMCP` instead).\n"
+                f"  likely cause: something in the same environment pins `mcp<2` and pip "
+                f"downgraded it. semgrep does exactly this — if the security_scan capability "
+                f"shares this venv, that is your answer.\n"
+                f"  fix: python3 tools/deps_preflight.py --install mcp_server  (the capability is "
+                f"marked isolated, so it installs into .harvest-venv-mcp_server where nothing "
+                f"else can downgrade it), then run this file with that interpreter: "
+                f"python3 tools/deps_preflight.py --python-path mcp_server")
+    return (f"the `mcp` SDK is installed (version {installed}) but `mcp.server.MCPServer` could "
+            f"not be imported: {exc}\n"
+            f"  this is not the missing-package case; the installation is broken or the API "
+            f"moved. Check the SDK changelog before changing this file.")
 
 
 def build_mcp():
@@ -613,6 +659,17 @@ def self_test() -> int:
     ck("transport security: naming hosts turns protection on for exactly those hosts",
        ts2.enable_dns_rebinding_protection and
        ts2.allowed_hosts == ["tools.example.org", "tos.example.net"])
+
+    # --- H-5: the diagnostic must never call an installed-but-downgraded SDK "not installed" ---
+    downgraded = _sdk_diagnosis("1.29.0", True, "cannot import name 'MCPServer'")
+    ck("wrong-major SDK: reported as INSTALLED but too old, naming the version",
+       "1.29.0" in downgraded and "not installed" not in downgraded)
+    ck("wrong-major SDK: names semgrep, the actual cause, and the isolated venv",
+       "semgrep" in downgraded and ".harvest-venv-mcp_server" in downgraded)
+    ck("absent SDK still says absent", "not installed" in _sdk_diagnosis(None, False))
+    ck("present-but-broken is its own message, not the downgrade one",
+       "not the missing-package case" in _sdk_diagnosis("2.0.0", True, "boom"))
+    ck("the live environment satisfies the floor", _need_sdk() is None)
 
     import export_actions_schema
     ck("openapi served == generated schema paths",

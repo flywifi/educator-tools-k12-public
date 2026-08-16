@@ -365,7 +365,9 @@
         "uvicorn"
       ],
       "bins": [],
-      "requirements": "tools/requirements-mcp.txt"
+      "requirements": "tools/requirements-mcp.txt",
+      "isolated": true,
+      "isolated_reason": "semgrep (security_scan) pins mcp<2, so a shared venv silently downgrades mcp 2.0.0 -> 1.29.0 and the hosted leg stops importing MCPServer (audit H-5). Its own venv: .harvest-venv-mcp_server."
     }
   ]
 }

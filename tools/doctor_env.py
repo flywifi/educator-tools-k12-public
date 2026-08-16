@@ -187,7 +187,16 @@ def check_mcp() -> dict:
                                                 "mcp_server.py --print-config desktop)"))
     try:
         import mcp  # noqa: F401
-        out["mcp_sdk"] = "installed (needed only for the hosted HTTP leg)"
+        from importlib.metadata import version
+        v = version("mcp")
+        # The version matters, not just presence: MCPServer exists only in 2.x, and semgrep pins
+        # mcp<2, so a shared environment can leave a DOWNGRADED SDK that looks installed (H-5).
+        major = int(v.split(".")[0]) if v.split(".")[0].isdigit() else 2
+        out["mcp_sdk"] = (f"installed {v} (needed only for the hosted HTTP leg)" if major >= 2 else
+                          f"installed {v} — TOO OLD for the hosted leg (needs >=2.0.0; 1.x has no "
+                          f"MCPServer). Something here pins mcp<2 (semgrep does). Reinstall the "
+                          f"isolated capability: python tools/deps_preflight.py --install "
+                          f"mcp_server, then use tools/deps_preflight.py --python-path mcp_server")
     except ImportError:
         out["mcp_sdk"] = ("not installed — FINE for local stdio (stdlib-only); the hosted "
                           "leg installs it via: python tools/deps_preflight.py "

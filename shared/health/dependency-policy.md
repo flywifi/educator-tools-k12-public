@@ -32,6 +32,20 @@ image for QA, or read every script/font. If baseline Claude already does it, we 
 - The hosted leg is **stateless and standards-data-only**: no identity, no student data, no
   request-body logging; deployment is an explicit human act (`deploy/mcp/README.md`) and the
   repo never points at a live endpoint.
+- **`mcp_server` is `"isolated": true` — the one capability that does not share `.harvest-venv`
+  (added 2026-08-16, audit H-5).** Cause: `semgrep` (the `security_scan` capability) depends on
+  `mcp<2`, so installing it into the shared venv **silently downgraded `mcp` 2.0.0 → 1.29.0**;
+  `from mcp.server import MCPServer` then failed, because 1.x ships `FastMCP` instead. pip
+  resolved the conflict the way it always does — by demoting one side — and nothing announced it.
+  `--install mcp_server` now targets `.harvest-venv-mcp_server`; point a launcher at it with
+  `deps_preflight.py --python-path mcp_server`.
+  **Why no gate caught this:** CI installs `tools/requirements-mcp.txt` into a clean runner and
+  runs semgrep in a separate supply-chain job, so the two never meet there. It bites **local
+  developers only** — which is precisely the class of failure that gets misdiagnosed, so
+  `_need_sdk()` now reports "installed but too old", names semgrep as the likely cause, and never
+  claims the package is absent when it is present.
+  **The `==` pins stay** (pip-audit rejects range specifiers), and a pin cannot express a floor
+  a later install must respect — the floor is asserted in code for that reason.
 
 ## Secrets (cloud tier)
 - API keys come from the **environment only** (e.g. `AZURE_SPEECH_KEY`, `FAL_KEY`, `NUTRIENT_API_KEY`,
