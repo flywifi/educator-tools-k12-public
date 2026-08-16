@@ -1,7 +1,7 @@
 {
   "_comment": "Canonical routing registry (Area 3). Data-driven map of request -> skill so teacher-core AND meeting-classifier route from ONE source instead of duplicate prose tables. router.py scores a request and returns the best skill + confidence + alternates (+ a minority report on a tie). 'artifact_routes' = keyword cues per capability skill; 'meeting_routes' = meeting_type -> owner skill (consumed by meeting-classifier). Add a new skill here (and to shared/ontology/artifact-types.json) when it ships; sync_check verifies every target exists.",
   "version": "0.1.0",
-  "updated": "2026-06-23",
+  "updated": "2026-08-16",
   "fallback": "manual_review",
   "observation_types": ["annual_review_observation", "interim_observation", "annual_review_debrief"],
   "evaluator_personas": ["administrator", "evaluator", "principal"],

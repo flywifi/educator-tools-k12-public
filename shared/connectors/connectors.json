@@ -1,7 +1,7 @@
 {
   "_comment": "Workplace-connector registry + feature-flag contract. Teachers connect only the tools their district/school/classroom allows; unused connectors are flagged off to save time/resources. Each connector declares the normalized EVIDENCE it can provide so a skill (e.g., meeting-classifier) can use whatever is available and DEGRADE/CONVERGE via alternates when one is off. Offline contract — this registry describes what each connector WOULD provide; we build NO provider auth/API clients. Live retrieval is realized by the HOST AI's native integration (Claude / OpenAI / Gemini / etc.) when the deployment has connected it, or via manual paste / uploaded files (incl. .ics/.eml) through shared/docintel/. A district may RESTRICT specific evidence even when a connector is active (see per-deployment 'restricted_evidence' + reason); skills then take what they can get and look elsewhere. Prose: connectors.md. Per-deployment flags: feature-flags.example.json (schema: connector.schema.json).",
   "version": "0.3.0",
-  "updated": "2026-06-23",
+  "updated": "2026-08-16",
   "states": ["available", "disabled", "not_installed", "permission_blocked", "metadata_only", "unsupported", "unknown"],
   "evidence_types": ["calendar_event", "email", "roster", "attendee_roles", "transcript", "call_notes", "chat_history", "file", "student_profile", "guardians", "plan_flags", "grades", "assessments", "attendance", "behavior", "standards_mastery", "accommodations"],
   "connectors": [

@@ -2,7 +2,7 @@
 """Drift guard for the TOS SKILL.md ecosystem.
 
 Asserts INVARIANTS (not textual diffs) so that:
-  - the governed core (shared/, protocols/) and each skill's synced copies can
+  - the governed core (shared/, protocol-layer/) and each skill's synced copies can
     never silently diverge, and
   - every skill honors the Quality Gates repository invariants and governance wiring.
 
@@ -66,7 +66,7 @@ _REF_ANCHORS = ("references/", "scripts/", "evals/", "examples/",
                 "protocol-layer/", "protocols/", "shared/", "tools/", "ledger/")
 _REF_EXTS = (".md", ".py", ".json", ".yaml", ".yml", ".txt", ".csv")
 
-# --- Doc-drift guards (checks 15-23) ---------------------------------------------------------------
+# --- Doc-drift guards (checks 15-24) ---------------------------------------------------------------
 # New in the maintainer/README audit. They land in REPORT-ONLY first (so the backfill PR stays green
 # while docs are filled in), then flip to CI-blocking. Set True to enforce.
 DOC_GUARDS_ENFORCE = True
@@ -117,6 +117,34 @@ def maintainer_class_docs(tracked) -> list:
     docs = set(tracked(*MAINTAINER_CLASS_GLOBS))
     docs |= {ROOT / rel for rel in MAINTAINER_CLASS_FILES if (ROOT / rel).exists()}
     return sorted(docs)
+
+
+# Check 24: JSONs carrying a human-typed `updated` that NOTHING read. dependencies.json declared
+# 2026-06-23 while the mcp_server capability and its isolation flag landed 2026-08-16 — an
+# eight-week-old date that survived a full audit. A date a human types and no machine checks is
+# decoration; the repo already learned this for versions (version.py gates versions.json.updated)
+# and for generated artifacts (checks 16/21/22). These seven were never brought into that discipline.
+DATED_MANIFESTS = (
+    "tools/dependencies.json", "tools/registry-sources.json", "tools/url-provenance.json",
+    "shared/atoms/atoms.json", "shared/connectors/connectors.json",
+    "shared/routing/routing.json", "shared/standards/states.json",
+)
+
+
+def git_commit_date(path: Path, exclude_names=()):
+    """The date of the last commit touching `path` — or None when git cannot answer.
+
+    None is returned for a `git archive` export or a missing git binary, and callers must treat it
+    as "no comparison available", never as "up to date". `exclude_names` drops matching basenames
+    anywhere beneath a directory argument via git pathspec magic."""
+    try:
+        rel = path.relative_to(ROOT).as_posix() if path != ROOT else "."
+        spec = [rel] + [f":(exclude){rel}/**/{n}" for n in exclude_names]
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", *spec],
+                             cwd=ROOT, capture_output=True, text=True, timeout=10).stdout.strip()
+        return date.fromisoformat(out) if out else None
+    except Exception:
+        return None
 
 
 def synced_basenames() -> set:
@@ -386,7 +414,7 @@ def main() -> int:
         if _crash:
             failures.append(_crash)
 
-    # --- Doc-drift guards (checks 15-18) -----------------------------------------------------------
+    # --- Doc-drift guards (checks 15-24) -----------------------------------------------------------
     # Each emits into `failures` when DOC_GUARDS_ENFORCE, else prints a [note] (report-only). All are
     # wrapped so an unexpected error degrades to a note and never crashes the gate (as with 12-14).
     def _emit(msg: str) -> None:
@@ -536,16 +564,7 @@ def main() -> int:
         _synced = sorted(synced_basenames())
 
         def _git_date(p: Path, exclude_synced: bool = False):
-            try:
-                rel = p.relative_to(ROOT).as_posix() if p != ROOT else "."
-                spec = [rel]
-                if exclude_synced:
-                    spec += [f":(exclude){rel}/**/{name}" for name in _synced]
-                out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", *spec],
-                                     cwd=ROOT, capture_output=True, text=True, timeout=10).stdout.strip()
-                return date.fromisoformat(out) if out else None
-            except Exception:
-                return None
+            return git_commit_date(p, _synced if exclude_synced else ())
 
         docs = maintainer_class_docs(_tracked_files)
         for doc in docs:
@@ -752,12 +771,51 @@ def main() -> int:
               f"NOT the missing-SDK case; fix tools/mcp_http_server.py "
               f"(its --self-test should reproduce this)")
 
+    # 24. A hand-curated `updated` field must not contradict its own file. Same shape as check 18's
+    # stamp comparison, and tolerant in exactly one direction: a date NEWER than the last commit is
+    # fine (you stamp today and commit today), a date OLDER means the content moved and the date did
+    # not. This catches the real failure mode — someone edits the file and forgets — and needs no new
+    # state. It does NOT prove anyone re-thought the content; that is the limit every freshness stamp
+    # has. git unavailable (a `git archive` export) yields no comparison and says so rather than
+    # inventing one, exactly as check 18 already degrades.
+    try:
+        for _rel in DATED_MANIFESTS:
+            _p = ROOT / _rel
+            if not _p.exists():
+                _emit(f"  x dated manifest missing: {_rel} — it is a tracked file; restore it from git")
+                continue
+            try:
+                _declared = json.loads(_p.read_text(encoding="utf-8")).get("updated")
+            except Exception as e:
+                _emit(f"  x dated manifest unreadable: {_rel} ({e.__class__.__name__}: {e})")
+                continue
+            if not _declared:
+                _emit(f"  x {_rel} has no `updated` field — it is in DATED_MANIFESTS because that "
+                      f"date is load-bearing; add it, or remove the file from the tuple")
+                continue
+            try:
+                _d = date.fromisoformat(str(_declared))
+            except ValueError:
+                _emit(f"  x {_rel} `updated` is not an ISO date: {_declared!r}")
+                continue
+            _g = git_commit_date(_p)
+            if _g is None:
+                print(f"[note] dated-manifest guard: git cannot date {_rel} (export or no git) — "
+                      f"declared {_d} not compared")
+            elif _g > _d:
+                _emit(f"  x {_rel} declares `updated: {_d}` but its last commit is {_g} — the "
+                      f"content moved and the date did not. Set it to the date of the change.")
+    except Exception as e:
+        _crash = _guard_crashed("dated-manifest guard", e)
+        if _crash:
+            _emit(_crash)
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")
         print("\n".join(failures))
         print(
-            f"\n{len(failures)} check(s) failed. Edit the canonical file in shared/ or protocols/ "
+            f"\n{len(failures)} check(s) failed. Edit the canonical file in shared/ or protocol-layer/ "
             "and re-sync; do not hand-edit synced copies."
         )
         return 1
