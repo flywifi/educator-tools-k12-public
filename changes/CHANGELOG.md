@@ -4,6 +4,44 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Fixed — the hosted `/mcp` endpoint had never worked, and nine gates could not fail (2026-08-16)
+- **`/mcp` returned HTTP 500 to every request** from the hosted leg's first commit until now. It is
+  the address a claude.ai custom connector and a ChatGPT Developer-mode server both point at, so
+  Door 3 has never functioned. Cause: `build_app()` mounted the SDK's app with `Mount()`, and
+  Starlette does not run a mounted sub-application's lifespan — the lifespan that creates the
+  session manager's task group. Found by starting the server on a real network port, which no test
+  in this repo had ever done: the self-test used an in-memory transport that bypasses ASGI, and
+  yesterday's ASGI probes assert refusals that happen *before* the mount. Fixed by passing the
+  sub-app's lifespan to the parent, and covered by a real-socket `initialize`/`tools/list`/
+  `tools/call` probe plus a twin that rebuilds the broken mount and must still fail.
+- **Nine of twenty-four drift checks disarmed themselves.** Checks 12–20 ended in
+  `except Exception: print("[note] … skipped")`, so a guard that CRASHED was indistinguishable from
+  a guard that found nothing and CI stayed green. All nine now fail. The only remaining skips are
+  check 23's optional SDK and one explicit escape hatch (`TOS_SYNC_SKIP`) that is refused whenever
+  `CI` is set. The sibling-freshness advisory — 84 of 85 notes on every run — collapses to one
+  summary line so a loud message now has somewhere to land.
+- **The supply-chain gate could pass having scanned nothing**: `security_scan` computed
+  `status: "no_scanners"`, printed it, and never consulted it. It now returns a tri-state (0 clean /
+  1 findings / **2 could not scan**), CI installs the scanners from the pinned file dependabot
+  updates, and `repair_loop`'s exit 2 — the health engine itself broken, gated nowhere else — is no
+  longer swallowed by `|| true`.
+- **`plugin-autobump` ran 7 of ~25 checks and no security scan** before pushing a release to main.
+  It now calls `ci.yml` itself (`workflow_call`), so the release path and the review path cannot
+  drift. Still dormant; enabling it remains an owner decision.
+- **`doctor_env` reported "not installed" for a correctly installed SDK** — it probed its own
+  interpreter, while the isolated capability puts the SDK in `.harvest-venv-mcp_server`. It now
+  probes that interpreter, names which one answered, reports all six `TOS_MCP_*` knobs, and checks
+  index *freshness* rather than mere existence.
+- **New `tools/mcp_smoke.py`**: one command that resolves what each launcher would spawn on the
+  machine it runs on, checks the index, and holds a real stdio conversation with the server —
+  printing a PASS/FAIL block to paste back. It is the only evidence obtainable for the UNTESTED Mac
+  and Windows entries in `docs/MACOS.md`, and it runs in CI so the script itself is tested.
+- Also: an unparseable first-party Python file is now a mac-lint **finding** rather than a note (it
+  hid a real SyntaxError during this round); `cpalms_verify --self-test` no longer risks leaving a
+  lock file in the production overlay directory; `mcpb pack` was run for real (1.8 MB bundle) and
+  `mcpb validate` recorded as schema-only — it passes the broken twin, so the repo-side probes
+  remain the guard.
+
 ### Fixed — MCP hardening: every finding of the cross-domain audit, remediated (2026-08-16)
 An adversarial audit of the MCP arc above (attacks executed, not code read) found 22 defects — all
 in transport, validation, packaging or documentation; the tool logic audited clean. Each fix ships

@@ -1,6 +1,10 @@
+<!-- last_reviewed: 2026-08-16 | owner: security-maintainer -->
 # SECURITY_REVIEW.md
 ## Security & safety review — v1 ecosystem
-Date: 2026-06-20 · Scope: all 11 skills, 6 protocols, shared core, tooling. Reviewed against
+Date: 2026-06-20 · **amended 2026-08-15 and 2026-08-16** (MCP tool surface; two retractions
+below) · Scope at the original review: 11 skills; the ecosystem now ships **62** — the skill-
+level findings below were re-checked mechanically by the drift guard, not re-reviewed by hand,
+and a full re-review is the honest next step. Reviewed against
 `SECURITY_AND_SAFETY.md`, the Quality Gates Safety/Integrity gates, and the drift-guard invariants.
 
 ## Findings by control
@@ -15,7 +19,7 @@ Date: 2026-06-20 · Scope: all 11 skills, 6 protocols, shared core, tooling. Rev
 | **Bias & representation** | ✅ Pass (process) | Inclusive-examples requirement in `SECURITY_AND_SAFETY.md` + the Educational Quality/Accessibility gates; relies on review (no automated check). |
 | **Privacy in family-facing text** | ✅ Pass | `family-communication` uses placeholders and marks where the teacher personalizes; benchmark-style prompt with a real name → replaced with placeholder. |
 | **Content/tooling safety** | ✅ Pass | No malware/exploit content; skills do nothing beyond their stated purpose; external/student text is treated as data, not instructions. |
-| **Ecosystem integrity (drift)** | ✅ Pass | `tools/sync_check.py` enforces the 8 QG repository invariants + per-skill reference sync; PASS across 11 skills; negative test confirms it catches drift. |
+| **Ecosystem integrity (drift)** | ✅ Pass | `tools/sync_check.py` enforces the 8 QG repository invariants across 24 numbered checks (0–23) + per-skill reference sync; PASS across 11 skills; negative test confirms it catches drift. |
 
 ## MCP tool surface (added 2026-08-15)
 
@@ -54,6 +58,18 @@ Date: 2026-06-20 · Scope: all 11 skills, 6 protocols, shared core, tooling. Rev
   committed + CPALMS-verified, so the injection surface is the repo's own review process.
 - **Fabrication stance carried over the wire**: `verify_standard_codes` keeps the blocking
   `not_found` semantics; `retired` is never reported as fabricated (D-K).
+- **Schema enforcement (added 2026-08-16, audit H-1).** The advertised JSON Schemas were
+  advertisement only: a bogus `subject` enum was ACCEPTED and answered `count: 0` — a silent
+  false negative in a system whose purpose is not lying about standards — and `maxItems`/
+  `additionalProperties` were ignored. A stdlib validator in the registry now runs on every leg
+  before any handler sees an argument.
+- **DNS-rebinding protection is deliberately OFF** unless `TOS_MCP_ALLOWED_HOSTS` names the
+  hosts. This is a recorded decision, not an oversight: the SDK's default constructs settings
+  with protection disabled, and enabling it with an empty allow-list rejects every request whose
+  Host header is a load balancer's — i.e. all of them, on a normal deployment.
+- **Process survival (added 2026-08-16, audit C-1/C-2/C-3).** A corrupt index used to kill the
+  stdio server mid-session; guards now sit at four boundaries and the honesty tool survives the
+  exact condition it exists to report.
 
 ## Residual risks / follow-ups
 - **Standards licensing (state corpora).** Bundling full state standard sets has licensing
@@ -63,6 +79,18 @@ Date: 2026-06-20 · Scope: all 11 skills, 6 protocols, shared core, tooling. Rev
 - **PII check is token/pattern-based.** The drift guard catches obvious cases; it is not a full PII
   scanner. The primary control remains the placeholders-only design + human review.
 - **Eval coverage.** The benchmark covered a 3-case subset; widening it strengthens assurance.
+- **Rate limiting is per-process.** N replicas of the hosted leg means N independent buckets;
+  it is an abuse brake, not a quota. Front it with the platform limiter for anything serious.
+- **Two paths are token-exempt** (`/healthz`, `/openapi.json`) — still rate-limited, and neither
+  returns corpus data. The exemptions exist because gating them breaks platform health probes
+  and ChatGPT's Import-from-URL respectively; the token guards the data paths.
+- **The hosted leg has never run in production.** Its threat model is written for a system
+  nobody has deployed. As of 2026-08-16 it is verified end-to-end on loopback (before that date
+  `/mcp` answered 500 to every request — see the changelog); a first real deployment is still a
+  first.
+- **Original-scope drift.** This document was written for 11 skills and now describes an
+  ecosystem of 62. Nothing in the findings table is known to be false, but "unchanged" is an
+  assumption, not evidence, until the review is redone.
 
 ## Conclusion
 No critical issues. The v1 ecosystem upholds the safety constraints by design (placeholders-only,

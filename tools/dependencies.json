@@ -1,7 +1,7 @@
 {
   "_comment": "Capability/dependency manifest (single source of truth for optional deps). Read by shared/health/capabilities.py (the preflight) and the docs. Each capability is gated: it activates when its deps/bins/fonts/credentials are present and is honestly reported as a GAP when not \u2014 never faked. Tiers: builtin (stdlib, always on), local_optional (local lib/bin/font; no secrets; on when installed), cloud_optional (external SaaS; OFF by default; needs district opt-in + an API key read ONLY from the environment, never the repo; may send data off-site so it is bound by shared/students/student-data-policy.md + the connector restriction model). Supply chain: pin in the named requirements file, auto-update via .github/dependabot.yml, scan via tools/security_scan.py (pip-audit + bandit) in CI.",
   "version": "0.1.0",
-  "updated": "2026-06-23",
+  "updated": "2026-08-16",
   "capabilities": [
     {
       "id": "pdf_hifi",

@@ -19,7 +19,7 @@ A dependency is added only if it does something the chat model cannot do well un
 scanned PDF with tables, produce a real editable `.pptx`, transcribe an audio file, render a slide to an
 image for QA, or read every script/font. If baseline Claude already does it, we don't add a dep.
 
-## The MCP server surface (2026-08-15)
+## The MCP server surface (2026-08-15; amended 2026-08-16)
 
 - The **local stdio MCP server** (`tools/mcp_server.py`) is deliberately **stdlib** — the
   official SDK's compiled-wheel footprint (pydantic-core et al.) would force an install on every
@@ -27,11 +27,14 @@ image for QA, or read every script/font. If baseline Claude already does it, we 
   Hand-rolled IS the chosen baseline there.
 - The **hosted HTTP leg** (`tools/mcp_http_server.py`, capability `mcp_server`, OFF by default)
   earns the `mcp` SDK: streamable-HTTP session management and protocol churn are exactly what
-  the official implementation maintains. It installs only into the managed venv
-  (`deps_preflight --install mcp_server`) or the deploy container — never system Python.
-- The hosted leg is **stateless and standards-data-only**: no identity, no student data, no
-  request-body logging; deployment is an explicit human act (`deploy/mcp/README.md`) and the
-  repo never points at a live endpoint.
+  the official implementation maintains. It installs only into a managed venv — its OWN,
+  `.harvest-venv-mcp_server`, since the capability is `"isolated": true` (see below)
+  (`deps_preflight --install mcp_server`) — or the deploy container; never system Python.
+- The hosted leg is **standards-data-only**: no identity, no student data, no request-body
+  logging. (Stateless is the DEFAULT, not an invariant — `TOS_MCP_STATELESS=false` pins a single
+  instance. See the 2026-08-16 retraction in `security/SECURITY_REVIEW.md` for what the gate
+  actually covered before that date.) Deployment is an explicit human act
+  (`deploy/mcp/README.md`) and the repo never points at a live endpoint.
 - **`mcp_server` is `"isolated": true` — the one capability that does not share `.harvest-venv`
   (added 2026-08-16, audit H-5).** Cause: `semgrep` (the `security_scan` capability) depends on
   `mcp<2`, so installing it into the shared venv **silently downgraded `mcp` 2.0.0 → 1.29.0**;
