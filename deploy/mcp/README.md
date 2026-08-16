@@ -28,7 +28,7 @@ connector door and zero-config import, not a platform impossibility.)
 ```bash
 docker build -f deploy/mcp/Dockerfile -t tos-mcp .
 docker run --rm -p 8033:8033 tos-mcp
-curl -s localhost:8033/healthz          # {"ok": true, "tools": 8}
+curl -s localhost:8033/healthz          # {"ok":true,"tools":8,"public_url":…,"public_url_pinned":…,"stateless":true}
 curl -s localhost:8033/openapi.json | head
 ```
 
@@ -63,6 +63,7 @@ it is pinned, and whether the server is stateless) — check it before telling a
 | `TOS_MCP_HOST` / `TOS_MCP_PORT` | `127.0.0.1` / `8033` | The container sets host `0.0.0.0`. A non-numeric port is refused with a message instead of a crash loop. |
 | `TOS_MCP_STATELESS` | `true` | Set `false` only on a single pinned instance where you want resumable streaming. |
 | `TOS_MCP_FORWARDED_ALLOW_IPS` | `127.0.0.1` | Set to your LB's address (or `*` in the container) so `X-Forwarded-For` is honored — otherwise every caller shares one rate-limit bucket. Never `*` on a directly-exposed container: the key becomes spoofable. |
+| `TOS_MCP_JSON_RESPONSE` | `false` | Set `true` only if your platform cannot stream SSE; the SDK then answers `/mcp` with plain JSON. |
 | `TOS_MCP_ALLOWED_HOSTS` | *(unset)* | Comma-separated public hostnames; enables DNS-rebinding protection. Leave unset unless you know all of them — an empty allow-list with protection on rejects everything. |
 
 ## What teachers do with the URL (their side, ~1 minute)
@@ -74,7 +75,10 @@ it is pinned, and whether the server is stateless) — check it before telling a
   enable Developer mode → add the same `/mcp` URL.
 - **ChatGPT Custom GPT (works on Plus, no admin):** build a GPT → Actions → *Import from URL*
   → `https://<your-host>/openapi.json` → no auth. The schema is generated from the same tool
-  registry, so the two surfaces cannot drift (sync_check check 22).
+  registry, so the two surfaces cannot drift: **check 22** holds the committed Actions schema
+  to the registry, and **check 23** holds the SDK-derived Claude schema to that same registry
+  — check 22 alone could not see the second divergence, which is how all eight tools once
+  advertised different rules depending on which product the teacher used.
 
 ## Operations notes
 

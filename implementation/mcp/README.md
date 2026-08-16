@@ -27,6 +27,9 @@ The plugin ships the tool server. If you installed TOS with the two `/plugin` co
 `tos-tools` server starts automatically — ask *"search the verified standards for grade 3
 fractions"* and watch it call the tool.
 
+<!-- LOAD-BEARING: tools/mac_audit.py's json-launcher check exempts plugin.json's bare
+     `python3` ONLY while this paragraph documents the `claude mcp add --scope user`
+     workaround. Deleting it turns a lint exemption into a CI failure — which is the point. -->
 **Known gap — Windows.** The plugin manifest launches the server with `python3`, and on Windows
 that command usually does not exist: python.org's installer provides `python.exe` and `py.exe`,
 never `python3.exe`. The plugin manifest format has no per-OS command and no default-value
@@ -51,14 +54,18 @@ with the same name and the same tools. Remove one.
 2. Claude Desktop → **Settings → Extensions → Advanced settings → Install Extension…** → pick
    the file. Done — everything runs on your computer, offline.
 
-If your desktop app doesn't offer extension installs, run
-`python3 tools/mcp_server.py --print-config desktop` from a repo download and your assistant
-will help you place the config file (it needs a full app restart afterwards).
+If your desktop app doesn't offer extension installs, run this from a repo download and your
+assistant will help you place the config file (it needs a full app restart afterwards):
+on macOS/Linux `python3 tools/mcp_server.py --print-config desktop`, **on Windows**
+`py -3 tools\mcp_server.py --print-config desktop` (see the Windows note above — `python3`
+is not a command there).
 
 ## Door 3 — claude.ai, Claude mobile, or ChatGPT Developer mode: paste an address
 
 These need your school's **TOS tools address** — a web address someone at your school or
-district sets up once (ask whoever set TOS up; the recipe is `deploy/mcp/README.md`). Then:
+district sets up once (ask whoever set TOS up; the recipe is `deploy/mcp/README.md` — whoever
+hosts it must set `TOS_MCP_PUBLIC_URL`, or Door 4's import fails at *your* step, not theirs).
+Then:
 
 - **claude.ai / Claude apps:** Settings → **Connectors** → *Add custom connector* → paste the
   address ending in `/mcp`. (On a Team/Enterprise workspace an admin adds it for everyone.

@@ -54,7 +54,7 @@ that boundary (found by adversarial audit, mitigations in place):
   **Preferred: install into the repo's managed venv** — `python3 tools/deps_preflight.py --install
   <capability>` (e.g. `office_authoring`) or `--install tools/requirements-<name>.txt`. It builds/uses
   the isolated, gitignored `.harvest-venv/`, installs **wheels-only**, and **never touches system
-  Python** — so PEP 668 never triggers. `python3 tools/deps_preflight.py --python-path` prints that
+  Python** — so PEP 668 never triggers. **One capability opts out: `mcp_server` is `"isolated": true`** (semgrep pins `mcp<2` and a shared venv silently downgraded the SDK), so it installs into `.harvest-venv-mcp_server` and its interpreter is `--python-path mcp_server`, not the bare form. `python3 tools/deps_preflight.py --python-path [capability]` prints that
   venv's interpreter (the exact Python to point a Claude Desktop MCP `command`/a GUI launch at). A
   manual venv works too: `python3 -m venv .venv && source .venv/bin/activate` then `pip install -r …`
   (`--break-system-packages` exists but is risky; pipx suits standalone CLI tools). Homebrew's prefix
@@ -83,13 +83,15 @@ that boundary (found by adversarial audit, mitigations in place):
 - **Notepad trap:** saving `my-teacher-profile.md` in Windows Notepad appends `.txt` unless
   "Save as type" is set to **All Files**.
 
-## MCP tool surface (2026-08-15)
+## MCP tool surface (2026-08-15; hardened 2026-08-16)
 
 The registry `tools/mcp_tooldefs.py` serves 8 read-only tools on four legs: plugin-shipped
 stdio (zero-step; `plugin.json` `mcpServers`), the `.mcpb` Claude Desktop extension
 (one-click; `tools/build_mcpb.py`), the hosted streamable-HTTP leg (`tools/mcp_http_server.py`
 — claude.ai connectors + ChatGPT; dormant until a human deploys `deploy/mcp/`), and the
-generated Custom GPT Actions schema (`tools/export_actions_schema.py`, sync_check check 22).
+generated Custom GPT Actions schema (`tools/export_actions_schema.py`, sync_check check 22 —
+with **check 23** separately holding the SDK-derived Claude schema to the same registry, the
+divergence check 22 structurally cannot see).
 Data handling: nothing student-related ever transits any leg — queries are standards
 codes/topics over a public, CPALMS-verified corpus; the hosted leg is stateless with no
 request-body logging. The local stdio leg is deliberately stdlib (runs on the CLT stub with

@@ -30,7 +30,10 @@ Deployment posture (see deploy/mcp/README.md, security/SECURITY_REVIEW.md):
   otherwise (the container sets 0.0.0.0; TLS terminates at the host).
 
 Usage:
-  python3 tools/mcp_http_server.py                 # serve (env: TOS_MCP_HOST/PORT/TOKEN)
+  python3 tools/mcp_http_server.py                 # serve
+    env: TOS_MCP_HOST · TOS_MCP_PORT · TOS_MCP_TOKEN · TOS_MCP_PUBLIC_URL (required on a real
+    host) · TOS_MCP_STATELESS · TOS_MCP_ALLOWED_HOSTS · TOS_MCP_FORWARDED_ALLOW_IPS ·
+    TOS_MCP_JSON_RESPONSE — all of them documented in deploy/mcp/README.md
   python3 tools/mcp_http_server.py --self-test     # in-memory Client round-trip (CI)
 Requires: python3 tools/deps_preflight.py --install mcp_server   (tools/requirements-mcp.txt)
 """

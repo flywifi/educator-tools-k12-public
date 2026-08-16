@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-07-16 | owner: macos-maintainer -->
+<!-- last_reviewed: 2026-08-16 | owner: macos-maintainer -->
 # macOS support + `mac-lint` — maintainer notes & findings log
 
 Home for the repo's macOS cross-platform work: the `mac-lint` static guard and a **living log** of
@@ -22,16 +22,18 @@ defects we fixed, so a Linux-only CI can't let a Mac regression slip back in:
 Known limitations (kept deliberately, to preserve zero false positives on a hard gate):
 `Path.open()` and other attribute-call opens on untyped receivers are not detected (add
 `encoding=` anyway); string-command spawns (`subprocess.run("python3 …", shell=True)`) are
-**bandit's** beat (security_scan gates `shell=True` at HIGH); an unparseable `.py` is skipped with a
-`[note]` (it cannot run either).
+**bandit's** beat (security_scan gates `shell=True` at HIGH). An unparseable `.py` used to be
+skipped with a `[note]`; since 2026-08-16 it is a **finding** — a file that cannot be parsed cannot
+run, and a note plus a green exit hid a real SyntaxError during that very round.
 
 Run it:
 ```bash
 python3 tools/mac_audit.py            # report; exit 1 on findings
 python3 tools/mac_audit.py --json
 ```
-It is also enforced as **`tools/sync_check.py` check 19** (hard gate; degrades to a `[note]` if the
-module can't be imported, like checks 12–14). Escape hatch for an intentional case: put
+It is also enforced as **`tools/sync_check.py` check 19** (hard gate). It no longer degrades to a
+`[note]` when the module cannot be imported — since 2026-08-16 every guard that crashes is a
+failure, because a guard that cannot run is not a guard that found nothing (checks 12–20). Escape hatch for an intentional case: put
 `# mac-audit: ignore` on **any line of the offending call** (multi-line calls included — end-of-call
 placement works).
 
@@ -123,6 +125,8 @@ All confirmed findings fixed in this round; probes re-run and flipped:
   `${CLAUDE_PROJECT_DIR:-.}` expansions resolving in a real Claude Code session — the substitution
   syntax is documented, but only a live run proves the default branch is taken when the vars are
   unset. Set `TOS_PYTHON` to `python3 tools/deps_preflight.py --python-path` output to pin the
+  shared managed venv (the stdio leg is stdlib, so the shared one is the right answer here; the
+  hosted leg would need `--python-path mcp_server`). Pin the
   managed venv interpreter (the E1/E2 answer for a Mac).
 - **M5 — UNTESTED (added 2026-08-16)**: the `.mcpb` `platform_overrides.win32` branch. It exists
   to keep Windows working and is unobservable on a Mac; what a Mac *can* confirm is that the

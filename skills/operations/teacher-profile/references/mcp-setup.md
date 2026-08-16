@@ -13,7 +13,7 @@ standards/lookup tools). Chat-platform sibling: the "Connect the tools" section 
 2. **Say the why**: *"these tools make me look up your standards from the verified corpus
    instead of remembering them — a code I can't find gets flagged instead of invented."*
 3. **File-offer ladder for Door 2's fallback config** (same ladder as the profile file): offer
-   to run `python3 tools/mcp_server.py --print-config desktop` and write the file; else give
+   to run `python3 tools/mcp_server.py --print-config desktop` (on Windows: `py -3 tools\mcp_server.py --print-config desktop` — `python3` is not a command there) and write the file; else give
    the exact clicks (TextEdit: Format → Make Plain Text; Windows Notepad: Save as type →
    All Files), then a FULL app restart.
 4. **Never oversell**: hedge the Claude-for-Teachers connector question and ChatGPT Plus

@@ -386,7 +386,10 @@ def preflight(update: bool | None = None, quiet: bool = False) -> dict:
 
 
 # --------------------------------------------------------------------------- Option 1: install ANY
-# capability's requirements into the SAME managed venv (never system/Homebrew Python -> no PEP 668).
+# capability's requirements into the SAME managed venv (never system/Homebrew Python -> no PEP
+# 668) — EXCEPT a capability marked `"isolated": true` in dependencies.json, which gets its own
+# `.harvest-venv-<id>` so one capability's pins cannot demote another's (audit H-5: semgrep pins
+# mcp<2 and silently downgraded the hosted leg's SDK).
 def _load_capabilities() -> list[dict]:
     try:
         return json.loads((ROOT / "tools" / "dependencies.json").read_text(encoding="utf-8")).get("capabilities", [])

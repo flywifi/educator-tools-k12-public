@@ -55,8 +55,9 @@ log). The essentials for working here on a Mac:
   never the bare name `python3` (enforced by `tools/mac_audit.py` = `sync_check` check 19).
 - **Optional deps (PEP 668):** never `pip install` globally on Homebrew Python — install into the
   managed venv: `python3 tools/deps_preflight.py --install <capability>` (or `--install-all`). It uses
-  the isolated `.harvest-venv/`, wheels-only, never system Python. `--python-path` prints the venv
-  interpreter to point a Claude Desktop MCP `command`/GUI launch at.
+  the isolated `.harvest-venv/`, wheels-only, never system Python. `--python-path [capability]`
+  prints the venv interpreter to point a Claude Desktop MCP `command`/GUI launch at.
+  **One capability opts out: `mcp_server` is `"isolated": true`** (semgrep pins `mcp<2` and a shared venv silently downgraded the SDK), so it installs into `.harvest-venv-mcp_server` and its interpreter is `--python-path mcp_server`, not the bare form.
 - **System bins:** `brew install libreoffice tesseract ffmpeg poppler` (LibreOffice may need
   System Settings › Privacy & Security to open on Sequoia). Homebrew prefix is `/opt/homebrew` on
   Apple Silicon, `/usr/local` on Intel — never hardcode it.
