@@ -2,9 +2,9 @@
   "mcpServers": {
     "tos-tools": {
       "type": "stdio",
-      "command": "python3",
+      "command": "${TOS_PYTHON:-python3}",
       "args": [
-        "tools/mcp_server.py"
+        "${CLAUDE_PROJECT_DIR:-.}/tools/mcp_server.py"
       ]
     }
   }

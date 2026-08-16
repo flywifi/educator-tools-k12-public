@@ -95,3 +95,15 @@ codes/topics over a public, CPALMS-verified corpus; the hosted leg is stateless 
 request-body logging. The local stdio leg is deliberately stdlib (runs on the CLT stub with
 zero installs); the platform truth that shaped all of this: ChatGPT and claude.ai remote
 connectors are brokered from vendor clouds, so localhost serves only Claude Desktop/Code stdio.
+
+**Launcher interpreters (updated 2026-08-16).** All three JSON launchers originally spawned the
+stdio server as `python3`, which is exactly the E2 defect in a file the Python lint could not
+see: on Windows that command does not exist (python.org ships `python.exe`/`py.exe`), and under a
+macOS GUI PATH it may not resolve. Now: `.mcp.json` uses `${TOS_PYTHON:-python3}` with
+`${CLAUDE_PROJECT_DIR:-.}` for the script path (also fixing a cwd-relative argument), and the
+`.mcpb` manifest declares `platform_overrides.win32 → python`. `plugin.json` **cannot** be fixed —
+its schema has neither per-OS commands nor default-valued substitution, and an unresolved
+`${VAR}` would be passed through literally — so Door 1 on Windows stays broken by platform
+design, with a user-scope `claude mcp add` workaround documented in `implementation/mcp/README.md`.
+`tools/mac_audit.py` now lints these JSON launchers (check `json-launcher`, consumed by sync_check
+check 19) so a fourth recurrence fails locally and in CI.

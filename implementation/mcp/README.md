@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-08-15 | owner: mcp-maintainer -->
+<!-- last_reviewed: 2026-08-16 | owner: mcp-maintainer -->
 # Connect the TOS tools — verified lookups inside your AI chat
 
 Two minutes of setup gives your AI real, callable tools: search the **verified Florida
@@ -26,6 +26,23 @@ Say **"connect my tools"** to your assistant and it will walk you through the ri
 The plugin ships the tool server. If you installed TOS with the two `/plugin` commands, the
 `tos-tools` server starts automatically — ask *"search the verified standards for grade 3
 fractions"* and watch it call the tool.
+
+**Known gap — Windows.** The plugin manifest launches the server with `python3`, and on Windows
+that command usually does not exist: python.org's installer provides `python.exe` and `py.exe`,
+never `python3.exe`. The plugin manifest format has no per-OS command and no default-value
+substitution, so this cannot be fixed from inside the plugin. Until it can, Windows teachers
+register the server once by hand — a user-scope entry outranks the plugin's:
+
+```
+claude mcp add --scope user tos-tools -- python "<path-to-repo>\tools\mcp_server.py"
+```
+
+(macOS and Linux are unaffected. Doors 2, 3 and 4 don't use this launcher at all.)
+
+**Don't install two copies.** If you use the plugin *and* the Desktop extension, pick one per
+app: Claude Code namespaces plugin tools so it stays clear, but adding the `.mcpb` extension
+*and* a hand-written `claude_desktop_config.json` entry in Claude Desktop gives you two servers
+with the same name and the same tools. Remove one.
 
 ## Door 2 — Claude desktop app: one-click extension
 

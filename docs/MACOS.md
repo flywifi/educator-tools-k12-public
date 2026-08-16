@@ -119,6 +119,20 @@ All confirmed findings fixed in this round; probes re-run and flipped:
   workaround, applied).
 - **M3 — UNTESTED**: the stdlib server on the Xcode CLT stub `/usr/bin/python3` (design target:
   stdlib-only, Python ≥3.10; the stub qualifies on paper).
+- **M4 — UNTESTED (added 2026-08-16)**: `.mcp.json`'s `${TOS_PYTHON:-python3}` /
+  `${CLAUDE_PROJECT_DIR:-.}` expansions resolving in a real Claude Code session — the substitution
+  syntax is documented, but only a live run proves the default branch is taken when the vars are
+  unset. Set `TOS_PYTHON` to `python3 tools/deps_preflight.py --python-path` output to pin the
+  managed venv interpreter (the E1/E2 answer for a Mac).
+- **M5 — UNTESTED (added 2026-08-16)**: the `.mcpb` `platform_overrides.win32` branch. It exists
+  to keep Windows working and is unobservable on a Mac; what a Mac *can* confirm is that the
+  darwin path still launches with plain `python3` after the manifest moved to
+  `manifest_version 0.3`.
+- **M6 — OPEN, not fixable here (added 2026-08-16)**: the plugin manifest (`plugin.json`) has no
+  per-OS command and no `${VAR:-default}` form, so Door 1 launches with a bare `python3` and does
+  not start on a Windows box with a python.org Python. Documented workaround (user-scope
+  `claude mcp add`) in `implementation/mcp/README.md`; `mac_audit`'s json-launcher check exempts
+  this one launcher by name *only while that workaround stays documented*.
 
 ## Sources & freshness (keeping the research citations verifiable)
 Every authoritative source behind the macOS findings is registered in

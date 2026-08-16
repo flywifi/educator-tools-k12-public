@@ -130,10 +130,87 @@ def _literal_mode(call: ast.Call):
     return ""  # no mode → text read
 
 
+# --- check 3: JSON launchers ------------------------------------------------------------------
+# The same bare-interpreter defect the AST check has caught in Python since the cross-platform
+# pass shipped unnoticed THREE TIMES in JSON, because JSON is not Python and nothing looked at it:
+# .mcp.json, .claude-plugin/plugin.json and the .mcpb manifest all launched the stdio server with
+# command "python3" — absent on Windows (python.org ships python.exe/py.exe, never python3.exe)
+# and absent from a macOS GUI app's PATH (the repo's own OPEN finding E2). A launcher command must
+# therefore be an absolute path, an ${...} expansion the client resolves, or carry a win32
+# platform override.
+JSON_LAUNCHERS = (".mcp.json", ".claude-plugin/plugin.json")
+
+# The one launcher that cannot be fixed from this repo, exempted BY NAME and only while the gap
+# stays documented. The plugin manifest schema has no ${VAR:-default} form and no per-OS command;
+# an unset ${VAR} would be passed through as literal text, which fails worse than "python3". So
+# Door 1 on a Windows box whose Python is python.org's does not start, and the honest response is
+# a documented workaround, not a silent pass. The exemption is conditional: if the workaround text
+# disappears from the doc, this reverts to a finding.
+LAUNCHER_GAP_EXEMPT = {
+    (".claude-plugin/plugin.json", "tos-tools"):
+        ("implementation/mcp/README.md", "claude mcp add --scope user"),
+}
+
+
+def _launcher_ok(cfg: dict) -> str:
+    cmd = cfg.get("command")
+    if not isinstance(cmd, str) or not cmd:
+        return ""                                   # nothing to judge
+    if cmd.startswith("${") or cmd.startswith("/") or (len(cmd) > 2 and cmd[1] == ":"):
+        return ""                                   # expansion or absolute path
+    if (cfg.get("platform_overrides") or {}).get("win32", {}).get("command"):
+        return ""                                   # per-OS command declared
+    if cmd in _BARE_INTERPRETERS:
+        return (f"launcher command {cmd!r} is a bare interpreter name — absent on Windows "
+                f"(python.org ships python.exe/py.exe) and outside a macOS GUI app's PATH; use "
+                f"an ${{VAR}} expansion, an absolute path, or a win32 platform override")
+    return ""
+
+
+def _check_json_launchers() -> list[dict]:
+    out: list[dict] = []
+    for rel in JSON_LAUNCHERS:
+        p = ROOT / rel
+        if not p.exists():
+            continue
+        doc = json.loads(p.read_text(encoding="utf-8"))
+        for name, cfg in (doc.get("mcpServers") or {}).items():
+            issue = _launcher_ok(cfg if isinstance(cfg, dict) else {})
+            if not issue:
+                continue
+            exempt = LAUNCHER_GAP_EXEMPT.get((rel, name))
+            if exempt:
+                doc_rel, marker = exempt
+                doc_path = ROOT / doc_rel
+                if doc_path.exists() and marker in doc_path.read_text(encoding="utf-8"):
+                    continue                        # platform gap, documented with a workaround
+                out.append({"file": rel, "line": 1, "check": "json-launcher",
+                            "issue": f"mcpServers.{name}: {issue} — this launcher is exempted "
+                                     f"ONLY while {doc_rel} documents the workaround "
+                                     f"({marker!r}); that text is now missing"})
+                continue
+            out.append({"file": rel, "line": 1, "check": "json-launcher",
+                        "issue": f"mcpServers.{name}: {issue}"})
+    try:                                            # the .mcpb manifest is generated, not stored
+        sys.path.insert(0, str(ROOT / "tools"))
+        import build_mcpb
+        cfg = (build_mcpb._manifest("0.0.0").get("server") or {}).get("mcp_config") or {}
+        issue = _launcher_ok(cfg)
+        if issue:
+            out.append({"file": "tools/build_mcpb.py", "line": 1, "check": "json-launcher",
+                        "issue": f"the generated .mcpb manifest: {issue}"})
+    except Exception as exc:                        # a broken generator is itself a finding
+        out.append({"file": "tools/build_mcpb.py", "line": 1, "check": "json-launcher",
+                    "issue": f"could not render the .mcpb manifest to check it: "
+                             f"{exc.__class__.__name__}: {exc}"})
+    return out
+
+
 def scan() -> list[dict]:
     findings: list[dict] = []
     for p in sorted(_iter_py()):
         findings.extend(_check_file(p))
+    findings.extend(_check_json_launchers())
     return findings
 
 
