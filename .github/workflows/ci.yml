@@ -69,6 +69,12 @@ jobs:
       - name: MCP Desktop-bundle self-test (stages, probes real stdio, manifest shape twins)
         run: python3 tools/build_mcpb.py --self-test
 
+      # The script maintainers ask a Mac/Windows teacher to run must itself be tested somewhere.
+      # On Linux it exercises the launcher resolution, the index state and a live stdio round trip;
+      # on the platforms that matter it is the only evidence we can get (docs/MACOS.md M1-M6).
+      - name: MCP smoke test (launchers resolved, live stdio round trip)
+        run: python3 tools/mcp_smoke.py
+
       - name: Cross-platform lint (bare-interpreter spawns; encoding-less text opens)
         run: python3 tools/mac_audit.py
 
@@ -120,6 +126,7 @@ jobs:
         run: |
           pip install -r tools/requirements-mcp.txt
           python3 tools/mcp_http_server.py --self-test
+          python3 tools/mcp_smoke.py --hosted
 
       # Advisory BY DESIGN for exit 1: its blocking-issue list is already hard-gated by the
       # health step above, so failing here would just duplicate that. Exit 2 is different — it
