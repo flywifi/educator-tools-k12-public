@@ -106,8 +106,10 @@ jobs:
       - name: Validate committed example artifacts (output-validator)
         run: python3 tools/validate_examples.py
 
+      # registry_currency returns 0 on every path BY DESIGN (drift is human-approved, then
+      # re-baselined) — the old `|| true` suppressed an exit code that cannot happen.
       - name: Registry currency (informational drift report)
-        run: python3 tools/registry_currency.py --summary || true
+        run: python3 tools/registry_currency.py --summary
 
       # LAST in the job on purpose: an SDK install failure must never mask a stdlib failure.
       - name: MCP hosted-leg self-test (installs the SDK; in-memory Client round-trip)
@@ -115,8 +117,18 @@ jobs:
           pip install -r tools/requirements-mcp.txt
           python3 tools/mcp_http_server.py --self-test
 
-      - name: Repair loop (advisory — detect, propose, verify)
-        run: python3 tools/repair_loop.py || true
+      # Advisory BY DESIGN for exit 1: its blocking-issue list is already hard-gated by the
+      # health step above, so failing here would just duplicate that. Exit 2 is different — it
+      # means health.py did not produce parseable JSON, i.e. the health engine itself is broken,
+      # and `|| true` was swallowing the one signal nothing else gates (audit G-6).
+      - name: Repair loop (advisory; exit 2 = the health engine is broken, and that blocks)
+        run: |
+          rc=0
+          python3 tools/repair_loop.py || rc=$?
+          if [ "$rc" = "2" ]; then
+            echo "::error::repair_loop exit 2 — shared/health/health.py produced unparseable output"
+            exit 1
+          fi
       # Phase A+: add eval smoke tests here (skill triggering + Quality Gates pass).
 
   supply-chain:
@@ -126,7 +138,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      # Pinned, from the same file dependabot updates — the runner, the pins and the audit policy
+      # were three different sources of truth (audit G-4). security_scan now also refuses to pass
+      # when a scanner is missing (exit 2), so an install failure here can no longer look clean.
       - name: Install scanners
-        run: pip install pip-audit bandit semgrep
+        run: pip install -r tools/requirements-security.txt
       - name: Dependency + code security scan (gate)
         run: python3 tools/security_scan.py
