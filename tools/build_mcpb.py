@@ -38,6 +38,17 @@ DATA_TREES = ["shared/standards/resources/florida/data"]
 INDEX_FILES = ["canonical-sources/index/offline.db", "canonical-sources/index/index-manifest.json"]
 
 
+def launch_command(mcp_config: dict, platform: str) -> str:
+    """The interpreter a client would ACTUALLY spawn for this manifest on `platform`.
+
+    Extracted so the Windows branch has automated coverage on a Linux runner (audit H-4/M5): the
+    override exists precisely because python.org's Windows installer ships python.exe and py.exe
+    and never python3.exe, and no test here can run on Windows. tools/mcp_smoke.py reuses this to
+    tell a teacher what will be launched on the machine they are actually sitting at."""
+    override = (mcp_config.get("platform_overrides") or {}).get(platform) or {}
+    return override.get("command") or mcp_config.get("command", "")
+
+
 def _manifest(version: str) -> dict:
     # Shape per the MCPB spec (github.com/modelcontextprotocol/mcpb); `mcpb pack` validates —
     # a shape drift fails loudly at pack time, never silently at a teacher's install.
@@ -140,8 +151,13 @@ def self_test() -> int:
     for i in issues:
         print("   ", i)
     man = json.loads((tmp / "manifest.json").read_text(encoding="utf-8"))
+    cfg = man["server"]["mcp_config"]
     ck("manifest declares the win32 interpreter (H-4: python3.exe does not exist there)",
-       man["server"]["mcp_config"]["platform_overrides"]["win32"]["command"] == "python")
+       cfg["platform_overrides"]["win32"]["command"] == "python")
+    ck("launch_command resolves win32 -> python (the branch no Linux runner can execute)",
+       launch_command(cfg, "win32") == "python")
+    ck("launch_command leaves darwin/linux on python3",
+       launch_command(cfg, "darwin") == "python3" and launch_command(cfg, "linux") == "python3")
     ck("manifest_version tracks the current MCPB spec", man["manifest_version"] == "0.3")
 
     # twin: the manifest exactly as it shipped — 0.2, no override — must now be refused
