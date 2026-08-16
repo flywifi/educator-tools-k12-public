@@ -5,6 +5,73 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.5.0] — 2026-08-16
+
+### Fixed — claims that were false, and the guards that could not see them (2026-08-16)
+- **42 of 43 atom `MAINTAINER.md` files described a mechanism their skill does not have.** Every one
+  carried "Model-inferred `match_method` when L1 cache is absent"; `match_method` exists only in
+  `standards-match`. The bullet is removed where it was false and kept where it is true. The section
+  is not refilled with generic prose — the true generic statement is already in those files twice.
+- **33 atom MAINTAINERs documented a superseded minority-report mechanism** (a `minority_report`
+  field) against a canonical policy that requires a decision record via `sot_resolver.py` and says
+  it must "never be buried in prose caveats". Corrected to the wording the other 37 skills use.
+- **`SECURITY_REVIEW.md` was written for 11 skills and describes an ecosystem of 62.** Rebuilt from
+  executed evidence: every row now carries the command, the observed result, the scope as n of 62,
+  and whether it is machine-checked or review-based. Three claims were false at real scope and are
+  recorded as dated corrections — placeholders-only (28/62, not all), the validate-against-the-
+  actual-plan note (2/62; disciplinary 1/62), and "repo-wide PII grep is clean", which described a
+  scan that does not exist. The document now also states what it is NOT: no runtime refusal
+  testing, no readability scoring, no bias detection.
+- **Nine sensitive skills carried no boundary language at all.** `behavior-strategy`,
+  `present-levels`, `referral-draft`, `intervention-select`, `progress-monitor-plan`,
+  `differentiate`, `udl-options`, `meeting-classify` and `translate-comm` now carry a block matched
+  to their own domain — including the **disciplinary-output** requirement that policy mandates and
+  no skill carried. Not behaviourally tested: 44 of 62 skills still have zero eval cases.
+- **The feed catalog explained its blanket `verified:false` by an "egress-restricted build
+  environment" that no longer exists**, and described a `url_status` vocabulary no entry used. All
+  14 fetched: 2 parse a real feed and are verified with a proof item; 12 carry a dated
+  probe_history naming what was tried.
+- **Seven OCPS URLs registered as "GUESSED … Unconfirmed" in June were never verified** because
+  nothing existed to verify them. New `tools/verify_urls.py` fetches each registered URL once,
+  robots-respecting, and records an HTTP code, a page title and a date. 2 promoted on a
+  corroborating title; 5 stay unverified because the host answers unknown paths with a generic
+  landing page; a 403 confirms an existing bot-blocked status and never creates one.
+- **`docs/MACOS.md` said a bare-date `last_checked` "crashes the age math".** It does not —
+  measured. Corrected, and the 12 bare dates normalised to the documented form (the offline triage
+  is identical before and after, proving representation changed and recorded fact did not).
+
+### Added — gates for the things nothing was watching (2026-08-16)
+- **sync_check check 24**: a hand-curated `updated` field that is older than its own file's last
+  commit is a failure. Five of seven manifests were stale, up to eight weeks.
+  `tools/ingest_sources.py` wrote a hardcoded date on every run and is now computed.
+- **`shared/health/binaries.py`** — one resolver for every external tool, replacing four separate
+  PATH-only probes and one inlined duplicate. `health` and `office` previously **contradicted each
+  other about `soffice` on any Mac**; they now agree. `tesseract` and `ffmpeg` are checked for the
+  first time (both were advertised on the Python wrapper alone). Candidates include both Homebrew
+  prefixes. macOS finding **E2: OPEN → UNTESTED** — one Mac run closes it.
+- **`source_currency` gained a `never_checked` state.** 69 of 124 registry sources have no
+  `last_checked`, so they could never age out and hid in `uncertain` forever. Offline triage now
+  separates 69 never_checked from 55 uncertain. No date was invented.
+
+### Changed — signals that meant nothing (2026-08-16)
+- **One definition of a maintainer-class doc.** Checks 18 and 20 each had their own; both now
+  consume one constant. A synced reference no longer counts as a "sibling changed" signal — check 2
+  already holds it byte-identical to canon.
+- **The doc-freshness advisory split into two findings.** "A file next to this doc changed" and
+  "this doc changed after the date it claims" are different, and only the first is a nudge. 83
+  conflated advisories became 79 self-stale + 2 sibling-stale, then 37 + 2 after the atom pass.
+- **The url-provenance scan learned BASE-joined URLs.** `ocps_resources.py` joins a `BASE` constant
+  to path fragments, so the scan validated the docstrings while the executing constants went
+  unchecked — three pages the code fetches were declared nowhere. Ten previously-invisible URLs
+  registered; findings 9 → 0.
+
+### Known limits carried forward
+- 44 of 62 skills have no eval cases, including every high-risk atom. The boundary language added
+  above is prose, and prose binds a model, not a sandbox.
+- The health readiness score is saturated (`0/100 not_ready` alongside `blocking_issues: []`).
+- 889 stale `protocols/` doc references remain; check 15 cannot see them, because a renamed
+  directory drops out of its anchor list. Open.
+
 ## [1.4.0] — 2026-08-16
 ### Fixed — the hosted `/mcp` endpoint had never worked, and nine gates could not fail (2026-08-16)
 - **`/mcp` returned HTTP 500 to every request** from the hosted leg's first commit until now. It is

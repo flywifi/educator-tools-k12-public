@@ -218,10 +218,50 @@ Markdown, portable. First consumer: `meeting-classifier`.
 
 ## Last drift-guard result
 `python3 tools/sync_check.py` → **PASS — 62 skills, 8 invariants, 2 synced refs; frontmatter +
-resource integrity validated; `MAINTAINER.md` present in all skills; all 24 numbered checks (0–23)
+resource integrity validated; `MAINTAINER.md` present in all skills; all 25 numbered checks (0–24)
 enforced, and since 2026-08-16 a guard that CRASHES is a failure rather than a `[note]`.**
 (2026-08-16)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
+
+## 2026-08-16 — false claims corrected, and the guards that could not see them (round 3)
+
+A verification-and-correction round. It makes the repo look **worse before it looks better**:
+a downgraded security table, a newly-failing date check, feeds confirmed dead. That is the intended
+direction — an honest red beats a decorative green — but the next reader will see more open items
+than last week, and that is stated here rather than discovered.
+
+What was corrected:
+- **42 of 43 atom MAINTAINERs** claimed a `match_method` mechanism only `standards-match` has; 33 of
+  them also documented a superseded minority-report mechanism. Both had survived a 2026-07-15 doc
+  audit that edited all 43 files.
+- **`security/SECURITY_REVIEW.md`** was written 2026-06-20 for 11 skills and had described an
+  ecosystem of 62 since 2026-06-29. Rebuilt from executed commands with per-row scope and class.
+  Three claims were false at real scope and carry dated corrections.
+- **Nine sensitive skills** had no boundary language; they now do, including the disciplinary-output
+  requirement policy mandates and no skill carried.
+- **The feed catalog's stated reason** for being unverified (an egress-restricted environment) had
+  expired; all 14 were fetched and 2 verified with proof items.
+- **Seven "GUESSED" OCPS URLs** became dated observations. 2 verified, 5 held back because the host
+  answers unknown paths with a generic landing page.
+
+What was gated for the first time:
+- **check 24** — a hand-typed `updated` older than its own file's last commit. 5 of 7 manifests were
+  stale; one generator wrote a hardcoded date on every run.
+- **`shared/health/binaries.py`** — one resolver replacing four PATH-only probes and one inlined
+  duplicate. `health` and `office` had **contradicted each other about `soffice` on any Mac**.
+  macOS **E2: OPEN → UNTESTED**.
+- **`never_checked`** in `source_currency` — 69 of 124 registry sources could never age out and were
+  invisible inside `uncertain`.
+
+Two mistakes of mine, recorded because the commits are the record: the binary-resolver self-test
+asserted that LibreOffice was installed, so CI failed twice on an environment fact rather than a
+code property; the URL promotion table would have upgraded a URL its own note calls FABRICATED,
+because it read a blanket 403 as proof of existence. Both fixed with twins in both directions.
+
+Still open, named not implied: **44 of 62 skills have zero eval cases**, including every high-risk
+atom, so the boundary language is unverified rather than verified-and-minor; the health readiness
+score is saturated and information-free; and **889 stale `protocols/` doc references** are
+structurally invisible to check 15, because a renamed directory falls out of its anchor list.
 
 ## 2026-07-16 — adversarial audit of the 24h window (34 probes) + full remediation
 Audit-only pass over everything landed in the prior 24h (doc guards 15–18, supply-chain fix, macOS
