@@ -300,6 +300,68 @@ TOOLS: list[dict] = [
 
 _BY_NAME = {t["name"]: t for t in TOOLS}
 
+# `limit` is CORRECTED rather than rejected: a model asking for 20 rows should get 10, not an
+# error (teacher UX). Every other bound rejects. This is a decision, not an oversight.
+_CLAMPED = frozenset({"limit"})
+_TYPES = {"string": str, "integer": int, "number": (int, float), "boolean": bool,
+          "array": list, "object": dict}
+
+
+def _type_ok(value, want: str) -> bool:
+    # `isinstance(True, int)` is True, so a bare integer check would accept {"private": true}.
+    if want in ("integer", "number") and type(value) is bool:
+        return False
+    py = _TYPES.get(want)
+    return True if py is None else isinstance(value, py)
+
+
+def _validate_args(schema: dict, args: dict) -> list[str]:
+    """Enforce the schema we ADVERTISE. Shipped in 80e75de as decoration only: a bogus `subject`
+    was accepted and returned count:0 — a silent false negative in a system whose whole purpose
+    is not lying about standards; 60 codes sailed past maxItems:25; unknown keys were ignored.
+
+    Every leg inherits this (stdio, SDK /mcp, REST /v1/*) because all of them funnel through
+    call_tool. On the HTTP leg the SDK validates first against its own derived schema; this is
+    the second, AUTHORITATIVE pass — the two schemas differ (finding H-2), so skipping it would
+    be skipping the canonical one."""
+    props, issues = schema.get("properties", {}), []
+    for key in schema.get("required", []):
+        if key not in args or args[key] is None:
+            issues.append(f"missing required argument: {key}")
+    if schema.get("additionalProperties") is False:
+        for key in args:
+            if key not in props:
+                issues.append(f"unexpected argument '{key}' "
+                              f"(allowed: {', '.join(sorted(props))})")
+    for key, spec in props.items():
+        if key not in args:
+            continue
+        val = args[key]
+        # An explicit null on a non-required property means ABSENT. The HTTP wrappers pass
+        # grade=None/subject=None on EVERY call; treating null as a value would 400 all of them.
+        if val is None:
+            continue
+        want = spec.get("type")
+        if want and not _type_ok(val, want):
+            issues.append(f"{key}: expected {want}, got {type(val).__name__}")
+            continue
+        if "enum" in spec and val not in spec["enum"]:
+            issues.append(f"{key}: {val!r} is not one of {sorted(spec['enum'])}")
+        if key not in _CLAMPED:
+            if "minimum" in spec and val < spec["minimum"]:
+                issues.append(f"{key}: {val} is below minimum {spec['minimum']}")
+            if "maximum" in spec and val > spec["maximum"]:
+                issues.append(f"{key}: {val} exceeds maximum {spec['maximum']}")
+        if want == "array":
+            if "minItems" in spec and len(val) < spec["minItems"]:
+                issues.append(f"{key}: {len(val)} items is below minItems {spec['minItems']}")
+            if "maxItems" in spec and len(val) > spec["maxItems"]:
+                issues.append(f"{key}: {len(val)} items exceeds maxItems {spec['maxItems']}")
+            it = (spec.get("items") or {}).get("type")
+            if it and not all(_type_ok(v, it) for v in val):
+                issues.append(f"{key}: every item must be {it}")
+    return issues
+
 
 def list_tools() -> list[dict]:
     """The wire-shape tool list (no handler callables)."""
@@ -315,9 +377,9 @@ def call_tool(name: str, args: dict | None) -> dict:
         return {"error": f"unknown tool: {name!r}",
                 "available": sorted(_BY_NAME)}
     args = args or {}
-    missing = [k for k in tool["inputSchema"]["required"] if k not in args]
-    if missing:
-        return {"error": f"missing required argument(s): {', '.join(missing)}"}
+    issues = _validate_args(tool["inputSchema"], args)
+    if issues:
+        return {"error": "invalid_arguments", "tool": name, "issues": issues}
     try:
         return tool["handler"](args)
     except Exception as exc:
@@ -379,7 +441,36 @@ def self_test() -> int:  # noqa: C901
         ck("unknown tool -> structured error with the available list",
            "available" in call_tool("frobnicate", {}))
         ck("missing required arg -> structured error",
-           "missing required" in call_tool("search_standards", {}).get("error", ""))
+           any("missing required" in i
+               for i in call_tool("search_standards", {}).get("issues", [])))
+
+        # --- H-1: the advertised schema is ENFORCED, not decoration --------------------------
+        r = call_tool("search_standards", {"query": "fractions", "subject": "algebra"})
+        ck("enum violation REJECTED (pre-fix it dispatched and returned a silent count:0 — a "
+           "false 'no such standard' in an anti-fabrication system)",
+           r.get("error") == "invalid_arguments"
+           and any("not one of" in i for i in r["issues"]))
+        pre = _search_standards({"query": "fractions", "subject": "algebra"})
+        ck("twin: the unvalidated path still answers count:0 for a bogus subject",
+           pre.get("count") == 0)
+        r = call_tool("verify_standard_codes", {"codes": [f"MA.{i}" for i in range(60)]})
+        ck("maxItems 25 REJECTED for 60 codes",
+           r.get("error") == "invalid_arguments" and any("maxItems" in i for i in r["issues"]))
+        r = call_tool("search_standards", {"query": "x", "grades": "3"})
+        ck("unknown argument REJECTED (additionalProperties:false enforced), and the message "
+           "names the allowed keys",
+           r.get("error") == "invalid_arguments" and any("unexpected argument" in i
+                                                         for i in r["issues"]))
+        r = call_tool("lookup_school", {"query": "x", "private": 1})
+        ck("bool-vs-int: {'private': 1} REJECTED (isinstance(True, int) would have accepted it)",
+           r.get("error") == "invalid_arguments")
+        r = call_tool("search_standards", {"query": "fractions", "grade": None,
+                                           "subject": None, "limit": None})
+        ck("explicit nulls on optional args are ABSENT, not values (the HTTP wrappers send "
+           "them on every call — rejecting would 400 all hosted traffic)", "error" not in r)
+        r = call_tool("search_standards", {"query": "fractions", "limit": 999})
+        ck("limit CLAMPS rather than rejecting (teacher UX; the documented exception)",
+           "error" not in r)
         offline_index.DB = tmp / "nowhere.db"
         r = call_tool("search_standards", {"query": "x"})
         ck("missing db -> index_unavailable with the exact fix command",
