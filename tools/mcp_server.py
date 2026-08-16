@@ -37,6 +37,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -44,6 +45,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import mcp_tooldefs  # noqa: E402
 
 PROTOCOL_VERSION = "2026-07-28"
+# Versions we can speak. `initialize` echoes the CLIENT's version when it is one of these
+# (per-request negotiation is the client's job in 2026-07-28), ours otherwise — silently
+# answering with a different version than the client asked for invites a mid-session mismatch.
+SUPPORTED_PROTOCOL_VERSIONS = (PROTOCOL_VERSION, "2025-06-18", "2025-03-26")
 
 
 def _server_version() -> str:
@@ -93,8 +98,21 @@ def handle_frame(line: str) -> dict | None:
     method, id_, params = msg["method"], msg.get("id"), msg.get("params") or {}
     if id_ is None:  # notification — never answered
         return None
+    try:
+        return _dispatch(method, id_, params)
+    except Exception as exc:
+        # Layer 2. NOT redundant with call_tool's guard: json.dumps() below raises TypeError on
+        # any non-serializable value a handler returns (sqlite3.Row, Decimal, Path) — that raise
+        # happens OUTSIDE call_tool, and this is the only thing that catches it.
+        print(f"[tos-tools] frame handling failed: {traceback.format_exc()}", file=sys.stderr)
+        return _error(id_, -32603, f"internal error: {exc.__class__.__name__}")
+
+
+def _dispatch(method: str, id_, params: dict) -> dict:
     if method == "initialize":
-        return _result(id_, {"protocolVersion": PROTOCOL_VERSION,
+        want = params.get("protocolVersion")
+        return _result(id_, {"protocolVersion": (want if want in SUPPORTED_PROTOCOL_VERSIONS
+                                                 else PROTOCOL_VERSION),
                              "capabilities": {"tools": {"listChanged": False}},
                              "serverInfo": _server_info(),
                              "instructions": mcp_tooldefs.server_instructions()})
@@ -122,15 +140,41 @@ def serve(stdin=None, stdout=None) -> int:
     _ensure_index()
     print(f"[tos-tools] serving {len(mcp_tooldefs.TOOLS)} read-only tools "
           f"(protocol {PROTOCOL_VERSION}, v{_server_version()})", file=sys.stderr)
-    for line in stdin:
+    # readline(), not `for line in stdin`: iteration read-ahead buffers on a pipe and can delay a
+    # response indefinitely, and per-line structure is what makes the guards below legal.
+    while True:
+        try:
+            line = stdin.readline()
+        except KeyboardInterrupt:
+            return 0                       # the client's shutdown signal, not an error
+        if not line:                       # EOF — the client closed the pipe
+            return 0
         line = line.strip()
         if not line:
             continue
-        resp = handle_frame(line)
-        if resp is not None:
+        try:
+            resp = handle_frame(line)
+        except Exception:                  # layer 3: nothing gets past the loop
+            print(f"[tos-tools] unhandled: {traceback.format_exc()}", file=sys.stderr)
+            resp = _error(_recover_id(line), -32603, "internal error")
+        if resp is None:
+            continue
+        try:
             stdout.write(json.dumps(resp, ensure_ascii=False) + "\n")
             stdout.flush()
-    return 0
+        except (BrokenPipeError, OSError, ValueError):
+            # Client vanished mid-write (on Windows the same condition arrives as OSError/
+            # EINVAL). A traceback into a dead pipe is noise; leave quietly.
+            print("[tos-tools] client closed the connection", file=sys.stderr)
+            return 0
+
+
+def _recover_id(raw: str):
+    """Best-effort id from a raw line so an internal error can still be addressed to its call."""
+    try:
+        return json.loads(raw).get("id")
+    except Exception:
+        return None
 
 
 # --------------------------------------------------------------------------------- setup output
@@ -219,6 +263,67 @@ def self_test() -> int:
        pure(fout.getvalue()) and len(fout.getvalue().splitlines()) == 2)
     ck("twin: a planted stray print corrupts the stream and the purity check CATCHES it",
        not pure("[tos-tools] oops, a diagnostic on stdout\n" + fout.getvalue()))
+
+    # --- survival probes (C-1 layers 2+3, C-3) --------------------------------------------
+    r = handle_frame(rpc("initialize", params={"protocolVersion": "2025-06-18"}))
+    ck("initialize: a SUPPORTED client version is echoed back, not silently replaced",
+       r["result"]["protocolVersion"] == "2025-06-18")
+    r = handle_frame(rpc("initialize", params={"protocolVersion": "1999-01-01"}))
+    ck("initialize: an unsupported version falls back to ours",
+       r["result"]["protocolVersion"] == PROTOCOL_VERSION)
+
+    real_call = mcp_tooldefs.call_tool
+    mcp_tooldefs.call_tool = lambda n, a: {"leak": object()}   # non-JSON-serializable
+    try:
+        r = handle_frame(rpc("tools/call", params={"name": "search_standards",
+                                                   "arguments": {"query": "x"}}))
+        ck("C-3: a non-serializable handler result becomes -32603, not a raise",
+           r.get("error", {}).get("code") == -32603)
+        raised = False
+        try:
+            json.dumps({"leak": object()})
+        except TypeError:
+            raised = True
+        ck("twin: json.dumps on that value DOES raise — the hole layer 2 exists to plug", raised)
+    finally:
+        mcp_tooldefs.call_tool = real_call
+
+    # THE headline regression: the audit's exact reproduction (corrupt db, tools/call, ping).
+    import sqlite3 as _sq
+    import tempfile as _tf
+    import offline_index as _oi
+    bad = Path(_tf.mkdtemp()) / "corrupt.db"
+    bad.write_bytes(b"not a database")
+    real_db, _oi.DB = _oi.DB, bad
+    real_ensure = globals()["_ensure_index"]
+    globals()["_ensure_index"] = lambda: None
+    try:
+        fin2 = io.StringIO(rpc("tools/call", 1, {"name": "search_standards",
+                                                 "arguments": {"query": "x"}}) + "\n"
+                           + rpc("ping", 2) + "\n")
+        fout2 = io.StringIO()
+        crashed = False
+        try:
+            serve(stdin=fin2, stdout=fout2)
+        except Exception:
+            crashed = True
+        frames = [ln for ln in fout2.getvalue().splitlines() if ln]
+        ck("REGRESSION (audit repro): corrupt db -> 2 frames written, ping ANSWERED, no crash",
+           not crashed and len(frames) == 2 and json.loads(frames[1])["id"] == 2)
+    finally:
+        _oi.DB = real_db
+        globals()["_ensure_index"] = real_ensure
+    del _sq
+
+    class _DeadPipe(io.StringIO):
+        def write(self, _s):
+            raise BrokenPipeError(32, "Broken pipe")
+    globals()["_ensure_index"] = lambda: None
+    try:
+        rc = serve(stdin=io.StringIO(rpc("ping", 1) + "\n"), stdout=_DeadPipe())
+        ck("a client that vanishes mid-write ends the loop cleanly (rc 0, no traceback)", rc == 0)
+    finally:
+        globals()["_ensure_index"] = real_ensure
 
     cfg_out = io.StringIO()
     real = sys.stdout
