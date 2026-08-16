@@ -454,20 +454,22 @@ def build_app(mcp):
                              "public_url_pinned": bool(os.environ.get("TOS_MCP_PUBLIC_URL")),
                              "stateless": _env_bool("TOS_MCP_STATELESS", True)})
 
+    # stateless_http defaults to False in the SDK, i.e. in-process sessions — on the
+    # scale-to-zero / multi-replica hosts deploy/mcp/README.md recommends, a teacher's second
+    # request can land on a replica that never saw the first, producing intermittent "session
+    # not found" on BOTH platforms (M-1). These 8 tools are request/response, so the cost of
+    # stateless (no resumable streaming) is nil. Env escape hatch for a single pinned instance.
+    sub = mcp.streamable_http_app(
+        stateless_http=_env_bool("TOS_MCP_STATELESS", True),
+        json_response=_env_bool("TOS_MCP_JSON_RESPONSE", False),
+        transport_security=_transport_security())
+
     app = Starlette(routes=[
         Route("/v1/{tool}", rest_tool, methods=["POST"]),
         Route("/openapi.json", openapi),
         Route("/healthz", healthz),
-        # stateless_http defaults to False in the SDK, i.e. in-process sessions — on the
-        # scale-to-zero / multi-replica hosts deploy/mcp/README.md recommends, a teacher's second
-        # request can land on a replica that never saw the first, producing intermittent "session
-        # not found" on BOTH platforms (M-1). These 8 tools are request/response, so the cost of
-        # stateless (no resumable streaming) is nil. Env escape hatch for a single pinned instance.
-        Mount("/", app=mcp.streamable_http_app(
-            stateless_http=_env_bool("TOS_MCP_STATELESS", True),
-            json_response=_env_bool("TOS_MCP_JSON_RESPONSE", False),
-            transport_security=_transport_security())),
-    ])
+        Mount("/", app=sub),
+    ], lifespan=sub.router.lifespan_context)   # AUDIT C-4 — see below
     return _gate_middleware(app, bucket, token)
 
 
@@ -518,6 +520,110 @@ def _port():
 
 
 # ------------------------------------------------------------------------------------ self-test
+def _free_port() -> int:
+    """Bind :0, read the port the OS chose, release it. A hardcoded port collides on a busy
+    runner; :0 is the only allocation that cannot fight another job."""
+    import socket
+    s = socket.socket()
+    try:
+        s.bind(("127.0.0.1", 0))
+        return s.getsockname()[1]
+    finally:
+        s.close()
+
+
+def _e2e(ck) -> None:
+    """The probe shape that would have caught C-4: a REAL server on a REAL socket, driven by the
+    official client over HTTP.
+
+    Every other probe here uses Client(mcp) — an in-memory transport that never touches ASGI — or
+    raw ASGI scopes that assert refusals happening BEFORE the mount. Neither can observe a mounted
+    sub-app whose lifespan never ran, which is why /mcp answered 500 to every real request from
+    69182cd until this commit while every gate stayed green."""
+    import logging
+    import threading
+    import time as _t
+
+    import anyio
+    import uvicorn
+    from mcp import Client
+
+    # The SDK's session manager logs at INFO ("shutting down"); this probe's output is meant to be
+    # pasted into a bug report by a teacher, so keep the transcript to PASS/FAIL lines only.
+    logging.getLogger("mcp").setLevel(logging.WARNING)
+
+    port = _free_port()
+    server = uvicorn.Server(uvicorn.Config(build_app(build_mcp()), host="127.0.0.1", port=port,
+                                           log_level="critical", access_log=False))
+    thread = threading.Thread(target=server.run, daemon=True)
+    thread.start()
+    try:
+        deadline = _t.monotonic() + 30
+        while not server.started and thread.is_alive() and _t.monotonic() < deadline:
+            _t.sleep(0.05)
+        ck("E2E: the server actually came up on a real socket", server.started)
+        if not server.started:
+            return
+
+        async def run() -> None:
+            async with Client(f"http://127.0.0.1:{port}/mcp") as client:
+                tools = await client.list_tools()
+                ck("E2E: initialize + tools/list over HTTP (C-4: this was a 500)",
+                   len(tools.tools) == 8)
+                r = await client.call_tool("check_citation_mutation",
+                                           {"cited": "count to 1000",
+                                            "origin": "count to 100 with support"})
+                ck("E2E: a real tools/call round-trip returns the mutation verdict",
+                   json.loads(r.content[0].text)["faithful"] is False)
+        anyio.run(run)
+
+        import urllib.request
+        with urllib.request.urlopen(f"http://127.0.0.1:{port}/healthz", timeout=10) as resp:
+            health = json.loads(resp.read().decode("utf-8"))
+        ck("E2E: /healthz over HTTP reports the tool count and the advertised URL",
+           health["ok"] and health["tools"] == 8 and "public_url" in health)
+        with urllib.request.urlopen(f"http://127.0.0.1:{port}/openapi.json", timeout=10) as resp:
+            doc = json.loads(resp.read().decode("utf-8"))
+        ck("E2E: /openapi.json is served with a concrete server URL",
+           doc["servers"][0]["url"].startswith("http"))
+    finally:
+        server.should_exit = True
+        thread.join(timeout=15)
+
+
+def _e2e_twin(ck) -> None:
+    """THE BROKEN TWIN — build_app() as it shipped, mounting the SDK app without handing its
+    lifespan to the parent. Starlette does not start a mounted sub-app's lifespan, so the session
+    manager's task group is never created and the first /mcp request dies. This must still fail."""
+    import anyio
+    from starlette.applications import Starlette
+    from starlette.routing import Mount
+
+    mcp = build_mcp()
+    twin = Starlette(routes=[Mount("/", app=mcp.streamable_http_app(
+        stateless_http=True, transport_security=_transport_security()))])   # no lifespan= : the bug
+
+    async def go() -> str:
+        async def receive():
+            return {"type": "http.request", "body": b"{}", "more_body": False}
+
+        async def send(msg):
+            pass
+        try:
+            await twin({"type": "http", "method": "POST", "path": "/mcp", "raw_path": b"/mcp",
+                        "headers": [(b"content-type", b"application/json"),
+                                    (b"accept", b"application/json, text/event-stream")],
+                        "query_string": b"", "client": ("1.2.3.4", 1), "server": ("t", 80),
+                        "scheme": "http", "root_path": "", "http_version": "1.1",
+                        "asgi": {"version": "3.0", "spec_version": "2.1"}}, receive, send)
+            return ""
+        except Exception as exc:                       # noqa: BLE001 — the twin's whole point
+            return f"{exc.__class__.__name__}: {exc}"
+    err = anyio.run(go)
+    ck("broken twin: the shipped mount (no lifespan) still dies on the first /mcp request",
+       "Task group is not initialized" in err)
+
+
 def self_test() -> int:
     missing = _need_sdk()
     if missing:
@@ -707,6 +813,8 @@ def self_test() -> int:
     ck("openapi served == generated schema paths",
        set(export_actions_schema.render_actions()["paths"]) ==
        {f"/v1/{t['name']}" for t in mcp_tooldefs.list_tools()})
+    _e2e_twin(ck)
+    _e2e(ck)
     print(f"self-test: {fails} failure(s)")
     return 1 if fails else 0
 
