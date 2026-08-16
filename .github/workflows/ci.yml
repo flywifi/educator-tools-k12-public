@@ -56,6 +56,15 @@ jobs:
       - name: MCP stdio-server self-test (frame shapes, error codes, stdout-purity twin)
         run: python3 tools/mcp_server.py --self-test
 
+      # The Actions-schema generator and the Desktop-bundle builder both had --self-test from
+      # the day they landed and neither was ever run by CI (audit M-3) — the bundle a teacher
+      # one-click installs had zero standing coverage. Both are stdlib + offline.
+      - name: MCP Actions-schema self-test (staged twins; both artifacts really compared)
+        run: python3 tools/export_actions_schema.py --self-test
+
+      - name: MCP Desktop-bundle self-test (stages, probes real stdio, manifest shape twins)
+        run: python3 tools/build_mcpb.py --self-test
+
       - name: Cross-platform lint (bare-interpreter spawns; encoding-less text opens)
         run: python3 tools/mac_audit.py
 

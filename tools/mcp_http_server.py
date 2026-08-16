@@ -360,6 +360,25 @@ def _gate_middleware(app, bucket: "_Bucket", token: str):
     return middleware
 
 
+#: REST status per error kind (M-4). Any non-2xx makes ChatGPT tell the teacher "the action
+#: failed" and swallow the body — so an OPERATIONAL answer the model should relay must be 200.
+#: index_unavailable/index_corrupt are exactly that: the tool worked, answered honestly, and
+#: carries the fix text; returning 400 turned the honesty tool into a dead end.
+_ERROR_STATUS = {"index_unavailable": 200, "index_corrupt": 200,
+                 "unknown tool": 404, "invalid_arguments": 400,
+                 "artifact must be": 400}
+
+
+def _status_for(out: dict) -> int:
+    err = out.get("error")
+    if not err:
+        return 200
+    for key, status in _ERROR_STATUS.items():
+        if str(err).startswith(key):
+            return status
+    return 500          # a genuine server-side failure (the call_tool chokepoint caught something)
+
+
 def _env_bool(name: str, default: bool) -> bool:
     raw = os.environ.get(name)
     return default if raw is None else raw.strip().lower() in ("1", "true", "yes", "on")
@@ -420,7 +439,7 @@ def build_app(mcp):
             return JSONResponse({"error": "body must be a JSON object"}, status_code=400)
         out = mcp_tooldefs.call_tool(request.path_params["tool"],
                                      args if isinstance(args, dict) else {})
-        return JSONResponse(out, status_code=200 if "error" not in out else 400)
+        return JSONResponse(out, status_code=_status_for(out))
 
     async def openapi(request: Request):
         doc = export_actions_schema.render_actions()
@@ -670,6 +689,19 @@ def self_test() -> int:
     ck("present-but-broken is its own message, not the downgrade one",
        "not the missing-package case" in _sdk_diagnosis("2.0.0", True, "boom"))
     ck("the live environment satisfies the floor", _need_sdk() is None)
+
+    # --- M-4: the REST status table. A wrong status makes ChatGPT report a failed action and
+    # throw away a body that was telling the teacher exactly how to fix things. ---
+    ck("index_unavailable is 200 — an honest operational answer, not a failed action",
+       _status_for({"error": "index_unavailable", "fix": "run offline_index.py --build"}) == 200)
+    ck("index_corrupt is 200 for the same reason",
+       _status_for({"error": "index_corrupt"}) == 200)
+    ck("a bad argument is the caller's fault: 400",
+       _status_for({"error": "invalid_arguments", "issues": []}) == 400)
+    ck("an unknown tool is 404", _status_for({"error": "unknown tool: 'nope'"}) == 404)
+    ck("an unexpected handler failure is 500, not 400",
+       _status_for({"error": "DatabaseError: file is not a database"}) == 500)
+    ck("a successful call is 200", _status_for({"count": 0, "rows": []}) == 200)
 
     import export_actions_schema
     ck("openapi served == generated schema paths",

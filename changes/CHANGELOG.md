@@ -4,6 +4,51 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+### Fixed — MCP hardening: every finding of the cross-domain audit, remediated (2026-08-16)
+An adversarial audit of the MCP arc above (attacks executed, not code read) found 22 defects — all
+in transport, validation, packaging or documentation; the tool logic audited clean. Each fix ships
+with a broken twin that reproduces the finding first.
+- **Process death (C-1/C-2/C-3).** A corrupt `offline.db` raised `sqlite3.DatabaseError` past
+  `call_tool`'s three-type except clause and **killed the stdio server mid-session** (reproduced:
+  zero frames written, a queued `ping` never answered). Guards now sit at four boundaries —
+  `_index_status`, the `call_tool` chokepoint, `handle_frame` (which is the only one that can
+  catch a `json.dumps` TypeError on a non-serializable handler return), and the `serve()` loop,
+  which also moved to `readline()` and survives a dead stdout. `SystemExit`/`KeyboardInterrupt`
+  are never swallowed, and a probe asserts that.
+- **Advertised schemas are now enforced (H-1) and identical on both platforms (H-2).** A bogus
+  `subject` enum was accepted and answered `count: 0` — a silent false negative in an
+  anti-fabrication system; 60 codes sailed past `maxItems: 25`. A stdlib validator in the registry
+  now runs on every leg (explicit `null` on an optional property means absent — without that rule
+  validation would have 400'd all hosted traffic). The SDK-derived Claude schema had dropped every
+  enum and bound the ChatGPT schema carried; the wrappers now hold the constraints in their type
+  annotations, and **sync_check check 23** compares the two semantically (skips only when the SDK
+  is absent — parity is also asserted in the hosted self-test CI runs).
+- **The security gate was decorative (H-3).** Rate limiting and `TOS_MCP_TOKEN` ran only on
+  `/v1/*`; `/mcp` — the path every connector uses — was ungated and unthrottled, while
+  `SECURITY_REVIEW.md` and `deploy/mcp/README.md` said otherwise. Now ASGI middleware ahead of
+  routing (`/healthz` + `/openapi.json` token-exempt but rate-limited, so probes and ChatGPT's
+  import still work), `hmac.compare_digest`, and an eviction policy that never resets the caller
+  being throttled. Both documents carry dated **retractions**.
+- **Launchers that exist on the teacher's machine (H-4).** All three shipped configs spawned
+  `python3` — absent on Windows, absent from a macOS GUI PATH. `.mcpb` moves to manifest 0.3 with
+  a `win32` override; `.mcp.json` uses `${TOS_PYTHON:-python3}` + `${CLAUDE_PROJECT_DIR:-.}`;
+  `plugin.json` cannot be fixed (no per-OS command, no default substitution) so the Windows gap
+  and its `claude mcp add --scope user` workaround are documented. `mac_audit` now lints JSON
+  launchers, exempting the plugin **only while that workaround stays documented**.
+- **Hosted-leg reality (M-1/M-2/L-10):** stateless by default (in-process sessions break
+  scale-to-zero hosts), DNS-rebinding protection stated explicitly as off (enabling it naively
+  rejects every request behind a load balancer), `TOS_MCP_PUBLIC_URL` + `forwarded_allow_ips`
+  (without which the rate limiter degraded to one global bucket and ChatGPT rejected the import),
+  `/healthz` echoes the computed URL, and a bad `TOS_MCP_PORT` refuses to start instead of
+  crash-looping.
+- **Dependency honesty (H-5):** semgrep pins `mcp<2` and silently downgraded the SDK in the shared
+  venv; the diagnostic said "not installed" about a package that was installed. `mcp_server` is now
+  an isolated capability, and the message names the version, the cause, and a fix that works.
+- **Coverage the gates lacked (M-3/M-4/L-11):** the bundle builder and Actions generator self-tests
+  now run in CI; `index_unavailable` returns HTTP 200 so ChatGPT relays the fix text instead of
+  reporting a failed action; the export twin stages both artifacts in a tempdir instead of reading
+  the production tree.
+
 ### Added — the MCP tool surface: verified lookups as callable tools on Claude AND ChatGPT (2026-08-15)
 - **`tools/mcp_tooldefs.py`** — 8 read-only tools defined once (verified-standards search with
   the token-budget detail-strip, course/school lookup, CPALMS resources, fabrication-blocking

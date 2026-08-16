@@ -81,6 +81,10 @@ it is pinned, and whether the server is stateless) — check it before telling a
 - Rate limiting is in-process per-IP (token bucket), applied as middleware to **every** path
   including `/mcp` — front with your platform's limiter for anything serious, since N replicas
   means N independent buckets.
+- `POST /v1/{tool}` returns **200** for `index_unavailable` / `index_corrupt`: the tool answered
+  honestly and the body carries the fix. Any non-2xx makes ChatGPT report "the action failed" and
+  discard that text. 400 = bad arguments, 404 = unknown tool, 500 = a real server-side failure.
+  A monitor should therefore watch `/healthz` (and the index), not REST status codes alone.
 - Updating: rebuild the image from a fresh clone; the index rebuilds from the committed,
   CPALMS-verified sources at build time. Version = the repo `VERSION` baked into the image.
 - Rollback = redeploy the previous image. The server holds no state to migrate.
