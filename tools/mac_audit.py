@@ -63,10 +63,13 @@ def _check_file(p: Path) -> list[dict]:
         src = p.read_text(encoding="utf-8")
         tree = ast.parse(src)
     except Exception as e:
-        # a file that can't be parsed can't run either, but say so instead of silently skipping —
-        # its findings are otherwise invisible.
-        print(f"[note] mac-lint: skipped unparseable {rel} ({e.__class__.__name__})", file=sys.stderr)
-        return []
+        # A file that cannot be parsed cannot run either — and its findings are invisible, so a
+        # note plus a green exit is the worst of both. This printed a note and returned clean until
+        # a real SyntaxError slipped past it during this very round; same disarm pattern as the
+        # nine sync_check guards, one level down. It is now a finding.
+        return [{"file": rel, "line": getattr(e, "lineno", 1) or 1, "check": "unparseable",
+                 "issue": f"{e.__class__.__name__}: {e} — this file cannot run, and mac-lint "
+                          f"cannot inspect it; fix the syntax"}]
     lines = src.splitlines()
     # Names bound anywhere in this file to a literal argv starting with a bare interpreter — a spawn
     # via such a variable is the same defect one hop away (a plain literal-only check missed it).
