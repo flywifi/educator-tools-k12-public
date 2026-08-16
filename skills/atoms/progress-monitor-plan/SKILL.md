@@ -7,6 +7,14 @@ description: "Create ONE progress-monitoring schedule and probe plan for an IEP 
 
 Designs a progress-monitoring schedule with probe type, frequency, decision rules, and data collection method for a single IEP goal or intervention target.
 
+> **Read first — boundaries (`security/SECURITY_AND_SAFETY.md` §2).** A monitoring plan is a
+> **draft for the IEP or MTSS team**, not a decision. It must be validated against the student's
+> **actual** IEP/504 plan and local and state policy before anyone collects data against it. This
+> atom does **not** set, alter, or approve goals, does **not** make eligibility or placement
+> determinations, and does **not** decide whether an intervention continues — those belong to the
+> team (`protocol-layer/assumptions-protocol.md`). **Never request, infer, or include real student
+> data — placeholders only.**
+
 ## Input
 
 ```json

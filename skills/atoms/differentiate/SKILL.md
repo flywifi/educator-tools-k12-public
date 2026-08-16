@@ -7,6 +7,14 @@ description: "Apply ONE differentiation profile (ELL, IEP/SPED, Gifted, 504, Bel
 
 Takes one piece of instructional content (activity, passage, question, instructions) and returns a differentiated version for the specified learner profile. Keeps the learning target constant; only modifies scaffolding, vocabulary, format, and support level.
 
+> **Read first — boundaries (`security/SECURITY_AND_SAFETY.md` §1-2).** A profile here — `IEP`,
+> `504`, `ELL`, `Gifted` — is a **generic scaffolding pattern, not a student's plan**. The output is
+> decision support and must be validated against the student's **actual** IEP/504/ELL plan and local
+> policy before it is used with them; matching a profile name confers no accommodation and no legal
+> entitlement. Where a request needs a specific student's plan details, **escalate** rather than
+> assume (`protocol-layer/assumptions-protocol.md`). **Never request, infer, or include real student
+> data — placeholders only.**
+
 ## Input
 
 ```json

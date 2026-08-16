@@ -7,6 +7,15 @@ description: "Match a tiered intervention to a documented student need at a spec
 
 Suggests an evidence-based intervention matched to a student need and MTSS tier, with implementation notes (frequency, duration, group size). Never fabricates program names or citations.
 
+> **Read first — boundaries (`security/SECURITY_AND_SAFETY.md` §2, §5).** An intervention match is
+> **decision support for the MTSS or problem-solving team**, not a placement, a tier assignment, or
+> an eligibility determination — **MTSS is not special-education eligibility**, and a tier-3 match
+> here neither implies nor initiates a referral. It must be validated against the **actual**
+> district-adopted programs available to that student and against local policy. Program names and
+> research citations are **never fabricated**: return an honest gap instead of a plausible-sounding
+> program (`protocol-layer/standards-verification.md`). **Never request, infer, or include real
+> student data — placeholders only.**
+
 ## Input
 
 ```json

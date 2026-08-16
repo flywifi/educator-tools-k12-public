@@ -7,6 +7,15 @@ description: "Suggest ONE function-based behavior support strategy for a documen
 
 Given an antecedent and hypothesized function of a behavior, suggests a replacement behavior and support strategy aligned to positive behavior support (PBS/PBIS) principles.
 
+> **Read first — boundaries (`security/SECURITY_AND_SAFETY.md` §2).** Every strategy here is a
+> **draft for the IEP/BIP or MTSS team**, never a behavior determination and never a disciplinary
+> one. It must be validated against the student's **actual** BIP/IEP/504 plan and against local and
+> state **discipline policy** before use. This atom does **not** decide consequences, placement,
+> eligibility, or anything with legal effect, and it is **out of scope for crisis response,
+> restraint, or seclusion** — escalate those to the trained team and the district's crisis protocol
+> (`protocol-layer/assumptions-protocol.md`). **Never request, infer, or include real student data —
+> placeholders only.**
+
 ## Input
 
 ```json

@@ -7,6 +7,14 @@ description: "Suggest Universal Design for Learning (UDL) checkpoint options for
 
 Maps a learning barrier or activity to specific UDL 3.0 checkpoints (Engagement, Representation, Action & Expression) with concrete classroom suggestions. References the CAST framework with attribution.
 
+> **Read first — boundaries (`security/SECURITY_AND_SAFETY.md` §3).** UDL options are
+> **universal design suggestions, not IEP/504 accommodations** — they carry no legal force, and an
+> accommodation a plan requires must come from `atom-accommodation-match` and the plan itself. The
+> output is decision support for a teacher to adapt. CAST checkpoint numbers and names are
+> **cited, never invented**: if the mapping is uncertain, say so instead of producing a
+> plausible-looking checkpoint. **Never request, infer, or include real student data —
+> placeholders only.**
+
 ## Input
 
 ```json
