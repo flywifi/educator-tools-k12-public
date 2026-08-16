@@ -35,6 +35,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -171,8 +172,13 @@ def _index_status(args: dict) -> dict:
     out: dict = {"db_present": offline_index.DB.exists()}
     if out["db_present"]:
         import sqlite3
-        conn = sqlite3.connect(offline_index.DB)
+        # A PRESENT file is not a READABLE one. The honesty tool must survive exactly the
+        # condition it exists to report: a truncated/corrupt/locked db (interrupted --build,
+        # a partially-copied .mcpb, a full disk) previously raised sqlite3.DatabaseError out
+        # of here, past call_tool's narrow except, and killed the whole stdio server.
+        conn = None
         try:
+            conn = sqlite3.connect(offline_index.DB)
             eng = conn.execute("SELECT value FROM idx_meta WHERE key='engine'").fetchone()
             out["engine"] = eng[0] if eng else "unknown"
             out["counts"] = {}
@@ -183,8 +189,14 @@ def _index_status(args: dict) -> dict:
                 # t is from offline_index._TABLES — the same allow-list _q enforces; a table
                 # identifier cannot be a bound parameter.
                 out["counts"][t] = conn.execute("SELECT count(*) FROM " + t).fetchone()[0]  # nosemgrep
+        except (sqlite3.Error, OSError) as exc:
+            out["error"] = "index_corrupt"
+            out["detail"] = f"{exc.__class__.__name__}: {exc}"
+            out["fix"] = ("delete canonical-sources/index/offline.db and run: "
+                          "python3 tools/offline_index.py --build")
         finally:
-            conn.close()
+            if conn is not None:
+                conn.close()
         try:
             out["drift"] = offline_index.drift_report()
         except Exception as exc:
@@ -308,8 +320,17 @@ def call_tool(name: str, args: dict | None) -> dict:
         return {"error": f"missing required argument(s): {', '.join(missing)}"}
     try:
         return tool["handler"](args)
-    except (ValueError, TypeError, KeyError) as exc:
-        return {"error": f"{exc.__class__.__name__}: {exc}"}
+    except Exception as exc:
+        # ONE chokepoint, deliberately not a decorator: all handlers dispatch through this line,
+        # so a future tool cannot forget the guard. `Exception` and NOT `BaseException` — a
+        # probe asserts SystemExit/KeyboardInterrupt still propagate (the client's shutdown
+        # signal must not be swallowed). The traceback goes to STDERR ONLY: on the stdio leg
+        # stdout is the protocol wire, and a traceback there corrupts the session.
+        # This tuple was (ValueError, TypeError, KeyError) as shipped in 80e75de, so a
+        # sqlite3.DatabaseError from a corrupt index escaped and killed the server process.
+        traceback.print_exc(file=sys.stderr)
+        return {"error": f"{exc.__class__.__name__}: {exc}", "tool": name,
+                "note": "the call failed; the server is still running"}
 
 
 # ----------------------------------------------------------------------------------- self-test
@@ -368,6 +389,48 @@ def self_test() -> int:  # noqa: C901
            and "--build" in r["fix"])
     finally:
         offline_index.DB = real_db
+
+    # --- survival probes (C-1/C-2): a corrupt index must never kill the process -------------
+    corrupt = tmp / "corrupt.db"
+    corrupt.write_bytes(b"this is not a sqlite database at all")
+    offline_index.DB = corrupt
+    try:
+        r = call_tool("index_status", {})
+        ck("index_status: a CORRUPT db reports index_corrupt + the fix (never raises)",
+           r.get("error") == "index_corrupt" and "offline_index.py --build" in r.get("fix", ""))
+        # twin: the raw call the guard wraps DOES raise — proving the guard is load-bearing
+        raised = False
+        try:
+            sqlite3.connect(corrupt).execute("SELECT value FROM idx_meta").fetchone()
+        except sqlite3.Error:
+            raised = True
+        ck("twin: the unguarded sqlite call raises DatabaseError (guard is load-bearing)", raised)
+        r = call_tool("search_standards", {"query": "x"})
+        ck("search_standards on a corrupt db: structured error, still running",
+           "error" in r and r.get("note", "").endswith("still running"))
+    finally:
+        offline_index.DB = real_db
+
+    def _poison(_args):
+        raise sqlite3.DatabaseError("simulated corruption from inside a handler")
+    _BY_NAME["_poison"] = {"name": "_poison", "description": "", "handler": _poison,
+                           "inputSchema": _schema({}, [])}
+    r = call_tool("_poison", {})
+    ck("poisoned handler: sqlite3.DatabaseError is caught (the shipped 3-type tuple would not "
+       "have caught it)",
+       "error" in r and not isinstance(sqlite3.DatabaseError(), (ValueError, TypeError, KeyError)))
+
+    def _exiting(_args):
+        raise SystemExit(3)
+    _BY_NAME["_exiting"] = {"name": "_exiting", "description": "", "handler": _exiting,
+                            "inputSchema": _schema({}, [])}
+    escaped = False
+    try:
+        call_tool("_exiting", {})
+    except SystemExit:
+        escaped = True
+    ck("SystemExit is NOT swallowed (except Exception, never BaseException)", escaped)
+    del _BY_NAME["_poison"], _BY_NAME["_exiting"]
 
     # Live-corpus probes (the real repo data these run against in CI):
     r = call_tool("verify_standard_codes", {"codes": ["MA.999.ZZ.9.9"]})
