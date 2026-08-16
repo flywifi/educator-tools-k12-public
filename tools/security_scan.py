@@ -102,6 +102,17 @@ def _is_blocking(f: dict) -> bool:
     return True  # unknown tool / parse error -> conservative
 
 
+#: Scanners whose absence makes a green run meaningless. AUDIT G-3: `status: "no_scanners"` was
+#: computed, printed, and never consulted — main() returned `1 if blocking_count else 0`, so a
+#: machine with no scanners installed reported success, and a partial outage (semgrep missing)
+#: reported "clean". A scan that could not look is not a scan that found nothing.
+REQUIRED_SCANNERS = ("pip-audit", "bandit", "semgrep")
+
+
+def missing_scanners() -> list:
+    return [t for t in REQUIRED_SCANNERS if not shutil.which(t)]
+
+
 def scan() -> dict:
     findings, ran, skipped = [], [], []
     # 1) pip-audit over every pinned requirements file — EXCEPT the security-scanner tooling itself.
@@ -167,6 +178,7 @@ def scan() -> dict:
 
     blocking = [f for f in findings if _is_blocking(f)]
     return {"tool": "security-scan", "ran": ran, "skipped": skipped,
+            "missing_scanners": missing_scanners(),
             "findings": findings, "finding_count": len(findings),
             "blocking_count": len(blocking), "advisory_count": len(findings) - len(blocking),
             "language_modules": lang_modules,
@@ -177,11 +189,20 @@ def scan() -> dict:
 def main(argv) -> int:
     ap = argparse.ArgumentParser(description="Dependency + code security scan gate.")
     ap.add_argument("--report", action="store_true", help="print JSON and exit 0 regardless")
+    ap.add_argument("--allow-missing-scanners", action="store_true",
+                    help="accept an INCOMPLETE run (local dev only — CI must never pass this)")
     a = ap.parse_args(argv)
     result = scan()
     print(json.dumps(result, indent=2))
     if a.report:
         return 0
+    # Tri-state, so an incomplete run can never be mistaken for a clean one (the currency_recheck
+    # precedent): 0 clean · 1 blocking findings · 2 the scan could not be performed.
+    if result["missing_scanners"] and not a.allow_missing_scanners:
+        print(f"security scan INCOMPLETE — not installed: {', '.join(result['missing_scanners'])}. "
+              f"Install them (python3 -m pip install -r tools/requirements-security.txt) or pass "
+              f"--allow-missing-scanners to accept an incomplete local run.", file=sys.stderr)
+        return 2
     return 1 if result["blocking_count"] else 0
 
 

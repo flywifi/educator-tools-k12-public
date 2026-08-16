@@ -33,6 +33,11 @@ the right assistant takes it from there. Two doors in, both written for non-tech
   experience, including the setup wizard and your personal requirements map.
 - **On ChatGPT**: **[implementation/gpt/web/README.md](implementation/gpt/web/README.md)** — one
   file to drag in, plus an optional Reference Pack with the verified Florida data.
+- **Verified tools inside either chat** (optional, ~2 minutes):
+  **[implementation/mcp/README.md](implementation/mcp/README.md)** — give your assistant eight
+  read-only tools so it *looks standards up* instead of recalling them: search the verified
+  corpus, check that a cited code is real, catch a misquoted standard, validate an artifact.
+  Four ways in, depending on which app you use.
 
 For the curious: **[docs/END_TO_END_WALKTHROUGH.md](docs/END_TO_END_WALKTHROUGH.md)** is a
 technical validation log of a real start-to-finish run (shell commands and all — not a

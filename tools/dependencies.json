@@ -1,7 +1,7 @@
 {
-  "_comment": "Capability/dependency manifest (single source of truth for optional deps). Read by shared/health/capabilities.py (the preflight) and the docs. Each capability is gated: it activates when its deps/bins/fonts/credentials are present and is honestly reported as a GAP when not \u2014 never faked. Tiers: builtin (stdlib, always on), local_optional (local lib/bin/font; no secrets; on when installed), cloud_optional (external SaaS; OFF by default; needs district opt-in + an API key read ONLY from the environment, never the repo; may send data off-site so it is bound by shared/students/student-data-policy.md + the connector restriction model). Supply chain: pin in the named requirements file, auto-update via .github/dependabot.yml, scan via tools/security_scan.py (pip-audit + bandit) in CI.",
+  "_comment": "Capability/dependency manifest (single source of truth for optional deps). Read by shared/health/capabilities.py (the preflight) and the docs. Each capability is gated: it activates when its deps/bins/fonts/credentials are present and is honestly reported as a GAP when not — never faked. Tiers: builtin (stdlib, always on), local_optional (local lib/bin/font; no secrets; on when installed), cloud_optional (external SaaS; OFF by default; needs district opt-in + an API key read ONLY from the environment, never the repo; may send data off-site so it is bound by shared/students/student-data-policy.md + the connector restriction model). Supply chain: pin in the named requirements file, auto-update via .github/dependabot.yml, scan via tools/security_scan.py (pip-audit + bandit) in CI.",
   "version": "0.1.0",
-  "updated": "2026-06-23",
+  "updated": "2026-08-16",
   "capabilities": [
     {
       "id": "pdf_hifi",
@@ -49,10 +49,10 @@
       "beats_baseline": "convert/render decks+docs to PDF/PNG for visual QA",
       "python": [],
       "bins": [
-        "soffice",
-        "pdftoppm"
+        "soffice"
       ],
-      "requirements": null
+      "requirements": null,
+      "_bins_note": "pdftoppm (poppler) was declared here and is invoked nowhere in the tree — soffice does the PDF/PNG conversion itself. A declared binary nothing calls made a working capability report `partial` forever, so it is removed rather than left as a permanent false negative."
     },
     {
       "id": "transcription",
@@ -83,7 +83,7 @@
       "id": "read_any_markitdown",
       "tier": "local_optional",
       "default": "on_if_present",
-      "beats_baseline": "high-fidelity 'convert any file to markdown' (15+ formats incl. zip iteration) via microsoft/markitdown \u2014 boosts the docintel universal reader",
+      "beats_baseline": "high-fidelity 'convert any file to markdown' (15+ formats incl. zip iteration) via microsoft/markitdown — boosts the docintel universal reader",
       "python": [
         "markitdown"
       ],
@@ -110,7 +110,11 @@
           "Noto Color Emoji"
         ]
       },
-      "install": "apt-get install fonts-liberation fonts-crosextra-carlito fonts-crosextra-caladea fonts-noto-core fonts-noto-cjk fonts-noto-color-emoji"
+      "install": "apt-get install fonts-liberation fonts-crosextra-carlito fonts-crosextra-caladea fonts-noto-core fonts-noto-cjk fonts-noto-color-emoji",
+      "bins": [
+        "fc-list"
+      ],
+      "_bins_note": "fc-list drives the font-coverage probe in shared/health/capabilities.py and was declared nowhere, so the one binary the fonts capability actually shells out to was invisible to the manifest."
     },
     {
       "id": "cloud_transcription",
@@ -126,7 +130,7 @@
         "AZURE_SPEECH_REGION"
       ],
       "requirements": "tools/requirements-cloud.txt",
-      "privacy": "high \u2014 audio may leave the building; district opt-in + minimum-necessary"
+      "privacy": "high — audio may leave the building; district opt-in + minimum-necessary"
     },
     {
       "id": "cloud_vision_ocr",
@@ -157,7 +161,7 @@
         "FAL_KEY"
       ],
       "requirements": "tools/requirements-cloud.txt",
-      "privacy": "high \u2014 do not send student PII to a generation API"
+      "privacy": "high — do not send student PII to a generation API"
     },
     {
       "id": "cloud_doc_processing",
@@ -179,7 +183,7 @@
       "tier": "cloud_optional",
       "default": "auto_when_configured",
       "provider": "firecrawl",
-      "beats_baseline": "managed JS-rendered web crawl/extract (handles SPAs the polite stdlib crawler reports as js_required); AUTO-detected from FIRECRAWL_API_KEY (SaaS) or FIRECRAWL_BASE_URL (self-host) and preferred by the traversal web fetcher \u2014 no per-use setup",
+      "beats_baseline": "managed JS-rendered web crawl/extract (handles SPAs the polite stdlib crawler reports as js_required); AUTO-detected from FIRECRAWL_API_KEY (SaaS) or FIRECRAWL_BASE_URL (self-host) and preferred by the traversal web fetcher — no per-use setup",
       "python": [
         "firecrawl"
       ],
@@ -213,7 +217,7 @@
         "STAFF_INGEST_AUTHORIZED"
       ],
       "requirements": null,
-      "privacy": "high \u2014 staff personal data (work email/role); OFF by default, authorized-first, minimum-necessary, gitignored local store. Bulk-harvesting public emails carries ToS/privacy risk \u2014 see shared/staff/staff-data-policy.md. Lookup of placeholder data needs no authorization; INGEST requires STAFF_INGEST_AUTHORIZED=true."
+      "privacy": "high — staff personal data (work email/role); OFF by default, authorized-first, minimum-necessary, gitignored local store. Bulk-harvesting public emails carries ToS/privacy risk — see shared/staff/staff-data-policy.md. Lookup of placeholder data needs no authorization; INGEST requires STAFF_INGEST_AUTHORIZED=true."
     },
     {
       "id": "google_authoring",
@@ -233,19 +237,19 @@
         "GOOGLE_APPLICATION_CREDENTIALS"
       ],
       "requirements": null,
-      "privacy": "high \u2014 Drive/Workspace content; district opt-in; live calls via host-AI native Google integration or a deployment Node runner (no OAuth client built here)"
+      "privacy": "high — Drive/Workspace content; district opt-in; live calls via host-AI native Google integration or a deployment Node runner (no OAuth client built here)"
     },
     {
       "id": "local_semantic",
       "tier": "local_optional",
       "default": "off",
-      "beats_baseline": "opt-in OFFLINE semantic recall over the L1 standards cache via sqlite-vec (paraphrase matches that keyword search misses); embeddings computed locally once and reused. Activated only with teacher consent (teacher-profile local_first.consents.local_semantic). Absent or declined => graceful fallback to L1 keyword search, reported as a gap \u2014 never faked. No data leaves the machine.",
+      "beats_baseline": "opt-in OFFLINE semantic recall over the L1 standards cache via sqlite-vec (paraphrase matches that keyword search misses); embeddings computed locally once and reused. Activated only with teacher consent (teacher-profile local_first.consents.local_semantic). Absent or declined => graceful fallback to L1 keyword search, reported as a gap — never faked. No data leaves the machine.",
       "python": [
         "sqlite_vec"
       ],
       "bins": [],
       "requirements": "tools/requirements-semantic.txt",
-      "privacy": "low \u2014 local-only; vectors derived from PUBLIC standards text, no student data"
+      "privacy": "low — local-only; vectors derived from PUBLIC standards text, no student data"
     },
     {
       "id": "local_feeds",
@@ -255,7 +259,7 @@
       "python": [],
       "bins": [],
       "requirements": null,
-      "privacy": "low \u2014 public feed content only; advisory + human-reviewed; no student data"
+      "privacy": "low — public feed content only; advisory + human-reviewed; no student data"
     },
     {
       "id": "fast_feeds",
@@ -267,19 +271,19 @@
       ],
       "bins": [],
       "requirements": "tools/requirements-feeds.txt",
-      "privacy": "low \u2014 local parsing of public feed XML; no student data"
+      "privacy": "low — local parsing of public feed XML; no student data"
     },
     {
       "id": "scrape_feed",
       "tier": "local_optional",
       "default": "on_if_present",
-      "beats_baseline": "CSS-selector-based news extraction from sites without RSS (beautifulsoup4) \u2014 powers tools/make_feed.py and the type='page' path in shared/feeds/feeds.py; stdlib html.parser fallback always available but less precise. Use to build RSS-style feeds from FLDOE, OCPS, CPALMS, Monarch, and any other site missing a native feed.",
+      "beats_baseline": "CSS-selector-based news extraction from sites without RSS (beautifulsoup4) — powers tools/make_feed.py and the type='page' path in shared/feeds/feeds.py; stdlib html.parser fallback always available but less precise. Use to build RSS-style feeds from FLDOE, OCPS, CPALMS, Monarch, and any other site missing a native feed.",
       "python": [
         "bs4"
       ],
       "bins": [],
       "requirements": "tools/requirements-scraper.txt",
-      "privacy": "low \u2014 scrapes public education news pages only; no student data"
+      "privacy": "low — scrapes public education news pages only; no student data"
     },
     {
       "id": "feed_gen",
@@ -291,25 +295,25 @@
       ],
       "bins": [],
       "requirements": "tools/requirements-feeds.txt",
-      "privacy": "low \u2014 generates public feed metadata only; no student data"
+      "privacy": "low — generates public feed metadata only; no student data"
     },
     {
       "id": "local_render",
       "tier": "local_optional",
       "default": "on_if_present",
-      "beats_baseline": "LOCAL, offline-capable headless-browser render of JS-required SPA pages (e.g. CPALMS search) using the pre-installed Chromium at /opt/pw-browsers \u2014 NOT impersonation/evasion: same honest identifying User-Agent, robots.txt-respecting, just runs the site's own JavaScript the way a browser is meant to. Powers the render + screenshot prongs in shared/render/render_prongs.py and tools/render_fetch.py. Absent => the prong chain falls back to the offline-docintel parse of static HTML, then reports js_required honestly (never faked). Prefer this LOCAL prong over the cloud_web_crawl (firecrawl) prong when offline-first.",
+      "beats_baseline": "LOCAL, offline-capable headless-browser render of JS-required SPA pages (e.g. CPALMS search) using the pre-installed Chromium at /opt/pw-browsers — NOT impersonation/evasion: same honest identifying User-Agent, robots.txt-respecting, just runs the site's own JavaScript the way a browser is meant to. Powers the render + screenshot prongs in shared/render/render_prongs.py and tools/render_fetch.py. Absent => the prong chain falls back to the offline-docintel parse of static HTML, then reports js_required honestly (never faked). Prefer this LOCAL prong over the cloud_web_crawl (firecrawl) prong when offline-first.",
       "python": [
         "playwright"
       ],
       "bins": [],
       "requirements": "tools/requirements-render.txt",
-      "privacy": "low \u2014 renders public education pages locally; no data leaves the machine; no student data"
+      "privacy": "low — renders public education pages locally; no data leaves the machine; no student data"
     },
     {
       "id": "crawl_full",
       "tier": "local_optional",
       "default": "on_if_present",
-      "beats_baseline": "stateful session handling (mechanize), transparent TTL-aware request caching (requests-cache), and HTML\u2192PDF export (weasyprint) for offline archival of public education sites. Absent => requests + urllib stdlib crawl still works, just less capable. (Full recursive crawling via scrapy is DEFERRED \u2014 see tools/requirements-crawl.txt \u2014 pending a fixed upstream lxml pin.)",
+      "beats_baseline": "stateful session handling (mechanize), transparent TTL-aware request caching (requests-cache), and HTML→PDF export (weasyprint) for offline archival of public education sites. Absent => requests + urllib stdlib crawl still works, just less capable. (Full recursive crawling via scrapy is DEFERRED — see tools/requirements-crawl.txt — pending a fixed upstream lxml pin.)",
       "python": [
         "mechanize",
         "weasyprint",
@@ -317,55 +321,57 @@
       ],
       "bins": [],
       "requirements": "tools/requirements-crawl.txt",
-      "privacy": "low \u2014 public sites only; all caching is local; no student data"
+      "privacy": "low — public sites only; all caching is local; no student data"
     },
     {
       "id": "feed_discover",
       "tier": "local_optional",
       "default": "on_if_present",
-      "beats_baseline": "OPML/FOAF bundle parsing (listparser) and strict RFC-compliant feed validation (atoma) \u2014 structured feed discovery and parsing. Powers shared/feeds autodiscovery. Absent => bs4 scrape_feed fallback still runs. (newspaper4k article extraction is DEFERRED \u2014 see tools/requirements-crawl.txt \u2014 pending a fixed upstream lxml pin.)",
+      "beats_baseline": "OPML/FOAF bundle parsing (listparser) and strict RFC-compliant feed validation (atoma) — structured feed discovery and parsing. Powers shared/feeds autodiscovery. Absent => bs4 scrape_feed fallback still runs. (newspaper4k article extraction is DEFERRED — see tools/requirements-crawl.txt — pending a fixed upstream lxml pin.)",
       "python": [
         "listparser",
         "atoma"
       ],
       "bins": [],
       "requirements": "tools/requirements-crawl.txt",
-      "privacy": "low \u2014 public news/feed pages only; no student data"
+      "privacy": "low — public news/feed pages only; no student data"
     },
     {
       "id": "ocr_advanced",
       "tier": "local_optional",
       "default": "off",
-      "beats_baseline": "deep-learning OCR (easyocr / surya) + document layout analysis (layoutparser / unstructured) + table extraction (img2table / camelot) \u2014 recovers text and structure from scanned PDFs, complex multi-column layouts, handwritten notes, and image-heavy pages that tesseract misses; integrates with shared/docintel and shared/render prong chain. Absent => tesseract ocr capability still runs.",
+      "beats_baseline": "deep-learning OCR (easyocr / surya) + document layout analysis (layoutparser / unstructured) + table extraction (img2table / camelot) — recovers text and structure from scanned PDFs, complex multi-column layouts, handwritten notes, and image-heavy pages that tesseract misses; integrates with shared/docintel and shared/render prong chain. Absent => tesseract ocr capability still runs.",
       "python": [],
       "bins": [],
       "requirements": "tools/requirements-ocr-advanced.txt",
-      "privacy": "low \u2014 offline processing of local documents; no content or student data sent anywhere",
-      "note": "DEFERRED \u2014 not yet wired into shipping code; the deep-learning OCR stack (easyocr/surya/transformers/pillow) carries transitive CVEs that cannot currently be pinned without a resolution conflict. Packages are listed (commented) in tools/requirements-ocr-advanced.txt and re-added with audited pins when built. Until then the builtin tesseract `ocr` capability is the supported path. default:off \u2014 large model downloads (~300 MB\u20131 GB)."
+      "privacy": "low — offline processing of local documents; no content or student data sent anywhere",
+      "note": "DEFERRED — not yet wired into shipping code; the deep-learning OCR stack (easyocr/surya/transformers/pillow) carries transitive CVEs that cannot currently be pinned without a resolution conflict. Packages are listed (commented) in tools/requirements-ocr-advanced.txt and re-added with audited pins when built. Until then the builtin tesseract `ocr` capability is the supported path. default:off — large model downloads (~300 MB–1 GB)."
     },
     {
       "id": "web_archive",
       "tier": "local_optional",
       "default": "on_if_present",
-      "beats_baseline": "cross-checks any current fetch against the most recent Wayback Machine snapshot (archive.org CDX API, free/no-auth) to confirm whether a page genuinely changed, was removed, or whether the current fetch is unreliable \u2014 raises confidence score on agreement, generates minority_report entry on discrepancy. Powers _wayback_compare() in shared/render/render_prongs.py. Absent => stdlib urllib fallback attempts the same CDX query.",
+      "beats_baseline": "cross-checks any current fetch against the most recent Wayback Machine snapshot (archive.org CDX API, free/no-auth) to confirm whether a page genuinely changed, was removed, or whether the current fetch is unreliable — raises confidence score on agreement, generates minority_report entry on discrepancy. Powers _wayback_compare() in shared/render/render_prongs.py. Absent => stdlib urllib fallback attempts the same CDX query.",
       "python": [
         "waybackpy"
       ],
       "bins": [],
       "requirements": "tools/requirements-crawl.txt",
-      "privacy": "low \u2014 sends only the public page URL to archive.org CDX API; no page content; no student data"
+      "privacy": "low — sends only the public page URL to archive.org CDX API; no page content; no student data"
     },
     {
       "id": "mcp_server",
       "tier": "local_optional",
       "default": "off",
-      "beats_baseline": "serve TOS's verified lookups/validators to claude.ai connectors and ChatGPT over MCP/HTTP (tools/mcp_http_server.py \u2014 the HOSTED leg only; the local stdio server tools/mcp_server.py is stdlib and needs nothing installed). Hand-rolling streamable-HTTP session management is what the official SDK exists to maintain; hand-rolled IS the chosen baseline for stdio, where the SDK buys nothing.",
+      "beats_baseline": "serve TOS's verified lookups/validators to claude.ai connectors and ChatGPT over MCP/HTTP (tools/mcp_http_server.py — the HOSTED leg only; the local stdio server tools/mcp_server.py is stdlib and needs nothing installed). Hand-rolling streamable-HTTP session management is what the official SDK exists to maintain; hand-rolled IS the chosen baseline for stdio, where the SDK buys nothing.",
       "python": [
         "mcp",
         "uvicorn"
       ],
       "bins": [],
-      "requirements": "tools/requirements-mcp.txt"
+      "requirements": "tools/requirements-mcp.txt",
+      "isolated": true,
+      "isolated_reason": "semgrep (security_scan) pins mcp<2, so a shared venv silently downgrades mcp 2.0.0 -> 1.29.0 and the hosted leg stops importing MCPServer (audit H-5). Its own venv: .harvest-venv-mcp_server."
     }
   ]
 }

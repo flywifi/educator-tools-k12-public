@@ -17,6 +17,18 @@ from ..governance import Confidence, Provenance, new_id
 from ..transcribe import Transcriber
 from ..udom import Block, Source
 
+def _find(name: str):
+    """health.binaries.find_binary, importable however this module was loaded."""
+    import sys
+    from pathlib import Path
+    try:
+        from health.binaries import find_binary
+    except ImportError:                                  # shared/ not yet on sys.path
+        sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+        from health.binaries import find_binary
+    return find_binary(name)
+
+
 _SUFFIX = {"audio/mpeg": ".mp3", "audio/wav": ".wav", "audio/mp4": ".m4a", "audio/aac": ".aac",
            "audio/ogg": ".ogg", "audio/flac": ".flac", "video/mp4": ".mp4", "video/quicktime": ".mov",
            "video/webm": ".webm", "video/x-matroska": ".mkv", "video/x-msvideo": ".avi"}
@@ -27,7 +39,12 @@ class WhisperTranscriber(Transcriber):
     version = "0.1.0"
 
     def available(self) -> bool:
-        return importlib.util.find_spec("faster_whisper") is not None
+        """faster-whisper AND the system ffmpeg. The module docstring has always said ffmpeg is
+        required; nothing ever checked, so a machine with the wheel and no ffmpeg advertised
+        transcription and failed at decode time instead of reporting an honest gap."""
+        if importlib.util.find_spec("faster_whisper") is None:
+            return False
+        return _find("ffmpeg") is not None
 
     def supports(self, media_type: str) -> bool:
         return media_type.startswith("audio/") or media_type.startswith("video/")

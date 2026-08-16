@@ -132,23 +132,22 @@ def build_xlsx(spec: dict, out: Path, author: Optional[str] = None) -> dict:
     return {"status": "ok", "path": str(out), "author": a, "sheets": len(spec.get("sheets", [])) or 1}
 
 
+def _binaries():
+    """health.binaries, importable whether or not shared/ is already on sys.path."""
+    try:
+        from health import binaries
+    except ImportError:                                   # standalone/script invocation
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        from health import binaries
+    return binaries
+
+
 def _find_soffice() -> Optional[str]:
-    """Locate LibreOffice/soffice. PATH first, then the standard per-OS install locations —
-    on Windows and macOS soffice is NOT on PATH by default, so PATH-only discovery would report a
-    false capability gap on the very desktops that run the offline tools."""
-    found = shutil.which("soffice") or shutil.which("libreoffice")
-    if found:
-        return found
-    candidates = []
-    if sys.platform == "win32":
-        candidates = [r"C:\Program Files\LibreOffice\program\soffice.exe",
-                      r"C:\Program Files (x86)\LibreOffice\program\soffice.exe"]
-    elif sys.platform == "darwin":
-        candidates = ["/Applications/LibreOffice.app/Contents/MacOS/soffice"]
-    else:  # linux/other: common non-PATH spots (snap/flatpak/distros)
-        candidates = ["/usr/bin/soffice", "/usr/bin/libreoffice",
-                      "/snap/bin/libreoffice", "/opt/libreoffice/program/soffice"]
-    return next((c for c in candidates if Path(c).exists()), None)
+    """Locate LibreOffice/soffice. Kept as a named function because shared/office/README.md and
+    shared/docintel/README.md both point callers here; the logic now lives in ONE place
+    (health.binaries) so a second copy cannot drift back in — which is exactly what had already
+    happened in docintel/parsers/libreoffice_parser.py."""
+    return _binaries().find_binary("soffice")
 
 
 def convert(path: Path, to: str = "pdf", outdir: Optional[Path] = None) -> dict:

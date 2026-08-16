@@ -36,11 +36,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "c04a9c117b5862f6e66020686ca240fdbe1ffff7489077e027fd1c7937abf00b",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "browser_headers"
+        "fetch_prong": "browser_headers",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "live_page_no_feed",
       "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
@@ -57,11 +58,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "5dc74c11b4788ee996f38d27e0875adc27116de82072b6f75f92302e3ca55b9c",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "browser_headers"
+        "fetch_prong": "browser_headers",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "live_page_no_feed",
       "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
@@ -78,11 +80,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "dc3e67b999114ee723de3061d89b92e604208ec86ef3f0ca105231a6c4387623",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "wayback"
+        "fetch_prong": "wayback",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "archived_recent",
       "probe_note": "[2026-06-28] direct fetch blocked; usable RECENT Wayback snapshot (10d old) — re-verify against live before relying",
@@ -100,11 +103,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "d7cd2104e1dcb23bf14432408bcc8f28571d91a3ba3b4148b46bbefe878ea832",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "wayback"
+        "fetch_prong": "wayback",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "archived_recent",
       "probe_note": "[2026-06-28] direct fetch blocked; usable RECENT Wayback snapshot (44d old) — re-verify against live before relying",
@@ -122,11 +126,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "bb8120740def2f25a46dbf244c48ed14933b44695d380737b99319b10ef87537",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "browser_headers"
+        "fetch_prong": "browser_headers",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "redirected",
       "probe_note": "[2026-06-28] redirected to https://www.fldoe.org/accountability/assessments/k-12-student-assessment/best/ (HTML, not a feed)",
@@ -147,11 +152,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "09eb05692d3c051d381c52c93684ca6879fe6982bab87e9a64b20bb4d8e49677",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "browser_headers"
+        "fetch_prong": "browser_headers",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "redirected",
       "probe_note": "[2026-06-28] redirected to https://flrules.org/gateway/ChapterHome.asp?Chapter=6A-1 (HTML, not a feed)",
@@ -172,11 +178,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "752afad0b3a72dc006b724a810ab512f2258a22e8e83edc74b42bf026ae9ee20",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "browser_headers"
+        "fetch_prong": "browser_headers",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "live_page_no_feed",
       "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
@@ -193,11 +200,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "f1f6e48c34a6747025cb35dc9da450aba75246fe970f4d6e9cf3502486f6f1eb",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "browser_headers"
+        "fetch_prong": "browser_headers",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "redirected",
       "probe_note": "[2026-06-28] redirected to https://www.flhouse.gov/ (HTML, not a feed)",
@@ -215,11 +223,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "9b3ebca888868956a734658a9c8e938ad349340ae8d98f2d9545992e06c99e87",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "browser_headers"
+        "fetch_prong": "browser_headers",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "live_page_no_feed",
       "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",
@@ -236,11 +245,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "6469eec0d297ff4a5f82444c1f32d4c78ec8085e5d93853a7150e22066bf38cd",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "wayback"
+        "fetch_prong": "wayback",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "archived_only_stale",
       "probe_note": "[2026-06-28] recovered ONLY from an OLD Wayback snapshot (4136d old) — STALE, likely defunct",

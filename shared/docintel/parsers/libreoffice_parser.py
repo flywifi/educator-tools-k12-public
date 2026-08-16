@@ -7,7 +7,6 @@ by the render_convert capability (LibreOffice).
 """
 from __future__ import annotations
 
-import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -33,29 +32,19 @@ class LegacyOfficeParser(Parser):
     capabilities = {"text", "reading_order"}
 
     def _soffice(self) -> str | None:
-        # Reuse the office engine's canonical cross-platform resolver so this can't drift from it.
-        # PATH-only discovery (shutil.which) misses a normally-installed LibreOffice on macOS
-        # (/Applications/LibreOffice.app/…) and Windows (Program Files), where soffice is NOT on PATH
-        # by default — the parser would then falsely report `render_convert` unavailable on those
-        # desktops. When the office module isn't importable, fall back to the same PATH + per-OS
-        # install-dir logic locally.
+        # One resolver, in health.binaries. The `except` branch here used to carry an INLINED COPY
+        # of the per-OS logic — the second resolver shared/office/README.md forbids by name, and it
+        # had already drifted: its darwin list held /Applications only, so a Homebrew LibreOffice on
+        # a Mac was invisible to it. PATH-only discovery misses a normally-installed LibreOffice on
+        # macOS and Windows, where soffice is NOT on PATH, and the parser would then falsely report
+        # `render_convert` unavailable on exactly the desktops that run the offline tools.
+        import sys as _sys
         try:
-            from office.office_authoring import _find_soffice
-            return _find_soffice()
-        except Exception:
-            found = shutil.which("soffice") or shutil.which("libreoffice")
-            if found:
-                return found
-            import sys
-            if sys.platform == "darwin":
-                cands = ["/Applications/LibreOffice.app/Contents/MacOS/soffice"]
-            elif sys.platform == "win32":
-                cands = [r"C:\Program Files\LibreOffice\program\soffice.exe",
-                         r"C:\Program Files (x86)\LibreOffice\program\soffice.exe"]
-            else:
-                cands = ["/usr/bin/soffice", "/usr/bin/libreoffice",
-                         "/snap/bin/libreoffice", "/opt/libreoffice/program/soffice"]
-            return next((c for c in cands if Path(c).exists()), None)
+            from health.binaries import find_binary
+        except ImportError:                                  # shared/ not yet on sys.path
+            _sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+            from health.binaries import find_binary
+        return find_binary("soffice")
 
     def available(self) -> bool:
         return self._soffice() is not None

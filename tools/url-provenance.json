@@ -1,14 +1,14 @@
 {
-  "_comment": "URL provenance registry. EVERY external http(s) URL hardcoded in tools/*.py and shared/**/*.py MUST be declared here with an honest status. This is the code-side analog of the source/verified provenance on data records \u2014 it exists because an AI operating this repo can confabulate plausible-looking URLs, so the system must force every URL to be consciously declared and catch any that aren't. Enforced by health.scan_url_provenance() + sync_check invariant #13. Status vocabulary: 'verified' = a human/tool confirmed this exact URL returns the expected content (record the date); 'well_known' = a documented public API/service endpoint (real service, standard path, not individually fetch-tested here); 'unverified' = used in code but NOT confirmed \u2014 may be wrong, treat as a guess until verified; 'example' = appears only in docstring/usage text, never fetched.",
+  "_comment": "URL provenance registry. EVERY external http(s) URL hardcoded in tools/*.py and shared/**/*.py MUST be declared here with an honest status. This is the code-side analog of the source/verified provenance on data records — it exists because an AI operating this repo can confabulate plausible-looking URLs, so the system must force every URL to be consciously declared and catch any that aren't. Enforced by health.scan_url_provenance() + sync_check invariant #13. Status vocabulary: 'verified' = a human/tool confirmed this exact URL returns the expected content (record the date); 'well_known' = a documented public API/service endpoint (real service, standard path, not individually fetch-tested here); 'unverified' = used in code but NOT confirmed — may be wrong, treat as a guess until verified; 'example' = appears only in docstring/usage text, never fetched.",
   "version": "1.0.0",
-  "updated": "2026-06-28",
-  "policy": "An UNREGISTERED url in code is a hard drift failure (it may be fabricated). An 'unverified' url is allowed but surfaced \u2014 it must be confirmed (and re-statused) before anything relies on it. Never state an unverified url to a user as if it were confirmed.",
+  "updated": "2026-08-16",
+  "policy": "An UNREGISTERED url in code is a hard drift failure (it may be fabricated). An 'unverified' url is allowed but surfaced — it must be confirmed (and re-statused) before anything relies on it. Never state an unverified url to a user as if it were confirmed.",
   "urls": [
     {
       "url": "https://eds.fldoe.org/EDS/MasterSchoolID/Selection.cfm",
       "status": "verified",
       "checked": "2026-06-28",
-      "note": "FLDOE Education Data System Master School ID list. Confirmed: a saved copy parses to 7,180 FL schools with DIST/SCHL numbers. The authoritative MSID source. NOT a file download \u2014 an interactive page saved from a browser."
+      "note": "FLDOE Education Data System Master School ID list. Confirmed: a saved copy parses to 7,180 FL schools with DIST/SCHL numbers. The authoritative MSID source. NOT a file download — an interactive page saved from a browser."
     },
     {
       "url": "https://www.cpalms.org/search/Standard",
@@ -38,7 +38,7 @@
     {
       "url": "https://archive.org/wayback/available",
       "status": "well_known",
-      "note": "Internet Archive Wayback availability API (documented public endpoint) \u2014 fetch_resilient.py wayback prong."
+      "note": "Internet Archive Wayback availability API (documented public endpoint) — fetch_resilient.py wayback prong."
     },
     {
       "url": "https://www.ocps.net",
@@ -48,13 +48,35 @@
     {
       "url": "https://www.fldoe.org/academics/standards/",
       "status": "exists_bot_blocked",
-      "checked": "2026-06-28",
-      "note": "FLDOE academic standards page (also tracked in registries/florida-standards.json). Real page, 403s scripts directly; used as a docstring usage example in tools/acquire.py."
+      "checked": "2026-08-16",
+      "note": "FLDOE academic standards page (also tracked in registries/florida-standards.json). Real page, 403s scripts directly; used as a docstring usage example in tools/acquire.py.",
+      "observed": {
+        "http_status": 403,
+        "title": null,
+        "reason": "HTTP 403 — confirms the recorded bot-blocked status",
+        "checked_at": "2026-08-16T23:08:04Z",
+        "by": "tools/verify_urls.py"
+      }
     },
     {
       "url": "https://www.ocps.net/school-directory",
-      "status": "unverified",
-      "note": "GUESSED path for the OCPS school directory. Not confirmed to exist/return what we expect. Verify before relying on it."
+      "status": "verified",
+      "note": "GUESSED path for the OCPS school directory. Not confirmed to exist/return what we expect. Verify before relying on it.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 200,
+        "title": "Orange County Public Schools - School Directory Home",
+        "reason": "HTTP 200 and the title echoes the path (['directory'])",
+        "checked_at": "2026-08-16T23:05:00Z",
+        "by": "tools/verify_urls.py"
+      },
+      "status_history": [
+        {
+          "from": "unverified",
+          "to": "verified",
+          "on": "2026-08-16"
+        }
+      ]
     },
     {
       "url": "https://www.ocps.net/departments/school_choice",
@@ -64,33 +86,88 @@
     },
     {
       "url": "https://www.ocps.net/current-list-of-charter-schools",
-      "status": "unverified",
-      "note": "GUESSED OCPS charter-list path. Unconfirmed."
+      "status": "verified",
+      "note": "GUESSED OCPS charter-list path. Unconfirmed.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 200,
+        "title": "Orange County Public Schools - Current List of Charter Schools",
+        "reason": "HTTP 200 and the title echoes the path (['charter', 'current', 'list'])",
+        "checked_at": "2026-08-16T23:05:05Z",
+        "by": "tools/verify_urls.py"
+      },
+      "status_history": [
+        {
+          "from": "unverified",
+          "to": "verified",
+          "on": "2026-08-16"
+        }
+      ]
     },
     {
       "url": "https://www.ocps.net/departments/curriculum_digital_learning",
       "status": "unverified",
-      "note": "GUESSED OCPS curriculum path. Unconfirmed."
+      "note": "GUESSED OCPS curriculum path. Unconfirmed.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 200,
+        "title": "Orange County Public Schools - Departments",
+        "reason": "HTTP 200 but the title does not corroborate the path — generic or redirected landing page (title: 'Orange County Public Schools - Departments')",
+        "checked_at": "2026-08-16T23:08:04Z",
+        "by": "tools/verify_urls.py"
+      }
     },
     {
       "url": "https://www.ocps.net/departments/exceptional_student_education",
       "status": "unverified",
-      "note": "GUESSED OCPS ESE path. Unconfirmed."
+      "note": "GUESSED OCPS ESE path. Unconfirmed.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 200,
+        "title": "Orange County Public Schools - Departments",
+        "reason": "HTTP 200 but the title does not corroborate the path — generic or redirected landing page (title: 'Orange County Public Schools - Departments')",
+        "checked_at": "2026-08-16T23:08:09Z",
+        "by": "tools/verify_urls.py"
+      }
     },
     {
       "url": "https://www.ocps.net/departments/esol",
       "status": "unverified",
-      "note": "GUESSED OCPS ESOL path. Unconfirmed."
+      "note": "GUESSED OCPS ESOL path. Unconfirmed.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 200,
+        "title": "Orange County Public Schools - Departments",
+        "reason": "HTTP 200 but the title does not corroborate the path — generic or redirected landing page (title: 'Orange County Public Schools - Departments')",
+        "checked_at": "2026-08-16T23:08:14Z",
+        "by": "tools/verify_urls.py"
+      }
     },
     {
       "url": "https://www.ocps.net/departments/gifted",
       "status": "unverified",
-      "note": "GUESSED OCPS gifted path. Unconfirmed."
+      "note": "GUESSED OCPS gifted path. Unconfirmed.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 200,
+        "title": "Orange County Public Schools - Departments",
+        "reason": "HTTP 200 but the title does not corroborate the path — generic or redirected landing page (title: 'Orange County Public Schools - Departments')",
+        "checked_at": "2026-08-16T23:08:19Z",
+        "by": "tools/verify_urls.py"
+      }
     },
     {
       "url": "https://www.ocps.net/departments/professional_development",
       "status": "unverified",
-      "note": "GUESSED OCPS PD path. Unconfirmed."
+      "note": "GUESSED OCPS PD path. Unconfirmed.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 200,
+        "title": "Orange County Public Schools - Departments",
+        "reason": "HTTP 200 but the title does not corroborate the path — generic or redirected landing page (title: 'Orange County Public Schools - Departments')",
+        "checked_at": "2026-08-16T23:08:24Z",
+        "by": "tools/verify_urls.py"
+      }
     },
     {
       "url": "https://www.ocps.net/departments/media_relations/newsroom",
@@ -101,23 +178,46 @@
     {
       "url": "https://www.fldoe.org/accountability/data-sys/school-fin-data/master-school-id-files.stml",
       "status": "exists_bot_blocked",
-      "checked": "2026-06-28",
-      "note": "Real FLDOE page but returns HTTP 403 to scripts (bot protection) \u2014 confirmed by seed_probe 2026-06-28. NOT the MSID data itself; the authoritative machine-readable source is the eds.fldoe.org EDS app (browser-save). Do NOT present as a download."
+      "checked": "2026-08-16",
+      "note": "Real FLDOE page but returns HTTP 403 to scripts (bot protection) — confirmed by seed_probe 2026-06-28. NOT the MSID data itself; the authoritative machine-readable source is the eds.fldoe.org EDS app (browser-save). Do NOT present as a download.",
+      "observed": {
+        "http_status": 403,
+        "title": null,
+        "reason": "HTTP 403 — confirms the recorded bot-blocked status",
+        "checked_at": "2026-08-16T23:08:25Z",
+        "by": "tools/verify_urls.py"
+      }
     },
     {
       "url": "https://www.fldoe.org/core/fileparse.php/7584/urlt/MasterSchoolID.csv",
       "status": "unverified",
-      "note": "FABRICATED FLDOE download URL. 403s / does not exist. Retained only so the auto-fetch path is honestly flagged; the reliable path is the saved EDS page."
+      "note": "FABRICATED FLDOE download URL. 403s / does not exist. Retained only so the auto-fetch path is honestly flagged; the reliable path is the saved EDS page.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 403,
+        "title": null,
+        "reason": "HTTP 403 — the host refuses scripted clients, which is NOT evidence the path exists; this host 403s unknown paths identically",
+        "checked_at": "2026-08-16T23:08:27Z",
+        "by": "tools/verify_urls.py"
+      }
     },
     {
       "url": "https://www.ed.gov/feed",
       "status": "unverified",
-      "note": "Example/placeholder feed URL in verify_feeds.py; not confirmed."
+      "note": "Example/placeholder feed URL in verify_feeds.py; not confirmed.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 403,
+        "title": null,
+        "reason": "HTTP 403 — the host refuses scripted clients, which is NOT evidence the path exists; this host 403s unknown paths identically",
+        "checked_at": "2026-08-16T23:08:28Z",
+        "by": "tools/verify_urls.py"
+      }
     },
     {
       "url": "https://github.com/UB-Mannheim/tesseract/wiki",
       "status": "well_known",
-      "note": "UB-Mannheim Tesseract OCR Windows installer wiki \u2014 the standard Windows tesseract binary source. Printed by tools/deps_preflight.py as an install hint when the tesseract system binary is missing (tesseract is NOT pip-installable)."
+      "note": "UB-Mannheim Tesseract OCR Windows installer wiki — the standard Windows tesseract binary source. Printed by tools/deps_preflight.py as an install hint when the tesseract system binary is missing (tesseract is NOT pip-installable)."
     },
     {
       "url": "https://github.com/flywifi/educator-tools-k12-public",
@@ -136,7 +236,103 @@
       "used_by": [
         "tools/export_actions_schema.py"
       ],
-      "note": "NOT A REAL HOST \u2014 the deliberate placeholder baked into the generated Actions schema so the repo never promises a live endpoint; the deployer of tools/mcp_http_server.py replaces it (deploy/mcp/README.md)."
+      "note": "NOT A REAL HOST — the deliberate placeholder baked into the generated Actions schema so the repo never promises a live endpoint; the deployer of tools/mcp_http_server.py replaces it (deploy/mcp/README.md)."
+    },
+    {
+      "url": "https://tools.example.org",
+      "status": "example",
+      "note": "RFC 2606 reserved documentation domain, used only as a fixture in mcp_http_server's public_url self-test (TOS_MCP_PUBLIC_URL / x-forwarded-proto resolution). Never fetched; no such host is expected to exist."
+    },
+    {
+      "url": "http://tools.example.org",
+      "status": "example",
+      "note": "Same fixture as the https form - the http input the x-forwarded-proto probe upgrades. Never fetched."
+    },
+    {
+      "url": "http://10.0.0.7",
+      "status": "example",
+      "note": "RFC 1918 private address used as the 'what the load balancer hands us' fixture in mcp_http_server's public_url self-test, proving an explicit TOS_MCP_PUBLIC_URL wins over the observed base URL. Never fetched."
+    },
+    {
+      "url": "https://www.cpalms.org/Search/GetSearchStandard",
+      "status": "verified",
+      "note": "CPALMS search endpoint called by tools/cpalms_verify.py (BASE + path constant). Status `verified` on execution evidence, not a fetch made today: these endpoints served the code-by-code verification of all 6,574 FL standards recorded in ledger/cpalms-run-manifest.json. Registered 2026-08-16 — previously invisible to the url-provenance scan because the URL is assembled from BASE + a path fragment.",
+      "checked": "2026-08-16"
+    },
+    {
+      "url": "https://www.cpalms.org/Search/GetSearchAccessPoint",
+      "status": "verified",
+      "note": "CPALMS search endpoint called by tools/cpalms_verify.py (BASE + path constant). Status `verified` on execution evidence, not a fetch made today: these endpoints served the code-by-code verification of all 6,574 FL standards recorded in ledger/cpalms-run-manifest.json. Registered 2026-08-16 — previously invisible to the url-provenance scan because the URL is assembled from BASE + a path fragment.",
+      "checked": "2026-08-16"
+    },
+    {
+      "url": "https://www.cpalms.org/Search/GetStandardGradeFilters",
+      "status": "verified",
+      "note": "CPALMS search endpoint called by tools/cpalms_verify.py (BASE + path constant). Status `verified` on execution evidence, not a fetch made today: these endpoints served the code-by-code verification of all 6,574 FL standards recorded in ledger/cpalms-run-manifest.json. Registered 2026-08-16 — previously invisible to the url-provenance scan because the URL is assembled from BASE + a path fragment.",
+      "checked": "2026-08-16"
+    },
+    {
+      "url": "https://www.cpalms.org/Search/GetStandardSubjectFilters",
+      "status": "verified",
+      "note": "CPALMS search endpoint called by tools/cpalms_verify.py (BASE + path constant). Status `verified` on execution evidence, not a fetch made today: these endpoints served the code-by-code verification of all 6,574 FL standards recorded in ledger/cpalms-run-manifest.json. Registered 2026-08-16 — previously invisible to the url-provenance scan because the URL is assembled from BASE + a path fragment.",
+      "checked": "2026-08-16"
+    },
+    {
+      "url": "https://www.cpalms.org/Search/GetAccessPointGradeFilters",
+      "status": "verified",
+      "note": "CPALMS search endpoint called by tools/cpalms_verify.py (BASE + path constant). Status `verified` on execution evidence, not a fetch made today: these endpoints served the code-by-code verification of all 6,574 FL standards recorded in ledger/cpalms-run-manifest.json. Registered 2026-08-16 — previously invisible to the url-provenance scan because the URL is assembled from BASE + a path fragment.",
+      "checked": "2026-08-16"
+    },
+    {
+      "url": "https://www.cpalms.org/Search/GetAccessPointSubjectFilters",
+      "status": "verified",
+      "note": "CPALMS search endpoint called by tools/cpalms_verify.py (BASE + path constant). Status `verified` on execution evidence, not a fetch made today: these endpoints served the code-by-code verification of all 6,574 FL standards recorded in ledger/cpalms-run-manifest.json. Registered 2026-08-16 — previously invisible to the url-provenance scan because the URL is assembled from BASE + a path fragment.",
+      "checked": "2026-08-16"
+    },
+    {
+      "url": "https://www.cpalms.org/robots.txt",
+      "status": "verified",
+      "note": "CPALMS robots.txt, fetched by tools/cpalms_verify.py before any crawl to honour the site's policy. Registered 2026-08-16; previously invisible (BASE + path fragment).",
+      "checked": "2026-08-16"
+    },
+    {
+      "url": "https://www.ocps.net/departments/research_evaluation",
+      "status": "unverified",
+      "note": "OCPS Research & Evaluation (assessment) department page, fetched by tools/ocps_resources.py (BASE + PAGES fragment). Registered 2026-08-16 — the executing constant was invisible to the provenance scan, so this URL was requested by code while declared nowhere.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 200,
+        "title": "Orange County Public Schools - Departments",
+        "reason": "HTTP 200 but the title does not corroborate the path — generic or redirected landing page (title: 'Orange County Public Schools - Departments')",
+        "checked_at": "2026-08-16T23:08:29Z",
+        "by": "tools/verify_urls.py"
+      }
+    },
+    {
+      "url": "https://www.ocps.net/departments/technology_services",
+      "status": "unverified",
+      "note": "OCPS Technology Services department page, fetched by tools/ocps_resources.py (BASE + PAGES fragment). Registered 2026-08-16 — the executing constant was invisible to the provenance scan, so this URL was requested by code while declared nowhere.",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 200,
+        "title": "Orange County Public Schools - Departments",
+        "reason": "HTTP 200 but the title does not corroborate the path — generic or redirected landing page (title: 'Orange County Public Schools - Departments')",
+        "checked_at": "2026-08-16T23:08:35Z",
+        "by": "tools/verify_urls.py"
+      }
+    },
+    {
+      "url": "https://nces.ed.gov/surveys/pss",
+      "status": "unverified",
+      "note": "NCES Private School Universe Survey — the codebook cited by tools/ingest_sources.py for the LoGrade/HiGrade numeric codes. Written scheme-less in that file, so it was registered nowhere. Registered 2026-08-16. The raw codes are deliberately NOT decoded: reachability is recorded, the data is unchanged (verify-and-record).",
+      "checked": "2026-08-16",
+      "observed": {
+        "http_status": 403,
+        "title": null,
+        "reason": "HTTP 403 — the host refuses scripted clients, which is NOT evidence the path exists; this host 403s unknown paths identically",
+        "checked_at": "2026-08-16T23:08:36Z",
+        "by": "tools/verify_urls.py"
+      }
     }
   ]
 }

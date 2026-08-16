@@ -1,7 +1,7 @@
 {
   "_comment": "Currency-watch config (Area 1). Lists every stored authoritative REGISTRY/field-catalog in the ecosystem, where its authority lives (to re-verify a drift), and how to check it (sha256 baseline). tools/registry_currency.py hashes each, compares to tools/registry-baselines.json, and reports drift + the source to re-verify on. Education-standards crawling lives in standards-updater (tools/standards_refresh.py); this watches the OTHER registries + the plugin manifest. Human-approve every change, then --update-baselines.",
   "version": "0.1.0",
-  "updated": "2026-06-23",
+  "updated": "2026-08-16",
   "registries": [
     {
       "id": "connectors",

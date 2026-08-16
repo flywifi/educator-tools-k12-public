@@ -152,6 +152,44 @@ def smoke_test() -> dict:
     return out
 
 
+def _sdk_state() -> str:
+    """The `mcp` SDK's state, looked up where it now actually lives.
+
+    AUDIT D-1: a bare `import mcp` here only ever sees doctor_env's OWN interpreter. Since the
+    capability became isolated (finding H-5), the SDK installs into `.harvest-venv-mcp_server/`,
+    so on a CORRECTLY installed machine this reported "not installed" and told the user to run the
+    command that had already succeeded. Probe that interpreter first, then the ambient one."""
+    exe = "python.exe" if os.name == "nt" else "python"
+    sub = "Scripts" if os.name == "nt" else "bin"
+    probes = []
+    isolated = ROOT / ".harvest-venv-mcp_server" / sub / exe
+    if isolated.exists():
+        probes.append((str(isolated), "the isolated mcp_server venv"))
+    shared = ROOT / ".harvest-venv" / sub / exe
+    if shared.exists():
+        probes.append((str(shared), "the shared .harvest-venv"))
+    probes.append((sys.executable, "this interpreter"))
+    for py, where in probes:
+        try:
+            r = subprocess.run([py, "-c",
+                                "import importlib.metadata as m; print(m.version('mcp'))"],
+                               capture_output=True, text=True, timeout=30)
+        except Exception:  # noqa: BLE001 — a broken candidate is just not the answer
+            continue
+        v = r.stdout.strip()
+        if r.returncode != 0 or not v:
+            continue
+        major = int(v.split(".")[0]) if v.split(".")[0].isdigit() else 2
+        if major >= 2:
+            return f"installed {v} in {where} (needed only for the hosted HTTP leg)"
+        return (f"installed {v} in {where} — TOO OLD for the hosted leg (needs >=2.0.0; 1.x has "
+                f"no MCPServer). Something there pins mcp<2 (semgrep does). Reinstall the isolated "
+                f"capability: python3 tools/deps_preflight.py --install mcp_server, then point "
+                f"launchers at: python3 tools/deps_preflight.py --python-path mcp_server")
+    return ("not installed anywhere I can see — FINE for local stdio (stdlib-only); the hosted leg "
+            "installs it via: python3 tools/deps_preflight.py --install mcp_server")
+
+
 def check_mcp() -> dict:
     """MCP-server readiness (tools/mcp_server.py): what the local stdio leg needs — and the
     honest answer is 'almost nothing' (stdlib only). The SDK matters only for the hosted leg."""
@@ -175,23 +213,46 @@ def check_mcp() -> dict:
     out["offline_index"] = ("present" if db.exists()
                             else "absent — mcp_server builds it once at startup from a repo "
                                  "clone, or run: python tools/offline_index.py --build")
+    # PRESENT is not FRESH. A stale index serves out-of-date standard text silently, which
+    # implementation/mcp/MAINTAINER.md names as the top risk for the shipped .mcpb — and existence
+    # alone could never detect it. drift_report reads committed files only, so this works on a
+    # fresh clone with no database at all.
+    try:
+        sys.path.insert(0, str(ROOT / "tools"))
+        from offline_index import drift_report
+        rep = drift_report()
+        why = rep.get("reason") or "sources changed since the manifest was written"
+        out["offline_index_fresh"] = ("yes — sources match the committed manifest"
+                                      if not rep.get("stale") else
+                                      f"NO — {why}; run: python tools/offline_index.py --build "
+                                      f"&& commit index-manifest.json")
+    except Exception as exc:  # noqa: BLE001 — the doctor reports, it never fails the run
+        out["offline_index_fresh"] = f"could not check ({exc.__class__.__name__}: {exc})"
     if os.name == "nt":
         cfg = Path(os.environ.get("APPDATA", "")) / "Claude" / "claude_desktop_config.json"
-        out["python_launcher_note"] = ("Windows: if `python3` is not found, use `py -3` or "
-                                       "`python` — docs command lines assume python3")
+        out["python_launcher_note"] = ("Windows: `python3` usually does not exist (python.org "
+                                       "ships python.exe and py.exe) — use `py -3`. Door 1 (the "
+                                       "TOS plugin) launches `python3` and cannot be fixed from "
+                                       "this repo; register the server once instead: "
+                                       "claude mcp add --scope user tos-tools -- python "
+                                       "\"<repo>\\tools\\mcp_server.py\" "
+                                       "(see implementation/mcp/README.md)")
     else:
         cfg = Path.home() / "Library" / "Application Support" / "Claude" / \
             "claude_desktop_config.json"
     out["claude_desktop_config"] = (str(cfg) + (" (exists)" if cfg.exists()
                                                 else " (not created yet — "
                                                 "mcp_server.py --print-config desktop)"))
-    try:
-        import mcp  # noqa: F401
-        out["mcp_sdk"] = "installed (needed only for the hosted HTTP leg)"
-    except ImportError:
-        out["mcp_sdk"] = ("not installed — FINE for local stdio (stdlib-only); the hosted "
-                          "leg installs it via: python tools/deps_preflight.py "
-                          "--install mcp_server")
+    out["mcp_sdk"] = _sdk_state()
+    out["mcp_env"] = {k: ("set" if os.environ.get(k) else "unset")
+                      for k in ("TOS_MCP_PUBLIC_URL", "TOS_MCP_TOKEN", "TOS_MCP_STATELESS",
+                                "TOS_MCP_ALLOWED_HOSTS", "TOS_MCP_FORWARDED_ALLOW_IPS",
+                                "TOS_MCP_JSON_RESPONSE")}
+    if not os.environ.get("TOS_MCP_PUBLIC_URL"):
+        out["mcp_env_note"] = ("TOS_MCP_PUBLIC_URL unset — only matters if you HOST the remote "
+                               "leg: /openapi.json would advertise whatever host each request "
+                               "arrives with, and ChatGPT Actions rejects an http:// or internal "
+                               "URL at import. Irrelevant for local stdio use.")
     return out
 
 

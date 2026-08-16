@@ -68,7 +68,7 @@ self-contained (synced references travel in the bundle).
   credentialed. Install per-capability into the **managed venv** — `python3 tools/deps_preflight.py
   --install <capability>` (e.g. `office_authoring`) or `--install-all` — which uses the isolated,
   gitignored `.harvest-venv/` (wheels-only, never system Python, so **macOS/Homebrew PEP 668 never
-  trips**); `--python-path` prints that venv's interpreter for a Claude Desktop MCP `command`/GUI
+  trips**); `--python-path [capability]` prints that venv's interpreter for a Claude Desktop MCP `command`/GUI
   launch. (Direct `pip install -r tools/requirements-*.txt` works too, but only inside a venv on
   macOS.) **System bins** are separate — LibreOffice, poppler, ffmpeg, tesseract (macOS:
   `brew install libreoffice tesseract ffmpeg poppler`); fonts: Noto/Liberation/Carlito/Caladea. macOS

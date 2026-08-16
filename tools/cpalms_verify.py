@@ -1416,18 +1416,26 @@ def self_test() -> int:
     with overlay_lock("__probe__"):
         _reacquired = True
     check("lock: released on both normal exit and exception", _reacquired)
+    # AUDIT G-8: this probe writes a lock file into the PRODUCTION overlay directory. The unlink
+    # used to sit after the two checks, outside any try/finally — so a probe failure (or a
+    # KeyboardInterrupt) left `.__stale__.cpalms.lock` behind in a real overlay dir, where the next
+    # apply run would refuse to write. Same family as L-11: a self-test must not be able to damage
+    # the tree it is testing. The write stays here (the lock path is what is under test), but the
+    # cleanup is now unconditional.
     _lk = OVERLAYS / ".__stale__.cpalms.lock"
     OVERLAYS.mkdir(parents=True, exist_ok=True)
     _lk.write_text(json.dumps({"pid": 999999, "at": time.time() - 2 * LOCK_STALE_SECONDS,
                                "started": "old"}), encoding="utf-8")
     try:
-        with overlay_lock("__stale__"):
-            _broke = True
-    except OverlayLocked as _e2:
-        _broke, _stale_msg = False, str(_e2)
-    check("lock: a STALE lock is reported, never auto-broken", _broke is False)
-    check("lock: the stale message prints the clearing command", "rm " in _stale_msg)
-    _lk.unlink(missing_ok=True)
+        try:
+            with overlay_lock("__stale__"):
+                _broke = True
+        except OverlayLocked as _e2:
+            _broke, _stale_msg = False, str(_e2)
+        check("lock: a STALE lock is reported, never auto-broken", _broke is False)
+        check("lock: the stale message prints the clearing command", "rm " in _stale_msg)
+    finally:
+        _lk.unlink(missing_ok=True)
 
     check("every disposition state is a valid state", DISPOSITION_STATES <= VALID_STATES)
     check("transients are NOT dispositions — they must stay in the work list",

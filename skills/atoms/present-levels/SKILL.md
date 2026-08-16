@@ -7,6 +7,14 @@ description: "Draft a Present Levels of Academic Achievement and Functional Perf
 
 Generates a PLAAFP statement that describes a student's current performance across academic and functional domains, using placeholder data. Follows the strengths-needs-impact format required by IDEA.
 
+> **Read first — boundaries (`security/SECURITY_AND_SAFETY.md` §1-2).** A PLAAFP draft is
+> **decision support for the IEP team**, never a final present-levels statement and never an
+> eligibility determination. It must be validated against the student's **actual** evaluation data,
+> IEP, and local and state policy — IDEA requires the team, not a draft, to establish present
+> levels. Where a request needs a specific student's data, **escalate** rather than infer
+> (`protocol-layer/assumptions-protocol.md`). **Never request, infer, or include real student data —
+> placeholders only.**
+
 ## Input
 
 ```json

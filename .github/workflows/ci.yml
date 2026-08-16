@@ -4,6 +4,10 @@ on:
   push:
     branches: ["**"]
   pull_request:
+  # Callable so plugin-autobump runs THIS gate set rather than a hand-copied subset of it
+  # (audit G-5: it ran 7 of ~25 checks and no security scan, then pushed to main). One
+  # definition, so the release path and the review path can never drift apart.
+  workflow_call:
 
 jobs:
   checks:
@@ -50,11 +54,39 @@ jobs:
       - name: Plugin-metadata generator self-test (pass-through, idempotency, broken twins)
         run: python3 tools/export_plugin_manifest.py --self-test
 
+      # macOS finding E2. The darwin/win32 branches CANNOT run on this runner, so they are exercised
+      # by injected lookup/exists (the build_mcpb.launch_command precedent). Without this step the
+      # only coverage of Homebrew/Program Files discovery would be a Mac nobody has run yet.
+      - name: Binary-resolver self-test (darwin + win32 branches via injected lookup)
+        run: python3 shared/health/binaries.py --self-test
+
+      # --self-test is offline (promotion-table probes only). --check lists what WOULD be fetched
+      # and makes zero requests, so CI never touches a third-party host.
+      - name: URL-verifier self-test (promotion table; 403 must not promote)
+        run: python3 tools/verify_urls.py --self-test
+      - name: URL-verifier offline mode makes no network requests
+        run: python3 tools/verify_urls.py --check
+
       - name: MCP tool-registry self-test (detail-strip, clamps, fabricated-code block, twins)
         run: python3 tools/mcp_tooldefs.py --self-test
 
       - name: MCP stdio-server self-test (frame shapes, error codes, stdout-purity twin)
         run: python3 tools/mcp_server.py --self-test
+
+      # The Actions-schema generator and the Desktop-bundle builder both had --self-test from
+      # the day they landed and neither was ever run by CI (audit M-3) — the bundle a teacher
+      # one-click installs had zero standing coverage. Both are stdlib + offline.
+      - name: MCP Actions-schema self-test (staged twins; both artifacts really compared)
+        run: python3 tools/export_actions_schema.py --self-test
+
+      - name: MCP Desktop-bundle self-test (stages, probes real stdio, manifest shape twins)
+        run: python3 tools/build_mcpb.py --self-test
+
+      # The script maintainers ask a Mac/Windows teacher to run must itself be tested somewhere.
+      # On Linux it exercises the launcher resolution, the index state and a live stdio round trip;
+      # on the platforms that matter it is the only evidence we can get (docs/MACOS.md M1-M6).
+      - name: MCP smoke test (launchers resolved, live stdio round trip)
+        run: python3 tools/mcp_smoke.py
 
       - name: Cross-platform lint (bare-interpreter spawns; encoding-less text opens)
         run: python3 tools/mac_audit.py
@@ -97,17 +129,30 @@ jobs:
       - name: Validate committed example artifacts (output-validator)
         run: python3 tools/validate_examples.py
 
+      # registry_currency returns 0 on every path BY DESIGN (drift is human-approved, then
+      # re-baselined) — the old `|| true` suppressed an exit code that cannot happen.
       - name: Registry currency (informational drift report)
-        run: python3 tools/registry_currency.py --summary || true
+        run: python3 tools/registry_currency.py --summary
 
       # LAST in the job on purpose: an SDK install failure must never mask a stdlib failure.
       - name: MCP hosted-leg self-test (installs the SDK; in-memory Client round-trip)
         run: |
           pip install -r tools/requirements-mcp.txt
           python3 tools/mcp_http_server.py --self-test
+          python3 tools/mcp_smoke.py --hosted
 
-      - name: Repair loop (advisory — detect, propose, verify)
-        run: python3 tools/repair_loop.py || true
+      # Advisory BY DESIGN for exit 1: its blocking-issue list is already hard-gated by the
+      # health step above, so failing here would just duplicate that. Exit 2 is different — it
+      # means health.py did not produce parseable JSON, i.e. the health engine itself is broken,
+      # and `|| true` was swallowing the one signal nothing else gates (audit G-6).
+      - name: Repair loop (advisory; exit 2 = the health engine is broken, and that blocks)
+        run: |
+          rc=0
+          python3 tools/repair_loop.py || rc=$?
+          if [ "$rc" = "2" ]; then
+            echo "::error::repair_loop exit 2 — shared/health/health.py produced unparseable output"
+            exit 1
+          fi
       # Phase A+: add eval smoke tests here (skill triggering + Quality Gates pass).
 
   supply-chain:
@@ -117,7 +162,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      # Pinned, from the same file dependabot updates — the runner, the pins and the audit policy
+      # were three different sources of truth (audit G-4). security_scan now also refuses to pass
+      # when a scanner is missing (exit 2), so an install failure here can no longer look clean.
       - name: Install scanners
-        run: pip install pip-audit bandit semgrep
+        run: pip install -r tools/requirements-security.txt
       - name: Dependency + code security scan (gate)
         run: python3 tools/security_scan.py

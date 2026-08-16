@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-06-27 | owner: assessment-item-maintainer -->
+<!-- last_reviewed: 2026-08-16 | owner: assessment-item-maintainer -->
 # MAINTAINER — atom-assessment-item
 
 ## Purpose
@@ -14,9 +14,6 @@
 ## Known failure modes
 - Scope creep: being asked to do multiple things (generate + differentiate + check). Refuse and redirect to the appropriate atom.
 - Fabricating a standard code when lookup fails. Always return empty `standards: []` with an honest `note` instead.
-
-## Fragile fallbacks that must not become defaults
-- Model-inferred match_method when L1 cache is absent — must be labeled `uncertain`, never presented as confirmed.
 
 ## Regression cases to preserve
 1. Returns `human_review_required: true` in every response.

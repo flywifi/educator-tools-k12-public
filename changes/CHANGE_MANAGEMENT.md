@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-08-16 | owner: change-manager -->
 # CHANGE_MANAGEMENT.md
 ## Teacher Operating System (TOS) — Change Management
 Governance document (Quality Gates §2.1). How changes are made safely and traceably (QG §2.4 scope
@@ -6,7 +7,7 @@ governance; QG §98 maintenance).
 ---
 
 ## 1. Branching
-- Develop on a feature branch (this work: `claude/fervent-hawking-nyrzy5`). **Never push to `main`.**
+- Develop on a feature branch (this work: `claude/educator-tools-k12-plan-f49yju`). **Never push to `main`.**
 - Commits are descriptive; significant changes reference the affected protocol/skill.
 
 ## 2. The change loop

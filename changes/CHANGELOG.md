@@ -4,6 +4,158 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 `CHANGE_MANAGEMENT.md` for the versioning policy.
 
 ## [Unreleased]
+
+## [1.5.0] — 2026-08-16
+
+### Fixed — claims that were false, and the guards that could not see them (2026-08-16)
+- **42 of 43 atom `MAINTAINER.md` files described a mechanism their skill does not have.** Every one
+  carried "Model-inferred `match_method` when L1 cache is absent"; `match_method` exists only in
+  `standards-match`. The bullet is removed where it was false and kept where it is true. The section
+  is not refilled with generic prose — the true generic statement is already in those files twice.
+- **33 atom MAINTAINERs documented a superseded minority-report mechanism** (a `minority_report`
+  field) against a canonical policy that requires a decision record via `sot_resolver.py` and says
+  it must "never be buried in prose caveats". Corrected to the wording the other 37 skills use.
+- **`SECURITY_REVIEW.md` was written for 11 skills and describes an ecosystem of 62.** Rebuilt from
+  executed evidence: every row now carries the command, the observed result, the scope as n of 62,
+  and whether it is machine-checked or review-based. Three claims were false at real scope and are
+  recorded as dated corrections — placeholders-only (28/62, not all), the validate-against-the-
+  actual-plan note (2/62; disciplinary 1/62), and "repo-wide PII grep is clean", which described a
+  scan that does not exist. The document now also states what it is NOT: no runtime refusal
+  testing, no readability scoring, no bias detection.
+- **Nine sensitive skills carried no boundary language at all.** `behavior-strategy`,
+  `present-levels`, `referral-draft`, `intervention-select`, `progress-monitor-plan`,
+  `differentiate`, `udl-options`, `meeting-classify` and `translate-comm` now carry a block matched
+  to their own domain — including the **disciplinary-output** requirement that policy mandates and
+  no skill carried. Not behaviourally tested: 44 of 62 skills still have zero eval cases.
+- **The feed catalog explained its blanket `verified:false` by an "egress-restricted build
+  environment" that no longer exists**, and described a `url_status` vocabulary no entry used. All
+  14 fetched: 2 parse a real feed and are verified with a proof item; 12 carry a dated
+  probe_history naming what was tried.
+- **Seven OCPS URLs registered as "GUESSED … Unconfirmed" in June were never verified** because
+  nothing existed to verify them. New `tools/verify_urls.py` fetches each registered URL once,
+  robots-respecting, and records an HTTP code, a page title and a date. 2 promoted on a
+  corroborating title; 5 stay unverified because the host answers unknown paths with a generic
+  landing page; a 403 confirms an existing bot-blocked status and never creates one.
+- **`docs/MACOS.md` said a bare-date `last_checked` "crashes the age math".** It does not —
+  measured. Corrected, and the 12 bare dates normalised to the documented form (the offline triage
+  is identical before and after, proving representation changed and recorded fact did not).
+
+### Added — gates for the things nothing was watching (2026-08-16)
+- **sync_check check 24**: a hand-curated `updated` field that is older than its own file's last
+  commit is a failure. Five of seven manifests were stale, up to eight weeks.
+  `tools/ingest_sources.py` wrote a hardcoded date on every run and is now computed.
+- **`shared/health/binaries.py`** — one resolver for every external tool, replacing four separate
+  PATH-only probes and one inlined duplicate. `health` and `office` previously **contradicted each
+  other about `soffice` on any Mac**; they now agree. `tesseract` and `ffmpeg` are checked for the
+  first time (both were advertised on the Python wrapper alone). Candidates include both Homebrew
+  prefixes. macOS finding **E2: OPEN → UNTESTED** — one Mac run closes it.
+- **`source_currency` gained a `never_checked` state.** 69 of 124 registry sources have no
+  `last_checked`, so they could never age out and hid in `uncertain` forever. Offline triage now
+  separates 69 never_checked from 55 uncertain. No date was invented.
+
+### Changed — signals that meant nothing (2026-08-16)
+- **One definition of a maintainer-class doc.** Checks 18 and 20 each had their own; both now
+  consume one constant. A synced reference no longer counts as a "sibling changed" signal — check 2
+  already holds it byte-identical to canon.
+- **The doc-freshness advisory split into two findings.** "A file next to this doc changed" and
+  "this doc changed after the date it claims" are different, and only the first is a nudge. 83
+  conflated advisories became 79 self-stale + 2 sibling-stale, then 37 + 2 after the atom pass.
+- **The url-provenance scan learned BASE-joined URLs.** `ocps_resources.py` joins a `BASE` constant
+  to path fragments, so the scan validated the docstrings while the executing constants went
+  unchecked — three pages the code fetches were declared nowhere. Ten previously-invisible URLs
+  registered; findings 9 → 0.
+
+### Known limits carried forward
+- 44 of 62 skills have no eval cases, including every high-risk atom. The boundary language added
+  above is prose, and prose binds a model, not a sandbox.
+- The health readiness score is saturated (`0/100 not_ready` alongside `blocking_issues: []`).
+- 889 stale `protocols/` doc references remain; check 15 cannot see them, because a renamed
+  directory drops out of its anchor list. Open.
+
+## [1.4.0] — 2026-08-16
+### Fixed — the hosted `/mcp` endpoint had never worked, and nine gates could not fail (2026-08-16)
+- **`/mcp` returned HTTP 500 to every request** from the hosted leg's first commit until now. It is
+  the address a claude.ai custom connector and a ChatGPT Developer-mode server both point at, so
+  Door 3 has never functioned. Cause: `build_app()` mounted the SDK's app with `Mount()`, and
+  Starlette does not run a mounted sub-application's lifespan — the lifespan that creates the
+  session manager's task group. Found by starting the server on a real network port, which no test
+  in this repo had ever done: the self-test used an in-memory transport that bypasses ASGI, and
+  yesterday's ASGI probes assert refusals that happen *before* the mount. Fixed by passing the
+  sub-app's lifespan to the parent, and covered by a real-socket `initialize`/`tools/list`/
+  `tools/call` probe plus a twin that rebuilds the broken mount and must still fail.
+- **Nine of twenty-four drift checks disarmed themselves.** Checks 12–20 ended in
+  `except Exception: print("[note] … skipped")`, so a guard that CRASHED was indistinguishable from
+  a guard that found nothing and CI stayed green. All nine now fail. The only remaining skips are
+  check 23's optional SDK and one explicit escape hatch (`TOS_SYNC_SKIP`) that is refused whenever
+  `CI` is set. The sibling-freshness advisory — 84 of 85 notes on every run — collapses to one
+  summary line so a loud message now has somewhere to land.
+- **The supply-chain gate could pass having scanned nothing**: `security_scan` computed
+  `status: "no_scanners"`, printed it, and never consulted it. It now returns a tri-state (0 clean /
+  1 findings / **2 could not scan**), CI installs the scanners from the pinned file dependabot
+  updates, and `repair_loop`'s exit 2 — the health engine itself broken, gated nowhere else — is no
+  longer swallowed by `|| true`.
+- **`plugin-autobump` ran 7 of ~25 checks and no security scan** before pushing a release to main.
+  It now calls `ci.yml` itself (`workflow_call`), so the release path and the review path cannot
+  drift. Still dormant; enabling it remains an owner decision.
+- **`doctor_env` reported "not installed" for a correctly installed SDK** — it probed its own
+  interpreter, while the isolated capability puts the SDK in `.harvest-venv-mcp_server`. It now
+  probes that interpreter, names which one answered, reports all six `TOS_MCP_*` knobs, and checks
+  index *freshness* rather than mere existence.
+- **New `tools/mcp_smoke.py`**: one command that resolves what each launcher would spawn on the
+  machine it runs on, checks the index, and holds a real stdio conversation with the server —
+  printing a PASS/FAIL block to paste back. It is the only evidence obtainable for the UNTESTED Mac
+  and Windows entries in `docs/MACOS.md`, and it runs in CI so the script itself is tested.
+- Also: an unparseable first-party Python file is now a mac-lint **finding** rather than a note (it
+  hid a real SyntaxError during this round); `cpalms_verify --self-test` no longer risks leaving a
+  lock file in the production overlay directory; `mcpb pack` was run for real (1.8 MB bundle) and
+  `mcpb validate` recorded as schema-only — it passes the broken twin, so the repo-side probes
+  remain the guard.
+
+### Fixed — MCP hardening: every finding of the cross-domain audit, remediated (2026-08-16)
+An adversarial audit of the MCP arc above (attacks executed, not code read) found 22 defects — all
+in transport, validation, packaging or documentation; the tool logic audited clean. Each fix ships
+with a broken twin that reproduces the finding first.
+- **Process death (C-1/C-2/C-3).** A corrupt `offline.db` raised `sqlite3.DatabaseError` past
+  `call_tool`'s three-type except clause and **killed the stdio server mid-session** (reproduced:
+  zero frames written, a queued `ping` never answered). Guards now sit at four boundaries —
+  `_index_status`, the `call_tool` chokepoint, `handle_frame` (which is the only one that can
+  catch a `json.dumps` TypeError on a non-serializable handler return), and the `serve()` loop,
+  which also moved to `readline()` and survives a dead stdout. `SystemExit`/`KeyboardInterrupt`
+  are never swallowed, and a probe asserts that.
+- **Advertised schemas are now enforced (H-1) and identical on both platforms (H-2).** A bogus
+  `subject` enum was accepted and answered `count: 0` — a silent false negative in an
+  anti-fabrication system; 60 codes sailed past `maxItems: 25`. A stdlib validator in the registry
+  now runs on every leg (explicit `null` on an optional property means absent — without that rule
+  validation would have 400'd all hosted traffic). The SDK-derived Claude schema had dropped every
+  enum and bound the ChatGPT schema carried; the wrappers now hold the constraints in their type
+  annotations, and **sync_check check 23** compares the two semantically (skips only when the SDK
+  is absent — parity is also asserted in the hosted self-test CI runs).
+- **The security gate was decorative (H-3).** Rate limiting and `TOS_MCP_TOKEN` ran only on
+  `/v1/*`; `/mcp` — the path every connector uses — was ungated and unthrottled, while
+  `SECURITY_REVIEW.md` and `deploy/mcp/README.md` said otherwise. Now ASGI middleware ahead of
+  routing (`/healthz` + `/openapi.json` token-exempt but rate-limited, so probes and ChatGPT's
+  import still work), `hmac.compare_digest`, and an eviction policy that never resets the caller
+  being throttled. Both documents carry dated **retractions**.
+- **Launchers that exist on the teacher's machine (H-4).** All three shipped configs spawned
+  `python3` — absent on Windows, absent from a macOS GUI PATH. `.mcpb` moves to manifest 0.3 with
+  a `win32` override; `.mcp.json` uses `${TOS_PYTHON:-python3}` + `${CLAUDE_PROJECT_DIR:-.}`;
+  `plugin.json` cannot be fixed (no per-OS command, no default substitution) so the Windows gap
+  and its `claude mcp add --scope user` workaround are documented. `mac_audit` now lints JSON
+  launchers, exempting the plugin **only while that workaround stays documented**.
+- **Hosted-leg reality (M-1/M-2/L-10):** stateless by default (in-process sessions break
+  scale-to-zero hosts), DNS-rebinding protection stated explicitly as off (enabling it naively
+  rejects every request behind a load balancer), `TOS_MCP_PUBLIC_URL` + `forwarded_allow_ips`
+  (without which the rate limiter degraded to one global bucket and ChatGPT rejected the import),
+  `/healthz` echoes the computed URL, and a bad `TOS_MCP_PORT` refuses to start instead of
+  crash-looping.
+- **Dependency honesty (H-5):** semgrep pins `mcp<2` and silently downgraded the SDK in the shared
+  venv; the diagnostic said "not installed" about a package that was installed. `mcp_server` is now
+  an isolated capability, and the message names the version, the cause, and a fix that works.
+- **Coverage the gates lacked (M-3/M-4/L-11):** the bundle builder and Actions generator self-tests
+  now run in CI; `index_unavailable` returns HTTP 200 so ChatGPT relays the fix text instead of
+  reporting a failed action; the export twin stages both artifacts in a tempdir instead of reading
+  the production tree.
+
 ### Added — the MCP tool surface: verified lookups as callable tools on Claude AND ChatGPT (2026-08-15)
 - **`tools/mcp_tooldefs.py`** — 8 read-only tools defined once (verified-standards search with
   the token-budget detail-strip, course/school lookup, CPALMS resources, fabrication-blocking

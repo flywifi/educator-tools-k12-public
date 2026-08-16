@@ -1,7 +1,7 @@
 {
   "_comment": "Atom registry — canonical list of all single-operation atoms. Source of truth for routing, workflow dispatch, and health checks. Regenerate with: python3 -c from SKILL.md frontmatter.",
   "version": "0.1.0",
-  "updated": "2026-06-27",
+  "updated": "2026-08-16",
   "count": 43,
   "atoms": {
     "accommodation-match": {

@@ -2,7 +2,7 @@
 """Drift guard for the TOS SKILL.md ecosystem.
 
 Asserts INVARIANTS (not textual diffs) so that:
-  - the governed core (shared/, protocols/) and each skill's synced copies can
+  - the governed core (shared/, protocol-layer/) and each skill's synced copies can
     never silently diverge, and
   - every skill honors the Quality Gates repository invariants and governance wiring.
 
@@ -14,6 +14,7 @@ Exit:  0 if every invariant holds, 1 (with a report) otherwise.
 from __future__ import annotations
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -65,7 +66,7 @@ _REF_ANCHORS = ("references/", "scripts/", "evals/", "examples/",
                 "protocol-layer/", "protocols/", "shared/", "tools/", "ledger/")
 _REF_EXTS = (".md", ".py", ".json", ".yaml", ".yml", ".txt", ".csv")
 
-# --- Doc-drift guards (checks 15-22) ---------------------------------------------------------------
+# --- Doc-drift guards (checks 15-24) ---------------------------------------------------------------
 # New in the maintainer/README audit. They land in REPORT-ONLY first (so the backfill PR stays green
 # while docs are filled in), then flip to CI-blocking. Set True to enforce.
 DOC_GUARDS_ENFORCE = True
@@ -89,6 +90,100 @@ COVERAGE_SKIP = {"index"}         # index/ ships data + its own README; add non-
 # Check 18 (doc freshness): a missing stamp or a stamp older than this hard-fails (on enforce); a
 # sibling changed after the stamp is an advisory reminder only.
 DOC_FRESHNESS_MAX_AGE_DAYS = 365
+
+# WHAT COUNTS AS A MAINTAINER-CLASS DOC — one definition, because there were two. Check 18 used
+# ("*README.md", "*MAINTAINER.md") while check 20 used {CLAUDE.md, docs/MACOS.md,
+# docs/DEPLOYMENT*.md, *MAINTAINER.md}. Neither was wrong; having both meant a doc could be held to
+# the source-provenance rule while being exempt from the freshness rule, and vice versa.
+#
+# Adding a path here REQUIRES adding its `last_reviewed` stamp in the same commit — a missing stamp
+# is a hard failure by design. Deliberately NOT widened into shared/** or protocol-layer/**: those
+# are the canonical halves of the two-copy sync rule, so a stamp there propagates into the per-skill
+# copies and turns a review date into a sync artifact. Their freshness is governed by the sync rule.
+# docs/audits/* are also excluded: a dated audit is an immutable record, not a living document, and
+# forcing it to be "re-reviewed" every 365 days would make its stamp mean the opposite of what it says.
+MAINTAINER_CLASS_GLOBS = ("*README.md", "*MAINTAINER.md")
+MAINTAINER_CLASS_FILES = (
+    "CLAUDE.md", "STATE.md",
+    "docs/ARCHITECTURE.md", "docs/DEPLOYMENT.md", "docs/DEPLOYMENT_SURFACES.md",
+    "docs/MACOS.md", "docs/QUALITY_MODEL.md", "docs/RUNBOOK-cpalms.md",
+    "security/SECURITY_REVIEW.md", "security/SECURITY_AND_SAFETY.md",
+    "shared/health/dependency-policy.md", "changes/CHANGE_MANAGEMENT.md",
+)
+
+
+def maintainer_class_docs(tracked) -> list:
+    """Every doc held to the stamp. `tracked` is the _tracked_files helper (git-backed)."""
+    docs = set(tracked(*MAINTAINER_CLASS_GLOBS))
+    docs |= {ROOT / rel for rel in MAINTAINER_CLASS_FILES if (ROOT / rel).exists()}
+    return sorted(docs)
+
+
+# Check 24: JSONs carrying a human-typed `updated` that NOTHING read. dependencies.json declared
+# 2026-06-23 while the mcp_server capability and its isolation flag landed 2026-08-16 — an
+# eight-week-old date that survived a full audit. A date a human types and no machine checks is
+# decoration; the repo already learned this for versions (version.py gates versions.json.updated)
+# and for generated artifacts (checks 16/21/22). These seven were never brought into that discipline.
+DATED_MANIFESTS = (
+    "tools/dependencies.json", "tools/registry-sources.json", "tools/url-provenance.json",
+    "shared/atoms/atoms.json", "shared/connectors/connectors.json",
+    "shared/routing/routing.json", "shared/standards/states.json",
+)
+
+
+def git_commit_date(path: Path, exclude_names=()):
+    """The date of the last commit touching `path` — or None when git cannot answer.
+
+    None is returned for a `git archive` export or a missing git binary, and callers must treat it
+    as "no comparison available", never as "up to date". `exclude_names` drops matching basenames
+    anywhere beneath a directory argument via git pathspec magic."""
+    try:
+        rel = path.relative_to(ROOT).as_posix() if path != ROOT else "."
+        spec = [rel] + [f":(exclude){rel}/**/{n}" for n in exclude_names]
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", *spec],
+                             cwd=ROOT, capture_output=True, text=True, timeout=10).stdout.strip()
+        return date.fromisoformat(out) if out else None
+    except Exception:
+        return None
+
+
+def synced_basenames() -> set:
+    """The file names that exist in every skill as byte-identical copies of a canonical source.
+
+    Read from tools/sync_manifest.json rather than hardcoded, so adding a synced reference updates
+    every consumer automatically. Check 18 uses this to stop treating a re-sync as a review signal:
+    a copy that check 2 already holds byte-identical to canon cannot drift, so its commit date says
+    nothing about whether the MAINTAINER doc beside it still describes its skill. That single
+    exclusion is worth 43 of the 83 advisories the check used to print — every atom MAINTAINER was
+    flagged by references/quality-gates.md being re-synced, and nothing else."""
+    try:
+        man = json.loads((ROOT / "tools" / "sync_manifest.json").read_text(encoding="utf-8"))
+        return set(man.get("synced_references", {}))
+    except Exception:
+        return set()
+
+
+def _guard_crashed(guard: str, exc: Exception):
+    """The message for a drift check that raised — or None when a developer explicitly allowed it.
+
+    AUDIT G-1: nine of these handlers used to print a lowercase `[note] … skipped` and let CI pass
+    green, so a guard that crashed was indistinguishable from a guard that found nothing. Every
+    guard here is stdlib, offline and in-repo (verified: health.health, metrics, offline_index and
+    mac_audit all import on a bare interpreter; the two that shell out to git already fall back
+    internally), so an unexpected exception means the repo or the guard is broken — which is
+    exactly what the gate exists to say.
+
+    TOS_SYNC_SKIP is the single escape hatch: a comma-separated list of guard names a developer
+    has to type on purpose. It is refused whenever CI is set, so it can never soften the build.
+    The only OTHER skip in this file is check 23's ImportError path, where the `mcp` SDK is a
+    genuinely optional, off-by-default capability."""
+    allowed = {g.strip() for g in os.environ.get("TOS_SYNC_SKIP", "").split(",") if g.strip()}
+    if guard in allowed and not os.environ.get("CI"):
+        print(f"SKIPPED {guard} — named in TOS_SYNC_SKIP ({exc.__class__.__name__}: {exc}); "
+              f"this escape hatch is refused when CI is set")
+        return None
+    return (f"  x {guard} CRASHED and did not run ({exc.__class__.__name__}: {exc}) — a guard that "
+            f"cannot run is a failure, not a pass; fix the guard or what it imports")
 
 
 def read(p: Path) -> str:
@@ -232,9 +327,16 @@ def main() -> int:
 
     # 10. Routing integrity: every shared/routing/routing.json target is a real skill (or the fallback).
     routing_path = ROOT / "shared" / "routing" / "routing.json"
-    if routing_path.exists():
+    # skill_names is bound OUTSIDE the exists() branch on purpose (audit G-7): check 11 below uses
+    # it too, so a missing routing.json used to raise NameError mid-run — a traceback instead of a
+    # finding. routing.json is a TRACKED file, so its absence is itself a failure, not a skip.
+    skill_names = {d.name for d in skill_dirs}  # leaf names are stable after sub-grouping
+    if not routing_path.exists():
+        failures.append("  x shared/routing/routing.json is missing — it is a tracked file, and "
+                        "without it neither route targets nor workflow atoms can be resolved; "
+                        "restore it from git")
+    else:
         rj = json.loads(read(routing_path))
-        skill_names = {d.name for d in skill_dirs}  # leaf names are stable after sub-grouping
         fallback = rj.get("fallback", "manual_review")
         targets = set(rj.get("skills", {})) | set(rj.get("meeting_routes", {}).values())
         for t in sorted(targets):
@@ -273,7 +375,9 @@ def main() -> int:
             if "without --only-binary guard" in p["issue"]:
                 failures.append(f"  x {p['file']}: {p['issue']}")
     except Exception as e:  # health engine optional — never let it crash the guard
-        print(f"[note] dependency guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("dependency guard", e)
+        if _crash:
+            failures.append(_crash)
 
     # 13. URL-provenance guard (anti-fabrication): every external URL hardcoded in tools/*.py and
     # shared/**/*.py must be DECLARED in tools/url-provenance.json. An undeclared URL is the
@@ -284,7 +388,9 @@ def main() -> int:
         for p in scan_url_provenance():
             failures.append(f"  x {p['file']}: {p['issue']}")
     except Exception as e:
-        print(f"[note] url-provenance guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("url-provenance guard", e)
+        if _crash:
+            failures.append(_crash)
 
     # 14. Offline-index freshness guard: the gitignored canonical-sources/index/offline.db is built
     # from committed JSON. If a source changed since the last build, the committed
@@ -304,9 +410,11 @@ def main() -> int:
                 "  x offline index stale vs canonical-sources/index/index-manifest.json "
                 f"({detail}) — run: python3 tools/offline_index.py --build && commit the manifest")
     except Exception as e:  # index tool import optional — never let it crash the guard
-        print(f"[note] index-freshness guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("index-freshness guard", e)
+        if _crash:
+            failures.append(_crash)
 
-    # --- Doc-drift guards (checks 15-18) -----------------------------------------------------------
+    # --- Doc-drift guards (checks 15-24) -----------------------------------------------------------
     # Each emits into `failures` when DOC_GUARDS_ENFORCE, else prints a [note] (report-only). All are
     # wrapped so an unexpected error degrades to a note and never crashes the gate (as with 12-14).
     def _emit(msg: str) -> None:
@@ -388,7 +496,9 @@ def main() -> int:
                     continue
                 _emit(f"  x doc-path drift — {rel}: dead {'link' if not require_anchor else 'path'} `{tok}`")
     except Exception as e:
-        print(f"[note] doc-path guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("doc-path guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 16. METRICS.md freshness: the committed dashboard must equal a fresh render (minus the generated
     # date line). metrics.py is marked "Do not hand-edit"; this catches "edited skills, forgot to
@@ -407,7 +517,9 @@ def main() -> int:
             _emit("  x docs/METRICS.md is stale vs live evidence — "
                   "run: python3 tools/metrics.py && commit docs/METRICS.md")
     except Exception as e:
-        print(f"[note] metrics-freshness guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("metrics-freshness guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 17. Component-doc coverage: every engine under shared/ and every bucket under canonical-sources/
     # carries >=1 top-level .md doc (README, MAINTAINER, or a *-model.md / *-policy.md). Extends the
@@ -424,7 +536,9 @@ def main() -> int:
                     _emit(f"  x component has no doc (add a README/MAINTAINER or *-model.md): "
                           f"{d.relative_to(ROOT).as_posix()}/")
     except Exception as e:
-        print(f"[note] coverage guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("component-doc-coverage guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 18. Doc freshness (SWE-at-Google Ch.10): every README/MAINTAINER carries a `last_reviewed` stamp.
     # A missing stamp, or a stamp older than DOC_FRESHNESS_MAX_AGE_DAYS, hard-fails (on enforce). A
@@ -432,16 +546,27 @@ def main() -> int:
     # re-review nudge, not a correctness failure.
     try:
         today = date.today()
+        # AUDIT G-2: this advisory fired on 84 of 95 maintainer-class docs on EVERY run — 85 notes
+        # per CI log, 84 of them this one. A signal that never stops is not a signal, and it buried
+        # the SKIPPED/CRASHED lines the fail-closed conversion now prints. Collect and summarise;
+        # TOS_SYNC_VERBOSE=1 restores the per-file list for whoever is actually doing a doc pass.
+        _sibling_stale: list[tuple] = []
+        # ...and two signals were conflated into one. "Someone edited a file NEXT to this doc" and
+        # "someone edited THIS DOC after the date it claims to have been reviewed" are different
+        # findings, and only the first is a nudge. The second is the stamp contradicting its own
+        # file. Reported separately so the loud one is legible: all 43 atom MAINTAINERs are in the
+        # second class (edited 2026-07-15, stamped 2026-06-27), not the first.
+        _self_stale: list[tuple] = []
 
-        def _git_date(p: Path):
-            try:
-                out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(p)],
-                                     cwd=ROOT, capture_output=True, text=True, timeout=10).stdout.strip()
-                return date.fromisoformat(out) if out else None
-            except Exception:
-                return None
+        # Synced references are byte-identical to canon by construction and are guarded harder by
+        # check 2 — a re-sync is not evidence that the doc beside them needs re-reading. Excluding
+        # them is what turns this advisory back into a signal.
+        _synced = sorted(synced_basenames())
 
-        docs = sorted(_tracked_files("*README.md", "*MAINTAINER.md"))
+        def _git_date(p: Path, exclude_synced: bool = False):
+            return git_commit_date(p, _synced if exclude_synced else ())
+
+        docs = maintainer_class_docs(_tracked_files)
         for doc in docs:
             drel = doc.relative_to(ROOT).as_posix()
             if "/skill-template/" in drel or "/node_modules/" in drel:
@@ -465,12 +590,40 @@ def main() -> int:
             if (today - stamp).days > DOC_FRESHNESS_MAX_AGE_DAYS:
                 _emit(f"  x doc stale: {drel} last_reviewed {stamp} (> {DOC_FRESHNESS_MAX_AGE_DAYS}d)")
                 continue
-            newest = _git_date(doc.parent)                     # advisory only — never a hard failure
+            own = _git_date(doc)                               # advisory only — never a failure
+            if own and own > stamp:
+                # The doc's own content moved after the date it claims. The sibling nudge below
+                # would be noise on top of this, so it is skipped: report the stronger finding once.
+                _self_stale.append((stamp, drel, own))
+                continue
+            newest = _git_date(doc.parent, exclude_synced=True)  # advisory only — never a failure
             if newest and newest > stamp:
-                print(f"[note] doc {drel}: a sibling changed {newest} after last_reviewed {stamp} "
-                      f"— consider re-reviewing + restamping")
+                _sibling_stale.append((stamp, drel, newest))
+        if _self_stale:
+            _self_stale.sort()
+            oldest = "; ".join(f"{d} (stamped {s}, edited {n})" for s, d, n in _self_stale[:5])
+            print(f"[note] doc-freshness: {len(_self_stale)} doc(s) were EDITED after the "
+                  f"last_reviewed date they declare — the stamp contradicts its own file, not a "
+                  f"sibling. Oldest 5: {oldest}"
+                  + ("" if os.environ.get("TOS_SYNC_VERBOSE") else
+                     " — set TOS_SYNC_VERBOSE=1 for the full list"))
+            if os.environ.get("TOS_SYNC_VERBOSE"):
+                for s, d, n in _self_stale:
+                    print(f"[note]   SELF {d}: edited {n}, last_reviewed {s}")
+        if _sibling_stale:
+            _sibling_stale.sort()
+            oldest = "; ".join(f"{d} (stamped {s})" for s, d, _ in _sibling_stale[:5])
+            print(f"[note] doc-freshness: {len(_sibling_stale)} doc(s) have a sibling change newer "
+                  f"than their last_reviewed stamp. Oldest 5: {oldest}"
+                  + ("" if os.environ.get("TOS_SYNC_VERBOSE") else
+                     " — set TOS_SYNC_VERBOSE=1 for the full list"))
+            if os.environ.get("TOS_SYNC_VERBOSE"):
+                for s, d, n in _sibling_stale:
+                    print(f"[note]   {d}: sibling changed {n}, last_reviewed {s}")
     except Exception as e:
-        print(f"[note] doc-freshness guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("doc-freshness guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 19. mac-lint (cross-platform safety): no child process spawned by the bare name "python3"/"python"
     # (use sys.executable — a macOS venv can otherwise launch the wrong interpreter), and no text
@@ -482,7 +635,9 @@ def main() -> int:
         for f in _mac_scan():
             _emit(f"  x mac-lint {f['file']}:{f['line']} [{f['check']}] {f['issue']}")
     except Exception as e:
-        print(f"[note] mac-lint guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("mac-lint guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 20. Doc-source provenance (declare-or-fail): an external URL cited in a maintainer-class doc must
     # be registered in a canonical-sources/registries/*.json source registry (freshness-tracked by
@@ -532,9 +687,7 @@ def main() -> int:
             return any(c.startswith(r + "#") or c.startswith(r + "?") for r in registered)
 
         DOC_SOURCE_ALLOW = ("https://github.com/",)   # incidental repo/issue links, not cited authorities
-        doc_set = {ROOT / "CLAUDE.md", ROOT / "docs" / "MACOS.md"}
-        doc_set |= set((ROOT / "docs").glob("DEPLOYMENT*.md"))
-        doc_set |= set(_tracked_files("*MAINTAINER.md"))
+        doc_set = set(maintainer_class_docs(_tracked_files))   # same definition as check 18
         for md in sorted(p for p in doc_set if p.exists()):
             rel = md.relative_to(ROOT).as_posix()
             if "/skill-template/" in rel:
@@ -546,6 +699,12 @@ def main() -> int:
                 continue
             body = re.sub(r"(```|~~~).*?\1", "", body, flags=re.DOTALL)
             for url in re.findall(r"https?://[^\s)>\]\"'`]+", body, flags=re.IGNORECASE):
+                # A template placeholder is not a cited authority. `https://<your-host>/mcp` in a
+                # deploy recipe names no source to register — the same reason check 8's reference
+                # scan skips tokens containing "<>*| ". Surfaced when this check was widened to
+                # READMEs: deploy/mcp/README.md tripped it five times on its own instructions.
+                if "<" in url or ">" in url:
+                    continue
                 url = url.rstrip(".,;:!?")
                 if any(url.lower().startswith(a) for a in DOC_SOURCE_ALLOW):
                     continue
@@ -555,7 +714,9 @@ def main() -> int:
                       f"canonical-sources/registries/*.json source registry (with state.last_checked) "
                       f"or tools/url-provenance.json")
     except Exception as e:
-        print(f"[note] doc-source guard skipped: {e.__class__.__name__}: {e}")
+        _crash = _guard_crashed("doc-source guard", e)
+        if _crash:
+            _emit(_crash)
 
     # 21. Plugin-metadata freshness: the committed .claude-plugin/ manifests + the skills/README
     # generated catalog must equal a fresh render from live facts (export_plugin_manifest.py —
@@ -585,12 +746,76 @@ def main() -> int:
               f"({e.__class__.__name__}: {e}) — fix tools/export_actions_schema.py "
               f"(its --self-test should reproduce this)")
 
+    # 23. Cross-domain schema parity: the schema the `mcp` SDK derives for Claude must match the
+    # registry schema ChatGPT gets. Check 22 above cannot see this — it compares a registry render
+    # to committed registry artifacts, so registry-vs-SDK divergence is structurally invisible to
+    # it, which is how all 8 tools shipped a free-text `subject` on claude.ai and a constrained one
+    # on ChatGPT. Comparison is SEMANTIC (the SDK spells optionals `anyOf:[X,null]`); see
+    # mcp_http_server.schema_parity().
+    # DEGRADATION IS DELIBERATELY UNLIKE 21/22: ImportError -> SKIP, anything else -> FAIL. Those
+    # gates are fail-closed because their generators are stdlib/offline/in-repo, so an ImportError
+    # means the repo is broken; here it means the OPTIONAL `mcp_server` capability (off by default)
+    # simply is not installed — a documented, expected state on a plain clone. The skip cannot
+    # become permanent: parity is also asserted inside `mcp_http_server.py --self-test`, which CI
+    # runs after installing tools/requirements-mcp.txt.
+    try:
+        import mcp_http_server as _mhs
+        for _issue in _mhs.schema_parity():
+            _emit(_issue)
+    except ImportError as e:
+        print(f"[note] MCP schema-parity gate skipped — the `mcp` SDK is not installed here "
+              f"({e.__class__.__name__}: {e}). CI asserts it in mcp_http_server --self-test; to "
+              f"run it locally: python3 tools/deps_preflight.py --install mcp_server")
+    except Exception as e:
+        _emit(f"  x MCP schema-parity gate could not run ({e.__class__.__name__}: {e}) — this is "
+              f"NOT the missing-SDK case; fix tools/mcp_http_server.py "
+              f"(its --self-test should reproduce this)")
+
+    # 24. A hand-curated `updated` field must not contradict its own file. Same shape as check 18's
+    # stamp comparison, and tolerant in exactly one direction: a date NEWER than the last commit is
+    # fine (you stamp today and commit today), a date OLDER means the content moved and the date did
+    # not. This catches the real failure mode — someone edits the file and forgets — and needs no new
+    # state. It does NOT prove anyone re-thought the content; that is the limit every freshness stamp
+    # has. git unavailable (a `git archive` export) yields no comparison and says so rather than
+    # inventing one, exactly as check 18 already degrades.
+    try:
+        for _rel in DATED_MANIFESTS:
+            _p = ROOT / _rel
+            if not _p.exists():
+                _emit(f"  x dated manifest missing: {_rel} — it is a tracked file; restore it from git")
+                continue
+            try:
+                _declared = json.loads(_p.read_text(encoding="utf-8")).get("updated")
+            except Exception as e:
+                _emit(f"  x dated manifest unreadable: {_rel} ({e.__class__.__name__}: {e})")
+                continue
+            if not _declared:
+                _emit(f"  x {_rel} has no `updated` field — it is in DATED_MANIFESTS because that "
+                      f"date is load-bearing; add it, or remove the file from the tuple")
+                continue
+            try:
+                _d = date.fromisoformat(str(_declared))
+            except ValueError:
+                _emit(f"  x {_rel} `updated` is not an ISO date: {_declared!r}")
+                continue
+            _g = git_commit_date(_p)
+            if _g is None:
+                print(f"[note] dated-manifest guard: git cannot date {_rel} (export or no git) — "
+                      f"declared {_d} not compared")
+            elif _g > _d:
+                _emit(f"  x {_rel} declares `updated: {_d}` but its last commit is {_g} — the "
+                      f"content moved and the date did not. Set it to the date of the change.")
+    except Exception as e:
+        _crash = _guard_crashed("dated-manifest guard", e)
+        if _crash:
+            _emit(_crash)
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")
         print("\n".join(failures))
         print(
-            f"\n{len(failures)} check(s) failed. Edit the canonical file in shared/ or protocols/ "
+            f"\n{len(failures)} check(s) failed. Edit the canonical file in shared/ or protocol-layer/ "
             "and re-sync; do not hand-edit synced copies."
         )
         return 1

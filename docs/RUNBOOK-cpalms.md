@@ -191,7 +191,9 @@ When the manifest shows 0 remaining **and 0 needs_review**: delete the standing 
   "(e.g., "). The corpus matches the committed source document in both cases; CPALMS has revised
   them. Do not "fix" the corpus to match — the corpus reflects its source, and the overlay serves
   CPALMS's text to citations.
-- The seven residual risks in `docs/audits/2026-08-10-launch-readiness-audit.md` §4, and the two
+- The residual risks in `docs/audits/2026-08-10-launch-readiness-audit.md` §4 — originally seven;
+  §4.1's two-source claim was retracted in-place and §4.5 and §4.6 are recorded closed there, so
+  four remain live. Read §4 itself rather than the count. Plus the two
   correction notes (§6 on the wrong counts, §7 on what `confirmed` used to mean).
 - **A4/A5/A6/NEW-8 — RESOLVED 2026-08-11.** The card parser now slices the fragment per card, so a
   regex cannot read across a card boundary: cross-card bleed and positionally-zipped dates are

@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-08-16 | owner: repo-maintainer -->
 # STATE.md
 ## Teacher Operating System — Live Status & Recovery
 Update at every phase boundary and after each skill ships. Recovery package = the charters + Quality
@@ -112,7 +113,7 @@ via `google_bridge.py` (lossless Office import + generated Apps Script; live cal
 native Google integration or a deployment Node/clasp runner, no OAuth client built). docintel now reads
 **any file type**: typed parsers for known formats, legacy/ODF office via LibreOffice, and a never-fail
 universal fallback (text decode, else binary metadata/strings) so every input yields at least metadata.
-**Active branch:** `claude/fervent-hawking-nyrzy5`
+**Active branch:** `claude/educator-tools-k12-plan-f49yju`
 **Resume here:** maintenance mode. **Florida is complete & current for 2026–27** — adapter
 (`florida-best.md`), stored corpus + refresher, and **all standards enumerated to queryable (6,583 at the time; 6,574 today after 9 CS retirements)
 JSON** (`resources/florida/data/` via `tools/parse_fl_standards.py` + `tools/fl_lookup.py`). A
@@ -131,7 +132,9 @@ follow-ups: widen the eval benchmark; populate a 2nd state via the Florida templ
 | D — Repository Hardening | packaging, CI, catalog, security review, **versioning** (`VERSION`/`CHANGELOG`) | ✅ Complete (per-skill READMEs omitted — redundant with each `SKILL.md`) |
 | E — Advanced Architecture | analytics (`metrics.py`/`METRICS.md`), artifact registry, `DEPLOYMENT.md`, AI-systems doc | ✅ Largely complete (ontology can deepen later) |
 
-## Skill status (17 built)
+## Skill status (historical table — 17 skills at the time of writing)
+*Live counts live in `docs/METRICS.md` (generated, gated by check 16). Counts are deliberately
+not restated in this file.*
 | Skill | Role | Status |
 |---|---|---|
 | `teacher-core` | hub / router | ✅ built |
@@ -215,9 +218,50 @@ Markdown, portable. First consumer: `meeting-classifier`.
 
 ## Last drift-guard result
 `python3 tools/sync_check.py` → **PASS — 62 skills, 8 invariants, 2 synced refs; frontmatter +
-resource integrity validated; `MAINTAINER.md` present in all skills; doc-drift guards (checks 15-18)
-enforced.** (2026-07-15)
+resource integrity validated; `MAINTAINER.md` present in all skills; all 25 numbered checks (0–24)
+enforced, and since 2026-08-16 a guard that CRASHES is a failure rather than a `[note]`.**
+(2026-08-16)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
+
+## 2026-08-16 — false claims corrected, and the guards that could not see them (round 3)
+
+A verification-and-correction round. It makes the repo look **worse before it looks better**:
+a downgraded security table, a newly-failing date check, feeds confirmed dead. That is the intended
+direction — an honest red beats a decorative green — but the next reader will see more open items
+than last week, and that is stated here rather than discovered.
+
+What was corrected:
+- **42 of 43 atom MAINTAINERs** claimed a `match_method` mechanism only `standards-match` has; 33 of
+  them also documented a superseded minority-report mechanism. Both had survived a 2026-07-15 doc
+  audit that edited all 43 files.
+- **`security/SECURITY_REVIEW.md`** was written 2026-06-20 for 11 skills and had described an
+  ecosystem of 62 since 2026-06-29. Rebuilt from executed commands with per-row scope and class.
+  Three claims were false at real scope and carry dated corrections.
+- **Nine sensitive skills** had no boundary language; they now do, including the disciplinary-output
+  requirement policy mandates and no skill carried.
+- **The feed catalog's stated reason** for being unverified (an egress-restricted environment) had
+  expired; all 14 were fetched and 2 verified with proof items.
+- **Seven "GUESSED" OCPS URLs** became dated observations. 2 verified, 5 held back because the host
+  answers unknown paths with a generic landing page.
+
+What was gated for the first time:
+- **check 24** — a hand-typed `updated` older than its own file's last commit. 5 of 7 manifests were
+  stale; one generator wrote a hardcoded date on every run.
+- **`shared/health/binaries.py`** — one resolver replacing four PATH-only probes and one inlined
+  duplicate. `health` and `office` had **contradicted each other about `soffice` on any Mac**.
+  macOS **E2: OPEN → UNTESTED**.
+- **`never_checked`** in `source_currency` — 69 of 124 registry sources could never age out and were
+  invisible inside `uncertain`.
+
+Two mistakes of mine, recorded because the commits are the record: the binary-resolver self-test
+asserted that LibreOffice was installed, so CI failed twice on an environment fact rather than a
+code property; the URL promotion table would have upgraded a URL its own note calls FABRICATED,
+because it read a blanket 403 as proof of existence. Both fixed with twins in both directions.
+
+Still open, named not implied: **44 of 62 skills have zero eval cases**, including every high-risk
+atom, so the boundary language is unverified rather than verified-and-minor; the health readiness
+score is saturated and information-free; and **889 stale `protocols/` doc references** are
+structurally invisible to check 15, because a renamed directory falls out of its anchor list.
 
 ## 2026-07-16 — adversarial audit of the 24h window (34 probes) + full remediation
 Audit-only pass over everything landed in the prior 24h (doc guards 15–18, supply-chain fix, macOS
@@ -421,6 +465,8 @@ live, generated breakdown is `ledger/cpalms-run-manifest.json` (`python3 tools/c
 **189 are K-5** and have no overlay yet — elementary is *not* complete for this subject);
 **ELD** (5). Also:
 social studies remains low-confidence (19.5% whole-corpus) so its absences stay advisory;
+[SUPERSEDED 2026-08-13: SS and ELD both crossed the 0.98 coverage threshold — their absences
+now BLOCK. See the behaviour-change entry below and docs/RUNBOOK-cpalms.md §5.]
 CCSS/NGSS remain scheme-only; a FLDOE source-document refresh would fix the legacy `.doc` parse
 artifacts recorded as finding D-J.
 
@@ -495,9 +541,32 @@ completed CPALMS sweep, the remediation, the currency re-check, and truthful lis
 code verification, citation-mutation check, validators) defined once in `tools/mcp_tooldefs.py`
 and served four ways — plugin-shipped stdio (zero-step), one-click `.mcpb` for Claude Desktop,
 a dormant hosted leg for claude.ai/ChatGPT (`deploy/mcp/`), and a generated Custom GPT Actions
-schema (check 22). The "no provider client" rule stands — this is a server. Two platform
+schema (check 22; check 23 added 2026-08-16 holds the SDK-derived Claude schema to the same
+registry). The "no provider client" rule stands — this is a server. Two platform
 questions stay empirically open (Claude-for-Teachers connector self-serve; ChatGPT Plus
 Developer mode) and gate doc claims only.
+
+**MCP hardening — 22 audit findings (2026-08-16):** an adversarial audit of the surface above
+(attacks executed, not code read) found 22 defects, all in transport, validation, packaging or
+documentation; the tool logic audited clean. Highlights: a corrupt index could KILL the stdio
+server mid-session; the advertised schemas were never enforced, so a bogus subject enum was
+accepted and answered `count: 0`; Claude and ChatGPT were being handed different rulebooks for the
+same eight tools; the rate limit and token gated `/v1/*` but not `/mcp`, while two shipped
+documents said otherwise (both now carry dated retractions); all three launchers spawned `python3`,
+which does not exist on Windows. Each fix ships with a broken twin that reproduces the finding
+first. `sync_check` gained **check 23** (cross-platform schema parity).
+
+**Round 2 — the endpoint that never answered (2026-08-16):** starting the hosted server on a real
+network port for the first time showed `/mcp` returning **HTTP 500 to every request** since the
+day it shipped: Starlette does not run a mounted sub-app's lifespan, and that lifespan creates the
+session manager's task group. Every test used an in-memory transport no real client uses. Fixed,
+and now covered by a real-socket end-to-end probe plus a twin that keeps the outage from returning
+quietly. The same round made nine drift checks fail-closed (a guard that crashes was printing a
+note and passing), stopped `security_scan` from exiting 0 with no scanners installed, made
+`plugin-autobump` run the real CI gate set before it can cut a release, taught `doctor_env` to look
+for the SDK in the isolated venv where it now lives, and added `tools/mcp_smoke.py` — the
+one-command PASS/FAIL script a Mac or Windows teacher runs and pastes back, which is the only
+evidence available for the UNTESTED entries in `docs/MACOS.md`.
 
 ## Open items (optional follow-ups — core build complete)
 1. Widen the eval benchmark to the full 27-case set (subset done — `BENCHMARK.md`).
@@ -506,6 +575,6 @@ Developer mode) and gate doc claims only.
 3. Deepen the ontology; optional LLM-as-judge automation; tag a `v1.0.0` git release.
 
 ## Success metrics (Phase E)
-Live dashboard: **`METRICS.md`** (regenerate with `python3 tools/metrics.py`). Current: 62 skills ·
-69 artifact types · 75 eval cases · 10 standards frameworks (incl. Florida B.E.S.T./NGSSS) · 4 differentiation engines · 6/6
-protocols · 100% ledger approval (seed) · 62/62 skills emit `human_review_required`.
+Live dashboard: **`docs/METRICS.md`** (regenerate with `python3 tools/metrics.py`; freshness is
+gated by sync_check check 16). The numbers are deliberately NOT mirrored here — a hand-typed
+mirror of generated output is the exact drift class check 16 and check 21 exist to kill.

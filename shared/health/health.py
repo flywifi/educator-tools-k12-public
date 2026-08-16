@@ -198,6 +198,37 @@ URL_PROVENANCE = ROOT / "tools" / "url-provenance.json"
 _URL_SKIP = ("schemastore", "json-schema.org", "w3.org", "python.org", "example.com",
              "localhost", "127.0.0.1", "0.0.0.0", "anthropic.com")
 _URL_RE = re.compile(r"https?://[a-zA-Z0-9.\-_/]+")
+# A URL does not have to be written whole to be fetched whole. Two forms were structurally
+# invisible to this scan, and both are in live code:
+#   1. BASE-joined fragments. tools/ocps_resources.py declares BASE = "https://www.ocps.net" and a
+#      PAGES dict of path fragments; the executing code joins them. The scan saw only the docstring
+#      copies, so it validated the documentation while the constants that actually run went
+#      unchecked — and three of the ten (school_choice, technology_services, research_evaluation)
+#      were registered NOWHERE.
+#   2. Scheme-less host references, e.g. `nces.ed.gov/surveys/pss` in tools/ingest_sources.py.
+_BASE_RE = re.compile(r'^\s*(?:BASE|BASE_URL|ROOT_URL|HOST)\s*=\s*["\'](https?://[^"\']+)["\']',
+                      re.M)
+_FRAGMENT_RE = re.compile(r'["\'](/[a-zA-Z0-9][a-zA-Z0-9._\-/]*)["\']')
+_HOSTLESS_RE = re.compile(r'(?<![a-zA-Z0-9./@\-])((?:[a-z0-9\-]+\.)+(?:gov|edu|org|net|com))'
+                          r'(/[a-zA-Z0-9._\-/]*)?(?![a-zA-Z0-9.\-])')
+
+
+def _implied_urls(text: str) -> set:
+    """Full URLs a file will actually request, that _URL_RE cannot see."""
+    out = set()
+    bases = _BASE_RE.findall(text)
+    if len(bases) == 1:                      # one unambiguous base; more would be guesswork
+        base = bases[0].rstrip("/")
+        for frag in _FRAGMENT_RE.findall(text):
+            if "//" in frag or frag.endswith("/"):
+                continue
+            out.add(base + frag)
+    # A bare hostname in a comment is a MENTION, not a request. Sweeping for `host.tld` produced 30
+    # false positives (prose, docstrings, this scan's own fixtures) against 11 real findings, and a
+    # guard that cries wolf is the exact failure this round is fixing elsewhere. Scheme-less
+    # references that a human knows are load-bearing get REGISTERED by hand instead — see the
+    # nces.ed.gov/surveys/pss entry in url-provenance.json.
+    return out
 
 
 def scan_url_provenance() -> List[dict]:
@@ -228,7 +259,7 @@ def scan_url_provenance() -> List[dict]:
             except Exception:
                 continue
             rel = pyf.relative_to(ROOT).as_posix()
-            for m in _URL_RE.findall(text):
+            for m in list(_URL_RE.findall(text)) + sorted(_implied_urls(text)):
                 url = m.rstrip("/.,)\"'")
                 if any(s in url for s in _URL_SKIP):
                     continue

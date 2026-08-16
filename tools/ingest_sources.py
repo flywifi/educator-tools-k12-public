@@ -27,6 +27,7 @@ import json
 import re
 import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -103,7 +104,10 @@ def catalog_base(entries: list[dict]) -> int:
         else:
             by_key[k] = e; n_new += 1
     reg["sources"] = sorted(by_key.values(), key=lambda s: (s.get("status", ""), s.get("file", "")))
-    reg["updated"] = "2026-06-29"
+    # Computed, never typed. This was the literal "2026-06-29", so every run since then restamped
+    # the file it had just rewritten with a date two months in the past — a generated field that
+    # could not be right and that no reader could distinguish from a real one.
+    reg["updated"] = date.today().isoformat()
     INGESTED.parent.mkdir(parents=True, exist_ok=True)
     INGESTED.write_text(json.dumps(reg, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return n_new

@@ -123,22 +123,36 @@ def self_test() -> int:
        a["servers"][0]["url"] == PLACEHOLDER_URL)
     ck("surface snapshot mirrors list_tools() exactly",
        render_surface()["tools"] == mcp_tooldefs.list_tools())
-    # broken twin: a mutated committed artifact must be caught by check()
+    # Broken twin, staged ENTIRELY in a tempdir (L-11). The previous version passed
+    # root_surface=SURFACE_PATH, so the probe read the production artifact and its result depended
+    # on the working tree — a stale committed surface would have reddened the "mutation is caught"
+    # probe for the wrong reason, and a `check()` that silently stopped reading root_actions would
+    # still have looked green. It also computed an `ok_clean` value it deleted unread.
+    import shutil
     import tempfile
     tmp = Path(tempfile.mkdtemp(prefix="actions-st-"))
-    good = tmp / "actions.json"
-    good.write_text(json.dumps(render_actions()), encoding="utf-8")
-    ok_clean = check(root_actions=good, root_surface=SURFACE_PATH if SURFACE_PATH.exists()
-                     else good) if SURFACE_PATH.exists() else []
+    actions, surface = tmp / "actions.json", tmp / "surface.json"
+    actions.write_text(json.dumps(render_actions()), encoding="utf-8")
+    surface.write_text(json.dumps(render_surface()), encoding="utf-8")
+    ck("clean staged pair reports no issues (the control for the twins below)",
+       check(root_actions=actions, root_surface=surface) == [])
+
     mutated = render_actions()
     mutated["paths"]["/v1/search_standards"]["post"]["x-openai-isConsequential"] = True
-    good.write_text(json.dumps(mutated), encoding="utf-8")
+    actions.write_text(json.dumps(mutated), encoding="utf-8")
     ck("twin: a mutated committed schema is caught by --check",
-       any("stale" in i for i in check(root_actions=good,
-                                       root_surface=SURFACE_PATH if SURFACE_PATH.exists()
-                                       else good)))
-    del ok_clean
-    import shutil
+       any("stale" in i and "actions" in i
+           for i in check(root_actions=actions, root_surface=surface)))
+
+    actions.write_text(json.dumps(render_actions()), encoding="utf-8")
+    surface.write_text(json.dumps({"tools": []}), encoding="utf-8")
+    ck("twin: a mutated surface snapshot is caught too (both artifacts are really compared)",
+       any("stale" in i and "surface" in i
+           for i in check(root_actions=actions, root_surface=surface)))
+
+    actions.unlink()
+    ck("twin: a MISSING artifact is reported as missing, not silently skipped",
+       any("missing" in i for i in check(root_actions=actions, root_surface=surface)))
     shutil.rmtree(tmp)
     print(f"self-test: {fails} failure(s)")
     return 1 if fails else 0

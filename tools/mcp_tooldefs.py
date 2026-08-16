@@ -35,6 +35,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -171,8 +172,13 @@ def _index_status(args: dict) -> dict:
     out: dict = {"db_present": offline_index.DB.exists()}
     if out["db_present"]:
         import sqlite3
-        conn = sqlite3.connect(offline_index.DB)
+        # A PRESENT file is not a READABLE one. The honesty tool must survive exactly the
+        # condition it exists to report: a truncated/corrupt/locked db (interrupted --build,
+        # a partially-copied .mcpb, a full disk) previously raised sqlite3.DatabaseError out
+        # of here, past call_tool's narrow except, and killed the whole stdio server.
+        conn = None
         try:
+            conn = sqlite3.connect(offline_index.DB)
             eng = conn.execute("SELECT value FROM idx_meta WHERE key='engine'").fetchone()
             out["engine"] = eng[0] if eng else "unknown"
             out["counts"] = {}
@@ -183,8 +189,14 @@ def _index_status(args: dict) -> dict:
                 # t is from offline_index._TABLES — the same allow-list _q enforces; a table
                 # identifier cannot be a bound parameter.
                 out["counts"][t] = conn.execute("SELECT count(*) FROM " + t).fetchone()[0]  # nosemgrep
+        except (sqlite3.Error, OSError) as exc:
+            out["error"] = "index_corrupt"
+            out["detail"] = f"{exc.__class__.__name__}: {exc}"
+            out["fix"] = ("delete canonical-sources/index/offline.db and run: "
+                          "python3 tools/offline_index.py --build")
         finally:
-            conn.close()
+            if conn is not None:
+                conn.close()
         try:
             out["drift"] = offline_index.drift_report()
         except Exception as exc:
@@ -288,6 +300,68 @@ TOOLS: list[dict] = [
 
 _BY_NAME = {t["name"]: t for t in TOOLS}
 
+# `limit` is CORRECTED rather than rejected: a model asking for 20 rows should get 10, not an
+# error (teacher UX). Every other bound rejects. This is a decision, not an oversight.
+_CLAMPED = frozenset({"limit"})
+_TYPES = {"string": str, "integer": int, "number": (int, float), "boolean": bool,
+          "array": list, "object": dict}
+
+
+def _type_ok(value, want: str) -> bool:
+    # `isinstance(True, int)` is True, so a bare integer check would accept {"private": true}.
+    if want in ("integer", "number") and type(value) is bool:
+        return False
+    py = _TYPES.get(want)
+    return True if py is None else isinstance(value, py)
+
+
+def _validate_args(schema: dict, args: dict) -> list[str]:
+    """Enforce the schema we ADVERTISE. Shipped in 80e75de as decoration only: a bogus `subject`
+    was accepted and returned count:0 — a silent false negative in a system whose whole purpose
+    is not lying about standards; 60 codes sailed past maxItems:25; unknown keys were ignored.
+
+    Every leg inherits this (stdio, SDK /mcp, REST /v1/*) because all of them funnel through
+    call_tool. On the HTTP leg the SDK validates first against its own derived schema; this is
+    the second, AUTHORITATIVE pass — the two schemas differ (finding H-2), so skipping it would
+    be skipping the canonical one."""
+    props, issues = schema.get("properties", {}), []
+    for key in schema.get("required", []):
+        if key not in args or args[key] is None:
+            issues.append(f"missing required argument: {key}")
+    if schema.get("additionalProperties") is False:
+        for key in args:
+            if key not in props:
+                issues.append(f"unexpected argument '{key}' "
+                              f"(allowed: {', '.join(sorted(props))})")
+    for key, spec in props.items():
+        if key not in args:
+            continue
+        val = args[key]
+        # An explicit null on a non-required property means ABSENT. The HTTP wrappers pass
+        # grade=None/subject=None on EVERY call; treating null as a value would 400 all of them.
+        if val is None:
+            continue
+        want = spec.get("type")
+        if want and not _type_ok(val, want):
+            issues.append(f"{key}: expected {want}, got {type(val).__name__}")
+            continue
+        if "enum" in spec and val not in spec["enum"]:
+            issues.append(f"{key}: {val!r} is not one of {sorted(spec['enum'])}")
+        if key not in _CLAMPED:
+            if "minimum" in spec and val < spec["minimum"]:
+                issues.append(f"{key}: {val} is below minimum {spec['minimum']}")
+            if "maximum" in spec and val > spec["maximum"]:
+                issues.append(f"{key}: {val} exceeds maximum {spec['maximum']}")
+        if want == "array":
+            if "minItems" in spec and len(val) < spec["minItems"]:
+                issues.append(f"{key}: {len(val)} items is below minItems {spec['minItems']}")
+            if "maxItems" in spec and len(val) > spec["maxItems"]:
+                issues.append(f"{key}: {len(val)} items exceeds maxItems {spec['maxItems']}")
+            it = (spec.get("items") or {}).get("type")
+            if it and not all(_type_ok(v, it) for v in val):
+                issues.append(f"{key}: every item must be {it}")
+    return issues
+
 
 def list_tools() -> list[dict]:
     """The wire-shape tool list (no handler callables)."""
@@ -303,13 +377,22 @@ def call_tool(name: str, args: dict | None) -> dict:
         return {"error": f"unknown tool: {name!r}",
                 "available": sorted(_BY_NAME)}
     args = args or {}
-    missing = [k for k in tool["inputSchema"]["required"] if k not in args]
-    if missing:
-        return {"error": f"missing required argument(s): {', '.join(missing)}"}
+    issues = _validate_args(tool["inputSchema"], args)
+    if issues:
+        return {"error": "invalid_arguments", "tool": name, "issues": issues}
     try:
         return tool["handler"](args)
-    except (ValueError, TypeError, KeyError) as exc:
-        return {"error": f"{exc.__class__.__name__}: {exc}"}
+    except Exception as exc:
+        # ONE chokepoint, deliberately not a decorator: all handlers dispatch through this line,
+        # so a future tool cannot forget the guard. `Exception` and NOT `BaseException` — a
+        # probe asserts SystemExit/KeyboardInterrupt still propagate (the client's shutdown
+        # signal must not be swallowed). The traceback goes to STDERR ONLY: on the stdio leg
+        # stdout is the protocol wire, and a traceback there corrupts the session.
+        # This tuple was (ValueError, TypeError, KeyError) as shipped in 80e75de, so a
+        # sqlite3.DatabaseError from a corrupt index escaped and killed the server process.
+        traceback.print_exc(file=sys.stderr)
+        return {"error": f"{exc.__class__.__name__}: {exc}", "tool": name,
+                "note": "the call failed; the server is still running"}
 
 
 # ----------------------------------------------------------------------------------- self-test
@@ -358,7 +441,36 @@ def self_test() -> int:  # noqa: C901
         ck("unknown tool -> structured error with the available list",
            "available" in call_tool("frobnicate", {}))
         ck("missing required arg -> structured error",
-           "missing required" in call_tool("search_standards", {}).get("error", ""))
+           any("missing required" in i
+               for i in call_tool("search_standards", {}).get("issues", [])))
+
+        # --- H-1: the advertised schema is ENFORCED, not decoration --------------------------
+        r = call_tool("search_standards", {"query": "fractions", "subject": "algebra"})
+        ck("enum violation REJECTED (pre-fix it dispatched and returned a silent count:0 — a "
+           "false 'no such standard' in an anti-fabrication system)",
+           r.get("error") == "invalid_arguments"
+           and any("not one of" in i for i in r["issues"]))
+        pre = _search_standards({"query": "fractions", "subject": "algebra"})
+        ck("twin: the unvalidated path still answers count:0 for a bogus subject",
+           pre.get("count") == 0)
+        r = call_tool("verify_standard_codes", {"codes": [f"MA.{i}" for i in range(60)]})
+        ck("maxItems 25 REJECTED for 60 codes",
+           r.get("error") == "invalid_arguments" and any("maxItems" in i for i in r["issues"]))
+        r = call_tool("search_standards", {"query": "x", "grades": "3"})
+        ck("unknown argument REJECTED (additionalProperties:false enforced), and the message "
+           "names the allowed keys",
+           r.get("error") == "invalid_arguments" and any("unexpected argument" in i
+                                                         for i in r["issues"]))
+        r = call_tool("lookup_school", {"query": "x", "private": 1})
+        ck("bool-vs-int: {'private': 1} REJECTED (isinstance(True, int) would have accepted it)",
+           r.get("error") == "invalid_arguments")
+        r = call_tool("search_standards", {"query": "fractions", "grade": None,
+                                           "subject": None, "limit": None})
+        ck("explicit nulls on optional args are ABSENT, not values (the HTTP wrappers send "
+           "them on every call — rejecting would 400 all hosted traffic)", "error" not in r)
+        r = call_tool("search_standards", {"query": "fractions", "limit": 999})
+        ck("limit CLAMPS rather than rejecting (teacher UX; the documented exception)",
+           "error" not in r)
         offline_index.DB = tmp / "nowhere.db"
         r = call_tool("search_standards", {"query": "x"})
         ck("missing db -> index_unavailable with the exact fix command",
@@ -368,6 +480,48 @@ def self_test() -> int:  # noqa: C901
            and "--build" in r["fix"])
     finally:
         offline_index.DB = real_db
+
+    # --- survival probes (C-1/C-2): a corrupt index must never kill the process -------------
+    corrupt = tmp / "corrupt.db"
+    corrupt.write_bytes(b"this is not a sqlite database at all")
+    offline_index.DB = corrupt
+    try:
+        r = call_tool("index_status", {})
+        ck("index_status: a CORRUPT db reports index_corrupt + the fix (never raises)",
+           r.get("error") == "index_corrupt" and "offline_index.py --build" in r.get("fix", ""))
+        # twin: the raw call the guard wraps DOES raise — proving the guard is load-bearing
+        raised = False
+        try:
+            sqlite3.connect(corrupt).execute("SELECT value FROM idx_meta").fetchone()
+        except sqlite3.Error:
+            raised = True
+        ck("twin: the unguarded sqlite call raises DatabaseError (guard is load-bearing)", raised)
+        r = call_tool("search_standards", {"query": "x"})
+        ck("search_standards on a corrupt db: structured error, still running",
+           "error" in r and r.get("note", "").endswith("still running"))
+    finally:
+        offline_index.DB = real_db
+
+    def _poison(_args):
+        raise sqlite3.DatabaseError("simulated corruption from inside a handler")
+    _BY_NAME["_poison"] = {"name": "_poison", "description": "", "handler": _poison,
+                           "inputSchema": _schema({}, [])}
+    r = call_tool("_poison", {})
+    ck("poisoned handler: sqlite3.DatabaseError is caught (the shipped 3-type tuple would not "
+       "have caught it)",
+       "error" in r and not isinstance(sqlite3.DatabaseError(), (ValueError, TypeError, KeyError)))
+
+    def _exiting(_args):
+        raise SystemExit(3)
+    _BY_NAME["_exiting"] = {"name": "_exiting", "description": "", "handler": _exiting,
+                            "inputSchema": _schema({}, [])}
+    escaped = False
+    try:
+        call_tool("_exiting", {})
+    except SystemExit:
+        escaped = True
+    ck("SystemExit is NOT swallowed (except Exception, never BaseException)", escaped)
+    del _BY_NAME["_poison"], _BY_NAME["_exiting"]
 
     # Live-corpus probes (the real repo data these run against in CI):
     r = call_tool("verify_standard_codes", {"codes": ["MA.999.ZZ.9.9"]})

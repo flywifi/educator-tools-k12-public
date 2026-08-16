@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-08-16 | owner: deployment-maintainer -->
 # DEPLOYMENT_SURFACES.md — where the TOS runs (and how data is handled per surface)
 
 > Teacher-friendly version of this: [`implementation/claude/README.md`](../implementation/claude/README.md).
@@ -54,7 +55,7 @@ that boundary (found by adversarial audit, mitigations in place):
   **Preferred: install into the repo's managed venv** — `python3 tools/deps_preflight.py --install
   <capability>` (e.g. `office_authoring`) or `--install tools/requirements-<name>.txt`. It builds/uses
   the isolated, gitignored `.harvest-venv/`, installs **wheels-only**, and **never touches system
-  Python** — so PEP 668 never triggers. `python3 tools/deps_preflight.py --python-path` prints that
+  Python** — so PEP 668 never triggers. **One capability opts out: `mcp_server` is `"isolated": true`** (semgrep pins `mcp<2` and a shared venv silently downgraded the SDK), so it installs into `.harvest-venv-mcp_server` and its interpreter is `--python-path mcp_server`, not the bare form. `python3 tools/deps_preflight.py --python-path [capability]` prints that
   venv's interpreter (the exact Python to point a Claude Desktop MCP `command`/a GUI launch at). A
   manual venv works too: `python3 -m venv .venv && source .venv/bin/activate` then `pip install -r …`
   (`--break-system-packages` exists but is risky; pipx suits standalone CLI tools). Homebrew's prefix
@@ -83,15 +84,29 @@ that boundary (found by adversarial audit, mitigations in place):
 - **Notepad trap:** saving `my-teacher-profile.md` in Windows Notepad appends `.txt` unless
   "Save as type" is set to **All Files**.
 
-## MCP tool surface (2026-08-15)
+## MCP tool surface (2026-08-15; hardened 2026-08-16)
 
 The registry `tools/mcp_tooldefs.py` serves 8 read-only tools on four legs: plugin-shipped
 stdio (zero-step; `plugin.json` `mcpServers`), the `.mcpb` Claude Desktop extension
 (one-click; `tools/build_mcpb.py`), the hosted streamable-HTTP leg (`tools/mcp_http_server.py`
 — claude.ai connectors + ChatGPT; dormant until a human deploys `deploy/mcp/`), and the
-generated Custom GPT Actions schema (`tools/export_actions_schema.py`, sync_check check 22).
+generated Custom GPT Actions schema (`tools/export_actions_schema.py`, sync_check check 22 —
+with **check 23** separately holding the SDK-derived Claude schema to the same registry, the
+divergence check 22 structurally cannot see).
 Data handling: nothing student-related ever transits any leg — queries are standards
 codes/topics over a public, CPALMS-verified corpus; the hosted leg is stateless with no
 request-body logging. The local stdio leg is deliberately stdlib (runs on the CLT stub with
 zero installs); the platform truth that shaped all of this: ChatGPT and claude.ai remote
 connectors are brokered from vendor clouds, so localhost serves only Claude Desktop/Code stdio.
+
+**Launcher interpreters (updated 2026-08-16).** All three JSON launchers originally spawned the
+stdio server as `python3`, which is exactly the E2 defect in a file the Python lint could not
+see: on Windows that command does not exist (python.org ships `python.exe`/`py.exe`), and under a
+macOS GUI PATH it may not resolve. Now: `.mcp.json` uses `${TOS_PYTHON:-python3}` with
+`${CLAUDE_PROJECT_DIR:-.}` for the script path (also fixing a cwd-relative argument), and the
+`.mcpb` manifest declares `platform_overrides.win32 → python`. `plugin.json` **cannot** be fixed —
+its schema has neither per-OS commands nor default-valued substitution, and an unresolved
+`${VAR}` would be passed through literally — so Door 1 on Windows stays broken by platform
+design, with a user-scope `claude mcp add` workaround documented in `implementation/mcp/README.md`.
+`tools/mac_audit.py` now lints these JSON launchers (check `json-launcher`, consumed by sync_check
+check 19) so a fourth recurrence fails locally and in CI.

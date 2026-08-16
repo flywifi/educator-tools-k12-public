@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-08-16 | owner: security-maintainer -->
 # SECURITY_AND_SAFETY.md
 ## Teacher Operating System (TOS) — Security & Safety
 Governance document (Quality Gates §2.1). Encodes the **Safety dimension** and the education-specific
@@ -12,11 +13,11 @@ drift guard where checkable.
 - Real student PII in an artifact or its metadata is a **critical failure** (Integrity/Safety →
   Rejected; QG §37).
 - When a task seems to need real student specifics (e.g., a specific IEP), **escalate** rather than
-  request data (`protocols/assumptions-protocol.md` §4).
+  request data (`protocol-layer/assumptions-protocol.md` §4).
 
 ## 2. Human-in-the-loop — decision support, not determinations
 - Every artifact is **decision support**; a qualified professional must review and adapt it.
-  `human_review_required: true` on every artifact (`protocols/metadata-schema.md`).
+  `human_review_required: true` on every artifact (`protocol-layer/metadata-schema.md`).
 - **IEP/504, eligibility, MTSS, and disciplinary** outputs additionally state they must be validated
   against the student's actual plan and local/state policy. The ecosystem does not make legal or
   eligibility determinations.
@@ -31,7 +32,7 @@ drift guard where checkable.
 
 ## 5. Integrity — no fabrication
 - Never invent standards, citations, sources, statistics, or verification results to fill a gap or
-  to "pass" a gate (`protocols/standards-verification.md`, `protocols/failure-recovery.md`).
+  to "pass" a gate (`protocol-layer/standards-verification.md`, `protocol-layer/failure-recovery.md`).
   Fabrication is the canonical critical failure (QG §11.4, §37).
 
 ## 6. Content & tooling safety
@@ -41,5 +42,5 @@ drift guard where checkable.
 
 ## 7. Legal/policy boundary
 - The ecosystem operates within educational, legal, and accessibility constraints (Charter V3 §20).
-  When a request conflicts with safety/legal boundaries, Safety wins (`protocols/conflict-protocol.md`)
+  When a request conflicts with safety/legal boundaries, Safety wins (`protocol-layer/conflict-protocol.md`)
   — refuse the unsafe part and offer a compliant alternative.

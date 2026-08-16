@@ -1,7 +1,8 @@
+<!-- last_reviewed: 2026-08-16 | owner: quality-maintainer -->
 # QUALITY_MODEL.md
 ## Teacher Operating System (TOS) — Quality Model
 Governance document (Quality Gates §2.1). Operational summary of the Quality Gates Protocol.
-**Authoritative spec:** `protocols/quality-gates.md`. **Executor:** the `quality-review` skill.
+**Authoritative spec:** `protocol-layer/quality-gates.md`. **Executor:** the `quality-review` skill.
 
 ---
 
@@ -25,7 +26,7 @@ Integrity → Safety → Governance → Accuracy → Alignment → Educational Q
 Professional Quality → User Intent.
 
 ## 5. Decision records, certification, release readiness
-Every decision is recorded (`protocols/metadata-schema.md`) and logged in the Quality Ledger.
+Every decision is recorded (`protocol-layer/metadata-schema.md`) and logged in the Quality Ledger.
 Certification levels: Development → Review → Production → Governance Certified → Repository Certified.
 Release readiness (a higher bar than approval) checks Quality · Governance · Documentation · Audit ·
 Remediation · Certification.

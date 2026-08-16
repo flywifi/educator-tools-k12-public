@@ -115,6 +115,37 @@ def _dist_name(spec: str) -> str:
     return re.split(r"[<>=!~;\[\s]", spec, 1)[0].strip().lower()
 
 
+def _capability_venv(cap: dict | None) -> Path:
+    """Where a capability's packages go: the shared venv, or its own if it declares isolation.
+
+    One shared venv is right for the harvest pipeline (its capabilities compose). It is wrong when
+    two capabilities pin incompatible versions of the same package, because pip resolves that by
+    silently DOWNGRADING the loser — audit finding H-5: installing the security_scan capability
+    pulled semgrep, semgrep pins `mcp<2`, and mcp 2.0.0 was replaced with 1.29.0, after which the
+    hosted MCP leg could not import MCPServer at all. `"isolated": true` in dependencies.json opts
+    a capability out of that shared fate."""
+    if cap and cap.get("isolated"):
+        return ROOT / f".harvest-venv-{cap['id']}"
+    return VENV_DIR
+
+
+def _ensure_venv(venv: Path) -> Path | None:
+    """Create `venv` if absent; return its interpreter, or None if it could not be built."""
+    vpy = _venv_python(venv)
+    if vpy.exists():
+        return vpy
+    try:
+        print(f"[deps] building isolated environment at {venv} (one-time)...", file=sys.stderr)
+        subprocess.run([sys.executable, "-m", "venv", str(venv)], check=True)
+        subprocess.run([str(vpy), "-m", "pip", "install", "--quiet", "--upgrade", "pip"],
+                       check=False)
+        return vpy if vpy.exists() else None
+    except Exception as e:  # noqa: BLE001
+        print(f"[deps] could not build {venv.name} ({e})", file=sys.stderr)
+        shutil.rmtree(venv, ignore_errors=True)
+        return None
+
+
 def _create_base_venv() -> bool:
     """Create an empty isolated venv (python + fresh pip). Cleans up on failure so a half-built env
     can never strand a future run. Returns True only if the venv python exists afterward."""
@@ -355,7 +386,10 @@ def preflight(update: bool | None = None, quiet: bool = False) -> dict:
 
 
 # --------------------------------------------------------------------------- Option 1: install ANY
-# capability's requirements into the SAME managed venv (never system/Homebrew Python -> no PEP 668).
+# capability's requirements into the SAME managed venv (never system/Homebrew Python -> no PEP
+# 668) — EXCEPT a capability marked `"isolated": true` in dependencies.json, which gets its own
+# `.harvest-venv-<id>` so one capability's pins cannot demote another's (audit H-5: semgrep pins
+# mcp<2 and silently downgraded the hosted leg's SDK).
 def _load_capabilities() -> list[dict]:
     try:
         return json.loads((ROOT / "tools" / "dependencies.json").read_text(encoding="utf-8")).get("capabilities", [])
@@ -422,9 +456,19 @@ def install_requirements(cap_or_path: str, upgrade: bool = False) -> dict:
     if not specs:
         return {"target": cap_or_path, "requirements": rel, "installed": True,
                 "note": "no active (uncommented) packages", "packages": {}}
-    _pip_install(sys.executable, specs, upgrade=upgrade)  # sys.executable == venv python here
-    present = _pip_present(sys.executable, [_dist_name(s) for s in specs])
-    return {"target": cap_or_path, "requirements": rel, "venv_python": str(_venv_python(VENV_DIR)),
+    venv = _capability_venv(cap)
+    if venv == VENV_DIR:
+        py = sys.executable                       # already re-exec'd inside the shared venv
+    else:
+        vpy = _ensure_venv(venv)                  # isolated: its own env, built on demand
+        if vpy is None:
+            return {"target": cap_or_path, "requirements": rel, "installed": False,
+                    "note": f"could not build the isolated venv {venv.name}"}
+        py = str(vpy)
+    _pip_install(py, specs, upgrade=upgrade)
+    present = _pip_present(py, [_dist_name(s) for s in specs])
+    return {"target": cap_or_path, "requirements": rel, "venv_python": str(_venv_python(venv)),
+            "isolated": venv != VENV_DIR,
             "packages": present, "gaps": sorted(d for d, ok in present.items() if not ok),
             "installed": True}
 
@@ -434,7 +478,9 @@ def _print_install(rep: dict) -> None:
     if not rep.get("installed"):
         w(f"[deps] {rep['target']}: {rep.get('note', 'not installed')}")
         return
-    w(f"[deps] {rep['target']} -> {rep.get('requirements', '')} (into {VENV_DIR.name})")
+    into = Path(rep.get("venv_python", VENV_DIR)).parent.parent.name or VENV_DIR.name
+    w(f"[deps] {rep['target']} -> {rep.get('requirements', '')} (into {into}"
+      f"{' — ISOLATED, its pins cannot be downgraded by another capability' if rep.get('isolated') else ''})")
     for d, ok in (rep.get("packages") or {}).items():
         w(f"  {'OK ' if ok else '-- '}{d}")
     if rep.get("gaps"):
@@ -444,10 +490,18 @@ def _print_install(rep: dict) -> None:
 def main(argv=None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
 
-    # --python-path: print the managed-venv interpreter (built or not) — the "exact spot" a GUI launch
-    # or a Claude Desktop MCP `command` can point at. Print-only; wiring those is out of scope.
+    # --python-path [capability]: print the managed-venv interpreter (built or not) — the "exact
+    # spot" a GUI launch or a Claude Desktop MCP `command` can point at. An isolated capability
+    # (e.g. mcp_server) lives in its OWN venv, so name it to get the right interpreter. Print-only.
     if "--python-path" in args:
-        print(str(_venv_python(VENV_DIR)))
+        rest = [a for a in args[args.index("--python-path") + 1:] if not a.startswith("-")]
+        cap = None
+        if rest:
+            cap = next((c for c in _load_capabilities() if c["id"] == rest[0]), None)
+            if cap is None:
+                print(f"unknown capability: {rest[0]}", file=sys.stderr)
+                return 2
+        print(str(_venv_python(_capability_venv(cap))))
         return 0
 
     # --install <cap|path> / --install-all: install into .harvest-venv, never global (Option 1).

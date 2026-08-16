@@ -3,7 +3,8 @@
 version: 2
 updates:
   - package-ecosystem: "pip"
-    directory: "/tools"          # scans tools/requirements-*.txt (docintel, scraper, office, media, cloud)
+    directory: "/tools"          # scans EVERY tools/requirements-*.txt in this directory
+                                 # (14 today, including mcp and security) — not a fixed list
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5

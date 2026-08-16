@@ -43,3 +43,10 @@ response = client.chat.completions.create(
 python3 tools/export_openai.py    # rebuilds tools.yaml + tools.json
 python3 tools/export_chatgpt.py   # also rebuild the ChatGPT web version
 ```
+
+## `actions-openapi.json` (generated — do not hand-edit)
+`tools/export_actions_schema.py` renders it from the MCP tool registry
+(`tools/mcp_tooldefs.py`); `sync_check` check 22 fails if the committed file differs from a
+fresh render. It is the Custom GPT **Actions** door: a teacher imports it by URL from a hosted
+deployment (`deploy/mcp/README.md`), which substitutes its own host at serve time. The
+committed copy carries a placeholder URL on purpose — the repo never points at a live endpoint.

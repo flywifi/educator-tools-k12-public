@@ -20,7 +20,7 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
   `validate_document.py` — governance/quality/output validators.
 - `deps_preflight.py`, `doctor_env.py` — dependency + environment preflight. `deps_preflight.py
   --install <capability>` / `--install-all` installs optional capabilities into the isolated
-  `.harvest-venv` (wheels-only; never system Python → no macOS/Homebrew PEP 668); `--python-path`
+  `.harvest-venv` (wheels-only; never system Python → no macOS/Homebrew PEP 668). **One capability opts out: `mcp_server` is `"isolated": true`** (semgrep pins `mcp<2` and a shared venv silently downgraded the SDK), so it installs into `.harvest-venv-mcp_server` and its interpreter is `--python-path mcp_server`, not the bare form. `--python-path [capability]`
   prints that venv's interpreter for a Claude Desktop MCP `command`/GUI launch.
 - `mcp_tooldefs.py` — the MCP tool registry: 8 read-only tools (verified-standards search,
   course/school lookup, CPALMS resources, fabrication-blocking code verification,
@@ -32,7 +32,12 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
 - `mcp_http_server.py` — the HOSTED leg (claude.ai connectors / ChatGPT): streamable-HTTP /mcp
   + REST /v1/* + /openapi.json on one app. Needs `--install mcp_server`; see `deploy/mcp/`.
 - `export_actions_schema.py` — generates the Custom GPT Actions OpenAPI + the tool-surface
-  snapshot from the registry (`--check` = sync_check check 22).
+  snapshot from the registry (`--check` = sync_check check 22). **Check 23** is the companion
+  gate the first release lacked: it compares the schema the `mcp` SDK derives for Claude against
+  the same registry, the divergence check 22 structurally cannot see.
+- `mcp_smoke.py` — one-command PASS/FAIL smoke for the tool surface on the machine it runs on
+  (launcher resolution per OS, index state, a live stdio round trip; `--hosted` adds the
+  loopback HTTP handshake). Designed to be run on a Mac or Windows box and pasted back.
 - `build_mcpb.py` — stages the one-click Claude Desktop extension bundle (`dist/mcpb-staging/`;
   maintainer runs `mcpb pack` on top).
 
@@ -69,6 +74,13 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
 - `run_benchmark.py` — the evidence-gated benchmark harness (`--check`, `--report`).
 - `make_feed.py`, `feeds_import.py`, `feeds_publish.py`, `feeds_update.py`, `verify_feeds.py`,
   `seed_curator.py`, `seed_probe.py` — content-feed tooling.
+
+## Also in tools/ (not detailed above)
+`cpalms_verify.py` + `verify_standards.py` + `audit_overlays.py` + `currency_recheck.py`
+(the standards verification chain — see `docs/RUNBOOK-cpalms.md`), `export_plugin_manifest.py`
+(generated plugin/marketplace metadata; sync_check check 21), `docintel_run.py`,
+`sync_cache.py`, `fetch_diag.py`, `context_demo.py`. Every tool with a `--self-test` is run by
+`.github/workflows/ci.yml`; if you add one, add the step in the same commit.
 
 ## Non-negotiable invariants
 - After editing anything under `shared/` or `protocol-layer/`, run `python3 tools/sync_check.py`.

@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-07-16 | owner: macos-maintainer -->
+<!-- last_reviewed: 2026-08-16 | owner: macos-maintainer -->
 # macOS support + `mac-lint` — maintainer notes & findings log
 
 Home for the repo's macOS cross-platform work: the `mac-lint` static guard and a **living log** of
@@ -22,16 +22,18 @@ defects we fixed, so a Linux-only CI can't let a Mac regression slip back in:
 Known limitations (kept deliberately, to preserve zero false positives on a hard gate):
 `Path.open()` and other attribute-call opens on untyped receivers are not detected (add
 `encoding=` anyway); string-command spawns (`subprocess.run("python3 …", shell=True)`) are
-**bandit's** beat (security_scan gates `shell=True` at HIGH); an unparseable `.py` is skipped with a
-`[note]` (it cannot run either).
+**bandit's** beat (security_scan gates `shell=True` at HIGH). An unparseable `.py` used to be
+skipped with a `[note]`; since 2026-08-16 it is a **finding** — a file that cannot be parsed cannot
+run, and a note plus a green exit hid a real SyntaxError during that very round.
 
 Run it:
 ```bash
 python3 tools/mac_audit.py            # report; exit 1 on findings
 python3 tools/mac_audit.py --json
 ```
-It is also enforced as **`tools/sync_check.py` check 19** (hard gate; degrades to a `[note]` if the
-module can't be imported, like checks 12–14). Escape hatch for an intentional case: put
+It is also enforced as **`tools/sync_check.py` check 19** (hard gate). It no longer degrades to a
+`[note]` when the module cannot be imported — since 2026-08-16 every guard that crashes is a
+failure, because a guard that cannot run is not a guard that found nothing (checks 12–20). Escape hatch for an intentional case: put
 `# mac-audit: ignore` on **any line of the offending call** (multi-line calls included — end-of-call
 placement works).
 
@@ -59,7 +61,7 @@ hardware to observe (see the on-Mac runbook you keep outside the repo).
 | D5 | Hardcoded `/tmp` in a workflow example | **RESOLVED** | `skills/operations/standards-updater/` uses portable relative paths |
 | D6 | Bare `python` in a harvest doc | **RESOLVED** | `canonical-sources/schools/HARVESTING.md` → `python3` |
 | E1 | PEP 668 `externally-managed-environment` install break | **UNTESTED** — fix landed, awaits on-Mac validation | `tools/deps_preflight.py --install <capability>` installs into the managed `.harvest-venv` (wheels-only, never system Python); `--python-path` exposes the venv interpreter for F2/F3. Verify the exact error text on a Mac. |
-| E2 | Homebrew tools invisible under a GUI/MCP PATH | **OPEN** — partly fixed (soffice=D1) + doc'd | MCP absolute-path guidance in `docs/DEPLOYMENT_SURFACES.md`; a general binary resolver is a follow-up |
+| E2 | Homebrew tools invisible under a GUI/MCP PATH | **UNTESTED** — general resolver shipped 2026-08-16 (`shared/health/binaries.py`); needs one Mac run to close | `find_binary()` replaces four separate PATH-only probes and adds BOTH Homebrew prefixes (`/opt/homebrew`, `/usr/local`), which the old `_find_soffice` listed for neither. Darwin branch is exercised by injected-lookup probes on Linux, so it is simulated, not run: `python3 shared/health/binaries.py` on a Mac prints what resolved and how. |
 | E3 | Stale right-click Gatekeeper guidance (Sequoia) | **OPEN** — doc'd; verify on-device | `docs/DEPLOYMENT_SURFACES.md` (System Settings flow) |
 
 ### New finding template (append below as you test)
@@ -119,6 +121,22 @@ All confirmed findings fixed in this round; probes re-run and flipped:
   workaround, applied).
 - **M3 — UNTESTED**: the stdlib server on the Xcode CLT stub `/usr/bin/python3` (design target:
   stdlib-only, Python ≥3.10; the stub qualifies on paper).
+- **M4 — UNTESTED (added 2026-08-16)**: `.mcp.json`'s `${TOS_PYTHON:-python3}` /
+  `${CLAUDE_PROJECT_DIR:-.}` expansions resolving in a real Claude Code session — the substitution
+  syntax is documented, but only a live run proves the default branch is taken when the vars are
+  unset. Set `TOS_PYTHON` to `python3 tools/deps_preflight.py --python-path` output to pin the
+  shared managed venv (the stdio leg is stdlib, so the shared one is the right answer here; the
+  hosted leg would need `--python-path mcp_server`). Pin the
+  managed venv interpreter (the E1/E2 answer for a Mac).
+- **M5 — UNTESTED (added 2026-08-16)**: the `.mcpb` `platform_overrides.win32` branch. It exists
+  to keep Windows working and is unobservable on a Mac; what a Mac *can* confirm is that the
+  darwin path still launches with plain `python3` after the manifest moved to
+  `manifest_version 0.3`.
+- **M6 — OPEN, not fixable here (added 2026-08-16)**: the plugin manifest (`plugin.json`) has no
+  per-OS command and no `${VAR:-default}` form, so Door 1 launches with a bare `python3` and does
+  not start on a Windows box with a python.org Python. Documented workaround (user-scope
+  `claude mcp add`) in `implementation/mcp/README.md`; `mac_audit`'s json-launcher check exempts
+  this one launcher by name *only while that workaround stays documented*.
 
 ## Sources & freshness (keeping the research citations verifiable)
 Every authoritative source behind the macOS findings is registered in
@@ -146,8 +164,12 @@ declared only if it equals a registered URL after normalization (scheme/host cas
 ± trailing slash) or adds only a `#fragment`/`?query` to a registered page. A registered *root*
 does **not** bless deeper pages — each distinct page cited must be registered, because each page is
 what goes stale.
-Gotcha: `state.last_checked` must be a full timezone-aware ISO timestamp (a bare date crashes the
-age math in `source_currency`).
+Gotcha: write `state.last_checked` as a full timezone-aware ISO timestamp. (Corrected
+2026-08-16: this previously said a bare date *crashes* the age math. It does not —
+`source_currency._parse_dt` normalises `2026-06-28` to midnight UTC and the age math runs
+fine, measured. The real cost is up to 24h of imprecision plus a second storage form to
+reason about, which is why the convention stands; 12 registry entries carried bare dates
+and were normalised.)
 
 ## Where these lessons live (component-local docs)
 The macOS knowledge is folded into the docs a maintainer of each area actually reads:

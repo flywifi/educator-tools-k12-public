@@ -31,11 +31,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": null,
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": null,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": null
+        "fetch_prong": null,
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "needs_browser_save",
       "probe_note": "[2026-06-28] direct fetch fails (bot-blocked, no archive); MSID DATA is obtained via the eds.fldoe.org EDS app browser-save — see canonical-sources/schools/HARVESTING.md",
@@ -52,11 +53,12 @@
         "etag": null,
         "last_modified": null,
         "content_sha256": "298abd251d45140e9ad7f33c2061205894c222ed6251b3489b28bbdb49406606",
-        "last_checked": "2026-06-28",
+        "last_checked": "2026-06-28T00:00:00+00:00",
         "last_status": 200,
         "effective_date": null,
         "superseded_by": null,
-        "fetch_prong": "browser_headers"
+        "fetch_prong": "browser_headers",
+        "last_checked_note": "normalised 2026-08-16 from the bare date 2026-06-28; midnight UTC is what the age math already inferred"
       },
       "probe_status": "live_page_no_feed",
       "probe_note": "[2026-06-28] live (200) via browser_headers; no discoverable RSS feed",

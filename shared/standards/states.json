@@ -1,6 +1,6 @@
 {
   "_comment": "National standards overlay. ONLY Florida is fully populated (status=populated, verified codes + adapter + corpus). Every other state is a STUB with room to fill in: set its status to 'populated', fill subjects[*].framework/source/example, set codes_verified, and add adapter + resources_dir. See state-standards-map.md 'Populating a state'. Verified June 2026.",
-  "updated": "2026-06-22",
+  "updated": "2026-08-16",
   "schema": {
     "status": [
       "populated",

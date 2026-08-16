@@ -1,3 +1,4 @@
+<!-- last_reviewed: 2026-08-16 | owner: architecture-maintainer -->
 # ARCHITECTURE.md
 ## Teacher Operating System (TOS) — Architecture
 Governance document (Quality Gates §2.1). Authoritative description of how the ecosystem is built.
@@ -75,6 +76,22 @@ Three rules make this trustworthy:
 
 `tools/cpalms_verify.py` produces overlays (network, polite, robots-respecting, resumable) in two
 phases — verify, then a human-reviewed apply. Nothing is auto-applied.
+
+## 5b. The tool surface (MCP) — the same corpus, callable
+The engines above are *documents the model reads*. The same verified data is also exposed as
+**eight read-only tools** so an assistant can look a standard up rather than recall it:
+`tools/mcp_tooldefs.py` is the single registry (names, JSON Schemas, governance-bearing
+descriptions, handlers), and four delivery legs serve it — plugin-shipped stdio, the Claude
+Desktop `.mcpb` bundle, a hosted streamable-HTTP endpoint (dormant until someone deploys it),
+and a generated OpenAPI document for Custom GPT Actions.
+
+Two architectural rules make that safe rather than merely convenient. **The registry is the
+only definition**: the advertised schema is enforced at call time on every leg, and `sync_check`
+checks 22 and 23 hold the ChatGPT-side artifacts and the Claude-side derived schema to it, so
+the two platforms cannot be told different rules. **The surface is read-only by construction**:
+every tool carries `readOnlyHint`, and the excluded operations (index rebuild, overlay writes,
+any harvest/crawl path) are listed by name in the registry docstring — the trust chain in §5a
+is what the tools serve, never something they can alter.
 
 ## 6. Dependency order
 
