@@ -142,12 +142,30 @@ DATED_MANIFESTS = (
 )
 
 
+def _is_shallow() -> bool:
+    """True when the checkout has no real history — every file then looks like it changed at HEAD.
+
+    This is not hypothetical: `actions/checkout@v4` defaults to fetch-depth 1, so in CI
+    `git log -1 -- <file>` returns HEAD's date for EVERY tracked file. Check 24 therefore reported
+    six manifests as stale the first time CI ran on a day later than the day they were stamped —
+    a false failure, and one that hid until the calendar moved. Checks that ask git "when did this
+    last change" must answer "I cannot tell" here, not a wrong date."""
+    try:
+        out = subprocess.run(["git", "rev-parse", "--is-shallow-repository"],
+                             cwd=ROOT, capture_output=True, text=True, timeout=10).stdout.strip()
+        return out == "true"
+    except Exception:
+        return False
+
+
 def git_commit_date(path: Path, exclude_names=()):
     """The date of the last commit touching `path` — or None when git cannot answer.
 
-    None is returned for a `git archive` export or a missing git binary, and callers must treat it
-    as "no comparison available", never as "up to date". `exclude_names` drops matching basenames
-    anywhere beneath a directory argument via git pathspec magic."""
+    None is returned for a `git archive` export, a missing git binary, or a SHALLOW clone, and
+    callers must treat it as "no comparison available", never as "up to date". `exclude_names`
+    drops matching basenames anywhere beneath a directory argument via git pathspec magic."""
+    if _is_shallow():
+        return None
     try:
         rel = path.relative_to(ROOT).as_posix() if path != ROOT else "."
         spec = [rel] + [f":(exclude){rel}/**/{n}" for n in exclude_names]

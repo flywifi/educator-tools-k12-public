@@ -14,6 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Checks 18 and 24 ask git when a file last changed. The default fetch-depth of 1
+          # makes every tracked file look like it changed at HEAD, which turned check 24
+          # into six false failures the first time CI ran a day after the manifests were
+          # stamped. Full history is what those checks actually need.
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -154,6 +160,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Checks 18 and 24 ask git when a file last changed. The default fetch-depth of 1
+          # makes every tracked file look like it changed at HEAD, which turned check 24
+          # into six false failures the first time CI ran a day after the manifests were
+          # stamped. Full history is what those checks actually need.
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
