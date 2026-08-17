@@ -2,7 +2,7 @@
 ## Quality Gates — Operational Rubric (skill self-check)
 Canonical source. **Synced** into each skill's `references/quality-gates.md`
 (see `tools/sync_manifest.json`) — do not edit per-skill copies; edit here and run
-`tools/sync_check.py`. The full spec is `protocols/quality-gates.md`; `quality-review` is the
+`tools/sync_check.py`. The full spec is `protocol-layer/quality-gates.md`; `quality-review` is the
 authoritative executor. Every skill self-checks against this before handoff (defense in depth).
 
 ---
@@ -38,7 +38,7 @@ Fabricating a code/standard/citation is **always** a critical failure, in every 
 *absence* of a mandated framework where none applies is correct; *invented* codes never are.
 
 **A real code whose text is unverified is not a fabrication.** When the resolver returns
-`needs_review: true` (`protocols/standards-verification.md` §3a), the code exists on CPALMS and
+`needs_review: true` (`protocol-layer/standards-verification.md` §3a), the code exists on CPALMS and
 CPALMS's own statement is what gets cited — what is missing is corroboration between that text and
 our stored corpus. Score it as an **Accuracy** item requiring human confirmation before publication,
 not as an Integrity critical failure. `tools/validate_outputs.py` reflects this: a warning
@@ -58,15 +58,15 @@ not as an Integrity critical failure. `tools/validate_outputs.py` reflects this:
 
 ## Critical failures → Rejected regardless of composite (never override)
 Fabricated citation/standard/source/result · real student PII · unsafe or legal-overreach output ·
-"approval" without evidence. (Full list: `protocols/quality-gates.md` §6.)
+"approval" without evidence. (Full list: `protocol-layer/quality-gates.md` §6.)
 
 ## On not-Approved
-- Resolve contradictions with `protocols/conflict-protocol.md` (integrity > safety > governance >
+- Resolve contradictions with `protocol-layer/conflict-protocol.md` (integrity > safety > governance >
   accuracy/alignment > preference > presentation).
-- Recover/degrade honestly with `protocols/failure-recovery.md` — never fabricate to "pass."
+- Recover/degrade honestly with `protocol-layer/failure-recovery.md` — never fabricate to "pass."
 
 ## Emit a decision record
-Record the outcome in the artifact's metadata block (`protocols/metadata-schema.md`): per-dimension
+Record the outcome in the artifact's metadata block (`protocol-layer/metadata-schema.md`): per-dimension
 scores, composite, decision, evidence, rationale, and `human_review_required: true`.
 State each clean dimension as "no issues found — checked: <what was examined>", never "error-free";
 name the weakest dimension as `residual_risk` (review limits, not defects) even when Approved.

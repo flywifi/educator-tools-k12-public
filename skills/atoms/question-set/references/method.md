@@ -35,10 +35,10 @@ Before generating, satisfy the governance protocols:
   disagree about which standard/rule/SOP governs, settle it with the canonical source-of-truth resolver
   (`shared/context/sot_resolver.py`) and attach its decision record + minority report
   (`shared/context/source-of-truth.md`).
-- **assumptions** — log anything the request didn't specify (`protocols/assumptions-protocol.md`);
-- **metadata** — initialize the artifact metadata block (`protocols/metadata-schema.md`);
+- **assumptions** — log anything the request didn't specify (`protocol-layer/assumptions-protocol.md`);
+- **metadata** — initialize the artifact metadata block (`protocol-layer/metadata-schema.md`);
 - **standards-verification** — arm verification for any standards to be cited
-  (`protocols/standards-verification.md`).
+  (`protocol-layer/standards-verification.md`).
 
 ### 3. Generation  *(owned by the capability skill)*
 The domain work, itself a mini-pipeline:
@@ -59,13 +59,13 @@ and internally consistent?
 
 ### 5. Quality Gates  *(owned by `quality-review`)*
 Score the 9 dimensions in gate order, apply thresholds + critical-failure overrides
-(`shared/quality/quality-gates.md`; full spec `protocols/quality-gates.md`). Outcome: Approved /
+(`shared/quality/quality-gates.md`; full spec `protocol-layer/quality-gates.md`). Outcome: Approved /
 Conditionally Approved / Remediation Required / Rejected. On failure → remediate
-(`protocols/failure-recovery.md`) or resolve conflicts (`protocols/conflict-protocol.md` — source-vs-source
+(`protocol-layer/failure-recovery.md`) or resolve conflicts (`protocol-layer/conflict-protocol.md` — source-vs-source
 conflicts go through the canonical resolver and carry a minority report).
 
 ### 6. Approval / Certification
-Record the decision (`protocols/metadata-schema.md` decision record); assign a certification level
+Record the decision (`protocol-layer/metadata-schema.md` decision record); assign a certification level
 where applicable (QG §59).
 
 ### 7. Release
