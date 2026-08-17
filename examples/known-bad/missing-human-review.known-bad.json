@@ -1,0 +1,8 @@
+{
+  "_comment": "NEGATIVE CONTROL — deliberately invalid; must FAIL tools/validate_outputs.py; not a template. Omits human_review_required ENTIRELY rather than setting it false. Before 2026-08-17 this PASSED: the rule only fired when the key was present, so the likelier failure — a generator that forgets the flag — went uncaught.",
+  "artifact_type": "lesson_plan",
+  "grade_band": "3-5",
+  "subject": "Math",
+  "standards_set": "B.E.S.T. Math 2020",
+  "standards_cited": ["MA.3.NSO.1.1"]
+}

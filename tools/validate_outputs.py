@@ -44,9 +44,23 @@ def rule_checks(art: dict) -> list[dict]:
     """Universal claim catalog — governance + no-fabrication + no-real-PII heuristics."""
     fails = []
     # Governance: governed artifacts must carry human_review_required: true.
-    if "human_review_required" in art and art["human_review_required"] is not True:
+    # Was `if "human_review_required" in art and ... is not True`, which only fired when the key was
+    # PRESENT — so an artifact omitting it entirely passed clean. Omission is the likelier failure
+    # (a generator that forgets is more common than one that writes `false`), and the invariant is
+    # that every governed artifact CARRIES the flag. Caught by
+    # examples/known-bad/missing-human-review.known-bad.json, which passed validation before this.
+    # Scoped by `artifact_type`, which is what makes an object a governed ARTIFACT rather than
+    # input data. Requiring the flag unconditionally was too broad — it demanded it of
+    # shared/students/students.example.json (a data file) and slide-spec.example.json (a spec for
+    # producing an artifact), neither of which is decision-support output. Both failure modes are
+    # now covered: an artifact that OMITS the flag, and any object that sets it to something other
+    # than true.
+    if art.get("artifact_type") and art.get("human_review_required") is not True:
         fails.append({"rule": "human_review_required", "severity": "blocking",
                       "guidance": "set human_review_required: true — outputs are decision support"})
+    elif "human_review_required" in art and art["human_review_required"] is not True:
+        fails.append({"rule": "human_review_required", "severity": "blocking",
+                      "guidance": "human_review_required is present but not true — remove it or set it true"})
     # No fabricated standards: cited codes must be non-empty strings.
     for key in ("standards_cited", "standards_set"):
         vals = art.get(key)

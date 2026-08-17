@@ -1,4 +1,38 @@
 {
-  "_note": "Add 2-3 regression cases here. Each case: {id, input, expected_output_shape, must_contain, must_not_contain}",
-  "skill_name": "email-draft"
+  "skill_name": "email-draft",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_from_draft_an_email",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "draft an email",
+      "assert": {
+        "atom": "email-draft",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_professional_email",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "professional email",
+      "assert": {
+        "atom": "email-draft",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_staff_email",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "staff email",
+      "assert": {
+        "atom": "email-draft",
+        "basis": "atom_keyword_match"
+      }
+    }
+  ]
 }

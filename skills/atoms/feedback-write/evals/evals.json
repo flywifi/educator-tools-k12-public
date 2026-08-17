@@ -1,4 +1,38 @@
 {
-  "_note": "Add 2-3 regression cases here. Each case: {id, input, expected_output_shape, must_contain, must_not_contain}",
-  "skill_name": "feedback-write"
+  "skill_name": "feedback-write",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_from_write_feedback",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "write feedback",
+      "assert": {
+        "atom": "feedback-write",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_model_feedback",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "model feedback",
+      "assert": {
+        "atom": "feedback-write",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_feedback_on_student_work",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "feedback on student work",
+      "assert": {
+        "atom": "feedback-write",
+        "basis": "atom_keyword_match"
+      }
+    }
+  ]
 }

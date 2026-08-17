@@ -231,6 +231,46 @@ def kind_of(case: dict) -> str:
     return "prompt"              # Dialects A/D: model-facing
 
 
+def grade_triggers() -> tuple:
+    """Grade every populated `trigger_evals` block through the deterministic router.
+
+    Trigger evals test the DESCRIPTION's routing, not the skill's behaviour. The skill template has
+    mandated >=10 positive / >=5 negative "before shipping" since it was written, with a pass bar of
+    >=80% positive and <=20% negative, and 2+ negative activations meaning DETECTOR SUSPECT. Nothing
+    ever read the block — `grep trigger_evals` over all .py returned zero — so the bar had never
+    been measured once.
+
+    Graded here through shared/routing/router.py, which is pure and offline, so no model is needed.
+    Returns (rows, suspect_count). This is a MEASUREMENT, not yet a gate: see the note printed with
+    the results."""
+    sys.path[:0] = [str(ROOT / "shared")]
+    try:
+        from routing.router import route
+    except Exception as e:
+        return [], f"router unavailable: {e.__class__.__name__}: {e}"
+    rows = []
+    for f in sorted(glob.glob(str(ROOT / "skills/**/evals/evals.json"), recursive=True)):
+        doc = json.loads(Path(f).read_text(encoding="utf-8"))
+        tg = doc.get("trigger_evals") or {}
+        pos, neg = tg.get("positive") or [], tg.get("negative") or []
+        if not pos and not neg:
+            continue
+        skill = Path(f).parts[-3]
+        bar = tg.get("pass_bar") or {}
+        hit = sum(1 for p in pos if route({"text": p["prompt"]}).get("recommended_skill") == skill)
+        act = sum(1 for n in neg if route({"text": n["prompt"]}).get("recommended_skill") == skill)
+        rows.append({
+            "skill": skill,
+            "positive": f"{hit}/{len(pos)}", "positive_rate": round(hit / len(pos), 2) if pos else None,
+            "positive_min": bar.get("positive_min"),
+            "negative_activated": f"{act}/{len(neg)}",
+            "negative_rate": round(act / len(neg), 2) if neg else None,
+            "negative_max": bar.get("negative_max"),
+            "detector_suspect": act >= 2,
+        })
+    return rows, ""
+
+
 def collect() -> list:
     out = []
     for f in sorted(glob.glob(str(ROOT / "skills/**/evals/evals.json"), recursive=True)):
@@ -253,10 +293,31 @@ def main(argv) -> int:
     ap.add_argument("--run", action="store_true", help="execute command/call cases")
     ap.add_argument("--check", action="store_true", help="shape only; execute nothing (CI default)")
     ap.add_argument("--allow-network", action="store_true")
+    ap.add_argument("--triggers", action="store_true",
+                    help="grade trigger_evals through the deterministic router")
     ap.add_argument("--self-test", action="store_true")
     a = ap.parse_args(argv)
     if a.self_test:
         return _self_test()
+    if a.triggers:
+        rows, err = grade_triggers()
+        if err:
+            print(err); return 2
+        if not rows:
+            print("no skill has a populated trigger_evals block"); return 0
+        print("trigger evals, graded through shared/routing/router.py (deterministic, offline):\n")
+        for r in rows:
+            flag = "  <-- BELOW BAR" if (r["positive_min"] and r["positive_rate"] is not None
+                                         and r["positive_rate"] < r["positive_min"]) else ""
+            print(f"  {r['skill']:20s} positive {r['positive']:>7s} (rate {r['positive_rate']}, "
+                  f"bar >={r['positive_min']}){flag}")
+            print(f"  {'':20s} negative {r['negative_activated']:>7s} (rate {r['negative_rate']}, "
+                  f"bar <={r['negative_max']})"
+                  + ("  <-- DETECTOR SUSPECT" if r["detector_suspect"] else ""))
+        print("\nMEASUREMENT ONLY — not wired into CI. A skill below its positive bar means the "
+              "ROUTER or the DESCRIPTION needs changing, and both are product behaviour changes "
+              "that need a human decision, not a silent edit from the tool that found the problem.")
+        return 0
 
     cases = collect()
     tally = {"pass": 0, "fail": 0, "skip": 0, "unrunnable": 0, "prompt": 0, "broken": 0}

@@ -1,4 +1,38 @@
 {
-  "_note": "Add 2-3 regression cases here. Each case: {id, input, expected_output_shape, must_contain, must_not_contain}",
-  "skill_name": "worked-example"
+  "skill_name": "worked-example",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_from_worked_example",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "worked example",
+      "assert": {
+        "atom": "worked-example",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_model_problem",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "model problem",
+      "assert": {
+        "atom": "worked-example",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_step_by_step_solution",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "step by step solution",
+      "assert": {
+        "atom": "worked-example",
+        "basis": "atom_keyword_match"
+      }
+    }
+  ]
 }

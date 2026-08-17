@@ -1,4 +1,38 @@
 {
-  "_note": "Add 2-3 regression cases here. Each case: {id, input, expected_output_shape, must_contain, must_not_contain}",
-  "skill_name": "progress-monitor-plan"
+  "skill_name": "progress-monitor-plan",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_from_progress_monitoring_plan",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "progress monitoring plan",
+      "assert": {
+        "atom": "progress-monitor-plan",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_probe_schedule",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "probe schedule",
+      "assert": {
+        "atom": "progress-monitor-plan",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_monitoring_schedule",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "monitoring schedule",
+      "assert": {
+        "atom": "progress-monitor-plan",
+        "basis": "atom_keyword_match"
+      }
+    }
+  ]
 }

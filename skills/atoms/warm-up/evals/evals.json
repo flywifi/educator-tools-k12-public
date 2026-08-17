@@ -1,4 +1,38 @@
 {
-  "_note": "Add 2-3 regression cases here. Each case: {id, input, expected_output_shape, must_contain, must_not_contain}",
-  "skill_name": "warm-up"
+  "skill_name": "warm-up",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_from_bell_ringer",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "bell ringer",
+      "assert": {
+        "atom": "warm-up",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_do_now",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "do now",
+      "assert": {
+        "atom": "warm-up",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_warm-up_activity",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "warm-up activity",
+      "assert": {
+        "atom": "warm-up",
+        "basis": "atom_keyword_match"
+      }
+    }
+  ]
 }

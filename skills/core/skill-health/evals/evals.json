@@ -9,7 +9,7 @@
         "blocking_issues": [],
         "human_review_required": true
       },
-      "_note": "Was `readiness_band: strong`, which has been FALSE for as long as the 44 eval warnings have existed: the score is 100-10*blocking-4*warning clamped at 0, so 44 warnings floor it at 0/not_ready while blocking_issues is empty. Asserting the band would assert a known-saturated metric (recorded as a residual risk in security/SECURITY_REVIEW.md). The meaningful invariant is that nothing BLOCKS. Corrected 2026-08-17, the first time any eval was run."
+      "_note": "Was `readiness_band: strong`, which was FALSE when this eval was first executed (2026-08-17): the scan reported `not_ready`. The cause turned out NOT to be a saturated metric, as I first assumed, but 44 warnings of which 43 were health.py's own false negative — it read routing.skills and never routing.atom_routes, so every correctly-registered atom was flagged 'not referenced'. With that fixed and teacher-core given the evals/ dir it lacked, the band IS `strong` again. The assertion stays on blocking_issues because that is the durable invariant; the band moves with any new warning and would re-couple this case to a number that is not about blocking."
     },
     {
       "name": "impact_reports_both_reference_lists",
