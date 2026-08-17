@@ -62,6 +62,7 @@ MAX_NAME, MAX_DESC = 64, 1024
 # resolves under the skill dir OR the repo root (so skill-local `examples/...` and repo-root
 # `shared/...` both work). Conservative anchors/extensions on purpose; assets/ is intentionally
 # excluded (output templates may be absent by design).
+# `protocols/` is a TRIPWIRE, not a live path — see _DOC_ANCHORS below for why it stays.
 _REF_ANCHORS = ("references/", "scripts/", "evals/", "examples/",
                 "protocol-layer/", "protocols/", "shared/", "tools/", "ledger/")
 _REF_EXTS = (".md", ".py", ".json", ".yaml", ".yml", ".txt", ".csv")
@@ -75,7 +76,17 @@ DOC_GUARDS_ENFORCE = True
 # repo layout; runtime stores (*.local.json) and historical records are excluded so the guard only
 # fires on real drift.
 _DOC_ANCHORS = ("skills/", "shared/", "protocol-layer/", "canonical-sources/", "tools/", "docs/",
-                "implementation/", "examples/", "ledger/", "security/", "changes/")
+                "implementation/", "examples/", "ledger/", "security/", "changes/",
+                # TRIPWIRE — `protocols/` was renamed to `protocol-layer/` (a git R100 rename) on
+                # 2026-06-28 and is NOT a real directory. It stays in this whitelist ON PURPOSE.
+                # An anchor list is a WHITELIST, so a path starting with an unknown prefix is
+                # silently skipped rather than flagged — which is exactly how 877 dead references
+                # survived seven weeks and a full doc audit: `_REF_ANCHORS` kept the legacy entry
+                # while `_DOC_ANCHORS`, written later against the new layout, did not. Naming the
+                # dead prefix here turns the blind spot into a trap: a reintroduced `protocols/x.md`
+                # now FAILS instead of vanishing. Do not "clean this up" — deleting this entry
+                # reopens the hole, and there is a twin in the commit that proves it.
+                "protocols/")
 DOC_PATH_ALLOW_FILES = {          # historical records — the paths in them are frozen at write time
     "ledger/quality-ledger.md", "changes/CHANGELOG.md",
 }
