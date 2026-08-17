@@ -39,4 +39,4 @@ Tags an objective or item with Bloom level (Remember through Create) and Webb DO
 - Replacing teacher professional judgment on rigor alignment
 
 ## Pipeline note
-Follows `references/method.md` at the Analysis step (rigor classification). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — Bloom/DOK classification is model-inferred; teacher should verify alignment.
+Follows `references/method.md` at the Analysis step (rigor classification). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — Bloom/DOK classification is model-inferred; teacher should verify alignment.

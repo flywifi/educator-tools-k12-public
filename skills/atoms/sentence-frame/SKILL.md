@@ -39,4 +39,4 @@ Creates sentence frames (fill-in-the-blank structures) and sentence stems (openi
 - Assessment accommodation (use atom-accommodation-match)
 
 ## Pipeline note
-Follows `references/method.md` at the Differentiation step (ELL scaffolding). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — frames must match the actual proficiency level of students in the class.
+Follows `references/method.md` at the Differentiation step (ELL scaffolding). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — frames must match the actual proficiency level of students in the class.

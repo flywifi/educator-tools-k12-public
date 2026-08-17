@@ -50,4 +50,4 @@ Generates a single assessment item with answer key. Supports multiple-choice, sh
 - Items without a standard — always pass a verified standard code
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step. Output conforms to `references/metadata-schema.md`. Generation step only. Run through atom-quality-check and atom-reading-level before including in a formal assessment. `human_review_required: true`.
+Follows `references/method.md` at the Generation step. Output conforms to `protocol-layer/metadata-schema.md`. Generation step only. Run through atom-quality-check and atom-reading-level before including in a formal assessment. `human_review_required: true`.

@@ -60,4 +60,4 @@ recalling from memory, so it cannot fabricate a code. Never fabricate a standard
 - Confirming whether a standard was repealed — route to standards-updater
 
 ## Pipeline note
-Output conforms to `references/metadata-schema.md`. Follows `references/method.md` at the Standards step only. No Generation or Differentiation step — this atom stops at Standards Alignment and returns. `human_review_required: true` because model-inferred matches are not guaranteed correct.
+Output conforms to `protocol-layer/metadata-schema.md`. Follows `references/method.md` at the Standards step only. No Generation or Differentiation step — this atom stops at Standards Alignment and returns. `human_review_required: true` because model-inferred matches are not guaranteed correct.

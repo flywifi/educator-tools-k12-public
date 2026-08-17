@@ -1,6 +1,6 @@
 ---
 name: standards-crosswalk
-description: "Map a standard from one framework to its closest equivalent in another framework. Use this atom when curriculum-mapping or standards-match needs to align across state frameworks. NEVER fabricate standard codes — return an honest gap if no match exists."
+description: "Map a standard from one framework to its closest equivalent in another framework. Use this atom when curriculum-mapping or standards-match needs to align across state frameworks. NEVER fabricate standard codes — return an honest gap if no match exists. Do NOT use this atom to verify that a code is current (use atom-standards-verify) or to author instructional content."
 ---
 
 # standards-crosswalk
@@ -38,4 +38,4 @@ Maps a standard to its nearest equivalent in a different framework (e.g., FL B.E
 - Replacing curriculum director review of crosswalk decisions
 
 ## Pipeline note
-Follows `references/method.md` at the Analysis step (standards crosswalk). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — crosswalk accuracy must be verified by a curriculum specialist.
+Follows `references/method.md` at the Analysis step (standards crosswalk). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — crosswalk accuracy must be verified by a curriculum specialist.

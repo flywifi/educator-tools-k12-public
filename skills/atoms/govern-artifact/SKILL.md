@@ -44,4 +44,4 @@ Stamps any artifact with governance metadata: provenance (where it came from), l
 - Security scanning
 
 ## Pipeline note
-Follows `references/method.md` at the Governance step (metadata attachment). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — provenance and confidence metadata should be verified.
+Follows `references/method.md` at the Governance step (metadata attachment). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — provenance and confidence metadata should be verified.

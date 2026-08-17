@@ -51,4 +51,4 @@ Given an antecedent and hypothesized function of a behavior, suggests a replacem
 - Using real student data
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (behavior strategy). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — behavior strategies must be developed with the behavior support team and family.
+Follows `references/method.md` at the Generation step (behavior strategy). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — behavior strategies must be developed with the behavior support team and family.

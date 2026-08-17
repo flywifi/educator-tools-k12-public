@@ -48,4 +48,4 @@ Returns a short list (2–5) of documented common student misconceptions for a t
 - Generating assessment items or activities (pass this output to atom-assessment-item or atom-activity-generate)
 
 ## Pipeline note
-Follows `references/method.md` at the Analysis step (pre-Generation). Output conforms to `references/metadata-schema.md`. Pre-Generation step. `human_review_required: true` — misconceptions are research-based but model-inferred; teacher should verify against district curriculum materials.
+Follows `references/method.md` at the Analysis step (pre-Generation). Output conforms to `protocol-layer/metadata-schema.md`. Pre-Generation step. `human_review_required: true` — misconceptions are research-based but model-inferred; teacher should verify against district curriculum materials.

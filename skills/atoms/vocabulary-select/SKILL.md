@@ -39,4 +39,4 @@ Identifies 5-10 key vocabulary words for a topic/passage, classified by Marzano 
 - Vocabulary for texts not yet selected (provide topic or passage)
 
 ## Pipeline note
-Follows `references/method.md` at the Analysis step (vocabulary selection). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — vocabulary selection depends on students' prior knowledge; teacher should adjust.
+Follows `references/method.md` at the Analysis step (vocabulary selection). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — vocabulary selection depends on students' prior knowledge; teacher should adjust.

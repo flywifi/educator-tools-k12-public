@@ -42,4 +42,4 @@ Estimates reading level of a text passage and returns a grade-band label, approx
 - Assigning a Lexile as a guaranteed authoritative measure — it's an estimate
 
 ## Pipeline note
-Follows `references/method.md` at the Analysis step (reading-level estimation). Output conforms to `references/metadata-schema.md`. Standards and Differentiation steps are skipped. This atom is a quality pre-check only. `human_review_required: true` — Lexile estimates are directional, not certified.
+Follows `references/method.md` at the Analysis step (reading-level estimation). Output conforms to `protocol-layer/metadata-schema.md`. Standards and Differentiation steps are skipped. This atom is a quality pre-check only. `human_review_required: true` — Lexile estimates are directional, not certified.

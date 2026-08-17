@@ -53,4 +53,4 @@ Creates a referral draft with all required fields (student info, reason, prior i
 - Making eligibility determinations
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (referral drafting). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — referral must be completed with actual data and submitted through district procedures.
+Follows `references/method.md` at the Generation step (referral drafting). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — referral must be completed with actual data and submitted through district procedures.

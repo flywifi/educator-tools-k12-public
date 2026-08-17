@@ -42,4 +42,4 @@ Generic guided-intake atom: given a question schema (fields, types, validation r
 - Replacing direct user input with AI-generated answers
 
 ## Pipeline note
-Follows `references/method.md` at the Intake step (user data collection). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — collected responses drive downstream generation and must be confirmed.
+Follows `references/method.md` at the Intake step (user data collection). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — collected responses drive downstream generation and must be confirmed.

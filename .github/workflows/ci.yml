@@ -98,6 +98,8 @@ jobs:
         run: python3 tools/run_evals.py --self-test
       - name: Run the executable eval cases (command + call kinds)
         run: python3 tools/run_evals.py --run
+      - name: Atom contract (declared Output vs atom-io.schema.json)
+        run: python3 tools/atom_contract.py
 
       - name: Package all skills (validates every skill is installable)
         run: python3 tools/package_skill.py --all

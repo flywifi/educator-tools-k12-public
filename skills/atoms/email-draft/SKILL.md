@@ -38,4 +38,4 @@ Creates a single professional email draft with appropriate tone, structure, and 
 - Emails containing real student data (placeholders only)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (email composition). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — email must be personalized and reviewed before sending.
+Follows `references/method.md` at the Generation step (email composition). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — email must be personalized and reviewed before sending.

@@ -40,4 +40,4 @@ Creates a single 3-5 minute warm-up activity (bell-ringer, do-now) that activate
 - Activities longer than 10 minutes (use atom-activity-generate)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (warm-up creation). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — teacher should verify appropriateness for their specific class.
+Follows `references/method.md` at the Generation step (warm-up creation). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — teacher should verify appropriateness for their specific class.

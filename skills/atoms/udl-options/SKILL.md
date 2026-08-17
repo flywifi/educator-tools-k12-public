@@ -46,4 +46,4 @@ Maps a learning barrier or activity to specific UDL 3.0 checkpoints (Engagement,
 - Replacing teacher knowledge of individual student needs
 
 ## Pipeline note
-Follows `references/method.md` at the Differentiation step (UDL options). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — UDL suggestions must be adapted to the specific classroom context.
+Follows `references/method.md` at the Differentiation step (UDL options). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — UDL suggestions must be adapted to the specific classroom context.

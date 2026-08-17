@@ -53,4 +53,4 @@ Generates measurable learning objectives (Students will be able to...) aligned t
 - Objectives without a standard code — always pass a verified standard
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (objectives only). Output conforms to `references/metadata-schema.md`. Generation step only (objectives). No activities, assessments, or differentiation — pass the output to atom-activity-generate, atom-assessment-item, or atom-differentiate. `human_review_required: true`.
+Follows `references/method.md` at the Generation step (objectives only). Output conforms to `protocol-layer/metadata-schema.md`. Generation step only (objectives). No activities, assessments, or differentiation — pass the output to atom-activity-generate, atom-assessment-item, or atom-differentiate. `human_review_required: true`.

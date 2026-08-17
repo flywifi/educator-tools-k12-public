@@ -50,4 +50,4 @@ Builds a single rubric with criteria rows and performance-level columns (e.g. Ex
 - Building multi-objective rubrics (call once per objective)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (rubric construction). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — rubric descriptors must be reviewed for grade-level appropriateness.
+Follows `references/method.md` at the Generation step (rubric construction). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — rubric descriptors must be reviewed for grade-level appropriateness.

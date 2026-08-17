@@ -38,4 +38,4 @@ Creates an answer key with correct answers and scoring notes for each assessment
 - Building rubrics (use atom-rubric-build)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (answer key). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — answer keys must be verified by a content expert.
+Follows `references/method.md` at the Generation step (answer key). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — answer keys must be verified by a content expert.

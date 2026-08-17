@@ -24,7 +24,7 @@ Parse raw file bytes into a structured document representation (UDOM tree). Used
 {
   "tool": "document-parse",
   "udom": {"type": "document", "children": [{"type": "heading", "text": "Chapter 1"}, {"type": "paragraph", "text": "..."}]},
-  "confidence": 0.95,
+  "confidence": "high",
   "recovery_note": "Full text extraction; no OCR gaps",
   "parser_used": "PyMuPDF",
   "unrecovered_regions": [],
@@ -38,4 +38,4 @@ Parse raw file bytes into a structured document representation (UDOM tree). Used
 - Document comparison or diff (this atom extracts, it does not compare)
 
 ## Pipeline note
-Follows `references/method.md` at the Ingestion step (raw file → UDOM). Output conforms to `references/metadata-schema.md`. Downstream steps (governance, analysis) are handled by the orchestrator. `human_review_required: true` — OCR/layout recovery is imperfect; teacher should verify critical content.
+Follows `references/method.md` at the Ingestion step (raw file → UDOM). Output conforms to `protocol-layer/metadata-schema.md`. Downstream steps (governance, analysis) are handled by the orchestrator. `human_review_required: true` — OCR/layout recovery is imperfect; teacher should verify critical content.

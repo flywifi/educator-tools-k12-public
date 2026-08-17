@@ -39,4 +39,4 @@ Rewrites a passage to hit a target grade-band reading level (simpler vocabulary,
 - Modifying meaning or factual content
 
 ## Pipeline note
-Follows `references/method.md` at the Differentiation step (reading-level adaptation). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — leveled text must preserve accuracy; teacher should verify.
+Follows `references/method.md` at the Differentiation step (reading-level adaptation). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — leveled text must preserve accuracy; teacher should verify.

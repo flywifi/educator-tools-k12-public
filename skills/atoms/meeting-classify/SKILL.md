@@ -37,7 +37,7 @@ Pure classification atom: infers meeting type (IEP, 504, MTSS, parent contact, o
   "tool": "meeting-classify",
   "meeting_type": "iep",
   "intent": "compliance",
-  "confidence": 0.95,
+  "confidence": "high",
   "evidence_strength": {"explicit": 5, "role_based": 4, "calendar": 3},
   "minority_report": null,
   "human_review_required": true
@@ -51,4 +51,4 @@ Pure classification atom: infers meeting type (IEP, 504, MTSS, parent contact, o
 - Routing to a skill (the orchestrator handles routing after classification)
 
 ## Pipeline note
-Follows `references/method.md` at the Analysis step (classification). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — meeting classification is model-inferred; teacher should verify before compliance actions.
+Follows `references/method.md` at the Analysis step (classification). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — meeting classification is model-inferred; teacher should verify before compliance actions.
