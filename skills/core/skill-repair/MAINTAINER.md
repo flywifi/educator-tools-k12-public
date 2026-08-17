@@ -19,7 +19,7 @@ Skill-specific:
 - **Stdlib / always runs.** The repair tool must work with zero optional libraries.
 - **Honesty.** Never present a patch as complete if the risky parts could not be validated; if the real
   problem is architectural drift, recommend a refactor instead of hiding it in a small patch.
-- **Canon, not copies.** Fix a synced reference in `shared/`/`protocols/` and re-sync — never edit a
+- **Canon, not copies.** Fix a synced reference in `shared/`/`protocol-layer/` and re-sync — never edit a
   per-skill copy.
 
 ## Known failure modes

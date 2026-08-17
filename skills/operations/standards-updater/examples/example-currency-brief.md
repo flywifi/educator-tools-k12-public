@@ -36,7 +36,7 @@
   **primary FLDOE source could not be confirmed** at run time → recorded as a gap, **excluded from
   results** until verified on the primary source (per the verification rule).
 
-## Metadata (per `protocols/metadata-schema.md`)
+## Metadata (per `protocol-layer/metadata-schema.md`)
 ```yaml
 artifact_type: currency-brief
 reviewer: standards-updater (self-check) then quality-review

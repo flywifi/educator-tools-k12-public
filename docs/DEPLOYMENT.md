@@ -56,7 +56,7 @@ self-contained (synced references travel in the bundle).
 - **CI gate:** `.github/workflows/ci.yml` runs the drift guard, validates evals, and packages all
   skills on every push — a change that breaks sync or packaging fails CI.
 - **Re-sync on shared changes:** because skills carry synced copies of shared references, a change to
-  `shared/`/`protocols/` requires re-packaging the affected skills so bundles aren't stale (the drift
+  `shared/`/`protocol-layer/` requires re-packaging the affected skills so bundles aren't stale (the drift
   guard catches divergence in-repo).
 - **Registry currency:** `python3 tools/registry_currency.py --summary` watches the stored
   authoritative registries (connectors, grade-scales, frameworks, ontology, routing, records field

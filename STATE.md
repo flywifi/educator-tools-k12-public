@@ -182,7 +182,7 @@ School-type **exception rule-sets** (`school-types.json`):
 traditional/magnet/charter/district-virtual/FLVS/home-ed/private-scholarship/private-independent. **Context contract**
 (`context.schema.json` + `context.py`) — state/district/school_type/program/instructional_model/
 mandates/SOPs/authority_precedence/overrides — resolved first by teacher-core and carried into the
-metadata block + handoffs (`protocols/metadata-schema.md` gains a `context` envelope). Teachers upload
+metadata block + handoffs (`protocol-layer/metadata-schema.md` gains a `context` envelope). Teachers upload
 SOPs (`sop-model.md`), read offline via docintel; school type governs standards applicability.
 **Architecture in place; district rules/norms + school-type specifics are fillable stubs.**
 

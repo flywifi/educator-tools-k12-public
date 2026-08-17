@@ -2,7 +2,7 @@
 ## Differentiation Engine — Tiering
 Canonical source. Tiering adjusts a task so students at different points can all engage with the
 **same essential objective**. Use after UDL (`udl.md`) for remaining readiness/interest/profile
-variability. Distinct from MTSS tiers (intervention) — see `protocols/` and the future
+variability. Distinct from MTSS tiers (intervention) — see `protocol-layer/` and the future
 `intervention-mtss` skill.
 
 ---

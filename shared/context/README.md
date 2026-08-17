@@ -30,7 +30,7 @@ calendar · standards_applicability · mandates[] · sop_refs[] · authority_pre
 
 ## How it changes the contracts & handoffs
 - **Metadata contract:** every artifact's metadata block gains a `context` envelope
-  (`protocols/metadata-schema.md`) — so an artifact records the district/school-type/mandates it was
+  (`protocol-layer/metadata-schema.md`) — so an artifact records the district/school-type/mandates it was
   built for, and is auditable against them.
 - **Routing (teacher-core):** the hub **resolves context first** (operating-reference), then routes;
   the resolved contract is passed to capability skills and **preserved across handoffs** (a skill

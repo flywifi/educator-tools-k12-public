@@ -61,7 +61,7 @@ legal determinations to a human.
 3. every reference named in `SKILL.md` still exists; evals still pass and a case was added for new behavior;
 4. context adaptation still correct across school types (`shared/context/`);
 5. skill-specific:
-   - weights match `protocols/quality-gates.md`
+   - weights match `protocol-layer/quality-gates.md`
    - the context-conditional rule is applied
    - a decision record is emitted
 6. minority-report behavior unchanged unless explicitly approved; add a regression case for any bug

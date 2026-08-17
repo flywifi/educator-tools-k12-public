@@ -11,7 +11,7 @@ coherent deliverable, each piece gated by `quality-review`.
 3. **Share context** across steps — the same grade band, subject, standard, and assumptions flow to
    every skill so the bundle is internally consistent (one standard set, one persona, one voice).
 4. **Gate each artifact** with `quality-review`; nothing in the bundle is "Final" until each piece
-   passes (or is fixed/regenerated — `protocols/failure-recovery.md`).
+   passes (or is fixed/regenerated — `protocol-layer/failure-recovery.md`).
 5. **Assemble** the bundle with a short cover summary + a combined metadata block listing every
    artifact's decision.
 
@@ -31,5 +31,5 @@ coherent deliverable, each piece gated by `quality-review`.
 ## Consistency rules
 - One verified standard set across the bundle (re-cite, don't re-derive differently per piece).
 - One persona + grade band + reading level; consistent vocabulary.
-- If two pieces conflict, apply `protocols/conflict-protocol.md`.
+- If two pieces conflict, apply `protocol-layer/conflict-protocol.md`.
 - Every piece keeps `human_review_required: true`; the bundle is decision support, not final.

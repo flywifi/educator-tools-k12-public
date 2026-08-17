@@ -46,7 +46,7 @@ evidence > opinion. Mirrors the gate execution order (QG §20.2).
    conflict is between *sources* (which standard/rule/SOP governs).
 4. If unresolved or high-stakes → **escalate** (do not silently pick a side).
 5. Document the conflict and resolution in the artifact metadata `rationale` **and**, when sources
-   disagreed, attach the decision record + minority report (§4a; `protocols/metadata-schema.md`).
+   disagreed, attach the decision record + minority report (§4a; `protocol-layer/metadata-schema.md`).
 
 ## 4a. Canonical source-of-truth resolution + minority report
 
@@ -85,4 +85,4 @@ explicit in the decision record.
 Phase A wires conflict handling into pipeline step 5 (Quality Gates) via `quality-review`, which
 applies the hierarchy and records the resolution. Source-vs-source conflicts are resolved through
 `shared/context/sot_resolver.py`, whose decision record (with minority report) is attached to the
-artifact metadata (`protocols/metadata-schema.md`).
+artifact metadata (`protocol-layer/metadata-schema.md`).

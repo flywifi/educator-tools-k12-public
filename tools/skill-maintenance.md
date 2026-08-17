@@ -32,8 +32,8 @@ skill resolves a conflict — not ad-hoc per-skill logic.
 ## How it ties to the resolver
 When sources disagree about which standard/rule/SOP governs, skills resolve it through
 `shared/context/sot_resolver.py` and attach the decision record (`shared/context/decision.schema.json`)
-to artifact metadata (`protocols/metadata-schema.md`); the procedure is canon in
-`protocols/conflict-protocol.md` §4a. A `MAINTAINER.md` does not re-implement this — it points to it, so
+to artifact metadata (`protocol-layer/metadata-schema.md`); the procedure is canon in
+`protocol-layer/conflict-protocol.md` §4a. A `MAINTAINER.md` does not re-implement this — it points to it, so
 the policy stays in one place.
 
 ## When you change a skill

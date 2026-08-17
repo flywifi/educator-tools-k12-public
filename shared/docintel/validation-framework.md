@@ -46,4 +46,4 @@ the `Parser` contract + artifact-contract stability, and by the drift guard.
 `validation.validate(udom, artifact) -> report`. Computable metrics return values; staged metrics
 return `null` with a `status: "staged"` note (honest, not fabricated). The report feeds the
 `score_summary` in the metadata block; `quality-review` makes the final Approved/Remediation decision
-against `protocols/quality-gates.md`. **Nothing is "Final" until it passes the Quality Gates.**
+against `protocol-layer/quality-gates.md`. **Nothing is "Final" until it passes the Quality Gates.**

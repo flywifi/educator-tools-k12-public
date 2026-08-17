@@ -71,7 +71,7 @@ Optional dependencies are isolated; the engine is stdlib-only by default. Add a 
 `Parser` in `shared/docintel/parsers/` and registering it — that is the whole integration surface.
 
 ## TOS integration
-- Governance ties to `protocols/metadata-schema.md`; gates via `protocols/quality-gates.md` +
+- Governance ties to `protocol-layer/metadata-schema.md`; gates via `protocol-layer/quality-gates.md` +
   `quality-review`; artifacts register in `shared/ontology/artifact-types.json`.
 - First consumer: the Florida pipeline — re-implement `tools/parse_fl_standards.py` to consume
   `knowledge-artifact` / `consumer-artifact` output so the corpus is read with structure + tables +

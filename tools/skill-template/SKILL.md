@@ -15,7 +15,7 @@ Approval/Certification → Release`). The domain work happens in Generation:
 `Analysis → Standards Alignment → Differentiation → Generation`.
 
 - **Standards** — select + cite verifiable standards (`references/` standards material;
-  `protocols/standards-verification.md`). Never fabricate a standard.
+  `protocol-layer/standards-verification.md`). Never fabricate a standard.
 - **Differentiation** — apply UDL by default, plus tiering / EL / IEP supports as relevant.
 - **Quality** — self-check against `references/quality-gates.md`, then hand to `quality-review`.
 
@@ -23,7 +23,7 @@ Approval/Certification → Release`). The domain work happens in Generation:
 See `references/artifact-types.md` for the artifact types this skill produces and their specs.
 
 ## Output: always emit the metadata block
-Every artifact ends with the metadata block from `protocols/metadata-schema.md`, including the
+Every artifact ends with the metadata block from `protocol-layer/metadata-schema.md`, including the
 per-dimension quality scores, the decision, and `human_review_required: true` — outputs are
 decision support, not final professional or legal determinations. Use placeholders only; never real
 student data.

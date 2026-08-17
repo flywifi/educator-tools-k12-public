@@ -19,7 +19,7 @@ mapping carries:
   policy before it is relied on (this is exactly the kind of "operationally clear but formally
   underdefined" claim that triggers the minority-report discipline — `shared/context/minority-report.md`).
 
-Never assert a conversion you cannot cite (`protocols/standards-verification.md`); offer it as the
+Never assert a conversion you cannot cite (`protocol-layer/standards-verification.md`); offer it as the
 institution's stated table, flagged.
 
 ## Scale file shape

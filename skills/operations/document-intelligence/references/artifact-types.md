@@ -2,7 +2,7 @@
 ## Artifacts produced by document-intelligence
 
 All artifacts are parser-independent, carry full governance (provenance/lineage/confidence/evidence),
-and end with the metadata block from `protocols/metadata-schema.md` (`human_review_required: true`).
+and end with the metadata block from `protocol-layer/metadata-schema.md` (`human_review_required: true`).
 Specs live in the canonical engine `shared/docintel/` (kept in sync with
 `shared/ontology/artifact-types.json`).
 
@@ -50,5 +50,5 @@ Specs live in the canonical engine `shared/docintel/` (kept in sync with
 - Required elements: `derived_from` (the knowledge artifact id), the projection payload, inherited
   governance, metadata block.
 - Standards: when projecting standards data, cite framework + code per
-  `protocols/standards-verification.md`; never invent a code.
+  `protocol-layer/standards-verification.md`; never invent a code.
 - Validation: derivable without the source file (R-003 consumer independence).

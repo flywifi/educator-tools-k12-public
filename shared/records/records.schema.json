@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://tos.local/records/records.schema.json",
   "title": "TOS student records + handoff packages",
-  "description": "Two shapes: (1) the academic RECORDS STORE (records.example.json / records.local.json) and (2) a generated HANDOFF PACKAGE (skill_to_skill | teacher_to_teacher | school_transfer). Identity/guardians/health come from ../students/. Core entities are always present; extended entities live under `modules` and appear only when the module is enabled. Universal pattern: every entity ref carries *_id/*_code/*_name/*_display_name. Prose: records-model.md. Governance/audit envelope maps to protocols/metadata-schema.md.",
+  "description": "Two shapes: (1) the academic RECORDS STORE (records.example.json / records.local.json) and (2) a generated HANDOFF PACKAGE (skill_to_skill | teacher_to_teacher | school_transfer). Identity/guardians/health come from ../students/. Core entities are always present; extended entities live under `modules` and appear only when the module is enabled. Universal pattern: every entity ref carries *_id/*_code/*_name/*_display_name. Prose: records-model.md. Governance/audit envelope maps to protocol-layer/metadata-schema.md.",
   "$defs": {
     "entity_ref": {
       "type": "object",
@@ -11,7 +11,7 @@
     },
     "lifecycle": {
       "type": "object",
-      "description": "Lifecycle/audit envelope (maps to the metadata block in protocols/metadata-schema.md).",
+      "description": "Lifecycle/audit envelope (maps to the metadata block in protocol-layer/metadata-schema.md).",
       "properties": {
         "created_date": {"type": "string"},
         "last_modified_date": {"type": "string"},
@@ -82,7 +82,7 @@
         "mobility_history": {"type": ["array", "null"], "description": "school_transfer only"},
         "lifecycle": {"$ref": "#/$defs/lifecycle"},
         "human_review_required": {"const": true},
-        "metadata": {"type": "object", "description": "the metadata block (protocols/metadata-schema.md)"}
+        "metadata": {"type": "object", "description": "the metadata block (protocol-layer/metadata-schema.md)"}
       }
     }
   },

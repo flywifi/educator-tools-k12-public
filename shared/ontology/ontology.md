@@ -14,7 +14,7 @@ Canonical source. One name per concept so skills, protocols, and metadata stay c
   `teacher-core`; **spokes** are capability skills; `quality-review` is the governance skill.
 - **Engine** — a cross-cutting capability used by many skills, implemented in `shared/`:
   Standards, Differentiation, Quality/Verification (Charter V3 §16).
-- **Protocol** — a governance rule set in `protocols/` (the 6 files).
+- **Protocol** — a governance rule set in `protocol-layer/` (the 6 files).
 
 ## Educational terms
 
@@ -43,7 +43,7 @@ Canonical source. One name per concept so skills, protocols, and metadata stay c
   fabrication).
 - **Certification level** — Development → Review → Production → Governance Certified → Repository
   Certified.
-- **Decision record** — the auditable record of a quality decision (`protocols/metadata-schema.md`).
+- **Decision record** — the auditable record of a quality decision (`protocol-layer/metadata-schema.md`).
 
 ## Persona
 

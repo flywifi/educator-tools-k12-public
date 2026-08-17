@@ -8,7 +8,7 @@ Usage:
 Parser-independent + stdlib-only by default (PlainTextParser handles .txt/.md/.html/.docx);
 PDF support activates automatically if PyMuPDF is installed. Nothing is fabricated: unrecovered
 content is reported with low/zero confidence, and the artifact is never "certified" here -
-that is quality-review's job (protocols/quality-gates.md).
+that is quality-review's job (protocol-layer/quality-gates.md).
 """
 from __future__ import annotations
 

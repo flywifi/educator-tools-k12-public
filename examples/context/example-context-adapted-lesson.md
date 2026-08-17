@@ -93,7 +93,7 @@ A lesson built for THIS context differs from the traditional-public default:
 - **Family-contact rule:** within 24h of a grade of 1 (routes to `family-communication`).
 - **Governance:** contract-affecting changes route to the charter board (`school-administration`).
 
-## Metadata (per `protocols/metadata-schema.md`)
+## Metadata (per `protocol-layer/metadata-schema.md`)
 ```yaml
 artifact_type: lesson-plan
 subject: Mathematics

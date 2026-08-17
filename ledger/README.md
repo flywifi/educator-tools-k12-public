@@ -14,7 +14,7 @@ artifact, who decided, the outcome, and a pointer to the full decision record.
 - **Append-only / immutable.** Once written, an entry is not edited; a correction adds a **new** entry
   (QG §94.4).
 - **Full record lives with the artifact.** Each artifact carries its complete decision record in its
-  metadata block (`protocols/metadata-schema.md`); the ledger is the index + audit trail.
+  metadata block (`protocol-layer/metadata-schema.md`); the ledger is the index + audit trail.
 - **No real student data.** Ledger entries reference placeholder artifacts only.
 
 ## Format

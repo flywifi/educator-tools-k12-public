@@ -34,5 +34,5 @@ The smaller the change, the safer the repair. These rules keep a fix tight, dura
 
 ## Hard stops
 - Do not finalize if a risky change could not be validated.
-- Do not edit a synced reference's per-skill copy — fix canon in `shared/`/`protocols/` and re-sync.
+- Do not edit a synced reference's per-skill copy — fix canon in `shared/`/`protocol-layer/` and re-sync.
 - Do not delete content you did not create without surfacing it first.
