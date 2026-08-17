@@ -2,6 +2,7 @@
   "skill_name": "curriculum-mapping",
   "evals": [
     {
+      "kind": "prompt",
       "id": 1,
       "prompt": "Make me a year-long pacing guide for 6th grade math, roughly 36 weeks.",
       "expected_output": "A pacing guide placing verified Grade-6 CCSS math domains across ~36 weeks with assessment checkpoints, buffer days, and a coverage check — realistic totals.",
@@ -14,6 +15,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 2,
       "prompt": "I'm teaching a semester of high school biology — what order should I teach the units in and why?",
       "expected_output": "A scope & sequence with units ordered by prerequisite logic, tied to real NGSS HS life-science standards, with a rationale for the sequence.",

@@ -2,6 +2,7 @@
   "skill_name": "document-intelligence",
   "evals": [
     {
+      "kind": "prompt",
       "id": 1,
       "prompt": "Read this DOCX properly and give me a structured, governed version I can reuse.",
       "expected_output": "Runs the docintel pipeline (ingestion -> recovery -> structure -> governance -> knowledge -> artifact), emits a UDOM + knowledge-artifact with provenance/lineage/confidence on every block and explicit reading order, and ends with the metadata block (human_review_required: true). Not certified until quality-review runs.",
@@ -14,6 +15,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 2,
       "prompt": "This is a scanned PDF and we have no OCR engine installed. Extract the text.",
       "expected_output": "Reports that the required OCR capability is unavailable (capability_gaps), recovers whatever native extraction can, and flags the rest with low/zero confidence — without inventing any text. Points to installing an OCR plugin (Surya/OCRmyPDF) to fill the gap.",
@@ -25,6 +27,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 3,
       "prompt": "Swap our PDF parser for a different engine without breaking downstream consumers.",
       "expected_output": "Adds the new engine as a Parser plugin in shared/docintel/parsers/ and registers it; the artifact contract and UDOM are unchanged, so consumers keep working. Parser replaceability is an acceptance guarantee.",
@@ -36,6 +39,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 4,
       "prompt": "Turn off the experimental table-reconstruction stage for this run.",
       "expected_output": "Uses PipelineConfig.flags to keep the experimental stage OFF (the default), running only the validated governed path; explains flags are per-run/per-environment and experimental stages default off.",

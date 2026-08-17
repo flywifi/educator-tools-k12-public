@@ -2,6 +2,7 @@
   "skill_name": "lesson-planner",
   "evals": [
     {
+      "kind": "prompt",
       "id": 1,
       "prompt": "I need a lesson for my 3rd graders on fractions for tomorrow — something hands-on. About 45 minutes.",
       "expected_output": "A complete lesson plan aligned to a real Grade-3 CCSS fractions standard (e.g., 3.NF.A.1), with gradual release, concrete manipulatives, differentiation (UDL + tiers + EL + IEP), a check for understanding/exit ticket, and the metadata block. Should pass quality-review.",
@@ -16,6 +17,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 2,
       "prompt": "Plan a 5-day unit on argumentative writing for 8th grade ELA, with a summative at the end.",
       "expected_output": "A unit plan with day-by-day pacing, aligned 8th-grade CCSS ELA writing standard(s) (e.g., W.8.1), a summative assessment plan, and differentiation across the unit.",
@@ -28,6 +30,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 3,
       "prompt": "Make me an exit ticket for a lesson on identifying the main idea, 4th grade reading.",
       "expected_output": "A 1-3 item exit ticket aligned to a real Grade-4 CCSS RI standard, with an answer key and a 'what to do with the data' note.",

@@ -91,20 +91,13 @@ jobs:
       - name: Cross-platform lint (bare-interpreter spawns; encoding-less text opens)
         run: python3 tools/mac_audit.py
 
-      - name: Validate eval files
-        run: |
-          python3 - <<'PY'
-          import json, glob, sys
-          bad = []
-          for f in glob.glob("skills/**/evals/evals.json", recursive=True):
-              try:
-                  json.load(open(f))
-              except Exception as e:
-                  bad.append(f"{f}: {e}")
-          if bad:
-              print("\n".join(bad)); sys.exit(1)
-          print("all eval files valid")
-          PY
+      # Was a step named "Validate eval files" that ran json.load() and nothing else — a file
+      # containing {} passed, and so did an assertion that was factually wrong. It printed "all
+      # eval files valid" over 43 empty stubs and one eval that had been false for weeks.
+      - name: Eval self-test (assert grammar, skip gate, allow-list)
+        run: python3 tools/run_evals.py --self-test
+      - name: Run the executable eval cases (command + call kinds)
+        run: python3 tools/run_evals.py --run
 
       - name: Package all skills (validates every skill is installable)
         run: python3 tools/package_skill.py --all

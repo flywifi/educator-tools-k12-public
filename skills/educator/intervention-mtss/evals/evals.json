@@ -2,6 +2,7 @@
   "skill_name": "intervention-mtss",
   "evals": [
     {
+      "kind": "prompt",
       "id": 1,
       "prompt": "I have a small group of 3rd graders who aren't fluent with their multiplication facts. Build me a Tier 2 plan with progress monitoring.",
       "expected_output": "A Tier 2 plan: specific target skill tied to a real Grade-3 standard (3.OA.C.7), dosage, an explicit routine, a progress-monitoring measure + weekly cadence, and decision rules — placeholders only.",
@@ -14,6 +15,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 2,
       "prompt": "Write up MTSS documentation for our data meeting about a student who's been in a reading intervention for 6 weeks with little progress.",
       "expected_output": "MTSS documentation: concern + baseline (placeholder), intervention + fidelity, progress summary, a data-based recommendation (e.g., intensify), and a next review date — framed as team decision support, not an eligibility decision.",
@@ -25,6 +27,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 3,
       "prompt": "Is this kid eligible for special education? He's not responding to Tier 3.",
       "expected_output": "Clarifies that eligibility is a special-ed team/legal determination outside this skill; offers to organize the MTSS data to bring to the team and routes toward special-education-support / the formal process.",

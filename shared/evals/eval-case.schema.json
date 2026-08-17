@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "shared/evals/eval-case.schema.json",
+  "title": "TOS eval case",
+  "_comment": "ONE schema, because there were six. 75 cases were authored across 18 skills in FOUR mutually incompatible dialects (prompt/assertions · command/assert · input/assert · intent/expect); the 43 atom stubs prescribed a FIFTH shape ({id, input, expected_output_shape, must_contain, must_not_contain}) that zero cases use; and tools/skill-template/evals/evals.json is a SIXTH (trigger_evals, with `evals: []` and no example). Four dialects cannot share a runner, which is a large part of why no eval had ever been executed. `kind` is the discriminator: `command` and `call` are deterministic and RUN in CI via tools/run_evals.py; `prompt` is model-facing and is NEVER executed there — its evidence is recorded under benchmarks/. Anything that claims to be executable must actually be executable, or it is honestly labelled `prompt`.",
+
+  "type": "object",
+  "required": ["skill_name", "evals"],
+  "properties": {
+    "skill_name": {"type": "string"},
+    "_note": {"type": "string"},
+    "evals": {"type": "array", "items": {"$ref": "#/definitions/case"}},
+    "trigger_evals": {"$ref": "#/definitions/trigger_evals"}
+  },
+
+  "definitions": {
+    "case": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "enum": ["command", "call", "prompt"],
+          "description": "command = run an allow-listed argv and assert on its output · call = import an in-repo callable and assert on its return · prompt = model-facing, recorded not executed"
+        },
+        "name": {"type": "string"},
+        "id": {"type": ["integer", "string"]},
+        "_note": {"type": "string"},
+
+        "command": {"type": "string", "description": "kind=command. argv0 must be an allow-listed interpreter. An unfilled <placeholder> makes the case SKIP with a reason, never pass."},
+        "call": {"type": "string", "pattern": "^[A-Za-z0-9_.]+:[A-Za-z0-9_]+$", "description": "kind=call. `module.path:function`, resolved with shared/ and tools/ on sys.path."},
+        "input": {"description": "kind=call. Passed to the callable; use `kwargs: true` to splat a dict."},
+        "kwargs": {"type": "boolean"},
+
+        "assert": {
+          "type": "object",
+          "description": "kind=command|call. Plain keys and dotted paths (`required_cadence.authority`) read the parsed output. Reserved meta-keys: `has` (list of keys that must be present), `each.<listkey>` (every item of that list carries these keys), `stdout_contains` (substrings of raw stdout — the only honest form for a tool that emits prose), `exit_code`. A string value beginning >=, <=, >, < or != is a comparison; a list compares order-insensitively; a bool is compared by identity, so 1 does NOT satisfy true."
+        },
+
+        "prompt": {"type": "string", "description": "kind=prompt."},
+        "expected_output": {"type": "string"},
+        "assertions": {"type": "array", "items": {"type": "string"}, "description": "kind=prompt. Prose, judged by a human or a blind judge — never machine-checked. Saying so is the point."},
+        "files": {"type": "array"},
+        "evidence": {"type": "string", "description": "kind=prompt. Repo-relative path to a recorded run under benchmarks/results/. Absent = unrun, which is a visible gap, not a pass."}
+      }
+    },
+
+    "trigger_evals": {
+      "type": "object",
+      "description": "Routing tests: does THIS skill activate on prompts it should own, and stay quiet on prompts it should not? Behaviour cases test the skill AFTER invocation; these test the description's triggering. The template has mandated >=10 positive / >=5 negative 'before shipping' since it was written, and 61 of 62 skills shipped without any.",
+      "properties": {
+        "positive": {"type": "array", "items": {"$ref": "#/definitions/trigger_prompt"}},
+        "negative": {"type": "array", "items": {"$ref": "#/definitions/trigger_prompt"}},
+        "pass_bar": {
+          "type": "object",
+          "properties": {"positive_min": {"type": "number"}, "negative_max": {"type": "number"}}
+        },
+        "counting_rule": {"type": "string"},
+        "detector_control": {"type": "string"},
+        "graded_by": {
+          "type": "string",
+          "description": "`router` = shared/routing/router.py, deterministic and offline, so atom trigger evals need no model. `model` = requires a recorded run."
+        }
+      }
+    },
+
+    "trigger_prompt": {
+      "type": "object",
+      "required": ["prompt"],
+      "properties": {
+        "prompt": {"type": "string"},
+        "instead": {"type": "string", "description": "negatives only: the skill that SHOULD own this, or 'out of ecosystem'."}
+      }
+    }
+  }
+}
