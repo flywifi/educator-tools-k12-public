@@ -45,9 +45,9 @@ it. Stdlib, fully offline.
   candidate, and the prior interpretation is preserved in the minority report — never silently dropped.
 
 ## Governance
-The decision record is recorded in artifact metadata (`protocols/metadata-schema.md`) and the conflict
-procedure is canon in `protocols/conflict-protocol.md`. Quality Gates treats a *fabricated* source as a
-critical failure in every context (`protocols/quality-gates.md` §37).
+The decision record is recorded in artifact metadata (`protocol-layer/metadata-schema.md`) and the conflict
+procedure is canon in `protocol-layer/conflict-protocol.md`. Quality Gates treats a *fabricated* source as a
+critical failure in every context (`protocol-layer/quality-gates.md` §37).
 
 ## Worked example
 `python3 shared/context/sot_resolver.py` resolves a district pacing guide (**canon**) against a

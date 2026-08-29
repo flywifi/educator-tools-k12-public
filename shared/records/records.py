@@ -9,7 +9,7 @@ data lives under `modules` and is included only for ENABLED modules (records_mod
 deployment opts in per category rather than to one massive set. Health is surfaced verbatim from the
 source on file (attributed; a signature is NOT required), never fabricated; defer to the nurse / 911.
 
-Every package carries the metadata block + `human_review_required: true` (protocols/metadata-schema.md).
+Every package carries the metadata block + `human_review_required: true` (protocol-layer/metadata-schema.md).
 Repo data is placeholders only; real records live in records.local.json (gitignored) or a live SIS.
 Stdlib only, offline.
 
@@ -194,7 +194,7 @@ def metadata_block(package_type: str, record: dict, mode: str, modules: list[str
             "generated_by": "shared/records/records.py",
             "records_store": records_src,
             "identity_health_store": "shared/students/",
-            "lifecycle_audit_maps_to": "protocols/metadata-schema.md",
+            "lifecycle_audit_maps_to": "protocol-layer/metadata-schema.md",
         },
         "human_review_required": True,
     }

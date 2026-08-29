@@ -1,1 +1,38 @@
-{"_note": "Add 2-3 regression cases here. Each case: {id, input, expected_output_shape, must_contain, must_not_contain}"}
+{
+  "skill_name": "parent-comm",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_from_parent_email",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "parent email",
+      "assert": {
+        "atom": "parent-comm",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_note_home",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "note home",
+      "assert": {
+        "atom": "parent-comm",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_draft_a_parent",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "draft a parent",
+      "assert": {
+        "atom": "parent-comm",
+        "basis": "atom_keyword_match"
+      }
+    }
+  ]
+}

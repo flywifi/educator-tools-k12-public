@@ -1,1 +1,38 @@
-{"_note": "Add 2-3 regression cases here. Each case: {id, input, expected_output_shape, must_contain, must_not_contain}"}
+{
+  "skill_name": "translate-comm",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_from_translate_this",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "translate this",
+      "assert": {
+        "atom": "translate-comm",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_translate_to_spanish",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "translate to spanish",
+      "assert": {
+        "atom": "translate-comm",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_translate_to_haitian_creole",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "translate to haitian creole",
+      "assert": {
+        "atom": "translate-comm",
+        "basis": "atom_keyword_match"
+      }
+    }
+  ]
+}

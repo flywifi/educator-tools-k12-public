@@ -46,4 +46,4 @@ Generates a structured meeting agenda with time allocations, discussion items, r
 - IEP meeting agendas with legal timelines (those require district-specific templates)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (agenda creation). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — agenda items should be customized by the meeting facilitator.
+Follows `references/method.md` at the Generation step (agenda creation). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — agenda items should be customized by the meeting facilitator.

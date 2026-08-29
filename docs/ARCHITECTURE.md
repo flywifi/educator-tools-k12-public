@@ -17,7 +17,7 @@ modular and testable.
 ```
 skills/        the capabilities (hub + spokes + governance skill)
 shared/        the cross-cutting engines (Standards, Differentiation, Quality, Context, Connectors, Students, DocIntel, Records)  [canonical]
-protocols/     the governance rule sets (the 6 protocols)                       [canonical]
+protocol-layer/     the governance rule sets (the 6 protocols)                       [canonical]
 ```
 
 - **Hub:** `skills/core/teacher-core/` — mission, personas, the unified pipeline, and **routing**.
@@ -39,7 +39,7 @@ split into focused skills that pull detail from `references/` and the shared cor
 
 ## 5. The two-copy / sync model
 
-`shared/` and `protocols/` are the **single source of truth**. For portability, each skill carries
+`shared/` and `protocol-layer/` are the **single source of truth**. For portability, each skill carries
 **synced copies** of the cross-cutting references it needs (`references/method.md`,
 `references/quality-gates.md`, …). The mapping lives in `tools/sync_manifest.json`; the drift guard
 `tools/sync_check.py` guarantees the copies never diverge from canon. (Pattern: an invariants-based
@@ -101,7 +101,7 @@ advanced` (Charter dependency model). Quality Gates depends on the other five pr
 ## 7. Repository map
 
 ```
-skills/ shared/ protocols/ tools/ examples/ .github/workflows/
+skills/ shared/ protocol-layer/ tools/ examples/ .github/workflows/
 CLAUDE.md README.md STATE.md TOS_ECOSYSTEM_BUILD_OUTLINE.md
 ARCHITECTURE.md QUALITY_MODEL.md SECURITY_AND_SAFETY.md ROUTING_MODEL.md CHANGE_MANAGEMENT.md
 ```

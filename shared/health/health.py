@@ -74,7 +74,12 @@ def _load_routing() -> dict:
 # --------------------------------------------------------------------------- 1. SCAN
 def scan_skills() -> List[dict]:
     routing = _load_routing()
-    routed = set(routing.get("skills", {})) | set(routing.get("meeting_routes", {}).values())
+    # `atom_routes` was missing here, so all 43 atoms were reported "not referenced in
+    # routing.json" while all 43 ARE correctly registered — a 43-instance false negative that
+    # made the one real signal in this check unreadable. Keys of atom_routes are atom names.
+    routed = (set(routing.get("skills", {}))
+              | set(routing.get("meeting_routes", {}).values())
+              | {k for k in routing.get("atom_routes", {}) if not k.startswith("_")})
     out = []
     for d in _skill_dirs():
         name = d.name

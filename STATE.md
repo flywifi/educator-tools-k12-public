@@ -182,7 +182,7 @@ School-type **exception rule-sets** (`school-types.json`):
 traditional/magnet/charter/district-virtual/FLVS/home-ed/private-scholarship/private-independent. **Context contract**
 (`context.schema.json` + `context.py`) — state/district/school_type/program/instructional_model/
 mandates/SOPs/authority_precedence/overrides — resolved first by teacher-core and carried into the
-metadata block + handoffs (`protocols/metadata-schema.md` gains a `context` envelope). Teachers upload
+metadata block + handoffs (`protocol-layer/metadata-schema.md` gains a `context` envelope). Teachers upload
 SOPs (`sop-model.md`), read offline via docintel; school type governs standards applicability.
 **Architecture in place; district rules/norms + school-type specifics are fillable stubs.**
 
@@ -223,6 +223,41 @@ enforced, and since 2026-08-16 a guard that CRASHES is a failure rather than a `
 (2026-08-16)
 `quality-review/scripts/score.py` verified (normal / critical-override / threshold cases).
 
+## 2026-08-17 — the guard that could not see, and the evals that had never run (round 4)
+
+Two things Round 3 named and did not fix.
+
+**`protocols/`.** The directory was renamed to `protocol-layer/` on 2026-06-28 (a git R100 rename)
+and 877 references went stale that day, invisible to check 15 because an anchor list is a whitelist
+and an unknown prefix reads as "not a path". 90% of it was 13 lines in two canonical files
+replicated into 62 skills. Swept in three commits; the dead prefix now stays in both anchor tuples
+as a tripwire, with a twin proving that removing it reopens the hole.
+
+**The evals.** They had never been executed — not once, by any machine. The proof was a committed
+assertion that was false: `skill-health` expected `readiness_band: "strong"` while its own recorded
+command returned `"not_ready"`. The CI step named "Validate eval files" ran `json.load()`. Six case
+shapes existed across the repo. Now: one schema, a runner, and **0 → 133 executed cases, all
+passing**, with skips and unrunnable cases counted rather than hidden.
+
+Running things found more than reading them did. `health.py` was flagging all 43 atoms as
+"not referenced in routing.json" while all 43 were registered — a 43-instance false negative that
+also floored the readiness score. `validate_outputs` let an artifact omitting `human_review_required`
+pass. Three atoms declared `confidence` as a float against a string enum. All 43 cited a
+`references/metadata-schema.md` no atom has. And check 24 — which I shipped last round — was wrong
+under a shallow clone, producing six false CI failures the first time the calendar moved past the
+day the manifests were stamped.
+
+Three mistakes of mine are in the commits: the atom-contract checker's first version read the wrong
+schema key and silently skipped a rule (its twins caught it, and fixing it surfaced two more real
+violations); a blanket sweep corrupted `sync_check.py`'s own anchor tuple; and I recorded the
+readiness score here as "saturated by design" when it was reporting a real bug.
+
+**What is NOT closed.** The 133 are CONTRACT cases — routing, output shapes, schema conformance.
+**65 model-facing cases remain unexecuted**, including every refusal case for the nine skills that
+received boundary language in v1.5.0. And quality-review's trigger evals fail their own bar (1 of 10
+positives route to it, against ≥0.8): the keyword router scores the artifact noun above the review
+verb. Measured and recorded, deliberately not fixed — that is a product behaviour change.
+
 ## 2026-08-16 — false claims corrected, and the guards that could not see them (round 3)
 
 A verification-and-correction round. It makes the repo look **worse before it looks better**:
@@ -260,7 +295,7 @@ because it read a blanket 403 as proof of existence. Both fixed with twins in bo
 
 Still open, named not implied: **44 of 62 skills have zero eval cases**, including every high-risk
 atom, so the boundary language is unverified rather than verified-and-minor; the health readiness
-score is saturated and information-free; and **889 stale `protocols/` doc references** are
+score read 0/100 for a reason that was NOT saturation (see below); and **877 dead `protocols/` doc references** were
 structurally invisible to check 15, because a renamed directory falls out of its anchor list.
 
 ## 2026-07-16 — adversarial audit of the 24h window (34 probes) + full remediation

@@ -46,7 +46,7 @@ From the request (and conversation), determine:
   **multi-skill workflow** (Phase C) — one skill per artifact, each gated by `quality-review`.
 - **No spoke yet / ambiguous:** if the target skill isn't built yet, `teacher-core` **carries the
   pipeline itself** using the shared core, and labels the output's provenance. If genuinely
-  ambiguous, ask one clarifying question rather than guess (`protocols/assumptions-protocol.md`).
+  ambiguous, ask one clarifying question rather than guess (`protocol-layer/assumptions-protocol.md`).
 - **Meeting-centered requests:** when the request is about a meeting, invite, or calendar event,
   classify it via `meeting-classifier` first — it returns the meeting type, request intent, IEP/504
   advisories, the subject student/guardians, and the recommended owner skill (then route there).

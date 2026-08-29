@@ -49,4 +49,4 @@ $ python3 scripts/score.py '{"integrity":3,"safety":5,"governance":4,"accuracy":
 composite: 3.04   decision: Rejected   critical_override: true
 ```
 Remediation: replace the fabricated code with a verified one
-(`protocols/standards-verification.md`) and re-evaluate.
+(`protocol-layer/standards-verification.md`) and re-evaluate.

@@ -18,7 +18,7 @@ Every entity reference carries a human-readable name alongside every id:
 
 ## Lifecycle / audit envelope → metadata block
 Every major object carries `lifecycle` (`created_date, last_modified_date, created_by, last_modified_by,
-status, active`). This **maps to** the governance metadata block (`protocols/metadata-schema.md`) — audit
+status, active`). This **maps to** the governance metadata block (`protocol-layer/metadata-schema.md`) — audit
 entries reference the decision record / Quality Ledger id rather than duplicating governance. Every
 generated package ends with that metadata block and `human_review_required: true`.
 

@@ -2,6 +2,7 @@
   "skill_name": "professional-learning",
   "evals": [
     {
+      "kind": "prompt",
       "id": 1,
       "prompt": "I'm coaching a teacher who wants to get better at checking for understanding. Make me an observation tool I can use.",
       "expected_output": "A non-evaluative observation tool with 3-6 observable look-fors for checks-for-understanding, evidence space, glow/grow, reflective questions, and a teacher-owned next step.",
@@ -13,6 +14,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 2,
       "prompt": "Plan a 60-minute PD session for my team on using discussion strategies in middle school.",
       "expected_output": "A PD plan with an objective, a timed agenda using active learning (modeling + practice + reflection, not lecture-only), materials, and a follow-up/transfer plan.",

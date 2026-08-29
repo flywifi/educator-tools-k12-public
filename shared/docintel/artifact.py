@@ -1,8 +1,8 @@
 """Artifact Framework - turn a governed UDOM into durable, consumer-ready artifacts.
 
 Canonical contract: shared/docintel/artifact-framework.md. Every artifact carries the TOS
-metadata block (protocols/metadata-schema.md) with `human_review_required: true` and is NOT
-certified until it passes quality-review against protocols/quality-gates.md.
+metadata block (protocol-layer/metadata-schema.md) with `human_review_required: true` and is NOT
+certified until it passes quality-review against protocol-layer/quality-gates.md.
 """
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ SCHEMA_VERSION = "0.1.0"
 def _metadata_block(doc: UDOMDocument, *, artifact_type: str, persona: str, grade_band: str,
                     subject: str, standards_set: Optional[str],
                     score_summary: Optional[Dict[str, Any]]) -> Dict[str, Any]:
-    """The TOS artifact metadata block (protocols/metadata-schema.md)."""
+    """The TOS artifact metadata block (protocol-layer/metadata-schema.md)."""
     return {
         # --- Quality decision record (QG section 93) ---
         "decision_id": new_id("dec"),

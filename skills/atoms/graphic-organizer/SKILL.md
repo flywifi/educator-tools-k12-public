@@ -40,4 +40,4 @@ Picks the most appropriate graphic organizer type for a learning task, provides 
 - Digital/interactive organizer rendering
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (organizer selection). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — organizer choice depends on classroom context; teacher should adapt.
+Follows `references/method.md` at the Generation step (organizer selection). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — organizer choice depends on classroom context; teacher should adapt.

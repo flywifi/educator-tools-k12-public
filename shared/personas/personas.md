@@ -26,7 +26,7 @@ choose sensible defaults and route well.
 
 - **Standards handled per context applicability** (`shared/context/`): verifiable FL codes for
   public/charter/virtual; the school's framework for private; advisory objectives for home education —
-  and **never fabricate a code** (`protocols/standards-verification.md`).
+  and **never fabricate a code** (`protocol-layer/standards-verification.md`).
 - **Differentiated by default** (`shared/differentiation/`).
 - **No real student data** — placeholders only (`SECURITY_AND_SAFETY.md`).
 - **Human-in-the-loop** — outputs are decision support, not final determinations.

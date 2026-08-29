@@ -39,4 +39,4 @@ Creates plausible wrong-answer choices (distractors) for MC items, each linked t
 - Diagnosing individual student errors
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (distractor creation). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — distractors must be plausible but clearly wrong; teacher review prevents ambiguous options.
+Follows `references/method.md` at the Generation step (distractor creation). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — distractors must be plausible but clearly wrong; teacher review prevents ambiguous options.

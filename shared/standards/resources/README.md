@@ -15,7 +15,7 @@ alongside their source information.
 The stored files are a **dated 2025–26 snapshot**. The **live authority** is the source recorded in
 the manifest — **CPALMS (`cpalms.org`)** for standards, **FLDOE (`fldoe.org`)** for assessments,
 **WIDA (`wida.wisc.edu`)** for ELD. Always prefer the live source when verifying a code or pulling a
-newer document (`protocols/standards-verification.md`).
+newer document (`protocol-layer/standards-verification.md`).
 
 ## Refreshing (crawl the sources for updates)
 `tools/standards_refresh.py` reads `sources.json` and recursively crawls the canonical sources for

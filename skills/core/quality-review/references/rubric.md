@@ -1,6 +1,6 @@
 # rubric.md
 ## Quality Gates — 0-5 dimension descriptors
-Scoring detail for `quality-review` (from `protocols/quality-gates.md` §§24-31). Weights in
+Scoring detail for `quality-review` (from `protocol-layer/quality-gates.md` §§24-31). Weights in
 parentheses. General scale: 0 critical failure · 1 major · 2 significant · 3 acceptable · 4 strong ·
 5 exemplary. Score each dimension with **evidence quoted from the artifact**.
 

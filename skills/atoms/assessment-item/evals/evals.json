@@ -1,1 +1,38 @@
-{"_note": "Add 2-3 regression cases here. Each case: {id, input, expected_output_shape, must_contain, must_not_contain}"}
+{
+  "skill_name": "assessment-item",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_from_one_question",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "one question",
+      "assert": {
+        "atom": "assessment-item",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_write_a_question",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "write a question",
+      "assert": {
+        "atom": "assessment-item",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_single_item",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "single item",
+      "assert": {
+        "atom": "assessment-item",
+        "basis": "atom_keyword_match"
+      }
+    }
+  ]
+}

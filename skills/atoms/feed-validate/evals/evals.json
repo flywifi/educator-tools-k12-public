@@ -1,1 +1,38 @@
-{"_note": "Add 2-3 regression cases here. Each case: {id, input, expected_output_shape, must_contain, must_not_contain}"}
+{
+  "skill_name": "feed-validate",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_from_check_this_feed",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "check this feed",
+      "assert": {
+        "atom": "feed-validate",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_is_this_feed_alive",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "is this feed alive",
+      "assert": {
+        "atom": "feed-validate",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_validate_feed_url",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "validate feed url",
+      "assert": {
+        "atom": "feed-validate",
+        "basis": "atom_keyword_match"
+      }
+    }
+  ]
+}

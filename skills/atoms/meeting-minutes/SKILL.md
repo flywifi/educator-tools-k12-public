@@ -45,4 +45,4 @@ Converts raw meeting notes or transcript into structured minutes: attendees, key
 - IEP meeting minutes with legal requirements (use district templates)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (minutes composition). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — meeting participants should verify accuracy of decisions and action items.
+Follows `references/method.md` at the Generation step (minutes composition). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — meeting participants should verify accuracy of decisions and action items.

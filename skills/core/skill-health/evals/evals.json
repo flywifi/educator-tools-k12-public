@@ -3,24 +3,45 @@
   "_note": "Declarative regression cases for the health engine (shared/health/health.py). Each maps to a MAINTAINER regression case; no real data — the engine reads repo structure + the placeholder ledger.",
   "evals": [
     {
-      "name": "clean_repo_scans_strong",
+      "name": "clean_repo_has_no_blocking_issues",
       "command": "python3 shared/health/health.py --scan",
-      "assert": {"readiness_band": "strong", "blocking_issues": 0, "human_review_required": true}
+      "assert": {
+        "blocking_issues": [],
+        "human_review_required": true
+      },
+      "_note": "Was `readiness_band: strong`, which was FALSE when this eval was first executed (2026-08-17): the scan reported `not_ready`. The cause turned out NOT to be a saturated metric, as I first assumed, but 44 warnings of which 43 were health.py's own false negative — it read routing.skills and never routing.atom_routes, so every correctly-registered atom was flagged 'not referenced'. With that fixed and teacher-core given the evals/ dir it lacked, the band IS `strong` again. The assertion stays on blocking_issues because that is the durable invariant; the band moves with any new warning and would re-couple this case to a number that is not about blocking."
     },
     {
-      "name": "impact_flags_missing_references",
+      "name": "impact_reports_both_reference_lists",
       "command": "python3 shared/health/health.py --impact skill-health",
-      "assert": {"update_needed_in_includes": "shared/ontology/artifact-types.json"}
+      "assert": {
+        "has": [
+          "skill",
+          "referenced_in",
+          "update_needed_in"
+        ],
+        "skill": "skill-health",
+        "update_needed_in": []
+      },
+      "_note": "Was `update_needed_in_includes: shared/ontology/artifact-types.json` — two problems. `update_needed_in_includes` is not a key the tool emits (it emits `update_needed_in`), and the assertion encoded a GAP that has since been CLOSED: artifact-types.json now mentions skill-health, so it correctly appears in `referenced_in` and `update_needed_in` is empty. Rewritten to the durable invariant plus the now-true fact. Corrected 2026-08-17."
     },
     {
       "name": "diagnose_rolls_up_failure_classes",
       "command": "python3 shared/health/health.py --diagnose --traces <saved-traces>",
-      "assert": {"runtime_traces.failure_classes": ["PERMISSION", "DEGRADED_SUCCESS"], "minority_reports": ">=1"}
+      "assert": {
+        "runtime_traces.failure_classes": [
+          "PERMISSION",
+          "DEGRADED_SUCCESS"
+        ],
+        "minority_reports": ">=1"
+      }
     },
     {
       "name": "dangling_route_is_blocking",
       "_note": "A routing.json target that is not an installed skill must appear in blocking_issues.",
-      "assert": {"blocking_issues_includes": "routing target"}
+      "assert": {
+        "blocking_issues_includes": "routing target"
+      }
     }
   ]
 }

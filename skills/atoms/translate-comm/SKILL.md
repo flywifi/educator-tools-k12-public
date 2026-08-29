@@ -46,4 +46,4 @@ Translates a school communication (email, note, announcement) into a target lang
 - Translation without the advisory flag
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (translation). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — ALL translations must be reviewed by a fluent speaker before distribution to families.
+Follows `references/method.md` at the Generation step (translation). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — ALL translations must be reviewed by a fluent speaker before distribution to families.

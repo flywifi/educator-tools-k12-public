@@ -39,4 +39,4 @@ Creates a single engagement hook (question, scenario, demo, visual, story opener
 - Assessment or evaluation hooks
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (engagement design). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — teacher should adapt the hook to their class context.
+Follows `references/method.md` at the Generation step (engagement design). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — teacher should adapt the hook to their class context.

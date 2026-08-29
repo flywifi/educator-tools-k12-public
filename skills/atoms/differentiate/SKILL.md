@@ -59,4 +59,4 @@ Takes one piece of instructional content (activity, passage, question, instructi
 - Real student PII — descriptors only (grade level, language, profile type)
 
 ## Pipeline note
-Follows `references/method.md` at the Differentiation step. Output conforms to `references/metadata-schema.md`. Runs after Generation (atom-activity-generate / atom-assessment-item). `human_review_required: true`.
+Follows `references/method.md` at the Differentiation step. Output conforms to `protocol-layer/metadata-schema.md`. Runs after Generation (atom-activity-generate / atom-assessment-item). `human_review_required: true`.

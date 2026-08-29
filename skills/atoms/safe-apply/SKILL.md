@@ -47,4 +47,4 @@ Cross-cutting approval-workflow atom: takes a change proposal and categorization
 - Security scanning (use tools/security_scan.py)
 
 ## Pipeline note
-Follows `references/method.md` at the Validation step (change categorization). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — even mechanical changes should be reviewed in aggregate before commit.
+Follows `references/method.md` at the Validation step (change categorization). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — even mechanical changes should be reviewed in aggregate before commit.

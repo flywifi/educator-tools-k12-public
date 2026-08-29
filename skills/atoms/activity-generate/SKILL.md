@@ -52,4 +52,4 @@ Generates a single, structured learning activity (not a whole lesson). Each acti
 - Differentiated rewrites of an existing activity (use atom-differentiate)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step. Output conforms to `references/metadata-schema.md`. Generation step only. Pass the output to atom-quality-check before including in a lesson. `human_review_required: true`.
+Follows `references/method.md` at the Generation step. Output conforms to `protocol-layer/metadata-schema.md`. Generation step only. Pass the output to atom-quality-check before including in a lesson. `human_review_required: true`.

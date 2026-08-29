@@ -50,6 +50,6 @@ the user.
 ## 5. Verification & licensing
 
 State standards are verified the same way (exist / correctly coded / current / grade-appropriate /
-aligned — `protocols/standards-verification.md`). **Licensing caveat:** some state corpora have
+aligned — `protocol-layer/standards-verification.md`). **Licensing caveat:** some state corpora have
 usage terms; the `source_note` records provenance, and bundling a full corpus is gated on a
 licensing check (see Risk register in the build outline).

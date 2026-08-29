@@ -114,7 +114,7 @@ function:
         type: string
         description: >
           Quality Gates rubric version to use. Defaults to the current version in
-          protocols/quality-gates.md. Provide only when testing against a specific version.
+          protocol-layer/quality-gates.md. Provide only when testing against a specific version.
       promote_failures_to_eval:
         type: boolean
         description: >

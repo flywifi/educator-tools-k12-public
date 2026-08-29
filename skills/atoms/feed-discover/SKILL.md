@@ -37,4 +37,4 @@ Performs RSS/Atom autodiscovery from a seed page URL. Returns candidate feed URL
 - Crawling beyond the seed page (single-page discovery only)
 
 ## Pipeline note
-Follows `references/method.md` at the Discovery step (feed autodiscovery). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — discovered feeds must be verified by a human before adding to the catalog.
+Follows `references/method.md` at the Discovery step (feed autodiscovery). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — discovered feeds must be verified by a human before adding to the catalog.

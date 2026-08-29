@@ -27,7 +27,7 @@ Only Florida is built out. To fill in another state later (no redesign needed ‚Ä
 3. Optionally add `resources/<state>/` + `sources.json` (mirror `florida/`).
 4. In `states.json`: set `status: populated`, fill `subjects[*]` (framework/source/example,
    `codes_verified`), set `adapter` + `resources_dir`.
-5. Never invent codes ‚Äî verify on the DOE (`protocols/standards-verification.md`).
+5. Never invent codes ‚Äî verify on the DOE (`protocol-layer/standards-verification.md`).
 
 ## Per-state table (‚òê stub = room to fill; verify on the state DOE)
 | State | Status | Math/ELA | Science | State-specific set |
@@ -87,4 +87,4 @@ Only Florida is built out. To fill in another state later (no redesign needed ‚Ä
 ## How the engine uses this
 When a user names a state, look it up in `states.json`: if `status: populated` (currently only Florida),
 use its adapter; otherwise use the framework classification as an **approximation**, tell the user it's
-unverified, and verify on the state DOE (`protocols/standards-verification.md`).
+unverified, and verify on the state DOE (`protocol-layer/standards-verification.md`).

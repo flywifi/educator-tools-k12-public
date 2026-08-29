@@ -13,7 +13,7 @@ Maintenance artifacts (not student-facing). Each carries the metadata block + `h
 - **Purpose:** the auditable record of an update that was *verified and applied*.
 - **Required elements:** which files were added/replaced; **what was verified on CPALMS** (with the
   code/URL); the re-enumeration result (counts from `parse_fl_standards.py`); refreshed `sources.json`
-  hashes; `human_review_required: true`. Logged like a decision record (`protocols/metadata-schema.md`).
+  hashes; `human_review_required: true`. Logged like a decision record (`protocol-layer/metadata-schema.md`).
 
 ### Currency check (read-only)
 - **Purpose:** a quick "are we current for school year N?" answer without applying anything.

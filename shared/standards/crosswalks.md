@@ -26,7 +26,7 @@ B.E.S.T. coverage, or a homeschooler mapping a chosen curriculum to FL for refer
   source frameworks — they are starting points, not certified equivalences.
 - Use `relationship` honestly: `exact` only with a verified 1:1 source mapping; otherwise `partial`/
   `related`. Record a `note`/source. Never assert an equivalence you can't cite
-  (`protocols/standards-verification.md`).
+  (`protocol-layer/standards-verification.md`).
 - Crosswalks are **decision support**: a generated artifact still cites the school's own framework as
   primary; the crosswalk is supplementary coverage information.
 

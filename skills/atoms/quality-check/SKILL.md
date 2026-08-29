@@ -45,4 +45,4 @@ On `fail`: `corrective_action` describes exactly what to change. On `warn`: issu
 - Certifying an artifact as Final
 
 ## Pipeline note
-Output conforms to `references/metadata-schema.md`. Called at the Validation step of `references/method.md`. `human_review_required: true` — a passing gate is a positive signal, not a certification.
+Output conforms to `protocol-layer/metadata-schema.md`. Called at the Validation step of `references/method.md`. `human_review_required: true` — a passing gate is a positive signal, not a certification.

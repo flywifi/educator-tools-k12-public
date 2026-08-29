@@ -2,8 +2,8 @@
 
 Governance is **continuous, not a final review** (Principle 2; V02 §S07; V03 §S06). Every object
 carries provenance + confidence; every stage appends lineage; every fact keeps its evidence. This
-contract is the bridge between docintel and the existing TOS governance: `protocols/metadata-schema.md`
-(the artifact metadata block) and `protocols/quality-gates.md` (the 9-dimension gates). Implemented
+contract is the bridge between docintel and the existing TOS governance: `protocol-layer/metadata-schema.md`
+(the artifact metadata block) and `protocol-layer/quality-gates.md` (the 9-dimension gates). Implemented
 in `governance.py`.
 
 ## The three governance records
@@ -31,7 +31,7 @@ Any extracted fact in a knowledge artifact keeps an `evidence` back-reference
 traced back. Evidence references must survive transformations (they are never discarded — V01 §S01).
 
 ## Tie-in to the TOS metadata block
-When docintel emits an artifact, the metadata block (`protocols/metadata-schema.md`) is populated:
+When docintel emits an artifact, the metadata block (`protocol-layer/metadata-schema.md`) is populated:
 - `provenance` summary + `audit_reference` ← the lineage record;
 - `score_summary` ← the validation metrics below + `quality-review`;
 - `confidence` rolls up to the document level;

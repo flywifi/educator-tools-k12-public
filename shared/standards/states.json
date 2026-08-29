@@ -1,6 +1,6 @@
 {
   "_comment": "National standards overlay. ONLY Florida is fully populated (status=populated, verified codes + adapter + corpus). Every other state is a STUB with room to fill in: set its status to 'populated', fill subjects[*].framework/source/example, set codes_verified, and add adapter + resources_dir. See state-standards-map.md 'Populating a state'. Verified June 2026.",
-  "updated": "2026-08-16",
+  "updated": "2026-08-17",
   "schema": {
     "status": [
       "populated",
@@ -40,7 +40,7 @@
     "Create shared/standards/<state>-best.md with VERIFIED coding schemes (mirror florida-best.md).",
     "Optionally add resources/<state>/ corpus + sources.json (mirror florida/).",
     "In states.json: set status=populated, fill subjects[*], set adapter + resources_dir.",
-    "Never invent codes \u2014 verify on the DOE (protocols/standards-verification.md)."
+    "Never invent codes \u2014 verify on the DOE (protocol-layer/standards-verification.md)."
   ],
   "national_sources": {
     "ccss": "https://www.thecorestandards.org/standards-in-your-state/",

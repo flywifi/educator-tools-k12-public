@@ -1,1 +1,38 @@
-{"_note": "Add 2-3 regression cases here. Each case: {id, input, expected_output_shape, must_contain, must_not_contain}"}
+{
+  "skill_name": "text-leveler",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_from_rewrite_at_grade_level",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "rewrite at grade level",
+      "assert": {
+        "atom": "text-leveler",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_level_this_text",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "level this text",
+      "assert": {
+        "atom": "text-leveler",
+        "basis": "atom_keyword_match"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "routes_from_simplify_this_passage",
+      "_note": "Deterministic: shared/routing/router.py is pure and offline, so this needs no model. The phrase is taken from this atom's own routing.json entry, so the case cannot drift from the registry it tests.",
+      "call": "routing.router:atom_route",
+      "input": "simplify this passage",
+      "assert": {
+        "atom": "text-leveler",
+        "basis": "atom_keyword_match"
+      }
+    }
+  ]
+}

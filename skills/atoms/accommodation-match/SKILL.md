@@ -40,4 +40,4 @@ Given a documented student need (from IEP, 504 plan, or ELL profile), suggests s
 - Using real student data (placeholders only)
 
 ## Pipeline note
-Follows `references/method.md` at the Differentiation step (accommodation matching). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — accommodations must align with the student's actual IEP/504 plan; teacher/case manager must verify.
+Follows `references/method.md` at the Differentiation step (accommodation matching). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — accommodations must align with the student's actual IEP/504 plan; teacher/case manager must verify.

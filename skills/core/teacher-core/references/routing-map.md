@@ -28,5 +28,5 @@ is the readable companion.
   gated by `quality-review` (multi-skill workflow, Phase C).
 - **Target not built yet** → `teacher-core` carries the pipeline using the shared core and labels
   the output's provenance.
-- **Ambiguous** → ask one clarifying question (`protocols/assumptions-protocol.md`) rather than guess.
+- **Ambiguous** → ask one clarifying question (`protocol-layer/assumptions-protocol.md`) rather than guess.
 - **Always** finish with the Quality Gates before declaring an artifact final.

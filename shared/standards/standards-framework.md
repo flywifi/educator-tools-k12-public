@@ -3,7 +3,7 @@
 Canonical source. How the ecosystem selects, cites, and verifies standards across **all of K–12**
 (scope decision: full K–12, breadth-first via a state-agnostic adapter).
 
-Works with `protocols/standards-verification.md` (the verification rules) and the framework files
+Works with `protocol-layer/standards-verification.md` (the verification rules) and the framework files
 in this directory (`ccss.md`, `ngss.md`, `state-standards-model.md`).
 
 ---
@@ -66,7 +66,7 @@ Always cite **framework + version + code** so the citation is verifiable, e.g.:
 
 ## 4. Verifying standards
 
-Follow `protocols/standards-verification.md`: a cited standard must **exist, be correctly coded, be
+Follow `protocol-layer/standards-verification.md`: a cited standard must **exist, be correctly coded, be
 current, be grade-appropriate, and be genuinely aligned**. A fabricated standard is an automatic
 integrity failure (QG §11.4). Never invent a code to fill a gap — correct it or escalate.
 

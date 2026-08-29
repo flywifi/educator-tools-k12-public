@@ -42,4 +42,4 @@ Creates a single worked example with numbered steps, reasoning annotations, and 
 - Problems without step-by-step solutions
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (worked example). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — mathematical accuracy and grade-level appropriateness must be verified.
+Follows `references/method.md` at the Generation step (worked example). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — mathematical accuracy and grade-level appropriateness must be verified.

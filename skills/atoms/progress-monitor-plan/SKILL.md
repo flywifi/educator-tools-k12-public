@@ -49,4 +49,4 @@ Designs a progress-monitoring schedule with probe type, frequency, decision rule
 - Making placement decisions
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (monitoring plan). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — monitoring plans must be approved by the IEP/MTSS team.
+Follows `references/method.md` at the Generation step (monitoring plan). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — monitoring plans must be approved by the IEP/MTSS team.

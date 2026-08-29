@@ -41,4 +41,4 @@ Creates 3-5 discussion or text-dependent questions scaffolded from lower to high
 - Questions without a text or topic anchor
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (question design). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — question quality and rigor alignment must be teacher-verified.
+Follows `references/method.md` at the Generation step (question design). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — question quality and rigor alignment must be teacher-verified.

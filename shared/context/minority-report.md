@@ -53,5 +53,5 @@ a **provisional teacher-/admin-directed update**.)
 `sot_resolver.resolve(claim, claim_type, candidates, context)` ranks candidates by
 `source-roles.json` (what each source may prove) then by the context's `authority_precedence`, writes
 `decision_log`, and fills `conflicts` / `failed_to_merge` / `residual_uncertainty`. The result is
-recorded in artifact metadata (`protocols/metadata-schema.md`) and governed by
-`protocols/conflict-protocol.md`.
+recorded in artifact metadata (`protocol-layer/metadata-schema.md`) and governed by
+`protocol-layer/conflict-protocol.md`.

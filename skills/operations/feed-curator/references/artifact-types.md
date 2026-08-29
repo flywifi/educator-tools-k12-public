@@ -2,7 +2,7 @@
 ## Artifacts produced by feed-curator
 
 These are governance/maintenance artifacts (not student-facing). All carry the metadata block from
-`protocols/metadata-schema.md` with `human_review_required: true`, and none fabricate URLs, labels, or
+`protocol-layer/metadata-schema.md` with `human_review_required: true`, and none fabricate URLs, labels, or
 verification status.
 
 ### catalog-health-report

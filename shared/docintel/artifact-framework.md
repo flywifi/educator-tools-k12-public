@@ -9,7 +9,7 @@ artifacts, not source documents and not parser output. Implemented in `artifact.
 - **Consumer Artifact** — a projection shaped for a specific consumer (a TOS skill, a human reviewer,
   an analytics job). Derived from the knowledge artifact; never re-derives from source.
 
-Both are parser-independent and carry the metadata block from `protocols/metadata-schema.md`.
+Both are parser-independent and carry the metadata block from `protocol-layer/metadata-schema.md`.
 
 ## Required elements (every artifact)
 1. `artifact_id`, `artifact_type`, `schema_version`.
@@ -37,7 +37,7 @@ change preserves integrity; uncontrolled change creates uncertainty*. Implemente
   **approval evidence** + at least one approval reference (§7); recorded in the Quality Ledger.
 - **Trace** — every change keeps an id, status, rationale, and approval references (§8); artifacts
   are immutable, so corrections create a **new** record, never an in-place edit
-  (`protocols/metadata-schema.md` §3).
+  (`protocol-layer/metadata-schema.md` §3).
 - **Constraints** (§9, enforced by `validate_change`): a change may **not** bypass governance, bypass
   review (no jump from proposed → approved), reduce traceability, or reduce planning integrity.
 

@@ -2,6 +2,7 @@
   "skill_name": "presentation-builder",
   "evals": [
     {
+      "kind": "prompt",
       "id": 1,
       "prompt": "Turn my 3rd grade fractions lesson into slides for tomorrow — about 7 slides.",
       "expected_output": "A slide outline (one idea per slide, gradual-release flow, visuals with alt text, at least one CFU) aligned to the real Grade-3 standard, then rendered to .pptx via the pptx skill, with the metadata block. Should pass quality-review.",
@@ -15,6 +16,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 2,
       "prompt": "Make a short review deck to warm up my 7th graders before their ratios quiz.",
       "expected_output": "A review/warm-up deck with item-per-slide prompts and reveal-answer slides, aligned to real Grade-7 CCSS ratio/proportion standards.",
@@ -26,6 +28,7 @@
       "files": []
     },
     {
+      "kind": "prompt",
       "id": 3,
       "prompt": "I need a parent-night presentation explaining how we teach reading in kindergarten.",
       "expected_output": "A family briefing deck in plain language, no jargon, no real student data, with clear visuals.",

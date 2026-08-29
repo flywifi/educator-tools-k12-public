@@ -84,7 +84,7 @@ Detection finds *what moved*; this turns it into *what matters*. The policy is c
 2. **Triage the report:** `new` (filename not in the snapshot), `changed` (sha256 differs),
    `js_required` (fetch via browser/downloads page), `skipped_robots`, `rate_limited`, `errors`.
 3. **Verify on CPALMS** before trusting any change (standards are the high-stakes part —
-   `protocols/standards-verification.md`).
+   `protocol-layer/standards-verification.md`).
 4. **Download accepted updates:** add `--download out/`; place them in
    `resources/<state>/<category>/`.
 5. **Re-enumerate + re-sync:** `parse_fl_standards.py`, then `sync_check.py`; update `sources.json`,
@@ -109,7 +109,7 @@ standards). The standards *content* changes rarely; assessment fact sheets/sched
 the live FLDOE/CPALMS pages always hold the newest. Run `source_currency.py` on a regular cadence (e.g.,
 monthly) to catch sources that quietly go stale or disappear between school-year refreshes.
 
-## Failure handling (`protocols/failure-recovery.md`)
+## Failure handling (`protocol-layer/failure-recovery.md`)
 If a source is unreachable, JS-gated, or robots-disallowed: **report it and stop** for that source —
 do not bypass. Fall back to the static downloads page / CDN, or a human pull. Never fabricate a
 "latest" version.

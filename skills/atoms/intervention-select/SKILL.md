@@ -52,4 +52,4 @@ Suggests an evidence-based intervention matched to a student need and MTSS tier,
 - Using real student data
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (intervention matching). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — intervention selection must be confirmed by the MTSS/IEP team.
+Follows `references/method.md` at the Generation step (intervention matching). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — intervention selection must be confirmed by the MTSS/IEP team.

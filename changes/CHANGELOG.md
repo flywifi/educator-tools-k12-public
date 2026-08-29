@@ -5,6 +5,59 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.6.0] — 2026-08-17
+
+### Fixed — a guard that could not see, and an eval system that had never run (2026-08-17)
+- **877 dead `protocols/` references, invisible to the guard whose job is dead references.** The
+  directory was renamed to `protocol-layer/` (a git R100 rename) on 2026-06-28; the references went
+  stale that day. Check 15 skipped every one because an anchor list is a WHITELIST and `protocols/`
+  was not in it — an unknown prefix reads as "not a path". 90% of the problem was 13 lines in two
+  canonical files replicated into 62 skills. Swept; the dead prefix is now retained in **both**
+  anchor tuples as a deliberate tripwire, with a twin proving that deleting it reopens the hole.
+- **The eval system had never executed. Not once, by any machine.** The proof was a committed
+  assertion that was false: `skill-health` expected `readiness_band: "strong"` while its own
+  recorded command returned `"not_ready"`. The CI step named "Validate eval files" ran `json.load()`
+  and nothing else, so a file containing `{}` passed and so did the lie. **0 → 133 executed cases.**
+- **`health.py` reported all 43 atoms as "not referenced in routing.json" while all 43 ARE
+  registered** — it read `routing.skills` and never `routing.atom_routes`. A 43-instance false
+  negative that also floored the readiness score at `0/100 not_ready`; it now reads `100/100 strong`.
+- **`validate_outputs` let an artifact omitting `human_review_required` pass**, because the rule only
+  fired when the key was present. Omission is the likelier failure. Now required on anything
+  carrying `artifact_type`, and caught by a new negative-control fixture.
+- **Three atoms declared `confidence` as a float against a string enum** (`meeting-classify`,
+  `document-parse`, `feed-validate`), and **all 43 cited a `references/metadata-schema.md` that no
+  atom has**. `standards-crosswalk` was the only atom whose description carried no Do-NOT clause.
+- **check 24 was wrong under a shallow clone.** `actions/checkout@v4` defaults to fetch-depth 1, so
+  every file reports HEAD's date as its last-change date; the check produced six false failures the
+  first time CI ran on a later calendar day. Fixed both ways: `fetch-depth: 0`, and
+  `git_commit_date()` now returns "cannot tell" on a shallow repo instead of a wrong date.
+
+### Added — things that can now fail (2026-08-17)
+- **`shared/evals/eval-case.schema.json`** — one case shape where there were six (four dialects in
+  use, a fifth prescribed by the 43 empty stubs, a sixth in the template). `kind` discriminates
+  `command`/`call` (executed) from `prompt` (model-facing, recorded, never executed here).
+- **`tools/run_evals.py`** — executes the executable kinds and is honest about the rest: skips
+  (placeholder, missing fixture, network) and `unrunnable` (the case asserts keys the tool never
+  emits) are counted and printed, never passed. Replaces the `json.load()` step in CI.
+- **`tools/atom_contract.py`** — every atom's declared Output against `atom-io.schema.json`: tool
+  name, `human_review_required`, the confidence enum, live `references/`, and a Do-NOT clause. Five
+  twins. Its own first version read the wrong schema key and silently skipped the confidence check —
+  the twins caught that, and fixing it surfaced two more real violations.
+- **Eval coverage: every skill now has cases.** `teacher-core` had no `evals/` directory at all; the
+  43 atoms had empty stubs. 133 executable contract cases, generated from `routing.json` so they
+  cannot drift from the registry they test.
+- **`run_evals.py --triggers`** grades `trigger_evals` through the deterministic router.
+
+### Known limits — stated, not implied closed
+- **The 133 executed cases are CONTRACT cases, not behaviour.** 65 model-facing cases remain
+  unexecuted, including every refusal case for the nine skills that got boundary language in v1.5.0.
+- **quality-review's trigger evals fail their own bar: 1/10 positives route to it (bar ≥0.8).** The
+  keyword router scores the artifact noun above the review verb, so "review my lesson plan" reaches
+  `lesson-planner`. One of five negatives — an out-of-ecosystem code-review prompt — does activate
+  it. Measured and recorded; **not fixed**, because the fix is a router or description change and
+  that is product behaviour, not a change the tool that found the problem should make alone.
+- The readiness score's fragility stands even at 100/100: 25 warnings would floor it again.
+
 ## [1.5.0] — 2026-08-16
 
 ### Fixed — claims that were false, and the guards that could not see them (2026-08-16)

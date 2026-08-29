@@ -37,4 +37,4 @@ Generates one standards-based report card comment with growth language, aligned 
 - Parent conference notes (use atom-parent-comm)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (narrative composition). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — comment must be personalized with real data by the teacher.
+Follows `references/method.md` at the Generation step (narrative composition). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — comment must be personalized with real data by the teacher.

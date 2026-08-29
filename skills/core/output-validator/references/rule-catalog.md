@@ -2,7 +2,7 @@
 
 The universal checks `tools/validate_outputs.py` applies to every governed JSON artifact. `blocking` =
 must fix before ship; `warning` = confirm; `info` = note. Mirrors the ecosystem non-negotiables
-(`CLAUDE.md`, `protocols/metadata-schema.md`).
+(`CLAUDE.md`, `protocol-layer/metadata-schema.md`).
 
 | Rule | Severity | What it asserts | Why |
 |---|---|---|---|

@@ -12,7 +12,7 @@ remain Florida's adopted standards.
 > FLDOE `https://www.fldoe.org/academics/standards/`. Assessment (FAST/B.E.S.T./EOC):
 > `https://www.fldoe.org/accountability/assessments/k-12-student-assessment/`. EL/WIDA:
 > `https://wida.wisc.edu/memberships/consortium/fl`. Always prefer these live sources; never invent a
-> code — confirm on CPALMS (`protocols/standards-verification.md`). Refresh: `tools/standards_refresh.py`.
+> code — confirm on CPALMS (`protocol-layer/standards-verification.md`). Refresh: `tools/standards_refresh.py`.
 
 ## Frameworks (use these in metadata `standards_set`)
 | Framework | Subject | System | Live source |

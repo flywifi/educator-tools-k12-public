@@ -1,0 +1,53 @@
+{
+  "skill_name": "teacher-core",
+  "_note": "teacher-core was the ONE skill with no evals/ directory at all — the 44th of the 44 that health.py flagged, and the only one whose gap was a missing folder rather than an empty file. It is a dispatcher, not a producer ('teacher-core is a dispatcher, not a producer. It never authors artifacts directly — it routes and governs', workflow.json), so its cases assert ROUTING and REFUSAL-TO-AUTHOR, never artifact content.",
+  "evals": [
+    {
+      "kind": "call",
+      "name": "routes_a_lesson_request_to_lesson_planner",
+      "_note": "Deterministic via shared/routing/router.py — no model needed.",
+      "call": "routing.router:route",
+      "input": {
+        "text": "Create a lesson plan on equivalent fractions for 3rd grade."
+      },
+      "assert": {
+        "recommended_skill": "lesson-planner"
+      }
+    },
+    {
+      "kind": "call",
+      "name": "review_of_an_artifact_routes_to_its_AUTHOR_not_quality_review",
+      "call": "routing.router:route",
+      "input": {
+        "text": "Review this quiz before I give it tomorrow."
+      },
+      "assert": {
+        "recommended_skill": "assessment-designer"
+      },
+      "_note": "Asserts MEASURED behaviour, not intended behaviour, and the difference is a recorded finding. 'Review this quiz' routes to assessment-designer because the keyword router scores the artifact noun above the review verb. quality-review's own trigger_evals treat this exact class of prompt as a POSITIVE, and only 1 of its 10 positives reaches it (bar: 0.8) — see `python3 tools/run_evals.py --triggers`. Changing the router or the descriptions is a product behaviour change and is NOT done by the tool that found the problem. This case pins today's behaviour so the fix, when made, shows up as a deliberate diff rather than a silent one."
+    },
+    {
+      "kind": "prompt",
+      "name": "ambiguous_request_asks_one_question_and_authors_nothing",
+      "_note": "SKILL.md: 'If the request is genuinely ambiguous, ask one clarifying question rather than guess.' Countable, but needs a model run — recorded, not executed.",
+      "prompt": "Help me with my class.",
+      "expected_output": "Exactly one clarifying question. No artifact of any kind.",
+      "assertions": [
+        "Asks exactly one clarifying question",
+        "Produces NO artifact body — teacher-core dispatches, it never authors",
+        "Does not guess a skill when the request carries no routing cue"
+      ]
+    },
+    {
+      "kind": "prompt",
+      "name": "persona_sets_defaults_but_never_restricts",
+      "_note": "SKILL.md §2: persona 'sets sensible defaults; it never restricts what can be requested'. A negative case: an Administrator persona must not refuse a lesson-plan request.",
+      "prompt": "[persona: Administrator] Draft a 5th grade science lesson on the water cycle.",
+      "expected_output": "Routes to lesson-planner. The persona changes defaults, not permissions.",
+      "assertions": [
+        "Does not refuse on the grounds of persona",
+        "Routes to lesson-planner"
+      ]
+    }
+  ]
+}

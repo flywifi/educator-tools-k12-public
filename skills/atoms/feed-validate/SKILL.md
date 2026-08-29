@@ -28,7 +28,7 @@ Validates a single feed URL and returns its health status (live, dead, stale, re
   "reason": "Feed updated 2 hours ago; last 5 entries recent",
   "redirect_target": null,
   "last_entry_date": "2026-06-27T10:30:00Z",
-  "confidence": 0.99,
+  "confidence": "high",
   "label_issues": [],
   "human_review_required": true
 }
@@ -40,4 +40,4 @@ Validates a single feed URL and returns its health status (live, dead, stale, re
 - Bulk feed validation (call this atom once per feed URL)
 
 ## Pipeline note
-Follows `references/method.md` at the Validation step (feed health check). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — feed health is advisory; dead feeds may be temporarily unreachable.
+Follows `references/method.md` at the Validation step (feed health check). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — feed health is advisory; dead feeds may be temporarily unreachable.

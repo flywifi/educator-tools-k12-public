@@ -47,4 +47,4 @@ Generates a PLAAFP statement that describes a student's current performance acro
 - Diagnostic assessment or evaluation
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (PLAAFP drafting). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — PLAAFP must be completed with actual assessment data by the IEP team.
+Follows `references/method.md` at the Generation step (PLAAFP drafting). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — PLAAFP must be completed with actual assessment data by the IEP team.

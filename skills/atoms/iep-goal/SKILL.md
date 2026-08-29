@@ -53,4 +53,4 @@ Drafts a single SMART IEP annual goal in the standard format (condition + behavi
 - Behavior Intervention Plans (BIPs) — those require FBA data, not a standard goal format
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step. Output conforms to `references/metadata-schema.md`. This atom is advisory only. `human_review_required: true`. `legal_notice` must be preserved in any output shown to users. IEP goals require qualified professional review before inclusion in a legal document.
+Follows `references/method.md` at the Generation step. Output conforms to `protocol-layer/metadata-schema.md`. This atom is advisory only. `human_review_required: true`. `legal_notice` must be preserved in any output shown to users. IEP goals require qualified professional review before inclusion in a legal document.

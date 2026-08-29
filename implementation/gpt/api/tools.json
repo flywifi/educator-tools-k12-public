@@ -1783,7 +1783,7 @@
           },
           "rubric_version": {
             "type": "string",
-            "description": "Quality Gates rubric version to use. Defaults to the current version in protocols/quality-gates.md. Provide only when testing against a specific version.\n"
+            "description": "Quality Gates rubric version to use. Defaults to the current version in protocol-layer/quality-gates.md. Provide only when testing against a specific version.\n"
           },
           "promote_failures_to_eval": {
             "type": "boolean",

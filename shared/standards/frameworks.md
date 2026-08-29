@@ -15,7 +15,7 @@ pattern, source) in the normalized standard shape from `standards-framework.md`
 Each ships as a **stub** (`status: "stub"`, `codes_verified: false`, `standards: []`) — same pattern as
 `states.json`. The full standard-by-standard enumeration is a **data task**, populated from each
 framework's official source and kept current offline by `standards-updater`. **Never invent codes or
-statements** — verify on the source (`protocols/standards-verification.md`).
+statements** — verify on the source (`protocol-layer/standards-verification.md`).
 
 ## Cross-mapping (`crosswalks/<a>__<b>.json`)
 A crosswalk maps requirements between two frameworks so coverage can be translated across standards,

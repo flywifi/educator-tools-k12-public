@@ -50,4 +50,4 @@ Drafts a single parent/guardian communication. Supports email, paper note, and s
 - Bulk mail-merge generation (this atom drafts one at a time)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step. Output conforms to `references/metadata-schema.md`. Generation step only. Review and fill placeholders before sending. `human_review_required: true` — teacher must verify tone, content, and facts before sending to families.
+Follows `references/method.md` at the Generation step. Output conforms to `protocol-layer/metadata-schema.md`. Generation step only. Review and fill placeholders before sending. `human_review_required: true` — teacher must verify tone, content, and facts before sending to families.
