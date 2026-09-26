@@ -1,0 +1,16 @@
+{
+  "agent-plugins-schemas": "6539175bfcdf43085855183e86da40ea94b166547a72b47ae9a0a390516d3acb",
+  "agentskills-spec": "2b1dbb4fd80c31748d15812c4ebd3e66c09383d0c792801f617718684489e40d",
+  "chatgpt-codex-changelog": "Codex CLI Release: 0.157.1",
+  "claude-code-changelog": "2.1.283",
+  "claude-platform-notes": "Claude Platform release notes \u2014 September 24, 2026",
+  "gemini-api-changelog": "0d999a0f58f3951c62b632221671ae12b34d51327b22c08713f0316990fa583e",
+  "gemini-codeassist": "August 08, 2025",
+  "google-edu-blog": "Expanding free AI training for educators",
+  "mcp-python-sdk": "2.2.0",
+  "mcp-spec-versioning": "f00269fadddff0f5500bdfda7169d572d2adf3131d239a69c1465d541d7f6eb6",
+  "mcp-ts-sdk": "1.30.1",
+  "mcpb-manifest": "cac6cf56412f2d136da2fc886cc3417acbcbfd73b260024388159562b2abe466",
+  "openai-devs": "OpenAI Developers plugin",
+  "workspace-updates": ""
+}

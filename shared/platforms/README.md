@@ -13,5 +13,10 @@ Rules:
   teacher account.
 - Consumers: teacher-facing setup docs and `tools/build_teacher_pack.py` (install pages cite
   the matrix row they depend on). Edit the matrix, then regenerate — never fork a claim.
-- Freshness: `updated` is gated by sync_check check 24 (dated manifests). The weekly vendor
-  watcher and its source registry land with R5-F (see this README's tail once it does).
+- Freshness: `updated` is gated by sync_check check 24 (dated manifests);
+  `tools/platform_watch.py` polls the vendor feeds in `platform-sources.json` weekly
+  (detect-only) so a platform change becomes a matrix edit, not a surprise.
+
+`platform-sources.json` lists every machine-readable vendor feed (RSS/Atom/JSON/md-hash) with
+what it covers; rows the container cannot poll (help.openai.com is bot-blocked) are
+`kind: "manual-agent"` and belong to the quarterly re-audit checklist.

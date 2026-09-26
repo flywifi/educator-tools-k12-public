@@ -131,11 +131,29 @@ jobs:
       - name: Registry currency (informational drift report)
         run: python3 tools/registry_currency.py --summary
 
+      # R5-F2 contract tests: exercise the repo the way the PRODUCTS do. The plugin shipped
+      # loading 0 of 62 skills and the server refused every current client, and CI was green,
+      # because nothing here ever spoke a vendor's actual protocol or scan.
+      - name: Teacher-pack builder self-test (packs render, packed server answers initialize)
+        run: python3 tools/build_teacher_pack.py --self-test
+
+      - name: Platform watcher self-test + registry shape (offline; the weekly workflow fetches)
+        run: |
+          python3 tools/platform_watch.py --self-test
+          python3 tools/platform_watch.py --check
+
+      - name: Official-MCP-client handshake (the pinned client library Claude/Codex ship)
+        run: |
+          python3 tools/offline_index.py --build
+          cd tools/contract && npm ci --silent && cd ../..
+          node tools/contract/handshake.mjs
+
       # LAST in the job on purpose: an SDK install failure must never mask a stdlib failure.
       - name: MCP hosted-leg self-test (installs the SDK; in-memory Client round-trip)
         run: |
           pip install -r tools/requirements-mcp.txt
           python3 tools/mcp_http_server.py --self-test
+          python3 tools/build_teacher_pack.py --self-test   # jsonschema present here: packs validate against the vendored agent-plugins schemas
           python3 tools/mcp_smoke.py --hosted
 
       # Advisory BY DESIGN for exit 1: its blocking-issue list is already hard-gated by the

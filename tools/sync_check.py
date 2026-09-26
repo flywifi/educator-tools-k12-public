@@ -766,6 +766,60 @@ def main() -> int:
     # (check 22, the Actions OpenAPI freshness gate, was RETIRED with the Custom GPT Actions
     # leg in R5-B — the artifact it gated no longer exists. The number is not reused.)
 
+    # 26. Plugin-loader mirror: apply the documented ONE-LEVEL scan (each manifest `skills` entry
+    # is a directory of <name>/SKILL.md) to .claude-plugin/plugin.json and require that it finds
+    # every skill on disk. The shipped manifest had NO skills key, the loader found 0 of 62, and
+    # nothing noticed because nothing ever loaded the plugin the way the product does (R5 B1 —
+    # verified 0 -> 62 with `claude plugin details` 2.1.282). Gemini CLI and ADK scan the same
+    # one level, so this mirror guards three vendors at once.
+    try:
+        _plug = json.loads(read(ROOT / ".claude-plugin" / "plugin.json"))
+        _entries = _plug.get("skills") or []
+        _found = set()
+        for _e in _entries:
+            _base = ROOT / _e.lstrip("./")
+            _found |= {d.parent.name for d in _base.glob("*/SKILL.md")}
+            if (_base / "SKILL.md").exists():
+                _found.add(_base.name)
+        _on_disk = {d.name for d in skill_dirs}
+        if not _entries:
+            _emit("  x .claude-plugin/plugin.json has no `skills` array — the loader's default "
+                  "one-level scan finds 0 skills in this repo's two-level layout (R5 B1)")
+        elif _found != _on_disk:
+            _missing = sorted(_on_disk - _found)[:5]
+            _emit(f"  x plugin skills scan: loader would find {len(_found)}/{len(_on_disk)} "
+                  f"skills — first missing: {_missing} (a new group dir needs the generated "
+                  f"skills array regenerated: python3 tools/export_plugin_manifest.py)")
+    except Exception as e:
+        _emit(f"  x plugin-loader mirror could not run ({e.__class__.__name__}: {e})")
+
+    # 27. Description routing integrity: a "(use X)" cross-reference or an atom- prefixed id in
+    # any SKILL.md must name a skill that exists. 34 descriptions shipped routing to atom-<x> ids
+    # that never existed (the registered names are bare), and one to a skill that was never built
+    # (source-crawl) — an assistant following those hints dead-ends silently. Single-word "use
+    # the/tools/district" prose is exempt: only multi-word kebab tokens are candidate skill ids.
+    _skill_names = {d.name for d in skill_dirs}
+    for sd in skill_dirs:
+        _body = read(sd / "SKILL.md")
+        for _m in re.findall(r"\batom-([a-z][a-z-]*[a-z])\b", _body):
+            _emit(f"  x {sd.relative_to(ROOT)}: SKILL.md routes to 'atom-{_m}' — atom- ids do "
+                  f"not exist; the registered name is '{_m}'")
+        for _m in re.findall(r"\(use ([a-z]+(?:-[a-z]+)+)", _body):
+            if _m not in _skill_names:
+                _emit(f"  x {sd.relative_to(ROOT)}: SKILL.md says '(use {_m})' but no such skill "
+                      f"exists — dead routing hint")
+
+    # 25. ChatGPT web-doc freshness: the committed TOS-skills.md must equal a fresh render from
+    # the canonical skill tree + wizard (the audit found it silently stale — the generator's old
+    # YAML inputs were retired in R5-B, so this doc now regenerates from canon). FAIL-CLOSED.
+    try:
+        import export_chatgpt as _ecg
+        for _issue in _ecg.check():
+            _emit(_issue)
+    except Exception as e:
+        _emit(f"  x ChatGPT web-doc freshness gate could not run "
+              f"({e.__class__.__name__}: {e}) — fix tools/export_chatgpt.py")
+
     # 23. Cross-domain schema parity: the schema the `mcp` SDK derives for Claude must match the
     # registry schema every SDK consumer gets. The retired check 22 compared a registry render
     # to committed registry artifacts, so registry-vs-SDK divergence was structurally invisible to
