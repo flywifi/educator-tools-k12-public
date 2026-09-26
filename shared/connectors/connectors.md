@@ -7,7 +7,10 @@ probed when it's not there. It is a *contract*, not a set of live API clients �
 auth/API code**. Live retrieval is realized by the **host AI's native integration** (Claude / OpenAI /
 Gemini / etc.) when the deployment has connected it, or through manual paste / **uploaded files (incl.
 `.ics`/`.eml`)** via `shared/docintel/`; the registry says what each connector **would** provide and how
-to behave when it's off or restricted. First consumer: `skills/operations/meeting-classifier/`.
+to behave when it's off or restricted. *(Reach caveat, 2026-09-25: on Google Workspace-for-Education
+accounts the Gemini app reaches only Google's own services — third-party connectors/custom MCP are
+personal-account features there — so on that surface every non-Google connector degrades to
+paste/upload by construction.)* First consumer: `skills/operations/meeting-classifier/`.
 
 Files: `connectors.json` (registry), `connector.schema.json` (contract), `feature-flags.example.json`
 (sample per-deployment flags), `connectors.py` (offline resolver). Companion privacy policy for student

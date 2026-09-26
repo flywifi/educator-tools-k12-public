@@ -1,7 +1,7 @@
-<!-- last_reviewed: 2026-07-11 | owner: claude-maintainer -->
+<!-- last_reviewed: 2026-09-25 | owner: claude-maintainer -->
 # TOS on Claude — pick your door
 
-Two ways in, depending on how you use Claude. Neither needs any technical skill.
+Three ways in, depending on how you use Claude. None needs any technical skill.
 
 > **Always true, whichever door you pick:** everything TOS makes is a **draft for
 > your review** — you make the final call. Verified data ships for **Florida only**
@@ -33,9 +33,23 @@ verified Florida data), your course codes, your district, and the rules for your
 kind of school — each row citing its source and the official site to verify it on.
 It's a draft for your review, always.
 
-## Door 2 — "I use claude.ai in the browser"
+## Door 2 — "I use claude.ai in the browser on a paid plan (Pro/Max/Team) — or Claude for Teachers"
 
-No files live on your computer, so it works like a Project:
+Paid claude.ai chat installs plugins now: **Customize → Plugins → "+" → Add marketplace →**
+enter `flywifi/educator-tools-k12-public` → install **Teacher Operating System**. You get every
+skill in the browser; the verified-lookup TOOLS still run only where Claude runs on your
+computer (Claude Code, the desktop app, or Cowork with the desktop app open) — in the browser
+the skills work from their bundled references instead.
+
+**Claude for Teachers** (free for verified US K-12 educators; sign up by June 30, 2027 for a
+free year) is "a free Claude for Teams plan" with Claude Code and Cowork, and training is off.
+Its published disabled-features list does not include plugins — but nobody has confirmed a
+plugin install on a real teacher account yet (UNTESTED-live): if Customize → Plugins isn't
+there, use Door 3.
+
+## Door 3 — "I use claude.ai in the browser on the Free plan"
+
+No plugin support, so it works like a Project:
 
 1. Create a Project on claude.ai.
 2. Add `implementation/gpt/web/TOS-skills.md` **and the Reference Pack** as Project
@@ -50,14 +64,18 @@ No files live on your computer, so it works like a Project:
 Same flow as the ChatGPT version — the step-by-step lives in
 [`implementation/gpt/web/README.md`](../gpt/web/README.md). TOS itself stores
 nothing in the browser: your profile lives in your Project, under your control.
+(Free plans also get **one** custom remote connector — irrelevant unless someone
+hosts the tools server for your school.)
 
 ## "Wait — which one is the desktop app?"
 
-Naming, plainly: **Claude Code** is the command-line/IDE tool; **Cowork** is the
-Claude desktop app. TOS ships as **one plugin bundle** (`.claude-plugin/` in this
-repository) that serves both — the same two `/plugin` commands above work in
-either. If you can open a folder of files with it, you're in Door 1; if you're in
-a browser tab, you're in Door 2.
+Naming, plainly: the Claude **desktop app** now has three tabs — **Chat**, **Cowork**
+and **Code** — and **Claude Code** is also a command-line tool. TOS ships as **one plugin
+bundle** (`.claude-plugin/` in this repository) that serves all of them: the two `/plugin`
+commands work in Claude Code and the Code tab; Chat/Cowork/claude.ai install the same plugin
+through **Customize → Plugins**. Plugin skills work in chat everywhere; the local tools server
+runs where Claude runs on your computer (Code, Desktop, and Cowork while the desktop app is
+open). If you're in a browser tab on the Free plan, you're in Door 3.
 
 ## Connect the verified tools (optional, powerful)
 

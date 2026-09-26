@@ -11,13 +11,13 @@ _Snapshot date: 2026-07-15._
 
 ## Native AI assistants (the "AI alone" arms)
 
-| Capability (as of 2026-07) | Claude | ChatGPT | Gemini |
+| Capability (as of 2026-07; standards row re-verified 2026-09-25) | Claude | ChatGPT | Gemini |
 |---|---|---|---|
 | Per-file upload size | ~500 MB | ~512 MB | ~100 MB |
 | Files per chat / project | ~20/chat | ~10/chat, Project persistence | ~10/chat |
 | Reads uploaded files | multimodal PDF < 100 pp (charts/graphics read, not just OCR); text-only for very large | **Advanced Data Analysis = real Python sandbox** that can exhaustively read an uploaded file | native file read + Workspace reach |
 | Generates documents | artifacts; exports | Canvas (rewrite length/reading-level, export PDF) | Workspace-native Docs/Slides/Sheets |
-| Standards grounding | model memory only (no verified corpus) | model memory only | model memory only |
+| Standards grounding | model memory only (no verified corpus); Claude for Teachers adds the Learning Commons connector (all-state standards KG) | model memory only on personal plans; Edu / district-claimed Teachers workspaces get OpenAI's K-12 Educator plugin with Learning Commons (2026-08-04) | model memory only in the app; Google Classroom now tags learning standards via CASE/Rosetta (2026-05, US incl.) — Classroom context, not an in-chat verified corpus |
 | Auditable gated decision | none native | none native | none native |
 
 Sources (accessed 2026-07-15): file-limit + capability comparisons —
