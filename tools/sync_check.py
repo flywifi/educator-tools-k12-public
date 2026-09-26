@@ -139,6 +139,7 @@ DATED_MANIFESTS = (
     "tools/dependencies.json", "tools/registry-sources.json", "tools/url-provenance.json",
     "shared/atoms/atoms.json", "shared/connectors/connectors.json",
     "shared/routing/routing.json", "shared/standards/states.json",
+    "shared/platforms/platform-matrix.json",
 )
 
 
