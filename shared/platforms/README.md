@@ -11,8 +11,7 @@ Rules:
 - A status changes ONLY with a vendor source + a fresh `checked` date. `unverified` beats a
   guess; `UNTESTED-live` in a note means vendor-documented but never exercised on a real
   teacher account.
-- Consumers: teacher-facing setup docs and the per-vendor pack builder (lands with R5-D;
-  install pages cite the matrix row they depend on). Edit the matrix, then regenerate — never
-  fork a claim.
+- Consumers: teacher-facing setup docs and `tools/build_teacher_pack.py` (install pages cite
+  the matrix row they depend on). Edit the matrix, then regenerate — never fork a claim.
 - Freshness: `updated` is gated by sync_check check 24 (dated manifests). The weekly vendor
   watcher and its source registry land with R5-F (see this README's tail once it does).
