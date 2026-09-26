@@ -1,6 +1,6 @@
 ---
 name: text-leveler
-description: "Rewrite a text passage to a target reading level while preserving key content and meaning. Use this atom when differentiate or lesson-planner needs a passage adapted for below-grade or above-grade readers. Do NOT use for translation — that is atom-translate-comm. Do NOT use for original content generation."
+description: "Rewrite a text passage to a target reading level while preserving key content and meaning. Use this atom when differentiate or lesson-planner needs a passage adapted for below-grade or above-grade readers. Do NOT use for translation — that is translate-comm. Do NOT use for original content generation."
 ---
 
 # text-leveler
@@ -34,9 +34,9 @@ Rewrites a passage to hit a target grade-band reading level (simpler vocabulary,
 ```
 
 ## Do NOT use this atom for
-- Translation to another language (use atom-translate-comm)
+- Translation to another language (use translate-comm)
 - Original content generation (this rewrites existing text)
 - Modifying meaning or factual content
 
 ## Pipeline note
-Follows `references/method.md` at the Differentiation step (reading-level adaptation). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — leveled text must preserve accuracy; teacher should verify.
+Follows `references/method.md` at the Differentiation step (reading-level adaptation). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — leveled text must preserve accuracy; teacher should verify.

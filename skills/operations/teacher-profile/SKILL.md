@@ -48,7 +48,7 @@ See `references/wizard.md` for the interview script and `references/profile-mode
 See `references/artifact-types.md` for the artifact types this skill produces and their specs.
 
 ## Output: always emit the metadata block
-Every artifact ends with the metadata block from `protocol-layer/metadata-schema.md`, including the
+Every artifact ends with the metadata block from `references/metadata-schema.md`, including the
 per-dimension quality scores, the decision, and `human_review_required: true` — outputs are
 decision support, not final professional or legal determinations. Use placeholders only; never real
 student data.

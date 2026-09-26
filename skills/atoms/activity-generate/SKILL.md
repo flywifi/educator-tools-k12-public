@@ -1,11 +1,11 @@
 ---
 name: activity-generate
-description: "Generate exactly ONE learning activity for a given objective, grade, and subject. Use this atom when a teacher says 'give me an activity for this objective' or when lesson-planner needs to generate activities one at a time. Do NOT use for generating a full lesson plan — use lesson-planner. Do NOT use for assessment questions — use atom-assessment-item. Call this atom once per activity needed."
+description: "Generate exactly ONE learning activity for a given objective, grade, and subject. Use this atom when a teacher says 'give me an activity for this objective' or when lesson-planner needs to generate activities one at a time. Do NOT use for generating a full lesson plan — use lesson-planner. Do NOT use for assessment questions — use assessment-item. Call this atom once per activity needed."
 ---
 
 # activity-generate
 
-Generates a single, structured learning activity (not a whole lesson). Each activity includes a procedure, materials, timing, and DOK level. Accepts an objective from atom-objective-write and optional differentiation flags.
+Generates a single, structured learning activity (not a whole lesson). Each activity includes a procedure, materials, timing, and DOK level. Accepts an objective from objective-write and optional differentiation flags.
 
 ## Input
 
@@ -22,7 +22,7 @@ Generates a single, structured learning activity (not a whole lesson). Each acti
 }
 ```
 
-`activity_type`: optional; if omitted the atom selects an appropriate type. `differentiation`: list of profiles to weave in (see atom-differentiate for a separate full differentiation pass). `materials_available`: optional constraint.
+`activity_type`: optional; if omitted the atom selects an appropriate type. `differentiation`: list of profiles to weave in (see differentiate for a separate full differentiation pass). `materials_available`: optional constraint.
 
 ## Output
 
@@ -42,14 +42,14 @@ Generates a single, structured learning activity (not a whole lesson). Each acti
     "objective": "Students will be able to represent fractions greater than one on a number line."
   },
   "human_review_required": true,
-  "note": "One activity — combine with other atom-activity-generate calls to build a full lesson."
+  "note": "One activity — combine with other activity-generate calls to build a full lesson."
 }
 ```
 
 ## Do NOT use this atom for
 - Full lesson plans (use lesson-planner, which calls this atom multiple times)
-- Assessment items (use atom-assessment-item)
-- Differentiated rewrites of an existing activity (use atom-differentiate)
+- Assessment items (use assessment-item)
+- Differentiated rewrites of an existing activity (use differentiate)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step. Output conforms to `protocol-layer/metadata-schema.md`. Generation step only. Pass the output to atom-quality-check before including in a lesson. `human_review_required: true`.
+Follows `references/method.md` at the Generation step. Output conforms to `references/metadata-schema.md`. Generation step only. Pass the output to quality-check before including in a lesson. `human_review_required: true`.

@@ -15,7 +15,7 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
    time span (year / semester / quarter), and instructional days available. Log assumptions
    (calendar, period length) where not given.
 2. **Standards Alignment** — gather the full set of standards for the span and **verify** them
-   (`shared/standards/`, `protocol-layer/standards-verification.md`); the goal is **complete coverage**
+   (`shared/standards/`, `references/standards-verification.md`); the goal is **complete coverage**
    with no gaps or unnecessary duplication. Pull standards AND the **FL course code** from the offline
    index (zero-token, verbatim — `tools/offline_index.py --standards "<topic>" --grade <g> --subject
    <s>` and `--course "<title>"`, e.g. `Grade Three Mathematics → 5012050`) so the map anchors to the
@@ -27,12 +27,12 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
    unit, a realistic time allocation, and assessment checkpoints.
 
 ## 2. Validate, then gate
-Run the universal + mapping checks (`shared/quality/verification-checklists.md`) — especially
+Run the universal + mapping checks (`references/verification-checklists.md`) — especially
 **coverage** (every required standard placed once) and **pacing realism**. Self-score against
 `references/quality-gates.md`, then hand to **quality-review**.
 
 ## 3. Always emit the metadata block
-Per `protocol-layer/metadata-schema.md`, with `human_review_required: true` and the standards-coverage
+Per `references/metadata-schema.md`, with `human_review_required: true` and the standards-coverage
 summary. Placeholders only.
 
 Artifact types: `references/artifact-types.md`. Template: `assets/templates/pacing-guide-template.md`.

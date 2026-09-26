@@ -4,7 +4,7 @@
 ## Purpose
 One tool registry (`tools/mcp_tooldefs.py`) serving four delivery legs: plugin-shipped stdio
 (zero-step), Claude Desktop `.mcpb` (one-click), hosted streamable-HTTP (claude.ai + ChatGPT
-Developer mode), and Custom GPT Actions (the generated OpenAPI). Teachers get deterministic,
+Developer mode; the Actions leg was retired 2026-09 — R5-B). Teachers get deterministic,
 verified lookups instead of model recall.
 
 ## Non-negotiable invariants
@@ -60,8 +60,8 @@ verified lookups instead of model recall.
 - LIKE-fallback search (no FTS5) is correct but slower — never treated as an error.
 - `TOS_MCP_TOKEN` gates `/mcp` and `/v1/*` via middleware; `/healthz` and `/openapi.json` stay
   token-exempt (but rate-limited) because gating them breaks platform health probes and ChatGPT's
-  Import-from-URL respectively. MCP **connectors** on either platform cannot send it; Custom GPT
-  **Actions** can — the "ChatGPT cannot send headers" rationale was retracted on 2026-08-16 in
+  Import-from-URL respectively. MCP **connectors** on either platform cannot send it — the
+  "ChatGPT cannot send headers" rationale was retracted on 2026-08-16 in
   `security/SECURITY_REVIEW.md`; do not reintroduce it. Never document the token as "auth for the
   server".
 
@@ -78,8 +78,8 @@ already eradicated everywhere else. Run the self-test; its probe list is the sou
 3. `mcp_http_server --self-test` — SDK round-trip, `readOnlyHint` survival, rate-limit burst,
    ASGI-level token gating of `/mcp`, `public_url` resolution, `TOS_MCP_PORT` refusal,
    `schema_parity()`, **and the real-socket E2E plus its no-lifespan twin**.
-4. `export_actions_schema --self-test` + **sync_check checks 22 AND 23**: 22 holds the committed
-   Actions artifacts to the registry; **23 holds the SDK-derived Claude schema to the same
+4. **sync_check check 23** (22 retired with the Actions leg, R5-B): **23 holds the
+   SDK-derived Claude schema to the same
    registry**. 22 alone cannot see registry-vs-SDK divergence — that is exactly how all eight
    tools once advertised different rules per platform.
 5. `build_mcpb --self-test` — staged server answers stdio from inside the staging tree;
@@ -98,9 +98,11 @@ Any tool added/removed/renamed on the surface · any auth change on the hosted l
 release.
 
 ## Empirical checkpoints (unchecked until tested on real accounts)
-- [ ] Claude for Teachers: can that plan self-serve a custom connector? (Docs currently hedge.)
-- [ ] ChatGPT Plus: does Developer mode appear for individual Plus accounts? (OpenAI's own
-      docs conflict; Door 4 is the documented-safe path meanwhile.)
+- [ ] Claude for Teachers: plugin install + custom connector on a real teacher account
+      (vendor text: free Team plan; connectors/plugins not on its disabled list — inferred).
+- [x] ChatGPT web Developer mode: **Business/Enterprise/Edu only** (help 12584461, 2026-08);
+      the desktop app's Settings → MCP servers (STDIO) is the individual-plan tools path —
+      end-to-end UNTESTED-live.
 - [ ] Real-Mac smoke: `.mcpb` install, GUI-PATH stdio spawn, CLT-stub run (docs/MACOS.md
       entries are UNTESTED until these flip).
 
@@ -110,9 +112,9 @@ Platform-capability claims that cannot be verified from an official page are sta
 are recorded as conflicts (see the Plus-gating note), not resolved by preference.
 
 ## Update checklist
-1. Change the registry → `mcp_tooldefs --self-test` → `export_actions_schema.py` (regenerate)
-   → sync_check (checks 21, 22 **and 23** green; 23 needs the SDK installed, and CI asserts it
-   inside `mcp_http_server --self-test` regardless).
+1. Change the registry → `mcp_tooldefs --self-test` → sync_check (checks 21 and 23 green;
+   23 needs the SDK installed, and CI asserts it inside `mcp_http_server --self-test`
+   regardless).
 2. `mcp_server --self-test` + `mcp_http_server --self-test` (venv/CI).
 3. Re-stage the bundle (`build_mcpb.py`), re-verify, attach to the next release.
 4. Re-verify the stdio frame set against the MCP spec page; bump `PROTOCOL_VERSION`

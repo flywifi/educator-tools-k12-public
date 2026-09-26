@@ -1,0 +1,7 @@
+{
+  "name": "tos-contract-tests",
+  "private": true,
+  "type": "module",
+  "description": "Pinned official MCP client for the CI handshake contract test (R5-F2). Bump the pin when platform_watch reports a new @modelcontextprotocol/sdk — that report IS the review trigger.",
+  "dependencies": { "@modelcontextprotocol/sdk": "1.30.1" }
+}

@@ -16,7 +16,8 @@ standards/lookup tools). Chat-platform sibling: the "Connect the tools" section 
    to run `python3 tools/mcp_server.py --print-config desktop` (on Windows: `py -3 tools\mcp_server.py --print-config desktop` — `python3` is not a command there) and write the file; else give
    the exact clicks (TextEdit: Format → Make Plain Text; Windows Notepad: Save as type →
    All Files), then a FULL app restart.
-4. **Never oversell**: hedge the Claude-for-Teachers connector question and ChatGPT Plus
-   Developer-mode question exactly as `implementation/mcp/README.md` does; Door 4 (Custom GPT)
-   is the always-works ChatGPT path.
+4. **Never oversell**: state platform gates exactly as `implementation/mcp/README.md` does
+   (web Developer mode = Business/Enterprise/Edu; Custom GPTs retired — Door 4 is gone). The
+   always-works ChatGPT paths are the desktop app's Settings → MCP servers (STDIO) for tools
+   and the Reference-Pack Project for browser-only.
 5. No student data ever goes in a tool query; the tools are read-only and keep nothing.

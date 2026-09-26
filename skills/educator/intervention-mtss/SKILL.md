@@ -27,11 +27,11 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
    **decision rules** (what data triggers continue / intensify / fade).
 
 ## 2. Validate, then gate
-Run the universal + intervention checks (`shared/quality/verification-checklists.md`); self-score
+Run the universal + intervention checks (`references/verification-checklists.md`); self-score
 against `references/quality-gates.md`, then hand to **quality-review**.
 
 ## 3. Always emit the metadata block
-Per `protocol-layer/metadata-schema.md`, with `human_review_required: true`. Placeholders only.
+Per `references/metadata-schema.md`, with `human_review_required: true`. Placeholders only.
 
 Artifact types: `references/artifact-types.md`. Template: `assets/templates/`. Example:
 `examples/example-tier2-plan.md`.

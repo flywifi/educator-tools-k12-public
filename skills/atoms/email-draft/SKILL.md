@@ -1,6 +1,6 @@
 ---
 name: email-draft
-description: "Draft ONE professional email for staff, family, or vendor communication. Use this atom when school-administration or any workflow needs a polished email draft. Do NOT use for parent-teacher conference notes (use atom-parent-comm) or mass communications."
+description: "Draft ONE professional email for staff, family, or vendor communication. Use this atom when school-administration or any workflow needs a polished email draft. Do NOT use for parent-teacher conference notes (use parent-comm) or mass communications."
 ---
 
 # email-draft
@@ -34,8 +34,8 @@ Creates a single professional email draft with appropriate tone, structure, and 
 
 ## Do NOT use this atom for
 - Mass email campaigns or newsletters
-- Parent-teacher conference notes (use atom-parent-comm)
+- Parent-teacher conference notes (use parent-comm)
 - Emails containing real student data (placeholders only)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (email composition). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — email must be personalized and reviewed before sending.
+Follows `references/method.md` at the Generation step (email composition). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — email must be personalized and reviewed before sending.

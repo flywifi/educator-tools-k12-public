@@ -8,13 +8,14 @@ had (sat at 29 skills), fixed the same way: a generator plus a freshness gate, s
 artifact must equal a fresh render or CI goes red (tools/sync_check.py check 21).
 
 What this tool OWNS (regenerates):
-  .claude-plugin/plugin.json        -> `version` + `description` only
+  .claude-plugin/plugin.json        -> `version` + `description` + `skills` (and it DELETES
+                                       `autoUpdate` — see render_plugin's docstring)
   .claude-plugin/marketplace.json   -> `metadata.version`, `plugins[0].version`,
                                        `plugins[0].description` only
   skills/README.md                  -> the marker-delimited skills catalog block only
 
 Everything else in those files is IDENTITY, passed through untouched: plugin
-name/autoUpdate/author/keywords/license, marketplace name/owner/metadata.description/
+name/author/keywords/license, marketplace name/owner/metadata.description/
 source/category. None of them encode counts, so none of them can drift; folding them into the
 template would make this tool the sole editor of identity for no benefit.
 
@@ -51,7 +52,8 @@ PLUGIN_DESC = (
     "teacher skills ({core} core hub+governance, {educator} educator, {operations} operations, "
     "{atoms} atom sub-skills) over {engines_count} shared engines (roster: versions.json), with "
     "{verified_standards} Florida standards verified code-by-code against CPALMS. Skills under "
-    "skills/ are auto-discovered, and the tos-tools MCP server (8 read-only verified-lookup/"
+    "skills/ are loaded from the manifest's skills directories, and the tos-tools MCP server "
+    "(8 read-only verified-lookup/"
     "validator tools) starts with the plugin. Offline/stdlib; decision-support with "
     "human_review_required; "
     "placeholders only in the repo."
@@ -108,10 +110,23 @@ def _fill(template: str, f: dict) -> str:
 
 
 def render_plugin(f: dict, current: dict) -> dict:
-    """Only `version` and `description` are generated; every other key passes through."""
+    """`version`, `description` and `skills` are generated; every other key passes through.
+
+    `skills` exists because Claude Code's plugin loader scans skill directories ONE level deep
+    (`<dir>/<name>/SKILL.md`) — with the repo's two-level `skills/<group>/<name>/` layout and no
+    `skills` key, an installed plugin loaded 0 of 62 skills (R5 audit B1; `claude plugin details`
+    confirmed 0 -> 62 with this array). Generated from the groups actually on disk so a new group
+    can never be silently invisible. Entries are `./`-prefixed: ChatGPT's plugin loader REJECTS
+    manifest paths that don't start with `./` (openai/codex core-plugins manifest.rs).
+
+    `autoUpdate` is REMOVED, not passed through: it is not a plugin.json field — `claude plugin
+    validate` flags it "Unknown field ... ignores it at load time", and third-party marketplace
+    auto-update is a user/admin toggle, not a manifest right."""
     out = dict(current)
+    out.pop("autoUpdate", None)
     out["version"] = f["version"]
     out["description"] = _fill(PLUGIN_DESC, f)
+    out["skills"] = [f"./skills/{g}/" for g in sorted(f["skills_by_group"])]
     return out
 
 
@@ -265,7 +280,16 @@ def self_test() -> int:
 
     plug = json.loads(_paths(tmp)["plugin"].read_text(encoding="utf-8"))
     ck("pass-through: identity keys survive regeneration untouched",
-       plug["name"] == "x" and plug["autoUpdate"] is True and plug["keywords"] == ["k1"])
+       plug["name"] == "x" and plug["keywords"] == ["k1"])
+    ck("autoUpdate: the not-a-real-field key is DELETED, not passed through",
+       "autoUpdate" not in plug)
+    ck("skills: generated ./-prefixed one per group on disk, sorted",
+       plug["skills"] == ["./skills/atoms/", "./skills/core/"])
+    plug_s = dict(plug); plug_s["skills"] = ["./skills/atoms/"]
+    _paths(tmp)["plugin"].write_text(json.dumps(plug_s), encoding="utf-8")
+    ck("skills: a hand-narrowed array is STALE to check() (a group vanishing = skills vanishing)",
+       any("plugin.json" in i for i in check(tmp)))
+    write(tmp)
     plug["keywords"] = ["MUTATED"]
     _paths(tmp)["plugin"].write_text(json.dumps(plug), encoding="utf-8")
     write(tmp)

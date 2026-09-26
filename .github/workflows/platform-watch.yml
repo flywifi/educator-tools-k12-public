@@ -1,0 +1,26 @@
+name: platform-watch
+# Weekly vendor-surface watch (R5-F1) — DETECT-ONLY, the currency-recheck pattern: a vendor
+# posting news is never a red build; findings land in the run summary and the committed state
+# diff is the reviewable artifact. Manual dispatch for on-demand checks.
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "41 13 * * 1"   # Mondays 13:41 UTC — off the :00 stampede
+permissions:
+  contents: read
+concurrency:
+  group: platform-watch
+  cancel-in-progress: false
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Poll vendor sources (never fails on content; errors are findings in the summary)
+        run: python3 tools/platform_watch.py --fetch | tee watch.out
+      - name: Publish summary
+        if: always()
+        run: cat watch.out >> "$GITHUB_STEP_SUMMARY" || true

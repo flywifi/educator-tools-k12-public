@@ -64,14 +64,14 @@ replaces the file. (If she moves to the ChatGPT desktop app or another device: s
 same Project, nothing to redo.)
 
 ### Connect the tools (if the teacher asks, or after the map)
-If the teacher says **"connect my tools"**: on ChatGPT the reliable door is a **Custom GPT
-Action** (works on Plus, no admin): Explore GPTs → Create → Configure → Actions → Import from
-URL → their school's TOS tools address ending in `/openapi.json` → no auth. If they see
-Settings → Security → **Developer mode**, the `/mcp` address works there too. *Why: "with the
-tools connected I look your standards up from the verified corpus instead of remembering them —
-a code I can't find gets flagged instead of invented."* If they don't have a school tools
-address, say so honestly — the address comes from whoever set TOS up (deploy/mcp/README.md);
-without it, the Reference Pack files in this Project remain the lookup path.
+If the teacher says **"connect my tools"**: in the ChatGPT **browser** there is no tools door on
+personal plans (Custom GPTs retired 2026-12-11; web Developer mode is Business/Enterprise/Edu
+only) — the Reference Pack files in this Project ARE the lookup path, and say so plainly. If
+they use the **ChatGPT desktop app**, the local server works without any school hosting:
+Settings → **MCP servers** → *Add server* → type **STDIO** → the command and script path from
+`python3 tools/mcp_server.py --print-config desktop`, then restart; use it in Work mode or
+Codex. *Why: "with the tools connected I look your standards up from the verified corpus
+instead of remembering them — a code I can't find gets flagged instead of invented."*
 
 ### Offer the requirements map
 End with: *"Want your requirements map? One table with every standard for your grade and subject,

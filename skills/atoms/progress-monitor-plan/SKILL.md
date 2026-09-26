@@ -1,18 +1,18 @@
 ---
 name: progress-monitor-plan
-description: "Create ONE progress-monitoring schedule and probe plan for an IEP goal or MTSS intervention. Use this atom when special-education-support or intervention-mtss needs a measurement plan. Do NOT use for generating the goals themselves (use atom-iep-goal)."
+description: "Create ONE progress-monitoring schedule and probe plan for an IEP goal or MTSS intervention. Use this atom when special-education-support or intervention-mtss needs a measurement plan. Do NOT use for generating the goals themselves (use iep-goal)."
 ---
 
 # progress-monitor-plan
 
 Designs a progress-monitoring schedule with probe type, frequency, decision rules, and data collection method for a single IEP goal or intervention target.
 
-> **Read first — boundaries (`security/SECURITY_AND_SAFETY.md` §2).** A monitoring plan is a
+> **Read first — boundaries (`references/security-and-safety.md` §2).** A monitoring plan is a
 > **draft for the IEP or MTSS team**, not a decision. It must be validated against the student's
 > **actual** IEP/504 plan and local and state policy before anyone collects data against it. This
 > atom does **not** set, alter, or approve goals, does **not** make eligibility or placement
 > determinations, and does **not** decide whether an intervention continues — those belong to the
-> team (`protocol-layer/assumptions-protocol.md`). **Never request, infer, or include real student
+> team (`references/assumptions-protocol.md`). **Never request, infer, or include real student
 > data — placeholders only.**
 
 ## Input
@@ -44,9 +44,9 @@ Designs a progress-monitoring schedule with probe type, frequency, decision rule
 ```
 
 ## Do NOT use this atom for
-- Generating IEP goals (use atom-iep-goal)
+- Generating IEP goals (use iep-goal)
 - Administering assessments or recording data
 - Making placement decisions
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (monitoring plan). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — monitoring plans must be approved by the IEP/MTSS team.
+Follows `references/method.md` at the Generation step (monitoring plan). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — monitoring plans must be approved by the IEP/MTSS team.

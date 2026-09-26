@@ -26,12 +26,12 @@ Within Generation: `Analysis → (light Standards Alignment) → Differentiation
    action / contact line.
 
 ## 2. Validate, then gate
-Run the universal + communication checks (`shared/quality/verification-checklists.md`) — the Safety
+Run the universal + communication checks (`references/verification-checklists.md`) — the Safety
 gate (no real PII) and Accessibility gate (readability, tone) are key. Self-score against
 `references/quality-gates.md`, then hand to **quality-review**.
 
 ## 3. Always emit the metadata block
-Per `protocol-layer/metadata-schema.md`, with `human_review_required: true` and a note on where the
+Per `references/metadata-schema.md`, with `human_review_required: true` and a note on where the
 teacher should personalize. Placeholders only.
 
 Artifact types: `references/artifact-types.md`. Template: `assets/templates/newsletter-template.md`.

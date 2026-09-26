@@ -5,15 +5,18 @@ WHY STDLIB AND NOT THE SDK: the official `mcp` package drags pydantic/starlette/
 compiled, platform-specific wheels — which would force a pip install (or per-platform bundles)
 on every teacher before first use. This server implements the small stdio subset the protocol
 needs (newline-delimited JSON-RPC: initialize, notifications/initialized, ping, tools/list,
-tools/call, server/discover) in pure stdlib, so it runs on ANY Python >= 3.10 — including the
+tools/call) in pure stdlib, so it runs on ANY Python >= 3.10 — including the
 macOS Xcode CLT stub — with nothing installed. The hosted HTTP leg (tools/mcp_http_server.py)
 uses the real SDK, where a container already exists and session management earns it.
 
 SPEC-CHURN CONTRACT: the implemented protocol revision is the PROTOCOL_VERSION constant below;
 the self-test pins the frame shapes; MAINTAINER.md requires re-verifying against the published
-spec (modelcontextprotocol.io) before each release. A client offering an unknown newer version
-gets ours back and decides — per-request version negotiation is the client's job in the
-2026-07-28 revision.
+spec (modelcontextprotocol.io) before each release. This server speaks the legacy (`initialize`)
+era ONLY: current clients (TS SDK 1.30.x, @modelcontextprotocol/client 2.x default, Claude Code,
+Codex) offer 2025-11-25 or older and REFUSE a reply outside their legacy list, and the 2026-07-28
+era's `server/discover` gets -32601 so a modern-probing client (Antigravity, client 2.x `auto`)
+falls back to `initialize` instead of parsing a half-modern reply. A client offering an unknown
+version gets our newest legacy version back and decides.
 
 STDOUT IS THE WIRE. Every diagnostic goes to stderr; a stray print() corrupts the protocol
 stream. The self-test asserts output purity (exactly one JSON-RPC frame per request, nothing
@@ -44,10 +47,11 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import mcp_tooldefs  # noqa: E402
 
-PROTOCOL_VERSION = "2026-07-28"
-# Versions we can speak. `initialize` echoes the CLIENT's version when it is one of these
-# (per-request negotiation is the client's job in 2026-07-28), ours otherwise — silently
-# answering with a different version than the client asked for invites a mid-session mismatch.
+PROTOCOL_VERSION = "2025-11-25"
+# The newest LEGACY revision, and the fallback answer. `initialize` echoes the CLIENT's version
+# when it is one of these, ours otherwise. Answering with a MODERN version here is what the
+# TS SDK refuses outright ("Server's protocol version is not supported") — that bug shipped as
+# PROTOCOL_VERSION = "2026-07-28" and broke every current client until R5-A1.
 SUPPORTED_PROTOCOL_VERSIONS = (PROTOCOL_VERSION, "2025-06-18", "2025-03-26")
 
 
@@ -118,10 +122,6 @@ def _dispatch(method: str, id_, params: dict) -> dict:
                              "instructions": mcp_tooldefs.server_instructions()})
     if method == "ping":
         return _result(id_, {})
-    if method == "server/discover":  # mandatory in the 2026-07-28 revision
-        return _result(id_, {"protocolVersion": PROTOCOL_VERSION,
-                             "capabilities": {"tools": {"listChanged": False}},
-                             "serverInfo": _server_info()})
     if method == "tools/list":
         return _result(id_, {"tools": mcp_tooldefs.list_tools()})
     if method == "tools/call":
@@ -214,7 +214,8 @@ def self_test() -> int:
                            "params": params or {}})
 
     r = handle_frame(rpc("initialize", params={"protocolVersion": "2026-07-28"}))
-    ck("initialize: protocol version + serverInfo + governance instructions",
+    ck("initialize: a MODERN (2026-07-28) offer falls back to our newest legacy version — "
+       "answering with a modern version is exactly what the TS SDK refuses",
        r["result"]["protocolVersion"] == PROTOCOL_VERSION
        and r["result"]["serverInfo"]["name"] == "tos-tools"
        and "fabricate" in r["result"]["instructions"])
@@ -223,8 +224,10 @@ def self_test() -> int:
                                 "method": "notifications/initialized"})) is None)
     ck("ping answers", handle_frame(rpc("ping"))["result"] == {})
     r = handle_frame(rpc("server/discover"))
-    ck("server/discover (2026-07-28 mandatory) answers with server info",
-       r["result"]["serverInfo"]["name"] == "tos-tools")
+    ck("server/discover -> -32601 method-not-found (the spec's fallback signal; a modern-probing "
+       "client then retries with initialize — verified against @modelcontextprotocol/client 2.x "
+       "auto mode and Antigravity's probe order)",
+       r.get("error", {}).get("code") == -32601)
     r = handle_frame(rpc("tools/list"))
     ck("tools/list: 8 tools, readOnlyHint intact on the wire",
        len(r["result"]["tools"]) == 8

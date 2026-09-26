@@ -31,9 +31,9 @@ Approval/Certification → Release`.
   unstated; log the assumption. School type governs standards applicability (home-ed/private contexts
   do not silently inherit the B.E.S.T./NGSSS mandate).
 - **Routing** — classify persona × artifact × subject × grade band (× context), then dispatch (§4).
-- **Protocol Enforcement** — log assumptions (`protocol-layer/assumptions-protocol.md`), initialize the
-  metadata block (`protocol-layer/metadata-schema.md`), arm standards verification
-  (`protocol-layer/standards-verification.md`).
+- **Protocol Enforcement** — log assumptions (`references/assumptions-protocol.md`), initialize the
+  metadata block (`references/metadata-schema.md`), arm standards verification
+  (`references/standards-verification.md`).
 - **Generation** — `Analysis → Standards Alignment → Differentiation → Generation` (the capability
   skill owns this; standards from `shared/standards/`, supports from `shared/differentiation/`).
 - **Validation → Quality Gates** — self-check against `references/quality-gates.md`, then the
@@ -52,13 +52,13 @@ rather than guess.
 
 ## 5. Standards, differentiation, quality (the shared engines)
 - **Standards** — select + cite verifiable standards (CCSS/NGSS/state), framework + version; never
-  fabricate (`shared/standards/`, `protocol-layer/standards-verification.md`).
+  fabricate (`shared/standards/`, `references/standards-verification.md`).
 - **Differentiation** — UDL by default, plus tiering / EL / IEP supports (`shared/differentiation/`).
 - **Quality** — the 9-dimension Quality Gates rubric; nothing is "Final" below 4.0 or with a critical
-  failure (`shared/quality/quality-gates.md`; full spec `protocol-layer/quality-gates.md`).
+  failure (`references/quality-gates.md`; full spec `references/quality-gates.md`).
 
 ## 6. Output: always emit the metadata block
-End every artifact with the metadata block from `protocol-layer/metadata-schema.md`: artifact type,
+End every artifact with the metadata block from `references/metadata-schema.md`: artifact type,
 persona, grade band, subject, standards set + cited codes, differentiation applied, the
 teaching-context contract (district / school-type / mandates / SOPs; `shared/context/`), the quality
 decision (per-dimension scores + composite), assumptions, and `human_review_required: true`.

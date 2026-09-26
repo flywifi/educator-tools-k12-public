@@ -1,18 +1,18 @@
 ---
 name: differentiate
-description: "Apply ONE differentiation profile (ELL, IEP/SPED, Gifted, 504, Below-grade, Above-grade) to a SINGLE piece of existing content. Use this when a teacher says 'make this activity ELL-friendly' or 'add IEP supports to this passage'. Do NOT use for full lesson differentiation — call this atom once per content piece. Do NOT generate new content from scratch — use atom-activity-generate or atom-assessment-item first, then differentiate."
+description: "Apply ONE differentiation profile (ELL, IEP/SPED, Gifted, 504, Below-grade, Above-grade) to a SINGLE piece of existing content. Use this when a teacher says 'make this activity ELL-friendly' or 'add IEP supports to this passage'. Do NOT use for full lesson differentiation — call this atom once per content piece. Do NOT generate new content from scratch — use activity-generate or assessment-item first, then differentiate."
 ---
 
 # differentiate
 
 Takes one piece of instructional content (activity, passage, question, instructions) and returns a differentiated version for the specified learner profile. Keeps the learning target constant; only modifies scaffolding, vocabulary, format, and support level.
 
-> **Read first — boundaries (`security/SECURITY_AND_SAFETY.md` §1-2).** A profile here — `IEP`,
+> **Read first — boundaries (`references/security-and-safety.md` §1-2).** A profile here — `IEP`,
 > `504`, `ELL`, `Gifted` — is a **generic scaffolding pattern, not a student's plan**. The output is
 > decision support and must be validated against the student's **actual** IEP/504/ELL plan and local
 > policy before it is used with them; matching a profile name confers no accommodation and no legal
 > entitlement. Where a request needs a specific student's plan details, **escalate** rather than
-> assume (`protocol-layer/assumptions-protocol.md`). **Never request, infer, or include real student
+> assume (`references/assumptions-protocol.md`). **Never request, infer, or include real student
 > data — placeholders only.**
 
 ## Input
@@ -54,9 +54,9 @@ Takes one piece of instructional content (activity, passage, question, instructi
 - **below_grade / above_grade**: Lexile and vocabulary adjustment, keeping standard alignment
 
 ## Do NOT use this atom for
-- Generating new content (use atom-activity-generate first, then differentiate)
-- Writing IEP goals (use atom-iep-goal)
+- Generating new content (use activity-generate first, then differentiate)
+- Writing IEP goals (use iep-goal)
 - Real student PII — descriptors only (grade level, language, profile type)
 
 ## Pipeline note
-Follows `references/method.md` at the Differentiation step. Output conforms to `protocol-layer/metadata-schema.md`. Runs after Generation (atom-activity-generate / atom-assessment-item). `human_review_required: true`.
+Follows `references/method.md` at the Differentiation step. Output conforms to `references/metadata-schema.md`. Runs after Generation (activity-generate / assessment-item). `human_review_required: true`.

@@ -577,9 +577,11 @@ code verification, citation-mutation check, validators) defined once in `tools/m
 and served four ways — plugin-shipped stdio (zero-step), one-click `.mcpb` for Claude Desktop,
 a dormant hosted leg for claude.ai/ChatGPT (`deploy/mcp/`), and a generated Custom GPT Actions
 schema (check 22; check 23 added 2026-08-16 holds the SDK-derived Claude schema to the same
-registry). The "no provider client" rule stands — this is a server. Two platform
-questions stay empirically open (Claude-for-Teachers connector self-serve; ChatGPT Plus
-Developer mode) and gate doc claims only.
+registry). The "no provider client" rule stands — this is a server. *(Correction 2026-09: the
+Actions leg and check 22 were retired in R5-B — custom GPTs end 2026-12-11 platform-wide; and
+the two then-open platform questions were resolved from vendor pages: web Developer mode is
+Business/Enterprise/Edu only, and Claude for Teachers is a free Team plan whose disabled list
+does not cover connectors/plugins — the live-account test remains open.)*
 
 **MCP hardening — 22 audit findings (2026-08-16):** an adversarial audit of the surface above
 (attacks executed, not code read) found 22 defects, all in transport, validation, packaging or

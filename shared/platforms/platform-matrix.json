@@ -1,0 +1,102 @@
+{
+  "_what": "Per-platform capability matrix for TOS delivery: what an INDIVIDUAL teacher's account can actually run, as dated, sourced facts. Statuses: available | unavailable | unverified (never guessed). UNTESTED-live marks a vendor-documented capability no one has exercised on a real teacher account yet.",
+  "_why": "User decision (R5): plan-gated capabilities are feature flags, not assumptions. Docs and tools/build_teacher_pack.py read THIS file; a vendor change is a one-line status flip here, and check 24 (dated manifests) plus tools/platform_watch.py keep it from rotting silently.",
+  "_rules": "Every status carries source + checked. A claim without a vendor page is at best unverified. Sources verified by the 2026-09-25 research rounds (research-manager graded); the full research record is retained off-repo (delivered to the maintainer 2026-09-25), and every status stands on its inline source URL.",
+  "platforms": {
+    "claude": {
+      "code_cli": {
+        "skills": "available",
+        "local_mcp": "available",
+        "install": "plugin marketplace add + install",
+        "source": "https://code.claude.com/docs/en/plugins-reference",
+        "checked": "2026-09-25",
+        "note": "Loader scans skill dirs ONE level deep; the manifest skills array (R5-A2) is what makes 62/62 load. Verified with claude plugin details 2.1.282."
+      },
+      "desktop_chat": {
+        "skills": "available",
+        "local_mcp": "available",
+        "install": "plugin via Customize, or .mcpb extension",
+        "source": "https://support.claude.com/en/articles/13837440",
+        "checked": "2026-09-25",
+        "note": "'You can install and use plugins in chat on the web, the Chat tab in Claude Desktop, and Claude Cowork.' Plugin local MCP runs in Cowork/Code; .mcpb covers Desktop chat tools. Desktop >= v2.9939.2 for plugins containing a .zip."
+      },
+      "web_chat_paid": {
+        "skills": "available",
+        "local_mcp": "unavailable",
+        "install": "plugin via Customize (upload or GitHub marketplace)",
+        "source": "https://support.claude.com/en/articles/13837440",
+        "checked": "2026-09-25",
+        "note": "'A plugin's local MCP server runs in Cowork and Claude Code, not in chat.' Browser cannot reach localhost."
+      },
+      "web_chat_free": {
+        "skills": "unavailable",
+        "local_mcp": "unavailable",
+        "install": "Project file upload; 1 custom remote connector allowed",
+        "source": "https://support.claude.com/en/articles/11176164",
+        "checked": "2026-09-25",
+        "note": "Plugins are documented for paid plans only."
+      },
+      "teachers_plan": {
+        "skills": "unverified",
+        "local_mcp": "unverified",
+        "install": "expected: same as Team (plugins + Cowork/Code)",
+        "source": "https://support.claude.com/en/articles/15926041",
+        "checked": "2026-09-25",
+        "note": "UNTESTED-live. 'A free Claude for Teams plan' with Claude Code + Cowork; its disabled-features list does NOT include plugins/connectors/extensions — inference, not a statement. Training off. One free year for signups by 2027-06-30. District domain claims can absorb the account later."
+      }
+    },
+    "chatgpt": {
+      "desktop_workcodex_personal": {
+        "skills": "available",
+        "local_mcp": "available",
+        "install": "local marketplace (~/.agents/plugins/marketplace.json + ~/.codex/plugins/) or Settings > MCP servers > STDIO",
+        "source": "https://developers.openai.com/plugins/build/plugins",
+        "checked": "2026-09-25",
+        "note": "UNTESTED-live end-to-end. Codex on every plan incl. Free/Go; Work on paid plans (desktop; staged rollout). openai/codex source: plugin stdio servers ARE spawned; ${CLAUDE_PLUGIN_ROOT} is NOT expanded in MCP args (use the Agent-Plugins mcp.json with ${PLUGIN_ROOT}, or cwd '.'); manifest skills paths must start with './'; initialize offers 2025-06-18; Windows resolves commands PATHEXT-style, python3 is NOT mapped to python."
+      },
+      "web_personal": {
+        "skills": "unavailable",
+        "local_mcp": "unavailable",
+        "install": "Project + reference pack (25 files on Plus)",
+        "source": "https://help.openai.com/en/articles/12584461",
+        "checked": "2026-09-25",
+        "note": "'Can I connect to a local MCP server? Not directly.' Web developer mode is Business/Enterprise/Edu. Custom GPTs retire 2026-12-11; personal plans already cannot create them."
+      },
+      "teachers_plan": {
+        "skills": "unverified",
+        "local_mcp": "unverified",
+        "install": "unknown",
+        "source": "https://help.openai.com/en/articles/12844995",
+        "checked": "2026-09-25",
+        "note": "Weakest path. Skills + plugin upload/GitHub import are documented for Business/Enterprise/(Healthcare)/Edu, never Teachers; Codex pricing page omits Teachers; a Jan-2026 OpenAI-contributor comment said Codex 'isn't provided' there (possibly superseded). Free through June 2028, training off, self-serve workspace possible. OpenAI's own K-12 plugin: district-claimed workspaces only."
+      }
+    },
+    "gemini": {
+      "antigravity_personal": {
+        "skills": "available",
+        "local_mcp": "available",
+        "install": "skills -> ~/.gemini/config/skills/<name>/; stdio server -> ~/.gemini/config/mcp_config.json (mcpServers.command/args); plugin folder -> ~/.gemini/config/plugins/",
+        "source": "https://antigravity.google/docs/mcp/",
+        "checked": "2026-09-25",
+        "note": "UNTESTED-live. Personal Google account, 18+, approved regions; NOT for school accounts. Free weekly quota. Client probes server/discover (2026-07-28) FIRST and needs -32601 to fall back (R5-A1 provides it). Terms allow interaction review/training unless Settings > Account > Telemetry is off — default not stated, tell teachers to check."
+      },
+      "gemini_cli": {
+        "skills": "available",
+        "local_mcp": "available",
+        "install": "gemini extensions install <github-url>",
+        "source": "https://docs.cloud.google.com/gemini/docs/codeassist/release-notes",
+        "checked": "2026-09-25",
+        "note": "NOT FREE since 2026-06-18: personal/free tiers stopped being served; needs a paid API key or a school Code Assist Standard/Enterprise or Workspace AI Ultra licence. Loader glob ['SKILL.md','*/SKILL.md']."
+      },
+      "gemini_app": {
+        "skills": "unavailable",
+        "local_mcp": "unavailable",
+        "install": "Gem with <=10 knowledge files (upload-rule cap) or a Gemini Notebook source; Classroom Gem = 10 sources",
+        "source": "https://support.google.com/gemini/answer/17209137",
+        "checked": "2026-09-25",
+        "note": "Custom MCP 'apps' take a remote URL only (18+, US, English, personal accounts; not work/school). Personal accounts: Keep Activity on by default, human review + training — warn before student-adjacent use. School accounts: no review/training (edition-dependent)."
+      }
+    }
+  },
+  "updated": "2026-09-26"
+}

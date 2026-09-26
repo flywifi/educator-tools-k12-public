@@ -12,9 +12,9 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
 
 1. **Analysis** — topic, grade band, subject, purpose (intro / direct instruction / review), and how
    many minutes. If a lesson plan already exists, build the deck *from it*. Log assumptions
-   (`protocol-layer/assumptions-protocol.md`).
+   (`references/assumptions-protocol.md`).
 2. **Standards Alignment** — anchor the deck to a real, cited, verified standard
-   (`shared/standards/`, `protocol-layer/standards-verification.md`).
+   (`shared/standards/`, `references/standards-verification.md`).
 3. **Differentiation & accessibility** — UDL (visuals + words + audio cues), grade-appropriate
    reading level (`shared/quality/readability-age.md`), high-contrast/large-text, alt text for images;
    keep the cognitive load low (one idea per slide).
@@ -27,11 +27,11 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
    generation** by hand.
 
 ## 2. Validate, then gate
-Run the universal + slide checks (`shared/quality/verification-checklists.md`), self-score against
+Run the universal + slide checks (`references/verification-checklists.md`), self-score against
 `references/quality-gates.md`, then hand to **quality-review**.
 
 ## 3. Always emit the metadata block
-Per `protocol-layer/metadata-schema.md`, including the standard, grade band, and
+Per `references/metadata-schema.md`, including the standard, grade band, and
 `human_review_required: true`. Use placeholder student content only — never real student data.
 
 Artifact types: `references/artifact-types.md`. Outline template: `assets/templates/`. Worked

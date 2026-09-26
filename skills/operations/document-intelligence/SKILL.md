@@ -69,7 +69,7 @@ python3 tools/docintel_run.py --process-queue --queue inbox_queue      # parse a
 - **Structure** — reading order, headings, and tables into the UDOM
   (`shared/docintel/udom.md` + `udom.schema.json`).
 - **Governance** — provenance/lineage/confidence/evidence on every object
-  (`shared/docintel/governance-contract.md`); ties to `protocol-layer/metadata-schema.md`.
+  (`shared/docintel/governance-contract.md`); ties to `references/metadata-schema.md`.
 - **Validation** — accuracy/governance/reusability metrics (`shared/docintel/validation-framework.md`);
   staged metrics are reported honestly as `staged`, never faked.
 - **Quality** — self-check against `references/quality-gates.md`, then hand to `quality-review`.
@@ -85,7 +85,7 @@ See `references/artifact-types.md`: `processed-document-record`, `udom-document`
 `structure-map`, `governance-record`, `knowledge-artifact`, `consumer-artifact`.
 
 ## Output: always emit the metadata block
-Every artifact ends with the metadata block from `protocol-layer/metadata-schema.md`, including the
+Every artifact ends with the metadata block from `references/metadata-schema.md`, including the
 validation `score_summary` and `human_review_required: true` — outputs are decision support, not
 final professional or legal determinations, and nothing is "certified" until it passes the Quality
 Gates via `quality-review`. Use placeholders only; never real student data or PII.

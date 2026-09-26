@@ -19,7 +19,7 @@ Say **"connect my tools"** to your assistant and it will walk you through the ri
 | Claude Code, or the Claude desktop app **with the TOS plugin** | **Door 1 — already connected** | 0 min |
 | The Claude desktop app, no plugin | **Door 2 — one-click extension** | ~2 min |
 | claude.ai in the browser / Claude mobile | **Door 3 — paste your school's tools address** | ~1 min |
-| ChatGPT | **Door 3** (if you see Developer mode) or **Door 4 — a Custom GPT** | ~5 min |
+| ChatGPT desktop app | **Door 3** — add the tools address, or a local STDIO server under Settings → MCP servers | ~5 min |
 
 ## Door 1 — TOS plugin users: nothing to do
 
@@ -64,23 +64,28 @@ is not a command there).
 
 These need your school's **TOS tools address** — a web address someone at your school or
 district sets up once (ask whoever set TOS up; the recipe is `deploy/mcp/README.md` — whoever
-hosts it must set `TOS_MCP_PUBLIC_URL`, or Door 4's import fails at *your* step, not theirs).
+hosts it must set `TOS_MCP_PUBLIC_URL`, or the connector add fails at *your* step, not theirs).
 Then:
 
 - **claude.ai / Claude apps:** Settings → **Connectors** → *Add custom connector* → paste the
-  address ending in `/mcp`. (On a Team/Enterprise workspace an admin adds it for everyone.
-  **Claude for Teachers:** we haven't yet confirmed whether custom connectors appear on that
-  plan — try Settings → Connectors; if it's not there, Door 2 always works.)
-- **ChatGPT:** Settings → **Security** → turn on **Developer mode** (if you see it — confirmed
-  on Business/Enterprise/Edu, where an admin may need to enable it; on Plus, check and see) →
-  add the same `/mcp` address.
+  address ending in `/mcp`. Custom connectors exist on free (limited to one), Pro, Max, Team
+  and Enterprise plans; on Team/Enterprise an **Owner** enables them. **Claude for Teachers** is
+  a free Team-type plan and its published disabled-features list does not include connectors —
+  UNTESTED-live on a real teacher account; if Settings → Connectors isn't there, Door 2 works.
+- **ChatGPT:** web Developer mode is **Business/Enterprise/Edu only** (help article 12584461,
+  2026-08), and the web product cannot reach a local server at all. On the **desktop app** you
+  can instead add the LOCAL server directly: Settings → **MCP servers** → *Add server* → type
+  **STDIO** → command + script path (run `python3 tools/mcp_server.py --print-config desktop`
+  for this machine's values) — works in Work mode and Codex.
 
-## Door 4 — ChatGPT without Developer mode: a Custom GPT (works on Plus)
+## Door 4 — RETIRED (was: a Custom GPT with Actions)
 
-1. ChatGPT → Explore GPTs → **Create**. Name it "TOS Tools".
-2. In **Configure → Actions → Import from URL**, paste your school's tools address ending in
-   `/openapi.json`. No authentication.
-3. Save (just for yourself is fine). Chat with that GPT when you want the verified tools.
+Retired 2026-09 (R5-B). OpenAI removed GPT creation from personal ChatGPT accounts (Free, Go,
+Plus, Pro) in 2026 and retires **all** custom GPTs on **2026-12-11** (Enterprise deferrals:
+2027-02-11); custom Actions do not survive the migration. The `/openapi.json` schema, the
+`/v1/*` REST routes and their generator are gone from this repo. What remains for ChatGPT:
+Door 3 above (desktop STDIO, or a workspace connector where the plan allows it) and the
+Reference-Pack Project (`implementation/gpt/web/`) for browser-only use.
 
 ## What the tools can and cannot do
 

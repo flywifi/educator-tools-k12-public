@@ -1,6 +1,6 @@
 ---
 name: rubric-build
-description: "Build ONE rubric (criteria x performance levels) for a given objective or standard. Use this atom when assessment-designer or any workflow needs a scoring rubric for a task or assignment. Do NOT use for generating assessment items — that is atom-assessment-item. Do NOT use for scoring student work."
+description: "Build ONE rubric (criteria x performance levels) for a given objective or standard. Use this atom when assessment-designer or any workflow needs a scoring rubric for a task or assignment. Do NOT use for generating assessment items — that is assessment-item. Do NOT use for scoring student work."
 ---
 
 # rubric-build
@@ -45,9 +45,9 @@ Builds a single rubric with criteria rows and performance-level columns (e.g. Ex
 ```
 
 ## Do NOT use this atom for
-- Generating assessment items (use atom-assessment-item)
+- Generating assessment items (use assessment-item)
 - Scoring or grading student work
 - Building multi-objective rubrics (call once per objective)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (rubric construction). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — rubric descriptors must be reviewed for grade-level appropriateness.
+Follows `references/method.md` at the Generation step (rubric construction). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — rubric descriptors must be reviewed for grade-level appropriateness.

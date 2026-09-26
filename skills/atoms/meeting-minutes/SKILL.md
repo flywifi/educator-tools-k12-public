@@ -1,6 +1,6 @@
 ---
 name: meeting-minutes
-description: "Summarize meeting notes or a transcript into structured minutes with action items. Use this atom when school-administration or meeting-classifier needs post-meeting documentation. Do NOT use for meeting agendas (use atom-meeting-agenda)."
+description: "Summarize meeting notes or a transcript into structured minutes with action items. Use this atom when school-administration or meeting-classifier needs post-meeting documentation. Do NOT use for meeting agendas (use meeting-agenda)."
 ---
 
 # meeting-minutes
@@ -40,9 +40,9 @@ Converts raw meeting notes or transcript into structured minutes: attendees, key
 ```
 
 ## Do NOT use this atom for
-- Creating agendas (use atom-meeting-agenda)
+- Creating agendas (use meeting-agenda)
 - Recording meetings (this summarizes existing notes)
 - IEP meeting minutes with legal requirements (use district templates)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (minutes composition). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — meeting participants should verify accuracy of decisions and action items.
+Follows `references/method.md` at the Generation step (minutes composition). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — meeting participants should verify accuracy of decisions and action items.

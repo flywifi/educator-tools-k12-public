@@ -28,6 +28,15 @@ K-12 educational artifacts. Read `docs/ARCHITECTURE.md` for the design. Live sta
 ## Branching & git
 - Develop on the feature branch (currently `claude/educator-tools-k12-plan-f49yju`). **Never push to `main`.**
 - Push with `git push -u origin <branch>`; retry network failures with backoff.
+- **Gate AFTER the commit, and unshallow first.** Cloud containers clone SHALLOW, and
+  sync_check's git-dated checks (15/18/24) skip untracked files and return no-comparison on a
+  shallow repo — so a pre-add battery on a shallow clone tests a repo CI never sees (two R5
+  defects shipped that way). Once per container: `git fetch --unshallow origin` (ignore "on a
+  complete repository" errors). Per commit: stage -> commit -> battery -> amend if red.
+- **Bisect-walk before every push** — every commit must be independently green:
+  `for c in $(git rev-list --reverse origin/main..HEAD); do git worktree add -f /tmp/bx $c
+  >/dev/null 2>&1 && (cd /tmp/bx && python3 tools/sync_check.py >/dev/null) || { echo "RED at
+  $c"; break; }; git worktree remove -f /tmp/bx >/dev/null; done`
 - Do not open a PR unless explicitly asked.
 
 ## The two-copy / sync rule (important)

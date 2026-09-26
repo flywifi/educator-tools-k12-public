@@ -1,15 +1,15 @@
 ---
 name: udl-options
-description: "Suggest Universal Design for Learning (UDL) checkpoint options for a barrier or activity. Use this atom when differentiate or lesson-planner needs UDL-aligned accommodations for a specific learning barrier. References CAST UDL Guidelines 3.0. Do NOT use for IEP accommodations (use atom-accommodation-match)."
+description: "Suggest Universal Design for Learning (UDL) checkpoint options for a barrier or activity. Use this atom when differentiate or lesson-planner needs UDL-aligned accommodations for a specific learning barrier. References CAST UDL Guidelines 3.0. Do NOT use for IEP accommodations (use accommodation-match)."
 ---
 
 # udl-options
 
 Maps a learning barrier or activity to specific UDL 3.0 checkpoints (Engagement, Representation, Action & Expression) with concrete classroom suggestions. References the CAST framework with attribution.
 
-> **Read first — boundaries (`security/SECURITY_AND_SAFETY.md` §3).** UDL options are
+> **Read first — boundaries (`references/security-and-safety.md` §3).** UDL options are
 > **universal design suggestions, not IEP/504 accommodations** — they carry no legal force, and an
-> accommodation a plan requires must come from `atom-accommodation-match` and the plan itself. The
+> accommodation a plan requires must come from `accommodation-match` and the plan itself. The
 > output is decision support for a teacher to adapt. CAST checkpoint numbers and names are
 > **cited, never invented**: if the mapping is uncertain, say so instead of producing a
 > plausible-looking checkpoint. **Never request, infer, or include real student data —
@@ -41,9 +41,9 @@ Maps a learning barrier or activity to specific UDL 3.0 checkpoints (Engagement,
 ```
 
 ## Do NOT use this atom for
-- IEP-specific accommodations (use atom-accommodation-match)
+- IEP-specific accommodations (use accommodation-match)
 - Modifying content rigor (UDL removes barriers, not standards)
 - Replacing teacher knowledge of individual student needs
 
 ## Pipeline note
-Follows `references/method.md` at the Differentiation step (UDL options). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — UDL suggestions must be adapted to the specific classroom context.
+Follows `references/method.md` at the Differentiation step (UDL options). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — UDL suggestions must be adapted to the specific classroom context.

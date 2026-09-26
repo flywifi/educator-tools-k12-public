@@ -1,7 +1,7 @@
 {
   "_comment": "URL provenance registry. EVERY external http(s) URL hardcoded in tools/*.py and shared/**/*.py MUST be declared here with an honest status. This is the code-side analog of the source/verified provenance on data records — it exists because an AI operating this repo can confabulate plausible-looking URLs, so the system must force every URL to be consciously declared and catch any that aren't. Enforced by health.scan_url_provenance() + sync_check invariant #13. Status vocabulary: 'verified' = a human/tool confirmed this exact URL returns the expected content (record the date); 'well_known' = a documented public API/service endpoint (real service, standard path, not individually fetch-tested here); 'unverified' = used in code but NOT confirmed — may be wrong, treat as a guess until verified; 'example' = appears only in docstring/usage text, never fetched.",
   "version": "1.0.0",
-  "updated": "2026-08-16",
+  "updated": "2026-09-26",
   "policy": "An UNREGISTERED url in code is a hard drift failure (it may be fabricated). An 'unverified' url is allowed but surfaced — it must be confirmed (and re-statused) before anything relies on it. Never state an unverified url to a user as if it were confirmed.",
   "urls": [
     {
@@ -333,6 +333,18 @@
         "checked_at": "2026-08-16T23:08:36Z",
         "by": "tools/verify_urls.py"
       }
+    },
+    {
+      "url": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+      "status": "verified",
+      "checked": "2026-09-25",
+      "note": "Agent Plugins 1.0.0 plugin manifest JSON Schema — the portable-plugin format OpenAI's plugin docs reference and openai/codex enforces (deny_unknown_fields). Fetched 2026-09-25, HTTP 200; a copy is VENDORED at shared/platforms/ (hash-watched by tools/platform_watch.py) and build_teacher_pack's self-test validates emitted packs against the vendored copy, so CI never fetches this URL."
+    },
+    {
+      "url": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+      "status": "verified",
+      "checked": "2026-09-25",
+      "note": "Agent Plugins 1.0.0 MCP server config JSON Schema — the portable-plugin format OpenAI's plugin docs reference and openai/codex enforces (deny_unknown_fields). Fetched 2026-09-25, HTTP 200; a copy is VENDORED at shared/platforms/ (hash-watched by tools/platform_watch.py) and build_teacher_pack's self-test validates emitted packs against the vendored copy, so CI never fetches this URL."
     }
   ]
 }

@@ -5,6 +5,57 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.7.0] — 2026-09-26
+
+### Fixed
+- **Local MCP server speaks the era every current client speaks (R5-A1).** The official client
+  libraries (TS SDK 1.30.x / client 2.x, shipped by Claude Code, Claude Desktop and Codex)
+  refused the server's `2026-07-28` initialize answer outright; every Claude tool door was dead.
+  Now: `2025-11-25` accepted and used as the fallback; `server/discover` answers -32601 so
+  modern-probing clients (Antigravity, client 2.x auto mode) fall back cleanly. Proven with the
+  real client over real pipes; a CI contract test now runs that client on every push.
+- **The plugin loads its skills (R5-A2).** Claude's loader scans skill dirs one level deep; with
+  the nested `skills/<group>/<name>/` layout and no manifest `skills` array, an installed plugin
+  loaded **0 of 62 skills** — verified with `claude plugin details`, now 62/62 (~11.5k tokens
+  always-on, measured). The array is generated from the groups on disk; `autoUpdate` (not a real
+  manifest field) removed; license field now matches LICENSE (MIT). New check 26 mirrors the
+  loader's scan in CI.
+- **Description routing (R5-E1b):** 34 SKILL.md descriptions routed to `atom-<x>` ids that never
+  existed (registered names are bare) and one to a never-built skill (`source-crawl` →
+  `feed-discover`). New check 27 lints every `(use X)` target.
+
+### Changed
+- **Skills are self-contained (R5-E1).** Six governance/policy files skills cite became synced
+  references in every skill (`metadata-schema`, `assumptions-protocol`,
+  `standards-verification`, `security-and-safety`, `verification-checklists`,
+  `student-data-policy` — 2 → 8 synced refs), and SKILL.md citations point at the local copies,
+  so a skill folder now travels to any SKILL.md-reading runtime (Claude, ChatGPT/Codex, Gemini
+  CLI, Antigravity, ADK) without the repo around it.
+- **ChatGPT web doc regenerates from canon (R5-B).** `export_chatgpt.py` reads
+  `skills/{core,educator,operations}/*/SKILL.md` (19 entries, 14.6k chars) instead of the
+  retired YAMLs; new check 25 gates its freshness — the committed doc had been silently stale.
+- **Per-vendor teacher packs are built, not hand-kept (R5-D).** `tools/build_teacher_pack.py`
+  emits dist/teacher-packs/: a ChatGPT-desktop plugin (Agent-Plugins layout, `${PLUGIN_ROOT}`
+  args — `${CLAUDE_PLUGIN_ROOT}` is NOT expanded there), an Antigravity bundle with an
+  installer, and a ≤10-file Gem/Project reduced-mode pack. Both full-mode packs are best-effort:
+  vendor-source-verified, UNTESTED-live, and say so.
+- **Platform truth is data (R5-C/F).** `shared/platforms/platform-matrix.json` (per-surface
+  capability flags with sources + dates, check-24 gated) and `platform-sources.json` +
+  `tools/platform_watch.py` + a weekly detect-only workflow watching 14 machine-readable vendor
+  feeds (2 bot-blocked sources listed for the quarterly agent audit).
+
+### Removed — the R5-B retirement loss record
+- **GPT Actions leg** (`actions-openapi.json`, `export_actions_schema.py`, the hosted `/v1/*` +
+  `/openapi.json` routes, drift check 22) and **the Chat Completions export**
+  (`tools.json`/`tools.yaml`/29 skill YAMLs, `export_openai.py`). Why now: personal accounts
+  lost GPT creation in 2026; ALL custom GPTs retire 2026-12-11 (Enterprise deferrals
+  2027-02-11) and custom Actions don't survive migration; the Assistants API (still named in a
+  YAML header) shut down 2026-08-26. Who loses what: individual teachers nothing (the door was
+  already shut); Business/Enterprise/Edu workspaces lose the wire-into-a-Custom-GPT recipe ~2.5
+  months early; developers lose a drop-in Chat Completions tools file (~40k tokens of schemas
+  with no executor). The dormant hosted leg keeps `/mcp` + `/healthz` for self-hosting.
+
+
 ## [1.6.0] — 2026-08-17
 
 ### Fixed — a guard that could not see, and an eval system that had never run (2026-08-17)

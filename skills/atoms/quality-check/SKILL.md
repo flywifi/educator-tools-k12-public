@@ -33,7 +33,7 @@ Runs a single quality gate from `references/quality-gates.md` and returns a stru
   "finding": "Objective uses measurable verb 'place' (Apply level); condition and criteria are explicit.",
   "corrective_action": null,
   "human_review_required": true,
-  "note": "One gate checked. Run atom-quality-check again for each additional gate, or use quality-review for a full audit."
+  "note": "One gate checked. Run quality-check again for each additional gate, or use quality-review for a full audit."
 }
 ```
 
@@ -45,4 +45,4 @@ On `fail`: `corrective_action` describes exactly what to change. On `warn`: issu
 - Certifying an artifact as Final
 
 ## Pipeline note
-Output conforms to `protocol-layer/metadata-schema.md`. Called at the Validation step of `references/method.md`. `human_review_required: true` — a passing gate is a positive signal, not a certification.
+Output conforms to `references/metadata-schema.md`. Called at the Validation step of `references/method.md`. `human_review_required: true` — a passing gate is a positive signal, not a certification.

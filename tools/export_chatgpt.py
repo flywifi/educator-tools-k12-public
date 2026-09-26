@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
 """export_chatgpt.py — generate TOS-skills.md for ChatGPT web users.
 
-Reads every skill YAML file from implementation/gpt/api/skills/ and writes a single
-plain-English reference document (implementation/gpt/web/TOS-skills.md) that a teacher
+Reads the CANONICAL skill tree (skills/{core,educator,operations}/*/SKILL.md frontmatter — the
+43 atoms are internal routing targets and stay out of a paste-in teacher doc) and writes a
+single plain-English reference document (implementation/gpt/web/TOS-skills.md) that a teacher
 can drag into any ChatGPT Project or conversation window.
 
-This script keeps TOS-skills.md in sync with the YAML source of truth automatically.
-The YAML files are the source; TOS-skills.md is a generated output. Never edit
-TOS-skills.md by hand — edit the YAML and re-run this script.
+R5-B retargeted this generator: it used to read implementation/gpt/api/skills/*.yaml, a
+Chat-Completions export retired with the Custom GPT Actions leg. The SKILL.md descriptions are
+the same source those YAMLs were derived from, so the doc now regenerates from canon and
+sync_check check 25 gates its freshness (render vs committed — the audit found the committed
+doc silently stale with no gate).
 
 Usage:
   python3 tools/export_chatgpt.py              # regenerate TOS-skills.md
-  python3 tools/export_chatgpt.py --check      # validate YAMLs only, no write
+  python3 tools/export_chatgpt.py --check      # freshness: exit 1 if committed != fresh render
   python3 tools/export_chatgpt.py --out PATH   # write to a custom path
 
-Zero new dependencies — stdlib only. PyYAML used if installed (better parsing);
-stdlib fallback works for every skill YAML.
+Zero new dependencies — stdlib only.
 """
 from __future__ import annotations
 
@@ -26,7 +28,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SKILLS_DIR = ROOT / "implementation" / "gpt" / "api" / "skills"
+SKILL_GROUPS = ("core", "educator", "operations")   # atoms excluded: internal routing targets
 OUT_PATH = ROOT / "implementation" / "gpt" / "web" / "TOS-skills.md"
 WIZARD_SRC = ROOT / "implementation" / "gpt" / "api" / "web-wizard.md"
 REPO_URL = "https://github.com/flywifi/educator-tools-k12-public"
@@ -176,17 +178,37 @@ def _do_not_use(description: str) -> list[str]:
     return out[:3]
 
 
-def _build_entry(path: Path) -> str | None:
-    data = _load(path)
-    if not data:
-        print(f"  ERROR: could not load {path.name}", file=sys.stderr)
-        return None
+def _frontmatter(skill_md: Path) -> tuple[str, str]:
+    """(name, description) from SKILL.md frontmatter — the canonical source."""
+    name, desc, lines = skill_md.parent.name, [], skill_md.read_text(encoding="utf-8").splitlines()
+    in_fm = in_desc = False
+    for ln in lines:
+        if ln.strip() == "---":
+            if in_fm:
+                break
+            in_fm = True
+            continue
+        if not in_fm:
+            continue
+        if ln.startswith("name:"):
+            name, in_desc = ln.split(":", 1)[1].strip(), False
+        elif ln.startswith("description:"):
+            desc, in_desc = [ln.split(":", 1)[1].strip()], True
+        elif in_desc and (ln.startswith(" ") or ln.startswith("\t")):
+            desc.append(ln.strip())
+        else:
+            in_desc = False
+    return name, " ".join(desc).strip().strip('"')
 
-    fn = data.get("function", {})
-    name = fn.get("name", path.stem)
-    description = fn.get("description", "")
-    required = _required_params(fn)
-    param_descs = _param_descriptions(fn)
+
+def _build_entry(path: Path) -> str | None:
+    name, description = _frontmatter(path)
+    if not description:
+        print(f"  ERROR: no description in {path}", file=sys.stderr)
+        return None
+    name = name.replace("-", "_")           # doc titles keep the historical snake_case look
+    required: list[str] = []                # SKILL.md skills take prose, not typed parameters
+    param_descs: dict[str, str] = {}
 
     # human-readable title from snake_case name
     title = name.replace("_", " ").title()
@@ -235,11 +257,6 @@ def _build_entry(path: Path) -> str | None:
     if do_not:
         lines.append("")
         lines.append("**Do not use for:** " + "; ".join(do_not))
-
-    web_note = " ".join((data.get("web_note") or "").split())
-    if web_note:
-        lines.append("")
-        lines.append(f"**On ChatGPT:** {web_note}")
 
     lines.append("")
 
@@ -402,6 +419,36 @@ SKILL_ORDER = [
 ]
 
 
+def _render(entries: list[str]) -> str:
+    """The full document text. ONE body shared by write and --check, so the freshness gate can
+    never drift from what the writer produces (the audit found the committed doc stale with no
+    gate — the missing 'Connect the tools' section shipped to teachers for weeks)."""
+    if not WIZARD_SRC.exists():
+        raise SystemExit(f"ERROR: wizard source missing: {WIZARD_SRC}")
+    wizard = re.sub(r"<!--.*?-->\s*", "", WIZARD_SRC.read_text(encoding="utf-8"),
+                    count=1, flags=re.S).strip()
+    # The FL corpus count is COMPUTED at export time, never typed: a hardcoded "6,583" survived a
+    # corpus change (9 retirements -> 6,574) and shipped a false claim into the generated guide.
+    fl_index = ROOT / "shared" / "standards" / "resources" / "florida" / "data" / "index.json"
+    fl_total = json.loads(fl_index.read_text(encoding="utf-8")).get("total", "?")
+    return (HEADER + wizard + f"\n\n---\n\n## The {len(entries)} TOS Skills\n\n"
+            + "\n".join(entries) + FOOTER).replace("{REPO_URL}", REPO_URL) \
+        .replace("{fl_total}", f"{fl_total:,}" if isinstance(fl_total, int) else str(fl_total)) \
+        .replace("{n_skills}", str(len(entries)))
+
+
+def check() -> list[str]:
+    """sync_check check 25: committed doc must equal a fresh render. Silent on stdout."""
+    import io, contextlib
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        rc = main(["--check"])
+    if rc != 0:
+        return [f"  x implementation/gpt/web/TOS-skills.md is stale vs the canonical skill tree "
+                f"— run: python3 tools/export_chatgpt.py && commit it"]
+    return []
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description="Generate TOS-skills.md for ChatGPT web users.")
     ap.add_argument("--check", action="store_true",
@@ -410,12 +457,11 @@ def main(argv: list[str]) -> int:
                     help=f"output path (default: {OUT_PATH})")
     a = ap.parse_args(argv)
 
-    if not SKILLS_DIR.exists():
-        print(f"ERROR: skills dir not found: {SKILLS_DIR}", file=sys.stderr)
+    all_files = {p.parent.name.replace("-", "_"): p
+                 for g in SKILL_GROUPS for p in (ROOT / "skills" / g).glob("*/SKILL.md")}
+    if not all_files:
+        print("ERROR: no SKILL.md found under skills/{core,educator,operations}", file=sys.stderr)
         return 2
-
-    # Build ordered file list
-    all_files = {f.stem: f for f in SKILLS_DIR.glob("*.yaml")}
     ordered = [all_files[s] for s in SKILL_ORDER if s in all_files]
     remaining = [f for s, f in all_files.items() if s not in SKILL_ORDER]
     skill_files = ordered + sorted(remaining)
@@ -429,7 +475,7 @@ def main(argv: list[str]) -> int:
             errors += 1
         else:
             entries.append(entry)
-            print(f"  OK   {f.stem}")
+            print(f"  OK   {f.parent.name}")
 
     total = len(entries)
     print(f"\n{total} skill(s) processed, {errors} error(s).")
@@ -437,23 +483,16 @@ def main(argv: list[str]) -> int:
     if errors:
         return 1
 
+    content = _render(entries)
     if a.check:
-        print("--check passed. No files written.")
+        committed = OUT_PATH.read_text(encoding="utf-8") if OUT_PATH.exists() else ""
+        if committed != content:
+            print(f"STALE: {OUT_PATH} != a fresh render — run: python3 tools/export_chatgpt.py "
+                  f"&& commit it (sync_check check 25 enforces this)", file=sys.stderr)
+            return 1
+        print("--check passed: committed TOS-skills.md equals a fresh render.")
         return 0
 
-    if not WIZARD_SRC.exists():
-        print(f"ERROR: wizard source missing: {WIZARD_SRC}", file=sys.stderr)
-        return 2
-    wizard = re.sub(r"<!--.*?-->\s*", "", WIZARD_SRC.read_text(encoding="utf-8"),
-                    count=1, flags=re.S).strip()
-    # The FL corpus count is COMPUTED at export time, never typed: a hardcoded "6,583" survived a
-    # corpus change (9 retirements -> 6,574) and shipped a false claim into the generated guide.
-    fl_index = ROOT / "shared" / "standards" / "resources" / "florida" / "data" / "index.json"
-    fl_total = json.loads(fl_index.read_text(encoding="utf-8")).get("total", "?")
-    content = (HEADER + wizard + f"\n\n---\n\n## The {len(entries)} TOS Skills\n\n"
-               + "\n".join(entries) + FOOTER).replace("{REPO_URL}", REPO_URL) \
-              .replace("{fl_total}", f"{fl_total:,}" if isinstance(fl_total, int) else str(fl_total)) \
-              .replace("{n_skills}", str(len(entries)))
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(content, encoding="utf-8")

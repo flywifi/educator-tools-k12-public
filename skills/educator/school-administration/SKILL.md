@@ -24,11 +24,11 @@ Within Generation: `Analysis → (alignment to the initiative/standards) → Dif
    kept practical and summarizable for decision-making.
 
 ## 2. Validate, then gate
-Run the universal + admin checks (`shared/quality/verification-checklists.md`); self-score against
+Run the universal + admin checks (`references/verification-checklists.md`); self-score against
 `references/quality-gates.md`, then hand to **quality-review**.
 
 ## 3. Always emit the metadata block
-Per `protocol-layer/metadata-schema.md`, with `human_review_required: true`. Placeholders / aggregates
+Per `references/metadata-schema.md`, with `human_review_required: true`. Placeholders / aggregates
 only.
 
 Artifact types: `references/artifact-types.md`. Template:

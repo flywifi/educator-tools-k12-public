@@ -12,7 +12,7 @@ as a final or legal determination.
 > qualified team* and must be validated against the student's **actual** IEP/504 plan and local/state
 > law and policy. **Never request, infer, or include real student data — use placeholders only.**
 > Eligibility and legal determinations are out of scope; if a request needs a specific student's
-> plan details, **escalate** (`protocol-layer/assumptions-protocol.md`) rather than assume.
+> plan details, **escalate** (`references/assumptions-protocol.md`) rather than assume.
 
 ## 1. Follow the pipeline (`references/method.md`)
 Within Generation: `Analysis → Standards Alignment → Differentiation → Generation`.
@@ -33,12 +33,12 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
    note attached.
 
 ## 2. Validate, then gate
-Run the universal + SpEd checks (`shared/quality/verification-checklists.md`); the Safety gate is
+Run the universal + SpEd checks (`references/verification-checklists.md`); the Safety gate is
 prominent here (PII, legal boundary, human review). Self-score against `references/quality-gates.md`,
 then hand to **quality-review**.
 
 ## 3. Always emit the metadata block
-Per `protocol-layer/metadata-schema.md`, with `human_review_required: true` and an explicit "validate
+Per `references/metadata-schema.md`, with `human_review_required: true` and an explicit "validate
 against the student's actual plan" note. Placeholders only.
 
 Artifact types: `references/artifact-types.md`. Templates: `assets/templates/`. Example:

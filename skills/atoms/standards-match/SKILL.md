@@ -1,6 +1,6 @@
 ---
 name: standards-match
-description: "Look up and return a focused set of Florida K-12 standards matching a grade, subject, and keyword or topic. Use this atom when a workflow or teacher needs the exact standard codes + descriptions for a topic WITHOUT generating any instructional artifact. Do NOT use for generating lesson plans, activities, or assessments — hand those off to atom-objective-write or atom-activity-generate. Do NOT use if the teacher needs all standards for a whole subject; use tools/fl_lookup.py directly."
+description: "Look up and return a focused set of Florida K-12 standards matching a grade, subject, and keyword or topic. Use this atom when a workflow or teacher needs the exact standard codes + descriptions for a topic WITHOUT generating any instructional artifact. Do NOT use for generating lesson plans, activities, or assessments — hand those off to objective-write or activity-generate. Do NOT use if the teacher needs all standards for a whole subject; use tools/fl_lookup.py directly."
 ---
 
 # standards-match
@@ -50,14 +50,14 @@ recalling from memory, so it cannot fabricate a code. Never fabricate a standard
 
 ```
 "Find the top 3 Florida B.E.S.T. Math standards for grade 4 fractions on a number line."
-→ atom-standards-match returns the JSON above
-→ caller passes standards[] to atom-objective-write or atom-activity-generate
+→ standards-match returns the JSON above
+→ caller passes standards[] to objective-write or activity-generate
 ```
 
 ## Do NOT use this atom for
-- Generating any instructional content (use atom-objective-write, atom-activity-generate)
+- Generating any instructional content (use objective-write, activity-generate)
 - NGSSS or Common Core lookup (label the framework in `subject` if non-BEST)
 - Confirming whether a standard was repealed — route to standards-updater
 
 ## Pipeline note
-Output conforms to `protocol-layer/metadata-schema.md`. Follows `references/method.md` at the Standards step only. No Generation or Differentiation step — this atom stops at Standards Alignment and returns. `human_review_required: true` because model-inferred matches are not guaranteed correct.
+Output conforms to `references/metadata-schema.md`. Follows `references/method.md` at the Standards step only. No Generation or Differentiation step — this atom stops at Standards Alignment and returns. `human_review_required: true` because model-inferred matches are not guaranteed correct.

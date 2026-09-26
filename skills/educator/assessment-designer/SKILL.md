@@ -12,9 +12,9 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
 
 1. **Analysis** — determine the artifact (`references/artifact-types.md`), the **objective/standard
    to measure**, grade band, and purpose (formative vs. summative). Log assumptions
-   (`protocol-layer/assumptions-protocol.md`).
+   (`references/assumptions-protocol.md`).
 2. **Standards Alignment** — every item maps to a real, cited, **verified** standard
-   (`shared/standards/`, `protocol-layer/standards-verification.md`). Alignment is the point of an
+   (`shared/standards/`, `references/standards-verification.md`). Alignment is the point of an
    assessment — items must measure the objective, not merely the topic (QG §26).
 3. **Differentiation & accessibility** — apply UDL (multiple ways to demonstrate learning), readable
    language for the band (`shared/quality/readability-age.md`), and accommodations
@@ -24,11 +24,11 @@ Within Generation: `Analysis → Standards Alignment → Differentiation → Gen
    bias-free items).
 
 ## 2. Validate, then gate
-Run the universal + assessment checks (`shared/quality/verification-checklists.md`), self-score
+Run the universal + assessment checks (`references/verification-checklists.md`), self-score
 against `references/quality-gates.md`, then hand to **quality-review**.
 
 ## 3. Always emit the metadata block
-Per `protocol-layer/metadata-schema.md`, including standards cited, the objective measured, and
+Per `references/metadata-schema.md`, including standards cited, the objective measured, and
 `human_review_required: true`. Placeholders only — never real student data.
 
 Artifact types: `references/artifact-types.md`. Templates: `assets/templates/`. Worked example:

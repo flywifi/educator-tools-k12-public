@@ -37,9 +37,9 @@ Creates a single worked example with numbered steps, reasoning annotations, and 
 ```
 
 ## Do NOT use this atom for
-- Practice problem sets (use atom-activity-generate)
-- Assessment items (use atom-assessment-item)
+- Practice problem sets (use activity-generate)
+- Assessment items (use assessment-item)
 - Problems without step-by-step solutions
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (worked example). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — mathematical accuracy and grade-level appropriateness must be verified.
+Follows `references/method.md` at the Generation step (worked example). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — mathematical accuracy and grade-level appropriateness must be verified.

@@ -33,7 +33,7 @@ degrades to a labeled gap, so the validator itself always returns a usable answe
 - `references/profiles.md` — per-artifact required-key profiles.
 
 ## Output: always emit the metadata block
-Every validation report ends with the metadata block (`protocol-layer/metadata-schema.md`) +
+Every validation report ends with the metadata block (`references/metadata-schema.md`) +
 `human_review_required: true`. On a failure, route the fix to **skill-repair** (mechanical) or the owning
 skill (judgment). Placeholders only; never real student data.
 
