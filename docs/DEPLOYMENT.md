@@ -25,8 +25,9 @@ Cowork/desktop, both surfaces):
 /plugin install teacher-operating-system@tos-marketplace
 ```
 
-The repo root carries `.claude-plugin/plugin.json` + `marketplace.json`; `skills/` is
-auto-discovered, and the plugin ships the whole tracked tree (`source: "./"`), so shared engines
+The repo root carries `.claude-plugin/plugin.json` + `marketplace.json`; the manifest's
+generated `skills` array names the four group directories (Claude's loader scans ONE level deep,
+so without it an install loads zero skills — R5 audit B1), and the plugin ships the whole tracked tree (`source: "./"`), so shared engines
 and canonical data travel with it. **The manifests' versions and descriptions are GENERATED**
 (`tools/export_plugin_manifest.py`) and freshness-gated in CI (`sync_check` check 21) — never
 hand-edit them; a release (`python3 tools/version.py --release …`, §3) regenerates everything.
@@ -36,8 +37,10 @@ uploads: always include `teacher-core` (the router) + `quality-review` (the gate
 self-contained (synced references travel in the bundle).
 
 ## 3. Update strategy
-- **How installed plugins actually update (the channel truth):** `autoUpdate: true` refreshes
-  installs on session start, but **updates propagate on VERSION BUMPS, not on every push** — the
+- **How installed plugins actually update (the channel truth):** auto-update is a
+  user/marketplace toggle, OFF by default for third-party marketplaces (`autoUpdate` is not a
+  plugin.json field — the validator ignores it, and R5-A2 removed it), and **updates propagate on
+  VERSION BUMPS, not on every push** — the
   2026-06-29 attempt at pure push-based updates was reverted within two hours because dropping
   the pinned version broke the CI version gate. A merge to `main` without a bump reaches nobody's
   install. Hence:
