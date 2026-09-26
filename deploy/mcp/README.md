@@ -2,7 +2,7 @@
 # Deploying the TOS hosted MCP server (maintainer/district-facing)
 
 This is the **remote leg**: one small container that lets teachers on **claude.ai / Cowork /
-mobile** (custom connectors) and **ChatGPT** (Developer mode, or Custom GPT Actions) call TOS's
+mobile** (custom connectors) and **ChatGPT** (workspace Developer mode) call TOS's
 verified tools. Teachers never deploy this — a district IT person or the TOS maintainer does,
 once. Until someone does, nothing in the repo points at any live endpoint, by design.
 
@@ -10,9 +10,7 @@ once. Until someone does, nothing in the repo points at any live endpoint, by de
 reference data) · no identity, no accounts, no student data ever server-side · request bodies
 are not logged · treat the endpoint as public. No-auth by default — MCP *connectors* on either
 platform cannot send custom headers, and the data is already public; set `TOS_MCP_TOKEN` (env
-only) if you want bearer gating on `/mcp` and `/v1/*`, and accept that connectors then can't
-use it. (Custom GPT **Actions** do support key/header auth — the no-auth default is about the
-connector door and zero-config import, not a platform impossibility.)
+only) if you want bearer gating on `/mcp`, and accept that connectors then can't use it.
 
 > **RETRACTION — 2026-08-16.** The version of this page published on 2026-08-15 said the
 > endpoint was rate-limited and optionally token-gated. In the code as merged, both ran only on
@@ -73,12 +71,10 @@ it is pinned, and whether the server is stateless) — check it before telling a
   **Owner** adds it org-wide.)
 - **ChatGPT Developer mode** (where the plan/workspace allows it): Settings → *Security* →
   enable Developer mode → add the same `/mcp` URL.
-- **ChatGPT Custom GPT (works on Plus, no admin):** build a GPT → Actions → *Import from URL*
-  → `https://<your-host>/openapi.json` → no auth. The schema is generated from the same tool
-  registry, so the two surfaces cannot drift: **check 22** holds the committed Actions schema
-  to the registry, and **check 23** holds the SDK-derived Claude schema to that same registry
-  — check 22 alone could not see the second divergence, which is how all eight tools once
-  advertised different rules depending on which product the teacher used.
+- **ChatGPT Custom GPT — RETIRED 2026-09:** custom GPTs end 2026-12-11 platform-wide and
+  personal plans lost GPT creation in 2026; the `/openapi.json` Actions schema and `/v1/*`
+  routes were removed with it (R5-B). **Check 23** still holds the SDK-derived schema to the
+  registry.
 
 ## Operations notes
 

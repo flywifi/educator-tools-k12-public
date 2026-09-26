@@ -762,26 +762,16 @@ def main() -> int:
               f"({e.__class__.__name__}: {e}) — the generator itself is broken; fix "
               f"tools/export_plugin_manifest.py (its --self-test should reproduce this)")
 
-    # 22. MCP tool-surface freshness: the committed Actions OpenAPI schema + tool-surface
-    # snapshot must equal a fresh render from tools/mcp_tooldefs.py — any tool-surface change is
-    # a conscious, reviewed diff on both platforms (Claude MCP + ChatGPT Actions) at once.
-    # FAIL-CLOSED like check 21: a broken generator is a failure, not a skipped note.
-    try:
-        import export_actions_schema as _eas
-        for _issue in _eas.check():
-            _emit(_issue)
-    except Exception as e:
-        _emit(f"  x MCP tool-surface freshness gate could not run "
-              f"({e.__class__.__name__}: {e}) — fix tools/export_actions_schema.py "
-              f"(its --self-test should reproduce this)")
+    # (check 22, the Actions OpenAPI freshness gate, was RETIRED with the Custom GPT Actions
+    # leg in R5-B — the artifact it gated no longer exists. The number is not reused.)
 
     # 23. Cross-domain schema parity: the schema the `mcp` SDK derives for Claude must match the
-    # registry schema ChatGPT gets. Check 22 above cannot see this — it compares a registry render
-    # to committed registry artifacts, so registry-vs-SDK divergence is structurally invisible to
+    # registry schema every SDK consumer gets. The retired check 22 compared a registry render
+    # to committed registry artifacts, so registry-vs-SDK divergence was structurally invisible to
     # it, which is how all 8 tools shipped a free-text `subject` on claude.ai and a constrained one
     # on ChatGPT. Comparison is SEMANTIC (the SDK spells optionals `anyOf:[X,null]`); see
     # mcp_http_server.schema_parity().
-    # DEGRADATION IS DELIBERATELY UNLIKE 21/22: ImportError -> SKIP, anything else -> FAIL. Those
+    # DEGRADATION IS DELIBERATELY UNLIKE 21: ImportError -> SKIP, anything else -> FAIL. Those
     # gates are fail-closed because their generators are stdlib/offline/in-repo, so an ImportError
     # means the repo is broken; here it means the OPTIONAL `mcp_server` capability (off by default)
     # simply is not installed — a documented, expected state on a plain clone. The skip cannot

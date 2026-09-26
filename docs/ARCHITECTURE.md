@@ -81,9 +81,9 @@ phases — verify, then a human-reviewed apply. Nothing is auto-applied.
 The engines above are *documents the model reads*. The same verified data is also exposed as
 **eight read-only tools** so an assistant can look a standard up rather than recall it:
 `tools/mcp_tooldefs.py` is the single registry (names, JSON Schemas, governance-bearing
-descriptions, handlers), and four delivery legs serve it — plugin-shipped stdio, the Claude
-Desktop `.mcpb` bundle, a hosted streamable-HTTP endpoint (dormant until someone deploys it),
-and a generated OpenAPI document for Custom GPT Actions.
+descriptions, handlers), and three delivery legs serve it — plugin-shipped stdio, the Claude
+Desktop `.mcpb` bundle, and a hosted streamable-HTTP endpoint (dormant until someone deploys
+it). A fourth, the Custom GPT Actions OpenAPI document, was retired 2026-09 with that product.
 
 Two architectural rules make that safe rather than merely convenient. **The registry is the
 only definition**: the advertised schema is enforced at call time on every leg, and `sync_check`

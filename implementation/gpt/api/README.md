@@ -1,52 +1,22 @@
-<!-- last_reviewed: 2026-06-27 | owner: api-maintainer -->
-# TOS on OpenAI API (developer use)
+<!-- last_reviewed: 2026-09-25 | owner: api-maintainer -->
+# TOS on the OpenAI API — RETIRED (2026-09, R5-B)
 
-This folder contains OpenAI function calling definitions for all 29 TOS skills.
-It is intended for **developers** building applications with the OpenAI API.
+This folder held OpenAI **Chat Completions** function schemas for 29 TOS skills
+(`tools.json`/`tools.yaml`/`skills/*.yaml`) and the Custom GPT **Actions** OpenAPI
+(`actions-openapi.json`). All were removed:
 
-**If you are a teacher using ChatGPT on the website** → see `implementation/gpt/web/` instead.
-Drag `implementation/gpt/web/TOS-skills.md` into a ChatGPT Project and you're done.
+- **Custom GPTs retire 2026-12-11** platform-wide (Enterprise deferrals 2027-02-11); personal
+  plans lost GPT creation in 2026, and custom Actions do not survive OpenAI's migration.
+- The Chat Completions export targeted an API style OpenAI no longer recommends for tools
+  (the newest models require the Responses API for tool calling or restrict it), had never had
+  an executor, and cost ~40k tokens of schema per conversation.
 
----
+**What replaced them** (see the loss record in `changes/CHANGELOG.md` under v1.7.0):
+- Teachers in the browser: the Reference-Pack Project — `implementation/gpt/web/`.
+- Teachers on the ChatGPT desktop app: the LOCAL tos-tools server (Settings → MCP servers →
+  STDIO, or a plugin) — `implementation/mcp/README.md` Door 3.
+- Developers: the MCP surface (`tools/mcp_tooldefs.py` registry; `tools/mcp_server.py` stdio;
+  the dormant hosted `/mcp` leg) — usable from the OpenAI Responses API's `mcp` tool type.
 
-## API usage
-
-```python
-import json, openai
-
-tools = json.load(open("implementation/gpt/api/tools.json"))
-system_prompt = open("implementation/gpt/api/system-prompt.md").read()
-
-client = openai.OpenAI()
-response = client.chat.completions.create(
-    model="gpt-4o",
-    tools=tools,
-    messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "Write me a lesson plan for 4th grade math on fractions."}
-    ]
-)
-```
-
-## Files
-
-| File | Purpose |
-|---|---|
-| `skills/*.yaml` | One function definition per TOS skill (source of truth) |
-| `tools.yaml` | Combined tools array (YAML) |
-| `tools.json` | Combined tools array (JSON) — pass directly to the API |
-| `system-prompt.md` | Teacher-core routing logic as a system prompt |
-
-## Regenerating after a skill change
-
-```bash
-python3 tools/export_openai.py    # rebuilds tools.yaml + tools.json
-python3 tools/export_chatgpt.py   # also rebuild the ChatGPT web version
-```
-
-## `actions-openapi.json` (generated — do not hand-edit)
-`tools/export_actions_schema.py` renders it from the MCP tool registry
-(`tools/mcp_tooldefs.py`); `sync_check` check 22 fails if the committed file differs from a
-fresh render. It is the Custom GPT **Actions** door: a teacher imports it by URL from a hosted
-deployment (`deploy/mcp/README.md`), which substitutes its own host at serve time. The
-committed copy carries a placeholder URL on purpose — the repo never points at a live endpoint.
+`system-prompt.md` (the governance prompt) and `web-wizard.md` (the ChatGPT setup wizard)
+remain in this folder because the web Project path still uses them.

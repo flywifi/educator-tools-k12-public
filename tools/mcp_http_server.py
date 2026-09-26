@@ -10,22 +10,21 @@ hosted deployment already owns a container where pinned dependencies are normal;
 
 One ASGI app serves:
   /mcp            streamable-HTTP MCP (claude.ai connectors, ChatGPT Developer mode)
-  /v1/{tool}      plain REST POST per tool — the Custom GPT Actions fallback
-  /openapi.json   the Actions schema (generated from the registry) with THIS host substituted
   /healthz        liveness
 
 Tools come from tools/mcp_tooldefs.py — the single registry. The SDK derives input schemas from
 the typed wrapper signatures below, so those annotations carry every enum and bound the registry
 declares; schema_parity() asserts the two sides stay equivalent and sync_check check 23 runs it
 (the registry's own _validate_args is still the authoritative enforcement at call time, on every
-leg). The committed Actions artifacts are separately gated by check 22.
+leg). RETIRED 2026-09 (R5-B): the /v1/* REST + /openapi.json Custom GPT Actions leg — OpenAI
+removed GPT creation from personal plans and retires all custom GPTs on 2026-12-11, and custom
+actions do not survive the migration, so the door this leg served no longer exists.
 
 Deployment posture (see deploy/mcp/README.md, security/SECURITY_REVIEW.md):
   STATELESS · standards-data-only · no identity · request bodies never logged · treat as
   public. No-auth by default (MCP connectors on either platform cannot send custom headers, and
-  the data is the public CPALMS-derived corpus; Custom GPT Actions CAN send headers — the
-  default is about the connector door, not a platform limit). Districts wanting gating may set
-  TOS_MCP_TOKEN (env only); it covers /mcp and /v1/* via middleware, never per-route. Per-IP
+  the data is the public CPALMS-derived corpus). Districts wanting gating may set
+  TOS_MCP_TOKEN (env only); it covers every non-exempt path via middleware, never per-route. Per-IP
   token-bucket rate limiting in-process on every path. Binds 127.0.0.1 unless TOS_MCP_HOST says
   otherwise (the container sets 0.0.0.0; TLS terminates at the host).
 
@@ -175,10 +174,10 @@ def build_mcp():
 
 
 # ------------------------------------------------------------------------------- schema parity
-# The gate that would have caught H-2. sync_check check 22 diffs the committed Actions artifacts
+# The gate that would have caught H-2. The retired check 22 diffed committed registry artifacts
 # against a fresh REGISTRY render — registry vs registry, so a divergence between the registry and
-# what the SDK derives for Claude is structurally invisible to it. That is how all 8 tools came to
-# advertise different schemas on the two platforms for a full release.
+# what the SDK derives for Claude was structurally invisible to it. That is how all 8 tools came
+# to advertise different schemas on the two platforms for a full release.
 _CONSTRAINTS = ("type", "enum", "minimum", "maximum", "minItems", "maxItems", "items_type")
 
 
@@ -318,13 +317,11 @@ class _Bucket:
             self.state.pop(k, None)
 
 
-#: Paths reachable without TOS_MCP_TOKEN (still rate-limited). Both are exempt for a concrete
+#: Paths reachable without TOS_MCP_TOKEN (still rate-limited). /healthz is exempt for a concrete
 #: deployment reason, not convenience: platform health probes (Cloud Run, Fly, App Runner) cannot
-#: send a bearer, so gating /healthz means the service never reports healthy and the deploy never
-#: comes up; and ChatGPT's "Import from URL" fetches /openapi.json from a browser with no auth, so
-#: gating it closes Door 4 entirely. Neither returns corpus data — the token guards the DATA paths
-#: (/mcp and /v1/*), which is the whole point of having one.
-TOKEN_EXEMPT_PATHS = ("/healthz", "/openapi.json")
+#: send a bearer, so gating it means the service never reports healthy and the deploy never comes
+#: up. (/openapi.json left this tuple with the retired Actions leg — R5-B.)
+TOKEN_EXEMPT_PATHS = ("/healthz",)
 
 
 def _gate_middleware(app, bucket: "_Bucket", token: str):
@@ -363,23 +360,6 @@ def _gate_middleware(app, bucket: "_Bucket", token: str):
     return middleware
 
 
-#: REST status per error kind (M-4). Any non-2xx makes ChatGPT tell the teacher "the action
-#: failed" and swallow the body — so an OPERATIONAL answer the model should relay must be 200.
-#: index_unavailable/index_corrupt are exactly that: the tool worked, answered honestly, and
-#: carries the fix text; returning 400 turned the honesty tool into a dead end.
-_ERROR_STATUS = {"index_unavailable": 200, "index_corrupt": 200,
-                 "unknown tool": 404, "invalid_arguments": 400,
-                 "artifact must be": 400}
-
-
-def _status_for(out: dict) -> int:
-    err = out.get("error")
-    if not err:
-        return 200
-    for key, status in _ERROR_STATUS.items():
-        if str(err).startswith(key):
-            return status
-    return 500          # a genuine server-side failure (the call_tool chokepoint caught something)
 
 
 def _env_bool(name: str, default: bool) -> bool:
@@ -408,12 +388,11 @@ def _transport_security():
 
 
 def public_url(request) -> str:
-    """The base URL to advertise in the OpenAPI document (M-2).
+    """The base URL /healthz echoes so a deployer sees what a connector will be handed (M-2).
 
-    ChatGPT Actions requires TLS on 443 and rejects the import outright if servers[0].url is
-    http:// or an internal name — and that is exactly what request.base_url renders behind a
-    terminating load balancer. Resolution order: TOS_MCP_PUBLIC_URL (a required deploy step,
-    documented) -> base_url with the scheme corrected from x-forwarded-proto -> base_url."""
+    request.base_url renders http:// or an internal name behind a terminating load balancer.
+    Resolution order: TOS_MCP_PUBLIC_URL (a required deploy step, documented) -> base_url with
+    the scheme corrected from x-forwarded-proto -> base_url."""
     explicit = os.environ.get("TOS_MCP_PUBLIC_URL", "").strip().rstrip("/")
     if explicit:
         return explicit
@@ -425,29 +404,14 @@ def public_url(request) -> str:
 
 
 def build_app(mcp):
-    """One ASGI app: /mcp (SDK) + /v1/{tool} + /openapi.json + /healthz, all behind the gate."""
+    """One ASGI app: /mcp (SDK) + /healthz, all behind the gate. (/v1 + /openapi.json retired.)"""
     from starlette.applications import Starlette
     from starlette.requests import Request
     from starlette.responses import JSONResponse
     from starlette.routing import Mount, Route
 
-    import export_actions_schema
     bucket = _Bucket()
     token = os.environ.get("TOS_MCP_TOKEN", "")
-
-    async def rest_tool(request: Request):
-        try:
-            args = await request.json()
-        except Exception:
-            return JSONResponse({"error": "body must be a JSON object"}, status_code=400)
-        out = mcp_tooldefs.call_tool(request.path_params["tool"],
-                                     args if isinstance(args, dict) else {})
-        return JSONResponse(out, status_code=_status_for(out))
-
-    async def openapi(request: Request):
-        doc = export_actions_schema.render_actions()
-        doc["servers"] = [{"url": public_url(request)}]
-        return JSONResponse(doc)
 
     async def healthz(request: Request):
         # public_url is echoed so a deployer sees what ChatGPT will be handed BEFORE attempting
@@ -468,8 +432,6 @@ def build_app(mcp):
         transport_security=_transport_security())
 
     app = Starlette(routes=[
-        Route("/v1/{tool}", rest_tool, methods=["POST"]),
-        Route("/openapi.json", openapi),
         Route("/healthz", healthz),
         Mount("/", app=sub),
     ], lifespan=sub.router.lifespan_context)   # AUDIT C-4 — see below
@@ -489,12 +451,11 @@ def serve() -> int:
     mcp = build_mcp()
     stateless = _env_bool("TOS_MCP_STATELESS", True)
     if not os.environ.get("TOS_MCP_PUBLIC_URL"):
-        print("[tos-tools http] TOS_MCP_PUBLIC_URL is unset — /openapi.json will advertise "
-              "whatever host the request arrives with. Behind a load balancer that can render "
-              "http:// or an internal name, which ChatGPT Actions rejects at import. Set it to "
-              "your public https:// base URL.", file=sys.stderr)
-    print(f"[tos-tools http] {len(mcp_tooldefs.TOOLS)} read-only tools · /mcp + /v1/* + "
-          f"/openapi.json on {host}:{port} · "
+        print("[tos-tools http] TOS_MCP_PUBLIC_URL is unset — /healthz will advertise "
+              "whatever host the request arrives with; behind a load balancer that can render "
+              "http:// or an internal name. Set it to your public https:// base URL.",
+              file=sys.stderr)
+    print(f"[tos-tools http] {len(mcp_tooldefs.TOOLS)} read-only tools · /mcp on {host}:{port} · "
           f"{'stateless' if stateless else 'STATEFUL (pinned instance)'}, standards-data-only",
           file=sys.stderr)
     # forwarded_allow_ips: without it uvicorn ignores X-Forwarded-*, so behind a load balancer
@@ -585,10 +546,6 @@ def _e2e(ck) -> None:
             health = json.loads(resp.read().decode("utf-8"))
         ck("E2E: /healthz over HTTP reports the tool count and the advertised URL",
            health["ok"] and health["tools"] == 8 and "public_url" in health)
-        with urllib.request.urlopen(f"http://127.0.0.1:{port}/openapi.json", timeout=10) as resp:
-            doc = json.loads(resp.read().decode("utf-8"))
-        ck("E2E: /openapi.json is served with a concrete server URL",
-           doc["servers"][0]["url"].startswith("http"))
     finally:
         server.should_exit = True
         thread.join(timeout=15)
@@ -733,11 +690,13 @@ def self_test() -> int:
         gated = build_app(build_mcp())
         ck("/mcp is token-gated (H-3: it was wide open while the docs said otherwise)",
            _call(gated, "/mcp") == 401)
-        ck("/v1/* stays token-gated", _call(gated, "/v1/index_status") == 401)
+        ck("every non-exempt path is token-gated — incl. the retired /v1/* prefix, which the "
+           "middleware refuses before routing ever sees it",
+           _call(gated, "/v1/index_status") == 401)
         ck("/healthz is token-exempt so platform probes can bring the deploy up",
            _call(gated, "/healthz", method="GET") == 200)
-        ck("/openapi.json is token-exempt so ChatGPT's Import-from-URL still works",
-           _call(gated, "/openapi.json", method="GET") == 200)
+        ck("/openapi.json is NOT exempt anymore — it left with the retired Actions leg (R5-B)",
+           _call(gated, "/openapi.json", method="GET") == 401)
         ck("a wrong token is refused",
            _call(gated, "/mcp", [(b"authorization", b"Bearer wrong")]) == 401)
     finally:
@@ -799,23 +758,7 @@ def self_test() -> int:
        "not the missing-package case" in _sdk_diagnosis("2.0.0", True, "boom"))
     ck("the live environment satisfies the floor", _need_sdk() is None)
 
-    # --- M-4: the REST status table. A wrong status makes ChatGPT report a failed action and
-    # throw away a body that was telling the teacher exactly how to fix things. ---
-    ck("index_unavailable is 200 — an honest operational answer, not a failed action",
-       _status_for({"error": "index_unavailable", "fix": "run offline_index.py --build"}) == 200)
-    ck("index_corrupt is 200 for the same reason",
-       _status_for({"error": "index_corrupt"}) == 200)
-    ck("a bad argument is the caller's fault: 400",
-       _status_for({"error": "invalid_arguments", "issues": []}) == 400)
-    ck("an unknown tool is 404", _status_for({"error": "unknown tool: 'nope'"}) == 404)
-    ck("an unexpected handler failure is 500, not 400",
-       _status_for({"error": "DatabaseError: file is not a database"}) == 500)
-    ck("a successful call is 200", _status_for({"count": 0, "rows": []}) == 200)
 
-    import export_actions_schema
-    ck("openapi served == generated schema paths",
-       set(export_actions_schema.render_actions()["paths"]) ==
-       {f"/v1/{t['name']}" for t in mcp_tooldefs.list_tools()})
     _e2e_twin(ck)
     _e2e(ck)
     print(f"self-test: {fails} failure(s)")

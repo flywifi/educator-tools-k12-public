@@ -86,18 +86,20 @@ that boundary (found by adversarial audit, mitigations in place):
 
 ## MCP tool surface (2026-08-15; hardened 2026-08-16)
 
-The registry `tools/mcp_tooldefs.py` serves 8 read-only tools on four legs: plugin-shipped
+The registry `tools/mcp_tooldefs.py` serves 8 read-only tools on three legs: plugin-shipped
 stdio (zero-step; `plugin.json` `mcpServers`), the `.mcpb` Claude Desktop extension
-(one-click; `tools/build_mcpb.py`), the hosted streamable-HTTP leg (`tools/mcp_http_server.py`
-— claude.ai connectors + ChatGPT; dormant until a human deploys `deploy/mcp/`), and the
-generated Custom GPT Actions schema (`tools/export_actions_schema.py`, sync_check check 22 —
-with **check 23** separately holding the SDK-derived Claude schema to the same registry, the
-divergence check 22 structurally cannot see).
+(one-click; `tools/build_mcpb.py`), and the hosted streamable-HTTP leg
+(`tools/mcp_http_server.py` — remote connectors; dormant until a human deploys `deploy/mcp/`).
+**Check 23** holds the SDK-derived schema to the registry. (A fourth leg — the generated
+Custom GPT Actions schema and its check 22 — was retired 2026-09 with the Custom GPT product;
+see `implementation/mcp/README.md` "Door 4 — RETIRED".)
 Data handling: nothing student-related ever transits any leg — queries are standards
 codes/topics over a public, CPALMS-verified corpus; the hosted leg is stateless with no
 request-body logging. The local stdio leg is deliberately stdlib (runs on the CLT stub with
-zero installs); the platform truth that shaped all of this: ChatGPT and claude.ai remote
-connectors are brokered from vendor clouds, so localhost serves only Claude Desktop/Code stdio.
+zero installs); the platform truth that shaped all of this: browser products' remote
+connectors are brokered from vendor clouds, so a localhost server is reachable only by apps
+running ON the teacher's machine — Claude Desktop/Code, the ChatGPT desktop app (Work/Codex,
+Settings → MCP servers), and Gemini-side CLI/desktop agents (Antigravity).
 
 **Launcher interpreters (updated 2026-08-16).** All three JSON launchers originally spawned the
 stdio server as `python3`, which is exactly the E2 defect in a file the Python lint could not

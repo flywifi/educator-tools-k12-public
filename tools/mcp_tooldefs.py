@@ -4,7 +4,6 @@
 This module is the single source of truth for the MCP tool surface. Three consumers:
   tools/mcp_server.py            local stdio (Claude Code / Claude Desktop) — stdlib only
   tools/mcp_http_server.py       hosted streamable-HTTP (claude.ai connectors / ChatGPT)
-  tools/export_actions_schema.py generated OpenAPI for the Custom GPT Actions fallback
 
 Every tool is READ-ONLY (`annotations.readOnlyHint: true`), offline, and wraps an existing
 deterministic tool: `offline_index._q` (allow-listed tables, bound params — no injection
