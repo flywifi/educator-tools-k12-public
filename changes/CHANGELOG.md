@@ -5,6 +5,8 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.7.0] — 2026-09-26
+
 ### Fixed
 - **Local MCP server speaks the era every current client speaks (R5-A1).** The official client
   libraries (TS SDK 1.30.x / client 2.x, shipped by Claude Code, Claude Desktop and Codex)
