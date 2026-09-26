@@ -32,7 +32,7 @@ Generates model feedback on a placeholder response evaluated against a rubric. S
 ## Do NOT use this atom for
 - Using real student data (placeholders only)
 - Assigning grades or scores (this models feedback, not grading)
-- Generating rubrics (use atom-rubric-build)
+- Generating rubrics (use rubric-build)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (feedback modeling). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — feedback tone and accuracy must be teacher-reviewed.
+Follows `references/method.md` at the Generation step (feedback modeling). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — feedback tone and accuracy must be teacher-reviewed.

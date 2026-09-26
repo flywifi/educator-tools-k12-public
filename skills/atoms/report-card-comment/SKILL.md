@@ -1,6 +1,6 @@
 ---
 name: report-card-comment
-description: "Draft ONE standards-based report card comment for a student using placeholder performance data. Use this atom when family-communication or school-administration needs a single report-card narrative. Do NOT use with real student data — placeholders only. Do NOT use for IEP progress reports (use atom-iep-goal)."
+description: "Draft ONE standards-based report card comment for a student using placeholder performance data. Use this atom when family-communication or school-administration needs a single report-card narrative. Do NOT use with real student data — placeholders only. Do NOT use for IEP progress reports (use iep-goal)."
 ---
 
 # report-card-comment
@@ -33,8 +33,8 @@ Generates one standards-based report card comment with growth language, aligned 
 
 ## Do NOT use this atom for
 - Using real student data (placeholders only)
-- IEP progress reports (use atom-iep-goal)
-- Parent conference notes (use atom-parent-comm)
+- IEP progress reports (use iep-goal)
+- Parent conference notes (use parent-comm)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (narrative composition). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — comment must be personalized with real data by the teacher.
+Follows `references/method.md` at the Generation step (narrative composition). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — comment must be personalized with real data by the teacher.

@@ -6,7 +6,7 @@ description: "Evaluate any K-12 educational artifact against the TOS Quality Gat
 # quality-review — the Quality Gates executor
 
 `quality-review` is the governance skill of the Teacher Operating System. It runs the **Quality
-Gates Protocol** (`protocol-layer/quality-gates.md`) on an artifact and returns a scored, auditable
+Gates Protocol** (`references/quality-gates.md`) on an artifact and returns a scored, auditable
 decision. It is the final stage of the pipeline in `references/method.md`; nothing is "Final" until
 it passes here.
 
@@ -14,7 +14,7 @@ it passes here.
 - The **artifact** to evaluate (pasted, or just produced by a capability skill).
 - Its **context**: persona, grade band, subject, the standards it claims to meet, and the original
   request (for the User Intent gate). If context is missing, infer + log it
-  (`protocol-layer/assumptions-protocol.md`) — never invent facts about the artifact.
+  (`references/assumptions-protocol.md`) — never invent facts about the artifact.
 
 ## 2. Score the 9 dimensions, in gate order, 0-5
 Use the descriptors in `references/rubric.md`. Evaluate in this order and **stop early on a critical
@@ -48,7 +48,7 @@ It applies the QG §33.1 weights, the §35.3 thresholds (Approved ≥4.0 · Cond
 Rejected. Do not hand-compute — use the script.
 
 ## 5. Emit the decision record
-Return the verdict as a decision record per `protocol-layer/metadata-schema.md`: per-dimension scores +
+Return the verdict as a decision record per `references/metadata-schema.md`: per-dimension scores +
 evidence, composite, decision, rationale, and `human_review_required: true`. See
 `examples/example-evaluation.md` for the exact shape. Two honesty rules (QG §93.3):
 - A dimension with no findings is stated as "no issues found — checked: <what was examined>",

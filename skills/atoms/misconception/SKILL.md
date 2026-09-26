@@ -5,7 +5,7 @@ description: "Return the most common student misconceptions for a specific topic
 
 # misconception
 
-Returns a short list (2–5) of documented common student misconceptions for a topic, with a brief note on why each occurs and how instruction can address it. Used to seed distractor analysis in atom-assessment-item and to inform activity design in atom-activity-generate.
+Returns a short list (2–5) of documented common student misconceptions for a topic, with a brief note on why each occurs and how instruction can address it. Used to seed distractor analysis in assessment-item and to inform activity design in activity-generate.
 
 ## Input
 
@@ -45,7 +45,7 @@ Returns a short list (2–5) of documented common student misconceptions for a t
 
 ## Do NOT use this atom for
 - Diagnosing a specific student's errors (use intervention-mtss)
-- Generating assessment items or activities (pass this output to atom-assessment-item or atom-activity-generate)
+- Generating assessment items or activities (pass this output to assessment-item or activity-generate)
 
 ## Pipeline note
-Follows `references/method.md` at the Analysis step (pre-Generation). Output conforms to `protocol-layer/metadata-schema.md`. Pre-Generation step. `human_review_required: true` — misconceptions are research-based but model-inferred; teacher should verify against district curriculum materials.
+Follows `references/method.md` at the Analysis step (pre-Generation). Output conforms to `references/metadata-schema.md`. Pre-Generation step. `human_review_required: true` — misconceptions are research-based but model-inferred; teacher should verify against district curriculum materials.

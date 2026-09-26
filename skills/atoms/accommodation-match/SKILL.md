@@ -1,6 +1,6 @@
 ---
 name: accommodation-match
-description: "Match accommodations to a documented student need (IEP, 504, ELL, or learning profile). Use this atom when special-education-support or intervention-mtss needs to suggest specific accommodations for a documented need. Do NOT use without a documented need — accommodations must be tied to identified barriers. Do NOT use for UDL (use atom-udl-options)."
+description: "Match accommodations to a documented student need (IEP, 504, ELL, or learning profile). Use this atom when special-education-support or intervention-mtss needs to suggest specific accommodations for a documented need. Do NOT use without a documented need — accommodations must be tied to identified barriers. Do NOT use for UDL (use udl-options)."
 ---
 
 # accommodation-match
@@ -35,9 +35,9 @@ Given a documented student need (from IEP, 504 plan, or ELL profile), suggests s
 
 ## Do NOT use this atom for
 - Suggesting accommodations without a documented need
-- UDL options for general classroom design (use atom-udl-options)
-- Writing IEP goals (use atom-iep-goal)
+- UDL options for general classroom design (use udl-options)
+- Writing IEP goals (use iep-goal)
 - Using real student data (placeholders only)
 
 ## Pipeline note
-Follows `references/method.md` at the Differentiation step (accommodation matching). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — accommodations must align with the student's actual IEP/504 plan; teacher/case manager must verify.
+Follows `references/method.md` at the Differentiation step (accommodation matching). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — accommodations must align with the student's actual IEP/504 plan; teacher/case manager must verify.

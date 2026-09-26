@@ -32,7 +32,7 @@ Follow the unified pipeline (`references/method.md`); the repair work is the Gen
 - Never present a patch as complete if the risky parts could not be validated.
 
 ## Output: always emit the metadata block
-End with the metadata block (`protocol-layer/metadata-schema.md`) + `human_review_required: true`. When a fix
+End with the metadata block (`references/metadata-schema.md`) + `human_review_required: true`. When a fix
 needs judgment, route it back to the owning skill / a human. Placeholders only; never real student data.
 
 ```bash

@@ -7,12 +7,12 @@ description: "Draft ONE referral (MTSS, evaluation, counselor, or outside agency
 
 Creates a referral draft with all required fields (student info, reason, prior interventions, data summary) for MTSS escalation, special education evaluation, or counselor referral. Placeholders only.
 
-> **Read first — boundaries (`security/SECURITY_AND_SAFETY.md` §1-2).** A referral draft is
+> **Read first — boundaries (`references/security-and-safety.md` §1-2).** A referral draft is
 > **decision support**, not a submitted referral. It must be validated against the **actual**
 > district referral procedure and local and state policy before submission; drafting one here does
 > **not** initiate a referral, start any evaluation timeline, or determine eligibility for special
 > education or any service. Where a request needs a specific student's record, **escalate** rather
-> than infer (`protocol-layer/assumptions-protocol.md`). **Never request, infer, or include real
+> than infer (`references/assumptions-protocol.md`). **Never request, infer, or include real
 > student data — placeholders only.**
 
 ## Input
@@ -53,4 +53,4 @@ Creates a referral draft with all required fields (student info, reason, prior i
 - Making eligibility determinations
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (referral drafting). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — referral must be completed with actual data and submitted through district procedures.
+Follows `references/method.md` at the Generation step (referral drafting). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — referral must be completed with actual data and submitted through district procedures.

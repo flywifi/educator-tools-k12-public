@@ -22,11 +22,11 @@ Within Generation: `Analysis → (alignment to a practice/standard) → Differen
    prompts, and next steps.
 
 ## 2. Validate, then gate
-Run the universal + PD checks (`shared/quality/verification-checklists.md`); self-score against
+Run the universal + PD checks (`references/verification-checklists.md`); self-score against
 `references/quality-gates.md`, then hand to **quality-review**.
 
 ## 3. Always emit the metadata block
-Per `protocol-layer/metadata-schema.md`, with `human_review_required: true`. Placeholders only (no real
+Per `references/metadata-schema.md`, with `human_review_required: true`. Placeholders only (no real
 teacher or student data).
 
 Artifact types: `references/artifact-types.md`. Template:

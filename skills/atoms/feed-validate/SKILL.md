@@ -1,6 +1,6 @@
 ---
 name: feed-validate
-description: "Check a single RSS/Atom feed URL for liveness, staleness, redirects, and label accuracy. Use this atom when feed-curator needs to verify individual feed health or when any monitoring system needs a per-URL health check. Do NOT use for feed discovery — that is atom-feed-discover. Do NOT use for content extraction from feeds."
+description: "Check a single RSS/Atom feed URL for liveness, staleness, redirects, and label accuracy. Use this atom when feed-curator needs to verify individual feed health or when any monitoring system needs a per-URL health check. Do NOT use for feed discovery — that is feed-discover. Do NOT use for content extraction from feeds."
 ---
 
 # feed-validate
@@ -35,9 +35,9 @@ Validates a single feed URL and returns its health status (live, dead, stale, re
 ```
 
 ## Do NOT use this atom for
-- Feed discovery from a seed page (use atom-feed-discover)
+- Feed discovery from a seed page (use feed-discover)
 - Content extraction or summarization from feeds
 - Bulk feed validation (call this atom once per feed URL)
 
 ## Pipeline note
-Follows `references/method.md` at the Validation step (feed health check). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — feed health is advisory; dead feeds may be temporarily unreachable.
+Follows `references/method.md` at the Validation step (feed health check). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — feed health is advisory; dead feeds may be temporarily unreachable.

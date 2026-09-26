@@ -1,6 +1,6 @@
 ---
 name: cognitive-rigor
-description: "Classify an objective or assessment item by Bloom's Taxonomy level and Webb's Depth of Knowledge (DOK). Use this atom when lesson-planner, assessment-designer, or question-set needs to verify cognitive rigor before finalizing. Do NOT use for generating objectives — that is atom-objective-write."
+description: "Classify an objective or assessment item by Bloom's Taxonomy level and Webb's Depth of Knowledge (DOK). Use this atom when lesson-planner, assessment-designer, or question-set needs to verify cognitive rigor before finalizing. Do NOT use for generating objectives — that is objective-write."
 ---
 
 # cognitive-rigor
@@ -34,9 +34,9 @@ Tags an objective or item with Bloom level (Remember through Create) and Webb DO
 ```
 
 ## Do NOT use this atom for
-- Generating objectives (use atom-objective-write)
+- Generating objectives (use objective-write)
 - Scoring student work
 - Replacing teacher professional judgment on rigor alignment
 
 ## Pipeline note
-Follows `references/method.md` at the Analysis step (rigor classification). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — Bloom/DOK classification is model-inferred; teacher should verify alignment.
+Follows `references/method.md` at the Analysis step (rigor classification). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — Bloom/DOK classification is model-inferred; teacher should verify alignment.

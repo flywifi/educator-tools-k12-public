@@ -73,6 +73,6 @@ backend — details in `references/verification-methods.md`.
 See `references/artifact-types.md` for the artifact types this skill produces and their specs.
 
 ## Output: always emit the metadata block
-Every report/proposal ends with the metadata block from `protocol-layer/metadata-schema.md`, including the
+Every report/proposal ends with the metadata block from `references/metadata-schema.md`, including the
 decision and `human_review_required: true` — curation output is decision support, and catalog edits
 beyond mechanically-safe repairs are human-approved. No real student data; public feed metadata only.

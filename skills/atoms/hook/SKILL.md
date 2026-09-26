@@ -1,6 +1,6 @@
 ---
 name: hook
-description: "Generate ONE anticipatory set or engagement hook for a lesson objective. Use this atom when lesson-planner needs a compelling opening that draws students into the topic. Do NOT use for warm-ups (use atom-warm-up) or full lessons."
+description: "Generate ONE anticipatory set or engagement hook for a lesson objective. Use this atom when lesson-planner needs a compelling opening that draws students into the topic. Do NOT use for warm-ups (use warm-up) or full lessons."
 ---
 
 # hook
@@ -34,9 +34,9 @@ Creates a single engagement hook (question, scenario, demo, visual, story opener
 ```
 
 ## Do NOT use this atom for
-- Warm-up / bell-ringer activities (use atom-warm-up)
+- Warm-up / bell-ringer activities (use warm-up)
 - Full lesson planning (use lesson-planner)
 - Assessment or evaluation hooks
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (engagement design). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — teacher should adapt the hook to their class context.
+Follows `references/method.md` at the Generation step (engagement design). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — teacher should adapt the hook to their class context.

@@ -45,7 +45,7 @@ executed (SECURITY_AND_SAFETY.md §6).
    (secondary = discovery only), weigh recency including **forward-looking effective dates** (≈2-year
    window), and score **confidence** (`references/updater-method.md` → "Change intelligence").
 4. **Verify on CPALMS** — the live authority (`https://www.cpalms.org/search/Standard`). Never trust
-   a crawled change without confirming it (`protocol-layer/standards-verification.md`). Never invent codes.
+   a crawled change without confirming it (`references/standards-verification.md`). Never invent codes.
 5. **Apply (human-approved)** — drop accepted files into `resources/<state>/<category>/`, then
    re-enumerate and refresh hashes:
    ```bash
@@ -56,7 +56,7 @@ executed (SECURITY_AND_SAFETY.md §6).
 6. **Quality gate** — self-check against `references/quality-gates.md`, then hand to `quality-review`.
 
 ## Output: always emit the metadata/update record
-Produce an **update record** per `protocol-layer/metadata-schema.md`: what was crawled, NEW/CHANGED found,
+Produce an **update record** per `references/metadata-schema.md`: what was crawled, NEW/CHANGED found,
 what was verified on CPALMS, what was applied, and `human_review_required: true`. Placeholder/public
 data only — no PII. For policy/legislative/standards movement, also emit a **currency brief**
 (`references/artifact-types.md`): confirmed primary-source changes with confidence + **why it matters**

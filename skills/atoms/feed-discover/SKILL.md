@@ -1,6 +1,6 @@
 ---
 name: feed-discover
-description: "Discover RSS/Atom feed URLs from a seed web page using autodiscovery (link tags, common paths, MIME sniffing). Use this atom when feed-curator needs to find new feeds from an authoritative page. Do NOT use for validating existing feeds — that is atom-feed-validate. Do NOT use for content extraction."
+description: "Discover RSS/Atom feed URLs from a seed web page using autodiscovery (link tags, common paths, MIME sniffing). Use this atom when feed-curator needs to find new feeds from an authoritative page. Do NOT use for validating existing feeds — that is feed-validate. Do NOT use for content extraction."
 ---
 
 # feed-discover
@@ -32,9 +32,9 @@ Performs RSS/Atom autodiscovery from a seed page URL. Returns candidate feed URL
 ```
 
 ## Do NOT use this atom for
-- Validating existing feeds (use atom-feed-validate)
+- Validating existing feeds (use feed-validate)
 - Extracting or summarizing feed content
 - Crawling beyond the seed page (single-page discovery only)
 
 ## Pipeline note
-Follows `references/method.md` at the Discovery step (feed autodiscovery). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — discovered feeds must be verified by a human before adding to the catalog.
+Follows `references/method.md` at the Discovery step (feed autodiscovery). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — discovered feeds must be verified by a human before adding to the catalog.

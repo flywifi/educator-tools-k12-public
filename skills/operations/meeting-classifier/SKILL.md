@@ -12,7 +12,7 @@ does **not** author the meeting artifacts (sibling skills do).
 > **Read first — boundaries (`SECURITY_AND_SAFETY.md`).** This skill never makes a determination about
 > an individual student's IEP/504, eligibility, medical, or legal status — it **escalates** those to a
 > human/team. Medical/ePHI is **surfaced from the source on file (attributed; a signature is not required), never fabricated**
-> (`shared/students/student-data-policy.md`); real student data never enters a tracked/committed file.
+> (`references/student-data-policy.md`); real student data never enters a tracked/committed file.
 
 ## 1. Resolve context, connectors, and student first
 - **Context** — resolve the teaching-context contract (`shared/context/`), including the `department`
@@ -53,7 +53,7 @@ light prep brief / handoff packet (with guardian-contact info + a medical safety
 No full artifact authoring here.
 
 ## 5. Output: always emit the metadata block
-End with the metadata block from `protocol-layer/metadata-schema.md`, including the quality decision and
+End with the metadata block from `references/metadata-schema.md`, including the quality decision and
 `human_review_required: true` — outputs are decision support, not final professional, medical, or legal
 determinations. Placeholders only in any committed example; real student PII/ePHI stays in the storage
 adapter (`shared/students/`), never committed.

@@ -48,6 +48,6 @@ python3 tools/validate_outputs.py --input artifact.json --schema records
 See `references/artifact-types.md` — the **health report**, the **diagnosis**, and the **repair plan**.
 
 ## Output: always emit the metadata block
-Every report ends with the metadata block from `protocol-layer/metadata-schema.md` and
+Every report ends with the metadata block from `references/metadata-schema.md` and
 `human_review_required: true` — diagnostics and repair plans are decision support, not automatic changes.
 No real student data; placeholders only.

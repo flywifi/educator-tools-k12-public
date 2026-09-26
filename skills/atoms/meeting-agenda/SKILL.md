@@ -1,6 +1,6 @@
 ---
 name: meeting-agenda
-description: "Create ONE meeting agenda from a stated purpose and attendee list. Use this atom when school-administration or meeting-classifier needs a structured agenda. Do NOT use for meeting minutes (use atom-meeting-minutes)."
+description: "Create ONE meeting agenda from a stated purpose and attendee list. Use this atom when school-administration or meeting-classifier needs a structured agenda. Do NOT use for meeting minutes (use meeting-minutes)."
 ---
 
 # meeting-agenda
@@ -41,9 +41,9 @@ Generates a structured meeting agenda with time allocations, discussion items, r
 ```
 
 ## Do NOT use this atom for
-- Meeting minutes or summaries (use atom-meeting-minutes)
+- Meeting minutes or summaries (use meeting-minutes)
 - Scheduling meetings (this creates the agenda, not the calendar event)
 - IEP meeting agendas with legal timelines (those require district-specific templates)
 
 ## Pipeline note
-Follows `references/method.md` at the Generation step (agenda creation). Output conforms to `protocol-layer/metadata-schema.md`. `human_review_required: true` — agenda items should be customized by the meeting facilitator.
+Follows `references/method.md` at the Generation step (agenda creation). Output conforms to `references/metadata-schema.md`. `human_review_required: true` — agenda items should be customized by the meeting facilitator.

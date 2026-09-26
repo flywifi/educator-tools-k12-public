@@ -14,10 +14,10 @@ Within **Generation**, work `Analysis → Standards Alignment → Differentiatio
 
 1. **Analysis** — determine artifact type (`references/artifact-types.md`), subject, **grade band**,
    topic, and time available. Missing facts → assume the safest default and log it
-   (`protocol-layer/assumptions-protocol.md`); ask only if a choice is high-stakes.
+   (`references/assumptions-protocol.md`); ask only if a choice is high-stakes.
 2. **Standards Alignment** — select the most specific aligned standard(s) and cite with
    framework + version (`shared/standards/`). **Verify** every code
-   (`protocol-layer/standards-verification.md`); never invent a code. Use the offline index for a
+   (`references/standards-verification.md`); never invent a code. Use the offline index for a
    zero-token, verbatim lookup — `tools/offline_index.py --standards "<topic>" --grade <g> --subject
    <s>` (returns benchmarks + ESE access points), and `--resource <code>` to surface vetted **CPALMS
    lesson/resource links** already mapped to that standard from the FL instructional toolkits.
@@ -28,12 +28,12 @@ Within **Generation**, work `Analysis → Standards Alignment → Differentiatio
    understanding, aligned closure).
 
 ## 2. Validate, then gate
-Run the universal + lesson checks (`shared/quality/verification-checklists.md`), self-score against
+Run the universal + lesson checks (`references/verification-checklists.md`), self-score against
 `references/quality-gates.md`, then hand to **quality-review** for the authoritative decision.
 Nothing is "Final" below 4.0 or with a critical failure.
 
 ## 3. Always emit the metadata block
-End every artifact with the metadata block (`protocol-layer/metadata-schema.md`): artifact type, persona,
+End every artifact with the metadata block (`references/metadata-schema.md`): artifact type, persona,
 grade band, subject, standards set + cited codes, differentiation applied, assumptions, the quality
 decision, and `human_review_required: true`. Use placeholder student names only — never real data.
 
