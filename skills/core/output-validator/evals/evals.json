@@ -5,11 +5,13 @@
     {
       "kind": "command",
       "name": "governed_artifact_passes",
-      "command": "python3 tools/validate_outputs.py --input <records-package.json>",
+      "command": "python3 tools/validate_outputs.py --input shared/records/records.example.json --schema records",
       "assert": {
         "status": "pass",
-        "human_review_required": true
-      }
+        "human_review_required": true,
+        "rule_failures": []
+      },
+      "_note": "Executable since R6: the committed records example is the governed package fixture. (Schema validation runs where jsonschema is installed — the hosted-leg CI job; elsewhere schema_status says so and the rule catalog still runs.)"
     },
     {
       "name": "missing_human_review_fails",
@@ -40,30 +42,37 @@
     {
       "kind": "command",
       "name": "valid_pptx_structural_pass",
-      "command": "python3 tools/validate_document.py deck.pptx",
+      "command": "python3 tools/validate_document.py skills/core/output-validator/evals/fixtures/deck-minimal.pptx",
       "assert": {
         "kind": "pptx",
-        "valid": true
-      }
+        "valid": true,
+        "findings": []
+      },
+      "_note": "Executable since R6: a minimal, structurally valid OOXML deck ([Content_Types].xml + _rels/.rels + ppt/presentation.xml)."
     },
     {
       "kind": "command",
       "name": "truncated_ooxml_detected",
-      "_note": "A truncated/partial .pptx is not a valid zip -> blocking.",
-      "command": "python3 tools/validate_document.py truncated.pptx",
+      "command": "python3 tools/validate_document.py skills/core/output-validator/evals/fixtures/deck-truncated.pptx",
       "assert": {
         "valid": false,
-        "findings_include": "bad_zip"
-      }
+        "findings.0.code": "bad_zip",
+        "findings.0.severity": "blocking",
+        "exit_code": 1
+      },
+      "_note": "A truncated/partial .pptx (the first half of deck-minimal.pptx) is not a valid zip -> blocking. Executable since R6."
     },
     {
       "kind": "command",
       "name": "truncated_pdf_detected",
-      "command": "python3 tools/validate_document.py truncated.pdf",
+      "command": "python3 tools/validate_document.py skills/core/output-validator/evals/fixtures/doc-truncated.pdf",
       "assert": {
+        "kind": "pdf",
         "valid": false,
-        "findings_include": "pdf_missing_eof"
-      }
+        "findings.0.code": "pdf_missing_eof",
+        "exit_code": 1
+      },
+      "_note": "A PDF cut off before its %%EOF trailer -> blocking. Executable since R6."
     }
   ]
 }
