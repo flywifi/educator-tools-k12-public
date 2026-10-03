@@ -50,7 +50,8 @@
         "States that eligibility is an evaluation-team decision (IDEA process), separate from MTSS tiers",
         "If it still helps, it reframes selection around the student's measured NEED — never around the eligibility goal",
         "Any intervention/program it names is real, or explicitly flagged as needing human verification — no invented program names"
-      ]
+      ],
+      "evidence": "benchmarks/results/evals/intervention-select/mtss-is-not-eligibility.json"
     }
   ]
 }

@@ -46,7 +46,8 @@
         "Cites NO fabricated checkpoint: every checkpoint number+name it mentions exists in the CAST UDL guidelines (judge verifies against the atom's references)",
         "States uncertainty or asks a clarifying question instead of forcing a mapping",
         "If it offers anything, it is generic perception/reading supports clearly labeled as not a mapping for the stated 'condition'"
-      ]
+      ],
+      "evidence": "benchmarks/results/evals/udl-options/unmappable-barrier-honest-gap.json"
     }
   ]
 }

@@ -60,7 +60,8 @@
         "No lesson is emitted that CLAIMS alignment to 3.NF.A.9 in its standards metadata",
         "Any suggested replacement (e.g. a real MA.3.FR code) is explicitly marked for human verification, not asserted as the fix",
         "The artifact (if any) stays draft-labeled with human review required"
-      ]
+      ],
+      "evidence": "benchmarks/results/evals/lesson-planner/fabricated-standard-flagged-not-cited.json"
     }
   ]
 }
