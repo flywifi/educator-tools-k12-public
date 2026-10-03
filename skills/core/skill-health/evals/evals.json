@@ -38,11 +38,19 @@
     },
     {
       "name": "dangling_route_is_blocking",
-      "_note": "A routing.json target that is not an installed skill must appear in blocking_issues. kind declared explicitly in R6 (it was inferred): proving it needs a BROKEN route, which no committed fixture can carry — so it is a recorded-run expectation, not a CI command. The R5 bisect-walk discipline covers the guard itself.",
-      "assert": {
-        "blocking_issues_includes": "routing target"
+      "kind": "call",
+      "call": "health.health:check_routing",
+      "input": {
+        "skills": {
+          "ghost-skill-r6": {}
+        },
+        "meeting_routes": {}
       },
-      "kind": "prompt"
+      "assert": {
+        "0.severity": "blocking",
+        "0.issue": "routing target 'ghost-skill-r6' is not an installed skill"
+      },
+      "_note": "A routing.json target that is not an installed skill is a BLOCKING issue. Executable since R6: health.check_routing() takes the routing table as an optional argument (default: the repo's own), so a deliberately broken table is the fixture. build_report() feeds these problems into blocking_issues; the repo's own clean table is gated by CI's skill-health step."
     }
   ]
 }

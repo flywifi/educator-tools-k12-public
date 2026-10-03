@@ -114,8 +114,8 @@ def scan_engines() -> List[dict]:
     return out
 
 
-def check_routing() -> List[dict]:
-    routing = _load_routing()
+def check_routing(routing: Optional[dict] = None) -> List[dict]:
+    routing = _load_routing() if routing is None else routing
     skills = set(discover_skills())
     problems = []
     targets = set(routing.get("skills", {})) | {
