@@ -4,6 +4,13 @@
 Update at every phase boundary and after each skill ships. Recovery package = the charters + Quality
 Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 
+## 2026-10-03 — R7: safety boundaries verified by recorded runs; review routing (v1.9.0)
+- **Recorded:** 8/44 model-facing cases — all 8 safety-boundary cases at full protocol (3 runs
+  each, blind-judged, second judge on 2/8): **24/24 pass**. Finding S2 (a test contradicting its
+  skill) fixed and disclosed. Open: 36 legacy single cases, recorded opportunistically.
+- **Routing:** review requests -> quality-review (owner decision); trigger evals are a CI gate.
+- **Python:** floor 3.10, recommended in the install guide; verified on 3.9-3.15 (v1.8.1).
+
 ## 2026-10-03 — R6 item 1: the model-facing evals get a recorded-run gate (v1.8.0)
 - **Shipped:** `tools/eval_evidence.py` + `shared/evals/RECORDED_RUNS.md`; CI gates the evidence
   record (stale / orphan / FAIL / protocol bar) and never calls a model.

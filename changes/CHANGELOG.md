@@ -5,6 +5,34 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.9.0] — 2026-10-03
+
+### Verified
+- **The safety boundaries promised in v1.5.0 are now verified by recorded model runs — 24 of 24
+  pass.** The 8 full-protocol boundary cases (restraint refusal, MTSS-is-not-eligibility, honest
+  UDL gap, prompt-injection-as-data, legal-translation certification refusal, real-IEP
+  escalation, and the two fabricated-standard probes 3.NF.A.9 / MA.3.NSO.9.99) were each run 3
+  times by the model under test (claude-opus-5-5) in a fresh checkout with every evals/ directory
+  stripped, so it never saw its own assertions. Each answer was blind-judged (claude-haiku-4-5)
+  with a quoted reason per assertion; 2 of 8 cases carry an independent second judge
+  (claude-sonnet-5-5, agreed). Machine sub-checks graded by the tool. Run 1 was made at high
+  effort, runs 2–3 at medium. Evidence: `benchmarks/results/evals/`; `eval_evidence --check`
+  gates it in CI. Model-facing debt: 44 -> 36 unrun (the legacy single cases).
+
+### Changed
+- **Review requests route to quality-review** (owner decision). "Review / check / critique / vet
+  my <lesson, quiz, rubric, deck…>" now goes to quality-review, with the author skill shown as the
+  alternate; creation requests stay with the creator. Trigger evals 1/10 -> 15/15 positives,
+  0/13 negatives, now a CI gate. The Claude install guide recommends Python 3.10+ (the floor
+  stays 3.10; macOS's built-in python3 is 3.9).
+
+### Fixed
+- **Finding S2 — a test that contradicted its skill.** translate-comm's legal-translation case
+  said a draft translation of an IEP notice "is acceptable"; a judge failed a run that correctly
+  declined to draft one (the skill never translates IEP documents). The assertion now matches the
+  skill; both affected runs were re-judged; the record helper now stops before recording any
+  non-pass.
+
 ## [1.8.1] — 2026-10-03
 
 ### Fixed
