@@ -13,6 +13,7 @@ Usage: python3 tools/validate_examples.py
 from __future__ import annotations
 
 import glob
+import os
 import json
 import subprocess
 import sys
@@ -29,12 +30,20 @@ def _run_json(cmd: list[str]) -> dict:
         return {"status": "error", "raw": (out.stdout + out.stderr)[:300]}
 
 
+
+def _rglob(pattern: str) -> list:
+    """glob(pattern, recursive=True, root_dir=ROOT) without root_dir, which is Python 3.10+ and
+    broke this tool on the macOS system Python (3.9). Same matches, repo-relative paths."""
+    base = glob.escape(str(ROOT))
+    return [os.path.relpath(f, ROOT) for f in glob.glob(os.path.join(base, pattern), recursive=True)]
+
+
 def main() -> int:
     failures: list[str] = []
     checked = 0
 
     # 1) governed JSON examples -> rule catalog
-    for f in sorted(glob.glob("**/*.example.json", recursive=True, root_dir=str(ROOT))):
+    for f in sorted(_rglob("**/*.example.json")):
         schema = ["--schema", "connector-flags"] if "feature-flags" in f else []
         rep = _run_json([sys.executable, "tools/validate_outputs.py", "--input", f, *schema])
         checked += 1
@@ -45,7 +54,7 @@ def main() -> int:
     # 1b) negative controls: known-bad fixtures MUST fail (proves the gate actually gates).
     # A validator that has never failed on a known-bad is unproven; these fixtures are deliberately
     # invalid and the check inverts — a PASS here is the failure.
-    for f in sorted(glob.glob("**/*.known-bad.json", recursive=True, root_dir=str(ROOT))):
+    for f in sorted(_rglob("**/*.known-bad.json")):
         rep = _run_json([sys.executable, "tools/validate_outputs.py", "--input", f])
         checked += 1
         if rep.get("status") != "fail":
@@ -53,7 +62,7 @@ def main() -> int:
 
     # 2) committed example documents -> structural validity
     docs = [f for ext in ("docx", "pptx", "xlsx", "pdf", "odt", "ods", "odp")
-            for f in glob.glob(f"skills/**/examples/*.{ext}", recursive=True, root_dir=str(ROOT))]
+            for f in _rglob(f"skills/**/examples/*.{ext}")]
     for f in docs:
         rep = _run_json([sys.executable, "tools/validate_document.py", f])
         checked += 1
@@ -66,7 +75,7 @@ def main() -> int:
         import docintel  # type: ignore
         pipe = docintel.Pipeline()
         for f in [g for ext in ("ics", "eml", "vtt", "srt")
-                  for g in glob.glob(f"skills/**/examples/*.{ext}", recursive=True, root_dir=str(ROOT))]:
+                  for g in _rglob(f"skills/**/examples/*.{ext}")]:
             doc = pipe.run((ROOT / f).read_bytes(), f)
             checked += 1
             if doc.diagnostics.get("retrieval_state") != "content_ingested":
