@@ -4,6 +4,15 @@
 Update at every phase boundary and after each skill ships. Recovery package = the charters + Quality
 Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 
+## 2026-10-03 — R6 item 1: the model-facing evals get a recorded-run gate (v1.8.0)
+- **Shipped:** `tools/eval_evidence.py` + `shared/evals/RECORDED_RUNS.md`; CI gates the evidence
+  record (stale / orphan / FAIL / protocol bar) and never calls a model.
+- **Survey finding:** 29 of 73 "model-facing" cases tested deterministic tools — now CI-executed
+  (159 executed, 0 fail). The 44 left are genuinely model behaviour.
+- **Open:** 0 / 44 recorded. Next: the recording campaign (8 full-protocol boundary cases first,
+  3 runs each + second-judge sampling). 3 feed-curator cases need a fixture-registry parameter on
+  `tools/seed_curator.py`; 2 skill-repair cases remain UNRUNNABLE (need a `--json` mode).
+
 ## Context-First expansion (RFC-F001 V2) — F1–F6 shipped
 A six-phase build (plan: approved RFC-F001 V2) adding currency, a school/program index, a per-teacher SOP
 skill, a gated staff directory, always-on web crawl, and a light context spine — stdlib-first, gated,

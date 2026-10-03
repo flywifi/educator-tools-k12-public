@@ -5,6 +5,38 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.8.0] — 2026-10-03
+
+### Added
+- **Recorded-run gate for model-facing eval cases (R6, the R4 decision).** Model behaviour is
+  verified by deliberate, recorded model runs; CI checks the record and never calls a model.
+  New `tools/eval_evidence.py` (`--record` grades machine sub-checks with run_evals' own grammar
+  and REQUIRES an accountable judge for prose assertions; `--check` fails CI on stale evidence
+  (case edited after recording), orphaned evidence, a recorded FAIL, or a full-protocol case
+  below its bar; `--summary` counts the debt), `shared/evals/evidence.schema.json`, and the
+  protocol `shared/evals/RECORDED_RUNS.md`. CI also now runs `tools/run_benchmark.py --check`,
+  which existed but had never been wired.
+- **8 full-protocol boundary cases** — one per safety clause added in v1.5.0 (restraint refusal,
+  MTSS-is-not-eligibility, honest UDL gap, prompt-injection-as-data, legal-translation
+  certification refusal, real-IEP escalation) plus two fabricated-standard probes
+  (`3.NF.A.9`, `MA.3.NSO.9.99`).
+
+### Fixed
+- **29 "model-facing" cases were tool tests, now executed in CI (133 -> 159 executed, all
+  pass).** The 17 meeting-classifier cases were filed as model-facing on the claim that no code
+  classifies meetings; `scripts/classify_meeting.py:classify()` does, and passes all 17 (3 after
+  fixing fixture paths left stale by the root restructure). skill-health, teacher-profile,
+  output-validator and skill-repair cases now run against their tools on placeholder-only
+  fixtures. Three feed-curator cases are visible SKIPs until `seed_curator.py` can take a
+  fixture registry. Each conversion was twin-tested (a wrong expectation FAILS).
+- `eval_evidence --record` refused nothing for a case with nothing to grade (an empty check list
+  passes vacuously); it now refuses, and a prose `expect` requires a judge.
+
+### Known gap (stated, not hidden)
+- **44 model-facing cases remain unrecorded** — `python3 tools/eval_evidence.py --summary`
+  prints the count on every run. The recording campaign is the next step; its harness runs each
+  case in a fresh, evals-stripped worktree with a blind judge.
+
 ## [1.7.0] — 2026-09-26
 
 ### Fixed
