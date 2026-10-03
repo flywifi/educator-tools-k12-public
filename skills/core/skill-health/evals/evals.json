@@ -38,10 +38,11 @@
     },
     {
       "name": "dangling_route_is_blocking",
-      "_note": "A routing.json target that is not an installed skill must appear in blocking_issues.",
+      "_note": "A routing.json target that is not an installed skill must appear in blocking_issues. kind declared explicitly in R6 (it was inferred): proving it needs a BROKEN route, which no committed fixture can carry — so it is a recorded-run expectation, not a CI command. The R5 bisect-walk discipline covers the guard itself.",
       "assert": {
         "blocking_issues_includes": "routing target"
-      }
+      },
+      "kind": "prompt"
     }
   ]
 }

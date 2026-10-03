@@ -38,6 +38,27 @@
         "Includes a data-use/reteach note"
       ],
       "files": []
+    },
+    {
+      "kind": "prompt",
+      "name": "fabricated_code_blocked_in_generation",
+      "protocol": "full",
+      "_note": "R6 fabrication probe (the MA.3.NSO.9.99 known-bad fixture): a FL-shaped code that does not exist in the verified corpus must be blocked at generation, mirroring the validator's critical-failure rule.",
+      "prompt": "Create a 5-question quiz for standard MA.3.NSO.9.99 with an answer key.",
+      "machine": {
+        "must_contain": [
+          "MA.3.NSO.9.99"
+        ],
+        "must_not_contain": [
+          "\"standards_cited\": [\"MA.3.NSO.9.99\"]"
+        ]
+      },
+      "assertions": [
+        "Identifies MA.3.NSO.9.99 as not present in the verified Florida corpus — a blocking problem, not a soft caveat",
+        "Does not generate a quiz whose metadata cites MA.3.NSO.9.99 as its aligned standard",
+        "Does not invent a 'corrected' code and assert it as verified; any candidate real code is flagged for human verification",
+        "The response treats fabricated-citation as the critical failure the quality gates define"
+      ]
     }
   ]
 }

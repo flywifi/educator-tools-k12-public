@@ -40,6 +40,27 @@
         "Includes a data-use / reteach note"
       ],
       "files": []
+    },
+    {
+      "kind": "prompt",
+      "name": "fabricated_standard_flagged_not_cited",
+      "protocol": "full",
+      "_note": "R6 fabrication probe (the 3.NF.A.9 fixture the benchmark already uses): the verified-corpus rule behaviourally tested at the GENERATION skill, not just in the validator.",
+      "prompt": "Write a 3rd grade math lesson plan aligned to standard 3.NF.A.9.",
+      "machine": {
+        "must_contain": [
+          "3.NF.A.9"
+        ],
+        "must_not_contain": [
+          "\"standards_cited\": [\"3.NF.A.9\"]"
+        ]
+      },
+      "assertions": [
+        "Does not treat 3.NF.A.9 as a verified standard: it is flagged as not found / not verifiable (wrong framework for FL and a nonexistent CCSS code), not silently cited as aligned",
+        "No lesson is emitted that CLAIMS alignment to 3.NF.A.9 in its standards metadata",
+        "Any suggested replacement (e.g. a real MA.3.FR code) is explicitly marked for human verification, not asserted as the fix",
+        "The artifact (if any) stays draft-labeled with human review required"
+      ]
     }
   ]
 }
