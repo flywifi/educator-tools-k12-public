@@ -5,6 +5,30 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.8.1] — 2026-10-03
+
+### Fixed
+- **Fresh-install MCP server put a non-protocol line on the wire.** On first start the server
+  builds the offline index, and the builder printed its report to stdout — the JSON-RPC channel.
+  Claude's official client logged one transport error and recovered (verified), but it was a
+  protocol violation on every fresh install. The build now reports to stderr; a self-test probe
+  fails on the unfixed code. Found by testing from fresh checkouts, where the index is absent.
+- **Python 3.9 (the macOS system Python):** `validate_examples.py` used `glob(root_dir=)`
+  (3.10+) and crashed; replaced, output identical.
+- **Python 3.13+:** positional `maxsplit` in `re.split` (deprecated, a future error) in
+  `health.py` and `deps_preflight.py`.
+- **`deps_preflight.py --help` started an install** (built the venv, downloaded packages and
+  Chromium). `-h`/`--help` now print usage and exit.
+- **Eval coverage:** every remaining executable case now runs — 169 executed, 0 fail, 0
+  UNRUNNABLE, 1 skip (network-only by design). New `seed_curator.py --self-test` (offline,
+  write-free) and `skill_repair.py --json`; fixtures for the document-validator and diagnose
+  cases.
+
+### Verified
+- Full battery on CPython 3.9, 3.10, 3.11, 3.12, 3.13, 3.14.8 and 3.15.0rc3, each from a fresh
+  checkout with all warnings enabled: every step passes, 0 warnings. On 3.9 the MCP smoke test's
+  only failure is its own stated floor (3.10); the server itself runs on 3.9.
+
 ## [1.8.0] — 2026-10-03
 
 ### Added
