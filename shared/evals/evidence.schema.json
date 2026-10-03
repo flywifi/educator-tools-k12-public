@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "shared/evals/evidence.schema.json",
+  "title": "Recorded model-run evidence for a prompt-kind eval case",
+  "_comment": "R6: `kind: prompt` cases are NEVER executed in CI (your decision, R4: model runs are deliberate, recorded as dated evidence; CI checks the RECORD). One file per case under benchmarks/results/evals/<skill>/<case>.json, written ONLY by tools/eval_evidence.py --record. prompt_sha256 pins the exact prompt text the run answered — editing a case ORPHANS its evidence (stale evidence is a check failure, not a silent pass). protocol `full` = the benchmark's own bar (>=3 runs; second judge on a >=20% repo-wide sample of full-protocol cases); `single` = one recorded run, the documented long-tail bar, upgradeable to full without schema change.",
+  "type": "object",
+  "required": ["case", "skill", "prompt_sha256", "protocol", "arm", "model", "recorded", "runs", "overall"],
+  "additionalProperties": false,
+  "properties": {
+    "case": {"type": "string", "description": "<skill>/<case name>"},
+    "skill": {"type": "string"},
+    "prompt_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "protocol": {"enum": ["full", "single"]},
+    "arm": {"type": "string", "description": "who/what produced the outputs, e.g. claude-session, claude-plugin-desktop, teacher-device"},
+    "model": {"type": "string", "description": "the model id the run was served by, as reported by the runtime — never guessed"},
+    "recorded": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "runs": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["date", "output", "judge"],
+        "additionalProperties": false,
+        "properties": {
+          "date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "output": {"type": "string", "minLength": 1, "description": "the model's answer, verbatim"},
+          "machine": {"type": "object", "description": "auto-filled by --record: each machine sub-check's verdict; never hand-typed"},
+          "judge": {
+            "type": "object",
+            "required": ["verdict", "by"],
+            "additionalProperties": false,
+            "properties": {
+              "verdict": {"enum": ["pass", "fail", "mixed"]},
+              "by": {"type": "string", "pattern": "^(model:|human:|machine:).+", "description": "model:<id>, human:<name>, or machine:eval_evidence (allowed ONLY when the case has a structured assert block and no prose assertions — deterministic grading needs no judgement)"},
+              "per_assertion": {"type": "array", "items": {"type": "object", "required": ["assertion", "verdict"], "additionalProperties": false, "properties": {"assertion": {"type": "string"}, "verdict": {"enum": ["pass", "fail", "unclear"]}, "quote": {"type": "string", "description": "the output text the verdict rests on"}}}},
+              "notes": {"type": "string"}
+            }
+          },
+          "second_judge": {"type": "object", "required": ["verdict", "by"], "additionalProperties": false, "properties": {"verdict": {"enum": ["pass", "fail", "mixed"]}, "by": {"type": "string", "pattern": "^(model:|human:).+"}, "agrees": {"type": "boolean"}, "notes": {"type": "string"}}}
+        }
+      }
+    },
+    "overall": {"enum": ["pass", "fail", "mixed"], "description": "fail anywhere -> fail; CI goes RED on a recorded fail — a recorded failure is a finding, never wallpaper"},
+    "notes": {"type": "string"}
+  }
+}

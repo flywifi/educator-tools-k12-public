@@ -343,11 +343,13 @@ def main(argv) -> int:
             failures.append(line)
 
     ran = tally["pass"] + tally["fail"]
+    recorded = sum(1 for c in cases if c["kind"] == "prompt" and c["case"].get("evidence"))
     print(f"\neval cases: {len(cases)} total\n"
           f"  executed        {ran:3d}  (pass {tally['pass']}, FAIL {tally['fail']})\n"
           f"  skipped         {tally['skip']:3d}  (placeholder / missing fixture / network)\n"
           f"  UNRUNNABLE      {tally['unrunnable']:3d}  (case asserts keys the tool never emits)\n"
-          f"  model-facing    {tally['prompt']:3d}  (never executed here; see benchmarks/)")
+          f"  model-facing    {tally['prompt']:3d}  (never executed here; "
+          f"{recorded} recorded / {tally['prompt'] - recorded} unrun — tools/eval_evidence.py)")
     if tally["skip"]:
         print(f"note: {tally['skip']} executable case(s) could not run — each is a coverage gap, "
               f"not a pass. See the SKIP lines above.")

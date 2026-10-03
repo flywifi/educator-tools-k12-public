@@ -30,6 +30,9 @@ but nothing in the tree classifies meeting evidence — `router.meeting_route()`
 *already-known* type to a skill. Calling them `call` cases would assert a callable that does not
 exist.
 
+Recording and gating the `prompt` kind is `tools/eval_evidence.py`; the protocol — who runs, who
+judges, what counts as evidence — is `RECORDED_RUNS.md` in this directory.
+
 ## The assert grammar
 
 Plain keys and dotted paths (`required_cadence.authority`) read the parsed output. Reserved
