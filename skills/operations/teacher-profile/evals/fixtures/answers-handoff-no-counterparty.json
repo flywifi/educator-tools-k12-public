@@ -1,0 +1,17 @@
+{
+  "_note": "R6 eval fixture (placeholders only): a handoff with no counterparty_role.",
+  "teacher": {
+    "display_name": "EXAMPLE Teacher"
+  },
+  "roles": [
+    {
+      "role": "Classroom Teacher"
+    }
+  ],
+  "handoffs": [
+    {
+      "what": "weekly MTSS progress data",
+      "direction": "to"
+    }
+  ]
+}

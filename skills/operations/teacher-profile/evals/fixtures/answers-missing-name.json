@@ -1,0 +1,7 @@
+{
+  "_note": "R6 eval fixture (placeholders only): no display_name, no roles.",
+  "teacher": {
+    "display_name": ""
+  },
+  "roles": []
+}

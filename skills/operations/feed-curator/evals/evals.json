@@ -20,15 +20,16 @@
       }
     },
     {
-      "kind": "prompt",
       "name": "safe_404_removal_is_logged_and_revertible",
-      "_note": "A confirmed removed_404 feed auto-applies a remove with mode:auto; --revert restores it.",
+      "kind": "command",
+      "command": "python3 tools/seed_curator.py --apply --offline --registry <fixture-registry-with-removed-404> --log-file <isolated-log>",
       "assert": {
         "auto_applies": "removed_404 -> remove",
         "log_entry_mode": "auto",
         "revertible": true,
         "log_file": "ledger/feeds-change-log.json"
-      }
+      },
+      "_note": "Tool behaviour, not model behaviour (was filed as `prompt`). NOT YET EXECUTABLE: tools/seed_curator.py reads only the live feed registry and --apply/--revert write ledger/feeds-change-log.json, so an honest fixture needs a registry-path parameter and an isolated log first. The <placeholder> makes run_evals report a visible SKIP — a coverage gap, never a pass. Expectation: A confirmed removed_404 feed auto-applies a remove with mode:auto; --revert restores it."
     },
     {
       "kind": "command",
@@ -40,13 +41,14 @@
       }
     },
     {
-      "kind": "prompt",
       "name": "mislabeled_feed_flagged_not_auto_relabeled",
-      "_note": "A feed with bad authority / missing purpose appears in label_issues but relabel needs approval.",
+      "kind": "command",
+      "command": "python3 tools/seed_curator.py --validate --offline --registry <fixture-registry-with-mislabeled-feed>",
       "assert": {
         "label_issues_nonempty_for": "mislabeled",
         "relabel_requires": "--apply-proposal --approve"
-      }
+      },
+      "_note": "Tool behaviour, not model behaviour (was filed as `prompt`). NOT YET EXECUTABLE: tools/seed_curator.py reads only the live feed registry and --apply/--revert write ledger/feeds-change-log.json, so an honest fixture needs a registry-path parameter and an isolated log first. The <placeholder> makes run_evals report a visible SKIP — a coverage gap, never a pass. Expectation: A feed with bad authority / missing purpose appears in label_issues but relabel needs approval."
     },
     {
       "kind": "command",
@@ -59,13 +61,14 @@
       }
     },
     {
-      "kind": "prompt",
       "name": "monarch_private_school_labeled_secondary",
-      "_note": "Monarch Learning Academy (Orlando FL private PK-8) enters as authority:secondary, scope:school — never treated as a canonical source.",
+      "kind": "command",
+      "command": "python3 tools/seed_curator.py --propose --offline --registry <fixture-registry-with-monarch-entry>",
       "assert": {
         "authority": "secondary",
         "never": "canonical_change"
-      }
+      },
+      "_note": "Tool behaviour, not model behaviour (was filed as `prompt`). NOT YET EXECUTABLE: tools/seed_curator.py reads only the live feed registry and --apply/--revert write ledger/feeds-change-log.json, so an honest fixture needs a registry-path parameter and an isolated log first. The <placeholder> makes run_evals report a visible SKIP — a coverage gap, never a pass. Expectation: Monarch Learning Academy (Orlando FL private PK-8) enters as authority:secondary, scope:school — never treated as a canonical source."
     }
   ]
 }

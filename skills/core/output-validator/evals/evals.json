@@ -12,22 +12,30 @@
       }
     },
     {
-      "kind": "prompt",
       "name": "missing_human_review_fails",
-      "_note": "human_review_required: false must be a blocking rule_failure.",
+      "kind": "command",
+      "command": "python3 tools/validate_outputs.py --input skills/core/output-validator/evals/fixtures/artifact-human-review-false.json",
       "assert": {
         "status": "fail",
-        "rule_failures_includes": "human_review_required"
-      }
+        "exit_code": 1,
+        "stdout_contains": [
+          "\"rule\": \"human_review_required\""
+        ]
+      },
+      "_note": "Executable since R6 (was filed as `prompt`; tools/validate_outputs.py performs it). human_review_required: false must be a blocking rule_failure."
     },
     {
-      "kind": "prompt",
       "name": "real_pii_blocks",
-      "_note": "An SSN-pattern value anywhere triggers no_real_pii (blocking).",
+      "kind": "command",
+      "command": "python3 tools/validate_outputs.py --input skills/core/output-validator/evals/fixtures/artifact-ssn-pattern.json",
       "assert": {
         "status": "fail",
-        "rule_failures_includes": "no_real_pii"
-      }
+        "exit_code": 1,
+        "stdout_contains": [
+          "\"rule\": \"no_real_pii\""
+        ]
+      },
+      "_note": "Executable since R6 (was filed as `prompt`; tools/validate_outputs.py performs it). An SSN-pattern value anywhere triggers no_real_pii (blocking). The fixture value 000-00-0000 is structurally impossible as a real SSN."
     },
     {
       "kind": "command",

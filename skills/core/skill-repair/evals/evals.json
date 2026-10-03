@@ -12,12 +12,18 @@
       }
     },
     {
-      "kind": "prompt",
       "name": "separates_mechanical_from_judgment",
-      "_note": "Every plan step is classified mechanical (safe) or judgment (human-only).",
+      "kind": "command",
+      "command": "python3 tools/skill_repair.py --plan skills/core/skill-repair/evals/fixtures/repair-plan-mixed.json",
       "assert": {
-        "every_step_classified": true
-      }
+        "exit_code": 0,
+        "stdout_contains": [
+          "2 item(s): 1 mechanical (safe to automate), 1 that need your judgment",
+          "## Mechanical (I can apply on approval)",
+          "## Needs you (I will NOT auto-change these)"
+        ]
+      },
+      "_note": "Executable since R6 (was filed as `prompt`; tools/skill_repair.py performs it). Dry-run. Every plan step is classified mechanical (safe) or judgment (human-only)."
     },
     {
       "kind": "command",
@@ -30,12 +36,17 @@
       }
     },
     {
-      "kind": "prompt",
       "name": "never_edits_judgment_items",
-      "_note": "A judgment finding (e.g. SKILL.md name != folder) is proposed, never auto-changed.",
+      "kind": "command",
+      "command": "python3 tools/skill_repair.py --plan skills/core/skill-repair/evals/fixtures/repair-plan-mixed.json",
       "assert": {
-        "auto_changed_judgment": false
-      }
+        "exit_code": 0,
+        "stdout_contains": [
+          "## Needs you (I will NOT auto-change these)\n- [blocking] skills/atoms/example-b — fix SKILL.md name != folder",
+          "waiting for approval"
+        ]
+      },
+      "_note": "Executable since R6 (was filed as `prompt`; tools/skill_repair.py performs it). Dry-run. A judgment finding (SKILL.md name != folder) is routed to the human list, never to the mechanical one. --apply is not exercised in CI (it rewrites docs/METRICS.md); its code path touches only metrics + sync_check."
     }
   ]
 }

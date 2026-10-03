@@ -2,32 +2,61 @@
   "skill_name": "teacher-profile",
   "evals": [
     {
-      "kind": "prompt",
       "id": "tp-demo-valid",
+      "kind": "command",
       "intent": "build a profile from the example and validate it",
-      "input": "python3 skills/operations/teacher-profile/scripts/profile_wizard.py --demo",
-      "expect": "status profile_written; roles non-empty; gitignored true"
+      "command": "python3 skills/operations/teacher-profile/scripts/profile_wizard.py --demo",
+      "assert": {
+        "status": "profile_written",
+        "gitignored": true,
+        "roles": ">=1",
+        "human_review_required": true
+      },
+      "_note": "Executable since R6 (was filed as `prompt`, but profile_wizard.py performs it deterministically). Writes the GITIGNORED shared/context/profiles/teacher.local.json; tp-register-fragment below reads it, so this case must stay first."
     },
     {
-      "kind": "prompt",
       "id": "tp-missing-name-invalid",
+      "kind": "command",
       "intent": "a profile with no display_name / no roles is rejected",
-      "input": "answers with empty teacher.display_name and roles=[]",
-      "expect": "status invalid; issues include display_name and at least one role"
+      "command": "python3 skills/operations/teacher-profile/scripts/profile_wizard.py --init skills/operations/teacher-profile/evals/fixtures/answers-missing-name.json",
+      "assert": {
+        "status": "invalid",
+        "exit_code": 1,
+        "stdout_contains": [
+          "teacher.display_name is required",
+          "at least one role is required"
+        ]
+      },
+      "_note": "Executable since R6 (was filed as `prompt`, but profile_wizard.py performs it deterministically). An invalid profile is reported and NOT written."
     },
     {
-      "kind": "prompt",
       "id": "tp-register-fragment",
+      "kind": "command",
       "intent": "register emits a classroom sop_ref + overrides + role map",
-      "input": "python3 skills/operations/teacher-profile/scripts/profile_wizard.py --register",
-      "expect": "sop_refs[0].scope == classroom; role_interaction_map present; human_review_required true"
+      "command": "python3 skills/operations/teacher-profile/scripts/profile_wizard.py --register",
+      "assert": {
+        "sop_refs.0.scope": "classroom",
+        "has": [
+          "overrides",
+          "role_interaction_map"
+        ],
+        "human_review_required": true
+      },
+      "_note": "Executable since R6 (was filed as `prompt`, but profile_wizard.py performs it deterministically). Reads the local profile tp-demo-valid wrote (order-dependent by design)."
     },
     {
-      "kind": "prompt",
       "id": "tp-handoff-shape",
+      "kind": "command",
       "intent": "a handoff missing counterparty_role fails validation",
-      "input": "answers with a handoff lacking counterparty_role",
-      "expect": "status invalid; issues include handoff[..] missing counterparty_role"
+      "command": "python3 skills/operations/teacher-profile/scripts/profile_wizard.py --init skills/operations/teacher-profile/evals/fixtures/answers-handoff-no-counterparty.json",
+      "assert": {
+        "status": "invalid",
+        "exit_code": 1,
+        "stdout_contains": [
+          "handoff[0] missing counterparty_role"
+        ]
+      },
+      "_note": "Executable since R6 (was filed as `prompt`, but profile_wizard.py performs it deterministically). An invalid profile is reported and NOT written."
     }
   ]
 }

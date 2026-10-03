@@ -1,0 +1,6 @@
+{
+  "artifact_type": "family_letter",
+  "title": "R6 eval fixture — SSN-shaped value",
+  "body": "Reference on file: 000-00-0000 (fixture value; SSA never issues area 000)",
+  "human_review_required": true
+}
