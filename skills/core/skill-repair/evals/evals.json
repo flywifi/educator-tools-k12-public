@@ -5,11 +5,12 @@
     {
       "kind": "command",
       "name": "dry_run_is_default",
-      "command": "python3 tools/skill_repair.py",
+      "command": "python3 tools/skill_repair.py --json",
       "assert": {
         "finalization": "waiting for approval",
         "auto_applied": false
-      }
+      },
+      "_note": "Executable since R6 (--json mode). Dry-run is the default: nothing applied, waiting for approval."
     },
     {
       "name": "separates_mechanical_from_judgment",
@@ -28,12 +29,15 @@
     {
       "kind": "command",
       "name": "apply_runs_only_safe_fixes_then_sync_check",
-      "command": "python3 tools/skill_repair.py --apply",
+      "command": "python3 tools/skill_repair.py --json --apply --plan skills/core/skill-repair/evals/fixtures/repair-plan-judgment-only.json",
       "assert": {
         "applied": "mechanical_only",
         "reran": "tools/sync_check.py",
-        "judgment_left_for_human": true
-      }
+        "judgment_left_for_human": true,
+        "auto_applied": false,
+        "drift_guard_ok": true
+      },
+      "_note": "Executable since R6 (--json mode). On a judgment-only plan --apply writes nothing, still re-runs the drift guard, and leaves the judgment item for a human. (The metrics-regeneration branch is not exercised here on purpose: it rewrites the date-stamped docs/METRICS.md, a tracked file.)"
     },
     {
       "name": "never_edits_judgment_items",

@@ -20,6 +20,7 @@ Usage:
   python3 tools/seed_curator.py --apply-proposal <FILE> [--approve]  # apply an approved proposal
   python3 tools/seed_curator.py --log                            # show the audit trail
   python3 tools/seed_curator.py --revert <ENTRY_ID>             # undo a logged change
+  python3 tools/seed_curator.py --self-test                      # offline proof, writes nothing
 """
 from __future__ import annotations
 
@@ -234,6 +235,69 @@ def revert_entry(catalog: dict, entry_id: str) -> dict:
     return {"status": "reverted", "id": entry_id, "action": act}
 
 
+# --------------------------------------------------------------------------- self-test
+def self_test() -> dict:
+    """Offline, write-free proof of the curator's three promises, reported as OBSERVED values (the
+    eval cases assert on these, so a regression shows as a wrong value, not a missing boolean).
+    The audit log is redirected to a temp dir; catalogs are in-memory copies — the live catalog and
+    ledger/feeds-change-log.json are never written."""
+    import copy
+    import tempfile
+    global LOG
+    real_log = LOG
+    fixture = {"freshness_policy": {"stale_age_days": 365}, "feeds": [
+        {"id": "fx-mislabeled", "url": "https://example.com/fixture-a", "authority": "official-ish",
+         "tier": "canonical", "purpose": "", "state": {}},
+        {"id": "fx-gone", "url": "https://example.com/fixture-b", "authority": "secondary",
+         "tier": "news_teacher_student", "purpose": "fixture feed that returned HTTP 404",
+         "state": {}}]}
+    out = {"tool": "seed-curator-self-test", "human_review_required": True}
+    with tempfile.TemporaryDirectory() as td:
+        LOG = Path(td) / "feeds-change-log.json"
+        try:
+            # 1. mislabeled: flagged in label_issues; relabel is a proposal, never auto-applied
+            cat = copy.deepcopy(fixture)
+            rep = validate_catalog(cat, offline=True, timeout=1)
+            row = next(r for r in rep["reports"] if r["id"] == "fx-mislabeled")
+            prop = build_proposal(cat, rep)
+            auto = apply_proposal(cat, prop, approve=False, source="self-test")
+            out["mislabeled"] = {
+                "label_issues": len(row["label_issues"]),
+                "relabel_proposed": [x["id"] for x in prop["relabel"]],
+                "relabel_safe_repair": [x["safe_repair"] for x in prop["relabel"]],
+                "auto_applied": [x["action"] for x in auto["applied"]],
+                "skipped_actions": sorted({x["action"] for x in auto["skipped"]}),
+                "authority_after_auto": _find_feed(cat, "fx-mislabeled")["authority"]}
+            # 2. a confirmed 404 auto-removes (mode auto), is logged, and --revert restores it.
+            #    Offline cannot observe a 404, so the proposal is the one build_proposal emits for one.
+            cat = copy.deepcopy(fixture)
+            prop404 = {"remove": [{"id": "fx-gone", "safe_repair": True,
+                                   "reason": "removed_404: HTTP 404"}]}
+            res = apply_proposal(cat, prop404, approve=False, source="self-test")
+            entry = load_log()["entries"][-1]
+            gone = _find_feed(cat, "fx-gone") is None
+            rev = revert_entry(cat, entry["id"])
+            out["removed_404"] = {
+                "applied": [x["action"] for x in res["applied"]], "log_mode": entry["mode"],
+                "log_action": entry["action"], "removed_from_catalog": gone,
+                "revert_status": rev["status"],
+                "restored": _find_feed(cat, "fx-gone") is not None,
+                "log_entries": len(load_log()["entries"]),
+                "live_log_untouched": LOG != real_log}
+        finally:
+            LOG = real_log
+    # 3. the live catalog's private-school entry stays secondary, and promoting it to canonical
+    #    would be flagged (only a primary authority confirms a canonical change).
+    live = engine.load_catalog()
+    m = _find_feed(live, "monarch-news") or {}
+    promoted = dict(m, tier="canonical")
+    out["monarch"] = {"present": bool(m), "authority": m.get("authority"), "scope": m.get("scope"),
+                      "tier": m.get("tier"),
+                      "canonical_promotion_flagged": any("canonical" in i for i in
+                                                         static_label_checks(promoted))}
+    return out
+
+
 # --------------------------------------------------------------------------- CLI
 def main(argv) -> int:
     ap = argparse.ArgumentParser(description="Seed curator (L8) — keep the feed catalog accurate")
@@ -249,7 +313,12 @@ def main(argv) -> int:
     ap.add_argument("--revert", metavar="ENTRY_ID", help="undo a logged change")
     ap.add_argument("--offline", action="store_true", help="age-only triage; no network")
     ap.add_argument("--timeout", type=int, default=15)
+    ap.add_argument("--self-test", action="store_true", dest="self_test",
+                    help="offline, write-free proof of validate/propose/apply/revert (JSON)")
     a = ap.parse_args(argv)
+
+    if a.self_test:
+        print(json.dumps(self_test(), indent=2, ensure_ascii=False)); return 0
 
     catalog = engine.load_catalog()
 
