@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-08-16 | owner: macos-maintainer -->
+<!-- last_reviewed: 2026-10-03 | owner: macos-maintainer -->
 # macOS support + `mac-lint` — maintainer notes & findings log
 
 Home for the repo's macOS cross-platform work: the `mac-lint` static guard and a **living log** of
@@ -119,8 +119,11 @@ All confirmed findings fixed in this round; probes re-run and flipped:
 - **M2 — UNTESTED**: stdio spawn under Claude Desktop's near-empty GUI PATH using
   `mcp_server.py --print-config desktop` output (absolute command + explicit env.PATH — the E2
   workaround, applied).
-- **M3 — UNTESTED**: the stdlib server on the Xcode CLT stub `/usr/bin/python3` (design target:
-  stdlib-only, Python ≥3.10; the stub qualifies on paper).
+- **M3 — MEASURED off-device (2026-10-03), recommendation set**: the Xcode CLT `/usr/bin/python3`
+  has been Python 3.9.x for years, which is BELOW the stated 3.10 floor. Measured on CPython 3.9.23
+  (the same minor version): the stdio server, all 8 tools, and every executable eval run; the only
+  failure is `mcp_smoke`'s own floor check. Decision (owner): the floor stays 3.10 and the install
+  docs recommend 3.10+ (`brew install python`). Still to confirm on real Mac hardware.
 - **M4 — UNTESTED (added 2026-08-16)**: `.mcp.json`'s `${TOS_PYTHON:-python3}` /
   `${CLAUDE_PROJECT_DIR:-.}` expansions resolving in a real Claude Code session — the substitution
   syntax is documented, but only a live run proves the default branch is taken when the vars are

@@ -70,6 +70,21 @@
       },
       {
         "prompt": "Is this intervention plan solid enough to use with my Tier 2 small group?"
+      },
+      {
+        "prompt": "Can you check my IEP goal draft for a student reading 40 wpm?"
+      },
+      {
+        "prompt": "Look over this worksheet before I copy it"
+      },
+      {
+        "prompt": "Is this quiz any good? [quiz pasted]"
+      },
+      {
+        "prompt": "Proofread my newsletter for families"
+      },
+      {
+        "prompt": "Here's the pacing guide I made — will this pass the quality gates?"
       }
     ],
     "negative": [
@@ -92,6 +107,30 @@
       {
         "prompt": "Check this email to my landlord for tone.",
         "instead": "out of ecosystem"
+      },
+      {
+        "prompt": "I need a test to check for understanding on my unit about cells"
+      },
+      {
+        "prompt": "Make an exit ticket to check understanding for my 4th graders"
+      },
+      {
+        "prompt": "Create a quiz to check if my students get fractions"
+      },
+      {
+        "prompt": "Write a rubric I can use to evaluate my students' essays"
+      },
+      {
+        "prompt": "Turn this lesson into slides for tomorrow"
+      },
+      {
+        "prompt": "Translate this parent letter into Spanish"
+      },
+      {
+        "prompt": "Plan a lesson on photosynthesis and include a quick check for understanding"
+      },
+      {
+        "prompt": "Give me a unit test on ratios, I'll review it tonight"
       }
     ],
     "pass_bar": {

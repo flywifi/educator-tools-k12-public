@@ -100,6 +100,8 @@ jobs:
         run: python3 tools/run_evals.py --self-test
       - name: Run the executable eval cases (command + call kinds)
         run: python3 tools/run_evals.py --run
+      - name: Trigger-eval routing gate (positives route in, negatives stay out)
+        run: python3 tools/run_evals.py --triggers
 
       # R6: kind-prompt cases are verified by DELIBERATE recorded model runs (the R4 decision);
       # CI checks the RECORD and never calls a model. Stale/orphan/FAIL/protocol gates below.

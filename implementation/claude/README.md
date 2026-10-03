@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-09-25 | owner: claude-maintainer -->
+<!-- last_reviewed: 2026-10-03 | owner: claude-maintainer -->
 # TOS on Claude — pick your door
 
 Three ways in, depending on how you use Claude. None needs any technical skill.
@@ -12,6 +12,11 @@ Three ways in, depending on how you use Claude. None needs any technical skill.
 
 This is the full experience: TOS runs with a complete copy of its verified Florida
 data on your computer.
+
+**One-time check — Python 3.10 or newer.** The verified-data tools run on Python. Open
+Terminal and type `python3 --version`. If it says 3.10 or higher, you're set. If it says
+3.9 (the version built into macOS) or says it isn't found, install a current Python first:
+on a Mac, `brew install python` (or the installer from python.org), then reopen Claude.
 
 Type three things, in order:
 

@@ -330,9 +330,18 @@ def main(argv) -> int:
             print(f"  {'':20s} negative {r['negative_activated']:>7s} (rate {r['negative_rate']}, "
                   f"bar <={r['negative_max']})"
                   + ("  <-- DETECTOR SUSPECT" if r["detector_suspect"] else ""))
-        print("\nMEASUREMENT ONLY — not wired into CI. A skill below its positive bar means the "
-              "ROUTER or the DESCRIPTION needs changing, and both are product behaviour changes "
-              "that need a human decision, not a silent edit from the tool that found the problem.")
+        below = [r["skill"] for r in rows
+                 if (r["positive_min"] and r["positive_rate"] is not None
+                     and r["positive_rate"] < r["positive_min"])
+                 or (r["negative_max"] is not None and r["negative_rate"] is not None
+                     and r["negative_rate"] > r["negative_max"])
+                 or r["detector_suspect"]]
+        print("\nGATE (since R7 — the quality-review routing decision was made by the owner): a skill "
+              "below its bar fails CI. Fix the router or the description deliberately; never "
+              "loosen a bar to pass.")
+        if below:
+            print(f"FAIL: below bar: {', '.join(below)}")
+            return 1
         return 0
 
     cases = collect()

@@ -16,15 +16,19 @@
     },
     {
       "kind": "call",
-      "name": "review_of_an_artifact_routes_to_its_AUTHOR_not_quality_review",
+      "name": "review_of_an_existing_artifact_routes_to_quality_review",
       "call": "routing.router:route",
       "input": {
         "text": "Review this quiz before I give it tomorrow."
       },
       "assert": {
-        "recommended_skill": "assessment-designer"
+        "recommended_skill": "quality-review",
+        "basis": "review_intent",
+        "alternates": [
+          "assessment-designer"
+        ]
       },
-      "_note": "Asserts MEASURED behaviour, not intended behaviour, and the difference is a recorded finding. 'Review this quiz' routes to assessment-designer because the keyword router scores the artifact noun above the review verb. quality-review's own trigger_evals treat this exact class of prompt as a POSITIVE, and only 1 of its 10 positives reaches it (bar: 0.8) — see `python3 tools/run_evals.py --triggers`. Changing the router or the descriptions is a product behaviour change and is NOT done by the tool that found the problem. This case pins today's behaviour so the fix, when made, shows up as a deliberate diff rather than a silent one."
+      "_note": "Decided by the owner in R7 (2026-10-03): a request to review an EXISTING artifact goes to quality-review; the artifact's author skill stays visible as the alternate. Previously this case pinned the old measured behaviour (assessment-designer) so that the fix would land as this deliberate diff. Rule: routing.json `review_intent`; gated in CI by run_evals --triggers."
     },
     {
       "kind": "prompt",

@@ -265,7 +265,7 @@ readiness score here as "saturated by design" when it was reporting a real bug.
 **65 model-facing cases remain unexecuted**, including every refusal case for the nine skills that
 received boundary language in v1.5.0. And quality-review's trigger evals fail their own bar (1 of 10
 positives route to it, against ≥0.8): the keyword router scores the artifact noun above the review
-verb. Measured and recorded, deliberately not fixed — that is a product behaviour change.
+verb. Measured and recorded, deliberately not fixed — that is a product behaviour change. **[closed 2026-10-03 (R7): the owner decided review requests go to quality-review — routing.json `review_intent`; 15/15 positives, 0/13 negatives, now a CI gate.]**
 
 ## 2026-08-16 — false claims corrected, and the guards that could not see them (round 3)
 
