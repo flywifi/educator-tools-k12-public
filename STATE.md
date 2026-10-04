@@ -4,6 +4,15 @@
 Update at every phase boundary and after each skill ships. Recovery package = the charters + Quality
 Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 
+## 2026-10-04 — R8: local tools with nothing to install; the offline ladder (v1.10.0)
+- **Shipped on the branch:** compiled per-OS launcher (Level 0 = nothing installed); runtime
+  ladder to Level 1 when Python / the local tools exist; `local_capabilities`; `setup/tos_setup.py`;
+  wizard step 9; frozen-build workflow + one multi-OS `tos-tools.mcpb`; plugin runs the bundle.
+- **Tested:** builds on Python 3.11-3.14; empty-PATH start; Claude Code Connected with no runtimes;
+  official MCP client (9 tools); hosted leg (8 shared tools).
+- **Open:** real Mac/Windows check (Gatekeeper/SmartScreen) -> signing decision; Codex and
+  Antigravity stay on Python; Level 2 (local AI drafting) not built.
+
 ## 2026-10-03 — R7: safety boundaries verified by recorded runs; review routing (v1.9.0)
 - **Recorded:** 8/44 model-facing cases — all 8 safety-boundary cases at full protocol (3 runs
   each, blind-judged, second judge on 2/8): **24/24 pass**. Finding S2 (a test contradicting its
