@@ -1,6 +1,6 @@
 ---
 name: iep-goal
-description: "Draft ONE IEP annual goal for a given area, present-level descriptor, and standard alignment. Use this when a teacher or SPED team member says 'draft an IEP goal for reading fluency' or when special-education-support needs a goal before review. Do NOT use for full IEP document generation — use special-education-support. Do NOT use without a present-level baseline — goals must be grounded in PLOP. Never use real student names or data."
+description: "Draft ONE IEP annual goal from a present-level baseline. Do NOT use for a full IEP (use special-education-support) or real student data."
 ---
 
 # iep-goal

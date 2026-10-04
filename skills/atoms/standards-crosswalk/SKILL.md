@@ -1,6 +1,6 @@
 ---
 name: standards-crosswalk
-description: "Map a standard from one framework to its closest equivalent in another framework. Use this atom when curriculum-mapping or standards-match needs to align across state frameworks. NEVER fabricate standard codes — return an honest gap if no match exists. Do NOT use this atom to verify that a code is current (use standards-match) or to author instructional content."
+description: "Map a standard to its closest equivalent in another framework, or report an honest gap. Do NOT use to check a code is current (use standards-match); never invent codes."
 ---
 
 # standards-crosswalk

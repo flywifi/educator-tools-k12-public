@@ -1,6 +1,6 @@
 ---
 name: distractor-generate
-description: "Generate plausible multiple-choice distractors tied to common misconceptions for an assessment item. Use this atom when assessment-designer needs realistic wrong answer choices. Do NOT use for generating the item stem — that is assessment-item. Do NOT use for open-response items."
+description: "Write plausible multiple-choice wrong answers based on common misconceptions. Do NOT use for the question stem (use assessment-item) or open-response items."
 ---
 
 # distractor-generate

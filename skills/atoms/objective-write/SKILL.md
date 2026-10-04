@@ -1,6 +1,6 @@
 ---
 name: objective-write
-description: "Write 1–3 measurable learning objectives for a given standard code, grade, and topic. Use this atom directly when a teacher says 'write me an objective for standard X' or when a workflow (lesson-planner, unit planner) needs objectives before generating activities. Do NOT use for writing a full lesson plan — that is lesson-planner. Do NOT use for IEP goals — use iep-goal."
+description: "Write 1-3 measurable learning objectives for a standard. Do NOT use for a full lesson (use lesson-planner) or IEP goals (use iep-goal)."
 ---
 
 # objective-write

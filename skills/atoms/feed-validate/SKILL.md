@@ -1,6 +1,6 @@
 ---
 name: feed-validate
-description: "Check a single RSS/Atom feed URL for liveness, staleness, redirects, and label accuracy. Use this atom when feed-curator needs to verify individual feed health or when any monitoring system needs a per-URL health check. Do NOT use for feed discovery — that is feed-discover. Do NOT use for content extraction from feeds."
+description: "Check one RSS/Atom feed URL for liveness, staleness, redirects, and labels. Do NOT use to find new feeds (use feed-discover)."
 ---
 
 # feed-validate

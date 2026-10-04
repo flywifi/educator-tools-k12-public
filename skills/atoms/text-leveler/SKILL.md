@@ -1,6 +1,6 @@
 ---
 name: text-leveler
-description: "Rewrite a text passage to a target reading level while preserving key content and meaning. Use this atom when differentiate or lesson-planner needs a passage adapted for below-grade or above-grade readers. Do NOT use for translation — that is translate-comm. Do NOT use for original content generation."
+description: "Rewrite a passage at a target reading level, keeping its meaning. Do NOT use for translation (use translate-comm) or new content."
 ---
 
 # text-leveler

@@ -12,49 +12,49 @@ All **62** skills on disk — core 5 · educator 9 · operations 5 · atoms 43. 
 
 | Skill | Group | What it does |
 |---|---|---|
-| `accommodation-match` | atoms | Match accommodations to a documented student need (IEP, 504, ELL, or learning profile). |
-| `activity-generate` | atoms | Generate exactly ONE learning activity for a given objective, grade, and subject. |
-| `answer-key` | atoms | Generate an answer key with scoring notes for a set of assessment items. |
-| `assessment-item` | atoms | Generate exactly ONE assessment item (question + answer key) for a given objective and item type. |
-| `behavior-strategy` | atoms | Suggest ONE function-based behavior support strategy for a documented behavior concern. |
-| `cognitive-rigor` | atoms | Classify an objective or assessment item by Bloom's Taxonomy level and Webb's Depth of Knowledge (DOK). |
-| `differentiate` | atoms | Apply ONE differentiation profile (ELL, IEP/SPED, Gifted, 504, Below-grade, Above-grade) to a SINGLE piece of existing content. |
-| `distractor-generate` | atoms | Generate plausible multiple-choice distractors tied to common misconceptions for an assessment item. |
-| `document-parse` | atoms | Parse a raw file (PDF, DOCX, XLSX, PPTX, HTML, or scanned image) into a structured document representation (UDOM). |
-| `email-draft` | atoms | Draft ONE professional email for staff, family, or vendor communication. |
-| `feed-discover` | atoms | Discover RSS/Atom feed URLs from a seed web page using autodiscovery (link tags, common paths, MIME sniffing). |
-| `feed-validate` | atoms | Check a single RSS/Atom feed URL for liveness, staleness, redirects, and label accuracy. |
-| `feedback-write` | atoms | Write actionable feedback on a placeholder student response compared to a rubric. |
-| `govern-artifact` | atoms | Attach governance metadata (provenance, lineage, confidence, evidence) to any artifact. |
-| `graphic-organizer` | atoms | Select and scaffold ONE graphic organizer (Frayer model, T-chart, Venn diagram, concept map, etc.) for a given activity or objective. |
-| `hook` | atoms | Generate ONE anticipatory set or engagement hook for a lesson objective. |
-| `iep-goal` | atoms | Draft ONE IEP annual goal for a given area, present-level descriptor, and standard alignment. |
-| `intervention-select` | atoms | Match a tiered intervention to a documented student need at a specified MTSS tier (1/2/3). |
-| `meeting-agenda` | atoms | Create ONE meeting agenda from a stated purpose and attendee list. |
-| `meeting-classify` | atoms | Classify a meeting from available evidence (email subject/body, sender role, attendees, calendar event, prior thread) and return the meeting type, intent, and confidence. |
-| `meeting-minutes` | atoms | Summarize meeting notes or a transcript into structured minutes with action items. |
-| `misconception` | atoms | Return the most common student misconceptions for a specific topic, grade, and subject. |
-| `objective-write` | atoms | Write 1–3 measurable learning objectives for a given standard code, grade, and topic. |
-| `parent-comm` | atoms | Draft ONE parent or guardian communication (email, note, or text-message summary) for a specific purpose. |
-| `present-levels` | atoms | Draft a Present Levels of Academic Achievement and Functional Performance (PLAAFP) statement from placeholder data points. |
-| `progress-monitor-plan` | atoms | Create ONE progress-monitoring schedule and probe plan for an IEP goal or MTSS intervention. |
-| `quality-check` | atoms | Run ONE specific quality gate check on a draft artifact and return pass/fail + a corrective action. |
-| `question-set` | atoms | Generate a set of discussion or text-dependent questions at a target cognitive rigor level. |
-| `reading-level` | atoms | Estimate the reading level of a text snippet and return a grade-band label + Lexile estimate. |
-| `referral-draft` | atoms | Draft ONE referral (MTSS, evaluation, counselor, or outside agency) with required fields. |
-| `report-card-comment` | atoms | Draft ONE standards-based report card comment for a student using placeholder performance data. |
-| `rubric-build` | atoms | Build ONE rubric (criteria x performance levels) for a given objective or standard. |
-| `safe-apply` | atoms | Separate a change proposal into mechanical (safe to auto-apply) and judgment (needs human review) items based on categorization rules. |
-| `sentence-frame` | atoms | Generate ELL or scaffolding sentence frames and stems for a given academic task and proficiency level. |
-| `standards-crosswalk` | atoms | Map a standard from one framework to its closest equivalent in another framework. |
-| `standards-match` | atoms | Look up and return a focused set of Florida K-12 standards matching a grade, subject, and keyword or topic. |
-| `text-leveler` | atoms | Rewrite a text passage to a target reading level while preserving key content and meaning. |
-| `translate-comm` | atoms | Render a family communication into a target home language with advisory flags. |
-| `udl-options` | atoms | Suggest Universal Design for Learning (UDL) checkpoint options for a barrier or activity. |
-| `vocabulary-select` | atoms | Select key academic vocabulary for a topic or text passage and return definitions, tiers, and teaching suggestions. |
-| `warm-up` | atoms | Generate ONE bell-ringer or do-now warm-up activity aligned to a standard or objective. |
-| `wizard-interview` | atoms | Run a structured Q&A intake wizard from a question schema and return validated responses. |
-| `worked-example` | atoms | Generate ONE worked example with clear step-by-step solution for a given objective. |
+| `accommodation-match` | atoms | Match accommodations to a documented student need (IEP, 504, ELL). |
+| `activity-generate` | atoms | Generate ONE learning activity for an objective, grade, and subject. |
+| `answer-key` | atoms | Write an answer key with scoring notes for existing assessment items. |
+| `assessment-item` | atoms | Write ONE assessment question with its answer for an objective. |
+| `behavior-strategy` | atoms | Suggest ONE function-based behavior support strategy (a BIP component) for a documented concern. |
+| `cognitive-rigor` | atoms | Classify an objective or question by Bloom's level and Webb's DOK. |
+| `differentiate` | atoms | Adapt ONE existing piece of content for one profile (ELL, IEP, 504, gifted, below/above grade). |
+| `distractor-generate` | atoms | Write plausible multiple-choice wrong answers based on common misconceptions. |
+| `document-parse` | atoms | Extract text, tables, and layout from an uploaded file (PDF, DOCX, XLSX, PPTX, image). |
+| `email-draft` | atoms | Draft ONE professional email to staff, families, or vendors. |
+| `feed-discover` | atoms | Find RSS/Atom feed URLs on a web page. |
+| `feed-validate` | atoms | Check one RSS/Atom feed URL for liveness, staleness, redirects, and labels. |
+| `feedback-write` | atoms | Model actionable feedback on a placeholder student response against a rubric. |
+| `govern-artifact` | atoms | Stamp an artifact with provenance, lineage, and confidence metadata. |
+| `graphic-organizer` | atoms | Choose and scaffold ONE graphic organizer (Frayer, T-chart, Venn, concept map). |
+| `hook` | atoms | Write ONE engaging lesson hook or anticipatory set. |
+| `iep-goal` | atoms | Draft ONE IEP annual goal from a present-level baseline. |
+| `intervention-select` | atoms | Match a tiered MTSS intervention to a documented need. |
+| `meeting-agenda` | atoms | Create ONE meeting agenda from a purpose and attendee list. |
+| `meeting-classify` | atoms | Classify a meeting's type and intent from its evidence (email, invite, attendees). |
+| `meeting-minutes` | atoms | Turn meeting notes or a transcript into minutes with action items. |
+| `misconception` | atoms | List common student misconceptions for a topic and grade. |
+| `objective-write` | atoms | Write 1-3 measurable learning objectives for a standard. |
+| `parent-comm` | atoms | Draft ONE parent note or email for a specific purpose, placeholders only. |
+| `present-levels` | atoms | Draft a PLAAFP (present levels) statement from placeholder data. |
+| `progress-monitor-plan` | atoms | Create ONE progress-monitoring schedule for an IEP goal or MTSS intervention. |
+| `quality-check` | atoms | Run ONE quality gate check on a draft and return pass/fail with a fix. |
+| `question-set` | atoms | Write discussion or text-dependent questions at a target rigor (Socratic, close reading). |
+| `reading-level` | atoms | Estimate a passage's grade band and Lexile. |
+| `referral-draft` | atoms | Draft ONE referral (MTSS, evaluation, counselor) with required fields, placeholders only. |
+| `report-card-comment` | atoms | Draft ONE standards-based report card comment from placeholder data. |
+| `rubric-build` | atoms | Build ONE rubric (criteria by performance levels) for a task or standard. |
+| `safe-apply` | atoms | Sort a change proposal into safe mechanical items and items needing human judgment. |
+| `sentence-frame` | atoms | Write sentence frames and stems for English learners or struggling writers. |
+| `standards-crosswalk` | atoms | Map a standard to its closest equivalent in another framework, or report an honest gap. |
+| `standards-match` | atoms | Look up Florida K-12 standard codes and text for a grade, subject, and topic. |
+| `text-leveler` | atoms | Rewrite a passage at a target reading level, keeping its meaning. |
+| `translate-comm` | atoms | Translate a family message into a home language, advisory only. |
+| `udl-options` | atoms | Suggest UDL checkpoint options (CAST 3.0) for a learning barrier. |
+| `vocabulary-select` | atoms | Pick key academic vocabulary from a topic or passage, with tiers and definitions. |
+| `warm-up` | atoms | Write ONE bell-ringer or do-now warm-up for an objective. |
+| `wizard-interview` | atoms | Run a guided Q&A intake from a question schema and return validated answers. |
+| `worked-example` | atoms | Write ONE worked example with a step-by-step solution. |
 | `output-validator` | core | Validate a governed artifact or a produced document BEFORE it ships. |
 | `quality-review` | core | Evaluate any K-12 educational artifact against the TOS Quality Gates and return a scored, evidence-based verdict. |
 | `skill-health` | core | Diagnose and repair the TOS ecosystem itself. |

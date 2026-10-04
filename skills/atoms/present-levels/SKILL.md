@@ -1,6 +1,6 @@
 ---
 name: present-levels
-description: "Draft a Present Levels of Academic Achievement and Functional Performance (PLAAFP) statement from placeholder data points. Use this atom when special-education-support needs a PLAAFP draft before writing IEP goals. Do NOT use with real student data — placeholders only."
+description: "Draft a PLAAFP (present levels) statement from placeholder data. Do NOT use with real student data."
 ---
 
 # present-levels

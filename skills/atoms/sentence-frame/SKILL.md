@@ -1,6 +1,6 @@
 ---
 name: sentence-frame
-description: "Generate ELL or scaffolding sentence frames and stems for a given academic task and proficiency level. Use this atom when differentiate or lesson-planner needs language scaffolds for English Language Learners or struggling writers. Do NOT use for translation."
+description: "Write sentence frames and stems for English learners or struggling writers. Do NOT use for translation (use translate-comm)."
 ---
 
 # sentence-frame

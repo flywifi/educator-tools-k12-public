@@ -1,6 +1,6 @@
 ---
 name: hook
-description: "Generate ONE anticipatory set or engagement hook for a lesson objective. Use this atom when lesson-planner needs a compelling opening that draws students into the topic. Do NOT use for warm-ups (use warm-up) or full lessons."
+description: "Write ONE engaging lesson hook or anticipatory set. Do NOT use for warm-ups (use warm-up) or full lessons."
 ---
 
 # hook

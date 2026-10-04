@@ -1,6 +1,6 @@
 ---
 name: wizard-interview
-description: "Run a structured Q&A intake wizard from a question schema and return validated responses. Use this atom when teacher-profile or any coached workflow needs guided user intake with defaults, validation, and branching. Do NOT use for content generation — this collects user input only. Do NOT use for assessment item generation."
+description: "Run a guided Q&A intake from a question schema and return validated answers. Do NOT use to generate content."
 ---
 
 # wizard-interview

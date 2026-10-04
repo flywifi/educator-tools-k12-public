@@ -1,6 +1,6 @@
 ---
 name: cognitive-rigor
-description: "Classify an objective or assessment item by Bloom's Taxonomy level and Webb's Depth of Knowledge (DOK). Use this atom when lesson-planner, assessment-designer, or question-set needs to verify cognitive rigor before finalizing. Do NOT use for generating objectives — that is objective-write."
+description: "Classify an objective or question by Bloom's level and Webb's DOK. Do NOT use to write objectives (use objective-write)."
 ---
 
 # cognitive-rigor

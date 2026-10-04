@@ -1,6 +1,6 @@
 ---
 name: intervention-select
-description: "Match a tiered intervention to a documented student need at a specified MTSS tier (1/2/3). Use this atom when intervention-mtss needs to suggest evidence-based interventions. Do NOT fabricate intervention program names or research citations."
+description: "Match a tiered MTSS intervention to a documented need. Do NOT use to decide eligibility, and never invent program names or citations."
 ---
 
 # intervention-select

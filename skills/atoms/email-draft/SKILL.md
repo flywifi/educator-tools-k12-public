@@ -1,6 +1,6 @@
 ---
 name: email-draft
-description: "Draft ONE professional email for staff, family, or vendor communication. Use this atom when school-administration or any workflow needs a polished email draft. Do NOT use for parent-teacher conference notes (use parent-comm) or mass communications."
+description: "Draft ONE professional email to staff, families, or vendors. Do NOT use for parent notes about a student (use parent-comm) or mass messages."
 ---
 
 # email-draft

@@ -1,6 +1,6 @@
 ---
 name: standards-match
-description: "Look up and return a focused set of Florida K-12 standards matching a grade, subject, and keyword or topic. Use this atom when a workflow or teacher needs the exact standard codes + descriptions for a topic WITHOUT generating any instructional artifact. Do NOT use for generating lesson plans, activities, or assessments — hand those off to objective-write or activity-generate. Do NOT use if the teacher needs all standards for a whole subject; use tools/fl_lookup.py directly."
+description: "Look up Florida K-12 standard codes and text for a grade, subject, and topic. Do NOT use to write lessons or activities (use objective-write)."
 ---
 
 # standards-match

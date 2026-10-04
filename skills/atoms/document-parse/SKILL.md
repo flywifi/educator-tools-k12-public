@@ -1,6 +1,6 @@
 ---
 name: document-parse
-description: "Parse a raw file (PDF, DOCX, XLSX, PPTX, HTML, or scanned image) into a structured document representation (UDOM). Use this atom when a workflow needs to extract text, tables, and layout from an uploaded or crawled file BEFORE applying governance or analysis. Do NOT use for web page scraping — this handles file-based documents only. Do NOT use for reading-level estimation (call reading-level on the extracted text)."
+description: "Extract text, tables, and layout from an uploaded file (PDF, DOCX, XLSX, PPTX, image). Do NOT use for web scraping or reading level (use reading-level)."
 ---
 
 # document-parse

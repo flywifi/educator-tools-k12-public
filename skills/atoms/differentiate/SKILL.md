@@ -1,6 +1,6 @@
 ---
 name: differentiate
-description: "Apply ONE differentiation profile (ELL, IEP/SPED, Gifted, 504, Below-grade, Above-grade) to a SINGLE piece of existing content. Use this when a teacher says 'make this activity ELL-friendly' or 'add IEP supports to this passage'. Do NOT use for full lesson differentiation — call this atom once per content piece. Do NOT generate new content from scratch — use activity-generate or assessment-item first, then differentiate."
+description: "Adapt ONE existing piece of content for one profile (ELL, IEP, 504, gifted, below/above grade). Do NOT use to create new content (use activity-generate)."
 ---
 
 # differentiate

@@ -1,6 +1,6 @@
 ---
 name: worked-example
-description: "Generate ONE worked example with clear step-by-step solution for a given objective. Use this atom when lesson-planner needs a model problem for direct instruction or guided practice. Do NOT use for generating practice sets or assessments."
+description: "Write ONE worked example with a step-by-step solution. Do NOT use for practice sets or assessments."
 ---
 
 # worked-example

@@ -1,6 +1,6 @@
 ---
 name: feedback-write
-description: "Write actionable feedback on a placeholder student response compared to a rubric. Use this atom when a workflow needs to model what good feedback looks like for a given rubric and response. Do NOT use with real student data — placeholders only. Do NOT use for grading."
+description: "Model actionable feedback on a placeholder student response against a rubric. Do NOT use with real student data or for grading."
 ---
 
 # feedback-write

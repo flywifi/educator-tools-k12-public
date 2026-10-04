@@ -1,6 +1,6 @@
 ---
 name: vocabulary-select
-description: "Select key academic vocabulary for a topic or text passage and return definitions, tiers, and teaching suggestions. Use this atom when lesson-planner or any content skill needs to identify vocabulary that students must know. Do NOT use for vocabulary assessment — that is assessment-item."
+description: "Pick key academic vocabulary from a topic or passage, with tiers and definitions. Do NOT use for vocabulary quizzes (use assessment-item)."
 ---
 
 # vocabulary-select

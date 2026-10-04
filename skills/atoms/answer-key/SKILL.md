@@ -1,6 +1,6 @@
 ---
 name: answer-key
-description: "Generate an answer key with scoring notes for a set of assessment items. Use this atom when assessment-designer needs answer keys after items are generated. Do NOT use for generating the items themselves — that is assessment-item. Do NOT use for grading student responses."
+description: "Write an answer key with scoring notes for existing assessment items. Do NOT use to write the items (use assessment-item) or to grade students."
 ---
 
 # answer-key

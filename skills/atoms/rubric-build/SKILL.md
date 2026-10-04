@@ -1,6 +1,6 @@
 ---
 name: rubric-build
-description: "Build ONE rubric (criteria x performance levels) for a given objective or standard. Use this atom when assessment-designer or any workflow needs a scoring rubric for a task or assignment. Do NOT use for generating assessment items — that is assessment-item. Do NOT use for scoring student work."
+description: "Build ONE rubric (criteria by performance levels) for a task or standard. Do NOT use to write items (use assessment-item) or to score work."
 ---
 
 # rubric-build

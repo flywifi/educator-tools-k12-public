@@ -1,6 +1,6 @@
 ---
 name: feed-discover
-description: "Discover RSS/Atom feed URLs from a seed web page using autodiscovery (link tags, common paths, MIME sniffing). Use this atom when feed-curator needs to find new feeds from an authoritative page. Do NOT use for validating existing feeds — that is feed-validate. Do NOT use for content extraction."
+description: "Find RSS/Atom feed URLs on a web page. Do NOT use to check an existing feed (use feed-validate)."
 ---
 
 # feed-discover

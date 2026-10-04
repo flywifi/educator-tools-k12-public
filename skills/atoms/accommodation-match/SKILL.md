@@ -1,6 +1,6 @@
 ---
 name: accommodation-match
-description: "Match accommodations to a documented student need (IEP, 504, ELL, or learning profile). Use this atom when special-education-support or intervention-mtss needs to suggest specific accommodations for a documented need. Do NOT use without a documented need — accommodations must be tied to identified barriers. Do NOT use for UDL (use udl-options)."
+description: "Match accommodations to a documented student need (IEP, 504, ELL). Do NOT use without a documented need, or for UDL (use udl-options)."
 ---
 
 # accommodation-match

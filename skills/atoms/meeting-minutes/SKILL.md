@@ -1,6 +1,6 @@
 ---
 name: meeting-minutes
-description: "Summarize meeting notes or a transcript into structured minutes with action items. Use this atom when school-administration or meeting-classifier needs post-meeting documentation. Do NOT use for meeting agendas (use meeting-agenda)."
+description: "Turn meeting notes or a transcript into minutes with action items. Do NOT use for agendas (use meeting-agenda)."
 ---
 
 # meeting-minutes

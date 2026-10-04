@@ -72,8 +72,16 @@ def check() -> list:
         desc = re.search(r'description:\s*"(.*?)"\s*\n', text, re.S)
         if desc and "do not" not in desc.group(1).lower():
             findings.append(f"{rel}: frontmatter description has no 'Do NOT use' clause")
+        # Every atom description is loaded into EVERY teacher session (the always-on skill
+        # listing). R7 cut them to one sentence (11,477 -> 8,993 tokens/session, skill selection
+        # unchanged at 40/40); this cap keeps them from creeping back.
+        if desc and len(desc.group(1)) > MAX_ATOM_DESC:
+            findings.append(f"{rel}: description is {len(desc.group(1))} chars (cap "
+                            f"{MAX_ATOM_DESC}) — it ships in every session's always-on listing")
     return findings
 
+
+MAX_ATOM_DESC = 200   # chars; the always-on listing budget per atom (R7)
 
 def main(argv) -> int:
     if "--self-test" in argv:

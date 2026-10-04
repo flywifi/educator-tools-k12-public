@@ -1,6 +1,6 @@
 ---
 name: translate-comm
-description: "Render a family communication into a target home language with advisory flags. Use this atom when family-communication or parent-comm needs to provide a translation of a school message. ADVISORY ONLY — always flag that a fluent speaker should review. Do NOT use for certified translation of legal documents."
+description: "Translate a family message into a home language, advisory only. Do NOT use for certified translation of legal documents such as IEPs."
 ---
 
 # translate-comm
