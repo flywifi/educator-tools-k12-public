@@ -53,8 +53,8 @@ PLUGIN_DESC = (
     "{atoms} atom sub-skills) over {engines_count} shared engines (roster: versions.json), with "
     "{verified_standards} Florida standards verified code-by-code against CPALMS. Skills under "
     "skills/ are loaded from the manifest's skills directories, and the tos-tools MCP server "
-    "(8 read-only verified-lookup/"
-    "validator tools) starts with the plugin. Offline/stdlib; decision-support with "
+    "(9 read-only verified-lookup/"
+    "validator tools; runs with nothing to install) starts with the plugin. Offline/stdlib; decision-support with "
     "human_review_required; "
     "placeholders only in the repo."
 )
@@ -109,6 +109,10 @@ def _fill(template: str, f: dict) -> str:
                            verified_standards=f"{f['verified_standards']:,}")
 
 
+BUNDLE_URL = ("https://github.com/flywifi/educator-tools-k12-public/releases/download/"
+              "v{version}/tos-tools.mcpb")
+
+
 def render_plugin(f: dict, current: dict) -> dict:
     """`version`, `description` and `skills` are generated; every other key passes through.
 
@@ -127,6 +131,11 @@ def render_plugin(f: dict, current: dict) -> dict:
     out["version"] = f["version"]
     out["description"] = _fill(PLUGIN_DESC, f)
     out["skills"] = [f"./skills/{g}/" for g in sorted(f["skills_by_group"])]
+    if isinstance(out.get("mcpServers"), str) and "/releases/download/" in out["mcpServers"]:
+        # R8: the plugin runs the compiled bundle attached to THIS version's GitHub Release, so the
+        # URL is generated from the version — a release bump can never leave it pointing at the
+        # previous bundle (or at one whose tools/ differ from the plugin's).
+        out["mcpServers"] = BUNDLE_URL.format(version=f["version"])
     return out
 
 
@@ -302,6 +311,16 @@ def self_test() -> int:
     _paths(tmp)["plugin"].write_text(json.dumps(plug2), encoding="utf-8")
     ck("twin: a mutated description is caught", any("plugin.json" in i for i in check(tmp)))
     write(tmp)
+    plug3 = json.loads(_paths(tmp)["plugin"].read_text(encoding="utf-8"))
+    plug3["mcpServers"] = BUNDLE_URL.format(version="0.0.1")
+    _paths(tmp)["plugin"].write_text(json.dumps(plug3), encoding="utf-8")
+    ck("twin: a bundle URL left on an old release is caught (R8)",
+       any("plugin.json" in i for i in check(tmp)))
+    write(tmp)
+    ck("write() points the bundle URL at the current version",
+       json.loads(_paths(tmp)["plugin"].read_text(encoding="utf-8"))["mcpServers"]
+       == BUNDLE_URL.format(version=json.loads(_paths(tmp)["plugin"].read_text(
+           encoding="utf-8"))["version"]))
     mk = json.loads(_paths(tmp)["marketplace"].read_text(encoding="utf-8"))
     mk["plugins"][0]["version"] = "0.0.1"
     _paths(tmp)["marketplace"].write_text(json.dumps(mk), encoding="utf-8")

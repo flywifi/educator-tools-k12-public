@@ -170,6 +170,18 @@ def _launcher_ok(cfg: dict) -> str:
     return ""
 
 
+def _inline_servers(value) -> list:
+    """`mcpServers` may be an inline map, a .json path, a .mcpb bundle path/URL, or a list mixing
+    them (Claude Code plugin reference). Only INLINE configs carry a launcher command to lint here;
+    a bundle's per-OS launchers are verified by tools/build_mcpb.py (R8 — this guard used to crash
+    on the bundle form, and a crashed guard is a failure, not a pass)."""
+    if isinstance(value, dict):
+        return list(value.items())
+    if isinstance(value, list):
+        return [kv for v in value if isinstance(v, dict) for kv in v.items()]
+    return []
+
+
 def _check_json_launchers() -> list[dict]:
     out: list[dict] = []
     for rel in JSON_LAUNCHERS:
@@ -177,7 +189,7 @@ def _check_json_launchers() -> list[dict]:
         if not p.exists():
             continue
         doc = json.loads(p.read_text(encoding="utf-8"))
-        for name, cfg in (doc.get("mcpServers") or {}).items():
+        for name, cfg in _inline_servers(doc.get("mcpServers")):
             issue = _launcher_ok(cfg if isinstance(cfg, dict) else {})
             if not issue:
                 continue

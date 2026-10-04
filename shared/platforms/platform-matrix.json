@@ -10,7 +10,7 @@
         "install": "plugin marketplace add + install",
         "source": "https://code.claude.com/docs/en/plugins-reference",
         "checked": "2026-09-25",
-        "note": "Loader scans skill dirs ONE level deep; the manifest skills array (R5-A2) is what makes 62/62 load. Verified with claude plugin details 2.1.282."
+        "note": "Loader scans skill dirs ONE level deep; the manifest skills array (R5-A2) is what makes 62/62 load. Verified with claude plugin details 2.1.282. R8: plugin mcpServers runs the compiled tos-tools.mcpb release bundle — Connected with NO python/node/uv on PATH (tested, Claude Code 2.1.289). Claude Code does not supply Node and ignores uv-type bundles (tested)."
       },
       "desktop_chat": {
         "skills": "available",
@@ -18,7 +18,7 @@
         "install": "plugin via Customize, or .mcpb extension",
         "source": "https://support.claude.com/en/articles/13837440",
         "checked": "2026-09-25",
-        "note": "'You can install and use plugins in chat on the web, the Chat tab in Claude Desktop, and Claude Cowork.' Plugin local MCP runs in Cowork/Code; .mcpb covers Desktop chat tools. Desktop >= v2.9939.2 for plugins containing a .zip."
+        "note": "'You can install and use plugins in chat on the web, the Chat tab in Claude Desktop, and Claude Cowork.' Plugin local MCP runs in Cowork/Code; .mcpb covers Desktop chat tools. Desktop >= v2.9939.2 for plugins containing a .zip. R8: the .mcpb is type 'binary' with per-OS platform_overrides (one universal2 macOS build) — nothing to install. Gatekeeper/SmartScreen behavior on a real Mac/PC: UNTESTED-live (R8 phase 5)."
       },
       "web_chat_paid": {
         "skills": "available",
@@ -52,7 +52,7 @@
         "install": "local marketplace (~/.agents/plugins/marketplace.json + ~/.codex/plugins/) or Settings > MCP servers > STDIO",
         "source": "https://developers.openai.com/plugins/build/plugins",
         "checked": "2026-09-25",
-        "note": "UNTESTED-live end-to-end. Codex on every plan incl. Free/Go; Work on paid plans (desktop; staged rollout). openai/codex source: plugin stdio servers ARE spawned; ${CLAUDE_PLUGIN_ROOT} is NOT expanded in MCP args (use the Agent-Plugins mcp.json with ${PLUGIN_ROOT}, or cwd '.'); manifest skills paths must start with './'; initialize offers 2025-06-18; Windows resolves commands PATHEXT-style, python3 is NOT mapped to python."
+        "note": "UNTESTED-live end-to-end. Codex on every plan incl. Free/Go; Work on paid plans (desktop; staged rollout). openai/codex source: plugin stdio servers ARE spawned; ${CLAUDE_PLUGIN_ROOT} is NOT expanded in MCP args (use the Agent-Plugins mcp.json with ${PLUGIN_ROOT}, or cwd '.'); manifest skills paths must start with './'; initialize offers 2025-06-18; Windows resolves commands PATHEXT-style, python3 is NOT mapped to python. R8: stays on Python — Codex expands ${PLUGIN_ROOT} only in args (command must be a bare token) and has no per-OS override, so a bundled executable cannot be named portably; Codex also needs the runtime on PATH (openai/codex#31897)."
       },
       "web_personal": {
         "skills": "unavailable",
@@ -78,7 +78,7 @@
         "install": "skills -> ~/.gemini/config/skills/<name>/; stdio server -> ~/.gemini/config/mcp_config.json (mcpServers.command/args); plugin folder -> ~/.gemini/config/plugins/",
         "source": "https://antigravity.google/docs/mcp/",
         "checked": "2026-09-25",
-        "note": "UNTESTED-live. Personal Google account, 18+, approved regions; NOT for school accounts. Free weekly quota. Client probes server/discover (2026-07-28) FIRST and needs -32601 to fall back (R5-A1 provides it). Terms allow interaction review/training unless Settings > Account > Telemetry is off — default not stated, tell teachers to check."
+        "note": "UNTESTED-live. Personal Google account, 18+, approved regions; NOT for school accounts. Free weekly quota. Client probes server/discover (2026-07-28) FIRST and needs -32601 to fall back (R5-A1 provides it). Terms allow interaction review/training unless Settings > Account > Telemetry is off — default not stated, tell teachers to check. R8: stays on Python — the pack installer is itself a Python script, so its users are already at Level 1; the compiled launcher adds nothing here."
       },
       "gemini_cli": {
         "skills": "available",
@@ -98,5 +98,5 @@
       }
     }
   },
-  "updated": "2026-09-26"
+  "updated": "2026-10-04"
 }

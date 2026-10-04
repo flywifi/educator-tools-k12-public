@@ -80,7 +80,7 @@ def build_chatgpt(out: Path) -> None:
         "name": "teacher-operating-system",
         "version": _version(),
         "description": "Teacher Operating System: 62 governed K-12 teacher skills plus the "
-                       "tos-tools local server (8 read-only verified-standards tools; offline; "
+                       "tos-tools local server (9 read-only verified-standards tools; offline; "
                        "human_review_required on every artifact).",
     })
     # ${PLUGIN_ROOT} in ARGS is the expansion openai/codex actually performs; the command must be

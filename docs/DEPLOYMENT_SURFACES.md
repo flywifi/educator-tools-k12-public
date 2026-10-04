@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-08-16 | owner: deployment-maintainer -->
+<!-- last_reviewed: 2026-10-04 | owner: deployment-maintainer -->
 # DEPLOYMENT_SURFACES.md — where the TOS runs (and how data is handled per surface)
 
 > Teacher-friendly version of this: [`implementation/claude/README.md`](../implementation/claude/README.md).
@@ -86,9 +86,12 @@ that boundary (found by adversarial audit, mitigations in place):
 
 ## MCP tool surface (2026-08-15; hardened 2026-08-16)
 
-The registry `tools/mcp_tooldefs.py` serves 8 read-only tools on three legs: plugin-shipped
-stdio (zero-step; `plugin.json` `mcpServers`), the `.mcpb` Claude Desktop extension
-(one-click; `tools/build_mcpb.py`), and the hosted streamable-HTTP leg
+The registry `tools/mcp_tooldefs.py` serves 8 read-only tools on every leg, plus
+`local_capabilities` on the local legs only (R8: it reports what works offline on the teacher's own
+computer). Legs: plugin-shipped stdio (zero-step; since R8 `plugin.json` `mcpServers` names this
+version's compiled `tos-tools.mcpb` release bundle, so nothing needs installing — see
+`tools/frozen/tos_launcher.py`), the `.mcpb` Claude Desktop extension
+(one-click; `tools/build_mcpb.py --binary`), and the hosted streamable-HTTP leg
 (`tools/mcp_http_server.py` — remote connectors; dormant until a human deploys `deploy/mcp/`).
 **Check 23** holds the SDK-derived schema to the registry. (A fourth leg — the generated
 Custom GPT Actions schema and its check 22 — was retired 2026-09 with the Custom GPT product;

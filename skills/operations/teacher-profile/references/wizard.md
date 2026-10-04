@@ -49,6 +49,16 @@ Keep it short — smaller is more robust; depth can be added later.
    tool; report *matched N of the file's `count` total*), otherwise the table is labeled
    *best-effort — retrieved, not exhaustively enumerated*; one subject per table (~40 rows max,
    offer "next"); social-studies rows carry an extra "verify on CPALMS" flag (legacy-doc parse).
+9. **Offer to do more offline (once).** Call the `local_capabilities` tool, then explain in plain words:
+   *"TOS already checks standards and catches made-up codes on your own computer. If you install
+   Python (free, about 5 minutes, no admin rights needed on Windows), it can also read scanned
+   documents, transcribe audio, and convert files without sending them anywhere. Want that?"*
+   Offer it **once**; "no" is a complete answer and is never re-asked unprompted. On "yes":
+   if `offline_level` is 0, give the Python install step from the tool's `next_step`; then (where
+   Claude can run commands — Claude Code, Cowork) run `python3 setup/tos_setup.py --yes` (Windows:
+   `py setup\\tos_setup.py --yes`) **only after the teacher said yes**, or give the command to run.
+   Record the choice with `profile_wizard.py --preferences` (the Local-First block). Never install
+   anything silently; the AI model itself still needs the internet — say so if asked.
 
 ## Moving the profile between the desktop and the Claude/ChatGPT app
 The desktop tools keep the profile as `teacher.local.json` (gitignored); the apps keep it as

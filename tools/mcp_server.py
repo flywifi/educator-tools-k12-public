@@ -234,8 +234,8 @@ def self_test() -> int:
        "auto mode and Antigravity's probe order)",
        r.get("error", {}).get("code") == -32601)
     r = handle_frame(rpc("tools/list"))
-    ck("tools/list: 8 tools, readOnlyHint intact on the wire",
-       len(r["result"]["tools"]) == 8
+    ck("tools/list: 9 tools (8 shared + local_capabilities), readOnlyHint intact on the wire",
+       len(r["result"]["tools"]) == 9
        and all(t["annotations"]["readOnlyHint"] for t in r["result"]["tools"]))
     r = handle_frame(rpc("tools/call", params={"name": "check_citation_mutation",
                                                "arguments": {"cited": "count to 1000",
