@@ -1,0 +1,117 @@
+# R8 — build the per-OS `tos-tools` launcher (so a teacher installs nothing) and the one .mcpb that
+# carries all of them. PyInstaller cannot cross-compile, so each OS builds on its own runner.
+# Runs on demand and on version tags; artifacts attach to the GitHub Release for that tag.
+name: frozen-build
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]          # path filters are not evaluated for tag pushes — releases always build
+    branches: ["**"]
+    paths:                # branch pushes build only when the launcher or the server it runs changes
+      - "tools/frozen/**"
+      - "tools/build_frozen.py"
+      - "tools/build_mcpb.py"
+      - "tools/requirements-frozen.txt"
+      - "tools/mcp_server.py"
+      - "tools/mcp_tooldefs.py"
+      - "tools/offline_index.py"
+      - "tools/verify_standards.py"
+      - "tools/validate_outputs.py"
+      - ".github/workflows/frozen-build.yml"
+
+permissions:
+  contents: write        # attach release assets on tags
+  id-token: write        # build provenance attestation
+  attestations: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-22.04,   platform: linux }    # oldest supported glibc builds forward-compatibly
+          - { os: windows-latest, platform: win32 }
+          # ONE universal2 executable serves Apple silicon AND Intel Macs (the bundle format keys
+          # overrides by OS only, so there is one darwin slot) — and it avoids GitHub's Intel Mac
+          # runners, which end Aug 2027. Built with python.org's universal2 Python.
+          - { os: macos-14,       platform: darwin, arch: universal2 }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        if: matrix.platform != 'darwin'
+        with:
+          python-version: "3.12"
+      - name: python.org universal2 Python (macOS)
+        if: matrix.platform == 'darwin'
+        run: |
+          curl -fsSLo py.pkg https://www.python.org/ftp/python/3.12.10/python-3.12.10-macos11.pkg
+          sudo installer -pkg py.pkg -target /
+          echo "/Library/Frameworks/Python.framework/Versions/3.12/bin" >> "$GITHUB_PATH"
+      - name: Install the pinned builder
+        shell: bash
+        run: python3 -m pip install -r tools/requirements-frozen.txt || python -m pip install -r tools/requirements-frozen.txt
+      - name: Build + smoke (real server, built-in runtime, fabrication check)
+        shell: bash
+        run: |
+          PY=$(command -v python3 || command -v python)
+          if [ -n "${{ matrix.arch }}" ]; then "$PY" tools/build_frozen.py --target-arch "${{ matrix.arch }}"; else "$PY" tools/build_frozen.py; fi
+      - name: Zero-runtime check (empty PATH, no hints — the teacher with nothing installed)
+        shell: bash
+        run: $(command -v python3 || command -v python) tools/build_frozen.py --smoke-only --strip-path
+      - name: Both Mac chips (universal2 slices + Intel run under Rosetta)
+        if: matrix.platform == 'darwin'
+        run: |
+          lipo -archs dist/frozen/tos-tools/tos-tools | tee /dev/stderr | grep -q "x86_64 arm64"
+          if /usr/bin/arch -x86_64 /usr/bin/true 2>/dev/null; then
+            printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | \
+              TOS_ROOT="$PWD" TOS_FORCE_BUILTIN=1 /usr/bin/arch -x86_64 dist/frozen/tos-tools/tos-tools | grep -q '"tools"'
+          else echo "Rosetta not present on this runner — x86_64 run skipped (slices still verified)"; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tos-tools-${{ matrix.platform }}
+          path: dist/frozen/tos-tools/
+          if-no-files-found: error
+
+  bundle:
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist/frozen-all
+      - name: Stage, verify, and pack one bundle for every OS
+        shell: bash
+        run: |
+          chmod +x dist/frozen-all/*/tos-tools 2>/dev/null || true
+          python tools/build_mcpb.py \
+            --binary linux=dist/frozen-all/tos-tools-linux \
+            --binary win32=dist/frozen-all/tos-tools-win32 \
+            --binary darwin=dist/frozen-all/tos-tools-darwin
+          npx --yes @anthropic-ai/mcpb@2 validate dist/mcpb-staging/manifest.json
+          npx --yes @anthropic-ai/mcpb@2 pack dist/mcpb-staging dist/tos-tools.mcpb
+      - uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: dist/tos-tools.mcpb
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tos-tools-mcpb
+          path: dist/tos-tools.mcpb
+      - name: Attach to the release (tags only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1 || \
+            gh release create "${GITHUB_REF_NAME}" --verify-tag --title "${GITHUB_REF_NAME}" \
+              --notes "Teacher Operating System ${GITHUB_REF_NAME}. tos-tools.mcpb runs the verified local tools on Windows, macOS and Linux with nothing to install."
+          gh release upload "${GITHUB_REF_NAME}" dist/tos-tools.mcpb --clobber

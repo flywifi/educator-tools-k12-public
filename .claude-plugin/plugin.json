@@ -16,14 +16,7 @@
     "governance"
   ],
   "license": "MIT",
-  "mcpServers": {
-    "tos-tools": {
-      "command": "python3",
-      "args": [
-        "${CLAUDE_PLUGIN_ROOT}/tools/mcp_server.py"
-      ]
-    }
-  },
+  "mcpServers": "https://github.com/flywifi/educator-tools-k12-public/releases/download/v1.9.1/tos-tools.mcpb",
   "skills": [
     "./skills/atoms/",
     "./skills/core/",
