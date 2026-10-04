@@ -215,6 +215,51 @@ def _schema(props: dict, required: list[str]) -> dict:
 _LIMIT = {"type": "integer", "minimum": 1, "maximum": 10, "default": 5,
           "description": "max rows (clamped to 1-10)"}
 
+def _local_capabilities(args: dict) -> dict:
+    """The offline ladder, as data: which level this computer is at, which optional LOCAL tools are
+    ready, and the one step that adds each missing one (R8). Read-only; reports, never installs."""
+    frozen = bool(getattr(sys, "frozen", False))
+    prefix = sys.prefix.replace("\\", "/")
+    managed = (".harvest-venv" in prefix) or ("/.tos/venv" in prefix)
+    level = 0 if frozen else 1
+    runtime = ("built-in Python (nothing installed)" if frozen else
+               "managed local-tools environment" if managed else
+               f"system Python {sys.version_info[0]}.{sys.version_info[1]}")
+    out = {"tool": "local_capabilities", "offline_level": level, "runtime": runtime,
+           "always_offline": ["standards search", "fabricated-code check", "course and school lookup",
+                              "citation-mutation check", "artifact validation"],
+           "needs_internet": "the AI model itself (Claude, ChatGPT, Gemini)",
+           "human_review_required": True}
+    if frozen:
+        out["next_step"] = ("Install Python 3.10 or newer (Mac: python.org or `brew install python`; "
+                            "Windows: python.org — no admin rights needed), then restart the chat app. "
+                            "That unlocks the optional local tools below.")
+    try:
+        sys.path.insert(0, str(ROOT / "shared" / "health"))
+        import capabilities as _caps  # type: ignore
+        rep = _caps.report()
+    except Exception as exc:  # the Desktop bundle may not carry the report module
+        out["local_tools"] = {"note": f"capability report unavailable here ({exc.__class__.__name__})"}
+        return out
+    ready, missing = [], []
+    for c in rep["capabilities"]:
+        if c["tier"] != "local_optional":
+            continue
+        if c["status"] == "ready":
+            ready.append(c["id"])
+        elif c["status"] in ("deferred", "unknown"):
+            continue  # not installable yet — never send a teacher to a dead end
+        else:
+            need_bins = [b for b, ok in (c.get("bins") or {}).items() if not ok]
+            how = f"python3 tools/deps_preflight.py --install {c['id']}"
+            if need_bins:
+                how += f" (also needs the {', '.join(need_bins)} program installed)"
+            missing.append({"id": c["id"], "adds": c.get("beats_baseline"), "how": how})
+    out["local_tools"] = {"ready": ready, "missing": missing,
+                          "all_at_once": "python3 tools/deps_preflight.py --install-all"}
+    return out
+
+
 TOOLS: list[dict] = [
     {"name": "search_standards",
      "description": ("Search the committed, CPALMS-verified Florida K-12 standards corpus "
@@ -295,7 +340,16 @@ TOOLS: list[dict] = [
                      "stale or surprising."),
      "inputSchema": _schema({}, []),
      "handler": _index_status},
+    {"name": "local_capabilities",
+     "description": ("Which TOS features work offline on this computer and the one step that adds a "
+                     "missing one. Call when a request needs a local tool (OCR, transcription, file "
+                     "conversion) or the teacher asks about working offline."),
+     "inputSchema": _schema({}, []),
+     "handler": _local_capabilities,
+     "local_only": True},   # reports THIS computer — meaningless on the hosted leg (R8)
 ]
+#: tools every leg serves; the stdio leg also serves the local-only ones.
+SHARED_TOOLS = [t for t in TOOLS if not t.get("local_only")]
 
 _BY_NAME = {t["name"]: t for t in TOOLS}
 
@@ -536,8 +590,9 @@ def self_test() -> int:  # noqa: C901
     r = call_tool("validate_artifact", {"artifact": {"artifact_type": "x",
                                                      "human_review_required": False}})
     ck("validate_artifact: human_review_required:false FAILS", r["status"] == "fail")
-    ck("tool list: 8 tools, every one readOnlyHint",
-       len(list_tools()) == 8 and all(t["annotations"]["readOnlyHint"]
+    ck(f"tool list: {len(TOOLS)} tools ({len(SHARED_TOOLS)} shared + local-only), every one readOnlyHint",
+       len(list_tools()) == 9 and len(SHARED_TOOLS) == 8
+       and all(t["annotations"]["readOnlyHint"]
                                       for t in list_tools()))
     ck("server_instructions carry the data-not-instructions rule",
        "never instructions" in server_instructions()

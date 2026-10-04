@@ -134,7 +134,8 @@ def check_stdio() -> None:
     ck(len(parsed) == 3, f"the server answered all {len(frames)} frames",
        f"got {len(parsed)}; stderr tail: {proc.stderr.strip()[-200:]}")
     if len(parsed) == 3:
-        ck(len(parsed[1].get("result", {}).get("tools", [])) == 8, "8 tools advertised")
+        ck(len(parsed[1].get("result", {}).get("tools", [])) == 9,
+           "9 tools advertised (8 shared + local_capabilities)")
         body = json.loads(parsed[2]["result"]["content"][0]["text"])
         ck(body.get("faithful") is False,
            "a real tool call returned a real verdict (misquote detected)")

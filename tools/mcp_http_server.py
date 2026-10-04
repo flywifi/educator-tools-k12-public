@@ -128,7 +128,7 @@ def build_mcp():
     mcp = MCPServer("tos-tools", instructions=mcp_tooldefs.server_instructions())
     ro = ToolAnnotations(readOnlyHint=True)
     call = mcp_tooldefs.call_tool
-    by = {t["name"]: t["description"] for t in mcp_tooldefs.TOOLS}
+    by = {t["name"]: t["description"] for t in mcp_tooldefs.SHARED_TOOLS}
     Subject = Literal["math", "ela", "science", "social_studies", "computer_science", "eld"]
     Limit = Annotated[int, Field(ge=1, le=10)]
 
@@ -230,7 +230,7 @@ def schema_parity() -> list[str]:
     treats that as a SKIP (the hosted leg is an optional capability), unlike checks 21/22."""
     import anyio
 
-    registry = {t["name"]: t["inputSchema"] for t in mcp_tooldefs.TOOLS}
+    registry = {t["name"]: t["inputSchema"] for t in mcp_tooldefs.SHARED_TOOLS}
     return _parity(registry, anyio.run(build_mcp().list_tools))
 
 
@@ -416,7 +416,7 @@ def build_app(mcp):
     async def healthz(request: Request):
         # public_url is echoed so a deployer sees what ChatGPT will be handed BEFORE attempting
         # the import — the failure it prevents shows up at a teacher's step, not the deployer's.
-        return JSONResponse({"ok": True, "tools": len(mcp_tooldefs.TOOLS),
+        return JSONResponse({"ok": True, "tools": len(mcp_tooldefs.SHARED_TOOLS),
                              "public_url": public_url(request),
                              "public_url_pinned": bool(os.environ.get("TOS_MCP_PUBLIC_URL")),
                              "stateless": _env_bool("TOS_MCP_STATELESS", True)})
@@ -455,7 +455,7 @@ def serve() -> int:
               "whatever host the request arrives with; behind a load balancer that can render "
               "http:// or an internal name. Set it to your public https:// base URL.",
               file=sys.stderr)
-    print(f"[tos-tools http] {len(mcp_tooldefs.TOOLS)} read-only tools · /mcp on {host}:{port} · "
+    print(f"[tos-tools http] {len(mcp_tooldefs.SHARED_TOOLS)} read-only tools · /mcp on {host}:{port} · "
           f"{'stateless' if stateless else 'STATEFUL (pinned instance)'}, standards-data-only",
           file=sys.stderr)
     # forwarded_allow_ips: without it uvicorn ignores X-Forwarded-*, so behind a load balancer
@@ -639,7 +639,7 @@ def self_test() -> int:
                       annotations=ToolAnnotations(readOnlyHint=True))
         return anyio.run(twin.list_tools)
 
-    twin_issues = _parity({t["name"]: t["inputSchema"] for t in mcp_tooldefs.TOOLS
+    twin_issues = _parity({t["name"]: t["inputSchema"] for t in mcp_tooldefs.SHARED_TOOLS
                            if t["name"] == "search_standards"}, _stripped_tools())
     ck("broken twin: a constraint-stripped wrapper is caught, naming the enum",
        any("search_standards.subject" in i and "enum" in i for i in twin_issues))

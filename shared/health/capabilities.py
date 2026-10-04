@@ -95,19 +95,25 @@ def report() -> dict:
         elif c.get("fonts"):
             flat = [v for grp in entry["fonts"].values() for v in grp.values()]
             entry["status"] = "ready" if all(flat) else "partial" if any(flat) else "missing"
+        elif not pys and not bins:
+            # Nothing declared to check. This used to fall through to `ready` (all([]) is True),
+            # so the DEFERRED ocr_advanced reported ready on every machine (found R8). An empty
+            # check list is never evidence of presence.
+            entry["status"] = ("deferred" if str(c.get("note", "")).startswith("DEFERRED")
+                               else "unknown")
         else:
             some = (any(pys.values()) if pys else False) or (any(bins.values()) if bins else False)
             entry["status"] = "ready" if (py_ok and bin_ok) else "partial" if some else "missing"
         caps.append(entry)
     return {"tool": "capabilities-preflight", "capabilities": caps,
             "summary": {s: sum(1 for c in caps if c["status"] == s)
-                        for s in ("ready", "partial", "missing", "available_when_enabled",
-                                  "needs_credentials", "needs_install")},
+                        for s in ("ready", "partial", "missing", "deferred", "unknown",
+                                  "available_when_enabled", "needs_credentials", "needs_install")},
             "human_review_required": True}
 
 
 def to_summary(rep: dict) -> str:
-    mark = {"ready": "ok  ", "partial": "PART", "missing": "MISS",
+    mark = {"ready": "ok  ", "partial": "PART", "missing": "MISS", "deferred": "DEFR", "unknown": "?   ",
             "available_when_enabled": "rdy*", "needs_credentials": "key?", "needs_install": "----"}
     lines = ["# Capabilities preflight", "",
              "  (local: ready/partial/missing · cloud: rdy*=installed+keyed but off until opt-in)", ""]
