@@ -5,6 +5,15 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.9.1] — 2026-10-04
+
+### Changed
+- **Lower token cost in every chat: 11,477 -> 8,993 tokens (-22%).** The skill listing Claude
+  loads into every session carried long descriptions for the 43 sub-skills; each is now one
+  sentence that keeps its key boundary. All 62 skills still load, and a 40-request
+  skill-selection check scored 40/40 before and after. A 200-character cap in
+  `tools/atom_contract.py` keeps them from growing back.
+
 ## [1.9.0] — 2026-10-03
 
 ### Verified
