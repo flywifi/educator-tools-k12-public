@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-07-15 | owner: tooling-maintainer -->
+<!-- last_reviewed: 2026-10-04 | owner: tooling-maintainer -->
 # tools/ — build, guard, and data tooling
 
 Stdlib-first Python utilities for building the TOS, guarding it against drift, and maintaining the
@@ -22,9 +22,10 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
   --install <capability>` / `--install-all` installs optional capabilities into the isolated
   `.harvest-venv` (wheels-only; never system Python → no macOS/Homebrew PEP 668). **One capability opts out: `mcp_server` is `"isolated": true`** (semgrep pins `mcp<2` and a shared venv silently downgraded the SDK), so it installs into `.harvest-venv-mcp_server` and its interpreter is `--python-path mcp_server`, not the bare form. `--python-path [capability]`
   prints that venv's interpreter for a Claude Desktop MCP `command`/GUI launch.
-- `mcp_tooldefs.py` — the MCP tool registry: 8 read-only tools (verified-standards search,
+- `mcp_tooldefs.py` — the MCP tool registry: 9 read-only tools — 8 on every leg (verified-standards search,
   course/school lookup, CPALMS resources, fabrication-blocking code verification,
-  citation-mutation check, artifact rule-validation, index honesty) defined once for every
+  citation-mutation check, artifact rule-validation, index honesty) plus `local_capabilities`
+  on the local leg (what works offline on this computer) — defined once for every
   transport. Stdlib; `--self-test` is a mutation battery; `--list` prints the surface.
 - `mcp_server.py` — the LOCAL stdio MCP server over that registry (Claude Code / Claude
   Desktop). Pure stdlib — teachers install nothing. `--print-config desktop|code` emits exact

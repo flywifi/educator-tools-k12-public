@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""The TOS MCP tool registry — 8 read-only tools, defined ONCE, consumed by every transport.
+"""The TOS MCP tool registry — 9 read-only tools (8 on every leg; `local_capabilities` on the local
+stdio leg only, since it describes the teacher's own computer), defined ONCE, consumed by every transport.
 
 This module is the single source of truth for the MCP tool surface. Three consumers:
   tools/mcp_server.py            local stdio (Claude Code / Claude Desktop) — stdlib only

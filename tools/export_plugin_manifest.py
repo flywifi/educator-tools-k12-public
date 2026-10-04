@@ -53,8 +53,8 @@ PLUGIN_DESC = (
     "{atoms} atom sub-skills) over {engines_count} shared engines (roster: versions.json), with "
     "{verified_standards} Florida standards verified code-by-code against CPALMS. Skills under "
     "skills/ are loaded from the manifest's skills directories, and the tos-tools MCP server "
-    "(8 read-only verified-lookup/"
-    "validator tools) starts with the plugin. Offline/stdlib; decision-support with "
+    "(9 read-only verified-lookup/"
+    "validator tools; runs with nothing to install) starts with the plugin. Offline/stdlib; decision-support with "
     "human_review_required; "
     "placeholders only in the repo."
 )
