@@ -57,6 +57,32 @@ def score_skills(text: str, registry: dict | None = None) -> dict:
     return scores
 
 
+def _first(text: str, phrases: list) -> int:
+    """Earliest word-boundary match position of any phrase, or -1."""
+    import re
+    hits = [m.start() for ph in phrases
+            for m in [re.search(r"(?<![a-z0-9])" + re.escape(ph.lower()) + r"(?![a-z0-9])", text)] if m]
+    return min(hits) if hits else -1
+
+
+def review_intent(text: str, registry: dict | None = None) -> str | None:
+    """The review-intent rule (routing.json `review_intent`): return its skill when the request is a
+    review of an existing educational artifact, else None. See the registry comment for the why."""
+    rule = load_registry(registry).get("review_intent")
+    if not rule:
+        return None
+    t = (text or "").lower()
+    cue = _first(t, rule.get("review_cues", []))
+    if cue < 0 or _first(t, rule.get("artifact_nouns", [])) < 0:
+        return None
+    if _first(t, rule.get("existing_markers", [])) < 0:
+        return None
+    create = _first(t, rule.get("create_verbs", []))
+    if 0 <= create < cue:
+        return None
+    return rule.get("skill")
+
+
 def _confidence(margin: int, top: int) -> str:
     if top == 0:
         return "low"
@@ -288,6 +314,15 @@ def route(request: dict, registry: dict | None = None) -> dict:
 
     scores = score_skills(text, reg)
     ranked = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
+    reviewer = review_intent(text, reg)
+    if reviewer:
+        # The artifact's own skill keeps its claim visibly, as the alternate.
+        alt = [s for s, n in ranked if n > 0 and s != reviewer][:1]
+        return {"recommended_skill": reviewer, "confidence": "high", "alternates": alt,
+                "minority_report": None, "basis": "review_intent", "scores": scores,
+                "atom_shortcut": atom_match,
+                "inferred_atoms": infer_atoms(reviewer, request.get("context"))}
+
     if not ranked or ranked[0][1] == 0:
         return {"recommended_skill": fallback, "confidence": "low", "alternates": [],
                 "minority_report": None, "basis": "no_cue", "scores": scores,

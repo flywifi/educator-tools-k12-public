@@ -1,0 +1,11 @@
+{
+  "_note": "R6 eval fixture: judgment-only plan \u2014 --apply must change nothing and leave it for a human.",
+  "repair_plan": [
+    {
+      "severity": "blocking",
+      "area": "skills/atoms/example-b",
+      "action": "fix SKILL.md name != folder in skills/atoms/example-b/",
+      "mechanical": false
+    }
+  ]
+}

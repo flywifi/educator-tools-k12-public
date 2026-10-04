@@ -11,6 +11,7 @@ redesign.
 Usage:
   python3 tools/skill_repair.py                 # dry-run: what would change, what needs you
   python3 tools/skill_repair.py --apply         # apply safe mechanical fixes, then re-run sync_check
+  python3 tools/skill_repair.py --json [...]    # the same run, reported as one JSON object
 """
 from __future__ import annotations
 
@@ -42,11 +43,14 @@ def main(argv) -> int:
     ap = argparse.ArgumentParser(description="Apply an approved skill-health repair plan (minimally).")
     ap.add_argument("--apply", action="store_true", help="apply safe mechanical fixes (default: dry-run)")
     ap.add_argument("--plan", metavar="PATH", help="read the plan from a saved skill-health report (--out)")
+    ap.add_argument("--json", action="store_true", help="emit one JSON object instead of markdown")
     a = ap.parse_args(argv)
 
     plan = _plan(a.plan)
     mechanical = [s for s in plan if s.get("mechanical")]
     judgment = [s for s in plan if not s.get("mechanical")]
+    if a.json:
+        return _json_run(a.apply, mechanical, judgment)
 
     print("# Skill-repair — proposed changes (plain language)\n")
     print(f"The health scan found {len(plan)} item(s): {len(mechanical)} mechanical (safe to automate), "
@@ -76,6 +80,29 @@ def main(argv) -> int:
     print(f"- drift guard: {last}")
     print("\nFinalization status: **safe fixes applied**; "
           f"{len(judgment)} judgment item(s) still need you. Review the diff, then approve/commit.")
+    return 0 if code == 0 else 1
+
+
+def _json_run(apply: bool, mechanical: list, judgment: list) -> int:
+    """The same decision as the markdown run, as data. Derived files are regenerated only when
+    there is a mechanical step to apply — an apply with nothing to apply writes nothing."""
+    out = {"tool": "skill-repair", "mechanical": mechanical, "judgment": judgment,
+           "judgment_left_for_human": bool(judgment), "auto_applied": False,
+           "human_review_required": True}
+    if not apply:
+        out["finalization"] = "waiting for approval"
+        print(json.dumps(out, indent=2, ensure_ascii=False))
+        return 0
+    steps = []
+    if mechanical:
+        code, last = _run([sys.executable, "tools/metrics.py"])
+        steps.append({"step": "tools/metrics.py", "exit": code, "last": last})
+    code, last = _run([sys.executable, "tools/sync_check.py"])
+    steps.append({"step": "tools/sync_check.py", "exit": code, "last": last})
+    out.update(auto_applied=bool(mechanical), applied="mechanical_only", steps=steps,
+               reran="tools/sync_check.py", drift_guard_ok=code == 0,
+               finalization="safe fixes applied" if mechanical else "nothing mechanical to apply")
+    print(json.dumps(out, indent=2, ensure_ascii=False))
     return 0 if code == 0 else 1
 
 

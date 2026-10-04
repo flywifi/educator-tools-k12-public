@@ -1,0 +1,17 @@
+{
+  "_note": "R6 eval fixture: one mechanical and one judgment step, health.py's repair_plan shape.",
+  "repair_plan": [
+    {
+      "severity": "blocking",
+      "area": "skills/atoms/example-a",
+      "action": "fix missing MAINTAINER.md in skills/atoms/example-a/",
+      "mechanical": true
+    },
+    {
+      "severity": "blocking",
+      "area": "skills/atoms/example-b",
+      "action": "fix SKILL.md name != folder in skills/atoms/example-b/",
+      "mechanical": false
+    }
+  ]
+}

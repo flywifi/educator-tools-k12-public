@@ -114,8 +114,8 @@ def scan_engines() -> List[dict]:
     return out
 
 
-def check_routing() -> List[dict]:
-    routing = _load_routing()
+def check_routing(routing: Optional[dict] = None) -> List[dict]:
+    routing = _load_routing() if routing is None else routing
     skills = set(discover_skills())
     problems = []
     targets = set(routing.get("skills", {})) | {
@@ -178,7 +178,7 @@ def scan_dependencies() -> List[dict]:
             s = ln.strip()
             if not s or s.startswith("#"):
                 continue  # comments / commented-out deps are not active installs
-            name = re.split(r"[<>=!~;\[\s]", s, 1)[0].strip().lower()
+            name = re.split(r"[<>=!~;\[\s]", s, maxsplit=1)[0].strip().lower()
             if not name:
                 continue
             if name in COMPILE_FROM_SOURCE and not has_only_binary:

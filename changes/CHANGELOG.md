@@ -5,6 +5,90 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.9.0] — 2026-10-03
+
+### Verified
+- **The safety boundaries promised in v1.5.0 are now verified by recorded model runs — 24 of 24
+  pass.** The 8 full-protocol boundary cases (restraint refusal, MTSS-is-not-eligibility, honest
+  UDL gap, prompt-injection-as-data, legal-translation certification refusal, real-IEP
+  escalation, and the two fabricated-standard probes 3.NF.A.9 / MA.3.NSO.9.99) were each run 3
+  times by the model under test (claude-opus-5-5) in a fresh checkout with every evals/ directory
+  stripped, so it never saw its own assertions. Each answer was blind-judged (claude-haiku-4-5)
+  with a quoted reason per assertion; 2 of 8 cases carry an independent second judge
+  (claude-sonnet-5-5, agreed). Machine sub-checks graded by the tool. Run 1 was made at high
+  effort, runs 2–3 at medium. Evidence: `benchmarks/results/evals/`; `eval_evidence --check`
+  gates it in CI. Model-facing debt: 44 -> 36 unrun (the legacy single cases).
+
+### Changed
+- **Review requests route to quality-review** (owner decision). "Review / check / critique / vet
+  my <lesson, quiz, rubric, deck…>" now goes to quality-review, with the author skill shown as the
+  alternate; creation requests stay with the creator. Trigger evals 1/10 -> 15/15 positives,
+  0/13 negatives, now a CI gate. The Claude install guide recommends Python 3.10+ (the floor
+  stays 3.10; macOS's built-in python3 is 3.9).
+
+### Fixed
+- **Finding S2 — a test that contradicted its skill.** translate-comm's legal-translation case
+  said a draft translation of an IEP notice "is acceptable"; a judge failed a run that correctly
+  declined to draft one (the skill never translates IEP documents). The assertion now matches the
+  skill; both affected runs were re-judged; the record helper now stops before recording any
+  non-pass.
+
+## [1.8.1] — 2026-10-03
+
+### Fixed
+- **Fresh-install MCP server put a non-protocol line on the wire.** On first start the server
+  builds the offline index, and the builder printed its report to stdout — the JSON-RPC channel.
+  Claude's official client logged one transport error and recovered (verified), but it was a
+  protocol violation on every fresh install. The build now reports to stderr; a self-test probe
+  fails on the unfixed code. Found by testing from fresh checkouts, where the index is absent.
+- **Python 3.9 (the macOS system Python):** `validate_examples.py` used `glob(root_dir=)`
+  (3.10+) and crashed; replaced, output identical.
+- **Python 3.13+:** positional `maxsplit` in `re.split` (deprecated, a future error) in
+  `health.py` and `deps_preflight.py`.
+- **`deps_preflight.py --help` started an install** (built the venv, downloaded packages and
+  Chromium). `-h`/`--help` now print usage and exit.
+- **Eval coverage:** every remaining executable case now runs — 169 executed, 0 fail, 0
+  UNRUNNABLE, 1 skip (network-only by design). New `seed_curator.py --self-test` (offline,
+  write-free) and `skill_repair.py --json`; fixtures for the document-validator and diagnose
+  cases.
+
+### Verified
+- Full battery on CPython 3.9, 3.10, 3.11, 3.12, 3.13, 3.14.8 and 3.15.0rc3, each from a fresh
+  checkout with all warnings enabled: every step passes, 0 warnings. On 3.9 the MCP smoke test's
+  only failure is its own stated floor (3.10); the server itself runs on 3.9.
+
+## [1.8.0] — 2026-10-03
+
+### Added
+- **Recorded-run gate for model-facing eval cases (R6, the R4 decision).** Model behaviour is
+  verified by deliberate, recorded model runs; CI checks the record and never calls a model.
+  New `tools/eval_evidence.py` (`--record` grades machine sub-checks with run_evals' own grammar
+  and REQUIRES an accountable judge for prose assertions; `--check` fails CI on stale evidence
+  (case edited after recording), orphaned evidence, a recorded FAIL, or a full-protocol case
+  below its bar; `--summary` counts the debt), `shared/evals/evidence.schema.json`, and the
+  protocol `shared/evals/RECORDED_RUNS.md`. CI also now runs `tools/run_benchmark.py --check`,
+  which existed but had never been wired.
+- **8 full-protocol boundary cases** — one per safety clause added in v1.5.0 (restraint refusal,
+  MTSS-is-not-eligibility, honest UDL gap, prompt-injection-as-data, legal-translation
+  certification refusal, real-IEP escalation) plus two fabricated-standard probes
+  (`3.NF.A.9`, `MA.3.NSO.9.99`).
+
+### Fixed
+- **29 "model-facing" cases were tool tests, now executed in CI (133 -> 159 executed, all
+  pass).** The 17 meeting-classifier cases were filed as model-facing on the claim that no code
+  classifies meetings; `scripts/classify_meeting.py:classify()` does, and passes all 17 (3 after
+  fixing fixture paths left stale by the root restructure). skill-health, teacher-profile,
+  output-validator and skill-repair cases now run against their tools on placeholder-only
+  fixtures. Three feed-curator cases are visible SKIPs until `seed_curator.py` can take a
+  fixture registry. Each conversion was twin-tested (a wrong expectation FAILS).
+- `eval_evidence --record` refused nothing for a case with nothing to grade (an empty check list
+  passes vacuously); it now refuses, and a prose `expect` requires a judge.
+
+### Known gap (stated, not hidden)
+- **44 model-facing cases remain unrecorded** — `python3 tools/eval_evidence.py --summary`
+  prints the count on every run. The recording campaign is the next step; its harness runs each
+  case in a fresh, evals-stripped worktree with a blind judge.
+
 ## [1.7.0] — 2026-09-26
 
 ### Fixed

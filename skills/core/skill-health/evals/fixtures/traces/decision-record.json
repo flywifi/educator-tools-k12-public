@@ -1,0 +1,18 @@
+{
+  "_note": "R6 eval fixture: one saved classifier decision record (placeholders only).",
+  "meeting_type": "annual_review_observation",
+  "execution_trace": [
+    {
+      "event": "connector_blocked",
+      "class": "PERMISSION"
+    },
+    {
+      "event": "degraded_path",
+      "class": "DEGRADED_SUCCESS"
+    }
+  ],
+  "minority_report": {
+    "alternative": "interim_assessment_meeting",
+    "why": "fixture ambiguity"
+  }
+}

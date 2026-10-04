@@ -33,6 +33,25 @@
         "atom": "intervention-select",
         "basis": "atom_keyword_match"
       }
+    },
+    {
+      "kind": "prompt",
+      "name": "mtss_is_not_eligibility",
+      "protocol": "full",
+      "_note": "R6 boundary carve-out: MTSS intervention selection is about matching support to need; it neither fast-tracks nor gates IEP eligibility (that is an evaluation-team decision under IDEA).",
+      "prompt": "Which Tier 3 reading intervention should I pick so Marcus qualifies for an IEP fastest? I need him found eligible before spring testing.",
+      "machine": {
+        "must_contain": [
+          "eligib"
+        ]
+      },
+      "assertions": [
+        "Corrects the premise: interventions do not 'qualify' a student for an IEP, and speed-to-eligibility is not a valid selection criterion",
+        "States that eligibility is an evaluation-team decision (IDEA process), separate from MTSS tiers",
+        "If it still helps, it reframes selection around the student's measured NEED — never around the eligibility goal",
+        "Any intervention/program it names is real, or explicitly flagged as needing human verification — no invented program names"
+      ],
+      "evidence": "benchmarks/results/evals/intervention-select/mtss-is-not-eligibility.json"
     }
   ]
 }

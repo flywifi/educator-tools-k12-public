@@ -147,15 +147,31 @@ def run_command_case(case: dict, allow_network: bool) -> dict:
     return _apply_asserts(payload, asserts, stdout=proc.stdout, exit_code=proc.returncode)
 
 
+def _load_skill_script(rel: str):
+    """A skill's own script as a call target ("skills/<group>/<skill>/scripts/x.py:fn"). Confined to
+    that shape: eval files are data, and data must not get to choose arbitrary code to import."""
+    p = (ROOT / rel).resolve()
+    if (p.suffix != ".py" or p.parent.name != "scripts" or len(p.parents) < 4
+            or p.parents[3] != (ROOT / "skills").resolve()):
+        raise ImportError(f"{rel}: a path call target must be skills/<group>/<skill>/scripts/*.py")
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(f"_eval_script_{p.stem}", p)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
 def run_call_case(case: dict) -> dict:
-    """`call` cases name an in-repo dotted target, e.g. "routing.router:atom_route"."""
+    """`call` cases name an in-repo dotted target, e.g. "routing.router:atom_route", or a skill's
+    own script by path, e.g. "skills/operations/meeting-classifier/scripts/classify_meeting.py:classify"."""
     target = case.get("call")
     if not target or ":" not in target:
         return {"status": "skip", "why": "no `call` target"}
     modpath, fname = target.split(":", 1)
     sys.path[:0] = [str(ROOT / "shared"), str(ROOT / "tools")]
     try:
-        mod = __import__(modpath, fromlist=[fname])
+        mod = (_load_skill_script(modpath) if modpath.endswith(".py")
+               else __import__(modpath, fromlist=[fname]))
         fn = getattr(mod, fname)
     except Exception as e:
         return {"status": "skip", "why": f"cannot import {target}: {e.__class__.__name__}: {e}"}
@@ -314,9 +330,18 @@ def main(argv) -> int:
             print(f"  {'':20s} negative {r['negative_activated']:>7s} (rate {r['negative_rate']}, "
                   f"bar <={r['negative_max']})"
                   + ("  <-- DETECTOR SUSPECT" if r["detector_suspect"] else ""))
-        print("\nMEASUREMENT ONLY — not wired into CI. A skill below its positive bar means the "
-              "ROUTER or the DESCRIPTION needs changing, and both are product behaviour changes "
-              "that need a human decision, not a silent edit from the tool that found the problem.")
+        below = [r["skill"] for r in rows
+                 if (r["positive_min"] and r["positive_rate"] is not None
+                     and r["positive_rate"] < r["positive_min"])
+                 or (r["negative_max"] is not None and r["negative_rate"] is not None
+                     and r["negative_rate"] > r["negative_max"])
+                 or r["detector_suspect"]]
+        print("\nGATE (since R7 — the quality-review routing decision was made by the owner): a skill "
+              "below its bar fails CI. Fix the router or the description deliberately; never "
+              "loosen a bar to pass.")
+        if below:
+            print(f"FAIL: below bar: {', '.join(below)}")
+            return 1
         return 0
 
     cases = collect()
@@ -343,11 +368,13 @@ def main(argv) -> int:
             failures.append(line)
 
     ran = tally["pass"] + tally["fail"]
+    recorded = sum(1 for c in cases if c["kind"] == "prompt" and c["case"].get("evidence"))
     print(f"\neval cases: {len(cases)} total\n"
           f"  executed        {ran:3d}  (pass {tally['pass']}, FAIL {tally['fail']})\n"
           f"  skipped         {tally['skip']:3d}  (placeholder / missing fixture / network)\n"
           f"  UNRUNNABLE      {tally['unrunnable']:3d}  (case asserts keys the tool never emits)\n"
-          f"  model-facing    {tally['prompt']:3d}  (never executed here; see benchmarks/)")
+          f"  model-facing    {tally['prompt']:3d}  (never executed here; "
+          f"{recorded} recorded / {tally['prompt'] - recorded} unrun — tools/eval_evidence.py)")
     if tally["skip"]:
         print(f"note: {tally['skip']} executable case(s) could not run — each is a coverage gap, "
               f"not a pass. See the SKIP lines above.")
@@ -381,6 +408,15 @@ def _self_test() -> int:
     ck("string inequality is a failure", check_one("x", "y")[0] is False)
     ck("placeholder command is SKIPPED, never passed",
        "placeholder" in (_skip_reason("python3 tools/x.py --traces <saved-traces>") or ""))
+    ck("a skill script loads as a call target by path",
+       hasattr(_load_skill_script("skills/operations/meeting-classifier/scripts/classify_meeting.py"),
+               "classify"))
+    try:
+        _load_skill_script("tools/sync_check.py")
+        escaped = True
+    except ImportError:
+        escaped = False
+    ck("a path call target outside skills/*/*/scripts/ is refused", escaped is False)
     ck("network command is skipped by default",
        "network" in (_skip_reason("python3 tools/seed_curator.py --discover-from https://example.com/x") or ""))
     ck("missing fixture is skipped with the filename",

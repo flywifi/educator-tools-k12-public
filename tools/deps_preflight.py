@@ -112,7 +112,7 @@ def _venv_python(venv: Path) -> Path:
 
 def _dist_name(spec: str) -> str:
     import re
-    return re.split(r"[<>=!~;\[\s]", spec, 1)[0].strip().lower()
+    return re.split(r"[<>=!~;\[\s]", spec, maxsplit=1)[0].strip().lower()
 
 
 def _capability_venv(cap: dict | None) -> Path:
@@ -489,6 +489,12 @@ def _print_install(rep: dict) -> None:
 
 def main(argv=None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
+
+    # -h/--help must print and exit. Unrecognised flags fall through to the default action, which
+    # BUILDS the venv and downloads packages + Chromium — not what anyone asking for help expects.
+    if "-h" in args or "--help" in args:
+        print(__doc__)
+        return 0
 
     # --python-path [capability]: print the managed-venv interpreter (built or not) — the "exact
     # spot" a GUI launch or a Claude Desktop MCP `command` can point at. An isolated capability

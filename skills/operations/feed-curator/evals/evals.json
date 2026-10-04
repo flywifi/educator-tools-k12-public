@@ -20,15 +20,20 @@
       }
     },
     {
-      "kind": "prompt",
       "name": "safe_404_removal_is_logged_and_revertible",
-      "_note": "A confirmed removed_404 feed auto-applies a remove with mode:auto; --revert restores it.",
+      "kind": "command",
+      "command": "python3 tools/seed_curator.py --self-test",
       "assert": {
-        "auto_applies": "removed_404 -> remove",
-        "log_entry_mode": "auto",
-        "revertible": true,
-        "log_file": "ledger/feeds-change-log.json"
-      }
+        "removed_404.applied": [
+          "remove"
+        ],
+        "removed_404.log_mode": "auto",
+        "removed_404.removed_from_catalog": true,
+        "removed_404.revert_status": "reverted",
+        "removed_404.restored": true,
+        "removed_404.live_log_untouched": true
+      },
+      "_note": "Executable since R6 via seed_curator --self-test: offline and write-free (temp audit log, in-memory catalogs; the live catalog and ledger are never touched). It exercises the real validate/propose/apply/revert functions and reports OBSERVED values, asserted here. A confirmed removed_404 auto-applies a remove logged with mode:auto; --revert restores it. Offline cannot observe a 404, so the self-test feeds the proposal build_proposal emits for one."
     },
     {
       "kind": "command",
@@ -40,13 +45,16 @@
       }
     },
     {
-      "kind": "prompt",
       "name": "mislabeled_feed_flagged_not_auto_relabeled",
-      "_note": "A feed with bad authority / missing purpose appears in label_issues but relabel needs approval.",
+      "kind": "command",
+      "command": "python3 tools/seed_curator.py --self-test",
       "assert": {
-        "label_issues_nonempty_for": "mislabeled",
-        "relabel_requires": "--apply-proposal --approve"
-      }
+        "mislabeled.label_issues": 3,
+        "mislabeled.relabel_safe_repair.0": false,
+        "mislabeled.auto_applied": [],
+        "mislabeled.authority_after_auto": "official-ish"
+      },
+      "_note": "Executable since R6 via seed_curator --self-test: offline and write-free (temp audit log, in-memory catalogs; the live catalog and ledger are never touched). It exercises the real validate/propose/apply/revert functions and reports OBSERVED values, asserted here. A feed with bad authority / tier / missing purpose is flagged in label_issues; relabel is a proposal (safe_repair false) and an auto run changes nothing."
     },
     {
       "kind": "command",
@@ -59,13 +67,16 @@
       }
     },
     {
-      "kind": "prompt",
       "name": "monarch_private_school_labeled_secondary",
-      "_note": "Monarch Learning Academy (Orlando FL private PK-8) enters as authority:secondary, scope:school — never treated as a canonical source.",
+      "kind": "command",
+      "command": "python3 tools/seed_curator.py --self-test",
       "assert": {
-        "authority": "secondary",
-        "never": "canonical_change"
-      }
+        "monarch.present": true,
+        "monarch.authority": "secondary",
+        "monarch.scope": "school",
+        "monarch.canonical_promotion_flagged": true
+      },
+      "_note": "Executable since R6 via seed_curator --self-test: offline and write-free (temp audit log, in-memory catalogs; the live catalog and ledger are never touched). It exercises the real validate/propose/apply/revert functions and reports OBSERVED values, asserted here. Reads the LIVE catalog: Monarch Learning Academy (private PK-8) is authority:secondary, scope:school, and promoting it to the canonical tier is flagged — only a primary authority confirms a canonical change."
     }
   ]
 }

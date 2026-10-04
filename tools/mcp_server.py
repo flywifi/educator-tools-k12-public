@@ -74,7 +74,12 @@ def _ensure_index() -> None:
         if offline_index.source_files():
             print("[tos-tools] offline index absent — building once from committed sources…",
                   file=sys.stderr)
-            offline_index.build()
+            # build() reports on stdout (it is also a CLI) — and stdout is the wire. On a fresh
+            # install this is the FIRST thing the server does, so its report would be the first
+            # line the client reads. Every diagnostic goes to stderr; this one included.
+            import contextlib
+            with contextlib.redirect_stdout(sys.stderr):
+                offline_index.build()
             print("[tos-tools] index built.", file=sys.stderr)
     except Exception as exc:  # startup must never kill the transport — tools degrade honestly
         print(f"[tos-tools] index build failed ({exc.__class__.__name__}: {exc}); lookups "
@@ -327,6 +332,26 @@ def self_test() -> int:
         ck("a client that vanishes mid-write ends the loop cleanly (rc 0, no traceback)", rc == 0)
     finally:
         globals()["_ensure_index"] = real_ensure
+
+    # First start on a fresh install builds the index. Whatever build() prints must not reach
+    # stdout (found by the R6 Python-matrix run: "Built canonical-sources/index/offline.db ..."
+    # was the first line on the wire of every fresh plugin install).
+    class _AbsentDB:
+        def exists(self):
+            return False
+    real_db, real_build, real_src = _oi.DB, _oi.build, _oi.source_files
+    _oi.DB, _oi.build = _AbsentDB(), lambda: print("Built offline.db — 1 rows")
+    _oi.source_files = lambda: ["fixture"]
+    wire, diag = io.StringIO(), io.StringIO()
+    real_out, real_err = sys.stdout, sys.stderr
+    sys.stdout, sys.stderr = wire, diag
+    try:
+        real_ensure()
+    finally:
+        sys.stdout, sys.stderr = real_out, real_err
+        _oi.DB, _oi.build, _oi.source_files = real_db, real_build, real_src
+    ck("first-start index build writes NOTHING to stdout (its report goes to stderr)",
+       wire.getvalue() == "" and "Built offline.db" in diag.getvalue())
 
     cfg_out = io.StringIO()
     real = sys.stdout

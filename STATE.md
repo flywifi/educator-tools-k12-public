@@ -4,6 +4,22 @@
 Update at every phase boundary and after each skill ships. Recovery package = the charters + Quality
 Gates 001–100 + `TOS_ECOSYSTEM_BUILD_OUTLINE.md` + this file.
 
+## 2026-10-03 — R7: safety boundaries verified by recorded runs; review routing (v1.9.0)
+- **Recorded:** 8/44 model-facing cases — all 8 safety-boundary cases at full protocol (3 runs
+  each, blind-judged, second judge on 2/8): **24/24 pass**. Finding S2 (a test contradicting its
+  skill) fixed and disclosed. Open: 36 legacy single cases, recorded opportunistically.
+- **Routing:** review requests -> quality-review (owner decision); trigger evals are a CI gate.
+- **Python:** floor 3.10, recommended in the install guide; verified on 3.9-3.15 (v1.8.1).
+
+## 2026-10-03 — R6 item 1: the model-facing evals get a recorded-run gate (v1.8.0)
+- **Shipped:** `tools/eval_evidence.py` + `shared/evals/RECORDED_RUNS.md`; CI gates the evidence
+  record (stale / orphan / FAIL / protocol bar) and never calls a model.
+- **Survey finding:** 29 of 73 "model-facing" cases tested deterministic tools — now CI-executed
+  (159 executed, 0 fail). The 44 left are genuinely model behaviour.
+- **Open:** 0 / 44 recorded. Next: the recording campaign (8 full-protocol boundary cases first,
+  3 runs each + second-judge sampling). 3 feed-curator cases need a fixture-registry parameter on
+  `tools/seed_curator.py`; 2 skill-repair cases remain UNRUNNABLE (need a `--json` mode).
+
 ## Context-First expansion (RFC-F001 V2) — F1–F6 shipped
 A six-phase build (plan: approved RFC-F001 V2) adding currency, a school/program index, a per-teacher SOP
 skill, a gated staff directory, always-on web crawl, and a light context spine — stdlib-first, gated,
@@ -256,7 +272,7 @@ readiness score here as "saturated by design" when it was reporting a real bug.
 **65 model-facing cases remain unexecuted**, including every refusal case for the nine skills that
 received boundary language in v1.5.0. And quality-review's trigger evals fail their own bar (1 of 10
 positives route to it, against ≥0.8): the keyword router scores the artifact noun above the review
-verb. Measured and recorded, deliberately not fixed — that is a product behaviour change.
+verb. Measured and recorded, deliberately not fixed — that is a product behaviour change. **[closed 2026-10-03 (R7): the owner decided review requests go to quality-review — routing.json `review_intent`; 15/15 positives, 0/13 negatives, now a CI gate.]**
 
 ## 2026-08-16 — false claims corrected, and the guards that could not see them (round 3)
 

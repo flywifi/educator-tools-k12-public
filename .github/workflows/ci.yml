@@ -100,6 +100,17 @@ jobs:
         run: python3 tools/run_evals.py --self-test
       - name: Run the executable eval cases (command + call kinds)
         run: python3 tools/run_evals.py --run
+      - name: Trigger-eval routing gate (positives route in, negatives stay out)
+        run: python3 tools/run_evals.py --triggers
+
+      # R6: kind-prompt cases are verified by DELIBERATE recorded model runs (the R4 decision);
+      # CI checks the RECORD and never calls a model. Stale/orphan/FAIL/protocol gates below.
+      - name: Eval-evidence self-test (record/grade/check round trip; every gate proven failable)
+        run: python3 tools/eval_evidence.py --self-test
+      - name: Eval-evidence gate (recorded model runs; unrun counted as visible debt)
+        run: python3 tools/eval_evidence.py --check
+      - name: Benchmark record check (every scored row backed by evidence on disk)
+        run: python3 tools/run_benchmark.py --check
       - name: Atom contract (declared Output vs atom-io.schema.json)
         run: python3 tools/atom_contract.py
 
@@ -152,6 +163,7 @@ jobs:
       - name: MCP hosted-leg self-test (installs the SDK; in-memory Client round-trip)
         run: |
           pip install -r tools/requirements-mcp.txt
+          python3 tools/eval_evidence.py --check   # jsonschema present here: evidence files validate against evidence.schema.json
           python3 tools/mcp_http_server.py --self-test
           python3 tools/build_teacher_pack.py --self-test   # jsonschema present here: packs validate against the vendored agent-plugins schemas
           python3 tools/mcp_smoke.py --hosted
