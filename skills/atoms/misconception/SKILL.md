@@ -1,6 +1,6 @@
 ---
 name: misconception
-description: "Return the most common student misconceptions for a specific topic, grade, and subject. Use this when a teacher says 'what do students get wrong about fractions?' or when lesson-planner or assessment-designer needs to proactively address misconceptions in activities or distractors. Do NOT use for generating content — just returns a misconception list. Do NOT use for diagnosing an individual student's misunderstanding."
+description: "List common student misconceptions for a topic and grade. Do NOT use to diagnose one student or to write content."
 ---
 
 # misconception

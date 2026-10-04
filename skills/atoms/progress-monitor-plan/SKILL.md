@@ -1,6 +1,6 @@
 ---
 name: progress-monitor-plan
-description: "Create ONE progress-monitoring schedule and probe plan for an IEP goal or MTSS intervention. Use this atom when special-education-support or intervention-mtss needs a measurement plan. Do NOT use for generating the goals themselves (use iep-goal)."
+description: "Create ONE progress-monitoring schedule for an IEP goal or MTSS intervention. Do NOT use to write the goal (use iep-goal)."
 ---
 
 # progress-monitor-plan

@@ -1,6 +1,6 @@
 ---
 name: parent-comm
-description: "Draft ONE parent or guardian communication (email, note, or text-message summary) for a specific purpose. Use this when a teacher says 'write me a parent email about the upcoming unit' or 'draft a note home about behavior'. Do NOT use for IEP-related parent communications — use special-education-support. Do NOT use for formal legal notices. Do NOT include real student names or data — placeholders only."
+description: "Draft ONE parent note or email for a specific purpose, placeholders only. Do NOT use for IEP communications (use special-education-support) or legal notices."
 ---
 
 # parent-comm

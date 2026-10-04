@@ -1,6 +1,6 @@
 ---
 name: safe-apply
-description: "Separate a change proposal into mechanical (safe to auto-apply) and judgment (needs human review) items based on categorization rules. Use this atom when feed-curator, skill-repair, standards-updater, or any approval workflow needs to split changes by safety level. Do NOT use for actually applying changes — this atom classifies only. Do NOT use for content generation."
+description: "Sort a change proposal into safe mechanical items and items needing human judgment. Do NOT use to apply the changes."
 ---
 
 # safe-apply

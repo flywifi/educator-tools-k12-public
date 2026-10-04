@@ -1,6 +1,6 @@
 ---
 name: activity-generate
-description: "Generate exactly ONE learning activity for a given objective, grade, and subject. Use this atom when a teacher says 'give me an activity for this objective' or when lesson-planner needs to generate activities one at a time. Do NOT use for generating a full lesson plan — use lesson-planner. Do NOT use for assessment questions — use assessment-item. Call this atom once per activity needed."
+description: "Generate ONE learning activity for an objective, grade, and subject. Do NOT use for a full lesson (use lesson-planner) or quiz items (use assessment-item)."
 ---
 
 # activity-generate

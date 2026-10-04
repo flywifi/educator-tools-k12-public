@@ -1,6 +1,6 @@
 ---
 name: graphic-organizer
-description: "Select and scaffold ONE graphic organizer (Frayer model, T-chart, Venn diagram, concept map, etc.) for a given activity or objective. Use this atom when lesson-planner needs a visual thinking tool. Do NOT use for generating the content that fills the organizer."
+description: "Choose and scaffold ONE graphic organizer (Frayer, T-chart, Venn, concept map). Do NOT use to write the content that fills it."
 ---
 
 # graphic-organizer

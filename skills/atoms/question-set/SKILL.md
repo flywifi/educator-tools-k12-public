@@ -1,6 +1,6 @@
 ---
 name: question-set
-description: "Generate a set of discussion or text-dependent questions at a target cognitive rigor level. Use this atom when lesson-planner needs questions for guided discussion, Socratic seminar, or close reading. Do NOT use for assessment items (use assessment-item)."
+description: "Write discussion or text-dependent questions at a target rigor (Socratic, close reading). Do NOT use for assessment items (use assessment-item)."
 ---
 
 # question-set

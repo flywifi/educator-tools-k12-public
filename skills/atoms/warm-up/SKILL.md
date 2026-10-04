@@ -1,6 +1,6 @@
 ---
 name: warm-up
-description: "Generate ONE bell-ringer or do-now warm-up activity aligned to a standard or objective. Use this atom when lesson-planner needs an opening activity. Do NOT use for full lesson planning — that is lesson-planner. Do NOT use for assessment items."
+description: "Write ONE bell-ringer or do-now warm-up for an objective. Do NOT use for full lessons (use lesson-planner) or assessment items."
 ---
 
 # warm-up

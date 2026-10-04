@@ -1,6 +1,6 @@
 ---
 name: meeting-agenda
-description: "Create ONE meeting agenda from a stated purpose and attendee list. Use this atom when school-administration or meeting-classifier needs a structured agenda. Do NOT use for meeting minutes (use meeting-minutes)."
+description: "Create ONE meeting agenda from a purpose and attendee list. Do NOT use for minutes (use meeting-minutes)."
 ---
 
 # meeting-agenda

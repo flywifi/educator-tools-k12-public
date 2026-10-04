@@ -1,6 +1,6 @@
 ---
 name: meeting-classify
-description: "Classify a meeting from available evidence (email subject/body, sender role, attendees, calendar event, prior thread) and return the meeting type, intent, and confidence. Use this atom when meeting-classifier or teacher-core needs to determine what kind of meeting is being discussed BEFORE routing or attaching advisories. Do NOT use for meeting prep, agenda creation, or minutes — those are separate atoms/skills."
+description: "Classify a meeting's type and intent from its evidence (email, invite, attendees). Do NOT use for agendas (use meeting-agenda) or minutes (use meeting-minutes)."
 ---
 
 # meeting-classify

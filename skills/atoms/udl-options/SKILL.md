@@ -1,6 +1,6 @@
 ---
 name: udl-options
-description: "Suggest Universal Design for Learning (UDL) checkpoint options for a barrier or activity. Use this atom when differentiate or lesson-planner needs UDL-aligned accommodations for a specific learning barrier. References CAST UDL Guidelines 3.0. Do NOT use for IEP accommodations (use accommodation-match)."
+description: "Suggest UDL checkpoint options (CAST 3.0) for a learning barrier. Do NOT use for IEP accommodations (use accommodation-match)."
 ---
 
 # udl-options

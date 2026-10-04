@@ -1,6 +1,6 @@
 ---
 name: quality-check
-description: "Run ONE specific quality gate check on a draft artifact and return pass/fail + a corrective action. Use this when a workflow needs to validate a specific dimension (standard alignment, measurable objectives, reading level, differentiation coverage, etc.) before finalizing an artifact. Do NOT use for a full quality audit — use quality-review for that. Do NOT use on final published artifacts — this is a pre-release check."
+description: "Run ONE quality gate check on a draft and return pass/fail with a fix. Do NOT use for a full review (use quality-review)."
 ---
 
 # quality-check

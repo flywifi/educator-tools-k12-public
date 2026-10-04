@@ -1,6 +1,6 @@
 ---
 name: report-card-comment
-description: "Draft ONE standards-based report card comment for a student using placeholder performance data. Use this atom when family-communication or school-administration needs a single report-card narrative. Do NOT use with real student data — placeholders only. Do NOT use for IEP progress reports (use iep-goal)."
+description: "Draft ONE standards-based report card comment from placeholder data. Do NOT use with real student data or for IEP progress reports (use iep-goal)."
 ---
 
 # report-card-comment

@@ -1,6 +1,6 @@
 ---
 name: reading-level
-description: "Estimate the reading level of a text snippet and return a grade-band label + Lexile estimate. Use this atom when a workflow needs to check whether a passage, question, or artifact draft is appropriate for the target students BEFORE generating differentiated versions. Do NOT use for full document analysis — this atom takes a single passage (( 500 words). Do NOT use for student data analysis or grading."
+description: "Estimate a passage's grade band and Lexile. Do NOT use for whole documents or student data."
 ---
 
 # reading-level

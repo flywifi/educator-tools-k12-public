@@ -1,6 +1,6 @@
 ---
 name: behavior-strategy
-description: "Suggest ONE function-based behavior support strategy for a documented behavior concern. Use this atom when intervention-mtss or special-education-support needs a BIP component. Do NOT use for crisis intervention or restraint/seclusion guidance."
+description: "Suggest ONE function-based behavior support strategy (a BIP component) for a documented concern. Do NOT use for crisis intervention or restraint/seclusion guidance."
 ---
 
 # behavior-strategy

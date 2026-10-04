@@ -1,6 +1,6 @@
 ---
 name: assessment-item
-description: "Generate exactly ONE assessment item (question + answer key) for a given objective and item type. Use this when a teacher says 'write me a question for this standard' or when assessment-designer needs items one at a time. Do NOT use for generating a full assessment — use assessment-designer. Do NOT use for rubrics — use a separate rubric atom or assessment-designer."
+description: "Write ONE assessment question with its answer for an objective. Do NOT use for a full quiz or test (use assessment-designer) or rubrics (use rubric-build)."
 ---
 
 # assessment-item

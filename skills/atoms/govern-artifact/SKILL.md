@@ -1,6 +1,6 @@
 ---
 name: govern-artifact
-description: "Attach governance metadata (provenance, lineage, confidence, evidence) to any artifact. Use this atom when document-intelligence, output-validator, or any skill needs to stamp an artifact with its origin, processing chain, and confidence level. Do NOT use for quality gating — that is quality-check. Do NOT use for content generation."
+description: "Stamp an artifact with provenance, lineage, and confidence metadata. Do NOT use for quality gating (use quality-check) or content."
 ---
 
 # govern-artifact

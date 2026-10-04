@@ -1,6 +1,6 @@
 ---
 name: referral-draft
-description: "Draft ONE referral (MTSS, evaluation, counselor, or outside agency) with required fields. Use this atom when intervention-mtss or special-education-support needs a referral template filled with placeholder data. Do NOT use with real student data."
+description: "Draft ONE referral (MTSS, evaluation, counselor) with required fields, placeholders only. Do NOT use with real student data."
 ---
 
 # referral-draft
