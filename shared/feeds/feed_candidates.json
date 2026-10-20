@@ -46,6 +46,13 @@
       "tier": "news_teacher_student", "scope": "school", "grade_band": "PK-8", "subject": null,
       "cadence_days": 14, "purpose": "Monarch Learning Academy (private PK-8 Christian, College Park/Orlando FL) school news/calendar",
       "discover_from": "https://www.monarchlearningacademy.com/",
-      "_hint": "FACTS/ParentsWeb site; likely no RSS — check for an .ics/iCal calendar export instead"}
+      "_hint": "FACTS/ParentsWeb site; likely no RSS — check for an .ics/iCal calendar export instead"},
+
+    {"id": "edsecledger", "url": "https://edsecledger.com/rss.xml",
+      "label": "EdSecLedger — education sector security intelligence", "category": "news", "authority": "secondary",
+      "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": null,
+      "cadence_days": 7, "purpose": "education-sector data-security intelligence: breach analyses for districts, colleges and EdTech vendors (organization, data elements exposed, date), regulatory and enforcement updates, threat notes",
+      "discover_from": "https://edsecledger.com/",
+      "_hint": "native RSS 2.0, categories as <category> tags; HTTP 200 with 56 items (8 Jan–14 Oct 2026) from a teacher PC on 2026-10-19; verify_feeds.py --url passed on 2026-10-20 (latest item 14 Oct 2026). Not yet promoted to feeds.json"}
   ]
 }
