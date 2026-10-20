@@ -1,10 +1,16 @@
 # R8 — build the per-OS `tos-tools` launcher (so a teacher installs nothing) and the one .mcpb that
 # carries all of them. PyInstaller cannot cross-compile, so each OS builds on its own runner.
 # Runs on demand and on version tags; artifacts attach to the GitHub Release for that tag.
+# A manual run with `release` set cuts that release from the chosen branch (it must equal v + VERSION).
 name: frozen-build
 
 on:
   workflow_dispatch:
+    inputs:
+      release:
+        description: "Release tag to create/attach (must equal v + VERSION); leave empty to only build"
+        required: false
+        default: ""
   push:
     tags: ["v*"]          # path filters are not evaluated for tag pushes — releases always build
     branches: ["**"]
@@ -106,12 +112,22 @@ jobs:
         with:
           name: tos-tools-mcpb
           path: dist/tos-tools.mcpb
-      - name: Attach to the release (tags only)
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Attach to the release (tags, or a manual run with `release` set)
+        if: startsWith(github.ref, 'refs/tags/v') || inputs.release != ''
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.release || github.ref_name }}
         run: |
-          gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1 || \
-            gh release create "${GITHUB_REF_NAME}" --verify-tag --title "${GITHUB_REF_NAME}" \
-              --notes "Teacher Operating System ${GITHUB_REF_NAME}. tos-tools.mcpb runs the verified local tools on Windows, macOS and Linux with nothing to install."
-          gh release upload "${GITHUB_REF_NAME}" dist/tos-tools.mcpb --clobber
+          want="v$(tr -d '[:space:]' < VERSION)"
+          if [ "${TAG}" != "${want}" ]; then
+            echo "::error::release ${TAG} does not match VERSION (${want})"; exit 1
+          fi
+          notes="Teacher Operating System ${TAG}. tos-tools.mcpb runs the verified local tools on Windows, macOS and Linux with nothing to install."
+          if ! gh release view "${TAG}" >/dev/null 2>&1; then
+            if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+              gh release create "${TAG}" --verify-tag --title "${TAG}" --notes "${notes}"
+            else
+              gh release create "${TAG}" --target "${GITHUB_SHA}" --title "${TAG}" --notes "${notes}"
+            fi
+          fi
+          gh release upload "${TAG}" dist/tos-tools.mcpb --clobber
