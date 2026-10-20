@@ -58,3 +58,5 @@ HARVEST_HANDOFF.md
 
 # cpalms_verify overlay write locks — runtime only, never committed
 shared/standards/resources/florida/data/overlays/.*.cpalms.lock
+# Claude Code unpacks plugin .mcpb bundles here when a plugin loads from a local folder (R8)
+.mcpb-cache/

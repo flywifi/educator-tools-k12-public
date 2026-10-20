@@ -99,7 +99,12 @@ def _find_root(start: Path) -> Path:
 
 
 ROOT = _find_root(__file__)
-VENV_DIR = ROOT / ".harvest-venv"   # shared with field_harvest.py — one isolated env for the pipeline
+# shared with field_harvest.py — one isolated env for the pipeline. $TOS_VENV moves it out of the
+# install folder (R8): a Claude Code plugin lives in a per-VERSION folder, so an env inside it would
+# be lost on every update. The setup script points it at ~/.tos/venv, which the compiled launcher
+# (tools/frozen/tos_launcher.py) looks for first — installing the local tools then upgrades the
+# running level automatically.
+VENV_DIR = Path(os.environ["TOS_VENV"]).expanduser() if os.environ.get("TOS_VENV") else ROOT / ".harvest-venv"
 STAMP = VENV_DIR / ".deps-stamp"
 
 
@@ -125,7 +130,7 @@ def _capability_venv(cap: dict | None) -> Path:
     hosted MCP leg could not import MCPServer at all. `"isolated": true` in dependencies.json opts
     a capability out of that shared fate."""
     if cap and cap.get("isolated"):
-        return ROOT / f".harvest-venv-{cap['id']}"
+        return VENV_DIR.parent / f"{VENV_DIR.name}-{cap['id']}"
     return VENV_DIR
 
 

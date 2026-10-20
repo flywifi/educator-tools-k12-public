@@ -64,8 +64,13 @@ def check_launchers() -> None:
 
     plugin = ROOT / ".claude-plugin" / "plugin.json"
     if plugin.exists():
-        pcmd = json.loads(plugin.read_text(encoding="utf-8")) \
-            .get("mcpServers", {}).get("tos-tools", {}).get("command", "")
+        servers = json.loads(plugin.read_text(encoding="utf-8")).get("mcpServers", {})
+        if isinstance(servers, str) and servers.endswith((".mcpb", ".dxt")):
+            # R8: the plugin runs the compiled bundle — nothing for the teacher to have on PATH.
+            ck(True, f"plugin.json (Door 1) runs the compiled bundle {servers.rsplit('/', 1)[-1]} "
+                     f"— no Python needed on this machine")
+            return
+        pcmd = (servers.get("tos-tools", {}) if isinstance(servers, dict) else {}).get("command", "")
         found = bool(shutil.which(pcmd))
         ck(found or os.name != "nt",
            f"plugin.json (Door 1) launches {pcmd!r} — present on this machine" if found else
@@ -129,7 +134,8 @@ def check_stdio() -> None:
     ck(len(parsed) == 3, f"the server answered all {len(frames)} frames",
        f"got {len(parsed)}; stderr tail: {proc.stderr.strip()[-200:]}")
     if len(parsed) == 3:
-        ck(len(parsed[1].get("result", {}).get("tools", [])) == 8, "8 tools advertised")
+        ck(len(parsed[1].get("result", {}).get("tools", [])) == 9,
+           "9 tools advertised (8 shared + local_capabilities)")
         body = json.loads(parsed[2]["result"]["content"][0]["text"])
         ck(body.get("faithful") is False,
            "a real tool call returned a real verdict (misquote detected)")

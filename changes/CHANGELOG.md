@@ -5,6 +5,39 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+## [1.10.0] — 2026-10-04
+
+### Added
+- **TOS's local tools start on any computer, with nothing to install (R8).** A small compiled
+  launcher (`tools/frozen/tos_launcher.py`, built per OS by `tools/build_frozen.py` with
+  PyInstaller, one-folder) carries its own Python and runs the plugin's real server. Before, the
+  verified tools needed Python 3.10+, which most teacher computers don't have (Windows ships none;
+  macOS has 3.9) — and they failed silently, so Claude answered without the made-up-code check.
+  Tested with an empty PATH (no Python, Node or uv): real server, all tools, fabricated code
+  rejected; in Claude Code the plugin's tool server shows Connected with only `sh` and `git`.
+- **The offline ladder.** The launcher starts on the most capable runtime it finds — the private
+  local-tools env (`~/.tos/venv`), a system Python 3.10+, else its own — so installing Python
+  makes TOS do more offline automatically. New tool `local_capabilities` tells a teacher (at the
+  moment it matters) what works offline on their computer and the one step that adds more;
+  `setup/tos_setup.py` is the single opt-in installer (asks first; "no" installs nothing); the
+  setup wizard offers it once. The AI model itself still needs the internet.
+- `.github/workflows/frozen-build.yml`: builds Linux, Windows and one universal2 macOS launcher,
+  checks each with an empty PATH, packs one `tos-tools.mcpb` for every OS (platform overrides),
+  attests build provenance, attaches it to the release. The plugin runs that bundle.
+
+### Fixed
+- `capabilities.report()` marked the deferred advanced-OCR capability "ready" on every machine
+  (an empty check list passed); it now reports deferred/unknown and is never offered.
+- `mac_audit.py` and `mcp_smoke.py` crashed on the bundle form of `mcpServers`.
+- `deps_preflight.py` honors `$TOS_VENV`, so the local-tools env survives plugin updates.
+
+### Notes
+- Release order for this and every later version: tag the release PR head, let the workflow attach
+  `tos-tools.mcpb`, then merge — the plugin names that version's bundle.
+- ChatGPT desktop/Codex and Antigravity stay on Python (vendor launch constraints, recorded in
+  the platform matrix). Real Mac/Windows behavior (Gatekeeper/SmartScreen) is UNTESTED-live until
+  the on-device check.
+
 ## [1.9.1] — 2026-10-04
 
 ### Changed

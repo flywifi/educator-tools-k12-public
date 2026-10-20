@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-10-03 | owner: claude-maintainer -->
+<!-- last_reviewed: 2026-10-04 | owner: claude-maintainer -->
 # TOS on Claude — pick your door
 
 Three ways in, depending on how you use Claude. None needs any technical skill.
@@ -13,10 +13,19 @@ Three ways in, depending on how you use Claude. None needs any technical skill.
 This is the full experience: TOS runs with a complete copy of its verified Florida
 data on your computer.
 
-**One-time check — Python 3.10 or newer.** The verified-data tools run on Python. Open
-Terminal and type `python3 --version`. If it says 3.10 or higher, you're set. If it says
-3.9 (the version built into macOS) or says it isn't found, install a current Python first:
-on a Mac, `brew install python` (or the installer from python.org), then reopen Claude.
+**Nothing else to install.** TOS's verified tools — standards search and the check that catches
+made-up standard codes — run on your own computer automatically.
+
+**Want TOS to do more without the internet?** (optional, recommended)
+
+| Level | You install | Works on your computer, offline |
+|---|---|---|
+| 0 — out of the box | nothing | standards and school lookups, the made-up-code check |
+| 1 — more offline | Python 3.10+ (free; Windows: no admin rights needed), then say *"set me up to work offline"* | + reading scanned documents, transcribing audio, converting files, meaning-based search |
+| 2 — fully offline | coming later | + the writing itself, with a model on your computer |
+
+The AI (Claude) itself always needs the internet; the levels are about everything around it.
+Get Python from [python.org/downloads](https://www.python.org/downloads/) (Mac: or `brew install python`).
 
 Type three things, in order:
 
