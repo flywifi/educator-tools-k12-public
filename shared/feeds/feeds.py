@@ -53,9 +53,11 @@ def _parse_dt(value: str | None) -> datetime | None:
     if not value:
         return None
     try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError:
         return None
+    # The seed probes stamp bare dates ("2026-06-28"); treat those as UTC so they compare with _now().
+    return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
 
 
 # --------------------------------------------------------------------------- catalog
@@ -305,8 +307,12 @@ def fetch_and_store(feed: dict, offline: bool, timeout: int) -> dict:
         result["state"] = "uncertain"
         result["reason"] = "offline — no fetch; existing local items unchanged"
         return result
-    status, body, headers = sc._conditional_get(feed["url"], st.get("etag"),
-                                                 st.get("last_modified"), timeout)
+    # A promoted feed arrives with the verifier's ETag/sha baseline. Sending that on the FIRST
+    # fetch earns a 304 and the teacher never gets the backlog; ask unconditionally until the
+    # local store holds at least one item from this feed.
+    etag, last_mod = (None, None) if not _has_items(feed["id"]) else (st.get("etag"),
+                                                                       st.get("last_modified"))
+    status, body, headers = sc._conditional_get(feed["url"], etag, last_mod, timeout)
     result["status"] = status
     st["last_checked"] = _iso()
     st["last_status"] = status
@@ -362,6 +368,17 @@ def update(catalog: dict, offline: bool = False, timeout: int = 15,
 
 
 # --------------------------------------------------------------------------- digest / query
+def _has_items(feed_id: str) -> bool:
+    if not DB.exists():
+        return False
+    conn = _connect()
+    try:
+        return conn.execute("SELECT 1 FROM feed_items WHERE feed_id=? LIMIT 1",
+                            (feed_id,)).fetchone() is not None
+    finally:
+        conn.close()
+
+
 def new_count() -> int:
     if not DB.exists():
         return 0

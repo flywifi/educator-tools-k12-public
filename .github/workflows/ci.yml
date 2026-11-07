@@ -45,6 +45,9 @@ jobs:
       - name: Overlay integrity self-test (mutation battery — every check must be able to fail)
         run: python3 tools/audit_overlays.py --self-test
 
+      - name: Feed engine self-test (offline; bare-date stamps, first-fetch backlog, parser)
+        run: python3 tools/feeds_update.py --self-test
+
       - name: Overlay integrity audit (re-proof, routing, id-bleed, coverage, manifest identity)
         run: python3 tools/audit_overlays.py
 
