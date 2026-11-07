@@ -1,8 +1,8 @@
 {
-  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. PROVENANCE (updated 2026-08-16): the build environment DOES have egress, and every entry was fetched once with tools/verify_feeds.py on that date. 2 of 14 yielded a parseable feed and are verified:true with a proof_latest_item receipt; the other 12 carry a dated probe_history entry naming what was tried and what came back. The previous note here said none had been confirmed 'in the build environment (egress-restricted)' and described a url_status vocabulary ('unverified_candidate') that no entry actually used — the reason had expired and the description never matched. Promotion still requires a PARSED feed with a proof item; a page that merely answers 200 is never verified.py on an open network before it is trusted. Base domains are real; deep RSS/news paths are best-guess patterns. Nothing is presented as confirmed that was not actually fetched.",
+  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. PROVENANCE (updated 2026-08-16): the build environment DOES have egress, and every entry was fetched once with tools/verify_feeds.py on that date. 2 of 14 yielded a parseable feed and are verified:true with a proof_latest_item receipt; the other 12 carry a dated probe_history entry naming what was tried and what came back. The previous note here said none had been confirmed 'in the build environment (egress-restricted)' and described a url_status vocabulary ('unverified_candidate') that no entry actually used — the reason had expired and the description never matched. Promotion still requires a PARSED feed with a proof item; a page that merely answers 200 is never verified.py on an open network before it is trusted. Base domains are real; deep RSS/news paths are best-guess patterns. Nothing is presented as confirmed that was not actually fetched. PROVENANCE (2026-11-07): edsecledger added after a same-day tools/verify_feeds.py pass (parsed feed + proof item) — 3 of 15 are verified:true. The feed updater itself had been crashing on the bare-date last_checked stamps since 2026-06-28; fixed in shared/feeds/feeds.py the same day, with a CI self-test.",
   "domain": "education-feeds",
-  "version": "0.4.0",
-  "updated": "2026-08-16",
+  "version": "0.5.0",
+  "updated": "2026-11-07",
   "freshness_policy": {
     "stale_age_days": 365,
     "supersession_keywords": [
@@ -793,6 +793,46 @@
             "link": "https://ncte.org/blog/2026/06/100-teachers-study/",
             "date": "Thu, 18 Jun 2026 10:00:17 +0000"
           }
+        }
+      ]
+    },
+    {
+      "id": "edsecledger",
+      "label": "EdSecLedger — education sector security intelligence",
+      "category": "news",
+      "authority": "secondary",
+      "tier": "news_teacher_student",
+      "purpose": "education-sector data-security intelligence: breach analyses for districts, colleges and EdTech vendors (organization, data elements exposed, date), regulatory and enforcement updates, threat notes",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "national",
+      "cadence_days": 7,
+      "url": "https://edsecledger.com/rss.xml",
+      "type": "feed",
+      "parser": "rss",
+      "verified": true,
+      "discover_from": "https://edsecledger.com/",
+      "proof_latest_item": {
+        "title": "Yu Ming Charter School Data Breach Analysis",
+        "link": "https://edsecledger.com/article/yu-ming-charter-school-breach-analysis",
+        "date": "Thu, 05 Nov 2026 18:41:56 GMT"
+      },
+      "state": {
+        "etag": "\"21ec2047cb614a209fd576fe5b90caa8\"",
+        "last_modified": null,
+        "content_sha256": "3153c684828b7b0fe4b047e5bb1e95ec5b7212e2d47378576ba4a4c7b645f795",
+        "last_checked": null,
+        "last_status": 200
+      },
+      "note": "Supplied by Matt 2026-10-19 (relayed by the Creator OS PC session); TOS only — not for the GRC engine. Independent, single-maintainer site (its About page); its Terms allow linking and brief quotes with attribution and forbid bulk download or republishing its compilations — so: read only the RSS it publishes, by conditional GET on the 7-day cadence; keep items in the local gitignored store; never export this feed in a feeds_publish.py snapshot. Verified 2026-11-07 by tools/verify_feeds.py: RSS 2.0, 66 items, 8 Jan–5 Nov 2026.",
+      "url_status": "feed_confirmed",
+      "last_checked": "2026-11-07",
+      "probe_history": [
+        {
+          "checked": "2026-11-07",
+          "by": "tools/verify_feeds.py",
+          "result": "parsed feed",
+          "finding": "RSS 2.0 at the declared URL; 66 items; latest 2026-11-05 (proof_latest_item)"
         }
       ]
     }
