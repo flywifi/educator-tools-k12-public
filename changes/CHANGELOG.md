@@ -5,6 +5,28 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 
 ## [Unreleased]
 
+### Added
+- **EdSecLedger joins the live feed catalog** (`shared/feeds/feeds.json`): education-sector breach
+  analyses, FERPA/COPPA/CISA updates and threat notes for K-12 (`https://edsecledger.com/rss.xml`,
+  tier `news_teacher_student`, authority `secondary` — discovery, never confirmation). Verified the
+  same day by `tools/verify_feeds.py`; logged as `fc-0001` in `ledger/feeds-change-log.json`
+  (revertible). Its Terms allow linking and brief quotes only, so the entry's note says: never export
+  this feed in a `feeds_publish.py` snapshot.
+- `tools/feeds_update.py --self-test`: offline proof of the feed engine (bare-date stamps, the
+  first-fetch backlog rule, the parser, the off-by-default vendor layer). CI runs it.
+
+### Changed
+- A feed's **first** fetch is unconditional until the local store holds an item from it. A feed
+  promoted from the verifier carries the verifier's ETag; sending it on the first fetch earned a
+  304 and the teacher never received the backlog (pre-test: 0 items; now 66).
+
+### Fixed
+- `tools/feeds_update.py --status` / `--update` crashed on the live catalog
+  (`TypeError: can't subtract offset-naive and offset-aware datetimes`): the seed probes stamp
+  bare dates in `state.last_checked`, and `due_feeds` subtracted them from an aware `now()`.
+  Naive stamps are now read as UTC — the fix `tools/source_currency.py` already had. Nothing in CI
+  exercised the engine, so this had failed silently for every teacher since 2026-06-28.
+
 ## [1.10.0] — 2026-10-04
 
 ### Added

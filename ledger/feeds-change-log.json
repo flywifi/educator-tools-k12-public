@@ -1,5 +1,56 @@
 {
   "version": "0.1.0",
   "_comment": "Append-only audit trail of feed-catalog changes (auto-applied safe repairs + approved edits). Each entry records before/after + reason + source + mode (auto|approved) and is reversible via tools/seed_curator.py --revert <id>. Mirrors ledger/rollback-log.json. Seeded empty.",
-  "entries": []
+  "entries": [
+    {
+      "id": "fc-0001",
+      "ts": "2026-11-07T17:53:31Z",
+      "feed_id": "edsecledger",
+      "action": "add",
+      "before": null,
+      "after": {
+        "id": "edsecledger",
+        "label": "EdSecLedger \u2014 education sector security intelligence",
+        "category": "news",
+        "authority": "secondary",
+        "tier": "news_teacher_student",
+        "purpose": "education-sector data-security intelligence: breach analyses for districts, colleges and EdTech vendors (organization, data elements exposed, date), regulatory and enforcement updates, threat notes",
+        "grade_band": "K-12",
+        "subject": null,
+        "scope": "national",
+        "cadence_days": 7,
+        "url": "https://edsecledger.com/rss.xml",
+        "type": "feed",
+        "parser": "rss",
+        "verified": true,
+        "discover_from": "https://edsecledger.com/",
+        "proof_latest_item": {
+          "title": "Yu Ming Charter School Data Breach Analysis",
+          "link": "https://edsecledger.com/article/yu-ming-charter-school-breach-analysis",
+          "date": "Thu, 05 Nov 2026 18:41:56 GMT"
+        },
+        "state": {
+          "etag": "\"21ec2047cb614a209fd576fe5b90caa8\"",
+          "last_modified": null,
+          "content_sha256": "3153c684828b7b0fe4b047e5bb1e95ec5b7212e2d47378576ba4a4c7b645f795",
+          "last_checked": null,
+          "last_status": 200
+        },
+        "note": "Supplied by Matt 2026-10-19 (relayed by the Creator OS PC session); TOS only \u2014 not for the GRC engine. Independent, single-maintainer site (its About page); its Terms allow linking and brief quotes with attribution and forbid bulk download or republishing its compilations \u2014 so: read only the RSS it publishes, by conditional GET on the 7-day cadence; keep items in the local gitignored store; never export this feed in a feeds_publish.py snapshot. Verified 2026-11-07 by tools/verify_feeds.py: RSS 2.0, 66 items, 8 Jan\u20135 Nov 2026.",
+        "url_status": "feed_confirmed",
+        "last_checked": "2026-11-07",
+        "probe_history": [
+          {
+            "checked": "2026-11-07",
+            "by": "tools/verify_feeds.py",
+            "result": "parsed feed",
+            "finding": "RSS 2.0 at the declared URL; 66 items; latest 2026-11-05 (proof_latest_item)"
+          }
+        ]
+      },
+      "reason": "promote EdSecLedger from feed_candidates.json to the live catalog: education-sector breach, FERPA/COPPA/CISA and threat news for K-12 (tier news_teacher_student, authority secondary). Verified the same day by tools/verify_feeds.py.",
+      "source": "Matt (owner), 2026-10-19 request via the Creator OS PC session; approved 2026-11-07",
+      "mode": "approved"
+    }
+  ]
 }

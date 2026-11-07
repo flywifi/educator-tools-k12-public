@@ -53,6 +53,6 @@
       "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": null,
       "cadence_days": 7, "purpose": "education-sector data-security intelligence: breach analyses for districts, colleges and EdTech vendors (organization, data elements exposed, date), regulatory and enforcement updates, threat notes",
       "discover_from": "https://edsecledger.com/",
-      "_hint": "native RSS 2.0, categories as <category> tags; HTTP 200 with 56 items (8 Jan–14 Oct 2026) from a teacher PC on 2026-10-19; verify_feeds.py --url passed on 2026-10-20 (latest item 14 Oct 2026). Not yet promoted to feeds.json"}
+      "_hint": "promoted to feeds.json 2026-11-07 after a same-day verify_feeds.py pass (66 items, latest 2026-11-05); kept here like ed-gov-news for provenance"}
   ]
 }
