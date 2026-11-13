@@ -21,6 +21,10 @@
       "note": "edtech/vendor product-update feeds — OFF unless a teacher opts in"
     }
   },
+  "redistribution": {
+    "enforced": false,
+    "note": "When true, tools/feeds_publish.py leaves every feed marked redistribute:false out of the git-shareable snapshot (their publishers allow linking, not republishing). Off since 2026-11-13 by the owner's decision; with it off, the export warns and lists those feeds instead."
+  },
   "feeds": [
     {
       "id": "ed-gov-news",
@@ -834,7 +838,8 @@
           "result": "parsed feed",
           "finding": "RSS 2.0 at the declared URL; 66 items; latest 2026-11-05 (proof_latest_item)"
         }
-      ]
+      ],
+      "redistribute": false
     }
   ]
 }

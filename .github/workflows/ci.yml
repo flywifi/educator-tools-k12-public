@@ -48,6 +48,12 @@ jobs:
       - name: Feed engine self-test (offline; bare-date stamps, first-fetch backlog, parser)
         run: python3 tools/feeds_update.py --self-test
 
+      - name: Feed curator self-test (offline; safe repairs auto, the rest proposals; log + revert)
+        run: python3 tools/seed_curator.py --self-test
+
+      - name: Feed snapshot self-test (redistribution switch, both positions)
+        run: python3 tools/feeds_publish.py --self-test
+
       - name: Overlay integrity audit (re-proof, routing, id-bleed, coverage, manifest identity)
         run: python3 tools/audit_overlays.py
 

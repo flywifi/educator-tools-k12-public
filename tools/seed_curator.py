@@ -181,7 +181,10 @@ def apply_proposal(catalog: dict, proposal: dict, approve: bool, source: str) ->
         before = f.get(item["field"])
         f[item["field"]] = item["new"]
         if item["field"] == "url":
-            f.setdefault("state", {}).update({"etag": None, "last_modified": None, "content_sha256": None})
+            # Everything in `state` describes the OLD url; keep none of it (a stale 404 would follow
+            # the feed to its new address and the new url would not be due until the cadence ran out).
+            f.setdefault("state", {}).update({"etag": None, "last_modified": None, "content_sha256": None,
+                                              "last_status": None, "last_checked": None})
         eid = append_log("repair", item["id"], {item["field"]: before}, {item["field"]: item["new"]},
                          item["reason"], source, mode)
         applied.append({"id": item["id"], "action": "repair", "log": eid})
