@@ -10,7 +10,7 @@
       "before": null,
       "after": {
         "id": "edsecledger",
-        "label": "EdSecLedger \u2014 education sector security intelligence",
+        "label": "EdSecLedger — education sector security intelligence",
         "category": "news",
         "authority": "secondary",
         "tier": "news_teacher_student",
@@ -36,7 +36,7 @@
           "last_checked": null,
           "last_status": 200
         },
-        "note": "Supplied by Matt 2026-10-19 (relayed by the Creator OS PC session); TOS only \u2014 not for the GRC engine. Independent, single-maintainer site (its About page); its Terms allow linking and brief quotes with attribution and forbid bulk download or republishing its compilations \u2014 so: read only the RSS it publishes, by conditional GET on the 7-day cadence; keep items in the local gitignored store; never export this feed in a feeds_publish.py snapshot. Verified 2026-11-07 by tools/verify_feeds.py: RSS 2.0, 66 items, 8 Jan\u20135 Nov 2026.",
+        "note": "Supplied by Matt 2026-10-19 (relayed by the Creator OS PC session); TOS only — not for the GRC engine. Independent, single-maintainer site (its About page); its Terms allow linking and brief quotes with attribution and forbid bulk download or republishing its compilations — so: read only the RSS it publishes, by conditional GET on the 7-day cadence; keep items in the local gitignored store; never export this feed in a feeds_publish.py snapshot. Verified 2026-11-07 by tools/verify_feeds.py: RSS 2.0, 66 items, 8 Jan–5 Nov 2026.",
         "url_status": "feed_confirmed",
         "last_checked": "2026-11-07",
         "probe_history": [
@@ -50,6 +50,329 @@
       },
       "reason": "promote EdSecLedger from feed_candidates.json to the live catalog: education-sector breach, FERPA/COPPA/CISA and threat news for K-12 (tier news_teacher_student, authority secondary). Verified the same day by tools/verify_feeds.py.",
       "source": "Matt (owner), 2026-10-19 request via the Creator OS PC session; approved 2026-11-07",
+      "mode": "approved"
+    },
+    {
+      "id": "fc-0002",
+      "ts": "2026-11-13T14:20:31Z",
+      "feed_id": "cast-udl-news",
+      "action": "remove",
+      "before": {
+        "id": "cast-udl-news",
+        "url": "https://www.cast.org/news",
+        "label": "CAST — UDL news & updates",
+        "category": "standards",
+        "authority": "primary",
+        "tier": "canonical",
+        "purpose": "CAST Universal Design for Learning framework updates and guidance — primary canonical source for UDL (used by udl-options and differentiation atoms)",
+        "grade_band": "K-12",
+        "subject": null,
+        "scope": "national",
+        "type": "page",
+        "parser": "scraped",
+        "cadence_days": 30,
+        "verified": true,
+        "discover_from": "https://www.cast.org",
+        "note": "CAST hosts udlguidelines.cast.org (UDL 3.0). Check for RSS at cast.org/feed or cast.org/rss.xml. Also monitor udlguidelines.cast.org for guideline revisions.",
+        "scrape_config": {
+          "news_list_url": "https://www.cast.org/news",
+          "items": "article, .news-item, .post, .card",
+          "title": "h2, h3, .title, .card-title",
+          "link": "a",
+          "date": "time, .date, .published",
+          "summary": "p, .excerpt, .description",
+          "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
+        },
+        "state": {
+          "etag": null,
+          "last_modified": null,
+          "content_sha256": null,
+          "last_checked": "2026-06-28",
+          "last_status": null,
+          "fetch_prong": null
+        },
+        "url_status": "feed_confirmed",
+        "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace",
+        "last_checked": "2026-08-16",
+        "probe_history": [
+          {
+            "checked": "2026-08-16",
+            "by": "tools/verify_feeds.py",
+            "result": "feed parsed",
+            "resolved_url": "https://www.cast.org/feed/",
+            "proof_latest_item": {
+              "title": "Assistive Technology for Dyslexia: A Student’s Journey to Confidence and Access",
+              "link": "https://www.cast.org/resources/assistive-technology-for-dyslexia-a-students-journey-to-confidence-and-access/",
+              "date": "Tue, 28 Jul 2026 21:02:15 +0000"
+            }
+          }
+        ]
+      },
+      "after": null,
+      "reason": "HTTP 404 on https://www.cast.org/news (2026-11-12, rechecked 2026-11-13); replaced by CAST's RSS feed (add, same id)",
+      "source": "seed_curator --apply-proposal",
+      "mode": "approved"
+    },
+    {
+      "id": "fc-0003",
+      "ts": "2026-11-13T14:20:31Z",
+      "feed_id": "wida-news",
+      "action": "remove",
+      "before": {
+        "id": "wida-news",
+        "url": "https://wida.wisc.edu/news/feed",
+        "label": "WIDA — news",
+        "category": "standards",
+        "authority": "primary",
+        "tier": "canonical",
+        "purpose": "WIDA English-language-development standards + assessment news — primary canonical source for ELD/ELL educators",
+        "grade_band": "K-12",
+        "subject": "ELD",
+        "scope": "national",
+        "type": "feed",
+        "parser": "rss",
+        "cadence_days": 30,
+        "verified": false,
+        "discover_from": "https://wida.wisc.edu/news",
+        "note": "WIDA is hosted on UW-Madison (Drupal/WordPress). UW sites expose feeds at /news/feed — URL is the standard pattern, not yet confirmed by live fetch. If 404 try: https://wida.wisc.edu/rss.xml or fall back to page scraping the /news listing. Verify with tools/verify_feeds.py --url https://wida.wisc.edu/news/feed on open-net machine.",
+        "scrape_config": {
+          "news_list_url": "https://wida.wisc.edu/news",
+          "items": "article, .news-item, .views-row, li.news",
+          "title": "h2, h3, .title, .views-field-title",
+          "link": "a",
+          "date": "time, .date, .views-field-created",
+          "summary": "p, .views-field-body, .field--name-body",
+          "_note": "Fallback scrape config if /news/feed 404s — tune after running tools/make_feed.py --url https://wida.wisc.edu/news"
+        },
+        "state": {
+          "etag": null,
+          "last_modified": null,
+          "content_sha256": null,
+          "last_checked": "2026-06-28",
+          "last_status": null,
+          "fetch_prong": null
+        },
+        "url_status": "dead_confirmed",
+        "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace",
+        "last_checked": "2026-08-16",
+        "probe_history": [
+          {
+            "checked": "2026-08-16",
+            "by": "tools/verify_feeds.py",
+            "result": "no parseable feed",
+            "finding": "candidate fetch failed (fetch failed: HTTPError: HTTP Error 404: Not Found)",
+            "tried": [
+              "https://wida.wisc.edu/feed",
+              "https://wida.wisc.edu/feed/",
+              "https://wida.wisc.edu/rss",
+              "https://wida.wisc.edu/rss.xml",
+              "https://wida.wisc.edu/atom.xml",
+              "https://wida.wisc.edu/feed.xml",
+              "https://wida.wisc.edu/index.xml",
+              "https://wida.wisc.edu/news/feed",
+              "https://wida.wisc.edu/blog/feed",
+              "https://wida.wisc.edu/?feed=rss2"
+            ]
+          }
+        ]
+      },
+      "after": null,
+      "reason": "HTTP 404 (seed_curator --validate 2026-11-12, rechecked 2026-11-13). No replacement feed: RSS autodiscovery and the 10-path probe in tools/verify_feeds.py found none, and tools/make_feed.py's page scraper (with BeautifulSoup) found 0 items on the JS-rendered news page. Parked in shared/feeds/feed_candidates.json.",
+      "source": "seed_curator --apply-proposal",
+      "mode": "approved"
+    },
+    {
+      "id": "fc-0004",
+      "ts": "2026-11-13T14:20:31Z",
+      "feed_id": "ascd-blog",
+      "action": "remove",
+      "before": {
+        "id": "ascd-blog",
+        "url": "https://www.ascd.org/blogs/ascd-blog",
+        "label": "ASCD — curriculum & instruction blog",
+        "category": "instruction",
+        "authority": "secondary",
+        "tier": "news_teacher_student",
+        "purpose": "ASCD (formerly Association for Supervision and Curriculum Development) blog on curriculum design, assessment, and instructional leadership",
+        "grade_band": "K-12",
+        "subject": null,
+        "scope": "national",
+        "type": "page",
+        "parser": "scraped",
+        "cadence_days": 14,
+        "verified": false,
+        "discover_from": "https://www.ascd.org/blogs",
+        "note": "ASCD may have RSS at /feed or /rss. Try autodiscovery first. ASCD publishes Educational Leadership journal and Whole Child frameworks.",
+        "scrape_config": {
+          "news_list_url": "https://www.ascd.org/blogs/ascd-blog",
+          "items": "article, .blog-post, .card, .content-card",
+          "title": "h2, h3, .card-title, .blog-title",
+          "link": "a",
+          "date": "time, .date, .published",
+          "summary": "p, .excerpt, .card-description",
+          "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
+        },
+        "state": {
+          "etag": null,
+          "last_modified": null,
+          "content_sha256": null,
+          "last_checked": "2026-06-28",
+          "last_status": null,
+          "fetch_prong": null
+        },
+        "url_status": "dead_confirmed",
+        "probe_note": "[2026-06-28] live + browser + Wayback ALL failed — genuinely gone; remove/replace",
+        "last_checked": "2026-08-16",
+        "probe_history": [
+          {
+            "checked": "2026-08-16",
+            "by": "tools/verify_feeds.py",
+            "result": "no parseable feed",
+            "finding": "candidate fetch failed (fetch failed: HTTPError: HTTP Error 404: Not Found)",
+            "tried": [
+              "https://www.ascd.org/feed",
+              "https://www.ascd.org/feed/",
+              "https://www.ascd.org/rss",
+              "https://www.ascd.org/rss.xml",
+              "https://www.ascd.org/atom.xml",
+              "https://www.ascd.org/feed.xml",
+              "https://www.ascd.org/index.xml",
+              "https://www.ascd.org/news/feed",
+              "https://www.ascd.org/blog/feed",
+              "https://www.ascd.org/?feed=rss2"
+            ]
+          }
+        ]
+      },
+      "after": null,
+      "reason": "HTTP 404 (seed_curator --validate 2026-11-12, rechecked 2026-11-13). No replacement feed: RSS autodiscovery and the 10-path probe in tools/verify_feeds.py found none, and tools/make_feed.py's page scraper (with BeautifulSoup) found 0 items on the JS-rendered news page. Parked in shared/feeds/feed_candidates.json.",
+      "source": "seed_curator --apply-proposal",
+      "mode": "approved"
+    },
+    {
+      "id": "fc-0005",
+      "ts": "2026-11-13T14:20:31Z",
+      "feed_id": "nctm-news",
+      "action": "remove",
+      "before": {
+        "id": "nctm-news",
+        "url": "https://www.nctm.org/News-and-Calendar/",
+        "label": "NCTM — mathematics education news",
+        "category": "instruction",
+        "authority": "secondary",
+        "tier": "news_teacher_student",
+        "purpose": "National Council of Teachers of Mathematics — standards, research, and practice news for math educators",
+        "grade_band": "K-12",
+        "subject": "Math",
+        "scope": "national",
+        "type": "page",
+        "parser": "scraped",
+        "cadence_days": 14,
+        "verified": false,
+        "discover_from": "https://www.nctm.org",
+        "note": "NCTM publishes Principles to Actions and CCSS-M alignment resources. Check for RSS at nctm.org/feed or nctm.org/rss.",
+        "scrape_config": {
+          "news_list_url": "https://www.nctm.org/News-and-Calendar/",
+          "items": "article, .news-item, .card",
+          "title": "h2, h3, .title",
+          "link": "a",
+          "date": "time, .date",
+          "summary": "p, .excerpt",
+          "_note": "Selectors are best-guess — tune after running tools/make_feed.py --url"
+        },
+        "state": {
+          "etag": null,
+          "last_modified": null,
+          "content_sha256": "1a278a4e1e789a20bd58d0024b3dcdb4abcfe174d88ef6825905145eae965096",
+          "last_checked": "2026-06-28",
+          "last_status": 200,
+          "fetch_prong": "wayback"
+        },
+        "url_status": "archived_only_stale",
+        "probe_note": "[2026-06-28] recovered ONLY from an OLD Wayback snapshot (1361d old) — STALE, likely defunct",
+        "url_moved_to": "http://web.archive.org/web/20221006052809/http://www.nctm.org/News-and-Calendar/",
+        "last_checked": "2026-08-16",
+        "probe_history": [
+          {
+            "checked": "2026-08-16",
+            "by": "tools/verify_feeds.py",
+            "result": "no parseable feed",
+            "finding": "candidate fetch failed (fetch failed: HTTPError: HTTP Error 404: Not Found)",
+            "tried": [
+              "https://www.nctm.org/feed",
+              "https://www.nctm.org/feed/",
+              "https://www.nctm.org/rss",
+              "https://www.nctm.org/rss.xml",
+              "https://www.nctm.org/atom.xml",
+              "https://www.nctm.org/feed.xml",
+              "https://www.nctm.org/index.xml",
+              "https://www.nctm.org/news/feed",
+              "https://www.nctm.org/blog/feed",
+              "https://www.nctm.org/?feed=rss2"
+            ]
+          }
+        ]
+      },
+      "after": null,
+      "reason": "HTTP 404 (seed_curator --validate 2026-11-12, rechecked 2026-11-13). No replacement feed: RSS autodiscovery and the 10-path probe in tools/verify_feeds.py found none, and tools/make_feed.py's page scraper (with BeautifulSoup) found 0 items on the JS-rendered news page. Parked in shared/feeds/feed_candidates.json.",
+      "source": "seed_curator --apply-proposal",
+      "mode": "approved"
+    },
+    {
+      "id": "fc-0006",
+      "ts": "2026-11-13T14:20:31Z",
+      "feed_id": "fl-senate-calendars",
+      "action": "repair",
+      "before": {
+        "url": "https://www.flsenate.gov/PublishedContent/RSS/Calendars.xml"
+      },
+      "after": {
+        "url": "https://www.flsenate.gov/Tracker/RSS/DailyCalendar"
+      },
+      "reason": "Calendars.xml is HTTP 404 (2026-11-12, rechecked 2026-11-13). The Senate's RSS page (/Tracker/RSS) lists DailyCalendar, which returns valid RSS 2.0 with 0 items in the interim period; it stays verified:false until it carries items.",
+      "source": "seed_curator --apply-proposal",
+      "mode": "approved"
+    },
+    {
+      "id": "fc-0007",
+      "ts": "2026-11-13T14:20:31Z",
+      "feed_id": "cast-udl-news",
+      "action": "add",
+      "before": null,
+      "after": {
+        "id": "cast-udl-news",
+        "label": "CAST — UDL news & updates",
+        "category": "standards",
+        "authority": "primary",
+        "tier": "canonical",
+        "purpose": "CAST Universal Design for Learning framework updates and guidance — primary canonical source for UDL (used by udl-options and differentiation atoms)",
+        "grade_band": "K-12",
+        "subject": null,
+        "scope": "national",
+        "cadence_days": 30,
+        "url": "https://www.cast.org/feed/",
+        "type": "feed",
+        "parser": "rss",
+        "verified": true,
+        "discover_from": "https://www.cast.org",
+        "proof_latest_item": {
+          "title": "How Assistive Technology, AAC, and AI Support Student Communication: Laila’s Story",
+          "link": "https://www.cast.org/resources/how-assistive-technology-aac-and-ai-support-student-communication-lailas-story/",
+          "date": "Wed, 23 Sep 2026 15:47:50 +0000"
+        },
+        "state": {
+          "etag": "\"88a31a40f1a3f7f046284ad8686323d2\"",
+          "last_modified": "Wed, 11 Nov 2026 17:44:35 GMT",
+          "content_sha256": "04436efd8f4cccd759ad2ac71b9cac43d252f49a82c2bbfed2ceea61fbad3e4c",
+          "last_checked": null,
+          "last_status": 200
+        },
+        "url_status": "feed_confirmed",
+        "last_checked": "2026-11-13",
+        "note": "Replaces the scraped page https://www.cast.org/news (HTTP 404 on 2026-11-12 and 2026-11-13). CAST publishes a real RSS feed at /feed/; verified 2026-11-13 by tools/verify_feeds.py."
+      },
+      "reason": "CAST's UDL feed at https://www.cast.org/feed/: parsed RSS 2.0, latest item 2026-09-23 (proof_latest_item); same labels as the entry it replaces",
+      "source": "seed_curator --apply-proposal",
       "mode": "approved"
     }
   ]

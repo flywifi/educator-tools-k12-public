@@ -7,11 +7,12 @@
       "cadence_days": 7, "purpose": "federal education policy/funding news affecting teachers and students",
       "discover_from": "https://www.ed.gov/"},
 
-    {"id": "fl-senate-calendars", "url": "https://www.flsenate.gov/PublishedContent/RSS/Calendars.xml",
+    {"id": "fl-senate-calendars", "url": "https://www.flsenate.gov/Tracker/RSS/DailyCalendar",
       "label": "Florida Senate — calendars", "category": "legislation", "authority": "primary",
       "tier": "canonical", "scope": "state", "grade_band": "K-12", "subject": null,
       "cadence_days": 7, "purpose": "Florida Senate calendar/legislation feed (education bills, Title XLVIII)",
-      "discover_from": "https://www.flsenate.gov/Tracker/RSS/"},
+      "discover_from": "https://www.flsenate.gov/Tracker/RSS/",
+      "_hint": "Calendars.xml went 404; feeds.json repointed to DailyCalendar 2026-11-13 (ledger fc-0006). Valid RSS 2.0, empty between sessions — verify again once committee weeks start"},
 
     {"id": "fldoe-news", "url": "https://www.fldoe.org/newsroom/",
       "label": "Florida DOE — newsroom", "category": "program", "authority": "primary",
@@ -27,12 +28,12 @@
       "discover_from": "https://www.cpalms.org/",
       "_hint": "page; autodiscover RSS, else likely a JSON API — provide the feed/API URL directly"},
 
-    {"id": "wida-news", "url": "https://wida.wisc.edu/news/feed",
+    {"id": "wida-news", "url": "https://wida.wisc.edu/news",
       "label": "WIDA — news", "category": "standards", "authority": "primary",
       "tier": "canonical", "scope": "national", "grade_band": "K-12", "subject": "ELD",
       "cadence_days": 30, "purpose": "WIDA English-language-development standards + assessment news",
       "discover_from": "https://wida.wisc.edu/news",
-      "_hint": "Drupal; try /news/feed or /rss.xml"},
+      "_hint": "parked 2026-11-13 from feeds.json (ledger fc-0003): https://wida.wisc.edu/news/feed is HTTP 404; RSS autodiscovery, verify_feeds.py's 10-path probe and make_feed.py's page scraper (with BeautifulSoup) found nothing — the news page renders with JavaScript. Recheck with verify_feeds.py; promote only on a parsed feed with a proof item."},
 
     {"id": "ocps-news", "url": "https://www.ocps.net/departments/media_relations/newsroom",
       "label": "Orange County Public Schools — newsroom", "category": "news", "authority": "primary",
@@ -53,6 +54,20 @@
       "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": null,
       "cadence_days": 7, "purpose": "education-sector data-security intelligence: breach analyses for districts, colleges and EdTech vendors (organization, data elements exposed, date), regulatory and enforcement updates, threat notes",
       "discover_from": "https://edsecledger.com/",
-      "_hint": "promoted to feeds.json 2026-11-07 after a same-day verify_feeds.py pass (66 items, latest 2026-11-05); kept here like ed-gov-news for provenance"}
+      "_hint": "promoted to feeds.json 2026-11-07 after a same-day verify_feeds.py pass (66 items, latest 2026-11-05); kept here like ed-gov-news for provenance"},
+
+    {"id": "ascd-blog", "url": "https://www.ascd.org/blogs",
+      "label": "ASCD — curriculum & instruction blog", "category": "instruction", "authority": "secondary",
+      "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": null,
+      "cadence_days": 14, "purpose": "ASCD (formerly Association for Supervision and Curriculum Development) blog on curriculum design, assessment, and instructional leadership",
+      "discover_from": "https://www.ascd.org/blogs",
+      "_hint": "parked 2026-11-13 from feeds.json (ledger fc-0004): https://www.ascd.org/blogs/ascd-blog is HTTP 404; RSS autodiscovery, verify_feeds.py's 10-path probe and make_feed.py's page scraper (with BeautifulSoup) found nothing — the news page renders with JavaScript. Recheck with verify_feeds.py; promote only on a parsed feed with a proof item."},
+
+    {"id": "nctm-news", "url": "https://www.nctm.org",
+      "label": "NCTM — mathematics education news", "category": "instruction", "authority": "secondary",
+      "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": "Math",
+      "cadence_days": 14, "purpose": "National Council of Teachers of Mathematics — standards, research, and practice news for math educators",
+      "discover_from": "https://www.nctm.org",
+      "_hint": "parked 2026-11-13 from feeds.json (ledger fc-0005): https://www.nctm.org/News-and-Calendar/ is HTTP 404; RSS autodiscovery, verify_feeds.py's 10-path probe and make_feed.py's page scraper (with BeautifulSoup) found nothing — the news page renders with JavaScript. Recheck with verify_feeds.py; promote only on a parsed feed with a proof item."}
   ]
 }

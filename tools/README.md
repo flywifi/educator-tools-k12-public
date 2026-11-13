@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-11-07 | owner: tooling-maintainer -->
+<!-- last_reviewed: 2026-11-13 | owner: tooling-maintainer -->
 # tools/ — build, guard, and data tooling
 
 Stdlib-first Python utilities for building the TOS, guarding it against drift, and maintaining the
@@ -76,6 +76,9 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
 - `make_feed.py`, `feeds_import.py`, `feeds_publish.py`, `feeds_update.py`, `verify_feeds.py`,
   `seed_curator.py`, `seed_probe.py` — content-feed tooling. `feeds_update.py --self-test` proves the
   engine offline (bare-date stamps don't crash it; a promoted feed's first fetch stores the backlog).
+  `feeds_publish.py` honors the catalog's `redistribution` switch: with `enforced` on, feeds marked
+  `redistribute: false` stay out of the snapshot; with it off (the current setting) it exports them
+  and warns. `--self-test` proves both positions; `seed_curator.py --self-test` proves the curator.
 
 ## Also in tools/ (not detailed above)
 `cpalms_verify.py` + `verify_standards.py` + `audit_overlays.py` + `currency_recheck.py`

@@ -14,6 +14,18 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   this feed in a `feeds_publish.py` snapshot.
 - `tools/feeds_update.py --self-test`: offline proof of the feed engine (bare-date stamps, the
   first-fetch backlog rule, the parser, the off-by-default vendor layer). CI runs it.
+- **Redistribution switch for the feed snapshot** (built, not enforced). `shared/feeds/feeds.json`
+  carries `redistribution.enforced` (false) and a per-feed `redistribute: false` (EdSecLedger, whose
+  Terms allow linking, not republishing). `tools/feeds_publish.py` withholds marked feeds only when the
+  switch is on; while it is off, every export and `--stats` names them and their row counts, and the
+  manifest records them as `not_withheld`. `--self-test` proves both positions; CI runs it.
+- **First feed-curator pass** (`tools/seed_curator.py --validate`, one approved proposal, ledger
+  `fc-0002`–`fc-0007`, each revertible): 7 of 15 catalog feeds were broken. CAST's dead news page is
+  replaced by its real RSS feed (`https://www.cast.org/feed/`, verified the same day); the Florida
+  Senate calendar feed is repointed to `/Tracker/RSS/DailyCalendar` (valid, empty between sessions, so
+  still unverified); WIDA, ASCD and NCTM (404, no feed anywhere, JS-rendered pages) leave the live
+  catalog and are parked in `feed_candidates.json` with what was tried. ed.gov and FLDOE refuse every
+  cloud fetch (403) and are left as they are. The catalog is 12 feeds, 3 verified.
 
 ### Changed
 - A feed's **first** fetch is unconditional until the local store holds an item from it. A feed
@@ -21,6 +33,9 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   304 and the teacher never received the backlog (pre-test: 0 items; now 66).
 
 ### Fixed
+- A curator URL repair now clears the old URL's `last_status` and `last_checked` as well as its
+  ETag and hash. Before, a 404 followed the feed to its new address and the new URL was not due
+  until the cadence ran out. `seed_curator.py --self-test` was never run by CI; it is now.
 - `tools/feeds_update.py --status` / `--update` crashed on the live catalog
   (`TypeError: can't subtract offset-naive and offset-aware datetimes`): the seed probes stamp
   bare dates in `state.last_checked`, and `due_feeds` subtracted them from an aware `now()`.
