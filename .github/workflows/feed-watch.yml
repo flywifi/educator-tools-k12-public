@@ -1,0 +1,26 @@
+name: feed-watch
+# Weekly feed-catalog health check — DETECT-ONLY, the platform-watch pattern: a dead feed is never a
+# red build and nothing is changed; the curator's findings land in the run summary. The catalog went
+# from 15 feeds to 8 working ones with nobody looking; this is the look. Manual dispatch on demand.
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "17 14 * * 1"   # Mondays 14:17 UTC — after platform-watch, off the :00 stampede
+permissions:
+  contents: read
+concurrency:
+  group: feed-watch
+  cancel-in-progress: false
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Validate every feed and draft the fixes (reads only; never fails on a dead feed)
+        run: python3 tools/seed_curator.py --watch | tee watch.md
+      - name: Publish summary
+        if: always()
+        run: cat watch.md >> "$GITHUB_STEP_SUMMARY" || true
