@@ -54,6 +54,12 @@ jobs:
       - name: Feed snapshot self-test (redistribution switch, both positions)
         run: python3 tools/feeds_publish.py --self-test
 
+      - name: Feed verifier self-test (staleness gate; offline)
+        run: python3 tools/verify_feeds.py --self-test
+
+      - name: Atom-contract self-test
+        run: python3 tools/atom_contract.py --self-test
+
       - name: Overlay integrity audit (re-proof, routing, id-bleed, coverage, manifest identity)
         run: python3 tools/audit_overlays.py
 

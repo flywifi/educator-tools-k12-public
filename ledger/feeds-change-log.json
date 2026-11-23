@@ -374,6 +374,134 @@
       "reason": "CAST's UDL feed at https://www.cast.org/feed/: parsed RSS 2.0, latest item 2026-09-23 (proof_latest_item); same labels as the entry it replaces",
       "source": "seed_curator --apply-proposal",
       "mode": "approved"
+    },
+    {
+      "id": "fc-0008",
+      "ts": "2026-11-23T14:31:25Z",
+      "feed_id": "fed-register-ed",
+      "action": "add",
+      "before": null,
+      "after": {
+        "id": "fed-register-ed",
+        "label": "Federal Register — U.S. Department of Education documents",
+        "category": "legislation",
+        "authority": "primary",
+        "tier": "canonical",
+        "purpose": "official federal rules, proposed rules and notices from the Department of Education (the reachable primary federal source; ed.gov itself refuses automated fetches)",
+        "grade_band": "K-12",
+        "subject": null,
+        "scope": "national",
+        "cadence_days": 7,
+        "url": "https://www.federalregister.gov/api/v1/documents.rss?conditions[agencies][]=education-department",
+        "type": "feed",
+        "parser": "rss",
+        "verified": true,
+        "discover_from": "https://www.federalregister.gov/agencies/education-department",
+        "proof_latest_item": {
+          "title": "Privacy Act of 1974; Matching Program",
+          "link": "https://www.federalregister.gov/documents/2026/11/19/2026-23616/privacy-act-of-1974-matching-program",
+          "date": "Thu, 19 Nov 2026 05:00:00 GMT"
+        },
+        "state": {
+          "etag": null,
+          "last_modified": null,
+          "content_sha256": "8fafed7922855725c7284d59698646b80eaa020e1c47293ce061cd5f4217bd9e",
+          "last_checked": null,
+          "last_status": 200
+        },
+        "url_status": "feed_confirmed",
+        "last_checked": "2026-11-23",
+        "note": "Added 2026-11-23 (owner-approved). Terms read the same day: U.S. government work (public domain); the Federal Register publishes this RSS for reuse."
+      },
+      "reason": "new source, verified 2026-11-23 by tools/verify_feeds.py (latest item Thu, 19 Nov 2026 05:00:00 GMT); terms read the same day",
+      "source": "seed_curator --apply-proposal",
+      "mode": "approved"
+    },
+    {
+      "id": "fc-0009",
+      "ts": "2026-11-23T14:31:25Z",
+      "feed_id": "colorin-colorado",
+      "action": "add",
+      "before": null,
+      "after": {
+        "id": "colorin-colorado",
+        "label": "Colorín Colorado — English learner instruction",
+        "category": "instruction",
+        "authority": "secondary",
+        "tier": "news_teacher_student",
+        "purpose": "research-based guidance and news on teaching English learners (fills the gap left by WIDA, which publishes no feed)",
+        "grade_band": "K-12",
+        "subject": "ELD",
+        "scope": "national",
+        "cadence_days": 14,
+        "url": "https://www.colorincolorado.org/rss.xml",
+        "type": "feed",
+        "parser": "rss",
+        "verified": true,
+        "discover_from": "https://www.colorincolorado.org/",
+        "proof_latest_item": {
+          "title": "Dr. Elsa Cárdenas-Hagan: Literacy Instruction for ELLs",
+          "link": "https://www.colorincolorado.org/slide/dr-elsa-c%C3%A1rdenas-hagan-literacy-instruction-ells",
+          "date": "Fri, 13 Nov 2026 14:13:34 +0000"
+        },
+        "state": {
+          "etag": "W/\"1795444258-1\"",
+          "last_modified": "Mon, 23 Nov 2026 14:30:58 GMT",
+          "content_sha256": "a49f4fdcedbde81bbb7f18f7e7412704dc4207bd097f406f8084986979fbcb71",
+          "last_checked": null,
+          "last_status": 200
+        },
+        "url_status": "feed_confirmed",
+        "last_checked": "2026-11-23",
+        "note": "Added 2026-11-23 (owner-approved). Terms read the same day: Terms (WETA) forbid copying or republishing but not automated readers; the site links its own RSS; robots.txt allows the feed. Link and headline only, so redistribute:false.",
+        "redistribute": false
+      },
+      "reason": "new source, verified 2026-11-23 by tools/verify_feeds.py (latest item Fri, 13 Nov 2026 14:13:34 +0000); terms read the same day",
+      "source": "seed_curator --apply-proposal",
+      "mode": "approved"
+    },
+    {
+      "id": "fc-0010",
+      "ts": "2026-11-23T14:31:25Z",
+      "feed_id": "chalkbeat",
+      "action": "add",
+      "before": null,
+      "after": {
+        "id": "chalkbeat",
+        "label": "Chalkbeat — education news",
+        "category": "news",
+        "authority": "secondary",
+        "tier": "news_teacher_student",
+        "purpose": "nonprofit K-12 education reporting (policy, schools, teaching)",
+        "grade_band": "K-12",
+        "subject": null,
+        "scope": "national",
+        "cadence_days": 7,
+        "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/",
+        "type": "feed",
+        "parser": "atom",
+        "verified": true,
+        "discover_from": "https://www.chalkbeat.org/",
+        "proof_latest_item": {
+          "title": "Newark school district’s new student recruitment strategy is a reality show",
+          "link": "https://www.chalkbeat.org/newark/2026/11/23/district-betting-reality-tv-will-help-recruit-students/",
+          "date": "2026-11-23T11:00:00+00:00"
+        },
+        "state": {
+          "etag": "W/\"e1805-DptlHPyGpmNZIwR9sgT1AibIE0M\"",
+          "last_modified": "Mon, 23 Nov 2026 14:29:40 GMT",
+          "content_sha256": "00b3b8cc469540c05c2517cac9956215777715c2d2c9df51c33490bc4494370c",
+          "last_checked": null,
+          "last_status": 200
+        },
+        "url_status": "feed_confirmed",
+        "last_checked": "2026-11-23",
+        "note": "Added 2026-11-23 (owner-approved). Terms read the same day: Stories are free to republish under CC BY-NC-ND 4.0 (chalkbeat.org/pages/republishing); robots.txt is open. Marked redistribute:false anyway: the licence needs per-story credit a snapshot does not carry.",
+        "redistribute": false
+      },
+      "reason": "new source, verified 2026-11-23 by tools/verify_feeds.py (latest item 2026-11-23T11:00:00+00:00); terms read the same day",
+      "source": "seed_curator --apply-proposal",
+      "mode": "approved"
     }
   ]
 }

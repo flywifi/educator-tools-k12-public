@@ -884,6 +884,23 @@ def main() -> int:
         if _crash:
             _emit(_crash)
 
+    # 28. Every tool with a --self-test is run by CI. tools/README.md states the rule; nothing
+    # enforced it, and seed_curator.py's self-test sat unrun while 7 of 15 feeds went dead.
+    try:
+        _ci = (ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
+        _flag = '"--self' + '-test"'
+        _needles = ("add_argument(" + _flag, _flag + " in argv", _flag + " in sys.argv")
+        for _p in sorted([*ROOT.glob("tools/*.py"), *ROOT.glob("shared/*/*.py")]):
+            _rel = _p.relative_to(ROOT).as_posix()
+            _src = _p.read_text(encoding="utf-8")
+            if any(n in _src for n in _needles) and f"{_rel} --self-test" not in _ci:
+                _emit(f"  x {_rel} has a --self-test that .github/workflows/ci.yml never runs — "
+                      f"add a step `python3 {_rel} --self-test` (tools/README.md rule).")
+    except Exception as e:
+        _crash = _guard_crashed("self-test coverage guard", e)
+        if _crash:
+            _emit(_crash)
+
     print("TOS ecosystem - drift guard\n")
     if failures:
         print("DRIFT / INVARIANT FAILURES:\n")

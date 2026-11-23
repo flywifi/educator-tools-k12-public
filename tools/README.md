@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-11-13 | owner: tooling-maintainer -->
+<!-- last_reviewed: 2026-11-23 | owner: tooling-maintainer -->
 # tools/ — build, guard, and data tooling
 
 Stdlib-first Python utilities for building the TOS, guarding it against drift, and maintaining the
@@ -79,13 +79,16 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
   `feeds_publish.py` honors the catalog's `redistribution` switch: with `enforced` on, feeds marked
   `redistribute: false` stay out of the snapshot; with it off (the current setting) it exports them
   and warns. `--self-test` proves both positions; `seed_curator.py --self-test` proves the curator.
+  `verify_feeds.py` rejects a feed whose newest item is over `--max-age-days` old (default 365).
+  `seed_curator.py --watch` prints the read-only health report the weekly `feed-watch` workflow posts.
 
 ## Also in tools/ (not detailed above)
 `cpalms_verify.py` + `verify_standards.py` + `audit_overlays.py` + `currency_recheck.py`
 (the standards verification chain — see `docs/RUNBOOK-cpalms.md`), `export_plugin_manifest.py`
 (generated plugin/marketplace metadata; sync_check check 21), `docintel_run.py`,
 `sync_cache.py`, `fetch_diag.py`, `context_demo.py`. Every tool with a `--self-test` is run by
-`.github/workflows/ci.yml`; if you add one, add the step in the same commit.
+`.github/workflows/ci.yml`; if you add one, add the step in the same commit. `sync_check` check 28
+enforces this.
 
 ## Non-negotiable invariants
 - After editing anything under `shared/` or `protocol-layer/`, run `python3 tools/sync_check.py`.

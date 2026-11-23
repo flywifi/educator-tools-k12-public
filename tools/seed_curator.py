@@ -15,6 +15,7 @@ The catalog librarian for shared/feeds/feeds.json. It:
 Usage:
   python3 tools/seed_curator.py --validate [--offline]            # per-feed health + label checks
   python3 tools/seed_curator.py --propose  [--offline]            # dry-run change set (no writes)
+  python3 tools/seed_curator.py --watch                          # Markdown health report (no writes)
   python3 tools/seed_curator.py --discover-from <PAGE_URL>        # RSS autodiscovery candidates
   python3 tools/seed_curator.py --apply                          # auto-apply SAFE repairs (writes + logs)
   python3 tools/seed_curator.py --apply-proposal <FILE> [--approve]  # apply an approved proposal
@@ -61,7 +62,7 @@ def append_log(action: str, feed_id: str, before, after, reason: str, source: st
     log["entries"].append({"id": entry_id, "ts": _now(), "feed_id": feed_id, "action": action,
                            "before": before, "after": after, "reason": reason, "source": source,
                            "mode": mode})
-    LOG.write_text(json.dumps(log, indent=2) + "\n", encoding="utf-8")
+    LOG.write_text(json.dumps(log, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return entry_id
 
 
@@ -238,6 +239,28 @@ def revert_entry(catalog: dict, entry_id: str) -> dict:
     return {"status": "reverted", "id": entry_id, "action": act}
 
 
+def watch_summary(report: dict, proposal: dict) -> str:
+    """A Markdown health report for the weekly feed-watch run: what is broken and what the curator
+    would do about it. Read-only — it never writes the catalog or the change log."""
+    broken = [r for r in report["reports"] if r["state"] in ("removed_404", "unreachable", "uncertain")]
+    lines = ["# Feed catalog health", "",
+             f"{len(report['reports'])} feeds checked {report['generated_at']}: "
+             f"{len(report['reports']) - len(broken)} healthy, {len(broken)} need a look.", ""]
+    if broken:
+        lines += ["| feed | state | why |", "|---|---|---|"]
+        lines += [f"| `{r['id']}` | {r['state']} | {str(r.get('reason', '')).replace('|', '/')} |" for r in broken]
+        lines.append("")
+    todo = [(k, i) for k in ("remove", "repair", "relabel", "add") for i in proposal.get(k, [])]
+    if todo:
+        lines.append("Curator's draft (nothing applied):")
+        lines += [f"- {k} `{i.get('id') or i.get('feed', {}).get('id')}` — {i.get('reason', '')}"
+                  f"{' (safe repair)' if i.get('safe_repair') else ''}" for k, i in todo]
+        lines += ["", "To act: run the feed-curator skill, or `python3 tools/seed_curator.py --propose`."]
+    else:
+        lines.append("No changes proposed.")
+    return "\n".join(lines) + "\n"
+
+
 # --------------------------------------------------------------------------- self-test
 def self_test() -> dict:
     """Offline, write-free proof of the curator's three promises, reported as OBSERVED values (the
@@ -306,6 +329,7 @@ def main(argv) -> int:
     ap = argparse.ArgumentParser(description="Seed curator (L8) — keep the feed catalog accurate")
     ap.add_argument("--validate", action="store_true", help="per-feed health + label checks")
     ap.add_argument("--propose", action="store_true", help="dry-run change set (no writes)")
+    ap.add_argument("--watch", action="store_true", help="Markdown health report for the weekly run (no writes)")
     ap.add_argument("--discover-from", metavar="PAGE_URL", dest="discover_from",
                     help="RSS autodiscovery candidates from an authoritative page")
     ap.add_argument("--apply", action="store_true", help="auto-apply SAFE repairs (writes + logs)")
@@ -331,6 +355,9 @@ def main(argv) -> int:
         print(json.dumps(validate_catalog(catalog, a.offline, a.timeout), indent=2, ensure_ascii=False)); return 0
     if a.discover_from:
         print(json.dumps(discover_from_page(a.discover_from, a.timeout), indent=2, ensure_ascii=False)); return 0
+    if a.watch:
+        rep = validate_catalog(catalog, a.offline, a.timeout)
+        print(watch_summary(rep, build_proposal(catalog, rep))); return 0
     if a.propose:
         rep = validate_catalog(catalog, a.offline, a.timeout)
         print(json.dumps(build_proposal(catalog, rep), indent=2, ensure_ascii=False)); return 0
