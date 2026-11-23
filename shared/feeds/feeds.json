@@ -1,8 +1,8 @@
 {
-  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. PROVENANCE (updated 2026-08-16): the build environment DOES have egress, and every entry was fetched once with tools/verify_feeds.py on that date. 2 of 14 yielded a parseable feed and are verified:true with a proof_latest_item receipt; the other 12 carry a dated probe_history entry naming what was tried and what came back. The previous note here said none had been confirmed 'in the build environment (egress-restricted)' and described a url_status vocabulary ('unverified_candidate') that no entry actually used — the reason had expired and the description never matched. Promotion still requires a PARSED feed with a proof item; a page that merely answers 200 is never verified.py on an open network before it is trusted. Base domains are real; deep RSS/news paths are best-guess patterns. Nothing is presented as confirmed that was not actually fetched. PROVENANCE (2026-11-07): edsecledger added after a same-day tools/verify_feeds.py pass (parsed feed + proof item) — 3 of 15 are verified:true. The feed updater itself had been crashing on the bare-date last_checked stamps since 2026-06-28; fixed in shared/feeds/feeds.py the same day, with a CI self-test. PROVENANCE (2026-11-13): first curator pass (tools/seed_curator.py --validate, then one approved proposal, ledger fc-0002..fc-0007). cast-udl-news moved from the dead page cast.org/news to CAST's RSS feed (verified same day); fl-senate-calendars repointed to the Senate's DailyCalendar feed (valid RSS, empty between sessions, so still verified:false); wida-news, ascd-blog and nctm-news removed (404, no feed found, page scraper found 0 items) and parked in feed_candidates.json. ed-gov-news and fldoe-news refuse cloud fetches (403 on every prong) and are left as they are. 3 of 12 are verified:true.",
+  "_comment": "Education-feeds catalog (L7). A tiered address book of trusted feeds the self-updater harvests. Authoritative-first: only tier 'canonical' / authority 'primary' confirms a change; 'news_teacher_student' is curated secondary news on issues affecting teachers/students; the 'product_updates' layer (edtech/vendor) is OFF by default. Feeds come in two types: type='feed' (native RSS/Atom — fetched and parsed directly) and type='page' (HTML news-listing page without a feed — harvested by the page scraper in shared/feeds/feeds.py scrape_page_items(), driven by the scrape_config block). Page scrapers need site-specific selector tuning; run tools/make_feed.py --url URL to discover selectors. Standards/program changes are advisory + human-verified. PROVENANCE (updated 2026-08-16): the build environment DOES have egress, and every entry was fetched once with tools/verify_feeds.py on that date. 2 of 14 yielded a parseable feed and are verified:true with a proof_latest_item receipt; the other 12 carry a dated probe_history entry naming what was tried and what came back. The previous note here said none had been confirmed 'in the build environment (egress-restricted)' and described a url_status vocabulary ('unverified_candidate') that no entry actually used — the reason had expired and the description never matched. Promotion still requires a PARSED feed with a proof item; a page that merely answers 200 is never verified.py on an open network before it is trusted. Base domains are real; deep RSS/news paths are best-guess patterns. Nothing is presented as confirmed that was not actually fetched. PROVENANCE (2026-11-07): edsecledger added after a same-day tools/verify_feeds.py pass (parsed feed + proof item) — 3 of 15 are verified:true. The feed updater itself had been crashing on the bare-date last_checked stamps since 2026-06-28; fixed in shared/feeds/feeds.py the same day, with a CI self-test. PROVENANCE (2026-11-13): first curator pass (tools/seed_curator.py --validate, then one approved proposal, ledger fc-0002..fc-0007). cast-udl-news moved from the dead page cast.org/news to CAST's RSS feed (verified same day); fl-senate-calendars repointed to the Senate's DailyCalendar feed (valid RSS, empty between sessions, so still verified:false); wida-news, ascd-blog and nctm-news removed (404, no feed found, page scraper found 0 items) and parked in feed_candidates.json. ed-gov-news and fldoe-news refuse cloud fetches (403 on every prong) and are left as they are. 3 of 12 are verified:true. PROVENANCE (2026-11-23): three sources added after a same-day tools/verify_feeds.py pass and a read of each publisher's terms (ledger fc-0008..fc-0010): fed-register-ed (primary, public domain), colorin-colorado and chalkbeat (secondary, redistribute:false). Three more that parse were NOT added because their terms or robots.txt rule out automated or AI-agent use, or could not be read: cult-of-pedagogy, the74, fl-phoenix-edu — see feed_candidates.json. 6 of 15 are verified:true.",
   "domain": "education-feeds",
-  "version": "0.6.0",
-  "updated": "2026-11-13",
+  "version": "0.7.0",
+  "updated": "2026-11-23",
   "freshness_policy": {
     "stale_age_days": 365,
     "supersession_keywords": [
@@ -646,6 +646,104 @@
       "url_status": "feed_confirmed",
       "last_checked": "2026-11-13",
       "note": "Replaces the scraped page https://www.cast.org/news (HTTP 404 on 2026-11-12 and 2026-11-13). CAST publishes a real RSS feed at /feed/; verified 2026-11-13 by tools/verify_feeds.py."
+    },
+    {
+      "id": "fed-register-ed",
+      "label": "Federal Register — U.S. Department of Education documents",
+      "category": "legislation",
+      "authority": "primary",
+      "tier": "canonical",
+      "purpose": "official federal rules, proposed rules and notices from the Department of Education (the reachable primary federal source; ed.gov itself refuses automated fetches)",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "national",
+      "cadence_days": 7,
+      "url": "https://www.federalregister.gov/api/v1/documents.rss?conditions[agencies][]=education-department",
+      "type": "feed",
+      "parser": "rss",
+      "verified": true,
+      "discover_from": "https://www.federalregister.gov/agencies/education-department",
+      "proof_latest_item": {
+        "title": "Privacy Act of 1974; Matching Program",
+        "link": "https://www.federalregister.gov/documents/2026/11/19/2026-23616/privacy-act-of-1974-matching-program",
+        "date": "Thu, 19 Nov 2026 05:00:00 GMT"
+      },
+      "state": {
+        "etag": null,
+        "last_modified": null,
+        "content_sha256": "8fafed7922855725c7284d59698646b80eaa020e1c47293ce061cd5f4217bd9e",
+        "last_checked": null,
+        "last_status": 200
+      },
+      "url_status": "feed_confirmed",
+      "last_checked": "2026-11-23",
+      "note": "Added 2026-11-23 (owner-approved). Terms read the same day: U.S. government work (public domain); the Federal Register publishes this RSS for reuse."
+    },
+    {
+      "id": "colorin-colorado",
+      "label": "Colorín Colorado — English learner instruction",
+      "category": "instruction",
+      "authority": "secondary",
+      "tier": "news_teacher_student",
+      "purpose": "research-based guidance and news on teaching English learners (fills the gap left by WIDA, which publishes no feed)",
+      "grade_band": "K-12",
+      "subject": "ELD",
+      "scope": "national",
+      "cadence_days": 14,
+      "url": "https://www.colorincolorado.org/rss.xml",
+      "type": "feed",
+      "parser": "rss",
+      "verified": true,
+      "discover_from": "https://www.colorincolorado.org/",
+      "proof_latest_item": {
+        "title": "Dr. Elsa Cárdenas-Hagan: Literacy Instruction for ELLs",
+        "link": "https://www.colorincolorado.org/slide/dr-elsa-c%C3%A1rdenas-hagan-literacy-instruction-ells",
+        "date": "Fri, 13 Nov 2026 14:13:34 +0000"
+      },
+      "state": {
+        "etag": "W/\"1795444258-1\"",
+        "last_modified": "Mon, 23 Nov 2026 14:30:58 GMT",
+        "content_sha256": "a49f4fdcedbde81bbb7f18f7e7412704dc4207bd097f406f8084986979fbcb71",
+        "last_checked": null,
+        "last_status": 200
+      },
+      "url_status": "feed_confirmed",
+      "last_checked": "2026-11-23",
+      "note": "Added 2026-11-23 (owner-approved). Terms read the same day: Terms (WETA) forbid copying or republishing but not automated readers; the site links its own RSS; robots.txt allows the feed. Link and headline only, so redistribute:false.",
+      "redistribute": false
+    },
+    {
+      "id": "chalkbeat",
+      "label": "Chalkbeat — education news",
+      "category": "news",
+      "authority": "secondary",
+      "tier": "news_teacher_student",
+      "purpose": "nonprofit K-12 education reporting (policy, schools, teaching)",
+      "grade_band": "K-12",
+      "subject": null,
+      "scope": "national",
+      "cadence_days": 7,
+      "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/",
+      "type": "feed",
+      "parser": "atom",
+      "verified": true,
+      "discover_from": "https://www.chalkbeat.org/",
+      "proof_latest_item": {
+        "title": "Newark school district’s new student recruitment strategy is a reality show",
+        "link": "https://www.chalkbeat.org/newark/2026/11/23/district-betting-reality-tv-will-help-recruit-students/",
+        "date": "2026-11-23T11:00:00+00:00"
+      },
+      "state": {
+        "etag": "W/\"e1805-DptlHPyGpmNZIwR9sgT1AibIE0M\"",
+        "last_modified": "Mon, 23 Nov 2026 14:29:40 GMT",
+        "content_sha256": "00b3b8cc469540c05c2517cac9956215777715c2d2c9df51c33490bc4494370c",
+        "last_checked": null,
+        "last_status": 200
+      },
+      "url_status": "feed_confirmed",
+      "last_checked": "2026-11-23",
+      "note": "Added 2026-11-23 (owner-approved). Terms read the same day: Stories are free to republish under CC BY-NC-ND 4.0 (chalkbeat.org/pages/republishing); robots.txt is open. Marked redistribute:false anyway: the licence needs per-story credit a snapshot does not carry.",
+      "redistribute": false
     }
   ]
 }

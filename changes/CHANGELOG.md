@@ -27,12 +27,28 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   catalog and are parked in `feed_candidates.json` with what was tried. ed.gov and FLDOE refuse every
   cloud fetch (403) and are left as they are. The catalog is 12 feeds, 3 verified.
 
+- **Three new feeds** (ledger `fc-0008`–`fc-0010`, verified and terms read the same day): the Federal
+  Register's Education Department documents (primary; the reachable federal source, since ed.gov
+  refuses automated fetches), Colorín Colorado (English learners) and Chalkbeat (national K-12
+  news). Three others that parse were **not** added — Cult of Pedagogy and The 74 (their terms rule
+  out automated use or building a database) and Florida Phoenix (AI agents disallowed in robots.txt;
+  terms unreadable from a cloud network); each is recorded in `feed_candidates.json` with the reason.
+  The catalog is 15 feeds, 6 verified.
+- **Weekly `feed-watch` workflow**: a read-only health report on the catalog every Monday
+  (`seed_curator.py --watch`), in the run summary; it never changes the catalog or fails on a dead feed.
+- **`sync_check` check 28**: a tool with a `--self-test` that CI never runs is now a failure. It
+  found two (`verify_feeds.py`, `atom_contract.py`); CI runs both.
+- `tools/verify_feeds.py --max-age-days` (default 365): a feed that parses but whose newest item is
+  older than the limit is unverified. The verifier had passed a feed last updated in 2020.
+
 ### Changed
 - A feed's **first** fetch is unconditional until the local store holds an item from it. A feed
   promoted from the verifier carries the verifier's ETag; sending it on the first fetch earned a
   304 and the teacher never received the backlog (pre-test: 0 items; now 66).
 
 ### Fixed
+- Saving the feed catalog or its change log no longer escapes non-ASCII characters or turns
+  `updated` into a timestamp; one curator save used to rewrite every line holding an em dash.
 - A curator URL repair now clears the old URL's `last_status` and `last_checked` as well as its
   ETag and hash. Before, a 404 followed the feed to its new address and the new URL was not due
   until the cadence ran out. `seed_curator.py --self-test` was never run by CI; it is now.

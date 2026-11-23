@@ -68,6 +68,48 @@
       "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": "Math",
       "cadence_days": 14, "purpose": "National Council of Teachers of Mathematics — standards, research, and practice news for math educators",
       "discover_from": "https://www.nctm.org",
-      "_hint": "parked 2026-11-13 from feeds.json (ledger fc-0005): https://www.nctm.org/News-and-Calendar/ is HTTP 404; RSS autodiscovery, verify_feeds.py's 10-path probe and make_feed.py's page scraper (with BeautifulSoup) found nothing — the news page renders with JavaScript. Recheck with verify_feeds.py; promote only on a parsed feed with a proof item."}
+      "_hint": "parked 2026-11-13 from feeds.json (ledger fc-0005): https://www.nctm.org/News-and-Calendar/ is HTTP 404; RSS autodiscovery, verify_feeds.py's 10-path probe and make_feed.py's page scraper (with BeautifulSoup) found nothing — the news page renders with JavaScript. Recheck with verify_feeds.py; promote only on a parsed feed with a proof item."},
+
+    {"id": "fed-register-ed", "url": "https://www.federalregister.gov/api/v1/documents.rss?conditions[agencies][]=education-department",
+      "label": "Federal Register — U.S. Department of Education documents", "category": "legislation", "authority": "primary",
+      "tier": "canonical", "scope": "national", "grade_band": "K-12", "subject": null,
+      "cadence_days": 7, "purpose": "official federal rules, proposed rules and notices from the Department of Education (the reachable primary federal source; ed.gov itself refuses automated fetches)",
+      "discover_from": "https://www.federalregister.gov/agencies/education-department",
+      "_hint": "promoted to feeds.json 2026-11-23 after a same-day verify_feeds.py pass. Terms read 2026-11-23: U.S. government work (public domain); the Federal Register publishes this RSS for reuse."},
+
+    {"id": "colorin-colorado", "url": "https://www.colorincolorado.org/rss.xml",
+      "label": "Colorín Colorado — English learner instruction", "category": "instruction", "authority": "secondary",
+      "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": "ELD",
+      "cadence_days": 14, "purpose": "research-based guidance and news on teaching English learners (fills the gap left by WIDA, which publishes no feed)",
+      "discover_from": "https://www.colorincolorado.org/",
+      "_hint": "promoted to feeds.json 2026-11-23 after a same-day verify_feeds.py pass. Terms read 2026-11-23: Terms (WETA) forbid copying or republishing but not automated readers; the site links its own RSS; robots.txt allows the feed. Link and headline only, so redistribute:false."},
+
+    {"id": "chalkbeat", "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/",
+      "label": "Chalkbeat — education news", "category": "news", "authority": "secondary",
+      "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": null,
+      "cadence_days": 7, "purpose": "nonprofit K-12 education reporting (policy, schools, teaching)",
+      "discover_from": "https://www.chalkbeat.org/",
+      "_hint": "promoted to feeds.json 2026-11-23 after a same-day verify_feeds.py pass. Terms read 2026-11-23: Stories are free to republish under CC BY-NC-ND 4.0 (chalkbeat.org/pages/republishing); robots.txt is open. Marked redistribute:false anyway: the licence needs per-story credit a snapshot does not carry."},
+
+    {"id": "cult-of-pedagogy", "url": "https://www.cultofpedagogy.com/feed/",
+      "label": "Cult of Pedagogy — teaching practice", "category": "instruction", "authority": "secondary",
+      "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": null,
+      "cadence_days": 14, "purpose": "classroom practice, instructional strategies and ed-tech for working teachers",
+      "discover_from": "https://www.cultofpedagogy.com/",
+      "_hint": "NOT added 2026-11-23: its Terms of Use say users agree 'not to access (or attempt to access) any of our Resources through any automated, unethical or unconventional means'. The feed parses, but do not promote without the publisher's permission."},
+
+    {"id": "the74", "url": "https://www.the74million.org/feed/",
+      "label": "The 74 — national education news", "category": "news", "authority": "secondary",
+      "tier": "news_teacher_student", "scope": "national", "grade_band": "K-12", "subject": null,
+      "cadence_days": 7, "purpose": "national K-12 education news and policy reporting",
+      "discover_from": "https://www.the74million.org/",
+      "_hint": "NOT added 2026-11-23: its Terms forbid using the site 'to construct a database of any kind', and robots.txt disallows AI agents by name (ClaudeBot, anthropic-ai, GPTBot, …). The feed parses, but do not promote without the publisher's permission."},
+
+    {"id": "fl-phoenix-edu", "url": "https://floridaphoenix.com/education/feed/",
+      "label": "Florida Phoenix — education", "category": "news", "authority": "secondary",
+      "tier": "news_teacher_student", "scope": "state", "grade_band": "K-12", "subject": null,
+      "cadence_days": 7, "purpose": "Florida education policy and legislature reporting",
+      "discover_from": "https://floridaphoenix.com/education/",
+      "_hint": "NOT added 2026-11-23: robots.txt disallows AI agents by name (ClaudeBot, anthropic-ai, GPTBot, …) and the terms and republishing pages answer 403 from a cloud network, so permission could not be confirmed. Recheck the terms from a home or school network before promoting."}
   ]
 }
