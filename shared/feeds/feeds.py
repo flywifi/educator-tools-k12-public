@@ -68,8 +68,9 @@ def load_catalog() -> dict:
 
 
 def save_catalog(catalog: dict) -> None:
-    catalog["updated"] = _iso()
-    CATALOG.write_text(json.dumps(catalog, indent=2) + "\n", encoding="utf-8")
+    catalog["updated"] = _iso()[:10]   # a date, like every other `updated` in the repo
+    # ensure_ascii=False: the catalog holds em dashes; escaping them rewrote every line on a save.
+    CATALOG.write_text(json.dumps(catalog, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def _layer_enabled(catalog: dict, feed: dict) -> bool:

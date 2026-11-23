@@ -177,6 +177,72 @@ def run(cands: list[dict], timeout: int) -> dict:
             "note": "paste this to the TOS assistant; 'verified' entries drop into shared/feeds/feeds.json"}
 
 
+def _item_age_days(date_str: str, now=None):
+    """Age of a feed item in days, or None when its date cannot be read (RFC 822 or ISO 8601)."""
+    from datetime import datetime, timezone
+    from email.utils import parsedate_to_datetime
+    if not date_str:
+        return None
+    try:
+        dt = parsedate_to_datetime(date_str)
+    except (TypeError, ValueError):
+        try:
+            dt = datetime.fromisoformat(date_str.strip().replace("Z", "+00:00"))
+        except ValueError:
+            return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return ((now or datetime.now(timezone.utc)) - dt).days
+
+
+def apply_staleness(result: dict, max_age_days: int, now=None) -> dict:
+    """A feed that parses but whose newest item is older than max_age_days is not a live source:
+    move it from `verified` to `unverified` with the reason. An unreadable date is kept and noted."""
+    if not max_age_days:
+        return result
+    keep = []
+    for e in result.get("verified", []):
+        age = _item_age_days((e.get("proof_latest_item") or {}).get("date", ""), now)
+        if age is not None and age > max_age_days:
+            result.setdefault("unverified", []).append({
+                "id": e.get("id"), "url": e.get("url"),
+                "reason": f"stale: parses, but the newest item is {age} days old (limit {max_age_days})"})
+        else:
+            if age is None:
+                e["staleness_note"] = "newest item's date could not be read; age not checked"
+            keep.append(e)
+    result["verified"] = keep
+    return result
+
+
+def self_test() -> int:
+    """Offline proof of the staleness gate (no network)."""
+    from datetime import datetime, timezone
+    now = datetime(2026, 11, 13, tzinfo=timezone.utc)
+
+    def mk(fid, date):
+        return {"id": fid, "url": "https://example.com/" + fid, "proof_latest_item": {"date": date}}
+
+    old = "Wed, 01 Jan 2020 00:00:00 +0000"
+    res = apply_staleness({"verified": [mk("fresh-rfc", "Thu, 05 Nov 2026 18:41:56 GMT"),
+                                        mk("fresh-iso", "2026-11-13T04:54:17+00:00"),
+                                        mk("old", old), mk("nodate", "sometime")],
+                           "unverified": []}, 365, now)
+    kept = [e["id"] for e in res["verified"]]
+    off = apply_staleness({"verified": [mk("old", old)]}, 0, now)
+    checks = [("fresh RFC 822 and ISO dates stay verified", "fresh-rfc" in kept and "fresh-iso" in kept, kept),
+              ("a feed whose newest item is years old is not verified",
+               [u["id"] for u in res["unverified"]] == ["old"], [u["reason"] for u in res["unverified"]]),
+              ("an unreadable date is kept and noted",
+               any(e["id"] == "nodate" and "staleness_note" in e for e in res["verified"]), kept),
+              ("max age 0 turns the gate off", len(off["verified"]) == 1, len(off["verified"]))]
+    failures = [c[0] for c in checks if not c[1]]
+    print(json.dumps({"tool": "verify-feeds-self-test",
+                      "checks": [{"check": n, "ok": ok, "observed": o} for n, ok, o in checks],
+                      "failures": failures}, indent=2, ensure_ascii=False))
+    return 1 if failures else 0
+
+
 def main(argv) -> int:
     ap = argparse.ArgumentParser(description="Portable feed verifier/discoverer (run where net is open)")
     ap.add_argument("candidates", nargs="?", help="path to a candidates JSON (list, or {feeds:[...]})")
@@ -185,7 +251,12 @@ def main(argv) -> int:
     ap.add_argument("--tier", default="news_teacher_student")
     ap.add_argument("--authority", default="secondary")
     ap.add_argument("--timeout", type=int, default=20)
+    ap.add_argument("--max-age-days", type=int, default=365,
+                    help="a feed whose newest item is older than this is unverified (0 = no limit)")
+    ap.add_argument("--self-test", action="store_true", help="offline proof of the staleness gate")
     a = ap.parse_args(argv)
+    if a.self_test:
+        return self_test()
 
     if a.url:
         cands = [{"id": a.id, "url": a.url, "tier": a.tier, "authority": a.authority}]
@@ -195,7 +266,7 @@ def main(argv) -> int:
     else:
         ap.print_help()
         return 2
-    print(json.dumps(run(cands, a.timeout), indent=2, ensure_ascii=False))
+    print(json.dumps(apply_staleness(run(cands, a.timeout), a.max_age_days), indent=2, ensure_ascii=False))
     return 0
 
 
