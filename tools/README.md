@@ -42,6 +42,9 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
 - `build_mcpb.py` — stages the one-click Claude Desktop extension bundle (`dist/mcpb-staging/`;
   maintainer runs `mcpb pack` on top).
 
+- `watch_issue.py` — opens, updates or closes the tracking issue for `platform-watch` and
+  `feed-watch`, so a finding notifies a person (`--self-test` uses a stub `gh`).
+
 ## Scaffolding & packaging
 - `new_skill.py` — scaffold a skill from `tools/skill-template/` + copy synced refs.
 - `package_skill.py` — package a skill for distribution.

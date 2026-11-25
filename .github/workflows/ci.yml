@@ -48,6 +48,9 @@ jobs:
       - name: Feed engine self-test (offline; bare-date stamps, first-fetch backlog, parser)
         run: python3 tools/feeds_update.py --self-test
 
+      - name: Watcher tracking-issue self-test (stub gh; create / update / close)
+        run: python3 tools/watch_issue.py --self-test
+
       - name: Feed curator self-test (offline; safe repairs auto, the rest proposals; log + revert)
         run: python3 tools/seed_curator.py --self-test
 

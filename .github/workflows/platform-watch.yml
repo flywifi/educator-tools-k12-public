@@ -8,6 +8,7 @@ on:
     - cron: "41 13 * * 1"   # Mondays 13:41 UTC — off the :00 stampede
 permissions:
   contents: read
+  issues: write          # one tracking issue per watcher (tools/watch_issue.py)
 concurrency:
   group: platform-watch
   cancel-in-progress: false
@@ -24,3 +25,8 @@ jobs:
       - name: Publish summary
         if: always()
         run: cat watch.out >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Open, update or close the tracking issue (a person gets notified)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/watch_issue.py --report watch.out --label platform-watch --title "Vendor platform changes to review" --findings '^(NEW|ERROR)\b'

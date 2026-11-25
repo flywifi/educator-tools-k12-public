@@ -6,6 +6,8 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 ## [Unreleased]
 
 ### Added
+- **Watcher findings reach a person** (`tools/watch_issue.py`): `platform-watch` and `feed-watch` open a
+  tracking issue when they find something, update it on later runs, and close it after a clean run.
 - **Teacher packs are complete and installable** (`tools/build_teacher_pack.py`): each pack now carries
   whole skill folders (scripts, assets, examples) and the shared code those scripts import, never a
   gitignored `*.local.*` file, and its self-test runs every packed script. The Antigravity pack is a
@@ -49,11 +51,16 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   older than the limit is unverified. The verifier had passed a feed last updated in 2020.
 
 ### Changed
+- **Platform matrix refreshed** (2026-11-25): ChatGPT web skills marked unverified until checked on a
+  personal plan; Gemini CLI marked retired for individual accounts; a new Antigravity CLI row; Claude
+  Code's AGENTS.md support noted.
 - A feed's **first** fetch is unconditional until the local store holds an item from it. A feed
   promoted from the verifier carries the verifier's ETag; sending it on the first fetch earned a
   304 and the teacher never received the backlog (pre-test: 0 items; now 66).
 
 ### Fixed
+- **platform-watch read the wrong entry from unsorted feeds** (`tools/platform_watch.py`): it took the
+  first item, so OpenAI's developer feed reported a 2025 page as newest. Items are now sorted by date.
 - **Stale Windows guidance removed** (`implementation/mcp/README.md`, `docs/DEPLOYMENT_SURFACES.md`):
   since v1.10.0 the plugin installs the compiled `tos-tools.mcpb`, so Door 1 works on Windows without
   Python; the hand-registration line stays as a fallback. `tools/mac_audit.py` drops the by-name
