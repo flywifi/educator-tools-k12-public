@@ -6,6 +6,13 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 ## [Unreleased]
 
 ### Added
+- **Teacher packs are complete and installable** (`tools/build_teacher_pack.py`): each pack now carries
+  whole skill folders (scripts, assets, examples) and the shared code those scripts import, never a
+  gitignored `*.local.*` file, and its self-test runs every packed script. The Antigravity pack is a
+  native plugin (`plugin.json`, `mcp_config.json`, a governance rule) validated against Google's schema,
+  replacing the old installer. `--zip` builds the release zips that `frozen-build.yml` attaches and
+  attests, and the workflow publishes a `teacher-packs` branch that the new Codex marketplace
+  (`.agents/plugins/marketplace.json`) installs from. Three skill scripts now find the root by marker.
 - **EdSecLedger joins the live feed catalog** (`shared/feeds/feeds.json`): education-sector breach
   analyses, FERPA/COPPA/CISA updates and threat notes for K-12 (`https://edsecledger.com/rss.xml`,
   tier `news_teacher_student`, authority `secondary` — discovery, never confirmation). Verified the

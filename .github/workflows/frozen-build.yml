@@ -18,6 +18,8 @@ on:
       - "tools/frozen/**"
       - "tools/build_frozen.py"
       - "tools/build_mcpb.py"
+      - "tools/build_teacher_pack.py"
+      - "tools/publish_teacher_packs.sh"
       - "tools/requirements-frozen.txt"
       - "tools/mcp_server.py"
       - "tools/mcp_tooldefs.py"
@@ -105,9 +107,13 @@ jobs:
             --binary darwin=dist/frozen-all/tos-tools-darwin
           npx --yes @anthropic-ai/mcpb@2 validate dist/mcpb-staging/manifest.json
           npx --yes @anthropic-ai/mcpb@2 pack dist/mcpb-staging dist/tos-tools.mcpb
+      - name: Build the ChatGPT, Antigravity and Gem teacher packs (+ release zips)
+        run: python tools/build_teacher_pack.py --zip
       - uses: actions/attest-build-provenance@v2
         with:
-          subject-path: dist/tos-tools.mcpb
+          subject-path: |
+            dist/tos-tools.mcpb
+            dist/teacher-packs/tos-*.zip
       - uses: actions/upload-artifact@v4
         with:
           name: tos-tools-mcpb
@@ -122,7 +128,7 @@ jobs:
           if [ "${TAG}" != "${want}" ]; then
             echo "::error::release ${TAG} does not match VERSION (${want})"; exit 1
           fi
-          notes="Teacher Operating System ${TAG}. tos-tools.mcpb runs the verified local tools on Windows, macOS and Linux with nothing to install."
+          notes="Teacher Operating System ${TAG}. tos-tools.mcpb runs the verified local tools on Windows, macOS and Linux with nothing to install (Claude). tos-chatgpt-plugin.zip is the ChatGPT desktop / Codex plugin, tos-antigravity.zip the Antigravity plugin, tos-gem-pack.zip the browser Gem / Project pack."
           if ! gh release view "${TAG}" >/dev/null 2>&1; then
             if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
               gh release create "${TAG}" --verify-tag --title "${TAG}" --notes "${notes}"
@@ -130,4 +136,10 @@ jobs:
               gh release create "${TAG}" --target "${GITHUB_SHA}" --title "${TAG}" --notes "${notes}"
             fi
           fi
-          gh release upload "${TAG}" dist/tos-tools.mcpb --clobber
+          gh release upload "${TAG}" dist/tos-tools.mcpb dist/teacher-packs/tos-*.zip --clobber
+      - name: Publish the teacher-packs branch (the Codex / ChatGPT marketplace source)
+        if: startsWith(github.ref, 'refs/tags/v') || inputs.release != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.release || github.ref_name }}
+        run: bash tools/publish_teacher_packs.sh "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${TAG}"

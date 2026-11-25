@@ -39,7 +39,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = next((p for p in Path(__file__).resolve().parents if (p / "tools" / "sync_check.py").exists()), Path(__file__).resolve().parents[3])  # repo root by marker (relocation-proof)
+ROOT = next((p for p in Path(__file__).resolve().parents if (p / "VERSION").is_file() and (p / "shared").is_dir()), Path(__file__).resolve().parents[3])  # repo or teacher-pack root by marker (relocation-proof)
 PROFILES = ROOT / "shared" / "context" / "profiles"
 LOCAL = PROFILES / "teacher.local.json"
 EXAMPLE = PROFILES / "teacher.example.json"

@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-11-23 | owner: tooling-maintainer -->
+<!-- last_reviewed: 2026-11-25 | owner: tooling-maintainer -->
 # tools/ — build, guard, and data tooling
 
 Stdlib-first Python utilities for building the TOS, guarding it against drift, and maintaining the
@@ -47,6 +47,9 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
 - `package_skill.py` — package a skill for distribution.
 - `export_reference_pack.py`, `export_chatgpt.py`, `export_openai.py` — platform export bundles.
 - `version.py`, `rollback.py`, `repair_loop.py`, `skill_repair.py` — versioning + repair.
+- `build_teacher_pack.py` (`--zip`), `publish_teacher_packs.sh` — the ChatGPT/Codex plugin, the
+  Antigravity plugin and the Gem pack; the release workflow zips them and publishes the
+  `teacher-packs` branch that `.agents/plugins/marketplace.json` installs from.
 
 ## Reference index & standards data
 - `offline_index.py` — build/query the gitignored offline reference index; `--build` also writes the

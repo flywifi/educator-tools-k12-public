@@ -1,0 +1,22 @@
+{
+  "name": "tos-chatgpt",
+  "interface": {
+    "displayName": "Teacher Operating System (ChatGPT / Codex)"
+  },
+  "plugins": [
+    {
+      "name": "teacher-operating-system",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/flywifi/educator-tools-k12-public.git",
+        "path": "./chatgpt-plugin",
+        "ref": "teacher-packs"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
