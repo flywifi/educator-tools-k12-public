@@ -47,6 +47,12 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   304 and the teacher never received the backlog (pre-test: 0 items; now 66).
 
 ### Fixed
+- **Stale Windows guidance removed** (`implementation/mcp/README.md`, `docs/DEPLOYMENT_SURFACES.md`):
+  since v1.10.0 the plugin installs the compiled `tos-tools.mcpb`, so Door 1 works on Windows without
+  Python; the hand-registration line stays as a fallback. `tools/mac_audit.py` drops the by-name
+  launcher exemption that only existed for the old inline `python3` launcher. The deployment doc no
+  longer says the model-agnostic export is unbuilt (the teacher packs are it), and the student-data
+  policy's local adapter now names every desktop agent, not just Claude (canonical + synced copies).
 - Saving the feed catalog or its change log no longer escapes non-ASCII characters or turns
   `updated` into a timestamp; one curator save used to rewrite every line holding an em dash.
 - A curator URL repair now clears the old URL's `last_status` and `last_checked` as well as its

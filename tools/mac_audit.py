@@ -143,16 +143,9 @@ def _literal_mode(call: ast.Call):
 # platform override.
 JSON_LAUNCHERS = (".mcp.json", ".claude-plugin/plugin.json")
 
-# The one launcher that cannot be fixed from this repo, exempted BY NAME and only while the gap
-# stays documented. The plugin manifest schema has no ${VAR:-default} form and no per-OS command;
-# an unset ${VAR} would be passed through as literal text, which fails worse than "python3". So
-# Door 1 on a Windows box whose Python is python.org's does not start, and the honest response is
-# a documented workaround, not a silent pass. The exemption is conditional: if the workaround text
-# disappears from the doc, this reverts to a finding.
-LAUNCHER_GAP_EXEMPT = {
-    (".claude-plugin/plugin.json", "tos-tools"):
-        ("implementation/mcp/README.md", "claude mcp add --scope user"),
-}
+# No exemptions. plugin.json used to launch `python3` inline, which needed a documented Windows
+# workaround and a by-name exemption here; since v1.10.0 it references the compiled tos-tools.mcpb
+# (per-OS binaries, verified by build_mcpb), so an inline bare interpreter is always a finding.
 
 
 def _launcher_ok(cfg: dict) -> str:
@@ -192,17 +185,6 @@ def _check_json_launchers() -> list[dict]:
         for name, cfg in _inline_servers(doc.get("mcpServers")):
             issue = _launcher_ok(cfg if isinstance(cfg, dict) else {})
             if not issue:
-                continue
-            exempt = LAUNCHER_GAP_EXEMPT.get((rel, name))
-            if exempt:
-                doc_rel, marker = exempt
-                doc_path = ROOT / doc_rel
-                if doc_path.exists() and marker in doc_path.read_text(encoding="utf-8"):
-                    continue                        # platform gap, documented with a workaround
-                out.append({"file": rel, "line": 1, "check": "json-launcher",
-                            "issue": f"mcpServers.{name}: {issue} — this launcher is exempted "
-                                     f"ONLY while {doc_rel} documents the workaround "
-                                     f"({marker!r}); that text is now missing"})
                 continue
             out.append({"file": rel, "line": 1, "check": "json-launcher",
                         "issue": f"mcpServers.{name}: {issue}"})

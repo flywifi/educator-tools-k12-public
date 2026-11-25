@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-10-04 | owner: deployment-maintainer -->
+<!-- last_reviewed: 2026-11-25 | owner: deployment-maintainer -->
 # DEPLOYMENT_SURFACES.md — where the TOS runs (and how data is handled per surface)
 
 > Teacher-friendly version of this: [`implementation/claude/README.md`](../implementation/claude/README.md).
@@ -29,7 +29,8 @@ Three surfaces are supported; the difference is mostly **where student data live
 - Use the Markdown references/policies as system-prompt / project context, and run the **stdlib Python**
   helpers standalone (no Claude/network dependency). Classification, connector degradation/convergence,
   the grade/standards crosswalks, and the student-data policy all work unchanged.
-- A full model-agnostic **export bundle** is an optional follow-up, not built yet.
+- Ready-made packs exist: `tools/build_teacher_pack.py` builds packs for ChatGPT/Codex, Antigravity
+  and Gemini Gems.
 
 ## Invariants across every surface
 - **SIS-first** precedence + **SIS↔local conflict** escalation hold everywhere
@@ -111,7 +112,9 @@ macOS GUI PATH it may not resolve. Now: `.mcp.json` uses `${TOS_PYTHON:-python3}
 `${CLAUDE_PROJECT_DIR:-.}` for the script path (also fixing a cwd-relative argument), and the
 `.mcpb` manifest declares `platform_overrides.win32 → python`. `plugin.json` **cannot** be fixed —
 its schema has neither per-OS commands nor default-valued substitution, and an unresolved
-`${VAR}` would be passed through literally — so Door 1 on Windows stays broken by platform
-design, with a user-scope `claude mcp add` workaround documented in `implementation/mcp/README.md`.
+`${VAR}` would be passed through literally. Resolved in v1.10.0: `plugin.json` now references the
+compiled `tos-tools.mcpb` release asset (per-OS binaries, no Python needed), so Door 1 works on
+Windows; the user-scope `claude mcp add` entry stays documented in `implementation/mcp/README.md`
+as a fallback, and mac_audit's by-name exemption for the old launcher is gone.
 `tools/mac_audit.py` now lints these JSON launchers (check `json-launcher`, consumed by sync_check
 check 19) so a fourth recurrence fails locally and in CI.
