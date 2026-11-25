@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-08-16 | owner: mcp-maintainer -->
+<!-- last_reviewed: 2026-11-25 | owner: mcp-maintainer -->
 # MAINTAINER — the MCP tool surface
 
 ## Purpose
@@ -110,6 +110,41 @@ release.
 Platform-capability claims that cannot be verified from an official page are stated as hedged
 ("if you see it…") with the fallback door named — never asserted. Conflicting official sources
 are recorded as conflicts (see the Plus-gating note), not resolved by preference.
+
+## Other vendors' SDKs (developers only; tested 2026-11-25)
+Teachers never need this. It records what works so a developer wiring TOS into an app does not
+rediscover it.
+- **OpenAI Agents SDK** (https://openai.github.io/openai-agents-python/mcp/) runs the local server
+  unchanged (tested `openai-agents` 0.25.0: 9 tools listed, `verify_standard_codes` answered):
+
+  ```python
+  import sys
+  from agents.mcp import MCPServerStdio
+  server = MCPServerStdio(params={"command": sys.executable, "args": ["tools/mcp_server.py"]},
+                          cache_tools_list=True, client_session_timeout_seconds=60)
+  ```
+- **Gemini API, `google-genai`**: do not hand the MCP session to the SDK's automatic tool
+  conversion. In `google-genai` 3.6.1 it raises on every TOS tool, because each input schema sets
+  `"additionalProperties": false`. Declare the tools yourself with `parameters_json_schema`, which
+  takes full JSON Schema (https://ai.google.dev/gemini-api/docs/function-calling). Tested: 9
+  declarations, and a function-call round trip returned `not_found` for a made-up code.
+
+  ```python
+  from google.genai import types
+  def to_gemini_tool(mcp_tools) -> types.Tool:
+      return types.Tool(function_declarations=[types.FunctionDeclaration(
+          name=t.name, description=t.description or "",
+          parameters_json_schema=getattr(t, "input_schema", None) or getattr(t, "inputSchema", None)
+          or {"type": "object"}) for t in mcp_tools])
+  ```
+- **Hosted routes all need a public server**, which this project does not run (decision: keep
+  `tools/mcp_http_server.py` dormant; a school can self-host it per `deploy/mcp/README.md`).
+  OpenAI's Responses API `mcp` tool takes a `server_url` or a Secure MCP Tunnel
+  (https://developers.openai.com/api/docs/guides/tools-connectors-mcp,
+  https://developers.openai.com/api/docs/guides/secure-mcp-tunnels). Claude's MCP connector takes
+  remote servers only (https://platform.claude.com/docs/en/agents-and-tools/mcp-connector). Gemini's
+  Interactions API takes Streamable HTTP servers only and no `-` in the server name (use
+  `tos_tools`), and Google lists remote MCP as not yet supported on Gemini 3 models.
 
 ## Update checklist
 1. Change the registry → `mcp_tooldefs --self-test` → sync_check (checks 21 and 23 green;

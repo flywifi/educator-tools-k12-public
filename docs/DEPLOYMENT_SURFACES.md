@@ -29,8 +29,9 @@ Three surfaces are supported; the difference is mostly **where student data live
 - Use the Markdown references/policies as system-prompt / project context, and run the **stdlib Python**
   helpers standalone (no Claude/network dependency). Classification, connector degradation/convergence,
   the grade/standards crosswalks, and the student-data policy all work unchanged.
-- Ready-made packs exist: `tools/build_teacher_pack.py` builds packs for ChatGPT/Codex, Antigravity
-  and Gemini Gems.
+- Ready-made packs exist: `tools/build_teacher_pack.py` builds a ChatGPT/Codex plugin, an Antigravity
+  plugin and a Gem pack, attached to each release as zips (`implementation/gpt/web/README.md`,
+  `implementation/gemini/README.md`).
 
 ## Invariants across every surface
 - **SIS-first** precedence + **SIS↔local conflict** escalation hold everywhere

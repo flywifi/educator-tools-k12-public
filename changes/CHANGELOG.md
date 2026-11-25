@@ -6,6 +6,11 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 ## [Unreleased]
 
 ### Added
+- **TOS on Google, documented** (`implementation/gemini/README.md`, replacing an empty placeholder):
+  the Antigravity plugin and the Gem pack, with the Gemini CLI retirement noted. The ChatGPT guide
+  gains the plugin route (desktop app and Codex). `AGENTS.md` now carries the contributor conventions
+  so every coding agent reads them; `CLAUDE.md` imports it. `implementation/mcp/MAINTAINER.md` records
+  what works from the OpenAI Agents SDK and the Gemini API, both tested.
 - **Evidence per vendor** (`tools/eval_evidence.py --arm`): a run on another vendor's model is stored
   beside Claude's (`<case>.<arm>.json`), linked from the case, and reported as a vendor gap if it
   fails, without changing Claude's verdict or blocking CI. `tools/eval_vendor_run.py` runs recorded
@@ -55,6 +60,9 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   older than the limit is unverified. The verifier had passed a feed last updated in 2020.
 
 ### Changed
+- **`teacher-core` description trimmed to under 900 characters** (it was 1,020 of the open
+  standard's 1,024), keeping every trigger. CI now runs the official Agent Skills validator
+  (`skills-ref`, pinned in the new `tools/requirements-ci.txt`) over all 62 skills.
 - **Platform matrix refreshed** (2026-11-25): ChatGPT web skills marked unverified until checked on a
   personal plan; Gemini CLI marked retired for individual accounts; a new Antigravity CLI row; Claude
   Code's AGENTS.md support noted.

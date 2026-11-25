@@ -369,6 +369,36 @@
       "status": "well_known",
       "checked": "2026-11-25",
       "note": "Gemini API base. tools/eval_vendor_run.py posts to /v1beta/models/{model}:generateContent and lists /v1beta/models; only when a maintainer runs it with a key. Overridable by TOS_GEMINI_BASE; the --self-test uses a local stub and never calls it."
+    },
+    {
+      "url": "https://openai.github.io/openai-agents-python/mcp/",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "OpenAI Agents SDK MCP guide (MCPServerStdio). Cited in implementation/mcp/MAINTAINER.md; the snippet there was run against tools/mcp_server.py with openai-agents 0.25.0."
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/function-calling",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "Gemini function calling: parametersJsonSchema takes full JSON Schema; the Remote MCP section requires Streamable HTTP and server names without '-'. Cited in implementation/mcp/MAINTAINER.md."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/tools-connectors-mcp",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "OpenAI Responses API remote MCP tool (server_url). Cited in implementation/mcp/MAINTAINER.md."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/secure-mcp-tunnels",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "OpenAI Secure MCP Tunnels (tunnel_id) for private servers. Cited in implementation/mcp/MAINTAINER.md."
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-connector",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "Claude Messages API MCP connector: remote servers only. Cited in implementation/mcp/MAINTAINER.md."
     }
   ]
 }

@@ -126,6 +126,11 @@ jobs:
       - name: Cross-vendor eval runner self-test (stub OpenAI + Gemini servers; offline)
         run: python3 tools/eval_vendor_run.py --self-test
 
+      - name: Agent Skills format check (the official validator, every skill)
+        run: |
+          python3 -m pip install -r tools/requirements-ci.txt
+          for d in skills/*/*/; do agentskills validate "$d" || exit 1; done
+
       - name: Eval-evidence self-test (record/grade/check round trip; every gate proven failable)
         run: python3 tools/eval_evidence.py --self-test
       - name: Eval-evidence gate (recorded model runs; unrun counted as visible debt)
