@@ -123,6 +123,9 @@ jobs:
 
       # R6: kind-prompt cases are verified by DELIBERATE recorded model runs (the R4 decision);
       # CI checks the RECORD and never calls a model. Stale/orphan/FAIL/protocol gates below.
+      - name: Cross-vendor eval runner self-test (stub OpenAI + Gemini servers; offline)
+        run: python3 tools/eval_vendor_run.py --self-test
+
       - name: Eval-evidence self-test (record/grade/check round trip; every gate proven failable)
         run: python3 tools/eval_evidence.py --self-test
       - name: Eval-evidence gate (recorded model runs; unrun counted as visible debt)

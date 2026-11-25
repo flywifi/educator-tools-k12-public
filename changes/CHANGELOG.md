@@ -6,6 +6,10 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 ## [Unreleased]
 
 ### Added
+- **Evidence per vendor** (`tools/eval_evidence.py --arm`): a run on another vendor's model is stored
+  beside Claude's (`<case>.<arm>.json`), linked from the case, and reported as a vendor gap if it
+  fails, without changing Claude's verdict or blocking CI. `tools/eval_vendor_run.py` runs recorded
+  cases on an OpenAI or Gemini model with a hashed copy of the TOS rules; its self-test is offline.
 - **Watcher findings reach a person** (`tools/watch_issue.py`): `platform-watch` and `feed-watch` open a
   tracking issue when they find something, update it on later runs, and close it after a clean run.
 - **Teacher packs are complete and installable** (`tools/build_teacher_pack.py`): each pack now carries

@@ -69,9 +69,17 @@ def prompt_cases() -> dict:
     return out
 
 
-def _ev_path(case_id: str) -> Path:
+DEFAULT_ARM = "claude-session"   # its files keep the original <case>.json name and `evidence` link
+
+
+def _ev_path(case_id: str, arm: str = DEFAULT_ARM) -> Path:
+    """One evidence file per (case, arm). Another vendor's runs never mix into Claude's verdict:
+    the default arm keeps <case>.json; any other arm writes <case>.<arm>.json, linked from the
+    case's `evidence_arms` map."""
     skill, name = case_id.split("/", 1)
-    return EV_ROOT / skill / f"{_slug(name)}.json"
+    if arm == DEFAULT_ARM:
+        return EV_ROOT / skill / f"{_slug(name)}.json"
+    return EV_ROOT / skill / f"{_slug(name)}.{_slug(arm)}.json"
 
 
 def _first_json(text: str):
@@ -157,9 +165,13 @@ def record(a) -> int:
     if a.second_judge_verdict:
         run["second_judge"] = {"verdict": a.second_judge_verdict, "by": a.second_judge_by,
                                "agrees": a.second_judge_verdict == a.judge_verdict}
-    evp = _ev_path(a.case)
+    evp = _ev_path(a.case, a.arm)
     if evp.exists():
         doc = json.loads(evp.read_text(encoding="utf-8"))
+        if doc.get("arm") != a.arm:
+            print(f"REFUSED: {evp} holds arm {doc.get('arm')!r}, not {a.arm!r} — one file per arm.",
+                  file=sys.stderr)
+            return 2
         if doc["prompt_sha256"] != _sha(case.get("prompt", "") or json.dumps(case.get("input", ""), sort_keys=True)):
             print(f"REFUSED: {evp} was recorded against a DIFFERENT prompt text — the case moved "
                   f"under its evidence. Delete the stale file deliberately, then re-record.",
@@ -170,6 +182,8 @@ def record(a) -> int:
                "prompt_sha256": _sha(case.get("prompt", "") or json.dumps(case.get("input", ""), sort_keys=True)),
                "protocol": a.protocol or case.get("protocol", "single"),
                "arm": a.arm, "model": a.model, "recorded": a.date, "runs": []}
+        if getattr(a, "context", None):
+            doc["context"] = a.context
     doc["runs"].append(run)
     verdicts = {r["judge"]["verdict"] for r in doc["runs"]}
     machine_ok = all(all(r.get("machine", {}).values()) for r in doc["runs"])
@@ -178,11 +192,16 @@ def record(a) -> int:
     evp.parent.mkdir(parents=True, exist_ok=True)
     evp.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     rel = str(evp.relative_to(ROOT))
-    if case.get("evidence") != rel:       # two-way link written by the tool, never by hand
+    linked = (case.get("evidence") if a.arm == DEFAULT_ARM
+              else (case.get("evidence_arms") or {}).get(a.arm))
+    if linked != rel:                     # two-way link written by the tool, never by hand
         d = json.loads(evals_path.read_text(encoding="utf-8"))
         for c in d["evals"]:
             if (c.get("name") or c.get("id")) == a.case.split("/", 1)[1]:
-                c["evidence"] = rel
+                if a.arm == DEFAULT_ARM:
+                    c["evidence"] = rel
+                else:
+                    c.setdefault("evidence_arms", {})[a.arm] = rel
         evals_path.write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     mfail = [k for k, v in machine.items() if not v]
     print(f"recorded {a.case} run #{len(doc['runs'])} -> {rel} · machine "
@@ -193,6 +212,7 @@ def record(a) -> int:
 
 def check(root: Path = ROOT, quiet: bool = False) -> list[str]:
     issues: list[str] = []
+    gaps: list[str] = []          # another arm's recorded FAIL: reported, never a CI block
     try:
         import jsonschema
         schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
@@ -201,49 +221,65 @@ def check(root: Path = ROOT, quiet: bool = False) -> list[str]:
     cases = prompt_cases()
     seen_files = set()
     recorded = unrun = full_cases = second_judged = 0
+    arm_counts: dict[str, list[int]] = {}
     for cid, (case, _p) in sorted(cases.items()):
-        rel = case.get("evidence")
-        if not rel:
+        entries = ([(DEFAULT_ARM, case["evidence"])] if case.get("evidence") else [])
+        entries += sorted((case.get("evidence_arms") or {}).items())
+        if not case.get("evidence"):
             unrun += 1
-            continue
-        evp = ROOT / rel
-        seen_files.add(evp.resolve())
-        if not evp.exists():
-            issues.append(f"  x {cid}: `evidence` names {rel}, which does not exist — a dangling "
-                          f"claim of verification")
-            continue
-        try:
-            doc = json.loads(evp.read_text(encoding="utf-8"))
-        except Exception as e:
-            issues.append(f"  x {rel}: unreadable ({e.__class__.__name__}: {e})")
-            continue
-        if jsonschema:
-            try:
-                jsonschema.validate(doc, schema)
-            except Exception as e:
-                issues.append(f"  x {rel}: schema-invalid — {getattr(e, 'message', e)}")
+        for arm, rel in entries:
+            tag = "" if arm == DEFAULT_ARM else f"[{arm}] "
+            evp = ROOT / rel
+            seen_files.add(evp.resolve())
+            if not evp.exists():
+                issues.append(f"  x {tag}{cid}: evidence names {rel}, which does not exist — a "
+                              f"dangling claim of verification")
                 continue
-        want = _sha(case.get("prompt", "") or json.dumps(case.get("input", ""), sort_keys=True))
-        if doc.get("prompt_sha256") != want:
-            issues.append(f"  x {cid}: evidence is STALE — the case's prompt changed after the "
-                          f"run was recorded. Re-record, or revert the prompt edit.")
-            continue
-        for i, r in enumerate(doc.get("runs", []), 1):
-            bad = [k for k, v in (r.get("machine") or {}).items() if v is False]
-            if bad:
-                issues.append(f"  x {cid} run {i}: machine check(s) FAILED on the recorded "
-                              f"output: {', '.join(bad)}")
-        if doc.get("overall") == "fail":
-            issues.append(f"  x {cid}: recorded verdict is FAIL — a recorded failure blocks "
-                          f"until the skill (or the case) is fixed; see {rel}")
-        if doc.get("protocol") == "full":
-            full_cases += 1
-            if len(doc.get("runs", [])) < MIN_FULL_RUNS:
-                issues.append(f"  x {cid}: protocol `full` requires >={MIN_FULL_RUNS} runs "
+            try:
+                doc = json.loads(evp.read_text(encoding="utf-8"))
+            except Exception as e:
+                issues.append(f"  x {rel}: unreadable ({e.__class__.__name__}: {e})")
+                continue
+            if jsonschema:
+                try:
+                    jsonschema.validate(doc, schema)
+                except Exception as e:
+                    issues.append(f"  x {rel}: schema-invalid — {getattr(e, 'message', e)}")
+                    continue
+            if doc.get("arm") != arm:
+                issues.append(f"  x {rel}: records arm {doc.get('arm')!r} but is linked as {arm!r}")
+                continue
+            want = _sha(case.get("prompt", "") or json.dumps(case.get("input", ""), sort_keys=True))
+            if doc.get("prompt_sha256") != want:
+                issues.append(f"  x {tag}{cid}: evidence is STALE — the case's prompt changed after "
+                              f"the run was recorded. Re-record, or revert the prompt edit.")
+                continue
+            for n, r in enumerate(doc.get("runs", []), 1):
+                bad = [k for k, v in (r.get("machine") or {}).items() if v is False]
+                if bad:
+                    (issues if arm == DEFAULT_ARM else gaps).append(
+                        f"  {'x' if arm == DEFAULT_ARM else '!'} {tag}{cid} run {n}: machine check(s) "
+                        f"FAILED on the recorded output: {', '.join(bad)}")
+            if doc.get("overall") == "fail":
+                if arm == DEFAULT_ARM:
+                    issues.append(f"  x {cid}: recorded verdict is FAIL — a recorded failure blocks "
+                                  f"until the skill (or the case) is fixed; see {rel}")
+                else:
+                    gaps.append(f"  ! {tag}{cid}: VENDOR GAP — this model failed the case; record it "
+                                f"in the platform matrix and the teacher guide; see {rel}")
+            if doc.get("protocol") == "full" and len(doc.get("runs", [])) < MIN_FULL_RUNS:
+                issues.append(f"  x {tag}{cid}: protocol `full` requires >={MIN_FULL_RUNS} runs "
                               f"(benchmarks/README.md), has {len(doc.get('runs', []))}")
-            if any("second_judge" in r for r in doc.get("runs", [])):
-                second_judged += 1
-        recorded += 1
+            if arm == DEFAULT_ARM:
+                if doc.get("protocol") == "full":
+                    full_cases += 1
+                    if any("second_judge" in r for r in doc.get("runs", [])):
+                        second_judged += 1
+                recorded += 1
+            else:
+                c = arm_counts.setdefault(arm, [0, 0])
+                c[0] += 1
+                c[1] += 1 if doc.get("overall") == "fail" else 0
     for f in EV_ROOT.rglob("*.json"):
         if f.resolve() not in seen_files:
             issues.append(f"  x orphan evidence file {f.relative_to(ROOT)} — no prompt case "
@@ -256,7 +292,9 @@ def check(root: Path = ROOT, quiet: bool = False) -> list[str]:
     if not quiet:
         print(f"eval evidence: {recorded} recorded · {unrun} unrun (visible debt, not a pass) · "
               f"{full_cases} full-protocol · second-judge {second_judged}/{full_cases or 1}")
-        for i in issues:
+        for arm, (n, g) in sorted(arm_counts.items()):
+            print(f"  other arm {arm}: {n} recorded · {g} vendor gap(s)")
+        for i in issues + gaps:
             print(i)
     return issues
 
@@ -307,8 +345,8 @@ def self_test() -> int:  # twins live in tests below; every gate must be able to
         out = td / "o.txt"
 
         out.write_text("I cannot help with restraint. Escalate to your administrator.", encoding="utf-8")
-        ns = argparse.Namespace(case="toy/prose", output_file=str(out), arm="test", model="m-1",
-                                date="2026-09-26", protocol=None, judge_verdict="pass",
+        ns = argparse.Namespace(case="toy/prose", output_file=str(out), arm=DEFAULT_ARM, model="m-1",
+                                date="2026-09-26", protocol=None, judge_verdict="pass", context=None,
                                 judge_by="human:tester", judge_notes=None, per_assertion_file=None,
                                 second_judge_verdict="pass", second_judge_by="human:other")
         ck("record: prose case with judge + machine pass", record(ns) == 0)
@@ -342,6 +380,38 @@ def self_test() -> int:  # twins live in tests below; every gate must be able to
         ck("twin: a recorded FAIL verdict reds the check",
            any("recorded verdict is FAIL" in i for i in check(quiet=True)))
         evp.write_text(orig, encoding="utf-8")
+        # per-arm twins: another vendor writes its OWN file, links it, and can't mix into Claude's
+        nsv = argparse.Namespace(**{**vars(ns), "arm": "openai-responses-api", "model": "gpt-x",
+                                    "context": "governance+teacher-core+skill sha256:abc"})
+        record(nsv); record(nsv); record(nsv)
+        varm = _ev_path("toy/prose", "openai-responses-api")
+        linked = json.loads((sk / "evals.json").read_text(encoding="utf-8"))["evals"][0]
+        ck("arm: a second vendor writes <case>.<arm>.json and links it in evidence_arms",
+           varm.exists() and varm.name == "prose.openai-responses-api.json"
+           and linked.get("evidence_arms", {}).get("openai-responses-api", "").endswith(varm.name)
+           and json.loads(evp.read_text(encoding="utf-8"))["arm"] == DEFAULT_ARM)
+        ck("arm: the context field is kept on the arm's file",
+           json.loads(varm.read_text(encoding="utf-8")).get("context", "").startswith("governance+"))
+        ck("arm: a clean second arm keeps the gate green", check(quiet=True) == [])
+        vd = json.loads(varm.read_text(encoding="utf-8")); vo = json.dumps(vd)
+        vd["overall"] = "fail"; varm.write_text(json.dumps(vd), encoding="utf-8")
+        ck("arm: another vendor's FAIL is a reported gap, not a CI block", check(quiet=True) == [])
+        vd["arm"] = "gemini-api"; varm.write_text(json.dumps(vd), encoding="utf-8")
+        ck("twin: a file whose recorded arm disagrees with its link reds the check",
+           any("but is linked as" in i for i in check(quiet=True)))
+        ck("twin: recording into a file that holds a different arm is refused", record(nsv) == 2)
+        varm.write_text(vo, encoding="utf-8")
+        n_before = len(json.loads(varm.read_text(encoding="utf-8"))["runs"])
+        record(argparse.Namespace(**{**vars(nsv), "arm": DEFAULT_ARM}))
+        ck("arm: a default-arm record lands in <case>.json, never in the arm's file",
+           len(json.loads(varm.read_text(encoding="utf-8"))["runs"]) == n_before
+           and json.loads(evp.read_text(encoding="utf-8"))["arm"] == DEFAULT_ARM)
+        varm.unlink()
+        ck("twin: a deleted arm file is a dangling link",
+           any("[openai-responses-api]" in i and "does not exist" in i for i in check(quiet=True)))
+        ej0 = json.loads((sk / "evals.json").read_text(encoding="utf-8"))
+        ej0["evals"][0].pop("evidence_arms", None)
+        (sk / "evals.json").write_text(json.dumps(ej0), encoding="utf-8")
         ej = json.loads((sk / "evals.json").read_text(encoding="utf-8"))
         ej["evals"][0]["prompt"] = "an EDITED prompt"
         (sk / "evals.json").write_text(json.dumps(ej), encoding="utf-8")
@@ -369,7 +439,8 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--record", dest="case")
     ap.add_argument("--output-file")
-    ap.add_argument("--arm", default="claude-session")
+    ap.add_argument("--arm", default=DEFAULT_ARM)
+    ap.add_argument("--context", help="how the arm's prompt context was built (and its sha256)")
     ap.add_argument("--model")
     ap.add_argument("--date", default=date.today().isoformat())
     ap.add_argument("--protocol", choices=["full", "single"])

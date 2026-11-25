@@ -357,6 +357,18 @@
       "status": "verified",
       "checked": "2026-11-25",
       "note": "Google Antigravity plugin.json JSON Schema. A copy is VENDORED at shared/platforms/antigravity-plugin.schema.json (hash-watched by tools/platform_watch.py, source antigravity-plugin-schema); build_teacher_pack's self-test validates the emitted Antigravity plugin.json against the vendored copy, so CI never fetches this URL."
+    },
+    {
+      "url": "https://api.openai.com",
+      "status": "well_known",
+      "checked": "2026-11-25",
+      "note": "OpenAI API base. tools/eval_vendor_run.py posts eval prompts to /v1/responses (store:false) and lists /v1/models; only when a maintainer runs it with a key. Overridable by TOS_OPENAI_BASE; the --self-test uses a local stub and never calls it."
+    },
+    {
+      "url": "https://generativelanguage.googleapis.com",
+      "status": "well_known",
+      "checked": "2026-11-25",
+      "note": "Gemini API base. tools/eval_vendor_run.py posts to /v1beta/models/{model}:generateContent and lists /v1beta/models; only when a maintainer runs it with a key. Overridable by TOS_GEMINI_BASE; the --self-test uses a local stub and never calls it."
     }
   ]
 }

@@ -79,6 +79,8 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
 
 ## Benchmarks & feeds
 - `run_benchmark.py` — the evidence-gated benchmark harness (`--check`, `--report`).
+- `eval_vendor_run.py` — runs recorded eval cases on an OpenAI or Gemini model with the TOS rules
+  loaded; judge each answer, then store it with `eval_evidence.py --record --arm <vendor arm>`.
 - `make_feed.py`, `feeds_import.py`, `feeds_publish.py`, `feeds_update.py`, `verify_feeds.py`,
   `seed_curator.py`, `seed_probe.py` — content-feed tooling. `feeds_update.py --self-test` proves the
   engine offline (bare-date stamps don't crash it; a promoted feed's first fetch stores the backlog).
