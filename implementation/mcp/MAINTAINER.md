@@ -128,6 +128,8 @@ rediscover it.
   `"additionalProperties": false`. Declare the tools yourself with `parameters_json_schema`, which
   takes full JSON Schema (https://ai.google.dev/gemini-api/docs/function-calling). Tested: 9
   declarations, and a function-call round trip returned `not_found` for a made-up code.
+  The crash is a known upstream bug (https://github.com/googleapis/python-genai/issues/2476,
+  acknowledged; fixes awaiting review). Drop the adapter once a release ships the fix.
 
   ```python
   from google.genai import types
