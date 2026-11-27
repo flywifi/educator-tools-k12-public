@@ -15,7 +15,8 @@ and defines how it is accessed, stored, identified, and reconciled — safely.
   for the surface and is **never committed to git**.
 
 ## Storage adapter (by deployment surface)
-- `local_gitignored` — Claude Code / desktop with a writable repo FS. Real data in
+- `local_gitignored` — any desktop agent with a writable repo folder (Claude Code, Codex,
+  Antigravity). Real data in
   `students.local.json` (or `shared/students/local/`), **gitignored**. The default where a FS exists.
 - `session_ephemeral` — web chat with no FS: the teacher pastes the profile each session; nothing is
   persisted by the tool.

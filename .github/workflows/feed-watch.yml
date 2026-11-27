@@ -8,6 +8,7 @@ on:
     - cron: "17 14 * * 1"   # Mondays 14:17 UTC — after platform-watch, off the :00 stampede
 permissions:
   contents: read
+  issues: write          # one tracking issue per watcher (tools/watch_issue.py)
 concurrency:
   group: feed-watch
   cancel-in-progress: false
@@ -24,3 +25,8 @@ jobs:
       - name: Publish summary
         if: always()
         run: cat watch.md >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Open, update or close the tracking issue (a person gets notified)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/watch_issue.py --report watch.md --label feed-watch --title "Feed catalog needs a look" --findings '\b[1-9][0-9]* need a look\b'

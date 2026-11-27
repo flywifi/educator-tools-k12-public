@@ -9,8 +9,8 @@
         "local_mcp": "available",
         "install": "plugin marketplace add + install",
         "source": "https://code.claude.com/docs/en/plugins-reference",
-        "checked": "2026-09-25",
-        "note": "Loader scans skill dirs ONE level deep; the manifest skills array (R5-A2) is what makes 62/62 load. Verified with claude plugin details 2.1.282. R8: plugin mcpServers runs the compiled tos-tools.mcpb release bundle — Connected with NO python/node/uv on PATH (tested, Claude Code 2.1.289). Claude Code does not supply Node and ignores uv-type bundles (tested)."
+        "checked": "2026-11-25",
+        "note": "Loader scans skill dirs ONE level deep; the manifest skills array (R5-A2) is what makes 62/62 load. Verified with claude plugin details 2.1.282. R8: plugin mcpServers runs the compiled tos-tools.mcpb release bundle — Connected with NO python/node/uv on PATH (tested, Claude Code 2.1.289). Claude Code does not supply Node and ignores uv-type bundles (tested). 2026-11-25: Claude Code reads AGENTS.md when no CLAUDE.md exists (v2.1.277+), or through an @AGENTS.md import (code.claude.com/docs/en/memory)."
       },
       "desktop_chat": {
         "skills": "available",
@@ -51,16 +51,16 @@
         "local_mcp": "available",
         "install": "local marketplace (~/.agents/plugins/marketplace.json + ~/.codex/plugins/) or Settings > MCP servers > STDIO",
         "source": "https://developers.openai.com/plugins/build/plugins",
-        "checked": "2026-09-25",
-        "note": "UNTESTED-live end-to-end. Codex on every plan incl. Free/Go; Work on paid plans (desktop; staged rollout). openai/codex source: plugin stdio servers ARE spawned; ${CLAUDE_PLUGIN_ROOT} is NOT expanded in MCP args (use the Agent-Plugins mcp.json with ${PLUGIN_ROOT}, or cwd '.'); manifest skills paths must start with './'; initialize offers 2025-06-18; Windows resolves commands PATHEXT-style, python3 is NOT mapped to python. R8: stays on Python — Codex expands ${PLUGIN_ROOT} only in args (command must be a bare token) and has no per-OS override, so a bundled executable cannot be named portably; Codex also needs the runtime on PATH (openai/codex#31897)."
+        "checked": "2026-11-25",
+        "note": "UNTESTED-live end-to-end. Codex on every plan incl. Free/Go; Work on paid plans (desktop; staged rollout). openai/codex source: plugin stdio servers ARE spawned; ${CLAUDE_PLUGIN_ROOT} is NOT expanded in MCP args (use the Agent-Plugins mcp.json with ${PLUGIN_ROOT}, or cwd '.'); manifest skills paths must start with './'; initialize offers 2025-06-18; Windows resolves commands PATHEXT-style, python3 is NOT mapped to python. R8: stays on Python — Codex expands ${PLUGIN_ROOT} only in args (command must be a bare token) and has no per-OS override, so a bundled executable cannot be named portably; Codex also needs the runtime on PATH (openai/codex#31897). 2026-11-25: repo marketplaces live at $REPO_ROOT/.agents/plugins/marketplace.json and may point at a git-subdir source with a ref; the desktop app also reads .claude-plugin/marketplace.json as legacy-compatible (developers.openai.com/plugins/build/plugins). Codex finds repo skills in .agents/skills; the initial skills list is capped at 2% of context or 8,000 characters."
       },
       "web_personal": {
-        "skills": "unavailable",
+        "skills": "unverified",
         "local_mcp": "unavailable",
-        "install": "Project + reference pack (25 files on Plus)",
-        "source": "https://help.openai.com/en/articles/12584461",
-        "checked": "2026-09-25",
-        "note": "'Can I connect to a local MCP server? Not directly.' Web developer mode is Business/Enterprise/Edu. Custom GPTs retire 2026-12-11; personal plans already cannot create them."
+        "install": "Project + reference pack; plugin skills where the plan allows",
+        "source": "https://help.openai.com/en/articles/20001256-plugins-in-chatgpt",
+        "checked": "2026-11-25",
+        "note": "Plugins (skills + connected apps) now work in Chat and Work on ChatGPT web, desktop and mobile from one directory shared with Codex (developers.openai.com/codex/plugins); installing one 'depends on your plan, workspace, role, region' (help 20001256), and standalone skill upload is Business/Enterprise/Healthcare/Edu (help 20001066), so personal plans stay UNVERIFIED. A plugin with a local (stdio) server is Desktop only; web still cannot reach localhost. Custom GPTs retire 2026-12-11 (help 20001519)."
       },
       "teachers_plan": {
         "skills": "unverified",
@@ -75,18 +75,18 @@
       "antigravity_personal": {
         "skills": "available",
         "local_mcp": "available",
-        "install": "skills -> ~/.gemini/config/skills/<name>/; stdio server -> ~/.gemini/config/mcp_config.json (mcpServers.command/args); plugin folder -> ~/.gemini/config/plugins/",
-        "source": "https://antigravity.google/docs/mcp/",
-        "checked": "2026-09-25",
-        "note": "UNTESTED-live. Personal Google account, 18+, approved regions; NOT for school accounts. Free weekly quota. Client probes server/discover (2026-07-28) FIRST and needs -32601 to fall back (R5-A1 provides it). Terms allow interaction review/training unless Settings > Account > Telemetry is off — default not stated, tell teachers to check. R8: stays on Python — the pack installer is itself a Python script, so its users are already at Level 1; the compiled launcher adds nothing here."
+        "install": "plugin: /plugin -> install from a local directory, or agy plugin install <folder>; skills -> .agents/skills or ~/.gemini/config/skills; plugin MCP -> mcp_config.json",
+        "source": "https://antigravity.google/docs/plugins",
+        "checked": "2026-11-25",
+        "note": "UNTESTED-live. Personal Google account, 18+, approved regions; NOT for school accounts. Free weekly quota. Client probes server/discover (2026-07-28) FIRST and needs -32601 to fall back (R5-A1 provides it). Terms allow interaction review/training unless Settings > Account > Telemetry is off — default not stated, tell teachers to check. R8: stays on Python — the pack installer is itself a Python script, so its users are already at Level 1; the compiled launcher adds nothing here. 2026-11-25: native plugins (plugin.json, mcp_config.json, rules/, hooks) replace the hand-merged global config; agy plugin import claude migrates Claude Code plugins (untested for TOS)."
       },
       "gemini_cli": {
-        "skills": "available",
-        "local_mcp": "available",
-        "install": "gemini extensions install <github-url>",
+        "skills": "unavailable",
+        "local_mcp": "unavailable",
+        "install": "retired for individuals — migrate to Antigravity CLI (agy)",
         "source": "https://docs.cloud.google.com/gemini/docs/codeassist/release-notes",
-        "checked": "2026-09-25",
-        "note": "NOT FREE since 2026-06-18: personal/free tiers stopped being served; needs a paid API key or a school Code Assist Standard/Enterprise or Workspace AI Ultra licence. Loader glob ['SKILL.md','*/SKILL.md']."
+        "checked": "2026-11-25",
+        "note": "'Starting June 18, 2026, Gemini Code Assist IDE Extensions and Gemini CLI stopped serving requests for the Gemini Code Assist for individuals, Google AI Pro, and Google AI Ultra tiers.' New Code Assist Standard/Enterprise subscriptions can no longer be bought since 2026-10-09 (auto-renewal ends in 2027). Gemini CLI's own quota page still describes a free tier; the release notes are newer. Successor: gemini.antigravity_cli."
       },
       "gemini_app": {
         "skills": "unavailable",
@@ -95,8 +95,16 @@
         "source": "https://support.google.com/gemini/answer/17209137",
         "checked": "2026-09-25",
         "note": "Custom MCP 'apps' take a remote URL only (18+, US, English, personal accounts; not work/school). Personal accounts: Keep Activity on by default, human review + training — warn before student-adjacent use. School accounts: no review/training (edition-dependent)."
+      },
+      "antigravity_cli": {
+        "skills": "available",
+        "local_mcp": "available",
+        "install": "agy plugin install <folder|github-url> (or /plugin); skills: .agents/skills or ~/.gemini/config/skills",
+        "source": "https://antigravity.google/docs/cli/gcli-migration",
+        "checked": "2026-11-25",
+        "note": "UNTESTED-live. Google's successor to Gemini CLI; reads GEMINI.md and AGENTS.md; MCP in ~/.gemini/config/mcp_config.json or a plugin's mcp_config.json (${PLUGIN_ROOT} expanded in args/cwd/env, not in command); SSE servers unsupported. Personal Google account; Google Workspace plans don't include Antigravity plans (antigravity.google/docs/install)."
       }
     }
   },
-  "updated": "2026-10-04"
+  "updated": "2026-11-25"
 }

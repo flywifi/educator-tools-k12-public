@@ -4,7 +4,7 @@ version: 2
 updates:
   - package-ecosystem: "pip"
     directory: "/tools"          # scans EVERY tools/requirements-*.txt in this directory
-                                 # (14 today, including mcp and security) — not a fixed list
+                                 # (15 today, including mcp, security and ci) — not a fixed list
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5

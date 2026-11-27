@@ -1,0 +1,4 @@
+# CI-only tooling, never shipped to teachers. Audited by tools/security_scan.py (pip-audit over every
+# tools/requirements-*.txt except the scanner pins) and bumped by dependabot like the rest.
+# skills-ref: the Agent Skills reference validator (agentskills.io), CLI `agentskills validate`.
+skills-ref==0.1.1

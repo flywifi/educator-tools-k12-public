@@ -6,6 +6,24 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
 ## [Unreleased]
 
 ### Added
+- **TOS on Google, documented** (`implementation/gemini/README.md`, replacing an empty placeholder):
+  the Antigravity plugin and the Gem pack, with the Gemini CLI retirement noted. The ChatGPT guide
+  gains the plugin route (desktop app and Codex). `AGENTS.md` now carries the contributor conventions
+  so every coding agent reads them; `CLAUDE.md` imports it. `implementation/mcp/MAINTAINER.md` records
+  what works from the OpenAI Agents SDK and the Gemini API, both tested.
+- **Evidence per vendor** (`tools/eval_evidence.py --arm`): a run on another vendor's model is stored
+  beside Claude's (`<case>.<arm>.json`), linked from the case, and reported as a vendor gap if it
+  fails, without changing Claude's verdict or blocking CI. `tools/eval_vendor_run.py` runs recorded
+  cases on an OpenAI or Gemini model with a hashed copy of the TOS rules; its self-test is offline.
+- **Watcher findings reach a person** (`tools/watch_issue.py`): `platform-watch` and `feed-watch` open a
+  tracking issue when they find something, update it on later runs, and close it after a clean run.
+- **Teacher packs are complete and installable** (`tools/build_teacher_pack.py`): each pack now carries
+  whole skill folders (scripts, assets, examples) and the shared code those scripts import, never a
+  gitignored `*.local.*` file, and its self-test runs every packed script. The Antigravity pack is a
+  native plugin (`plugin.json`, `mcp_config.json`, a governance rule) validated against Google's schema,
+  replacing the old installer. `--zip` builds the release zips that `frozen-build.yml` attaches and
+  attests, and the workflow publishes a `teacher-packs` branch that the new Codex marketplace
+  (`.agents/plugins/marketplace.json`) installs from. Three skill scripts now find the root by marker.
 - **EdSecLedger joins the live feed catalog** (`shared/feeds/feeds.json`): education-sector breach
   analyses, FERPA/COPPA/CISA updates and threat notes for K-12 (`https://edsecledger.com/rss.xml`,
   tier `news_teacher_student`, authority `secondary` — discovery, never confirmation). Verified the
@@ -42,11 +60,25 @@ All notable changes to the Teacher Operating System (TOS) ecosystem. Format foll
   older than the limit is unverified. The verifier had passed a feed last updated in 2020.
 
 ### Changed
+- **`teacher-core` description trimmed to under 900 characters** (it was 1,020 of the open
+  standard's 1,024), keeping every trigger. CI now runs the official Agent Skills validator
+  (`skills-ref`, pinned in the new `tools/requirements-ci.txt`) over all 62 skills.
+- **Platform matrix refreshed** (2026-11-25): ChatGPT web skills marked unverified until checked on a
+  personal plan; Gemini CLI marked retired for individual accounts; a new Antigravity CLI row; Claude
+  Code's AGENTS.md support noted.
 - A feed's **first** fetch is unconditional until the local store holds an item from it. A feed
   promoted from the verifier carries the verifier's ETag; sending it on the first fetch earned a
   304 and the teacher never received the backlog (pre-test: 0 items; now 66).
 
 ### Fixed
+- **platform-watch read the wrong entry from unsorted feeds** (`tools/platform_watch.py`): it took the
+  first item, so OpenAI's developer feed reported a 2025 page as newest. Items are now sorted by date.
+- **Stale Windows guidance removed** (`implementation/mcp/README.md`, `docs/DEPLOYMENT_SURFACES.md`):
+  since v1.10.0 the plugin installs the compiled `tos-tools.mcpb`, so Door 1 works on Windows without
+  Python; the hand-registration line stays as a fallback. `tools/mac_audit.py` drops the by-name
+  launcher exemption that only existed for the old inline `python3` launcher. The deployment doc no
+  longer says the model-agnostic export is unbuilt (the teacher packs are it), and the student-data
+  policy's local adapter now names every desktop agent, not just Claude (canonical + synced copies).
 - Saving the feed catalog or its change log no longer escapes non-ASCII characters or turns
   `updated` into a timestamp; one curator save used to rewrite every line holding an em dash.
 - A curator URL repair now clears the old URL's `last_status` and `last_checked` as well as its

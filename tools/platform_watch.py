@@ -34,6 +34,34 @@ def _get(url: str, timeout: int = 30) -> bytes:
         return r.read()
 
 
+def _feed_items(text: str) -> list[tuple]:
+    """(date, title) per RSS item / Atom entry, newest first. A feed is NOT always date-sorted —
+    developers.openai.com/rss.xml lists a 2025 guide above 2026 posts, which made the first-item
+    rule report a "change" every time the feed reshuffled. Undated items keep their order after
+    the dated ones."""
+    from email.utils import parsedate_to_datetime
+    from datetime import datetime, timezone
+    out = []
+    for i, block in enumerate(re.findall(r"<(?:item|entry)[\s>].*?</(?:item|entry)>", text, re.S)):
+        t = re.search(r"<title[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</title>", block, re.S)
+        d = re.search(r"<(?:pubDate|updated|published)>(.*?)</(?:pubDate|updated|published)>", block, re.S)
+        when = None
+        if d:
+            raw = d.group(1).strip()
+            try:
+                when = parsedate_to_datetime(raw)
+            except (TypeError, ValueError):
+                try:
+                    when = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+                except ValueError:
+                    when = None
+            if when is not None and when.tzinfo is None:
+                when = when.replace(tzinfo=timezone.utc)
+        out.append((when, (t.group(1).strip() if t else ""), i))
+    out.sort(key=lambda x: (x[0] is None, -(x[0].timestamp()) if x[0] else 0, x[2]))
+    return [(w, title) for w, title, _ in out]
+
+
 def observe(kind: str, url: str) -> str:
     """One comparable string per source: newest item title/date, version, or content hash."""
     if kind not in ("rss", "atom", "npm", "pypi", "md-hash"):
@@ -42,9 +70,8 @@ def observe(kind: str, url: str) -> str:
     if kind in ("rss", "atom"):
         text = raw.decode("utf-8", "replace")
         m = re.search(r"<(?:title)>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</title>\s*", text, re.S)
-        items = re.findall(r"<(?:item|entry)[\s>].*?<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</title>",
-                           text, re.S)
-        return (items[0].strip() if items else (m.group(1).strip() if m else ""))[:200]
+        items = _feed_items(text)
+        return (items[0][1] if items else (m.group(1).strip() if m else ""))[:200]
     if kind == "npm":
         return json.loads(raw)["version"]
     if kind == "pypi":
@@ -119,6 +146,17 @@ def self_test() -> int:
     rss = b"<rss><channel><title>feed</title><item><title>Newest post</title></item></channel></rss>"
     with um.patch(__name__ + "._get", return_value=rss):
         ck("rss: newest item title extracted", observe("rss", "https://example.com/x") == "Newest post")
+    unsorted = (b"<rss><channel><title>f</title>"
+                b"<item><title>Old guide</title><pubDate>Mon, 21 Jul 2025 00:00:00 GMT</pubDate></item>"
+                b"<item><title>New post</title><pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate></item>"
+                b"</channel></rss>")
+    with um.patch(__name__ + "._get", return_value=unsorted):
+        ck("rss: an unsorted feed reports the NEWEST-dated item, not the first",
+           observe("rss", "https://example.com/x") == "New post")
+    atom = (b"<feed><title>f</title><entry><title>A</title><updated>2026-01-01T00:00:00Z</updated></entry>"
+            b"<entry><title>B</title><updated>2026-11-23T00:00:00Z</updated></entry></feed>")
+    with um.patch(__name__ + "._get", return_value=atom):
+        ck("atom: newest <updated> entry wins", observe("atom", "https://example.com/x") == "B")
     with um.patch(__name__ + "._get", return_value=b'{"version":"9.9.9"}'):
         ck("npm: version extracted", observe("npm", "https://example.com/x") == "9.9.9")
     with um.patch(__name__ + "._get", return_value=b'{"info":{"version":"2.2.0"}}'):

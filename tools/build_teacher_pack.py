@@ -9,16 +9,21 @@ vendor source/docs on 2026-09-25 (shared/platforms/platform-matrix.json carries 
   chatgpt-plugin/  Agent-Plugins portable layout. openai/codex expands ${PLUGIN_ROOT} in mcp.json
                    ARGS (never ${CLAUDE_PLUGIN_ROOT}); the command must be a bare token; skills
                    live flat at skills/<name>/SKILL.md. "Desktop only"; Work mode or Codex.
-  antigravity/     Skills flat + an installer that merges ~/.gemini/config/mcp_config.json with
-                   ABSOLUTE paths (Google documents the global file; per-plugin config on the 2.0
-                   desktop app is not documented, so we don't rely on it).
+  antigravity/     A native Antigravity plugin (plugin.json, flat skills/, mcp_config.json with
+                   ${PLUGIN_ROOT} in args, and a model_decision governance rule). Google documents
+                   per-plugin MCP config and ${PLUGIN_ROOT} since the plugin system shipped; the old
+                   installer script that edited ~/.gemini/config/mcp_config.json is retired.
   gem-pack/        Reduced mode for browser Gemini/ChatGPT: <= 10 files (the Gem source cap).
 
 Every pack ships the same self-contained server tree that tools/build_mcpb.py stages (its
-SERVER_FILES/DATA_TREES/INDEX_FILES are imported, not duplicated).
+SERVER_FILES/DATA_TREES/INDEX_FILES are imported, not duplicated), each skill's WHOLE folder
+(scripts, templates, examples — SKILL.md and references point at them) and the shared/ engines
+the skill scripts import. Only git-tracked files are copied, so a maintainer's gitignored local
+data (students.local.json, teacher.local.json) can never ride along into a published pack.
 
 Usage:
   python3 tools/build_teacher_pack.py               # build all packs
+  python3 tools/build_teacher_pack.py --zip         # also write <pack>.zip release assets
   python3 tools/build_teacher_pack.py --self-test   # offline probes incl. a real stdio handshake
 """
 from __future__ import annotations
@@ -37,7 +42,10 @@ import build_mcpb  # noqa: E402  (SERVER_FILES / DATA_TREES / INDEX_FILES — si
 DIST = ROOT / "dist" / "teacher-packs"
 PLUGIN_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
 MCP_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json"
+AG_PLUGIN_SCHEMA = "https://antigravity.google/schemas/v1/plugin.json"
 GEM_MAX_FILES = 10          # Classroom Gems: "supports up to 10 source documents"
+SKILL_SKIP = ("evals", "MAINTAINER.md", "__pycache__")   # contributor-only, never shipped
+LOCAL_DATA = ("*.local.*",)                               # gitignored real data, never shipped
 
 
 def _version() -> str:
@@ -57,16 +65,52 @@ def _copy_server_tree(dest: Path) -> None:
         shutil.copytree(ROOT / rel, dest / rel, dirs_exist_ok=True)
 
 
+def _tracked(prefix: str) -> set[str] | None:
+    """Repo-relative paths git tracks under prefix, or None outside a git checkout (an export or
+    a tarball holds only tracked files anyway)."""
+    try:
+        out = subprocess.run(["git", "-C", str(ROOT), "ls-files", "-z", "--", prefix],
+                             capture_output=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return {p for p in out.decode("utf-8").split("\0") if p} or None
+
+
+def _copy_tree(src_rel: str, dest: Path, skip_names=(), skip_rel=()) -> None:
+    """Copy ROOT/src_rel to dest, tracked files only, minus contributor files and local data."""
+    tracked = _tracked(src_rel)
+    src = ROOT / src_rel
+    for p in sorted(src.rglob("*")):
+        if not p.is_file():
+            continue
+        rel = p.relative_to(ROOT).as_posix()
+        parts = p.relative_to(src).parts
+        if any(n in parts for n in skip_names) or any(rel.startswith(s) for s in skip_rel):
+            continue
+        if any(p.match(g) for g in LOCAL_DATA) or (tracked is not None and rel not in tracked):
+            continue
+        t = dest / p.relative_to(src)
+        t.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(p, t)
+
+
 def _copy_flat_skills(dest: Path) -> int:
+    """Each skill's whole folder, flattened to skills/<name>/. The first version copied only
+    SKILL.md + references/, and 41 files those two point at (scoring scripts, templates,
+    examples) were missing from every pack."""
     n = 0
     for d in _skill_dirs():
-        t = dest / "skills" / d.name
-        t.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(d / "SKILL.md", t / "SKILL.md")
-        if (d / "references").is_dir():
-            shutil.copytree(d / "references", t / "references", dirs_exist_ok=True)
+        _copy_tree(d.relative_to(ROOT).as_posix(), dest / "skills" / d.name, skip_names=SKILL_SKIP)
         n += 1
     return n
+
+
+def _copy_shared_code(dest: Path) -> None:
+    """The shared/ engines the skill scripts import (connectors, students, docintel, routing,
+    records, office, ...). shared/standards is left out: its corpora are build inputs (108 MB),
+    and the server's data tree is copied by _copy_server_tree."""
+    _copy_tree("shared", dest / "shared", skip_names=("__pycache__",),
+               skip_rel=("shared/standards/",))
 
 
 def _write_json(path: Path, obj: dict) -> None:
@@ -91,11 +135,19 @@ def build_chatgpt(out: Path) -> None:
                                      "args": ["${PLUGIN_ROOT}/tools/mcp_server.py"]}},
     })
     _copy_flat_skills(out)
+    _copy_shared_code(out)
     _copy_server_tree(out)
     (out / "INSTALL.md").write_text(f"""# Install TOS in the ChatGPT desktop app (best-effort build — UNTESTED-live)
 
 Matrix row: chatgpt.desktop_workcodex_personal (shared/platforms/platform-matrix.json).
-Works in **Work mode** (paid plans) and **Codex** (every plan). Never in ChatGPT web/mobile.
+The tools server is local, so this plugin is **Desktop only** (Work mode or Codex). Its skills
+also work in ChatGPT web/mobile once installed, where your plan allows plugins.
+
+**One step (recommended):** in Codex CLI run
+`codex plugin marketplace add flywifi/educator-tools-k12-public`, or add that repository as a
+marketplace in the ChatGPT desktop app, then install **Teacher Operating System**.
+
+**From this download instead:**
 
 1. Copy this whole folder to `~/.codex/plugins/teacher-operating-system`.
 2. Create or edit `~/.agents/plugins/marketplace.json`:
@@ -121,51 +173,50 @@ controls -> turn off "Improve the model for everyone".
 
 def build_antigravity(out: Path) -> None:
     out.mkdir(parents=True, exist_ok=True)
+    _write_json(out / "plugin.json", {
+        "$schema": AG_PLUGIN_SCHEMA,
+        "name": "teacher-operating-system",
+        "displayName": "Teacher Operating System",
+        "version": _version(),
+        "description": "62 governed K-12 teacher skills plus the tos-tools local server "
+                       "(verified Florida standards lookups; fabricated codes flagged). Drafts "
+                       "for teacher review — human_review_required on every artifact.",
+        "license": "MIT",
+        "repository": "https://github.com/flywifi/educator-tools-k12-public",
+        "keywords": ["education", "k-12", "teaching", "lesson-planning", "standards"],
+        "suggestedPrompts": [
+            "Write a 3rd grade fractions lesson plan aligned to a verified Florida standard",
+            "Is MA.3.NSO.9.99 a real Florida standard? Check it with the TOS tools",
+            "Turn this lesson into a differentiated version for English learners"],
+    })
+    # ${PLUGIN_ROOT} is expanded in args/cwd/env (never in command), as Google documents.
+    _write_json(out / "mcp_config.json", {
+        "mcpServers": {"tos-tools": {"command": "python3",
+                                     "args": ["${PLUGIN_ROOT}/tools/mcp_server.py"]}},
+    })
+    rule = (ROOT / "implementation/gpt/api/system-prompt.md").read_text(encoding="utf-8")
+    (out / "rules").mkdir(exist_ok=True)
+    (out / "rules" / "tos-governance.md").write_text(
+        "---\ntrigger: model_decision\n"
+        'description: "Apply whenever doing K-12 teacher work with the Teacher Operating System '
+        '(lesson plans, assessments, IEP/MTSS supports, family communication, standards)."\n'
+        "---\n\n" + rule, encoding="utf-8")
     _copy_flat_skills(out)
+    _copy_shared_code(out)
     _copy_server_tree(out)
-    (out / "install_antigravity.py").write_text('''#!/usr/bin/env python3
-"""Wire this TOS folder into Google Antigravity (personal Google account, 18+).
-
-Copies the 62 skills to ~/.gemini/config/skills/ and merges the tos-tools stdio server into
-~/.gemini/config/mcp_config.json with ABSOLUTE paths (the file Google documents for 2.0/IDE/CLI).
-Run:  python3 install_antigravity.py   (Windows: py -3 install_antigravity.py)"""
-import json, pathlib, shutil, sys
-
-HERE = pathlib.Path(__file__).resolve().parent
-CFG = pathlib.Path.home() / ".gemini" / "config"
-
-def main() -> int:
-    if sys.version_info < (3, 10):
-        print("STOP: Python 3.10+ required."); return 1
-    sk = CFG / "skills"; sk.mkdir(parents=True, exist_ok=True)
-    n = 0
-    for d in sorted((HERE / "skills").iterdir()):
-        if (d / "SKILL.md").exists():
-            shutil.copytree(d, sk / d.name, dirs_exist_ok=True); n += 1
-    cfg_path = CFG / "mcp_config.json"
-    cfg = json.loads(cfg_path.read_text(encoding="utf-8")) if cfg_path.exists() else {}
-    cfg.setdefault("mcpServers", {})["tos-tools"] = {
-        "command": sys.executable,
-        "args": [str(HERE / "tools" / "mcp_server.py")]}
-    cfg_path.write_text(json.dumps(cfg, indent=2) + "\\n", encoding="utf-8")
-    print(f"installed {n} skills -> {sk}\\nserver wired in {cfg_path}\\n"
-          "Restart Antigravity, then Settings > Customizations > Installed MCP Servers > Refresh.\\n"
-          "PRIVACY: check Settings > Account > Telemetry before any classroom use — Google may\\n"
-          "review interactions and use them to improve models unless it is off.")
-    return 0
-
-if __name__ == "__main__":
-    sys.exit(main())
-''', encoding="utf-8")
     (out / "INSTALL.md").write_text("""# Install TOS in Google Antigravity (best-effort build — UNTESTED-live)
 
-Matrix row: gemini.antigravity_personal. Personal Google account, 18+ only — school accounts
-are not supported by Antigravity. Free tier: weekly-refreshed quota.
+Matrix row: gemini.antigravity_personal. Personal Google account, 18+ only. Google Workspace
+(school) accounts don't include Antigravity plans.
 
-1. Put this folder somewhere permanent (it is referenced by absolute path).
-2. Run `python3 install_antigravity.py` (Windows: `py -3 install_antigravity.py`).
-3. Restart Antigravity; test: *"Use the tos-tools verify_standard_codes tool to check
-   MA.3.NSO.1.1 and MA.3.NSO.9.99."*
+1. Unzip this folder somewhere permanent.
+2. **Antigravity App:** type `/plugin`, open **Installed**, choose *install from a local
+   directory*, and pick this folder. **Antigravity CLI:** `agy plugin install <this folder>`.
+3. Test: *"Use the tos-tools verify_standard_codes tool to check MA.3.NSO.1.1 and
+   MA.3.NSO.9.99."* (PASS = the first resolves, the second is flagged as not a real code.)
+
+Needs Python 3.10+ (`python3` on PATH). Privacy: check Settings > Account > Telemetry before any
+classroom use — Google may review interactions unless it is off.
 """, encoding="utf-8")
 
 
@@ -209,6 +260,15 @@ def build_all(dist: Path = DIST) -> None:
     print(f"built 3 packs under {dist} (v{_version()})")
 
 
+def zip_packs(dist: Path = DIST) -> list[Path]:
+    """<pack>.zip next to each pack folder — the release assets (folder at the zip root)."""
+    out = []
+    for name in ("chatgpt-plugin", "antigravity", "gem-pack"):
+        z = shutil.make_archive(str(dist / f"tos-{name}"), "zip", root_dir=dist, base_dir=name)
+        out.append(Path(z))
+    return out
+
+
 def self_test() -> int:
     import tempfile
     fails = 0
@@ -243,10 +303,50 @@ def self_test() -> int:
             pass
         ck("chatgpt: the PACKED server tree answers initialize (tree is self-contained)", ok)
         ag = dist / "antigravity"
-        ck("antigravity: skills flat + installer + server tree",
-           len(list(ag.glob("skills/*/SKILL.md"))) == 62
-           and (ag / "install_antigravity.py").exists()
-           and (ag / "tools" / "mcp_server.py").exists())
+        agm = json.loads((ag / "mcp_config.json").read_text(encoding="utf-8"))["mcpServers"]["tos-tools"]
+        ck("antigravity: native plugin — plugin.json + 62 flat skills + server tree, no installer",
+           (ag / "plugin.json").exists() and len(list(ag.glob("skills/*/SKILL.md"))) == 62
+           and (ag / "tools" / "mcp_server.py").exists() and not (ag / "install_antigravity.py").exists())
+        ck("antigravity: mcp_config bare command + ${PLUGIN_ROOT} in args (expanded there, never in command)",
+           agm["command"] == "python3" and agm["args"] == ["${PLUGIN_ROOT}/tools/mcp_server.py"])
+        rule = (ag / "rules" / "tos-governance.md").read_text(encoding="utf-8")
+        ck("antigravity: governance rule is model_decision with a description (not always_on)",
+           rule.startswith("---\ntrigger: model_decision\ndescription: "))
+        r2 = subprocess.run([sys.executable, agm["args"][0].replace("${PLUGIN_ROOT}", str(ag))],
+                            input=frame + "\n", capture_output=True, text=True, timeout=120)
+        ok2 = False
+        try:
+            ok2 = json.loads((r2.stdout.splitlines() or [""])[0])["result"]["protocolVersion"] == "2025-11-25"
+        except Exception:
+            pass
+        ck("antigravity: the server answers initialize at the ${PLUGIN_ROOT}-expanded path", ok2)
+        import re as _re
+        missing = []
+        for pack in (cg, ag):
+            for sk in pack.glob("skills/*/SKILL.md"):
+                d = sk.parent
+                for t in [sk, *d.glob("references/*.md")]:
+                    for m in _re.finditer(r"(?<![\w/.-])((?:scripts|assets|examples)/[\w./-]+\.\w+)",
+                                          t.read_text(encoding="utf-8")):
+                        src = next(iter((ROOT / "skills").glob(f"*/{d.name}/{m.group(1)}")), None)
+                        if src is not None and not (d / m.group(1)).exists():
+                            missing.append(f"{pack.name}:{d.name}/{m.group(1)}")
+        ck(f"both packs: every scripts/assets/examples file a SKILL.md or reference names is packed "
+           f"({len(missing)} missing)", not missing)
+        leaked = [p for p in dist.rglob("*") if p.is_file() and p.match("*.local.*")
+                  and p.name != "offline.db"]
+        ck("no gitignored local data (*.local.*) inside any pack", not leaked)
+        bad = []
+        probes = {"score.py": ['{"integrity":5,"safety":5,"governance":4,"accuracy":4,"alignment":4,'
+                               '"educational_quality":4,"accessibility":4,"professional_quality":4,'
+                               '"user_intent":5}']}       # score.py takes scores, not --help
+        for sc in sorted(cg.glob("skills/*/scripts/*.py")):
+            rr = subprocess.run([sys.executable, str(sc), *probes.get(sc.name, ["--help"])],
+                                capture_output=True, text=True, timeout=120, cwd=td)
+            if rr.returncode != 0:
+                bad.append(f"{sc.parent.parent.name}/{sc.name}: {(rr.stderr or rr.stdout).strip()[-160:]}")
+        ck(f"chatgpt: every packed skill script runs from the pack (exit 0){': ' + '; '.join(bad) if bad else ''}",
+           not bad)
         gem = dist / "gem-pack"
         ck(f"gem: <= {GEM_MAX_FILES} files (Classroom Gem source cap)",
            0 < len(list(gem.iterdir())) <= GEM_MAX_FILES)
@@ -265,6 +365,10 @@ def self_test() -> int:
                                     json.loads(sp.read_text(encoding="utf-8")))
             ck("chatgpt: plugin.json + mcp.json validate against the vendored "
                "agent-plugins 1.0.0 schemas", True)
+            jsonschema.validate(json.loads((ag / "plugin.json").read_text(encoding="utf-8")),
+                                json.loads((ROOT / "shared/platforms/antigravity-plugin.schema.json")
+                                           .read_text(encoding="utf-8")))
+            ck("antigravity: plugin.json validates against the vendored Antigravity v1 schema", True)
         except ModuleNotFoundError:
             print("SKIP jsonschema not installed here — CI's SDK venv runs this validation")
         except Exception as e:
@@ -276,10 +380,14 @@ def self_test() -> int:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--self-test", action="store_true")
+    ap.add_argument("--zip", action="store_true", help="also write tos-<pack>.zip release assets")
     a = ap.parse_args(argv)
     if a.self_test:
         return self_test()
     build_all()
+    if a.zip:
+        for z in zip_packs():
+            print(f"zipped {z.relative_to(ROOT)}")
     return 0
 
 

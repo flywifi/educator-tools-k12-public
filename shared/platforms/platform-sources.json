@@ -16,6 +16,7 @@
     {"id": "mcpb-manifest",           "kind": "md-hash", "url": "https://raw.githubusercontent.com/modelcontextprotocol/mcpb/main/MANIFEST.md", "covers": ".mcpb bundle spec"},
     {"id": "agentskills-spec",        "kind": "md-hash", "url": "https://agentskills.io/specification.md",                               "covers": "SKILL.md format limits"},
     {"id": "gemini-api-changelog",    "kind": "md-hash", "url": "https://ai.google.dev/gemini-api/docs/changelog.md.txt",                "covers": "Gemini API"},
+    {"id": "antigravity-plugin-schema", "kind": "md-hash", "url": "https://antigravity.google/schemas/v1/plugin.json",                 "covers": "the Antigravity pack's plugin.json contract (vendored copy at shared/platforms/)"},
     {"id": "agent-plugins-schemas",   "kind": "md-hash", "url": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",               "covers": "the ChatGPT pack's mcp.json contract (vendored copy at shared/platforms/)"},
     {"id": "openai-help-center",      "kind": "manual-agent", "url": "https://help.openai.com/en/articles/20001256",                     "covers": "plugin/Skills/plan eligibility — bot-blocked (403 to plain fetch); quarterly agent re-audit"},
     {"id": "antigravity-docs",        "kind": "manual-agent", "url": "https://antigravity.google/docs/mcp/",                             "covers": "Antigravity config paths + handshake; no feed; quarterly agent re-audit"}

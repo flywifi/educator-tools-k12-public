@@ -1,7 +1,7 @@
 {
   "_comment": "URL provenance registry. EVERY external http(s) URL hardcoded in tools/*.py and shared/**/*.py MUST be declared here with an honest status. This is the code-side analog of the source/verified provenance on data records — it exists because an AI operating this repo can confabulate plausible-looking URLs, so the system must force every URL to be consciously declared and catch any that aren't. Enforced by health.scan_url_provenance() + sync_check invariant #13. Status vocabulary: 'verified' = a human/tool confirmed this exact URL returns the expected content (record the date); 'well_known' = a documented public API/service endpoint (real service, standard path, not individually fetch-tested here); 'unverified' = used in code but NOT confirmed — may be wrong, treat as a guess until verified; 'example' = appears only in docstring/usage text, never fetched.",
   "version": "1.0.0",
-  "updated": "2026-10-04",
+  "updated": "2026-11-25",
   "policy": "An UNREGISTERED url in code is a hard drift failure (it may be fabricated). An 'unverified' url is allowed but surfaced — it must be confirmed (and re-statused) before anything relies on it. Never state an unverified url to a user as if it were confirmed.",
   "urls": [
     {
@@ -351,6 +351,54 @@
       "status": "verified",
       "checked": "2026-10-04",
       "note": "This repository's own GitHub Release asset path (R8). tools/export_plugin_manifest.py builds <this>/v<version>/tos-tools.mcpb, the compiled per-OS tool bundle that .github/workflows/frozen-build.yml attaches on each version tag. The asset exists only after that workflow runs — hence the release order: tag, attach, then merge."
+    },
+    {
+      "url": "https://antigravity.google/schemas/v1/plugin.json",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "Google Antigravity plugin.json JSON Schema. A copy is VENDORED at shared/platforms/antigravity-plugin.schema.json (hash-watched by tools/platform_watch.py, source antigravity-plugin-schema); build_teacher_pack's self-test validates the emitted Antigravity plugin.json against the vendored copy, so CI never fetches this URL."
+    },
+    {
+      "url": "https://api.openai.com",
+      "status": "well_known",
+      "checked": "2026-11-25",
+      "note": "OpenAI API base. tools/eval_vendor_run.py posts eval prompts to /v1/responses (store:false) and lists /v1/models; only when a maintainer runs it with a key. Overridable by TOS_OPENAI_BASE; the --self-test uses a local stub and never calls it."
+    },
+    {
+      "url": "https://generativelanguage.googleapis.com",
+      "status": "well_known",
+      "checked": "2026-11-25",
+      "note": "Gemini API base. tools/eval_vendor_run.py posts to /v1beta/models/{model}:generateContent and lists /v1beta/models; only when a maintainer runs it with a key. Overridable by TOS_GEMINI_BASE; the --self-test uses a local stub and never calls it."
+    },
+    {
+      "url": "https://openai.github.io/openai-agents-python/mcp/",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "OpenAI Agents SDK MCP guide (MCPServerStdio). Cited in implementation/mcp/MAINTAINER.md; the snippet there was run against tools/mcp_server.py with openai-agents 0.25.0."
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/function-calling",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "Gemini function calling: parametersJsonSchema takes full JSON Schema; the Remote MCP section requires Streamable HTTP and server names without '-'. Cited in implementation/mcp/MAINTAINER.md."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/tools-connectors-mcp",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "OpenAI Responses API remote MCP tool (server_url). Cited in implementation/mcp/MAINTAINER.md."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/secure-mcp-tunnels",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "OpenAI Secure MCP Tunnels (tunnel_id) for private servers. Cited in implementation/mcp/MAINTAINER.md."
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/mcp-connector",
+      "status": "verified",
+      "checked": "2026-11-25",
+      "note": "Claude Messages API MCP connector: remote servers only. Cited in implementation/mcp/MAINTAINER.md."
     }
   ]
 }

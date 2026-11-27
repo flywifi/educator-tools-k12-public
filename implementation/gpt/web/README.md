@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-07-15 | owner: web-maintainer -->
+<!-- last_reviewed: 2026-11-25 | owner: web-maintainer -->
 # TOS on ChatGPT (web)
 
 **One file. Drag and drop.**
@@ -10,6 +10,25 @@
 
 That's it. See the top of `TOS-skills.md` for an honest description of what works on
 ChatGPT and what requires the full Claude TOS deployment.
+
+## Using the ChatGPT desktop app? The plugin is the full version
+
+The TOS plugin installs every skill plus the verified-standards tools in one step. The tools run
+on your own computer, so OpenAI lists plugins like this one as **Desktop only**: install it in
+the ChatGPT desktop app (it also works in Codex). Its skills can then appear in your other
+ChatGPT apps where your plan allows plugins.
+
+- **One step:** add this project's repository, `flywifi/educator-tools-k12-public`, as a plugin
+  marketplace in the ChatGPT desktop app (in Codex:
+  `codex plugin marketplace add flywifi/educator-tools-k12-public`), then install
+  **Teacher Operating System**.
+- **Or by hand:** download `tos-chatgpt-plugin.zip` from the newest release
+  (`https://github.com/flywifi/educator-tools-k12-public/releases`) and follow its `INSTALL.md`.
+
+The tools need Python 3.10 or newer. On Windows, the current python.org installer includes the
+`python3` command the plugin starts; with an older install, change `"python3"` to `"python"` in
+the plugin's `mcp.json`. In a browser, or on a plan without plugins, use the Project route
+above; it needs nothing installed.
 
 ## Level up: the Reference Pack (recommended)
 
@@ -90,7 +109,7 @@ Start at [`implementation/claude/README.md`](../../claude/README.md).
 
 ---
 
-`TOS-skills.md` is generated from the YAML sources in `implementation/gpt/api/skills/`;
+`TOS-skills.md` is generated from the skills' own `SKILL.md` files (CI checks it is current);
 the `reference-pack/` folder is generated from the repository's canonical data.
 To regenerate after an update:
 

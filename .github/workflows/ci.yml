@@ -48,6 +48,9 @@ jobs:
       - name: Feed engine self-test (offline; bare-date stamps, first-fetch backlog, parser)
         run: python3 tools/feeds_update.py --self-test
 
+      - name: Watcher tracking-issue self-test (stub gh; create / update / close)
+        run: python3 tools/watch_issue.py --self-test
+
       - name: Feed curator self-test (offline; safe repairs auto, the rest proposals; log + revert)
         run: python3 tools/seed_curator.py --self-test
 
@@ -120,6 +123,14 @@ jobs:
 
       # R6: kind-prompt cases are verified by DELIBERATE recorded model runs (the R4 decision);
       # CI checks the RECORD and never calls a model. Stale/orphan/FAIL/protocol gates below.
+      - name: Cross-vendor eval runner self-test (stub OpenAI + Gemini servers; offline)
+        run: python3 tools/eval_vendor_run.py --self-test
+
+      - name: Agent Skills format check (the official validator, every skill)
+        run: |
+          python3 -m pip install -r tools/requirements-ci.txt
+          for d in skills/*/*/; do agentskills validate "$d" || exit 1; done
+
       - name: Eval-evidence self-test (record/grade/check round trip; every gate proven failable)
         run: python3 tools/eval_evidence.py --self-test
       - name: Eval-evidence gate (recorded model runs; unrun counted as visible debt)

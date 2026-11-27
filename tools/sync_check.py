@@ -115,7 +115,7 @@ DOC_FRESHNESS_MAX_AGE_DAYS = 365
 # forcing it to be "re-reviewed" every 365 days would make its stamp mean the opposite of what it says.
 MAINTAINER_CLASS_GLOBS = ("*README.md", "*MAINTAINER.md")
 MAINTAINER_CLASS_FILES = (
-    "CLAUDE.md", "STATE.md",
+    "AGENTS.md", "CLAUDE.md", "STATE.md",
     "docs/ARCHITECTURE.md", "docs/DEPLOYMENT.md", "docs/DEPLOYMENT_SURFACES.md",
     "docs/MACOS.md", "docs/QUALITY_MODEL.md", "docs/RUNBOOK-cpalms.md",
     "security/SECURITY_REVIEW.md", "security/SECURITY_AND_SAFETY.md",

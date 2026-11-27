@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-08-16 | owner: mcp-maintainer -->
+<!-- last_reviewed: 2026-11-25 | owner: mcp-maintainer -->
 # Connect the TOS tools — verified lookups inside your AI chat
 
 Two minutes of setup gives your AI real, callable tools: search the **verified Florida
@@ -27,20 +27,14 @@ The plugin ships the tool server. If you installed TOS with the two `/plugin` co
 `tos-tools` server starts automatically — ask *"search the verified standards for grade 3
 fractions"* and watch it call the tool.
 
-<!-- LOAD-BEARING: tools/mac_audit.py's json-launcher check exempts plugin.json's bare
-     `python3` ONLY while this paragraph documents the `claude mcp add --scope user`
-     workaround. Deleting it turns a lint exemption into a CI failure — which is the point. -->
-**Known gap — Windows.** The plugin manifest launches the server with `python3`, and on Windows
-that command usually does not exist: python.org's installer provides `python.exe` and `py.exe`,
-never `python3.exe`. The plugin manifest format has no per-OS command and no default-value
-substitution, so this cannot be fixed from inside the plugin. Until it can, Windows teachers
-register the server once by hand — a user-scope entry outranks the plugin's:
+**Windows, macOS and Linux alike.** Since v1.10.0 the plugin installs the tools as a compiled
+bundle (`tos-tools.mcpb`, one build per operating system), so it needs no Python on your computer.
+If the tools still don't appear, register them once by hand — a user-scope entry outranks the
+plugin's:
 
 ```
 claude mcp add --scope user tos-tools -- python "<path-to-repo>\tools\mcp_server.py"
 ```
-
-(macOS and Linux are unaffected. Doors 2, 3 and 4 don't use this launcher at all.)
 
 **Don't install two copies.** If you use the plugin *and* the Desktop extension, pick one per
 app: Claude Code namespaces plugin tools so it stays clear, but adding the `.mcpb` extension
@@ -57,8 +51,8 @@ with the same name and the same tools. Remove one.
 If your desktop app doesn't offer extension installs, run this from a repo download and your
 assistant will help you place the config file (it needs a full app restart afterwards):
 on macOS/Linux `python3 tools/mcp_server.py --print-config desktop`, **on Windows**
-`py -3 tools\mcp_server.py --print-config desktop` (see the Windows note above — `python3`
-is not a command there).
+`py -3 tools\mcp_server.py --print-config desktop` (older Python installs on Windows have no
+`python3` command).
 
 ## Door 3 — claude.ai, Claude mobile, or ChatGPT Developer mode: paste an address
 

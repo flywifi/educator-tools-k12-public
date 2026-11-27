@@ -1,4 +1,4 @@
-<!-- last_reviewed: 2026-11-23 | owner: tooling-maintainer -->
+<!-- last_reviewed: 2026-11-25 | owner: tooling-maintainer -->
 # tools/ — build, guard, and data tooling
 
 Stdlib-first Python utilities for building the TOS, guarding it against drift, and maintaining the
@@ -42,11 +42,17 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
 - `build_mcpb.py` — stages the one-click Claude Desktop extension bundle (`dist/mcpb-staging/`;
   maintainer runs `mcpb pack` on top).
 
+- `watch_issue.py` — opens, updates or closes the tracking issue for `platform-watch` and
+  `feed-watch`, so a finding notifies a person (`--self-test` uses a stub `gh`).
+
 ## Scaffolding & packaging
 - `new_skill.py` — scaffold a skill from `tools/skill-template/` + copy synced refs.
 - `package_skill.py` — package a skill for distribution.
 - `export_reference_pack.py`, `export_chatgpt.py`, `export_openai.py` — platform export bundles.
 - `version.py`, `rollback.py`, `repair_loop.py`, `skill_repair.py` — versioning + repair.
+- `build_teacher_pack.py` (`--zip`), `publish_teacher_packs.sh` — the ChatGPT/Codex plugin, the
+  Antigravity plugin and the Gem pack; the release workflow zips them and publishes the
+  `teacher-packs` branch that `.agents/plugins/marketplace.json` installs from.
 
 ## Reference index & standards data
 - `offline_index.py` — build/query the gitignored offline reference index; `--build` also writes the
@@ -73,6 +79,8 @@ canonical data. All are offline unless noted. Run from the repo root: `python3 t
 
 ## Benchmarks & feeds
 - `run_benchmark.py` — the evidence-gated benchmark harness (`--check`, `--report`).
+- `eval_vendor_run.py` — runs recorded eval cases on an OpenAI or Gemini model with the TOS rules
+  loaded; judge each answer, then store it with `eval_evidence.py --record --arm <vendor arm>`.
 - `make_feed.py`, `feeds_import.py`, `feeds_publish.py`, `feeds_update.py`, `verify_feeds.py`,
   `seed_curator.py`, `seed_probe.py` — content-feed tooling. `feeds_update.py --self-test` proves the
   engine offline (bare-date stamps don't crash it; a promoted feed's first fetch stores the backlog).
