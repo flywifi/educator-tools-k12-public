@@ -44,7 +44,9 @@ jobs:
           # ONE universal2 executable serves Apple silicon AND Intel Macs (the bundle format keys
           # overrides by OS only, so there is one darwin slot) — and it avoids GitHub's Intel Mac
           # runners, which end Aug 2027. Built with python.org's universal2 Python.
-          - { os: macos-14,       platform: darwin, arch: universal2 }
+          # macos-15 (arm64): GitHub retired every macos-14 image on 2026-11-02 and cancels jobs
+          # that still request it before any step runs. Pinned, not macos-latest, for a predictable image.
+          - { os: macos-15,       platform: darwin, arch: universal2 }
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
